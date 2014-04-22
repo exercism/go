@@ -2,6 +2,7 @@ leap
 raindrops
 grains
 etl
+scrabble-score
 hamming
 anagram
 word-count
