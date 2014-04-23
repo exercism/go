@@ -123,7 +123,7 @@ var testCases = []struct {
 			"Carthorse",
 			"radishes",
 		},
-		expected:    []string{"carthorse"},
+		expected:    []string{"Carthorse"},
 		description: "candidates are case insensitive",
 	},
 }
