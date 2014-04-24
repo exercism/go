@@ -1,5 +1,7 @@
 # xGo
 
+[![Build Status](https://travis-ci.org/exercism/xgo.png?branch=master)](https://travis-ci.org/exercism/xgo)
+
 Exercism exercises in Go
 
 ## Contributing Guide
