@@ -17,3 +17,5 @@ phone-number
 octal
 bottles
 nucleotide-count
+hexadecimal
+binary-search-tree
