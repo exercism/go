@@ -37,7 +37,12 @@ func TestRomanNumerals(t *testing.T) {
 	for _, test := range romanNumeralTests {
 		actual, err := ToRomanNumeral(test.arabic)
 		if err == nil && test.hasError {
-			t.Errorf("ToRomanNumberal(%d) should return an error.", test.arabic)
+			t.Errorf("ToRomanNumeral(%d) should return an error.", test.arabic)
+			continue
+		}
+		if err != nil && !test.hasError {
+			t.Errorf("ToRomanNumeral(%d) should not return an error.", test.arabic)
+			continue
 		}
 		if actual != test.roman {
 			t.Errorf("ToRomanNumeral(%d): expected %s, actual %s", test.arabic, test.roman, actual)
