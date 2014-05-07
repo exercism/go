@@ -7,7 +7,6 @@ hamming
 anagram
 word-count
 binary
-accumulate
 allergies
 bob
 rna-transcription
