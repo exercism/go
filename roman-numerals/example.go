@@ -2,7 +2,6 @@ package romannumerals
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
 )
 
@@ -15,8 +14,7 @@ func ToRomanNumeral(input int) (string, error) {
 	buffer := bytes.NewBufferString("")
 
 	if input <= 0 || input > 3000 {
-		msg := fmt.Sprintf("The number %d is undefined in the roman numeral system.", input)
-		return "", errors.New(msg)
+		return "", fmt.Errorf("The number %d is undefined in the roman numeral system.", input)
 	}
 
 	mappings := []arabicToRoman{

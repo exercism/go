@@ -29,7 +29,6 @@ var romanNumeralTests = []romanNumeralTest{
 	{911, "CMXI", false},
 	{1024, "MXXIV", false},
 	{3000, "MMM", false},
-	{3001, "", false}, // somewhat arbitrary cut-off. Perhaps 10,000 would be better?
 	{0, "", true},
 	{-1, "", true},
 }
