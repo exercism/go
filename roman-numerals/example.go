@@ -2,6 +2,8 @@ package romannumerals
 
 import (
 	"bytes"
+	"errors"
+	"fmt"
 )
 
 type arabicToRoman struct {
@@ -9,8 +11,13 @@ type arabicToRoman struct {
 	roman  string
 }
 
-func ToRomanNumeral(input int) string {
+func ToRomanNumeral(input int) (string, error) {
 	buffer := bytes.NewBufferString("")
+
+	if input <= 0 || input > 3000 {
+		msg := fmt.Sprintf("The number %d is undefined in the roman numeral system.", input)
+		return "", errors.New(msg)
+	}
 
 	mappings := []arabicToRoman{
 		{1000, "M"},
@@ -35,5 +42,5 @@ func ToRomanNumeral(input int) string {
 		}
 	}
 
-	return buffer.String()
+	return buffer.String(), nil
 }
