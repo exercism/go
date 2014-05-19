@@ -1,0 +1,29 @@
+{
+  "slug": "go",
+  "language": "Go",
+  "repository": "https://github.com/exercism/xgo",
+  "active": true,
+  "problems": [
+    "leap",
+    "raindrops",
+    "grains",
+    "etl",
+    "scrabble-score",
+    "hamming",
+    "anagram",
+    "word-count",
+    "binary",
+    "allergies",
+    "bob",
+    "rna-transcription",
+    "roman-numerals",
+    "atbash-cipher",
+    "phone-number",
+    "octal",
+    "bottles",
+    "nucleotide-count",
+    "hexadecimal",
+    "binary-search-tree",
+    "paasio"
+  ]
+}
