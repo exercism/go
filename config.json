@@ -26,6 +26,9 @@
     "binary-search-tree",
     "paasio"
   ],
+  "deprecated": [
+    "accumulate"
+  ],
   "ignore": [
 
   ]
