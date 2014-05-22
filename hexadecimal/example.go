@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-// ToDecimal converts a hexadecimal string to decimal integer.
+// ParseHex converts a hexadecimal string to decimal integer.
 // If the string is invalid, it returns 0 and an error.
-func ToDecimal(hex string) (int64, error) {
+func ParseHex(hex string) (int64, error) {
 	decimal := int64(0)
 	digitVal := int64(0)
 	// for each character in the hex string
@@ -24,7 +24,7 @@ func ToDecimal(hex string) (int64, error) {
 			digitVal = int64(c - 'A' + 10)
 		default:
 			// if the character is invalid, return 0
-			return 0, fmt.Errorf("%s is an invalid hexadecimal string", hex)
+			return 0, fmt.Errorf("unexpected rune '%c'", hex)
 		}
 		// multiply the current number by 16 (left shift by 4) and add the digit
 		decimal = decimal<<4 + digitVal
