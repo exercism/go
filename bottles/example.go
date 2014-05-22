@@ -1,31 +1,54 @@
 package bottles
 
 import (
+	"bytes"
 	"fmt"
-	"strings"
 )
 
+// Sing returns the full lyrics for 99 bottles of beer
 func Sing() (result string) {
-	return Verses(99, 0)
+	result, _ = Verses(99, 0)
+	return
 }
 
-func Verses(start, end int) string {
-	a := []string{}
-	for i := end; i < start+1; i++ {
-		a = append([]string{Verse(i)}, a...)
+// Verses returns an exerpt of the lyrics of 99 bottles of beer
+// between verse start and stop. The verse numbers count backwards, so the
+// first verse sung will be verse 99, and the last will be verse 0
+func Verses(start, stop int) (string, error) {
+	switch {
+	case 0 > start || start > 99:
+		return "", fmt.Errorf("start value[%d] is not a valid verse", start)
+	case 0 > stop || stop > 99:
+		return "", fmt.Errorf("stop value[%d] is not a valid verse", stop)
+	case start < stop:
+		return "", fmt.Errorf("start value[%d] is less than stop value[%d]", start, stop)
 	}
-	return strings.Join(a, "\n") + "\n"
+
+	var buff bytes.Buffer
+	for i := start; i >= stop; i-- {
+		v, _ := Verse(i)
+		buff.WriteString(v)
+		buff.WriteString("\n")
+	}
+	return buff.String(), nil
 }
 
-func Verse(n int) (result string) {
-	if n == 0 {
+// Verse returns a single verse of the lyrics of 99 bottles of beer. The verse
+// numbers count backwards, so the first verse sung will be verse 99, and the
+// last will be verse 0
+func Verse(n int) (string, error) {
+	result := ""
+	switch {
+	case 0 > n || n > 99:
+		return "", fmt.Errorf("%d is not a valid verse", n)
+	case n == 0:
 		result = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
-	} else if n == 1 {
+	case n == 1:
 		result = "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
-	} else if n == 2 {
+	case n == 2:
 		result = "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
-	} else {
+	default:
 		result = fmt.Sprintf("%d bottles of beer on the wall, %d bottles of beer.\nTake one down and pass it around, %d bottles of beer on the wall.\n", n, n, n-1)
 	}
-	return result
+	return result, nil
 }
