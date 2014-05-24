@@ -19,13 +19,11 @@ func assertAllTestsPass(t *testing.T, tests []test, testFunc func(string) string
 }
 
 func benchAllTests(b *testing.B, tests []test, testFunc func(string) string) {
-	//b.StopTimer()
+	// b.StopTimer()
 	for _, test := range tests {
-		//b.StartTimer()
-
+		// b.StartTimer()
 		testFunc(test.input)
-
-		//b.StopTimer()
+		// b.StopTimer()
 	}
 }
 
@@ -34,6 +32,7 @@ var numberTests = []test{
 	{"123.456.7890", "1234567890"},
 	{"1234567890", "1234567890"},
 	{"21234567890", "0000000000"},
+	{"11234567890444", "0000000000"},
 	{"123456789", "0000000000"},
 }
 
