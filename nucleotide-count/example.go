@@ -7,9 +7,7 @@ import (
 
 type Histogram map[string]int
 
-type DNA struct {
-	Strand string
-}
+type DNA string
 
 func (dna DNA) Count(nucleotide string) (count int, err error) {
 	validNucleotides := "ACGT"
@@ -17,7 +15,7 @@ func (dna DNA) Count(nucleotide string) (count int, err error) {
 		return 0, errors.New("dna: invalid nucleotide " + nucleotide)
 	}
 
-	return strings.Count(dna.Strand, nucleotide), nil
+	return strings.Count(string(dna), nucleotide), nil
 }
 
 func (dna DNA) Counts() Histogram {
