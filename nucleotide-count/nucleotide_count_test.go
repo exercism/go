@@ -22,13 +22,13 @@ func (h Histogram) sameMappings(o Histogram) (res bool) {
 
 var tallyTests = []struct {
 	strand     string
-	nucleotide string
+	nucleotide byte
 	expected   int
 }{
-	{"", "A", 0},
-	{"ACT", "G", 0},
-	{"CCCCC", "C", 5},
-	{"GGGGGTAACCCGG", "T", 1},
+	{"", 'A', 0},
+	{"ACT", 'G', 0},
+	{"CCCCC", 'C', 5},
+	{"GGGGGTAACCCGG", 'T', 1},
 }
 
 func TestNucleotideCounts(t *testing.T) {
@@ -43,7 +43,7 @@ func TestNucleotideCounts(t *testing.T) {
 
 func TestHasErrorForInvalidNucleotides(t *testing.T) {
 	dna := DNA("GATTACA")
-	count, err := dna.Count("X")
+	count, err := dna.Count('X')
 	if count != 0 {
 		t.Fatalf("Got \"%v\", expected \"%v\"", count, 0)
 	}
@@ -57,8 +57,8 @@ func TestHasErrorForInvalidNucleotides(t *testing.T) {
 // Just roll with it.
 func TestCountingDoesntChangeCount(t *testing.T) {
 	dna := DNA("CGATTGGG")
-	dna.Count("T")
-	count, _ := dna.Count("T")
+	dna.Count('T')
+	count, _ := dna.Count('T')
 	if count != 2 {
 		t.Fatalf("Got \"%v\", expected \"%v\"", count, 2)
 	}
@@ -72,15 +72,15 @@ type histogramTest struct {
 var histogramTests = []histogramTest{
 	{
 		"",
-		Histogram{"A": 0, "C": 0, "T": 0, "G": 0},
+		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 0},
 	},
 	{
 		"GGGGGGGG",
-		Histogram{"A": 0, "C": 0, "T": 0, "G": 8},
+		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 8},
 	},
 	{
 		"AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
-		Histogram{"A": 20, "C": 12, "T": 21, "G": 17},
+		Histogram{'A': 20, 'C': 12, 'T': 21, 'G': 17},
 	},
 }
 
