@@ -33,42 +33,65 @@ Take one down and pass it around, 4 bottles of beer on the wall.
 `
 
 var verseTestCases = []struct {
-	description string
-	verse       int
-	expected    string
+	description   string
+	verse         int
+	expectedVerse string
+	expectErr     bool
 }{
-	{"a typical verse", 8, verse8},
-	{"another typical verse", 3, verse3},
-	{"verse 2", 2, verse2},
-	{"verse 1", 1, verse1},
-	{"verse 0", 0, verse0},
+	{"a typical verse", 8, verse8, false},
+	{"another typical verse", 3, verse3, false},
+	{"verse 2", 2, verse2, false},
+	{"verse 1", 1, verse1, false},
+	{"verse 0", 0, verse0, false},
+	{"invalid verse", 104, "", true},
 }
 
 func TestBottlesVerse(t *testing.T) {
 	for _, tt := range verseTestCases {
-		actual := Verse(tt.verse)
-		if actual != tt.expected {
-			t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expected, actual)
+		actualVerse, err := Verse(tt.verse)
+		if actualVerse != tt.expectedVerse {
+			t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expectedVerse, actualVerse)
+		}
+
+		// if we expect an error and there isn't one
+		if tt.expectErr && err == nil {
+			t.Errorf("Verse(%d): expected an error, but error is nil", tt.verse)
+		}
+		// if we don't expect an error and there is one
+		if !tt.expectErr && err != nil {
+			t.Errorf("Verse(%d): expected no error, but error is: %s", tt.verse, err)
 		}
 	}
 }
 
 var versesTestCases = []struct {
-	description string
-	upperBound  int
-	lowerBound  int
-	expected    string
+	description   string
+	upperBound    int
+	lowerBound    int
+	expectedVerse string
+	expectErr     bool
 }{
-	{"multiple verses", 8, 6, verses86},
-	{"a different set of verses", 7, 5, verses75},
+	{"multiple verses", 8, 6, verses86, false},
+	{"a different set of verses", 7, 5, verses75, false},
+	{"invalid start", 109, 5, "", true},
+	{"invalid stop", 99, 204, "", true},
+	{"start less than stop", 8, 14, "", true},
 }
 
 func TestSeveralVerses(t *testing.T) {
 
 	for _, tt := range versesTestCases {
-		actual := Verses(tt.upperBound, tt.lowerBound)
-		if actual != tt.expected {
-			t.Fatalf("Verse(%d, %d):\nexpected\n%s\n\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expected, actual)
+		actualVerse, err := Verses(tt.upperBound, tt.lowerBound)
+		if actualVerse != tt.expectedVerse {
+			t.Fatalf("Verses(%d, %d):\nexpected\n%s\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expectedVerse, actualVerse)
+		}
+		// if we expect an error and there isn't one
+		if tt.expectErr && err == nil {
+			t.Errorf("Verses(%d, %d): expected an error, but error is nil", tt.upperBound, tt.lowerBound)
+		}
+		// if we don't expect an error and there is one
+		if !tt.expectErr && err != nil {
+			t.Errorf("Verses(%d, %d): expected no error, but error is: %s", tt.upperBound, tt.lowerBound, err)
 		}
 	}
 }
@@ -87,7 +110,10 @@ func BenchmarkSeveralVerses(b *testing.B) {
 }
 
 func TestSingAllVerses(t *testing.T) {
-	expected := Verses(99, 0)
+	expected, err := Verses(99, 0)
+	if err != nil {
+		t.Fatalf("unexpected error calling Verses(99,0)")
+	}
 	actual := Sing()
 
 	if expected != actual {
