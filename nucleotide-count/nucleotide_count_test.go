@@ -33,7 +33,7 @@ var tallyTests = []struct {
 
 func TestNucleotideCounts(t *testing.T) {
 	for _, tt := range tallyTests {
-		dna := DNA{tt.strand}
+		dna := DNA(tt.strand)
 		count, _ := dna.Count(tt.nucleotide)
 		if count != tt.expected {
 			t.Fatalf("Got \"%v\", expected \"%v\"", count, tt.expected)
@@ -42,7 +42,7 @@ func TestNucleotideCounts(t *testing.T) {
 }
 
 func TestHasErrorForInvalidNucleotides(t *testing.T) {
-	dna := DNA{"GATTACA"}
+	dna := DNA("GATTACA")
 	count, err := dna.Count("X")
 	if count != 0 {
 		t.Fatalf("Got \"%v\", expected \"%v\"", count, 0)
@@ -56,7 +56,7 @@ func TestHasErrorForInvalidNucleotides(t *testing.T) {
 // Very occasionally it matters.
 // Just roll with it.
 func TestCountingDoesntChangeCount(t *testing.T) {
-	dna := DNA{"CGATTGGG"}
+	dna := DNA("CGATTGGG")
 	dna.Count("T")
 	count, _ := dna.Count("T")
 	if count != 2 {
@@ -86,7 +86,7 @@ var histogramTests = []histogramTest{
 
 func TestSequenceHistograms(t *testing.T) {
 	for _, tt := range histogramTests {
-		dna := DNA{tt.strand}
+		dna := DNA(tt.strand)
 		if !dna.Counts().Equal(tt.expected) {
 			t.Fatalf("DNA{ \"%v\" }: Got \"%v\", expected \"%v\"", tt.strand, dna.Counts(), tt.expected)
 		}
@@ -97,7 +97,7 @@ func BenchmarkSequenceHistograms(b *testing.B) {
 	b.StopTimer()
 	for _, tt := range histogramTests {
 		for i := 0; i < b.N; i++ {
-			dna := DNA{tt.strand}
+			dna := DNA(tt.strand)
 			b.StartTimer()
 
 			dna.Counts()
