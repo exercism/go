@@ -1,3 +1,16 @@
+// Your solution must include the following definitions:
+//
+// * func ParseHex(s string) (int64, error)
+//
+// * The error that ParseHex returns:
+//   type ParseError struct {
+//          Num string
+//          Err error
+//   }
+//
+// * Two errors, ErrRange and ErrSyntax, that are returned in the
+//   Err field of ParseError depending on the input.
+
 package hexadecimal
 
 import (
