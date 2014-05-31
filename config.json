@@ -20,14 +20,15 @@
     "atbash-cipher",
     "phone-number",
     "octal",
-    "bottles",
+    "beer-song",
     "nucleotide-count",
     "hexadecimal",
     "binary-search-tree",
     "paasio"
   ],
   "deprecated": [
-    "accumulate"
+    "accumulate",
+    "bottles"
   ],
   "ignore": [
 
