@@ -1,4 +1,4 @@
-package bottles
+package beer
 
 import (
 	"testing"
