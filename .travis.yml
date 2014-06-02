@@ -3,4 +3,6 @@ go:
   - 1.1
   - 1.2
   - tip
-script: go test -cpu 2 ./...
+script:
+  - go test -cpu 2 ./...
+  - bin/configlet-linux-amd64 .
