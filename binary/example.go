@@ -1,32 +1,24 @@
 package binary
 
-import "math"
+import (
+	"fmt"
+)
 
-func ToDecimal(numString string) (result int) {
-	endIndex := len(numString) - 1
-	for i := endIndex; i >= 0; i-- {
-		digit := string(numString[i])
-		if validDigit(digit) {
-			if digit == "1" {
-				result += calcDigitValue(i, endIndex)
-			}
-		} else {
-			return 0
+// ParseBinary converts a binary string to a decimal
+func ParseBinary(bin string) (int, error) {
+	decimal := 0
+	for _, digit := range bin {
+		switch digit {
+		case '1':
+			// multiply decimal by 2 and add 1
+			decimal = (decimal << 1) + 1
+		case '0':
+			// multiply decimal by 2 and add 0
+			decimal = (decimal << 1) + 0
+		default:
+			// if the character was not 1 or 0, it must be invalid
+			return 0, fmt.Errorf("unexpected rune '%c'", bin)
 		}
-
 	}
-	return
-}
-
-func calcDigitValue(position, length int) (result int) {
-	if position == length {
-		result = 1
-	} else {
-		result = int(math.Pow(2, float64(length-position)))
-	}
-	return
-}
-
-func validDigit(digit string) bool {
-	return digit == "1" || digit == "0"
+	return decimal, nil
 }
