@@ -5,6 +5,7 @@
   "active": true,
   "problems": [
     "leap",
+    "gigasecond",
     "raindrops",
     "grains",
     "etl",
