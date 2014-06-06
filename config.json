@@ -12,6 +12,7 @@
     "etl",
     "scrabble-score",
     "hamming",
+    "palindrome-product",
     "anagram",
     "word-count",
     "binary",
