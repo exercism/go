@@ -1,51 +1,66 @@
+// Your solution must include the following definitions:
+//
+// * func ParseHex(s string) (int64, error)
+//
+// * The error that ParseHex returns:
+//   type ParseError struct {
+//          Num string
+//          Err error
+//   }
+//
+// * Two errors, ErrRange and ErrSyntax, that are returned in the
+//   Err field of ParseError depending on the input.
+
 package hexadecimal
 
 import (
+	"reflect"
 	"testing"
 )
 
 var testCases = []struct {
-	input           string
-	expectedDecimal int64
-	expectErr       bool
+	in  string
+	out int64
+	err error
 }{
-	{"1", 1, false},
-	{"10", 16, false},
-	{"2d", 45, false},
-	{"cfcfcf", 13619151, false},
-	{"CFCFCF", 13619151, false},
-	{"peanut", 0, true},
-	{"2cg134", 0, true},
+	{"1", 1, nil},
+	{"10", 0x10, nil},
+	{"2d", 0x2d, nil},
+	{"012", 0x12, nil},
+	{"cfcfcf", 0xcfcfcf, nil},
+	{"CFCFCF", 0xcfcfcf, nil},
+	{"", 0, ErrSyntax},
+	{"peanut", 0, ErrSyntax},
+	{"2cg134", 0, ErrSyntax},
+	{"8000000000000000", 1<<63 - 1, ErrRange},
+	{"9223372036854775809", 1<<63 - 1, ErrRange},
+}
+
+// Modify the test cases to expect a &ParseError instead of
+// the listed ErrSyntax or ErrRange.
+func init() {
+	for i := range testCases {
+		test := &testCases[i]
+		if test.err != nil {
+			test.err = &ParseError{test.in, test.err}
+		}
+	}
 }
 
 func TestParseHex(t *testing.T) {
 	for _, test := range testCases {
-		actualDecimal, actualErr := ParseHex(test.input)
-		if actualDecimal != test.expectedDecimal {
-			t.Fatalf("ParseHex(%s): expected result[%d], actual[%d]",
-				test.input, test.expectedDecimal, actualDecimal)
-		}
-		// if we expect an error and there isn't one
-		if test.expectErr && actualErr == nil {
-			t.Errorf("ParseHex(%s): expected an error, but error is nil", test.input)
-		}
-		// if we don't expect an error and there is one
-		if !test.expectErr && actualErr != nil {
-			t.Errorf("ParseHex(%s): expected no error, but error is: %s", test.input, actualErr)
+		out, err := ParseHex(test.in)
+		if test.out != out || !reflect.DeepEqual(test.err, err) {
+			t.Errorf("ParseHex(%q) = %v, %v want %v, %v",
+				test.in, out, err, test.out, test.err)
 		}
 	}
 }
 
 func BenchmarkParseHex(b *testing.B) {
-	b.StopTimer()
-
-	for _, test := range testCases {
-		b.StartTimer()
-
-		for i := 0; i < b.N; i++ {
-			ParseHex(test.input)
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
+			ParseHex(test.in)
 		}
-
-		b.StopTimer()
 	}
 }
