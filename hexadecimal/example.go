@@ -27,11 +27,10 @@ func (e *ParseError) Error() string {
 // ParseHex interprets a string s in base 16 and returns the corresponding
 // value n.
 //
-// The errors that ParseHex returns have concrete type *NumError
+// The errors that ParseHex returns have concrete type *ParseError
 // and include err.Num = s.  If s is empty or contains invalid
-// digits, err.Err = ErrSyntax; if the value corresponding
-// to s cannot be represented by a signed integer of the
-// given size, err.Err = ErrRange.
+// digits, ParseError.Err = ErrSyntax; if the value corresponding
+// to s cannot be represented by an int64, ParseError.Err = ErrRange.
 func ParseHex(s string) (n int64, err error) {
 	if len(s) < 1 {
 		err = ErrSyntax
@@ -76,4 +75,20 @@ func ParseHex(s string) (n int64, err error) {
 
 Error:
 	return n, &ParseError{s, err}
+}
+
+func HandleErrors(tests []string) []string {
+	e := make([]string, len(tests))
+	for i, s := range tests {
+		_, err := ParseHex(s)
+		switch pe, ok := err.(*ParseError); {
+		case err == nil:
+			e[i] = "none"
+		case ok && pe.Err == ErrSyntax:
+			e[i] = "syntax"
+		case ok && pe.Err == ErrRange:
+			e[i] = "range"
+		}
+	}
+	return e
 }
