@@ -15,6 +15,7 @@
     "hamming",
     "sum-of-multiples",
     "luhn",
+    "largest-series-product",
     "palindrome-product",
     "anagram",
     "word-count",
