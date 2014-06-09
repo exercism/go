@@ -29,6 +29,7 @@
     "atbash-cipher",
     "phone-number",
     "prime-factors",
+    "nth-prime",
     "octal",
     "beer-song",
     "wordy",
