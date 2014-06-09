@@ -45,9 +45,10 @@
   ],
   "deprecated": [
     "accumulate",
-    "bottles"
+    "bottles",
+    "point-mutations"
   ],
   "ignore": [
-
+    "space-age"
   ]
 }
