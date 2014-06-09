@@ -4,49 +4,52 @@ import (
 	"testing"
 )
 
+// You must implement the function,
+//
+//    func ParseBinary(string) (int, error)
+//
+// It is standard for Go functions to return error values to report error conditions.
+// The test cases below are all valid binary numbers however.  For this exercise you
+// may simply return nil for the error value in all cases.
+//
+// For bonus points though, what errors might be possible when parsing a number?
+// Can you add code to detect error conditions and return appropriate error values?
+
 var testCases = []struct {
-	binary    string
-	expected  int
-	expectErr bool
+	binary   string
+	expected int
 }{
-	{"1", 1, false},
-	{"10", 2, false},
-	{"11", 3, false},
-	{"100", 4, false},
-	{"1001", 9, false},
-	{"10001101000", 1128, false},
-	{"12", 0, true},
-	{"hello", 0, true},
+	{"1", 1},
+	{"10", 2},
+	{"11", 3},
+	{"100", 4},
+	{"1001", 9},
+	{"11010", 26},
+	{"10001101000", 1128},
+	{"0", 0},
 }
 
 func TestParseBinary(t *testing.T) {
 	for _, tt := range testCases {
 		actual, err := ParseBinary(tt.binary)
-
+		// We don't expect errors for any of the test cases.
+		if err != nil {
+			t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
+				tt.binary, err)
+		}
+		// Well, we don't expect wrong answers either.
 		if actual != tt.expected {
-			t.Fatalf("ParseBinary(%v): expected %v, actual %v", tt.binary, tt.expected, actual)
-		}
-
-		// if we expect an error and there isn't one
-		if tt.expectErr && err == nil {
-			t.Errorf("ParseBinary(%v): expected an error, but error is nil", tt.binary)
-		}
-		// if we don't expect an error and there is one
-		if !tt.expectErr && err != nil {
-			t.Errorf("ParseBinary(%v): expected no error, but error is: %s", tt.binary, err)
+			t.Fatalf("ParseBinary(%v): actual %d, expected %v",
+				tt.binary, actual, tt.expected)
 		}
 	}
 }
 
+// Benchmark combined time for all tests
 func BenchmarkBinary(b *testing.B) {
-	b.StopTimer()
-	for _, tt := range testCases {
-		b.StartTimer()
-
-		for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range testCases {
 			ParseBinary(tt.binary)
 		}
-
-		b.StopTimer()
 	}
 }
