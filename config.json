@@ -13,6 +13,7 @@
     "grains",
     "etl",
     "scrabble-score",
+    "parallel-letter-frequency",
     "hamming",
     "sum-of-multiples",
     "luhn",
