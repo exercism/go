@@ -16,6 +16,7 @@
     "parallel-letter-frequency",
     "hamming",
     "sum-of-multiples",
+    "pythagorean-triplet",
     "luhn",
     "largest-series-product",
     "sieve",
