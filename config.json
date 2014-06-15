@@ -5,6 +5,7 @@
   "active": true,
   "problems": [
     "leap",
+    "clock",
     "gigasecond",
     "raindrops",
     "triangle",
