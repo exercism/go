@@ -1,6 +1,6 @@
 package pythagorean
 
-// Use this type defintion,
+// Use this type definition,
 //
 //    type Triplet [3]int
 //
