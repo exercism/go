@@ -74,7 +74,7 @@ var versesTestCases = []struct {
 	{"multiple verses", 8, 6, verses86, false},
 	{"a different set of verses", 7, 5, verses75, false},
 	{"invalid start", 109, 5, "", true},
-	{"invalid stop", 99, 204, "", true},
+	{"invalid stop", 99, -20, "", true},
 	{"start less than stop", 8, 14, "", true},
 }
 
