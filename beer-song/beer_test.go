@@ -109,12 +109,12 @@ func BenchmarkSeveralVerses(b *testing.B) {
 	}
 }
 
-func TestSingAllVerses(t *testing.T) {
+func TestEntireSong(t *testing.T) {
 	expected, err := Verses(99, 0)
 	if err != nil {
 		t.Fatalf("unexpected error calling Verses(99,0)")
 	}
-	actual := Sing()
+	actual := Song()
 
 	if expected != actual {
 		msg := `
@@ -132,8 +132,8 @@ func TestSingAllVerses(t *testing.T) {
 	}
 }
 
-func BenchmarkSingAllVerses(b *testing.B) {
+func BenchmarkEntireSong(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Sing()
+		Song()
 	}
 }
