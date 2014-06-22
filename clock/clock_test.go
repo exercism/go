@@ -15,11 +15,27 @@ var addTests = []struct {
 	h, m, a int
 	disp    string
 }{
-	{10, 0, 3, "10:03"},
-	{10, 0, 61, "11:01"},
-	{23, 30, 60, "00:30"},
-	{10, 0, -90, "08:30"},
-	{0, 30, -60, "23:30"},
+	{10, 0, 3, "10:03"},   // simple
+	{10, 0, 61, "11:01"},  // add > 1 hour
+	{23, 30, 60, "00:30"}, // add across midnight
+	{10, 0, -90, "08:30"}, // subtract > 1 hour
+	{0, 30, -60, "23:30"}, // subtract across midnight
+
+	{0, 45, 40, "01:25"},   // hour carry
+	{1, 25, -40, "00:45"},  // hour borrow
+	{23, 45, 40, "00:25"},  // carry across midnight
+	{0, 25, -40, "23:45"},  // borrow across midnight
+	{0, 0, 160, "02:40"},   // add > 2 hrs
+	{0, 45, 160, "03:25"},  // add > 2 hrs with carry
+	{0, 0, -160, "21:20"},  // subtract > 2 hrs
+	{6, 15, -160, "03:35"}, // subtract > 2 hrs with borrow
+
+	{0, 160, 0, "02:40"},  // initial minutes roll over
+	{25, 0, 0, "01:00"},   // initial hour rolls over
+	{25, 160, 0, "03:40"}, // both rollover
+	{0, -160, 0, "21:20"}, // same cases, negative
+	{-25, 0, 0, "23:00"},
+	{-25, -160, 0, "20:20"},
 }
 
 func TestClock(t *testing.T) {
