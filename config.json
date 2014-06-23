@@ -56,7 +56,8 @@
     "binary-search-tree",
     "kindergarten-garden",
     "simple-cipher",
-    "paasio"
+    "paasio",
+    "robot-simulator"
   ],
   "deprecated": [
     "accumulate",
