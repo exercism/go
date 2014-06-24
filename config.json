@@ -66,9 +66,11 @@
     "point-mutations"
   ],
   "ignored": [
-    "space-age"
+
   ],
   "foregone": [
-
+    "space-age",
+    "linked-list",
+    "simple-linked-list"
   ]
 }
