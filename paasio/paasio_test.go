@@ -47,13 +47,13 @@ func TestWrite(t *testing.T) {
 				continue
 			}
 			if n != len(s) {
-				t.Errorf("test %d: Write(%q) unexpected number of bytes written: %v", i, s)
+				t.Errorf("test %d: Write(%q) unexpected number of bytes written: %v", i, s, n)
 				continue
 			}
 		}
 		out := buf.String()
 		if out != strings.Join(test.writes, "") {
-			t.Errorf("test %d: unexpected content in underlying writer: %q", out)
+			t.Errorf("test %d: unexpected content in underlying writer: %q", i, out)
 		}
 	}
 }
@@ -96,7 +96,7 @@ func TestReadTotal(t *testing.T) {
 	var r nopReader
 	rc, err := NewReadCounter(r)
 	if err != nil {
-		t.Fatal("error creating reader: %v", err)
+		t.Fatalf("error creating reader: %v", err)
 	}
 
 	numGo := 10000
@@ -134,7 +134,7 @@ func TestWriteTotal(t *testing.T) {
 	var w nopWriter
 	wt, err := NewWriteCounter(w)
 	if err != nil {
-		t.Fatal("error creating writer: %v", err)
+		t.Fatalf("error creating writer: %v", err)
 	}
 
 	numGo := 10000
