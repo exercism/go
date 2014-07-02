@@ -267,7 +267,7 @@ exp:
 			}
 			continue exp
 		}
-		t.Fatalf("Missing %d", exp.Name)
+		t.Fatalf("Missing %s", exp.Name)
 	}
 }
 
