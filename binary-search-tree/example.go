@@ -1,8 +1,8 @@
-package binary_search_tree
+package binarysearchtree
 
 type SearchTreeData struct {
-	left *SearchTreeData
-	data int
+	left  *SearchTreeData
+	data  int
 	right *SearchTreeData
 }
 

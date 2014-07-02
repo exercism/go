@@ -1,15 +1,16 @@
-package binary_search_tree
+package binarysearchtree
 
 import (
+	"reflect"
+	"strconv"
 	"testing"
-	"fmt"
 )
 
 func TestDataIsRetained(t *testing.T) {
-	expected := 4
 	actual := Bst(4).data
-	if expected != actual {
-		t.Errorf("Bst(4).data: expected %d, actual %d", expected, actual)
+	expected := 4
+	if actual != expected {
+		t.Errorf("Bst(4).data: %d, want %d.", actual, expected)
 	}
 }
 
@@ -17,16 +18,16 @@ func TestInsertingLess(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 	bst.Insert(2)
 
-	expected_data := 4
-	actual_data := bst.data
-	if expected_data != actual_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_data, actual_data)
+	actual := bst.data
+	expected := 4
+	if actual != expected {
+		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	expected_left_data := 2
-	actual_left_data := bst.left.data
-	if expected_left_data != actual_left_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_left_data, actual_left_data)
+	actual = bst.left.data
+	expected = 2
+	if actual != expected {
+		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
 }
 
@@ -34,16 +35,16 @@ func TestInsertingSame(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 	bst.Insert(4)
 
-	expected_data := 4
-	actual_data := bst.data
-	if expected_data != actual_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_data, actual_data)
+	actual := bst.data
+	expected := 4
+	if actual != expected {
+		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	expected_left_data := 4
-	actual_left_data := bst.left.data
-	if expected_left_data != actual_left_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_left_data, actual_left_data)
+	actual = bst.left.data
+	expected = 4
+	if actual != expected {
+		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
 }
 
@@ -51,16 +52,16 @@ func TestInsertingMore(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 	bst.Insert(5)
 
-	expected_data := 4
-	actual_data := bst.data
-	if expected_data != actual_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_data, actual_data)
+	actual := bst.data
+	expected := 4
+	if actual != expected {
+		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	expected_right_data := 5
-	actual_left_data := bst.right.data
-	if expected_right_data != actual_left_data {
-		t.Errorf("bst.data: expected %d, actual %d", expected_right_data, actual_left_data)
+	actual = bst.right.data
+	expected = 5
+	if actual != expected {
+		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 }
 
@@ -73,60 +74,56 @@ func TestComplexTree(t *testing.T) {
 	bst.Insert(7)
 	bst.Insert(5)
 
-	expected := 4
 	actual := bst.data
+	expected := 4
 	if actual != expected {
-		t.Errorf("bst.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	expected = 2
 	actual = bst.left.data
+	expected = 2
 	if actual != expected {
-		t.Errorf("bst.left.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
 
-	expected = 1
 	actual = bst.left.left.data
+	expected = 1
 	if actual != expected {
-		t.Errorf("bst.left.left.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.left.left.data: %d, want %d.", actual, expected)
 	}
 
-	expected = 3
 	actual = bst.left.right.data
+	expected = 3
 	if actual != expected {
-		t.Errorf("bst.left.right.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.left.right.data: %d, want %d.", actual, expected)
 	}
 
-	expected = 6
 	actual = bst.right.data
+	expected = 6
 	if actual != expected {
-		t.Errorf("bst.right.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.right.data: %d, want %d", actual, expected)
 	}
 
-	expected = 5
 	actual = bst.right.left.data
+	expected = 5
 	if actual != expected {
-		t.Errorf("bst.right.left.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.right.left.data: %d, want %d", actual, expected)
 	}
 
-	expected = 7
 	actual = bst.right.right.data
+	expected = 7
 	if actual != expected {
-		t.Errorf("bstfour.right.right.data: expected %d, actual %d", expected, actual)
+		t.Errorf("bst.right.right.data: %d, want %d", actual, expected)
 	}
-}
-
-func iToS(i int) string {
-	return fmt.Sprintf("%d", i)
 }
 
 func TestMapStringWithOneElement(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 
+	actual := bst.MapString(strconv.Itoa)
 	expected := []string{"4"}
-	actual := bst.MapString(iToS)
-	if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", expected) {
-		t.Errorf("bst.MapString(): expected %s, actual %s", expected, actual)
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("bst.MapString(): %q, want %q.", actual, expected)
 	}
 }
 
@@ -134,10 +131,10 @@ func TestMapStringWithSmallElement(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 	bst.Insert(2)
 
+	actual := bst.MapString(strconv.Itoa)
 	expected := []string{"2", "4"}
-	actual := bst.MapString(iToS)
-	if fmt.Sprintf("%v", actual) != fmt.Sprintf("%v", expected) {
-		t.Errorf("bst.MapString(): expected %v, actual %v", expected, actual)
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("bst.MapString(): %q, want %q.", actual, expected)
 	}
 }
 
@@ -145,10 +142,10 @@ func TestMapStringWithLargeElement(t *testing.T) {
 	bst := SearchTreeData{data: 4}
 	bst.Insert(5)
 
+	actual := bst.MapString(strconv.Itoa)
 	expected := []string{"4", "5"}
-	actual := bst.MapString(iToS)
-	if fmt.Sprintf("%v", actual) != fmt.Sprintf("%v", expected) {
-		t.Errorf("bst.MapString(): expected %v, actual %v", expected, actual)
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("bst.MapString(): %q, want %q.", actual, expected)
 	}
 }
 
@@ -161,10 +158,10 @@ func TestMapStringWithComplexStructure(t *testing.T) {
 	bst.Insert(7)
 	bst.Insert(5)
 
+	actual := bst.MapString(strconv.Itoa)
 	expected := []string{"1", "2", "3", "4", "5", "6", "7"}
-	actual := bst.MapString(iToS)
-	if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", expected) {
-		t.Errorf("bst.MapString(): expected %s, actual %s", expected, actual)
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("bst.MapString(): %q, want %q.", actual, expected)
 	}
 }
 
@@ -181,9 +178,9 @@ func TestMapIntWithComplexStructure(t *testing.T) {
 		return i
 	}
 
-	expected := []int{1, 2, 3, 4, 5, 6, 7}
 	actual := bst.MapInt(f)
-	if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", expected) {
-		t.Errorf("bst.MapInt(): expected %s, actual %s", expected, actual)
+	expected := []int{1, 2, 3, 4, 5, 6, 7}
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("bst.MapString(): %v, want %v.", actual, expected)
 	}
 }
