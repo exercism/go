@@ -36,6 +36,7 @@
     "rna-transcription",
     "roman-numerals",
     "say",
+    "circular-buffer",
     "robot-name",
     "custom-set",
     "atbash-cipher",
