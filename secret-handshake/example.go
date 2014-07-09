@@ -2,6 +2,7 @@ package secret
 
 var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 
+// Handshake returns sequence to perform corresponding to the given code.
 func Handshake(code int) (h []string) {
 	switch {
 	case code < 1 || code > 31:
