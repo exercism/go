@@ -19,13 +19,25 @@ var tests = []struct {
 	{0, nil},
 	{-1, nil},
 	{32, nil},
+	{33, nil},
 }
 
 func TestHandshake(t *testing.T) {
 	for _, test := range tests {
 		h := Handshake(test.code)
-		if len(test.h) == 0 && len(h) != 0 || !reflect.DeepEqual(h, test.h) {
+		// use len() to allow either nil or empty list, because
+		// they are not equal by DeepEqual
+		if len(h) == 0 && len(test.h) == 0 {
+			continue
+		}
+		if !reflect.DeepEqual(h, test.h) {
 			t.Fatalf("Handshake(%d) = %v, want %v.", test.code, h, test.h)
 		}
+	}
+}
+
+func BenchmarkHandshake(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Handshake(31)
 	}
 }
