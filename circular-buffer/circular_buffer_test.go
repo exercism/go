@@ -5,12 +5,25 @@ package circular
 //
 //   type Buffer
 //   func NewBuffer(size int) *Buffer
-//   func (*Buffer) Read() (c byte, ok bool)
-//   func (*Buffer) Write(c byte) (ok bool)
+//   func (*Buffer) ReadByte() (byte, error)
+//   func (*Buffer) WriteByte(c byte) error
 //   func (*Buffer) Overwrite(c byte)
-//   func (*Buffer) Clear() // clear entire buffer so that it is empty
+//   func (*Buffer) Reset() // clear entire buffer so that it is empty
 
-import "testing"
+import (
+	"io"
+	"testing"
+)
+
+// We chose the above API so that Buffer implements io.ByteReader
+// and io.ByteWrite and can be used (size permitting) as a drop in
+// replacement for anything using that interface.
+//
+// Here is one way you can have a test case verify that the expected
+// interfaces are implemented.
+
+var _ io.ByteReader = new(Buffer)
+var _ io.ByteWriter = new(Buffer)
 
 // testBuffer and methods support the tests, providing log and fail messages.
 
@@ -25,39 +38,39 @@ func nb(size int, t *testing.T) testBuffer {
 }
 
 func (tb testBuffer) read(want byte) {
-	switch c, ok := tb.b.Read(); {
-	case !ok:
-		tb.Fatal("Read() returned ok = false, want true.")
+	switch c, err := tb.b.ReadByte(); {
+	case err != nil:
+		tb.Fatalf("ReadByte() failed unexpectedly: %v", err)
 	case c != want:
-		tb.Fatalf("Read() = %c, want %c.", c, want)
+		tb.Fatalf("ReadByte() = %c, want %c.", c, want)
 	}
-	tb.Logf("Read %c", want)
+	tb.Logf("ReadByte %c", want)
 }
 
 func (tb testBuffer) readFail() {
-	if c, ok := tb.b.Read(); ok {
-		tb.Fatalf("Read() = %c, ok want !ok", c)
+	if c, err := tb.b.ReadByte(); err == nil {
+		tb.Fatalf("ReadByte() = %c, expected a failure", c)
 	}
-	tb.Log("Read() fail")
+	tb.Log("ReadByte() fails as expected")
 }
 
 func (tb testBuffer) write(c byte) {
-	if !tb.b.Write(c) {
-		tb.Fatalf("Write(%c) returned !ok, want ok.", c)
+	if err := tb.b.WriteByte(c); err != nil {
+		tb.Fatalf("WriteByte(%c) failed unexpectedly: %v", c, err)
 	}
-	tb.Logf("Write(%c)", c)
+	tb.Logf("WriteByte(%c)", c)
 }
 
 func (tb testBuffer) writeFail(c byte) {
-	if tb.b.Write(c) {
-		tb.Fatalf("Write(%c) returned ok, want !ok.", c)
+	if err := tb.b.WriteByte(c); err == nil {
+		tb.Fatalf("WriteByte(%c) succeeded, expected a failure", c)
 	}
-	tb.Logf("Write(%c) fail", c)
+	tb.Logf("WriteByte(%c) fails as expected", c)
 }
 
 func (tb testBuffer) clear() {
-	tb.b.Clear()
-	tb.Log("Clear()")
+	tb.b.Reset()
+	tb.Log("Reset()")
 }
 
 func (tb testBuffer) overwrite(c byte) {
@@ -88,7 +101,7 @@ func TestWriteAndReadMultipleItems(t *testing.T) {
 	tb.readFail()
 }
 
-func TestClear(t *testing.T) {
+func TestReset(t *testing.T) {
 	tb := nb(3, t)
 	tb.write('1')
 	tb.write('2')
@@ -165,13 +178,15 @@ func BenchmarkOverwrite(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		c.Overwrite(0)
 	}
+	b.SetBytes(int64(b.N))
 }
 
 func BenchmarkWriteRead(b *testing.B) {
 	c := NewBuffer(100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		c.Write(0)
-		c.Read()
+		c.WriteByte(0)
+		c.ReadByte()
 	}
+	b.SetBytes(int64(b.N))
 }
