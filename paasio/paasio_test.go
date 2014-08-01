@@ -11,7 +11,26 @@ import (
 	"time"
 )
 
+// TestVersion identifies the API tested by the test program.
+//
+// An exercise submission must export TestVersion with a value matching the
+// unexported value here.  The definition in the exercise thus documents the
+// version of the test program the exercise was developed and tested against.
+const testVersion = 1
+
+// Test program maintainers should change testVersion when changing what is
+// required of submission definitions or their behavior.  That includes
+// adding new test cases even if the test code is unchanged.  When changing
+// testVersion, also update this comment with the retired value and the latest
+// GitHub commit hash that used the retired value.
+//
+// Retired testVersions
+// (none) b3af595530b4d3aa0f3f1db5428947d2cb926e95
+
 func TestMultiThreaded(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	}
 	mincpu := 2
 	minproc := 2
 	ncpu := runtime.NumCPU()
@@ -36,10 +55,7 @@ func TestWrite(t *testing.T) {
 		{[]string{"I", " ", "never met ", "", "a gohper"}},
 	} {
 		var buf bytes.Buffer
-		buft, err := NewWriteCounter(&buf)
-		if err != nil {
-			t.Fatalf("unexpected constructor error: %v", err)
-		}
+		buft := NewWriteCounter(&buf)
 		for _, s := range test.writes {
 			n, err := buft.Write([]byte(s))
 			if err != nil {
@@ -68,10 +84,7 @@ func TestRead(t *testing.T) {
 		t.Fatalf("error reading random data")
 	}
 	buf := bytes.NewBuffer(orig)
-	rc, err := NewReadCounter(buf)
-	if err != nil {
-		t.Fatalf("error creating writer: %v", err)
-	}
+	rc := NewReadCounter(buf)
 	var obuf bytes.Buffer
 	ncopy, err := io.Copy(&obuf, rc)
 	if err != nil {
@@ -94,11 +107,7 @@ func TestRead(t *testing.T) {
 
 func TestReadTotal(t *testing.T) {
 	var r nopReader
-	rc, err := NewReadCounter(r)
-	if err != nil {
-		t.Fatalf("error creating reader: %v", err)
-	}
-
+	rc := NewReadCounter(r)
 	numGo := 10000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
@@ -108,10 +117,6 @@ func TestReadTotal(t *testing.T) {
 	wg := new(sync.WaitGroup)
 	wg.Add(numGo)
 	start := make(chan struct{})
-	go func() {
-		<-time.After(time.Microsecond)
-		close(start)
-	}()
 	for i := 0; i < numGo; i++ {
 		go func() {
 			<-start
@@ -119,6 +124,7 @@ func TestReadTotal(t *testing.T) {
 			wg.Done()
 		}()
 	}
+	close(start)
 
 	wg.Wait()
 	n, nops := rc.ReadCount()
@@ -132,11 +138,7 @@ func TestReadTotal(t *testing.T) {
 
 func TestWriteTotal(t *testing.T) {
 	var w nopWriter
-	wt, err := NewWriteCounter(w)
-	if err != nil {
-		t.Fatalf("error creating writer: %v", err)
-	}
-
+	wt := NewWriteCounter(w)
 	numGo := 10000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
@@ -146,10 +148,6 @@ func TestWriteTotal(t *testing.T) {
 	wg := new(sync.WaitGroup)
 	wg.Add(numGo)
 	start := make(chan struct{})
-	go func() {
-		<-time.After(time.Microsecond)
-		close(start)
-	}()
 	for i := 0; i < numGo; i++ {
 		go func() {
 			<-start
@@ -157,6 +155,7 @@ func TestWriteTotal(t *testing.T) {
 			wg.Done()
 		}()
 	}
+	close(start)
 
 	wg.Wait()
 	n, nops := wt.WriteCount()
