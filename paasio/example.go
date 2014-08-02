@@ -1,45 +1,43 @@
 package paasio
 
 import (
-	"fmt"
 	"io"
 	"sync"
 )
 
+const TestVersion = 1
+
 // NewWriteCounter returns an implementation of WriteCounter.  Calls to
 // w.Write() are not guaranteed to be synchronized.
-func NewWriteCounter(w io.Writer) (WriteCounter, error) {
-	return newWriteCounter(w)
+func NewWriteCounter(w io.Writer) WriteCounter {
+	return &writeCounter{
+		w:   w,
+		wrl: new(sync.Mutex),
+	}
 }
 
 // NewReadCounter returns an implementation of ReadCounter.  Calls to
 // r.Read() are not guaranteed to be synchronized.
-func NewReadCounter(r io.Reader) (ReadCounter, error) {
-	return newReadCounter(r)
+func NewReadCounter(r io.Reader) ReadCounter {
+	return &readCounter{
+		r:   r,
+		rdl: new(sync.Mutex),
+	}
 }
 
+/*
 // NewReadWriteCounter returns an implementation of ReadWriteCounter.  Calls to
 // Calls to rw.Write() and rw.Read() are not guaranteed to be synchronized.
 func NewReadWriteCounter(rw io.ReadWriter) (ReadWriteCounter, error) {
 	return newReadWriteCounter(rw)
 }
+*/
 
 type readCounter struct {
 	r      io.Reader
 	nrd    int64
 	nrdops int
 	rdl    *sync.Mutex
-}
-
-func newReadCounter(r io.Reader) (*readCounter, error) {
-	if r == nil {
-		return nil, fmt.Errorf("nil reader")
-	}
-	wt := &readCounter{
-		r:   r,
-		rdl: new(sync.Mutex),
-	}
-	return wt, nil
 }
 
 func (rc *readCounter) Read(p []byte) (int, error) {
@@ -65,17 +63,6 @@ type writeCounter struct {
 	wrl    *sync.Mutex
 }
 
-func newWriteCounter(w io.Writer) (*writeCounter, error) {
-	if w == nil {
-		return nil, fmt.Errorf("nil writer")
-	}
-	wt := &writeCounter{
-		w:   w,
-		wrl: new(sync.Mutex),
-	}
-	return wt, nil
-}
-
 func (wc *writeCounter) Write(p []byte) (int, error) {
 	m, err := wc.w.Write(p)
 	wc.wrl.Lock()
@@ -92,6 +79,7 @@ func (wc *writeCounter) WriteCount() (n int64, nops int) {
 	return n, nops
 }
 
+/*
 type rwCounter struct {
 	*writeCounter
 	*readCounter
@@ -113,3 +101,4 @@ func newIOCounter(w io.Writer, r io.Reader) (*rwCounter, error) {
 func newReadWriteCounter(rw io.ReadWriter) (*rwCounter, error) {
 	return newIOCounter(rw, rw)
 }
+*/
