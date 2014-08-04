@@ -8,17 +8,28 @@ package circular
 //   func (*Buffer) ReadByte() (byte, error)
 //   func (*Buffer) WriteByte(c byte) error
 //   func (*Buffer) Overwrite(c byte)
-//   func (*Buffer) Reset() // clear entire buffer so that it is empty
+//   func (*Buffer) Reset() // put buffer in an empty state
+//
+// We chose the above API so that Buffer implements io.ByteReader
+// and io.ByteWriter and can be used (size permitting) as a drop in
+// replacement for anything using that interface.
 
 import (
 	"io"
 	"testing"
 )
 
-// We chose the above API so that Buffer implements io.ByteReader
-// and io.ByteWrite and can be used (size permitting) as a drop in
-// replacement for anything using that interface.
-//
+const testVersion = 1
+
+// Retired:
+// (non-versioned) ea3c43868a02d8d899d3a99163380a3b7b3a0a18
+
+func TestTestVersion(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	}
+}
+
 // Here is one way you can have a test case verify that the expected
 // interfaces are implemented.
 
@@ -68,7 +79,7 @@ func (tb testBuffer) writeFail(c byte) {
 	tb.Logf("WriteByte(%c) fails as expected", c)
 }
 
-func (tb testBuffer) clear() {
+func (tb testBuffer) reset() {
 	tb.b.Reset()
 	tb.Log("Reset()")
 }
@@ -106,7 +117,7 @@ func TestReset(t *testing.T) {
 	tb.write('1')
 	tb.write('2')
 	tb.write('3')
-	tb.clear()
+	tb.reset()
 	tb.write('1')
 	tb.write('2')
 	tb.read('1')

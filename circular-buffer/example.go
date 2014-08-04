@@ -3,7 +3,12 @@ package circular
 // standard library container/ring package and "one slot open" technique
 // as described at WP.
 
-import "container/ring"
+import (
+	"container/ring"
+	"errors"
+)
+
+const TestVersion = 1
 
 // Buffer implements a circular buffer supporting both overflow-checked writes
 // and unconditional, possibly overwriting, writes.
@@ -17,26 +22,26 @@ func NewBuffer(size int) *Buffer {
 	return &Buffer{r, r}
 }
 
-// Read removes one byte from the buffer and returns it.
-// Read returns ok = false if the buffer is empty.
-func (b *Buffer) Read() (c byte, ok bool) {
+// ReadByte removes one byte from the buffer and returns it.
+// ReadByte returns an error if the buffer is empty.
+func (b *Buffer) ReadByte() (byte, error) {
 	if b.start == b.end {
-		return 0, false
+		return 0, errors.New("buffer empty")
 	}
-	c = b.start.Value.(byte)
+	c := b.start.Value.(byte)
 	b.start = b.start.Next()
-	return c, true
+	return c, nil
 }
 
-// Write puts byte c in the buffer and returns true as long as there is room
-// in the buffer.  Write returns false if the buffer is full.
-func (b *Buffer) Write(c byte) bool {
+// WriteByte puts byte c in the buffer there is room.
+// WriteByte returns an error if the buffer is full.
+func (b *Buffer) WriteByte(c byte) error {
 	if b.end.Next() == b.start {
-		return false
+		return errors.New("buffer full")
 	}
 	b.end.Value = c
 	b.end = b.end.Next()
-	return true
+	return nil
 }
 
 // Overwrite unconditionally puts byte c in the buffer.  If the buffer was
@@ -49,7 +54,7 @@ func (b *Buffer) Overwrite(c byte) {
 	}
 }
 
-// Clear clears the buffer, leaving it empty.
-func (b *Buffer) Clear() {
+// Reset puts the buffer in an empty state.
+func (b *Buffer) Reset() {
 	b.start = b.end
 }
