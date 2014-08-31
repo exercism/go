@@ -5,4 +5,5 @@ go:
   - tip
 script:
   - go test -cpu 2 ./...
-  - bin/configlet-linux-amd64 .
+  - bin/fetch-configlet
+  - bin/configlet .
