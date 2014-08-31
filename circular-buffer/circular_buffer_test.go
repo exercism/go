@@ -119,10 +119,10 @@ func TestReset(t *testing.T) {
 	tb.write('3')
 	tb.reset()
 	tb.write('1')
-	tb.write('2')
-	tb.read('1')
 	tb.write('3')
-	tb.read('2')
+	tb.read('1')
+	tb.write('4')
+	tb.read('3')
 }
 
 func TestAlternateWriteAndRead(t *testing.T) {
