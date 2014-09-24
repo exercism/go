@@ -7,7 +7,7 @@ func Hey(drivel string) string {
 	case silent(drivel):
 		return "Fine. Be that way!"
 	case yelling(drivel):
-		return "Woah, chill out!"
+		return "Whoa, chill out!"
 	case asking(drivel):
 		return "Sure."
 	default:

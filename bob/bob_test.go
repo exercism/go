@@ -14,7 +14,7 @@ var testCases = []struct {
 	},
 	{
 		"shouting",
-		"Woah, chill out!",
+		"Whoa, chill out!",
 		"WATCH OUT!",
 	},
 	{
@@ -39,12 +39,12 @@ var testCases = []struct {
 	},
 	{
 		"forceful questions",
-		"Woah, chill out!",
+		"Whoa, chill out!",
 		"WHAT THE HELL WERE YOU THINKING?",
 	},
 	{
 		"shouting numbers",
-		"Woah, chill out!",
+		"Whoa, chill out!",
 		"1, 2, 3 GO!",
 	},
 	{
@@ -59,12 +59,12 @@ var testCases = []struct {
 	},
 	{
 		"shouting with special characters",
-		"Woah, chill out!",
+		"Whoa, chill out!",
 		"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
 	},
 	{
 		"shouting with no exclamation mark",
-		"Woah, chill out!",
+		"Whoa, chill out!",
 		"I HATE YOU",
 	},
 	{
