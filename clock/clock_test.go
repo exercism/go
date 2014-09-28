@@ -1,6 +1,9 @@
 package clock
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 var newTests = []struct {
 	h, m int
@@ -53,13 +56,14 @@ func TestClock(t *testing.T) {
 	clock1 := New(15, 37)
 	clock2 := New(15, 36)
 	clock3 := New(14, 37)
-	if clock0 != clock1 {
+	if !reflect.DeepEqual(clock0, clock1) {
 		t.Fatal(clock0, "!=", clock1, "want ==")
 	}
-	if clock2 == clock1 {
+	if reflect.DeepEqual(clock1, clock2) {
 		t.Fatal(clock2, "==", clock1, "want !=")
 	}
-	if clock3 == clock1 {
+	if reflect.DeepEqual(clock1, clock3) {
 		t.Fatal(clock3, "==", clock1, "want !=")
 	}
+
 }
