@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const TestVersion = 1
+
 func norm(r rune) rune {
 	switch {
 	case r >= 'a' && r <= 'z' || r >= '0' && r <= '9':
@@ -17,19 +19,10 @@ func norm(r rune) rune {
 
 func Encode(pt string) string {
 	pt = strings.Map(norm, pt)
-	cols := int(math.Ceil(math.Sqrt(float64(len(pt)))))
-	b := make([]byte, len(pt)+(len(pt)-1)/5)
-	px := 0
-	for bx := range b {
-		if (bx+1)%6 == 0 {
-			b[bx] = ' '
-		} else {
-			b[bx] = pt[px]
-			px += cols
-			if px >= len(pt) {
-				px = (px + 1) % cols
-			}
-		}
+	numCols := int(math.Ceil(math.Sqrt(float64(len(pt)))))
+	cols := make([]string, numCols)
+	for i, r := range pt {
+		cols[i%numCols] += string(r)
 	}
-	return string(b)
+	return strings.Join(cols, " ")
 }

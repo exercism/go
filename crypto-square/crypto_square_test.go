@@ -2,29 +2,34 @@ package cryptosquare
 
 import "testing"
 
+const testVersion = 1
+
+// Retired testVersions
+// (none) 71ad8ac57fe7d5b777cfa1afd116cd41e1af55ed
+
 var tests = []struct {
-	pt string
-	ct string
+	pt string // plain text
+	ct string // cipher text
 }{
 	{
 		"s#$%^&plunk",
-		"supnl k",
+		"su pn lk",
 	},
 	{
 		"1, 2, 3 GO!",
-		"1g2o3",
+		"1g 2o 3",
 	},
 	{
 		"1234",
-		"1324",
+		"13 24",
 	},
 	{
 		"123456789",
-		"14725 8369",
+		"147 258 369",
 	},
 	{
 		"123456789abc",
-		"15926 a37b4 8c",
+		"159 26a 37b 48c",
 	},
 	{
 		"Never vex thine heart with idle woes",
@@ -32,23 +37,23 @@ var tests = []struct {
 	},
 	{
 		"ZOMG! ZOMBIES!!!",
-		"zzioo emmsg b",
+		"zzi ooe mms gb",
 	},
 	{
 		"Time is an illusion. Lunchtime doubly so.",
-		"tasne yinic dsmio hooel ntuil libsu uml",
+		"tasney inicds miohoo elntu illib suuml",
 	},
 	{
 		"We all know interspecies romance is weird.",
-		"wneia weore neaws scili prerl neoid ktcms",
+		"wneiaw eorene awssci liprer lneoid ktcms",
 	},
 	{
 		"Madness, and then illumination.",
-		"msemo aanin dninn dlaet ltshu i",
+		"msemo aanin dnin ndla etlt shui",
 	},
 	{
 		"Vampires are people too!",
-		"vrela epems etpao oirpo",
+		"vrel aepe mset paoo irpo",
 	},
 	{
 		"",
@@ -60,26 +65,39 @@ var tests = []struct {
 	},
 	{
 		"12",
-		"12",
+		"1 2",
 	},
 	{
-		"123",
-		"132",
+		"12 3",
+		"13 2",
 	},
 	{
 		"12345678",
-		"14725 836",
+		"147 258 36",
 	},
 	{
 		"123456789a",
-		"15926 a3748",
+		"159 26a 37 48",
+	},
+	{
+		"If man was meant to stay on the ground god would have given us roots",
+		"imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau",
+	},
+	{
+		"Have a nice day. Feed the dog & chill out!",
+		"hifei acedl veeol eddgo aatcu nyhht",
 	},
 }
 
 func TestEncode(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	}
 	for _, test := range tests {
 		if ct := Encode(test.pt); ct != test.ct {
-			t.Fatalf("Encode(%q) = %q, want %q", test.pt, ct, test.ct)
+			t.Fatalf(`Encode(%q):
+got  %q
+want %q`, test.pt, ct, test.ct)
 		}
 	}
 }
