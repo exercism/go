@@ -34,6 +34,17 @@ import (
 	"testing"
 )
 
+const testVersion = 1
+
+// Retired testVersions
+// (none) b0e8c094dd0bb0aa82c04d7e3470a0128daae78f
+
+func TestTestVersion(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	}
+}
+
 var _ fmt.Stringer = New()
 
 var _empty = New()
@@ -314,6 +325,34 @@ func TestEqualSubsetDisjoint(t *testing.T) {
 	}
 	if res, want := Disjoint(s1, s2), false; res != want {
 		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
+	}
+
+	// compare with multiple elements to test that order doesn't matter.
+	sx := []string{"a", "b", "c", "d", "e"}
+	for i := 0; i < 20; i++ {
+		sa := New()
+		sb := New()
+		pa := rand.Perm(len(sx))
+		pb := rand.Perm(len(sx))
+		for j := range sx {
+			sa.Add(sx[pa[j]])
+			sb.Add(sx[pb[j]])
+		}
+		if res, want := Equal(sa, sb), true; res != want {
+			t.Log(`sa =`, sa)
+			t.Log(`sb =`, sb)
+			t.Fatalf(`Equal(sa, sb) = %t, want %t.`, res, want)
+		}
+		if res, want := Subset(sa, sb), true; res != want {
+			t.Log(`sa =`, sa)
+			t.Log(`sb =`, sb)
+			t.Fatalf(`Subset(sa, sb) = %t, want %t.`, res, want)
+		}
+		if res, want := Disjoint(sa, sb), false; res != want {
+			t.Log(`sa =`, sa)
+			t.Log(`sb =`, sb)
+			t.Fatalf(`Disjoint(sa, sb) = %t, want %t.`, res, want)
+		}
 	}
 }
 
