@@ -2,6 +2,8 @@ package clock
 
 import "fmt"
 
+const TestVersion = 1
+
 type Clock int
 
 func New(h, m int) Clock {
