@@ -2,10 +2,11 @@ package gigasecond
 
 import "time"
 
-// A gigasecond is 10^9 seconds.
-const Gigasecond time.Duration = 1e9 * time.Second
+const TestVersion = 1
 
-// AddGigasecond returns the time t + Gigasecond.
+// AddGigasecond returns time t plus one gigasecond.
 func AddGigasecond(t time.Time) time.Time {
-	return t.Add(Gigasecond)
+	return t.Add(1e9 * time.Second)
 }
+
+var Birthday = time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC)
