@@ -72,7 +72,7 @@
     "point-mutations"
   ],
   "ignored": [
-
+    "img"
   ],
   "foregone": [
     "space-age",
