@@ -1,6 +1,21 @@
 package clock
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
+
+// Implement a Clock type with a constructor, a stringer, and an Add method.
+// Add should also handle subtraction by accepting negative values.
+// To satisfy the readme requirement about clocks being equal, values of
+// your Clock type need to work with the == operator.
+//
+// It might help to study the time.Time type in the standard library
+// (https://golang.org/pkg/time/#Time) as a model.  See how constructors there
+// (Date and Now) return Time values rather than pointers.  Note also how
+// most time.Time methods have value receivers rather that pointer recievers.
+// For more background on this read
+// https://github.com/golang/go/wiki/CodeReviewComments#receiver-type.
 
 const testVersion = 1
 
@@ -37,8 +52,11 @@ func TestCompareClocks(t *testing.T) {
 		if got != e.want {
 			t.Log("Clock1:", clock1)
 			t.Log("Clock2:", clock2)
-			op := map[bool]string{true: "==", false: "!="}
-			t.Fatal("Clock1, clock2 compare", op[got], "want", op[e.want])
+			t.Logf("Clock1 == Clock2 is %t, want %t", got, e.want)
+			if reflect.DeepEqual(clock1, clock2) {
+				t.Log("(Hint: see comments in clock_test.go.)")
+			}
+			t.FailNow()
 		}
 	}
 	t.Log(len(eqTests), "test cases")
