@@ -33,7 +33,7 @@ func TestCompareClocks(t *testing.T) {
 	for _, e := range eqTests {
 		clock1 := New(e.c1.h, e.c1.m)
 		clock2 := New(e.c2.h, e.c2.m)
-		got := clock1 == clock2
+		got := *clock1 == *clock2
 		if got != e.want {
 			t.Log("Clock1:", clock1)
 			t.Log("Clock2:", clock2)
