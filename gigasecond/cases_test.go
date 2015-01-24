@@ -1,7 +1,7 @@
 package gigasecond
 
 // Source: exercism/x-common
-// Commit: f362340 Merge pull request #36 from soniakeys/gigasecond-test-data
+// Commit: 1e9e232 Merge pull request #45 from soniakeys/gigasecond-tests
 
 // Add one gigasecond to the input.
 var addCases = []struct {
@@ -19,5 +19,13 @@ var addCases = []struct {
 	{
 		"1959-07-19",
 		"1991-03-27T01:46:40",
+	},
+	{
+		"2015-01-24T22:00:00",
+		"2046-10-02T23:46:40",
+	},
+	{
+		"2015-01-24T23:59:59",
+		"2046-10-03T01:46:39",
 	},
 }

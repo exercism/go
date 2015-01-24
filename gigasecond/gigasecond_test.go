@@ -10,10 +10,11 @@ import (
 	"time"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 // Retired testVersions
 // (none) 98807b314216ff27492378a00df60410cc971d32
+// 1      ed0594b6fd6664928d17bbc70b543a56da05a5b8
 
 // date formats used in test data
 const (
@@ -26,8 +27,8 @@ func TestAddGigasecond(t *testing.T) {
 		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
 	}
 	for _, tc := range addCases {
-		in := parse(tc.in, fmtD, t)
-		want := parse(tc.want, fmtDT, t)
+		in := parse(tc.in, t)
+		want := parse(tc.want, t)
 		got := AddGigasecond(in)
 		if !got.Equal(want) {
 			t.Fatalf(`AddGigasecond(%s)
@@ -44,8 +45,11 @@ Your birthday:               %s
 Your gigasecond anniversary: %s`, Birthday, AddGigasecond(Birthday))
 }
 
-func parse(s string, f string, t *testing.T) time.Time {
-	tt, err := time.Parse(f, s)
+func parse(s string, t *testing.T) time.Time {
+	tt, err := time.Parse(fmtDT, s) // try full date time format first
+	if err != nil {
+		tt, err = time.Parse(fmtD, s) // also allow just date
+	}
 	if err != nil {
 		// can't run tests if input won't parse.  if this seems to be a
 		// development or ci environment, raise an error.  if this condition
