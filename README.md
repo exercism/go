@@ -15,19 +15,16 @@ pass tests or of valid solutions that fail tests
 
 Beyond filing issues, if you would like to contribute directly to the Go code in xgo, you should follow some
 standard Go development practices.  You should have a [recent version of Go](http://golang.org/doc/install)
-installed.  Our continuous integration (CI) tests that our code base works with the current "release" version of
-Go, the previous minor version release, and also with "tip."  You don't need to have all of these installed, any
-one of them is fine.
+installed, ideally either the current release, the previous release, or tip.
 
 You will need a github account and you will need to fork exercism/xgo to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
 Clone your fork into a Go workspace on your GOPATH.  Read [How to Write Go Code](http://golang.org/doc/code.html)
-if you are unfamiliar with Go workspaces and GOPATH.  As an example, if you have `$HOME/dev` on your GOPATH, then
-you should cd to `$HOME/dev/src/github.com/<you>` to type the clone command.
-Type `git clone https://github.com/<you>/xgo` then, to clone into `$HOME/dev/src/github.com/<you>/xgo`.  Test your
-clone by cding to the xgo directory and typing `go test ./...`.  You should see tests pass for all exercises.
-(Oh wait, do you see the error message from paasio?  Try what it says, `go test -cpu 2 ./...`.  Tests should be
-clean now.
+if you are unfamiliar with Go workspaces and GOPATH.  As an example, if you have `$HOME/dev` on your GOPATH,
+you should cd to `$HOME/dev/src/github.com/<you>` to type the clone command:
+`git clone https://github.com/<you>/xgo`.  Test your clone by cding to the xgo directory and typing
+`go test ./...`. You should see tests pass for all exercises. (Oh wait, do you see the error message from paasio?
+Try what it says, `go test -cpu 2 ./...`.  Tests should be clean now.)
 
 ## Contributing Guide
 
@@ -40,16 +37,19 @@ the common metadata, and high-level information about contributing to existing p
 Let's walk through the first problem in `config.json`, leap.  Cd down into the leap directory now, there are two
 files there, example.go and leap_test.go.  Example.go is a reference solution.  It is a valid solution that CI can
 run tests against.  Solvers generally will not see it though.  Files with "example" in the file name are skipped
-by `fetch`.  Because of this, there is less need for this code to be an example of style, expression and
+by `fetch`.  Because of this, there is less need for this code to be a model of style, expression and
 readability, or to use the best algorithm.  Examples can be plain, simple, concise, even naïve, as long as they
 are correct.  The test program though, is fetched for the solver and deserves attention for consistency and
 appearance.
 
 Leap_test.go uses a data-driven test.  Test cases are defined as data, then a test function iterates over
-the data.  Identifiers within the method appear in actual-expected order.  Here the identifier 'observed' is used
-instead of actual.  That's fine.  The words 'got' and 'want' are common in go tests.  They are clear and short.
-See [Useful Test Failures](http://code.google.com/p/go-wiki/wiki/CodeReviewComments#Useful_Test_Failures).
-Really we like most of the advice on that page.
+the data.  Identifiers within the method appear in actual-expected order as described at
+[Useful Test Failures](https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures).
+Here the identifier 'observed' is used instead of actual.  That's fine.  More common are words 'got' and 'want'.
+They are clear and short.  Note
+[Useful Test Failures](https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures) is part of
+[Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments).  Really we like most of the
+advice on that page.
 
 Also here in leap_test.go is a benchmark.  We throw in benchmarks because they're interesting, and because it's
 idiomatic in Go to think about performance.  There is no critical use for these though.  Usually, like this one in
@@ -79,8 +79,8 @@ it.  Looking at the exercism/xgo repository now instead of your own, you see thi
 
 <img src="img/mars2.png">
 
-That inconspicuous orange dot is important!  Hover over it (no, not on this page, on a real page) and you can see
-it's indicating that the Travis CI build is in progress.  After a few minutes (usually) that dot will turn green
+That inconspicuous orange dot is important!  Hover over it (no, not on this image, on a real page) and you can see
+it's indicating that a Travis CI build is in progress.  After a few minutes (usually) that dot will turn green
 indicating that tests passed.  If there's a problem, it comes up red:
 
 <img src="img/mars3.png">
@@ -91,7 +91,7 @@ for clues.  Usually error messages will be helpful and you can correct the probl
 ## Direction
 
 Directions are unlimited.  This code is fresh and evolving.  Explore the existing code and you will see some new
-directions being tried.  Your fresh ideas and contributions are welcome.
+directions being tried.  Your fresh ideas and contributions are welcome.  :sparkles:
 
 ## License
 
