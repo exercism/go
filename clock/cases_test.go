@@ -1,10 +1,10 @@
 package clock
 
 // Source: exercism/x-common
-// Commit: 6bf749c Merge pull request #32 from soniakeys/test-data
+// Commit: 1e9e232 Merge pull request #45 from soniakeys/gigasecond-tests
 
 // Test creating a new clock with an initial time.
-var newTests = []struct {
+var timeTests = []struct {
 	h, m int
 	want string
 }{
