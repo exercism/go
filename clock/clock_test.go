@@ -5,7 +5,12 @@ import (
 	"testing"
 )
 
-// Implement a Clock type with a constructor, a stringer, and an Add method.
+// Clock type API:
+//
+// Time(hour, minute int) Clock    // a "constructor"
+// (Clock) String() string         // a "stringer"
+// (Clock) Add(minutes)
+//
 // Add should also handle subtraction by accepting negative values.
 // To satisfy the readme requirement about clocks being equal, values of
 // your Clock type need to work with the == operator.
@@ -17,27 +22,28 @@ import (
 // For more background on this read
 // https://github.com/golang/go/wiki/CodeReviewComments#receiver-type.
 
-const testVersion = 1
+const testVersion = 2
 
 // Retired testVersions
 // (none) 79937f6d58e25ebafe12d1cb4a9f88f4de70cfd6
+// 1      8d0cb8b617be2e36b2ca5ad2034e5f80f2372924
 
-func TestNewClock(t *testing.T) {
+func TestCreateClock(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
 	}
-	for _, n := range newTests {
-		if got := New(n.h, n.m); got.String() != n.want {
-			t.Fatalf("New(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
+	for _, n := range timeTests {
+		if got := Time(n.h, n.m); got.String() != n.want {
+			t.Fatalf("Time(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
 		}
 	}
-	t.Log(len(newTests), "test cases")
+	t.Log(len(timeTests), "test cases")
 }
 
 func TestAddMinutes(t *testing.T) {
 	for _, a := range addTests {
-		if got := New(a.h, a.m).Add(a.a); got.String() != a.want {
-			t.Fatalf("New(%d, %d).Add(%d) = %q, want %q",
+		if got := Time(a.h, a.m).Add(a.a); got.String() != a.want {
+			t.Fatalf("Time(%d, %d).Add(%d) = %q, want %q",
 				a.h, a.m, a.a, got, a.want)
 		}
 	}
@@ -46,8 +52,8 @@ func TestAddMinutes(t *testing.T) {
 
 func TestCompareClocks(t *testing.T) {
 	for _, e := range eqTests {
-		clock1 := New(e.c1.h, e.c1.m)
-		clock2 := New(e.c2.h, e.c2.m)
+		clock1 := Time(e.c1.h, e.c1.m)
+		clock2 := Time(e.c2.h, e.c2.m)
 		got := clock1 == clock2
 		if got != e.want {
 			t.Log("Clock1:", clock1)

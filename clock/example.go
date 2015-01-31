@@ -2,11 +2,11 @@ package clock
 
 import "fmt"
 
-const TestVersion = 1
+const TestVersion = 2
 
 type Clock int
 
-func New(h, m int) Clock {
+func Time(h, m int) Clock {
 	c := Clock((h*60 + m) % 1440)
 	if c < 0 {
 		c += 1440

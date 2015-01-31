@@ -53,7 +53,7 @@ func main() {
 type js struct {
 	Create struct {
 		Description []string
-		Cases       []newCase
+		Cases       []timeCase
 	}
 	Add struct {
 		Description []string
@@ -67,20 +67,20 @@ type js struct {
 
 // Handle the three tests similarly
 
-type newCase struct {
+type timeCase struct {
 	Description  string
 	Hour, Minute int
 	Expected     string
 }
 
-func genNewTests(f *os.File, j *js) {
+func genTimeTests(f *os.File, j *js) {
 	// json.Unmarshal will happily skip parts of the data structure that
 	// don't match.  Check here that we really got some data.
 	if len(j.Create.Cases) == 0 {
 		log.Fatal(`Missing "Create" test cases`)
 	}
 	genCmts(f, j.Create.Description)
-	fmt.Fprintln(f, `var newTests = []struct {
+	fmt.Fprintln(f, `var timeTests = []struct {
 	h, m int
 	want string
 }{`)
@@ -163,7 +163,7 @@ func gen(j *js, jPath, jOri, jCommit string) {
 		fmt.Fprintf(f, "// Commit: %s\n\n", jCommit)
 	}
 
-	genNewTests(f, j)
+	genTimeTests(f, j)
 	genAddTests(f, j)
 	genEqTests(f, j)
 
