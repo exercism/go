@@ -6,20 +6,20 @@ package stringset
 //
 // New() Set
 // NewFromSlice([]string) Set
-// (s Set) Add(string)
-// (s Set) Delete(string)
+// (s Set) Add(string)         // modify s
+// (s Set) Delete(string)      // modify s
 // (s Set) Has(string) bool
 // (s Set) IsEmpty() bool
 // (s Set) Len() int
 // (s Set) Slice() []string
 // (s Set) String() string
-// Disjoint(s1, s2 Set) bool
 // Equal(s1, s2 Set) bool
+// Subset(s1, s2 Set) bool     // return s1 ⊆ s2
+// Disjoint(s1, s2 Set) bool
 // Intersection(s1, s2 Set) Set
 // Union(s1, s2 Set) Set
-// Difference(s1, s2 Set) Set
-// Subset(s1, s2 Set) bool
-// SymetricDifference(s1 s2 Set) Set
+// Difference(s1, s2 Set) Set  // return s1 ∖ s2
+// SymmetricDifference(s1, s2 Set) Set
 //
 // For Set.String, use '{' and '}', output elements as double-quoted strings
 // safely escaped with Go syntax, and use a comma and a single space between
@@ -27,17 +27,17 @@ package stringset
 // Format the empty set as {}.
 
 import (
-	"fmt"
 	"math/rand"
 	"reflect"
 	"strconv"
 	"testing"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 // Retired testVersions
 // (none) b0e8c094dd0bb0aa82c04d7e3470a0128daae78f
+// 1      8d0cb8b617be2e36b2ca5ad2034e5f80f2372924
 
 func TestTestVersion(t *testing.T) {
 	if TestVersion != testVersion {
@@ -45,455 +45,223 @@ func TestTestVersion(t *testing.T) {
 	}
 }
 
-var _ fmt.Stringer = New()
+// A first set of tests uses Set.String() to judge correctness.
 
-var _empty = New()
-
-// These first tests of New and Add also test String.  No way around the
-// chicken and egg problem.
 func TestNew(t *testing.T) {
-
 	// New must return an empty set.
 	want := "{}"
-	if res := _empty.String(); res != want {
-		t.Fatalf(`New().String() = %s, want %s.`, res, want)
-	}
-}
-
-var (
-	_a    = New()
-	_b    = New()
-	_c    = New()
-	_ab   = New()
-	_abc  = New()
-	_aS   = `{"a"}`
-	_bS   = `{"b"}`
-	_abS  = `{"a", "b"}`
-	_baS  = `{"b", "a"}`
-	_abcS = `{"a", "b", "c"}`
-)
-
-func init() {
-	_a.Add("a")
-	_b.Add("b")
-	_c.Add("c")
-	_ab.Add("a")
-	_ab.Add("b")
-	_abc.Add("a")
-	_abc.Add("b")
-	_abc.Add("c")
-}
-
-func TestAdd(t *testing.T) {
-	// some sets are created and elements added in init() above.
-	// now test results:
-
-	// single element
-	if res := _a.String(); res != _aS {
-		t.Fatalf(`Add("a") = %s, want %s.`, res, _aS)
-	}
-
-	// another set, with a different element element
-	if res := _b.String(); res != _bS {
-		t.Fatalf(`Add("b") = %s, want %s.`, res, _bS)
-	}
-
-	// a third set, with two elements added
-	if res := _ab.String(); res != _abS && res != _baS { // order undefined
-		t.Fatalf(`Add("a"); Add("b") = %s, want %s.`, res, _abS)
-	}
-
-	// test adding an element that already exists
-	_b.Add("b")
-	if res := _b.String(); res != _bS {
-		t.Fatalf(`Add("b") = %s, want %s.`, res, _bS)
+	if got := New().String(); got != want {
+		t.Fatalf(`New().String() = %s, want %s.`, got, want)
 	}
 }
 
 func TestNewFromSlice(t *testing.T) {
 	// nil slice should give empty set
 	want := "{}"
-	if res := NewFromSlice(nil).String(); res != want {
-		t.Fatalf(`NewFromSlice(nil) = %s, want %s.`, res, want)
+	if got := NewFromSlice(nil).String(); got != want {
+		t.Fatalf(`NewFromSlice(nil) = %s, want %s.`, got, want)
 	}
 
 	// slice with one element:
-	if res := NewFromSlice([]string{"a"}).String(); res != _aS {
-		t.Fatalf(`NewFromSlice([]string{"a"}) = %s, want %s.`, res, _aS)
-	}
-
-	// slice with two elements:
-	res := NewFromSlice([]string{"a", "b"}).String()
-	if res != _abS && res != _baS { // order undefined
-		t.Fatalf(`NewFromSlice([]string{"a", "b"}) = %s, want %s.`, res, _abS)
+	want = `{"a"}`
+	if got := NewFromSlice([]string{"a"}).String(); got != want {
+		t.Fatalf(`NewFromSlice([]string{"a"}) = %s, want %s.`, got, want)
 	}
 
 	// slice with repeated element:
-	if res := NewFromSlice([]string{"a", "a"}).String(); res != _aS {
-		t.Fatalf(`NewFromSlice([]string{"a", "a"}) = %s, want %s.`, res, _aS)
-	}
-}
-
-func TestDeleteHasIsEmptyLen(t *testing.T) {
-	// properties of empty set:
-	s := New()
-	t.Log("s := New()") // log messages provide context for failure messages
-	if l := s.Len(); l != 0 {
-		t.Fatalf(`s.Len() = %d, want 0.`, l)
-	}
-	// `if !s.IsEmpty() {` is readable, but then literal bools
-	// in the fail message would be prone to being mistyped.
-	// this more tedious form should be safer.
-	if res, want := s.IsEmpty(), true; res != want {
-		t.Fatalf(`s.IsEmpty() = %t, want %t.`, res, want)
+	if got := NewFromSlice([]string{"a", "a"}).String(); got != want {
+		t.Fatalf(`NewFromSlice([]string{"a", "a"}) = %s, want %s.`, got, want)
 	}
 
-	// properties of set with one element:
-	s.Add("a")
-	t.Log(`s.Add("a")`)
-	if l := s.Len(); l != 1 {
-		t.Fatalf(`s.Len() = %d, want 1.`, l)
-	}
-	if res, want := s.IsEmpty(), false; res != want {
-		t.Fatalf(`s.IsEmpty() = %t, want %t.`, res, want)
-	}
-	if res, want := s.Has("a"), true; res != want {
-		t.Fatalf(`s.Has("a") = %t, want %t.`, res, want)
-	}
-
-	// delete sole element:
-	s.Delete("a")
-	t.Log(`s.Delete("a")`)
-	if res, want := s.IsEmpty(), true; res != want {
-		t.Fatalf(`s.IsEmpty = %t, want %t.`, res, want)
-	}
-
-	// add a different element
-	s.Add("b")
-	t.Log(`s.Add("b")`)
-	if l := s.Len(); l != 1 {
-		t.Fatalf(`s.Len() = %d, want 1.`, l)
-	}
-	if res, want := s.Has("b"), true; res != want {
-		t.Fatalf(`s.Has("b") = %t, want %t.`, res, want)
-	}
-	if res, want := s.Has("a"), false; res != want {
-		t.Fatalf(`s.Has("a") = %t, want %t.`, res, want)
-	}
-
-	// add a second element, then add it a second time.
-	s.Add("a")
-	t.Log(`s.Add("a")`)
-	s.Add("a")
-	t.Log(`s.Add("a")`)
-	if l := s.Len(); l != 2 {
-		t.Fatalf(`s.Len() = %d, want 2.`, l)
-	}
-
-	// delete the element that was added twice:
-	s.Delete("a")
-	t.Log(`s.Delete("a")`)
-	if res, want := s.IsEmpty(), false; res != want {
-		t.Fatalf(`s.IsEmpty() = %t, want %t.`, res, want)
-	}
-	if l := s.Len(); l != 1 {
-		t.Fatalf(`s.Len() = %d, want 1.`, l)
-	}
-	if res, want := s.Has("b"), true; res != want {
-		t.Fatalf(`s.Has("b") = %t, want %t.`, res, want)
-	}
-	if res := s.String(); res != _bS {
-		t.Fatalf(`s = %s, want %s.`, res, _bS)
+	// slice with two elements:
+	got := NewFromSlice([]string{"a", "b"}).String()
+	want1 := `{"a", "b"}`
+	want2 := `{"b", "a"}`
+	if got != want1 && got != want2 { // order undefined
+		t.Fatalf(`NewFromSlice([]string{"a", "b"}) = %s, want %s or (%s).`,
+			got, want1, want2)
 	}
 }
 
 func TestSlice(t *testing.T) {
 	// empty set should produce empty slice
 	s := New()
-	t.Log(`s := New()`)
 	if l := s.Slice(); len(l) != 0 {
 		t.Fatalf(`s.Slice() = %q, want []`, l)
 	}
 
 	// one element:
-	s.Add("a")
-	t.Log(`s.Add("a")`)
-	if l := s.Slice(); len(l) != 1 || l[0] != "a" {
-		t.Fatalf(`s.Slice() = %q, want ["a"]`, l)
+	want := []string{"a"}
+	s = NewFromSlice(want)
+	got := s.Slice()
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf(`%v Slice = %q, want %q`, s, got, want)
 	}
 
-	// add a second element:
-	s.Add("b")
-	t.Log(`s.Add("b")`)
-	if l := s.Slice(); len(l) != 2 ||
-		!(l[0] == "a" && l[1] == "b" ||
-			l[0] == "b" && l[1] == "a") {
-		t.Fatalf(`s.Slice() = %q, want ["a" "b"]`, l)
+	// two elements:
+	w1 := []string{"a", "b"}
+	w2 := []string{"b", "a"}
+	s = NewFromSlice(w1)
+	got = s.Slice()
+	if !reflect.DeepEqual(got, w1) && !reflect.DeepEqual(got, w2) {
+		t.Fatalf(`%v Slice = %q, want %q`, s, got, w1)
 	}
 }
 
-func TestEqualSubsetDisjoint(t *testing.T) {
-	// empty sets should be equal, subsets, disjoint
-	s1 := New()
-	t.Log(`s1 := New()`)
-	s2 := New()
-	t.Log(`s2 := New()`)
-	if res, want := Equal(s1, s2), true; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s1, s2), true; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Disjoint(s1, s2), true; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
-	}
+// Trusting NewFromSlice now, remaining tests are table driven, taking data
+// from cases_test.go and building sets with NewFromSlice.
 
-	// compare set with single element against empty set
-	s1.Add("a")
-	t.Log(`s1.Add("a")`)
-	if res, want := Equal(s1, s2), false; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
+// test case types used in cases_test.go
+type (
+	// binary function, bool result (Equal, Subset, Disjoint)
+	binBoolCase struct {
+		set1 []string
+		set2 []string
+		want bool
 	}
-	if res, want := Subset(s1, s2), false; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
+	// unary function, bool result (IsEmpty)
+	unaryBoolCase struct {
+		set  []string
+		want bool
 	}
-	if res, want := Subset(s2, s1), true; res != want {
-		t.Fatalf(`Subset(s2, s1) = %t, want %t.`, res, want)
+	// unary function, int result (Len)
+	unaryIntCase struct {
+		set  []string
+		want int
 	}
-	if res, want := Disjoint(s1, s2), true; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
+	// set-element function, bool result (Has)
+	eleBoolCase struct {
+		set  []string
+		ele  string
+		want bool
 	}
+	// set-element operator (Add, Delete)
+	eleOpCase struct {
+		set  []string
+		ele  string
+		want []string
+	}
+	// set-set operator (Union, Intersection, Difference, Symmetric-Difference)
+	binOpCase struct {
+		set1 []string
+		set2 []string
+		want []string
+	}
+)
 
-	// compare distinct Sets, both {a}
-	s2.Add("a")
-	t.Log(`s2.Add("a")`)
-	if res, want := Equal(s1, s2), true; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s1, s2), true; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Disjoint(s1, s2), false; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
-	}
-
-	// compare {a} with {a, b}
-	s2.Add("b")
-	t.Log(`s2.Add("b")`)
-	if res, want := Equal(s1, s2), false; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s1, s2), true; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s2, s1), false; res != want {
-		t.Fatalf(`Subset(s2, s1) = %t, want %t.`, res, want)
-	}
-	if res, want := Disjoint(s1, s2), false; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
-	}
-
-	// compare {a} with {b}
-	s2.Delete("a")
-	t.Log(`s2.Delete("a")`)
-	if res, want := Equal(s1, s2), false; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s1, s2), false; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s2, s1), false; res != want {
-		t.Fatalf(`Subset(s2, s1) = %t, want %t.`, res, want)
-	}
-	if res, want := Disjoint(s1, s2), true; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
-	}
-
-	// compare {a, c} with {b, c}
-	s1.Add("c")
-	t.Log(`s1.Add("c")`)
-	s2.Add("c")
-	t.Log(`s2.Add("c")`)
-	if res, want := Equal(s1, s2), false; res != want {
-		t.Fatalf(`Equal(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s1, s2), false; res != want {
-		t.Fatalf(`Subset(s1, s2) = %t, want %t.`, res, want)
-	}
-	if res, want := Subset(s2, s1), false; res != want {
-		t.Fatalf(`Subset(s2, s1) = %t, want %t.`, res, want)
-	}
-	if res, want := Disjoint(s1, s2), false; res != want {
-		t.Fatalf(`Disjoint(s1, s2) = %t, want %t.`, res, want)
-	}
-
-	// compare with multiple elements to test that order doesn't matter.
-	sx := []string{"a", "b", "c", "d", "e"}
-	for i := 0; i < 20; i++ {
-		sa := New()
-		sb := New()
-		pa := rand.Perm(len(sx))
-		pb := rand.Perm(len(sx))
-		for j := range sx {
-			sa.Add(sx[pa[j]])
-			sb.Add(sx[pb[j]])
-		}
-		if res, want := Equal(sa, sb), true; res != want {
-			t.Log(`sa =`, sa)
-			t.Log(`sb =`, sb)
-			t.Fatalf(`Equal(sa, sb) = %t, want %t.`, res, want)
-		}
-		if res, want := Subset(sa, sb), true; res != want {
-			t.Log(`sa =`, sa)
-			t.Log(`sb =`, sb)
-			t.Fatalf(`Subset(sa, sb) = %t, want %t.`, res, want)
-		}
-		if res, want := Disjoint(sa, sb), false; res != want {
-			t.Log(`sa =`, sa)
-			t.Log(`sb =`, sb)
-			t.Fatalf(`Disjoint(sa, sb) = %t, want %t.`, res, want)
+// helper for testing Equal, Subset, Disjoint
+func testBinBool(name string, f func(Set, Set) bool, cases []binBoolCase, t *testing.T) {
+	for _, tc := range cases {
+		s1 := NewFromSlice(tc.set1)
+		s2 := NewFromSlice(tc.set2)
+		got := f(s1, s2)
+		if got != tc.want {
+			t.Fatalf("%s(%v, %v) = %t, want %t", name, s1, s2, got, tc.want)
 		}
 	}
 }
 
-func TestUnionIntersectionDifferenceSymetricDifference(t *testing.T) {
-	// operations on empty sets
-	s1 := New()
-	t.Log(`s1 := New()`)
-	s2 := New()
-	t.Log(`s2 := New()`)
-	if res := Intersection(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Intersection(s1, s2) = %v, want {}.`, res)
-	}
-	if res := Union(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Union(s1, s2) = %v, want {}.`, res)
-	}
-	if res := Difference(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Difference(s1, s2) = %v, want {}.`, res)
-	}
-	if res := SymetricDifference(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want {}.`, res)
-	}
+func TestEqual(t *testing.T) {
+	testBinBool("Equal", Equal, eqCases, t)
+}
 
-	// {a} op empty set:
-	s1.Add("a")
-	t.Log(`s1.Add("a")`)
-	if res := Intersection(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Intersection(s1, s2) = %v, want {}.`, res)
-	}
-	if res := Union(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Union(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Difference(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Difference(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Difference(s2, s1); !res.IsEmpty() {
-		t.Fatalf(`Difference(s2, s1) = %v, want {}.`, res)
-	}
-	if res := SymetricDifference(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want %v.`, res, _a)
-	}
+// With Equal tested, remaining tests use it to judge correctness.
 
-	// {a} op {a}:
-	s2.Add("a")
-	t.Log(`s2.Add("a")`)
-	if res := Intersection(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Intersection(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Union(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Union(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Difference(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Difference(s1, s2) = %v, want {}.`, res)
-	}
-	if res := SymetricDifference(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want {}.`, res)
-	}
-
-	// {a} op {a, b}
-	s2.Add("b")
-	t.Log(`s2.Add("b")`)
-	if res := Intersection(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Intersection(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Union(s1, s2); !reflect.DeepEqual(res, _ab) {
-		t.Fatalf(`Union(s1, s2) = %v, want %s.`, res, _abS)
-	}
-	if res := Difference(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Difference(s1, s2) = %v, want {}.`, res)
-	}
-	if res := Difference(s2, s1); !reflect.DeepEqual(res, _b) {
-		t.Fatalf(`Difference(s2, s1) = %v, want %v.`, res, _b)
-	}
-	if res := SymetricDifference(s1, s2); !reflect.DeepEqual(res, _b) {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want %v.`, res, _b)
-	}
-
-	// {a} op {b}
-	s2.Delete("a")
-	t.Log(`s2.Delete("a")`)
-	if res := Intersection(s1, s2); !res.IsEmpty() {
-		t.Fatalf(`Intersection(s1, s2) = %v, want {}.`, res)
-	}
-	if res := Union(s1, s2); !reflect.DeepEqual(res, _ab) {
-		t.Fatalf(`Union(s1, s2) = %v, want %s.`, res, _abS)
-	}
-	if res := Difference(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Difference(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Difference(s2, s1); !reflect.DeepEqual(res, _b) {
-		t.Fatalf(`Difference(s2, s1) = %v, want %v.`, res, _b)
-	}
-	if res := SymetricDifference(s1, s2); !reflect.DeepEqual(res, _ab) {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want %s.`, res, _abS)
-	}
-
-	// {a, c} op {b, c}
-	s1.Add("c")
-	t.Log(`s1.Add("c")`)
-	s2.Add("c")
-	t.Log(`s2.Add("c")`)
-	if res := Intersection(s1, s2); !reflect.DeepEqual(res, _c) {
-		t.Fatalf(`Intersection(s1, s2) = %v, want %v.`, res, _c)
-	}
-	if res := Union(s1, s2); !reflect.DeepEqual(res, _abc) {
-		t.Fatalf(`Union(s1, s2) = %v, want %s.`, res, _abcS)
-	}
-	if res := Difference(s1, s2); !reflect.DeepEqual(res, _a) {
-		t.Fatalf(`Difference(s1, s2) = %v, want %v.`, res, _a)
-	}
-	if res := Difference(s2, s1); !reflect.DeepEqual(res, _b) {
-		t.Fatalf(`Difference(s2, s1) = %v, want %v.`, res, _b)
-	}
-	if res := SymetricDifference(s1, s2); !reflect.DeepEqual(res, _ab) {
-		t.Fatalf(`SymetricDifference(s1, s2) = %v, want %s.`, res, _abS)
+// helper for testing Add, Delete
+func testEleOp(name string, op func(Set, string), cases []eleOpCase, t *testing.T) {
+	for _, tc := range cases {
+		s := NewFromSlice(tc.set)
+		op(s, tc.ele)
+		want := NewFromSlice(tc.want)
+		if !Equal(s, want) {
+			t.Fatalf("%v %s %q = %v, want %v",
+				NewFromSlice(tc.set), name, tc.ele, s, want)
+		}
 	}
 }
 
-func BenchmarkNewFromSlice1e2(b *testing.B) {
-	s := make([]string, 1e2)
-	for i := range s {
-		s[i] = strconv.Itoa(rand.Intn(len(s)))
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		NewFromSlice(s)
+func TestAdd(t *testing.T) {
+	testEleOp("Add", Set.Add, addCases, t)
+}
+
+func TestDelete(t *testing.T) {
+	testEleOp("Delete", Set.Delete, delCases, t)
+}
+
+func TestHas(t *testing.T) {
+	for _, tc := range hasCases {
+		s := NewFromSlice(tc.set)
+		got := s.Has(tc.ele)
+		if got != tc.want {
+			t.Fatalf("%v Has %q = %t, want %t", s, tc.ele, got, tc.want)
+		}
 	}
 }
 
-func BenchmarkNewFromSlice1e4(b *testing.B) {
-	s := make([]string, 1e4)
-	for i := range s {
-		s[i] = strconv.Itoa(rand.Intn(len(s)))
-	}
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		NewFromSlice(s)
+func TestIsEmpty(t *testing.T) {
+	for _, tc := range emptyCases {
+		s := NewFromSlice(tc.set)
+		got := s.IsEmpty()
+		if got != tc.want {
+			t.Fatalf("%v IsEmpty = %t, want %t", s, got, tc.want)
+		}
 	}
 }
 
-func BenchmarkNewFromSlice1e6(b *testing.B) {
-	s := make([]string, 1e6)
+func TestLen(t *testing.T) {
+	for _, tc := range lenCases {
+		s := NewFromSlice(tc.set)
+		got := s.Len()
+		if got != tc.want {
+			t.Fatalf("%v Len = %d, want %d", s, got, tc.want)
+		}
+	}
+}
+
+func TestSubset(t *testing.T) {
+	testBinBool("Subset", Subset, subsetCases, t)
+}
+
+func TestDisjoint(t *testing.T) {
+	testBinBool("Disjoint", Disjoint, disjointCases, t)
+}
+
+// helper for testing Union, Intersection, Difference, SymmetricDifference
+func testBinOp(name string, f func(Set, Set) Set, cases []binOpCase, t *testing.T) {
+	for _, tc := range cases {
+		s1 := NewFromSlice(tc.set1)
+		s2 := NewFromSlice(tc.set2)
+		want := NewFromSlice(tc.want)
+		got := f(s1, s2)
+		if !Equal(got, want) {
+			t.Fatalf("%s(%v, %v) = %t, want %t", name, s1, s2, got, want)
+		}
+	}
+}
+
+func TestUnion(t *testing.T) {
+	testBinOp("Union", Union, unionCases, t)
+}
+
+func TestIntersection(t *testing.T) {
+	testBinOp("Intersection", Intersection, intersectionCases, t)
+}
+
+func TestDifference(t *testing.T) {
+	testBinOp("Difference", Difference, differenceCases, t)
+}
+
+func TestSymmetricDifference(t *testing.T) {
+	testBinOp("SymmetricDifference", SymmetricDifference, symmetricDifferenceCases, t)
+}
+
+func BenchmarkNewFromSlice1e1(b *testing.B) { bench(1e1, b) }
+func BenchmarkNewFromSlice1e2(b *testing.B) { bench(1e2, b) }
+func BenchmarkNewFromSlice1e3(b *testing.B) { bench(1e3, b) }
+func BenchmarkNewFromSlice1e4(b *testing.B) { bench(1e4, b) }
+
+func bench(nAdd int, b *testing.B) {
+	s := make([]string, nAdd)
 	for i := range s {
 		s[i] = strconv.Itoa(rand.Intn(len(s)))
 	}
