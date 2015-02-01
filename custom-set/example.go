@@ -1,3 +1,5 @@
+//+build !slice
+
 package stringset
 
 import (
@@ -5,7 +7,7 @@ import (
 	"reflect"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 // Set represents some properties of a mathematical set.
 // Sets are finite and all elements are unique string values.
@@ -136,9 +138,9 @@ func Subset(s1, s2 Set) bool {
 	return true
 }
 
-// SymetricDifference constructs a new set populated with elements that are
+// SymmetricDifference constructs a new set populated with elements that are
 // members of s1 or s2 but not both.
-func SymetricDifference(s1, s2 Set) Set {
+func SymmetricDifference(s1, s2 Set) Set {
 	r := Set{}
 	for e := range s1 {
 		if !s2[e] {
