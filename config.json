@@ -72,7 +72,8 @@
     "point-mutations"
   ],
   "ignored": [
-    "img"
+    "img",
+    "gen"
   ],
   "foregone": [
     "space-age",

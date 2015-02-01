@@ -3,60 +3,14 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
-	"io/ioutil"
 	"log"
-	"os"
-	"os/exec"
-	"path/filepath"
 	"strconv"
 	"text/template"
+
+	"../gen"
 )
 
-// Most code at the beginning here not specific to the exercise.
-// It could be used for other problems.
-
-func getPath() (jPath, jOri, jCommit string) {
-	// Ideally draw from a .json which is pulled from the official x-common
-	// repository.  For development however, accept a file in current directory
-	// if there is no .json in source control.  Also allow an override in any
-	// case by environment variable.
-	if jPath = os.Getenv("EXTEST"); jPath > "" {
-		return jPath, "local file", "" // override
-	}
-	c := exec.Command("git", "show", "--oneline", "HEAD")
-	c.Dir = "../../../exercism/x-common"
-	ori, err := c.Output()
-	if err != nil {
-		return "", "local file", "" // no source control
-	}
-	if _, err = os.Stat(filepath.Join(c.Dir, jFile)); err != nil {
-		return "", "local file", "" // not in source control
-	}
-	// good.  return source control dir and commit.
-	return c.Dir, "exercism/x-common", string(bytes.TrimSpace(ori))
-}
-
 func main() {
-	jPath, jOri, jCommit := getPath()
-	d, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
-	if err != nil {
-		log.Fatal(err)
-	}
-	j := &js{}
-	if err = json.Unmarshal(d, j); err != nil {
-		// This error message is usually enough if the problem is a wrong
-		// data structure defined here. Sadly it doesn't locate the error well
-		// in the case of invalid JSON.  Use a real validator tool if you can't
-		// spot the problem right away.
-		log.Print(`unexpected data structure`)
-		log.Fatal(err)
-	}
-	gen(j, jPath, jOri, jCommit)
-}
-
-func gen(j *js, jPath, jOri, jCommit string) {
 	t := template.New("").Funcs(template.FuncMap{
 		"str":  str,
 		"strs": strSlice,
@@ -65,31 +19,11 @@ func gen(j *js, jPath, jOri, jCommit string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	f, err := os.Create("cases_test.go")
-	if err != nil {
+	var j js
+	if err := gen.Gen("custom-set.json", &j, t); err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
-	d := struct {
-		Ori    string
-		Commit string
-		J      *js
-	}{jOri, jCommit, j}
-	if err = t.Execute(f, &d); err != nil {
-		log.Print(err)
-		return
-	}
-	if exec.Command("go", "fmt", "cases_test.go").Run(); err != nil {
-		log.Print(err)
-		return
-	}
 }
-
-// Code from here on is custom-set specific.
-//
-// There's some extra complexity because json test cases use ints but it's
-// all converted to strings here.  It just seemed like strings would make
-// a better and more practical example.
 
 func str(n int) string {
 	if n >= 1 && n <= 26 {
@@ -105,8 +39,6 @@ func strSlice(ns []int) []string {
 	}
 	return s
 }
-
-const jFile = "custom-set.json"
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
@@ -183,6 +115,10 @@ type binaryOp struct {
 }
 
 // template applied to above data structure generates the Go test cases
+//
+// There's some extra complexity because json test cases use ints but it's
+// all converted to strings here.  It just seemed like strings would make
+// a better and more practical example.
 var tmpl = `
 {{/* nested templates for repeated stuff */}}
 
