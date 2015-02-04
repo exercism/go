@@ -2,8 +2,10 @@ package bob
 
 import "strings"
 
+const TestVersion = 1
+
 func Hey(drivel string) string {
-	switch {
+	switch drivel = strings.TrimSpace(drivel); {
 	case silent(drivel):
 		return "Fine. Be that way!"
 	case yelling(drivel):
@@ -24,5 +26,5 @@ func asking(drivel string) bool {
 }
 
 func silent(drivel string) bool {
-	return strings.Trim(drivel, " ") == ""
+	return drivel == ""
 }
