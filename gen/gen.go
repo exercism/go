@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"go/format"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -28,6 +28,7 @@ func Gen(jFile string, j interface{}, t *template.Template) error {
 		// spot the problem right away.
 		return fmt.Errorf(`unexpected data structure: %v`, err)
 	}
+
 	// package up a little meta data
 	d := struct {
 		Ori    string
@@ -35,22 +36,18 @@ func Gen(jFile string, j interface{}, t *template.Template) error {
 		J      interface{}
 	}{jOri, jCommit, j}
 
-	// create an output file for the Go test cases.
-	f, err := os.Create("cases_test.go")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-
-	// render the Go test cases into the output file
-	if err = t.Execute(f, &d); err != nil {
+	// render the Go test cases
+	var b bytes.Buffer
+	if err = t.Execute(&b, &d); err != nil {
 		return err
 	}
 	// clean it up
-	if exec.Command("go", "fmt", "cases_test.go").Run(); err != nil {
+	src, err := format.Source(b.Bytes())
+	if err != nil {
 		return err
 	}
-	return nil
+	// write output file for the Go test cases.
+	return ioutil.WriteFile("cases_test.go", src, 0777)
 }
 
 func getPath(jFile string) (jPath, jOri, jCommit string) {
