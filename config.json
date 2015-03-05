@@ -64,7 +64,8 @@
     "simple-cipher",
     "paasio",
     "minesweeper",
-    "robot-simulator"
+    "robot-simulator",
+    "connect"
   ],
   "deprecated": [
     "accumulate",
