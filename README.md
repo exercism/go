@@ -9,7 +9,7 @@ Exercism exercises in Go
 We welcome issues filed at https://github.com/exercism/xgo/issues for problems of any size.  Feel free to report
 typographical errors or poor wording.  We are most interested in improving the quality of the test suites.
 You can greatly help us improve the quality of the exercises by filing reports of invalid solutions that
-pass tests or of valid solutions that fail tests 
+pass tests or of valid solutions that fail tests.
 
 ## Development setup
 
@@ -31,6 +31,14 @@ Try what it says, `go test -cpu 2 ./...`.  Tests should be clean now.)
 Please be familiar with the [contributing guide](https://github.com/exercism/x-api/blob/master/CONTRIBUTING.md#the-exercise-data)
 in the x-api repository.  This describes how all the language tracks are put together, as well as details about
 the common metadata, and high-level information about contributing to existing problems and adding new problems.
+
+## Problem Versioning
+
+Each problem defines a `const testVersion` in the test program, and validates that the solution has defined a matching value `TestVersion`.  Any xgo developer that changes the test program or test data increments `testVersion`.
+
+The benefit of all this is that nipickers can see which test version a posted solution was written for and be spared confusion over why an old posted solution might not pass current tests.
+
+Notice that the constant in the test suite is not exported (`testVersion`) whereas the expected value for the solution is exported (`TestVersion`).
 
 ## Xgo style
 
