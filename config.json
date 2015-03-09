@@ -65,6 +65,7 @@
     "paasio",
     "minesweeper",
     "robot-simulator",
+    "tournament",
     "connect"
   ],
   "deprecated": [
