@@ -66,7 +66,8 @@
     "minesweeper",
     "robot-simulator",
     "tournament",
-    "connect"
+    "connect",
+    "ledger"
   ],
   "deprecated": [
     "accumulate",
