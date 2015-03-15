@@ -4,6 +4,6 @@ go:
   - 1.4.1
   - tip
 script:
-  - go test -cpu 2 ./...
+  - go test -cpu 2 --tags example  ./...
   - bin/fetch-configlet
   - bin/configlet .
