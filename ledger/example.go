@@ -161,14 +161,12 @@ func (e entrySlice) Swap(i, j int) {
 }
 
 func (e entrySlice) Less(i, j int) bool {
-	if e[i].Date == e[j].Date {
-		if e[i].Description == e[i].Description {
-			return e[i].Change < e[j].Change
-		} else {
-			return e[i].Description < e[j].Description
-		}
-	} else {
-		// ISO dates sort nicely
-		return e[i].Date < e[j].Date
-	}
+    if e[i].Date != e[j].Date {
+        // ISO dates sort nicely
+        return e[i].Date < e[j].Date
+    }
+    if e[i].Description != e[i].Description {
+        return e[i].Description < e[j].Description
+    }
+    return e[i].Change < e[j].Change
 }
