@@ -5,7 +5,7 @@ import "math"
 type Kind string
 
 const (
-	Equ = "equilateral"
+	Equ Kind = "equilateral"
 	Iso = "isosceles"
 	Sca = "scalene"
 	NaT = "not a triangle"

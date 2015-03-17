@@ -5,7 +5,7 @@ import "fmt"
 // ======= Step 1
 
 const (
-	N = iota
+	N Dir = iota
 	E
 	S
 	W
