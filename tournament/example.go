@@ -9,15 +9,17 @@ import (
 
 const TestVersion = 1
 
+type outcome int
+
 const (
-	LOSS = iota
+	LOSS outcome = iota
 	DRAW
 	WIN
 )
 
 type inputEntry struct {
 	teams    [2]string
-	outcomes [2]int
+	outcomes [2]outcome
 }
 
 type teamResult struct {
@@ -67,13 +69,13 @@ func readInput(reader io.Reader) ([]inputEntry, error) {
 		if len(record) == 3 {
 			t1, t2 := record[0], record[1]
 			teams := [2]string{t1, t2}
-			var outcomes [2]int
+			var outcomes [2]outcome
 			if record[2] == "win" {
-				outcomes = [2]int{WIN, LOSS}
+				outcomes = [2]outcome{WIN, LOSS}
 			} else if record[2] == "loss" {
-				outcomes = [2]int{LOSS, WIN}
+				outcomes = [2]outcome{LOSS, WIN}
 			} else if record[2] == "draw" {
-				outcomes = [2]int{DRAW, DRAW}
+				outcomes = [2]outcome{DRAW, DRAW}
 			} else {
 				return nil, fmt.Errorf("Invalid outcome %q", record[2])
 			}
