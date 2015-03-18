@@ -39,14 +39,13 @@ func (s TeamResultSlice) Len() int {
 }
 
 func (s TeamResultSlice) Less(i, j int) bool {
-	if s[i].points == s[j].points {
-		if s[i].wins == s[j].wins {
-			return s[i].team < s[j].team
-		} else {
-			return s[i].wins > s[j].wins
-		}
-	} else {
+	switch {
+	case s[i].points != s[j].points:
 		return s[i].points > s[j].points
+	case s[i].wins != s[j].wins:
+		return s[i].wins > s[j].wins
+	default:
+		return s[i].team < s[j].team
 	}
 }
 
@@ -70,13 +69,14 @@ func readInput(reader io.Reader) ([]inputEntry, error) {
 			t1, t2 := record[0], record[1]
 			teams := [2]string{t1, t2}
 			var outcomes [2]outcome
-			if record[2] == "win" {
+			switch record[2] {
+			case "win":
 				outcomes = [2]outcome{WIN, LOSS}
-			} else if record[2] == "loss" {
+			case "loss":
 				outcomes = [2]outcome{LOSS, WIN}
-			} else if record[2] == "draw" {
+			case "draw":
 				outcomes = [2]outcome{DRAW, DRAW}
-			} else {
+			default:
 				return nil, fmt.Errorf("Invalid outcome %q", record[2])
 			}
 			entries = append(entries, inputEntry{teams: teams, outcomes: outcomes})
