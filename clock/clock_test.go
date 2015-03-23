@@ -9,7 +9,7 @@ import (
 //
 // Time(hour, minute int) Clock    // a "constructor"
 // (Clock) String() string         // a "stringer"
-// (Clock) Add(minutes)
+// (Clock) Add(minutes int) Clock
 //
 // Add should also handle subtraction by accepting negative values.
 // To satisfy the readme requirement about clocks being equal, values of
