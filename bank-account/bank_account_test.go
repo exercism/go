@@ -136,7 +136,7 @@ func TestMoreSeqCases(t *testing.T) {
 	}
 	t.Logf("Withdrawal of %d accepted from account 'a'", wAmt)
 	if _, ok := z.Deposit(-1); ok {
-		t.Fatal("a.Deposit(-1) returned ok, want !ok.")
+		t.Fatal("z.Deposit(-1) returned ok, want !ok.")
 	}
 
 	// verify both balances

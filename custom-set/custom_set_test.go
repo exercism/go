@@ -234,7 +234,7 @@ func testBinOp(name string, f func(Set, Set) Set, cases []binOpCase, t *testing.
 		want := NewFromSlice(tc.want)
 		got := f(s1, s2)
 		if !Equal(got, want) {
-			t.Fatalf("%s(%v, %v) = %t, want %t", name, s1, s2, got, want)
+			t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
 		}
 	}
 }
