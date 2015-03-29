@@ -3,18 +3,17 @@ package cryptosquare
 import (
 	"math"
 	"strings"
+	"unicode"
 )
 
 const TestVersion = 1
 
 func norm(r rune) rune {
-	switch {
-	case r >= 'a' && r <= 'z' || r >= '0' && r <= '9':
-		return r
-	case r >= 'A' && r <= 'Z':
-		return r + 'a' - 'A'
+	if unicode.IsLetter(r) || unicode.IsDigit(r) {
+		return unicode.ToLower(r)
+	} else {
+		return -1
 	}
-	return -1
 }
 
 func Encode(pt string) string {
