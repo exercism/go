@@ -68,7 +68,8 @@
     "robot-simulator",
     "tournament",
     "connect",
-    "ledger"
+    "ledger",
+    "poker"
   ],
   "deprecated": [
     "accumulate",
