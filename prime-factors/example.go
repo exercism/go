@@ -1,8 +1,10 @@
 package prime
 
-func Factors(n int) []int {
-	factors := []int{}
-	possibleFactor := 2
+const TestVersion = 1
+
+func Factors(n int64) []int64 {
+	factors := []int64{}
+	possibleFactor := int64(2)
 
 	for possibleFactor*possibleFactor <= n {
 		for n%possibleFactor == 0 {
