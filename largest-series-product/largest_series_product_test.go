@@ -2,10 +2,15 @@ package lsproduct
 
 import "testing"
 
+const testVersion = 1
+
+// Retired testVersions
+// (none) ba7a22a355a32901caf46529c799fa53118ded0a
+
 var tests = []struct {
 	digits  string
 	span    int
-	product int
+	product int64
 	ok      bool
 }{
 	{"0123456789",
@@ -56,6 +61,9 @@ const pe1k = "73167176531330624919225119674426574742355349194934" +
 	"71636269561882670428252483600823257530420752963450"
 
 func TestLargestSeriesProduct(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	}
 	for _, test := range tests {
 		p, err := LargestSeriesProduct(test.digits, test.span)
 		switch {
@@ -68,7 +76,7 @@ func TestLargestSeriesProduct(t *testing.T) {
 		case !test.ok:
 			t.Fatalf("LargestSeriesProduct(%s, %d) = %d, %v.  Expected error",
 				test.digits, test.span, p, err)
-		case p != test.product:
+		case int64(p) != test.product:
 			t.Fatalf("LargestSeriesProduct(%s, %d) = %d, want %d",
 				test.digits, test.span, p, test.product)
 		}
