@@ -58,7 +58,7 @@ func getPath(jFile string) (jPath, jOri, jCommit string) {
 	if jPath = os.Getenv("EXTEST"); jPath > "" {
 		return jPath, "local file", "" // override
 	}
-	c := exec.Command("git", "show", "--oneline", "HEAD")
+	c := exec.Command("git", "log", "-1", "--oneline")
 	c.Dir = "../../../exercism/x-common"
 	ori, err := c.Output()
 	if err != nil {
