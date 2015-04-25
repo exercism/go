@@ -79,7 +79,8 @@
   ],
   "ignored": [
     "img",
-    "gen"
+    "gen",
+    "docs"
   ],
   "foregone": [
     "space-age",
