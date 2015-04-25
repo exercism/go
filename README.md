@@ -74,6 +74,20 @@ all at once.
 We like errors in Go.  It's not idiomatic Go to ignore invalid data or have undefined behavior.  Sometimes our
 Go tests require an error return where other language tracks don't.
 
+## Generating test cases
+
+Some problems that are implemented in multiple tracks use the same inputs and outputs to define the test suites.
+Where the [x-common](https://github.com/exercism/x-common) repository contains json files with these inputs and
+outputs, we can generate the test cases programmatically.
+
+See `leap/example_gen.go` for an example of how this can be done.
+
+Whenever the shared JSON data changes, the test cases will need to be regenerated. To do this, make sure that the
+x-common repository has been cloned in the same parent-directory as the xgo repository. Then `cd` to the `xgo`
+directory and run `go run <problem>/example_gen.go`.
+
+You should see that the `<problem>/test_cases.go` file has changed. Commit the change.
+
 ## Pull requests
 
 Pull requests are welcome.  You forked, cloned, coded and tested and you have something good?  Awesome!  Use git
