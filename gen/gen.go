@@ -3,16 +3,51 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"go/format"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"text/template"
 )
 
+// dirMetadata is the location of the x-common repository
+// on the filesystem.
+// We're making the assumption that the x-common repository
+// has been cloned to the same parent directory as the xgo
+// repository. E.g.
+//
+//     $ tree -L 1 .
+//     .
+//     ├── x-common
+//     └── xgo
+var dirMetadata string
+
+// dirProblem is the location that the test cases should be generated to.
+// This assumes that the generator script lives in the same directory as
+// the problem.
+// Falls back to the present working directory.
+var dirProblem string
+
+func init() {
+	if _, path, _, ok := runtime.Caller(0); ok {
+		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
+	}
+	if _, path, _, ok := runtime.Caller(2); ok {
+		dirProblem = filepath.Join(path, "..")
+	}
+	if dirProblem == "" {
+		dirProblem = "."
+	}
+}
+
 func Gen(jFile string, j interface{}, t *template.Template) error {
+	if dirMetadata == "" {
+		return errors.New("unable to determine current path")
+	}
 	// find and read the json source file
 	jPath, jOri, jCommit := getPath(jFile)
 	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
@@ -47,7 +82,7 @@ func Gen(jFile string, j interface{}, t *template.Template) error {
 		return err
 	}
 	// write output file for the Go test cases.
-	return ioutil.WriteFile("cases_test.go", src, 0777)
+	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0777)
 }
 
 func getPath(jFile string) (jPath, jOri, jCommit string) {
@@ -59,7 +94,7 @@ func getPath(jFile string) (jPath, jOri, jCommit string) {
 		return jPath, "local file", "" // override
 	}
 	c := exec.Command("git", "log", "-1", "--oneline")
-	c.Dir = "../../../exercism/x-common"
+	c.Dir = dirMetadata
 	ori, err := c.Output()
 	if err != nil {
 		return "", "local file", "" // no source control
