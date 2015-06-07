@@ -7,7 +7,7 @@ import (
 	"sort"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 type outcome int
 
@@ -57,6 +57,8 @@ func readInput(reader io.Reader) ([]inputEntry, error) {
 	var entries []inputEntry
 	csvReader := csv.NewReader(reader)
 	csvReader.Comma = ';'
+	csvReader.Comment = '#'
+	csvReader.FieldsPerRecord = -1 // Allow variable number of fields
 	for {
 		record, err := csvReader.Read()
 		if err == io.EOF {
