@@ -14,7 +14,10 @@ import (
 //
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
-const testVersion = 1
+
+// Retired testVersions
+// 1 7f391e8e025840de5e2b56dc9b40d7ad765a1f8a (see discussion under https://github.com/exercism/xgo/pull/170)
+const testVersion = 2
 
 var _ func(io.Reader, io.Writer) error = Tally
 
@@ -43,13 +46,14 @@ Courageous Californians        |  3 |  0 |  1 |  2 |  1
 `[1:], // [1:] = strip initial readability newline
 	},
 	{
-		description: "ignore empty lines",
+		description: "ignore comments and newlines",
 		input: `
 
 Allegoric Alaskians;Blithering Badgers;win
 Devastating Donkeys;Allegoric Alaskians;win
-
+# Catastrophic Loss of the Californians
 Courageous Californians;Blithering Badgers;loss
+
 Blithering Badgers;Devastating Donkeys;loss
 Allegoric Alaskians;Courageous Californians;win
 Devastating Donkeys;Courageous Californians;draw
