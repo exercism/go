@@ -12,7 +12,7 @@ var tests = []struct {
 	{"f", 4},
 	{"street", 6},
 	{"quirky", 22},
-	{"MULTIBILLIONAIRE", 20},
+	{"oxyphenbutazone", 41},
 	{"alacrity", 13},
 }
 
