@@ -19,7 +19,7 @@ var tests = []struct {
 	{0, nil},
 	{-1, nil},
 	{32, nil},
-	{33, nil},
+	{33, []string{"wink"}},
 }
 
 func TestHandshake(t *testing.T) {

@@ -5,7 +5,7 @@ var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 // Handshake returns sequence to perform corresponding to the given code.
 func Handshake(code int) (h []string) {
 	switch {
-	case code < 1 || code > 31:
+	case code < 1:
 	case code&16 == 0:
 		for _, s := range signals {
 			if code&1 != 0 {
