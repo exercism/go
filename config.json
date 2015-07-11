@@ -10,7 +10,6 @@
     "raindrops",
     "triangle",
     "difference-of-squares",
-    "error-handling",
     "secret-handshake",
     "food-chain",
     "house",
@@ -82,6 +81,7 @@
     "point-mutations"
   ],
   "ignored": [
+    "error-handling",
     "img",
     "gen",
     "docs"
