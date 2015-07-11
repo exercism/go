@@ -1,5 +1,9 @@
 package counter
 
+// NOTE: This file is called example.go and not example_test.go because if it's
+// called example_test.go it will get picked up by the test suite and fail
+// because COUNTER_IMPL isn't set (see maker.go).
+
 import "testing"
 
 func TestNoAdd(t *testing.T) {
