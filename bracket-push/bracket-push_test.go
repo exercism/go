@@ -33,6 +33,10 @@ var testCases = []struct {
 		expected: true,
 	},
 	{
+		input:    "{[}]",
+		expected: false,
+	},
+	{
 		input:    "{[)][]}",
 		expected: false,
 	},
