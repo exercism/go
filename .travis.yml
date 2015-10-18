@@ -1,14 +1,54 @@
 language: go
+sudo: false
+
+# We expect users to use something fairly recent so we test the last two
+# versions plus tip.  Update these freely as new versions of Go are released.
+# Tip is useful to automatically test a version more recent than the
+# the last time .travis.yml was looked at, and (unlikely as it might be)
+# to alert us to any real upcoming change in the language that would be
+# incompatible with our existing code.
 go:
-  - 1.3.3
-  - 1.4.2
+  - 1.4.3
+  - 1.5.1
   - tip
-env: TESTARCH=amd64
-script:
+
+# Travis runs in a 64 bit environment but beginning with Go 1.5, building a
+# 32 bit target is as easy as specifying GOARCH.  We test both to accomodate
+# users that might be running 32 bit environments and make sure our code
+# works for them.
+env:
+  - TESTARCH=amd64
+  - TESTARCH=386
+
+# Travis doc for the install step says it is for any dependencies of the
+# build.  We don't have any build dependencies so we can disable this with
+# `install: true`.  (Actually we have to specify either true or something else
+# here because the default step for this is currently `go get -t ./...` which
+# doesn't work for us, because build tags...)
+install: true
+
+# Configlet tests a number of things like config.json.
+# See https://github.com/exercism/configlet.
+before_script:
   - bin/fetch-configlet
   - bin/configlet .
+
+# Our "build" is to run `go test` which is what our users do.
+# -cpu 2 is for our problems that involve concurrency to test that they
+# perform as expected on multiple cores.
+# `--tags example` is for our problems that include stub solutions or
+# solutions to be be modified.  The stub or starter starter solutions will
+# have `//+build !example` build tags so that they can be ignored with
+# `--tags example` here.
+script:
   - GOARCH=$TESTARCH go test -cpu 2 --tags example  ./...
+
+# special cases for the build matrix are that go 1.4.3 can't be tested 32 bit
+# and that tip is allowed to fail.  Broken tips are extremely rare these days
+# but anyway, it could happen and it wouldn't be our problem.
 matrix:
-  include:
-    - go: tip
+  exclude:
+    - go: 1.4.3
       env: TESTARCH=386
+  allow_failures:
+    - go: tip
