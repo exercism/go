@@ -108,7 +108,7 @@ func TestRead(t *testing.T) {
 func TestReadTotal(t *testing.T) {
 	var r nopReader
 	rc := NewReadCounter(r)
-	numGo := 10000
+	numGo := 8000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
 	p := make([]byte, numBytes)
@@ -139,7 +139,7 @@ func TestReadTotal(t *testing.T) {
 func TestWriteTotal(t *testing.T) {
 	var w nopWriter
 	wt := NewWriteCounter(w)
-	numGo := 10000
+	numGo := 8000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
 	p := make([]byte, numBytes)

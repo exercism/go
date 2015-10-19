@@ -16,8 +16,11 @@ go:
 # 32 bit target is as easy as specifying GOARCH.  We test both to accomodate
 # users that might be running 32 bit environments and make sure our code
 # works for them.
+#
+# Race detection is valuable for our problems that involve concurrency.
+# The race detector isn't supported on 386 though.
 env:
-  - TESTARCH=amd64
+  - TESTARCH=amd64 RACE=-race
   - TESTARCH=386
 
 # Travis doc for the install step says it is for any dependencies of the
@@ -41,7 +44,7 @@ before_script:
 # have `//+build !example` build tags so that they can be ignored with
 # `--tags example` here.
 script:
-  - GOARCH=$TESTARCH go test -cpu 2 --tags example  ./...
+  - GOARCH=$TESTARCH go test -cpu 2 $RACE --tags example  ./...
 
 # special cases for the build matrix are that go 1.4.3 can't be tested 32 bit
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
