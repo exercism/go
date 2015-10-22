@@ -19,10 +19,11 @@ import (
 	"testing"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 // Retired:
 // (non-versioned) ea3c43868a02d8d899d3a99163380a3b7b3a0a18
+// 1               38c982fc7e6861dfebec2a0023a85e53ea8c1b59
 
 func TestTestVersion(t *testing.T) {
 	if TestVersion != testVersion {
@@ -150,13 +151,22 @@ func TestWriteFullBuffer(t *testing.T) {
 	tb.writeFail('A')
 }
 
-func TestOverwrite(t *testing.T) {
+func TestOverwriteFull(t *testing.T) {
 	tb := nb(2, t)
 	tb.write('1')
 	tb.write('2')
 	tb.overwrite('A')
 	tb.read('2')
 	tb.read('A')
+	tb.readFail()
+}
+
+func TestOverwriteNonFull(t *testing.T) {
+	tb := nb(2, t)
+	tb.write('1')
+	tb.overwrite('2')
+	tb.read('1')
+	tb.read('2')
 	tb.readFail()
 }
 
