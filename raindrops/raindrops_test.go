@@ -2,29 +2,15 @@ package raindrops
 
 import "testing"
 
-var tests = []struct {
-	input    int
-	expected string
-}{
-	{1, "1"},
-	{3, "Pling"},
-	{5, "Plang"},
-	{7, "Plong"},
-	{6, "Pling"},
-	{9, "Pling"},
-	{10, "Plang"},
-	{14, "Plong"},
-	{15, "PlingPlang"},
-	{21, "PlingPlong"},
-	{25, "Plang"},
-	{35, "PlangPlong"},
-	{49, "Plong"},
-	{52, "52"},
-	{105, "PlingPlangPlong"},
-	{12121, "12121"},
-}
+const testVersion = 1
+
+// Retired testVersions
+// (none) 52fb31c169bc1b540109028f33f4f61b5f429753
 
 func TestConvert(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	}
 	for _, test := range tests {
 		if actual := Convert(test.input); actual != test.expected {
 			t.Errorf("Convert(%d) = %q, expected %q.",
