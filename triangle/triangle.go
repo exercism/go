@@ -1,5 +1,7 @@
 //+build !example
 
+package triangle
+
 // Code this function.
 func KindFromSides(a, b, c float64) Kind
 
