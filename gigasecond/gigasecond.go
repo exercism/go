@@ -6,9 +6,6 @@
 // Package clause.
 package gigasecond
 
-// Import declaration (or it will be after you complete it.)
-import
-
 // Constant declaration.
 const TestVersion = ? // find the value in gigasecond_test.go
 
