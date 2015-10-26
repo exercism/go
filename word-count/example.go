@@ -1,34 +1,20 @@
-package wc
+package wordcount
 
 import (
 	"regexp"
 	"strings"
 )
 
-func (h Histogram) Equal(o Histogram) bool {
-	return h.sameLength(o) && h.sameMappings(o)
-}
+const TestVersion = 1
 
-func (h Histogram) sameLength(o Histogram) bool {
-	return len(h) == len(o)
-}
+type Frequency map[string]int
 
-func (h Histogram) sameMappings(o Histogram) (res bool) {
-	res = true
-	for k := range h {
-		if h[k] != o[k] {
-			res = false
-		}
-	}
-	return
-}
-
-func WordCount(phrase string) Histogram {
-	counts := make(Histogram)
+func WordCount(phrase string) Frequency {
+	freq := Frequency{}
 	for _, word := range strings.Fields(normalize(phrase)) {
-		counts[word]++
+		freq[word]++
 	}
-	return counts
+	return freq
 }
 
 func normalize(phrase string) string {
