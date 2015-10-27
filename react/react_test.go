@@ -21,17 +21,20 @@ func TestTestVersion(t *testing.T) {
 	}
 }
 
+func assertCellValue(t *testing.T, c Cell, expected int, explanation string) {
+	observed := c.Value()
+	if observed != expected {
+		t.Fatalf("%s: expected %d, got %d", explanation, expected, observed)
+	}
+}
+
 // Setting the value of an input cell changes the observable Value()
 func TestSetInput(t *testing.T) {
 	r := New()
 	i := r.CreateInput(1)
-	if i.Value() != 1 {
-		t.Fatalf("i.Value() doesn't match initial value")
-	}
+	assertCellValue(t, i, 1, "i.Value() doesn't match initial value")
 	i.SetValue(2)
-	if i.Value() != 2 {
-		t.Fatalf("i.Value() doesn't match changed value")
-	}
+	assertCellValue(t, i, 2, "i.Value() doesn't match changed value")
 }
 
 // The value of a compute cell is determined by the value of the dependencies.
@@ -39,13 +42,9 @@ func TestBasicCompute(t *testing.T) {
 	r := New()
 	i := r.CreateInput(1)
 	c := r.CreateCompute1(i, func(v int) int { return v + 1 })
-	if c.Value() != 2 {
-		t.Fatalf("c.Value() isn't properly computed based on initial input cell value")
-	}
+	assertCellValue(t, c, 2, "c.Value() isn't properly computed based on initial input cell value")
 	i.SetValue(2)
-	if c.Value() != 3 {
-		t.Fatalf("c.Value() isn't properly computed based on changed input cell value")
-	}
+	assertCellValue(t, c, 3, "c.Value() isn't properly computed based on changed input cell value")
 }
 
 // Compute cells can depend on other compute cells.
@@ -55,13 +54,9 @@ func TestTopology(t *testing.T) {
 	c1 := r.CreateCompute1(i, func(v int) int { return v + 1 })
 	c2 := r.CreateCompute1(i, func(v int) int { return v - 1 })
 	c3 := r.CreateCompute2(c1, c2, func(v1, v2 int) int { return v1 * v2 })
-	if c3.Value() != 0 {
-		t.Fatalf("c3.Value() isn't properly computed based on initial input cell value")
-	}
+	assertCellValue(t, c3, 0, "c3.Value() isn't properly computed based on initial input cell value")
 	i.SetValue(3)
-	if c3.Value() != 8 {
-		t.Fatalf("c3.Value() isn't properly computed based on changed input cell value")
-	}
+	assertCellValue(t, c3, 8, "c3.Value() isn't properly computed based on changed input cell value")
 }
 
 // Compute cells can have callbacks.
