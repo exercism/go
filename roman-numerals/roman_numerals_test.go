@@ -1,40 +1,23 @@
 package romannumerals
 
-import (
-	"testing"
-)
+import "testing"
 
-type romanNumeralTest struct {
-	arabic   int
-	roman    string
-	hasError bool
-}
+const testVersion = 1
 
-var romanNumeralTests = []romanNumeralTest{
-	{1, "I", false},
-	{2, "II", false},
-	{3, "III", false},
-	{4, "IV", false},
-	{5, "V", false},
-	{6, "VI", false},
-	{9, "IX", false},
-	{27, "XXVII", false},
-	{48, "XLVIII", false},
-	{59, "LIX", false},
-	{93, "XCIII", false},
-	{141, "CXLI", false},
-	{163, "CLXIII", false},
-	{402, "CDII", false},
-	{575, "DLXXV", false},
-	{911, "CMXI", false},
-	{1024, "MXXIV", false},
-	{3000, "MMM", false},
-	{0, "", true},
-	{-1, "", true},
-}
+// Retired testVersions
+// (none) 313e3266c5fc18aca31a314b390bbc645956dbff
 
 func TestRomanNumerals(t *testing.T) {
-	for _, test := range romanNumeralTests {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	}
+	tc := append(romanNumeralTests, []romanNumeralTest{
+		{0, "", true},
+		{-1, "", true},
+		{4000, "", true},
+		{3999, "MMMCMXCIX", false},
+	}...)
+	for _, test := range tc {
 		actual, err := ToRomanNumeral(test.arabic)
 		if err == nil && test.hasError {
 			t.Errorf("ToRomanNumeral(%d) should return an error.", test.arabic)
@@ -45,20 +28,15 @@ func TestRomanNumerals(t *testing.T) {
 			continue
 		}
 		if actual != test.roman {
-			t.Errorf("ToRomanNumeral(%d): expected %s, actual %s", test.arabic, test.roman, actual)
+			t.Errorf("ToRomanNumeral(%d): %s, expected %s", test.arabic, actual, test.roman)
 		}
 	}
 }
 
 func BenchmarkRomanNumerals(b *testing.B) {
-	b.StopTimer()
-	for _, test := range romanNumeralTests {
-		b.StartTimer()
-
-		for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
+		for _, test := range romanNumeralTests {
 			ToRomanNumeral(test.arabic)
 		}
-
-		b.StopTimer()
 	}
 }

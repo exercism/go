@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+const TestVersion = 1
+
 type arabicToRoman struct {
 	arabic int
 	roman  string
@@ -13,7 +15,7 @@ type arabicToRoman struct {
 func ToRomanNumeral(input int) (string, error) {
 	buffer := bytes.NewBufferString("")
 
-	if input <= 0 || input > 3000 {
+	if input <= 0 || input >= 4000 {
 		return "", fmt.Errorf("The number %d is undefined in the roman numeral system.", input)
 	}
 
