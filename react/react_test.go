@@ -1,6 +1,9 @@
 package react
 
-import "testing"
+import (
+	"runtime"
+	"testing"
+)
 
 // Define a function New() Reactor and the stuff that follows from
 // implementing Reactor.
@@ -26,8 +29,9 @@ func TestTestVersion(t *testing.T) {
 
 func assertCellValue(t *testing.T, c Cell, expected int, explanation string) {
 	observed := c.Value()
+	_, _, line, _ := runtime.Caller(1)
 	if observed != expected {
-		t.Fatalf("%s: expected %d, got %d", explanation, expected, observed)
+		t.Fatalf("(from line %d) %s: expected %d, got %d", line, explanation, expected, observed)
 	}
 }
 
