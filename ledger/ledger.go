@@ -66,13 +66,15 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 	}
 	// Parallelism, always a great idea
 	co := make(chan struct {
+		i int
 		s string
 		e error
 	})
-	for _, et := range entriesCopy {
-		go func(entry Entry) {
+	for i, et := range entriesCopy {
+		go func(i int, entry Entry) {
 			if len(entry.Date) != 10 {
 				co <- struct {
+					i int
 					s string
 					e error
 				}{e: errors.New("")}
@@ -80,12 +82,14 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			d1, d2, d3, d4, d5 := entry.Date[0:4], entry.Date[4], entry.Date[5:7], entry.Date[7], entry.Date[8:10]
 			if d2 != '-' {
 				co <- struct {
+					i int
 					s string
 					e error
 				}{e: errors.New("")}
 			}
 			if d4 != '-' {
 				co <- struct {
+					i int
 					s string
 					e error
 				}{e: errors.New("")}
@@ -116,6 +120,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 					a += "$"
 				} else {
 					co <- struct {
+						i int
 						s string
 						e error
 					}{e: errors.New("")}
@@ -158,6 +163,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 					a += "$"
 				} else {
 					co <- struct {
+						i int
 						s string
 						e error
 					}{e: errors.New("")}
@@ -191,6 +197,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}
 			} else {
 				co <- struct {
+					i int
 					s string
 					e error
 				}{e: errors.New("")}
@@ -200,19 +207,24 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				al++
 			}
 			co <- struct {
+				i int
 				s string
 				e error
-			}{s: d + strings.Repeat(" ", 10-len(d)) + " | " + de + " | " +
+			}{i: i, s: d + strings.Repeat(" ", 10-len(d)) + " | " + de + " | " +
 				strings.Repeat(" ", 13-al) + a + "\n"}
-		}(et)
+		}(i, et)
 	}
+	ss := make([]string, len(entriesCopy))
 	for _ = range entriesCopy {
 		v := <-co
 		if v.e != nil {
 			return "", v.e
 		} else {
-			s += v.s
+			ss[v.i] = v.s
 		}
+	}
+	for i := 0; i < len(entriesCopy); i++ {
+		s += ss[i]
 	}
 	return s, nil
 }
