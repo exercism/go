@@ -1,6 +1,6 @@
 package react
 
-const TestVersion = 2
+const TestVersion = 3
 
 type reactor struct {
 	cells []*cell

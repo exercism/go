@@ -1,6 +1,9 @@
 package react
 
-import "testing"
+import (
+	"runtime"
+	"testing"
+)
 
 // Define a function New() Reactor and the stuff that follows from
 // implementing Reactor.
@@ -8,9 +11,10 @@ import "testing"
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
 
-const testVersion = 2
+const testVersion = 3
 
 // Retired:
+//  2 9d1c247d698fb68119379ef92f2b15ff46175f7c
 //  1 afa5c1278857457403a30479663d26d4e1c8c496
 
 // This is a compile time check to see if you've properly implemented New().
@@ -26,8 +30,9 @@ func TestTestVersion(t *testing.T) {
 
 func assertCellValue(t *testing.T, c Cell, expected int, explanation string) {
 	observed := c.Value()
+	_, _, line, _ := runtime.Caller(1)
 	if observed != expected {
-		t.Fatalf("%s: expected %d, got %d", explanation, expected, observed)
+		t.Fatalf("(from line %d) %s: expected %d, got %d", line, explanation, expected, observed)
 	}
 }
 
@@ -192,6 +197,53 @@ func TestCallbackAddRemove(t *testing.T) {
 	}
 }
 
+func TestMultipleCallbackRemoval(t *testing.T) {
+	r := New()
+	inp := r.CreateInput(1)
+	c := r.CreateCompute1(inp, func(v int) int { return v + 1 })
+
+	numCallbacks := 5
+
+	calls := make([]int, numCallbacks)
+	handles := make([]CallbackHandle, numCallbacks)
+	for i := 0; i < numCallbacks; i++ {
+		// Rebind i, otherwise all callbacks will use i = numCallbacks
+		i := i
+		handles[i] = c.AddCallback(func(v int) { calls[i]++ })
+	}
+
+	inp.SetValue(2)
+	for i := 0; i < numCallbacks; i++ {
+		if calls[i] != 1 {
+			t.Fatalf("callback %d/%d should be called 1 time, was called %d times", i+1, numCallbacks, calls[i])
+		}
+		c.RemoveCallback(handles[i])
+	}
+
+	inp.SetValue(3)
+	for i := 0; i < numCallbacks; i++ {
+		if calls[i] != 1 {
+			t.Fatalf("callback %d/%d was called after it was removed", i+1, numCallbacks)
+		}
+	}
+}
+
+func TestRemoveIdempotence(t *testing.T) {
+	r := New()
+	inp := r.CreateInput(1)
+	output := r.CreateCompute1(inp, func(v int) int { return v + 1 })
+	timesCalled := 0
+	cb1 := output.AddCallback(func(int) {})
+	output.AddCallback(func(int) { timesCalled++ })
+	for i := 0; i < 10; i++ {
+		output.RemoveCallback(cb1)
+	}
+	inp.SetValue(2)
+	if timesCalled != 1 {
+		t.Fatalf("remaining callback function was not called")
+	}
+}
+
 // Callbacks should only be called once even though
 // multiple dependencies have changed.
 func TestOnlyCallOnceOnMultipleDepChanges(t *testing.T) {
@@ -208,5 +260,24 @@ func TestOnlyCallOnceOnMultipleDepChanges(t *testing.T) {
 		t.Fatalf("callback function was not called")
 	} else if changed4 > 1 {
 		t.Fatalf("callback function was called too often")
+	}
+}
+
+// Callbacks should not be called if dependencies change in such a way
+// that the final value of the compute cell does not change.
+func TestNoCallOnDepChangesResultingInNoChange(t *testing.T) {
+	r := New()
+	inp := r.CreateInput(0)
+	plus1 := r.CreateCompute1(inp, func(v int) int { return v + 1 })
+	minus1 := r.CreateCompute1(inp, func(v int) int { return v - 1 })
+	// The output's value is always 2, no matter what the input is.
+	output := r.CreateCompute2(plus1, minus1, func(v1, v2 int) int { return v1 - v2 })
+
+	timesCalled := 0
+	output.AddCallback(func(int) { timesCalled++ })
+
+	inp.SetValue(5)
+	if timesCalled != 0 {
+		t.Fatalf("callback function called even though computed value didn't change")
 	}
 }
