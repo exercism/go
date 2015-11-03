@@ -22,8 +22,8 @@ const TestVersion = 1
 // (But delete all these instructional comments!)
 func IsLeapYear(int) bool {
 	// Write some code here to pass the test suite.
-}
 
-// Finally, remove all the stock comments here that you didn't write or edit.
-// They're here to to help you get started but they only clutter a finished
-// solution.  If you leave them in, nitpickers are likely to protest!
+	// When you have a working solution, REMOVE ALL THE STOCK COMMENTS.
+	// They're here to to help you get started but they only clutter a finished solution.
+	// If you leave them in, nitpickers will protest!
+}
