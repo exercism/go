@@ -6,7 +6,10 @@ import (
 	"testing"
 )
 
-const testVersion = 1
+const testVersion = 2
+
+// Retired:
+//  1 3bb3de28d30b6db66070440df9de0d8a1963f22f
 
 var successTestCases = []struct {
 	name     string
@@ -119,13 +122,13 @@ Date       | Description               | Change
 		entries: []Entry{
 			{
 				Date:        "2015-01-01",
-				Description: "Freude schöner Götterfunken",
+				Description: "Freude schoner Gotterfunken",
 				Change:      -123456,
 			},
 		},
 		expected: `
 Date       | Description               | Change
-01/01/2015 | Freude schöner Götterf... |   ($1,234.56)
+01/01/2015 | Freude schoner Gotterf... |   ($1,234.56)
 `,
 	},
 	{

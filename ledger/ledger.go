@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 type Entry struct {
 	Date        string // "Y-m-d"
@@ -95,8 +95,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}{e: errors.New("")}
 			}
 			de := entry.Description
-			if len(de) > 27 {
-				de = de[:24] + "..."
+			if len(de) > 25 {
+				de = de[:22] + "..."
 			} else {
 				de = de + strings.Repeat(" ", 25-len(de))
 			}

@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 type Entry struct {
 	Date        string // "Y-m-d"
@@ -41,8 +41,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			return "", err
 		}
 		description := entry.Description
-		if len(description) > 27 {
-			description = description[:24] + "..."
+		if len(description) > 25 {
+			description = description[:22] + "..."
 		}
 		buf.WriteString(fmt.Sprintf("%-10s | %-25s | %13s\n",
 			locInfo.dateString(date),
