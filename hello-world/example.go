@@ -1,4 +1,4 @@
-package helloworld
+package hello
 
 const TestVersion = 1
 
