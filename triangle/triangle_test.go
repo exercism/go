@@ -47,6 +47,29 @@ func init() {
 	testData = append(testData, nf[1:]...)
 }
 
+// Test that the kinds are not equal to each other.
+// If they are equal, then TestKind will return false positives.
+func TestKindsNotEqual(t *testing.T) {
+	kindsAndNames := []struct {
+		kind Kind
+		name string
+	}{
+		{Equ, "Equ"},
+		{Iso, "Iso"},
+		{Sca, "Sca"},
+		{NaT, "NaT"},
+	}
+
+	for i, pair1 := range kindsAndNames {
+		for j := i + 1; j < len(kindsAndNames); j++ {
+			pair2 := kindsAndNames[j]
+			if pair1.kind == pair2.kind {
+				t.Fatalf("%s should not be equal to %s", pair1.name, pair2.name)
+			}
+		}
+	}
+}
+
 func TestKind(t *testing.T) {
 	for _, test := range testData {
 		got := KindFromSides(test.a, test.b, test.c)
