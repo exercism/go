@@ -67,3 +67,19 @@ func TestCompareClocks(t *testing.T) {
 	}
 	t.Log(len(eqTests), "test cases")
 }
+
+func BenchmarkAddMinutes(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, a := range addTests {
+			Time(a.h, a.m).Add(a.a)
+		}
+	}
+}
+
+func BenchmarkCreateClocks(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, n := range timeTests {
+			Time(n.h, n.m)
+		}
+	}
+}
