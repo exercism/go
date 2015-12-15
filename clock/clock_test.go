@@ -69,9 +69,10 @@ func TestCompareClocks(t *testing.T) {
 }
 
 func BenchmarkAddMinutes(b *testing.B) {
+	c := Clock(720)
 	for i := 0; i < b.N; i++ {
 		for _, a := range addTests {
-			Time(a.h, a.m).Add(a.a)
+			c.Add(a.a)
 		}
 	}
 }
