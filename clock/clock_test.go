@@ -11,14 +11,14 @@ import (
 // (Clock) String() string         // a "stringer"
 // (Clock) Add(minutes int) Clock
 //
-// Add should also handle subtraction by accepting negative values.
+// The Add method should also handle subtraction by accepting negative values.
 // To satisfy the readme requirement about clocks being equal, values of
 // your Clock type need to work with the == operator.
 //
 // It might help to study the time.Time type in the standard library
 // (https://golang.org/pkg/time/#Time) as a model.  See how constructors there
 // (Date and Now) return Time values rather than pointers.  Note also how
-// most time.Time methods have value receivers rather that pointer recievers.
+// most time.Time methods have value receivers rather than pointer receivers.
 // For more background on this read
 // https://github.com/golang/go/wiki/CodeReviewComments#receiver-type.
 
