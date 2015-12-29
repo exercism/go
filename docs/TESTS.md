@@ -49,7 +49,7 @@ To find problems with concurrent programs, try `go test -race`.
 Let's say that again, run `go fmt`.
 [Golint](https://github.com/golang/lint) can inform you about style issues in your code that `go fmt` won't catch.
 You might also look at `go vet`, which warns about potential problems in your code.
-Read and heed [frequent comments from code reviews](https://code.google.com/p/go-wiki/wiki/CodeReviewComments) (aka nitpicking.)
+Read and heed [frequent comments from code reviews](https://code.google.com/p/go-wiki/wiki/CodeReviewComments).
 For an exercise that involves concurrency, try `go test -race` even if passes its tests.
 Keep readability in mind even if you optimize for benchmark performance.  Sometimes optimization can help you discover solutions that are concise and readable, but there can be a temptation to abandon readability in the pursuit of performance.
 
