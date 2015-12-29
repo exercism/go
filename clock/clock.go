@@ -27,5 +27,5 @@ func (Clock) String() string {
 func (Clock) Add(minutes int) Clock {
 }
 
-// This comment and others that aren't of interest become nits if you
-// don't delete them...
+// Remember to delete all of the stub comments.
+// They are just noise, and reviewers will complain.
