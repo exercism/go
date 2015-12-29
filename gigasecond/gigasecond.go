@@ -16,4 +16,4 @@ func AddGigasecond(time.Time) time.Time
 // See gigasecond_test.go.
 var Birthday
 
-// Nitpickers don't think much of stub comments.  Replace or remove.
+// Reviewers don't think much of stub comments.  Replace or remove.
