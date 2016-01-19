@@ -65,7 +65,6 @@ func lookup(x, y int, puzzle []string) (rune, bool) {
 	if x >= 0 && x < len(puzzle[0]) && y >= 0 && y < len(puzzle) {
 		// Yes, yes, this won't work with multi-byte codepoints.
 		return rune(puzzle[y][x]), true
-	} else {
-		return 0, false
 	}
+	return 0, false
 }
