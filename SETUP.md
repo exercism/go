@@ -6,4 +6,4 @@ flag:
     go test -bench .
 
 For more detailed info about the Go track see the [help
-page](http://help.exercism.io/getting-started-with-go.html).
+page](http://exercism.io/languages/go).
