@@ -149,9 +149,8 @@ func TestOnlyCallOnChanges(t *testing.T) {
 	c := r.CreateCompute1(i, func(v int) int {
 		if v > 3 {
 			return v + 1
-		} else {
-			return 2
 		}
+		return 2
 	})
 	var observedCalled int
 	c.AddCallback(func(int) {
