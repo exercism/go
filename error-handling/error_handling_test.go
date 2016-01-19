@@ -1,4 +1,4 @@
-package error_handling
+package erratum
 
 import (
 	"errors"
@@ -13,7 +13,7 @@ import (
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
 
-const testVersion = 1
+const testVersion = 2
 
 // Little helper to let us customize behaviour of the resource on a per-test
 // basis.
@@ -61,9 +61,8 @@ func TestKeepTryOpenOnTransient(t *testing.T) {
 		if nthCall < 3 {
 			nthCall++
 			return mockResource{}, TransientError{errors.New("some error")}
-		} else {
-			return mr, nil
 		}
+		return mr, nil
 	}
 	inp := "hello"
 	err := Use(opener, inp)
@@ -82,9 +81,8 @@ func TestFailOpenOnNonTransient(t *testing.T) {
 		if nthCall < 3 {
 			nthCall++
 			return mockResource{}, TransientError{errors.New("some error")}
-		} else {
-			return nil, errors.New("too awesome")
 		}
+		return nil, errors.New("too awesome")
 	}
 	inp := "hello"
 	err := Use(opener, inp)
@@ -153,5 +151,11 @@ func TestCallCloseNonOnFrobError(t *testing.T) {
 	}
 	if !closeCalled {
 		t.Fatalf("Close was not called")
+	}
+}
+
+func TestExerciseVersion(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
 	}
 }
