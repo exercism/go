@@ -219,9 +219,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		v := <-co
 		if v.e != nil {
 			return "", v.e
-		} else {
-			ss[v.i] = v.s
 		}
+		ss[v.i] = v.s
 	}
 	for i := 0; i < len(entriesCopy); i++ {
 		s += ss[i]
