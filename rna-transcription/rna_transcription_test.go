@@ -6,6 +6,7 @@ const testVersion = 2
 
 // Retired testVersions
 // (none) 3e164bf0858b6bf7dbed8ff8a8d487105a41ada6
+// 1 3c5bf77aac0adaa665f9a72e115712bbb7ca890a
 
 func TestRNATranscription(t *testing.T) {
 	if TestVersion != testVersion {
