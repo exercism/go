@@ -7,25 +7,25 @@ import (
 )
 
 const (
-	WHITE = 1 << iota
-	BLACK
-	WHITE_CONNECTED
-	BLACK_CONNECTED
+	white = 1 << iota
+	black
+	connectedWhite
+	connectedBlack
 )
 
 type colorFlags struct {
-	color_flag     int8
-	connected_flag int8
+	color     int8
+	connected int8
 }
 
-var black_flags = colorFlags{
-	color_flag:     BLACK,
-	connected_flag: BLACK_CONNECTED,
+var flagsBlack = colorFlags{
+	color:     black,
+	connected: connectedBlack,
 }
 
-var white_flags = colorFlags{
-	color_flag:     WHITE,
-	connected_flag: WHITE_CONNECTED,
+var flagsWhite = colorFlags{
+	color:     white,
+	connected: connectedWhite,
 }
 
 type coord struct {
@@ -58,9 +58,9 @@ func newBoard(lines []string) (board, error) {
 		for x, c := range line {
 			switch c {
 			case 'X':
-				fields[y][x] = BLACK
+				fields[y][x] = black
 			case 'O':
-				fields[y][x] = WHITE
+				fields[y][x] = white
 			}
 			// No need for default, zero value already means no stone
 		}
@@ -79,12 +79,12 @@ func newBoard(lines []string) (board, error) {
 // whether the connected flag was set for it.
 func (b board) at(c coord, cf colorFlags) (bool, bool) {
 	f := b.fields[c.y][c.x]
-	return f&cf.color_flag == cf.color_flag,
-		f&cf.connected_flag == cf.connected_flag
+	return f&cf.color == cf.color,
+		f&cf.connected == cf.connected
 }
 
 func (b board) markConnected(c coord, cf colorFlags) {
-	b.fields[c.y][c.x] |= cf.connected_flag
+	b.fields[c.y][c.x] |= cf.connected
 }
 
 func (b board) validCoord(c coord) bool {
@@ -104,7 +104,7 @@ func (b board) neighbours(c coord) []coord {
 }
 
 func (b board) startCoords(cf colorFlags) []coord {
-	if cf.color_flag == WHITE {
+	if cf.color == white {
 		coords := make([]coord, b.width)
 		for i := 0; i < b.width; i++ {
 			coords[i] = coord{x: i, y: 0}
@@ -120,7 +120,7 @@ func (b board) startCoords(cf colorFlags) []coord {
 }
 
 func (b board) isTargetCoord(c coord, cf colorFlags) bool {
-	if cf.color_flag == WHITE {
+	if cf.color == white {
 		return c.y == b.height-1
 	} else {
 		return c.x == b.width-1
@@ -149,14 +149,14 @@ func (b board) dump() {
 		spaces := strings.Repeat(" ", y)
 		chars := make([]string, b.width)
 		for x := 0; x < b.width; x++ {
-			if b.fields[y][x]&WHITE == WHITE {
-				if b.fields[y][x]&WHITE_CONNECTED == WHITE_CONNECTED {
+			if b.fields[y][x]&white == white {
+				if b.fields[y][x]&connectedWhite == connectedWhite {
 					chars[x] = "O"
 				} else {
 					chars[x] = "o"
 				}
-			} else if b.fields[y][x]&BLACK == BLACK {
-				if b.fields[y][x]&BLACK_CONNECTED == BLACK_CONNECTED {
+			} else if b.fields[y][x]&black == black {
+				if b.fields[y][x]&connectedBlack == connectedBlack {
 					chars[x] = "X"
 				} else {
 					chars[x] = "x"
@@ -176,13 +176,13 @@ func ResultOf(lines []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	for _, c := range board.startCoords(black_flags) {
-		if board.evaluate(c, black_flags) {
+	for _, c := range board.startCoords(flagsBlack) {
+		if board.evaluate(c, flagsBlack) {
 			return "black", nil
 		}
 	}
-	for _, c := range board.startCoords(white_flags) {
-		if board.evaluate(c, white_flags) {
+	for _, c := range board.startCoords(flagsWhite) {
+		if board.evaluate(c, flagsWhite) {
 			return "white", nil
 		}
 	}
