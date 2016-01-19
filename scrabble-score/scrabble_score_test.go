@@ -1,6 +1,8 @@
-package scrabble_score
+package scrabble
 
 import "testing"
+
+const testVersion = 2
 
 var tests = []struct {
 	input    string
@@ -21,6 +23,10 @@ func TestScore(t *testing.T) {
 		if actual := Score(test.input); actual != test.expected {
 			t.Errorf("Score(%q) expected %d, Actual %d", test.input, test.expected, actual)
 		}
+	}
+
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
 	}
 }
 
