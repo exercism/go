@@ -1,8 +1,10 @@
-package bracket_push
+package brackets
 
 import (
 	"testing"
 )
+
+const testVersion = 2
 
 var testCases = []struct {
 	input    string
@@ -57,6 +59,9 @@ func TestBracket(t *testing.T) {
 			t.Fatalf("Bracket(%q) was expected to return %v but returned %v.",
 				tt.input, tt.expected, actual)
 		}
+	}
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
 	}
 }
 
