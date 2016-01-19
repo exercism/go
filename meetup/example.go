@@ -2,7 +2,7 @@ package meetup
 
 import "time"
 
-const TestVersion = 1
+const TestVersion = 2
 
 type WeekSchedule int
 
@@ -15,7 +15,7 @@ const (
 	Last                = -6
 )
 
-func MeetupDay(wSched WeekSchedule, wDay time.Weekday, month time.Month, year int) int {
+func Day(wSched WeekSchedule, wDay time.Weekday, month time.Month, year int) int {
 	if wSched == Last {
 		month++
 	}
