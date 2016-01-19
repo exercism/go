@@ -12,9 +12,9 @@ const TestVersion = 2
 type outcome int
 
 const (
-	LOSS outcome = iota
-	DRAW
-	WIN
+	loss outcome = iota
+	draw
+	win
 )
 
 type inputEntry struct {
@@ -73,11 +73,11 @@ func readInput(reader io.Reader) ([]inputEntry, error) {
 			var outcomes [2]outcome
 			switch record[2] {
 			case "win":
-				outcomes = [2]outcome{WIN, LOSS}
+				outcomes = [2]outcome{win, loss}
 			case "loss":
-				outcomes = [2]outcome{LOSS, WIN}
+				outcomes = [2]outcome{loss, win}
 			case "draw":
-				outcomes = [2]outcome{DRAW, DRAW}
+				outcomes = [2]outcome{draw, draw}
 			default:
 				return nil, fmt.Errorf("Invalid outcome %q", record[2])
 			}
@@ -101,16 +101,16 @@ func tallyEntries(entries []inputEntry) map[string]teamResult {
 				// The rest is 0, which is correct
 			}
 			switch outcome {
-			case WIN:
-				result.wins += 1
+			case win:
+				result.wins++
 				result.points += 3
-			case DRAW:
-				result.draws += 1
-				result.points += 1
-			case LOSS:
-				result.losses += 1
+			case draw:
+				result.draws++
+				result.points++
+			case loss:
+				result.losses++
 			}
-			result.played += 1
+			result.played++
 			results[team] = result
 		}
 	}
