@@ -8,13 +8,13 @@ import (
 )
 
 // Define a function Build(records []Record) (*Node, error)
-// where Record is a struct containing int fields Id and Parent
-// and Node is a struct containing int field Id and []*Node field Children.
+// where Record is a struct containing int fields ID and Parent
+// and Node is a struct containing int field ID and []*Node field Children.
 //
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
 
-const testVersion = 1
+const testVersion = 2
 
 var successTestCases = []struct {
 	name     string
@@ -29,85 +29,85 @@ var successTestCases = []struct {
 	{
 		name: "one node",
 		input: []Record{
-			{Id: 0},
+			{ID: 0},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 		},
 	},
 	{
 		name: "three nodes in order",
 		input: []Record{
-			{Id: 0},
-			{Id: 1, Parent: 0},
-			{Id: 2, Parent: 0},
+			{ID: 0},
+			{ID: 1, Parent: 0},
+			{ID: 2, Parent: 0},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 			Children: []*Node{
-				{Id: 1},
-				{Id: 2},
+				{ID: 1},
+				{ID: 2},
 			},
 		},
 	},
 	{
 		name: "three nodes in reverse order",
 		input: []Record{
-			{Id: 2, Parent: 0},
-			{Id: 1, Parent: 0},
-			{Id: 0},
+			{ID: 2, Parent: 0},
+			{ID: 1, Parent: 0},
+			{ID: 0},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 			Children: []*Node{
-				{Id: 1},
-				{Id: 2},
+				{ID: 1},
+				{ID: 2},
 			},
 		},
 	},
 	{
 		name: "more than two children",
 		input: []Record{
-			{Id: 3, Parent: 0},
-			{Id: 2, Parent: 0},
-			{Id: 1, Parent: 0},
-			{Id: 0},
+			{ID: 3, Parent: 0},
+			{ID: 2, Parent: 0},
+			{ID: 1, Parent: 0},
+			{ID: 0},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 			Children: []*Node{
-				{Id: 1},
-				{Id: 2},
-				{Id: 3},
+				{ID: 1},
+				{ID: 2},
+				{ID: 3},
 			},
 		},
 	},
 	{
 		name: "binary tree",
 		input: []Record{
-			{Id: 5, Parent: 1},
-			{Id: 3, Parent: 2},
-			{Id: 2, Parent: 0},
-			{Id: 4, Parent: 1},
-			{Id: 1, Parent: 0},
-			{Id: 0},
-			{Id: 6, Parent: 2},
+			{ID: 5, Parent: 1},
+			{ID: 3, Parent: 2},
+			{ID: 2, Parent: 0},
+			{ID: 4, Parent: 1},
+			{ID: 1, Parent: 0},
+			{ID: 0},
+			{ID: 6, Parent: 2},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 			Children: []*Node{
 				{
-					Id: 1,
+					ID: 1,
 					Children: []*Node{
-						{Id: 4},
-						{Id: 5},
+						{ID: 4},
+						{ID: 5},
 					},
 				},
 				{
-					Id: 2,
+					ID: 2,
 					Children: []*Node{
-						{Id: 3},
-						{Id: 6},
+						{ID: 3},
+						{ID: 6},
 					},
 				},
 			},
@@ -116,29 +116,29 @@ var successTestCases = []struct {
 	{
 		name: "unbalanced tree",
 		input: []Record{
-			{Id: 5, Parent: 2},
-			{Id: 3, Parent: 2},
-			{Id: 2, Parent: 0},
-			{Id: 4, Parent: 1},
-			{Id: 1, Parent: 0},
-			{Id: 0},
-			{Id: 6, Parent: 2},
+			{ID: 5, Parent: 2},
+			{ID: 3, Parent: 2},
+			{ID: 2, Parent: 0},
+			{ID: 4, Parent: 1},
+			{ID: 1, Parent: 0},
+			{ID: 0},
+			{ID: 6, Parent: 2},
 		},
 		expected: &Node{
-			Id: 0,
+			ID: 0,
 			Children: []*Node{
 				{
-					Id: 1,
+					ID: 1,
 					Children: []*Node{
-						{Id: 4},
+						{ID: 4},
 					},
 				},
 				{
-					Id: 2,
+					ID: 2,
 					Children: []*Node{
-						{Id: 3},
-						{Id: 5},
-						{Id: 6},
+						{ID: 3},
+						{ID: 5},
+						{ID: 6},
 					},
 				},
 			},
@@ -153,61 +153,61 @@ var failureTestCases = []struct {
 	{
 		name: "root node has parent",
 		input: []Record{
-			{Id: 0, Parent: 1},
-			{Id: 1, Parent: 0},
+			{ID: 0, Parent: 1},
+			{ID: 1, Parent: 0},
 		},
 	},
 	{
 		name: "no root node",
 		input: []Record{
-			{Id: 1, Parent: 0},
+			{ID: 1, Parent: 0},
 		},
 	},
 	{
 		name: "non-continuous",
 		input: []Record{
-			{Id: 2, Parent: 0},
-			{Id: 4, Parent: 2},
-			{Id: 1, Parent: 0},
-			{Id: 0},
+			{ID: 2, Parent: 0},
+			{ID: 4, Parent: 2},
+			{ID: 1, Parent: 0},
+			{ID: 0},
 		},
 	},
 	{
 		name: "cycle directly",
 		input: []Record{
-			{Id: 5, Parent: 2},
-			{Id: 3, Parent: 2},
-			{Id: 2, Parent: 2},
-			{Id: 4, Parent: 1},
-			{Id: 1, Parent: 0},
-			{Id: 0},
-			{Id: 6, Parent: 3},
+			{ID: 5, Parent: 2},
+			{ID: 3, Parent: 2},
+			{ID: 2, Parent: 2},
+			{ID: 4, Parent: 1},
+			{ID: 1, Parent: 0},
+			{ID: 0},
+			{ID: 6, Parent: 3},
 		},
 	},
 	{
 		name: "cycle indirectly",
 		input: []Record{
-			{Id: 5, Parent: 2},
-			{Id: 3, Parent: 2},
-			{Id: 2, Parent: 6},
-			{Id: 4, Parent: 1},
-			{Id: 1, Parent: 0},
-			{Id: 0},
-			{Id: 6, Parent: 3},
+			{ID: 5, Parent: 2},
+			{ID: 3, Parent: 2},
+			{ID: 2, Parent: 6},
+			{ID: 4, Parent: 1},
+			{ID: 1, Parent: 0},
+			{ID: 0},
+			{ID: 6, Parent: 3},
 		},
 	},
 	{
 		name: "higher id parent of lower id",
 		input: []Record{
-			{Id: 0},
-			{Id: 2, Parent: 0},
-			{Id: 1, Parent: 2},
+			{ID: 0},
+			{ID: 2, Parent: 0},
+			{ID: 1, Parent: 2},
 		},
 	},
 }
 
 func (n Node) String() string {
-	return fmt.Sprintf("%d:%s", n.Id, n.Children)
+	return fmt.Sprintf("%d:%s", n.ID, n.Children)
 }
 
 func TestMakeTreeSuccess(t *testing.T) {
@@ -251,9 +251,9 @@ func makeTwoTreeRecords() []Record {
 	records := make([]Record, 1<<16)
 	for i := range records {
 		if i == 0 {
-			records[i] = Record{Id: 0}
+			records[i] = Record{ID: 0}
 		} else {
-			records[i] = Record{Id: i, Parent: i >> 1}
+			records[i] = Record{ID: i, Parent: i >> 1}
 		}
 	}
 	return shuffleRecords(records)
@@ -272,9 +272,9 @@ func makeTenTreeRecords() []Record {
 	records := make([]Record, 10000)
 	for i := range records {
 		if i == 0 {
-			records[i] = Record{Id: 0}
+			records[i] = Record{ID: 0}
 		} else {
-			records[i] = Record{Id: i, Parent: i / 10}
+			records[i] = Record{ID: i, Parent: i / 10}
 		}
 	}
 	return shuffleRecords(records)
@@ -291,7 +291,7 @@ func BenchmarkTenTree(b *testing.B) {
 func makeShallowRecords() []Record {
 	records := make([]Record, 10000)
 	for i := range records {
-		records[i] = Record{Id: i, Parent: 0}
+		records[i] = Record{ID: i, Parent: 0}
 	}
 	return shuffleRecords(records)
 }

@@ -7,14 +7,14 @@ import (
 	"fmt"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 type Record struct {
-	Id, Parent int
+	ID, Parent int
 }
 
 type Node struct {
-	Id       int
+	ID       int
 	Children []*Node
 }
 
@@ -38,23 +38,23 @@ func Build(records []Record) (*Node, error) {
 		newTodo := []*Node(nil)
 		for _, c := range todo {
 			for _, r := range records {
-				if r.Parent == c.Id {
-					if r.Id < c.Id {
+				if r.Parent == c.ID {
+					if r.ID < c.ID {
 						return nil, errors.New("a")
-					} else if r.Id == c.Id {
-						if r.Id != 0 {
+					} else if r.ID == c.ID {
+						if r.ID != 0 {
 							return nil, fmt.Errorf("b")
 						}
 					} else {
 						n++
 						switch len(c.Children) {
 						case 0:
-							nn := &Node{Id: r.Id}
+							nn := &Node{ID: r.ID}
 							c.Children = []*Node{nn}
 							newTodo = append(newTodo, nn)
 						case 1:
-							nn := &Node{Id: r.Id}
-							if c.Children[0].Id < r.Id {
+							nn := &Node{ID: r.ID}
+							if c.Children[0].ID < r.ID {
 								c.Children = []*Node{c.Children[0], nn}
 								newTodo = append(newTodo, nn)
 							} else {
@@ -62,12 +62,12 @@ func Build(records []Record) (*Node, error) {
 								newTodo = append(newTodo, nn)
 							}
 						default:
-							nn := &Node{Id: r.Id}
+							nn := &Node{ID: r.ID}
 							newTodo = append(newTodo, nn)
 						breakpoint:
 							for _ = range []bool{false} {
 								for i, cc := range c.Children {
-									if cc.Id > r.Id {
+									if cc.ID > r.ID {
 										a := make([]*Node, len(c.Children)+1)
 										copy(a, c.Children[:i])
 										copy(a[i+1:], c.Children[i:])
@@ -95,9 +95,9 @@ func Build(records []Record) (*Node, error) {
 }
 
 func chk(n *Node, m int) (err error) {
-	if n.Id > m {
+	if n.ID > m {
 		return fmt.Errorf("z")
-	} else if n.Id == m {
+	} else if n.ID == m {
 		return fmt.Errorf("y")
 	} else {
 		for i := 0; i < len(n.Children); i++ {
