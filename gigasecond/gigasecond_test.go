@@ -12,10 +12,6 @@ import (
 
 const testVersion = 3
 
-// Retired testVersions
-// (none) 98807b314216ff27492378a00df60410cc971d32
-// 1      ed0594b6fd6664928d17bbc70b543a56da05a5b8
-
 // date formats used in test data
 const (
 	fmtD  = "2006-01-02"

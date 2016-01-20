@@ -35,10 +35,6 @@ import (
 
 const testVersion = 2
 
-// Retired testVersions
-// (none) b0e8c094dd0bb0aa82c04d7e3470a0128daae78f
-// 1      8d0cb8b617be2e36b2ca5ad2034e5f80f2372924
-
 func TestTestVersion(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)

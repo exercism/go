@@ -4,9 +4,6 @@ import "testing"
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) ba7a22a355a32901caf46529c799fa53118ded0a
-
 var tests = []struct {
 	digits  string
 	span    int

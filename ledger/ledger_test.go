@@ -8,9 +8,6 @@ import (
 
 const testVersion = 2
 
-// Retired:
-//  1 3bb3de28d30b6db66070440df9de0d8a1963f22f
-
 var successTestCases = []struct {
 	name     string
 	currency string

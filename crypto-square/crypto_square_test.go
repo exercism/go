@@ -4,9 +4,6 @@ import "testing"
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) 71ad8ac57fe7d5b777cfa1afd116cd41e1af55ed
-
 var tests = []struct {
 	pt string // plain text
 	ct string // cipher text

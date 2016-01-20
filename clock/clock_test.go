@@ -24,10 +24,6 @@ import (
 
 const testVersion = 2
 
-// Retired testVersions
-// (none) 79937f6d58e25ebafe12d1cb4a9f88f4de70cfd6
-// 1      8d0cb8b617be2e36b2ca5ad2034e5f80f2372924
-
 func TestCreateClock(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)

@@ -4,10 +4,6 @@ import "testing"
 
 const testVersion = 2
 
-// Retired testVersions
-// (none) df178dc24b57f7d4ccf54d47430192749d56898f
-// 1      4f6fe21682f7f2a7845683cb26ff557208153ffe
-
 func TestHamming(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
