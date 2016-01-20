@@ -1,8 +1,11 @@
-package scrabble_score
+package scrabble
 
 import (
 	"strings"
 )
+
+// TestVersion tracks the version of the exercise.
+const TestVersion = 2
 
 var letterValues = map[rune]int{
 	'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1,
@@ -13,6 +16,7 @@ var letterValues = map[rune]int{
 	'z': 10,
 }
 
+// Score computes the number of points that a word is worth.
 func Score(word string) int {
 	word = strings.ToLower(word)
 
