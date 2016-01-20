@@ -1,4 +1,6 @@
-package error_handling
+package erratum
+
+const TestVersion = 2
 
 func Use(opener ResourceOpener, input string) (err error) {
 	var r Resource
