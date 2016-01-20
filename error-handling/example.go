@@ -1,4 +1,4 @@
-package error_handling
+package erratum
 
 func Use(opener ResourceOpener, input string) (err error) {
 	var r Resource

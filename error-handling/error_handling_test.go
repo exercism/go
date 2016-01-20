@@ -1,4 +1,4 @@
-package error_handling
+package erratum
 
 import (
 	"errors"
