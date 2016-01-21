@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const testVersion = 2
+const testVersion = 3
 
 // Retired testVersions
 // (none) 98807b314216ff27492378a00df60410cc971d32
@@ -37,12 +37,6 @@ want %s`, in, got, want)
 		}
 	}
 	t.Log("Tested", len(addCases), "cases.")
-}
-
-func TestYourAnniversary(t *testing.T) {
-	t.Logf(`
-Your birthday:               %s
-Your gigasecond anniversary: %s`, Birthday, AddGigasecond(Birthday))
 }
 
 func parse(s string, t *testing.T) time.Time {
