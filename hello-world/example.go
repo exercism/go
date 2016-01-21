@@ -2,6 +2,9 @@ package hello
 
 const TestVersion = 1
 
-func HelloWorld() string {
-	return "Hello, World!"
+func HelloWorld(name string) string {
+	if name == "" {
+		name = "World"
+	}
+	return "Hello, " + name + "!"
 }

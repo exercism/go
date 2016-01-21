@@ -2,7 +2,7 @@ package hello
 
 import "testing"
 
-// Define a function HelloWorld() string.
+// Define a function HelloWorld(string) string.
 //
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
@@ -14,7 +14,7 @@ func TestHelloWorld(t *testing.T) {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
 	}
 	expected := "Hello, World!"
-	observed := HelloWorld()
+	observed := HelloWorld("")
 	if observed != expected {
 		t.Fatalf("HelloWorld() = %v, want %v", observed, expected)
 	}
