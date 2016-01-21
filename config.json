@@ -4,6 +4,7 @@
   "repository": "https://github.com/exercism/xgo",
   "active": true,
   "problems": [
+    "hello-world",
     "leap",
     "clock",
     "gigasecond",
