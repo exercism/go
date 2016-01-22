@@ -13,10 +13,6 @@ import (
 
 const testVersion = 3
 
-// Retired:
-//  2 9d1c247d698fb68119379ef92f2b15ff46175f7c
-//  1 afa5c1278857457403a30479663d26d4e1c8c496
-
 // This is a compile time check to see if you've properly implemented New().
 var _ Reactor = New()
 

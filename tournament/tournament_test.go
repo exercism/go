@@ -15,8 +15,6 @@ import (
 // Also define an exported TestVersion with a value that matches
 // the internal testVersion here.
 
-// Retired testVersions
-// 1 7f391e8e025840de5e2b56dc9b40d7ad765a1f8a (see discussion under https://github.com/exercism/xgo/pull/170)
 const testVersion = 2
 
 var _ func(io.Reader, io.Writer) error = Tally

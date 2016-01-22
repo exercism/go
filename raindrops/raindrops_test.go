@@ -4,9 +4,6 @@ import "testing"
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) 52fb31c169bc1b540109028f33f4f61b5f429753
-
 func TestConvert(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)

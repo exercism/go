@@ -16,10 +16,6 @@ func Day(WeekSchedule, time.Weekday, time.Month, int) int
 
 const testVersion = 2
 
-// Retired testVersions
-// (none) fcef587e5fc4f22d82eea9366fedd7a5363147d1
-// 1      0be0802be138413671fbc43294ef495f407cdcb2
-
 var weekName = map[WeekSchedule]string{
 	First:  "first",
 	Second: "second",

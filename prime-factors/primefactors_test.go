@@ -9,9 +9,6 @@ import (
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) 1c5d360b98fc3a9f59c1e5e2f3a668ff8438419d
-
 var tests = []struct {
 	input    int64
 	expected []int64

@@ -7,9 +7,6 @@ import (
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) 133d626683b18a22f9aa59ad0990c7d0f565291c
-
 func TestWordCount(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)

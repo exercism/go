@@ -4,9 +4,6 @@ import "testing"
 
 const testVersion = 1
 
-// Retired testVersions
-// (none) 313e3266c5fc18aca31a314b390bbc645956dbff
-
 func TestRomanNumerals(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)

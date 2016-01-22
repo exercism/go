@@ -12,20 +12,7 @@ import (
 )
 
 // TestVersion identifies the API tested by the test program.
-//
-// An exercise submission must export TestVersion with a value matching the
-// unexported value here.  The definition in the exercise thus documents the
-// version of the test program the exercise was developed and tested against.
 const testVersion = 1
-
-// Test program maintainers should change testVersion when changing what is
-// required of submission definitions or their behavior.  That includes
-// adding new test cases even if the test code is unchanged.  When changing
-// testVersion, also update this comment with the retired value and the latest
-// GitHub commit hash that used the retired value.
-//
-// Retired testVersions
-// (none) b3af595530b4d3aa0f3f1db5428947d2cb926e95
 
 func TestMultiThreaded(t *testing.T) {
 	if TestVersion != testVersion {

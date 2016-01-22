@@ -21,10 +21,6 @@ import (
 
 const testVersion = 2
 
-// Retired:
-// (non-versioned) ea3c43868a02d8d899d3a99163380a3b7b3a0a18
-// 1               38c982fc7e6861dfebec2a0023a85e53ea8c1b59
-
 func TestTestVersion(t *testing.T) {
 	if TestVersion != testVersion {
 		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
