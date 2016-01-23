@@ -2,9 +2,12 @@ package lsproduct
 
 import "fmt"
 
-const TestVersion = 1
+const TestVersion = 2
 
 func LargestSeriesProduct(digits string, span int) (int64, error) {
+	if span < 0 {
+		return 0, fmt.Errorf("span is negative: %d", span)
+	}
 	if len(digits) < span {
 		return 0, fmt.Errorf("len(%s) < span: %d < %d", digits, len(digits), span)
 	}
@@ -15,7 +18,7 @@ func LargestSeriesProduct(digits string, span int) (int64, error) {
 		}
 		v[i] = int64(r - '0')
 	}
-	maxsp := int64(1)
+	maxsp := int64(0)
 	for i, last := 0, len(v)-span+1; i < last; i++ {
 		sp := int64(1)
 		for _, d := range v[i : i+span] {
