@@ -19,7 +19,7 @@ func TestHelloWorld(t *testing.T) {
 	for _, test := range tests {
 		observed := HelloWorld(test.name)
 		if observed != test.expected {
-			t.Fatalf("HelloWorld() = %v, want %v", observed, test.expected)
+			t.Fatalf("HelloWorld(%s) = %v, want %v", test.name, observed, test.expected)
 		}
 	}
 
