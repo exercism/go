@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"text/template"
 
-	"../gen"
+	"../../gen"
 )
 
 func main() {
