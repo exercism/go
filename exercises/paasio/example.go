@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-const TestVersion = 1
+const TestVersion = 2
 
 // NewWriteCounter returns an implementation of WriteCounter.  Calls to
 // w.Write() are not guaranteed to be synchronized.
@@ -25,13 +25,14 @@ func NewReadCounter(r io.Reader) ReadCounter {
 	}
 }
 
-/*
 // NewReadWriteCounter returns an implementation of ReadWriteCounter.  Calls to
 // Calls to rw.Write() and rw.Read() are not guaranteed to be synchronized.
-func NewReadWriteCounter(rw io.ReadWriter) (ReadWriteCounter, error) {
-	return newReadWriteCounter(rw)
+func NewReadWriteCounter(rw io.ReadWriter) ReadWriteCounter {
+	return &rwCounter{
+		NewWriteCounter(rw),
+		NewReadCounter(rw),
+	}
 }
-*/
 
 type readCounter struct {
 	r      io.Reader
@@ -79,26 +80,7 @@ func (wc *writeCounter) WriteCount() (n int64, nops int) {
 	return n, nops
 }
 
-/*
 type rwCounter struct {
-	*writeCounter
-	*readCounter
+	WriteCounter
+	ReadCounter
 }
-
-func newIOCounter(w io.Writer, r io.Reader) (*rwCounter, error) {
-	rc, err := newReadCounter(r)
-	if err != nil {
-		return nil, err
-	}
-	wc, err := newWriteCounter(w)
-	if err != nil {
-		return nil, err
-	}
-	wt := &rwCounter{wc, rc}
-	return wt, nil
-}
-
-func newReadWriteCounter(rw io.ReadWriter) (*rwCounter, error) {
-	return newIOCounter(rw, rw)
-}
-*/

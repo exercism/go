@@ -12,7 +12,7 @@ import (
 )
 
 // TestVersion identifies the API tested by the test program.
-const testVersion = 1
+const testVersion = 2
 
 func TestMultiThreaded(t *testing.T) {
 	if TestVersion != testVersion {
@@ -65,6 +65,13 @@ func TestWriteWriter(t *testing.T) {
 	testWrite(t, NewWriteCounter)
 }
 
+func TestWriteReadWriter(t *testing.T) {
+	testWrite(t, func(w io.Writer) WriteCounter {
+		var r nopReader
+		return NewReadWriteCounter(readWriter{r, w})
+	})
+}
+
 // this test could be improved to test exact number of operations as well as
 // ensure that error conditions are preserved.
 func testRead(t *testing.T, reader func(io.Reader) ReadCounter) {
@@ -98,6 +105,13 @@ func testRead(t *testing.T, reader func(io.Reader) ReadCounter) {
 
 func TestReadReader(t *testing.T) {
 	testRead(t, NewReadCounter)
+}
+
+func TestReadReadWriter(t *testing.T) {
+	testRead(t, func(r io.Reader) ReadCounter {
+		var w nopWriter
+		return NewReadWriteCounter(readWriter{r, w})
+	})
 }
 
 func testReadTotal(t *testing.T, rc ReadCounter) {
@@ -134,6 +148,11 @@ func TestReadTotalReader(t *testing.T) {
 	testReadTotal(t, NewReadCounter(r))
 }
 
+func TestReadTotalReadWriter(t *testing.T) {
+	var rw nopReadWriter
+	testReadTotal(t, NewReadWriteCounter(rw))
+}
+
 func testWriteTotal(t *testing.T, wt WriteCounter) {
 	numGo := 8000
 	numBytes := 50
@@ -168,6 +187,11 @@ func TestWriteTotalWriter(t *testing.T) {
 	testWriteTotal(t, NewWriteCounter(w))
 }
 
+func TestWriteTotalReadWriter(t *testing.T) {
+	var rw nopReadWriter
+	testWriteTotal(t, NewReadWriteCounter(rw))
+}
+
 type nopWriter struct{ error }
 
 func (w nopWriter) Write(p []byte) (int, error) {
@@ -186,4 +210,14 @@ func (r nopReader) Read(p []byte) (int, error) {
 		return 0, r.error
 	}
 	return len(p), nil
+}
+
+type nopReadWriter struct {
+	nopReader
+	nopWriter
+}
+
+type readWriter struct {
+	io.Reader
+	io.Writer
 }
