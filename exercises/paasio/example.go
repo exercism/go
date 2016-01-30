@@ -2,7 +2,6 @@ package paasio
 
 import (
 	"io"
-	"sync"
 )
 
 const TestVersion = 1
@@ -11,8 +10,8 @@ const TestVersion = 1
 // w.Write() are not guaranteed to be synchronized.
 func NewWriteCounter(w io.Writer) WriteCounter {
 	return &writeCounter{
-		w:   w,
-		wrl: new(sync.Mutex),
+		w:       w,
+		counter: newCounter(),
 	}
 }
 
@@ -20,8 +19,8 @@ func NewWriteCounter(w io.Writer) WriteCounter {
 // r.Read() are not guaranteed to be synchronized.
 func NewReadCounter(r io.Reader) ReadCounter {
 	return &readCounter{
-		r:   r,
-		rdl: new(sync.Mutex),
+		r:       r,
+		counter: newCounter(),
 	}
 }
 
@@ -34,49 +33,72 @@ func NewReadWriteCounter(rw io.ReadWriter) (ReadWriteCounter, error) {
 */
 
 type readCounter struct {
-	r      io.Reader
-	nrd    int64
-	nrdops int
-	rdl    *sync.Mutex
+	r io.Reader
+	counter
 }
 
 func (rc *readCounter) Read(p []byte) (int, error) {
 	m, err := rc.r.Read(p)
-	rc.rdl.Lock()
-	rc.nrd += int64(m)
-	rc.nrdops++
-	rc.rdl.Unlock()
+	rc.updates <- int64(m)
 	return m, err
 }
 
 func (rc *readCounter) ReadCount() (n int64, nops int) {
-	rc.rdl.Lock()
-	n, nops = rc.nrd, rc.nrdops
-	rc.rdl.Unlock()
-	return n, nops
+	return rc.query()
 }
 
 type writeCounter struct {
-	w      io.Writer
-	nwr    int64
-	nwrops int
-	wrl    *sync.Mutex
+	w io.Writer
+	counter
 }
 
 func (wc *writeCounter) Write(p []byte) (int, error) {
 	m, err := wc.w.Write(p)
-	wc.wrl.Lock()
-	wc.nwr += int64(m)
-	wc.nwrops++
-	wc.wrl.Unlock()
+	wc.updates <- int64(m)
 	return m, err
 }
 
 func (wc *writeCounter) WriteCount() (n int64, nops int) {
-	wc.wrl.Lock()
-	n, nops = wc.nwr, wc.nwrops
-	wc.wrl.Unlock()
-	return n, nops
+	return wc.query()
+}
+
+type counts struct {
+	bytes int64
+	ops   int
+}
+
+type counter struct {
+	counts
+	updates chan int64
+	queries chan chan counts
+}
+
+func newCounter() counter {
+	c := counter{
+		updates: make(chan int64),
+		queries: make(chan chan counts),
+	}
+
+	go func() {
+		for {
+			select {
+			case bytes := <-c.updates:
+				c.bytes += bytes
+				c.ops += 1
+			case dest := <-c.queries:
+				dest <- c.counts
+			}
+		}
+	}()
+
+	return c
+}
+
+func (c counter) query() (int64, int) {
+	ch := make(chan counts)
+	c.queries <- ch
+	counts := <-ch
+	return counts.bytes, counts.ops
 }
 
 /*
