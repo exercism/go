@@ -33,7 +33,7 @@ func TestMultiThreaded(t *testing.T) {
 }
 
 // this test could be improved to test that error conditions are preserved.
-func TestWrite(t *testing.T) {
+func testWrite(t *testing.T, writer func(io.Writer) WriteCounter) {
 	for i, test := range []struct {
 		writes []string
 	}{
@@ -42,7 +42,7 @@ func TestWrite(t *testing.T) {
 		{[]string{"I", " ", "never met ", "", "a gohper"}},
 	} {
 		var buf bytes.Buffer
-		buft := NewWriteCounter(&buf)
+		buft := writer(&buf)
 		for _, s := range test.writes {
 			n, err := buft.Write([]byte(s))
 			if err != nil {
@@ -61,9 +61,13 @@ func TestWrite(t *testing.T) {
 	}
 }
 
+func TestWriteWriter(t *testing.T) {
+	testWrite(t, NewWriteCounter)
+}
+
 // this test could be improved to test exact number of operations as well as
 // ensure that error conditions are preserved.
-func TestRead(t *testing.T) {
+func testRead(t *testing.T, reader func(io.Reader) ReadCounter) {
 	chunkLen := 10 << 20 // 10MB
 	orig := make([]byte, 10<<20)
 	_, err := rand.Read(orig)
@@ -71,7 +75,7 @@ func TestRead(t *testing.T) {
 		t.Fatalf("error reading random data")
 	}
 	buf := bytes.NewBuffer(orig)
-	rc := NewReadCounter(buf)
+	rc := reader(buf)
 	var obuf bytes.Buffer
 	ncopy, err := io.Copy(&obuf, rc)
 	if err != nil {
@@ -92,9 +96,11 @@ func TestRead(t *testing.T) {
 	}
 }
 
-func TestReadTotal(t *testing.T) {
-	var r nopReader
-	rc := NewReadCounter(r)
+func TestReadReader(t *testing.T) {
+	testRead(t, NewReadCounter)
+}
+
+func testReadTotal(t *testing.T, rc ReadCounter) {
 	numGo := 8000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
@@ -123,9 +129,12 @@ func TestReadTotal(t *testing.T) {
 	}
 }
 
-func TestWriteTotal(t *testing.T) {
-	var w nopWriter
-	wt := NewWriteCounter(w)
+func TestReadTotalReader(t *testing.T) {
+	var r nopReader
+	testReadTotal(t, NewReadCounter(r))
+}
+
+func testWriteTotal(t *testing.T, wt WriteCounter) {
 	numGo := 8000
 	numBytes := 50
 	totalBytes := int64(numGo) * int64(numBytes)
@@ -152,6 +161,11 @@ func TestWriteTotal(t *testing.T) {
 	if nops != numGo {
 		t.Errorf("expected %d write operations; %d operations reported", numGo, nops)
 	}
+}
+
+func TestWriteTotalWriter(t *testing.T) {
+	var w nopWriter
+	testWriteTotal(t, NewWriteCounter(w))
 }
 
 type nopWriter struct{ error }
