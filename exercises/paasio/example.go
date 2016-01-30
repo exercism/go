@@ -11,8 +11,8 @@ const TestVersion = 1
 // w.Write() are not guaranteed to be synchronized.
 func NewWriteCounter(w io.Writer) WriteCounter {
 	return &writeCounter{
-		w:   w,
-		wrl: new(sync.Mutex),
+		w:       w,
+		counter: newCounter(),
 	}
 }
 
@@ -20,8 +20,8 @@ func NewWriteCounter(w io.Writer) WriteCounter {
 // r.Read() are not guaranteed to be synchronized.
 func NewReadCounter(r io.Reader) ReadCounter {
 	return &readCounter{
-		r:   r,
-		rdl: new(sync.Mutex),
+		r:       r,
+		counter: newCounter(),
 	}
 }
 
@@ -34,49 +34,56 @@ func NewReadWriteCounter(rw io.ReadWriter) (ReadWriteCounter, error) {
 */
 
 type readCounter struct {
-	r      io.Reader
-	nrd    int64
-	nrdops int
-	rdl    *sync.Mutex
+	r io.Reader
+	counter
 }
 
 func (rc *readCounter) Read(p []byte) (int, error) {
 	m, err := rc.r.Read(p)
-	rc.rdl.Lock()
-	rc.nrd += int64(m)
-	rc.nrdops++
-	rc.rdl.Unlock()
+	rc.addBytes(m)
 	return m, err
 }
 
 func (rc *readCounter) ReadCount() (n int64, nops int) {
-	rc.rdl.Lock()
-	n, nops = rc.nrd, rc.nrdops
-	rc.rdl.Unlock()
-	return n, nops
+	return rc.count()
 }
 
 type writeCounter struct {
-	w      io.Writer
-	nwr    int64
-	nwrops int
-	wrl    *sync.Mutex
+	w io.Writer
+	counter
 }
 
 func (wc *writeCounter) Write(p []byte) (int, error) {
 	m, err := wc.w.Write(p)
-	wc.wrl.Lock()
-	wc.nwr += int64(m)
-	wc.nwrops++
-	wc.wrl.Unlock()
+	wc.addBytes(m)
 	return m, err
 }
 
 func (wc *writeCounter) WriteCount() (n int64, nops int) {
-	wc.wrl.Lock()
-	n, nops = wc.nwr, wc.nwrops
-	wc.wrl.Unlock()
-	return n, nops
+	return wc.count()
+}
+
+type counter struct {
+	bytes int64
+	ops   int
+	mutex *sync.Mutex
+}
+
+func newCounter() counter {
+	return counter{mutex: new(sync.Mutex)}
+}
+
+func (c *counter) addBytes(n int) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.bytes += int64(n)
+	c.ops += 1
+}
+
+func (c *counter) count() (int64, int) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return c.bytes, c.ops
 }
 
 /*
