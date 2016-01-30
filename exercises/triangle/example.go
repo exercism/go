@@ -8,9 +8,9 @@ const TestVersion = 1
 
 const (
 	Equ Kind = "equilateral"
-	Iso = "isosceles"
-	Sca = "scalene"
-	NaT = "not a triangle"
+	Iso      = "isosceles"
+	Sca      = "scalene"
+	NaT      = "not a triangle"
 )
 
 func KindFromSides(a, b, c float64) Kind {
@@ -34,12 +34,9 @@ func KindFromSides(a, b, c float64) Kind {
 		return NaT
 	case a+b < c: // triangle inequality
 		return NaT
-	case a == b:
-		if b == c {
-			return Equ
-		}
-		return Iso
-	case a == c || b == c:
+	case a == c:
+		return Equ
+	case a == b || b == c:
 		return Iso
 	}
 	return Sca
