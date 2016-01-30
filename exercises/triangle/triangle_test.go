@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+const testVersion = 1
+
 type testCase struct {
 	want    Kind
 	a, b, c float64
@@ -79,6 +81,12 @@ func TestKind(t *testing.T) {
 			t.Fatalf("Triangle with sides, %g, %g, %g = %v, want %v",
 				test.a, test.b, test.c, got, test.want)
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if TestVersion != testVersion {
+		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
 	}
 }
 
