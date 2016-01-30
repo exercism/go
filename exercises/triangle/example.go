@@ -6,9 +6,9 @@ type Kind string
 
 const (
 	Equ Kind = "equilateral"
-	Iso = "isosceles"
-	Sca = "scalene"
-	NaT = "not a triangle"
+	Iso      = "isosceles"
+	Sca      = "scalene"
+	NaT      = "not a triangle"
 )
 
 func KindFromSides(a, b, c float64) Kind {
