@@ -4,6 +4,8 @@ import "math"
 
 type Kind string
 
+const TestVersion = 1
+
 const (
 	Equ Kind = "equilateral"
 	Iso = "isosceles"
@@ -26,9 +28,11 @@ func KindFromSides(a, b, c float64) Kind {
 	}
 	// sides are now sorted
 	switch {
+	case math.IsInf(c, 1): // largest side is +Inf, guards against (3, +Inf, +Inf)
+		return NaT
 	case a <= 0:
 		return NaT
-	case a+b <= c: // triangle inequality
+	case a+b < c: // triangle inequality
 		return NaT
 	case a == b:
 		if b == c {
