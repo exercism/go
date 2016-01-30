@@ -25,7 +25,7 @@ func NewReadCounter(r io.Reader) ReadCounter {
 	}
 }
 
-// NewReadWriteCounter returns an implementation of ReadWriteCounter.  Calls to
+// NewReadWriteCounter returns an implementation of ReadWriteCounter.
 // Calls to rw.Write() and rw.Read() are not guaranteed to be synchronized.
 func NewReadWriteCounter(rw io.ReadWriter) ReadWriteCounter {
 	return &rwCounter{
