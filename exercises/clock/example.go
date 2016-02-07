@@ -15,11 +15,7 @@ func New(h, m int) Clock {
 }
 
 func (c Clock) Add(m int) Clock {
-	c = (c + Clock(m)) % 1440
-	if c < 0 {
-		c += 1440
-	}
-	return c
+	return New(0, int(c)+m)
 }
 
 func (c Clock) String() string {
