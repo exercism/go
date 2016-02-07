@@ -11,9 +11,9 @@ func KindFromSides(a, b, c float64) Kind
 type Kind
 
 // Pick values for the following identifiers used by the test program.
+NaT // not a triangle
 Equ // equilateral
 Iso // isosceles
 Sca // scalene
-NaT // not a triangle
 
 // Organize your code for readability.
