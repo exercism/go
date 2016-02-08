@@ -18,7 +18,7 @@ const TestVersion = 2
 
 type Clock // Complete the type definition.  Pick a suitable data type.
 
-func Time(hour, minute int) Clock {
+func New(hour, minute int) Clock {
 }
 
 func (Clock) String() string {

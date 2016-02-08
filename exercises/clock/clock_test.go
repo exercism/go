@@ -7,7 +7,7 @@ import (
 
 // Clock type API:
 //
-// Time(hour, minute int) Clock    // a "constructor"
+// New(hour, minute int) Clock     // a "constructor"
 // (Clock) String() string         // a "stringer"
 // (Clock) Add(minutes int) Clock
 //
@@ -29,8 +29,8 @@ func TestCreateClock(t *testing.T) {
 		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
 	}
 	for _, n := range timeTests {
-		if got := Time(n.h, n.m); got.String() != n.want {
-			t.Fatalf("Time(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
+		if got := New(n.h, n.m); got.String() != n.want {
+			t.Fatalf("New(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
 		}
 	}
 	t.Log(len(timeTests), "test cases")
@@ -38,8 +38,8 @@ func TestCreateClock(t *testing.T) {
 
 func TestAddMinutes(t *testing.T) {
 	for _, a := range addTests {
-		if got := Time(a.h, a.m).Add(a.a); got.String() != a.want {
-			t.Fatalf("Time(%d, %d).Add(%d) = %q, want %q",
+		if got := New(a.h, a.m).Add(a.a); got.String() != a.want {
+			t.Fatalf("New(%d, %d).Add(%d) = %q, want %q",
 				a.h, a.m, a.a, got, a.want)
 		}
 	}
@@ -48,8 +48,8 @@ func TestAddMinutes(t *testing.T) {
 
 func TestCompareClocks(t *testing.T) {
 	for _, e := range eqTests {
-		clock1 := Time(e.c1.h, e.c1.m)
-		clock2 := Time(e.c2.h, e.c2.m)
+		clock1 := New(e.c1.h, e.c1.m)
+		clock2 := New(e.c2.h, e.c2.m)
 		got := clock1 == clock2
 		if got != e.want {
 			t.Log("Clock1:", clock1)
@@ -65,7 +65,7 @@ func TestCompareClocks(t *testing.T) {
 }
 
 func BenchmarkAddMinutes(b *testing.B) {
-	c := Time(12, 0)
+	c := New(12, 0)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, a := range addTests {
@@ -77,7 +77,7 @@ func BenchmarkAddMinutes(b *testing.B) {
 func BenchmarkCreateClocks(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, n := range timeTests {
-			Time(n.h, n.m)
+			New(n.h, n.m)
 		}
 	}
 }
