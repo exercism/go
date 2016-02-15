@@ -13,7 +13,7 @@ func Nth(n int) (p int, ok bool) {
 	sqr := 1
 	sqrt := 1
 	for {
-		for f := 3;; f += 2 {
+		for f := 3; ; f += 2 {
 			if f > sqrt {
 				n--
 				if n == 0 {
