@@ -10,7 +10,7 @@ package stringset
 
 import "fmt"
 
-const TestVersion = 2
+const testVersion = 3
 
 type Set struct{ s *[]string }
 

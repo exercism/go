@@ -2,4 +2,4 @@
 
 package paasio
 
-const TestVersion = 2
+const testVersion = 3

@@ -11,12 +11,12 @@
 // It has to stay just the way it is.
 package hello
 
-// TestVersion identifies the version of the test program that you are
+// testVersion identifies the version of the test program that you are
 // writing your code to. If the test program changes in the future --
 // after you have posted this code to the Exercism site -- nitpickers
 // will see that your code can't necessarily be expected to pass the
 // current test suite because it was written to an earlier test version.
-const TestVersion = 1
+const testVersion = 2
 
 // It's good style to write a comment here documenting HelloWorld.
 // (But delete all these instructional comments!)

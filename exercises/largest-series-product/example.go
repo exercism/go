@@ -2,7 +2,7 @@ package lsproduct
 
 import "fmt"
 
-const TestVersion = 2
+const testVersion = 3
 
 func LargestSeriesProduct(digits string, span int) (int64, error) {
 	if span < 0 {

@@ -2,7 +2,7 @@ package cryptosquare
 
 import "testing"
 
-const testVersion = 1
+const targetTestVersion = 2
 
 var tests = []struct {
 	pt string // plain text
@@ -87,8 +87,8 @@ var tests = []struct {
 }
 
 func TestEncode(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 	for _, test := range tests {
 		if ct := Encode(test.pt); ct != test.ct {

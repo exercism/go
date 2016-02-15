@@ -4,10 +4,10 @@ import "testing"
 
 // Define a function HelloWorld(string) string.
 //
-// Also define an exported TestVersion with a value that matches
-// the internal testVersion here.
+// Also define a testVersion with a value that matches
+// the internal targetTestVersion here.
 
-const testVersion = 1
+const targetTestVersion = 2
 
 func TestHelloWorld(t *testing.T) {
 	tests := []struct {
@@ -23,7 +23,7 @@ func TestHelloWorld(t *testing.T) {
 		}
 	}
 
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }

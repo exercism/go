@@ -10,10 +10,10 @@ import (
 // (in all cases). The function should properly handle errors,
 // as defined by the expectations of this test suite.
 //
-// Also define an exported TestVersion with a value that matches
-// the internal testVersion here.
+// Also define a testVersion with a value that matches
+// the internal targetTestVersion here.
 
-const testVersion = 1
+const targetTestVersion = 2
 
 // Little helper to let us customize behaviour of the resource on a per-test
 // basis.

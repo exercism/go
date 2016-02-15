@@ -2,7 +2,7 @@ package clock
 
 import "fmt"
 
-const TestVersion = 2
+const testVersion = 3
 
 type Clock int
 

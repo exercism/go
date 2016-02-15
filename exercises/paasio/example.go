@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-const TestVersion = 2
+const testVersion = 3
 
 // NewWriteCounter returns an implementation of WriteCounter.  Calls to
 // w.Write() are not guaranteed to be synchronized.

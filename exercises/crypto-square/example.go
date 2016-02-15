@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const TestVersion = 1
+const testVersion = 2
 
 func norm(r rune) rune {
 	switch {

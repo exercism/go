@@ -1,6 +1,6 @@
 package prime
 
-const TestVersion = 1
+const testVersion = 2
 
 func Factors(n int64) []int64 {
 	factors := []int64{}

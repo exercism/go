@@ -2,7 +2,7 @@ package wordsearch
 
 import "fmt"
 
-const TestVersion = 1
+const testVersion = 2
 
 func Solve(words []string, puzzle []string) (map[string][2][2]int, error) {
 	positions := make(map[string][2][2]int, len(words))

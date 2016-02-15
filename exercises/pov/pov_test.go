@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const testVersion = 1
+const targetTestVersion = 2
 
 // POV / reparent / change root of a tree
 //
@@ -260,8 +260,8 @@ func (tc testCase) testResult(got, want []string, msg string, t *testing.T) {
 }
 
 func TestConstruction(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 	for _, tc := range testCases {
 		got := tc.graph().ArcList()

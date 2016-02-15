@@ -2,11 +2,11 @@ package bob
 
 import "testing"
 
-const testVersion = 1
+const targetTestVersion = 2
 
 func TestHeyBob(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 	for _, tt := range testCases {
 		actual := Hey(tt.input)
