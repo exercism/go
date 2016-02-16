@@ -1,6 +1,6 @@
 package hello
 
-const TestVersion = 1
+const testVersion = 2
 
 func HelloWorld(name string) string {
 	if name == "" {

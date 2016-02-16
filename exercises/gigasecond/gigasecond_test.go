@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const testVersion = 3
+const targetTestVersion = 4
 
 // date formats used in test data
 const (
@@ -19,8 +19,8 @@ const (
 )
 
 func TestAddGigasecond(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 	for _, tc := range addCases {
 		in := parse(tc.in, t)

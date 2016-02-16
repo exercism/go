@@ -2,4 +2,4 @@
 
 package cryptosquare
 
-const TestVersion = 1
+const testVersion = 2

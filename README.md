@@ -34,11 +34,11 @@ the common metadata, and high-level information about contributing to existing p
 
 ## Problem Versioning
 
-Each problem defines a `const testVersion` in the test program, and validates that the solution has defined a matching value `TestVersion`.  Any xgo developer that changes the test program or test data increments `testVersion`.
+Each problem defines a `const targetTestVersion` in the test program, and validates that the solution has defined a matching value `testVersion`.  Any xgo developer that changes the test program or test data increments `targetTestVersion`.
 
 The benefit of all this is that nipickers can see which test version a posted solution was written for and be spared confusion over why an old posted solution might not pass current tests.
 
-Notice that the constant in the test suite is not exported (`testVersion`) whereas the expected value for the solution is exported (`TestVersion`).
+Notice that neither the `testVersion` nor the `targetTestVersion` is exported. This is so that golint will not complain about a missing comment. In general, adding tests for unexported names is considered an anti-pattern, but in this case the trade-off seems acceptable.
 
 ## Xgo style
 

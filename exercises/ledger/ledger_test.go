@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const testVersion = 2
+const targetTestVersion = 3
 
 var successTestCases = []struct {
 	name     string
@@ -251,8 +251,8 @@ var failureTestCases = []struct {
 }
 
 func TestFormatLedgerSuccess(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 	for _, tt := range successTestCases {
 		actual, err := FormatLedger(tt.currency, tt.locale, tt.entries)

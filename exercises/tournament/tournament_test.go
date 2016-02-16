@@ -12,10 +12,10 @@ import (
 // Note that unlike other tracks the Go version of the tally function
 // should not ignore errors. It's not idiomatic Go to ignore errors.
 //
-// Also define an exported TestVersion with a value that matches
-// the internal testVersion here.
+// Also define a testVersion with a value that matches
+// the internal targetTestVersion here.
 
-const testVersion = 2
+const targetTestVersion = 3
 
 var _ func(io.Reader, io.Writer) error = Tally
 
@@ -111,8 +111,8 @@ var errorTestCases = []string{
 }
 
 func TestTallyHappy(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 
 	for _, tt := range happyTestCases {

@@ -7,7 +7,7 @@ import (
 	"reflect"
 )
 
-const TestVersion = 2
+const testVersion = 3
 
 // Set represents some properties of a mathematical set.
 // Sets are finite and all elements are unique string values.

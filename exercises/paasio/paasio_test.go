@@ -11,12 +11,12 @@ import (
 	"time"
 )
 
-// TestVersion identifies the API tested by the test program.
-const testVersion = 2
+// testVersion identifies the API tested by the test program.
+const targetTestVersion = 3
 
 func TestMultiThreaded(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 	mincpu := 2
 	minproc := 2

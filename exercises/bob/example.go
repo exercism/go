@@ -2,7 +2,7 @@ package bob
 
 import "strings"
 
-const TestVersion = 1
+const testVersion = 2
 
 func Hey(drivel string) string {
 	switch drivel = strings.TrimSpace(drivel); {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-// TestVersion shows the version of the exercise.
-const TestVersion = 2
+// testVersion shows the version of the exercise.
+const testVersion = 3
 
 type bracketKind int
 

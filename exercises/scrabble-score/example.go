@@ -4,8 +4,8 @@ import (
 	"strings"
 )
 
-// TestVersion tracks the version of the exercise.
-const TestVersion = 2
+// testVersion tracks the version of the exercise.
+const testVersion = 3
 
 var letterValues = map[rune]int{
 	'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1,

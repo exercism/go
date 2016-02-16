@@ -1,6 +1,6 @@
 package foodchain
 
-const TestVersion = 1
+const testVersion = 2
 
 var verse = []struct{ eaten, comment string }{
 	{"", ""},

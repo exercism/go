@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-const TestVersion = 1
+const testVersion = 2
 
 type arabicToRoman struct {
 	arabic int

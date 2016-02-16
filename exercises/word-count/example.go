@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const TestVersion = 1
+const testVersion = 2
 
 type Frequency map[string]int
 

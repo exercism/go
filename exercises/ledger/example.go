@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const TestVersion = 2
+const testVersion = 3
 
 type Entry struct {
 	Date        string // "Y-m-d"

@@ -7,10 +7,10 @@ import (
 
 // Define a function BestHand([]string) ([]string, error).
 //
-// Also define an exported TestVersion with a value that matches
-// the internal testVersion here.
+// Also define a testVersion with a value that matches
+// the internal targetTestVersion here.
 
-const testVersion = 1
+const targetTestVersion = 2
 
 var validTestCases = []struct {
 	name  string
@@ -281,8 +281,8 @@ var invalidTestCases = []struct {
 }
 
 func TestBestHandValid(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 	for _, tt := range validTestCases {
 		actual, err := BestHand(tt.hands)

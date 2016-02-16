@@ -2,7 +2,7 @@
 
 package raindrops
 
-const TestVersion = 1
+const testVersion = 2
 
 func Convert(int) string
 

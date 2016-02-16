@@ -7,7 +7,7 @@
 package gigasecond
 
 // Constant declaration.
-const TestVersion = ? // find the value in gigasecond_test.go
+const testVersion = ? // find the value in gigasecond_test.go
 
 // API function.  It uses a type from the Go standard library.
 func AddGigasecond(time.Time) time.Time

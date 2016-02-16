@@ -8,19 +8,19 @@ import (
 // Define a function New() Reactor and the stuff that follows from
 // implementing Reactor.
 //
-// Also define an exported TestVersion with a value that matches
-// the internal testVersion here.
+// Also define a testVersion with a value that matches
+// the internal targetTestVersion here.
 
-const testVersion = 3
+const targetTestVersion = 4
 
 // This is a compile time check to see if you've properly implemented New().
 var _ Reactor = New()
 
-// If this test fails and you've proprly defined TestVersion the requirements
+// If this test fails and you've proprly defined testVersion the requirements
 // of the tests have changed since you wrote your submission.
 func TestTestVersion(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 

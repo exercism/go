@@ -2,7 +2,7 @@ package gigasecond
 
 import "time"
 
-const TestVersion = 3
+const testVersion = 4
 
 // AddGigasecond returns time t plus one gigasecond.
 func AddGigasecond(t time.Time) time.Time {

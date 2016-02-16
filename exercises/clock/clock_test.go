@@ -22,11 +22,11 @@ import (
 // For more background on this read
 // https://github.com/golang/go/wiki/CodeReviewComments#receiver-type.
 
-const testVersion = 2
+const targetTestVersion = 3
 
 func TestCreateClock(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 	for _, n := range timeTests {
 		if got := New(n.h, n.m); got.String() != n.want {

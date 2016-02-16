@@ -33,11 +33,11 @@ import (
 	"testing"
 )
 
-const testVersion = 2
+const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 

@@ -9,8 +9,8 @@
 // The package name is expected by the test program.
 package leap
 
-// TestVersion should match the testVersion in the test file.
-const TestVersion = 1
+// testVersion should match the targetTestVersion in the test file.
+const testVersion = 2
 
 // It's good style to write a comment here documenting IsLeapYear.
 func IsLeapYear(int) bool {

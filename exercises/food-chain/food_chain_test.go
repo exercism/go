@@ -5,11 +5,11 @@ import (
 	"testing"
 )
 
-const testVersion = 1
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Errorf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 

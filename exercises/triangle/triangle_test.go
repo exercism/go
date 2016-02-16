@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-const testVersion = 1
+const targetTestVersion = 2
 
 type testCase struct {
 	want    Kind
@@ -85,8 +85,8 @@ func TestKind(t *testing.T) {
 }
 
 func TestTestVersion(t *testing.T) {
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 

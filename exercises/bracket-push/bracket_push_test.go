@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-const testVersion = 2
+const targetTestVersion = 3
 
 var testCases = []struct {
 	input    string
@@ -60,8 +60,8 @@ func TestBracket(t *testing.T) {
 				tt.input, tt.expected, actual)
 		}
 	}
-	if TestVersion != testVersion {
-		t.Fatalf("Found TestVersion = %v, want %v.", TestVersion, testVersion)
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 

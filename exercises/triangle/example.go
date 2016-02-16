@@ -4,7 +4,7 @@ import "math"
 
 type Kind string
 
-const TestVersion = 1
+const testVersion = 2
 
 const (
 	Equ Kind = "equilateral"

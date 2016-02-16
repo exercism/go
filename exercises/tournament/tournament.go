@@ -2,4 +2,4 @@
 
 package tournament
 
-const TestVersion = 2
+const testVersion = 3

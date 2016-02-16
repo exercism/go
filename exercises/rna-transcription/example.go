@@ -2,7 +2,7 @@ package strand
 
 import "strings"
 
-const TestVersion = 2
+const testVersion = 3
 
 func ToRNA(dna string) string {
 	dna = strings.Replace(dna, "A", "u", -1)
