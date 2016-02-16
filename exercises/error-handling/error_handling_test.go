@@ -11,7 +11,7 @@ import (
 // as defined by the expectations of this test suite.
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 2
 
@@ -153,5 +153,13 @@ func TestCallCloseNonOnFrobError(t *testing.T) {
 	}
 	if !closeCalled {
 		t.Fatalf("Close was not called")
+	}
+}
+
+// If this test fails and you've properly defined testVersion the requirements
+// of the tests have changed since you wrote your submission.
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
