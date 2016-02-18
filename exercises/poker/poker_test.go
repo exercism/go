@@ -8,7 +8,7 @@ import (
 // Define a function BestHand([]string) ([]string, error).
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 2
 

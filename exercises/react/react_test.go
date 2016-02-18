@@ -9,7 +9,7 @@ import (
 // implementing Reactor.
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 4
 
