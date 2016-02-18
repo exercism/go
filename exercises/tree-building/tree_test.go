@@ -12,7 +12,7 @@ import (
 // and Node is a struct containing int field ID and []*Node field Children.
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 3
 

@@ -8,7 +8,7 @@ import (
 // Define a function Solve(words []string, puzzle []string) (map[string][2][2]int, error).
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 2
 

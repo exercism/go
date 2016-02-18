@@ -13,7 +13,7 @@ import (
 // should not ignore errors. It's not idiomatic Go to ignore errors.
 //
 // Also define a testVersion with a value that matches
-// the internal targetTestVersion here.
+// the targetTestVersion here.
 
 const targetTestVersion = 3
 
