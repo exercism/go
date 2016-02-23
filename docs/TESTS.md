@@ -1,9 +1,12 @@
-Go exercises within your exercism project directory can be run by changing to the exercise directory, and running `go test`.
+Go exercises within your exercism project directory can be run by changing to the exercise directory, and running `go test .`.
 
 ```bash
 $ cd exercism/project/directory/go/leap
-$ go test
+$ go test .
 ```
+### Note the trailing period
+
+Since the exercises are stored outside of Go's GOPATH by default, it may be easiest to instruct Go to test the exercises from the current exercise's directory. While there are other options for those familiar with Go, this may be the easiest option for you if you're just getting used to the language and these exercises.
 
 ### Running benchmarks
 
