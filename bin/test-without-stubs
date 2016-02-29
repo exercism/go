@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# This file moves all stub files out of the way so that they don't get built,
+# runs the tests, then moves the stub files back.
+
+# We use this instead of build constraints to have less noise in stub files.
+# Newcomers to go might be confused by build constraints
+
+# It's useful to move the stub files back instead of outright deleting them.
+# That way no maintainer will mistakenly commit the deleted files,
+# which could otherwise happen after running tests locally.
+
+for dir in exercises/*; do
+  stub=$(echo $(basename $dir) | tr - _)
+  file="$dir/$stub.go"
+  if [ -f $file ]; then
+    echo "moving stub $file"
+    mv $file "$dir/$stub.notgo"
+  fi
+done
+
+go test -cpu 2 $RACE ./...
+
+# could use `rename` here, but it's not uniform among platforms.
+# some renames take two arguments while others take a single regex.
+for file in exercises/*/*.notgo; do
+  dir=$(dirname $file)
+  base=$(basename $file .notgo)
+  mv "$dir/$base.notgo" "$dir/$base.go"
+done

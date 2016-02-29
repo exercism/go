@@ -40,12 +40,8 @@ before_script:
 # Our "build" is to run `go test` which is what our users do.
 # -cpu 2 is for our problems that involve concurrency to test that they
 # perform as expected on multiple cores.
-# `--tags example` is for our problems that include stub solutions or
-# solutions to be be modified.  The stub or starter starter solutions will
-# have `//+build !example` build tags so that they can be ignored with
-# `--tags example` here.
 script:
-  - GOARCH=$TESTARCH go test -cpu 2 $RACE --tags example  ./...
+  - GOARCH=$TESTARCH RACE=$RACE ./bin/test-without-stubs
 
 # special cases for the build matrix are that go 1.4.3 can't be tested 32 bit
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
