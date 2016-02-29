@@ -64,6 +64,11 @@ idiomatic in Go to think about performance.  There is no critical use for these 
 leap, they will just bench the combined time to run over all the test data rather than attempt precise timings
 on single function calls.  They are useful if they let the solver try a change and see a performance effect.
 
+Finally we provide the stub file `leap.go` as a starting point for solutions.
+Not all exercises need do this; this is most helpful in the early exercises for newcomers to Go.
+By convention, the stub file for an exercise with slug `exercise-slug` must be named `exercise_slug.go`.
+This is because CI needs to delete stub files to avoid conflicting definitions.
+
 ## Xgo compared
 
 We do a few things differently than the other language tracks.  In Go we generally have all tests enabled and do
