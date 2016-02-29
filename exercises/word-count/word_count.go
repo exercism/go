@@ -1,5 +1,3 @@
-// +build !example
-
 package wordcount
 
 const testVersion = 2

@@ -1,5 +1,3 @@
-//+build !example
-
 package triangle
 
 const testVersion = 2

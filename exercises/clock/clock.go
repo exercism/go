@@ -1,10 +1,5 @@
 // Clock stub file
 
-// Build constraint.
-// It lets our CI (Continuous Integration) testing test the test program.
-// But it's served its purpose by now.  Feel free to delete.
-// +build !example
-
 // To use the right term, this is the package *clause*.
 // You can document general stuff about the package here if you like.
 package clock

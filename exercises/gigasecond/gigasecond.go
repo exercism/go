@@ -1,8 +1,3 @@
-// Build constraint.  It's like when you buy something new and you find a
-// tag that says "Inspected by #12."  Nice to know it was inspected, but
-// you don't need the tag.  Take it off.
-// +build !example
-
 // Package clause.
 package gigasecond
 
