@@ -1,5 +1,3 @@
-// +build !example
-
 package raindrops
 
 const testVersion = 2

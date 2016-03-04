@@ -1,5 +1,3 @@
-// +build !example
-
 package ledger
 
 import (

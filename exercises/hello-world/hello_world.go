@@ -1,12 +1,6 @@
 // This is a "stub" file.  It's a little start on your solution.
 // It's not a complete solution though; you have to write some code.
 
-// This next comment is a "build constraint."  It's here for, well, kind of
-// complicated testing purposes you don't need to worry about now.
-// Actually, you can delete it.
-
-// +build !example
-
 // The package name is expected by the test program.
 // It has to stay just the way it is.
 package hello
