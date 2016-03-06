@@ -10,7 +10,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 var validTestCases = []struct {
 	name  string
@@ -29,8 +29,8 @@ var validTestCases = []struct {
 	},
 	{
 		name:  "highest card with mostly same cards",
-		hands: []string{"3♢ 2♢ 5♤ 6♤ 9♡", "3♡ 3♤ 5♧ 6♢ 9♢"},
-		best:  []string{"3♡ 3♤ 5♧ 6♢ 9♢"},
+		hands: []string{"4♢ 2♢ 5♤ 6♤ 9♡", "4♡ 3♤ 5♧ 6♢ 9♢"},
+		best:  []string{"4♡ 3♤ 5♧ 6♢ 9♢"},
 	},
 	{
 		name:  "pair beats lower",
@@ -88,17 +88,17 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♢ 3♤ 4♤ J♤ K♤",
 			"A♡ K♡ J♢ 10♧ 9♡",
-			"3♢ 8♡ 3♢ 3♧ 8♧",
+			"3♢ 8♡ 3♡ 3♧ 9♧",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
-		best: []string{"3♢ 8♡ 3♢ 3♧ 8♧"},
+		best: []string{"3♢ 8♡ 3♡ 3♧ 9♧"},
 	},
 	{
 		name: "best three of a kind",
 		hands: []string{
 			"4♢ 3♤ 4♤ J♤ 4♡",
 			"A♡ K♡ J♢ 10♧ 9♡",
-			"3♢ 8♡ 3♢ 3♧ 9♧",
+			"3♢ 8♡ 3♡ 3♧ 9♧",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
 		best: []string{"4♢ 3♤ 4♤ J♤ 4♡"},
@@ -108,7 +108,7 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♢ 3♤ 4♤ J♤ K♤",
 			"Q♡ K♡ J♢ 10♧ 9♡",
-			"3♢ 8♡ 3♢ 3♧ 9♧",
+			"3♢ 8♡ 3♡ 3♧ 9♧",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
 		best: []string{"Q♡ K♡ J♢ 10♧ 9♡"},
@@ -118,7 +118,7 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♢ 3♤ 4♤ J♤ K♤",
 			"2♤ 3♡ A♤ 5♤ 4♤",
-			"3♢ 8♡ 3♢ 3♧ 9♧",
+			"3♢ 8♡ 3♡ 3♧ 9♧",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
 		best: []string{"2♤ 3♡ A♤ 5♤ 4♤"},
@@ -138,7 +138,7 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♤ 3♤ 8♤ J♤ K♤",
 			"Q♡ K♡ J♢ 10♧ 9♡",
-			"3♢ 8♡ 3♢ 3♧ 9♧",
+			"3♢ 8♡ 3♡ 3♧ 9♧",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
 		best: []string{"4♤ 3♤ 8♤ J♤ K♤"},
@@ -148,10 +148,10 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♤ 3♤ 8♤ J♤ K♤",
 			"Q♡ K♡ J♢ 10♧ 9♡",
-			"3♢ 8♢ A♢ 3♢ 7♢",
+			"3♢ 8♢ A♢ 4♢ 7♢",
 			"2♢ 8♡ 5♢ 2♡ 8♧",
 		},
-		best: []string{"3♢ 8♢ A♢ 3♢ 7♢"},
+		best: []string{"3♢ 8♢ A♢ 4♢ 7♢"},
 	},
 	{
 		name: "full house beats lower",
@@ -159,7 +159,7 @@ var validTestCases = []struct {
 			"4♤ 3♤ 8♤ J♤ K♤",
 			"2♢ 8♡ 8♢ 2♡ 8♧",
 			"Q♡ K♡ J♢ 10♧ 9♡",
-			"3♢ A♡ 3♢ 3♧ A♧",
+			"3♢ A♡ 3♡ 3♧ A♧",
 		},
 		best: []string{"2♢ 8♡ 8♢ 2♡ 8♧"},
 	},
@@ -168,8 +168,8 @@ var validTestCases = []struct {
 		hands: []string{
 			"4♤ 3♤ 8♤ J♤ K♤",
 			"2♢ 8♡ 8♢ 2♡ 8♧",
-			"5♡ 5♢ A♢ 5♧ A♢",
-			"3♢ A♡ 3♢ 3♧ A♧",
+			"5♡ 5♢ A♧ 5♧ A♢",
+			"3♢ A♡ 3♡ 3♧ A♧",
 		},
 		best: []string{"2♢ 8♡ 8♢ 2♡ 8♧"},
 	},
@@ -199,6 +199,7 @@ var validTestCases = []struct {
 			"4♤ 5♢ 8♤ J♤ K♤",
 			"2♢ 8♡ 8♢ 2♡ 8♧",
 			"Q♡ K♡ 8♡ 10♡ 9♡",
+			"3♢ 3♡ 3♤ 3♧ A♧",
 			"2♤ 3♤ A♤ 5♤ 4♤",
 		},
 		best: []string{"2♤ 3♤ A♤ 5♤ 4♤"},
@@ -215,8 +216,8 @@ var validTestCases = []struct {
 	},
 	{
 		name:  "tie for best pair",
-		hands: []string{"4♡ 2♡ 5♧ 4♢ 10♡", "4♧ 10♢ 5♤ 2♤ 4♧"},
-		best:  []string{"4♡ 2♡ 5♧ 4♢ 10♡", "4♧ 10♢ 5♤ 2♤ 4♧"},
+		hands: []string{"4♡ 2♡ 5♧ 4♢ 10♡", "4♧ 10♢ 5♤ 2♤ 4♤"},
+		best:  []string{"4♡ 2♡ 5♧ 4♢ 10♡", "4♧ 10♢ 5♤ 2♤ 4♤"},
 	},
 	{
 		name: "tie of three",
