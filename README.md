@@ -23,8 +23,7 @@ Clone your fork into a Go workspace on your GOPATH.  Read [How to Write Go Code]
 if you are unfamiliar with Go workspaces and GOPATH.  As an example, if you have `$HOME/dev` on your GOPATH,
 you should cd to `$HOME/dev/src/github.com/<you>` to type the clone command:
 `git clone https://github.com/<you>/xgo`.  Test your clone by cding to the xgo directory and typing
-`go test ./...`. You should see tests pass for all exercises. (Oh wait, do you see the error message from paasio?
-Try what it says, `go test -cpu 2 ./...`.  Tests should be clean now.)
+`bin/test-without-stubs`. You should see tests pass for all exercises.
 
 ## Contributing Guide
 
