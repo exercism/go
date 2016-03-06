@@ -10,7 +10,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 var validTestCases = []struct {
 	name  string
