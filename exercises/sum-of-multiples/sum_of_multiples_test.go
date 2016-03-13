@@ -22,6 +22,13 @@ var varTests = []struct {
 	{[]int{43, 47}, 10000, 2203160},
 	{[]int{5, 10, 12}, 10000, 13331672},
 	{[]int{1, 1}, 10000, 49995000},
+	// Note: The following test case deviates from the README.
+	// The README specifies some rather odd defaults, whereas
+	// this has the more logical approach of not implementing any
+	// defaults, which causes the resulting sum to be zero.
+	// See discussion in:
+	// https://github.com/exercism/xgo/issues/256 and
+	// https://github.com/exercism/x-common/issues/198
 	{[]int{}, 10000, 0},
 }
 
