@@ -75,4 +75,10 @@ var eqTests = []struct {
 		hm{34, 37},
 		true,
 	},
+	// clocks with minute overflow
+	{
+		hm{0, 1},
+		hm{0, 1441},
+		true,
+	},
 }
