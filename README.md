@@ -19,11 +19,12 @@ installed, ideally either the current release, the previous release, or tip.
 
 You will need a github account and you will need to fork exercism/xgo to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
-Clone your fork into a Go workspace on your GOPATH.  Read [How to Write Go Code](http://golang.org/doc/code.html)
-if you are unfamiliar with Go workspaces and GOPATH.  As an example, if you have `$HOME/dev` on your GOPATH,
-you should cd to `$HOME/dev/src/github.com/<you>` to type the clone command:
-`git clone https://github.com/<you>/xgo`.  Test your clone by cding to the xgo directory and typing
+Clone your fork with the command: `git clone https://github.com/<you>/xgo`.
+Test your clone by cding to the xgo directory and typing
 `bin/test-without-stubs`. You should see tests pass for all exercises.
+
+Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
+This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
 
 ## Contributing Guide
 
