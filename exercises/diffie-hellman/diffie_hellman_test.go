@@ -1,8 +1,8 @@
 // Diffie-Hellman-Merkle key exchange
 //
 // Step 1:   PrivateKey(p *big.Int) *big.Int
-// Step 2:   PublicKey(private, p, *big.Int, g int64) *big.Int
-// Step 2.1: NewPair(p, *big.Int, g int64) (private, public *big.Int)
+// Step 2:   PublicKey(private, p *big.Int, g int64) *big.Int
+// Step 2.1: NewPair(p *big.Int, g int64) (private, public *big.Int)
 // Step 3:   SecretKey(private1, public2, p *big.Int) *big.Int
 //
 // Private keys should be generated randomly.
