@@ -22,7 +22,7 @@ import (
 // For more background on this read
 // https://github.com/golang/go/wiki/CodeReviewComments#receiver-type.
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 func TestCreateClock(t *testing.T) {
 	if testVersion != targetTestVersion {
