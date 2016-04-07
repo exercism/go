@@ -2,7 +2,7 @@ package scrabble
 
 import "testing"
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 var tests = []struct {
 	input    string
@@ -14,7 +14,7 @@ var tests = []struct {
 	{"f", 4},
 	{"street", 6},
 	{"quirky", 22},
-	{"oxyphenbutazone", 41},
+	{"OXYPHENBUTAZONE", 41},
 	{"alacrity", 13},
 }
 
