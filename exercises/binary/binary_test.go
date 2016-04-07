@@ -9,38 +9,50 @@ import (
 //    func ParseBinary(string) (int, error)
 //
 // It is standard for Go functions to return error values to report error conditions.
-// The test cases below are all valid binary numbers however.  For this exercise you
-// may simply return nil for the error value in all cases.
+// The test cases have some inputs that are invalid.
+// For invalid inputs, return an error that signals to the user why the error happened.
+// The test cases can only check that you return *some* error,
+// but it's still good practice to return useful errors.
 //
-// For bonus points though, what errors might be possible when parsing a number?
-// Can you add code to detect error conditions and return appropriate error values?
+// Also define a testVersion with a value that matches
+// the targetTestVersion here.
+
+const targetTestVersion = 1
 
 var testCases = []struct {
 	binary   string
 	expected int
+	ok bool
 }{
-	{"1", 1},
-	{"10", 2},
-	{"11", 3},
-	{"100", 4},
-	{"1001", 9},
-	{"11010", 26},
-	{"10001101000", 1128},
-	{"0", 0},
+	{"1", 1, true},
+	{"10", 2, true},
+	{"11", 3, true},
+	{"100", 4, true},
+	{"1001", 9, true},
+	{"11010", 26, true},
+	{"10001101000", 1128, true},
+	{"0", 0, true},
+	{"foo101", 0, false},
+	{"101bar", 0, false},
+	{"101baz010", 0, false},
+	{"22", 0, false},
 }
 
 func TestParseBinary(t *testing.T) {
 	for _, tt := range testCases {
 		actual, err := ParseBinary(tt.binary)
-		// We don't expect errors for any of the test cases.
-		if err != nil {
-			t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
-				tt.binary, err)
-		}
-		// Well, we don't expect wrong answers either.
-		if actual != tt.expected {
-			t.Fatalf("ParseBinary(%v): actual %d, expected %v",
-				tt.binary, actual, tt.expected)
+		if tt.ok {
+			if err != nil {
+				t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
+					tt.binary, err)
+			}
+			if actual != tt.expected {
+				t.Fatalf("ParseBinary(%v): actual %d, expected %v",
+					tt.binary, actual, tt.expected)
+			}
+		} else if err == nil {
+			t.Fatalf("ParseBinary(%v) returned %d and no error.  Expected an error.",
+				tt.binary, actual)
 		}
 	}
 }
