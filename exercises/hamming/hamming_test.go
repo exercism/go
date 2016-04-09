@@ -2,7 +2,7 @@ package hamming
 
 import "testing"
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 func TestHamming(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -11,6 +11,7 @@ func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
 		switch got, err := Distance(tc.s1, tc.s2); {
 		case err != nil:
+			var _ error = err
 			if tc.want >= 0 {
 				t.Fatalf("Distance(%q, %q) returned error: %v",
 					tc.s1, tc.s2, err)
