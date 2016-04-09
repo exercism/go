@@ -2,7 +2,7 @@ package hamming
 
 import "errors"
 
-const testVersion = 3
+const testVersion = 4
 
 func Distance(a, b string) (d int, err error) {
 	if len(b) != len(a) {

@@ -1,3 +1,3 @@
 package hamming
 
-const testVersion = 3
+const testVersion = 4
