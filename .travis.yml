@@ -19,6 +19,7 @@ sudo: false
 # These additional versions will not be required, so they're advisory only.
 # Since Travis runs five jobs at a time, a limit of ten jobs makes sense.
 go:
+  - 1.6.1
   - 1.5.4
   - 1.4.3
   - tip
@@ -62,3 +63,4 @@ matrix:
       env: TESTARCH=386
   allow_failures:
     - go: tip
+    - go: 1.4.3
