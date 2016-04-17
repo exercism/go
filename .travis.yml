@@ -9,8 +9,8 @@ sudo: false
 # to alert us to any real upcoming change in the language that would be
 # incompatible with our existing code.
 go:
+  - 1.5.4
   - 1.4.3
-  - 1.5.1
   - tip
 
 # Travis runs in a 64 bit environment but beginning with Go 1.5, building a
