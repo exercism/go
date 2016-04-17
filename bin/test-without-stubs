@@ -19,12 +19,18 @@ for dir in exercises/*; do
   fi
 done
 
-go test -cpu 2 $RACE ./...
+cleanup () {
+  echo "moving stub files back"
 
-# could use `rename` here, but it's not uniform among platforms.
-# some renames take two arguments while others take a single regex.
-for file in exercises/*/*.notgo; do
-  dir=$(dirname $file)
-  base=$(basename $file .notgo)
-  mv "$dir/$base.notgo" "$dir/$base.go"
-done
+  # could use `rename` here, but it's not uniform among platforms.
+  # some renames take two arguments while others take a single regex.
+  for file in exercises/*/*.notgo; do
+    dir=$(dirname $file)
+    base=$(basename $file .notgo)
+    mv "$dir/$base.notgo" "$dir/$base.go"
+  done
+}
+
+trap cleanup EXIT INT TERM
+
+go test -cpu 2 $RACE ./...
