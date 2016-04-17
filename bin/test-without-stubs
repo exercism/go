@@ -33,4 +33,8 @@ cleanup () {
 
 trap cleanup EXIT INT TERM
 
+# This is the last command in the file,
+# so the exit status of this script is the exit status of go test.
+# If this ever changes, remember to preserve the exit status acordingly.
+# Otherwise Travis may falsely report a test as passed when it has failed.
 go test -cpu 2 $RACE ./...
