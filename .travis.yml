@@ -4,10 +4,20 @@ sudo: false
 
 # We expect users to use something fairly recent so we test the last two
 # versions plus tip.  Update these freely as new versions of Go are released.
+#
+# We choose two versions since official support of Go mirrors this policy:
+# Only the current major release (x.y) has full official support.
+# The previous major release gets security-only support.
+#
 # Tip is useful to automatically test a version more recent than the
 # the last time .travis.yml was looked at, and (unlikely as it might be)
 # to alert us to any real upcoming change in the language that would be
 # incompatible with our existing code.
+#
+# We may choose to test additional versions as time allows,
+# as long as the number of entries in the build matrix doesn't exceed ten.
+# These additional versions will not be required, so they're advisory only.
+# Since Travis runs five jobs at a time, a limit of ten jobs makes sense.
 go:
   - 1.5.4
   - 1.4.3
