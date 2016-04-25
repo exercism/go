@@ -42,7 +42,6 @@
     "circular-buffer",
     "robot-name",
     "react",
-    "counter",
     "custom-set",
     "atbash-cipher",
     "phone-number",
@@ -80,6 +79,7 @@
   "deprecated": [
     "accumulate",
     "bottles",
+    "counter",
     "point-mutations"
   ],
   "ignored": [
