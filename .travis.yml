@@ -39,7 +39,8 @@ env:
 # build.  We don't have any build dependencies so we can disable this with
 # `install: true`.  (Actually we have to specify either true or something else
 # here because the default step for this is currently `go get -t ./...` which
-# doesn't work for us, because build tags...)
+# doesn't work for us because some of our stub files have invalid Go syntax
+# or duplicate definitions of the example files)
 install: true
 
 # Configlet tests a number of things like config.json.
