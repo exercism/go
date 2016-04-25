@@ -35,13 +35,6 @@ env:
   - TESTARCH=amd64 RACE=-race
   - TESTARCH=386
 
-# Travis doc for the install step says it is for any dependencies of the
-# build.  We don't have any build dependencies so we can disable this with
-# `install: true`.  (Actually we have to specify either true or something else
-# here because the default step for this is currently `go get -t ./...` which
-# doesn't work for us, because build tags...)
-install: true
-
 # Configlet tests a number of things like config.json.
 # See https://github.com/exercism/configlet.
 before_script:
