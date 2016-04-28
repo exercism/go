@@ -75,7 +75,8 @@
     "word-search",
     "connect",
     "ledger",
-    "poker"
+    "poker",
+    "variable-length-quantity"
   ],
   "deprecated": [
     "accumulate",
