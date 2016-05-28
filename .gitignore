@@ -1,4 +1,3 @@
-*.beam
 *.swp
 .DS_Store
 tmp
