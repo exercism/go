@@ -3,7 +3,7 @@
 // Open(initalDeposit int64) *Account
 // (Account) Close() (payout int64, ok bool)
 // (Account) Balance() (balance int64, ok bool)
-// (Account) Deposit(amount uint64) (newBalance int64, ok bool)
+// (Account) Deposit(amount int64) (newBalance int64, ok bool)
 //
 // If Open is given a negative initial deposit, it must return nil.
 // Deposit must handle a negative amount as a withdrawal.
