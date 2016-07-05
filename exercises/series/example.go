@@ -8,6 +8,6 @@ func All(n int, s string) (r []string) {
 	return
 }
 
-func Frist(n int, s string) string {
+func UnsafeFirst(n int, s string) string {
 	return s[:n]
 }
