@@ -14,6 +14,8 @@
 // Bonus exercise:
 //
 // Once you get `go test` passing, try `go test -tags asktoomuch`.
+// This uses a *build tag* to enable a test that wasn't enabled before.
+// You can read more about those at https://golang.org/pkg/go/build/#hdr-Build_Constraints
 // (Hint, you can't make it happy.)
 //
 // Now slow down and do things right(tm).  Define
