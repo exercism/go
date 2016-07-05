@@ -16,9 +16,12 @@
 // Once you get `go test` passing, try `go test -tags asktoomuch`.
 // This uses a *build tag* to enable a test that wasn't enabled before.
 // You can read more about those at https://golang.org/pkg/go/build/#hdr-Build_Constraints
-// (Hint, you can't make it happy.)
 //
-// Now slow down and do things right(tm).  Define
+// You may notice that you can't make this asktoomuch test happy.
+// We need a way to signal that in some cases you can't take the first N characters of the string.
+// UnsafeFirst can't do that since it only returns a string.
+//
+// To fix that, let's add another return value to the function.  Define
 //
 //    First(int, string) (first string, ok bool)
 //
