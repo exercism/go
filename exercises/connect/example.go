@@ -178,12 +178,12 @@ func ResultOf(lines []string) (string, error) {
 	}
 	for _, c := range board.startCoords(flagsBlack) {
 		if board.evaluate(c, flagsBlack) {
-			return "black", nil
+			return "X", nil
 		}
 	}
 	for _, c := range board.startCoords(flagsWhite) {
 		if board.evaluate(c, flagsWhite) {
-			return "white", nil
+			return "O", nil
 		}
 	}
 	return "", nil
