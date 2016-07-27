@@ -17,7 +17,7 @@ func prepare(lines []string) []string {
 
 func TestResultOf(t *testing.T) {
 	for _, tt := range testCases {
-		actual, err := ResultOf(prepare(tt.lines))
+		actual, err := ResultOf(prepare(tt.board))
 		// We don't expect errors for any of the test cases
 		if err != nil {
 			t.Fatalf("ResultOf for board %q returned error %q.  Error not expected.",
@@ -35,7 +35,7 @@ func BenchmarkResultOf(b *testing.B) {
 	b.StopTimer()
 
 	for _, tt := range testCases {
-		board := prepare(tt.lines)
+		board := prepare(tt.board)
 		b.StartTimer()
 
 		for i := 0; i < b.N; i++ {
