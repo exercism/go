@@ -15,7 +15,12 @@ func prepare(lines []string) []string {
 	return newLines
 }
 
+const targetTestVersion = 2
+
 func TestResultOf(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 	for _, tt := range testCases {
 		actual, err := ResultOf(prepare(tt.board))
 		// We don't expect errors for any of the test cases
