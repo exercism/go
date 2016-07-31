@@ -1,7 +1,7 @@
 package connect
 
 // Source: exercism/x-common
-// Commit: 6c6a395 improving description again
+// Commit: 038124b triangle: Add JSON test data
 
 var testCases = []struct {
 	description string
@@ -17,6 +17,18 @@ var testCases = []struct {
 			"   . . . . .",
 			"    . . . . ."},
 		expected: "",
+	},
+	{
+		description: "X can win on a 1x1 board",
+		board: []string{
+			"X"},
+		expected: "X",
+	},
+	{
+		description: "O can win on a 1x1 board",
+		board: []string{
+			"O"},
+		expected: "O",
 	},
 	{
 		description: "only edges does not make a winner",
