@@ -36,8 +36,6 @@ var tmpl = `package connect
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
 
-const testVersion = 2
-
 var testCases = []struct {
     description string
     board       []string

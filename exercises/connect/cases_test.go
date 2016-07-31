@@ -3,8 +3,6 @@ package connect
 // Source: exercism/x-common
 // Commit: 6c6a395 improving description again
 
-const testVersion = 2
-
 var testCases = []struct {
 	description string
 	board       []string
