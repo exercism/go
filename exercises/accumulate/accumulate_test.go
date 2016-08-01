@@ -23,14 +23,14 @@ var tests = []struct {
 	{[]string{}, []string{}, echo, "echo"},
 	{[]string{"echo", "echo", "echo", "echo"}, []string{"echo", "echo", "echo", "echo"}, echo, "echo"},
 	{[]string{"First", "Letter", "Only"}, []string{"first", "letter", "only"}, capitalize, "capitalize"},
-	{[]string{"HELLO", "WORLD"}, []string{"hello", "world"}, strings.ToUpper, "upcase"},
+	{[]string{"HELLO", "WORLD"}, []string{"hello", "world"}, strings.ToUpper, "strings.ToUpper"},
 }
 
 func TestAccumulate(t *testing.T) {
 	for _, test := range tests {
 		actual := Accumulate(test.given, test.converter)
 		if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", test.expected) {
-			t.Fatalf("Accumulate(%s, %#v): expected %s, actual %s", test.given, test.converter, test.expected, actual)
+			t.Fatalf("Accumulate(%s, %s): expected %s, actual %s", test.given, test.description, test.expected, actual)
 		} else {
 			t.Logf("PASS: %s %v", test.description, test.given)
 		}
