@@ -46,23 +46,13 @@ O'er the land of the free and the home of the brave?`
 )
 
 func BenchmarkSequentialFrequency(b *testing.B) {
-	b.StopTimer()
-	b.StartTimer()
-
 	for i := 0; i < b.N; i++ {
 		Frequency(euro + dutch + us)
 	}
-
-	b.StopTimer()
 }
 
 func BenchmarkConcurrentFrequency(b *testing.B) {
-	b.StopTimer()
-	b.StartTimer()
-
 	for i := 0; i < b.N; i++ {
 		ConcurrentFrequency([]string{euro, dutch, us})
 	}
-
-	b.StopTimer()
 }
