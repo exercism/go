@@ -44,3 +44,15 @@ Gave proof through the night that our flag was still there;
 O say does that star-spangled banner yet wave,
 O'er the land of the free and the home of the brave?`
 )
+
+func BenchmarkSequentialFrequency(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Frequency(euro + dutch + us)
+	}
+}
+
+func BenchmarkConcurrentFrequency(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ConcurrentFrequency([]string{euro, dutch, us})
+	}
+}
