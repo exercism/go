@@ -11,11 +11,10 @@ import (
 
 type Product struct {
 	Product int // palindromic, of course
-	Factorizations [][2]int //list of all possible two-factor factorizations of Product,
-							  within given limits, in order
+	Factorizations [][2]int //list of all possible two-factor factorizations of Product, within given limits, in order
  }
- func Products(fmin, fmax int) (pmin, pmax Product, error)
 
+ func Products(fmin, fmax int) (pmin, pmax Product, error)
 */
 
 var testData = []struct {
