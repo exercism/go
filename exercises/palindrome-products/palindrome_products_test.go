@@ -7,14 +7,15 @@ import (
 	"testing"
 )
 
-// API to impliment:
-// type Product struct {
-// 	Product int // palindromic, of course
-// 	// list of all possible two-factor factorizations of Product, within
-// 	// given limits, in order
-// 	Factorizations [][2]int
-// }
-// func Products(fmin, fmax int) (pmin, pmax Product, error)
+/* API to impliment:
+
+type Product struct {
+	Product int // palindromic, of course
+	Factorizations [][2]int //list of all possible two-factor factorizations of Product, within given limits, in order
+ }
+
+ func Products(fmin, fmax int) (pmin, pmax Product, error)
+*/
 
 var testData = []struct {
 	// input to Products(): range limits for factors of the palindrome
@@ -37,10 +38,16 @@ var testData = []struct {
 		""},
 	{4, 10, Product{}, Product{}, "No palindromes"},
 	{10, 4, Product{}, Product{}, "fmin > fmax"},
-	/* bonus curiosities.  (can a negative number be a palindrome?
-	// most say no
+}
+
+// Bonus curiosities. Can a negative number be a palindrome? Most say no
+var bonusData = []struct {
+	fmin, fmax int
+	pmin, pmax Product
+	errPrefix  string
+}{
 	{-99, -10, Product{}, Product{}, "Negative limits"},
-	// but you can still get non-negative products from negative factors.
+	// but you can still get non-negative products from negative factors
 	{-99, -10,
 		Product{121, [][2]int{{-11, -11}}},
 		Product{9009, [][2]int{{-99, -91}}},
@@ -49,17 +56,17 @@ var testData = []struct {
 		Product{0, [][2]int{{-2, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-	// or you could reverse the *digits*, keeping the minus sign in place.
+	// or you could reverse the *digits*, keeping the minus sign in place
 	{-2, 2,
 		Product{-4, [][2]int{{-2, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-	{
-	{0, (^uint(0))>>1, Product{}, Product{}, "This one's gonna overflow"},
-	*/
+	{0, int(^uint(0) >> 1), Product{}, Product{}, "This one's gonna overflow"},
 }
 
 func TestPalindromeProducts(t *testing.T) {
+	// Uncomment the following line to add the bonus test to the default tests
+	// testData = append(testData, bonusData...)
 	for _, test := range testData {
 		// common preamble for test failures
 		ret := fmt.Sprintf("Products(%d, %d) returned",
