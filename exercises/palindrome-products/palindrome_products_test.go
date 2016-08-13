@@ -40,28 +40,30 @@ var testData = []struct {
 	{10, 4, Product{}, Product{}, "fmin > fmax"},
 }
 
-// Bonus curiosities. Can a negative number be a palindrome? Most say no
+// Bonus curiosities. Can a negative number be a palindrome? Most say no.
 var bonusData = []struct {
 	fmin, fmax int
 	pmin, pmax Product
 	errPrefix  string
 }{
+	// You can reach the limit of the largest palindrome made of two 2-digit numbers.
 	{-99, -10, Product{}, Product{}, "Negative limits"},
-	// but you can still get non-negative products from negative factors
+	// You can still get non-negative products from negative factors.
 	{-99, -10,
 		Product{121, [][2]int{{-11, -11}}},
 		Product{9009, [][2]int{{-99, -91}}},
 		""},
+	// In case you reverse the *digits* you could have the following cases:
+	// - the zero has to be considered
 	{-2, 2,
 		Product{0, [][2]int{{-2, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-	// or you could reverse the *digits*, keeping the minus sign in place
+	// - you can keep the minus sign in place
 	{-2, 2,
 		Product{-4, [][2]int{{-2, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-	{0, int(^uint(0) >> 1), Product{}, Product{}, "This one's gonna overflow"},
 }
 
 func TestPalindromeProducts(t *testing.T) {
