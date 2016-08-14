@@ -67,7 +67,7 @@ func equal(actual map[string]int, expectation map[string]int) bool {
 	return true
 }
 
-func TestTranform(t *testing.T) {
+func TestTransform(t *testing.T) {
 	for _, tt := range transformTests {
 		actual := Transform(map[int][]string(tt.input))
 		if !equal(actual, tt.output) {
@@ -76,7 +76,7 @@ func TestTranform(t *testing.T) {
 	}
 }
 
-func BenchmarkTranform(b *testing.B) {
+func BenchmarkTransform(b *testing.B) {
 	b.StopTimer()
 	for _, tt := range transformTests {
 		b.StartTimer()
