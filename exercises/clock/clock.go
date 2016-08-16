@@ -6,7 +6,7 @@ package clock
 
 // The value of testVersion here must match `targetTestVersion` in the file
 // clock_test.go.
-const testVersion = 3
+const testVersion = 4
 
 // Clock API as stub definitions.  No, it doesn't compile yet.
 // More details and hints are in clock_test.go.
