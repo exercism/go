@@ -46,10 +46,7 @@ var bonusData = []struct {
 	pmin, pmax Product
 	errPrefix  string
 }{
-	/* This commented test case has the same input of the following uncommented one.
-	Comment/uncomment one of them if you want to try to handle different cases using the same input.
-	WARNING: you will probably have to change your solution in order to handle it.
-	*/
+	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
 
 	/* Here you can test that you can reach the limit of the largest palindrome made of two 2-digit numbers.
 	{-99, -10, Product{}, Product{}, "Negative limits"}, */
@@ -60,10 +57,7 @@ var bonusData = []struct {
 		Product{9009, [][2]int{{-99, -91}}},
 		""},
 
-	/* This commented test case has the same input of the following uncommented one.
-	Comment/uncomment one of them if you want to try to handle different cases using the same input.
-	WARNING: you will probably have to change your solution in order to handle it.
-	*/
+	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
 
 	/*In case you reverse the *digits* you could have the following cases:
 	- the zero has to be considered
