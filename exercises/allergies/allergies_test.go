@@ -2,6 +2,7 @@ package allergies
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 )
 
@@ -23,6 +24,8 @@ var allergiesTests = []struct {
 func TestAllergies(t *testing.T) {
 	for _, test := range allergiesTests {
 		actual := Allergies(test.input)
+		sort.Strings(actual)
+		sort.Strings(test.expected)
 		if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", test.expected) {
 			t.Fatalf("FAIL: Allergies(%d): expected %s, actual %s", test.input, test.expected, actual)
 		} else {
