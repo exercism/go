@@ -1,3 +1,16 @@
+// API:
+//
+// type SearchTreeData struct {
+//	left  *SearchTreeData
+//	data  int
+//	right *SearchTreeData
+// }
+//
+// func Bst(int) *SearchTreeData
+// func (*SearchTreeData) Insert(int)
+// func (*SearchTreeData) MapString(func(int) string) []string
+// func (*SearchTreeData) MapInt(func(int) int) []int
+
 package binarysearchtree
 
 import (
