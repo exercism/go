@@ -41,27 +41,27 @@ import "testing"
 
 var test2 = []struct {
 	Command
-	DirAt
+	Robot
 }{
-	0:  {' ', DirAt{N, Pos{1, 1}}}, // no command, this is the start DirAt
-	1:  {'A', DirAt{N, Pos{1, 2}}},
-	2:  {'R', DirAt{E, Pos{1, 2}}},
-	3:  {'A', DirAt{E, Pos{2, 2}}},
-	4:  {'L', DirAt{N, Pos{2, 2}}},
-	5:  {'L', DirAt{W, Pos{2, 2}}},
-	6:  {'L', DirAt{S, Pos{2, 2}}},
-	7:  {'A', DirAt{S, Pos{2, 1}}},
-	8:  {'R', DirAt{W, Pos{2, 1}}},
-	9:  {'A', DirAt{W, Pos{1, 1}}},
-	10: {'A', DirAt{W, Pos{1, 1}}}, // bump W wall
-	11: {'L', DirAt{S, Pos{1, 1}}},
-	12: {'A', DirAt{S, Pos{1, 1}}}, // bump S wall
-	13: {'L', DirAt{E, Pos{1, 1}}},
-	14: {'A', DirAt{E, Pos{2, 1}}},
-	15: {'A', DirAt{E, Pos{2, 1}}}, // bump E wall
-	16: {'L', DirAt{N, Pos{2, 1}}},
-	17: {'A', DirAt{N, Pos{2, 2}}},
-	18: {'A', DirAt{N, Pos{2, 2}}}, // bump N wall
+	0:  {' ', Robot{N, Pos{1, 1}}}, // no command, this is the start DirAt
+	1:  {'A', Robot{N, Pos{1, 2}}},
+	2:  {'R', Robot{E, Pos{1, 2}}},
+	3:  {'A', Robot{E, Pos{2, 2}}},
+	4:  {'L', Robot{N, Pos{2, 2}}},
+	5:  {'L', Robot{W, Pos{2, 2}}},
+	6:  {'L', Robot{S, Pos{2, 2}}},
+	7:  {'A', Robot{S, Pos{2, 1}}},
+	8:  {'R', Robot{W, Pos{2, 1}}},
+	9:  {'A', Robot{W, Pos{1, 1}}},
+	10: {'A', Robot{W, Pos{1, 1}}}, // bump W wall
+	11: {'L', Robot{S, Pos{1, 1}}},
+	12: {'A', Robot{S, Pos{1, 1}}}, // bump S wall
+	13: {'L', Robot{E, Pos{1, 1}}},
+	14: {'A', Robot{E, Pos{2, 1}}},
+	15: {'A', Robot{E, Pos{2, 1}}}, // bump E wall
+	16: {'L', Robot{N, Pos{2, 1}}},
+	17: {'A', Robot{N, Pos{2, 2}}},
+	18: {'A', Robot{N, Pos{2, 2}}}, // bump N wall
 }
 
 func TestStep2(t *testing.T) {
@@ -69,16 +69,16 @@ func TestStep2(t *testing.T) {
 	for i := 1; i <= len(test2); i++ {
 		cmd := make(chan Command)
 		act := make(chan Action)
-		rep := make(chan DirAt)
-		go Robot(cmd, act)
-		go Room(Rect{Pos{1, 1}, Pos{2, 2}}, test2[0].DirAt, act, rep)
+		rep := make(chan Robot)
+		go StartRobot(cmd, act)
+		go Room(Rect{Pos{1, 1}, Pos{2, 2}}, test2[0].Robot, act, rep)
 		for j := 1; j < i; j++ {
 			cmd <- test2[j].Command
 		}
 		close(cmd)
 		da := <-rep
 		last := i - 1
-		want := test2[last].DirAt
+		want := test2[last].Robot
 		if da.Pos != want.Pos {
 			t.Fatalf("Command #%d, Pos = %v, want %v", last, da.Pos, want.Pos)
 		}

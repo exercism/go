@@ -19,14 +19,14 @@ type Command byte // valid values are 'R', 'L', 'A'
 type RU int
 type Pos struct{ Easting, Northing RU }
 type Rect struct{ Min, Max Pos }
-type DirAt struct {
+type Robot struct {
 	Dir
 	Pos
 }
 
 // additional definition used in step 3
 
-type Place struct {
+type Robot3 struct {
 	Name string
-	DirAt
+	Robot
 }
