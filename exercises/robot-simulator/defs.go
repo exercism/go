@@ -4,10 +4,10 @@ import "fmt"
 
 // definitions used in step 1
 
-var (
+var Robot1 struct {
 	X, Y   int
-	Facing Dir
-)
+	Dir
+}
 
 type Dir int
 
@@ -19,7 +19,7 @@ type Command byte // valid values are 'R', 'L', 'A'
 type RU int
 type Pos struct{ Easting, Northing RU }
 type Rect struct{ Min, Max Pos }
-type Robot struct {
+type Robot2 struct {
 	Dir
 	Pos
 }
@@ -28,5 +28,5 @@ type Robot struct {
 
 type Robot3 struct {
 	Name string
-	Robot
+	Robot2
 }

@@ -34,13 +34,13 @@ func TestStep1(t *testing.T) {
 	}
 	want := func(x, y int, dir Dir) {
 		_, _, line, _ := runtime.Caller(1)
-		if X != x || Y != y {
+		if Robot1.X != x || Robot1.Y != y {
 			t.Fatalf("(from line %d) robot at = %d, %d.  Want %d, %d.",
-				line, X, Y, x, y)
+				line, Robot1.X, Robot1.Y, x, y)
 		}
-		if Facing != dir {
+		if Robot1.Dir != dir {
 			t.Fatalf("(from line %d) robot facing %v, want %v.",
-				line, Facing, dir)
+				line, Robot1.Dir, dir)
 		}
 	}
 	want(0, 0, N)

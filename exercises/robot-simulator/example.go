@@ -15,13 +15,13 @@ func (d Dir) String() string {
 	return "NESW"[d : d+1]
 }
 
-func Right() { Facing = (Facing + 1) % 4 }
-func Left()  { Facing = (Facing + 3) % 4 }
+func Right() { Robot1.Dir = (Robot1.Dir + 1) % 4 }
+func Left()  { Robot1.Dir = (Robot1.Dir + 3) % 4 }
 func Advance() {
-	if Facing&1 == 1 {
-		X += 1 - int(Facing&2)
+	if Robot1.Dir&1 == 1 {
+		Robot1.X += 1 - int(Robot1.Dir&2)
 	} else {
-		Y += 1 - int(Facing&2)
+		Robot1.Y += 1 - int(Robot1.Dir&2)
 	}
 }
 
@@ -36,7 +36,7 @@ func StartRobot(cmd chan Command, act chan Action) {
 	close(act)
 }
 
-func Room(extent Rect, place Robot, act chan Action, report chan Robot) {
+func Room(extent Rect, place Robot2, act chan Action, report chan Robot2) {
 	for a := range act {
 		switch a {
 		case 'R':
@@ -96,15 +96,15 @@ func Room3(extent Rect, robots []Robot3, act chan Action3, rep chan []Robot3, lo
 		}
 		nx[r.Name] = x
 
-		if !in(r.Robot.Pos, extent) {
+		if !in(r.Robot2.Pos, extent) {
 			log <- "Robot placed outside room"
 			return
 		}
-		if _, ok := px[r.Robot.Pos]; ok {
+		if _, ok := px[r.Robot2.Pos]; ok {
 			log <- "Position occupied"
 			return
 		}
-		px[r.Robot.Pos] = x
+		px[r.Robot2.Pos] = x
 	}
 	done := 0
 	for a := range act {
@@ -113,7 +113,7 @@ func Room3(extent Rect, robots []Robot3, act chan Action3, rep chan []Robot3, lo
 			log <- "Action by unknown robot"
 			return
 		}
-		da := &robots[x].Robot
+		da := &robots[x].Robot2
 		switch a.action {
 		case 'R':
 			da.Dir = (da.Dir + 1) % 4

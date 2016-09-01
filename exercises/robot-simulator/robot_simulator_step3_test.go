@@ -13,8 +13,8 @@ import "testing"
 // Step 3 API:
 //
 //    Robot3(name, script string, action chan Action3, log chan string)
-//    Room3(extent Rect, robots []Place,
-//       action chan Action3, report chan []Place, log chan string)
+//    Room3(extent Rect, robots []Robot3,
+//       action chan Action3, report chan []Robot3, log chan string)
 //
 // Again, you define Action3.
 //
@@ -33,29 +33,29 @@ import "testing"
 
 var testOneRobot = []struct {
 	cmd byte
-	Robot
+	Robot2
 	nMsg int
 }{
 	// (test2 data with message counts added)
-	{' ', Robot{N, Pos{1, 1}}, 0},
-	{'A', Robot{N, Pos{1, 2}}, 0},
-	{'R', Robot{E, Pos{1, 2}}, 0},
-	{'A', Robot{E, Pos{2, 2}}, 0},
-	{'L', Robot{N, Pos{2, 2}}, 0},
-	{'L', Robot{W, Pos{2, 2}}, 0},
-	{'L', Robot{S, Pos{2, 2}}, 0},
-	{'A', Robot{S, Pos{2, 1}}, 0},
-	{'R', Robot{W, Pos{2, 1}}, 0},
-	{'A', Robot{W, Pos{1, 1}}, 0},
-	{'A', Robot{W, Pos{1, 1}}, 1}, // bump W wall
-	{'L', Robot{S, Pos{1, 1}}, 1},
-	{'A', Robot{S, Pos{1, 1}}, 2}, // bump S wall
-	{'L', Robot{E, Pos{1, 1}}, 2},
-	{'A', Robot{E, Pos{2, 1}}, 2},
-	{'A', Robot{E, Pos{2, 1}}, 3}, // bump E wall
-	{'L', Robot{N, Pos{2, 1}}, 3},
-	{'A', Robot{N, Pos{2, 2}}, 3},
-	{'A', Robot{N, Pos{2, 2}}, 4}, // bump N wall
+	{' ', Robot2{N, Pos{1, 1}}, 0},
+	{'A', Robot2{N, Pos{1, 2}}, 0},
+	{'R', Robot2{E, Pos{1, 2}}, 0},
+	{'A', Robot2{E, Pos{2, 2}}, 0},
+	{'L', Robot2{N, Pos{2, 2}}, 0},
+	{'L', Robot2{W, Pos{2, 2}}, 0},
+	{'L', Robot2{S, Pos{2, 2}}, 0},
+	{'A', Robot2{S, Pos{2, 1}}, 0},
+	{'R', Robot2{W, Pos{2, 1}}, 0},
+	{'A', Robot2{W, Pos{1, 1}}, 0},
+	{'A', Robot2{W, Pos{1, 1}}, 1}, // bump W wall
+	{'L', Robot2{S, Pos{1, 1}}, 1},
+	{'A', Robot2{S, Pos{1, 1}}, 2}, // bump S wall
+	{'L', Robot2{E, Pos{1, 1}}, 2},
+	{'A', Robot2{E, Pos{2, 1}}, 2},
+	{'A', Robot2{E, Pos{2, 1}}, 3}, // bump E wall
+	{'L', Robot2{N, Pos{2, 1}}, 3},
+	{'A', Robot2{N, Pos{2, 2}}, 3},
+	{'A', Robot2{N, Pos{2, 2}}, 4}, // bump N wall
 }
 
 func logMon(log chan string, nMsg chan int, t *testing.T) {
@@ -77,7 +77,7 @@ func TestOneStep3(t *testing.T) {
 		rep := make(chan []Robot3)
 		go Room3(
 			Rect{Pos{1, 1}, Pos{2, 2}},
-			[]Robot3{{"Robbie", testOneRobot[0].Robot}},
+			[]Robot3{{"Robbie", testOneRobot[0].Robot2}},
 			act, rep, log)
 		scr := ""
 		for j := 1; j < i; j++ {
@@ -95,8 +95,8 @@ func TestOneStep3(t *testing.T) {
 			t.Fatalf(`Got report for robot %q, want report for "Robbie".`,
 				pl.Name)
 		}
-		da := pl.Robot
-		want := lastTest.Robot
+		da := pl.Robot2
+		want := lastTest.Robot2
 		if da.Pos != want.Pos {
 			t.Fatalf("Script %q, Pos = %v, want %v", scr, da.Pos, want.Pos)
 		}
@@ -118,7 +118,7 @@ func TestNoName(t *testing.T) {
 	rep := make(chan []Robot3)
 	go Room3(
 		Rect{Pos{1, 1}, Pos{1, 1}},
-		[]Robot3{{"", Robot{N, Pos{1, 1}}}},
+		[]Robot3{{"", Robot2{N, Pos{1, 1}}}},
 		act, rep, log)
 	go StartRobot3("", "", act, log)
 	<-rep
@@ -137,8 +137,8 @@ func TestSameName(t *testing.T) {
 	go Room3(
 		Rect{Pos{1, 1}, Pos{2, 1}},
 		[]Robot3{
-			{"Daryl", Robot{N, Pos{1, 1}}},
-			{"Daryl", Robot{N, Pos{2, 1}}},
+			{"Daryl", Robot2{N, Pos{1, 1}}},
+			{"Daryl", Robot2{N, Pos{2, 1}}},
 		},
 		act, rep, log)
 	go StartRobot3("Daryl", "", act, log)
@@ -159,8 +159,8 @@ func TestSamePosition(t *testing.T) {
 	go Room3(
 		Rect{Pos{1, 1}, Pos{100, 100}},
 		[]Robot3{
-			{"Matter", Robot{N, Pos{23, 47}}},
-			{"Antimatter", Robot{N, Pos{23, 47}}},
+			{"Matter", Robot2{N, Pos{23, 47}}},
+			{"Antimatter", Robot2{N, Pos{23, 47}}},
 		},
 		act, rep, log)
 	go StartRobot3("Matter", "", act, log)
@@ -180,7 +180,7 @@ func TestOutsideRoom(t *testing.T) {
 	rep := make(chan []Robot3)
 	go Room3(
 		Rect{Pos{1, 1}, Pos{1, 1}},
-		[]Robot3{{"Elvis", Robot{N, Pos{2, 3}}}},
+		[]Robot3{{"Elvis", Robot2{N, Pos{2, 3}}}},
 		act, rep, log)
 	go StartRobot3("Elvis", "", act, log)
 	<-rep
@@ -198,7 +198,7 @@ func TestBadCommand(t *testing.T) {
 	rep := make(chan []Robot3)
 	go Room3(
 		Rect{Pos{0, 0}, Pos{0, 99}},
-		[]Robot3{{"Vgr", Robot{N, Pos{0, 99}}}},
+		[]Robot3{{"Vgr", Robot2{N, Pos{0, 99}}}},
 		act, rep, log)
 	go StartRobot3("Vgr", "RET", act, log)
 	<-rep
@@ -216,7 +216,7 @@ func TestBadRobot(t *testing.T) {
 	rep := make(chan []Robot3)
 	go Room3(
 		Rect{Pos{0, 0}, Pos{0, 0}},
-		[]Robot3{{"Data", Robot{N, Pos{0, 0}}}},
+		[]Robot3{{"Data", Robot2{N, Pos{0, 0}}}},
 		act, rep, log)
 	go StartRobot3("Lore", "A", act, log)
 	<-rep
@@ -238,9 +238,9 @@ func TestThree(t *testing.T) { // no bumping
 	go Room3(
 		Rect{Pos{-10, -10}, Pos{15, 10}},
 		[]Robot3{
-			{"clutz", Robot{N, Pos{0, 0}}},
-			{"sphero", Robot{E, Pos{2, -7}}},
-			{"roomba", Robot{S, Pos{8, 4}}},
+			{"clutz", Robot2{N, Pos{0, 0}}},
+			{"sphero", Robot2{E, Pos{2, -7}}},
+			{"roomba", Robot2{S, Pos{8, 4}}},
 		},
 		act, rep, log)
 	pls := <-rep
@@ -249,21 +249,21 @@ func TestThree(t *testing.T) { // no bumping
 	}
 exp:
 	for _, exp := range []Robot3{
-		{"clutz", Robot{W, Pos{-4, 1}}},
-		{"sphero", Robot{S, Pos{-3, -8}}},
-		{"roomba", Robot{N, Pos{11, 5}}},
+		{"clutz", Robot2{W, Pos{-4, 1}}},
+		{"sphero", Robot2{S, Pos{-3, -8}}},
+		{"roomba", Robot2{N, Pos{11, 5}}},
 	} {
 		for _, pl := range pls {
 			if pl.Name != exp.Name {
 				continue
 			}
-			if pl.Robot.Pos != exp.Robot.Pos {
+			if pl.Robot2.Pos != exp.Robot2.Pos {
 				t.Fatalf("%s at %v, want %v",
-					pl.Name, pl.Robot.Pos, exp.Robot.Pos)
+					pl.Name, pl.Robot2.Pos, exp.Robot2.Pos)
 			}
-			if pl.Robot.Dir != exp.Robot.Dir {
+			if pl.Robot2.Dir != exp.Robot2.Dir {
 				t.Fatalf("%s facing %v, want %v",
-					pl.Name, pl.Robot.Dir, exp.Robot.Dir)
+					pl.Name, pl.Robot2.Dir, exp.Robot2.Dir)
 			}
 			continue exp
 		}
@@ -282,8 +282,8 @@ func TestBattle(t *testing.T) {
 	go Room3(
 		Rect{Pos{1, 1}, Pos{9, 9}},
 		[]Robot3{
-			{"Toro", Robot{E, Pos{1, 5}}},
-			{"Phere", Robot{W, Pos{9, 5}}},
+			{"Toro", Robot2{E, Pos{1, 5}}},
+			{"Phere", Robot2{W, Pos{9, 5}}},
 		},
 		act, rep, log)
 	<-rep

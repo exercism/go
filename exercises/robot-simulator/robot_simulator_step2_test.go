@@ -12,7 +12,7 @@ import "testing"
 // Step 2 introduces a "room."  It seems a small addition, but we'll make
 // big changes to clarify the rolls of "room", "robot", and "test program"
 // and begin to clarify the physics of the simulation.  You will define Room
-// and Robot as functions which the test program "brings into existance" by
+// and Robot as functions which the test program "brings into existence" by
 // launching them as goroutines.  Information moves between test program,
 // robot, and room over Go channels.
 //
@@ -21,12 +21,12 @@ import "testing"
 // coordinate space of the room, the location of the robot and the walls,
 // and ensure for example that the robot doesn't walk through walls.
 // We want Robot to be an agent that performs actions, but we want Room to
-// maintain a coherrent truth.
+// maintain a coherent truth.
 //
 // Step 2 API:
 //
 // Robot(chan Command, chan Action)
-// Room(extent Rect, place DirAt, act chan Action, rep chan DirAt)
+// Room(extent Rect, place Robot2, act chan Action, rep chan Robot2)
 //
 // You get to define Action; see defs.go for other definitions.
 //
@@ -41,27 +41,27 @@ import "testing"
 
 var test2 = []struct {
 	Command
-	Robot
+	Robot2
 }{
-	0:  {' ', Robot{N, Pos{1, 1}}}, // no command, this is the start DirAt
-	1:  {'A', Robot{N, Pos{1, 2}}},
-	2:  {'R', Robot{E, Pos{1, 2}}},
-	3:  {'A', Robot{E, Pos{2, 2}}},
-	4:  {'L', Robot{N, Pos{2, 2}}},
-	5:  {'L', Robot{W, Pos{2, 2}}},
-	6:  {'L', Robot{S, Pos{2, 2}}},
-	7:  {'A', Robot{S, Pos{2, 1}}},
-	8:  {'R', Robot{W, Pos{2, 1}}},
-	9:  {'A', Robot{W, Pos{1, 1}}},
-	10: {'A', Robot{W, Pos{1, 1}}}, // bump W wall
-	11: {'L', Robot{S, Pos{1, 1}}},
-	12: {'A', Robot{S, Pos{1, 1}}}, // bump S wall
-	13: {'L', Robot{E, Pos{1, 1}}},
-	14: {'A', Robot{E, Pos{2, 1}}},
-	15: {'A', Robot{E, Pos{2, 1}}}, // bump E wall
-	16: {'L', Robot{N, Pos{2, 1}}},
-	17: {'A', Robot{N, Pos{2, 2}}},
-	18: {'A', Robot{N, Pos{2, 2}}}, // bump N wall
+	0:  {' ', Robot2{N, Pos{1, 1}}}, // no command, this is the start Robot2
+	1:  {'A', Robot2{N, Pos{1, 2}}},
+	2:  {'R', Robot2{E, Pos{1, 2}}},
+	3:  {'A', Robot2{E, Pos{2, 2}}},
+	4:  {'L', Robot2{N, Pos{2, 2}}},
+	5:  {'L', Robot2{W, Pos{2, 2}}},
+	6:  {'L', Robot2{S, Pos{2, 2}}},
+	7:  {'A', Robot2{S, Pos{2, 1}}},
+	8:  {'R', Robot2{W, Pos{2, 1}}},
+	9:  {'A', Robot2{W, Pos{1, 1}}},
+	10: {'A', Robot2{W, Pos{1, 1}}}, // bump W wall
+	11: {'L', Robot2{S, Pos{1, 1}}},
+	12: {'A', Robot2{S, Pos{1, 1}}}, // bump S wall
+	13: {'L', Robot2{E, Pos{1, 1}}},
+	14: {'A', Robot2{E, Pos{2, 1}}},
+	15: {'A', Robot2{E, Pos{2, 1}}}, // bump E wall
+	16: {'L', Robot2{N, Pos{2, 1}}},
+	17: {'A', Robot2{N, Pos{2, 2}}},
+	18: {'A', Robot2{N, Pos{2, 2}}}, // bump N wall
 }
 
 func TestStep2(t *testing.T) {
@@ -69,16 +69,16 @@ func TestStep2(t *testing.T) {
 	for i := 1; i <= len(test2); i++ {
 		cmd := make(chan Command)
 		act := make(chan Action)
-		rep := make(chan Robot)
+		rep := make(chan Robot2)
 		go StartRobot(cmd, act)
-		go Room(Rect{Pos{1, 1}, Pos{2, 2}}, test2[0].Robot, act, rep)
+		go Room(Rect{Pos{1, 1}, Pos{2, 2}}, test2[0].Robot2, act, rep)
 		for j := 1; j < i; j++ {
 			cmd <- test2[j].Command
 		}
 		close(cmd)
 		da := <-rep
 		last := i - 1
-		want := test2[last].Robot
+		want := test2[last].Robot2
 		if da.Pos != want.Pos {
 			t.Fatalf("Command #%d, Pos = %v, want %v", last, da.Pos, want.Pos)
 		}
