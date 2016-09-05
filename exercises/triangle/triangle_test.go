@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 type testCase struct {
 	want    Kind
@@ -26,6 +26,8 @@ var testData = []testCase{
 	{Sca, 5, 4, 2},    // descending order
 	{Sca, .4, .6, .3}, // small sides
 	{Sca, 1, 4, 3},    // a "triangle" that is just a line is still OK
+	{Sca, 5, 4, 6},    // 2a == b+c looks like equilateral, but isn't always.
+	{Sca, 6, 4, 5},    // 2a == b+c looks like equilateral, but isn't always.
 	{NaT, 0, 0, 0},    // zero length
 	{NaT, 3, 4, -5},   // negative length
 	{NaT, 1, 1, 3},    // fails triangle inequality
