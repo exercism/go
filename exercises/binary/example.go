@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 // ParseBinary converts a binary string to an integer value
 func ParseBinary(bin string) (int, error) {
