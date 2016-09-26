@@ -125,3 +125,6 @@ directions being tried.  Your fresh ideas and contributions are welcome.  :spark
 The MIT License (MIT)
 
 Copyright (c) 2014 Katrina Owen, _@kytrinyx.com
+
+### Go icon
+The Go logo was designed by Renée French, and has been released under the Creative Commons 3.0 Attributions license.
