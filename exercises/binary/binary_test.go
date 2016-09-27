@@ -22,7 +22,7 @@ const targetTestVersion = 1
 var testCases = []struct {
 	binary   string
 	expected int
-	ok bool
+	ok       bool
 }{
 	{"1", 1, true},
 	{"10", 2, true},
