@@ -17,12 +17,12 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 var testCases = []struct {
 	binary   string
 	expected int
-	ok bool
+	ok       bool
 }{
 	{"1", 1, true},
 	{"10", 2, true},
@@ -39,10 +39,14 @@ var testCases = []struct {
 }
 
 func TestParseBinary(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, tt := range testCases {
 		actual, err := ParseBinary(tt.binary)
 		if tt.ok {
 			if err != nil {
+				var _ error = err
 				t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
 					tt.binary, err)
 			}
