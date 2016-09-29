@@ -5,7 +5,7 @@ import (
 )
 
 // testVersion shows the version of the exercise.
-const testVersion = 3
+const testVersion = 4
 
 type bracketKind int
 

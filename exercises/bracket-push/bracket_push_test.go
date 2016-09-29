@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 var testCases = []struct {
 	input    string
@@ -49,19 +49,20 @@ var testCases = []struct {
 }
 
 func TestBracket(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, tt := range testCases {
 		actual, err := Bracket(tt.input)
 		// We don't expect errors for any of the test cases
 		if err != nil {
+			var _ error = err
 			t.Fatalf("Bracket(%q) returned error %q.  Error not expected.", tt.input, err)
 		}
 		if actual != tt.expected {
 			t.Fatalf("Bracket(%q) was expected to return %v but returned %v.",
 				tt.input, tt.expected, actual)
 		}
-	}
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
