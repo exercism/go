@@ -4,6 +4,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 type testCase struct {
 	input     string
 	expected  string
@@ -20,18 +22,23 @@ var numberTests = []testCase{
 }
 
 func TestNumber(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, test := range numberTests {
 		actual, actualErr := Number(test.input)
-		if actual != test.expected {
-			t.Errorf("Number(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
-		}
-		// if we expect an error and there isn't one
-		if test.expectErr && actualErr == nil {
+		if !test.expectErr {
+			if actualErr != nil {
+				// if we don't expect an error and there is one
+				var _ error = actualErr
+				t.Errorf("Number(%s): expected no error, but error is: %s", test.input, actualErr)
+			}
+			if actual != test.expected {
+				t.Errorf("Number(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			}
+		} else if actualErr == nil {
+			// if we expect an error and there isn't one
 			t.Errorf("Number(%s): expected an error, but error is nil", test.input)
-		}
-		// if we don't expect an error and there is one
-		if !test.expectErr && actualErr != nil {
-			t.Errorf("Number(%s): expected no error, but error is: %s", test.input, actualErr)
 		}
 	}
 }
@@ -55,18 +62,23 @@ var areaCodeTests = []testCase{
 }
 
 func TestAreaCode(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, test := range areaCodeTests {
 		actual, actualErr := AreaCode(test.input)
-		if actual != test.expected {
-			t.Errorf("AreaCode(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
-		}
-		// if we expect an error and there isn't one
-		if test.expectErr && actualErr == nil {
+		if !test.expectErr {
+			if actual != test.expected {
+				t.Errorf("AreaCode(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			}
+			if actualErr != nil {
+				// if we don't expect an error and there is one
+				var _ error = actualErr
+				t.Errorf("AreaCode(%s): expected no error, but error is: %s", test.input, actualErr)
+			}
+		} else if actualErr == nil {
+			// if we expect an error and there isn't one
 			t.Errorf("AreaCode(%s): expected an error, but error is nil", test.input)
-		}
-		// if we don't expect an error and there is one
-		if !test.expectErr && actualErr != nil {
-			t.Errorf("AreaCode(%s): expected no error, but error is: %s", test.input, actualErr)
 		}
 	}
 }
@@ -90,18 +102,23 @@ var formatTests = []testCase{
 }
 
 func TestFormat(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, test := range formatTests {
 		actual, actualErr := Format(test.input)
-		if actual != test.expected {
-			t.Errorf("Format(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
-		}
-		// if we expect an error and there isn't one
-		if test.expectErr && actualErr == nil {
+		if !test.expectErr {
+			if actualErr != nil {
+				// if we don't expect an error and there is one
+				var _ error = actualErr
+				t.Errorf("Format(%s): expected no error, but error is: %s", test.input, actualErr)
+			}
+			if actual != test.expected {
+				t.Errorf("Format(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			}
+		} else if actualErr == nil {
+			// if we expect an error and there isn't one
 			t.Errorf("Format(%s): expected an error, but error is nil", test.input)
-		}
-		// if we don't expect an error and there is one
-		if !test.expectErr && actualErr != nil {
-			t.Errorf("Format(%s): expected no error, but error is: %s", test.input, actualErr)
 		}
 	}
 }
