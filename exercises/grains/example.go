@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+const testVersion = 1
+
 // Square returns the number of grains on a square on a chess board where the
 // first square has 1 and every subsequent square doubles the number.
 func Square(num int) (uint64, error) {

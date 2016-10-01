@@ -4,6 +4,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var squareTests = []struct {
 	input       int
 	expectedVal uint64
@@ -34,6 +36,7 @@ func TestSquare(t *testing.T) {
 		}
 		// if we don't expect an error and there is one
 		if !test.expectError && actualErr != nil {
+			var _ error = actualErr
 			t.Errorf("Square(%d) expected no error, but error is: %s", test.input, actualErr)
 		}
 	}
@@ -43,6 +46,12 @@ func TestTotal(t *testing.T) {
 	var expected uint64 = 18446744073709551615
 	if actual := Total(); actual != expected {
 		t.Errorf("Total() expected %d, Actual %d", expected, actual)
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
