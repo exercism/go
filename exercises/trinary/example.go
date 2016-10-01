@@ -5,6 +5,8 @@ import (
 	"math"
 )
 
+const testVersion = 1
+
 func ParseTrinary(s string) (int64, error) {
 	const third = math.MaxInt64 / 3
 	overflow := false

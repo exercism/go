@@ -2,6 +2,8 @@ package trinary
 
 import "testing"
 
+const targetTestVersion = 1
+
 var tests = []struct {
 	arg  string
 	want int64
@@ -18,10 +20,17 @@ var tests = []struct {
 	{"2021110011022210012102010021220101220222", 0, false},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestParseTrinary(t *testing.T) {
 	for _, test := range tests {
 		switch res, err := ParseTrinary(test.arg); {
 		case err != nil:
+			var _ error = err
 			if test.ok {
 				t.Errorf("ParseTrinary(%q) returned error %q, Error not expected",
 					test.arg, err)
