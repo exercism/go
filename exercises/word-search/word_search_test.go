@@ -10,7 +10,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 var words = []string{
 	"clojure", "ecmascript", "elixir", "go", "java", "lisp",
@@ -51,6 +51,7 @@ func TestSolve(t *testing.T) {
 	}
 	actual, err := Solve(words, puzzle)
 	if err != nil {
+		var _ error = err
 		t.Fatalf("Didn't expect error but got %v", err)
 	}
 	if !reflect.DeepEqual(actual, positions) {
