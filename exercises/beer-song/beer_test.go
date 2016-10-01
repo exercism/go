@@ -57,6 +57,7 @@ var verseTestCases = []struct {
 func TestBottlesVerse(t *testing.T) {
 	for _, tt := range verseTestCases {
 		actualVerse, err := Verse(tt.verse)
+		var _ error = err
 		if actualVerse != tt.expectedVerse {
 			t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expectedVerse, actualVerse)
 		}
@@ -90,6 +91,7 @@ func TestSeveralVerses(t *testing.T) {
 
 	for _, tt := range versesTestCases {
 		actualVerse, err := Verses(tt.upperBound, tt.lowerBound)
+		var _ error = err
 		if actualVerse != tt.expectedVerse {
 			t.Fatalf("Verses(%d, %d):\nexpected\n%s\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expectedVerse, actualVerse)
 		}
@@ -119,6 +121,7 @@ func BenchmarkSeveralVerses(b *testing.B) {
 
 func TestEntireSong(t *testing.T) {
 	expected, err := Verses(99, 0)
+	var _ error = err
 	if err != nil {
 		t.Fatalf("unexpected error calling Verses(99,0)")
 	}
