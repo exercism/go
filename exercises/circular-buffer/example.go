@@ -8,7 +8,7 @@ import (
 	"errors"
 )
 
-const testVersion = 3
+const testVersion = 4
 
 // Buffer implements a circular buffer supporting both overflow-checked writes
 // and unconditional, possibly overwriting, writes.
