@@ -15,7 +15,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 var _ func(io.Reader, io.Writer) error = Tally
 
@@ -140,6 +140,7 @@ func TestTallyError(t *testing.T) {
 		if err == nil {
 			t.Fatalf("Tally for input %q should have failed but didn't.", s)
 		}
+		var _ error = err
 	}
 }
 
