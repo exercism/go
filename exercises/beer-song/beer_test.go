@@ -96,21 +96,23 @@ func TestSeveralVerses(t *testing.T) {
 
 	for _, tt := range versesTestCases {
 		actualVerse, err := Verses(tt.upperBound, tt.lowerBound)
-		if actualVerse != tt.expectedVerse {
-			t.Fatalf("Verses(%d, %d):\nexpected\n%s\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expectedVerse, actualVerse)
-		}
-
 		if tt.expectErr {
+			// check if err is of error type
 			var _ error = err
-		}
 
-		// if we expect an error and there isn't one
-		if tt.expectErr && err == nil {
-			t.Errorf("Verses(%d, %d): expected an error, but error is nil", tt.upperBound, tt.lowerBound)
-		}
-		// if we don't expect an error and there is one
-		if !tt.expectErr && err != nil {
-			t.Errorf("Verses(%d, %d): expected no error, but error is: %s", tt.upperBound, tt.lowerBound, err)
+			// if we expect an error and there isn't one
+			if err == nil {
+				t.Errorf("Verses(%d, %d): expected an error, but error is nil", tt.upperBound, tt.lowerBound)
+			}
+		} else {
+			if actualVerse != tt.expectedVerse {
+				t.Fatalf("Verses(%d, %d):\nexpected\n%s\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expectedVerse, actualVerse)
+			}
+
+			// if we don't expect an error and there is one
+			if err != nil {
+				t.Errorf("Verses(%d, %d): expected no error, but error is: %s", tt.upperBound, tt.lowerBound, err)
+			}
 		}
 	}
 }
