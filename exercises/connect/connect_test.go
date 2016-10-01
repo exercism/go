@@ -15,7 +15,7 @@ func prepare(lines []string) []string {
 	return newLines
 }
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestResultOf(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -25,6 +25,7 @@ func TestResultOf(t *testing.T) {
 		actual, err := ResultOf(prepare(tt.board))
 		// We don't expect errors for any of the test cases
 		if err != nil {
+			var _ error = err
 			t.Fatalf("ResultOf for board %q returned error %q.  Error not expected.",
 				tt.description, err)
 		}
