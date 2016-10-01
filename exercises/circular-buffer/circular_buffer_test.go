@@ -19,7 +19,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -48,6 +48,7 @@ func nb(size int, t *testing.T) testBuffer {
 func (tb testBuffer) read(want byte) {
 	switch c, err := tb.b.ReadByte(); {
 	case err != nil:
+		var _ error = err
 		tb.Fatalf("ReadByte() failed unexpectedly: %v", err)
 	case c != want:
 		tb.Fatalf("ReadByte() = %c, want %c.", c, want)
@@ -56,23 +57,28 @@ func (tb testBuffer) read(want byte) {
 }
 
 func (tb testBuffer) readFail() {
-	if c, err := tb.b.ReadByte(); err == nil {
+	c, err := tb.b.ReadByte()
+	if err == nil {
 		tb.Fatalf("ReadByte() = %c, expected a failure", c)
 	}
+	var _ error = err
 	tb.Log("ReadByte() fails as expected")
 }
 
 func (tb testBuffer) write(c byte) {
 	if err := tb.b.WriteByte(c); err != nil {
+		var _ error = err
 		tb.Fatalf("WriteByte(%c) failed unexpectedly: %v", c, err)
 	}
 	tb.Logf("WriteByte(%c)", c)
 }
 
 func (tb testBuffer) writeFail(c byte) {
-	if err := tb.b.WriteByte(c); err == nil {
+	err := tb.b.WriteByte(c)
+	if err == nil {
 		tb.Fatalf("WriteByte(%c) succeeded, expected a failure", c)
 	}
+	var _ error = err
 	tb.Logf("WriteByte(%c) fails as expected", c)
 }
 
