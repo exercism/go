@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+const testVersion = 1
+
 // Song returns the full lyrics for 99 bottles of beer
 func Song() (result string) {
 	result, _ = Verses(99, 0)
