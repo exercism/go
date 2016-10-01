@@ -57,21 +57,23 @@ var verseTestCases = []struct {
 func TestBottlesVerse(t *testing.T) {
 	for _, tt := range verseTestCases {
 		actualVerse, err := Verse(tt.verse)
-		if actualVerse != tt.expectedVerse {
-			t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expectedVerse, actualVerse)
-		}
-
 		if tt.expectErr {
+			// check if err is of error type
 			var _ error = err
-		}
 
-		// if we expect an error and there isn't one
-		if tt.expectErr && err == nil {
-			t.Errorf("Verse(%d): expected an error, but error is nil", tt.verse)
-		}
-		// if we don't expect an error and there is one
-		if !tt.expectErr && err != nil {
-			t.Errorf("Verse(%d): expected no error, but error is: %s", tt.verse, err)
+			// if we expect an error and there isn't one
+			if err == nil {
+				t.Errorf("Verse(%d): expected an error, but error is nil", tt.verse)
+			}
+		} else {
+			if actualVerse != tt.expectedVerse {
+				t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expectedVerse, actualVerse)
+			}
+
+			// if we don't expect an error and there is one
+			if err != nil {
+				t.Errorf("Verse(%d): expected no error, but error is: %s", tt.verse, err)
+			}
 		}
 	}
 }
