@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 var successTestCases = []struct {
 	name     string
@@ -258,6 +258,7 @@ func TestFormatLedgerSuccess(t *testing.T) {
 		actual, err := FormatLedger(tt.currency, tt.locale, tt.entries)
 		// We don't expect errors for any of the test cases
 		if err != nil {
+			var _ error = err
 			t.Fatalf("FormatLedger for input named %q returned error %q. Error not expected.",
 				tt.name, err)
 		}
