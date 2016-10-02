@@ -14,6 +14,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 var testCases = []struct {
 	in      string
 	out     int64
