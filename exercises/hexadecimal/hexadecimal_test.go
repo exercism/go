@@ -56,8 +56,8 @@ func TestParseHex(t *testing.T) {
 
 			if !strings.Contains(strings.ToLower(err.Error()), test.errCase) {
 				t.Errorf(
-					"ParseHex(%q) returned error %q. Expected error %s.",
-					err, test.errCase)
+					"ParseHex(%q) returned error %q. Expected error containing '%s'.",
+					test.in, err, test.errCase)
 			}
 		} else {
 			if out != test.out {
