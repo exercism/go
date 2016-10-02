@@ -6,9 +6,11 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var allergiesTests = []struct {
 	expected []string
-	input    int
+	input    uint
 }{
 	{[]string{}, 0},
 	{[]string{"eggs"}, 1},
@@ -22,6 +24,9 @@ var allergiesTests = []struct {
 }
 
 func TestAllergies(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 	for _, test := range allergiesTests {
 		actual := Allergies(test.input)
 		sort.Strings(actual)
@@ -48,7 +53,7 @@ func BenchmarkAllergies(b *testing.B) {
 
 var allergicToTests = []struct {
 	expected bool
-	i        int
+	i        uint
 	allergen string
 }{
 	{false, 0, "peanuts"},
