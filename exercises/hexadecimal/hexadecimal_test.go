@@ -11,6 +11,7 @@
 package hexadecimal
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -42,18 +43,33 @@ var testCases = []struct {
 
 func TestParseHex(t *testing.T) {
 	for _, test := range testCases {
-		switch out, err := ParseHex(test.in); {
-		case err != nil:
-			if test.errCase == "none" {
+		out, err := ParseHex(test.in)
+		if test.errCase != "none" {
+			// check if err is of error type
+			var _ error = err
+
+			// we expect error
+			if err == nil {
+				t.Errorf("ParseHex(%q): expected an error, but error is nil",
+					test.in)
+			}
+
+			if !strings.Contains(strings.ToLower(err.Error()), test.errCase) {
+				t.Errorf(
+					"ParseHex(%q) returned error %q. Expected error %s.",
+					err, test.errCase)
+			}
+		} else {
+			if out != test.out {
+				t.Errorf("ParseHex(%q) = %d. Expected %d.",
+					test.in, out, test.out)
+			}
+
+			// we dont expect error
+			if err != nil {
 				t.Errorf("ParseHex(%q) returned error %q.  Error not expected.",
 					test.in, err)
 			}
-		case test.errCase != "none":
-			t.Errorf("ParseHex(%q) = %d, %v. Expected error.",
-				test.in, out, err)
-		case out != test.out:
-			t.Errorf("ParseHex(%q) = %d. Expected %d.",
-				test.in, out, test.out)
 		}
 	}
 }
