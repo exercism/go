@@ -1,9 +1,11 @@
 package secret
 
+const testVersion = 1
+
 var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 
 // Handshake returns sequence to perform corresponding to the given code.
-func Handshake(code int) (h []string) {
+func Handshake(code uint) (h []string) {
 	switch {
 	case code < 1:
 	case code&16 == 0:
