@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var validBoards = []string{
 	// zero size board
 	`
@@ -154,6 +156,7 @@ func TestValid(t *testing.T) {
 		b := clear(ref)
 		t.Log(b)
 		if err := b.Count(); err != nil {
+			var _ error = err
 			t.Fatalf("Count() returned %q, want nil.", err)
 		}
 		if res := b.String(); res != ref {
@@ -169,6 +172,12 @@ func TestBad(t *testing.T) {
 		if b.Count() == nil {
 			t.Fatal("Count() returned nil, want error.")
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
