@@ -54,6 +54,10 @@ before_script:
 # -cpu 2 is for our problems that involve concurrency to test that they
 # perform as expected on multiple cores.
 script:
+  - ./bin/test-without-stubs fmt
+  # go vet can't be run on Travis with 1.4.3
+  # this `go version | grep` can be removed once 1.4.3 is no longer tested.
+  - if ! go version | grep -q 1.4.3; then ./bin/test-without-stubs vet; fi
   - GOARCH=$TESTARCH RACE=$RACE ./bin/test-without-stubs
 
 # special cases for the build matrix are that go 1.4.3 can't be tested 32 bit
