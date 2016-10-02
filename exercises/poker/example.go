@@ -7,7 +7,7 @@ import (
 	"unicode/utf8"
 )
 
-const testVersion = 3
+const testVersion = 4
 
 const (
 	Jack  = 11
