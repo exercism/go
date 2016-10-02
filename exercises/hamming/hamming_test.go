@@ -4,10 +4,13 @@ import "testing"
 
 const targetTestVersion = 4
 
-func TestHamming(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
+}
+
+func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
 		switch got, err := Distance(tc.s1, tc.s2); {
 		case err != nil:
