@@ -13,17 +13,7 @@ func TestTestVersion(t *testing.T) {
 func TestLargestSeriesProduct(t *testing.T) {
 	for _, test := range tests {
 		p, err := LargestSeriesProduct(test.digits, test.span)
-		if !test.ok { // expect error
-			// check if err is of error type
-			var _ error = err
-
-			// we expect error
-			if err == nil {
-				t.Fatalf("LargestSeriesProduct(%s, %d) = %d, %v."+
-					"  Expected error got nil",
-					test.digits, test.span, p, err)
-			}
-		} else {
+		if test.ok {
 			// we do not expect error
 			if err != nil {
 				t.Fatalf("LargestSeriesProduct(%s, %d) returned error %q.  "+
@@ -34,6 +24,16 @@ func TestLargestSeriesProduct(t *testing.T) {
 			if int64(p) != test.product {
 				t.Fatalf("LargestSeriesProduct(%s, %d) = %d, want %d",
 					test.digits, test.span, p, test.product)
+			}
+		} else { // expect error
+			// check if err is of error type
+			var _ error = err
+
+			// we expect error
+			if err == nil {
+				t.Fatalf("LargestSeriesProduct(%s, %d) = %d, %v."+
+					"  Expected error got nil",
+					test.digits, test.span, p, err)
 			}
 		}
 	}
