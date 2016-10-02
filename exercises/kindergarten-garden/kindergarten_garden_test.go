@@ -128,15 +128,7 @@ RVGCCGCV`, append([]string{}, test6names...), true, []lookup{
 func TestGarden(t *testing.T) {
 	for _, test := range tests {
 		g, err := NewGarden(test.diagram, test.children)
-		if !test.ok { // negative tests; expecting error
-			// check err is of error type
-			var _ error = err
-
-			// we expect error
-			if err == nil {
-				t.Fatalf("NewGarden test %d. Expected error but got nil.", test.number)
-			}
-		} else {
+		if test.ok {
 			if err != nil {
 				t.Fatalf("NewGarden test %d returned error %q.  Error not expected.",
 					test.number, err)
@@ -151,6 +143,14 @@ func TestGarden(t *testing.T) {
 					t.Fatalf("Garden %d lookup %s = %v, want %v.",
 						test.number, l.child, plants, l.plants)
 				}
+			}
+		} else { // negative tests; expecting error
+			// check err is of error type
+			var _ error = err
+
+			// we expect error
+			if err == nil {
+				t.Fatalf("NewGarden test %d. Expected error but got nil.", test.number)
 			}
 		}
 	}
