@@ -4,6 +4,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var testCases = []struct {
 	input       string
 	expectedNum int64
@@ -19,19 +21,26 @@ var testCases = []struct {
 func TestParseOctal(t *testing.T) {
 	for _, test := range testCases {
 		actualNum, actualErr := ParseOctal(test.input)
-		if actualNum != test.expectedNum {
+		// check actualNum only if no error expected
+		if !test.expectErr && actualNum != test.expectedNum {
 			t.Fatalf("ParseOctal(%s): expected[%d], actual [%d]",
 				test.input, test.expectedNum, actualNum)
 		}
-
 		// if we expect an error and there isn't one
 		if test.expectErr && actualErr == nil {
 			t.Errorf("ParseOctal(%s): expected an error, but error is nil", test.input)
 		}
 		// if we don't expect an error and there is one
 		if !test.expectErr && actualErr != nil {
+			var _ error = actualErr
 			t.Errorf("ParseOctal(%s): expected no error, but error is: %s", test.input, actualErr)
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
