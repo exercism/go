@@ -2,7 +2,7 @@ package hamming
 
 import "testing"
 
-const targetTestVersion = 4
+const targetTestVersion = 5
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -12,19 +12,27 @@ func TestTestVersion(t *testing.T) {
 
 func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
-		switch got, err := Distance(tc.s1, tc.s2); {
-		case err != nil:
+		got, err := Distance(tc.s1, tc.s2)
+		if tc.want < 0 {
+			// check if err is of error type
 			var _ error = err
-			if tc.want >= 0 {
-				t.Fatalf("Distance(%q, %q) returned error: %v",
+
+			// we expect error
+			if err == nil {
+				t.Fatalf("Distance(%q, %q). error is nil.",
+					tc.s1, tc.s2)
+			}
+		} else {
+			if got != tc.want {
+				t.Fatalf("Distance(%q, %q) = %d, want %d.",
+					tc.s1, tc.s2, got, tc.want)
+			}
+
+			// we do not expect error
+			if err != nil {
+				t.Fatalf("Distance(%q, %q) returned error: %v when expecting none.",
 					tc.s1, tc.s2, err)
 			}
-		case tc.want < 0:
-			t.Fatalf("Distance(%q, %q) = %d.  Expected error.",
-				tc.s1, tc.s2, got)
-		case got != tc.want:
-			t.Fatalf("Distance(%q, %q) = %d, want %d.",
-				tc.s1, tc.s2, got, tc.want)
 		}
 	}
 }
