@@ -18,6 +18,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var tests = []struct {
 	in   string
 	ok   bool
@@ -145,6 +147,7 @@ func TestNew(t *testing.T) {
 		m, err := New(test.in)
 		switch {
 		case err != nil:
+			var _ error = err
 			if test.ok {
 				t.Fatalf("New(%q) returned error %q.  Error not expected",
 					test.in, err)
@@ -261,5 +264,11 @@ func TestSet(t *testing.T) {
 				t.Fatalf("Matrix(%q).Set(%d, %d, 0) = ok, want !ok", s, r, c)
 			}
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }

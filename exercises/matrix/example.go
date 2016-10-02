@@ -9,6 +9,8 @@ import (
 // Maintenance note:  This file exists as both matrix/example.go and
 // saddle-points/matrix_example.go.  When changing one file, copy to the other.
 
+const testVersion = 1
+
 type Matrix [][]int
 
 func New(s string) (*Matrix, error) {
