@@ -1,5 +1,7 @@
 package matrix
 
+const testVersion = 1
+
 type Pair struct{ r, c int }
 
 func (m *Matrix) Saddle() (p []Pair) {

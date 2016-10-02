@@ -8,6 +8,8 @@ package matrix
 
 import "testing"
 
+const targetTestVersion = 1
+
 var tests = []struct {
 	m  string
 	sp []Pair
@@ -22,6 +24,7 @@ func TestSaddle(t *testing.T) {
 	for _, test := range tests {
 		m, err := New(test.m)
 		if err != nil {
+			var _ error = err
 			t.Fatalf("TestSaddle needs working New.  "+
 				"New(%s) returned %s.  Error not expected.",
 				test.m, err)
@@ -46,6 +49,12 @@ exp:
 		return false
 	}
 	return true
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 }
 
 func BenchmarkSaddle(b *testing.B) {
