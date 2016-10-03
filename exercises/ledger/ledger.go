@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const testVersion = 3
+const testVersion = 4
 
 type Entry struct {
 	Date        string // "Y-m-d"
