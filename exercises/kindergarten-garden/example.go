@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+const testVersion = 1
+
 type Garden map[string][]string
 
 func (g *Garden) Plants(child string) ([]string, bool) {

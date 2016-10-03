@@ -24,6 +24,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 type lookup struct {
 	child  string
 	plants []string
@@ -120,24 +128,29 @@ RVGCCGCV`, append([]string{}, test6names...), true, []lookup{
 func TestGarden(t *testing.T) {
 	for _, test := range tests {
 		g, err := NewGarden(test.diagram, test.children)
-		switch {
-		case err != nil:
-			if test.ok {
+		if test.ok {
+			if err != nil {
 				t.Fatalf("NewGarden test %d returned error %q.  Error not expected.",
 					test.number, err)
 			}
-		case !test.ok:
-			t.Fatalf("NewGarden test %d error = %v.  Expected error.",
-				test.number, err)
-		}
-		for _, l := range test.lookups {
-			switch plants, ok := g.Plants(l.child); {
-			case ok != l.ok:
-				t.Fatalf("Garden %d lookup %s returned ok = %t, want %t.",
-					test.number, l.child, ok, l.ok)
-			case ok && !reflect.DeepEqual(plants, l.plants):
-				t.Fatalf("Garden %d lookup %s = %v, want %v.",
-					test.number, l.child, plants, l.plants)
+
+			for _, l := range test.lookups {
+				switch plants, ok := g.Plants(l.child); {
+				case ok != l.ok:
+					t.Fatalf("Garden %d lookup %s returned ok = %t, want %t.",
+						test.number, l.child, ok, l.ok)
+				case ok && !reflect.DeepEqual(plants, l.plants):
+					t.Fatalf("Garden %d lookup %s = %v, want %v.",
+						test.number, l.child, plants, l.plants)
+				}
+			}
+		} else { // negative tests; expecting error
+			// check err is of error type
+			var _ error = err
+
+			// we expect error
+			if err == nil {
+				t.Fatalf("NewGarden test %d. Expected error but got nil.", test.number)
 			}
 		}
 	}
