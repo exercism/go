@@ -12,7 +12,7 @@ import "testing"
 // Step 2 introduces a "room."  It seems a small addition, but we'll make
 // big changes to clarify the rolls of "room", "robot", and "test program"
 // and begin to clarify the physics of the simulation.  You will define Room
-// and Robot as functions which the test program "brings into existance" by
+// and Robot as functions which the test program "brings into existence" by
 // launching them as goroutines.  Information moves between test program,
 // robot, and room over Go channels.
 //
@@ -21,7 +21,7 @@ import "testing"
 // coordinate space of the room, the location of the robot and the walls,
 // and ensure for example that the robot doesn't walk through walls.
 // We want Robot to be an agent that performs actions, but we want Room to
-// maintain a coherrent truth.
+// maintain a coherent truth.
 //
 // Step 2 API:
 //

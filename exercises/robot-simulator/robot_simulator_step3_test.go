@@ -19,7 +19,7 @@ import "testing"
 // Again, you define Action3.
 //
 // For the final position report sent from Room3, you can return the same slice
-// recieved from the robots channel, just with updated positions and directions.
+// received from the robots channel, just with updated positions and directions.
 //
 // Messages must be sent on the log channel for
 // *  A robot without a name
