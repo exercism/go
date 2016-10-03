@@ -10,7 +10,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 var validTestCases = []struct {
 	name  string
@@ -282,12 +282,10 @@ var invalidTestCases = []struct {
 }
 
 func TestBestHandValid(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 	for _, tt := range validTestCases {
 		actual, err := BestHand(tt.hands)
 		if err != nil {
+			var _ error = err
 			t.Fatalf("Got unexpected error in valid case %q: %v", tt.name, err)
 		}
 		if !reflect.DeepEqual(actual, tt.best) {
@@ -303,6 +301,12 @@ func TestBestHandInvalid(t *testing.T) {
 		if err == nil {
 			t.Fatalf("Did not get an error for invalid case %q", tt.name)
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 
