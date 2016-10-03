@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-const testVersion = 3
+const testVersion = 4
 
 type Record struct {
 	ID, Parent int
