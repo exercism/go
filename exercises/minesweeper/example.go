@@ -5,6 +5,8 @@ import (
 	"errors"
 )
 
+const testVersion = 1
+
 func (b Board) Count() error {
 	if len(b) < 2 {
 		return errors.New("need top and bottom border")
