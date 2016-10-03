@@ -2,27 +2,39 @@ package lsproduct
 
 import "testing"
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
-func TestLargestSeriesProduct(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestLargestSeriesProduct(t *testing.T) {
 	for _, test := range tests {
 		p, err := LargestSeriesProduct(test.digits, test.span)
-		switch {
-		case err != nil:
-			if test.ok {
+		if test.ok {
+			// we do not expect error
+			if err != nil {
 				t.Fatalf("LargestSeriesProduct(%s, %d) returned error %q.  "+
 					"Error not expected.",
 					test.digits, test.span, err)
 			}
-		case !test.ok:
-			t.Fatalf("LargestSeriesProduct(%s, %d) = %d, %v.  Expected error",
-				test.digits, test.span, p, err)
-		case int64(p) != test.product:
-			t.Fatalf("LargestSeriesProduct(%s, %d) = %d, want %d",
-				test.digits, test.span, p, test.product)
+
+			if int64(p) != test.product {
+				t.Fatalf("LargestSeriesProduct(%s, %d) = %d, want %d",
+					test.digits, test.span, p, test.product)
+			}
+		} else { // expect error
+			// check if err is of error type
+			var _ error = err
+
+			// we expect error
+			if err == nil {
+				t.Fatalf("LargestSeriesProduct(%s, %d) = %d, %v."+
+					"  Expected error got nil",
+					test.digits, test.span, p, err)
+			}
 		}
 	}
 }
