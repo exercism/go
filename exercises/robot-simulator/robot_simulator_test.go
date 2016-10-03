@@ -25,7 +25,13 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 2
+
 func TestStep1(t *testing.T) {
+
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 	want := func(x, y int, dir Dir) {
 		_, _, line, _ := runtime.Caller(1)
 		if X != x || Y != y {
