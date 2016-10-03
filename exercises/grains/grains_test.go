@@ -26,7 +26,9 @@ var squareTests = []struct {
 func TestSquare(t *testing.T) {
 	for _, test := range squareTests {
 		actualVal, actualErr := Square(test.input)
-		if actualVal != test.expectedVal {
+
+		// check actualVal only if no error expected
+		if !test.expectError && actualVal != test.expectedVal {
 			t.Errorf("Square(%d) expected %d, Actual %d", test.input, test.expectedVal, actualVal)
 		}
 
