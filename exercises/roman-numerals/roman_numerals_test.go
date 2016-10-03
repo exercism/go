@@ -2,7 +2,7 @@ package romannumerals
 
 import "testing"
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestRomanNumerals(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -21,10 +21,11 @@ func TestRomanNumerals(t *testing.T) {
 			continue
 		}
 		if err != nil && !test.hasError {
+			var _ error = err
 			t.Errorf("ToRomanNumeral(%d) should not return an error.", test.arabic)
 			continue
 		}
-		if actual != test.roman {
+		if !test.hasError && actual != test.roman {
 			t.Errorf("ToRomanNumeral(%d): %s, expected %s", test.arabic, actual, test.roman)
 		}
 	}
