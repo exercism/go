@@ -3,7 +3,7 @@ package robot
 import "fmt"
 
 // ======= Step 1
-
+const testVersion = 2
 const (
 	N Dir = iota
 	E
@@ -29,33 +29,33 @@ func Advance() {
 
 type Action byte
 
-func Robot(cmd chan Command, act chan Action) {
+func StartRobot(cmd chan Command, act chan Action) {
 	for c := range cmd {
 		act <- Action(c)
 	}
 	close(act)
 }
 
-func Room(extent Rect, place DirAt, act chan Action, report chan DirAt) {
+func Room(extent Rect, robot Step2Robot, act chan Action, report chan Step2Robot) {
 	for a := range act {
 		switch a {
 		case 'R':
-			place.Dir = (place.Dir + 1) % 4
+			robot.Dir = (robot.Dir + 1) % 4
 		case 'L':
-			place.Dir = (place.Dir + 3) % 4
+			robot.Dir = (robot.Dir + 3) % 4
 		case 'A':
-			np := place.Pos
-			if place.Dir&1 == 1 {
-				np.Easting += 1 - RU(place.Dir&2)
+			np := robot.Pos
+			if robot.Dir&1 == 1 {
+				np.Easting += 1 - RU(robot.Dir&2)
 			} else {
-				np.Northing += 1 - RU(place.Dir&2)
+				np.Northing += 1 - RU(robot.Dir&2)
 			}
 			if in(np, extent) {
-				place.Pos = np
+				robot.Pos = np
 			}
 		}
 	}
-	report <- place
+	report <- robot
 }
 
 func in(p Pos, ext Rect) bool {
@@ -72,14 +72,14 @@ type Action3 struct {
 
 const beep = 7 // robots beep to communicate that they are done
 
-func Robot3(name, script string, act chan Action3, log chan string) {
+func StartRobot3(name, script string, act chan Action3, log chan string) {
 	for i := 0; i < len(script); i++ {
 		act <- Action3{name, script[i]}
 	}
 	act <- Action3{name, beep}
 }
 
-func Room3(extent Rect, robots []Place, act chan Action3, rep chan []Place, log chan string) {
+func Room3(extent Rect, robots []Step3Robot, act chan Action3, rep chan []Step3Robot, log chan string) {
 	// The function has multiple returns.  No matter what, rep <- is how we
 	// communicate to the test program that the room is terminating.
 	defer func() { rep <- robots }()
@@ -96,15 +96,15 @@ func Room3(extent Rect, robots []Place, act chan Action3, rep chan []Place, log 
 		}
 		nx[r.Name] = x
 
-		if !in(r.DirAt.Pos, extent) {
+		if !in(r.Step2Robot.Pos, extent) {
 			log <- "Robot placed outside room"
 			return
 		}
-		if _, ok := px[r.DirAt.Pos]; ok {
+		if _, ok := px[r.Step2Robot.Pos]; ok {
 			log <- "Position occupied"
 			return
 		}
-		px[r.DirAt.Pos] = x
+		px[r.Step2Robot.Pos] = x
 	}
 	done := 0
 	for a := range act {
@@ -113,7 +113,7 @@ func Room3(extent Rect, robots []Place, act chan Action3, rep chan []Place, log 
 			log <- "Action by unknown robot"
 			return
 		}
-		da := &robots[x].DirAt
+		da := &robots[x].Step2Robot
 		switch a.action {
 		case 'R':
 			da.Dir = (da.Dir + 1) % 4
