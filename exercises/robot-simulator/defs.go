@@ -4,10 +4,10 @@ import "fmt"
 
 // definitions used in step 1
 
-var (
+var Step1Robot struct {
 	X, Y   int
-	Facing Dir
-)
+	Dir
+}
 
 type Dir int
 
