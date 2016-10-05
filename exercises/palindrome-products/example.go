@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+const testVersion = 1
+
 func isPal(x int) bool {
 	s := strconv.Itoa(x)
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {

@@ -7,6 +7,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 // API to impliment:
 // type Product struct {
 // 	Product int // palindromic, of course
@@ -66,6 +74,8 @@ func TestPalindromeProducts(t *testing.T) {
 			test.fmin, test.fmax)
 		// test
 		pmin, pmax, err := Products(test.fmin, test.fmax)
+		// we check if err is of error type
+		var _ error = err
 		switch {
 		case err == nil:
 			if test.errPrefix > "" {
