@@ -6,6 +6,8 @@ import (
 	"unicode"
 )
 
+const testVersion = 1
+
 // Number takes in a potential phone number string and returns the number
 // without any formatting if it's valid.
 //
