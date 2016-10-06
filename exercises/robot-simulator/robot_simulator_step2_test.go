@@ -25,8 +25,8 @@ import "testing"
 //
 // Step 2 API:
 //
-// Robot(chan Command, chan Action)
-// Room(extent Rect, place DirAt, act chan Action, rep chan DirAt)
+// StartRobot(chan Command, chan Action)
+// Room(extent Rect, robot Step2Robot, act chan Action, rep chan Step2Robot)
 //
 // You get to define Action; see defs.go for other definitions.
 //

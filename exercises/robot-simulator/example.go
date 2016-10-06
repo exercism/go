@@ -3,7 +3,7 @@ package robot
 import "fmt"
 
 // ======= Step 1
-const testVersion = 2
+const testVersion = 3
 const (
 	N Dir = iota
 	E
@@ -15,13 +15,13 @@ func (d Dir) String() string {
 	return "NESW"[d : d+1]
 }
 
-func Right() { Facing = (Facing + 1) % 4 }
-func Left()  { Facing = (Facing + 3) % 4 }
+func Right() { Step1Robot.Dir = (Step1Robot.Dir + 1) % 4 }
+func Left()  { Step1Robot.Dir = (Step1Robot.Dir + 3) % 4 }
 func Advance() {
-	if Facing&1 == 1 {
-		X += 1 - int(Facing&2)
+	if Step1Robot.Dir&1 == 1 {
+		Step1Robot.X += 1 - int(Step1Robot.Dir&2)
 	} else {
-		Y += 1 - int(Facing&2)
+		Step1Robot.Y += 1 - int(Step1Robot.Dir&2)
 	}
 }
 

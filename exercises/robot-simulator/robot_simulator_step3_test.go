@@ -12,13 +12,12 @@ import "testing"
 //
 // Step 3 API:
 //
-//    Robot3(name, script string, action chan Action3, log chan string)
-//    Room3(extent Rect, robots []Place,
-//       action chan Action3, report chan []Place, log chan string)
+//    StartRobot3(name, script string, action chan Action3, log chan string)
+//    Room3(extent Rect, robots []Step3Robot, action chan Action3, report chan []Step3Robot, log chan string)
 //
 // Again, you define Action3.
 //
-// For the final position report sent from Room3, you can return the same slice
+// For the final position report sent from StartRobot3, you can return the same slice
 // received from the robots channel, just with updated positions and directions.
 //
 // Messages must be sent on the log channel for

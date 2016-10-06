@@ -25,7 +25,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestStep1(t *testing.T) {
 
@@ -34,13 +34,13 @@ func TestStep1(t *testing.T) {
 	}
 	want := func(x, y int, dir Dir) {
 		_, _, line, _ := runtime.Caller(1)
-		if X != x || Y != y {
+		if Step1Robot.X != x || Step1Robot.Y != y {
 			t.Fatalf("(from line %d) robot at = %d, %d.  Want %d, %d.",
-				line, X, Y, x, y)
+				line, Step1Robot.X, Step1Robot.Y, x, y)
 		}
-		if Facing != dir {
+		if Step1Robot.Dir != dir {
 			t.Fatalf("(from line %d) robot facing %v, want %v.",
-				line, Facing, dir)
+				line, Step1Robot.Dir, dir)
 		}
 	}
 	want(0, 0, N)
