@@ -2,6 +2,8 @@ package dna
 
 import "testing"
 
+const targetTestVersion = 1
+
 func (h Histogram) Equal(o Histogram) bool {
 	return h.sameLength(o) && h.sameMappings(o)
 }
@@ -45,10 +47,14 @@ func TestHasErrorForInvalidNucleotides(t *testing.T) {
 	dna := DNA("GATTACA")
 	count, err := dna.Count('X')
 	if count != 0 {
-		t.Fatalf("Got \"%v\", expected \"%v\"", count, 0)
+		var _ error = err
+		if err == nil {
+			t.Fatalf("Got \"%v\", expected \"%v\". error is nil", count, 0)
+		}
+		t.Fatalf("Got \"%v\", expected \"%v\".", count, 0)
 	}
-	if err == nil {
-		t.Fatalf("X is an invalid nucleotide, but no error was raised")
+	if err != nil {
+		t.Fatalf("Raised error %v when expecting none", err)
 	}
 }
 
@@ -58,9 +64,16 @@ func TestHasErrorForInvalidNucleotides(t *testing.T) {
 func TestCountingDoesntChangeCount(t *testing.T) {
 	dna := DNA("CGATTGGG")
 	dna.Count('T')
-	count, _ := dna.Count('T')
+	count, err := dna.Count('T')
 	if count != 2 {
-		t.Fatalf("Got \"%v\", expected \"%v\"", count, 2)
+		var _ error = err
+		if err == nil {
+			t.Fatalf("Got \"%v\", expected \"%v\". error is nil", count, 2)
+		}
+		t.Fatalf("Got \"%v\", expected \"%v\".", count, 2)
+	}
+	if err != nil {
+		t.Fatalf("Raised error %v when expecting none", err)
 	}
 }
 

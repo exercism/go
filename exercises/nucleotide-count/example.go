@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const testVersion = 1
+
 type Histogram map[byte]int
 
 type DNA string
