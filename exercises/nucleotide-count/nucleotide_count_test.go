@@ -22,6 +22,22 @@ func (h Histogram) sameMappings(o Histogram) (res bool) {
 	return
 }
 
+func assertError(count, expected int, err error, t *testing.T) {
+	var _ error = err
+	if err == nil {
+		t.Fatalf("Got \"%v\", expected \"%v\". error is nil", count, expected)
+	}
+}
+
+func assertResult(count, expected int, err error, t *testing.T) {
+	if err != nil {
+		t.Fatalf("Raised error %v when expecting none", err)
+	}
+	if count != expected {
+		t.Fatalf("Got \"%v\", expected \"%v\".", count, expected)
+	}
+}
+
 var tallyTests = []struct {
 	strand     string
 	nucleotide byte
@@ -36,26 +52,15 @@ var tallyTests = []struct {
 func TestNucleotideCounts(t *testing.T) {
 	for _, tt := range tallyTests {
 		dna := DNA(tt.strand)
-		count, _ := dna.Count(tt.nucleotide)
-		if count != tt.expected {
-			t.Fatalf("Got \"%v\", expected \"%v\"", count, tt.expected)
-		}
+		count, err := dna.Count(tt.nucleotide)
+		assertResult(count, tt.expected, err, t)
 	}
 }
 
 func TestHasErrorForInvalidNucleotides(t *testing.T) {
 	dna := DNA("GATTACA")
 	count, err := dna.Count('X')
-	if count != 0 {
-		var _ error = err
-		if err == nil {
-			t.Fatalf("Got \"%v\", expected \"%v\". error is nil", count, 0)
-		}
-		t.Fatalf("Got \"%v\", expected \"%v\".", count, 0)
-	}
-	if err != nil {
-		t.Fatalf("Raised error %v when expecting none", err)
-	}
+	assertError(count, 0, err, t)
 }
 
 // In most cases, this test is pointless.
@@ -65,16 +70,7 @@ func TestCountingDoesntChangeCount(t *testing.T) {
 	dna := DNA("CGATTGGG")
 	dna.Count('T')
 	count, err := dna.Count('T')
-	if count != 2 {
-		var _ error = err
-		if err == nil {
-			t.Fatalf("Got \"%v\", expected \"%v\". error is nil", count, 2)
-		}
-		t.Fatalf("Got \"%v\", expected \"%v\".", count, 2)
-	}
-	if err != nil {
-		t.Fatalf("Raised error %v when expecting none", err)
-	}
+	assertResult(count, 2, err, t)
 }
 
 type histogramTest struct {
