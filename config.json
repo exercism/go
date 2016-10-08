@@ -73,6 +73,11 @@
     },
     {
       "difficulty": 1,
+      "slug": "twelve-days",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
       "slug": "difference-of-squares",
       "topics": []
     },
