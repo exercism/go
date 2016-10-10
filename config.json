@@ -168,6 +168,11 @@
     },
     {
       "difficulty": 1,
+      "slug": "protein-translation",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
       "slug": "bracket-push",
       "topics": []
     },
