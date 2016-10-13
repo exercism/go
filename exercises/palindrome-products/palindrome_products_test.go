@@ -9,20 +9,15 @@ import (
 
 const targetTestVersion = 1
 
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
+/* API to implement:
 
-// API to impliment:
-// type Product struct {
-// 	Product int // palindromic, of course
-// 	// list of all possible two-factor factorizations of Product, within
-// 	// given limits, in order
-// 	Factorizations [][2]int
-// }
-// func Products(fmin, fmax int) (pmin, pmax Product, error)
+type Product struct {
+	Product int // palindromic, of course
+	Factorizations [][2]int //list of all possible two-factor factorizations of Product, within given limits, in order
+ }
+
+ func Products(fmin, fmax int) (pmin, pmax Product, error)
+*/
 
 var testData = []struct {
 	// input to Products(): range limits for factors of the palindrome
@@ -45,29 +40,44 @@ var testData = []struct {
 		""},
 	{4, 10, Product{}, Product{}, "No palindromes"},
 	{10, 4, Product{}, Product{}, "fmin > fmax"},
-	/* bonus curiosities.  (can a negative number be a palindrome?
-	// most say no
-	{-99, -10, Product{}, Product{}, "Negative limits"},
-	// but you can still get non-negative products from negative factors.
+}
+
+// Bonus curiosities. Can a negative number be a palindrome? Most say no.
+var bonusData = []struct {
+	fmin, fmax int
+	pmin, pmax Product
+	errPrefix  string
+}{
+	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
+
+	/* Here you can test that you can reach the limit of the largest palindrome made of two 2-digit numbers.
+	{-99, -10, Product{}, Product{}, "Negative limits"}, */
+
+	// You can still get non-negative products from negative factors.
 	{-99, -10,
 		Product{121, [][2]int{{-11, -11}}},
 		Product{9009, [][2]int{{-99, -91}}},
 		""},
+
+	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
+
+	/*In case you reverse the *digits* you could have the following cases:
+	- the zero has to be considered
 	{-2, 2,
 		Product{0, [][2]int{{-2, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
-		""},
-	// or you could reverse the *digits*, keeping the minus sign in place.
+		""}, */
+
+	// - you can keep the minus sign in place
 	{-2, 2,
 		Product{-4, [][2]int{{-2, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-	{
-	{0, (^uint(0))>>1, Product{}, Product{}, "This one's gonna overflow"},
-	*/
 }
 
 func TestPalindromeProducts(t *testing.T) {
+	// Uncomment the following line to add the bonus test to the default tests
+	// testData = append(testData, bonusData...)
 	for _, test := range testData {
 		// common preamble for test failures
 		ret := fmt.Sprintf("Products(%d, %d) returned",
@@ -96,6 +106,12 @@ func TestPalindromeProducts(t *testing.T) {
 		}
 		matchProd("pmin", pmin, test.pmin)
 		matchProd("pmax", pmax, test.pmax)
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
