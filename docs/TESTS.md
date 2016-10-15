@@ -38,7 +38,7 @@ Your first goal it to get something to compile, even though it fails tests.  For
 
 ### Fixing
 
-Tests will often stop at the first error.  Fix that one, repeat until no errors.  `go test` has useful options.  `go test -v` will give more verbose output. `go test -run <regexp>` will run just tests with names that match <regexp>.
+Tests will often stop at the first error.  Fix that one, repeat until no errors.  `go test` has useful options.  `go test -v` will give more verbose output. `go test -run <regexp>` will run just tests with names that match `<regexp>`.
 
 Panics produce lots of output.  It might seem scary at first, but be brave.  Look at the very top of the panic output for the panic message.  That should give a general description of the problem.  Then read through the rest of it looking for the first reference to your code.  That will often point right to the problem.
 
