@@ -19,8 +19,13 @@ for dir in exercises/*; do
   fi
 done
 
+root=$(pwd)
+
 cleanup () {
   echo "moving stub files back"
+  # the cd for go fmt or go vet could leave us in an unexpected place.
+  # cd to a known place.
+  cd "$root"
 
   # could use `rename` here, but it's not uniform among platforms.
   # some renames take two arguments while others take a single regex.
@@ -32,6 +37,30 @@ cleanup () {
 }
 
 trap cleanup EXIT INT TERM
+
+if [ "$1" = "fmt" ]; then
+  for dir in exercises/*; do
+    cd $dir
+    if [ -n "$(go fmt)" ]; then
+      echo "please run 'go fmt' on $dir" >&2
+      exit 1
+    fi
+    cd "$root"
+  done
+  exit 0
+fi
+
+if [ "$1" = "vet" ]; then
+  for dir in exercises/*; do
+    cd $dir
+    if ! go vet; then
+      echo "please follow the 'go vet' suggestions in $dir" >&2
+      exit 1
+    fi
+    cd "$root"
+  done
+  exit 0
+fi
 
 # This is the last command in the file,
 # so the exit status of this script is the exit status of go test.

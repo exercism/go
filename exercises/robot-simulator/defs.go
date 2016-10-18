@@ -5,7 +5,7 @@ import "fmt"
 // definitions used in step 1
 
 var Step1Robot struct {
-	X, Y   int
+	X, Y int
 	Dir
 }
 

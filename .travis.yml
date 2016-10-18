@@ -54,7 +54,9 @@ before_script:
 # -cpu 2 is for our problems that involve concurrency to test that they
 # perform as expected on multiple cores.
 script:
-  - GOARCH=$TESTARCH RACE=$RACE ./bin/test-without-stubs
+  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
+  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
+  - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
 
 # special cases for the build matrix are that go 1.4.3 can't be tested 32 bit
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
@@ -63,6 +65,10 @@ matrix:
   exclude:
     - go: 1.4.3
       env: TESTARCH=386
+  include:
+    # Keep this in sync with the latest version.
+    - go: 1.7
+      env: STATIC_CHECKERS=1
   allow_failures:
     - go: tip
     - go: 1.4.3
