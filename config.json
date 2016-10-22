@@ -3,81 +3,6 @@
   "language": "Go",
   "repository": "https://github.com/exercism/xgo",
   "active": true,
-  "problems": [
-    "hello-world",
-    "leap",
-    "clock",
-    "gigasecond",
-    "hamming",
-    "raindrops",
-    "acronym",
-    "bob",
-    "triangle",
-    "difference-of-squares",
-    "secret-handshake",
-    "food-chain",
-    "house",
-    "pascals-triangle",
-    "series",
-    "queen-attack",
-    "grains",
-    "etl",
-    "scrabble-score",
-    "parallel-letter-frequency",
-    "sum-of-multiples",
-    "pythagorean-triplet",
-    "bank-account",
-    "crypto-square",
-    "luhn",
-    "largest-series-product",
-    "sieve",
-    "palindrome-products",
-    "bracket-push",
-    "anagram",
-    "word-count",
-    "binary",
-    "allergies",
-    "rna-transcription",
-    "roman-numerals",
-    "say",
-    "circular-buffer",
-    "robot-name",
-    "react",
-    "custom-set",
-    "atbash-cipher",
-    "phone-number",
-    "strain",
-    "pig-latin",
-    "prime-factors",
-    "nth-prime",
-    "diffie-hellman",
-    "octal",
-    "beer-song",
-    "ocr-numbers",
-    "wordy",
-    "nucleotide-count",
-    "grade-school",
-    "matrix",
-    "saddle-points",
-    "trinary",
-    "hexadecimal",
-    "meetup",
-    "binary-search",
-    "binary-search-tree",
-    "tree-building",
-    "kindergarten-garden",
-    "simple-cipher",
-    "paasio",
-    "pov",
-    "minesweeper",
-    "robot-simulator",
-    "tournament",
-    "word-search",
-    "connect",
-    "ledger",
-    "poker",
-    "variable-length-quantity"
-  ],
   "deprecated": [
     "accumulate",
     "bottles",
@@ -94,5 +19,372 @@
     "space-age",
     "linked-list",
     "simple-linked-list"
+  ],
+  "exercises": [
+    {
+      "difficulty": 1,
+      "slug": "hello-world",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "leap",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "clock",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "gigasecond",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "hamming",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "raindrops",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "acronym",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "bob",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "triangle",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "difference-of-squares",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "secret-handshake",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "food-chain",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "house",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "pascals-triangle",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "series",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "queen-attack",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "grains",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "etl",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "scrabble-score",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "parallel-letter-frequency",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "sum-of-multiples",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "pythagorean-triplet",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "bank-account",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "crypto-square",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "luhn",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "largest-series-product",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "sieve",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "palindrome-products",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "bracket-push",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "anagram",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "word-count",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "binary",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "allergies",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "rna-transcription",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "roman-numerals",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "say",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "circular-buffer",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "robot-name",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "react",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "custom-set",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "atbash-cipher",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "phone-number",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "strain",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "pig-latin",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "prime-factors",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "nth-prime",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "diffie-hellman",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "octal",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "beer-song",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "ocr-numbers",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "wordy",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "nucleotide-count",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "grade-school",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "matrix",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "saddle-points",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "trinary",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "hexadecimal",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "meetup",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "binary-search",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "binary-search-tree",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "tree-building",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "kindergarten-garden",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "simple-cipher",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "paasio",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "pov",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "minesweeper",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "robot-simulator",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "tournament",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "word-search",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "connect",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "ledger",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "poker",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "variable-length-quantity",
+      "topics": []
+    }
   ]
 }
