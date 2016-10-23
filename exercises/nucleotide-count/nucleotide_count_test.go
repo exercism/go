@@ -34,8 +34,9 @@ var tallyTests = []struct {
 func TestNucleotideCounts(t *testing.T) {
 	for _, tt := range tallyTests {
 		dna := DNA(tt.strand)
-		count, _ := dna.Count(tt.nucleotide)
-		if count != tt.expected {
+		if count, err := dna.Count(tt.nucleotide); err != nil {
+			t.Fatal(err)
+		} else if count != tt.expected {
 			t.Fatalf("Got \"%v\", expected \"%v\"", count, tt.expected)
 		}
 	}
@@ -43,11 +44,7 @@ func TestNucleotideCounts(t *testing.T) {
 
 func TestHasErrorForInvalidNucleotides(t *testing.T) {
 	dna := DNA("GATTACA")
-	count, err := dna.Count('X')
-	if count != 0 {
-		t.Fatalf("Got \"%v\", expected \"%v\"", count, 0)
-	}
-	if err == nil {
+	if _, err := dna.Count('X'); err == nil {
 		t.Fatalf("X is an invalid nucleotide, but no error was raised")
 	}
 }
@@ -58,9 +55,16 @@ func TestHasErrorForInvalidNucleotides(t *testing.T) {
 func TestCountingDoesntChangeCount(t *testing.T) {
 	dna := DNA("CGATTGGG")
 	dna.Count('T')
-	count, _ := dna.Count('T')
-	if count != 2 {
-		t.Fatalf("Got \"%v\", expected \"%v\"", count, 2)
+	count1, err := dna.Count('T')
+	if err != nil {
+		t.Fatal(err)
+	}
+	count2, err := dna.Count('T')
+	if err != nil {
+		t.Fatal(err)
+	}
+	if count1 != count2 || count2 != 2 {
+		t.Fatalf("Got %v, expected %v", []int{count1, count2}, []int{2, 2})
 	}
 }
 
@@ -104,5 +108,13 @@ func BenchmarkSequenceHistograms(b *testing.B) {
 
 			b.StopTimer()
 		}
+	}
+}
+
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
