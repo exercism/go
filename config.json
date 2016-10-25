@@ -213,6 +213,11 @@
     },
     {
       "difficulty": 1,
+      "slug": "diamond",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
       "slug": "react",
       "topics": []
     },
