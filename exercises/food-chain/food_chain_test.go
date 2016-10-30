@@ -1,6 +1,7 @@
 package foodchain
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -67,24 +68,48 @@ I don't know why she swallowed the fly. Perhaps she'll die.`,
 She's dead, of course!`,
 }
 
+// diff compares two multi-line strings and returns a helpful comment
+func diff(got, want string) string {
+	g := strings.Split(got, "\n")
+	w := strings.Split(want, "\n")
+	for i := 0; ; i++ {
+		switch {
+		case i < len(g) && i < len(w):
+			if g[i] == w[i] {
+				continue
+			}
+			return fmt.Sprintf("-- first difference in line %d:\n"+
+				"-- got : %q\n-- want: %q\n", i+1, g[i], w[i])
+		case i < len(g):
+			return fmt.Sprintf("-- got %d extra lines after line %d:\n"+
+				"-- first extra line: %q\n", len(g)-len(w), i, g[i])
+		case i < len(w):
+			return fmt.Sprintf("-- got %d correct lines, want %d more lines:\n"+
+				"-- want next: %q\n", i, len(w)-i, w[i])
+		default:
+			return "no differences found"
+		}
+	}
+}
+
 func TestVerse(t *testing.T) {
 	for v := 1; v <= 8; v++ {
 		if ret := Verse(v); ret != ref[v] {
-			t.Fatalf("Verse(%d) =\n%s\n  want:\n%s", v, ret, ref[v])
+			t.Fatalf("Verse(%d) =\n%s\n  want:\n%s\n%s", v, ret, ref[v], diff(ret, ref[v]))
 		}
 	}
 }
 
 func TestVerses(t *testing.T) {
 	if ret, want := Verses(1, 2), ref[1]+"\n\n"+ref[2]; ret != want {
-		t.Fatalf("Verses(1, 2) =\n%s\n  want:\n%s", ret, want)
+		t.Fatalf("Verses(1, 2) =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
 	}
 
 }
 
 func TestSong(t *testing.T) {
 	if ret, want := Song(), strings.Join(ref[1:], "\n\n"); ret != want {
-		t.Fatalf("Song() =\n%s\n  want:\n%s", ret, want)
+		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
 	}
 }
 
