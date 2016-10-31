@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -101,10 +101,9 @@ func TestVerse(t *testing.T) {
 }
 
 func TestVerses(t *testing.T) {
-	if ret, want := Verses(1, 2), ref[1]+"\n\n"+ref[2]; ret != want {
-		t.Fatalf("Verses(1, 2) =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
+	if ret, want := Verses(1, 3), strings.Join(ref[1:4], "\n\n"); ret != want {
+		t.Fatalf("Verses(1, 3) =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
 	}
-
 }
 
 func TestSong(t *testing.T) {
