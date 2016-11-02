@@ -55,27 +55,41 @@ func TestCountingDoesntChangeCount(t *testing.T) {
 type histogramTest struct {
 	strand   DNA
 	expected Histogram
+	err      bool
 }
 
 var histogramTests = []histogramTest{
 	{
 		"",
 		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 0},
+		false,
 	},
 	{
 		"GGGGGGGG",
 		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 8},
+		false,
 	},
 	{
 		"AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
 		Histogram{'A': 20, 'C': 12, 'T': 21, 'G': 17},
+		false,
+	},
+	{
+		"GGXXX",
+		nil,
+		true,
 	},
 }
 
 func TestSequenceHistograms(t *testing.T) {
 	for _, tt := range histogramTests {
-		if !reflect.DeepEqual(tt.strand.Counts(), tt.expected) {
-			t.Fatalf("DNA{ %q }: Got %v, expected %v", tt.strand, tt.strand.Counts(), tt.expected)
+		counts, err := tt.strand.Counts()
+		if tt.err && err == nil {
+			t.Fatalf("DNA{ %q }: expected error but didn't get one.", tt.strand)
+		} else if !tt.err && err != nil {
+			t.Fatalf("DNA{ %q }: expected no error but got error %s", tt.strand, err.Error())
+		} else if !tt.err && !reflect.DeepEqual(counts, tt.expected) {
+			t.Fatalf("DNA{ %q }: Got %v, expected %v", tt.strand, counts, tt.expected)
 		}
 	}
 }
@@ -93,7 +107,7 @@ func BenchmarkSequenceHistograms(b *testing.B) {
 	}
 }
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
