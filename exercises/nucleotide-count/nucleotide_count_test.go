@@ -1,27 +1,12 @@
 package dna
 
-import "testing"
-
-func (h Histogram) Equal(o Histogram) bool {
-	return h.sameLength(o) && h.sameMappings(o)
-}
-
-func (h Histogram) sameLength(o Histogram) bool {
-	return len(h) == len(o)
-}
-
-func (h Histogram) sameMappings(o Histogram) (res bool) {
-	res = true
-	for k := range h {
-		if h[k] != o[k] {
-			res = false
-		}
-	}
-	return
-}
+import (
+	"reflect"
+	"testing"
+)
 
 var tallyTests = []struct {
-	strand     string
+	strand     DNA
 	nucleotide byte
 	expected   int
 }{
@@ -33,8 +18,7 @@ var tallyTests = []struct {
 
 func TestNucleotideCounts(t *testing.T) {
 	for _, tt := range tallyTests {
-		dna := DNA(tt.strand)
-		if count, err := dna.Count(tt.nucleotide); err != nil {
+		if count, err := tt.strand.Count(tt.nucleotide); err != nil {
 			t.Fatal(err)
 		} else if count != tt.expected {
 			t.Fatalf("Got \"%v\", expected \"%v\"", count, tt.expected)
@@ -69,30 +53,43 @@ func TestCountingDoesntChangeCount(t *testing.T) {
 }
 
 type histogramTest struct {
-	strand   string
+	strand   DNA
 	expected Histogram
+	err      bool
 }
 
 var histogramTests = []histogramTest{
 	{
 		"",
 		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 0},
+		false,
 	},
 	{
 		"GGGGGGGG",
 		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 8},
+		false,
 	},
 	{
 		"AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
 		Histogram{'A': 20, 'C': 12, 'T': 21, 'G': 17},
+		false,
+	},
+	{
+		"GGXXX",
+		nil,
+		true,
 	},
 }
 
 func TestSequenceHistograms(t *testing.T) {
 	for _, tt := range histogramTests {
-		dna := DNA(tt.strand)
-		if !dna.Counts().Equal(tt.expected) {
-			t.Fatalf("DNA{ \"%v\" }: Got \"%v\", expected \"%v\"", tt.strand, dna.Counts(), tt.expected)
+		counts, err := tt.strand.Counts()
+		if tt.err && err == nil {
+			t.Fatalf("DNA{ %q }: expected error but didn't get one.", tt.strand)
+		} else if !tt.err && err != nil {
+			t.Fatalf("DNA{ %q }: expected no error but got error %s", tt.strand, err.Error())
+		} else if !tt.err && !reflect.DeepEqual(counts, tt.expected) {
+			t.Fatalf("DNA{ %q }: Got %v, expected %v", tt.strand, counts, tt.expected)
 		}
 	}
 }
@@ -101,17 +98,16 @@ func BenchmarkSequenceHistograms(b *testing.B) {
 	b.StopTimer()
 	for _, tt := range histogramTests {
 		for i := 0; i < b.N; i++ {
-			dna := DNA(tt.strand)
 			b.StartTimer()
 
-			dna.Counts()
+			tt.strand.Counts()
 
 			b.StopTimer()
 		}
 	}
 }
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
