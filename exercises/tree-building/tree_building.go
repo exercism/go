@@ -63,7 +63,7 @@ func Build(records []Record) (*Node, error) {
 							nn := &Node{ID: r.ID}
 							newTodo = append(newTodo, nn)
 						breakpoint:
-							for _ = range []bool{false} {
+							for range []bool{false} {
 								for i, cc := range c.Children {
 									if cc.ID > r.ID {
 										a := make([]*Node, len(c.Children)+1)

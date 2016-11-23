@@ -201,7 +201,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}{e: errors.New("")}
 			}
 			var al int
-			for _ = range a {
+			for range a {
 				al++
 			}
 			co <- struct {
@@ -213,7 +213,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		}(i, et)
 	}
 	ss := make([]string, len(entriesCopy))
-	for _ = range entriesCopy {
+	for range entriesCopy {
 		v := <-co
 		if v.e != nil {
 			return "", v.e
