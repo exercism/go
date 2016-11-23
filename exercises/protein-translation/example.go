@@ -44,12 +44,11 @@ func FromCodon(codon string) string {
 func FromRNA(s string) []string {
 	listCodon := []rune(s)
 	var res = ""
-	var tempCodon = ""
 	var proteins []string
 	for index, codon := range listCodon {
 		res += string(codon)
 		if index > 0 && (index+1)%3 == 0 {
-			tempCodon = FromCodon(res)
+			tempCodon := FromCodon(res)
 			if tempCodon == "STOP" {
 				break
 			}
