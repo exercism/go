@@ -40,7 +40,7 @@ var proteinTestCases = []testCase{
 
 func TestCodon(t *testing.T) {
 	for _, test := range codonTestCases {
-		actual := proteinLookUp(test.input)
+		actual := FromCodon(test.input)
 		if actual != test.expected {
 			t.Errorf("Protein Translation test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
 		}
@@ -49,7 +49,7 @@ func TestCodon(t *testing.T) {
 
 func TestProtein(t *testing.T) {
 	for _, test := range proteinTestCases {
-		actual := toProtein(test.input)
+		actual := FromRNA(test.input)
 		if actual != test.expected {
 			t.Errorf("Protein Translation test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
 		}

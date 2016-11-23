@@ -2,7 +2,7 @@ package protein
 
 const testVersion = 1
 
-func proteinLookUp(codon string) string {
+func FromCodon(codon string) string {
 	switch codon {
 	case
 		"AUG":
@@ -41,7 +41,7 @@ func proteinLookUp(codon string) string {
 	return "STOP"
 }
 
-func toProtein(s string) string {
+func FromRNA(s string) string {
 	listCodon := []rune(s)
 	var res = ""
 	var tempCodon = ""
@@ -49,7 +49,7 @@ func toProtein(s string) string {
 	for index, codon := range listCodon {
 		res += string(codon)
 		if index > 0 && (index+1)%3 == 0 {
-			tempCodon = proteinLookUp(res)
+			tempCodon = FromCodon(res)
 			if tempCodon == "STOP" {
 				break
 			}
