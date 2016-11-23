@@ -26,21 +26,22 @@ var testCases = []testCase{
 	{12, "On the twelfth day of Christmas my true love gave to me, twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
 }
 
-func TestSing(t *testing.T) {
+func TestSong(t *testing.T) {
 	var song = ""
 	for i := 1; i <= 12; i++ {
-		song += verses(i) + "\n"
+		song += Verse(i) + "\n"
 	}
-	if song != sing() {
+	actual := Song()
+	if actual != song {
 		t.Errorf("Twelve Days test, Output of sing is different than test output")
 	}
 }
 
 func TestVerse(t *testing.T) {
 	for _, test := range testCases {
-		actual := verses(test.input)
+		actual := Verse(test.input)
 		if actual != test.expected {
-			t.Errorf("Twelve Days test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
+			t.Errorf("Twelve Days test [%d], expected [%s], actual [%s]", test.input, test.expected, actual)
 		}
 	}
 }

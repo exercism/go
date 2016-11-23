@@ -36,7 +36,7 @@ var wording = map[int]string{
 	12: "twelfth",
 }
 
-func verses(i int) string {
+func Verse(i int) string {
 	var gifts = ""
 	for from := i; from > 0; from-- {
 		if i != 1 && from == 1 {
@@ -48,10 +48,10 @@ func verses(i int) string {
 	return fmt.Sprintf("On the %s day of Christmas my true love gave to me%s", wording[i], gifts)
 }
 
-func sing() string {
+func Song() string {
 	var song = ""
 	for i := 1; i <= 12; i++ {
-		song += verses(i) + "\n"
+		song += Verse(i) + "\n"
 	}
 	return song
 }
