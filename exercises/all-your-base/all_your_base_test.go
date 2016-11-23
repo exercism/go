@@ -2,6 +2,9 @@ package allyourbase
 
 import "testing"
 
+// Note: ConvertToBase should accept leading zeroes in its input,
+// but never emit leading zeroes in its output.
+// Exception: If the value of the output is zero, represent it with a single zero.
 var testCases = []struct {
 	description  string
 	inputBase    uint64
