@@ -133,6 +133,11 @@
     },
     {
       "difficulty": 1,
+      "slug": "isogram",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
       "slug": "bank-account",
       "topics": []
     },
