@@ -58,6 +58,11 @@
     },
     {
       "difficulty": 1,
+      "slug": "pangram",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
       "slug": "bob",
       "topics": []
     },
