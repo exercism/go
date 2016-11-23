@@ -53,13 +53,13 @@ func diff(got, want string) string {
 }
 
 func TestSong(t *testing.T) {
-	var song = ""
-	for i := 1; i <= 12; i++ {
-		song += Verse(i) + "\n"
+	var expected = ""
+	for _, test := range testCases {
+		expected += test.expected + "\n"
 	}
 	actual := Song()
-	if actual != song {
-		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", actual, song, diff(actual, song))
+	if expected != actual {
+		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", actual, expected, diff(actual, expected))
 	}
 }
 
