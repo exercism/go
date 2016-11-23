@@ -41,11 +41,11 @@ func FromCodon(codon string) string {
 	return "STOP"
 }
 
-func FromRNA(s string) string {
+func FromRNA(s string) []string {
 	listCodon := []rune(s)
 	var res = ""
 	var tempCodon = ""
-	var proteinName = ""
+	var proteins []string
 	for index, codon := range listCodon {
 		res += string(codon)
 		if index > 0 && (index+1)%3 == 0 {
@@ -53,13 +53,9 @@ func FromRNA(s string) string {
 			if tempCodon == "STOP" {
 				break
 			}
-			if proteinName == "" {
-				proteinName += tempCodon
-			} else {
-				proteinName += " " + tempCodon
-			}
+			proteins = append(proteins, tempCodon)
 			res = ""
 		}
 	}
-	return proteinName
+	return proteins
 }

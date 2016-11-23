@@ -1,17 +1,18 @@
 package protein
 
 import (
+	"reflect"
 	"testing"
 )
 
 const targetTestVersion = 1
 
-type testCase struct {
+type codonCase struct {
 	input    string
 	expected string
 }
 
-var codonTestCases = []testCase{
+var codonTestCases = []codonCase{
 	{"AUG", "Methionine"},
 	{"UUU", "Phenylalanine"},
 	{"UUC", "Phenylalanine"},
@@ -31,11 +32,16 @@ var codonTestCases = []testCase{
 	{"UGA", "STOP"},
 }
 
-var proteinTestCases = []testCase{
-	{"AUGUUUUCUUAAAUG", "Methionine Phenylalanine Serine"},
-	{"AUGUUUUGG", "Methionine Phenylalanine Tryptophan"},
-	{"AUGUUUUAA", "Methionine Phenylalanine"},
-	{"UGGUGUUAUUAAUGGUUU", "Tryptophan Cysteine Tyrosine"},
+type rnaCase struct {
+	input    string
+	expected []string
+}
+
+var proteinTestCases = []rnaCase{
+	{"AUGUUUUCUUAAAUG", []string{"Methionine", "Phenylalanine", "Serine"}},
+	{"AUGUUUUGG", []string{"Methionine", "Phenylalanine", "Tryptophan"}},
+	{"AUGUUUUAA", []string{"Methionine", "Phenylalanine"}},
+	{"UGGUGUUAUUAAUGGUUU", []string{"Tryptophan", "Cysteine", "Tyrosine"}},
 }
 
 func TestCodon(t *testing.T) {
@@ -50,8 +56,8 @@ func TestCodon(t *testing.T) {
 func TestProtein(t *testing.T) {
 	for _, test := range proteinTestCases {
 		actual := FromRNA(test.input)
-		if actual != test.expected {
-			t.Errorf("Protein Translation test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
+		if !reflect.DeepEqual(actual, test.expected) {
+			t.Errorf("Protein Translation test [%s], expected %q, actual %q", test.input, test.expected, actual)
 		}
 	}
 }
