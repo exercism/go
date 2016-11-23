@@ -1,7 +1,6 @@
 package pangram
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -36,9 +35,9 @@ func TestPangram(t *testing.T) {
 		actual := isPangram(test.input)
 		if actual != test.expected {
 			t.Errorf("Pangram test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
-		}
-		if !test.expected {
-			fmt.Printf("Pangram test [%s], failure reason : %s\n", test.input, test.failureReason)
+			if !test.expected {
+				t.Logf("[%s] should not be a pangram because : %s\n", test.input, test.failureReason)
+			}
 		}
 	}
 }
