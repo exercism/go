@@ -88,11 +88,6 @@
     },
     {
       "difficulty": 1,
-      "slug": "food-chain",
-      "topics": []
-    },
-    {
-      "difficulty": 1,
       "slug": "house",
       "topics": []
     },
@@ -159,6 +154,11 @@
     {
       "difficulty": 1,
       "slug": "luhn",
+      "topics": []
+    },
+    {
+      "difficulty": 1,
+      "slug": "food-chain",
       "topics": []
     },
     {
