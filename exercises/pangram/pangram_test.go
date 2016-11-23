@@ -34,7 +34,7 @@ func TestPangram(t *testing.T) {
 	for _, test := range testCases {
 		actual := IsPangram(test.input)
 		if actual != test.expected {
-			t.Errorf("Pangram test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
+			t.Errorf("Pangram test [%s], expected [%t], actual [%t]", test.input, test.expected, actual)
 			if !test.expected {
 				t.Logf("[%s] should not be a pangram because : %s\n", test.input, test.failureReason)
 			}
