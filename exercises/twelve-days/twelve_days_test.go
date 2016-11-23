@@ -1,6 +1,8 @@
 package twelve
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -26,6 +28,30 @@ var testCases = []testCase{
 	{12, "On the twelfth day of Christmas my true love gave to me, twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
 }
 
+// diff compares two multi-line strings and returns a helpful comment
+func diff(got, want string) string {
+	g := strings.Split(got, "\n")
+	w := strings.Split(want, "\n")
+	for i := 0; ; i++ {
+		switch {
+		case i < len(g) && i < len(w):
+			if g[i] == w[i] {
+				continue
+			}
+			return fmt.Sprintf("-- first difference in line %d:\n"+
+				"-- got : %q\n-- want: %q\n", i+1, g[i], w[i])
+		case i < len(g):
+			return fmt.Sprintf("-- got %d extra lines after line %d:\n"+
+				"-- first extra line: %q\n", len(g)-len(w), i, g[i])
+		case i < len(w):
+			return fmt.Sprintf("-- got %d correct lines, want %d more lines:\n"+
+				"-- want next: %q\n", i, len(w)-i, w[i])
+		default:
+			return "no differences found"
+		}
+	}
+}
+
 func TestSong(t *testing.T) {
 	var song = ""
 	for i := 1; i <= 12; i++ {
@@ -33,7 +59,7 @@ func TestSong(t *testing.T) {
 	}
 	actual := Song()
 	if actual != song {
-		t.Errorf("Twelve Days test, Output of sing is different than test output")
+		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", actual, song, diff(actual, song))
 	}
 }
 
