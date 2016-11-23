@@ -6,7 +6,7 @@ import (
 
 const testVersion = 1
 
-func isPangram(s string) bool {
+func IsPangram(s string) bool {
 	lowerString := strings.ToLower(s)
 	var check [26]bool
 	var count int

@@ -32,7 +32,7 @@ func TestTestVersion(t *testing.T) {
 
 func TestPangram(t *testing.T) {
 	for _, test := range testCases {
-		actual := isPangram(test.input)
+		actual := IsPangram(test.input)
 		if actual != test.expected {
 			t.Errorf("Pangram test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
 			if !test.expected {
