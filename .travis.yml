@@ -26,7 +26,7 @@ go:
   - tip
 
 # Travis runs in a 64 bit environment but beginning with Go 1.5, building a
-# 32 bit target is as easy as specifying GOARCH.  We test both to accomodate
+# 32 bit target is as easy as specifying GOARCH.  We test both to accommodate
 # users that might be running 32 bit environments and make sure our code
 # works for them.
 #
