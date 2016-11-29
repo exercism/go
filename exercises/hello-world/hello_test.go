@@ -1,4 +1,4 @@
-package hello
+package greeting
 
 import "testing"
 
@@ -7,7 +7,7 @@ import "testing"
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestHelloWorld(t *testing.T) {
 	tests := []struct {
@@ -15,10 +15,10 @@ func TestHelloWorld(t *testing.T) {
 	}{
 		{"", "Hello, World!"},
 		{"Gopher", "Hello, Gopher!"},
+		{"ゴーファー", "Hello, ゴーファー!"},
 	}
 	for _, test := range tests {
-		observed := HelloWorld(test.name)
-		if observed != test.expected {
+		if observed := HelloWorld(test.name); observed != test.expected {
 			t.Fatalf("HelloWorld(%s) = %v, want %v", test.name, observed, test.expected)
 		}
 	}
