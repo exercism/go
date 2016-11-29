@@ -32,9 +32,9 @@ func TestAllergies(t *testing.T) {
 		sort.Strings(actual)
 		sort.Strings(test.expected)
 		if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", test.expected) {
-			t.Fatalf("FAIL: Allergies(%d): expected %s, actual %s", test.input, test.expected, actual)
+			t.Fatalf("FAIL: Allergies(%d): expected %q, actual %q", test.input, test.expected, actual)
 		} else {
-			t.Logf("PASS: Allergic to %v", test.expected)
+			t.Logf("PASS: Allergic to %q", test.expected)
 		}
 	}
 }

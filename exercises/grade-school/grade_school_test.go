@@ -88,9 +88,9 @@ func TestGetGrade(t *testing.T) {
 		}
 	}
 	t.Errorf(`Get grade, got
-%v
+%q
 expected
-%v`, got, exp)
+%q`, got, exp)
 }
 
 func TestNonExistantGrade(t *testing.T) {
@@ -98,7 +98,7 @@ func TestNonExistantGrade(t *testing.T) {
 	got := s.Grade(1)
 	if len(got) != 0 {
 		t.Errorf(`Get non-existant grade, got
-%v
+%q
 expected
 []`, got)
 	}

@@ -35,7 +35,7 @@ func TestHandshake(t *testing.T) {
 			continue
 		}
 		if !reflect.DeepEqual(h, test.h) {
-			t.Fatalf("Handshake(%d) = %v, want %v.", test.code, h, test.h)
+			t.Fatalf("Handshake(%d) = %q, want %q.", test.code, h, test.h)
 		}
 	}
 }
