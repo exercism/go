@@ -144,9 +144,9 @@ func TestDetectAnagrams(t *testing.T) {
 		if !equal(tt.expected, actual) {
 			msg := `FAIL: %s
 	Subject %s
-	Candidates %v
-	Expected %v
-	Got %v
+	Candidates %q
+	Expected %q
+	Got %q
 				`
 			t.Fatalf(msg, tt.description, tt.subject, tt.candidates, tt.expected, actual)
 		} else {
