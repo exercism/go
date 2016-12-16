@@ -1,23 +1,17 @@
-// Embed embeds a noun phrase as the object of relative clause with a
-// transitive verb.
+// Embed places a phrase with another phrase.
 //
-// Argument relPhrase is a phrase with a relative clause, minus the object
-// of the clause.  That is, relPhrase consists of a subject, a relative
-// pronoun, a transitive verb, possibly a preposition, but then no object.
-//
-//    func Embed(relPhrase, nounPhrase string) string
+//    func Embed(prefixPhrase, suffixPhrase string) string
 
-// Verse generates a verse of a song with relative clauses that have
-// a recursive structure.
+// Verse generates a verse with relative phrases that have a recursive structure.
 //
-//    func Verse(subject string, relPhrases []string, nounPhrase string) string
-//
-// There are different ways to do this of course, but try using Embed as a
-// subroutine and using programmatic recursion that reflects the grammatical
-// recursion.
+//    func Verse(prefixPhrase string, relPhrases []string, suffixPhrase string) string
 
-// Song generates the full text of "The House That Jack Built".  Oh yes, you
-// could just return a string literal, but humor us; use Verse as a subroutine.
+// As ever, there are different ways to do this. Try using Embed as a
+// subroutine of Verse, and using programmatic recursion to generate the return
+// value, reflecting the grammatical recursion of the song.
+
+// Song generates the full text of "The House That Jack Built". Of course, you
+// could return a string literal, but humor us; try using Verse as a subroutine.
 //
 //    func Song() string
 
