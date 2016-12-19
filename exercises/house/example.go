@@ -1,39 +1,67 @@
 package house
 
-func Embed(relPhrase, nounPhrase string) string {
-	return relPhrase + " " + nounPhrase
+var songLines = []string{
+	"the horse and the hound and the horn\nthat belonged to",
+	"the farmer sowing his corn\nthat kept",
+	"the rooster that crowed in the morn\nthat woke",
+	"the priest all shaven and shorn\nthat married",
+	"the man all tattered and torn\nthat kissed",
+	"the maiden all forlorn\nthat milked",
+	"the cow with the crumpled horn\nthat tossed",
+	"the dog\nthat worried",
+	"the cat\nthat killed",
+	"the rat\nthat ate",
+	"the malt\nthat lay in",
 }
 
-func Verse(subject string, relPhrases []string, nounPhrase string) string {
-	return subject + " " + recurse(relPhrases, nounPhrase)
+// Recursive Solution
+
+func Verse(v int) (verse string) {
+	v--
+	i := len(songLines) - v
+	verse += buildVerse(songLines[i:], "This is ")
+	verse += "the house that Jack built."
+	return
 }
 
-func recurse(relPhrases []string, nounPhrase string) string {
-	if len(relPhrases) == 0 {
-		return nounPhrase
+func buildVerse(songLines []string, cur string) string {
+	if len(songLines) == 0 {
+		return cur
 	}
-	return Embed(relPhrases[0], recurse(relPhrases[1:], nounPhrase))
+	cur += songLines[0]
+	cur += " "
+	return buildVerse(songLines[1:], cur)
 }
 
-func Song() string {
-	relPhrases := []string{
-		"the horse and the hound and the horn\nthat belonged to",
-		"the farmer sowing his corn\nthat kept",
-		"the rooster that crowed in the morn\nthat woke",
-		"the priest all shaven and shorn\nthat married",
-		"the man all tattered and torn\nthat kissed",
-		"the maiden all forlorn\nthat milked",
-		"the cow with the crumpled horn\nthat tossed",
-		"the dog\nthat worried",
-		"the cat\nthat killed",
-		"the rat\nthat ate",
-		"the malt\nthat lay in",
+func Song() (song string) {
+	for i := 0; i <= len(songLines); i++ {
+		song += Verse(i + 1)
+		if i < len(songLines) {
+			song += "\n\n"
+		}
 	}
-	subject := "This is"
-	nounPhrase := "the house that Jack built."
-	s := subject + " " + nounPhrase
-	for c := len(relPhrases) - 1; c >= 0; c-- {
-		s += "\n\n" + Verse(subject, relPhrases[c:], nounPhrase)
-	}
-	return s
+	return
 }
+
+// Iterative Solution
+
+// func Verse(v int) (verse string) {
+//     v--
+//     verse += "This is "
+//     verse += strings.Join(songLines[len(songLines)-v:], " ")
+//     if v > 0 {
+//         verse += " "
+//     }
+//     verse += "the house that Jack built."
+//     return
+// }
+//
+// func Song() (song string) {
+//     for i := 0; i <= len(songLines); i++ {
+//         song += Verse(i + 1)
+//         if i < len(songLines) {
+//             song += "\n\n"
+//         }
+//     }
+//     return
+// }
