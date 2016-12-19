@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 type testCase struct {
 	input    string
@@ -28,7 +28,7 @@ func TestTestVersion(t *testing.T) {
 
 func TestAcronym(t *testing.T) {
 	for _, test := range stringTestCases {
-		actual := abbreviate(test.input)
+		actual := Abbreviate(test.input)
 		if actual != test.expected {
 			t.Errorf("Acronym test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
 		}

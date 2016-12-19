@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-const testVersion = 1
+const testVersion = 2
 
-func abbreviate(s string) string {
+func Abbreviate(s string) string {
 	regex := regexp.MustCompile("[A-Z]+[a-z]*|[a-z]+")
 	words := regex.FindAllString(s, -1)
 	abbr := []string{}
