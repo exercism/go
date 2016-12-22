@@ -19,9 +19,9 @@ var varTests = []struct {
 	{[]int{}, 10000, 0},
 }
 
-func TestVar(t *testing.T) {
+func TestSumMultiples(t *testing.T) {
 	for _, test := range varTests {
-		s := MultipleSummer(test.limit, test.divisors...)
+		s := SumMultiples(test.limit, test.divisors...)
 		if s != test.sum {
 			t.Fatalf("Sum of multiples of %v to %d returned %d, want %d.",
 				test.divisors, test.limit, s, test.sum)
@@ -29,10 +29,10 @@ func TestVar(t *testing.T) {
 	}
 }
 
-func BenchmarkVar(b *testing.B) {
+func BenchmarkSumMultiples(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, test := range varTests {
-			MultipleSummer(test.limit, test.divisors...)
+			SumMultiples(test.limit, test.divisors...)
 		}
 	}
 }
