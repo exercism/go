@@ -21,8 +21,7 @@ var varTests = []struct {
 
 func TestVar(t *testing.T) {
 	for _, test := range varTests {
-		sv := MultipleSummer(test.divisors...)
-		s := sv(test.limit)
+		s := MultipleSummer(test.limit, test.divisors...)
 		if s != test.sum {
 			t.Fatalf("Sum of multiples of %v to %d returned %d, want %d.",
 				test.divisors, test.limit, s, test.sum)
@@ -31,10 +30,9 @@ func TestVar(t *testing.T) {
 }
 
 func BenchmarkVar(b *testing.B) {
-	// bench combined time to bind sum function and call it.
 	for i := 0; i < b.N; i++ {
 		for _, test := range varTests {
-			MultipleSummer(test.divisors...)(test.limit)
+			MultipleSummer(test.limit, test.divisors...)
 		}
 	}
 }
