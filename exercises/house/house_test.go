@@ -1,19 +1,12 @@
-// Embed places a phrase with another phrase.
-//
-//    func Embed(prefixPhrase, suffixPhrase string) string
+// As ever, there are different ways to complete this exercise.
+// Try using using programmatic recursion to generate the verses of the song,
+// thus reflecting the song's grammatical recursion.
 
-// Verse generates a verse with relative phrases that have a recursive structure.
+// While recursion isn't always the simplest or most efficient solution to a problem,
+// it's a powerful programming technique nonetheless.
 //
-//    func Verse(prefixPhrase string, relPhrases []string, suffixPhrase string) string
-
-// As ever, there are different ways to do this. Try using Embed as a
-// subroutine of Verse, and using programmatic recursion to generate the return
-// value, reflecting the grammatical recursion of the song.
-
-// Song generates the full text of "The House That Jack Built". Of course, you
-// could return a string literal, but humor us; try using Verse as a subroutine.
-//
-//    func Song() string
+// New to recursion? Here's a quick introduction:
+// https://www.golang-book.com/books/intro/7#section5
 
 package house
 
@@ -22,15 +15,10 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var (
-	s = "This is"
-	r = []string{
-		"the cat that broke",
-		"the vase that was on",
-	}
-	p    = "the shelf."
-	last = len(r) - 1
-	// song copied from readme
+	// song copied from README
 	song = `This is the house that Jack built.
 
 This is the malt
@@ -120,22 +108,14 @@ that worried the cat
 that killed the rat
 that ate the malt
 that lay in the house that Jack built.`
+
+	verses = strings.Split(song, "\n\n")
 )
 
-func TestEmbed(t *testing.T) {
-	l := r[last]
-	want := l + " " + p
-	if e := Embed(l, p); e != want {
-		t.Fatalf("Embed(%q, %q) = %q, want %q.", l, p, e, want)
-	}
-}
-
 func TestVerse(t *testing.T) {
-	for i := len(r); i >= 0; i-- {
-		ri := r[i:]
-		want := s + " " + strings.Join(append(ri, p), " ")
-		if v := Verse(s, ri, p); v != want {
-			t.Fatalf("Verse(%q, %q, %q) = %q, want %q.", s, ri, p, v, want)
+	for v := 0; v < len(verses); v++ {
+		if ret := Verse(v + 1); ret != verses[v] {
+			t.Fatalf("Verse(%d) =\n%q\n  want:\n%q", v+1, ret, verses[v])
 		}
 	}
 }
@@ -146,6 +126,11 @@ func TestSong(t *testing.T) {
 		return
 	}
 	// a little help in locating an error
+	gotStanzas := len(strings.Split(s, "\n\n"))
+	wantStanzas := len(verses)
+	if wantStanzas != gotStanzas {
+		t.Fatalf("Song() has %d verse(s), want %d verses", gotStanzas, wantStanzas)
+	}
 	got := strings.Split(s, "\n")
 	want := strings.Split(song, "\n")
 	var g, w string
@@ -159,5 +144,11 @@ func TestSong(t *testing.T) {
 			break
 		}
 	}
-	t.Fatalf("Song() line %d = %q, want %q", i+1, g, w)
+	t.Fatalf("Song() line %d =\n%q\n want \n%q", i+1, g, w)
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
