@@ -1,5 +1,7 @@
 package house
 
+const testVersion = 1
+
 var songLines = []string{
 	"the horse and the hound and the horn\nthat belonged to",
 	"the farmer sowing his corn\nthat kept",

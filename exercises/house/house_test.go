@@ -15,6 +15,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var (
 	// song copied from README
 	song = `This is the house that Jack built.
