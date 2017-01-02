@@ -1,6 +1,6 @@
 package wordcount
 
-const testVersion = 2
+const testVersion = 3
 
 // Use this return type.
 type Frequency map[string]int
