@@ -1,7 +1,6 @@
 package wordcount
 
 // Source: exercism/x-common
-// Commit: 3b07e53 Merge pull request #117 from mikeyjcat/add-raindrops-json
 
 var testCases = []struct {
 	description string
@@ -24,8 +23,18 @@ var testCases = []struct {
 		Frequency{"blue": 1, "fish": 4, "one": 1, "red": 1, "two": 1},
 	},
 	{
+		"handles cramped lists",
+		"one,two,three",
+		Frequency{"one": 1, "three": 1, "two": 1},
+	},
+	{
+		"handles expanded lists",
+		"one,\ntwo,\nthree",
+		Frequency{"one": 1, "three": 1, "two": 1},
+	},
+	{
 		"ignore punctuation",
-		"car : carpet as java : javascript!!&@$%^&",
+		"car: carpet as java: javascript!!&@$%^&",
 		Frequency{"as": 1, "car": 1, "carpet": 1, "java": 1, "javascript": 1},
 	},
 	{
@@ -35,7 +44,17 @@ var testCases = []struct {
 	},
 	{
 		"normalize case",
-		"go Go GO",
-		Frequency{"go": 3},
+		"go Go GO Stop stop",
+		Frequency{"go": 3, "stop": 2},
+	},
+	{
+		"with apostrophes",
+		"First: don't laugh. Then: don't cry.",
+		Frequency{"cry": 1, "don't": 2, "first": 1, "laugh": 1, "then": 1},
+	},
+	{
+		"with_quotations",
+		"Joe can't tell between 'large' and large.",
+		Frequency{"and": 1, "between": 1, "can't": 1, "joe": 1, "large": 2, "tell": 1},
 	},
 }

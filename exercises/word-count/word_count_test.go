@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestWordCount(t *testing.T) {
 	if testVersion != targetTestVersion {
