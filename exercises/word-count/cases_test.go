@@ -53,7 +53,7 @@ var testCases = []struct {
 		Frequency{"cry": 1, "don't": 2, "first": 1, "laugh": 1, "then": 1},
 	},
 	{
-		"with_quotations",
+		"with quotations",
 		"Joe can't tell between 'large' and large.",
 		Frequency{"and": 1, "between": 1, "can't": 1, "joe": 1, "large": 2, "tell": 1},
 	},
