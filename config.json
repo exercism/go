@@ -24,7 +24,12 @@
     {
       "difficulty": 1,
       "slug": "hello-world",
-      "topics": []
+      "topics": [
+          "Control-flow (if-else statements)",
+          "Optional values",
+          "Strings",
+          "Text formatting"
+      ]
     },
     {
       "difficulty": 1,
