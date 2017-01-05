@@ -112,9 +112,15 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 2,
       "slug": "grains",
-      "topics": []
+      "topics": [
+        "Control-flow (if-else statements)",
+        "Bitwise operations",
+        "Mathematics",
+        "Type conversion",
+        "Integers"
+      ]
     },
     {
       "difficulty": 1,
