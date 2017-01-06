@@ -5,9 +5,13 @@
   "active": true,
   "deprecated": [
     "accumulate",
+    "binary",
     "bottles",
     "counter",
-    "point-mutations"
+    "hexadecimal",
+    "octal",
+    "point-mutations",
+    "trinary"
   ],
   "ignored": [
     "error-handling",
@@ -208,11 +212,6 @@
     },
     {
       "difficulty": 1,
-      "slug": "binary",
-      "topics": []
-    },
-    {
-      "difficulty": 1,
       "slug": "allergies",
       "topics": []
     },
@@ -293,11 +292,6 @@
     },
     {
       "difficulty": 1,
-      "slug": "octal",
-      "topics": []
-    },
-    {
-      "difficulty": 1,
       "slug": "beer-song",
       "topics": []
     },
@@ -329,16 +323,6 @@
     {
       "difficulty": 1,
       "slug": "saddle-points",
-      "topics": []
-    },
-    {
-      "difficulty": 1,
-      "slug": "trinary",
-      "topics": []
-    },
-    {
-      "difficulty": 1,
-      "slug": "hexadecimal",
       "topics": []
     },
     {
