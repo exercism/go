@@ -10,7 +10,7 @@
 # That way no maintainer will mistakenly commit the deleted files,
 # which could otherwise happen after running tests locally.
 
-for dir in exercises/*; do
+for dir in exercises/*/; do
   stub=$(echo $(basename $dir) | tr - _)
   file="$dir/$stub.go"
   if [ -f $file ]; then
@@ -39,7 +39,7 @@ cleanup () {
 trap cleanup EXIT INT TERM
 
 if [ "$1" = "fmt" ]; then
-  for dir in exercises/*; do
+  for dir in exercises/*/; do
     cd $dir
     if [ -n "$(go fmt)" ]; then
       echo "please run 'go fmt' on $dir" >&2
@@ -51,7 +51,7 @@ if [ "$1" = "fmt" ]; then
 fi
 
 if [ "$1" = "vet" ]; then
-  for dir in exercises/*; do
+  for dir in exercises/*/; do
     cd $dir
     if ! go vet; then
       echo "please follow the 'go vet' suggestions in $dir" >&2
