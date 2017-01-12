@@ -29,7 +29,7 @@
       "difficulty": 1,
       "slug": "hello-world",
       "topics": [
-          "Control-flow (if-else statements)",
+          "Control-flow (conditionals)",
           "Optional values",
           "Strings",
           "Text formatting"
