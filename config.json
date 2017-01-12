@@ -303,6 +303,15 @@
       "topics": []
     },
     {
+      "difficulty": 5,
+      "slug": "transpose",
+      "topics": [
+        "Control-flow (loops)",
+        "Strings",
+        "Transforming"
+      ]
+    },
+    {
       "difficulty": 1,
       "slug": "nth-prime",
       "topics": []
