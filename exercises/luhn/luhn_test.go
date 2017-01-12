@@ -2,6 +2,8 @@ package luhn
 
 import "testing"
 
+const targetTestVersion = 1
+
 var testCases = []struct {
 	input       string
 	description string
@@ -26,5 +28,11 @@ func TestValid(t *testing.T) {
 func BenchmarkValid(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Valid("2323 2005 7766 3554")
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }

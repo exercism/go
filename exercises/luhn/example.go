@@ -1,5 +1,7 @@
 package luhn
 
+const testVersion = 1
+
 func Valid(n string) bool {
 	if len(n) == 1 {
 		return false
