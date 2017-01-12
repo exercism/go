@@ -1,4 +1,4 @@
-To run the tests simply run the command `go test` in the exercise directory.
+To run the tests run the command `go test` from within the exercise directory.
 
 If the test suite contains benchmarks, you can run these with the `-bench`
 flag:
