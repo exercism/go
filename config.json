@@ -46,9 +46,13 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "clock",
-      "topics": []
+      "topics": [
+        "Time",
+        "Mathematics",
+        "Text formatting"
+      ]
     },
     {
       "difficulty": 1,
