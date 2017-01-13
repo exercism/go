@@ -2,41 +2,25 @@ package luhn
 
 import "testing"
 
-var validTests = []struct {
-	n  string
-	ok bool
-}{
-	{"738", false},
-	{"8739567", true},
-	{"1111", false},
-	{"8763", true},
-	{"    ", false},
-	{"", false},
-	{"2323 2005 7766 3554", true},
-}
+const targetTestVersion = 1
 
-var addTests = []struct{ raw, luhn string }{
-	{"123", "1230"},
-	{"873956", "8739567"},
-	{"837263756", "8372637564"},
-	{"2323 2005 7766 355", "2323 2005 7766 3554"},
-	// bonus Unicode cases
-	// {"2323·2005·7766·355", "2323·2005·7766·3554"},
-	// {"１２３", "１２３０"},
+var testCases = []struct {
+	input       string
+	description string
+	ok          bool
+}{
+	{"1", "single digit strings can not be valid", false},
+	{"0", "a single zero is invalid", false},
+	{"046 454 286", "valid Canadian SIN", true},
+	{"046 454 287", "invalid Canadian SIN", false},
+	{"8273 1232 7352 0569", "invalid credit card", false},
+	{"827a 1232 7352 0569", "strings that contain non-digits are not valid", false},
 }
 
 func TestValid(t *testing.T) {
-	for _, test := range validTests {
-		if ok := Valid(test.n); ok != test.ok {
-			t.Fatalf("Valid(%s) = %t, want %t.", test.n, ok, test.ok)
-		}
-	}
-}
-
-func TestAddCheck(t *testing.T) {
-	for _, test := range addTests {
-		if luhn := AddCheck(test.raw); luhn != test.luhn {
-			t.Fatalf("AddCheck(%s) = %s, want %s.", test.raw, luhn, test.luhn)
+	for _, test := range testCases {
+		if ok := Valid(test.input); ok != test.ok {
+			t.Fatalf("Valid(%s): %s\n\t Expected: %t\n\t Got: %t", test.input, test.description, ok, test.ok)
 		}
 	}
 }
@@ -47,8 +31,8 @@ func BenchmarkValid(b *testing.B) {
 	}
 }
 
-func BenchmarkAddCheck(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		AddCheck("2323 2005 7766 355")
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }

@@ -1,6 +1,11 @@
 package luhn
 
+const testVersion = 1
+
 func Valid(n string) bool {
+	if len(n) == 1 {
+		return false
+	}
 	d := extract(n)
 	if len(d) == 0 {
 		return false
@@ -32,8 +37,4 @@ func check(d []int) int {
 		s += x
 	}
 	return s
-}
-
-func AddCheck(raw string) string {
-	return raw + string('0'+(10-check(extract(raw))%10)%10)
 }
