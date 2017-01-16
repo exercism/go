@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("rna-transcription.json", &j, t); err != nil {
+	if err := gen.Gen("rna-transcription", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }

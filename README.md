@@ -89,7 +89,7 @@ See `leap/example_gen.go` for an example of how this can be done.
 
 Whenever the shared JSON data changes, the test cases will need to be regenerated. To do this, make sure that the
 x-common repository has been cloned in the same parent-directory as the xgo repository. Then `cd` to the `xgo`
-directory and run `go run <problem>/example_gen.go`.
+directory and run `go run exercises/<problem>/example_gen.go`.
 
 You should see that the `<problem>/test_cases.go` file has changed. Commit the change.
 

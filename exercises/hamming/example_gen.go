@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("hamming.json", &j, t); err != nil {
+	if err := gen.Gen("hamming", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
