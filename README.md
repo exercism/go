@@ -28,8 +28,8 @@ This is because this repo only imports from the standard library and isn't expec
 
 ## Contributing Guide
 
-Please be familiar with the [contributing guide](https://github.com/exercism/x-api/blob/master/CONTRIBUTING.md#the-exercise-data)
-in the x-api repository.  This describes how all the language tracks are put together, as well as details about
+Please be familiar with the [contributing guide](https://github.com/exercism/x-common/blob/master/CONTRIBUTING.md)
+in the x-common repository.  This describes how all the language tracks are put together, as well as details about
 the common metadata, and high-level information about contributing to existing problems and adding new problems.
 
 ## Problem Versioning
