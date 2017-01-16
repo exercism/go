@@ -44,10 +44,11 @@ func init() {
 	}
 }
 
-func Gen(jFile string, j interface{}, t *template.Template) error {
+func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
 		return errors.New("unable to determine current path")
 	}
+	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
 	// find and read the json source file
 	jPath, jOri, jCommit := getPath(jFile)
 	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
