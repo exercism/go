@@ -44,10 +44,11 @@ func init() {
 	}
 }
 
-func Gen(jFile string, j interface{}, t *template.Template) error {
+func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
 		return errors.New("unable to determine current path")
 	}
+	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
 	// find and read the json source file
 	jPath, jOri, jCommit := getPath(jFile)
 	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
@@ -93,7 +94,7 @@ func getPath(jFile string) (jPath, jOri, jCommit string) {
 	if jPath = os.Getenv("EXTEST"); jPath > "" {
 		return jPath, "local file", "" // override
 	}
-	c := exec.Command("git", "log", "-1", "--oneline")
+	c := exec.Command("git", "log", "-1", "--oneline", jFile)
 	c.Dir = dirMetadata
 	ori, err := c.Output()
 	if err != nil {
