@@ -2,6 +2,8 @@ package queenattack
 
 import "testing"
 
+const targetTestVersion = 1
+
 // Arguments to CanQueenAttack are in algebraic notation.
 // See http://en.wikipedia.org/wiki/Algebraic_notation_(chess)
 
@@ -33,6 +35,9 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestCanQueenAttack(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 	for _, test := range tests {
 		switch attack, err := CanQueenAttack(test.w, test.b); {
 		case err != nil:
