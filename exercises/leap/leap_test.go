@@ -7,7 +7,7 @@ import "testing"
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestLeapYears(t *testing.T) {
 	if testVersion != targetTestVersion {
