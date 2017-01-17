@@ -4,7 +4,7 @@
 package leap
 
 // testVersion should match the targetTestVersion in the test file.
-const testVersion = 2
+const testVersion = 3
 
 // It's good style to write a comment here documenting IsLeapYear.
 func IsLeapYear(int) bool {
