@@ -63,7 +63,11 @@
     {
       "difficulty": 1,
       "slug": "hamming",
-      "topics": []
+      "topics": [
+        "Control-flow (loops)",
+        "Equality",
+        "Strings"
+      ]
     },
     {
       "difficulty": 1,
