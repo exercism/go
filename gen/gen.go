@@ -83,7 +83,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return err
 	}
 	// write output file for the Go test cases.
-	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0777)
+	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0666)
 }
 
 func getPath(jFile string) (jPath, jOri, jCommit string) {
