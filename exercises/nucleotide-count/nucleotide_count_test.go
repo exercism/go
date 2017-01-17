@@ -97,9 +97,7 @@ func TestSequenceHistograms(t *testing.T) {
 func BenchmarkSequenceHistograms(b *testing.B) {
 	for _, tt := range histogramTests {
 		for i := 0; i < b.N; i++ {
-
 			tt.strand.Counts()
-
 		}
 	}
 }
