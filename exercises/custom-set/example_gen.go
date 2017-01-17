@@ -20,7 +20,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("custom-set.json", &j, t); err != nil {
+	if err := gen.Gen("custom-set", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }

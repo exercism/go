@@ -17,7 +17,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("meetup.json", &j, t); err != nil {
+	if err := gen.Gen("meetup", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
