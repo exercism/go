@@ -58,7 +58,9 @@
     {
       "difficulty": 1,
       "slug": "gigasecond",
-      "topics": []
+      "topics": [
+        "Time"
+      ]
     },
     {
       "difficulty": 1,
