@@ -2,7 +2,7 @@ package queenattack
 
 import "fmt"
 
-const testVersion = 1
+const testVersion = 2
 
 func CanQueenAttack(w, b string) (attack bool, err error) {
 	if err = valSq(w); err != nil {
