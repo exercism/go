@@ -1,6 +1,6 @@
 package triangle
 
-const testVersion = 2
+const testVersion = 3
 
 // Code this function.
 func KindFromSides(a, b, c float64) Kind
