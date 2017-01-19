@@ -12,8 +12,8 @@ var tests = []struct {
 	attack bool
 	ok     bool
 }{
-	{"b4", "b4", false, false},      // same square
-	{"a8", "b9", false, false},      // off board
+	{"b4", "b4", false, false}, // same square
+	{"a8", "b9", false, false}, // off board
 	{"a0", "b1", false, false},
 	{"g3", "i5", false, false},
 	{"here", "there", false, false}, // invalid
@@ -21,9 +21,9 @@ var tests = []struct {
 
 	{"b3", "d7", false, true}, // no attack
 	{"a1", "f8", false, true},
-	{"b4", "b7", true, true},  // same file
-	{"e4", "b4", true, true},  // same rank
-	{"a1", "f6", true, true},  // common diagonals
+	{"b4", "b7", true, true}, // same file
+	{"e4", "b4", true, true}, // same rank
+	{"a1", "f6", true, true}, // common diagonals
 	{"a6", "b7", true, true},
 	{"d1", "f3", true, true},
 	{"f1", "a6", true, true},
