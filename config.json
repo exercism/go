@@ -145,7 +145,11 @@
     {
       "difficulty": 1,
       "slug": "etl",
-      "topics": []
+      "topics": [
+        "Control-flow (loops)",
+        "Maps",
+        "Transforming"
+      ]
     },
     {
       "difficulty": 1,
