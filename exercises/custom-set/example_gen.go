@@ -42,22 +42,38 @@ func strSlice(ns []int) []string {
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Equal               binaryBool // binary function, boolean result
-	Add                 eleOp      // set-element operator
-	Delete              eleOp      // ...
-	IsEmpty             unaryBool  `json:"is-empty"`
-	Size                unaryInt   // Set.Len
-	Element             eleBool    // Set.Has
-	Subset              binaryBool
-	Disjoint            binaryBool
-	Union               binaryOp // set-set operator
-	Intersection        binaryOp
-	Difference          binaryOp
-	SymmetricDifference binaryOp `json:"symmetric-difference"`
+	IsEmpty      unaryBool `json:"empty"`
+	Contains     eleBool
+	Subset       binaryBool
+	Disjoint     binaryBool
+	Equal        binaryBool
+	Add          eleOp
+	Intersection binaryOp
+	Difference   binaryOp
+	Union        binaryOp
+}
+
+type unaryBool struct {
+	Description string
+	Cases       []struct {
+		Description string
+		Set         []int
+		Expected    bool
+	}
+}
+
+type eleBool struct {
+	Description string
+	Cases       []struct {
+		Description string
+		Set         []int
+		Element     int
+		Expected    bool
+	}
 }
 
 type binaryBool struct {
-	Description []string
+	Description string
 	Cases       []struct {
 		Description string
 		Set1        []int
@@ -67,7 +83,7 @@ type binaryBool struct {
 }
 
 type eleOp struct {
-	Description []string
+	Description string
 	Cases       []struct {
 		Description string
 		Set         []int
@@ -76,36 +92,8 @@ type eleOp struct {
 	}
 }
 
-type unaryBool struct {
-	Description []string
-	Cases       []struct {
-		Description string
-		Set         []int
-		Expected    bool
-	}
-}
-
-type unaryInt struct {
-	Description []string
-	Cases       []struct {
-		Description string
-		Set         []int
-		Expected    int
-	}
-}
-
-type eleBool struct {
-	Description []string
-	Cases       []struct {
-		Description string
-		Set         []int
-		Element     int
-		Expected    bool
-	}
-}
-
 type binaryOp struct {
-	Description []string
+	Description string
 	Cases       []struct {
 		Description string
 		Set1        []int
@@ -121,9 +109,6 @@ type binaryOp struct {
 // a better and more practical example.
 var tmpl = `
 {{/* nested templates for repeated stuff */}}
-
-{{define "cmts"}}{{range .}}// {{.}}
-{{end}}{{end}}
 
 {{define "binaryBool"}} = []binBoolCase{
 {{range .}}{ // {{.Description}}
@@ -156,46 +141,41 @@ package stringset
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
 
-{{template "cmts" .J.Equal.Description}}var eqCases{{template "binaryBool" .J.Equal.Cases}}
-
-{{template "cmts" .J.Add.Description}}var addCases{{template "eleOp" .J.Add.Cases}}
-
-{{template "cmts" .J.Delete.Description}}var delCases{{template "eleOp" .J.Delete.Cases}}
-
-{{range .J.IsEmpty.Description}}// {{.}}
-{{end}}var emptyCases = []unaryBoolCase{
+// {{.J.IsEmpty.Description}}
+var emptyCases = []unaryBoolCase{
 {{range .J.IsEmpty.Cases}}{ // {{.Description}}
 	{{strs .Set | printf "%#v"}},
 	{{.Expected}},
 },
 {{end}}}
 
-{{range .J.Size.Description}}// {{.}}
-{{end}}var lenCases = []unaryIntCase{
-{{range .J.Size.Cases}}{ // {{.Description}}
-	{{strs .Set | printf "%#v"}},
-	{{.Expected}},
-},
-{{end}}}
-
-{{range .J.Element.Description}}// {{.}}
-{{end}}var hasCases = []eleBoolCase{
-{{range .J.Element.Cases}}{ // {{.Description}}
+// {{.J.Contains.Description}}
+var hasCases = []eleBoolCase{
+{{range .J.Contains.Cases}}{ // {{.Description}}
 	{{strs .Set | printf "%#v"}},
 	{{str .Element | printf "%q"}},
 	{{.Expected}},
 },
 {{end}}}
 
-{{template "cmts" .J.Subset.Description}}var subsetCases{{template "binaryBool" .J.Subset.Cases}}
+// {{.J.Subset.Description}}
+var subsetCases{{template "binaryBool" .J.Subset.Cases}}
 
-{{template "cmts" .J.Disjoint.Description}}var disjointCases{{template "binaryBool" .J.Disjoint.Cases}}
+// {{.J.Disjoint.Description}}
+var disjointCases{{template "binaryBool" .J.Disjoint.Cases}}
 
-{{template "cmts" .J.Union.Description}}var unionCases{{template "binaryOp" .J.Union.Cases}}
+// {{.J.Equal.Description}}
+var eqCases{{template "binaryBool" .J.Equal.Cases}}
 
-{{template "cmts" .J.Intersection.Description}}var intersectionCases{{template "binaryOp" .J.Intersection.Cases}}
+// {{.J.Add.Description}}
+var addCases{{template "eleOp" .J.Add.Cases}}
 
-{{template "cmts" .J.Difference.Description}}var differenceCases{{template "binaryOp" .J.Difference.Cases}}
+// {{.J.Intersection.Description}}
+var intersectionCases{{template "binaryOp" .J.Intersection.Cases}}
 
-{{template "cmts" .J.SymmetricDifference.Description}}var symmetricDifferenceCases{{template "binaryOp" .J.SymmetricDifference.Cases}}
+// {{.J.Difference.Description}}
+var differenceCases{{template "binaryOp" .J.Difference.Cases}}
+
+// {{.J.Union.Description}}
+var unionCases{{template "binaryOp" .J.Union.Cases}}
 `

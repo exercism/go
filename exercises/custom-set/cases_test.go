@@ -1,34 +1,108 @@
 package stringset
 
 // Source: exercism/x-common
-// Commit: 269f498 Merge pull request #48 from soniakeys/custom-set-json
+// Commit: cda8f98 Create new exercises structure
 
-// Test two sets for equality.
-var eqCases = []binBoolCase{
-	{ // order doesn't matter
-		[]string{"a", "c"},
-		[]string{"c", "a"},
+// Returns true if the set contains no elements
+var emptyCases = []unaryBoolCase{
+	{ // sets with no elements are empty
+		[]string{},
 		true,
 	},
-	{ // dupicates don't matter
-		[]string{"a", "a"},
+	{ // sets with elements are not empty
+		[]string{"a"},
+		false,
+	},
+}
+
+// Sets can report if they contain an element
+var hasCases = []eleBoolCase{
+	{ // nothing is contained in an empty set
+		[]string{},
+		"a",
+		false,
+	},
+	{ // when the element is in the set
+		[]string{"a", "b", "c"},
+		"a",
+		true,
+	},
+	{ // when the element is not in the set
+		[]string{"a", "b", "c"},
+		"d",
+		false,
+	},
+}
+
+// A set is a subset if all of its elements are contained in the other set
+var subsetCases = []binBoolCase{
+	{ // empty set is a subset of another empty set
+		[]string{},
+		[]string{},
+		true,
+	},
+	{ // empty set is a subset of non-empty set
+		[]string{},
 		[]string{"a"},
 		true,
 	},
+	{ // non-empty set is not a subset of empty set
+		[]string{"a"},
+		[]string{},
+		false,
+	},
+	{ // set is a subset of set with exact same elements
+		[]string{"a", "b", "c"},
+		[]string{"a", "b", "c"},
+		true,
+	},
+	{ // set is a subset of larger set with same elements
+		[]string{"a", "b", "c"},
+		[]string{"d", "a", "b", "c"},
+		true,
+	},
+	{ // set is not a subset of set that does not contain its elements
+		[]string{"a", "b", "c"},
+		[]string{"d", "a", "c"},
+		false,
+	},
+}
+
+// Sets are disjoint if they share no elements
+var disjointCases = []binBoolCase{
+	{ // the empty set is disjoint with itself
+		[]string{},
+		[]string{},
+		true,
+	},
+	{ // empty set is disjoint with non-empty set
+		[]string{},
+		[]string{"a"},
+		true,
+	},
+	{ // non-empty set is disjoint with empty set
+		[]string{"a"},
+		[]string{},
+		true,
+	},
+	{ // sets are not disjoint if they share an element
+		[]string{"a", "b"},
+		[]string{"b", "c"},
+		false,
+	},
+	{ // sets are disjoint if they share no elements
+		[]string{"a", "b"},
+		[]string{"c", "d"},
+		true,
+	},
+}
+
+// Sets with the same elements are equal
+var eqCases = []binBoolCase{
 	{ // empty sets are equal
 		[]string{},
 		[]string{},
 		true,
-	},
-	{ // set with single element is equal to itself
-		[]string{"a"},
-		[]string{"a"},
-		true,
-	},
-	{ // different sets are not equal
-		[]string{"a", "b", "c"},
-		[]string{"c", "d", "e"},
-		false,
 	},
 	{ // empty set is not equal to non-empty set
 		[]string{},
@@ -40,14 +114,19 @@ var eqCases = []binBoolCase{
 		[]string{},
 		false,
 	},
-	{ // having most in common is not good enough
-		[]string{"a", "b", "c", "d"},
-		[]string{"b", "c", "d", "e"},
+	{ // sets with the same elements are equal
+		[]string{"a", "b"},
+		[]string{"b", "a"},
+		true,
+	},
+	{ // sets with different elements are not equal
+		[]string{"a", "b", "c"},
+		[]string{"a", "b", "d"},
 		false,
 	},
 }
 
-// Add an element to a set.
+// Unique elements can be added to a set
 var addCases = []eleOpCase{
 	{ // add to empty set
 		[]string{},
@@ -59,310 +138,86 @@ var addCases = []eleOpCase{
 		"c",
 		[]string{"a", "b", "c", "d"},
 	},
-	{ // add existing element
+	{ // adding an existing element does not change the set
 		[]string{"a", "b", "c"},
 		"c",
 		[]string{"a", "b", "c"},
 	},
 }
 
-// Delete an element from a set.
-var delCases = []eleOpCase{
-	{ // delete an element
-		[]string{"c", "b", "a"},
-		"b",
-		[]string{"a", "c"},
-	},
-	{ // delete an element not in set
-		[]string{"c", "b", "a"},
-		"d",
-		[]string{"a", "b", "c"},
-	},
-}
-
-// Test if is a set is empty.
-var emptyCases = []unaryBoolCase{
-	{ // empty
-		[]string{},
-		true,
-	},
-	{ // single element
-		[]string{"a"},
-		false,
-	},
-	{ // a few elements
-		[]string{"a", "b", "c", "b"},
-		false,
-	},
-}
-
-// Return the cardinality of a set.
-var lenCases = []unaryIntCase{
-	{ // empty set
-		[]string{},
-		0,
-	},
-	{ // non-empty set
-		[]string{"a", "b", "c"},
-		3,
-	},
-	{ // duplicate element
-		[]string{"a", "b", "c", "b"},
-		3,
-	},
-}
-
-// Test if a value is an element of a set.
-var hasCases = []eleBoolCase{
-	{ // nothing is an element of the empty set
-		[]string{},
-		"a",
-		false,
-	},
-	{ // 1 is in the set
-		[]string{"a", "b", "c", "b"},
-		"a",
-		true,
-	},
-	{ // 2 is in the set
-		[]string{"a", "b", "c", "b"},
-		"b",
-		true,
-	},
-	{ // 3 is in the set
-		[]string{"a", "b", "c", "b"},
-		"c",
-		true,
-	},
-	{ // 4 not in the set
-		[]string{"a", "b", "c", "b"},
-		"d",
-		false,
-	},
-}
-
-// Test if set1 is a subset of set2.
-var subsetCases = []binBoolCase{
-	{ // empty set is subset of itself
-		[]string{},
-		[]string{},
-		true,
-	},
-	{ // empty set is subset of non-empty set
-		[]string{},
-		[]string{"a"},
-		true,
-	},
-	{ // non-empty set is not subset of empty set
-		[]string{"a"},
-		[]string{},
-		false,
-	},
-	{ // non-empty set is subset of itself
-		[]string{"a", "b", "c"},
-		[]string{"a", "b", "c"},
-		true,
-	},
-	{ // proper subset
-		[]string{"a", "b", "c"},
-		[]string{"d", "a", "b", "c"},
-		true,
-	},
-	{ // same number of elements
-		[]string{"a", "b", "c"},
-		[]string{"d", "a", "c"},
-		false,
-	},
-	{ // superset
-		[]string{"a", "b", "c", "d", "e"},
-		[]string{"b", "c", "d"},
-		false,
-	},
-	{ // fewer elements but not a subset
-		[]string{"a", "b", "c", "k"},
-		[]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"},
-		false,
-	},
-}
-
-// Test if two sets are disjoint.
-var disjointCases = []binBoolCase{
-	{ // the empty set is disjoint with itself
-		[]string{},
-		[]string{},
-		true,
-	},
-	{ // empty set disjoint with non-empty set
-		[]string{},
-		[]string{"a"},
-		true,
-	},
-	{ // non-empty set disjoint with empty set
-		[]string{"a"},
-		[]string{},
-		true,
-	},
-	{ // one element in common
-		[]string{"a", "b"},
-		[]string{"b", "c"},
-		false,
-	},
-	{ // no elements in common
-		[]string{"a", "b"},
-		[]string{"c", "d"},
-		true,
-	},
-}
-
-// Produce the union of two sets.
-var unionCases = []binOpCase{
-	{ // union of empty sets
-		[]string{},
-		[]string{},
-		[]string{},
-	},
-	{ // union of empty set with set of one element
-		[]string{},
-		[]string{"b"},
-		[]string{"b"},
-	},
-	{ // union of empty set with non-empty set
-		[]string{},
-		[]string{"c", "b", "e"},
-		[]string{"b", "c", "e"},
-	},
-	{ // union of non-empty set with empty set
-		[]string{"a", "c"},
-		[]string{},
-		[]string{"a", "c"},
-	},
-	{ // union of a set with itself
-		[]string{"a", "c"},
-		[]string{"c", "a"},
-		[]string{"a", "c"},
-	},
-	{ // union with one element
-		[]string{"a", "c"},
-		[]string{"b"},
-		[]string{"a", "b", "c"},
-	},
-	{ // one element in common, one different
-		[]string{"a", "c"},
-		[]string{"b", "c"},
-		[]string{"c", "b", "a"},
-	},
-	{ // two elements in common
-		[]string{"a", "b", "c", "d"},
-		[]string{"c", "b", "e"},
-		[]string{"a", "b", "c", "d", "e"},
-	},
-}
-
-// Intersect two sets.
+// Intersect returns a set of all shared elements
 var intersectionCases = []binOpCase{
-	{ // intersect empty sets
+	{ // intersection of two empty sets is an empty set
 		[]string{},
 		[]string{},
 		[]string{},
 	},
-	{ // intersect empty set with non-empty set
+	{ // intersection of an empty set and non-empty set is an empty set
 		[]string{},
 		[]string{"c", "b", "e"},
 		[]string{},
 	},
-	{ // intersect non-empty set with empty set
+	{ // intersection of a non-empty set and an empty set is an empty set
 		[]string{"a", "b", "c", "d"},
 		[]string{},
 		[]string{},
 	},
-	{ // intersect one element with itself
-		[]string{"c"},
-		[]string{"c"},
-		[]string{"c"},
-	},
-	{ // one element in common, extra elements in both sets
-		[]string{"a", "b", "c"},
-		[]string{"c", "e", "d"},
-		[]string{"c"},
-	},
-	{ // two elements in common, extras in both sets
-		[]string{"a", "b", "c", "d"},
-		[]string{"c", "b", "e"},
-		[]string{"b", "c"},
-	},
-	{ // intersect with subset
-		[]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"},
-		[]string{"e", "f", "g", "h", "i", "j"},
-		[]string{"e", "f", "g", "h", "i", "j"},
-	},
-	{ // nothing in common
+	{ // intersection of two sets with no shared elements is an empty set
 		[]string{"a", "b", "c"},
 		[]string{"d", "e", "f"},
 		[]string{},
 	},
+	{ // intersection of two sets with shared elements is a set of the shared elements
+		[]string{"a", "b", "c", "d"},
+		[]string{"c", "b", "e"},
+		[]string{"b", "c"},
+	},
 }
 
-// Produce the set difference (set1 - set2)
-// or more specifically, (set1 ∖ set2)
+// Difference (or Complement) of a set is a set of all elements that are only in the first set
 var differenceCases = []binOpCase{
-	{ // difference of two empty sets
+	{ // difference of two empty sets is an empty set
 		[]string{},
 		[]string{},
 		[]string{},
 	},
-	{ // difference of empty set and non-empty set
+	{ // difference of empty set and non-empty set is an empty set
 		[]string{},
 		[]string{"c", "b", "e"},
 		[]string{},
 	},
-	{ // difference of non-empty set and empty set
+	{ // difference of a non-empty set and an empty set is the non-empty set
 		[]string{"a", "b", "c", "d"},
 		[]string{},
 		[]string{"a", "b", "c", "d"},
 	},
-	{ // no elements in common
-		[]string{"a", "b", "c"},
-		[]string{"d"},
-		[]string{"a", "b", "c"},
-	},
-	{ // one element in common, one extra
+	{ // difference of two non-empty sets is a set of elements that are only in the first set
 		[]string{"c", "b", "a"},
 		[]string{"b", "d"},
 		[]string{"a", "c"},
 	},
-	{ // two elements in common, one extra
-		[]string{"a", "b", "c", "d"},
-		[]string{"c", "b", "e"},
-		[]string{"a", "d"},
-	},
 }
 
-// Produce the symmetric difference of two sets.  The symmetric
-// difference consists of elements in one or the other but not both.
-var symmetricDifferenceCases = []binOpCase{
-	{ // two empty sets
+// Union returns a set of all elements in either set
+var unionCases = []binOpCase{
+	{ // union of empty sets is an empty set
 		[]string{},
 		[]string{},
 		[]string{},
 	},
-	{ // empty set and non-empty set
+	{ // union of an empty set and non-empty set is the non-empty set
 		[]string{},
-		[]string{"c", "b", "e"},
-		[]string{"c", "b", "e"},
+		[]string{"b"},
+		[]string{"b"},
 	},
-	{ // non-empty set and empty set
-		[]string{"a", "b", "c", "d"},
+	{ // union of a non-empty set and empty set is the non-empty set
+		[]string{"a", "c"},
 		[]string{},
-		[]string{"a", "b", "c", "d"},
+		[]string{"a", "c"},
 	},
-	{ // no elements in common
-		[]string{"a", "b", "c"},
-		[]string{"d"},
-		[]string{"a", "b", "c", "d"},
-	},
-	{ // one element in common
+	{ // union of non-empty sets contains all unique elements
+		[]string{"a", "c"},
+		[]string{"b", "c"},
 		[]string{"c", "b", "a"},
-		[]string{"b", "d"},
-		[]string{"a", "c", "d"},
 	},
 }
