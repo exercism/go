@@ -154,7 +154,11 @@
     {
       "difficulty": 1,
       "slug": "scrabble-score",
-      "topics": []
+      "topics": [
+        "Control-flow (loops)",
+        "Maps",
+        "Strings"
+      ]
     },
     {
       "difficulty": 1,
