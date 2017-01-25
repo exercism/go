@@ -77,9 +77,13 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "acronym",
-      "topics": []
+      "topics": [
+        "Strings",
+        "Transforming",
+        "Regular Expressions"
+      ]
     },
     {
       "difficulty": 1,
