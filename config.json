@@ -98,9 +98,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 2,
       "slug": "bob",
-      "topics": []
+      "topics": [
+        "Control-flow (conditionals)",
+        "Strings"
+      ]
     },
     {
       "difficulty": 1,
