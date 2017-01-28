@@ -90,9 +90,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 2,
       "slug": "pangram",
-      "topics": []
+      "topics": [
+        "Control-flow (loops)",
+        "Strings"
+      ]
     },
     {
       "difficulty": 1,
