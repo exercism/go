@@ -106,9 +106,13 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "triangle",
-      "topics": []
+      "topics": [
+        "Control-flow (conditionals)",
+        "Booleans",
+        "Logic"
+      ]
     },
     {
       "difficulty": 1,
