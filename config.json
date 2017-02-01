@@ -111,9 +111,15 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 4,
       "slug": "twelve-days",
-      "topics": []
+      "topics": [
+        "Strings",
+        "Sequences",
+        "Algorithms",
+        "Pattern recognition",
+        "Text formatting"
+      ]
     },
     {
       "difficulty": 1,
