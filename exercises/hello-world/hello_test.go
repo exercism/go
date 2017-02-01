@@ -2,25 +2,20 @@ package greeting
 
 import "testing"
 
-// Define a function HelloWorld(string) string.
+// Define a function named HelloWorld that takes no arguments,
+// and returns a string.
+// In other words, define a function with the following signature:
+// HelloWorld() string
 //
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 func TestHelloWorld(t *testing.T) {
-	tests := []struct {
-		name, expected string
-	}{
-		{"", "Hello, World!"},
-		{"Gopher", "Hello, Gopher!"},
-		{"ゴーファー", "Hello, ゴーファー!"},
-	}
-	for _, test := range tests {
-		if observed := HelloWorld(test.name); observed != test.expected {
-			t.Fatalf("HelloWorld(%s) = %v, want %v", test.name, observed, test.expected)
-		}
+	expected := "Hello, World!"
+	if observed := HelloWorld(); observed != expected {
+		t.Fatalf("HelloWorld() = %v, want %v", observed, expected)
 	}
 
 	if testVersion != targetTestVersion {
