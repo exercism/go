@@ -45,10 +45,13 @@ var positions = map[string][2][2]int{
 	"scheme":     {{0, 6}, {5, 6}},
 }
 
-func TestSolve(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestSolve(t *testing.T) {
 	actual, err := Solve(words, puzzle)
 	if err != nil {
 		var _ error = err
