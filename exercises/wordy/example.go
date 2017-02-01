@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const testVersion = 1
+
 func Answer(q string) (a int, ok bool) {
 	w := strings.Fields(q)
 	if len(w) < 3 { // length check for first two words and last word
