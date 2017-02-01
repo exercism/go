@@ -2,6 +2,8 @@ package allyourbase
 
 import "testing"
 
+const targetTestVersion = 1
+
 // Note: ConvertToBase should accept leading zeroes in its input,
 // but never emit leading zeroes in its output.
 // Exception: If the value of the output is zero, represent it with a single zero.
@@ -154,6 +156,12 @@ func digitsEqual(a, b []uint64) bool {
 	return true
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestConvertToBase(t *testing.T) {
 	for _, c := range testCases {
 		output, err := ConvertToBase(c.inputBase, c.inputDigits, c.outputBase)
@@ -173,13 +181,5 @@ func TestConvertToBase(t *testing.T) {
 		} else {
 			t.Logf("PASS: %s", c.description)
 		}
-	}
-}
-
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
