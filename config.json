@@ -185,9 +185,11 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "parallel-letter-frequency",
-      "topics": []
+      "topics": [
+        "Concurrency"
+      ]
     },
     {
       "difficulty": 1,
