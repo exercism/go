@@ -26,7 +26,7 @@ var testCases = []testCase{
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
@@ -38,6 +38,14 @@ func TestPangram(t *testing.T) {
 			if !test.expected {
 				t.Logf("[%s] should not be a pangram because : %s\n", test.input, test.failureReason)
 			}
+		}
+	}
+}
+
+func BenchmarkPangram(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
+			IsPangram(test.input)
 		}
 	}
 }
