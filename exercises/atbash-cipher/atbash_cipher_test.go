@@ -2,6 +2,8 @@ package atbash
 
 import "testing"
 
+const targetTestVersion = 1
+
 var tests = []struct {
 	expected string
 	s        string
@@ -15,6 +17,12 @@ var tests = []struct {
 	{"gvhgr mt123 gvhgr mt", "Testing, 1 2 3, testing."},
 	{"gifgs rhurx grlm", "Truth is fiction."},
 	{"gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt", "The quick brown fox jumps over the lazy dog."},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestAtbash(t *testing.T) {
