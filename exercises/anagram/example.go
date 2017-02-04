@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const testVersion = 1
+
 func Detect(subject string, candidates []string) []string {
 	subject = strings.ToLower(subject)
 	var matches []string
