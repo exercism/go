@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const testVersion = 1
+
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 func Atbash(s string) string {
