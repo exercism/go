@@ -23,10 +23,13 @@ var allergiesTests = []struct {
 	{[]string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 509},
 }
 
-func TestAllergies(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestAllergies(t *testing.T) {
 	for _, test := range allergiesTests {
 		actual := Allergies(test.input)
 		sort.Strings(actual)
