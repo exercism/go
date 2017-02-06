@@ -1,5 +1,7 @@
 package variablelengthquantity
 
+const testVersion = 1
+
 // EncodeVarint returns the varint encoding of x.
 func EncodeVarint(x uint32) []byte {
 	if x>>7 == 0 {
