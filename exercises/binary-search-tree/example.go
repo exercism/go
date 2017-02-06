@@ -1,5 +1,7 @@
 package binarysearchtree
 
+const testVersion = 1
+
 type SearchTreeData struct {
 	left  *SearchTreeData
 	data  int
