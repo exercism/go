@@ -2,6 +2,8 @@ package account
 
 import "sync"
 
+const testVersion = 1
+
 type Account struct {
 	sync.RWMutex
 	open    bool
