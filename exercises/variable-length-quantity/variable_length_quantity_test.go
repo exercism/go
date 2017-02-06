@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var testCases = []struct {
 	input  []byte
 	output uint32
@@ -21,6 +23,12 @@ var testCases = []struct {
 	8:  {[]byte{0xFF, 0xFF, 0xFF, 0x7F}, 268435455, 3},
 	9:  {[]byte{0x82, 0x00}, 256, 1},
 	10: {[]byte{0x81, 0x10}, 144, 1},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 }
 
 func TestDecodeVarint(t *testing.T) {
