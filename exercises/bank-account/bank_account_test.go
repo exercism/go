@@ -20,6 +20,14 @@ import (
 	"time"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestSeqOpenBalanceClose(t *testing.T) {
 	// open account
 	const amt = 10
