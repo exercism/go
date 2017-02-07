@@ -25,6 +25,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var testData = []struct {
 	ref   string
 	slice []int
@@ -82,6 +84,12 @@ var testData = []struct {
 		0, 5},
 	{"slice has no values",
 		nil, 0, 0},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestSearchInts(t *testing.T) {
