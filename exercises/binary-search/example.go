@@ -2,6 +2,8 @@ package binarysearch
 
 import "fmt"
 
+const testVersion = 1
+
 func SearchInts(s []int, k int) (i int) {
 	for j := len(s); i < j; {
 		if h := (i + j) / 2; s[h] < k {
