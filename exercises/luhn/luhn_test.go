@@ -26,7 +26,7 @@ func TestTestVersion(t *testing.T) {
 func TestValid(t *testing.T) {
 	for _, test := range testCases {
 		if ok := Valid(test.input); ok != test.ok {
-			t.Fatalf("Valid(%s): %s\n\t Expected: %t\n\t Got: %t", test.input, test.description, ok, test.ok)
+			t.Fatalf("Valid(%s): %s\n\t Expected: %t\n\t Got: %t", test.input, test.description, test.ok, ok)
 		}
 	}
 }
