@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+const targetTestVersion = 1
+
 var config = &quick.Config{Rand: rand.New(rand.NewSource(time.Now().UnixNano()))}
 
 type correctChar byte
@@ -35,6 +37,12 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
@@ -215,13 +223,5 @@ func TestCharOutOfRangeShouldGiveError(t *testing.T) {
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
-	}
-}
-
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
