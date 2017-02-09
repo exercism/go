@@ -4,10 +4,13 @@ import "testing"
 
 const targetTestVersion = 2
 
-func TestHeyBob(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestHeyBob(t *testing.T) {
 	for _, tt := range testCases {
 		actual := Hey(tt.input)
 		if actual != tt.expected {
