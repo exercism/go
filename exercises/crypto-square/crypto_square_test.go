@@ -86,10 +86,13 @@ var tests = []struct {
 	},
 }
 
-func TestEncode(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestEncode(t *testing.T) {
 	for _, test := range tests {
 		if ct := Encode(test.pt); ct != test.ct {
 			t.Fatalf(`Encode(%q):
