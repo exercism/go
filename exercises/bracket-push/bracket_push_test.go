@@ -48,10 +48,13 @@ var testCases = []struct {
 	},
 }
 
-func TestBracket(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestBracket(t *testing.T) {
 	for _, tt := range testCases {
 		actual, err := Bracket(tt.input)
 		// We don't expect errors for any of the test cases
