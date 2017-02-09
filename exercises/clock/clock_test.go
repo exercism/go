@@ -29,10 +29,13 @@ import (
 
 const targetTestVersion = 4
 
-func TestCreateClock(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestCreateClock(t *testing.T) {
 	for _, n := range timeTests {
 		if got := New(n.h, n.m); got.String() != n.want {
 			t.Fatalf("New(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
