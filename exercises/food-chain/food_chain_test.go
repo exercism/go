@@ -8,12 +8,6 @@ import (
 
 const targetTestVersion = 3
 
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
-
 var ref = []string{``,
 
 	`I know an old lady who swallowed a fly.
@@ -89,6 +83,12 @@ func diff(got, want string) string {
 		default:
 			return "no differences found"
 		}
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
