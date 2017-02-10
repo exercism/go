@@ -2,10 +2,18 @@ package diffsquares
 
 import "testing"
 
+const targetTestVersion = 1
+
 var tests = []struct{ n, sqOfSums, sumOfSq int }{
 	{5, 225, 55},
 	{10, 3025, 385},
 	{100, 25502500, 338350},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestSquareOfSums(t *testing.T) {
