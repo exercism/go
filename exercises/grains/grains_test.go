@@ -23,6 +23,12 @@ var squareTests = []struct {
 	{-1, 0, true},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestSquare(t *testing.T) {
 	for _, test := range squareTests {
 		actualVal, actualErr := Square(test.input)
@@ -48,12 +54,6 @@ func TestTotal(t *testing.T) {
 	var expected uint64 = 18446744073709551615
 	if actual := Total(); actual != expected {
 		t.Errorf("Total() expected %d, Actual %d", expected, actual)
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
