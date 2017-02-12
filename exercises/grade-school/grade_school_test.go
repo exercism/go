@@ -19,6 +19,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestNewSchoolIsEmpty(t *testing.T) {
 	if len(New().Enrollment()) != 0 {
 		t.Error("New school not empty")

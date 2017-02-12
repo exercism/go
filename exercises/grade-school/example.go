@@ -2,6 +2,8 @@ package school
 
 import "sort"
 
+const testVersion = 1
+
 type School map[int][]string
 
 func New() *School {
