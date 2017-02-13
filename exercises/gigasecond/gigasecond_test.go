@@ -16,10 +16,13 @@ const (
 	fmtDT = "2006-01-02T15:04:05"
 )
 
-func TestAddGigasecond(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestAddGigasecond(t *testing.T) {
 	for _, tc := range addCases {
 		in := parse(tc.in, t)
 		want := parse(tc.want, t)
