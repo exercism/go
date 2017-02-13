@@ -9,6 +9,12 @@ import "testing"
 
 const targetTestVersion = 3
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestHelloWorld(t *testing.T) {
 	tests := []struct {
 		name, expected string
@@ -21,9 +27,5 @@ func TestHelloWorld(t *testing.T) {
 		if observed := HelloWorld(test.name); observed != test.expected {
 			t.Fatalf("HelloWorld(%s) = %v, want %v", test.name, observed, test.expected)
 		}
-	}
-
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
