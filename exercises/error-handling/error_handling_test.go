@@ -27,6 +27,14 @@ func (mr mockResource) Close() error      { return mr.close() }
 func (mr mockResource) Frob(input string) { mr.frob(input) }
 func (mr mockResource) Defrob(tag string) { mr.defrob(tag) }
 
+// If this test fails and you've properly defined testVersion the requirements
+// of the tests have changed since you wrote your submission.
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 // Use should not return an error on the "happy" path.
 func TestNoErrors(t *testing.T) {
 	var frobInput string
@@ -153,13 +161,5 @@ func TestCallCloseNonOnFrobError(t *testing.T) {
 	}
 	if !closeCalled {
 		t.Fatalf("Close was not called")
-	}
-}
-
-// If this test fails and you've properly defined testVersion the requirements
-// of the tests have changed since you wrote your submission.
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
