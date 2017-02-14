@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+const testVersion = 1
+
 var r = rand.New(rand.NewSource(time.Now().Unix()))
 var two = big.NewInt(2)
 
