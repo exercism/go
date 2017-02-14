@@ -2,6 +2,8 @@ package etl
 
 import "strings"
 
+const testVersion = 1
+
 type legacy map[int][]string
 
 func Transform(in legacy) (out map[string]int) {

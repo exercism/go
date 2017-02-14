@@ -2,6 +2,8 @@ package etl
 
 import "testing"
 
+const targetTestVersion = 1
+
 type given map[int][]string
 type expectation map[string]int
 
@@ -65,6 +67,12 @@ func equal(actual map[string]int, expectation map[string]int) bool {
 	}
 
 	return true
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestTransform(t *testing.T) {
