@@ -17,12 +17,6 @@ import (
 
 const targetTestVersion = 1
 
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
-
 var testCases = []struct {
 	in      string
 	out     int64
@@ -39,6 +33,12 @@ var testCases = []struct {
 	{"2cg134", 0, "syntax"},
 	{"8000000000000000", 0, "range"},
 	{"9223372036854775809", 0, "range"},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 }
 
 func TestParseHex(t *testing.T) {
