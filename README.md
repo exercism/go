@@ -31,6 +31,7 @@ This is because this repo only imports from the standard library and isn't expec
 Please be familiar with the [contributing guide](https://github.com/exercism/x-common/blob/master/CONTRIBUTING.md)
 in the x-common repository.  This describes how all the language tracks are put together, as well as details about
 the common metadata, and high-level information about contributing to existing problems and adding new problems.
+In particular, please read the [Pull Request Guidelines](https://github.com/exercism/x-common/blob/master/CONTRIBUTING.md#pull-request-guidelines) before opening a pull request.
 
 ## Problem Versioning
 
