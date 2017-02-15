@@ -112,6 +112,12 @@ that lay in the house that Jack built.`
 	verses = strings.Split(song, "\n\n")
 )
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestVerse(t *testing.T) {
 	for v := 0; v < len(verses); v++ {
 		if ret := Verse(v + 1); ret != verses[v] {
@@ -145,10 +151,4 @@ func TestSong(t *testing.T) {
 		}
 	}
 	t.Fatalf("Song() line %d =\n%q\n want \n%q", i+1, g, w)
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
