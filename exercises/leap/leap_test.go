@@ -9,10 +9,13 @@ import "testing"
 
 const targetTestVersion = 3
 
-func TestLeapYears(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestLeapYears(t *testing.T) {
 	for _, test := range testCases {
 		observed := IsLeapYear(test.year)
 		if observed != test.expected {
