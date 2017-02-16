@@ -250,10 +250,13 @@ var failureTestCases = []struct {
 	},
 }
 
-func TestFormatLedgerSuccess(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestFormatLedgerSuccess(t *testing.T) {
 	for _, tt := range successTestCases {
 		actual, err := FormatLedger(tt.currency, tt.locale, tt.entries)
 		// We don't expect errors for any of the test cases
