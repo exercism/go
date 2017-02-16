@@ -151,6 +151,12 @@ func clear(s string) Board {
 	return bytes.Split(b, []byte{'\n'})[1:]
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestValid(t *testing.T) {
 	for _, ref := range validBoards {
 		b := clear(ref)
@@ -172,12 +178,6 @@ func TestBad(t *testing.T) {
 		if b.Count() == nil {
 			t.Fatal("Count() returned nil, want error.")
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
