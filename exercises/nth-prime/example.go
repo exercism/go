@@ -1,5 +1,7 @@
 package prime
 
+const testVersion = 1
+
 func Nth(n int) (p int, ok bool) {
 	switch {
 	case n < 1:
