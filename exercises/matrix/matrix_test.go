@@ -142,6 +142,12 @@ var tests = []struct {
 	// {"",     // valid?, 0 rows, 0 columns
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestNew(t *testing.T) {
 	for _, test := range tests {
 		m, err := New(test.in)
@@ -264,11 +270,5 @@ func TestSet(t *testing.T) {
 				t.Fatalf("Matrix(%q).Set(%d, %d, 0) = ok, want !ok", s, r, c)
 			}
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
