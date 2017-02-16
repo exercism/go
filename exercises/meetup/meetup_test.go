@@ -25,10 +25,13 @@ var weekName = map[WeekSchedule]string{
 	Last:   "last",
 }
 
-func TestDay(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestDay(t *testing.T) {
 	for _, test := range testCases {
 		res := Day(test.week, test.weekday, test.month, test.year)
 		if res != test.expDay {
