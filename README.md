@@ -37,7 +37,7 @@ In particular, please read the [Pull Request Guidelines](https://github.com/exer
 
 Each problem defines a `const targetTestVersion` in the test program, and validates that the solution has defined a matching value `testVersion`.  Any xgo developer that changes the test program or test data increments `targetTestVersion`.
 
-The benefit of all this is that nipickers can see which test version a posted solution was written for and be spared confusion over why an old posted solution might not pass current tests.
+The benefit of all this is that reviewers can see which test version a posted solution was written for and be spared confusion over why an old posted solution might not pass current tests.
 
 Notice that neither the `testVersion` nor the `targetTestVersion` is exported. This is so that golint will not complain about a missing comment. In general, adding tests for unexported names is considered an anti-pattern, but in this case the trade-off seems acceptable.
 
