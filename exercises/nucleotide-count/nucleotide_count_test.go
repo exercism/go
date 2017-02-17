@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 2
+
 var tallyTests = []struct {
 	strand     DNA
 	nucleotide byte
@@ -14,6 +16,12 @@ var tallyTests = []struct {
 	{"ACT", 'G', 0},
 	{"CCCCC", 'C', 5},
 	{"GGGGGTAACCCGG", 'T', 1},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
 }
 
 func TestNucleotideCounts(t *testing.T) {
@@ -99,13 +107,5 @@ func BenchmarkSequenceHistograms(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			tt.strand.Counts()
 		}
-	}
-}
-
-const targetTestVersion = 2
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
