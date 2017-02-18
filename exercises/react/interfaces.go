@@ -38,12 +38,12 @@ type ComputeCell interface {
 	Cell
 
 	// AddCallback adds a callback which will be called when the value changes.
-	// It returns a callback handle which can be used to remove the callback.
-	AddCallback(func(int)) CallbackHandle
-
-	// RemoveCallback removes a previously added callback, if it exists.
-	RemoveCallback(CallbackHandle)
+	// It returns a Canceler which can be used to remove the callback.
+	AddCallback(func(int)) Canceler
 }
 
-// A CallbackHandle is used to remove previously added callbacks, see ComputeCell.
-type CallbackHandle interface{}
+// A Canceler is used to remove previously added callbacks, see ComputeCell.
+type Canceler interface {
+	// Cancel removes the callback.
+	Cancel()
+}
