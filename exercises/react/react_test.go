@@ -11,7 +11,7 @@ import (
 // Also define a testVersion with a value that matches
 // the targetTestVersion here.
 
-const targetTestVersion = 4
+const targetTestVersion = 5
 
 // This is a compile time check to see if you've properly implemented New().
 var _ Reactor = New()
@@ -182,7 +182,7 @@ func TestCallbackAddRemove(t *testing.T) {
 	if len(observed2) != 1 || observed2[0] != 3 {
 		t.Fatalf("observed2 not properly called")
 	}
-	c.RemoveCallback(cb1)
+	cb1.Cancel()
 	i.SetValue(3)
 	if len(observed1) != 1 {
 		t.Fatalf("observed1 called after removal")
@@ -200,11 +200,11 @@ func TestMultipleCallbackRemoval(t *testing.T) {
 	numCallbacks := 5
 
 	calls := make([]int, numCallbacks)
-	handles := make([]CallbackHandle, numCallbacks)
+	cancelers := make([]Canceler, numCallbacks)
 	for i := 0; i < numCallbacks; i++ {
 		// Rebind i, otherwise all callbacks will use i = numCallbacks
 		i := i
-		handles[i] = c.AddCallback(func(v int) { calls[i]++ })
+		cancelers[i] = c.AddCallback(func(v int) { calls[i]++ })
 	}
 
 	inp.SetValue(2)
@@ -212,7 +212,7 @@ func TestMultipleCallbackRemoval(t *testing.T) {
 		if calls[i] != 1 {
 			t.Fatalf("callback %d/%d should be called 1 time, was called %d times", i+1, numCallbacks, calls[i])
 		}
-		c.RemoveCallback(handles[i])
+		cancelers[i].Cancel()
 	}
 
 	inp.SetValue(3)
@@ -231,7 +231,7 @@ func TestRemoveIdempotence(t *testing.T) {
 	cb1 := output.AddCallback(func(int) {})
 	output.AddCallback(func(int) { timesCalled++ })
 	for i := 0; i < 10; i++ {
-		output.RemoveCallback(cb1)
+		cb1.Cancel()
 	}
 	inp.SetValue(2)
 	if timesCalled != 1 {

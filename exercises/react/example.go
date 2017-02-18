@@ -1,6 +1,6 @@
 package react
 
-const testVersion = 4
+const testVersion = 5
 
 type reactor struct {
 	cells []*cell
@@ -17,6 +17,14 @@ type cell struct {
 	observers map[int]func(int)
 }
 
+type canceler struct {
+	cancel func()
+}
+
+func (c *canceler) Cancel() {
+	c.cancel()
+}
+
 func (c *cell) Value() int { return c.value }
 
 func (c *cell) SetValue(v int) {
@@ -27,15 +35,15 @@ func (c *cell) SetValue(v int) {
 	}
 }
 
-func (c *cell) AddCallback(cb func(int)) CallbackHandle {
+func (c *cell) AddCallback(cb func(int)) Canceler {
 	key := c.nextKey
 	c.nextKey++
 	c.observers[key] = cb
-	return key
-}
-
-func (c *cell) RemoveCallback(key CallbackHandle) {
-	delete(c.observers, key.(int))
+	return &canceler{
+		cancel: func() {
+			delete(c.observers, key)
+		},
+	}
 }
 
 func New() Reactor {
