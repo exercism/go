@@ -2,15 +2,23 @@ package greeting
 
 import "testing"
 
-// Define a function HelloWorld(string) string.
-
-// In any exercise solution using these tests you must also define a
-// testVersion constant with a value that matches the targetTestVersion
-// here.
-const targetTestVersion = 3
+// Define a function named HelloWorld that takes no arguments,
+// and returns a string.
+// In other words, define a function with the following signature:
+// HelloWorld() string
+//
+// In any exercise solution using the following tests you must also define a
+// "testVersion" constant with a value that matches the targetTestVersion
+// here. See how it is done in the the ./hello_world.go file provided.
+// This is a common convention for ensuring test consistency throughout the
+// Exercism Go language track.
+//
+// See TestTestVersion function below for how this and the testVersion
+// constants are used.
+const targetTestVersion = 4
 
 // TestTestVersion is used to ensure the exercise solution is considered
-// compatable with the rest of the tests. It should be the initial testing
+// compatible with the rest of the tests. It should be the initial testing
 // function in any test suite. If there is an incompatibility the tests can
 // be considered unreliable therefore this function will abort the testing.
 func TestTestVersion(t *testing.T) {
@@ -20,16 +28,8 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestHelloWorld(t *testing.T) {
-	tests := []struct {
-		name, expected string
-	}{
-		{"", "Hello, World!"},
-		{"Gopher", "Hello, Gopher!"},
-		{"ゴーファー", "Hello, ゴーファー!"},
-	}
-	for _, test := range tests {
-		if observed := HelloWorld(test.name); observed != test.expected {
-			t.Fatalf("HelloWorld(%s) = %v, want %v", test.name, observed, test.expected)
-		}
+	expected := "Hello, World!"
+	if observed := HelloWorld(); observed != expected {
+		t.Fatalf("HelloWorld() = %v, want %v", observed, expected)
 	}
 }
