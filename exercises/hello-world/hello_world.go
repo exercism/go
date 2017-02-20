@@ -10,10 +10,10 @@ package greeting
 // after you have posted this code to the Exercism site -- reviewers
 // will see that your code can't necessarily be expected to pass the
 // current test suite because it was written to an earlier test version.
-const testVersion = 3
+const testVersion = 4
 
 // HelloWorld needs a comment documenting it as package does.
-func HelloWorld(string) string {
+func HelloWorld() string {
 	// Write some code here to pass the test suite.
 
 	// When you have a working solution, REMOVE ALL THE STOCK COMMENTS.
