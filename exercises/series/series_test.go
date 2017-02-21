@@ -75,7 +75,7 @@ func TestAll(t *testing.T) {
 		case len(res) == 0 && len(test.out) == 0:
 		case reflect.DeepEqual(res, test.out):
 		default:
-			t.Fatalf("All(%d, %s) = %v, want %v.",
+			t.Fatalf("All(%d, %q) = %q, want %q.",
 				test.n, test.s, res, test.out)
 		}
 	}
@@ -87,7 +87,7 @@ func TestUnsafeFirst(t *testing.T) {
 			continue
 		}
 		if res := UnsafeFirst(test.n, test.s); res != test.out[0] {
-			t.Fatalf("UnsafeFirst(%d, %s) = %s, want %s.",
+			t.Fatalf("UnsafeFirst(%d, %q) = %q, want %q.",
 				test.n, test.s, res, test.out[0])
 		}
 	}
