@@ -1,5 +1,7 @@
 package slice
 
+const testVersion = 1
+
 func All(n int, s string) (r []string) {
 	for i := 0; n <= len(s); i++ {
 		r = append(r, s[i:n])
