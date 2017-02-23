@@ -53,8 +53,8 @@ func TestKeepInts(t *testing.T) {
 		}
 		switch res := cp.Keep(test.pred); {
 		case !reflect.DeepEqual(cp, test.list):
-			t.Fatalf("Ints%v.Keep() should not modify its reciever.  "+
-				"Found %v, reciever should stay %v",
+			t.Fatalf("Ints%v.Keep() should not modify its receiver.  "+
+				"Found %v, receiver should stay %v",
 				test.list, cp, test.list)
 		case !reflect.DeepEqual(res, test.want):
 			t.Fatalf("Ints%v.Keep() = %v, want %v",
@@ -90,8 +90,8 @@ func TestDiscardInts(t *testing.T) {
 		}
 		switch res := cp.Discard(test.pred); {
 		case !reflect.DeepEqual(cp, test.list):
-			t.Fatalf("Ints%v.Discard() should not modify its reciever.  "+
-				"Found %v, reciever should stay %v",
+			t.Fatalf("Ints%v.Discard() should not modify its receiver.  "+
+				"Found %v, receiver should stay %v",
 				test.list, cp, test.list)
 		case !reflect.DeepEqual(res, test.want):
 			t.Fatalf("Ints%v.Discard() = %v, want %v",
@@ -102,14 +102,14 @@ func TestDiscardInts(t *testing.T) {
 
 func TestKeepStrings(t *testing.T) {
 	zword := func(s string) bool { return len(s) > 0 && s[0] == 'z' }
-	list := Strings{"apple", "zebra", "banana", "zombies", "cherimoya", "zelot"}
-	want := Strings{"zebra", "zombies", "zelot"}
+	list := Strings{"apple", "zebra", "banana", "zombies", "cherimoya", "zealot"}
+	want := Strings{"zebra", "zombies", "zealot"}
 
 	cp := append(Strings{}, list...) // make copy, as with TestInts
 	switch res := cp.Keep(zword); {
 	case !reflect.DeepEqual(cp, list):
-		t.Fatalf("Strings%v.Keep() should not modify its reciever.  "+
-			"Found %v, reciever should stay %v",
+		t.Fatalf("Strings%v.Keep() should not modify its receiver.  "+
+			"Found %v, receiver should stay %v",
 			list, cp, list)
 	case !reflect.DeepEqual(res, want):
 		t.Fatalf("Strings%v.Keep() = %v, want %v",
@@ -144,8 +144,8 @@ func TestKeepLists(t *testing.T) {
 	cp := append(Lists{}, list...)
 	switch res := cp.Keep(has5); {
 	case !reflect.DeepEqual(cp, list):
-		t.Fatalf("Lists%v.Keep() should not modify its reciever.  "+
-			"Found %v, reciever should stay %v",
+		t.Fatalf("Lists%v.Keep() should not modify its receiver.  "+
+			"Found %v, receiver should stay %v",
 			list, cp, list)
 	case !reflect.DeepEqual(res, want):
 		t.Fatalf("Lists%v.Keep() = %v, want %v",
