@@ -126,9 +126,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 2,
       "slug": "difference-of-squares",
-      "topics": []
+      "topics": [
+        "Algorithms",
+        "Mathematics"
+      ]
     },
     {
       "difficulty": 1,
