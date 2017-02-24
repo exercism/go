@@ -19,6 +19,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func lt10(x int) bool { return x < 10 }
 func gt10(x int) bool { return x > 10 }
 func odd(x int) bool  { return x&1 == 1 }
