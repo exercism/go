@@ -18,6 +18,12 @@ var testCases = []struct {
 	{"35682", 0, true},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestParseOctal(t *testing.T) {
 	for _, test := range testCases {
 		actualNum, actualErr := ParseOctal(test.input)
@@ -35,12 +41,6 @@ func TestParseOctal(t *testing.T) {
 			var _ error = actualErr
 			t.Errorf("ParseOctal(%s): expected no error, but error is: %s", test.input, actualErr)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
