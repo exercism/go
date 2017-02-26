@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// testVersion identifies the API tested by the test program.
+// targetTestVersion identifies the API tested by the test program.
 const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
