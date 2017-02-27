@@ -7,6 +7,9 @@ flag:
 
     go test -bench .
 
+Keep in mind that each reviewer will run benchmarks on a different machine, with
+different specs, so the results from these benchmark tests may vary.
+
 ## Further information
 
 For more detailed information about the Go track, including how to get help if
