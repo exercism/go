@@ -75,6 +75,12 @@ var bonusData = []struct {
 		""},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestPalindromeProducts(t *testing.T) {
 	// Uncomment the following line to add the bonus test to the default tests
 	// testData = append(testData, bonusData...)
@@ -106,12 +112,6 @@ func TestPalindromeProducts(t *testing.T) {
 		}
 		matchProd("pmin", pmin, test.pmin)
 		matchProd("pmax", pmax, test.pmax)
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
