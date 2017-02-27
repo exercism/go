@@ -21,12 +21,6 @@ import (
 
 const targetTestVersion = 1
 
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func lt10(x int) bool { return x < 10 }
 func gt10(x int) bool { return x > 10 }
 func odd(x int) bool  { return x&1 == 1 }
@@ -51,6 +45,31 @@ var keepTests = []struct {
 		Ints{2, 4}},
 }
 
+var discardTests = []struct {
+	pred func(int) bool
+	list Ints
+	want Ints
+}{
+	{lt10,
+		nil,
+		nil},
+	{gt10,
+		Ints{1, 2, 3},
+		Ints{1, 2, 3}},
+	{odd,
+		Ints{1, 2, 3},
+		Ints{2}},
+	{even,
+		Ints{1, 2, 3, 4, 5},
+		Ints{1, 3, 5}},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestKeepInts(t *testing.T) {
 	for _, test := range keepTests {
 		// setup here copies test.list, preserving the nil value if it is nil
@@ -69,25 +88,6 @@ func TestKeepInts(t *testing.T) {
 				test.list, res, test.want)
 		}
 	}
-}
-
-var discardTests = []struct {
-	pred func(int) bool
-	list Ints
-	want Ints
-}{
-	{lt10,
-		nil,
-		nil},
-	{gt10,
-		Ints{1, 2, 3},
-		Ints{1, 2, 3}},
-	{odd,
-		Ints{1, 2, 3},
-		Ints{2}},
-	{even,
-		Ints{1, 2, 3, 4, 5},
-		Ints{1, 3, 5}},
 }
 
 func TestDiscardInts(t *testing.T) {
