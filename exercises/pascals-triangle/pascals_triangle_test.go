@@ -6,6 +6,8 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
 var t20 = [][]int{
 	{1},
 	{1, 1},
@@ -27,6 +29,12 @@ var t20 = [][]int{
 	{1, 17, 136, 680, 2380, 6188, 12376, 19448, 24310, 24310, 19448, 12376, 6188, 2380, 680, 136, 17, 1},
 	{1, 18, 153, 816, 3060, 8568, 18564, 31824, 43758, 48620, 43758, 31824, 18564, 8568, 3060, 816, 153, 18, 1},
 	{1, 19, 171, 969, 3876, 11628, 27132, 50388, 75582, 92378, 92378, 75582, 50388, 27132, 11628, 3876, 969, 171, 19, 1},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestTriangle(t *testing.T) {
