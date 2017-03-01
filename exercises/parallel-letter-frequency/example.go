@@ -1,5 +1,7 @@
 package letter
 
+const testVersion = 1
+
 func ConcurrentFrequency(l []string) FreqMap {
 	switch len(l) {
 	case 0:
