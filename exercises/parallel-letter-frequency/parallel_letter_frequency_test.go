@@ -5,6 +5,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 // In the separate file frequency.go, you are given a function, Frequency(),
 // to sequentially count letter frequencies in a single text.
 // Perform this exercise on parallelism using Go concurrency features.
