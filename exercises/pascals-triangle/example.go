@@ -1,5 +1,7 @@
 package pascal
 
+const testVersion = 1
+
 func Triangle(n int) (t [][]int) {
 	if n < 1 {
 		return
