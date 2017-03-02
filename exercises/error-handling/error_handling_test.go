@@ -9,9 +9,6 @@ import (
 // opens a resource, calls Frob(input) and closes the resource
 // (in all cases). The function should properly handle errors,
 // as defined by the expectations of this test suite.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
 
 const targetTestVersion = 2
 
@@ -27,8 +24,6 @@ func (mr mockResource) Close() error      { return mr.close() }
 func (mr mockResource) Frob(input string) { mr.frob(input) }
 func (mr mockResource) Defrob(tag string) { mr.defrob(tag) }
 
-// If this test fails and you've properly defined testVersion the requirements
-// of the tests have changed since you wrote your submission.
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
