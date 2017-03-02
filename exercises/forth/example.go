@@ -98,9 +98,8 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 				}
 				if len(userops) == 0 {
 					return nil, errEmptyUserDef
-				} else {
-					userDefs[userword] = userops
 				}
+				userDefs[userword] = userops
 			} else {
 				// Normal builtin operator.
 				oplist = append(oplist, op)
