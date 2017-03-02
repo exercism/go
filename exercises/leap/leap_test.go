@@ -2,10 +2,8 @@ package leap
 
 import "testing"
 
-// Define a function IsLeapYear(int) bool.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
+// Define a function with the following signature:
+// IsLeapYear(int) bool
 
 const targetTestVersion = 3
 
