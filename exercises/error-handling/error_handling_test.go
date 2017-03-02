@@ -64,9 +64,8 @@ func TestKeepTryOpenOnTransient(t *testing.T) {
 		if nthCall < 3 {
 			nthCall++
 			return mockResource{}, TransientError{errors.New("some error")}
-		} else {
-			return mr, nil
 		}
+		return mr, nil
 	}
 	inp := "hello"
 	err := Use(opener, inp)
@@ -85,9 +84,8 @@ func TestFailOpenOnNonTransient(t *testing.T) {
 		if nthCall < 3 {
 			nthCall++
 			return mockResource{}, TransientError{errors.New("some error")}
-		} else {
-			return nil, errors.New("too awesome")
 		}
+		return nil, errors.New("too awesome")
 	}
 	inp := "hello"
 	err := Use(opener, inp)
