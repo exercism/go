@@ -77,11 +77,11 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 				// Handle user defined word definition.
 				t++
 				if t >= len(words)-2 {
-					return nil, emptyUserDefErr
+					return nil, errEmptyUserDef
 				}
 				userword := strings.ToUpper(words[t])
 				if _, numerr := strconv.Atoi(userword); numerr == nil {
-					return nil, invalidUserDefErr
+					return nil, errInvalidUserDef
 				}
 				t++
 				var userops []operatorTyp
@@ -97,7 +97,7 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 					t++
 				}
 				if len(userops) == 0 {
-					return nil, emptyUserDefErr
+					return nil, errEmptyUserDef
 				} else {
 					userDefs[userword] = userops
 				}
@@ -145,7 +145,7 @@ func pop(stack *[]int) (v int, err error) {
 		*stack = (*stack)[:slen-1]
 		return v, nil
 	}
-	return 0, notEnoughOperands
+	return 0, errNotEnoughOperands
 }
 
 func pop2(stack *[]int) (v1, v2 int, err error) {
@@ -188,7 +188,7 @@ func divide(stack *[]int) error {
 		return err
 	}
 	if v1 == 0 {
-		return divideByZero
+		return errDivideByZero
 	}
 	push(stack, v2/v1)
 	return nil
@@ -230,9 +230,9 @@ func swap(stack *[]int) error {
 	return nil
 }
 
-var notEnoughOperands error = errors.New("not enough operands")
-var divideByZero error = errors.New("attempt to divide by zero")
-var emptyUserDefErr error = errors.New("empty user definition")
-var invalidUserDefErr error = errors.New("invalid user def word")
+var errNotEnoughOperands = errors.New("not enough operands")
+var errDivideByZero = errors.New("attempt to divide by zero")
+var errEmptyUserDef = errors.New("empty user definition")
+var errInvalidUserDef = errors.New("invalid user def word")
 
 const testVersion = 1
