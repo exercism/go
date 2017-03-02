@@ -10,10 +10,10 @@ import (
 
 type operatorFn func(stack *[]int) error
 
-type operatorId byte
+type operatorID byte
 
 const (
-	addOp operatorId = iota
+	addOp operatorID = iota
 	subOp
 	mulOp
 	divOp
@@ -28,7 +28,7 @@ const (
 
 type operatorTyp struct {
 	fn operatorFn
-	id operatorId
+	id operatorID
 }
 
 func Forth(input []string) (result []int, err error) {
