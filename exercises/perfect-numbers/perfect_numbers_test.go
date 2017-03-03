@@ -4,6 +4,19 @@ import "testing"
 
 var _ error = ErrOnlyPositive
 
+var classificationTestCases = []struct {
+	input    uint64
+	expected Classification
+}{
+	{1, ClassificationDeficient},
+	{13, ClassificationDeficient},
+	{12, ClassificationAbundant},
+	{6, ClassificationPerfect},
+	{28, ClassificationPerfect},
+	{496, ClassificationPerfect},
+	{8128, ClassificationPerfect},
+}
+
 const targetTestVersion = 1
 
 func TestTestVersion(t *testing.T) {
@@ -19,19 +32,7 @@ func TestGivesPositiveRequiredError(t *testing.T) {
 }
 
 func TestClassifiesCorrectly(t *testing.T) {
-	cases := []struct {
-		input    uint64
-		expected Classification
-	}{
-		{1, ClassificationDeficient},
-		{13, ClassificationDeficient},
-		{12, ClassificationAbundant},
-		{6, ClassificationPerfect},
-		{28, ClassificationPerfect},
-		{496, ClassificationPerfect},
-		{8128, ClassificationPerfect},
-	}
-	for _, c := range cases {
+	for _, c := range classificationTestCases {
 		if cat, err := Classify(c.input); err != nil {
 			t.Errorf("%d: Expected no error but got %s", c.input, err)
 		} else if cat != c.expected {
