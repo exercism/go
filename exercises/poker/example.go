@@ -60,9 +60,8 @@ func (s rankCountSlice) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 func (s rankCountSlice) Less(i, j int) bool {
 	if s[i].count != s[j].count {
 		return s[i].count < s[j].count
-	} else {
-		return s[i].rank < s[j].rank
 	}
+	return s[i].rank < s[j].rank
 }
 
 // The strength of a hand in a way that's easily comparable.
@@ -86,17 +85,15 @@ func (hv handValue) Compare(other handValue) ordering {
 			if hv.discrs[i] != other.discrs[i] {
 				if hv.discrs[i] < other.discrs[i] {
 					return lessThan
-				} else {
-					return greaterThan
 				}
+				return greaterThan
 			}
 		}
 		return equalTo
 	} else if hv.kind < other.kind {
 		return lessThan
-	} else {
-		return greaterThan
 	}
+	return greaterThan
 }
 
 func BestHand(hands []string) ([]string, error) {
