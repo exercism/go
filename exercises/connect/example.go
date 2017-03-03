@@ -109,24 +109,22 @@ func (b board) startCoords(cf colorFlags) []coord {
 	if cf.color == white {
 		coords := make([]coord, b.width)
 		for i := 0; i < b.width; i++ {
-			coords[i] = coord{x: i, y: 0}
-		}
-		return coords
-	} else {
-		coords := make([]coord, b.height)
-		for i := 0; i < b.height; i++ {
-			coords[i] = coord{x: 0, y: i}
+			coords[i] = coord{x: i}
 		}
 		return coords
 	}
+	coords := make([]coord, b.height)
+	for i := 0; i < b.height; i++ {
+		coords[i] = coord{y: i}
+	}
+	return coords
 }
 
 func (b board) isTargetCoord(c coord, cf colorFlags) bool {
 	if cf.color == white {
 		return c.y == b.height-1
-	} else {
-		return c.x == b.width-1
 	}
+	return c.x == b.width-1
 }
 
 func (b board) evaluate(c coord, cf colorFlags) bool {
