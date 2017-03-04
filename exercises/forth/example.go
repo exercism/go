@@ -10,25 +10,25 @@ import (
 
 type operatorFn func(stack *[]int) error
 
-type operatorId byte
+type operatorID byte
 
 const (
-	addOp operatorId = iota
-	subOp
-	mulOp
-	divOp
-	dropOp
-	dupOp
-	swapOp
-	overOp
-	constOp
-	userDefOp
-	endDefOp
+	opAdd operatorID = iota
+	opSub
+	opMul
+	opDiv
+	opDrop
+	opDup
+	opSwap
+	opOver
+	opConst
+	opUserDef
+	opEndDef
 )
 
 type operatorTyp struct {
 	fn operatorFn
-	id operatorId
+	id operatorID
 }
 
 func Forth(input []string) (result []int, err error) {
@@ -73,15 +73,15 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 		if udef, ok := userDefs[w]; ok {
 			oplist = append(oplist, udef...)
 		} else if op, ok := builtinOps[w]; ok {
-			if op.id == userDefOp {
+			if op.id == opUserDef {
 				// Handle user defined word definition.
 				t++
 				if t >= len(words)-2 {
-					return nil, emptyUserDefErr
+					return nil, errEmptyUserDef
 				}
 				userword := strings.ToUpper(words[t])
 				if _, numerr := strconv.Atoi(userword); numerr == nil {
-					return nil, invalidUserDefErr
+					return nil, errInvalidUserDef
 				}
 				t++
 				var userops []operatorTyp
@@ -90,17 +90,16 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 					if err != nil {
 						return nil, err
 					}
-					if oneOp[0].id == endDefOp {
+					if oneOp[0].id == opEndDef {
 						break
 					}
 					userops = append(userops, oneOp...)
 					t++
 				}
 				if len(userops) == 0 {
-					return nil, emptyUserDefErr
-				} else {
-					userDefs[userword] = userops
+					return nil, errEmptyUserDef
 				}
+				userDefs[userword] = userops
 			} else {
 				// Normal builtin operator.
 				oplist = append(oplist, op)
@@ -113,7 +112,7 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 				return nil, err
 			}
 			oplist = append(oplist,
-				operatorTyp{id: constOp,
+				operatorTyp{id: opConst,
 					fn: func(stack *[]int) error {
 						push(stack, x)
 						return nil
@@ -126,16 +125,16 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 
 // builtinOps are the pre-defined operators to support.
 var builtinOps = map[string]operatorTyp{
-	"+":    {add, addOp},
-	"-":    {subtract, subOp},
-	"*":    {multiply, mulOp},
-	"/":    {divide, divOp},
-	"DUP":  {dup, dropOp},
-	"DROP": {drop, dupOp},
-	"SWAP": {swap, swapOp},
-	"OVER": {over, overOp},
-	":":    {nil, userDefOp},
-	";":    {nil, endDefOp},
+	"+":    {add, opAdd},
+	"-":    {subtract, opSub},
+	"*":    {multiply, opMul},
+	"/":    {divide, opDiv},
+	"DUP":  {dup, opDrop},
+	"DROP": {drop, opDup},
+	"SWAP": {swap, opSwap},
+	"OVER": {over, opOver},
+	":":    {nil, opUserDef},
+	";":    {nil, opEndDef},
 }
 
 func pop(stack *[]int) (v int, err error) {
@@ -145,7 +144,7 @@ func pop(stack *[]int) (v int, err error) {
 		*stack = (*stack)[:slen-1]
 		return v, nil
 	}
-	return 0, notEnoughOperands
+	return 0, errNotEnoughOperands
 }
 
 func pop2(stack *[]int) (v1, v2 int, err error) {
@@ -188,7 +187,7 @@ func divide(stack *[]int) error {
 		return err
 	}
 	if v1 == 0 {
-		return divideByZero
+		return errDivideByZero
 	}
 	push(stack, v2/v1)
 	return nil
@@ -230,9 +229,9 @@ func swap(stack *[]int) error {
 	return nil
 }
 
-var notEnoughOperands error = errors.New("not enough operands")
-var divideByZero error = errors.New("attempt to divide by zero")
-var emptyUserDefErr error = errors.New("empty user definition")
-var invalidUserDefErr error = errors.New("invalid user def word")
+var errNotEnoughOperands = errors.New("not enough operands")
+var errDivideByZero = errors.New("attempt to divide by zero")
+var errEmptyUserDef = errors.New("empty user definition")
+var errInvalidUserDef = errors.New("invalid user def word")
 
 const testVersion = 1
