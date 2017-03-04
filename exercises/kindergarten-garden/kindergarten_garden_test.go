@@ -140,7 +140,7 @@ func TestGarden(t *testing.T) {
 					t.Fatalf("Garden %d lookup %s returned ok = %t, want %t.",
 						test.number, l.child, ok, l.ok)
 				case ok && !reflect.DeepEqual(plants, l.plants):
-					t.Fatalf("Garden %d lookup %s = %v, want %v.",
+					t.Fatalf("Garden %d lookup %s = %q, want %q.",
 						test.number, l.child, plants, l.plants)
 				}
 			}
@@ -192,7 +192,7 @@ RVGCCGCV`
 			t.Skip("Garden %d lookup %s returned ok = false, want true.",
 				n, child)
 		case !reflect.DeepEqual(plants, expPlants):
-			t.Fatalf("Garden %d lookup %s = %v, want %v.",
+			t.Fatalf("Garden %d lookup %s = %q, want %q.",
 				n, child, plants, expPlants)
 		}
 	}
