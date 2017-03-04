@@ -13,17 +13,17 @@ type operatorFn func(stack *[]int) error
 type operatorID byte
 
 const (
-	addOp operatorID = iota
-	subOp
-	mulOp
-	divOp
-	dropOp
-	dupOp
-	swapOp
-	overOp
-	constOp
-	userDefOp
-	endDefOp
+	opAdd operatorID = iota
+	opSub
+	opMul
+	opDiv
+	opDrop
+	opDup
+	opSwap
+	opOver
+	opConst
+	opUserDef
+	opEndDef
 )
 
 type operatorTyp struct {
@@ -73,7 +73,7 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 		if udef, ok := userDefs[w]; ok {
 			oplist = append(oplist, udef...)
 		} else if op, ok := builtinOps[w]; ok {
-			if op.id == userDefOp {
+			if op.id == opUserDef {
 				// Handle user defined word definition.
 				t++
 				if t >= len(words)-2 {
@@ -90,7 +90,7 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 					if err != nil {
 						return nil, err
 					}
-					if oneOp[0].id == endDefOp {
+					if oneOp[0].id == opEndDef {
 						break
 					}
 					userops = append(userops, oneOp...)
@@ -112,7 +112,7 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 				return nil, err
 			}
 			oplist = append(oplist,
-				operatorTyp{id: constOp,
+				operatorTyp{id: opConst,
 					fn: func(stack *[]int) error {
 						push(stack, x)
 						return nil
@@ -125,16 +125,16 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 
 // builtinOps are the pre-defined operators to support.
 var builtinOps = map[string]operatorTyp{
-	"+":    {add, addOp},
-	"-":    {subtract, subOp},
-	"*":    {multiply, mulOp},
-	"/":    {divide, divOp},
-	"DUP":  {dup, dropOp},
-	"DROP": {drop, dupOp},
-	"SWAP": {swap, swapOp},
-	"OVER": {over, overOp},
-	":":    {nil, userDefOp},
-	";":    {nil, endDefOp},
+	"+":    {add, opAdd},
+	"-":    {subtract, opSub},
+	"*":    {multiply, opMul},
+	"/":    {divide, opDiv},
+	"DUP":  {dup, opDrop},
+	"DROP": {drop, opDup},
+	"SWAP": {swap, opSwap},
+	"OVER": {over, opOver},
+	":":    {nil, opUserDef},
+	";":    {nil, opEndDef},
 }
 
 func pop(stack *[]int) (v int, err error) {
