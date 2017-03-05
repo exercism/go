@@ -21,10 +21,13 @@ var numberTests = []testCase{
 	{"123456789", "", true},
 }
 
-func TestNumber(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestNumber(t *testing.T) {
 	for _, test := range numberTests {
 		actual, actualErr := Number(test.input)
 		if !test.expectErr {
