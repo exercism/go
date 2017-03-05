@@ -2,6 +2,8 @@ package igpay
 
 import "testing"
 
+const targetTestVersion = 1
+
 var tests = []struct{ pl, in string }{
 	{"appleay", "apple"},
 	{"earay", "ear"},
@@ -18,6 +20,12 @@ var tests = []struct{ pl, in string }{
 	{"yttriaay", "yttria"},
 	{"enonxay", "xenon"},
 	{"xrayay", "xray"},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestPigLatin(t *testing.T) {
