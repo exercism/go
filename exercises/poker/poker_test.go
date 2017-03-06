@@ -281,6 +281,12 @@ var invalidTestCases = []struct {
 	},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestBestHandValid(t *testing.T) {
 	for _, tt := range validTestCases {
 		actual, err := BestHand(tt.hands)
@@ -301,12 +307,6 @@ func TestBestHandInvalid(t *testing.T) {
 		if err == nil {
 			t.Fatalf("Did not get an error for invalid case %q", tt.name)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 
