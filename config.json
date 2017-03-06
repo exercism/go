@@ -139,9 +139,13 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 4,
       "slug": "house",
-      "topics": []
+      "topics": [
+        "Strings",
+        "Text formatting",
+        "Recursion"
+      ]
     },
     {
       "difficulty": 1,
