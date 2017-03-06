@@ -105,7 +105,7 @@ func TestNonExistantGrade(t *testing.T) {
 	s := New()
 	got := s.Grade(1)
 	if len(got) != 0 {
-		t.Errorf(`Get non-existant grade, got
+		t.Errorf(`Get non-existent grade, got
 %q
 expected
 []`, got)

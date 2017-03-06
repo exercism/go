@@ -13,7 +13,7 @@ func Song() (result string) {
 	return
 }
 
-// Verses returns an exerpt of the lyrics of 99 bottles of beer
+// Verses returns an excerpt of the lyrics of 99 bottles of beer
 // between verse start and stop. The verse numbers count backwards, so the
 // first verse sung will be verse 99, and the last will be verse 0
 func Verses(start, stop int) (string, error) {

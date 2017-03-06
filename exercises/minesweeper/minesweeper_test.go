@@ -94,7 +94,7 @@ var validBoards = []string{
 | |
 +-+`,
 
-	// 1x1 sqaure with 1 bomb
+	// 1x1 square with 1 bomb
 	`
 +-+
 |*|
