@@ -134,9 +134,13 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 5,
       "slug": "secret-handshake",
-      "topics": []
+      "topics": [
+        "Bitwise operations",
+        "Arrays",
+        "Integers"
+      ]
     },
     {
       "difficulty": 4,
