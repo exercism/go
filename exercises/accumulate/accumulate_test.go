@@ -37,10 +37,8 @@ func TestTestVersion(t *testing.T) {
 func TestAccumulate(t *testing.T) {
 	for _, test := range tests {
 		actual := Accumulate(test.given, test.converter)
-		if fmt.Sprintf("%s", actual) != fmt.Sprintf("%s", test.expected) {
-			t.Fatalf("Accumulate(%s, %s): expected %s, actual %s", test.given, test.description, test.expected, actual)
-		} else {
-			t.Logf("PASS: %s %v", test.description, test.given)
+		if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", test.expected) {
+			t.Fatalf("Accumulate(%q, %q): expected %q, actual %q", test.given, test.description, test.expected, actual)
 		}
 	}
 }
