@@ -2,20 +2,7 @@ package luhn
 
 import "testing"
 
-const targetTestVersion = 1
-
-var testCases = []struct {
-	input       string
-	description string
-	ok          bool
-}{
-	{"1", "single digit strings can not be valid", false},
-	{"0", "a single zero is invalid", false},
-	{"046 454 286", "valid Canadian SIN", true},
-	{"046 454 287", "invalid Canadian SIN", false},
-	{"8273 1232 7352 0569", "invalid credit card", false},
-	{"827a 1232 7352 0569", "strings that contain non-digits are not valid", false},
-}
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
