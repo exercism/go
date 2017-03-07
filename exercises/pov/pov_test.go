@@ -259,10 +259,13 @@ func (tc testCase) testResult(got, want []string, msg string, t *testing.T) {
 	t.FailNow()
 }
 
-func TestConstruction(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestConstruction(t *testing.T) {
 	for _, tc := range testCases {
 		got := tc.graph().ArcList()
 		want := tc.arcStrings
