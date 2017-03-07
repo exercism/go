@@ -4,7 +4,7 @@
 // with the exercise README.
 //
 // * If there are duplicate values of the key you are searching for, you can't
-// just stop at the first one you find; you must find the first occurance in
+// just stop at the first one you find; you must find the first occurrence in
 // the slice.
 //
 // * There is no special "not found" indication.  If the search key is not
