@@ -36,8 +36,8 @@ In particular, please read the [Pull Request Guidelines](https://github.com/exer
 ## xgo style
 
 Let's walk through the `leap` exercise to see what is included in an exercise
-implementation. Navigate into the *leap* directory, you'll see there are five
-files there.
+implementation. Navigate into the *leap* directory, you'll see there are a
+number of files there.
 
 ```sh
 ~/exercism/go/leap
@@ -112,9 +112,16 @@ these though. Usually they will just bench the combined time to run over all
 the test data rather than attempt precise timings on single function calls. They
 are useful if they let the solver try a change and see a performance effect.
 
+### Testable examples
+
+Some exercises can contain [Example tests](https://blog.golang.org/examples) that document the exercise API. These
+examples are run alongside the standard exercise tests and will verify that the
+exercise API is working as expected. They are not required by all exercises and
+are most useful when clarifying the API of the exercise.
+
 ### Stub files
 
-Stub files, such as `leap.go`, are a starting point for solutions. Not all exercises
+Stub files, such as *leap.go*, are a starting point for solutions. Not all exercises
 need to do this; this is most helpful in the early exercises for newcomers to Go.
 By convention, the stub file for an exercise with slug `exercise-slug`
 must be named `exercise_slug.go`. This is because CI needs to delete stub files

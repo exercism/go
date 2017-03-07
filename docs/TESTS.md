@@ -24,6 +24,13 @@ Should the tests change in a way that old submissions will or could no longer
 work the test writer should increase the `targetTestVersion` value which will cause
 the tests to fail with a clear message when an old submission is run with them.
 
+### Testable examples
+
+[Example tests](https://blog.golang.org/examples) are used in some exercises and
+are run alongside the standard exercise tests. These examples are used for
+documenting and verifying the exercise's API and can be useful in determining
+what the expected exercise API is.
+
 ## Go fmt
 
 Please run [`go fmt`](http://blog.golang.org/go-fmt-your-code) on your code before submitting it.
