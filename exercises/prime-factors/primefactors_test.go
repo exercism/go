@@ -26,10 +26,13 @@ var tests = []struct {
 	{93819012551, []int64{11, 9539, 894119}},
 }
 
-func TestPrimeFactors(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestPrimeFactors(t *testing.T) {
 	for _, test := range tests {
 		actual := Factors(test.input)
 		if !reflect.DeepEqual(actual, test.expected) {
