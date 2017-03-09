@@ -4,7 +4,6 @@
   "repository": "https://github.com/exercism/xgo",
   "active": true,
   "deprecated": [
-    "accumulate",
     "binary",
     "bottles",
     "counter",
@@ -78,6 +77,13 @@
         "Control-flow (conditionals)",
         "Strings",
         "Filtering"
+      ]
+    },
+    {
+      "difficulty": 1,
+      "slug": "accumulate",
+      "topics": [
+        "Lists"
       ]
     },
     {
