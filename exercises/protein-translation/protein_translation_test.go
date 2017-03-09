@@ -44,6 +44,12 @@ var proteinTestCases = []rnaCase{
 	{"UGGUGUUAUUAAUGGUUU", []string{"Tryptophan", "Cysteine", "Tyrosine"}},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestCodon(t *testing.T) {
 	for _, test := range codonTestCases {
 		actual := FromCodon(test.input)
@@ -59,11 +65,5 @@ func TestProtein(t *testing.T) {
 		if !reflect.DeepEqual(actual, test.expected) {
 			t.Errorf("Protein Translation test [%s], expected %q, actual %q", test.input, test.expected, actual)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
