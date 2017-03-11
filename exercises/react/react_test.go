@@ -16,19 +16,17 @@ const targetTestVersion = 5
 // This is a compile time check to see if you've properly implemented New().
 var _ Reactor = New()
 
-// If this test fails and you've proprly defined testVersion the requirements
-// of the tests have changed since you wrote your submission.
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func assertCellValue(t *testing.T, c Cell, expected int, explanation string) {
 	observed := c.Value()
 	_, _, line, _ := runtime.Caller(1)
 	if observed != expected {
 		t.Fatalf("(from line %d) %s: expected %d, got %d", line, explanation, expected, observed)
+	}
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 
