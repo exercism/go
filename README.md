@@ -26,6 +26,9 @@ Test your clone by cding to the xgo directory and typing
 Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
 This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
 
+There is a [misspelling tool](https://github.com/client9/misspell). You can install and occasionally run it to
+find low hanging typo problems. [#570](https://github.com/exercism/xgo/pull/570) It's not added into CI since it could give false positives.
+
 ## Contributing Guide
 
 Please be familiar with the [contributing guide](https://github.com/exercism/x-common/blob/master/CONTRIBUTING.md)
