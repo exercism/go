@@ -4,10 +4,13 @@ import "testing"
 
 const targetTestVersion = 3
 
-func TestRomanNumerals(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestRomanNumerals(t *testing.T) {
 	tc := append(romanNumeralTests, []romanNumeralTest{
 		{0, "", true},
 		{-1, "", true},
