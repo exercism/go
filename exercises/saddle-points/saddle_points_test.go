@@ -20,6 +20,12 @@ var tests = []struct {
 	{"4 5 4\n3 5 5\n1 5 4", []Pair{{0, 1}, {1, 1}, {2, 1}}},
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestSaddle(t *testing.T) {
 	for _, test := range tests {
 		m, err := New(test.m)
@@ -49,12 +55,6 @@ exp:
 		return false
 	}
 	return true
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func BenchmarkSaddle(b *testing.B) {
