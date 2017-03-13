@@ -5,9 +5,17 @@ import (
 	"testing"
 )
 
-func New() *Robot { return new(Robot) }
+const targetTestVersion = 1
 
 var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
+
+func New() *Robot { return new(Robot) }
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
 
 func TestNameValid(t *testing.T) {
 	n := New().Name()
