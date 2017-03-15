@@ -5,6 +5,14 @@ import (
 	"testing"
 )
 
+const targetTestVersion = 1
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestTranspose(t *testing.T) {
 	for _, test := range testCases {
 		actual := Transpose(test.input)
