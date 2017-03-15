@@ -110,11 +110,13 @@ var errorTestCases = []string{
 	"Devastating Donkeys;Allegoric Alaskians;dra",
 }
 
-func TestTallyHappy(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
 
+func TestTallyHappy(t *testing.T) {
 	for _, tt := range happyTestCases {
 		reader := strings.NewReader(tt.input)
 		var buffer bytes.Buffer
