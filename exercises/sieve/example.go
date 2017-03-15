@@ -1,5 +1,7 @@
 package sieve
 
+const testVersion = 1
+
 func Sieve(limit int) (primes []int) {
 	c := make([]bool, limit)
 	for p := 2; p < limit; {
