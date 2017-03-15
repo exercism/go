@@ -23,10 +23,13 @@ var tests = []struct {
 	{33, []string{"wink"}},
 }
 
-func TestHandshake(t *testing.T) {
+func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
+}
+
+func TestHandshake(t *testing.T) {
 	for _, test := range tests {
 		h := Handshake(test.code)
 		// use len() to allow either nil or empty list, because
