@@ -2,6 +2,8 @@ package summultiples
 
 import "testing"
 
+const targetTestVersion = 1
+
 var varTests = []struct {
 	divisors []int
 	limit    int
@@ -17,6 +19,12 @@ var varTests = []struct {
 	{[]int{5, 10, 12}, 10000, 13331672},
 	{[]int{1, 1}, 10000, 49995000},
 	{[]int{}, 10000, 0},
+}
+
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
 }
 
 func TestSumMultiples(t *testing.T) {
