@@ -210,6 +210,12 @@ func (n Node) String() string {
 	return fmt.Sprintf("%d:%s", n.ID, n.Children)
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 func TestMakeTreeSuccess(t *testing.T) {
 	for _, tt := range successTestCases {
 		actual, err := Build(tt.input)
@@ -232,12 +238,6 @@ func TestMakeTreeFailure(t *testing.T) {
 			t.Fatalf("Build for test case %q returned %s but was expected to fail.",
 				tt.name, actual)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 
