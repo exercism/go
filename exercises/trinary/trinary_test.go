@@ -22,7 +22,7 @@ var tests = []struct {
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 
