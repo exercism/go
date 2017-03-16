@@ -1,5 +1,7 @@
 package transpose
 
+const testVersion = 1
+
 func Transpose(m []string) []string {
 	max := maxLen(m)
 	t := make([]string, max)
