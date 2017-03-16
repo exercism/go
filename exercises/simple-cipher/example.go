@@ -2,9 +2,11 @@ package cipher
 
 import "strings"
 
-func NewCaesar() Cipher { return NewShift(3) }
+const testVersion = 1
 
 type shift int
+
+func NewCaesar() Cipher { return NewShift(3) }
 
 func NewShift(s int) Cipher {
 	c := shift(s)
