@@ -53,6 +53,12 @@ func init() {
 	testData = append(testData, nf[1:]...)
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
+	}
+}
+
 // Test that the kinds are not equal to each other.
 // If they are equal, then TestKind will return false positives.
 func TestKindsNotEqual(t *testing.T) {
@@ -83,12 +89,6 @@ func TestKind(t *testing.T) {
 			t.Fatalf("Triangle with sides, %g, %g, %g = %v, want %v",
 				test.a, test.b, test.c, got, test.want)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
 	}
 }
 
