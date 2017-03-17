@@ -52,6 +52,12 @@ func diff(got, want string) string {
 	}
 }
 
+func TestTestVersion(t *testing.T) {
+	if testVersion != targetTestVersion {
+		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
+	}
+}
+
 func TestSong(t *testing.T) {
 	var expected = ""
 	for _, test := range testCases {
@@ -69,11 +75,5 @@ func TestVerse(t *testing.T) {
 		if actual != test.expected {
 			t.Errorf("Twelve Days test [%d], expected [%s], actual [%s]", test.input, test.expected, actual)
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
