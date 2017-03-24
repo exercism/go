@@ -3,6 +3,12 @@
 
 // Package greeting should have a package comment that summarizes what it's about.
 // https://golang.org/doc/effective_go.html#commentary
+// While documentation is taken very seriously in Go, and tools like golint will
+// complain if you don't include it, these comments are not required to make
+// the test suite pass. It is up to you whether to include them in your submitted
+// exercises.
+// You can read more about the importance of documentation in Go here:
+// https://blog.golang.org/godoc-documenting-go-code
 package greeting
 
 // testVersion identifies the version of the test program that you are
@@ -22,7 +28,10 @@ package greeting
 // information.
 const testVersion = 4
 
-// HelloWorld needs a comment documenting it as package does.
+// HelloWorld should have a comment documenting it, beginning with the name of
+// the function. It is recommended good practice, but, as we mention above, it's
+// not necessary for making your solutions pass.
+// https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 func HelloWorld() string {
 	// Write some code here to pass the test suite.
 
