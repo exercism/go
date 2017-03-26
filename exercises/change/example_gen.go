@@ -22,18 +22,22 @@ func main() {
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Find_fewest_coins struct {
-		Description []string
-		Cases       []struct {
-			Description string
-			Coins       []int
-			Target      int
-			Expected    []int
-		}
-	}
+	Exercise string
+	Version  string
+	Comments []string
+	Cases    []OneCase
 }
 
 // template applied to above data structure generates the Go test cases
+
+type OneCase struct {
+	Description string
+	Property    string
+	Coins       []int
+	Target      int
+	Expected    interface{}
+}
+
 var tmpl = `package change
 
 // Source: {{.Ori}}
@@ -44,17 +48,15 @@ var testCases = []struct {
 	description string
 	coins       []int
 	target	    int
-	expected    []int
+	expected    interface{}
 }{
-{{range .J.Find_fewest_coins.Cases}}{
+{{range .J.Cases}}{
 	{{printf "%q" .Description}},
 	[]int{
 {{range .Coins}}  {{printf "%v" .}},
 {{end}}},
 	{{printf "%d" .Target}},
-	[]int{
-{{range .Expected}}  {{printf "%v" .}},
-{{end}}},
+	{{printf "%#v" .Expected}},
 },
 {{end}}}
 `

@@ -1,13 +1,13 @@
 package change
 
 // Source: exercism/x-common
-// Commit: cda8f98 Create new exercises structure
+// Commit: 3d8b5b3 change: Fix canonical-data.json formatting
 
 var testCases = []struct {
 	description string
 	coins       []int
 	target      int
-	expected    []int
+	expected    interface{}
 }{
 	{
 		"single coin change",
@@ -19,9 +19,7 @@ var testCases = []struct {
 			100,
 		},
 		25,
-		[]int{
-			25,
-		},
+		[]interface{}{25},
 	},
 	{
 		"multiple coin change",
@@ -33,10 +31,7 @@ var testCases = []struct {
 			100,
 		},
 		15,
-		[]int{
-			5,
-			10,
-		},
+		[]interface{}{5, 10},
 	},
 	{
 		"change with Lilliputian Coins",
@@ -48,11 +43,7 @@ var testCases = []struct {
 			50,
 		},
 		23,
-		[]int{
-			4,
-			4,
-			15,
-		},
+		[]interface{}{4, 4, 15},
 	},
 	{
 		"change with Lower Elbonia Coins",
@@ -64,11 +55,7 @@ var testCases = []struct {
 			25,
 		},
 		63,
-		[]int{
-			21,
-			21,
-			21,
-		},
+		[]interface{}{21, 21, 21},
 	},
 	{
 		"large target values",
@@ -82,23 +69,19 @@ var testCases = []struct {
 			100,
 		},
 		999,
+		[]interface{}{2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+	},
+	{
+		"possible change without unit coins available",
 		[]int{
 			2,
-			2,
 			5,
-			20,
+			10,
 			20,
 			50,
-			100,
-			100,
-			100,
-			100,
-			100,
-			100,
-			100,
-			100,
-			100,
 		},
+		21,
+		[]interface{}{2, 2, 2, 5, 10},
 	},
 	{
 		"no coins make 0 change",
@@ -110,7 +93,7 @@ var testCases = []struct {
 			25,
 		},
 		0,
-		[]int{},
+		[]interface{}{},
 	},
 	{
 		"error testing for change smaller than the smallest of coins",
@@ -119,9 +102,16 @@ var testCases = []struct {
 			10,
 		},
 		3,
+		-1,
+	},
+	{
+		"error if no combination can add up to target",
 		[]int{
-			-1,
+			5,
+			10,
 		},
+		94,
+		-1,
 	},
 	{
 		"cannot find negative change values",
@@ -131,8 +121,6 @@ var testCases = []struct {
 			5,
 		},
 		-5,
-		[]int{
-			-1,
-		},
+		-1,
 	},
 }

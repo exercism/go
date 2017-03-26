@@ -500,7 +500,11 @@
     {
       "difficulty": 1,
       "slug": "change",
-      "topics": []
+      "topics": [
+        "Control-flow (loops)",
+        "Arrays",
+        "Algorithms"
+      ]
     }
   ]
 }
