@@ -13,37 +13,17 @@ func TestTestVersion(t *testing.T) {
 	}
 }
 
-func determineExpected(expected interface{}) (valid bool, list []int) {
-	_, isError := expected.(int)
-	if isError {
-		return false, nil
-	}
-	ilist, isIntList := expected.([]interface{})
-	if isIntList {
-		list = make([]int, 0)
-		for _, iv := range ilist {
-			v, isInt := iv.(int)
-			if isInt {
-				list = append(list, v)
-			}
-		}
-		return true, list
-	}
-	return false, nil
-}
-
 func TestChange(t *testing.T) {
 	for _, tc := range testCases {
-		valid, expectedChange := determineExpected(tc.expected)
 		actual, err := Change(tc.coins, tc.target)
-		if valid {
+		if tc.valid {
 			if err != nil {
 				t.Fatalf("%s : Change(%v, %d): expected %v, got error %s",
-					tc.description, tc.coins, tc.target, expectedChange, err)
+					tc.description, tc.coins, tc.target, tc.expectedChange, err)
 			} else {
-				if !reflect.DeepEqual(actual, expectedChange) {
+				if !reflect.DeepEqual(actual, tc.expectedChange) {
 					t.Fatalf("%s : Change(%v, %d): expected %v, actual %v",
-						tc.description, tc.coins, tc.target, expectedChange, actual)
+						tc.description, tc.coins, tc.target, tc.expectedChange, actual)
 				} else {
 					t.Logf("PASS: %s", tc.description)
 				}

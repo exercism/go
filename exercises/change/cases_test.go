@@ -4,123 +4,80 @@ package change
 // Commit: 3d8b5b3 change: Fix canonical-data.json formatting
 
 var testCases = []struct {
-	description string
-	coins       []int
-	target      int
-	expected    interface{}
+	description    string
+	coins          []int
+	target         int
+	valid          bool  // true => no error, false => error expected
+	expectedChange []int // when .valid == true, the expected change coins
 }{
 	{
 		"single coin change",
-		[]int{
-			1,
-			5,
-			10,
-			25,
-			100,
-		},
+		[]int{1, 5, 10, 25, 100},
 		25,
-		[]interface{}{25},
+		true,
+		[]int{25},
 	},
 	{
 		"multiple coin change",
-		[]int{
-			1,
-			5,
-			10,
-			25,
-			100,
-		},
+		[]int{1, 5, 10, 25, 100},
 		15,
-		[]interface{}{5, 10},
+		true,
+		[]int{5, 10},
 	},
 	{
 		"change with Lilliputian Coins",
-		[]int{
-			1,
-			4,
-			15,
-			20,
-			50,
-		},
+		[]int{1, 4, 15, 20, 50},
 		23,
-		[]interface{}{4, 4, 15},
+		true,
+		[]int{4, 4, 15},
 	},
 	{
 		"change with Lower Elbonia Coins",
-		[]int{
-			1,
-			5,
-			10,
-			21,
-			25,
-		},
+		[]int{1, 5, 10, 21, 25},
 		63,
-		[]interface{}{21, 21, 21},
+		true,
+		[]int{21, 21, 21},
 	},
 	{
 		"large target values",
-		[]int{
-			1,
-			2,
-			5,
-			10,
-			20,
-			50,
-			100,
-		},
+		[]int{1, 2, 5, 10, 20, 50, 100},
 		999,
-		[]interface{}{2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+		true,
+		[]int{2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 	},
 	{
 		"possible change without unit coins available",
-		[]int{
-			2,
-			5,
-			10,
-			20,
-			50,
-		},
+		[]int{2, 5, 10, 20, 50},
 		21,
-		[]interface{}{2, 2, 2, 5, 10},
+		true,
+		[]int{2, 2, 2, 5, 10},
 	},
 	{
 		"no coins make 0 change",
-		[]int{
-			1,
-			5,
-			10,
-			21,
-			25,
-		},
+		[]int{1, 5, 10, 21, 25},
 		0,
-		[]interface{}{},
+		true,
+		[]int{},
 	},
 	{
 		"error testing for change smaller than the smallest of coins",
-		[]int{
-			5,
-			10,
-		},
+		[]int{5, 10},
 		3,
-		-1,
+		false,
+		[]int(nil),
 	},
 	{
 		"error if no combination can add up to target",
-		[]int{
-			5,
-			10,
-		},
+		[]int{5, 10},
 		94,
-		-1,
+		false,
+		[]int(nil),
 	},
 	{
 		"cannot find negative change values",
-		[]int{
-			1,
-			2,
-			5,
-		},
+		[]int{1, 2, 5},
 		-5,
-		-1,
+		false,
+		[]int(nil),
 	},
 }
