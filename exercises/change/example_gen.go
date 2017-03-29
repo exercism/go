@@ -57,19 +57,19 @@ func determineExpected(expected interface{}) (valid bool, list []int) {
 		return false, nil
 	}
 	ilist, ok := expected.([]interface{})
-	if ok {
-		list = make([]int, 0)
-		for _, iv := range ilist {
-			// The literals from the JSON are unmarshalled to float64 values,
-			// which are converted to int for the template output.
-			v, isFloat64 := iv.(float64)
-			if isFloat64 {
-				list = append(list, int(v))
-			}
-		}
-		return true, list
+	if !ok {
+		return false, nil
 	}
-	return false, nil
+	list = make([]int, 0)
+	for _, iv := range ilist {
+		// The literals from the JSON are unmarshalled to float64 values,
+		// which are converted to int for the template output.
+		v, isFloat64 := iv.(float64)
+		if isFloat64 {
+			list = append(list, int(v))
+		}
+	}
+	return true, list
 }
 
 var tmpl = `package change
