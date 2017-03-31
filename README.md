@@ -130,6 +130,14 @@ By convention, the stub file for an exercise with slug `exercise-slug`
 must be named `exercise_slug.go`. This is because CI needs to delete stub files
 to avoid conflicting definitions.
 
+The track exercises may or may not provide stub files. The first few exercises
+provide stubs as a helpful starting point. The initial exercise users will encounter
+without a stub is [twelve-days](exercises/twelve-days/). At this point users will
+have some experience in creating solutions for the exercises and can begin to
+create their own solutions from scratch. Some of the later exercises may have stub
+files if the author thinks there may be implementation confusion, a particularly
+difficult concept, or boilerplate code needed. 
+
 ### Problem Versioning
 
 Each problem defines a `const targetTestVersion` in the test file, and validates
