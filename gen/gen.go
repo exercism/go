@@ -60,7 +60,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	}
 	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
 	// find and read the json source file
-	jPath, jOri, jCommit := getPath(jFile)
+	jPath, jOrigin, jCommit := getPath(jFile)
 	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
 	if err != nil {
 		return err
@@ -88,8 +88,8 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		Header
 		J interface{}
 	}{Header{
-		Ori:     jOri,
-		Origin:  jOri,
+		Ori:     jOrigin,
+		Origin:  jOrigin,
 		Commit:  jCommit,
 		Version: commonMetadata.Version,
 	}, j}
@@ -108,7 +108,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0666)
 }
 
-func getPath(jFile string) (jPath, jOri, jCommit string) {
+func getPath(jFile string) (jPath, jOrigin, jCommit string) {
 	// Ideally draw from a .json which is pulled from the official x-common
 	// repository.  For development however, accept a file in current directory
 	// if there is no .json in source control.  Also allow an override in any
