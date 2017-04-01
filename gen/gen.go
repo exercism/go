@@ -42,6 +42,17 @@ type Header struct {
 	Version string
 }
 
+func (h Header) String() string {
+	s := fmt.Sprintf("// Source: %s\n", h.Origin)
+	if h.Commit != "" {
+		s += fmt.Sprintf("// Commit: %s\n", h.Commit)
+	}
+	if h.Version != "" {
+		s += fmt.Sprintf("// x-common version: %s\n", h.Version)
+	}
+	return s
+}
+
 func init() {
 	if _, path, _, ok := runtime.Caller(0); ok {
 		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
