@@ -65,12 +65,21 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return fmt.Errorf(`unexpected data structure: %v`, err)
 	}
 
+	// These fields are guaranteed to be in every problem
+	var commonMetadata struct {
+		Version string
+	}
+	if err := json.Unmarshal(jSrc, &commonMetadata); err != nil {
+		return fmt.Errorf(`Didn't contain version: %v`, err)
+	}
+
 	// package up a little meta data
 	d := struct {
-		Ori    string
-		Commit string
-		J      interface{}
-	}{jOri, jCommit, j}
+		Ori     string
+		Commit  string
+		Version string
+		J       interface{}
+	}{jOri, jCommit, commonMetadata.Version, j}
 
 	// render the Go test cases
 	var b bytes.Buffer
