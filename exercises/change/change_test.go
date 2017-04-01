@@ -19,7 +19,7 @@ func TestChange(t *testing.T) {
 		if tc.valid {
 			if err != nil {
 				t.Fatalf("%s : Change(%v, %d): expected %v, got error %s",
-					tc.description, tc.coins, tc.target, tc.expectedChange, err)
+					tc.description, tc.coins, tc.target, tc.expectedChange, err.Error())
 			} else {
 				if !reflect.DeepEqual(actual, tc.expectedChange) {
 					t.Fatalf("%s : Change(%v, %d): expected %v, actual %v",
