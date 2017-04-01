@@ -1,7 +1,8 @@
 package leap
 
 // Source: exercism/x-common
-// Commit: be6fa53 leap: Rewrite the test cases and their descriptions
+// Commit: cc65ebe leap: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	year        int
