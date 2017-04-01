@@ -32,6 +32,13 @@ var dirMetadata string
 // Falls back to the present working directory.
 var dirProblem string
 
+// Header tells how the test data was generated, for display in the header of cases_test.go
+type Header struct {
+	Ori     string
+	Commit  string
+	Version string
+}
+
 func init() {
 	if _, path, _, ok := runtime.Caller(0); ok {
 		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
@@ -75,11 +82,13 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 
 	// package up a little meta data
 	d := struct {
-		Ori     string
-		Commit  string
-		Version string
-		J       interface{}
-	}{jOri, jCommit, commonMetadata.Version, j}
+		Header
+		J interface{}
+	}{Header{
+		Ori:     jOri,
+		Commit:  jCommit,
+		Version: commonMetadata.Version,
+	}, j}
 
 	// render the Go test cases
 	var b bytes.Buffer
