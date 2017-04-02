@@ -32,6 +32,27 @@ var dirMetadata string
 // Falls back to the present working directory.
 var dirProblem string
 
+// Header tells how the test data was generated, for display in the header of cases_test.go
+type Header struct {
+	// Ori is a deprecated short name for Origin.
+	// TODO: Remove Ori once everything switches to Origin.
+	Ori     string
+	Origin  string
+	Commit  string
+	Version string
+}
+
+func (h Header) String() string {
+	s := fmt.Sprintf("// Source: %s\n", h.Origin)
+	if h.Commit != "" {
+		s += fmt.Sprintf("// Commit: %s\n", h.Commit)
+	}
+	if h.Version != "" {
+		s += fmt.Sprintf("// x-common version: %s\n", h.Version)
+	}
+	return s
+}
+
 func init() {
 	if _, path, _, ok := runtime.Caller(0); ok {
 		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
@@ -50,7 +71,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	}
 	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
 	// find and read the json source file
-	jPath, jOri, jCommit := getPath(jFile)
+	jPath, jOrigin, jCommit := getPath(jFile)
 	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
 	if err != nil {
 		return err
@@ -65,12 +86,24 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return fmt.Errorf(`unexpected data structure: %v`, err)
 	}
 
+	// These fields are guaranteed to be in every problem
+	var commonMetadata struct {
+		Version string
+	}
+	if err := json.Unmarshal(jSrc, &commonMetadata); err != nil {
+		return fmt.Errorf(`Didn't contain version: %v`, err)
+	}
+
 	// package up a little meta data
 	d := struct {
-		Ori    string
-		Commit string
-		J      interface{}
-	}{jOri, jCommit, j}
+		Header
+		J interface{}
+	}{Header{
+		Ori:     jOrigin,
+		Origin:  jOrigin,
+		Commit:  jCommit,
+		Version: commonMetadata.Version,
+	}, j}
 
 	// render the Go test cases
 	var b bytes.Buffer
@@ -86,7 +119,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0666)
 }
 
-func getPath(jFile string) (jPath, jOri, jCommit string) {
+func getPath(jFile string) (jPath, jOrigin, jCommit string) {
 	// Ideally draw from a .json which is pulled from the official x-common
 	// repository.  For development however, accept a file in current directory
 	// if there is no .json in source control.  Also allow an override in any
