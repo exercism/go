@@ -2,6 +2,7 @@ package bowling
 
 // Source: exercism/x-common
 // Commit: 3cf5eb9 bowling: Make canonical-data.json compliant
+// x-common version: 1.0.0
 
 var scoreTestCases = []struct {
 	description   string

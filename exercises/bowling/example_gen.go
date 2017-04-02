@@ -81,9 +81,7 @@ func determineExpected(expected interface{}) (bool, int, string) {
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
 var tmpl = `package bowling
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var scoreTestCases = []struct {
 	description    string
