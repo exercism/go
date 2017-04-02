@@ -49,7 +49,7 @@ func (g *Game) Roll(pins int) error {
 	// Record the roll.
 	g.rolls[g.nRolls] = pins
 	g.nRolls++
-	if pins == pinsPerFrame && g.completedFrames() < (framesPerGame-1) {
+	if pins == pinsPerFrame && g.completedFrames() < framesPerGame-1 {
 		// Frames before last one can be strikes with no problems.
 		g.completeTheFrame()
 		return nil
@@ -58,11 +58,11 @@ func (g *Game) Roll(pins int) error {
 		// Have counted normal max rolls on a frame.
 		if g.rawFrameScore(g.rFrameStart) > pinsPerFrame {
 			// Unless we have completed all but last frame, cannot count > pinsPerFrame.
-			if g.completedFrames() != (framesPerGame - 1) {
+			if g.completedFrames() != framesPerGame-1 {
 				return ErrPinCountExceedsPinsOnTheLane
 			}
 		}
-		if g.completedFrames() < (framesPerGame - 1) {
+		if g.completedFrames() < framesPerGame-1 {
 			// Completed frames before last one with maxRollsPerFrame.
 			g.completeTheFrame()
 			return nil

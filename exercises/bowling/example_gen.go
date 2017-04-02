@@ -60,7 +60,7 @@ func (c OneCase) ExplainText() string {
 
 // determineExpected examines an .Expected interface{} object and determines
 // whether a test case is valid(bool), has a score field, and/or has an expected error,
-// returning valid, score, and error explaination text.
+// returning valid, score, and error explanation text.
 func determineExpected(expected interface{}) (bool, int, string) {
 	score, ok := expected.(float64)
 	if ok {
@@ -90,7 +90,7 @@ var scoreTestCases = []struct {
 	previousRolls  []int	// bowling rolls to do before the Score() test
 	valid          bool     // true => no error, false => error expected
 	score          int	// when .valid == true, the expected score value
-	explainText    string   // when .valid == false, error explaination text
+	explainText    string   // when .valid == false, error explanation text
 }{ {{range .J.Cases}}
 {{if .ScoreTest}}{
 	{{printf "%q"  .Description}},
@@ -106,7 +106,7 @@ var rollTestCases = []struct {
 	previousRolls  []int	// bowling rolls to do before the Roll(roll) test
 	valid          bool     // true => no error, false => error expected
 	roll           int	// pin count for the test roll
-	explainText    string   // when .valid == false, error explaination text
+	explainText    string   // when .valid == false, error explanation text
 }{ {{range .J.Cases}}
 {{if .RollTest}}{
 	{{printf "%q"  .Description}},

@@ -47,7 +47,7 @@ func TestScore(t *testing.T) {
 				}
 			}
 		} else if err == nil {
-			t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected an error, got score %d\n\tExplaination: %s",
+			t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected an error, got score %d\n\tExplanation: %s",
 				tc.description, tc.previousRolls, score, tc.explainText)
 		}
 		t.Logf("PASS: %s", tc.description)
@@ -69,7 +69,7 @@ func TestRoll(t *testing.T) {
 				tc.description, tc.roll, tc.previousRolls, err)
 
 		} else if !tc.valid && err == nil {
-			t.Fatalf("FAIL: %s : Roll(%d) after Previous Rolls: %#v expected an error.\n\tExplaination: %s",
+			t.Fatalf("FAIL: %s : Roll(%d) after Previous Rolls: %#v expected an error.\n\tExplanation: %s",
 				tc.description, tc.roll, tc.previousRolls, tc.explainText)
 		}
 		t.Logf("PASS: %s", tc.description)
