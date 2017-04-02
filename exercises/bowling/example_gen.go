@@ -53,14 +53,14 @@ func (c OneCase) Score() int {
 	return score
 }
 
-func (c OneCase) ErrorString() string {
-	_, _, errorString := determineExpected(c.Expected)
-	return errorString
+func (c OneCase) ExplainText() string {
+	_, _, explainText := determineExpected(c.Expected)
+	return explainText
 }
 
 // determineExpected examines an .Expected interface{} object and determines
 // whether a test case is valid(bool), has a score field, and/or has an expected error,
-// returning valid, score, and error string text.
+// returning valid, score, and error explaination text.
 func determineExpected(expected interface{}) (bool, int, string) {
 	score, ok := expected.(float64)
 	if ok {
@@ -74,8 +74,8 @@ func determineExpected(expected interface{}) (bool, int, string) {
 	if !ok {
 		return false, 0, ""
 	}
-	errorText, ok := iError.(string)
-	return false, 0, errorText
+	explainText, ok := iError.(string)
+	return false, 0, explainText
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
@@ -90,14 +90,14 @@ var scoreTestCases = []struct {
 	previousRolls  []int	// bowling rolls to do before the Score() test
 	valid          bool     // true => no error, false => error expected
 	score          int	// when .valid == true, the expected score value
-	errorString    string   // when .valid == false, error string detail
+	explainText    string   // when .valid == false, error explaination text
 }{ {{range .J.Cases}}
 {{if .ScoreTest}}{
 	{{printf "%q"  .Description}},
 	{{printf "%#v" .PreviousRolls}},
 	{{printf "%v"  .Valid}},
 	{{printf "%d"  .Score}},
-	{{printf "%q"  .ErrorString}},
+	{{printf "%q"  .ExplainText}},
 },{{- end}}{{end}}
 }
 
@@ -106,14 +106,14 @@ var rollTestCases = []struct {
 	previousRolls  []int	// bowling rolls to do before the Roll(roll) test
 	valid          bool     // true => no error, false => error expected
 	roll           int	// pin count for the test roll
-	errorString    string   // when .valid == false, error string detail
+	explainText    string   // when .valid == false, error explaination text
 }{ {{range .J.Cases}}
 {{if .RollTest}}{
 	{{printf "%q"  .Description}},
 	{{printf "%#v" .PreviousRolls}},
 	{{printf "%v"  .Valid}},
 	{{printf "%d"  .Roll}},
-	{{printf "%q"  .ErrorString}},
+	{{printf "%q"  .ExplainText}},
 },{{- end}}{{end}}
 }
 `
