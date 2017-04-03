@@ -505,6 +505,14 @@
         "Arrays",
         "Algorithms"
       ]
+    },
+    {
+      "difficulty": 1,
+      "slug": "bowling",
+      "topics": [
+        "Control-flow (conditionals)",
+        "Arrays"
+      ]
     }
   ]
 }
