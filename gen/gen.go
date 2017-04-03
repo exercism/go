@@ -26,11 +26,10 @@ import (
 //     └── xgo
 var dirMetadata string
 
-// dirProblem is the location that the test cases should be generated to.
-// This assumes that the generator script lives in the same directory as
-// the problem.
-// Falls back to the present working directory.
-var dirProblem string
+// dirExercise is the location that the test cases should be generated to.
+// This assumes that the generator script lives in the .meta directory within
+// the exercise directory. Falls back to the present working directory.
+var dirExercise string
 
 // Header tells how the test data was generated, for display in the header of cases_test.go
 type Header struct {
@@ -58,13 +57,14 @@ func init() {
 		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
 	}
 	if _, path, _, ok := runtime.Caller(2); ok {
-		dirProblem = filepath.Join(path, "..")
+		dirExercise = filepath.Join(path, "..", "..")
 	}
-	if dirProblem == "" {
-		dirProblem = "."
+	if dirExercise == "" {
+		dirExercise = "."
 	}
 }
 
+// Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
 		return errors.New("unable to determine current path")
@@ -116,7 +116,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return err
 	}
 	// write output file for the Go test cases.
-	return ioutil.WriteFile(filepath.Join(dirProblem, "cases_test.go"), src, 0666)
+	return ioutil.WriteFile(filepath.Join(dirExercise, "cases_test.go"), src, 0666)
 }
 
 func getPath(jFile string) (jPath, jOrigin, jCommit string) {
