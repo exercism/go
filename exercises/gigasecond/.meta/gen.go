@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,33 +15,36 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("roman-numerals", &j, t); err != nil {
+	if err := gen.Gen("gigasecond", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Cases []struct {
-		Number   int
-		Expected string
+	Add struct {
+		Description []string
+		Cases       []struct {
+			Input    string
+			Expected string
+		}
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package romannumerals
+var tmpl = `package gigasecond
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
-
-type romanNumeralTest struct {
-	arabic   int
-	roman    string
-	hasError bool
-}
-
-var romanNumeralTests = []romanNumeralTest {
-{{range .J.Cases}}{ {{.Number}}, "{{.Expected}}", false},
+{{range .J.Add.Description}}// {{.}}
+{{end}}var addCases = []struct {
+	in   string
+	want string
+}{
+{{range .J.Add.Cases}}{
+	{{printf "%q" .Input}},
+	{{printf "%q" .Expected}},
+},
 {{end}}}
 `

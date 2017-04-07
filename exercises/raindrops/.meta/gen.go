@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("connect", &j, t); err != nil {
+	if err := gen.Gen("raindrops", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -23,28 +23,22 @@ func main() {
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
 	Cases []struct {
-		Description string
-		Board       []string
-		Expected    string
+		Number   int
+		Expected string
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package connect
+var tmpl = `package raindrops
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
 
-var testCases = []struct {
-    description string
-    board       []string
-    expected    string
+var tests = []struct {
+	input    int
+	expected string
 }{
-	{{range .J.Cases}}{
-		description: {{printf "%q" .Description}},
-		board: []string{ {{range $line := .Board}}{{printf "\n    %q," $line}}{{end}}},
-		expected: {{printf "%q" .Expected}},
-},
+{{range .J.Cases}}{ {{.Number}}, "{{.Expected}}"},
 {{end}}}
 `

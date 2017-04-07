@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,36 +15,34 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("gigasecond", &j, t); err != nil {
+	if err := gen.Gen("largest-series-product", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Add struct {
-		Description []string
-		Cases       []struct {
-			Input    string
-			Expected string
-		}
+	Cases []struct {
+		Description string
+		Digits      string
+		Span        int
+		Expected    int64
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package gigasecond
+var tmpl = `package lsproduct
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
-{{range .J.Add.Description}}// {{.}}
-{{end}}var addCases = []struct {
-	in   string
-	want string
+
+var tests = []struct {
+	digits  string
+	span    int
+	product int64
+	ok      bool
 }{
-{{range .J.Add.Cases}}{
-	{{printf "%q" .Input}},
-	{{printf "%q" .Expected}},
-},
+{{range .J.Cases}}{ "{{.Digits}}", {{.Span}}, {{.Expected}}, {{ge .Expected 0}}},
 {{end}}}
 `

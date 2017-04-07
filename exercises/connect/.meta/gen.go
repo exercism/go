@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("word-count", &j, t); err != nil {
+	if err := gen.Gen("connect", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -24,13 +24,13 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       string
-		Expected    map[string]int
+		Board       []string
+		Expected    string
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package wordcount
+var tmpl = `package connect
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
@@ -38,13 +38,13 @@ var tmpl = `package wordcount
 
 var testCases = []struct {
     description string
-	input       string
-	output      Frequency
+    board       []string
+    expected    string
 }{
 	{{range .J.Cases}}{
-	{{printf "%q" .Description}},
-	{{printf "%q" .Input}},
-	Frequency{ {{range $key, $val := .Expected}} {{printf "%q: %d, " $key $val}} {{end}} },
+		description: {{printf "%q" .Description}},
+		board: []string{ {{range $line := .Board}}{{printf "\n    %q," $line}}{{end}}},
+		expected: {{printf "%q" .Expected}},
 },
 {{end}}}
 `

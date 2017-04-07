@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("transpose", &j, t); err != nil {
+	if err := gen.Gen("leap", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -24,31 +24,21 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       []string
-		Expected    []string
+		Input       int
+		Expected    bool
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package transpose
+var tmpl = `package leap
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var testCases = []struct {
+	year        int
+	expected    bool
 	description string
-	input       []string
-	expected    []string
 }{
-{{range .J.Cases}}{
-	{{printf "%q" .Description}},
-	[]string{
-{{range .Input}}  {{printf "%q" .}},
-{{end}}},
-	[]string{
-{{range .Expected}}  {{printf "%q" .}},
-{{end}}},
-},
+{{range .J.Cases}}{ {{.Input}}, {{.Expected}}, {{printf "%q" .Description}}},
 {{end}}}
 `

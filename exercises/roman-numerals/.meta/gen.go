@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("raindrops", &j, t); err != nil {
+	if err := gen.Gen("roman-numerals", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -29,16 +29,19 @@ type js struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package raindrops
+var tmpl = `package romannumerals
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
 
-var tests = []struct {
-	input    int
-	expected string
-}{
-{{range .J.Cases}}{ {{.Number}}, "{{.Expected}}"},
+type romanNumeralTest struct {
+	arabic   int
+	roman    string
+	hasError bool
+}
+
+var romanNumeralTests = []romanNumeralTest {
+{{range .J.Cases}}{ {{.Number}}, "{{.Expected}}", false},
 {{end}}}
 `

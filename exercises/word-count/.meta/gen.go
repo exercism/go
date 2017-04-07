@@ -6,7 +6,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../gen"
+	"../../../gen"
 )
 
 func main() {
@@ -15,36 +15,36 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("luhn", &j, t); err != nil {
+	if err := gen.Gen("word-count", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Valid []struct {
+	Cases []struct {
 		Description string
 		Input       string
-		Expected    bool
+		Expected    map[string]int
 	}
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package luhn
+var tmpl = `package wordcount
 
 // Source: {{.Ori}}
 {{if .Commit}}// Commit: {{.Commit}}
 {{end}}
 
 var testCases = []struct {
-	description string
+    description string
 	input       string
-	ok			bool
+	output      Frequency
 }{
-{{range .J.Valid}}{
+	{{range .J.Cases}}{
 	{{printf "%q" .Description}},
 	{{printf "%q" .Input}},
-	{{.Expected}},
+	Frequency{ {{range $key, $val := .Expected}} {{printf "%q: %d, " $key $val}} {{end}} },
 },
-{{end}}
-}`
+{{end}}}
+`

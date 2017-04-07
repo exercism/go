@@ -44,15 +44,16 @@ number of files there.
 
 ```sh
 ~/exercism/go/leap
-$ tree
+$ tree -a
 .
 ├── cases_test.go
-├── example_gen.go
 ├── example.go
 ├── leap.go
-└── leap_test.go
+├── leap_test.go
+└── .meta
+    └── gen.go
 
-0 directories, 5 files
+1 directory, 5 files
 ```
 
 This list of files can vary across exercises so let's quickly run through
@@ -61,15 +62,21 @@ each file and briefly describe what it is.
 **cases_test.go** - This file contains [generated test cases](#generating-test-cases),
 and will only be present in some exercises.
 
-**example_gen.go** - This file generates the *cases_test.go* file, and will only
-be present in some exercises. See [generating test cases](#generating-test-cases)
-for more information.
-
-**example.go** - This is a reference solution for the exercise.
+**example.go** - This is a reference solution for the exercise. This file is
+ignored by the `exercism fetch` command, as are any files that include the
+word *example* in the filename, or anything within the *.meta* directory.
 
 **leap.go** - This is a *stub file*, and will only be present in some exercises.
 
 **leap_test.go** - This is the main test file for the exercise.
+
+**.meta/** - The *.meta* directory is used to contain files that are not
+meant to be included when a user fetches an exercise, for instance test case
+generators.
+
+**gen.go** - This file, within the *.meta* directory, generates the *cases_test.go*
+file, and will only be present in some exercises. See [generating test cases](#generating-test-cases)
+for more information.
 
 In some exercises there can be extra files, for instance the `series` exercise
 contains extra test files.
@@ -136,7 +143,7 @@ without a stub is [twelve-days](exercises/twelve-days/). At this point users wil
 have some experience in creating solutions for the exercises and can begin to
 create their own solutions from scratch. Some of the later exercises may have stub
 files if the author thinks there may be implementation confusion, a particularly
-difficult concept, or boilerplate code needed. 
+difficult concept, or boilerplate code needed.
 
 ### Problem Versioning
 
@@ -163,17 +170,21 @@ tracks don't.
 
 Some problems that are implemented in multiple tracks use the same inputs and
 outputs to define the test suites. Where the [x-common](https://github.com/exercism/x-common)
-repository contains json files with these inputs and outputs, we can generate
-the test cases programmatically.
+repository contains a *canonical-data.json* file with these inputs and outputs,
+we can generate the test cases programmatically.
 
-See the *example_gen.go* file in the `leap` exercise for an example of how this
+See the *gen.go* file in the `leap` exercise for an example of how this
 can be done.
+
+Test case generators are named *gen.go* and are kept in a special *.meta*
+directory within each exercise that makes use of a test cases generator. This
+*.meta* directory will be ignored when a user fetches an exercise.
 
 Whenever the shared JSON data changes, the test cases will need to be regenerated.
 To do this, make sure that the **x-common** repository has been cloned in the same
 parent-directory as the **xgo** repository. Then navigate into the **xgo**
-directory and run `go run exercises/<problem>/example_gen.go`. You should see
-that the `<problem>/test_cases.go` file has changed. Commit the change.
+directory and run `go run exercises/<exercise>/.meta/gen.go`. You should see
+that the `<exercise>/cases_test.go` file has changed. Commit the change.
 
 ## Pull requests
 
