@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 var testCases = []struct {
 	input  []byte
@@ -13,16 +13,16 @@ var testCases = []struct {
 	size   int
 }{
 	0:  {[]byte{0x7F}, 127, 1},
-	1:  {[]byte{0x81, 0x00}, 128, 1},
-	2:  {[]byte{0xC0, 0x00}, 8192, 1},
-	3:  {[]byte{0xFF, 0x7F}, 16383, 1},
-	4:  {[]byte{0x81, 0x80, 0x00}, 16384, 2},
-	5:  {[]byte{0xFF, 0xFF, 0x7F}, 2097151, 2},
-	6:  {[]byte{0x81, 0x80, 0x80, 0x00}, 2097152, 3},
-	7:  {[]byte{0xC0, 0x80, 0x80, 0x00}, 134217728, 3},
-	8:  {[]byte{0xFF, 0xFF, 0xFF, 0x7F}, 268435455, 3},
-	9:  {[]byte{0x82, 0x00}, 256, 1},
-	10: {[]byte{0x81, 0x10}, 144, 1},
+	1:  {[]byte{0x81, 0x00}, 128, 2},
+	2:  {[]byte{0xC0, 0x00}, 8192, 2},
+	3:  {[]byte{0xFF, 0x7F}, 16383, 2},
+	4:  {[]byte{0x81, 0x80, 0x00}, 16384, 3},
+	5:  {[]byte{0xFF, 0xFF, 0x7F}, 2097151, 3},
+	6:  {[]byte{0x81, 0x80, 0x80, 0x00}, 2097152, 4},
+	7:  {[]byte{0xC0, 0x80, 0x80, 0x00}, 134217728, 4},
+	8:  {[]byte{0xFF, 0xFF, 0xFF, 0x7F}, 268435455, 4},
+	9:  {[]byte{0x82, 0x00}, 256, 2},
+	10: {[]byte{0x81, 0x10}, 144, 2},
 }
 
 func TestTestVersion(t *testing.T) {

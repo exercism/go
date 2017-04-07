@@ -1,6 +1,6 @@
 package variablelengthquantity
 
-const testVersion = 1
+const testVersion = 2
 
 // EncodeVarint returns the varint encoding of x.
 func EncodeVarint(x uint32) []byte {
@@ -50,9 +50,9 @@ func DecodeVarint(buf []byte) (x uint32, n int) {
 		x = x << 7
 		x |= uint32(b) & 0x7F
 		if (b & 0x80) == 0 {
-			return x, n
+			return x, n + 1
 		}
 	}
 
-	return x, n
+	return x, 0
 }
