@@ -22,71 +22,60 @@ func main() {
 
 // The JSON structure we expect to be able to umarshal into
 type js struct {
-	Create struct {
-		Description []string
-		Cases       []timeCase
-	}
-	Add struct {
-		Description []string
-		Cases       []addCase
-	}
-	Equal struct {
-		Description []string
-		Cases       []eqCase
+	Cases []struct {
+		Description string
+		Cases       []OneCase
 	}
 }
 
-// Handle the three tests similarly
+type OneCase struct {
+	Description string
+	Property    string
+	Hour        int // "create"/"add" cases
+	Minute      int // "create"/"add" cases
+	Add         int // "add" cases only
 
-type timeCase struct {
-	Description  string
-	Hour, Minute int
-	Expected     string
+	Clock1   struct{ Hour, Minute int } // "equal" cases only
+	Clock2   struct{ Hour, Minute int } // "equal" cases only
+	Expected interface{}                // string or bool
 }
-type addCase struct {
-	Description       string
-	Hour, Minute, Add int
-	Expected          string
-}
-type eqCase struct {
-	Description    string
-	Clock1, Clock2 struct{ Hour, Minute int }
-	Expected       bool
-}
+
+func (c OneCase) IsTimeCase() bool  { return c.Property == "create" }
+func (c OneCase) IsAddCase() bool   { return c.Property == "add" }
+func (c OneCase) IsEqualCase() bool { return c.Property == "equal" }
 
 var tmpl = `package clock
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
-{{range .J.Create.Description}}// {{.}}
-{{end}}var timeTests = []struct {
+// Test creating a new clock with an initial time.
+var timeTests = []struct {
 	h, m int
 	want string
-}{
-{{range .J.Create.Cases}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}},	// {{.Description}}
-{{end}}}
+}{ {{range .J.Cases}} {{range .Cases}}
+{{if .IsTimeCase}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{- end}}{{end}}{{end}} }
 
-{{range .J.Add.Description}}// {{.}}
-{{end}}var addTests = []struct {
+// Test adding and subtracting minutes.
+var addTests = []struct {
 	h, m, a int
-	want  string
-}{
-{{range .J.Add.Cases}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-{{end}}}
+	want string
+}{ {{range .J.Cases}} {{range .Cases}}
+{{if .IsAddCase}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{- end}}{{end}}{{end}} }
 
-{{range .J.Equal.Description}}// {{.}}
-{{end}}type hm struct{ h, m int }
+// Construct two separate clocks, set times, test if they are equal.
+type hm struct{ h, m int }
 
 var eqTests = []struct {
 	c1, c2 hm
 	want   bool
-}{
-{{range .J.Equal.Cases}}// {{.Description}}
+}{ {{range .J.Cases}} {{range .Cases}}
+{{if .IsEqualCase}} // {{.Description}}
 {
 	hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
 	hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
 	{{.Expected}},
-},
-{{end}}}`
+}, {{- end}}{{end}}{{end}}
+}
+`
