@@ -22,7 +22,7 @@ func main() {
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Valid []struct {
+	Cases []struct {
 		Description string
 		Input       string
 		Expected    bool
@@ -32,16 +32,14 @@ type js struct {
 // template applied to above data structure generates the Go test cases
 var tmpl = `package luhn
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var testCases = []struct {
 	description string
 	input       string
 	ok			bool
 }{
-{{range .J.Valid}}{
+{{range .J.Cases}}{
 	{{printf "%q" .Description}},
 	{{printf "%q" .Input}},
 	{{.Expected}},
