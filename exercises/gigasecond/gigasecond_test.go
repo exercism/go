@@ -28,10 +28,12 @@ func TestAddGigasecond(t *testing.T) {
 		want := parse(tc.want, t)
 		got := AddGigasecond(in)
 		if !got.Equal(want) {
-			t.Fatalf(`AddGigasecond(%s)
+			t.Fatalf(`FAIL: %s
+AddGigasecond(%s)
    = %s
-want %s`, in, got, want)
+want %s`, tc.description, in, got, want)
 		}
+		t.Log("PASS:", tc.description)
 	}
 	t.Log("Tested", len(addCases), "cases.")
 }
