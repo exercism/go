@@ -22,10 +22,12 @@ func main() {
 
 // The JSON structure we expect to be able to umarshal into
 type js struct {
-	Cases []struct {
-		Description string
-		Cases       []OneCase
-	}
+	Groups TestGroups `json:"Cases"`
+}
+
+type TestGroups []struct {
+	Description string
+	Cases       []OneCase
 }
 
 type OneCase struct {
@@ -44,33 +46,52 @@ func (c OneCase) IsTimeCase() bool  { return c.Property == "create" }
 func (c OneCase) IsAddCase() bool   { return c.Property == "add" }
 func (c OneCase) IsEqualCase() bool { return c.Property == "equal" }
 
+func (groups TestGroups) GroupComment(property string) string {
+	for _, group := range groups {
+		propertyGroupMatch := true
+		for _, testcase := range group.Cases {
+			if testcase.Property != property {
+				propertyGroupMatch = false
+				break
+			}
+		}
+		if propertyGroupMatch {
+			return group.Description
+		}
+	}
+	return "Note: Apparent inconsistent use of \"property\": \"" + property + "\" within test case group!"
+}
+
 var tmpl = `package clock
 
 {{.Header}}
 
-// Test creating a new clock with an initial time.
-var timeTests = []struct {
+{{with .J.Groups}}
+    // {{ .GroupComment "create"}}
+{{end}} var timeTests = []struct {
 	h, m int
 	want string
-}{ {{range .J.Cases}} {{range .Cases}}
+}{ {{range .J.Groups}} {{range .Cases}}
 {{if .IsTimeCase}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
 {{- end}}{{end}}{{end}} }
 
-// Test adding and subtracting minutes.
-var addTests = []struct {
+{{with .J.Groups}}
+    // {{ .GroupComment "add"}}
+{{end}} var addTests = []struct {
 	h, m, a int
 	want string
-}{ {{range .J.Cases}} {{range .Cases}}
+}{ {{range .J.Groups}} {{range .Cases}}
 {{if .IsAddCase}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
 {{- end}}{{end}}{{end}} }
 
-// Construct two separate clocks, set times, test if they are equal.
-type hm struct{ h, m int }
+{{with .J.Groups}}
+    // {{ .GroupComment "equal"}}
+{{end}} type hm struct{ h, m int }
 
 var eqTests = []struct {
 	c1, c2 hm
 	want   bool
-}{ {{range .J.Cases}} {{range .Cases}}
+}{ {{range .J.Groups}} {{range .Cases}}
 {{if .IsEqualCase}} // {{.Description}}
 {
 	hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
