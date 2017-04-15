@@ -181,10 +181,23 @@ directory within each exercise that makes use of a test cases generator. This
 *.meta* directory will be ignored when a user fetches an exercise.
 
 Whenever the shared JSON data changes, the test cases will need to be regenerated.
-To do this, make sure that the **x-common** repository has been cloned in the same
-parent-directory as the **xgo** repository. Then navigate into the **xgo**
-directory and run `go run exercises/<exercise>/.meta/gen.go`. You should see
-that the `<exercise>/cases_test.go` file has changed. Commit the change.
+The generator will first look for a local copy of the **x-common** repository.
+If there isn't one it will attempt to get the relevant json data for the
+exercise from the **x-common** repository on GitHub.
+
+To use a local copy of the **x-common** repository, make sure that it has been
+cloned into the same parent-directory as the **xgo** repository.
+
+```sh
+$ tree -L 1 .
+.
+├── x-common
+└── xgo
+```
+
+To regenerate the test cases, navigate into the **xgo** directory and run
+`go run exercises/<exercise>/.meta/gen.go`. You should see that the
+`<exercise>/cases_test.go` file has changed. Commit the change.
 
 ## Pull requests
 
