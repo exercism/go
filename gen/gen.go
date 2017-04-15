@@ -17,11 +17,10 @@ import (
 	"time"
 )
 
-// dirMetadata is the location of the x-common repository
-// on the filesystem.
-// We're making the assumption that the x-common repository
-// has been cloned to the same parent directory as the xgo
-// repository. E.g.
+// dirMetadata is the location of the x-common repository on the filesystem.
+// We're making the assumption that the x-common repository has been cloned to
+// the same parent directory as the xgo repository.
+// E.g.
 //
 //     $ tree -L 1 .
 //     .
@@ -47,7 +46,8 @@ const (
 	commitsURL = "https://api.github.com/repos/exercism/x-common/commits?path=exercises/%s/canonical-data.json"
 )
 
-// Header tells how the test data was generated, for display in the header of cases_test.go
+// Header tells how the test data was generated, for display in the header of
+// cases_test.go
 type Header struct {
 	// Ori is a deprecated short name for Origin.
 	// TODO: Remove Ori once everything switches to Origin.
@@ -117,7 +117,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		Version string
 	}
 	if err := json.Unmarshal(jSrc, &commonMetadata); err != nil {
-		return fmt.Errorf(`Didn't contain version: %v`, err)
+		return fmt.Errorf(`didn't contain version: %v`, err)
 	}
 
 	// package up a little meta data
@@ -133,7 +133,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 
 	// render the Go test cases
 	var b bytes.Buffer
-	if err = t.Execute(&b, &d); err != nil {
+	if err := t.Execute(&b, &d); err != nil {
 		return err
 	}
 	// clean it up
@@ -150,12 +150,12 @@ func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
 	// repository.  For development however, accept a file in current directory
 	// if there is no .json in source control.  Also allow an override in any
 	// case by environment variable.
-	if jPath = os.Getenv("EXTEST"); jPath > "" {
+	if jPath := os.Getenv("EXTEST"); jPath > "" {
 		return jPath, "local file", "" // override
 	}
 	c := exec.Command("git", "log", "-1", "--oneline", jFile)
 	c.Dir = dirMetadata
-	ori, err := c.Output()
+	origin, err := c.Output()
 	if err != nil {
 		return "", "local file", "" // no source control
 	}
@@ -163,7 +163,7 @@ func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
 		return "", "local file", "" // not in source control
 	}
 	// good.  return source control dir and commit.
-	return c.Dir, "exercism/x-common", string(bytes.TrimSpace(ori))
+	return c.Dir, "exercism/x-common", string(bytes.TrimSpace(origin))
 }
 
 func getRemote(exercise string) (body []byte, jOrigin string, jCommit string, err error) {
