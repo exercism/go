@@ -1,15 +1,8 @@
-// Clock stub file
-
-// To use the right term, this is the package *clause*.
-// You can document general stuff about the package here if you like.
 package clock
 
-// The value of testVersion here must match `targetTestVersion` in the file
-// clock_test.go.
 const testVersion = 4
 
-// Clock API as stub definitions.  No, it doesn't compile yet.
-// More details and hints are in clock_test.go.
+// You can find more details and hints in the test file.
 
 type Clock // Complete the type definition.  Pick a suitable data type.
 
