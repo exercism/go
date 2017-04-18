@@ -2,10 +2,9 @@ package triangle
 
 const testVersion = 3
 
-// Code this function.
 func KindFromSides(a, b, c float64) Kind
 
-// Notice it returns this type.  Pick something suitable.
+// Notice KindFromSides() returns this type. Pick a suitable data type.
 type Kind
 
 // Pick values for the following identifiers used by the test program.
