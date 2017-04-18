@@ -1,3 +1,3 @@
-package bob // package name must match the package name in bob_test.go
+package bob
 
-const testVersion = 2 // same as targetTestVersion
+const testVersion = 2
