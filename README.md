@@ -59,27 +59,41 @@ $ tree -a
 This list of files can vary across exercises so let's quickly run through
 each file and briefly describe what it is.
 
-**cases_test.go** - This file contains [generated test cases](#generating-test-cases),
-and will only be present in some exercises.
+* **cases_test.go** - This file contains [generated test cases](#generating-test-cases),
+    and will only be present in some exercises.
 
-**example.go** - This is a reference solution for the exercise. This file is
-ignored by the `exercism fetch` command, as are any files that include the
-word *example* in the filename, or anything within the *.meta* directory.
+* **example.go** - This is a reference solution for the exercise. This file is
+    ignored by the `exercism fetch` command. See [ignored files](#ignored-files) for
+    details on which files are ignored.
 
-**leap.go** - This is a *stub file*, and will only be present in some exercises.
+* **leap.go** - This is a *stub file*, and will only be present in some exercises.
 
-**leap_test.go** - This is the main test file for the exercise.
+* **leap_test.go** - This is the main test file for the exercise.
 
-**.meta/** - The *.meta* directory is used to contain files that are not
-meant to be included when a user fetches an exercise, for instance test case
-generators.
+* **.meta/** - The *.meta* directory contains files that are not meant to be
+    included when a user fetches an exercise, for instance test case generators.
+    See [ignored files](#ignored-files) for details on which files are ignored.
 
-**gen.go** - This file, within the *.meta* directory, generates the *cases_test.go*
-file, and will only be present in some exercises. See [generating test cases](#generating-test-cases)
-for more information.
+* **gen.go** - This file, within the *.meta* directory, generates the *cases_test.go*
+    file, and will only be present in some exercises. See [generating test cases](#generating-test-cases)
+    for more information.
 
 In some exercises there can be extra files, for instance the `series` exercise
 contains extra test files.
+
+### Ignored files
+
+When a user fetches an exercise, they do not need to get all the files within an
+exercise directory. For instance; the *example.go* files that contain an
+example solution, or the *gen.go* files used to generate an exercise's test
+cases. Therefore there are certain files and directories that are ignored when
+an exercise is fetched. These are:
+
+* The *.meta* directory and anything within it.
+* Any file that matches the `ignore_pattern` defined in the [config.json file](/config.json).
+    This currently matches any filename that contains the word `example`, **unless**
+    it is followed by the word `test`, with any number of characters inbetween.
+
 
 ### Example solutions
 
