@@ -47,7 +47,7 @@ func Products(fmin, fmax int) (pmin, pmax Product, err error) {
 		}
 	}
 	if len(pmin.Factorizations) == 0 {
-		err = fmt.Errorf("No palindromes in range [%d, %d].", fmin, fmax)
+		err = fmt.Errorf("no palindromes in range [%d, %d]", fmin, fmax)
 	}
 	return
 }
