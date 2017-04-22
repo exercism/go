@@ -3,6 +3,7 @@
   "language": "Go",
   "repository": "https://github.com/exercism/xgo",
   "active": true,
+  "ignore_pattern": "example(?!.*test)",
   "deprecated": [
     "binary",
     "bottles",
