@@ -89,7 +89,7 @@ type OneCase struct {
 	Description string
 	Property    string
 	Set         []int       // "empty"/"contains"/"add" cases
-	Set1        []int       // "empty"/"contains"/"add" cases
+	Set1        []int       // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
 	Set2        []int       // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
 	Element     int         // "contains"/"add" cases
 	Expected    interface{} // bool or []int
