@@ -38,7 +38,7 @@ var testData = []struct {
 		Product{10201, [][2]int{{101, 101}}},
 		Product{906609, [][2]int{{913, 993}}},
 		""},
-	{4, 10, Product{}, Product{}, "No palindromes"},
+	{4, 10, Product{}, Product{}, "no palindromes"},
 	{10, 4, Product{}, Product{}, "fmin > fmax"},
 }
 

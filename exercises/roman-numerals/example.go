@@ -16,7 +16,7 @@ func ToRomanNumeral(input int) (string, error) {
 	buffer := bytes.NewBufferString("")
 
 	if input <= 0 || input >= 4000 {
-		return "", fmt.Errorf("The number %d is undefined in the roman numeral system.", input)
+		return "", fmt.Errorf("the number %d is undefined in the roman numeral system", input)
 	}
 
 	mappings := []arabicToRoman{
