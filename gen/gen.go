@@ -89,10 +89,11 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	// try to find and read the local json source file
 	log.Printf("[LOCAL] fetching %s test data\n", exercise)
 	jPath, jOrigin, jCommit := getLocal(jFile)
+	jFilePath := filepath.Join(jPath, jFile)
 	if jPath != "" {
-		log.Printf("[LOCAL] source: %s\n", jPath)
+		log.Printf("[LOCAL] source: %s\n", jFilePath)
 	}
-	jSrc, err := ioutil.ReadFile(filepath.Join(jPath, jFile))
+	jSrc, err := ioutil.ReadFile(jFilePath)
 	if err != nil {
 		// fetch json data remotely if there's no local file
 		log.Println("[LOCAL] No test data found")
