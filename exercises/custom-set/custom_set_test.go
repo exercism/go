@@ -122,7 +122,7 @@ func TestIsEmpty(t *testing.T) {
 }
 
 func TestHas(t *testing.T) {
-	for _, tc := range hasCases {
+	for _, tc := range containsCases {
 		s := NewFromSlice(tc.set)
 		got := s.Has(tc.ele)
 		if got != tc.want {
@@ -152,7 +152,7 @@ func TestDisjoint(t *testing.T) {
 }
 
 func TestEqual(t *testing.T) {
-	testBinBool("Equal", Equal, eqCases, t)
+	testBinBool("Equal", Equal, equalCases, t)
 }
 
 func TestAdd(t *testing.T) {
