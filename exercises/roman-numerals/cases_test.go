@@ -1,7 +1,8 @@
 package romannumerals
 
 // Source: exercism/x-common
-// Commit: 6985644 Merge pull request #121 from mikeyjcat/add-roman-numerals-test-definition
+// Commit: 070e8d5 roman-numerals: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 type romanNumeralTest struct {
 	arabic   int
