@@ -43,9 +43,7 @@ type js struct {
 // readme and have no biological basis and so are not converted here.
 var tmpl = `package strand
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var rnaTests = []struct {
 	input    string
