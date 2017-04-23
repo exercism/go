@@ -32,9 +32,7 @@ type js struct {
 // template applied to above data structure generates the Go test cases
 var tmpl = `package connect
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var testCases = []struct {
     description string
