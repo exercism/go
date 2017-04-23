@@ -1,7 +1,8 @@
 package stringset
 
 // Source: exercism/x-common
-// Commit: cda8f98 Create new exercises structure
+// Commit: 4527635 custom-set: Fix description to match property name
+// x-common version: 1.0.1
 
 // Returns true if the set contains no elements
 var emptyCases = []unaryBoolCase{
@@ -16,7 +17,8 @@ var emptyCases = []unaryBoolCase{
 }
 
 // Sets can report if they contain an element
-var hasCases = []eleBoolCase{
+var containsCases = []eleBoolCase{
+
 	{ // nothing is contained in an empty set
 		[]string{},
 		"a",
@@ -36,6 +38,7 @@ var hasCases = []eleBoolCase{
 
 // A set is a subset if all of its elements are contained in the other set
 var subsetCases = []binBoolCase{
+
 	{ // empty set is a subset of another empty set
 		[]string{},
 		[]string{},
@@ -70,6 +73,7 @@ var subsetCases = []binBoolCase{
 
 // Sets are disjoint if they share no elements
 var disjointCases = []binBoolCase{
+
 	{ // the empty set is disjoint with itself
 		[]string{},
 		[]string{},
@@ -98,7 +102,8 @@ var disjointCases = []binBoolCase{
 }
 
 // Sets with the same elements are equal
-var eqCases = []binBoolCase{
+var equalCases = []binBoolCase{
+
 	{ // empty sets are equal
 		[]string{},
 		[]string{},
@@ -128,6 +133,7 @@ var eqCases = []binBoolCase{
 
 // Unique elements can be added to a set
 var addCases = []eleOpCase{
+
 	{ // add to empty set
 		[]string{},
 		"c",
@@ -145,8 +151,9 @@ var addCases = []eleOpCase{
 	},
 }
 
-// Intersect returns a set of all shared elements
+// Intersection returns a set of all shared elements
 var intersectionCases = []binOpCase{
+
 	{ // intersection of two empty sets is an empty set
 		[]string{},
 		[]string{},
@@ -176,6 +183,7 @@ var intersectionCases = []binOpCase{
 
 // Difference (or Complement) of a set is a set of all elements that are only in the first set
 var differenceCases = []binOpCase{
+
 	{ // difference of two empty sets is an empty set
 		[]string{},
 		[]string{},
@@ -200,6 +208,7 @@ var differenceCases = []binOpCase{
 
 // Union returns a set of all elements in either set
 var unionCases = []binOpCase{
+
 	{ // union of empty sets is an empty set
 		[]string{},
 		[]string{},
