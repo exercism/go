@@ -1,7 +1,8 @@
 package transpose
 
 // Source: exercism/x-common
-// Commit: cda8f98 Create new exercises structure
+// Commit: 6dba022 transpose: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	description string
