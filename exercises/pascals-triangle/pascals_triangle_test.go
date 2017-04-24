@@ -8,6 +8,9 @@ import (
 
 const targetTestVersion = 1
 
+// testSize should reflect the length of t20
+const testSize = 20
+
 var t20 = [][]int{
 	{1},
 	{1, 1},
@@ -38,7 +41,7 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestTriangle(t *testing.T) {
-	for n := 1; n <= 20; n++ {
+	for n := 1; n <= testSize; n++ {
 		res := Triangle(n)
 		want := t20[:n]
 		if !reflect.DeepEqual(res, want) {
@@ -46,7 +49,7 @@ func TestTriangle(t *testing.T) {
 				n, format(res), format(want))
 		}
 	}
-	t.Log(format(Triangle(20)))
+	t.Log(format(Triangle(testSize)))
 }
 
 func format(t [][]int) (s string) {
@@ -54,4 +57,22 @@ func format(t [][]int) (s string) {
 		s = fmt.Sprintf("%s\n%v", s, r)
 	}
 	return
+}
+
+// BenchmarkPascalsTriangleFixed will generate Pascals Triangles against the
+// solution using triangles of fixed size 20.
+func BenchmarkPascalsTriangleFixed(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Triangle(testSize) // same length as the test for correctness above
+	}
+}
+
+// BenchmarkPascalsTriangleIncreasing will generate Pascals Triangles against the
+// solution using triangles of an increasingly larger size from 1 to 20.
+func BenchmarkPascalsTriangleIncreasing(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for x := 0; x <= testSize; x++ {
+			Triangle(x)
+		}
+	}
 }
