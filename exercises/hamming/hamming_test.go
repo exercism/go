@@ -2,7 +2,7 @@ package hamming
 
 import "testing"
 
-const targetTestVersion = 5
+const targetTestVersion = 6
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {

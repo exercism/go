@@ -1,7 +1,8 @@
 package hamming
 
 // Source: exercism/x-common
-// Commit: c84e435 Merge pull request #51 from soniakeys/master
+// Commit: bb56dc7 Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	s1   string
@@ -52,6 +53,11 @@ var testCases = []struct {
 		"AGG",
 		"AGA",
 		1,
+	},
+	{ // same nucleotides in different positions
+		"TAG",
+		"GAT",
+		2,
 	},
 	{ // large distance
 		"GATACA",

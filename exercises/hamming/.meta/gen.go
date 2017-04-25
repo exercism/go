@@ -33,9 +33,7 @@ type js struct {
 // template applied to above data structure generates the Go test cases
 var tmpl = `package hamming
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var testCases = []struct {
 	s1   string
