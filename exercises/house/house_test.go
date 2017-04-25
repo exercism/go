@@ -19,7 +19,7 @@ const targetTestVersion = 1
 
 var (
 	// song copied from README
-	song = `This is the house that Jack built.
+	expectedSong = `This is the house that Jack built.
 
 This is the malt
 that lay in the house that Jack built.
@@ -109,7 +109,7 @@ that killed the rat
 that ate the malt
 that lay in the house that Jack built.`
 
-	verses = strings.Split(song, "\n\n")
+	expectedVerses = strings.Split(expectedSong, "\n\n")
 )
 
 func TestTestVersion(t *testing.T) {
@@ -119,26 +119,26 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestVerse(t *testing.T) {
-	for v := 0; v < len(verses); v++ {
-		if ret := Verse(v + 1); ret != verses[v] {
-			t.Fatalf("Verse(%d) =\n%q\n  want:\n%q", v+1, ret, verses[v])
+	for v := 0; v < len(expectedVerses); v++ {
+		if ret := Verse(v + 1); ret != expectedVerses[v] {
+			t.Fatalf("Verse(%d) =\n%q\n  want:\n%q", v+1, ret, expectedVerses[v])
 		}
 	}
 }
 
 func TestSong(t *testing.T) {
 	s := Song()
-	if s == song {
+	if s == expectedSong {
 		return
 	}
 	// a little help in locating an error
 	gotStanzas := len(strings.Split(s, "\n\n"))
-	wantStanzas := len(verses)
+	wantStanzas := len(expectedVerses)
 	if wantStanzas != gotStanzas {
 		t.Fatalf("Song() has %d verse(s), want %d verses", gotStanzas, wantStanzas)
 	}
 	got := strings.Split(s, "\n")
-	want := strings.Split(song, "\n")
+	want := strings.Split(expectedSong, "\n")
 	var g, w string
 	var i int
 	for i, w = range want {
