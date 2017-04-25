@@ -1,7 +1,8 @@
 package wordcount
 
 // Source: exercism/x-common
-// Commit: f2ab262 word-count: replace underscore with space in description (#483)
+// Commit: cd26d49 word-count: Make exercise schema-compliant  (#634)
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	description string

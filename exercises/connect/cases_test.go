@@ -1,7 +1,8 @@
 package connect
 
 // Source: exercism/x-common
-// Commit: 038124b triangle: Add JSON test data
+// Commit: 327db7f connect: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	description string

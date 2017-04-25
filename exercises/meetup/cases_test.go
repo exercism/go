@@ -1,7 +1,8 @@
 package meetup
 
 // Source: exercism/x-common
-// Commit: b237b7b Merge pull request #124 from soniakeys/meetup-common-tests
+// Commit: fe9630e meetup: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 import "time"
 

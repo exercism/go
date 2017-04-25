@@ -1,7 +1,8 @@
 package strand
 
 // Source: exercism/x-common
-// Commit: 6985644 Merge pull request #121 from mikeyjcat/add-roman-numerals-test-definition
+// Commit: 0b20fff rna-transcription: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var rnaTests = []struct {
 	input    string
