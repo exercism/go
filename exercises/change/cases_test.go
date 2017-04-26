@@ -2,6 +2,7 @@ package change
 
 // Source: exercism/x-common
 // Commit: 3d8b5b3 change: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	description    string
