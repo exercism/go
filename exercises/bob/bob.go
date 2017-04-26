@@ -1,3 +1,3 @@
 package bob
 
-const testVersion = 2
+const testVersion = 3
