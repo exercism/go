@@ -74,9 +74,7 @@ func determineExpected(expected interface{}) (valid bool, list []int) {
 
 var tmpl = `package change
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var testCases = []struct {
 	description    string
