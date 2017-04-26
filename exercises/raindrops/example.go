@@ -2,7 +2,7 @@ package raindrops
 
 import "strconv"
 
-const testVersion = 2
+const testVersion = 3
 
 func Convert(number int) string {
 	s := ""

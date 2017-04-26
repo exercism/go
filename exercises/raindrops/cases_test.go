@@ -1,7 +1,8 @@
 package raindrops
 
 // Source: exercism/x-common
-// Commit: 3b07e53 Merge pull request #117 from mikeyjcat/add-raindrops-json
+// Commit: 9db5371 raindrops: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var tests = []struct {
 	input    int
@@ -12,14 +13,17 @@ var tests = []struct {
 	{5, "Plang"},
 	{7, "Plong"},
 	{6, "Pling"},
+	{8, "8"},
 	{9, "Pling"},
 	{10, "Plang"},
 	{14, "Plong"},
 	{15, "PlingPlang"},
 	{21, "PlingPlong"},
 	{25, "Plang"},
+	{27, "Pling"},
 	{35, "PlangPlong"},
 	{49, "Plong"},
 	{52, "52"},
 	{105, "PlingPlangPlong"},
+	{3125, "Plang"},
 }
