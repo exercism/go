@@ -55,7 +55,7 @@ func Forth(input []string) (result []int, err error) {
 		}
 	}
 
-	return stack[:len(stack)], nil
+	return stack, nil
 }
 
 // parse given phrase, returning an operator list, and updating
