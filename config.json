@@ -169,9 +169,14 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 5,
       "slug": "queen-attack",
-      "topics": []
+      "topics": [
+        "Booleans",
+        "Logic",
+        "Games",
+        "Errors"
+      ]
     },
     {
       "difficulty": 2,
