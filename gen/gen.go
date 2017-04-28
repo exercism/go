@@ -49,9 +49,6 @@ const (
 // Header tells how the test data was generated, for display in the header of
 // cases_test.go
 type Header struct {
-	// Ori is a deprecated short name for Origin.
-	// TODO: Remove Ori once everything switches to Origin.
-	Ori     string
 	Origin  string
 	Commit  string
 	Version string
@@ -126,7 +123,6 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		Header
 		J interface{}
 	}{Header{
-		Ori:     jOrigin,
 		Origin:  jOrigin,
 		Commit:  jCommit,
 		Version: commonMetadata.Version,
