@@ -2,7 +2,7 @@ package lsproduct
 
 import "testing"
 
-const targetTestVersion = 4
+const targetTestVersion = 5
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {

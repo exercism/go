@@ -33,9 +33,7 @@ type js struct {
 // template applied to above data structure generates the Go test cases
 var tmpl = `package lsproduct
 
-// Source: {{.Ori}}
-{{if .Commit}}// Commit: {{.Commit}}
-{{end}}
+{{.Header}}
 
 var tests = []struct {
 	digits  string
