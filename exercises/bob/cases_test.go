@@ -1,7 +1,8 @@
 package bob
 
 // Source: exercism/x-common
-// Commit: 945d08e Merge pull request #50 from soniakeys/master
+// Commit: 65756b1 bob: Fix canonical-data.json formatting
+// x-common version: 1.0.0
 
 var testCases = []struct {
 	description string
@@ -74,16 +75,6 @@ var testCases = []struct {
 		"Whoa, chill out!",
 	},
 	{
-		"shouting with umlauts",
-		"ÜMLÄÜTS!",
-		"Whoa, chill out!",
-	},
-	{
-		"calmly speaking with umlauts",
-		"ÜMLäÜTS!",
-		"Whatever.",
-	},
-	{
 		"shouting with no exclamation mark",
 		"I HATE YOU",
 		"Whoa, chill out!",
@@ -135,7 +126,12 @@ var testCases = []struct {
 	},
 	{
 		"other whitespace",
-		"\n\r \t\v\u00a0\u2002",
+		"\n\r \t",
 		"Fine. Be that way!",
+	},
+	{
+		"non-question ending with whitespace",
+		"This is a statement ending with whitespace      ",
+		"Whatever.",
 	},
 }
