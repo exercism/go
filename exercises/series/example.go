@@ -1,6 +1,6 @@
-package slice
+package series
 
-const testVersion = 1
+const testVersion = 2
 
 func All(n int, s string) (r []string) {
 	for i := 0; n <= len(s); i++ {

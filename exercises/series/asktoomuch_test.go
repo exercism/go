@@ -1,6 +1,6 @@
 // +build asktoomuch
 
-package slice
+package series
 
 import "testing"
 

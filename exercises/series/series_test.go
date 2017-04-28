@@ -27,14 +27,14 @@
 //
 // and test with `go test -tags first`.
 
-package slice
+package series
 
 import (
 	"reflect"
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 var allTests = []struct {
 	n   int

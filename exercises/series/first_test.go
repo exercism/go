@@ -1,6 +1,6 @@
 // +build first
 
-package slice
+package series
 
 import "testing"
 
