@@ -159,9 +159,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 4,
       "slug": "pascals-triangle",
-      "topics": []
+      "topics": [
+        "Arrays",
+        "Mathematics"
+      ]
     },
     {
       "difficulty": 1,
