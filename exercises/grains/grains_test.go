@@ -70,3 +70,9 @@ func BenchmarkSquare(b *testing.B) {
 		b.StopTimer()
 	}
 }
+
+func BenchmarkTotal(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Total()
+	}
+}
