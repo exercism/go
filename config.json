@@ -167,9 +167,13 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "series",
-      "topics": []
+      "topics": [
+        "Strings",
+        "Arrays",
+        "Refactoring"
+      ]
     },
     {
       "difficulty": 1,
