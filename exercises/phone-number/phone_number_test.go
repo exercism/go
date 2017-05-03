@@ -19,14 +19,14 @@ func TestNumber(t *testing.T) {
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("Number(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nNumber(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
 			if actual != test.number {
-				t.Errorf("Number(%s): expected [%s], actual: [%s]", test.input, test.number, actual)
+				t.Errorf("FAIL: %s\nNumber(%q): expected [%s], actual: [%s]", test.description, test.input, test.number, actual)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("Number(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nNumber(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
@@ -47,16 +47,16 @@ func TestAreaCode(t *testing.T) {
 		actual, actualErr := AreaCode(test.input)
 		if !test.expectErr {
 			if actual != test.areaCode {
-				t.Errorf("AreaCode(%s): expected [%s], actual: [%s]", test.input, test.areaCode, actual)
+				t.Errorf("FAIL: %s\nAreaCode(%q): expected [%s], actual: [%s]", test.description, test.input, test.areaCode, actual)
 			}
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("AreaCode(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nAreaCode(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("AreaCode(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nAreaCode(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
@@ -79,14 +79,14 @@ func TestFormat(t *testing.T) {
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("Format(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nFormat(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
 			if actual != test.formatted {
-				t.Errorf("Format(%s): expected [%s], actual: [%s]", test.input, test.formatted, actual)
+				t.Errorf("FAIL: %s\nFormat(%q): expected [%s], actual: [%s]", test.description, test.input, test.formatted, actual)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("Format(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nFormat(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
