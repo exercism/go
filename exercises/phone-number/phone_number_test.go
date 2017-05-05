@@ -4,22 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
-type testCase struct {
-	input     string
-	expected  string
-	expectErr bool
-}
-
-var numberTests = []testCase{
-	{"(123) 456-7890", "1234567890", false},
-	{"123.456.7890", "1234567890", false},
-	{"1234567890", "1234567890", false},
-	{"12345678901234567", "", true},
-	{"21234567890", "", true},
-	{"123456789", "", true},
-}
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -34,14 +19,14 @@ func TestNumber(t *testing.T) {
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("Number(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nNumber(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
-			if actual != test.expected {
-				t.Errorf("Number(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			if actual != test.number {
+				t.Errorf("FAIL: %s\nNumber(%q): expected [%s], actual: [%s]", test.description, test.input, test.number, actual)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("Number(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nNumber(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
@@ -57,38 +42,28 @@ func BenchmarkNumber(b *testing.B) {
 	}
 }
 
-var areaCodeTests = []testCase{
-	{"1234567890", "123", false},
-	{"213.456.7890", "213", false},
-	{"213.456.7890.2345", "", true},
-	{"213.456", "", true},
-}
-
 func TestAreaCode(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-	for _, test := range areaCodeTests {
+	for _, test := range numberTests {
 		actual, actualErr := AreaCode(test.input)
 		if !test.expectErr {
-			if actual != test.expected {
-				t.Errorf("AreaCode(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			if actual != test.areaCode {
+				t.Errorf("FAIL: %s\nAreaCode(%q): expected [%s], actual: [%s]", test.description, test.input, test.areaCode, actual)
 			}
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("AreaCode(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nAreaCode(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("AreaCode(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nAreaCode(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
 
 func BenchmarkAreaCode(b *testing.B) {
 	b.StopTimer()
-	for _, test := range areaCodeTests {
+	for _, test := range numberTests {
 		b.StartTimer()
 		for i := 0; i < b.N; i++ {
 			AreaCode(test.input)
@@ -97,38 +72,28 @@ func BenchmarkAreaCode(b *testing.B) {
 	}
 }
 
-var formatTests = []testCase{
-	{"1234567890", "(123) 456-7890", false},
-	{"11234567890", "(123) 456-7890", false},
-	{"112345", "", true},
-	{"11234590870986", "", true},
-}
-
 func TestFormat(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-	for _, test := range formatTests {
+	for _, test := range numberTests {
 		actual, actualErr := Format(test.input)
 		if !test.expectErr {
 			if actualErr != nil {
 				// if we don't expect an error and there is one
 				var _ error = actualErr
-				t.Errorf("Format(%s): expected no error, but error is: %s", test.input, actualErr)
+				t.Errorf("FAIL: %s\nFormat(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
 			}
-			if actual != test.expected {
-				t.Errorf("Format(%s): expected [%s], actual: [%s]", test.input, test.expected, actual)
+			if actual != test.formatted {
+				t.Errorf("FAIL: %s\nFormat(%q): expected [%s], actual: [%s]", test.description, test.input, test.formatted, actual)
 			}
 		} else if actualErr == nil {
 			// if we expect an error and there isn't one
-			t.Errorf("Format(%s): expected an error, but error is nil", test.input)
+			t.Errorf("FAIL: %s\nFormat(%q): expected an error, but error is nil", test.description, test.input)
 		}
 	}
 }
 
 func BenchmarkFormat(b *testing.B) {
 	b.StopTimer()
-	for _, test := range areaCodeTests {
+	for _, test := range numberTests {
 		b.StartTimer()
 		for i := 0; i < b.N; i++ {
 			Format(test.input)
