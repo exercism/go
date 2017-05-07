@@ -77,6 +77,18 @@ func init() {
 	}
 }
 
+// outputSource puts the src text into given fileName
+// and outputs a log message with given [status].
+func outputSource(status string, fileName string, src []byte) error {
+	ioerr := ioutil.WriteFile(fileName, src, 0666)
+	if ioerr != nil {
+		log.Printf("[FAILED] %s\n", ioerr)
+		return ioerr
+	}
+	log.Printf("[%s] output: %s\n", status, fileName)
+	return nil
+}
+
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
@@ -128,18 +140,30 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		Version: commonMetadata.Version,
 	}, j}
 
+	casesFileName := filepath.Join(dirExercise, "cases_test.go")
+
 	// render the Go test cases
 	var b bytes.Buffer
 	if err := t.Execute(&b, &d); err != nil {
+		log.Print("[ERROR] template.Execute failed. The template has a semantic error.")
 		return err
 	}
 	// clean it up
-	src, err := format.Source(b.Bytes())
+	srcBuf := b.Bytes()
+	src, err := format.Source(srcBuf)
 	if err != nil {
+		log.Print("[ERROR] format.Source failed. The generated source has a syntax error.")
+		b.Reset()
+		_, _ = b.Write(srcBuf)
+		_, _ = b.Write([]byte(
+			"// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
+		src = b.Bytes()
+		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
+		_ = outputSource("ERROR", casesFileName, src)
 		return err
 	}
 	// write output file for the Go test cases.
-	return ioutil.WriteFile(filepath.Join(dirExercise, "cases_test.go"), src, 0666)
+	return outputSource("SUCCESS", casesFileName, src)
 }
 
 func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
