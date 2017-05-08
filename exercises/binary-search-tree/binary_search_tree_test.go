@@ -45,8 +45,11 @@ func TestInsertingLess(t *testing.T) {
 		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.left.data
 	expected = 2
+	if bst.left == nil {
+		t.Fatalf("bst.left: nil, want %d.", expected)
+	}
+	actual = bst.left.data
 	if actual != expected {
 		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
@@ -62,8 +65,11 @@ func TestInsertingSame(t *testing.T) {
 		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.left.data
 	expected = 4
+	if bst.left == nil {
+		t.Fatalf("bst.left: nil, want %d.", expected)
+	}
+	actual = bst.left.data
 	if actual != expected {
 		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
@@ -79,8 +85,11 @@ func TestInsertingMore(t *testing.T) {
 		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.right.data
 	expected = 5
+	if bst.right == nil {
+		t.Fatalf("bst.right: nil, want %d.", expected)
+	}
+	actual = bst.right.data
 	if actual != expected {
 		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
@@ -101,38 +110,56 @@ func TestComplexTree(t *testing.T) {
 		t.Errorf("bst.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.left.data
 	expected = 2
+	if bst.left == nil {
+		t.Fatalf("bst.left: nil, want %d.", expected)
+	}
+	actual = bst.left.data
 	if actual != expected {
 		t.Errorf("bst.left.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.left.left.data
 	expected = 1
+	if bst.left.left == nil {
+		t.Fatalf("bst.left.left: nil, want %d.", expected)
+	}
+	actual = bst.left.left.data
 	if actual != expected {
 		t.Errorf("bst.left.left.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.left.right.data
 	expected = 3
+	if bst.left.right == nil {
+		t.Fatalf("bst.left.right: nil, want %d.", expected)
+	}
+	actual = bst.left.right.data
 	if actual != expected {
 		t.Errorf("bst.left.right.data: %d, want %d.", actual, expected)
 	}
 
-	actual = bst.right.data
 	expected = 6
+	if bst.right == nil {
+		t.Fatalf("bst.right: nil, want %d.", expected)
+	}
+	actual = bst.right.data
 	if actual != expected {
 		t.Errorf("bst.right.data: %d, want %d", actual, expected)
 	}
 
-	actual = bst.right.left.data
 	expected = 5
+	if bst.right.left == nil {
+		t.Fatalf("bst.right.left: nil, want %d.", expected)
+	}
+	actual = bst.right.left.data
 	if actual != expected {
 		t.Errorf("bst.right.left.data: %d, want %d", actual, expected)
 	}
 
-	actual = bst.right.right.data
 	expected = 7
+	if bst.right.right == nil {
+		t.Fatalf("bst.right.right: nil, want %d.", expected)
+	}
+	actual = bst.right.right.data
 	if actual != expected {
 		t.Errorf("bst.right.right.data: %d, want %d", actual, expected)
 	}
