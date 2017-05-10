@@ -5,6 +5,9 @@ import "testing"
 const targetTestVersion = 1
 
 var tests = []struct{ pl, in string }{
+	// converted from x-common by hand
+	// missing cases: igloo, object, under, equal, qat
+	// x-common version: 0.5.0
 	{"appleay", "apple"},
 	{"earay", "ear"},
 	{"igpay", "pig"},
