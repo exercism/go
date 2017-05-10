@@ -8,6 +8,8 @@ var testCases = []struct {
 	word     string
 	expected bool
 }{
+	// converted from x-common by hand
+	// x-common version: 0.8.0.20160608
 	{"duplicates", true},
 	{"eleven", false},
 	{"subdermatoglyphic", true},
