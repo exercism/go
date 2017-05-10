@@ -9,6 +9,10 @@ var varTests = []struct {
 	limit    int
 	sum      int
 }{
+	// converted from x-common by hand
+	// missing: 4/6 to 15, 5/6/7 to 150, 5/25 to 51, 1 to 100
+	// extra: 1/1 (duplicate factor?)
+	// x-common version: 0.5.0
 	{[]int{3, 5}, 1, 0},
 	{[]int{3, 5}, 4, 3},
 	{[]int{3, 5}, 10, 23},
