@@ -14,6 +14,10 @@ var tests = []struct {
 	m  string
 	sp []Pair
 }{
+	// converted from x-common by hand
+	// missing: all cases but last here (4)
+	// extra: all cases but last here (3)
+	// x-common version: 0.3.0
 	{"2 1\n1 2", nil},
 	{"1 2\n3 4", []Pair{{0, 1}}},
 	{"18 3 39 19 91\n38 10 8 77 320\n3 4 8 6 7", []Pair{{2, 2}}},
