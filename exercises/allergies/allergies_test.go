@@ -12,6 +12,8 @@ var allergiesTests = []struct {
 	expected []string
 	input    uint
 }{
+	// converted from x-common by hand
+	// x-common version: 0.8.0
 	{[]string{}, 0},
 	{[]string{"eggs"}, 1},
 	{[]string{"peanuts"}, 2},
@@ -63,6 +65,7 @@ var allergicToTests = []struct {
 	{false, 0, "cats"},
 	{false, 0, "strawberries"},
 	{true, 1, "eggs"},
+	// missing 5 shellfish true, 5 strawberries false
 	{true, 5, "eggs"},
 }
 
