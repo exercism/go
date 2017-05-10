@@ -12,6 +12,9 @@ type testCase struct {
 }
 
 var stringTestCases = []testCase{
+	// converted from x-common by hand
+	// missing: GIMP
+	// x-common version: 0.9.0.20151202
 	{"Portable Network Graphics", "PNG"},
 	{"HyperText Markup Language", "HTML"},
 	{"Ruby on Rails", "ROR"},
