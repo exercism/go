@@ -13,6 +13,10 @@ var tests = []struct {
 	uint64
 	string
 }{
+	// converted from x-common by hand
+	// missing: -1, 1000000000000
+	// extra: math.MaxUint64
+	// x-common version: 0.7.0
 	{1, "one"},
 	{14, "fourteen"},
 	{20, "twenty"},
