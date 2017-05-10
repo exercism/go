@@ -9,6 +9,8 @@ var tests = []struct {
 	a  int
 	ok bool
 }{
+	// converted from x-common by hand
+	// x-common version: 1.0.0
 	{"What is 1 plus 1?", 2, true},
 	{"What is 53 plus 2?", 55, true},
 	{"What is -1 plus -10?", -11, true},
