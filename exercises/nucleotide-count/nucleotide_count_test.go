@@ -67,6 +67,10 @@ type histogramTest struct {
 }
 
 var histogramTests = []histogramTest{
+	// converted from x-common by hand
+	// the single-nucleotide tests above were decided to be excluded from x-common
+	// The error case is slightly different but is quite similar.
+	// x-common version: 0.9.0
 	{
 		"",
 		Histogram{'A': 0, 'C': 0, 'T': 0, 'G': 0},
