@@ -15,6 +15,9 @@ var testCases = []struct {
 	outputDigits []uint64
 	error        error
 }{
+	// converted from x-common by hand
+	// cases with negative inputs are excluded, as Go uses unsigned ints.
+	// x-common version: 1.0.0
 	{
 		description:  "single bit one to decimal",
 		inputBase:    2,
