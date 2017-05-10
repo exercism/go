@@ -11,6 +11,8 @@ var squareTests = []struct {
 	expectedVal uint64
 	expectError bool
 }{
+	// converted from x-common by hand
+	// x-common version: 1.0.0
 	{1, 1, false},
 	{2, 2, false},
 	{3, 4, false},
