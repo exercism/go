@@ -4,49 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 4
-
-var testCases = []struct {
-	input    string
-	expected bool
-}{
-	{
-		input:    "",
-		expected: true,
-	},
-	{
-		input:    "{}",
-		expected: true,
-	},
-	{
-		input:    "{{",
-		expected: false,
-	},
-	{
-		input:    "}{",
-		expected: false,
-	},
-	{
-		input:    "{}[]",
-		expected: true,
-	},
-	{
-		input:    "{[]}",
-		expected: true,
-	},
-	{
-		input:    "{[}]",
-		expected: false,
-	},
-	{
-		input:    "{[)][]}",
-		expected: false,
-	},
-	{
-		input:    "{[]([()])}",
-		expected: true,
-	},
-}
+const targetTestVersion = 5
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
