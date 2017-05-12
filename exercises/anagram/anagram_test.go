@@ -14,6 +14,12 @@ var testCases = []struct {
 	expected    []string
 	description string
 }{
+	// converted from x-common by hand
+	// missing: banana / BANANA
+	// missing: go / go Go GO
+	// missing: tapper / patter
+	// missing: BANANA / Banana
+	// x-common version: 0.6.0
 	{
 		subject: "diaper",
 		candidates: []string{

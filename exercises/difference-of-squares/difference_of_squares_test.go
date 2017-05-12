@@ -5,6 +5,9 @@ import "testing"
 const targetTestVersion = 1
 
 var tests = []struct{ n, sqOfSums, sumOfSq int }{
+	// converted from x-common by hand
+	// Only needs a test of 0 to be compliant with 1.0.0.
+	// x-common version: 0.9.0
 	{5, 225, 55},
 	{10, 3025, 385},
 	{100, 25502500, 338350},

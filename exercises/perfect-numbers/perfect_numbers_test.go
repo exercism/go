@@ -8,6 +8,10 @@ var classificationTestCases = []struct {
 	input    uint64
 	expected Classification
 }{
+	// converted from x-common by hand
+	// missing: 33550336, 30, 33550335, 2, 4, 32, 33550337, 0
+	// -1 won't be tested
+	// x-common version: 0.2.0
 	{1, ClassificationDeficient},
 	{13, ClassificationDeficient},
 	{12, ClassificationAbundant},

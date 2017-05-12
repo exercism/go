@@ -13,6 +13,10 @@ var tests = []struct {
 	input    int64
 	expected []int64
 }{
+	// converted from x-common by hand
+	// missing: 12
+	// extra: 3, 4, 6, 27, 625
+	// x-common version: 0.4.0
 	{1, []int64{}},
 	{2, []int64{2}},
 	{3, []int64{3}},

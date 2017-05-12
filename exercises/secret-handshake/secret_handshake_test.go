@@ -11,6 +11,10 @@ var tests = []struct {
 	code uint
 	h    []string
 }{
+	// converted from x-common by hand
+	// missing: 16, 24, 15
+	// extra: 33
+	// x-common version: 0.6.0
 	{1, []string{"wink"}},
 	{2, []string{"double blink"}},
 	{4, []string{"close your eyes"}},

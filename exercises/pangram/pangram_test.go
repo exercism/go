@@ -13,6 +13,8 @@ type testCase struct {
 }
 
 var testCases = []testCase{
+	// converted from x-common by hand
+	// x-common version: 0.8.0.20160416
 	{"", false, "sentence empty"},
 	{"The quick brown fox jumps over the lazy dog", true, ""},
 	{"a quick movement of the enemy will jeopardize five gunboats", false, "missing character 'x'"},

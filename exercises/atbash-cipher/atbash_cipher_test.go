@@ -8,6 +8,9 @@ var tests = []struct {
 	expected string
 	s        string
 }{
+	// converted from x-common by hand
+	// cases are the same as 1.0.0, however only Encode is tested, not Decode.
+	// x-common version: 0.9.0
 	{"ml", "no"},
 	{"ml", "no"},
 	{"bvh", "yes"},
