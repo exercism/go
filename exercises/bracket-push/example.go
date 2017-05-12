@@ -1,11 +1,7 @@
 package brackets
 
-import (
-	"fmt"
-)
-
 // testVersion shows the version of the exercise.
-const testVersion = 4
+const testVersion = 5
 
 type bracketKind int
 
@@ -13,6 +9,7 @@ const (
 	kindParen  bracketKind = iota
 	kindSquare bracketKind = iota
 	kindBrace  bracketKind = iota
+	kindOther  bracketKind = iota
 )
 
 // Whether a bracket is an opening or closing bracket
@@ -33,9 +30,9 @@ type charInfo struct {
 func Bracket(input string) (bool, error) {
 	var stack []bracketKind
 	for _, char := range input {
-		ci, err := info(char)
-		if err != nil {
-			return false, err
+		ci := info(char)
+		if ci.kind == kindOther {
+			continue
 		}
 		if ci.form == formOpen {
 			stack = append(stack, ci.kind)
@@ -52,21 +49,21 @@ func Bracket(input string) (bool, error) {
 	return len(stack) == 0, nil
 }
 
-func info(char rune) (charInfo, error) {
+func info(char rune) charInfo {
 	switch char {
 	case '(':
-		return charInfo{kind: kindParen, form: formOpen}, nil
+		return charInfo{kind: kindParen, form: formOpen}
 	case '[':
-		return charInfo{kind: kindSquare, form: formOpen}, nil
+		return charInfo{kind: kindSquare, form: formOpen}
 	case '{':
-		return charInfo{kind: kindBrace, form: formOpen}, nil
+		return charInfo{kind: kindBrace, form: formOpen}
 	case ')':
-		return charInfo{kind: kindParen, form: formClose}, nil
+		return charInfo{kind: kindParen, form: formClose}
 	case ']':
-		return charInfo{kind: kindSquare, form: formClose}, nil
+		return charInfo{kind: kindSquare, form: formClose}
 	case '}':
-		return charInfo{kind: kindBrace, form: formClose}, nil
+		return charInfo{kind: kindBrace, form: formClose}
 	default:
-		return charInfo{}, fmt.Errorf("Unknown bracket %v", char)
+		return charInfo{kind: kindOther}
 	}
 }
