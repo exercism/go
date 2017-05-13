@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
