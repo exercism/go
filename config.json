@@ -224,7 +224,10 @@
     {
       "difficulty": 1,
       "slug": "sum-of-multiples",
-      "topics": []
+      "topics": [
+	"Control-flow (loops)",
+	"Mathematics"
+      ]
     },
     {
       "difficulty": 1,
