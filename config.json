@@ -222,7 +222,7 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 5,
       "slug": "sum-of-multiples",
       "topics": [
 	"Control-flow (loops)",
