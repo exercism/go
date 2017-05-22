@@ -138,10 +138,13 @@ are useful if they let the solver try a change and see a performance effect.
 
 ### Testable examples
 
-Some exercises can contain [Example tests](https://blog.golang.org/examples) that document the exercise API. These
-examples are run alongside the standard exercise tests and will verify that the
-exercise API is working as expected. They are not required by all exercises and
-are most useful when clarifying the API of the exercise.
+Some exercises can contain [Example tests](https://blog.golang.org/examples)
+that document the exercise API. These examples are run alongside the standard
+exercise tests and will verify that the exercise API is working as expected.
+They are not required by all exercises and are not intended to replace the
+data-driven tests. They are most useful for providing examples of how an
+exercise's API is used. Have a look at the example tests in the [clock exercise](https://github.com/exercism/xgo/blob/master/exercises/clock/example_clock_test.go)
+to see them in action.
 
 ### Stub files
 
