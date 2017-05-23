@@ -2,28 +2,11 @@ package variablelengthquantity
 
 import (
 	"bytes"
+	"reflect"
 	"testing"
 )
 
-const targetTestVersion = 2
-
-var testCases = []struct {
-	input  []byte
-	output uint32
-	size   int
-}{
-	0:  {[]byte{0x7F}, 127, 1},
-	1:  {[]byte{0x81, 0x00}, 128, 2},
-	2:  {[]byte{0xC0, 0x00}, 8192, 2},
-	3:  {[]byte{0xFF, 0x7F}, 16383, 2},
-	4:  {[]byte{0x81, 0x80, 0x00}, 16384, 3},
-	5:  {[]byte{0xFF, 0xFF, 0x7F}, 2097151, 3},
-	6:  {[]byte{0x81, 0x80, 0x80, 0x00}, 2097152, 4},
-	7:  {[]byte{0xC0, 0x80, 0x80, 0x00}, 134217728, 4},
-	8:  {[]byte{0xFF, 0xFF, 0xFF, 0x7F}, 268435455, 4},
-	9:  {[]byte{0x82, 0x00}, 256, 2},
-	10: {[]byte{0x81, 0x10}, 144, 2},
-}
+const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -32,24 +15,29 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestDecodeVarint(t *testing.T) {
-	for i, tc := range testCases {
-		o, size := DecodeVarint(tc.input)
-		if o != tc.output {
-			t.Fatalf("FAIL: case %d - expected %d got %d\n", i, tc.output, o)
+	for i, tc := range decodeTestCases {
+		o, size, err := DecodeVarint(tc.input)
+		if err != nil {
+			var _ error = err
+			if tc.output != nil {
+				t.Fatalf("FAIL: case %d | %s\nexpected %#v got error: %q\n", i, tc.description, tc.output, err)
+			}
+		} else if tc.output == nil {
+			t.Fatalf("FAIL: case %d | %s\nexpected error, got %#v\n", i, tc.description, o)
+		} else if !reflect.DeepEqual(o, tc.output) {
+			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, o)
 		} else if size != tc.size {
-			t.Fatalf("FAIL: case %d - expected encoding size of %d bytes\ngot %d bytes\n", i, tc.size, size)
-		} else {
-			t.Logf("PASS: case %d - %#v\n", i, tc.input)
+			t.Fatalf("FAIL: case %d | %s\n expected encoding size of %d bytes\ngot %d bytes\n", i, tc.description, tc.size, size)
 		}
+		t.Logf("PASS: case %d | %s\n", i, tc.description)
 	}
 }
 
 func TestEncodeVarint(t *testing.T) {
-	for i, tc := range testCases {
-		if encoded := EncodeVarint(tc.output); bytes.Compare(encoded, tc.input) != 0 {
-			t.Fatalf("FAIL: case %d - %d \nexpected\t%#v\ngot\t\t%#v\n", i, tc.output, tc.input, encoded)
-		} else {
-			t.Logf("PASS: case %d - %#v\n", i, tc.input)
+	for i, tc := range encodeTestCases {
+		if encoded := EncodeVarint(tc.input); bytes.Compare(encoded, tc.output) != 0 {
+			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, encoded)
 		}
+		t.Logf("PASS: case %d | %s\n", i, tc.description)
 	}
 }
