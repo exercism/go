@@ -226,7 +226,7 @@ func TestMakeTreeSuccess(t *testing.T) {
 		}
 		if !reflect.DeepEqual(actual, tt.expected) {
 			t.Fatalf("Build for test case %q returned %s but was expected to return %s.",
-				tt.name, tt.expected, actual)
+				tt.name, actual, tt.expected)
 		}
 	}
 }
