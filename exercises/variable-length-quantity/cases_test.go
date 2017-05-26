@@ -107,55 +107,46 @@ var decodeTestCases = []struct {
 	description string
 	input       []byte
 	output      []uint32 // nil slice indicates error expected.
-	size        int
 }{
 
 	{
 		"one byte",
 		[]byte{0x7f},
 		[]uint32{0x7f},
-		1,
 	},
 	{
 		"two bytes",
 		[]byte{0xc0, 0x0},
 		[]uint32{0x2000},
-		2,
 	},
 	{
 		"three bytes",
 		[]byte{0xff, 0xff, 0x7f},
 		[]uint32{0x1fffff},
-		3,
 	},
 	{
 		"four bytes",
 		[]byte{0x81, 0x80, 0x80, 0x0},
 		[]uint32{0x200000},
-		4,
 	},
 	{
 		"maximum 32-bit integer",
 		[]byte{0x8f, 0xff, 0xff, 0xff, 0x7f},
 		[]uint32{0xffffffff},
-		5,
 	},
 	{
 		"incomplete sequence causes error",
 		[]byte{0xff},
 		[]uint32(nil),
-		1,
 	},
 	{
 		"incomplete sequence causes error, even if value is zero",
 		[]byte{0x80},
 		[]uint32(nil),
-		1,
 	},
 	{
 		"multiple values",
 		[]byte{0xc0, 0x0, 0xc8, 0xe8, 0x56, 0xff, 0xff, 0xff, 0x7f, 0x0, 0xff, 0x7f, 0x81, 0x80, 0x0},
 		[]uint32{0x2000, 0x123456, 0xfffffff, 0x0, 0x3fff, 0x4000},
-		15,
 	},
 }
