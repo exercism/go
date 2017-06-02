@@ -2,7 +2,7 @@ package variablelengthquantity
 
 import "errors"
 
-const testVersion = 3
+const testVersion = 4
 
 var ErrUnterminatedSequence = errors.New("unterminated sequence")
 
@@ -83,19 +83,19 @@ func EncodeVarint(xa []uint32) []byte {
 // DecodeVarint decodes a buffer of var-int encoded values into
 // a slice of uint32 values; an error is returned if buf doesn't
 // decode var-int successfully.
-func DecodeVarint(buf []byte) (ra []uint32, n int, err error) {
+func DecodeVarint(buf []byte) (ra []uint32, err error) {
 	if len(buf) == 0 {
-		return []uint32{0}, 1, nil
+		return []uint32{0}, nil
 	}
 	usedBytes := 0
 	ra = make([]uint32, 0)
 	for usedBytes < len(buf) {
 		r, nUsed, err := decodeInt(buf[usedBytes:])
 		if err != nil {
-			return nil, usedBytes, err
+			return nil, err
 		}
 		ra = append(ra, r)
 		usedBytes += nUsed
 	}
-	return ra, usedBytes, nil
+	return ra, nil
 }

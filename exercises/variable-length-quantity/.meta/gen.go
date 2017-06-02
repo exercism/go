@@ -11,7 +11,6 @@ func main() {
 	t := template.New("").Funcs(template.FuncMap{
 		"GroupComment": GroupComment,
 		"byteSlice":    byteSlice,
-		"lengthSlice":  lengthSlice,
 	})
 	t, err := t.Parse(tmpl)
 	if err != nil {
@@ -30,11 +29,6 @@ func byteSlice(ns []uint32) []byte {
 		b[i] = byte(n)
 	}
 	return b
-}
-
-// lengthSlice returns the length of given slice.
-func lengthSlice(ns []uint32) int {
-	return len(ns)
 }
 
 // The JSON structure we expect to be able to unmarshal into
@@ -101,13 +95,11 @@ var decodeTestCases = []struct {
 	description string
 	input	[]byte
 	output	[]uint32 // nil slice indicates error expected.
-	size int
 }{ {{range .J.Groups}} {{range .Cases}}
 	{{if .PropertyMatch "decode"}} {
 		{{printf "%q" .Description}},
 		{{byteSlice .Input | printf "%#v" }},
 		{{printf "%#v" .Expected }},
-		{{lengthSlice .Input}},
 	},{{- end}}{{end}}{{end}}
 }
 `

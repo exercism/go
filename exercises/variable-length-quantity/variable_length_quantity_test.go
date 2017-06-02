@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
+const targetTestVersion = 4
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
@@ -16,7 +16,7 @@ func TestTestVersion(t *testing.T) {
 
 func TestDecodeVarint(t *testing.T) {
 	for i, tc := range decodeTestCases {
-		o, size, err := DecodeVarint(tc.input)
+		o, err := DecodeVarint(tc.input)
 		if err != nil {
 			var _ error = err
 			if tc.output != nil {
@@ -26,8 +26,6 @@ func TestDecodeVarint(t *testing.T) {
 			t.Fatalf("FAIL: case %d | %s\nexpected error, got %#v\n", i, tc.description, o)
 		} else if !reflect.DeepEqual(o, tc.output) {
 			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, o)
-		} else if size != tc.size {
-			t.Fatalf("FAIL: case %d | %s\n expected encoding size of %d bytes\ngot %d bytes\n", i, tc.description, tc.size, size)
 		}
 		t.Logf("PASS: case %d | %s\n", i, tc.description)
 	}
