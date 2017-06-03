@@ -1,6 +1,6 @@
 package summultiples
 
-const testVersion = 1
+const testVersion = 2
 
 // SumMultiples returns the sum of the multiples of the given divisors
 // up to, but not including, the given limit.
