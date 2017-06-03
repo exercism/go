@@ -7,7 +7,7 @@ import (
 	"unicode/utf8"
 )
 
-const testVersion = 4
+const testVersion = 5
 
 const (
 	Jack  = 11
@@ -168,6 +168,15 @@ func evalHand(counts []rankCount, cards []card) handValue {
 			discrs = append(discrs, card.rank)
 		}
 		sort.Sort(sort.Reverse(sort.IntSlice(discrs)))
+	} else if (kind == straight || kind == straightFlush) &&
+		counts[0].rank == Ace && counts[1].rank == 5 {
+		// For a straight with an Ace through 5,
+		// adjust down the discrs value of the Ace to be 1.
+		for i := 1; i < len(cards); i++ {
+			discrs = append(discrs, counts[i].rank)
+		}
+		// Ace becomes a 1 in a low straight with Ace.
+		discrs = append(discrs, 1)
 	} else {
 		for _, rc := range counts {
 			discrs = append(discrs, rc.rank)
