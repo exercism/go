@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 func Detect(subject string, candidates []string) []string {
 	subject = strings.ToLower(subject)
