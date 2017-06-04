@@ -9,8 +9,11 @@ var tests = []struct {
 	p  int
 	ok bool
 }{
+	// converted from x-common by hand
+	// x-common version: 1.0.0
 	{1, 2, true},
 	{2, 3, true},
+	// 3, 4, and 5 are only present in xgo
 	{3, 5, true},
 	{4, 7, true},
 	{5, 11, true},

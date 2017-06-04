@@ -11,6 +11,8 @@ var transformTests = []struct {
 	input  given
 	output expectation
 }{
+	// converted from x-common by hand
+	// x-common version: 1.0.0
 	{
 		given{1: {"A"}},
 		expectation{"a": 1},

@@ -92,6 +92,9 @@ func TestTestVersion(t *testing.T) {
 	}
 }
 
+// converted from x-common by hand
+// x-common version: 1.0.0
+
 func TestVerse(t *testing.T) {
 	for v := 1; v <= 8; v++ {
 		if ret := Verse(v); ret != ref[v] {
