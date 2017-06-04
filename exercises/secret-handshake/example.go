@@ -1,6 +1,6 @@
 package secret
 
-const testVersion = 1
+const testVersion = 2
 
 var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 
