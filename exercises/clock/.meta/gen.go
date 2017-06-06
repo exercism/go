@@ -28,27 +28,15 @@ type TestGroups []struct {
 	Cases       []OneCase
 }
 
-type OneCase struct {
-	Description string
-	Property    string
-	Hour        int // "create"/"add" cases
-	Minute      int // "create"/"add" cases
-	Add         int // "add" cases only
+type OneCase map[string]interface{}
 
-	Clock1   struct{ Hour, Minute int } // "equal" cases only
-	Clock2   struct{ Hour, Minute int } // "equal" cases only
-	Expected interface{}                // string or bool
-}
-
-func (c OneCase) IsTimeCase() bool  { return c.Property == "create" }
-func (c OneCase) IsAddCase() bool   { return c.Property == "add" }
-func (c OneCase) IsEqualCase() bool { return c.Property == "equal" }
+func (c OneCase) IsProperty(property string) bool { return c["property"].(string) == property }
 
 func (groups TestGroups) GroupComment(property string) string {
 	for _, group := range groups {
 		propertyGroupMatch := true
 		for _, testcase := range group.Cases {
-			if testcase.Property != property {
+			if !testcase.IsProperty(property) {
 				propertyGroupMatch = false
 				break
 			}
@@ -70,7 +58,7 @@ var tmpl = `package clock
 	h, m int
 	want string
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsTimeCase}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{if .IsProperty "create"}}{ {{.hour}}, {{.minute}}, {{.expected | printf "%#v"}}}, // {{.description}}
 {{- end}}{{end}}{{end}} }
 
 {{with .J.Groups}}
@@ -79,7 +67,7 @@ var tmpl = `package clock
 	h, m, a int
 	want string
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsAddCase}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{if .IsProperty "add"}}{ {{.hour}}, {{.minute}}, {{.add}}, {{.expected | printf "%#v"}}}, // {{.description}}
 {{- end}}{{end}}{{end}} }
 
 {{with .J.Groups}}
@@ -90,11 +78,11 @@ var eqTests = []struct {
 	c1, c2 hm
 	want   bool
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsEqualCase}} // {{.Description}}
+{{if .IsProperty "equal"}} // {{.description}}
 {
-	hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
-	hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
-	{{.Expected}},
+	hm{ {{.clock1.hour}}, {{.clock1.minute}}},
+	hm{ {{.clock2.hour}}, {{.clock2.minute}}},
+	{{.expected}},
 }, {{- end}}{{end}}{{end}}
 }
 `
