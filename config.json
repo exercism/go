@@ -13,11 +13,6 @@
     "point-mutations",
     "trinary"
   ],
-  "ignored": [
-    "img",
-    "gen",
-    "docs"
-  ],
   "foregone": [
     "space-age",
     "linked-list",
