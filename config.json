@@ -13,12 +13,6 @@
     "point-mutations",
     "trinary"
   ],
-  "ignored": [
-    "error-handling",
-    "img",
-    "gen",
-    "docs"
-  ],
   "foregone": [
     "space-age",
     "linked-list",
@@ -139,6 +133,11 @@
         "Algorithms",
         "Mathematics"
       ]
+    },
+    {
+      "difficulty": 1,
+      "slug": "error-handling",
+      "topics": []
     },
     {
       "difficulty": 5,
