@@ -14,7 +14,6 @@
     "trinary"
   ],
   "ignored": [
-    "error-handling",
     "img",
     "gen",
     "docs"
@@ -139,6 +138,11 @@
         "Algorithms",
         "Mathematics"
       ]
+    },
+    {
+      "difficulty": 1,
+      "slug": "error-handling",
+      "topics": []
     },
     {
       "difficulty": 5,
