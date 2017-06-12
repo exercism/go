@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 var testCases = []struct {
 	subject     string
@@ -125,7 +125,7 @@ var testCases = []struct {
 			"Carthorse",
 			"radishes",
 		},
-		expected:    []string{"carthorse"},
+		expected:    []string{"Carthorse"},
 		description: "candidates are case insensitive",
 	},
 }
