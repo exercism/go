@@ -1,5 +1,5 @@
 package acronym
 
-const testVersion = 2
+const testVersion = 3
 
 func Abbreviate(string) string
