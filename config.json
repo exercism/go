@@ -234,9 +234,12 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "isogram",
-      "topics": []
+      "topics": [
+	"Strings",
+	"Sequences"
+      ]
     },
     {
       "difficulty": 1,
