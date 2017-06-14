@@ -229,7 +229,7 @@
       ]
     },
     {
-      "difficulty": 8,
+      "difficulty": 5,
       "slug": "pythagorean-triplet",
       "topics": [
 	"Algorithms",
