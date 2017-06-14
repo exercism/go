@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const testVersion = 2
+const testVersion = 3
 
 func Abbreviate(s string) string {
 	regex := regexp.MustCompile("[A-Z]+[a-z]*|[a-z]+")

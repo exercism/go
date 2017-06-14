@@ -5,23 +5,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
-var tests = []struct {
-	code uint
-	h    []string
-}{
-	{1, []string{"wink"}},
-	{2, []string{"double blink"}},
-	{4, []string{"close your eyes"}},
-	{8, []string{"jump"}},
-	{3, []string{"wink", "double blink"}},
-	{19, []string{"double blink", "wink"}},
-	{31, []string{"jump", "close your eyes", "double blink", "wink"}},
-	{0, nil},
-	{32, nil},
-	{33, []string{"wink"}},
-}
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {

@@ -13,12 +13,6 @@
     "point-mutations",
     "trinary"
   ],
-  "ignored": [
-    "error-handling",
-    "img",
-    "gen",
-    "docs"
-  ],
   "foregone": [
     "space-age",
     "linked-list",
@@ -141,6 +135,11 @@
       ]
     },
     {
+      "difficulty": 1,
+      "slug": "error-handling",
+      "topics": []
+    },
+    {
       "difficulty": 5,
       "slug": "secret-handshake",
       "topics": [
@@ -238,9 +237,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "isogram",
-      "topics": []
+      "topics": [
+	"Strings",
+	"Sequences"
+      ]
     },
     {
       "difficulty": 1,

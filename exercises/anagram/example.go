@@ -5,14 +5,13 @@ import (
 	"strings"
 )
 
-const testVersion = 1
+const testVersion = 2
 
 func Detect(subject string, candidates []string) []string {
 	subject = strings.ToLower(subject)
 	var matches []string
 	for _, c := range candidates {
-		c = strings.ToLower(c)
-		if isAnagram(subject, c) {
+		if tc := strings.ToLower(c); isAnagram(subject, tc) {
 			matches = append(matches, c)
 		}
 	}
