@@ -28,7 +28,6 @@ var timeTests = []struct {
 	{1, -4820, "16:40"},    // negative minutes roll over continuously
 	{-25, -160, "20:20"},   // negative hour and minutes both roll over
 	{-121, -5810, "22:10"}, // negative hour and minutes both roll over continuously
-
 }
 
 // Test adding and subtracting minutes.
@@ -36,7 +35,6 @@ var addTests = []struct {
 	h, m, a int
 	want    string
 }{
-
 	{10, 0, 3, "10:03"},     // add minutes
 	{6, 41, 0, "06:41"},     // add no minutes
 	{0, 45, 40, "01:25"},    // add to next hour
@@ -53,7 +51,6 @@ var addTests = []struct {
 	{6, 15, -160, "03:35"},  // subtract more than two hours with borrow
 	{5, 32, -1500, "04:32"}, // subtract more than one day (1500 min = 25 hrs)
 	{2, 20, -3000, "00:20"}, // subtract more than two days
-
 }
 
 // Construct two separate clocks, set times, test if they are equal.
@@ -63,7 +60,6 @@ var eqTests = []struct {
 	c1, c2 hm
 	want   bool
 }{
-
 	// clocks with same time
 	{
 		hm{15, 37},

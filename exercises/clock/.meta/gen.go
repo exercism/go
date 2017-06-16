@@ -70,8 +70,10 @@ var tmpl = `package clock
 	h, m int
 	want string
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsTimeCase}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-{{- end}}{{end}}{{end}} }
+{{- if .IsTimeCase}}
+	{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{- end}}{{end}}{{end}}
+}
 
 {{with .J.Groups}}
     // {{ .GroupComment "add"}}
@@ -79,8 +81,10 @@ var tmpl = `package clock
 	h, m, a int
 	want string
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsAddCase}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-{{- end}}{{end}}{{end}} }
+{{- if .IsAddCase}}
+	{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+{{- end}}{{end}}{{end}}
+}
 
 {{with .J.Groups}}
     // {{ .GroupComment "equal"}}
@@ -90,7 +94,8 @@ var eqTests = []struct {
 	c1, c2 hm
 	want   bool
 }{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsEqualCase}} // {{.Description}}
+{{- if .IsEqualCase}}
+// {{.Description}}
 {
 	hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
 	hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
