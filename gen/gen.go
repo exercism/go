@@ -19,13 +19,13 @@ import (
 
 // dirMetadata is the location of the x-common repository on the filesystem.
 // We're making the assumption that the x-common repository has been cloned to
-// the same parent directory as the xgo repository.
+// the same parent directory as the Exercism Go track repository.
 // E.g.
 //
 //     $ tree -L 1 .
 //     .
 //     ├── x-common
-//     └── xgo
+//     └── go
 var dirMetadata string
 
 // dirExercise is the location that the test cases should be generated to.

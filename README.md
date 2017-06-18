@@ -1,33 +1,33 @@
-# xGo
+# Exercism Go Track
 
-[![Build Status](https://travis-ci.org/exercism/xgo.png?branch=master)](https://travis-ci.org/exercism/xgo)
+[![Build Status](https://travis-ci.org/exercism/go.png?branch=master)](https://travis-ci.org/exercism/go)
 
 Exercism exercises in Go
 
 ## Issues
 
-We welcome issues filed at https://github.com/exercism/xgo/issues for problems of any size.  Feel free to report
+We welcome issues filed at https://github.com/exercism/go/issues for problems of any size.  Feel free to report
 typographical errors or poor wording.  We are most interested in improving the quality of the test suites.
 You can greatly help us improve the quality of the exercises by filing reports of invalid solutions that
 pass tests or of valid solutions that fail tests.
 
 ## Development setup
 
-Beyond filing issues, if you would like to contribute directly to the Go code in xgo, you should follow some
+Beyond filing issues, if you would like to contribute directly to the Go code in the Exercism Go track, you should follow some
 standard Go development practices.  You should have a [recent version of Go](http://golang.org/doc/install)
 installed, ideally either the current release, the previous release, or tip.
 
-You will need a github account and you will need to fork exercism/xgo to your account.
+You will need a github account and you will need to fork exercism/go to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
-Clone your fork with the command: `git clone https://github.com/<you>/xgo`.
-Test your clone by cding to the xgo directory and typing
+Clone your fork with the command: `git clone https://github.com/<you>/go`.
+Test your clone by cding to the go directory and typing
 `bin/test-without-stubs`. You should see tests pass for all exercises.
 
 Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
 This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
 
 There is a [misspelling tool](https://github.com/client9/misspell). You can install and occasionally run it to
-find low hanging typo problems. [#570](https://github.com/exercism/xgo/pull/570) It's not added into CI since it could give false positives.
+find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) It's not added into CI since it could give false positives.
 
 ## Contributing Guide
 
@@ -35,7 +35,7 @@ Please be familiar with the [contributing guide](https://github.com/exercism/doc
 in the docs repository.  This describes some great ways to get involved.
 In particular, please read the [Pull Request Guidelines](https://github.com/exercism/docs/blob/master/contributing-to-language-tracks/pull-request-guidelines.md) before opening a pull request.
 
-## xgo style
+## Exercism Go style
 
 Let's walk through the `leap` exercise to see what is included in an exercise
 implementation. Navigate into the *leap* directory, you'll see there are a
@@ -96,7 +96,7 @@ an exercise is fetched. These are:
 
 ### Example solutions
 
-*example.go* is a reference solution. It is a valid solution that [Travis](https://travis-ci.org/exercism/xgo),
+*example.go* is a reference solution. It is a valid solution that [Travis](https://travis-ci.org/exercism/go),
 the CI (continuous integration) service, can run tests against. Solvers generally
 will not see it though. Files with *"example"* in the file name are skipped by
 the `exercism fetch` command. Because of this, there is less need for this code
@@ -142,7 +142,7 @@ that document the exercise API. These examples are run alongside the standard
 exercise tests and will verify that the exercise API is working as expected.
 They are not required by all exercises and are not intended to replace the
 data-driven tests. They are most useful for providing examples of how an
-exercise's API is used. Have a look at the example tests in the [clock exercise](https://github.com/exercism/xgo/blob/master/exercises/clock/example_clock_test.go)
+exercise's API is used. Have a look at the example tests in the [clock exercise](https://github.com/exercism/go/blob/master/exercises/clock/example_clock_test.go)
 to see them in action.
 
 ### Stub files
@@ -164,7 +164,7 @@ difficult concept, or boilerplate code needed.
 ### Problem Versioning
 
 Each problem defines a `const targetTestVersion` in the test file, and validates
-that the solution has defined a matching value `testVersion`. Any xgo developer
+that the solution has defined a matching value `testVersion`. Any Go track developer
 that changes the test file or test data must increment `targetTestVersion`.
 
 The benefit of all this is that reviewers can see which test version a posted
@@ -202,16 +202,16 @@ If there isn't one it will attempt to get the relevant json data for the
 exercise from the **x-common** repository on GitHub.
 
 To use a local copy of the **x-common** repository, make sure that it has been
-cloned into the same parent-directory as the **xgo** repository.
+cloned into the same parent-directory as the **go** repository.
 
 ```sh
 $ tree -L 1 .
 .
 ├── x-common
-└── xgo
+└── go
 ```
 
-To regenerate the test cases, navigate into the **xgo** directory and run
+To regenerate the test cases, navigate into the **go** directory and run
 `go run exercises/<exercise>/.meta/gen.go`. You should see that the
 `<exercise>/cases_test.go` file has changed. Commit the change.
 
@@ -224,7 +224,7 @@ and the invitation to submit a pull request!
 <img src="img/mars1.png">
 
 Click on that big green button.  You have a chance to add more explanation to your pull request here, then send
-it.  Looking at the exercism/xgo repository now instead of your own, you see this.
+it.  Looking at the exercism/go repository now instead of your own, you see this.
 
 <img src="img/mars2.png">
 
