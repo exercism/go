@@ -53,7 +53,7 @@ func parse(s string, t *testing.T) time.Time {
 		} else {
 			t.Log(err)
 			t.Skip("(Not your problem.  " +
-				"please file issue at https://github.com/exercism/xgo.)")
+				"please file issue at https://github.com/exercism/go.)")
 		}
 	}
 	return tt
