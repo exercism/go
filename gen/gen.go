@@ -130,6 +130,10 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return fmt.Errorf(`didn't contain version: %v`, err)
 	}
 
+	if err := classifyByProperty(j); err != nil {
+		return fmt.Errorf("couldn't auto-classify based on property: %v", err)
+	}
+
 	// package up a little meta data
 	d := struct {
 		Header
