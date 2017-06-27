@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"text/template"
 
@@ -20,81 +21,73 @@ func main() {
 
 // The JSON structure we expect to be able to umarshal into
 type js struct {
-	Groups TestGroups `json:"Cases"`
+	Groups []testGroup `json:"Cases"`
 }
 
-type TestGroups []struct {
+type testGroup struct {
 	Description string
-	Cases       []OneCase
-}
-
-type OneCase struct {
-	Description string
-	Property    string
-	Hour        int // "create"/"add" cases
-	Minute      int // "create"/"add" cases
-	Add         int // "add" cases only
-
-	Clock1   struct{ Hour, Minute int } // "equal" cases only
-	Clock2   struct{ Hour, Minute int } // "equal" cases only
-	Expected interface{}                // string or bool
-}
-
-func (c OneCase) IsTimeCase() bool  { return c.Property == "create" }
-func (c OneCase) IsAddCase() bool   { return c.Property == "add" }
-func (c OneCase) IsEqualCase() bool { return c.Property == "equal" }
-
-func (groups TestGroups) GroupComment(property string) string {
-	for _, group := range groups {
-		propertyGroupMatch := true
-		for _, testcase := range group.Cases {
-			if testcase.Property != property {
-				propertyGroupMatch = false
-				break
-			}
-		}
-		if propertyGroupMatch {
-			return group.Description
-		}
-	}
-	return "Note: Apparent inconsistent use of \"property\": \"" + property + "\" within test case group!"
+	Cases       []json.RawMessage `property:"RAW"`
+	CreateCases []struct {
+		Description  string
+		Hour, Minute int
+		Expected     string
+	} `property:"create"`
+	AddCases []struct {
+		Description       string
+		Hour, Minute, Add int
+		Expected          string
+	} `property:"add"`
+	EqCases []struct {
+		Description    string
+		Clock1, Clock2 struct{ Hour, Minute int }
+		Expected       bool
+	} `property:"equal"`
 }
 
 var tmpl = `package clock
 
 {{.Header}}
 
-{{with .J.Groups}}
-    // {{ .GroupComment "create"}}
-{{end}} var timeTests = []struct {
-	h, m int
-	want string
-}{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsTimeCase}}{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-{{- end}}{{end}}{{end}} }
+{{range .J.Groups}}
+	// {{ .Description }}
 
-{{with .J.Groups}}
-    // {{ .GroupComment "add"}}
-{{end}} var addTests = []struct {
-	h, m, a int
-	want string
-}{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsAddCase}}{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-{{- end}}{{end}}{{end}} }
+	{{- if .CreateCases }}
+		var timeTests = []struct {
+			h, m int
+			want string
+		}{
+			{{- range .CreateCases }}
+				{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+			{{- end }}
+		}
+	{{- end }}
 
-{{with .J.Groups}}
-    // {{ .GroupComment "equal"}}
-{{end}} type hm struct{ h, m int }
+	{{- if .AddCases }}
+		var addTests = []struct {
+			h, m, a int
+			want string
+		}{
+			{{- range .AddCases }}
+				{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+			{{- end }}
+		}
+	{{- end }}
 
-var eqTests = []struct {
-	c1, c2 hm
-	want   bool
-}{ {{range .J.Groups}} {{range .Cases}}
-{{if .IsEqualCase}} // {{.Description}}
-{
-	hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
-	hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
-	{{.Expected}},
-}, {{- end}}{{end}}{{end}}
-}
+	{{- if .EqCases }}
+		type hm struct{ h, m int }
+		var eqTests = []struct {
+			c1, c2 hm
+			want   bool
+		}{
+			{{- range .EqCases }}
+				// {{.Description}}
+				{
+					hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
+					hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
+					{{.Expected}},
+				},
+			{{- end }}
+		}
+	{{- end }}
+{{end}}
 `
