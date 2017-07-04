@@ -33,7 +33,7 @@ import (
 //   function using the FrobError's defrobTag variable as input. Either way
 //   return the error.
 //
-// Also note: if the Resource was opened successfully make sure to call it's
+// Also note: if the Resource was opened successfully make sure to call its
 // Close function no matter what (even if errors occur).
 //
 // If you are new to Go errors or panics here is a good place to start:
