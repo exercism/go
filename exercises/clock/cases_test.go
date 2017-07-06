@@ -1,10 +1,10 @@
 package clock
 
 // Source: exercism/x-common
-// Commit: 8c7fc0c clock: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Commit: 54c3b74 Cleanup canonical-data for clock
+// x-common version: 1.0.1
 
-// Test creating a new clock with an initial time.
+// Create a new clock with an initial time
 var timeTests = []struct {
 	h, m int
 	want string
@@ -30,19 +30,26 @@ var timeTests = []struct {
 	{-121, -5810, "22:10"}, // negative hour and minutes both roll over continuously
 }
 
-// Test adding and subtracting minutes.
+// Add minutes
 var addTests = []struct {
 	h, m, a int
 	want    string
 }{
-	{10, 0, 3, "10:03"},     // add minutes
-	{6, 41, 0, "06:41"},     // add no minutes
-	{0, 45, 40, "01:25"},    // add to next hour
-	{10, 0, 61, "11:01"},    // add more than one hour
-	{0, 45, 160, "03:25"},   // add more than two hours with carry
-	{23, 59, 2, "00:01"},    // add across midnight
-	{5, 32, 1500, "06:32"},  // add more than one day (1500 min = 25 hrs)
-	{1, 1, 3500, "11:21"},   // add more than two days
+	{10, 0, 3, "10:03"},    // add minutes
+	{6, 41, 0, "06:41"},    // add no minutes
+	{0, 45, 40, "01:25"},   // add to next hour
+	{10, 0, 61, "11:01"},   // add more than one hour
+	{0, 45, 160, "03:25"},  // add more than two hours with carry
+	{23, 59, 2, "00:01"},   // add across midnight
+	{5, 32, 1500, "06:32"}, // add more than one day (1500 min = 25 hrs)
+	{1, 1, 3500, "11:21"},  // add more than two days
+}
+
+// Subtract minutes
+var subtractTests = []struct {
+	h, m, a int
+	want    string
+}{
 	{10, 3, -3, "10:00"},    // subtract minutes
 	{10, 3, -30, "09:33"},   // subtract to previous hour
 	{10, 3, -70, "08:53"},   // subtract more than an hour
@@ -53,7 +60,7 @@ var addTests = []struct {
 	{2, 20, -3000, "00:20"}, // subtract more than two days
 }
 
-// Construct two separate clocks, set times, test if they are equal.
+// Compare two clocks for equality
 type hm struct{ h, m int }
 
 var eqTests = []struct {
