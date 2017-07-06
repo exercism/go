@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"strings"
 	"text/template"
 
 	"../../../gen"
@@ -44,6 +45,10 @@ type testGroup struct {
 	} `property:"equal"`
 }
 
+func (groups testGroup) GroupShortName() string {
+	return strings.ToLower(strings.Fields(groups.Description)[0])
+}
+
 var tmpl = `package clock
 
 {{.Header}}
@@ -63,7 +68,7 @@ var tmpl = `package clock
 	{{- end }}
 
 	{{- if .AddCases }}
-		var addTests = []struct {
+		var {{ .GroupShortName }}Tests = []struct {
 			h, m, a int
 			want string
 		}{
