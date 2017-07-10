@@ -247,9 +247,12 @@
       ]
     },
     {
-      "difficulty": 1,
+      "difficulty": 4,
       "slug": "bank-account",
-      "topics": []
+      "topics": [
+	"Concurrency",
+	"Integers"
+      ]
     },
     {
       "difficulty": 1,
