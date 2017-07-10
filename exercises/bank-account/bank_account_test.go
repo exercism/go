@@ -295,3 +295,23 @@ func TestConcDeposit(t *testing.T) {
 			"a.Balance = %d, %t.  Want 0, true", p, ok)
 	}
 }
+
+func BenchmarkAccountOperations(b *testing.B) {
+	a := Open(0)
+	defer a.Close()
+	for n := 0; n < b.N; n++ {
+		a.Deposit(10)
+		a.Deposit(-10)
+	}
+}
+
+func BenchmarkAccountOperationsConcurrent(b *testing.B) {
+	a := Open(0)
+	defer a.Close()
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			a.Deposit(10)
+			a.Deposit(-10)
+		}
+	})
+}
