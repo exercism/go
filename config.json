@@ -252,9 +252,14 @@
       "topics": []
     },
     {
-      "difficulty": 1,
+      "difficulty": 3,
       "slug": "crypto-square",
-      "topics": []
+      "topics": [
+	"Filtering",
+	"Strings",
+	"Text Formatting",
+	"Transforming"
+      ]
     },
     {
       "difficulty": 1,
