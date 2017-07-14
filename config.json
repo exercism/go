@@ -259,7 +259,11 @@
     {
       "difficulty": 1,
       "slug": "luhn",
-      "topics": []
+      "topics": [
+	"Algorithms",
+	"Integers",
+	"Strings"
+      ]
     },
     {
       "difficulty": 1,
