@@ -886,11 +886,6 @@
       "deprecated": true
     },
     {
-      "uuid": "4ee8dcdd-d9bd-4e31-8947-2c40b5822c4c",
-      "slug": "bottles",
-      "deprecated": true
-    },
-    {
       "uuid": "9a06556b-a661-4329-97a1-b5d0f0c7590c",
       "slug": "counter",
       "deprecated": true
@@ -903,11 +898,6 @@
     {
       "uuid": "4840c889-ebe5-4082-98c0-b9ed8618f6eb",
       "slug": "octal",
-      "deprecated": true
-    },
-    {
-      "uuid": "93bac569-468a-4bb0-952e-88b8a7a1c35a",
-      "slug": "point-mutations",
       "deprecated": true
     },
     {
