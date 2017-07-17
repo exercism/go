@@ -29,6 +29,8 @@ This is because this repo only imports from the standard library and isn't expec
 There is a [misspelling tool](https://github.com/client9/misspell). You can install and occasionally run it to
 find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) It's not added into CI since it could give false positives.
 
+You should be using [gofmt](https://golang.org/cmd/gofmt/) to format your Go code. This repository also has a root [.editorconfig](http://editorconfig.org/) file to keep consistent formatting for some non-Go files.
+
 ## Contributing Guide
 
 Please be familiar with the [contributing guide](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks)
