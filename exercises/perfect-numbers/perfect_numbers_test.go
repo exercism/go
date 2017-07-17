@@ -40,3 +40,25 @@ func TestClassifiesCorrectly(t *testing.T) {
 		}
 	}
 }
+
+// Test that the classifications are not equal to each other.
+// If they are equal, then the tests will return false positives.
+func TestClassificationsNotEqual(t *testing.T) {
+	classifications := []struct {
+		class Classification
+		name  string
+	}{
+		{ClassificationAbundant, "ClassificationAbundant"},
+		{ClassificationDeficient, "ClassificationDeficient"},
+		{ClassificationPerfect, "ClassificationPerfect"},
+	}
+
+	for i, pair1 := range classifications {
+		for j := i + 1; j < len(classifications); j++ {
+			pair2 := classifications[j]
+			if pair1.class == pair2.class {
+				t.Fatalf("%s should not be equal to %s", pair1.name, pair2.name)
+			}
+		}
+	}
+}

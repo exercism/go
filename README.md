@@ -33,7 +33,7 @@ find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) 
 
 Please be familiar with the [contributing guide](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks)
 in the docs repository.  This describes some great ways to get involved.
-In particular, please read the [Pull Request Guidelines](https://github.com/exercism/docs/blob/master/contributing-to-language-tracks/pull-request-guidelines.md) before opening a pull request.
+In particular, please read the [Pull Request Guidelines](https://github.com/exercism/docs/blob/master/contributing/pull-request-guidelines.md) before opening a pull request.
 
 ## Exercism Go style
 
