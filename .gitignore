@@ -1,5 +1,6 @@
 *.swp
 .DS_Store
+.editorconfig
 tmp
 bin/configlet
 bin/configlet.exe

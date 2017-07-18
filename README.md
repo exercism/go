@@ -26,6 +26,8 @@ Test your clone by cding to the go directory and typing
 Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
 This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
 
+Your Go code should be formatted using the [gofmt](https://golang.org/cmd/gofmt/) tool. For the other file types in the repository you may want to copy the setup used in the [.editorconfig](http://editorconfig.org/) file from [the exercism.io repository](https://github.com/exercism/exercism.io/blob/master/.editorconfig).
+
 There is a [misspelling tool](https://github.com/client9/misspell). You can install and occasionally run it to
 find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) It's not added into CI since it could give false positives.
 
