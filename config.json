@@ -340,9 +340,11 @@
       "slug": "luhn",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 2,
       "topics": [
-
+        "Algorithms",
+        "Integers",
+        "Strings"
       ]
     },
     {
