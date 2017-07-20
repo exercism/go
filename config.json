@@ -330,9 +330,12 @@
       "slug": "crypto-square",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Filtering",
+        "Strings",
+        "Text Formatting",
+        "Transforming"
       ]
     },
     {
