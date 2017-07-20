@@ -5,10 +5,43 @@ import (
 	"testing"
 )
 
-// Define a function `Use(o ResourceOpener, input string) error` that
-// opens a resource, calls Frob(input) and closes the resource
-// (in all cases). The function should properly handle errors,
-// as defined by the expectations of this test suite.
+// Because this exercise is generally unique to each language and how it
+// handles errors, most of the definition of your expected solution is provided
+// here instead of the README.
+// You should read this carefully (more than once) before implementation.
+
+// Define a function `Use(o ResourceOpener, input string) error` that opens a
+// resource, calls Frob(input) and closes the resource (in all cases). Your
+// function should properly handle errors, as defined by the expectations of
+// this test suite. ResourceOpener will be a function you may invoke directly
+// `o()` in an attempt to "open" the resource. It returns a Resource and error
+// value in the idiomatic Go fashion:
+// https://blog.golang.org/error-handling-and-go
+//
+// See the ./common.go file for the definitions of Resource, ResourceOpener,
+// FrobError and TransientError.
+//
+// There will be a few places in your Use function where errors may occur:
+//
+// - Invoking the ResourceOpener function passed into Use as the first
+//   parameter, it may fail with a TransientError, if so keep trying to open it.
+//   If it is some other sort of error, return it.
+//
+// - Calling the Frob function on the Resource returned from the ResourceOpener
+//   function, it may panic with a FrobError (or another type of error). If
+//   it is indeed a FrobError you will have to call the Resource's Defrob
+//   function using the FrobError's defrobTag variable as input. Either way
+//   return the error.
+//
+// Also note: if the Resource was opened successfully make sure to call its
+// Close function no matter what (even if errors occur).
+//
+// If you are new to Go errors or panics here is a good place to start:
+// https://blog.golang.org/defer-panic-and-recover
+//
+// You may also need to look at named return values as a helpful way to
+// return error information from panic recovery:
+// https://tour.golang.org/basics/7
 
 const targetTestVersion = 2
 
