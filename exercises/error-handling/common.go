@@ -4,9 +4,9 @@ import "io"
 
 // These are the support types and interface definitions used in the
 // implementation if your Use function. See the test suite file at
-// ./error_handling_test.go for information on the expected implementation.
+// for information on the expected implementation.
 //
-// Because this are part of the package "erratum" if your solution file
+// Because this is part of the package "erratum", if your solution file
 // is also declared in the package you will automatically have access to
 // these definitions (you do not have to re-declare them).
 

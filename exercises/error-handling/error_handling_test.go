@@ -6,7 +6,7 @@ import (
 )
 
 // Because this exercise is generally unique to each language and how it
-// handles errors most of the definition of your expected solution is provided
+// handles errors, most of the definition of your expected solution is provided
 // here instead of the README.
 // You should read this carefully (more than once) before implementation.
 
