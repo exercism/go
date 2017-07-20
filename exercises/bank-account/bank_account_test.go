@@ -14,7 +14,7 @@
 // The tests will execute some operations concurrently. You should strive
 // to ensure that operations on the Account leave it in a consistent state.
 // For example: multiple goroutines may be depositing and withdrawing money
-// simultaneously, two withdraws occurring concurrently should not be able
+// simultaneously, two withdrawals occurring concurrently should not be able
 // to bring the balance into the negative.
 
 // If you are new to concurrent operations in Go it will be worth looking
