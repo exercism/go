@@ -296,7 +296,7 @@ func TestConcDeposit(t *testing.T) {
 	}
 }
 
-// The benchmark operations are here to allow you to try different
+// The benchmark operations are here to encourage you to try different
 // implementations to see which ones perform better. These are worth
 // exploring after the tests pass.
 //
