@@ -309,3 +309,48 @@ func TestConcDeposit(t *testing.T) {
 			"a.Balance = %d, %t.  Want 0, true", p, ok)
 	}
 }
+
+// The benchmark operations are here to encourage you to try different
+// implementations to see which ones perform better. These are worth
+// exploring after the tests pass.
+//
+// There is a basic benchmark and a parallelized version of the same
+// benchmark. You run the benchmark using:
+// go test --bench=.
+//
+// The output will look something like this:
+// goos: linux
+// goarch: amd64
+// BenchmarkAccountOperations-8             10000000        130 ns/op
+// BenchmarkAccountOperationsParallel-8     3000000         488 ns/op
+// PASS
+//
+// You will notice that parallelism does not increase speed in this case, in
+// fact it makes things slower! This is because none of the operations in our
+// Account benefit from parallel processing. We are specifically protecting
+// the account balance internals from being accessed by multiple processes
+// simultaneously. Your protections will make the parallel processing slower
+// because there is some overhead in managing the processes and protections.
+//
+// The interesting thing to try here is to experiment with the protections
+// and see how their implementation changes the results of the parallel
+// benchmark.
+func BenchmarkAccountOperations(b *testing.B) {
+	a := Open(0)
+	defer a.Close()
+	for n := 0; n < b.N; n++ {
+		a.Deposit(10)
+		a.Deposit(-10)
+	}
+}
+
+func BenchmarkAccountOperationsParallel(b *testing.B) {
+	a := Open(0)
+	defer a.Close()
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			a.Deposit(10)
+			a.Deposit(-10)
+		}
+	})
+}
