@@ -1,7 +1,5 @@
 {
-  "slug": "go",
   "language": "Go",
-  "repository": "https://github.com/exercism/go",
   "active": true,
   "ignore_pattern": "example(?!.*test)",
   "foregone": [
