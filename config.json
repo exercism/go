@@ -444,9 +444,10 @@
       "slug": "allergies",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 4,
       "topics": [
-
+        "Enumeration",
+        "Bitwise operations"
       ]
     },
     {
