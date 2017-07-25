@@ -474,9 +474,12 @@
       "slug": "say",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 7,
       "topics": [
-
+        "Numbers",
+        "Strings",
+        "Transforming",
+        "Text Formatting"
       ]
     },
     {
