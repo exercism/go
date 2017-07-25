@@ -484,9 +484,10 @@
       "slug": "circular-buffer",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Queues",
+        "Structs"
       ]
     },
     {
