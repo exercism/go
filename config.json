@@ -354,9 +354,13 @@
       "slug": "food-chain",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 4,
       "topics": [
-
+        "Control-flow (conditionals)",
+        "Control-flow (loops)",
+        "Recursion",
+        "Strings",
+        "Text Formatting"
       ]
     },
     {
