@@ -387,9 +387,10 @@
       "slug": "palindrome-products",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 6,
       "topics": [
-
+        "Mathematics",
+        "Algorithms"
       ]
     },
     {
