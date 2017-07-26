@@ -377,9 +377,13 @@
       "slug": "sieve",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Algorithms",
+        "Integers",
+        "Mathematics",
+        "Sorting",
+        "Control-flow (loops)"
       ]
     },
     {
