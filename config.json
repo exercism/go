@@ -457,9 +457,10 @@
       "slug": "rna-transcription",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 2,
       "topics": [
-
+          "Maps",
+          "Transforming"
       ]
     },
     {
