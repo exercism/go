@@ -538,9 +538,9 @@
       "slug": "react",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 9,
       "topics": [
-
+        "Reactive programming"
       ]
     },
     {
