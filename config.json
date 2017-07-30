@@ -880,9 +880,11 @@
       "slug": "forth",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 8,
       "topics": [
-
+        "Domain-specific languages",
+        "Parsing",
+        "Stacks"
       ]
     },
     {
