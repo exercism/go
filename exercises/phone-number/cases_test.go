@@ -1,8 +1,8 @@
 package phonenumber
 
 // Source: exercism/x-common
-// Commit: 51d2475 number: Rewrite description and add tests
-// x-common version: 1.1.0
+// Commit: 39cba0d phone-number: Remove test using malformed input. (#772)
+// x-common version: 1.2.0
 
 // Cleanup user-entered phone numbers
 var numberTests = []struct {
@@ -71,11 +71,6 @@ var numberTests = []struct {
 	{
 		description: "invalid with punctuations",
 		input:       "123-@:!-7890",
-		expectErr:   true,
-	},
-	{
-		description: "invalid with right number of digits but letters mixed in",
-		input:       "1a2b3c4d5e6f7g8h9i0j",
 		expectErr:   true,
 	},
 	{

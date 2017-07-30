@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
+const targetTestVersion = 3
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
