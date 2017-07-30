@@ -1,7 +1,7 @@
 package secret
 
 // Source: exercism/x-common
-// Commit: 69c8700 secret-handshake: remove tests for numbers > 31 (#794)
+// Commit: 8acd78c Replace x-common with problem-specifications
 // x-common version: 1.1.0
 
 type secretHandshakeTest struct {
