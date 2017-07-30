@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/x-common
-// Commit: 0d6f5b7 forth: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Commit: 1b4165d Add test for Forth that an operator can be overridden.
+// x-common version: 1.2.0
 
 type testGroup struct {
 	group string
@@ -28,11 +28,6 @@ var testGroups = []testGroup{
 				"numbers just get pushed onto the stack",
 				[]string{"1 2 3 4 5"},
 				[]int{1, 2, 3, 4, 5},
-			},
-			{
-				"all non-word characters are separators",
-				[]string{"1\x002\x133\n4\r5 6\t7"},
-				[]int{1, 2, 3, 4, 5, 6, 7},
 			},
 		},
 	},
@@ -253,6 +248,11 @@ var testGroups = []testGroup{
 				"can override built-in words",
 				[]string{": swap dup ;", "1 swap"},
 				[]int{1, 1},
+			},
+			{
+				"can override built-in operators",
+				[]string{": + * ;", "3 4 +"},
+				[]int{12},
 			},
 			{
 				"cannot redefine numbers",

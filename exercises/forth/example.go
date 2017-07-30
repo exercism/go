@@ -234,4 +234,4 @@ var errDivideByZero = errors.New("attempt to divide by zero")
 var errEmptyUserDef = errors.New("empty user definition")
 var errInvalidUserDef = errors.New("invalid user def word")
 
-const testVersion = 1
+const testVersion = 2
