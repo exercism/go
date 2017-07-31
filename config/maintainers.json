@@ -36,13 +36,10 @@
     },
     {
       "github_username": "tleen",
-      "show_on_website": false,
-      "alumnus": false,
-      "name": null,
-      "bio": null,
-      "link_text": null,
-      "link_url": null,
-      "avatar_url": null
+      "show_on_website": true,
+      "name": "Tom Leen",
+      "link_text": "thomasleen.com",
+      "link_url": "http://www.thomasleen.com"
     },
     {
       "github_username": "soniakeys",
