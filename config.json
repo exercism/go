@@ -568,9 +568,12 @@
       "slug": "phone-number",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Control-flow (conditionals)",
+        "Strings",
+        "Transforming",
+        "Text formatting"
       ]
     },
     {
