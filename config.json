@@ -890,12 +890,13 @@
       "slug": "change",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 3,
+      "difficulty": 5,
       "topics": [
         "Algorithms",
         "Arrays",
         "Control-flow (loops)",
-        "Mathematics"
+        "Mathematics",
+        "Searching"
       ]
     },
     {
