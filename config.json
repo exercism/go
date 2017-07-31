@@ -558,9 +558,12 @@
       "slug": "atbash-cipher",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Algorithms",
+        "Strings",
+        "Transforming",
+        "Cryptography"
       ]
     },
     {
