@@ -1,8 +1,8 @@
 package bowling
 
 // Source: exercism/x-common
-// Commit: 3cf5eb9 bowling: Make canonical-data.json compliant
-// x-common version: 1.0.0
+// Commit: 26e345e [Bowling] Fix case descriptions (#832)
+// x-common version: 1.0.1
 
 var scoreTestCases = []struct {
 	description   string
@@ -119,14 +119,14 @@ var scoreTestCases = []struct {
 	},
 
 	{
-		"an unstarted game can not be scored",
+		"an unstarted game cannot be scored",
 		[]int{},
 		false,
 		0,
 		"Score cannot be taken until the end of the game",
 	},
 	{
-		"an incomplete game can not be scored",
+		"an incomplete game cannot be scored",
 		[]int{0, 0},
 		false,
 		0,
@@ -165,35 +165,35 @@ var rollTestCases = []struct {
 }{
 
 	{
-		"rolls can not score negative points",
+		"rolls cannot score negative points",
 		[]int{},
 		false,
 		-1,
 		"Negative roll is invalid",
 	},
 	{
-		"a roll can not score more than 10 points",
+		"a roll cannot score more than 10 points",
 		[]int{},
 		false,
 		11,
 		"Pin count exceeds pins on the lane",
 	},
 	{
-		"two rolls in a frame can not score more than 10 points",
+		"two rolls in a frame cannot score more than 10 points",
 		[]int{5},
 		false,
 		6,
 		"Pin count exceeds pins on the lane",
 	},
 	{
-		"bonus roll after a strike in the last frame can not score more than 10 points",
+		"bonus roll after a strike in the last frame cannot score more than 10 points",
 		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10},
 		false,
 		11,
 		"Pin count exceeds pins on the lane",
 	},
 	{
-		"two bonus rolls after a strike in the last frame can not score more than 10 points",
+		"two bonus rolls after a strike in the last frame cannot score more than 10 points",
 		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5},
 		false,
 		6,
@@ -201,14 +201,14 @@ var rollTestCases = []struct {
 	},
 
 	{
-		"the second bonus rolls after a strike in the last frame can not be a strike if the first one is not a strike",
+		"the second bonus rolls after a strike in the last frame cannot be a strike if the first one is not a strike",
 		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6},
 		false,
 		10,
 		"Pin count exceeds pins on the lane",
 	},
 	{
-		"second bonus roll after a strike in the last frame can not score than 10 points",
+		"second bonus roll after a strike in the last frame cannot score more than 10 points",
 		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10},
 		false,
 		11,

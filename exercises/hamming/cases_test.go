@@ -1,14 +1,19 @@
 package hamming
 
 // Source: exercism/x-common
-// Commit: bb56dc7 Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Commit: ebe9bbf fix versioning (#845)
+// x-common version: 1.1.0
 
 var testCases = []struct {
 	s1   string
 	s2   string
 	want int
 }{
+	{ // empty strands
+		"",
+		"",
+		0,
+	},
 	{ // identical strands
 		"A",
 		"A",
@@ -68,11 +73,6 @@ var testCases = []struct {
 		"GGACGGATTCTG",
 		"AGGACGGATTCT",
 		9,
-	},
-	{ // empty strands
-		"",
-		"",
-		0,
 	},
 	{ // disallow first strand longer
 		"AATG",

@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
