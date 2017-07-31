@@ -632,9 +632,11 @@
       "slug": "nth-prime",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Mathematics",
+        "Algorithms",
+        "Integers"
       ]
     },
     {
