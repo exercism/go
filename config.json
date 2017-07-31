@@ -662,9 +662,10 @@
       "slug": "ocr-numbers",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 7,
       "topics": [
-
+        "Parsing",
+        "Pattern recognition"
       ]
     },
     {
