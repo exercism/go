@@ -56,12 +56,12 @@
     },
     {
       "github_username": "robphoenix",
-      "show_on_website": false,
+      "show_on_website": true,
       "alumnus": false,
-      "name": null,
-      "bio": null,
-      "link_text": null,
-      "link_url": null,
+      "name": "Rob Phoenix",
+      "bio": "I used to be an artist, and am now a software engineer, using Go to build tools for network engineers. Maintaining Exercism's Go track has opened up the world of open source to me.",
+      "link_text": "robphoenix.com",
+      "link_url": "https://blog.robphoenix.com/",
       "avatar_url": null
     },
     {
