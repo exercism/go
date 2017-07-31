@@ -884,8 +884,8 @@
       "unlocked_by": null,
       "difficulty": 6,
       "topics": [
-        "Integers",
         "Bitwise operations",
+        "Integers",
         "Transforming"
       ]
     },
