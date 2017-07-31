@@ -872,9 +872,13 @@
       "slug": "poker",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Domain-specific languages",
+        "Equality",
+        "Games",
+        "Parsing",
+        "Strings"
       ]
     },
     {
