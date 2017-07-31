@@ -904,11 +904,13 @@
       "slug": "change",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-        "Control-flow (loops)",
+        "Algorithms",
         "Arrays",
-        "Algorithms"
+        "Control-flow (loops)",
+        "Mathematics",
+        "Searching"
       ]
     },
     {
