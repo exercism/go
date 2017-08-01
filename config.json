@@ -646,9 +646,12 @@
       "slug": "diffie-hellman",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Cryptography",
+        "Integers",
+        "Algorithms",
+        "Transforming"
       ]
     },
     {
