@@ -590,9 +590,11 @@
       "slug": "strain",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 2,
       "topics": [
-
+        "Filtering",
+        "Control-flow (loops)",
+        "Arrays"
       ]
     },
     {
