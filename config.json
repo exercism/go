@@ -888,9 +888,11 @@
       "slug": "variable-length-quantity",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Bitwise operations",
+        "Integers",
+        "Transforming"
       ]
     },
     {
