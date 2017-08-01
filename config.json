@@ -862,9 +862,15 @@
       "slug": "ledger",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 4,
       "topics": [
-
+        "Dates",
+        "Integers",
+        "Records",
+        "Refactoring",
+        "Sorting",
+        "Strings",
+        "Text formatting"
       ]
     },
     {
