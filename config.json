@@ -600,9 +600,11 @@
       "slug": "pig-latin",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 4,
       "topics": [
-
+        "Strings",
+        "Transforming",
+        "Control-flow (conditionals)"
       ]
     },
     {
