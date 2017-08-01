@@ -882,9 +882,14 @@
       "slug": "poker",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Equality",
+        "Games",
+        "Parsing",
+        "Pattern matching",
+        "Sequences",
+        "Strings"
       ]
     },
     {
