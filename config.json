@@ -656,9 +656,11 @@
       "slug": "beer-song",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+          "Strings",
+          "Text formatting",
+          "Control-flow (loops)"
       ]
     },
     {
