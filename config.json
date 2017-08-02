@@ -856,9 +856,10 @@
       "slug": "all-your-base",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 3,
       "topics": [
-
+        "Integers",
+        "Mathematics"
       ]
     },
     {
