@@ -700,9 +700,11 @@
       "slug": "nucleotide-count",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 2,
       "topics": [
-
+        "Strings",
+        "Parsing",
+        "Maps"
       ]
     },
     {
