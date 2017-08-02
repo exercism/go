@@ -832,7 +832,7 @@
       "slug": "robot-simulator",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 5,
+      "difficulty": 6,
       "topics": [
         "Concurrency",
         "Control-flow (loops)",
