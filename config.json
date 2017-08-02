@@ -814,9 +814,12 @@
       "slug": "pov",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 7,
       "topics": [
-
+        "Graphs",
+        "Structs",
+        "Transforming",
+        "Trees"
       ]
     },
     {
