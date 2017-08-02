@@ -866,9 +866,11 @@
       "slug": "connect",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 9,
       "topics": [
-
+        "Control-flow (loops)",
+        "Games",
+        "Graphs"
       ]
     },
     {
