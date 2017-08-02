@@ -838,9 +838,13 @@
       "slug": "robot-simulator",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 6,
       "topics": [
-
+        "Concurrency",
+        "Control-flow (loops)",
+        "Sequences",
+        "Strings",
+        "Structs"
       ]
     },
     {
