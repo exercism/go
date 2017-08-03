@@ -724,9 +724,13 @@
       "slug": "matrix",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 4,
       "topics": [
-
+        "Matrices",
+        "Type conversion",
+        "Arrays",
+        "Exception handling",
+        "Strings"
       ]
     },
     {
