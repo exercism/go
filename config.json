@@ -760,9 +760,12 @@
       "slug": "binary-search",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Algorithms",
+        "Arrays",
+        "Searching",
+        "Sorting"
       ]
     },
     {
