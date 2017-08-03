@@ -766,6 +766,7 @@
       "unlocked_by": null,
       "difficulty": 5,
       "topics": [
+        "Algorithms",
         "Recursion",
         "Searching",
         "Sorting",
