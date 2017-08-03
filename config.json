@@ -807,9 +807,11 @@
       "slug": "paasio",
       "core": false,
       "unlocked_by": null,
-      "difficulty": 1,
+      "difficulty": 5,
       "topics": [
-
+        "Concurrency",
+        "Interfaces",
+        "Networking"
       ]
     },
     {
