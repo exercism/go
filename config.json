@@ -776,7 +776,10 @@
       "unlocked_by": null,
       "difficulty": 3,
       "topics": [
-
+        "Records",
+        "Refactoring",
+        "Sorting",
+        "Trees"
       ]
     },
     {
