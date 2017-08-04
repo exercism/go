@@ -328,6 +328,7 @@
       "unlocked_by": null,
       "difficulty": 3,
       "topics": [
+        "Cryptography",
         "Filtering",
         "Strings",
         "Text Formatting",
@@ -822,8 +823,8 @@
       "difficulty": 3,
       "topics": [
         "Algorithms",
+        "Cryptography",
         "Interfaces",
-        "Security",
         "Strings",
         "Transforming"
       ]
