@@ -12,25 +12,27 @@
     {
       "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
       "slug": "hello-world",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Strings"
-      ]
+      ],
+      "comment": "Super stubbed, mostly serves to introduce the Exercism workflow"
     },
     {
       "uuid": "fee57b09-2b67-4483-a2e5-3dfec0568b15",
       "slug": "leap",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "hello-world",
       "difficulty": 1,
       "topics": [
         "Control-flow (conditionals)",
         "Booleans",
         "Integers",
         "Logic"
-      ]
+      ],
+      "comment": "Given a leap year int return bool if leap year, stubbed"
     },
     {
       "uuid": "7d2de21e-bf67-495e-8d90-05e1a35d5b99",
@@ -49,45 +51,49 @@
       "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a",
       "slug": "gigasecond",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "hello-world",
       "difficulty": 1,
       "topics": [
         "Time"
-      ]
+      ],
+      "comment": "Add a gigasecond to an instance of Time, stubbed"
     },
     {
       "uuid": "52582415-8f7f-4ac5-857f-5c160ec48134",
       "slug": "hamming",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Control-flow (loops)",
         "Equality",
         "Strings"
-      ]
+      ],
+      "comment": "Calculate diff of two equal length strings, can error, stubbed"
     },
     {
       "uuid": "2f51e32a-9b1f-4100-9eec-517115c858e9",
       "slug": "raindrops",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Control-flow (conditionals)",
         "Strings",
         "Filtering"
-      ]
+      ],
+      "comment": "A FizzBuzz implementation, benchmarking encouraged, stubbed"
     },
     {
       "uuid": "fb03948c-11e8-440d-9a5d-979396451270",
       "slug": "accumulate",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Lists"
-      ]
+      ],
+      "comment": "Implement a map function, stubbed"
     },
     {
       "uuid": "b39d9e79-dee0-4c70-a6c3-114bee8083f2",
@@ -104,24 +110,26 @@
     {
       "uuid": "d14c6283-e57c-472c-8181-87f82d9088dd",
       "slug": "pangram",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
-      "difficulty": 2,
+      "difficulty": 1,
       "topics": [
         "Control-flow (loops)",
         "Strings"
-      ]
+      ],
+      "comment": "Return true if every a-z letter is present in a string"
     },
     {
       "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748",
       "slug": "bob",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "raindrops",
       "difficulty": 2,
       "topics": [
         "Control-flow (conditionals)",
         "Strings"
-      ]
+      ],
+      "comment": "Eliza-lite, 4 responses based on question, yell, silent, other"
     },
     {
       "uuid": "6769557a-33fa-4257-adbf-e66dc8c06f85",
@@ -152,13 +160,14 @@
     {
       "uuid": "19628c8a-a89f-457e-9526-3d400024a927",
       "slug": "difference-of-squares",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 2,
       "topics": [
         "Algorithms",
         "Mathematics"
-      ]
+      ],
+      "comment": "Square of sums - sum of squares = difference, incremental test"
     },
     {
       "uuid": "cd05b63b-df20-4c8d-8743-53033acf7696",
@@ -234,7 +243,7 @@
       "uuid": "b4f6b08b-a132-447b-b447-66bf37ab20c6",
       "slug": "grains",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "difference-of-squares",
       "difficulty": 2,
       "topics": [
         "Control-flow (if-else statements)",
@@ -242,31 +251,34 @@
         "Mathematics",
         "Type conversion",
         "Integers"
-      ]
+      ],
+      "comment": "Calculate doubling of value as points between 1-64 and sum"
     },
     {
       "uuid": "73da448c-33b7-4565-ab48-1de5020d65ab",
       "slug": "etl",
       "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 2,
       "topics": [
         "Control-flow (loops)",
         "Maps",
         "Transforming"
-      ]
+      ],
+      "comment": "Transform int->string[] map to string->int map"
     },
     {
       "uuid": "20cbd8f9-f8e3-4767-a0f5-94810ba3f902",
       "slug": "scrabble-score",
-      "core": false,
-      "unlocked_by": null,
-      "difficulty": 1,
+      "core": true,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
       "topics": [
         "Control-flow (loops)",
         "Maps",
         "Strings"
-      ]
+      ],
+      "comment": "Turn string into int value based on table"
     },
     {
       "uuid": "bf366b19-63bf-4a75-9a35-08b881af6951",
@@ -340,13 +352,14 @@
       "uuid": "8b29da0e-8ead-4e72-a12a-d448c8434767",
       "slug": "luhn",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "difference-of-squares",
       "difficulty": 2,
       "topics": [
         "Algorithms",
         "Integers",
         "Strings"
-      ]
+      ],
+      "comment": "Credit card number checksum"
     },
     {
       "uuid": "12a16ab5-35fc-4fb2-a018-504953f3ad80",
@@ -472,24 +485,26 @@
     {
       "uuid": "9bef2163-2a24-4d50-9610-e3cac2e7772a",
       "slug": "rna-transcription",
-      "core": false,
+      "core": true,
       "unlocked_by": null,
       "difficulty": 2,
       "topics": [
           "Maps",
           "Transforming"
-      ]
+      ],
+      "comment": "Swap rune with complement rune"
     },
     {
       "uuid": "eccfd2b3-93cf-41a8-b39b-c29596469e8e",
       "slug": "roman-numerals",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "scrabble-score",
       "difficulty": 2,
       "topics": [
         "Numbers",
         "Transforming"
-      ]
+      ],
+      "comment": "Transform int into roman numeral string"
     },
     {
       "uuid": "5d742499-b130-458a-ba3e-a4c3d75419c3",
@@ -591,13 +606,14 @@
       "uuid": "7fbb0d9d-71d1-4654-8ca0-bb07ddbe6cb5",
       "slug": "strain",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "accumulate",
       "difficulty": 2,
       "topics": [
         "Filtering",
         "Control-flow (loops)",
         "Arrays"
-      ]
+      ],
+      "comment": "Build filter and reject map functions for arrays"
     },
     {
       "uuid": "4fe8ba14-20ba-4aa3-b134-7aed799a7522",
@@ -701,13 +717,14 @@
       "uuid": "5911d90f-ba2f-482f-8c92-c01c112d6fdd",
       "slug": "nucleotide-count",
       "core": false,
-      "unlocked_by": null,
+      "unlocked_by": "rna-transcription",
       "difficulty": 2,
       "topics": [
         "Strings",
         "Parsing",
         "Maps"
-      ]
+      ],
+      "comment": "Count characters present in string, also return all as map"
     },
     {
       "uuid": "aa598f3e-9d2b-4f9f-8c14-46e0ac27d5be",
