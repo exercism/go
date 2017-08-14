@@ -270,7 +270,7 @@
     {
       "uuid": "20cbd8f9-f8e3-4767-a0f5-94810ba3f902",
       "slug": "scrabble-score",
-      "core": true,
+      "core": false,
       "unlocked_by": "hamming",
       "difficulty": 2,
       "topics": [
