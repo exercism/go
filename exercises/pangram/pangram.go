@@ -1,5 +1,5 @@
 package pangram
 
-const testVersion = 1
+const testVersion = 2
 
 func IsPangram(string) bool
