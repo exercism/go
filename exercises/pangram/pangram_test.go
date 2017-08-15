@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
+const targetTestVersion = 2
 
 type testCase struct {
 	input         string
@@ -20,8 +20,6 @@ var testCases = []testCase{
 	{"the 1 quick brown fox jumps over the 2 lazy dogs", true, ""},
 	{"7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog", false, "missing letters replaced by numbers"},
 	{"\"Five quacking Zephyrs jolt my wax bed.\"", true, ""},
-	{"Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.", true, ""},
-	{"Широкая электрификация южных губерний даст мощный толчок подъёму сельского хозяйства.", false, "Panagram in alphabet other than ASCII"},
 }
 
 func TestTestVersion(t *testing.T) {
