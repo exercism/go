@@ -2,11 +2,15 @@ package leap
 
 import "testing"
 
-// Define a function with the following signature:
-// IsLeapYear(int) bool
-
+// targetTestVersion is used to ensure that a solution is only evaluated
+// against the correct version of the test suite.
 const targetTestVersion = 3
 
+// TestTestVersion compares the targetTestVersion defined above with
+// a testVersion value.
+// This is a common convention throughout the Go Exercism track.
+// To make a test like this test pass, define 'testVersion' in your solution.
+// We've done this for you in the ./leap.go file provided.
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
