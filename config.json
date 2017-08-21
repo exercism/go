@@ -20,6 +20,17 @@
       ]
     },
     {
+      "uuid": "dc4ad67d-0fe4-0880-5a13-3aebb8759bcc3095de1",
+      "slug": "two-fer",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "Control-flow (conditionals)",
+        "Strings"
+      ]
+    },
+    {
       "uuid": "52582415-8f7f-4ac5-857f-5c160ec48134",
       "slug": "hamming",
       "core": true,
