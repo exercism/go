@@ -2,29 +2,32 @@ package bob
 
 import "strings"
 
-const testVersion = 3
-
-func Hey(drivel string) string {
-	switch drivel = strings.TrimSpace(drivel); {
-	case silent(drivel):
+// Hey returns Bob's responses to any given dialogue
+func Hey(dialogue string) string {
+	switch dialogue = strings.TrimSpace(dialogue); {
+	case silent(dialogue):
 		return "Fine. Be that way!"
-	case yelling(drivel):
+	case yelling(dialogue):
 		return "Whoa, chill out!"
-	case asking(drivel):
+	case asking(dialogue):
 		return "Sure."
 	default:
 		return "Whatever."
 	}
 }
 
-func yelling(drivel string) bool {
-	return strings.ToUpper(drivel) == drivel && strings.ToLower(drivel) != strings.ToUpper(drivel)
+func yelling(dialogue string) bool {
+	return strings.ToUpper(dialogue) == dialogue && strings.ToLower(dialogue) != strings.ToUpper(dialogue)
 }
 
-func asking(drivel string) bool {
-	return strings.HasSuffix(drivel, "?")
+func asking(dialogue string) bool {
+	return strings.HasSuffix(dialogue, "?")
 }
 
-func silent(drivel string) bool {
-	return drivel == ""
+func silent(dialogue string) bool {
+	return dialogue == ""
 }
+
+// This test versioning is specific to Exercism,
+// you don't need to worry about this now.
+const testVersion = 3

@@ -2,8 +2,8 @@ package raindrops
 
 import "strconv"
 
-const testVersion = 3
-
+// Convert converts a number to a string, the contents
+// of which depend on the number's factors.
 func Convert(number int) string {
 	s := ""
 	if number%3 == 0 {
@@ -20,3 +20,7 @@ func Convert(number int) string {
 	}
 	return s
 }
+
+// This test versioning is specific to Exercism,
+// you don't need to worry about this now.
+const testVersion = 3
