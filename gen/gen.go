@@ -17,15 +17,16 @@ import (
 	"time"
 )
 
-// dirMetadata is the location of the x-common repository on the filesystem.
-// We're making the assumption that the x-common repository has been cloned to
+// dirMetadata is the location of the problem-specifications repository on the filesystem.
+// We're making the assumption that the problem-specifications repository has been cloned to
 // the same parent directory as the Exercism Go track repository.
 // E.g.
 //
 //     $ tree -L 1 .
 //     .
-//     ├── x-common
+//     ├── problem-specifications
 //     └── go
+//
 var dirMetadata string
 
 // dirExercise is the location that the test cases should be generated to.
@@ -40,10 +41,10 @@ var genClient = &http.Client{Timeout: 10 * time.Second}
 const (
 	// canonicalDataURL is the URL for the raw canonical-data.json data,
 	// requires exercise name.
-	canonicalDataURL = "https://raw.githubusercontent.com/exercism/x-common/master/exercises/%s/canonical-data.json"
+	canonicalDataURL = "https://raw.githubusercontent.com/exercism/problem-specifications/master/exercises/%s/canonical-data.json"
 	// commitsURL is the GitHub api endpoint for the canonical-data.json
 	// file commit history, requires exercise name.
-	commitsURL = "https://api.github.com/repos/exercism/x-common/commits?path=exercises/%s/canonical-data.json"
+	commitsURL = "https://api.github.com/repos/exercism/problem-specifications/commits?path=exercises/%s/canonical-data.json"
 )
 
 // Header tells how the test data was generated, for display in the header of
@@ -60,14 +61,14 @@ func (h Header) String() string {
 		s += fmt.Sprintf("// Commit: %s\n", h.Commit)
 	}
 	if h.Version != "" {
-		s += fmt.Sprintf("// x-common version: %s\n", h.Version)
+		s += fmt.Sprintf("// Problem Specifications Version: %s\n", h.Version)
 	}
 	return s
 }
 
 func init() {
 	if _, path, _, ok := runtime.Caller(0); ok {
-		dirMetadata = filepath.Join(path, "..", "..", "..", "x-common")
+		dirMetadata = filepath.Join(path, "..", "..", "..", "problem-specifications")
 	}
 	if _, path, _, ok := runtime.Caller(2); ok {
 		dirExercise = filepath.Join(path, "..", "..")
@@ -171,7 +172,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 }
 
 func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
-	// Ideally draw from a .json which is pulled from the official x-common
+	// Ideally draw from a .json which is pulled from the official problem-specifications
 	// repository.  For development however, accept a file in current directory
 	// if there is no .json in source control.  Also allow an override in any
 	// case by environment variable.
@@ -188,7 +189,7 @@ func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
 		return "", "local file", "" // not in source control
 	}
 	// good.  return source control dir and commit.
-	return c.Dir, "exercism/x-common", string(bytes.TrimSpace(origin))
+	return c.Dir, "exercism/problem-specifications", string(bytes.TrimSpace(origin))
 }
 
 func getRemote(exercise string) (body []byte, jOrigin string, jCommit string, err error) {
@@ -212,7 +213,7 @@ func getRemote(exercise string) (body []byte, jOrigin string, jCommit string, er
 		return []byte{}, "", "", err
 	}
 	log.Printf("[REMOTE] source: %s\n", url)
-	return body, "exercism/x-common", c, nil
+	return body, "exercism/problem-specifications", c, nil
 }
 
 func getRemoteCommit(exercise string) (string, error) {
