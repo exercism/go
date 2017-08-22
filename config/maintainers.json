@@ -18,14 +18,10 @@
       "name": "Katrina Owen"
     },
     {
-      "alumnus": false,
-      "avatar_url": null,
-      "bio": null,
+      "alumnus": true,
+      "bio": "I write a lot of Go for my day job, building platforms for other software engineers to use. The Exercism Go track was the first open-source project I joined; I'm grateful for all I've learned through this experience.",
       "github_username": "petertseng",
-      "link_text": null,
-      "link_url": null,
-      "name": null,
-      "show_on_website": false
+      "show_on_website": true
     },
     {
       "alumnus": false,
