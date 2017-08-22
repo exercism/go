@@ -1,8 +1,8 @@
 package leap
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: cc65ebe leap: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
 	year        int

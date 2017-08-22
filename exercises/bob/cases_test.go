@@ -1,8 +1,8 @@
 package bob
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 65756b1 bob: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
 	description string

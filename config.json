@@ -3,6 +3,42 @@
   "blurb": "Go is a compiled, open source programming language with a small, consistent syntax, a powerful standard library, and fantastic tooling. It's a great fit for web backends and command-line tools.",
   "exercises": [
     {
+      "core": false,
+      "difficulty": 1,
+      "slug": "raindrops",
+      "topics": [
+        "control-flow-(conditionals)",
+        "filtering",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "2f51e32a-9b1f-4100-9eec-517115c858e9"
+    },
+    {
+      "core": false,
+      "difficulty": 1,
+      "slug": "leap",
+      "topics": [
+        "booleans",
+        "control-flow-(conditionals)",
+        "integers",
+        "logic"
+      ],
+      "unlocked_by": null,
+      "uuid": "fee57b09-2b67-4483-a2e5-3dfec0568b15"
+    },
+    {
+      "core": false,
+      "difficulty": 2,
+      "slug": "bob",
+      "topics": [
+        "control-flow-(conditionals)",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748"
+    },
+    {
       "core": true,
       "difficulty": 1,
       "slug": "hello-world",
@@ -34,18 +70,6 @@
       ],
       "unlocked_by": null,
       "uuid": "52582415-8f7f-4ac5-857f-5c160ec48134"
-    },
-    {
-      "core": true,
-      "difficulty": 1,
-      "slug": "raindrops",
-      "topics": [
-        "control-flow-(conditionals)",
-        "filtering",
-        "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "2f51e32a-9b1f-4100-9eec-517115c858e9"
     },
     {
       "core": true,
@@ -220,17 +244,6 @@
       "uuid": "62aa3d20-65d8-440f-9d08-48bbc823f4fe"
     },
     {
-      "core": false,
-      "difficulty": 4,
-      "slug": "pascals-triangle",
-      "topics": [
-        "arrays",
-        "mathematics"
-      ],
-      "unlocked_by": "series",
-      "uuid": "92e2a192-5ee9-422a-8699-c231a7136b10"
-    },
-    {
       "core": true,
       "difficulty": 5,
       "slug": "queen-attack",
@@ -245,26 +258,14 @@
     },
     {
       "core": false,
-      "difficulty": 1,
-      "slug": "leap",
+      "difficulty": 4,
+      "slug": "pascals-triangle",
       "topics": [
-        "booleans",
-        "control-flow-(conditionals)",
-        "integers",
-        "logic"
+        "arrays",
+        "mathematics"
       ],
-      "unlocked_by": "hamming",
-      "uuid": "fee57b09-2b67-4483-a2e5-3dfec0568b15"
-    },
-    {
-      "core": false,
-      "difficulty": 1,
-      "slug": "gigasecond",
-      "topics": [
-        "time"
-      ],
-      "unlocked_by": "hamming",
-      "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a"
+      "unlocked_by": "series",
+      "uuid": "92e2a192-5ee9-422a-8699-c231a7136b10"
     },
     {
       "core": false,
@@ -273,8 +274,18 @@
       "topics": [
         "lists"
       ],
-      "unlocked_by": "raindrops",
+      "unlocked_by": "hamming",
       "uuid": "fb03948c-11e8-440d-9a5d-979396451270"
+    },
+    {
+      "core": false,
+      "difficulty": 1,
+      "slug": "gigasecond",
+      "topics": [
+        "time"
+      ],
+      "unlocked_by": "two-fer",
+      "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a"
     },
     {
       "core": false,
@@ -284,19 +295,8 @@
         "control-flow-(loops)",
         "strings"
       ],
-      "unlocked_by": "raindrops",
+      "unlocked_by": "hamming",
       "uuid": "d14c6283-e57c-472c-8181-87f82d9088dd"
-    },
-    {
-      "core": false,
-      "difficulty": 2,
-      "slug": "bob",
-      "topics": [
-        "control-flow-(conditionals)",
-        "strings"
-      ],
-      "unlocked_by": "raindrops",
-      "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748"
     },
     {
       "core": false,
@@ -462,7 +462,7 @@
         "maps",
         "sequences"
       ],
-      "unlocked_by": "rna-transcription",
+      "unlocked_by": "etl",
       "uuid": "0b9e07de-c8e4-4d28-b589-897a7ef8062a"
     },
     {
@@ -520,7 +520,7 @@
         "maps",
         "transforming"
       ],
-      "unlocked_by": "scrabble-score",
+      "unlocked_by": "two-fer",
       "uuid": "9bef2163-2a24-4d50-9610-e3cac2e7772a"
     },
     {
@@ -737,7 +737,7 @@
         "parsing",
         "strings"
       ],
-      "unlocked_by": "scrabble-score",
+      "unlocked_by": "etl",
       "uuid": "5911d90f-ba2f-482f-8c92-c01c112d6fdd"
     },
     {
