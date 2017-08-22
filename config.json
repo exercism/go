@@ -89,7 +89,8 @@
       "topics": [
         "arrays",
         "control-flow-(loops)",
-        "filtering"
+        "filtering",
+        "functional-programming"
       ],
       "unlocked_by": null,
       "uuid": "7fbb0d9d-71d1-4654-8ca0-bb07ddbe6cb5"
@@ -271,6 +272,7 @@
       "difficulty": 1,
       "slug": "accumulate",
       "topics": [
+        "functional-programming",
         "lists"
       ],
       "unlocked_by": "raindrops",
