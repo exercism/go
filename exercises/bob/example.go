@@ -4,27 +4,28 @@ import "strings"
 
 const testVersion = 3
 
-func Hey(drivel string) string {
-	switch drivel = strings.TrimSpace(drivel); {
-	case silent(drivel):
+// Hey returns Bob's responses to a given dialogue.
+func Hey(remark string) string {
+	switch remark = strings.TrimSpace(remark); {
+	case silent(remark):
 		return "Fine. Be that way!"
-	case yelling(drivel):
+	case yelling(remark):
 		return "Whoa, chill out!"
-	case asking(drivel):
+	case asking(remark):
 		return "Sure."
 	default:
 		return "Whatever."
 	}
 }
 
-func yelling(drivel string) bool {
-	return strings.ToUpper(drivel) == drivel && strings.ToLower(drivel) != strings.ToUpper(drivel)
+func yelling(remark string) bool {
+	return strings.ToUpper(remark) == remark && strings.ToLower(remark) != strings.ToUpper(remark)
 }
 
-func asking(drivel string) bool {
-	return strings.HasSuffix(drivel, "?")
+func asking(remark string) bool {
+	return strings.HasSuffix(remark, "?")
 }
 
-func silent(drivel string) bool {
-	return drivel == ""
+func silent(remark string) bool {
+	return remark == ""
 }
