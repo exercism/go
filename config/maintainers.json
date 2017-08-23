@@ -15,7 +15,8 @@
       "alumnus": true,
       "bio": "I love Go for its simplicity and consistency. I also appreciate how hard the Go project is working to make the ecosystem welcoming to newcomers. I no longer maintain the Go track, but still maintain the Go tooling on Exercism.",
       "github_username": "kytrinyx",
-      "name": "Katrina Owen"
+      "name": "Katrina Owen",
+      "show_on_website": true
     },
     {
       "alumnus": true,
