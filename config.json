@@ -3,6 +3,27 @@
   "blurb": "Go is a compiled, open source programming language with a small, consistent syntax, a powerful standard library, and fantastic tooling. It's a great fit for web backends and command-line tools.",
   "exercises": [
     {
+      "core": false,
+      "difficulty": 1,
+      "slug": "gigasecond",
+      "topics": [
+        "time"
+      ],
+      "unlocked_by": null,
+      "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a"
+    },
+    {
+      "core": false,
+      "difficulty": 2,
+      "slug": "bob",
+      "topics": [
+        "control-flow-(conditionals)",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748"
+    },
+    {
       "core": true,
       "difficulty": 1,
       "slug": "hello-world",
@@ -48,16 +69,6 @@
       ],
       "unlocked_by": null,
       "uuid": "7d2de21e-bf67-495e-8d90-05e1a35d5b99"
-    },
-    {
-      "core": false,
-      "difficulty": 1,
-      "slug": "gigasecond",
-      "topics": [
-        "time"
-      ],
-      "unlocked_by": "hamming",
-      "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a"
     },
     {
       "core": true,
@@ -115,17 +126,6 @@
       ],
       "unlocked_by": "raindrops",
       "uuid": "d14c6283-e57c-472c-8181-87f82d9088dd"
-    },
-    {
-      "core": false,
-      "difficulty": 2,
-      "slug": "bob",
-      "topics": [
-        "control-flow-(conditionals)",
-        "strings"
-      ],
-      "unlocked_by": "raindrops",
-      "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748"
     },
     {
       "core": true,
