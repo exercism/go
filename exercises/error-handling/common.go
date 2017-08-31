@@ -36,15 +36,16 @@ func (e FrobError) Error() string {
 type Resource interface {
 
 	// Resource is using composition to inherit the requirements of the io.Closer
-	// interface. What this means is that a Resource will have a .Close() method.
+	// interface. What this means is that a Resource implementation will be
+	// expected to have a .Close() method too.
 	io.Closer
 
 	// Frob does something with the input string.
 	// Because this is an incredibly badly designed system if there is an error
 	// it panics.
 	//
-	// The paniced error may be a FrobError in which case Defrob should be called
-	// with the defrobTag string.
+	// The panicked error may be a FrobError in which case Defrob should be
+	// called with the .defrobTag string property of the error.
 	Frob(string)
 
 	Defrob(string)

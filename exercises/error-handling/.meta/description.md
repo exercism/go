@@ -1,5 +1,3 @@
-# Error Handling
-
 Implement various kinds of error handling and resource management.
 
 An important point of programming is how to handle errors and close resources even if errors occur.
@@ -19,24 +17,3 @@ There will be a few places in your Use function where errors may occur:
 * Calling the Frob function on the Resource returned from the ResourceOpener function, it may **panic** with a FrobError (or another type of error). If it is indeed a FrobError you will have to call the Resource's `Defrob` function *using the panic FrobError's `.defrobTag` variable as input to the `Defrob` function*. Either way `Use` should return the error.
 
 * *Also note*: if the Resource was opened successfully make sure to call its Close function no matter what (even if errors have occurred).
-
-Testing for specific error types may be performed by [type assertions](https://golang.org/ref/spec#Type_assertions). You may also need to look at [named return values](https://blog.golang.org/error-handling-and-go) as a helpful way to return error information from panic recovery.
-
-
-## Running the tests
-
-To run the tests run the command `go test` from within the exercise directory.
-
-If the test suite contains benchmarks, you can run these with the `-bench` flag:
-
-    go test -bench .
-
-Keep in mind that each reviewer will run benchmarks on a different machine, with different specs, so the results from these benchmark tests may vary.
-
-## Further information
-
-For more detailed information about the Go track, including how to get help if you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
-
-
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
