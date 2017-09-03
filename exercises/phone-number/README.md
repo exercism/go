@@ -21,9 +21,13 @@ For example, the inputs
 - `1 613 995 0253`
 - `613.995.0253`
 
-should all produce the output
+should all produce the output below from a Number() function.
 
 `6139950253`
+
+Additionally, a Format() function should produce the outout
+
+`(613) 995-0253`
 
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
