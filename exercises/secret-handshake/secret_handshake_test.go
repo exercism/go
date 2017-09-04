@@ -29,6 +29,8 @@ func TestHandshake(t *testing.T) {
 
 func BenchmarkHandshake(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Handshake(31)
+		for j := uint(0); j < 32; j++ {
+			Handshake(j)
+		}
 	}
 }
