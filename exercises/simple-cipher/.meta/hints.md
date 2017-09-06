@@ -19,11 +19,11 @@ will be also normalized to lowercase.
 The functions used to obtain the ciphers are:
 
 ```go
-func NewCaesar() Cipher
+func NewCaesar() Cipher { }
 
-func NewShift(distance int) Cipher
+func NewShift(distance int) Cipher { }
 
-func NewVigenere(key string) Cipher
+func NewVigenere(key string) Cipher { }
 ```
 
 Argument for `NewShift` must be in the range 1 to 25 or -1 to -25.

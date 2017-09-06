@@ -68,7 +68,7 @@ up with the same message coming out. So "aaaa" is not an ideal
 key. But if we set the key to "dddd", we would get the same thing as
 the Shift Cipher with all shift distances set to 4.
 
-This is not much of an improvement over the fixed distance Shift
+These keys are not much of an improvement over the fixed distance Shift
 Cipher. However, we can put many different lengths into the key if we
 use strings with different characters:
 
@@ -79,15 +79,13 @@ Each character in the key is used to shift the corresponding character
 by index. If the key is shorter than the text, repeat the key as
 needed.
 
-For the final step you will implement a Vigenère cipher.
-
 ## Extensions
 
 Shift ciphers work by making the text slightly odd, but are vulnerable
 to frequency analysis. Substitution ciphers help that, but are still
 very vulnerable when the key is short or if spaces are
 preserved. You'll see one solution to this problem in the exercise
-"crypto-square".
+"[crypto-square](exercises/crypto-square/)".
 
 If you want to go farther in this field, the questions begin to be
 about how we can exchange keys in a secure way. Take a look at
