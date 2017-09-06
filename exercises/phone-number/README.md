@@ -25,7 +25,7 @@ should all produce the output below from a Number() function.
 
 `6139950253`
 
-Additionally, a Format() function should produce the outout
+Additionally, a Format() function should produce the output
 
 `(613) 995-0253`
 
