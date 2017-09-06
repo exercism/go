@@ -38,7 +38,7 @@ When "ldpdsdqgdehdu" is put into the decode function it would return
 the original "iamapandabear" letting your friend read your original
 message.
 
-Initially you will implement a [Caesar Cipher](cc) with a fixed shift
+Initially you will implement a [Caesar Cipher][cc] with a fixed shift
 distance of 3 (*namely D, for A*).
 
 ## Step 2
@@ -54,7 +54,7 @@ distance.
 
 With only 26 true possible shift values, your kid sister will figure
 this out too. Next lets define a more complex cipher using a string as
-key value: a [Vigenère cipher](vc).
+key value: a [Vigenère cipher][vc].
 
 Here's an example:
 
