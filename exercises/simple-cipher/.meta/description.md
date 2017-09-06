@@ -85,7 +85,7 @@ Shift ciphers work by making the text slightly odd, but are vulnerable
 to frequency analysis. Substitution ciphers help that, but are still
 very vulnerable when the key is short or if spaces are
 preserved. You'll see one solution to this problem in the exercise
-"[crypto-square](exercises/crypto-square/)".
+"[crypto-square](https://github.com/exercism/go/tree/master/exercises/crypto-square)".
 
 If you want to go farther in this field, the questions begin to be
 about how we can exchange keys in a secure way. Take a look at
