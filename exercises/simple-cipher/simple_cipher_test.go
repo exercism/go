@@ -1,33 +1,3 @@
-// For Step 1, implement the Caesar cipher, which seems clear enough except
-// maybe for figuring out whether to add or subtract.
-//
-// For Step 2, implement a shift cipher, like Caesar except the shift amount
-// is specified as an int.  (Each letter of "ddddddddddddddddd", is 'd';
-// 'd'-'a' == 3, so the corresponding shift amount is 3.)
-//
-// Steps 2 and 3 seem to be describing the Vigenère cipher (Google it)
-// so let's do that too.  The random thing, don't worry about.  There is
-// no test for that.
-//
-// API:
-//
-// type Cipher interface {
-//    Encode(string) string
-//    Decode(string) string
-// }
-// NewCaesar() Cipher
-// NewShift(int) Cipher
-// NewVigenere(string) Cipher
-//
-// Interface Cipher is in file cipher.go.
-//
-// Argument for NewShift must be in the range 1 to 25 or -1 to -25.
-// Zero is disallowed.  For invalid arguments NewShift returns nil.
-//
-// Argument for NewVigenere must consist of lower case letters a-z only.
-// Values consisting entirely of the letter 'a' are disallowed.
-// For invalid arguments NewVigenere returns nil.
-
 package cipher
 
 import (
