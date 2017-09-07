@@ -29,6 +29,10 @@ Additionally, a Format() function should produce the output
 
 `(613) 995-0253`
 
+and an AreaCode() function should output
+
+`613`
+
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
 ## Running the tests
