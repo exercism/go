@@ -40,7 +40,7 @@ In particular, please read the [Pull Request Guidelines](https://github.com/exer
 ## Exercism Go style
 
 Let's walk through the an imaginary `exercise-slug` exercise to see what is included in an exercise
-implementation. In any exercise you'll may see a number of files there:
+implementation. In any exercise you may see a number of files present:
 
 ```sh
 ~/exercism/go/exercise-slug
