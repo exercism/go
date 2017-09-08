@@ -11,7 +11,13 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestRomanNumerals(t *testing.T) {
-	for _, test := range romanNumeralTests {
+	tc := append(romanNumeralTests, []romanNumeralTest{
+		{0, "", true},
+		{-1, "", true},
+		{3001, "", true},
+	}...)
+
+	for _, test := range tc {
 		actual, err := ToRomanNumeral(test.arabic)
 		if err == nil && test.hasError {
 			t.Errorf("ToRomanNumeral(%d) should return an error.", test.arabic)
