@@ -223,7 +223,7 @@ tracks don't.
 ## Generating test cases
 
 Some problems that are implemented in multiple tracks use the same inputs and
-outputs to define the test suites. Where the [x-common](https://github.com/exercism/x-common)
+outputs to define the test suites. Where the [problem-specifications](https://github.com/exercism/problem-specifications)
 repository contains a *canonical-data.json* file with these inputs and outputs,
 we can generate the test cases programmatically.
 
@@ -235,17 +235,17 @@ directory within each exercise that makes use of a test cases generator. This
 *.meta* directory will be ignored when a user fetches an exercise.
 
 Whenever the shared JSON data changes, the test cases will need to be regenerated.
-The generator will first look for a local copy of the **x-common** repository.
+The generator will first look for a local copy of the **problem-specifications** repository.
 If there isn't one it will attempt to get the relevant json data for the
-exercise from the **x-common** repository on GitHub.
+exercise from the **problem-specifications** repository on GitHub.
 
-To use a local copy of the **x-common** repository, make sure that it has been
+To use a local copy of the **problem-specifications** repository, make sure that it has been
 cloned into the same parent-directory as the **go** repository.
 
 ```sh
 $ tree -L 1 .
 .
-├── x-common
+├── problem-specifications
 └── go
 ```
 
