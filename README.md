@@ -39,17 +39,18 @@ In particular, please read the [Pull Request Guidelines](https://github.com/exer
 
 ## Exercism Go style
 
-Let's walk through the an imaginary `exercise-slug` exercise to see what is included in an exercise
-implementation. In any exercise you may see a number of files present:
+Let's walk through an example, non-existent, exercise, which we'll call `fizzbuzz` to see what could be included in its implementation.
+
+In any exercise you may see a number of files present:
 
 ```sh
-~/exercism/go/exercise-slug
+~/exercism/go/fizzbuzz
 $ tree -a
 .
 ├── cases_test.go
 ├── example.go
-├── exercise_slug.go
-├── exercise_slug_test.go
+├── fizzbuzz_slug.go
+├── fizzbuzz_test.go
 ├── .meta
 │   └── description.md
 │   └── gen.go
@@ -58,17 +59,15 @@ $ tree -a
 └── README.md
 ```
 
-This list of files *can vary* across exercises. Not all exercise
-utilize all of the available files, but they are available for use
-should an exercise need to adjust itself against [the global problem-specification repository](https://github.com/exercism/problem-specifications/tree/master/exercises). This
-repository helps collect common information for all exercises across
-all tracks. However, should local track-specific modifications or
-enhancements be made with respect to the global problem specifications
-they may be performed by the presence of specifically named files in
-an exercises `.meta/` directory.
+This list of files *can vary* across exercises. Not all exercises use
+all of these files. Exercises originate their test data and README
+text from the Exercism [problem-specification repository](https://github.com/exercism/problem-specifications/tree/master/exercises).  
+This repository collects common information for all exercises across all
+tracks.  However, should track-specific documentation need to be
+included with the exercise, files in an exercise's `.meta/` directory
+can be used to override or augment the exercise's README.
 
-So let's quickly run through each potential file and briefly describe
-what and why it is.
+So let's quickly run through each file and briefly describe it:
 
 * **cases_test.go** - This file contains [generated test cases](#generating-test-cases),
   and will only be present in some exercises. These will be 
@@ -76,7 +75,7 @@ what and why it is.
   represent test data sourced from the problem-specifications repository.
 
 * **example.go** - This is an [example solution](#example-solutions) for
-  the exercise. It is used in integration testing and to provide a
+  the exercise. It is used to verify the test suite and to provide a
   reference example of a solution to the exercise. This file is ignored
   by the `exercism fetch` command. See [ignored files](#ignored-files)
   for details on which files are ignored.
@@ -100,14 +99,15 @@ what and why it is.
   [problem-specifications repository](https://github.com/exercism/problem-specifications/tree/master/exercises).
 
 * **.meta/gen.go** - This file, unique within the `.meta` directory,
-  generates the *cases_test.go* file, and will only be present in some
-  exercises should they have problem-specification test data and this
-  generator is present to to utilize it. See [generating test cases](#generating-test-cases) 
+  generates the *cases_test.go* file. This will only be present in some
+  exercises that have problem-specification test data. If so this
+  generator is used to transform the test data into a format suitable
+  for the exercise. See [generating test cases](#generating-test-cases) 
   for more information.
 
-* **.meta/hints.md** - This is another README related file, it should
-  used for the inclusion of any track specific information beyond what
-  would be present in a generic exercise's problem-specification
+* **.meta/hints.md** - This is another README related file, it should 
+  be used for the inclusion of any track specific information beyond 
+  what would be present in a generic exercise's problem-specification
   description.
 
 * **.meta/metadata.yml** - Like the `meta/*.md` files, this will
