@@ -49,7 +49,7 @@ $ tree -a
 .
 ├── cases_test.go
 ├── example.go
-├── fizzbuzz_slug.go
+├── fizzbuzz.go
 ├── fizzbuzz_test.go
 ├── .meta
 │   └── description.md
@@ -80,11 +80,11 @@ So let's quickly run through each file and briefly describe it:
   by the `exercism fetch` command. See [ignored files](#ignored-files)
   for details on which files are ignored.
 
-* **exercise_slug.go** - This is a *stub file*, and will only be
+* **fizzbuzz.go** - This is a *stub file*, and will only be
   present in some exercises as a way to give users a useful starting
   point.
 
-* **exercise_slug_test.go** - This is the main test file for the
+* **fizzbuzz_test.go** - This is the main test file for the
   exercise.
 
 * **.meta/** - The `.meta/` directory contains files that are not
