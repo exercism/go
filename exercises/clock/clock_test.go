@@ -68,7 +68,7 @@ func TestCompareClocks(t *testing.T) {
 		if got != e.want {
 			t.Log("Clock1:", clock1)
 			t.Log("Clock2:", clock2)
-			t.Logf("Clock1 == Clock2 is %t, want %t", got, e.want)
+			t.Logf("Clock1 == Clock2 is %t, want %t", got.String(), e.want)
 			if reflect.DeepEqual(clock1, clock2) {
 				t.Log("(Hint: see comments in clock_test.go.)")
 			}
