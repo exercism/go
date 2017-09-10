@@ -70,12 +70,6 @@ func init() {
 	if _, path, _, ok := runtime.Caller(0); ok {
 		dirMetadata = filepath.Join(path, "..", "..", "..", "problem-specifications")
 	}
-	if _, path, _, ok := runtime.Caller(2); ok {
-		dirExercise = filepath.Join(path, "..", "..")
-	}
-	if dirExercise == "" {
-		dirExercise = "."
-	}
 }
 
 // outputSource puts the src text into given fileName
@@ -94,6 +88,21 @@ func outputSource(status string, fileName string, src []byte) error {
 func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
 		return errors.New("unable to determine current path")
+	}
+	// Determine the exercise directory.
+	// Use runtime.Caller to determine path location of the generator main package.
+	// Call frames: 0 is this frame, Gen().
+	//              1 should be a func in <exercise-dir>/.meta/gen.go (generator main package)
+	//                which is calling Gen().
+	//                                  |
+	//                                  V
+	if _, path, _, ok := runtime.Caller(1); ok {
+		// Construct a path 2 directories higher than the path for .meta/gen.go
+		// and it should be exercise directory.
+		dirExercise = filepath.Join(path, "..", "..")
+	}
+	if dirExercise == "" {
+		dirExercise = "."
 	}
 	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
 	// try to find and read the local json source file
