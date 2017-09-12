@@ -1,7 +1,5 @@
 package prime
 
-const testVersion = 2
-
 func Factors(n int64) []int64 {
 	factors := []int64{}
 	possibleFactor := int64(2)

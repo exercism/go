@@ -2,8 +2,6 @@ package luhn
 
 import "strings"
 
-const testVersion = 2
-
 func Valid(id string) bool {
 
 	if len(strings.TrimSpace(id)) == 1 {

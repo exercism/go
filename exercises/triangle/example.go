@@ -4,8 +4,6 @@ import "math"
 
 type Kind string
 
-const testVersion = 3
-
 const (
 	Equ Kind = "equilateral"
 	Iso      = "isosceles"

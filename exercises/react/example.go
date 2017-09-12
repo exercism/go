@@ -1,7 +1,5 @@
 package react
 
-const testVersion = 5
-
 type reactor struct {
 	cells []*cell
 }

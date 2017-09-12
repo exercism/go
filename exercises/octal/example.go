@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-const testVersion = 1
-
 func ParseOctal(octal string) (int64, error) {
 	num := int64(0)
 	for _, digit := range octal {

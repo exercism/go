@@ -7,8 +7,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 var tests = []struct {
 	input    int64
 	expected []int64
@@ -24,12 +22,6 @@ var tests = []struct {
 	{625, []int64{5, 5, 5, 5}},
 	{901255, []int64{5, 17, 23, 461}},
 	{93819012551, []int64{11, 9539, 894119}},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestPrimeFactors(t *testing.T) {

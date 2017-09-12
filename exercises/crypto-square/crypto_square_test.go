@@ -2,8 +2,6 @@ package cryptosquare
 
 import "testing"
 
-const targetTestVersion = 2
-
 var tests = []struct {
 	pt string // plain text
 	ct string // cipher text
@@ -84,12 +82,6 @@ var tests = []struct {
 		"Have a nice day. Feed the dog & chill out!",
 		"hifei acedl veeol eddgo aatcu nyhht",
 	},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestEncode(t *testing.T) {

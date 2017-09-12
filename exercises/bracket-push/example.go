@@ -1,8 +1,5 @@
 package brackets
 
-// testVersion shows the version of the exercise.
-const testVersion = 5
-
 type bracketKind int
 
 const (

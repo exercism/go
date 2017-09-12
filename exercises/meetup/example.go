@@ -2,8 +2,6 @@ package meetup
 
 import "time"
 
-const testVersion = 3
-
 type WeekSchedule int
 
 const (

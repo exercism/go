@@ -4,7 +4,6 @@ import (
 	"strings"
 )
 
-const testVersion = 2
 
 func IsPangram(s string) bool {
 	lowerString := strings.ToLower(s)

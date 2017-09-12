@@ -18,8 +18,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	in   string
 	ok   bool
@@ -140,12 +138,6 @@ var tests = []struct {
 	// undefined
 	// {"\n\n", // valid?, 3 rows, 0 columns
 	// {"",     // valid?, 0 rows, 0 columns
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestNew(t *testing.T) {

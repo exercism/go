@@ -2,8 +2,6 @@ package perfect
 
 import "errors"
 
-const testVersion = 1
-
 // Classification is the category devised by Greek Mathematician Nicomachus
 type Classification string
 

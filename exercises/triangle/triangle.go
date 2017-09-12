@@ -1,7 +1,5 @@
 package triangle
 
-const testVersion = 3
-
 func KindFromSides(a, b, c float64) Kind
 
 // Notice KindFromSides() returns this type. Pick a suitable data type.

@@ -7,8 +7,6 @@ import (
 	"sort"
 )
 
-const testVersion = 4
-
 type outcome int
 
 const (

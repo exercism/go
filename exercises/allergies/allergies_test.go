@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var allergiesTests = []struct {
 	expected []string
 	input    uint
@@ -21,12 +19,6 @@ var allergiesTests = []struct {
 	{[]string{"strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 248},
 	{[]string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 255},
 	{[]string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}, 509},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestAllergies(t *testing.T) {

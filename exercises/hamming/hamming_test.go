@@ -2,14 +2,6 @@ package hamming
 
 import "testing"
 
-const targetTestVersion = 6
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
-
 func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
 		got, err := Distance(tc.s1, tc.s2)

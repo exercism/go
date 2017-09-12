@@ -2,8 +2,6 @@ package ocr
 
 import "strings"
 
-const testVersion = 1
-
 var digit = map[string]byte{
 	" _ | ||_|   ": '0',
 	"     |  |   ": '1',
