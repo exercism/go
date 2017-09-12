@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-const testVersion = 2
-
 func norm(r rune) rune {
 	switch {
 	case r >= 'a' && r <= 'z' || r >= '0' && r <= '9':

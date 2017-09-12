@@ -34,8 +34,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 var allTests = []struct {
 	n   int
 	s   string
@@ -70,12 +68,6 @@ var allTests = []struct {
 }
 
 var cx = "01032987583"
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
 
 func TestAll(t *testing.T) {
 	for _, test := range allTests {

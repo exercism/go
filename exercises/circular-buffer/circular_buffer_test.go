@@ -19,8 +19,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 4
-
 // Here is one way you can have a test case verify that the expected
 // interfaces are implemented.
 
@@ -87,12 +85,6 @@ func (tb testBuffer) overwrite(c byte) {
 }
 
 // tests.  separate functions so log will have descriptive test name.
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
 
 func TestReadEmptyBuffer(t *testing.T) {
 	tb := nb(1, t)

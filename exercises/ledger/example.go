@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-const testVersion = 4
-
 type Entry struct {
 	Date        string // "Y-m-d"
 	Description string

@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-const testVersion = 3
-
 // Frequency is a map of the frequency of occurrence keyed to the unique word.
 type Frequency map[string]int
 

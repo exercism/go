@@ -1,6 +1,5 @@
 package clock
 
-const testVersion = 4
 
 // You can find more details and hints in the test file.
 

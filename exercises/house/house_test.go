@@ -15,8 +15,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var (
 	// song copied from README
 	expectedSong = `This is the house that Jack built.
@@ -111,12 +109,6 @@ that lay in the house that Jack built.`
 
 	expectedVerses = strings.Split(expectedSong, "\n\n")
 )
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func TestVerse(t *testing.T) {
 	for v := 0; v < len(expectedVerses); v++ {

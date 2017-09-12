@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 4
-
 var successTestCases = []struct {
 	name     string
 	currency string
@@ -248,12 +246,6 @@ var failureTestCases = []struct {
 			},
 		},
 	},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestFormatLedgerSuccess(t *testing.T) {

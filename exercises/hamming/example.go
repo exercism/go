@@ -2,8 +2,6 @@ package hamming
 
 import "errors"
 
-const testVersion = 6
-
 func Distance(a, b string) (d int, err error) {
 	if len(b) != len(a) {
 		return 0, errors.New("strings of unequal length")

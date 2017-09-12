@@ -1,7 +1,5 @@
 package pythagorean
 
-const testVersion = 1
-
 type Triplet [3]int
 
 func pyth(a, b, c int) bool {

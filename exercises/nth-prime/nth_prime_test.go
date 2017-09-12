@@ -2,8 +2,6 @@ package prime
 
 import "testing"
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	n  int
 	p  int
@@ -17,12 +15,6 @@ var tests = []struct {
 	{6, 13, true},
 	{10001, 104743, true},
 	{0, 0, false},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestNth(t *testing.T) {

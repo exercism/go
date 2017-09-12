@@ -2,8 +2,6 @@ package bob
 
 import "strings"
 
-const testVersion = 3
-
 func Hey(drivel string) string {
 	switch drivel = strings.TrimSpace(drivel); {
 	case silent(drivel):

@@ -4,8 +4,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 type testCase struct {
 	input         string
 	expected      bool
@@ -20,12 +18,6 @@ var testCases = []testCase{
 	{"the 1 quick brown fox jumps over the 2 lazy dogs", true, ""},
 	{"7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog", false, "missing letters replaced by numbers"},
 	{"\"Five quacking Zephyrs jolt my wax bed.\"", true, ""},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestPangram(t *testing.T) {

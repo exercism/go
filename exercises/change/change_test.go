@@ -5,14 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestChange(t *testing.T) {
 	for _, tc := range testCases {
 		actual, err := Change(tc.coins, tc.target)
