@@ -2,7 +2,6 @@ package school
 
 import "sort"
 
-
 type School map[int][]string
 
 func New() *School {
