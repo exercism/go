@@ -9,7 +9,6 @@ func TestHey(t *testing.T) {
 			msg := `
 	ALICE (%s): %q
 	BOB: %s
-
 	Expected Bob to respond: %s`
 			t.Fatalf(msg, tt.description, tt.input, actual, tt.expected)
 		}
