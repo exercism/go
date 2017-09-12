@@ -2,14 +2,6 @@ package bob
 
 import "testing"
 
-const targetTestVersion = 3
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestHey(t *testing.T) {
 	for _, tt := range testCases {
 		actual := Hey(tt.input)
@@ -17,7 +9,6 @@ func TestHey(t *testing.T) {
 			msg := `
 	ALICE (%s): %q
 	BOB: %s
-
 	Expected Bob to respond: %s`
 			t.Fatalf(msg, tt.description, tt.input, actual, tt.expected)
 		}

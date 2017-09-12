@@ -13,11 +13,6 @@ import (
 // For invalid inputs, return an error that signals to the user why the error happened.
 // The test cases can only check that you return *some* error,
 // but it's still good practice to return useful errors.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
-const targetTestVersion = 2
 
 var testCases = []struct {
 	binary   string
@@ -36,12 +31,6 @@ var testCases = []struct {
 	{"101bar", 0, false},
 	{"101baz010", 0, false},
 	{"22", 0, false},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestParseBinary(t *testing.T) {

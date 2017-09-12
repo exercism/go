@@ -2,14 +2,6 @@ package romannumerals
 
 import "testing"
 
-const targetTestVersion = 4
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestRomanNumerals(t *testing.T) {
 	tc := append(romanNumeralTests, []romanNumeralTest{
 		{0, "", true},

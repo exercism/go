@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 var testCases = []struct {
 	subject     string
 	candidates  []string
@@ -138,12 +136,6 @@ func equal(a []string, b []string) bool {
 	sort.Strings(a)
 	sort.Strings(b)
 	return fmt.Sprintf("%v", a) == fmt.Sprintf("%v", b)
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestDetectAnagrams(t *testing.T) {

@@ -4,8 +4,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var squareTests = []struct {
 	input       int
 	expectedVal uint64
@@ -21,12 +19,6 @@ var squareTests = []struct {
 	{65, 0, true},
 	{0, 0, true},
 	{-1, 0, true},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestSquare(t *testing.T) {

@@ -2,14 +2,6 @@ package lsproduct
 
 import "testing"
 
-const targetTestVersion = 5
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestLargestSeriesProduct(t *testing.T) {
 	for _, test := range tests {
 		p, err := LargestSeriesProduct(test.digits, test.span)

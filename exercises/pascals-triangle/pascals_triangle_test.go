@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var triangleTestCases = [][]int{
 	{1},
 	{1, 1},
@@ -32,12 +30,6 @@ var triangleTestCases = [][]int{
 }
 
 var testSize = len(triangleTestCases)
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func TestTriangle(t *testing.T) {
 	for n := 1; n <= testSize; n++ {

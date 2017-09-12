@@ -1,7 +1,5 @@
 package protein
 
-const testVersion = 1
-
 func FromCodon(codon string) string {
 	switch codon {
 	case

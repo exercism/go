@@ -5,14 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestHandshake(t *testing.T) {
 	for _, test := range tests {
 		h := Handshake(test.code)

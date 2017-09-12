@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 func echo(c string) string {
 	return c
 }
@@ -26,12 +24,6 @@ var tests = []struct {
 	{[]string{"echo", "echo", "echo", "echo"}, []string{"echo", "echo", "echo", "echo"}, echo, "echo"},
 	{[]string{"First", "Letter", "Only"}, []string{"first", "letter", "only"}, capitalize, "capitalize"},
 	{[]string{"HELLO", "WORLD"}, []string{"hello", "world"}, strings.ToUpper, "strings.ToUpper"},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestAccumulate(t *testing.T) {

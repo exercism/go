@@ -25,14 +25,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestStep1(t *testing.T) {
 
 	want := func(x, y int, dir Dir) {

@@ -9,14 +9,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestForth(t *testing.T) {
 	for _, tg := range testGroups {
 		for _, tc := range tg.tests {
