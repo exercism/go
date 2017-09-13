@@ -5,8 +5,9 @@ import (
 	"testing"
 )
 
-// Clock type API:
+// Clock API:
 //
+// type Clock                      // define the clock type
 // New(hour, minute int) Clock     // a "constructor"
 // (Clock) String() string         // a "stringer"
 // (Clock) Add(minutes int) Clock

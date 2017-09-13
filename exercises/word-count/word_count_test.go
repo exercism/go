@@ -5,6 +5,11 @@ import (
 	"testing"
 )
 
+// wordcount API
+//
+// func WordCount(phrase string) Frequency  // Implement this function.
+// type Frequency map[string]int            // Using this return type.
+
 func TestWordCount(t *testing.T) {
 	for _, tt := range testCases {
 		expected := tt.output
