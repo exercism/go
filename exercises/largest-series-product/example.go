@@ -2,8 +2,6 @@ package lsproduct
 
 import "fmt"
 
-const testVersion = 5
-
 func LargestSeriesProduct(digits string, span int) (int64, error) {
 	if span < 0 {
 		return 0, fmt.Errorf("span is negative: %d", span)

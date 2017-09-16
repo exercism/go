@@ -1,7 +1,5 @@
 package say
 
-const testVersion = 1
-
 var small = []string{"zero", "one", "two", "three", "four", "five", "six",
 	"seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen",
 	"fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}

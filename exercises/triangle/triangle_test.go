@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 3
-
 type testCase struct {
 	want    Kind
 	a, b, c float64
@@ -51,12 +49,6 @@ func init() {
 		}
 	}
 	testData = append(testData, nf[1:]...)
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 // Test that the kinds are not equal to each other.

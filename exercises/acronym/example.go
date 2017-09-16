@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-const testVersion = 3
-
 func Abbreviate(s string) string {
 	regex := regexp.MustCompile("[A-Z]+[a-z]*|[a-z]+")
 	words := regex.FindAllString(s, -1)

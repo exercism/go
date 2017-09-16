@@ -24,8 +24,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 type lookup struct {
 	child  string
 	plants []string
@@ -118,12 +116,6 @@ RVGCCGCV`, append([]string{}, test6names...), true, []lookup{
 		{"Xander", []string{"radishes", "grass", "clover", "violets"}, true},
 	}}
 )
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
 
 func TestGarden(t *testing.T) {
 	for _, test := range tests {
