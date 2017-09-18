@@ -3,7 +3,6 @@ package robot
 import "fmt"
 
 // ======= Step 1
-const testVersion = 3
 const (
 	N Dir = iota
 	E

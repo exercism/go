@@ -2,8 +2,6 @@ package variablelengthquantity
 
 import "errors"
 
-const testVersion = 4
-
 var ErrUnterminatedSequence = errors.New("unterminated sequence")
 
 // encodeInt returns the varint encoding of x.

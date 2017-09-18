@@ -40,14 +40,6 @@ O say does that star-spangled banner yet wave,
 O'er the land of the free and the home of the brave?`
 )
 
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestConcurrentFrequency(t *testing.T) {
 	seq := Frequency(euro + dutch + us)
 	con := ConcurrentFrequency([]string{euro, dutch, us})

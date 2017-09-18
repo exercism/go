@@ -6,11 +6,6 @@ import (
 )
 
 // Define a function Solve(words []string, puzzle []string) (map[string][2][2]int, error).
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
-const targetTestVersion = 3
 
 var words = []string{
 	"clojure", "ecmascript", "elixir", "go", "java", "lisp",
@@ -43,12 +38,6 @@ var positions = map[string][2][2]int{
 	"ruby":       {{5, 7}, {8, 7}},
 	"rust":       {{8, 0}, {8, 3}},
 	"scheme":     {{0, 6}, {5, 6}},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestSolve(t *testing.T) {

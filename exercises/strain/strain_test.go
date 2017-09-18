@@ -19,8 +19,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 func lt10(x int) bool { return x < 10 }
 func gt10(x int) bool { return x > 10 }
 func odd(x int) bool  { return x&1 == 1 }
@@ -62,12 +60,6 @@ var discardTests = []struct {
 	{even,
 		Ints{1, 2, 3, 4, 5},
 		Ints{1, 3, 5}},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestKeepInts(t *testing.T) {

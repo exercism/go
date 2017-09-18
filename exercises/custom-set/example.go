@@ -4,8 +4,6 @@ package stringset
 
 import "fmt"
 
-const testVersion = 4
-
 // Set represents some properties of a mathematical set.
 // Sets are finite and all elements are unique string values.
 type Set map[string]bool

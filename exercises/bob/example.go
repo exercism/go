@@ -2,8 +2,6 @@ package bob
 
 import "strings"
 
-const testVersion = 3
-
 // Hey returns Bob's responses to a given remark.
 func Hey(remark string) string {
 	switch remark = strings.TrimSpace(remark); {

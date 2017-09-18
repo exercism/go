@@ -3,8 +3,6 @@ package bowling
 
 import "errors"
 
-const testVersion = 1
-
 var (
 	ErrNegativeRollIsInvalid        = errors.New("Negative roll is invalid")
 	ErrPinCountExceedsPinsOnTheLane = errors.New("Pin count exceeds pins on the lane")

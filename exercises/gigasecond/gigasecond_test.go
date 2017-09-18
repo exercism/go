@@ -8,19 +8,11 @@ import (
 	"time"
 )
 
-const targetTestVersion = 4
-
 // date formats used in test data
 const (
 	fmtD  = "2006-01-02"
 	fmtDT = "2006-01-02T15:04:05"
 )
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func TestAddGigasecond(t *testing.T) {
 	for _, tc := range addCases {

@@ -5,8 +5,6 @@ import "testing"
 // Arguments to CanQueenAttack are in algebraic notation.
 // See http://en.wikipedia.org/wiki/Algebraic_notation_(chess)
 
-const targetTestVersion = 2
-
 var tests = []struct {
 	w, b   string
 	attack bool
@@ -29,12 +27,6 @@ var tests = []struct {
 	{"f1", "a6", true, true},
 	{"a1", "h8", true, true},
 	{"a8", "h1", true, true},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestCanQueenAttack(t *testing.T) {

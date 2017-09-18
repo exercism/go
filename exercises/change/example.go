@@ -6,8 +6,6 @@ import (
 	"sort"
 )
 
-const testVersion = 1
-
 var (
 	ErrNoSolutionFound = errors.New("No solution")
 	ErrNegativeTarget  = errors.New("Negative Target")

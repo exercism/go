@@ -2,14 +2,6 @@ package summultiples
 
 import "testing"
 
-const targetTestVersion = 2
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestSumMultiples(t *testing.T) {
 	for _, test := range varTests {
 		s := SumMultiples(test.limit, test.divisors...)

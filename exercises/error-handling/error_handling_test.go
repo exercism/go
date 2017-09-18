@@ -6,7 +6,6 @@ import (
 )
 
 // Please review the README for this exercise carefully before implementation.
-const targetTestVersion = 2
 
 // Little helper to let us customize behaviour of the resource on a per-test
 // basis.
@@ -19,12 +18,6 @@ type mockResource struct {
 func (mr mockResource) Close() error      { return mr.close() }
 func (mr mockResource) Frob(input string) { mr.frob(input) }
 func (mr mockResource) Defrob(tag string) { mr.defrob(tag) }
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 // Use should not return an error on the "happy" path.
 func TestNoErrors(t *testing.T) {

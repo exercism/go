@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 // POV / reparent / change root of a tree
 //
 // API:
@@ -257,12 +255,6 @@ func (tc testCase) testResult(got, want []string, msg string, t *testing.T) {
 		t.Log(" ", s)
 	}
 	t.FailNow()
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestConstruction(t *testing.T) {

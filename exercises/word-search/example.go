@@ -2,8 +2,6 @@ package wordsearch
 
 import "fmt"
 
-const testVersion = 3
-
 func Solve(words []string, puzzle []string) (map[string][2][2]int, error) {
 	positions := make(map[string][2][2]int, len(words))
 	for _, word := range words {

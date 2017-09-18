@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-const testVersion = 1
-
 var vowel = regexp.MustCompile(`^([aeiou]|y[^aeiou]|xr)[a-z]*`)
 var cons = regexp.MustCompile(`^([^aeiou]?qu|[^aeiou]+)([a-z]*)`)
 

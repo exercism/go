@@ -6,14 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 4
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
-
 func TestDecodeVarint(t *testing.T) {
 	for i, tc := range decodeTestCases {
 		o, err := DecodeVarint(tc.input)

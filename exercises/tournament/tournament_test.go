@@ -11,11 +11,6 @@ import (
 //
 // Note that unlike other tracks the Go version of the tally function
 // should not ignore errors. It's not idiomatic Go to ignore errors.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
-const targetTestVersion = 4
 
 var _ func(io.Reader, io.Writer) error = Tally
 
@@ -108,12 +103,6 @@ var errorTestCases = []string{
 	"Devastating Donkeys_Courageous Californians;draw",
 	"Devastating Donkeys@Courageous Californians;draw",
 	"Devastating Donkeys;Allegoric Alaskians;dra",
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestTallyHappy(t *testing.T) {

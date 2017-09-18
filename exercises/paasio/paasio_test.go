@@ -11,14 +11,6 @@ import (
 	"time"
 )
 
-const targetTestVersion = 3
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestMultiThreaded(t *testing.T) {
 	mincpu := 2
 	minproc := 2
