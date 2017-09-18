@@ -1047,6 +1047,15 @@
       "deprecated": true,
       "slug": "trinary",
       "uuid": "52af9f03-8b6b-4d75-a363-124f3269dccd"
+    },
+    {
+      "slug": "run-length-encoding",
+      "difficulty": 4,
+      "topics": [
+        "strings",
+        "transforming",
+        "parsing"
+      ]
     }
   ],
   "foregone": [
