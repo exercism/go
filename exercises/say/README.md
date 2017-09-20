@@ -9,7 +9,7 @@ Handle the basic case of 0 through 99.
 If the input to the program is `22`, then the output should be
 `'twenty-two'`.
 
-Your program should complain loudly if given a number outside the
+Your program should throw an error if given a number outside the
 range of 0 through 99.
 
 Some good test cases for this program are:
