@@ -10,7 +10,7 @@ If the input to the program is `22`, then the output should be
 `'twenty-two'`.
 
 Your program should complain loudly if given a number outside the
-blessed range.
+range of 0 through 99.
 
 Some good test cases for this program are:
 
@@ -18,8 +18,8 @@ Some good test cases for this program are:
 - 14
 - 50
 - 98
-- -1
-- 100
+- 99 
+- 100 (currently an error case)
 
 ### Extension
 
@@ -28,12 +28,14 @@ loud.
 
 ## Step 2
 
+Handle the the case of 0 through 999,999,999,999.
+
 Implement breaking a number up into chunks of thousands.
 
 So `1234567890` should yield a list like 1, 234, 567, and 890, while the
 far simpler `1000` should yield just 1 and 0.
 
-The program must also report any values that are out of range.
+The program must also report any values that are larger than 999,999,999,999.
 
 ## Step 3
 
@@ -41,8 +43,7 @@ Now handle inserting the appropriate scale word between those chunks.
 
 So `1234567890` should yield `'1 billion 234 million 567 thousand 890'`
 
-The program must also report any values that are out of range.  It's
-fine to stop at "trillion".
+The program must also report any values that are larger than 999,999,999,999.
 
 ## Step 4
 
@@ -50,17 +51,7 @@ Put it all together to get nothing but plain English.
 
 `12345` should give `twelve thousand three hundred forty-five`.
 
-The program must also report any values that are out of range.
-
-### Extensions
-
-Use _and_ (correctly) when spelling out the number in English:
-
-- 14 becomes "fourteen".
-- 100 becomes "one hundred".
-- 120 becomes "one hundred and twenty".
-- 1002 becomes "one thousand and two".
-- 1323 becomes "one thousand three hundred and twenty-three".
+The program must also report any values that are larger than 999,999,999,999.
 
 ## Running the tests
 

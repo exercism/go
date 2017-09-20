@@ -31,6 +31,11 @@ var tests = []struct {
 		"three hundred twenty-one thousand " +
 		"one hundred twenty-three"},
 	{0, "zero"},
+}
+var errorTests = []struct {
+	uint64
+	string
+}{
 	{math.MaxUint64, "eighteen quintillion " +
 		"four hundred forty-six quadrillion " +
 		"seven hundred forty-four trillion " +
@@ -48,8 +53,16 @@ func TestTestVersion(t *testing.T) {
 
 func TestSay(t *testing.T) {
 	for _, test := range tests {
-		if s := Say(test.uint64); s != test.string {
+		if s, _ := Say(test.uint64); s != test.string {
 			t.Errorf("Say(%d) = %q.  Want %q.", test.uint64, s, test.string)
+		}
+	}
+}
+
+func TestErrorSay(t *testing.T) {
+	for _, test := range errorTests {
+		if _, e := Say(test.uint64); e == nil {
+			t.Errorf("Say(%d) should throw an error", test.uint64)
 		}
 	}
 }
