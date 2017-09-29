@@ -1,5 +1,7 @@
 package say
 
+import "errors"
+
 const testVersion = 1
 
 var small = []string{"zero", "one", "two", "three", "four", "five", "six",
@@ -7,12 +9,11 @@ var small = []string{"zero", "one", "two", "three", "four", "five", "six",
 	"fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
 var tens = []string{"ones", "ten", "twenty", "thirty", "forty",
 	"fifty", "sixty", "seventy", "eighty", "ninety"}
-var scale = []string{"thousand", "million", "billion",
-	"trillion", "quadrillion", "quintillion"}
+var scale = []string{"thousand", "million", "billion"}
 
 func Say(n uint64) (string, error) {
 	if n >= 1000000000000 {
-		return "", &errorString{"Value out of range."}
+		return "", errors.New("value out of range")
 	}
 	switch {
 	case n < 20:
@@ -49,12 +50,4 @@ func Say(n uint64) (string, error) {
 		}
 	}
 	return sx, nil
-}
-
-type errorString struct {
-	s string
-}
-
-func (e *errorString) Error() string {
-	return e.s
 }
