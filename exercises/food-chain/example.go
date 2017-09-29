@@ -1,7 +1,5 @@
 package foodchain
 
-const testVersion = 3
-
 var verse = []struct{ eaten, comment string }{
 	{"", ""},
 	{"fly", "I don't know why she swallowed the fly. Perhaps she'll die."},

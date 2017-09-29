@@ -2,8 +2,6 @@ package allergies
 
 import "math"
 
-const testVersion = 1
-
 var allergens = []string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}
 
 func Allergies(i uint) (result []string) {

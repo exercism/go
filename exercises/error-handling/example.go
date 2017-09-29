@@ -1,7 +1,5 @@
 package erratum
 
-const testVersion = 2
-
 func Use(opener ResourceOpener, input string) (err error) {
 	var r Resource
 	for {

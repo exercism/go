@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var validBoards = []string{
 	// zero size board
 	`
@@ -149,12 +147,6 @@ func clear(s string) Board {
 		}
 	}
 	return bytes.Split(b, []byte{'\n'})[1:]
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestValid(t *testing.T) {

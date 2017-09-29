@@ -8,8 +8,6 @@ package matrix
 
 import "testing"
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	m  string
 	sp []Pair
@@ -18,12 +16,6 @@ var tests = []struct {
 	{"1 2\n3 4", []Pair{{0, 1}}},
 	{"18 3 39 19 91\n38 10 8 77 320\n3 4 8 6 7", []Pair{{2, 2}}},
 	{"4 5 4\n3 5 5\n1 5 4", []Pair{{0, 1}, {1, 1}, {2, 1}}},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestSaddle(t *testing.T) {

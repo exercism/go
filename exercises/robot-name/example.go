@@ -7,8 +7,6 @@ import (
 	"math/rand"
 )
 
-const testVersion = 1
-
 type Robot struct {
 	name string
 }

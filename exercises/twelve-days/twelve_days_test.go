@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 type testCase struct {
 	input    int
 	expected string
@@ -49,12 +47,6 @@ func diff(got, want string) string {
 		default:
 			return "no differences found"
 		}
-	}
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
 	}
 }
 

@@ -5,8 +5,6 @@ import (
 	"sort"
 )
 
-const testVersion = 4
-
 type Record struct {
 	ID, Parent int
 }

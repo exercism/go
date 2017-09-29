@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 type codonCase struct {
 	input    string
 	expected string
@@ -42,12 +40,6 @@ var proteinTestCases = []rnaCase{
 	{"AUGUUUUGG", []string{"Methionine", "Phenylalanine", "Tryptophan"}},
 	{"AUGUUUUAA", []string{"Methionine", "Phenylalanine"}},
 	{"UGGUGUUAUUAAUGGUUU", []string{"Tryptophan", "Cysteine", "Tyrosine"}},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestCodon(t *testing.T) {

@@ -25,8 +25,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	in  string
 	out []string
@@ -122,12 +120,6 @@ var tests = []struct {
 }
 
 var _ = recognizeDigit // step 1.
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func TestRecognize(t *testing.T) {
 	for _, test := range tests {

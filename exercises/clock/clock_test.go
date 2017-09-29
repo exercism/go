@@ -5,8 +5,9 @@ import (
 	"testing"
 )
 
-// Clock type API:
+// Clock API:
 //
+// type Clock                      // define the clock type
 // New(hour, minute int) Clock     // a "constructor"
 // (Clock) String() string         // a "stringer"
 // (Clock) Add(minutes int) Clock
@@ -26,14 +27,6 @@ import (
 //
 // For some useful guidelines on when to use a value receiver or a pointer
 // receiver see: https://github.com/golang/go/wiki/CodeReviewComments#receiver-type
-
-const targetTestVersion = 4
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func TestCreateClock(t *testing.T) {
 	for _, n := range timeTests {

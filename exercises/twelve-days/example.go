@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-const testVersion = 1
-
 var verse = map[string]string{
 	"first":    "a Partridge in a Pear Tree.",
 	"twelfth":  "twelve Drummers Drumming",

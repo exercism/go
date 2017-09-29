@@ -5,8 +5,6 @@ import (
 	"math"
 )
 
-const testVersion = 1
-
 var (
 	ErrInvalidBase  = errors.New("invalid base given")
 	ErrInvalidDigit = errors.New("invalid digit given")
