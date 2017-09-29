@@ -2,8 +2,6 @@ package raindrops
 
 import "strconv"
 
-const testVersion = 3
-
 func Convert(number int) string {
 	s := ""
 	if number%3 == 0 {

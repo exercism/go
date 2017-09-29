@@ -2,19 +2,11 @@ package bowling
 
 import "testing"
 
-const targetTestVersion = 1
-
 const previousRollErrorMessage = `FAIL: %s
 	Unexpected error occurred: %q
 	while applying the previous rolls for the
 	test case: %v
 	The error was returned from Roll(%d) for previousRolls[%d].`
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 func applyPreviousRolls(g *Game, rolls []int) (int, int, error) {
 	for index, pins := range rolls {

@@ -7,8 +7,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	uint64
 	string
@@ -43,12 +41,6 @@ var errorTests = []struct {
 		"seven hundred nine million " +
 		"five hundred fifty-one thousand " +
 		"six hundred fifteen"},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestSay(t *testing.T) {

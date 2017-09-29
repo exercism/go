@@ -2,8 +2,6 @@ package isogram
 
 import "testing"
 
-const targetTestVersion = 1
-
 var testCases = []struct {
 	word     string
 	expected bool
@@ -18,12 +16,6 @@ var testCases = []struct {
 	{"the quick brown fox", false},
 	{"Emily Jung Schwartzkopf", true},
 	{"éléphant", false},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestIsIsogram(t *testing.T) {

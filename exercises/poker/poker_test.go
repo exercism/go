@@ -6,11 +6,6 @@ import (
 )
 
 // Define a function BestHand([]string) ([]string, error).
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
-const targetTestVersion = 5
 
 var invalidTestCases = []struct {
 	name string
@@ -56,12 +51,6 @@ var invalidTestCases = []struct {
 		name: "double suits after rank",
 		hand: "2♡ 3♡ 5♡♡ 8♡ 9♡",
 	},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestBestHandValid(t *testing.T) {

@@ -2,8 +2,6 @@ package trinary
 
 import "testing"
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	arg  string
 	want int64
@@ -18,12 +16,6 @@ var tests = []struct {
 	{"0000000000000000000000000000000000000000201", 19, true},
 	{"2021110011022210012102010021220101220221", 9223372036854775807, true},
 	{"2021110011022210012102010021220101220222", 0, false},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestParseTrinary(t *testing.T) {

@@ -5,8 +5,6 @@ import (
 	"sync"
 )
 
-const testVersion = 3
-
 // NewWriteCounter returns an implementation of WriteCounter.  Calls to
 // w.Write() are not guaranteed to be synchronized.
 func NewWriteCounter(w io.Writer) WriteCounter {

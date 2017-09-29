@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-const testVersion = 3
-
 const (
 	white = 1 << iota
 	black
