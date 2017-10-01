@@ -13,6 +13,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"text/template"
 	"time"
 )
@@ -242,5 +243,6 @@ func getRemoteCommit(exercise string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%s %s", c[0].Sha[0:7], c[0].Commit.Message), nil
+	messageFirstLine := strings.Split(c[0].Commit.Message, "\n")[0]
+	return fmt.Sprintf("%s %s", c[0].Sha[0:7], messageFirstLine), nil
 }
