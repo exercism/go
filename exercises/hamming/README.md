@@ -35,6 +35,10 @@ The Hamming distance is only defined for sequences of equal length. This means
 that based on the definition, each language could deal with getting sequences
 of equal length differently.
 
+You may be wondering about the `cases_test.go` file. We explain it in
+the [leap exercise](https://github.com/exercism/go/blob/master/exercises/leap/README.md).
+
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
