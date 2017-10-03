@@ -1024,6 +1024,18 @@
       "uuid": "8d5aaf47-7503-4797-85ed-d35a8755cfd4"
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "run-length-encoding",
+      "topics": [
+       "strings",
+        "transforming",
+        "parsing"
+      ],
+      "unlocked_by": null,
+      "uuid": "29ea064e-9d2a-11e7-abc4-cec278b6b50a"
+},
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
