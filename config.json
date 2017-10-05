@@ -511,6 +511,7 @@
       "topics": [
         "filtering",
         "parsing",
+        "sorting",
         "strings"
       ],
       "unlocked_by": "isogram",
