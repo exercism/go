@@ -18,8 +18,8 @@ sudo: false
 # but since Travis only runs five jobs at a time throughout all of Exercism,
 # it is better citizenship to not test the additional versions.
 go:
-  - 1.8.3
-  - 1.9
+  - 1.8.x
+  - 1.x
   - tip
 
 # Travis runs in a 64 bit environment but beginning with Go 1.5, building a
@@ -61,7 +61,7 @@ script:
 matrix:
   include:
     # Keep this in sync with the latest version.
-    - go: 1.8
+    - go: 1.x
       env: STATIC_CHECKERS=1
   allow_failures:
     - go: tip
