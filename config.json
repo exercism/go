@@ -353,7 +353,8 @@
         "booleans",
         "errors",
         "games",
-        "logic"
+        "logic",
+        "mathematics"
       ],
       "unlocked_by": "matrix",
       "uuid": "95f49a88-6f01-4905-a8b1-a3fcec1f535a"
