@@ -639,6 +639,7 @@
       "slug": "phone-number",
       "topics": [
         "conditionals",
+        "regular_expressions",
         "strings",
         "text_formatting",
         "transforming"
