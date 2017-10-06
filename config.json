@@ -607,6 +607,8 @@
       "difficulty": 9,
       "slug": "react",
       "topics": [
+        "callbacks",
+        "interfaces",
         "reactive_programming"
       ],
       "unlocked_by": "bank-account",
