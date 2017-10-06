@@ -327,8 +327,10 @@
       "difficulty": 4,
       "slug": "pascals-triangle",
       "topics": [
+        "algorithms",
         "arrays",
-        "mathematics"
+        "mathematics",
+        "recursion"
       ],
       "unlocked_by": "tournament",
       "uuid": "92e2a192-5ee9-422a-8699-c231a7136b10"
