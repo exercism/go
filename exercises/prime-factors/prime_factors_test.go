@@ -28,7 +28,7 @@ func TestPrimeFactors(t *testing.T) {
 	for _, test := range tests {
 		actual := Factors(test.input)
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Errorf("prime.Factors(%d) = %v; expected %v",
+			t.Errorf("prime.Factors(%d) = %#v; expected %#v",
 				test.input, actual, test.expected)
 		}
 	}
