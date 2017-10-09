@@ -13,8 +13,9 @@ func TestSay(t *testing.T) {
 			}
 		} else if !ok {
 			t.Fatalf("FAIL: %s\nDid not expect an error", tc.description)
+		} else if actual != tc.expected {
+			t.Fatalf("FAIL: %s\nExpected: %v\nActual: %v", tc.description, tc.expected, actual)
 		}
-
 		t.Logf("PASS: %s", tc.description)
 	}
 }
