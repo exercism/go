@@ -26,13 +26,12 @@
     },
     {
       "alumnus": false,
-      "avatar_url": null,
-      "bio": null,
+      "bio": "Passionate Developer",
       "github_username": "ferhatelmas",
-      "link_text": null,
-      "link_url": null,
-      "name": null,
-      "show_on_website": false
+      "link_text": "ferhatelmas.com",
+      "link_url": "https://ferhatelmas.com",
+      "name": "ferhat elmas",
+      "show_on_website": true
     },
     {
       "github_username": "tleen",
