@@ -112,8 +112,7 @@ So let's quickly run through each file and briefly describe it:
 
 * **.meta/metadata.yml** - Like the `meta/*.md` files, this will
   override the exercise metadata from the problem-specifications
-  repository. For now **the metadata file must be present** for the
-  `description.md` file to be used: see exercism/configlet#65.
+  repository.
 
 In some exercises there can be extra files, for instance the
 [series](exercises/series/) exercise contains extra test files.
