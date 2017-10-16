@@ -1043,6 +1043,19 @@
       "uuid": "29ea064e-9d2a-11e7-abc4-cec278b6b50a"
     },
     {
+      "core": false,
+      "difficulty": 1,
+      "slug": "collatz-conjecture",
+      "topics": [
+        "control-flow (loops)",
+        "integers",
+        "mathematics",
+        "conditionals"
+      ],
+      "unlocked_by": null,
+      "uuid": "0c17444e-65b0-4bc8-a7e1-ee6ab8c2e078"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
