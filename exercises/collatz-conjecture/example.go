@@ -4,8 +4,6 @@ import (
 	"errors"
 )
 
-const testVersion = 1
-
 // CollatzConjecture is an example implementation of the collatz conjecture exercise.
 func CollatzConjecture(n int) (int, error) {
 	if n <= 0 {

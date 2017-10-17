@@ -4,8 +4,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var testCases = []struct {
 	description string
 	input       int
@@ -48,12 +46,6 @@ var testCases = []struct {
 	},
 }
 
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestCollatzConjecture(t *testing.T) {
 	for _, testCase := range testCases {
 		steps, err := CollatzConjecture(testCase.input)
@@ -66,6 +58,10 @@ func TestCollatzConjecture(t *testing.T) {
 			if steps != testCase.expected {
 				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) expected %v, got %v",
 					testCase.description, testCase.input, testCase.expected, steps)
+			}
+			if err != nil {
+				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) returns unexpected error %s",
+					testCase.description, testCase.input, err.Error())
 			}
 		}
 		t.Logf("PASS: %s", testCase.description)
