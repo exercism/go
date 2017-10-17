@@ -55,13 +55,13 @@ func TestCollatzConjecture(t *testing.T) {
 					testCase.description, testCase.input, steps)
 			}
 		} else {
-			if steps != testCase.expected {
-				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) expected %v, got %v",
-					testCase.description, testCase.input, testCase.expected, steps)
-			}
 			if err != nil {
 				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) returns unexpected error %s",
 					testCase.description, testCase.input, err.Error())
+			}
+			if steps != testCase.expected {
+				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) expected %v, got %v",
+					testCase.description, testCase.input, testCase.expected, steps)
 			}
 		}
 		t.Logf("PASS: %s", testCase.description)
