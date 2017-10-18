@@ -1056,6 +1056,18 @@
       "uuid": "0c17444e-65b0-4bc8-a7e1-ee6ab8c2e078"
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "rotational-cipher",
+      "topics": [
+        "integers",
+        "strings",
+        "cryptography"
+      ],
+      "unlocked_by": null,
+      "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
