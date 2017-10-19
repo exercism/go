@@ -231,6 +231,17 @@
       "uuid": "62aa3d20-65d8-440f-9d08-48bbc823f4fe"
     },
     {
+      "core": false,
+      "difficulty": 3,
+      "slug": "sublist",
+      "topics": [
+        "arrays",
+        "control-flow (loops)"
+      ],
+      "unlocked_by": "matrix",
+      "uuid": "4174c0c6-cb8a-474c-9327-737b7a86326e"
+    },
+    {
       "core": true,
       "difficulty": 5,
       "slug": "error-handling",
