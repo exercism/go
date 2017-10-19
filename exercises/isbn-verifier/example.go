@@ -1,7 +1,6 @@
 package isbn
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
@@ -10,11 +9,9 @@ func IsVaildISBN(isbn string) bool {
 
 	// step 1
 	isbn = dropHyphen(isbn)
-	fmt.Println("step1: ", isbn)
 
 	// step 2
 	ary := strToAry(isbn)
-	fmt.Println("step2: ", ary)
 
 	if len(ary) != 10 {
 		return false

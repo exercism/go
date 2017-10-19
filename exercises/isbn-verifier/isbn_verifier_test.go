@@ -12,12 +12,12 @@ func TestTestVersion(t *testing.T) {
 	}
 }
 
-func TestSteps(t *testing.T) {
+func TestIsVaildISBN(t *testing.T) {
 	for _, test := range testCases {
-		observed := IsVaildISBN(test.input)
+		observed := IsVaildISBN(test.isbn)
 		if observed != test.expected {
 			t.Fatalf("IsValidISBN(%s) = %s, want %s (%s)",
-				test.input, observed, test.expected, test.description)
+				test.isbn, observed, test.expected, test.description)
 		}
 	}
 }
