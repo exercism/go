@@ -241,6 +241,17 @@
       "uuid": "cd05b63b-df20-4c8d-8743-53033acf7696"
     },
     {
+      "core": false,
+      "difficulty": 3,
+      "slug": "flatten-array",
+      "topics": [
+        "arrays",
+        "recursion"
+      ],
+      "unlocked_by": "error-handling",
+      "uuid": "40cc79a6-a6ea-45a0-944e-b4f3baabebc2"
+    },
+    {
       "core": true,
       "difficulty": 4,
       "slug": "bank-account",
