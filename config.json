@@ -1057,14 +1057,14 @@
     },
     {
       "core": false,
-      "difficulty": 4,
+      "difficulty": 2,
       "slug": "rotational-cipher",
       "topics": [
         "integers",
         "strings",
         "cryptography"
       ],
-      "unlocked_by": null,
+      "unlocked_by": "luhn",
       "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
     },
     {
