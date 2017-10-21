@@ -8,12 +8,12 @@ const bookPrice = 8
 
 var discountTiers = [...]float64{0, 0.05, 0.1, 0.2, 0.25}
 
-// CalculateBasketCost implements the book store exercise.
-func CalculateBasketCost(books []int) float64 {
-	return calculateBasketCost(books, 0.0)
+// Cost implements the book store exercise.
+func Cost(books []int) float64 {
+	return cost(books, 0)
 }
 
-func calculateBasketCost(books []int, priceSoFar float64) float64 {
+func cost(books []int, priceSoFar float64) float64 {
 	if len(books) == 0 {
 		return priceSoFar
 	}
@@ -26,7 +26,7 @@ func calculateBasketCost(books []int, priceSoFar float64) float64 {
 		copy(newRemainingBooks, remainingBooks)
 		newRemainingBooks = append(newRemainingBooks, distinctBooks[i:]...)
 
-		price := calculateBasketCost(newRemainingBooks, priceSoFar+costOfGroupSize(i))
+		price := cost(newRemainingBooks, priceSoFar+groupCost(i))
 		minPrice = math.Min(minPrice, price)
 	}
 
@@ -34,19 +34,19 @@ func calculateBasketCost(books []int, priceSoFar float64) float64 {
 }
 
 func getDistinctBooks(books []int) (distinct []int, remaining []int) {
-	distinctMap := make(map[int]bool)
+	exists := make(map[int]bool)
 	for _, book := range books {
-		if exists := distinctMap[book]; exists {
+		if exists[book] {
 			remaining = append(remaining, book)
 		} else {
 			distinct = append(distinct, book)
-			distinctMap[book] = true
+			exists[book] = true
 		}
 	}
 
-	return distinct, remaining
+	return
 }
 
-func costOfGroupSize(groupSize int) float64 {
+func groupCost(groupSize int) float64 {
 	return float64(bookPrice*groupSize) * (1.00 - discountTiers[groupSize-1])
 }

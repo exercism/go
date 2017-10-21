@@ -71,21 +71,21 @@ var testCases = []struct {
 	},
 }
 
-func TestCalculateBasketCost(t *testing.T) {
+func TestCost(t *testing.T) {
 	for _, testCase := range testCases {
-		cost := CalculateBasketCost(testCase.basket)
+		cost := Cost(testCase.basket)
 		if testCase.expected != cost {
-			t.Fatalf("FAIL: %s\n\tCalculateBasketCost(%v) expected %v, got %v",
+			t.Fatalf("FAIL: %s\n\tCost(%v) expected %v, got %v",
 				testCase.description, testCase.basket, testCase.expected, cost)
 		}
 		t.Logf("PASS: %s", testCase.description)
 	}
 }
 
-func BenchmarkCollatzConjecture(b *testing.B) {
+func BenchmarkCost(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, testCase := range testCases {
-			CalculateBasketCost(testCase.basket)
+			Cost(testCase.basket)
 		}
 	}
 }
