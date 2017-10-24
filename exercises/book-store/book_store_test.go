@@ -45,7 +45,7 @@ var testCases = []struct {
 		expected:    51.20,
 	},
 	{
-		description: "groups of four plush group of two is is cheaper than two groups of three",
+		description: "groups of four plus group of two is is cheaper than two groups of three",
 		basket:      []int{1, 1, 2, 2, 3, 4},
 		expected:    40.80,
 	},
