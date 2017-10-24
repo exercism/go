@@ -1068,6 +1068,20 @@
     },
     {
       "core": false,
+      "difficulty": 8,
+      "slug": "book-store",
+      "topics": [
+        "integers",
+        "lists",
+        "algorithms",
+        "mathematics",
+        "floating_point_numbers"
+      ],
+      "unlocked_by": "flatten-array",
+      "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097"
+    },
+    {
+      "core": false,
       "difficulty": 2,
       "slug": "rotational-cipher",
       "topics": [
