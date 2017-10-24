@@ -1068,6 +1068,18 @@
     },
     {
       "core": false,
+      "difficulty": 4,
+      "slug": "spiral-matrix",
+      "topics": [
+        "loops",
+        "arrays",
+        "matrices"
+      ],
+      "unlocked_by": "matrix",
+      "uuid": "4fc21001-2ada-41f6-92b6-cf0152df18bf"
+    },
+    {
+      "core": false,
       "difficulty": 8,
       "slug": "book-store",
       "topics": [
