@@ -241,6 +241,17 @@
       "uuid": "cd05b63b-df20-4c8d-8743-53033acf7696"
     },
     {
+      "core": false,
+      "difficulty": 3,
+      "slug": "flatten-array",
+      "topics": [
+        "arrays",
+        "recursion"
+      ],
+      "unlocked_by": "error-handling",
+      "uuid": "40cc79a6-a6ea-45a0-944e-b4f3baabebc2"
+    },
+    {
       "core": true,
       "difficulty": 4,
       "slug": "bank-account",
@@ -1066,6 +1077,32 @@
       ],
       "unlocked_by": "matrix",
       "uuid": "4fc21001-2ada-41f6-92b6-cf0152df18bf"
+    },
+    {
+      "core": false,
+      "difficulty": 8,
+      "slug": "book-store",
+      "topics": [
+        "integers",
+        "lists",
+        "algorithms",
+        "mathematics",
+        "floating_point_numbers"
+      ],
+      "unlocked_by": "flatten-array",
+      "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097"
+    },
+    {
+      "core": false,
+      "difficulty": 2,
+      "slug": "rotational-cipher",
+      "topics": [
+        "integers",
+        "strings",
+        "cryptography"
+      ],
+      "unlocked_by": "luhn",
+      "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
     },
     {
       "deprecated": true,
