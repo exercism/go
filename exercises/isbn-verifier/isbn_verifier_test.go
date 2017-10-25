@@ -28,8 +28,8 @@ func TestIsValidISBN(t *testing.T) {
 	for _, test := range testCases {
 		observed := IsValidISBN(test.isbn)
 		if observed != test.expected {
-			t.Fatalf("IsValidISBN(%s) = %t, want %t (%s)",
-				test.isbn, observed, test.expected, test.description)
+			t.Fatalf("got %t, want %t, %s (%s)",
+				observed, test.expected, test.description, test.isbn)
 		}
 	}
 }

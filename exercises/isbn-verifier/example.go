@@ -9,17 +9,13 @@ import (
 
 func IsValidISBN(isbn string) bool {
 
-	// step 1
 	isbn = dropHyphen(isbn)
 
-	// step 2
 	ary, err := strToSlice(isbn)
-
 	if len(ary) != 10 || err != nil {
 		return false
 	}
 
-	// step 3
 	return calcCheckDigit(ary)
 }
 
