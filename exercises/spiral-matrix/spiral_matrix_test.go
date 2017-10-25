@@ -19,34 +19,34 @@ var testCases = []struct {
 		description: "trivial spiral",
 		input:       1,
 		expected: [][]int{
-			[]int{1},
+			{1},
 		},
 	},
 	{
 		description: "spiral of size 2",
 		input:       2,
 		expected: [][]int{
-			[]int{1, 2},
-			[]int{4, 3},
+			{1, 2},
+			{4, 3},
 		},
 	},
 	{
 		description: "spiral of size 3",
 		input:       3,
 		expected: [][]int{
-			[]int{1, 2, 3},
-			[]int{8, 9, 4},
-			[]int{7, 6, 5},
+			{1, 2, 3},
+			{8, 9, 4},
+			{7, 6, 5},
 		},
 	},
 	{
 		description: "spiral of size 4",
 		input:       4,
 		expected: [][]int{
-			[]int{1, 2, 3, 4},
-			[]int{12, 13, 14, 5},
-			[]int{11, 16, 15, 6},
-			[]int{10, 9, 8, 7},
+			{1, 2, 3, 4},
+			{12, 13, 14, 5},
+			{11, 16, 15, 6},
+			{10, 9, 8, 7},
 		},
 	},
 }
