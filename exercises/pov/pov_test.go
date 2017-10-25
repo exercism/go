@@ -22,7 +22,7 @@ import (
 //
 // The test program will create a graph with New, then use AddNode to add
 // leaf nodes.  After that it will use AddArc to construct the rest of the tree
-// from the bottom up.  That is, the `to` argument will aways specify a node
+// from the bottom up.  That is, the `to` argument will always specify a node
 // that has already been added.
 //
 // ArcList is a dump method to let the test program see your graph.  It must
