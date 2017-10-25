@@ -34,7 +34,25 @@ It's getting even trickier since the check-digit of an ISBN-10 can be 'X'.
 
 * Generate a valid ISBN-13 from the input ISBN-10 (and maybe verify it again with a derived verifier)
 
-* Generate valid ISBN, maybe even from a given starting ISBN## Source
+* Generate valid ISBN, maybe even from a given starting ISBN
+## Running the tests
+
+To run the tests run the command `go test` from within the exercise directory.
+
+If the test suite contains benchmarks, you can run these with the `-bench`
+flag:
+
+    go test -bench .
+
+Keep in mind that each reviewer will run benchmarks on a different machine, with
+different specs, so the results from these benchmark tests may vary.
+
+## Further information
+
+For more detailed information about the Go track, including how to get help if
+you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
+
+## Source
 
 Converting a string into a number and some basic processing utilizing a relatable real world example. [https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-10_check_digit_calculation](https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-10_check_digit_calculation)
 
