@@ -1105,6 +1105,15 @@
       "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
     },
     {
+      "difficulty": 2,
+      "slug": "isbn-verifier",
+      "topics": [
+        "arrays"
+      ],
+      "unlocked_by": "difference-of-squares",
+      "uuid": "6b93edd9-0de4-4c80-6419-68b2f8232b91c3425fa"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
