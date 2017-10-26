@@ -4,8 +4,8 @@ import (
 	"log"
 	"text/template"
 
+	".."
 	"../../../gen"
-	"github.com/exercism/go/exercises/sublist"
 )
 
 func main() {
