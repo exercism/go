@@ -1,8 +1,8 @@
 package lsproduct
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: e79b832 largest-series-product: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 var tests = []struct {
 	digits  string

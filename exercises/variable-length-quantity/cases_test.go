@@ -1,8 +1,8 @@
 package variablelengthquantity
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: d6a62f7 variable-length-quantity: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 // Encode a series of integers, producing a series of bytes.
 var encodeTestCases = []struct {

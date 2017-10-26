@@ -1,8 +1,8 @@
 package atbash
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: bb4f220 atbash-cipher: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 type atbashTest struct {
 	s        string

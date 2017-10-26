@@ -1,8 +1,8 @@
 package strand
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: cb1fd3a rna-transcription: rephrase negative test descriptions
-// x-common version: 1.0.1
+// Problem Specifications Version: 1.0.1
 
 var rnaTests = []struct {
 	input    string

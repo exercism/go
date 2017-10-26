@@ -1,8 +1,8 @@
 package poker
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: d078ba8 poker: Add canonical-data (#793)
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 type validTestCase struct {
 	name  string

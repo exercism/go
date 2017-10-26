@@ -1,8 +1,8 @@
 package bowling
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 26e345e [Bowling] Fix case descriptions (#832)
-// x-common version: 1.0.1
+// Problem Specifications Version: 1.0.1
 
 var scoreTestCases = []struct {
 	description   string
