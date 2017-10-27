@@ -1,8 +1,8 @@
 package wordcount
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: cd26d49 word-count: Make exercise schema-compliant  (#634)
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
 	description string

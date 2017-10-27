@@ -1,8 +1,8 @@
 package clock
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 54c3b74 Cleanup canonical-data for clock
-// x-common version: 1.0.1
+// Problem Specifications Version: 1.0.1
 
 // Create a new clock with an initial time
 var timeTests = []struct {

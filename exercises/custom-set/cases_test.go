@@ -1,8 +1,8 @@
 package stringset
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 4527635 custom-set: Fix description to match property name
-// x-common version: 1.0.1
+// Problem Specifications Version: 1.0.1
 
 // Returns true if the set contains no elements
 var emptyCases = []unaryBoolCase{

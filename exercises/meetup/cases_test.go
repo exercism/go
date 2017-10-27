@@ -1,8 +1,8 @@
 package meetup
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: fe9630e meetup: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 import "time"
 

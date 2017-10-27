@@ -1,8 +1,8 @@
 package secret
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 8acd78c Replace x-common with problem-specifications
-// x-common version: 1.1.0
+// Problem Specifications Version: 1.1.0
 
 type secretHandshakeTest struct {
 	code uint

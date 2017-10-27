@@ -1,8 +1,8 @@
 package luhn
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: c826372 luhn: Make canonical-data.json compliant
-// x-common version: 1.0.0
+// Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
 	description string

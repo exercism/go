@@ -1,8 +1,8 @@
 package forth
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 1b4165d Add test for Forth that an operator can be overridden.
-// x-common version: 1.2.0
+// Problem Specifications Version: 1.2.0
 
 type testGroup struct {
 	group string
