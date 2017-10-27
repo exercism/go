@@ -46,6 +46,18 @@
       "uuid": "19957346-dedf-441e-85ea-656cac0d96d8"
     },
     {
+      "core": false,
+      "difficulty": 2,
+      "slug": "space-age",
+      "topics": [
+        "floating_point_numbers",
+        "if_else_statements",
+        "mathematics"
+      ],
+      "unlocked_by": "hello-world",
+      "uuid": "5a6baa1c-8ca8-4ebe-a1d2-1e0687ca846a"
+    },
+    {
       "core": true,
       "difficulty": 1,
       "slug": "two-fer",
@@ -1151,7 +1163,6 @@
     }
   ],
   "foregone": [
-    "space-age",
     "linked-list",
     "simple-linked-list"
   ],
