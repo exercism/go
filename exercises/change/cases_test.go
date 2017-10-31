@@ -1,8 +1,8 @@
 package change
 
-// Source: exercism/x-common
-// Commit: 3d8b5b3 change: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Source: exercism/problem-specifications
+// Commit: 52cf1cf Add test for incorrect greedy algorithm
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description    string
@@ -52,6 +52,13 @@ var testCases = []struct {
 		21,
 		true,
 		[]int{2, 2, 2, 5, 10},
+	},
+	{
+		"another possible change without unit coins available",
+		[]int{4, 5},
+		27,
+		true,
+		[]int{4, 4, 4, 5, 5, 5},
 	},
 	{
 		"no coins make 0 change",

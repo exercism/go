@@ -2,14 +2,6 @@ package luhn
 
 import "testing"
 
-const targetTestVersion = 2
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Errorf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestValid(t *testing.T) {
 	for _, test := range testCases {
 		if ok := Valid(test.input); ok != test.ok {

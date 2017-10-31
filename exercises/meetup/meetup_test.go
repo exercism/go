@@ -14,8 +14,6 @@ WeekSchedule Teenth
 func Day(WeekSchedule, time.Weekday, time.Month, int) int
 */
 
-const targetTestVersion = 3
-
 var weekName = map[WeekSchedule]string{
 	First:  "first",
 	Second: "second",
@@ -23,12 +21,6 @@ var weekName = map[WeekSchedule]string{
 	Fourth: "fourth",
 	Teenth: "teenth",
 	Last:   "last",
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestDay(t *testing.T) {

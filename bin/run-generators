@@ -1,0 +1,11 @@
+#!/bin/sh
+
+for dir in exercises/*/; do
+  file="$dir/.meta/gen.go"
+  if [ -f $file ]; then
+    cd "$dir/.meta"
+    echo "Generating $(basename $dir)"
+    go run gen.go
+    cd -
+  fi
+done

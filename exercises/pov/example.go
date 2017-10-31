@@ -5,8 +5,6 @@ import (
 	"log"
 )
 
-const testVersion = 2
-
 type Graph struct {
 	arcs   [][]int
 	labels []string

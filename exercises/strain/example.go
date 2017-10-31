@@ -1,7 +1,5 @@
 package strain
 
-const testVersion = 1
-
 type Ints []int
 
 func (s Ints) Keep(f func(int) bool) (r Ints) {

@@ -1,8 +1,8 @@
 package acronym
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: cae7ae1 acronym: remove test case with mixed-case phrase (#788)
-// x-common version: 1.1.0
+// Problem Specifications Version: 1.1.0
 
 type acronymTest struct {
 	input    string

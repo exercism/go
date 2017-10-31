@@ -28,14 +28,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 4
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 // A first set of tests uses Set.String() to judge correctness.
 
 func TestNew(t *testing.T) {

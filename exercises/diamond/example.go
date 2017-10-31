@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-const testVersion = 1
-
 const startIndex = 'A'
 
 // Gen builds a diamond

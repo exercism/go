@@ -7,8 +7,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 /* API to implement:
 
 type Product struct {
@@ -73,12 +71,6 @@ var bonusData = []struct {
 		Product{-4, [][2]int{{-2, 2}}},
 		Product{4, [][2]int{{-2, -2}, {2, 2}}},
 		""},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestPalindromeProducts(t *testing.T) {

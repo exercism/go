@@ -5,14 +5,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestChange(t *testing.T) {
 	for _, tc := range testCases {
 		actual, err := Change(tc.coins, tc.target)
@@ -22,7 +14,7 @@ func TestChange(t *testing.T) {
 					tc.description, tc.coins, tc.target, tc.expectedChange, err.Error())
 			} else {
 				if !reflect.DeepEqual(actual, tc.expectedChange) {
-					t.Fatalf("%s : Change(%v, %d): expected %v, actual %v",
+					t.Fatalf("%s : Change(%v, %d): expected %#v, actual %#v",
 						tc.description, tc.coins, tc.target, tc.expectedChange, actual)
 				} else {
 					t.Logf("PASS: %s", tc.description)

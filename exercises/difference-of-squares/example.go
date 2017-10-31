@@ -1,7 +1,5 @@
 package diffsquares
 
-const testVersion = 1
-
 func SquareOfSums(n int) int {
 	s := 0
 	for i := 0; i <= n; i++ {

@@ -2,14 +2,6 @@ package scrabble
 
 import "testing"
 
-const targetTestVersion = 5
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
-
 func TestScore(t *testing.T) {
 	for _, test := range scrabbleScoreTests {
 		if actual := Score(test.input); actual != test.expected {

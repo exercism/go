@@ -17,14 +17,6 @@ var classificationTestCases = []struct {
 	{8128, ClassificationPerfect},
 }
 
-const targetTestVersion = 1
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
-}
-
 func TestGivesPositiveRequiredError(t *testing.T) {
 	if _, err := Classify(0); err != ErrOnlyPositive {
 		t.Errorf("Expected error %q but got %q", ErrOnlyPositive, err)

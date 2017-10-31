@@ -14,8 +14,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 type testCase struct {
 	g    int64    // prime, generator
 	p    *big.Int // prime, modulus
@@ -79,12 +77,6 @@ var tests = []testCase{
 }
 
 var _one = big.NewInt(1)
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
-}
 
 // test that PrivateKey returns numbers in range, returns different numbers.
 func TestPrivateKey(t *testing.T) {

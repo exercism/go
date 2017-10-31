@@ -1,8 +1,8 @@
 package brackets
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 855c591 bracket-push: add test case (#747)
-// x-common version: 1.1.0
+// Problem Specifications Version: 1.1.0
 
 type bracketTest struct {
 	input    string

@@ -1,8 +1,8 @@
 package summultiples
 
-// Source: exercism/x-common
-// Commit: 72b1496 sum-of-multiples: Fix canonical-data.json formatting
-// x-common version: 1.0.0
+// Source: exercism/problem-specifications
+// Commit: df076b2 sum-of-multiples: Add up to 7 test case (#896)
+// Problem Specifications Version: 1.1.0
 
 var varTests = []struct {
 	divisors []int
@@ -11,6 +11,7 @@ var varTests = []struct {
 }{
 	{[]int{3, 5}, 1, 0},             // multiples of 3 or 5 up to 1
 	{[]int{3, 5}, 4, 3},             // multiples of 3 or 5 up to 4
+	{[]int{3}, 7, 9},                // multiples of 3 up to 7
 	{[]int{3, 5}, 10, 23},           // multiples of 3 or 5 up to 10
 	{[]int{3, 5}, 100, 2318},        // multiples of 3 or 5 up to 100
 	{[]int{3, 5}, 1000, 233168},     // multiples of 3 or 5 up to 1000

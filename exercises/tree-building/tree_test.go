@@ -10,11 +10,6 @@ import (
 // Define a function Build(records []Record) (*Node, error)
 // where Record is a struct containing int fields ID and Parent
 // and Node is a struct containing int field ID and []*Node field Children.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
-const targetTestVersion = 4
 
 var successTestCases = []struct {
 	name     string
@@ -208,12 +203,6 @@ var failureTestCases = []struct {
 
 func (n Node) String() string {
 	return fmt.Sprintf("%d:%s", n.ID, n.Children)
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestMakeTreeSuccess(t *testing.T) {

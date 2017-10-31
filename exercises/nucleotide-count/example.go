@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-const testVersion = 2
-
 // Histogram is a mapping from nucleotide to its count in given DNA
 type Histogram map[byte]int
 

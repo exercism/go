@@ -1,7 +1,5 @@
 package say
 
-const testVersion = 1
-
 var small = []string{"zero", "one", "two", "three", "four", "five", "six",
 	"seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen",
 	"fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
@@ -10,7 +8,14 @@ var tens = []string{"ones", "ten", "twenty", "thirty", "forty",
 var scale = []string{"thousand", "million", "billion",
 	"trillion", "quadrillion", "quintillion"}
 
-func Say(n uint64) string {
+func Say(n int64) (value string, ok bool) {
+	if n < 0 || n > 999999999999 {
+		return
+	}
+	return say(n), true
+}
+
+func say(n int64) string {
 	switch {
 	case n < 20:
 		return small[n]
@@ -25,18 +30,19 @@ func Say(n uint64) string {
 		h := small[n/100] + " hundred"
 		s := n % 100
 		if s > 0 {
-			h += " " + Say(s)
+			h += " " + say(s)
 		}
 		return h
 	}
 	sx := ""
+
 	if p := n % 1000; p > 0 {
-		sx = Say(p)
+		sx = say(p)
 	}
 	for i := 0; n >= 1000; i++ {
 		n /= 1000
 		if p := n % 1000; p > 0 {
-			ix := Say(p) + " " + scale[i]
+			ix := say(p) + " " + scale[i]
 			if sx > "" {
 				ix += " " + sx
 			}

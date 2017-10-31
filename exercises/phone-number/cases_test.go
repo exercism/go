@@ -1,8 +1,8 @@
 package phonenumber
 
-// Source: exercism/x-common
+// Source: exercism/problem-specifications
 // Commit: 39cba0d phone-number: Remove test using malformed input. (#772)
-// x-common version: 1.2.0
+// Problem Specifications Version: 1.2.0
 
 // Cleanup user-entered phone numbers
 var numberTests = []struct {

@@ -2,8 +2,6 @@ package cipher
 
 import "strings"
 
-const testVersion = 1
-
 type shift int
 
 func NewCaesar() Cipher { return NewShift(3) }

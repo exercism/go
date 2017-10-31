@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 2
-
 // POV / reparent / change root of a tree
 //
 // API:
@@ -24,7 +22,7 @@ const targetTestVersion = 2
 //
 // The test program will create a graph with New, then use AddNode to add
 // leaf nodes.  After that it will use AddArc to construct the rest of the tree
-// from the bottom up.  That is, the `to` argument will aways specify a node
+// from the bottom up.  That is, the `to` argument will always specify a node
 // that has already been added.
 //
 // ArcList is a dump method to let the test program see your graph.  It must
@@ -257,12 +255,6 @@ func (tc testCase) testResult(got, want []string, msg string, t *testing.T) {
 		t.Log(" ", s)
 	}
 	t.FailNow()
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestConstruction(t *testing.T) {

@@ -198,21 +198,6 @@ create their own solutions from scratch. Some of the later exercises may have st
 files if the author thinks there may be implementation confusion, a particularly
 difficult concept, or boilerplate code needed.
 
-### Problem Versioning
-
-Each problem defines a `const targetTestVersion` in the test file, and validates
-that the solution has defined a matching value `testVersion`. Any Go track developer
-that changes the test file or test data must increment `targetTestVersion`.
-
-The benefit of all this is that reviewers can see which test version a posted
-solution was written for and be spared confusion over why an old posted solution
-might not pass current tests.
-
-Notice that neither the `testVersion` nor the `targetTestVersion` is exported.
-This is so that golint will not complain about a missing comment. In general,
-adding tests for unexported names is considered an anti-pattern, but in this
-case the trade-off seems acceptable.
-
 ### Errors
 
 We like errors in Go. It's not idiomatic Go to ignore invalid data or have undefined

@@ -4,8 +4,6 @@ import (
 	"testing"
 )
 
-const targetTestVersion = 1
-
 var testCases = []struct {
 	input       string
 	expectedNum int64
@@ -16,12 +14,6 @@ var testCases = []struct {
 	{"1234567", 342391, false},
 	{"carrot", 0, true},
 	{"35682", 0, true},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
-	}
 }
 
 func TestParseOctal(t *testing.T) {

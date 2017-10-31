@@ -2,8 +2,6 @@ package wordy
 
 import "testing"
 
-const targetTestVersion = 1
-
 var tests = []struct {
 	q  string
 	a  int
@@ -25,12 +23,6 @@ var tests = []struct {
 	{"What is -12 divided by 2 divided by -3?", 2, true},
 	{"What is 53 cubed?", 0, false},
 	{"Who is the president of the United States?", 0, false},
-}
-
-func TestTestVersion(t *testing.T) {
-	if testVersion != targetTestVersion {
-		t.Fatalf("Found testVersion = %v, want %v", testVersion, targetTestVersion)
-	}
 }
 
 func TestAnswer(t *testing.T) {
