@@ -4,10 +4,11 @@ import "math"
 
 var allergens = []string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}
 
-func Allergies(i uint) (result []string) {
+func Allergies(i uint) []string {
+	var result []string
 	for _, v := range allergens {
 		if AllergicTo(i, v) {
-			result = append(result, []string{v}...)
+			result = append(result, v)
 		}
 	}
 	return result
