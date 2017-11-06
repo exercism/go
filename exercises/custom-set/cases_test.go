@@ -1,8 +1,8 @@
 package stringset
 
 // Source: exercism/problem-specifications
-// Commit: 4527635 custom-set: Fix description to match property name
-// Problem Specifications Version: 1.0.1
+// Commit: 390a769 custom-set: add test for inequality of subset (#991)
+// Problem Specifications Version: 1.1.0
 
 // Returns true if the set contains no elements
 var emptyCases = []unaryBoolCase{
@@ -127,6 +127,11 @@ var equalCases = []binBoolCase{
 	{ // sets with different elements are not equal
 		[]string{"a", "b", "c"},
 		[]string{"a", "b", "d"},
+		false,
+	},
+	{ // set is not equal to larger set with same elements
+		[]string{"a", "b", "c"},
+		[]string{"a", "b", "c", "d"},
 		false,
 	},
 }
