@@ -1,14 +1,12 @@
 package pangram
 
-import (
-	"strings"
-)
+import "strings"
 
+// IsPangram checks if given string is a pangram
 func IsPangram(s string) bool {
-	lowerString := strings.ToLower(s)
 	var check [26]bool
 	var count int
-	for _, c := range lowerString {
+	for _, c := range strings.ToLower(s) {
 		if c >= 'a' {
 			if c > 'z' {
 				continue
