@@ -1,7 +1,5 @@
 package dna
 
-const testVersion = 2
-
 // Histogram is a mapping from nucleotide to its count in given DNA.
 // Choose a suitable data type.
 type Histogram

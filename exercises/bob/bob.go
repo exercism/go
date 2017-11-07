@@ -5,8 +5,6 @@
 // https://golang.org/doc/effective_go.html#commentary
 package bob
 
-const testVersion = 3
-
 // Hey should have a comment documenting it.
 func Hey(remark string) string {
 	// Write some code here to pass the test suite.
