@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: 1b4165d Add test for Forth that an operator can be overridden.
-// Problem Specifications Version: 1.2.0
+// Commit: 3cb5e76 forth: Remove test for empty input (#976)
+// Problem Specifications Version: 1.3.0
 
 type testGroup struct {
 	group string
@@ -19,11 +19,6 @@ var testGroups = []testGroup{
 	{
 		group: "parsing and numbers",
 		tests: []testCase{
-			{
-				"empty input results in empty stack",
-				[]string{},
-				[]int{},
-			},
 			{
 				"numbers just get pushed onto the stack",
 				[]string{"1 2 3 4 5"},
