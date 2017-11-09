@@ -66,7 +66,7 @@
         "strings"
       ],
       "unlocked_by": null,
-      "uuid": "dc4ad67d-0fe4-0880-5a13-3aebb8759bcc3095de1"
+      "uuid": "08a6c476-9ffe-4ae3-9996-cd299cc82fca"
     },
     {
       "core": true,
@@ -1134,7 +1134,7 @@
         "arrays"
       ],
       "unlocked_by": "difference-of-squares",
-      "uuid": "6b93edd9-0de4-4c80-6419-68b2f8232b91c3425fa"
+      "uuid": "3530f2f0-ee5f-46a3-a8ee-e9927a637253"
     },
     {
       "deprecated": true,
