@@ -1137,6 +1137,18 @@
       "uuid": "6b93edd9-0de4-4c80-6419-68b2f8232b91c3425fa"
     },
     {
+      "core": false,
+      "difficulty": 6,
+      "slug": "zebra-puzzle",
+      "topics": [
+        "arrays",
+        "algorithms",
+        "searching"
+      ],
+      "unlocked_by": "bank-account",
+      "uuid": "e31199ac-e657-4997-b931-63893a575c08"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
