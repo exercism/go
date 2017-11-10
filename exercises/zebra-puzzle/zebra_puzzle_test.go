@@ -1,23 +1,22 @@
-package zebra_puzzle
+package zebra
 
 import "testing"
 
-func TestSolve(t *testing.T) {
-	const (
-		expectedWaterDrinker = "Norwegian"
-		expectedZebraOwner   = "Japanese"
-	)
-	waterDrinker, zebraOwner := Solve()
-	if waterDrinker != expectedWaterDrinker {
-		t.Fatalf("FAILED: For waterDrinker, expected %q, actual %q", expectedWaterDrinker, waterDrinker)
+func TestSolvePuzzle(t *testing.T) {
+	expected := Solution{DrinksWater: "Norwegian", OwnsZebra: "Japanese"}
+	actual := SolvePuzzle()
+	if expected.DrinksWater != actual.DrinksWater {
+		t.Fatalf("FAILED: The resident who drinks water should be %q. Actual: %q",
+			expected.DrinksWater, actual.DrinksWater)
 	}
-	if zebraOwner != expectedZebraOwner {
-		t.Fatalf("FAILED: For zebraOwner, expected %q, actual %q", expectedZebraOwner, zebraOwner)
+	if expected.OwnsZebra != actual.OwnsZebra {
+		t.Fatalf("FAILED: The resident who owns the zebra should be %q. Actual: %q",
+			expected.OwnsZebra, actual.OwnsZebra)
 	}
 }
 
 func BenchmarkScore(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Solve()
+		SolvePuzzle()
 	}
 }

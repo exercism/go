@@ -1,4 +1,4 @@
-package zebra_puzzle
+package zebra
 
 import "fmt"
 
@@ -22,11 +22,14 @@ import "fmt"
 
 */
 
+type Solution struct {
+	DrinksWater string
+	OwnsZebra   string
+}
+
 // Solve returns the answers to the two questions in the zebra puzzle,
 // which are "Who drinks water?", and "Who owns the zebra?"
-func Solve() (waterDrinker string, zebraOwner string) {
-
-	// This solution is modeled somewhat after the Exercism-Python solution.
+func SolvePuzzle() (solution Solution) {
 
 	// 1. There are five houses.
 	const (
@@ -51,105 +54,117 @@ func Solve() (waterDrinker string, zebraOwner string) {
 		iRed, iGreen, iIvory, iYellow, iBlue := assign(houseColors)
 
 		// 6. The green house is immediately to the right of the ivory house.
-		if justRightOf(iGreen, iIvory) {
+		if !justRightOf(iGreen, iIvory) {
+			continue
+		}
 
-			for _, residents := range houseIdentityPermutations {
+		for _, residents := range houseIdentityPermutations {
 
-				iEnglishman, iSpaniard, iUkranian, iJapanese, iNorwegian := assign(residents)
+			iEnglishman, iSpaniard, iUkrainian, iNorwegian, iJapanese := assign(residents)
 
-				// 2. The Englishman lives in the red house.
-				// 10. The Norwegian lives in the first house.
-				// 15. The Norwegian lives next to the blue house.
-				if iEnglishman == iRed && iNorwegian == firstHouse && nextTo(iNorwegian, iBlue) {
+			// 2. The Englishman lives in the red house.
+			// 10. The Norwegian lives in the first house.
+			// 15. The Norwegian lives next to the blue house.
+			if iEnglishman != iRed || iNorwegian != firstHouse || !nextTo(iNorwegian, iBlue) {
+				continue
+			}
 
-					for _, beverages := range houseIdentityPermutations {
+			for _, beverages := range houseIdentityPermutations {
 
-						iCoffee, iTea, iMilk, iOrangeJuice, iWater := assign(beverages)
+				iCoffee, iTea, iMilk, iOrangeJuice, iWater := assign(beverages)
 
-						// 4. Coffee is drunk in the green house.
-						// 5. The Ukrainian drinks tea.
-						// 9. Milk is drunk in the middle house.
-						if iCoffee == iGreen && iUkranian == iTea && iMilk == middleHouse {
+				// 4. Coffee is drunk in the green house.
+				// 5. The Ukrainian drinks tea.
+				// 9. Milk is drunk in the middle house.
+				if iCoffee != iGreen || iUkrainian != iTea || iMilk != middleHouse {
+					continue
+				}
 
-							for _, smokeBrands := range houseIdentityPermutations {
+				for _, smokeBrands := range houseIdentityPermutations {
 
-								iOldGold, iKools, iChesterfields, iLuckyStrike, iParliaments := assign(smokeBrands)
+					iOldGold, iKools, iChesterfields, iLuckyStrike, iParliaments := assign(smokeBrands)
 
-								// 8. Kools are smoked in the yellow house.
-								// 13. The Lucky Strike smoker drinks orange juice.
-								// 14. The Japanese smokes Parliaments.
-								if iKools == iYellow && iLuckyStrike == iOrangeJuice && iJapanese == iParliaments {
+					// 8. Kools are smoked in the yellow house.
+					// 13. The Lucky Strike smoker drinks orange juice.
+					// 14. The Japanese smokes Parliaments.
+					if iKools != iYellow || iLuckyStrike != iOrangeJuice || iJapanese != iParliaments {
+						continue
+					}
 
-									for _, pets := range houseIdentityPermutations {
+					for _, pets := range houseIdentityPermutations {
 
-										iDog, iSnails, iFox, iHorse, iZebra := assign(pets)
+						iDog, iSnails, iFox, iHorse, iZebra := assign(pets)
 
-										// 3. The Spaniard owns the dog.
-										// 7. The Old Gold smoker owns snails.
-										// 11. The man who smokes Chesterfields lives in the house next to the man with the fox.
-										// 12. Kools are smoked in the house next to the house where the horse is kept.
-										if iSpaniard == iDog && iOldGold == iSnails &&
-											nextTo(iChesterfields, iFox) && nextTo(iKools, iHorse) {
-
-											// At this point all criteria are met, so we arrived at the solution,
-											// and can fill in an array h of house facts (actually we only need the residents).
-
-											var h [numHouses]struct {
-												resident   string
-												color      string
-												pet        string
-												beverage   string
-												smokeBrand string
-											}
-
-											h[iEnglishman].resident = "Englishman"
-											h[iSpaniard].resident = "Spaniard"
-											h[iUkranian].resident = "Ukranian"
-											h[iJapanese].resident = "Japanese"
-											h[iNorwegian].resident = "Norwegian"
-
-											var showHouseFacts = false // true // print all house facts for fun.
-											if showHouseFacts {
-												h[iRed].color = "red"
-												h[iGreen].color = "green"
-												h[iIvory].color = "ivory"
-												h[iYellow].color = "yellow"
-												h[iBlue].color = "blue"
-												h[iDog].pet = "dog"
-												h[iSnails].pet = "snails"
-												h[iFox].pet = "fox"
-												h[iHorse].pet = "horse"
-												h[iZebra].pet = "zebra"
-												h[iCoffee].beverage = "coffee"
-												h[iTea].beverage = "tea"
-												h[iMilk].beverage = "milk"
-												h[iOrangeJuice].beverage = "orange juice"
-												h[iWater].beverage = "water"
-												h[iOldGold].smokeBrand = "OldGold"
-												h[iKools].smokeBrand = "Kools"
-												h[iChesterfields].smokeBrand = "Chesterfields"
-												h[iLuckyStrike].smokeBrand = "LuckyStrike"
-												h[iParliaments].smokeBrand = "Parliaments"
-
-												for p := firstHouse; p <= fifthHouse; p++ {
-													separator := "a"
-													if h[p].pet[len(h[p].pet)-1] == 's' {
-														separator = " "
-													}
-													fmt.Printf("%d The %-10s lives in a %-6s house, owns %s %-6s, drinks %-12s, and smokes %-13s\n",
-														p, h[p].resident, h[p].color, separator, h[p].pet, h[p].beverage, h[p].smokeBrand+".")
-												}
-											}
-
-											waterDrinker = h[iWater].resident
-											zebraOwner = h[iZebra].resident
-
-											return
-										}
-									}
-								}
-							}
+						// 3. The Spaniard owns the dog.
+						// 7. The Old Gold smoker owns snails.
+						// 11. The man who smokes Chesterfields lives in the house next to the man with the fox.
+						// 12. Kools are smoked in the house next to the house where the horse is kept.
+						if iSpaniard != iDog || iOldGold != iSnails ||
+							!nextTo(iChesterfields, iFox) || !nextTo(iKools, iHorse) {
+							continue
 						}
+
+						// At this point all criteria are met, so we arrived at the solution,
+						// and can fill in an array h of house facts (actually we only need the residents).
+
+						var h [numHouses]struct {
+							resident   string
+							color      string
+							pet        string
+							beverage   string
+							smokeBrand string
+						}
+
+						h[iEnglishman].resident = "Englishman"
+						h[iSpaniard].resident = "Spaniard"
+						h[iUkrainian].resident = "Ukrainian"
+						h[iJapanese].resident = "Japanese"
+						h[iNorwegian].resident = "Norwegian"
+
+						solution = Solution{
+							DrinksWater: h[iWater].resident,
+							OwnsZebra:   h[iZebra].resident}
+
+						if !showHouseFacts {
+							return
+						}
+						h[iRed].color = "red"
+						h[iGreen].color = "green"
+						h[iIvory].color = "ivory"
+						h[iYellow].color = "yellow"
+						h[iBlue].color = "blue"
+						h[iDog].pet = "dog"
+						h[iSnails].pet = "snails"
+						h[iFox].pet = "fox"
+						h[iHorse].pet = "horse"
+						h[iZebra].pet = "zebra"
+						h[iCoffee].beverage = "coffee"
+						h[iTea].beverage = "tea"
+						h[iMilk].beverage = "milk"
+						h[iOrangeJuice].beverage = "orange juice"
+						h[iWater].beverage = "water"
+						h[iOldGold].smokeBrand = "OldGold"
+						h[iKools].smokeBrand = "Kools"
+						h[iChesterfields].smokeBrand = "Chesterfields"
+						h[iLuckyStrike].smokeBrand = "LuckyStrike"
+						h[iParliaments].smokeBrand = "Parliaments"
+						var houseNames = [5]string{"first", "second", "middle", "fourth", "fifth"}
+
+						for p := firstHouse; p <= fifthHouse; p++ {
+							var separator string
+							if h[p].pet[len(h[p].pet)-1] != 's' {
+								separator = "a "
+							}
+							fmt.Printf("The %-10s lives in the %-6s house which is %-7s owns %-8s drinks %-13s and smokes %-13s\n",
+								h[p].resident,
+								houseNames[p],
+								h[p].color+",",
+								separator+h[p].pet+",",
+								h[p].beverage+",",
+								h[p].smokeBrand+".")
+						}
+
+						return
 					}
 				}
 			}
@@ -157,6 +172,8 @@ func Solve() (waterDrinker string, zebraOwner string) {
 	}
 	return
 }
+
+var showHouseFacts bool = false // when true, print all house facts for fun.
 
 // assign is notational helper function which returns the successive members
 // of a permutation slice as five distinct values.
@@ -205,11 +222,11 @@ func permutations(iterable []int, r int) (perms [][]int) {
 
 	for n > 0 {
 		i := r - 1
-		for ; i >= 0; i -= 1 {
-			cycles[i] -= 1
+		for ; i >= 0; i-- {
+			cycles[i]--
 			if cycles[i] == 0 {
 				index := indices[i]
-				for j := i; j < n-1; j += 1 {
+				for j := i; j < n-1; j++ {
 					indices[j] = indices[j+1]
 				}
 				indices[n-1] = index
@@ -218,7 +235,7 @@ func permutations(iterable []int, r int) (perms [][]int) {
 				j := cycles[i]
 				indices[i], indices[n-j] = indices[n-j], indices[i]
 
-				for k := i; k < r; k += 1 {
+				for k := i; k < r; k++ {
 					result[k] = pool[indices[k]]
 				}
 
