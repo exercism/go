@@ -27,7 +27,7 @@ type Solution struct {
 	OwnsZebra   string
 }
 
-// Solve returns the answers to the two questions in the zebra puzzle,
+// SolvePuzzle returns a solution answering the two questions for the zebra puzzle,
 // which are "Who drinks water?", and "Who owns the zebra?"
 func SolvePuzzle() (solution Solution) {
 
@@ -173,7 +173,7 @@ func SolvePuzzle() (solution Solution) {
 	return
 }
 
-var showHouseFacts bool = false // when true, print all house facts for fun.
+const showHouseFacts = false // when true, print all house facts for fun.
 
 // assign is notational helper function which returns the successive members
 // of a permutation slice as five distinct values.
