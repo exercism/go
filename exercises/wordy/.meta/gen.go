@@ -47,10 +47,6 @@ func determineExpected(expected interface{}) (bool, int) {
 	if ok {
 		return ok, int(ans)
 	}
-	_, ok = expected.(bool)
-	if ok {
-		return false, 0
-	}
 	return false, 0
 }
 
