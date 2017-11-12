@@ -20,12 +20,22 @@ func main() {
 
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Cases []struct {
-		Description string
-		Strand1     string
-		Strand2     string
-		Expected    int
+	Cases []oneCase
+}
+
+type oneCase struct {
+	Description string
+	Strand1     string
+	Strand2     string
+	Expected    interface{}
+}
+
+func (o oneCase) Want() int {
+	d, ok := o.Expected.(float64)
+	if ok {
+		return int(d)
 	}
+	return -1
 }
 
 // template applied to above data structure generates the Go test cases
@@ -41,7 +51,7 @@ var testCases = []struct {
 {{range .J.Cases}}{ // {{.Description}}
 	{{printf "%q" .Strand1}},
 	{{printf "%q" .Strand2}},
-	{{.Expected}},
+	{{.Want}},
 },
 {{end}}}
 `

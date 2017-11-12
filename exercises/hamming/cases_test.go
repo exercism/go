@@ -1,8 +1,8 @@
 package hamming
 
-// Source: exercism/x-common
-// Commit: ebe9bbf fix versioning (#845)
-// x-common version: 1.1.0
+// Source: exercism/problem-specifications
+// Commit: f79dfd7 Simplify two tests so the difference is easily spotted.
+// Problem Specifications Version: 2.0.1
 
 var testCases = []struct {
 	s1   string
@@ -50,13 +50,13 @@ var testCases = []struct {
 		2,
 	},
 	{ // non-unique character in first strand
-		"AGA",
-		"AGG",
+		"AAG",
+		"AAA",
 		1,
 	},
 	{ // non-unique character in second strand
-		"AGG",
-		"AGA",
+		"AAA",
+		"AAG",
 		1,
 	},
 	{ // same nucleotides in different positions
