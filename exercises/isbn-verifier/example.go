@@ -32,8 +32,8 @@ func dropHyphen(isbn string) string {
 
 func strToSlice(isbn string) (result []int, err error) {
 
-	for _, char := range isbn {
-		if unicode.IsLetter(char) && char != 'X' {
+	for pos, char := range isbn {
+		if unicode.IsLetter(char) && (char != 'X' || pos != 9) {
 			err = errors.New("invalid character")
 			return
 		} else if char == 'X' {
