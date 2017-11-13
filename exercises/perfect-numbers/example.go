@@ -18,12 +18,12 @@ var (
 )
 
 // Classify finds the category of given natural number
-func Classify(n uint64) (Classification, error) {
-	if n == 0 {
+func Classify(n int64) (Classification, error) {
+	if n <= 0 {
 		return "", ErrOnlyPositive
 	}
-	var sum uint64
-	for i := uint64(1); i < n; i++ {
+	var sum int64
+	for i := int64(1); i < n; i++ {
 		if n%i == 0 {
 			if sum = sum + i; sum > n {
 				return ClassificationAbundant, nil
