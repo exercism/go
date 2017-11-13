@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: 3cb5e76 forth: Remove test for empty input (#976)
-// Problem Specifications Version: 1.3.0
+// Commit: 9bf041b forth: Add tests for case-insensitivity (#979)
+// Problem Specifications Version: 1.4.0
 
 type testGroup struct {
 	group string
@@ -135,13 +135,13 @@ var testGroups = []testGroup{
 		group: "dup",
 		tests: []testCase{
 			{
-				"copies the top value on the stack",
-				[]string{"1 DUP"},
+				"copies a value on the stack",
+				[]string{"1 dup"},
 				[]int{1, 1},
 			},
 			{
-				"is case-insensitive",
-				[]string{"1 2 Dup"},
+				"copies the top value on the stack",
+				[]string{"1 2 dup"},
 				[]int{1, 2, 2},
 			},
 			{
@@ -258,6 +258,41 @@ var testGroups = []testGroup{
 				"errors if executing a non-existent word",
 				[]string{"foo"},
 				[]int(nil),
+			},
+		},
+	},
+	{
+		group: "case-insensitivity",
+		tests: []testCase{
+			{
+				"DUP is case-insensitive",
+				[]string{"1 DUP Dup dup"},
+				[]int{1, 1, 1, 1},
+			},
+			{
+				"DROP is case-insensitive",
+				[]string{"1 2 3 4 DROP Drop drop"},
+				[]int{1},
+			},
+			{
+				"SWAP is case-insensitive",
+				[]string{"1 2 SWAP 3 Swap 4 swap"},
+				[]int{2, 3, 4, 1},
+			},
+			{
+				"OVER is case-insensitive",
+				[]string{"1 2 OVER Over over"},
+				[]int{1, 2, 1, 2, 1},
+			},
+			{
+				"user-defined words are case-insensitive",
+				[]string{": foo dup ;", "1 FOO Foo foo"},
+				[]int{1, 1, 1, 1},
+			},
+			{
+				"definitions are case-insensitive",
+				[]string{": SWAP DUP Dup dup ;", "1 swap"},
+				[]int{1, 1, 1, 1},
 			},
 		},
 	},
