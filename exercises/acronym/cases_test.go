@@ -34,4 +34,8 @@ var stringTestCases = []acronymTest{
 		input:    "Complementary metal-oxide semiconductor",
 		expected: "CMOS",
 	},
+	{
+		input:    " Unusable   acronym over the years ",
+		expected: "UAOTY",
+	},
 }
