@@ -40,9 +40,9 @@ type SquareCase struct {
 	Expected    interface{}
 }
 
-func (c SquareCase) Valid() bool {
-	valid, _ := determineExpected(c.Expected)
-	return valid
+func (c SquareCase) HasAnswer() bool {
+	hasAnswer, _ := determineExpected(c.Expected)
+	return hasAnswer
 }
 
 func (c SquareCase) Answer() uint64 {
@@ -56,21 +56,17 @@ func (c SquareCase) EditedDescription() string {
 }
 
 // determineExpected examines an .Expected interface{} object and determines
-// whether a test case is valid(bool) and has an answer or expects an error.
-// returning valid and answer.
+// whether a test case has an answer or expects an error.
+// The return values are true and answer or false and zero.
 func determineExpected(expected interface{}) (bool, uint64) {
 	ans, ok := expected.(float64)
 	if ok {
 		if ans == float64(-1) {
 			return false, 0
 		}
-		return ok, uint64(ans)
+		return true, uint64(ans)
 	}
 	return false, 0
-}
-
-func (groups testGroup) GroupShortName() string {
-	return strings.ToLower(strings.Fields(groups.Description)[0])
 }
 
 var tmpl = `package grains
@@ -90,7 +86,7 @@ var tmpl = `package grains
 			{
 				description: "{{.EditedDescription}}",
 				input: {{.Input}},
-				{{- if .Valid}}
+				{{- if .HasAnswer}}
 					expectedVal: {{.Answer}},
 				{{- else}}
 					expectError: true,
