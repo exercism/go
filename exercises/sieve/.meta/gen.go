@@ -18,15 +18,13 @@ func main() {
 	}
 }
 
-type OneCase struct {
-	Description string
-	Limit       int
-	Expected    []int
-}
-
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
-	Cases []OneCase
+	Cases []struct {
+		Description string
+		Limit       int
+		Expected    []int
+	}
 }
 
 // template applied to above data structure generates the Go test cases
