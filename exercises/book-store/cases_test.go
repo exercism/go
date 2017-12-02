@@ -1,8 +1,8 @@
 package bookstore
 
 // Source: exercism/problem-specifications
-// Commit: 087ad69 book-store: Add missing trailing zero
-// Problem Specifications Version: 1.0.1
+// Commit: a636903 Update description per @insti comments
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
@@ -73,5 +73,10 @@ var testCases = []struct {
 		description: "Three each of first 2 books and 2 each of remaining books",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1, 2},
 		expected:    75.20,
+	},
+	{
+		description: "Four groups of four are cheaper than two groups each of five and three",
+		basket:      []int{1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5},
+		expected:    102.40,
 	},
 }
