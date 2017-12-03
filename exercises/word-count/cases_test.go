@@ -1,7 +1,7 @@
 package wordcount
 
 // Source: exercism/problem-specifications
-// Commit: cd26d49 word-count: Make exercise schema-compliant  (#634)
+// Commit: 8793a05 word-count: Add test for multiple whitespace (#1023)
 // Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
@@ -58,5 +58,10 @@ var testCases = []struct {
 		"with quotations",
 		"Joe can't tell between 'large' and large.",
 		Frequency{"and": 1, "between": 1, "can't": 1, "joe": 1, "large": 2, "tell": 1},
+	},
+	{
+		"multiple spaces not detected as a word",
+		" multiple   whitespaces",
+		Frequency{"multiple": 1, "whitespaces": 1},
 	},
 }
