@@ -1,8 +1,8 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: 65756b1 bob: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: fef09f6 Bob: Add fifth rule (#1025)
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
@@ -52,7 +52,7 @@ var testCases = []struct {
 	{
 		"forceful question",
 		"WHAT THE HELL WERE YOU THINKING?",
-		"Whoa, chill out!",
+		"Calm down, I know what I'm doing!",
 	},
 	{
 		"shouting numbers",

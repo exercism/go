@@ -8,6 +8,9 @@ func Hey(remark string) string {
 	case silent(remark):
 		return "Fine. Be that way!"
 	case yelling(remark):
+		if asking(remark) {
+			return "Calm down, I know what I'm doing!"
+		}
 		return "Whoa, chill out!"
 	case asking(remark):
 		return "Sure."
