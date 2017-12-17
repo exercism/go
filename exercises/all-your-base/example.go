@@ -5,19 +5,16 @@ import (
 	"math"
 )
 
-var (
-	ErrInvalidBase  = errors.New("invalid base given")
-	ErrInvalidDigit = errors.New("invalid digit given")
-)
-
-func ConvertToBase(inputBase uint64, inputDigits []uint64, outputBase uint64) ([]uint64, error) {
-	if inputBase < 2 || outputBase < 2 {
-		return nil, ErrInvalidBase
+// ConvertToBase converts given digits in input base to given output base
+func ConvertToBase(inputBase int, inputDigits []int, outputBase int) ([]int, error) {
+	if inputBase < 2 {
+		return nil, errors.New("input base must be >= 2")
+	} else if outputBase < 2 {
+		return nil, errors.New("output base must be >= 2")
 	}
-
 	for _, d := range inputDigits {
-		if d >= inputBase {
-			return nil, ErrInvalidDigit
+		if d < 0 || d >= inputBase {
+			return nil, errors.New("all digits must satisfy 0 <= d < input base")
 		}
 	}
 
@@ -25,34 +22,33 @@ func ConvertToBase(inputBase uint64, inputDigits []uint64, outputBase uint64) ([
 	return digitsInBase(total, outputBase), nil
 }
 
-func toCanonicalBase(inputBase uint64, inputDigits []uint64) uint64 {
-	var total uint64
+func toCanonicalBase(base int, digits []int) int {
+	var total int
 
-	digits := len(inputDigits)
-	for i := digits - 1; i >= 0; i-- {
-		total += inputDigits[digits-1-i] * uint64(math.Pow(float64(inputBase), float64(i)))
+	l := len(digits)
+	for i := l - 1; i >= 0; i-- {
+		total += digits[l-1-i] * int(math.Pow(float64(base), float64(i)))
 	}
 
 	return total
 }
 
-func reverse(digits []uint64) []uint64 {
-	var output = make([]uint64, len(digits))
-
-	for i, d := range digits {
-		output[len(digits)-1-i] = d
+func reverse(a []int) []int {
+	for i := len(a)/2 - 1; i >= 0; i-- {
+		opp := len(a) - 1 - i
+		a[i], a[opp] = a[opp], a[i]
 	}
-
-	return output
+	return a
 }
 
-func digitsInBase(total uint64, outputBase uint64) []uint64 {
-	var digits []uint64
-	for total >= outputBase {
-		digits = append(digits, total%outputBase)
-		total /= outputBase
+func digitsInBase(total, base int) []int {
+	var digits []int
+
+	for total >= base {
+		digits = append(digits, total%base)
+		total /= base
 	}
-	digits = append(digits, total%outputBase)
+	digits = append(digits, total%base)
 
 	return reverse(digits)
 }
