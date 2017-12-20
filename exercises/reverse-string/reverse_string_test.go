@@ -23,3 +23,11 @@ func TestReverseOfReverse(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func BenchmarkReverse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
+			String(test.input)
+		}
+	}
+}
