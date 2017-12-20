@@ -181,7 +181,7 @@ RVGCCGCV`
 	tf := func(g *Garden, n int, child string, expPlants []string) {
 		switch plants, ok := g.Plants(child); {
 		case !ok:
-			t.Skip("Garden %d lookup %s returned ok = false, want true.",
+			t.Skipf("Garden %d lookup %s returned ok = false, want true.",
 				n, child)
 		case !reflect.DeepEqual(plants, expPlants):
 			t.Fatalf("Garden %d lookup %s = %q, want %q.",
