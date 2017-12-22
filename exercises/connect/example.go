@@ -43,11 +43,11 @@ func newBoard(lines []string) (board, error) {
 	if len(lines) < 1 {
 		return board{}, errors.New("No lines given")
 	}
-	height := int(len(lines))
+	height := len(lines)
 	if len(lines[0]) < 1 {
 		return board{}, errors.New("First line is empty string")
 	}
-	width := int(len(lines[0]))
+	width := len(lines[0])
 	// This trick for 2D arrays comes from Effective Go
 	fields := make([][]int8, height)
 	fieldsBacker := make([]int8, height*width)
@@ -65,12 +65,11 @@ func newBoard(lines []string) (board, error) {
 			// No need for default, zero value already means no stone
 		}
 	}
-	board := board{
+	return board{
 		height: height,
 		width:  width,
 		fields: fields,
-	}
-	return board, nil
+	}, nil
 }
 
 // Whether there is a stone of the given color at the given location.
