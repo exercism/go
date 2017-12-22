@@ -1159,6 +1159,7 @@
       "unlocked_by": "bank-account",
       "uuid": "e31199ac-e657-4997-b931-63893a575c08"
     },
+    {
       "core": false,
       "difficulty": 4,
       "slug": "dominoes",
