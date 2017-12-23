@@ -1160,6 +1160,18 @@
       "uuid": "e31199ac-e657-4997-b931-63893a575c08"
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "dominoes",
+      "topics": [
+        "algorithms",
+        "arrays",
+        "searching"
+      ],
+      "unlocked_by": "flatten-array",
+      "uuid": "2e5c9e76-decd-49db-be4b-353ebeb46b73"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
