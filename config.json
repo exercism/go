@@ -736,6 +736,18 @@
     },
     {
       "core": false,
+      "difficulty": 3,
+      "slug": "armstrong-numbers",
+      "topics": [
+        "algorithms",
+        "integers",
+        "mathematics"
+      ],
+      "unlocked_by": "prime-factors",
+      "uuid": "b3f06c57-c0de-4b8f-bd16-782b2ce3f478"
+    },
+    {
+      "core": false,
       "difficulty": 5,
       "slug": "transpose",
       "topics": [
