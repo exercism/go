@@ -1164,8 +1164,8 @@
       "difficulty": 4,
       "slug": "dominoes",
       "topics": [
-        "arrays",
         "algorithms",
+        "arrays",
         "searching"
       ],
       "unlocked_by": "flatten-array",

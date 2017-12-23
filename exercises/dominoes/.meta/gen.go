@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-	//template.FuncMap{"dominoe": do}
 	t, err := template.New("").Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)

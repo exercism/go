@@ -2,6 +2,7 @@ package dominoes
 
 import (
 	"errors"
+	"reflect"
 	"sort"
 	"testing"
 )
@@ -58,41 +59,42 @@ func verifyChain(input []Dominoe, chain []Dominoe) error {
 	}
 
 	// Make copies of input and chain.
-	copyDominoes := func(d []Dominoe) (c []Dominoe) {
-		c = make([]Dominoe, len(d), len(d))
-		copy(c, d)
-		// Put each dominoe in "canonical position" [a,b] where a <= b.
-		for i := 0; i < len(c); i++ {
-			if c[i][0] > c[i][1] {
-				c[i][0], c[i][1] = c[i][1], c[i][0]
-			}
-		}
-		return c
-	}
 	cinput := copyDominoes(input)
 	cchain := copyDominoes(chain)
 
-	sortDominoes := func(d []Dominoe) {
-		sort.Slice(d,
-			func(i, j int) bool {
-				if d[i][0] < d[j][0] {
-					return true
-				}
-				if d[i][0] > d[j][0] {
-					return false
-				}
-				return d[i][1] < d[j][1]
-			})
-	}
 	sortDominoes(cinput)
 	sortDominoes(cchain)
+
 	// Compare for equality (same set in input and chain).
-	for i := 0; i < len(cinput); i++ {
-		if cinput[i] != cchain[i] {
-			return errChainSetNotSameAsInputSet
-		}
+	if !reflect.DeepEqual(cinput, cchain) {
+		return errChainSetNotSameAsInputSet
 	}
 	return nil
+}
+
+func copyDominoes(d []Dominoe) (c []Dominoe) {
+	c = make([]Dominoe, len(d))
+	// Put each dominoe in "canonical position" [a,b] where a <= b.
+	for i := range d {
+		c[i] = d[i]
+		if c[i][0] > c[i][1] {
+			c[i][0], c[i][1] = c[i][1], c[i][0]
+		}
+	}
+	return c
+}
+
+func sortDominoes(d []Dominoe) {
+	sort.Slice(d,
+		func(i, j int) bool {
+			if d[i][0] < d[j][0] {
+				return true
+			}
+			if d[i][0] > d[j][0] {
+				return false
+			}
+			return d[i][1] < d[j][1]
+		})
 }
 
 func BenchmarkMakeChain(b *testing.B) {

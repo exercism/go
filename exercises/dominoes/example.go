@@ -39,7 +39,7 @@ func buildDominoeChain(d []Dominoe) ([]Dominoe, bool) {
 // the same left to right.
 func arrangeChain(d []Dominoe) (chain []Dominoe, ok bool) {
 	// A good chain will match length of d, so preallocate the chain.
-	chain = make([]Dominoe, len(d), len(d))
+	chain = make([]Dominoe, len(d))
 	n := 0
 	// Put first dominoe into the chain for starting point.
 	chain[n] = d[0]
@@ -82,7 +82,7 @@ func reverseDominoe(x Dominoe) Dominoe {
 }
 
 // dominoePermutations returns a slice containing the r length permutations of the elements in iterable.
-// The implementation is modeled after the Python intertools.permutations().
+// The implementation is modeled after the Python itertools.permutations().
 func dominoePermutations(iterable []Dominoe, r int) (perms [][]Dominoe) {
 	pool := iterable
 	n := len(pool)
