@@ -161,7 +161,7 @@ func (e entrySlice) Less(i, j int) bool {
 		// ISO dates sort nicely
 		return e[i].Date < e[j].Date
 	}
-	if e[i].Description != e[i].Description {
+	if e[i].Description != e[j].Description {
 		return e[i].Description < e[j].Description
 	}
 	return e[i].Change < e[j].Change
