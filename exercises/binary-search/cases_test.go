@@ -1,8 +1,8 @@
 package binarysearch
 
 // Source: exercism/problem-specifications
-// Commit: 8acd78c Replace x-common with problem-specifications
-// Problem Specifications Version: 1.0.0
+// Commit: 6114d03 binary-search: Update json for new input policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
