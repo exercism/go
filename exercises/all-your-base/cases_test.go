@@ -1,8 +1,8 @@
 package allyourbase
 
 // Source: exercism/problem-specifications
-// Commit: ba6375e all-your-base: replace 'first' and 'second' with 'input' and 'output' in descriptions
-// Problem Specifications Version: 2.0.1
+// Commit: bf4052e all-your-base: Update json to reflect changes to schema
+// Problem Specifications Version: 2.1.0
 
 var testCases = []struct {
 	description string

@@ -29,10 +29,12 @@ type js struct {
 type oneCase struct {
 	Description string
 	Property    string
-	InputBase   int   `json:"input_base"`
-	InputDigits []int `json:"input_digits"`
-	OutputBase  int   `json:"output_base"`
-	Expected    interface{}
+	Input       struct {
+		InputBase  int   `json:"input_base"`
+		Digits     []int `json:"digits"`
+		OutputBase int   `json:"output_base"`
+	}
+	Expected interface{}
 }
 
 func (o oneCase) Result() []int {
@@ -70,9 +72,9 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
-	inputBase:		{{printf "%d"  .InputBase}},
-	inputDigits:		{{printf "%#v"  .InputDigits}},
-	outputBase:	{{printf "%d"  .OutputBase}},
+	inputBase:		{{printf "%d"  .Input.InputBase}},
+	inputDigits:		{{printf "%#v"  .Input.Digits}},
+	outputBase:	{{printf "%d"  .Input.OutputBase}},
 	expected:	{{printf "%#v"  .Result}},
 	err:	{{printf "%q"  .Err}},
 },{{end}}
