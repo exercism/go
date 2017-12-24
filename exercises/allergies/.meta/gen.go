@@ -31,16 +31,20 @@ type testGroup struct {
 	Cases           []json.RawMessage `property:"RAW"`
 	AllergicToCases []struct {
 		Description string
-		Score       uint
-		Expected    []struct {
+		Input       struct {
+			Score uint
+		}
+		Expected []struct {
 			Substance string
 			Result    bool
 		}
 	} `property:"allergicTo"`
 	ListCases []struct {
 		Description string
-		Score       uint
-		Expected    []string
+		Input       struct {
+			Score uint
+		}
+		Expected []string
 	} `property:"list"`
 }
 
@@ -64,7 +68,7 @@ var tmpl = `package allergies
 			{{- range .AllergicToCases }}
 				{
 					description: {{.Description | printf "%q"}},
-					score: {{.Score}},
+					score: {{.Input.Score}},
 					expected: []allergicResult{ {{range .Expected}}
 					  { {{.Substance | printf "%q"}}, {{.Result}} },{{end}}
 					},
@@ -80,7 +84,7 @@ var tmpl = `package allergies
 			expected []string
 		}{
 			{{- range .ListCases }}
-				{ {{.Description | printf "%q"}}, {{.Score}}, {{.Expected | printf "%#v"}}},
+				{ {{.Description | printf "%q"}}, {{.Input.Score}}, {{.Expected | printf "%#v"}}},
 			{{- end }}
 		}
 	{{- end }}
