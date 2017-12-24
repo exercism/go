@@ -5,8 +5,6 @@
 // https://golang.org/doc/effective_go.html#commentary
 package acronym
 
-func Abbreviate(string) string
-
 // Abbreviate should have a comment documenting it.
 func Abbreviate(s string) string {
 	// Write some code here to pass the test suite.
