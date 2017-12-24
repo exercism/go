@@ -25,8 +25,10 @@ type js struct {
 		Cases       []struct {
 			Description string
 			Property    string
-			Phrase      string
-			Expected    string
+			Input       struct {
+				Phrase string
+			}
+			Expected string
 		}
 	}
 }
@@ -43,7 +45,7 @@ type acronymTest struct {
 
 var stringTestCases = []acronymTest {
 {{range .J.Cases}} {{range .Cases}}{
-	input: {{printf "%q" .Phrase }},
+	input: {{printf "%q" .Input.Phrase }},
 	expected: {{printf "%q" .Expected }},
 },
 {{end}}{{end}}
