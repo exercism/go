@@ -29,9 +29,11 @@ type js struct {
 // The JSON structure we expect to be able to unmarshal into
 type OneCase struct {
 	Description string
-	Subject     string
-	Candidates  []string
-	Expected    []string
+	Input       struct {
+		Subject    string
+		Candidates []string
+	}
+	Expected []string
 }
 
 // template applied to above data structure generates the Go test cases
@@ -47,8 +49,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description: {{printf "%q"   .Description}},
-	subject: {{printf "%q"   .Subject}},
-	candidates: []string { {{range $line := .Candidates}}{{printf "\n%q," $line}}{{end}}},
+	subject: {{printf "%q"   .Input.Subject}},
+	candidates: []string { {{range $line := .Input.Candidates}}{{printf "\n%q," $line}}{{end}}},
 	expected: []string { {{range $line := .Expected}}{{printf "\n%q," $line}}{{end}}},
 	},{{end}}
 }
