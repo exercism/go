@@ -1,8 +1,8 @@
 package anagram
 
 // Source: exercism/problem-specifications
-// Commit: 196fc1a anagram: Rename duplicated test case description (#671)
-// Problem Specifications Version: 1.0.1
+// Commit: a0f7663 anagram: Update json for new "input" policy (#1036)
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
