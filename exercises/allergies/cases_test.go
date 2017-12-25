@@ -1,8 +1,8 @@
 package allergies
 
 // Source: exercism/problem-specifications
-// Commit: 879bc89 allergies: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 85dcb59 allergies: Update json for new "input" policy (#1033)
+// Problem Specifications Version: 1.1.0
 
 // allergicTo
 type allergicResult struct {
