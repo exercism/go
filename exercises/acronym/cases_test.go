@@ -1,8 +1,8 @@
 package acronym
 
 // Source: exercism/problem-specifications
-// Commit: cae7ae1 acronym: remove test case with mixed-case phrase (#788)
-// Problem Specifications Version: 1.1.0
+// Commit: c5fb622 acronym: Update json for new "input" policy (#1032)
+// Problem Specifications Version: 1.2.0
 
 type acronymTest struct {
 	input    string
