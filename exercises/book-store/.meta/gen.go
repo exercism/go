@@ -31,8 +31,10 @@ type TestGroup struct {
 
 type OneCase struct {
 	Description string
-	Basket      []int
-	Expected    float64
+	Input       struct {
+		Basket []int
+	}
+	Expected float64
 }
 
 // template applied to above data structure generates the Go test cases
@@ -47,7 +49,7 @@ var testCases = []struct {
 }{{range .J.Groups}}{
 {{range .Cases}} {
 	description: "{{.Description}}",
-	basket:      {{printf "%#v" .Basket}},
+	basket:      {{printf "%#v" .Input.Basket}},
 	expected:    {{printf "%.2f" .Expected}},
 },
 {{end}}}{{end}}

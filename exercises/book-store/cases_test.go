@@ -1,8 +1,8 @@
 package bookstore
 
 // Source: exercism/problem-specifications
-// Commit: a636903 Update description per @insti comments
-// Problem Specifications Version: 1.1.0
+// Commit: 78006a2 move "targetgrouping" to "comments"
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
