@@ -29,9 +29,11 @@ type js struct {
 type oneCase struct {
 	Description string
 	Property    string
-	Array       []int
-	Value       int
-	Expected    int
+	Input       struct {
+		Array []int
+		Value int
+	}
+	Expected int
 }
 
 // Template to generate test cases.
@@ -47,8 +49,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
-	slice:		{{printf "%#v"  .Array}},
-	key:		{{printf "%d"  .Value}},
+	slice:		{{printf "%#v" .Input.Array}},
+	key:		{{printf "%d"  .Input.Value}},
 	x:	{{printf "%d"  .Expected}},
 },{{end}}
 }
