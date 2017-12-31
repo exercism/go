@@ -1,8 +1,8 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: fef09f6 Bob: Add fifth rule (#1025)
-// Problem Specifications Version: 1.1.0
+// Commit: 6dc2014 bob: apply "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
