@@ -1,4 +1,4 @@
-package igpay
+package piglatin
 
 // Source: exercism/problem-specifications
 // Commit: b5ddd0a pig-latin: tests for Y as a vowel (#904)

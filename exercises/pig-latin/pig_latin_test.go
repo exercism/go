@@ -1,11 +1,15 @@
-package igpay
+package piglatin
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestPigLatin(t *testing.T) {
 	for _, test := range testCases {
-		if pl := PigLatin(test.input); pl != test.expected {
-			t.Fatalf("FAIL: %s\nPigLatin(%q) = %q, want %q.", test.description, test.input, pl, test.expected)
+		fmt.Printf("Test: %s\n", test.description)
+		if pl := Sentence(test.input); pl != test.expected {
+			t.Fatalf("FAIL: Sentence(%q) = %q, want %q.", test.input, pl, test.expected)
 		}
 	}
 }

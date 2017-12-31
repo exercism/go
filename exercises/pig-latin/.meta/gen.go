@@ -27,8 +27,8 @@ type js struct {
 
 // Test levels
 type oneLevel struct {
-  Description string
-  Cases []oneCase
+	Description string
+	Cases       []oneCase
 }
 
 // Test cases
@@ -40,7 +40,7 @@ type oneCase struct {
 }
 
 // Template to generate test cases.
-var tmpl = `package igpay
+var tmpl = `package piglatin
 
 {{.Header}}
 
