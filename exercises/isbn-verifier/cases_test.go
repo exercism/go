@@ -1,8 +1,8 @@
 package isbn
 
 // Source: exercism/problem-specifications
-// Commit: 3251fa6 Rename property for isbn-verifier exercise
-// Problem Specifications Version: 2.0.0
+// Commit: 4288ee0 isbn-verifier: add empty isbn case
+// Problem Specifications Version: 2.2.0
 
 var testCases = []struct {
 	isbn        string
@@ -22,4 +22,5 @@ var testCases = []struct {
 	{"3-598-21507", false, "isbn without check digit"},
 	{"3-598-21507-XX", false, "too long isbn"},
 	{"3-598-21515-X", false, "check digit of X should not be used for 0"},
+	{"", false, "empty isbn"},
 }
