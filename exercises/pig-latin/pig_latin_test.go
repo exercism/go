@@ -1,29 +1,15 @@
-package igpay
+package piglatin
 
-import "testing"
-
-var tests = []struct{ pl, in string }{
-	{"appleay", "apple"},
-	{"earay", "ear"},
-	{"igpay", "pig"},
-	{"oalakay", "koala"},
-	{"airchay", "chair"},
-	{"eenquay", "queen"},
-	{"aresquay", "square"},
-	{"erapythay", "therapy"},
-	{"ushthray", "thrush"},
-	{"oolschay", "school"},
-	{"ickquay astfay unray", "quick fast run"},
-	{"ellowyay", "yellow"},
-	{"yttriaay", "yttria"},
-	{"enonxay", "xenon"},
-	{"xrayay", "xray"},
-}
+import (
+	"fmt"
+	"testing"
+)
 
 func TestPigLatin(t *testing.T) {
-	for _, test := range tests {
-		if pl := PigLatin(test.in); pl != test.pl {
-			t.Fatalf("PigLatin(%q) = %q, want %q.", test.in, pl, test.pl)
+	for _, test := range testCases {
+		if pl := Sentence(test.input); pl != test.expected {
+			t.Fatalf("FAIL: Sentence(%q) = %q, want %q.", test.input, pl, test.expected)
 		}
+		fmt.Printf("PASS: %s\n", test.description)
 	}
 }
