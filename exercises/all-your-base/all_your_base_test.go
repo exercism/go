@@ -8,12 +8,13 @@ import (
 func TestConvertToBase(t *testing.T) {
 	for _, c := range testCases {
 		output, err := ConvertToBase(c.inputBase, c.inputDigits, c.outputBase)
-		if c.err != "" && (err == nil || c.err != err.Error()) {
-			t.Fatalf(`FAIL: %s
+		if c.err != "" {
+			if err == nil || c.err != err.Error() {
+				t.Fatalf(`FAIL: %s
 	Expected error: %s
 	Got: %v`, c.description, c.err, err)
-		}
-		if !reflect.DeepEqual(c.expected, output) {
+			}
+		} else if !reflect.DeepEqual(c.expected, output) {
 			t.Fatalf(`FAIL: %s
     Input base: %d
     Input digits: %#v
