@@ -159,6 +159,21 @@ var failureTestCases = []struct {
 		},
 	},
 	{
+		name: "duplicate node",
+		input: []Record{
+			{ID: 0, Parent: 0},
+			{ID: 1, Parent: 0},
+			{ID: 1, Parent: 0},
+		},
+	},
+	{
+		name: "duplicate root",
+		input: []Record{
+			{ID: 0, Parent: 0},
+			{ID: 0, Parent: 0},
+		},
+	},
+	{
 		name: "non-continuous",
 		input: []Record{
 			{ID: 2, Parent: 0},
