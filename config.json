@@ -872,6 +872,17 @@
     },
     {
       "core": false,
+      "difficulty": 4,
+      "slug": "simple-linked-list",
+      "topics": [
+        "arrays",
+        "loops"
+      ],
+      "unlocked_by": "error-handling",
+      "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae"
+    },
+    {
+      "core": false,
       "difficulty": 5,
       "slug": "binary-search",
       "topics": [
@@ -1210,8 +1221,7 @@
     }
   ],
   "foregone": [
-    "linked-list",
-    "simple-linked-list"
+    "linked-list"
   ],
   "ignore_pattern": "example(?!.*test)",
   "language": "Go"
