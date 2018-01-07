@@ -1,8 +1,8 @@
 package connect
 
 // Source: exercism/problem-specifications
-// Commit: 327db7f connect: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: a02d64d connect: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
