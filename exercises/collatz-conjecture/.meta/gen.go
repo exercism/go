@@ -20,8 +20,10 @@ func main() {
 
 type OneCase struct {
 	Description string
-	Number      int
-	Expected    interface{}
+	Input       struct {
+		Number int
+	}
+	Expected interface{}
 }
 
 // The JSON structure we expect to be able to unmarshal into
@@ -63,7 +65,7 @@ var testCases = []struct {
 }{
 {{range .J.Cases}}{
 	description:	"{{.Description}}",
-	input:		{{.Number}},
+	input:		{{.Input.Number}},
 {{if .Valid}} expected:	{{.Answer}},
 {{- else}} expectError: true,
 {{- end}}
