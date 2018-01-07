@@ -21,8 +21,7 @@ func Solve(puzzle string) (map[string]int, error) {
 	if p == nil {
 		return nil, errors.New("invalid puzzle")
 	}
-	r, err := solvePuzzle(p)
-	return r, err
+	return p.solvePuzzle()
 }
 
 // parsePuzzle parses the puzzle input into a problem for solving.
@@ -65,8 +64,7 @@ func parsePuzzle(puzzle string) (p *problem) {
 	}
 	// Make a list of the letters used, where 0 == 'A'
 	p.lettersUsed = make([]rune, p.nLetters)
-	n := 0
-	for v := 0; v < len(p.letterValues); v++ {
+	for n, v := 0, 0; v < len(p.letterValues); v++ {
 		if p.letterValues[v] == -1 {
 			p.lettersUsed[n] = rune(v) // 0 == 'A'
 			n++
@@ -75,31 +73,26 @@ func parsePuzzle(puzzle string) (p *problem) {
 	return p
 }
 
-func solvePuzzle(p *problem) (map[string]int, error) {
+func (p *problem) solvePuzzle() (map[string]int, error) {
 	for _, digValues := range permutations(decDigits, p.nLetters) {
-		applyValues(digValues, p)
-		if isPuzzleSolution(p) {
+		if p.isPuzzleSolution(digValues) {
 			// Check leading digit of answer for 0 (invalid solution).
 			r := p.vDigits[len(p.vDigits)-1][p.maxDigits-1]
 			if p.letterValues[r-1] == 0 {
 				continue
 			}
-			return puzzleMap(p), nil
+			return p.puzzleMap(), nil
 		}
 	}
 	return nil, errors.New("no solution")
 }
 
-// applyValues puts the candidate values into the letterValues for the lettersUsed.
-func applyValues(values []int, p *problem) {
-	// Stuff the values for this potential solution into letterValues array.
+// isPuzzleSolution returns true if the values work out as a solution.
+func (p *problem) isPuzzleSolution(values []int) bool {
+	// Put the candidate values into the letterValues for the lettersUsed.
 	for i, r := range p.lettersUsed {
 		p.letterValues[r] = values[i]
 	}
-}
-
-// isPuzzleSolution returns true if the current letterValues work out as a solution.
-func isPuzzleSolution(p *problem) bool {
 	// For each column up to maxDigits
 	// check that the sum of the digits corresponding to values in vDigits
 	// add up to the digits (modulo 10) of values in last row.
@@ -132,10 +125,10 @@ func isPuzzleSolution(p *problem) bool {
 }
 
 // puzzleMap creates a "by letter" map from the letterValues used.
-func puzzleMap(p *problem) map[string]int {
+func (p *problem) puzzleMap() map[string]int {
 	pm := make(map[string]int, p.nLetters)
 	for _, v := range p.lettersUsed {
-		r := rune(v) + 'A'
+		r := v + 'A'
 		s := string(r)
 		pm[s] = p.letterValues[v]
 	}

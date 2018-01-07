@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"sort"
+	"strings"
 	"text/template"
 
 	"../../../gen"
@@ -40,16 +40,12 @@ func (c OneCase) ErrorExpected() bool {
 }
 
 func (c OneCase) SortedMapString() string {
-	letters := make([]string, 0, len(c.Expected))
-	for s, _ := range c.Expected {
-		letters = append(letters, s)
+	strs := make([]string, 0, len(c.Expected))
+	for s, v := range c.Expected {
+		strs = append(strs, `"`+s+`": `+string(v+'0'))
 	}
-	result := ""
-	sort.Strings(letters)
-	for _, s := range letters {
-		result += fmt.Sprintf(`"%s": %d, `, s, c.Expected[s])
-	}
-	return result
+	sort.Strings(strs)
+	return strings.Join(strs, ",")
 }
 
 // template applied to above data structure generates the Go test cases
