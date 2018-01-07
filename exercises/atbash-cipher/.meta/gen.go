@@ -32,8 +32,10 @@ type js struct {
 		Cases       []struct {
 			Description string
 			Property    string
-			Phrase      string
-			Expected    string
+			Input       struct {
+				Phrase string
+			}
+			Expected string
 		}
 	}
 }
@@ -50,9 +52,9 @@ type atbashTest struct {
 
 var tests = []atbashTest {
 {{range .J.Cases}} {{range .Cases}}{
-	{{if isEncode .Property}} s: {{printf "%q" .Phrase }},
+	{{if isEncode .Property}} s: {{printf "%q" .Input.Phrase }},
 		expected: {{printf "%q" .Expected }}, {{else}} s: {{printf "%q" .Expected }},
-		expected:  {{printf "%q" .Phrase }}, {{- end}}
+		expected:  {{printf "%q" .Input.Phrase }}, {{- end}}
 },
 {{end}}{{end}}
 }
