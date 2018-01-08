@@ -1,8 +1,8 @@
 package meetup
 
 // Source: exercism/problem-specifications
-// Commit: fe9630e meetup: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 56cdfa5 meetup: Update json for new input policy
+// Problem Specifications Version: 1.1.0
 
 import "time"
 
