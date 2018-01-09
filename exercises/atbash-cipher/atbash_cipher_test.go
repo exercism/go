@@ -13,10 +13,10 @@ func TestAtbash(t *testing.T) {
 
 func BenchmarkAtbash(b *testing.B) {
 	b.StopTimer()
-	for _, test := range tests {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for _, test := range tests {
 			Atbash(test.s)
 		}
 

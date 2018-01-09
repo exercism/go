@@ -25,9 +25,9 @@ func TestNumber(t *testing.T) {
 
 func BenchmarkNumber(b *testing.B) {
 	b.StopTimer()
-	for _, test := range numberTests {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
-		for i := 0; i < b.N; i++ {
+		for _, test := range numberTests {
 			Number(test.input)
 		}
 		b.StopTimer()
@@ -55,9 +55,9 @@ func TestAreaCode(t *testing.T) {
 
 func BenchmarkAreaCode(b *testing.B) {
 	b.StopTimer()
-	for _, test := range numberTests {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
-		for i := 0; i < b.N; i++ {
+		for _, test := range numberTests {
 			AreaCode(test.input)
 		}
 		b.StopTimer()
@@ -85,9 +85,9 @@ func TestFormat(t *testing.T) {
 
 func BenchmarkFormat(b *testing.B) {
 	b.StopTimer()
-	for _, test := range numberTests {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
-		for i := 0; i < b.N; i++ {
+		for _, test := range numberTests {
 			Format(test.input)
 		}
 		b.StopTimer()

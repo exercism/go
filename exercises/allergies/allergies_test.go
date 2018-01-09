@@ -17,10 +17,10 @@ func TestAllergies(t *testing.T) {
 
 func BenchmarkAllergies(b *testing.B) {
 	b.StopTimer()
-	for _, test := range allergicToTests {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for _, test := range allergicToTests {
 			Allergies(test.score)
 		}
 		b.StopTimer()
@@ -42,11 +42,11 @@ func TestAllergicTo(t *testing.T) {
 
 func BenchmarkAllergicTo(b *testing.B) {
 	b.StopTimer()
-	for _, test := range allergicToTests {
+	for i := 0; i < b.N; i++ {
 		for _, response := range test.expected {
 			b.StartTimer()
 
-			for i := 0; i < b.N; i++ {
+			for _, test := range allergicToTests {
 				AllergicTo(test.score, response.substance)
 			}
 			b.StopTimer()

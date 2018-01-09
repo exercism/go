@@ -39,10 +39,10 @@ func TestParseOctal(t *testing.T) {
 func BenchmarkParseOctal(b *testing.B) {
 	b.StopTimer()
 
-	for _, test := range testCases {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
 			ParseOctal(test.input)
 		}
 

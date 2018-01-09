@@ -111,10 +111,10 @@ func TestSeveralVerses(t *testing.T) {
 
 func BenchmarkSeveralVerses(b *testing.B) {
 	b.StopTimer()
-	for _, tt := range versesTestCases {
+	for i := 0; i < b.N; i++ {
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for _, tt := range versesTestCases {
 			Verses(tt.upperBound, tt.lowerBound)
 		}
 

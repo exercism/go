@@ -36,8 +36,8 @@ func min(a, b int) int {
 }
 
 func BenchmarkTranspose(b *testing.B) {
-	for _, test := range testCases {
-		for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
 			Transpose(test.input)
 		}
 	}
