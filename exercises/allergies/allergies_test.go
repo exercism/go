@@ -43,10 +43,10 @@ func TestAllergicTo(t *testing.T) {
 func BenchmarkAllergicTo(b *testing.B) {
 	b.StopTimer()
 	for i := 0; i < b.N; i++ {
-		for _, response := range test.expected {
+		for _, test := range allergicToTests {
 			b.StartTimer()
 
-			for _, test := range allergicToTests {
+			for _, response := range test.expected {
 				AllergicTo(test.score, response.substance)
 			}
 			b.StopTimer()
