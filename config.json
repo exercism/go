@@ -872,6 +872,17 @@
     },
     {
       "core": false,
+      "difficulty": 4,
+      "slug": "simple-linked-list",
+      "topics": [
+        "arrays",
+        "loops"
+      ],
+      "unlocked_by": "error-handling",
+      "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae"
+    },
+    {
+      "core": false,
       "difficulty": 5,
       "slug": "binary-search",
       "topics": [
@@ -1184,6 +1195,19 @@
       "uuid": "2e5c9e76-decd-49db-be4b-353ebeb46b73"
     },
     {
+      "core": false,
+      "difficulty": 5,
+      "slug": "alphametics",
+      "topics": [
+        "algorithms",
+        "arrays",
+        "mathematics",
+        "searching"
+      ],
+      "unlocked_by": "flatten-array",
+      "uuid": "6b313720-104a-46c2-8290-4b4af121101f "
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
@@ -1210,8 +1234,7 @@
     }
   ],
   "foregone": [
-    "linked-list",
-    "simple-linked-list"
+    "linked-list"
   ],
   "ignore_pattern": "example(?!.*test)",
   "language": "Go"

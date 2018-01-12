@@ -1,8 +1,8 @@
 package flatten
 
 // Source: exercism/problem-specifications
-// Commit: d7a3c09 flatten-array: Add test case for no nesting (#744)
-// Problem Specifications Version: 1.1.0
+// Commit: 0290376 flatten-array: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string

@@ -1,8 +1,8 @@
 package collatzconjecture
 
 // Source: exercism/problem-specifications
-// Commit: 25c4479 Collatz-conjecture: remove trailing space in test name (#839)
-// Problem Specifications Version: 1.1.1
+// Commit: 7bb0a64 collatz-conjecture: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string

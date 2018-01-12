@@ -1,8 +1,8 @@
 package atbash
 
 // Source: exercism/problem-specifications
-// Commit: bb4f220 atbash-cipher: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: dda678b atbash-cipher: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 type atbashTest struct {
 	s        string

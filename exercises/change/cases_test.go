@@ -1,8 +1,8 @@
 package change
 
 // Source: exercism/problem-specifications
-// Commit: 52cf1cf Add test for incorrect greedy algorithm
-// Problem Specifications Version: 1.1.0
+// Commit: 044d09a change: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description    string

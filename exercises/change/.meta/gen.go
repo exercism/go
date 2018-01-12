@@ -31,9 +31,11 @@ type js struct {
 type OneCase struct {
 	Description string
 	Property    string
-	Coins       []int
-	Target      int
-	Expected    interface{}
+	Input       struct {
+		Coins  []int
+		Target int
+	}
+	Expected interface{}
 }
 
 func (c OneCase) Valid() bool {
@@ -83,8 +85,8 @@ var testCases = []struct {
 }{
 {{range .J.Cases}}{
 	{{printf "%q"  .Description}},
-	{{printf "%#v" .Coins}},
-	{{printf "%d"  .Target}},
+	{{printf "%#v" .Input.Coins}},
+	{{printf "%d"  .Input.Target}},
 	{{printf "%v"  .Valid}},
 	{{printf "%#v" .IntSlice}},
 },

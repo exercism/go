@@ -12,3 +12,11 @@ func TestAcronym(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkAcronym(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range stringTestCases {
+			Abbreviate(test.input)
+		}
+	}
+}
