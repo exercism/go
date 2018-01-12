@@ -5,35 +5,42 @@ import (
 	"strings"
 )
 
-// Histogram is a mapping from nucleotide to its count in given DNA
-type Histogram map[byte]int
-
 // DNA is a list of nucleotides
 type DNA string
 
-const validNucleotides = "ACGT"
+var validNucleotides = []string{"A", "C", "G", "T"}
+
+func isValidNucleotide(nucleotide string) bool {
+	for _, n := range validNucleotides {
+		if nucleotide == n {
+			return true
+		}
+	}
+	return false
+}
 
 // Count counts number of occurrences of given nucleotide in given DNA
-func (dna DNA) Count(nucleotide byte) (count int, err error) {
-	if !strings.Contains(validNucleotides, string(nucleotide)) {
+func (dna DNA) Count(nucleotide string) (count int, err error) {
+	if !isValidNucleotide(nucleotide) {
 		return 0, errors.New("dna: invalid nucleotide " + string(nucleotide))
 	}
 
-	return strings.Count(string(dna), string(nucleotide)), nil
+	return strings.Count(string(dna), nucleotide), nil
 }
 
 // Counts generates a histogram of valid nucleotides in given DNA.
 // Returns error if DNA contains invalid nucleotide.
-func (dna DNA) Counts() (Histogram, error) {
+func (dna DNA) Counts() (result map[string]int, e error) {
 	var total int
-	h := Histogram{}
+	result = make(map[string]int)
+
 	for i := range validNucleotides {
 		nucleotide := validNucleotides[i]
-		h[nucleotide], _ = dna.Count(nucleotide)
-		total += h[nucleotide]
+		result[nucleotide], _ = dna.Count(nucleotide)
+		total += result[nucleotide]
 	}
 	if total != len(dna) {
 		return nil, errors.New("dna: contains invalid nucleotide")
 	}
-	return h, nil
+	return result, nil
 }
