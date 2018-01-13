@@ -1,8 +1,8 @@
 package phonenumber
 
 // Source: exercism/problem-specifications
-// Commit: 39cba0d phone-number: Remove test using malformed input. (#772)
-// Problem Specifications Version: 1.2.0
+// Commit: 8380763 phone-number: add missing edge cases (#1090)
+// Problem Specifications Version: 1.3.0
 
 // Cleanup user-entered phone numbers
 var numberTests = []struct {
@@ -74,13 +74,23 @@ var numberTests = []struct {
 		expectErr:   true,
 	},
 	{
-		description: "invalid if area code does not start with 2-9",
+		description: "invalid if area code starts with 0",
+		input:       "(023) 456-7890",
+		expectErr:   true,
+	},
+	{
+		description: "invalid if area code starts with 1",
 		input:       "(123) 456-7890",
 		expectErr:   true,
 	},
 	{
-		description: "invalid if exchange code does not start with 2-9",
+		description: "invalid if exchange code starts with 0",
 		input:       "(223) 056-7890",
+		expectErr:   true,
+	},
+	{
+		description: "invalid if exchange code starts with 1",
+		input:       "(223) 156-7890",
 		expectErr:   true,
 	},
 }
