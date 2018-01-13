@@ -29,11 +29,13 @@ type js struct {
 // template applied to above data structure generates the Go test cases
 
 type OneCase struct {
-	Description   string
-	Property      string
-	PreviousRolls []int `json:"previous_rolls"`
-	Roll          int
-	Expected      interface{}
+	Description string
+	Property    string
+	Input       struct {
+		PreviousRolls []int
+		Roll          int
+	}
+	Expected interface{}
 }
 
 // ScoreTest and RollTest help determine which type of test case
@@ -90,7 +92,7 @@ var scoreTestCases = []struct {
 }{ {{range .J.Cases}}
 {{if .ScoreTest}}{
 	{{printf "%q"  .Description}},
-	{{printf "%#v" .PreviousRolls}},
+	{{printf "%#v" .Input.PreviousRolls}},
 	{{printf "%v"  .Valid}},
 	{{printf "%d"  .Score}},
 	{{printf "%q"  .ExplainText}},
@@ -106,9 +108,9 @@ var rollTestCases = []struct {
 }{ {{range .J.Cases}}
 {{if .RollTest}}{
 	{{printf "%q"  .Description}},
-	{{printf "%#v" .PreviousRolls}},
+	{{printf "%#v" .Input.PreviousRolls}},
 	{{printf "%v"  .Valid}},
-	{{printf "%d"  .Roll}},
+	{{printf "%d"  .Input.Roll}},
 	{{printf "%q"  .ExplainText}},
 },{{- end}}{{end}}
 }
