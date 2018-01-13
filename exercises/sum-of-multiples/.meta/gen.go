@@ -22,9 +22,11 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Factors     []int
-		Limit       int
-		Expected    int
+		Input       struct {
+			Factors []int
+			Limit   int
+		}
+		Expected int
 	}
 }
 
@@ -38,6 +40,6 @@ var varTests = []struct {
 	limit        int
 	sum          int
 }{
-{{range .J.Cases}}{ {{.Factors | printf "%#v"}}, {{.Limit}}, {{.Expected}}}, // {{.Description}}
+{{range .J.Cases}}{ {{.Input.Factors | printf "%#v"}}, {{.Input.Limit}}, {{.Expected}}}, // {{.Description}}
 {{end}}}
 `

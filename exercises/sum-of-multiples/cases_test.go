@@ -1,8 +1,8 @@
 package summultiples
 
 // Source: exercism/problem-specifications
-// Commit: df076b2 sum-of-multiples: Add up to 7 test case (#896)
-// Problem Specifications Version: 1.1.0
+// Commit: fb5b0a1 sum-of-multiples: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var varTests = []struct {
 	divisors []int
