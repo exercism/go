@@ -8,28 +8,28 @@ package dna
 var testCases = []struct {
 	description   string
 	strand        string
-	expected      map[byte]int
+	expected      Histogram
 	errorExpected bool
 }{
 	{
 		description: "empty strand",
 		strand:      "",
-		expected:    map[byte]int{'A': 0, 'C': 0, 'G': 0, 'T': 0},
+		expected:    Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0},
 	},
 	{
 		description: "can count one nucleotide in single-character input",
 		strand:      "G",
-		expected:    map[byte]int{'A': 0, 'C': 0, 'G': 1, 'T': 0},
+		expected:    Histogram{'A': 0, 'C': 0, 'G': 1, 'T': 0},
 	},
 	{
 		description: "strand with repeated nucleotide",
 		strand:      "GGGGGGG",
-		expected:    map[byte]int{'A': 0, 'C': 0, 'G': 7, 'T': 0},
+		expected:    Histogram{'A': 0, 'C': 0, 'G': 7, 'T': 0},
 	},
 	{
 		description: "strand with multiple nucleotides",
 		strand:      "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
-		expected:    map[byte]int{'A': 20, 'C': 12, 'G': 17, 'T': 21},
+		expected:    Histogram{'A': 20, 'C': 12, 'G': 17, 'T': 21},
 	},
 	{
 		description:   "strand with invalid nucleotides",

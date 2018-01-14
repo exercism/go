@@ -69,14 +69,14 @@ var tmpl = `package dna
 var testCases = []struct {
 	description   string
 	strand        string
-	expected      map[byte]int
+	expected      Histogram
 	errorExpected bool
 }{
 {{range .Cases}}{
 	description:	{{printf "%q"  .Description}},
 	strand:		{{printf "%#v"  .Strand}},
 	{{if .ErrorExpected}}errorExpected:	true,
-	{{else}}expected:       map[byte]int{ {{.SortedMapString}} },
+	{{else}}expected:       Histogram{ {{.SortedMapString}} },
 	{{- end}}
 },
 {{end}}{{end}}
