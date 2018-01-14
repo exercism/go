@@ -51,7 +51,7 @@ func (c OneCase) SortedMapString() string {
 	for k, v := range c.Expected {
 		switch t := v.(type) {
 		case float64:
-			strs = append(strs, `"`+k+`": `+strconv.FormatFloat(t, 'f', -1, 64))
+			strs = append(strs, `'`+k+`': `+strconv.FormatFloat(t, 'f', -1, 64))
 		default:
 		}
 
@@ -69,14 +69,14 @@ var tmpl = `package dna
 var testCases = []struct {
 	description   string
 	strand        string
-	expected      map[string]int
+	expected      map[byte]int
 	errorExpected bool
 }{
 {{range .Cases}}{
 	description:	{{printf "%q"  .Description}},
 	strand:		{{printf "%#v"  .Strand}},
 	{{if .ErrorExpected}}errorExpected:	true,
-	{{else}}expected:       map[string]int{ {{.SortedMapString}} },
+	{{else}}expected:       map[byte]int{ {{.SortedMapString}} },
 	{{- end}}
 },
 {{end}}{{end}}
