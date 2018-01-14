@@ -1,82 +1,82 @@
 package bookstore
 
 // Source: exercism/problem-specifications
-// Commit: 78006a2 move "targetgrouping" to "comments"
-// Problem Specifications Version: 1.2.0
+// Commit: a2ed4f7 book-store: Clarify expected monetary denomination
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description string
 	basket      []int
-	expected    float64
+	expected    int
 }{
 	{
 		description: "Only a single book",
 		basket:      []int{1},
-		expected:    8.00,
+		expected:    800,
 	},
 	{
 		description: "Two of the same book",
 		basket:      []int{2, 2},
-		expected:    16.00,
+		expected:    1600,
 	},
 	{
 		description: "Empty basket",
 		basket:      []int{},
-		expected:    0.00,
+		expected:    0,
 	},
 	{
 		description: "Two different books",
 		basket:      []int{1, 2},
-		expected:    15.20,
+		expected:    1520,
 	},
 	{
 		description: "Three different books",
 		basket:      []int{1, 2, 3},
-		expected:    21.60,
+		expected:    2160,
 	},
 	{
 		description: "Four different books",
 		basket:      []int{1, 2, 3, 4},
-		expected:    25.60,
+		expected:    2560,
 	},
 	{
 		description: "Five different books",
 		basket:      []int{1, 2, 3, 4, 5},
-		expected:    30.00,
+		expected:    3000,
 	},
 	{
 		description: "Two groups of four is cheaper than group of five plus group of three",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 5},
-		expected:    51.20,
+		expected:    5120,
 	},
 	{
 		description: "Group of four plus group of two is cheaper than two groups of three",
 		basket:      []int{1, 1, 2, 2, 3, 4},
-		expected:    40.80,
+		expected:    4080,
 	},
 	{
 		description: "Two each of first 4 books and 1 copy each of rest",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5},
-		expected:    55.60,
+		expected:    5560,
 	},
 	{
 		description: "Two copies of each book",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5},
-		expected:    60.00,
+		expected:    6000,
 	},
 	{
 		description: "Three copies of first book and 2 each of remaining",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1},
-		expected:    68.00,
+		expected:    6800,
 	},
 	{
 		description: "Three each of first 2 books and 2 each of remaining books",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1, 2},
-		expected:    75.20,
+		expected:    7520,
 	},
 	{
 		description: "Four groups of four are cheaper than two groups each of five and three",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5},
-		expected:    102.40,
+		expected:    10240,
 	},
 }
