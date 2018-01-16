@@ -35,8 +35,10 @@ type js struct {
 type OneCase struct {
 	Description string
 	Property    string
-	Strand      string
-	Expected    map[string]interface{}
+	Input       struct {
+		Strand string
+	}
+	Expected map[string]interface{}
 }
 
 // ErrorExpected returns true if an error should be raised
@@ -53,6 +55,7 @@ func (c OneCase) SortedMapString() string {
 		case float64:
 			strs = append(strs, `'`+k+`': `+strconv.FormatFloat(t, 'f', -1, 64))
 		default:
+			log.Fatalf("unexpected type %T for %v", t, v)
 		}
 
 	}
@@ -74,7 +77,7 @@ var testCases = []struct {
 }{
 {{range .Cases}}{
 	description:	{{printf "%q"  .Description}},
-	strand:		{{printf "%#v"  .Strand}},
+	strand:		{{printf "%#v"  .Input.Strand}},
 	{{if .ErrorExpected}}errorExpected:	true,
 	{{else}}expected:       Histogram{ {{.SortedMapString}} },
 	{{- end}}
