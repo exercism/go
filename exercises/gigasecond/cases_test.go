@@ -1,8 +1,8 @@
 package gigasecond
 
 // Source: exercism/problem-specifications
-// Commit: 61e7d70 Fix "Gigasecond: Schema Compliance"
-// Problem Specifications Version: 1.0.0
+// Commit: 5506bac gigasecond: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 // Add one gigasecond to the input.
 var addCases = []struct {
