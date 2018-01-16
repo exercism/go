@@ -1213,8 +1213,8 @@
       "slug": "grep",
       "topics": [
         "algorithms",
-        "conditionals",
         "arrays",
+        "conditionals",
         "searching",
         "strings"
       ],

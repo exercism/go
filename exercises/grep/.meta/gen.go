@@ -13,7 +13,6 @@ func main() {
 		"fileContentData": FileContentData,
 	})
 	t, err := t.Parse(tmpl)
-	//t, err := template.New("").Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -7,68 +7,68 @@ import (
 	"strings"
 )
 
-type grepOptions struct {
-	n_line_numbers      bool
-	l_file_only         bool
-	i_any_case          bool
-	v_invert            bool
-	x_match_entire_line bool
-	prefix_filenames    bool
+type options struct {
+	printLineNumbers     bool
+	printFilenamesOnly   bool
+	caseInsensitiveMatch bool
+	invertPatternMatch   bool
+	matchEntireLine      bool
+	prefixFilenames      bool
 }
 
-// GrepFiles searches for pattern in the files given, using optional flags.
-func GrepFiles(pattern string, flags []string, files []string) []string {
+// Search looks for pattern in the files given, using optional flags.
+func Search(pattern string, flags, files []string) []string {
 	output := []string{}
 	options := getOptions(flags, len(files))
 	for _, file := range files {
-		output = append(output, grepOneFile(pattern, file, options)...)
+		output = append(output, searchFile(pattern, file, options)...)
 	}
 	return output
 }
 
-// grepOneFile performs a search for pattern in the given file
-// and returns the proper output according to the options.
-func grepOneFile(pattern string, file string, options *grepOptions) (output []string) {
+// searchFile performs a search for pattern in the given file
+// and returns the output according to the options.
+func searchFile(pattern string, file string, options *options) (output []string) {
 	f, err := os.Open(file)
 	if err != nil {
 		return nil
 	}
 	defer f.Close()
 	var file_prefix string
-	if options.prefix_filenames {
+	if options.prefixFilenames {
 		file_prefix = file + ":"
 	}
 	scanner := bufio.NewScanner(f)
 	for line_num := 1; scanner.Scan(); line_num++ {
 		var match bool
 		line := scanner.Text()
-		if options.x_match_entire_line {
-			if options.i_any_case {
+		if options.matchEntireLine {
+			if options.caseInsensitiveMatch {
 				match = strings.EqualFold(line, pattern)
 			} else {
 				match = line == pattern
 			}
 		} else {
-			if options.i_any_case {
+			if options.caseInsensitiveMatch {
 				match = strings.Contains(strings.ToLower(line), strings.ToLower(pattern))
 			} else {
 				match = strings.Contains(line, pattern)
 			}
 		}
-		if match && !options.v_invert {
-			if options.l_file_only {
+		if match && !options.invertPatternMatch {
+			if options.printFilenamesOnly {
 				output = append(output, file)
 				break
-			} else if options.n_line_numbers {
+			} else if options.printLineNumbers {
 				output = append(output, file_prefix+strconv.Itoa(line_num)+":"+line)
 			} else {
 				output = append(output, file_prefix+line)
 			}
-		} else if !match && options.v_invert {
-			if options.l_file_only {
+		} else if !match && options.invertPatternMatch {
+			if options.printFilenamesOnly {
 				output = append(output, file)
 				break
-			} else if options.n_line_numbers {
+			} else if options.printLineNumbers {
 				output = append(output, file_prefix+strconv.Itoa(line_num)+":"+line)
 			} else {
 				output = append(output, file_prefix+line)
@@ -79,24 +79,24 @@ func grepOneFile(pattern string, file string, options *grepOptions) (output []st
 }
 
 // getOptions examines flags and nfiles, outputing options.
-func getOptions(flags []string, nfiles int) (options *grepOptions) {
-	options = &grepOptions{}
+func getOptions(flags []string, nfiles int) (opt *options) {
+	opt = &options{}
 	for _, option := range flags {
 		switch option {
 		case "-n":
-			options.n_line_numbers = true
+			opt.printLineNumbers = true
 		case "-l":
-			options.l_file_only = true
+			opt.printFilenamesOnly = true
 		case "-i":
-			options.i_any_case = true
+			opt.caseInsensitiveMatch = true
 		case "-v":
-			options.v_invert = true
+			opt.invertPatternMatch = true
 		case "-x":
-			options.x_match_entire_line = true
+			opt.matchEntireLine = true
 		}
 	}
 	if nfiles > 1 {
-		options.prefix_filenames = true
+		opt.prefixFilenames = true
 	}
-	return options
+	return opt
 }

@@ -66,15 +66,15 @@ print the names of files that do not contain the string "hello".
 
 ## Implementation
 
-Define a single Go func, GrepFiles, which accepts a pattern string,
+In package grep, Define a single Go func, Search, which accepts a pattern string,
 a slice of flags which are strings, and a slice of filename strings.
-GrepFiles should return a slice of strings of the output for
+Search should return a slice of strings of the output for
 the given flags and filenames.
 
-Use the following signature for func GrepFiles:
+Use the following signature for func Search:
 
 ```
-func GrepFiles(pattern string, flags []string, files []string) []string {
+func Search(pattern string, flags, files []string) []string {
 ```
 
 

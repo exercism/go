@@ -57,34 +57,31 @@ func deleteFiles(filenames []string) {
 	}
 }
 
-func TestGrepFiles(t *testing.T) {
+func TestSearch(t *testing.T) {
 	files := createFiles(fileContentData)
 	defer deleteFiles(files)
 
 	for _, tc := range testCases {
-		actual := GrepFiles(tc.pattern, tc.flags, tc.files)
+		actual := Search(tc.pattern, tc.flags, tc.files)
 		if !reflect.DeepEqual(actual, tc.expected) {
-			t.Fatalf("FAIL: %s\nGrepFiles for pattern %q\nexpected %v\nactual %v.",
+			t.Fatalf("FAIL: %s\nSearch for pattern %q\nexpected %v\nactual %v.",
 				tc.description, tc.pattern, tc.expected, actual)
 		}
 		t.Logf("PASS: %s", tc.description)
 	}
 }
 
-func BenchmarkResultOf(b *testing.B) {
+func BenchmarkSearch(b *testing.B) {
 	files := createFiles(fileContentData)
 	defer deleteFiles(files)
 
 	b.StopTimer()
+	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-
-		b.StartTimer()
-
 		for _, tc := range testCases {
-			GrepFiles(tc.pattern, tc.flags, tc.files)
+			Search(tc.pattern, tc.flags, tc.files)
 		}
-
-		b.StopTimer()
 	}
+	b.StopTimer()
 
 }
