@@ -34,16 +34,13 @@ func TestTotal(t *testing.T) {
 }
 
 func BenchmarkSquare(b *testing.B) {
-	b.StopTimer()
 
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 
 		for _, test := range squareTests {
 			Square(test.input)
 		}
 
-		b.StopTimer()
 	}
 }
 

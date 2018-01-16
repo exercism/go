@@ -36,14 +36,11 @@ func TestAccumulate(t *testing.T) {
 }
 
 func BenchmarkAccumulate(b *testing.B) {
-	b.StopTimer()
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 
 		for _, test := range tests {
 			Accumulate(test.given, test.converter)
 		}
 
-		b.StopTimer()
 	}
 }

@@ -20,12 +20,9 @@ func TestBracket(t *testing.T) {
 }
 
 func BenchmarkBracket(b *testing.B) {
-	b.StopTimer()
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 		for _, tt := range testCases {
 			Bracket(tt.input)
 		}
-		b.StopTimer()
 	}
 }

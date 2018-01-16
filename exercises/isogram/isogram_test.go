@@ -13,14 +13,11 @@ func TestIsIsogram(t *testing.T) {
 }
 
 func BenchmarkIsIsogram(b *testing.B) {
-	b.StopTimer()
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 
 		for _, c := range testCases {
 			IsIsogram(c.input)
 		}
 
-		b.StopTimer()
 	}
 }

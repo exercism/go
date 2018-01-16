@@ -35,16 +35,12 @@ func TestDetectAnagrams(t *testing.T) {
 
 func BenchmarkDetectAnagrams(b *testing.B) {
 
-	b.StopTimer()
-
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 
 		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)
 		}
 
-		b.StopTimer()
 	}
 
 }

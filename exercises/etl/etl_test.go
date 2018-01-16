@@ -77,14 +77,11 @@ func TestTransform(t *testing.T) {
 }
 
 func BenchmarkTransform(b *testing.B) {
-	b.StopTimer()
 	for i := 0; i < b.N; i++ {
-		b.StartTimer()
 
 		for _, tt := range transformTests {
 			Transform(map[int][]string(tt.input))
 		}
 
-		b.StopTimer()
 	}
 }
