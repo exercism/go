@@ -37,8 +37,11 @@ func (d Dominoe) String() string {
 
 type OneCase struct {
 	Description string
-	Dominoes    []Dominoe `json:"input"`
-	Expected    bool
+	Comments    []string
+	Input       struct {
+		Dominoes []Dominoe
+	}
+	Expected bool
 }
 
 //func (c OneCase)
@@ -54,7 +57,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	{{printf "%q"  .Description}},
-	[]Dominoe{ {{range .Dominoes}} {{printf "%v" .}}, {{end}} },
+	{{range .Comments}}//{{.}}
+	{{end}}[]Dominoe{ {{range .Input.Dominoes}} {{printf "%v" .}}, {{end}} },
 	{{printf "%v"  .Expected}},
 }, {{end}}
 }
