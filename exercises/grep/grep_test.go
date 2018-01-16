@@ -75,8 +75,7 @@ func BenchmarkSearch(b *testing.B) {
 	files := createFiles(fileContentData)
 	defer deleteFiles(files)
 
-	b.StopTimer()
-	b.StartTimer()
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, tc := range testCases {
 			Search(tc.pattern, tc.flags, tc.files)
