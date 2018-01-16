@@ -34,7 +34,7 @@ type OneCase struct {
 	Input       struct {
 		Basket []int
 	}
-	Expected float64
+	Expected int
 }
 
 // template applied to above data structure generates the Go test cases
@@ -45,12 +45,12 @@ var tmpl = `package bookstore
 var testCases = []struct {
 	description string
 	basket      []int
-	expected    float64
+	expected    int
 }{{range .J.Groups}}{
 {{range .Cases}} {
 	description: "{{.Description}}",
 	basket:      {{printf "%#v" .Input.Basket}},
-	expected:    {{printf "%.2f" .Expected}},
+	expected:    {{printf "%d" .Expected}},
 },
 {{end}}}{{end}}
 `

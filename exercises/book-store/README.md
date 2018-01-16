@@ -67,6 +67,22 @@ For a total of $51.20
 
 And $51.20 is the price with the biggest discount.
 
+## Implementation
+
+Define a single Go func, Cost, which calculates the cost
+for a given list of books based on the defined discounts.
+
+Use the following signature for func Cost:
+
+```
+func Cost(books []int) int
+```
+Cost will return the total cost (after discounts) in cents.
+For example, for a single book, the cost is 800 cents, which equals $8.00.
+Only integer calculations are necessary for this exercise.
+
+
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
@@ -86,7 +102,7 @@ you're having trouble, please visit the exercism.io [Go language page](http://ex
 
 ## Source
 
-[Inspired by the harry potter kata from Cyber-Dojo](http://cyber-dojo.org).
+Inspired by the harry potter kata from Cyber-Dojo. [http://cyber-dojo.org](http://cyber-dojo.org)
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.

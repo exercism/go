@@ -1,25 +1,23 @@
 package bookstore
 
-import (
-	"math"
-)
+import "math"
 
-const bookPrice = 8
+const bookPrice = 800 // 800 cents = $8.00
 
-var discountTiers = [...]float64{0, 0.05, 0.1, 0.2, 0.25}
+var discountTiers = [...]int{0, 5, 10, 20, 25}
 
 // Cost implements the book store exercise.
-func Cost(books []int) float64 {
+func Cost(books []int) int {
 	return cost(books, 0)
 }
 
-func cost(books []int, priceSoFar float64) float64 {
+func cost(books []int, priceSoFar int) int {
 	if len(books) == 0 {
 		return priceSoFar
 	}
 
 	distinctBooks, remainingBooks := getDistinctBooks(books)
-	minPrice := math.MaxFloat32
+	minPrice := math.MaxInt32
 
 	for i := 1; i <= len(distinctBooks); i++ {
 		newRemainingBooks := make([]int, len(remainingBooks))
@@ -27,7 +25,9 @@ func cost(books []int, priceSoFar float64) float64 {
 		newRemainingBooks = append(newRemainingBooks, distinctBooks[i:]...)
 
 		price := cost(newRemainingBooks, priceSoFar+groupCost(i))
-		minPrice = math.Min(minPrice, price)
+		if price < minPrice {
+			minPrice = price
+		}
 	}
 
 	return minPrice
@@ -47,6 +47,8 @@ func getDistinctBooks(books []int) (distinct []int, remaining []int) {
 	return
 }
 
-func groupCost(groupSize int) float64 {
-	return float64(bookPrice*groupSize) * (1.00 - discountTiers[groupSize-1])
+func groupCost(groupSize int) int {
+	normalPrice := bookPrice * groupSize
+	discount := (normalPrice * discountTiers[groupSize-1]) / 100
+	return normalPrice - discount
 }
