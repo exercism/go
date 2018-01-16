@@ -22,8 +22,10 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       string
-		Expected    bool
+		Input       struct {
+			Value string
+		}
+		Expected bool
 	}
 }
 
@@ -40,7 +42,7 @@ type bracketTest struct {
 var testCases = []bracketTest {
 {{range .J.Cases}}{
 	// {{.Description}}
-	{{printf "%q" .Input}},
+	{{printf "%q" .Input.Value}},
 	{{.Expected}},
 },
 {{end}}}
