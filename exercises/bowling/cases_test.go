@@ -1,8 +1,8 @@
 package bowling
 
 // Source: exercism/problem-specifications
-// Commit: 26e345e [Bowling] Fix case descriptions (#832)
-// Problem Specifications Version: 1.0.1
+// Commit: dfdc0e2 bowling: bump version
+// Problem Specifications Version: 1.1.0
 
 var scoreTestCases = []struct {
 	description   string
