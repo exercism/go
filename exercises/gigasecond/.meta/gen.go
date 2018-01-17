@@ -24,8 +24,10 @@ type js struct {
 		Description string
 		Cases       []struct {
 			Description string
-			Input       string
-			Expected    string
+			Input       struct {
+				Birthdate string
+			}
+			Expected string
 		}
 	}
 }
@@ -43,7 +45,7 @@ var addCases = []struct {
 }{
 {{range .Cases}}{
 	{{printf "%q" .Description}},
-	{{printf "%q" .Input}},
+	{{printf "%q" .Input.Birthdate}},
 	{{printf "%q" .Expected}},
 },
 {{end}}{{end}}
