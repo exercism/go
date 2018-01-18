@@ -34,12 +34,12 @@ func searchFile(pattern string, file string, options *options) (output []string)
 		return nil
 	}
 	defer f.Close()
-	var file_prefix string
+	var filePrefix string
 	if options.prefixFilenames {
-		file_prefix = file + ":"
+		filePrefix = file + ":"
 	}
 	scanner := bufio.NewScanner(f)
-	for line_num := 1; scanner.Scan(); line_num++ {
+	for lineNum := 1; scanner.Scan(); lineNum++ {
 		var match bool
 		line := scanner.Text()
 		if options.matchEntireLine {
@@ -60,18 +60,18 @@ func searchFile(pattern string, file string, options *options) (output []string)
 				output = append(output, file)
 				break
 			} else if options.printLineNumbers {
-				output = append(output, file_prefix+strconv.Itoa(line_num)+":"+line)
+				output = append(output, filePrefix+strconv.Itoa(lineNum)+":"+line)
 			} else {
-				output = append(output, file_prefix+line)
+				output = append(output, filePrefix+line)
 			}
 		} else if !match && options.invertPatternMatch {
 			if options.printFilenamesOnly {
 				output = append(output, file)
 				break
 			} else if options.printLineNumbers {
-				output = append(output, file_prefix+strconv.Itoa(line_num)+":"+line)
+				output = append(output, filePrefix+strconv.Itoa(lineNum)+":"+line)
 			} else {
-				output = append(output, file_prefix+line)
+				output = append(output, filePrefix+line)
 			}
 		}
 	}
