@@ -1,8 +1,8 @@
 package hamming
 
 // Source: exercism/problem-specifications
-// Commit: f79dfd7 Simplify two tests so the difference is easily spotted.
-// Problem Specifications Version: 2.0.1
+// Commit: b5d154b hamming: move inputs (strand1, strand2) to input object
+// Problem Specifications Version: 2.1.0
 
 var testCases = []struct {
 	s1   string

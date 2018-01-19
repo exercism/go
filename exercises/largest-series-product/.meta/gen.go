@@ -22,9 +22,11 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Digits      string
-		Span        int
-		Expected    int64
+		Input       struct {
+			Digits string
+			Span   int
+		}
+		Expected int64
 	}
 }
 
@@ -39,6 +41,6 @@ var tests = []struct {
 	product int64
 	ok      bool
 }{
-{{range .J.Cases}}{ "{{.Digits}}", {{.Span}}, {{.Expected}}, {{ge .Expected 0}}},
+{{range .J.Cases}}{ "{{.Input.Digits}}", {{.Input.Span}}, {{.Expected}}, {{ge .Expected 0}}},
 {{end}}}
 `
