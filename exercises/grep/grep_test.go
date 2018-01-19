@@ -81,6 +81,4 @@ func BenchmarkSearch(b *testing.B) {
 			Search(tc.pattern, tc.flags, tc.files)
 		}
 	}
-	b.StopTimer()
-
 }
