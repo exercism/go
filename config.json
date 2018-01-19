@@ -1208,6 +1208,20 @@
       "uuid": "6b313720-104a-46c2-8290-4b4af121101f "
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "grep",
+      "topics": [
+        "algorithms",
+        "arrays",
+        "conditionals",
+        "searching",
+        "strings"
+      ],
+      "unlocked_by": "hamming",
+      "uuid": "ec5dab72-dd96-4dce-8886-aff52a6eb090"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
