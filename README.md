@@ -221,7 +221,12 @@ directory within each exercise that makes use of a test cases generator. This
 Whenever the shared JSON data changes, the test cases will need to be regenerated.
 The generator will first look for a local copy of the **problem-specifications** repository.
 If there isn't one it will attempt to get the relevant json data for the
-exercise from the **problem-specifications** repository on GitHub.
+exercise from the **problem-specifications** repository on GitHub. The generator
+uses the GitHub API to find some information about exercises when it cannot
+find a local copy of **problem-specifications**. This can cause throttling
+issues if working with a large number of exercise. *We therefore recommend
+using a local copy of the repository when possible* (remember to keep it
+current :smile:).
 
 To use a local copy of the **problem-specifications** repository, make sure that it has been
 cloned into the same parent-directory as the **go** repository.
