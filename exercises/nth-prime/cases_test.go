@@ -1,8 +1,8 @@
 package prime
 
 // Source: exercism/problem-specifications
-// Commit: e82cbcd nth-prime: Use object instead of bool for invalid value (#969)
-// Problem Specifications Version: 2.0.0
+// Commit: 4a3ba76 nth-prime: Apply new "input" policy
+// Problem Specifications Version: 2.1.0
 
 var tests = []struct {
 	description string

@@ -25,9 +25,11 @@ type js struct {
 
 type oneCase struct {
 	Description string
-	Strand1     string
-	Strand2     string
-	Expected    interface{}
+	Input       struct {
+		Strand1 string
+		Strand2 string
+	}
+	Expected interface{}
 }
 
 func (o oneCase) Want() int {
@@ -49,8 +51,8 @@ var testCases = []struct {
 	want int
 }{
 {{range .J.Cases}}{ // {{.Description}}
-	{{printf "%q" .Strand1}},
-	{{printf "%q" .Strand2}},
+	{{printf "%q" .Input.Strand1}},
+	{{printf "%q" .Input.Strand2}},
 	{{.Want}},
 },
 {{end}}}

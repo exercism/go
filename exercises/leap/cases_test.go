@@ -1,8 +1,8 @@
 package leap
 
 // Source: exercism/problem-specifications
-// Commit: 11fbf7e leap: Fix loophole in unit tests (#971)
-// Problem Specifications Version: 1.2.0
+// Commit: e348053 leap: Apply new "input" policy
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	year        int

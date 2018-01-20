@@ -1,8 +1,8 @@
 package lsproduct
 
 // Source: exercism/problem-specifications
-// Commit: e79b832 largest-series-product: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 92b86a8 largest-series-product: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var tests = []struct {
 	digits  string

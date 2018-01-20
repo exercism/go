@@ -1,8 +1,8 @@
 package acronym
 
 // Source: exercism/problem-specifications
-// Commit: c5fb622 acronym: Update json for new "input" policy (#1032)
-// Problem Specifications Version: 1.2.0
+// Commit: 5ae1dba Acronym canonical-data: Remove redundant test case
+// Problem Specifications Version: 1.3.0
 
 type acronymTest struct {
 	input    string
@@ -21,10 +21,6 @@ var stringTestCases = []acronymTest{
 	{
 		input:    "First In, First Out",
 		expected: "FIFO",
-	},
-	{
-		input:    "PHP: Hypertext Preprocessor",
-		expected: "PHP",
 	},
 	{
 		input:    "GNU Image Manipulation Program",

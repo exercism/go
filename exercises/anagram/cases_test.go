@@ -1,8 +1,8 @@
 package anagram
 
 // Source: exercism/problem-specifications
-// Commit: a0f7663 anagram: Update json for new "input" policy (#1036)
-// Problem Specifications Version: 1.1.0
+// Commit: b8359f9 Anagram canonical-data: Update version
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
@@ -18,23 +18,6 @@ var testCases = []struct {
 			"world",
 			"zombies",
 			"pants"},
-		expected: []string{},
-	},
-	{
-		description: "detects simple anagram",
-		subject:     "ant",
-		candidates: []string{
-			"tan",
-			"stand",
-			"at"},
-		expected: []string{
-			"tan"},
-	},
-	{
-		description: "does not detect false positives",
-		subject:     "galea",
-		candidates: []string{
-			"eagle"},
 		expected: []string{},
 	},
 	{
@@ -83,20 +66,6 @@ var testCases = []struct {
 			"largely"},
 	},
 	{
-		description: "does not detect identical words",
-		subject:     "corn",
-		candidates: []string{
-			"corn",
-			"dark",
-			"Corn",
-			"rank",
-			"CORN",
-			"cron",
-			"park"},
-		expected: []string{
-			"cron"},
-	},
-	{
 		description: "does not detect non-anagrams with identical checksum",
 		subject:     "mass",
 		candidates: []string{
@@ -132,13 +101,6 @@ var testCases = []struct {
 			"radishes"},
 		expected: []string{
 			"Carthorse"},
-	},
-	{
-		description: "does not detect a word as its own anagram",
-		subject:     "banana",
-		candidates: []string{
-			"Banana"},
-		expected: []string{},
 	},
 	{
 		description: "does not detect a anagram if the original word is repeated",
