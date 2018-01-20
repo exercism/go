@@ -1,8 +1,8 @@
 package say
 
 // Source: exercism/problem-specifications
-// Commit: be403e1 say: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: c1467a0 say: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string

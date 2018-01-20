@@ -31,8 +31,10 @@ type js struct {
 type OneCase struct {
 	Description string
 	Property    string
-	Input       int64
-	Expected    interface{}
+	Input       struct {
+		Number int64
+	}
+	Expected interface{}
 }
 
 func (c OneCase) ErrorExpected() bool {
@@ -61,7 +63,7 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%v"  .Input}},
+	input:		{{printf "%v"  .Input.Number}},
 	{{if .ErrorExpected}}expectError:	true,
 	{{else}}expected:	{{printf "%q"  .Expected}},
 	{{- end}}
