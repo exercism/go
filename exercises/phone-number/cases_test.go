@@ -1,8 +1,8 @@
 package phonenumber
 
 // Source: exercism/problem-specifications
-// Commit: 8380763 phone-number: add missing edge cases (#1090)
-// Problem Specifications Version: 1.3.0
+// Commit: 0783171 phone-number: Apply new "input" policy
+// Problem Specifications Version: 1.4.0
 
 // Cleanup user-entered phone numbers
 var numberTests = []struct {

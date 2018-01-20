@@ -47,8 +47,10 @@ type js struct {
 		Description string
 		Cases       []struct {
 			Description string
-			Phrase      string
-			Expected    string
+			Input       struct {
+				Phrase string
+			}
+			Expected string
 		}
 	}
 }
@@ -69,7 +71,7 @@ var numberTests = []struct {
 }{
 	{{range .Cases}}{
 		description: {{printf "%q" .Description}},
-		input: {{printf "%q" .Phrase}},
+		input: {{printf "%q" .Input.Phrase}},
 		{{if expectErr .Expected}} expectErr: {{expectErr .Expected | printf "%v" }},
 		{{else}} number: {{printf "%q" .Expected}},
 		areaCode: {{areacode .Expected  | printf "%q" }},
