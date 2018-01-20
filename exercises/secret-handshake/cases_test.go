@@ -1,8 +1,8 @@
 package secret
 
 // Source: exercism/problem-specifications
-// Commit: 8acd78c Replace x-common with problem-specifications
-// Problem Specifications Version: 1.1.0
+// Commit: a9e4df8 secret-handshake: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 type secretHandshakeTest struct {
 	code uint

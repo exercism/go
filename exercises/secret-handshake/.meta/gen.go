@@ -25,8 +25,10 @@ type js struct {
 		Cases       []struct {
 			Description string
 			Property    string
-			Input       uint
-			Expected    []string
+			Input       struct {
+				Number uint
+			}
+			Expected []string
 		}
 	}
 }
@@ -42,7 +44,7 @@ type secretHandshakeTest struct {
 }
 
 var tests = []secretHandshakeTest {
-{{range .J.Cases}} {{range .Cases}}{ {{ .Input }}, {{printf "%#v" .Expected }},
+{{range .J.Cases}} {{range .Cases}}{ {{ .Input.Number }}, {{printf "%#v" .Expected }},
 },
 {{end}}{{end}}
 }
