@@ -1,8 +1,8 @@
 package piglatin
 
 // Source: exercism/problem-specifications
-// Commit: b5ddd0a pig-latin: tests for Y as a vowel (#904)
-// Problem Specifications Version: 1.1.0
+// Commit: d77de78 pig-latin: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
