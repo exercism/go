@@ -1,8 +1,8 @@
 package perfect
 
 // Source: exercism/problem-specifications
-// Commit: 924bb7a perfect-numbers: fix misleading test description
-// Problem Specifications Version: 1.0.1
+// Commit: d7c0227 perfect-numbers: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var classificationTestCases = []struct {
 	description string
