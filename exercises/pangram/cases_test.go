@@ -1,8 +1,8 @@
 package pangram
 
 // Source: exercism/problem-specifications
-// Commit: d79e13e pangram: fix duplicative case for a missing 'x' (#958)
-// Problem Specifications Version: 1.3.0
+// Commit: c319f15 pangram: Apply new "input" policy
+// Problem Specifications Version: 1.4.0
 
 var testCases = []struct {
 	description string
