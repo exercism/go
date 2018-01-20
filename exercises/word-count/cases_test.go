@@ -1,8 +1,8 @@
 package wordcount
 
 // Source: exercism/problem-specifications
-// Commit: 8793a05 word-count: Add test for multiple whitespace (#1023)
-// Problem Specifications Version: 1.0.0
+// Commit: 5559f34 word-count: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
