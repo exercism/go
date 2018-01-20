@@ -32,8 +32,10 @@ type js struct {
 type oneCase struct {
 	Description string
 	Property    string
-	Input       int64
-	Expected    interface{}
+	Input       struct {
+		Number int64
+	}
+	Expected interface{}
 }
 
 func (c oneCase) Valid() bool {
@@ -78,7 +80,7 @@ var classificationTestCases = []struct {
 }{ {{range .J.Cases}} {{range .Cases}}
 {
 	description:	"{{.Description}}",
-	input:		{{.Input}},
+	input:		{{.Input.Number}},
 {{if .Valid}} ok: true,
 	expected: {{.ExpectedClassification}},
 {{- else}} ok: false,
