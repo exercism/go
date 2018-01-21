@@ -22,8 +22,10 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       string
-		Expected    int
+		Input       struct {
+			Word string
+		}
+		Expected int
 	}
 }
 
@@ -38,6 +40,6 @@ type scrabbleTest struct {
 }
 
 var scrabbleScoreTests = []scrabbleTest {
-{{range .J.Cases}}{ "{{.Input}}", {{.Expected}}}, // {{.Description}}
+{{range .J.Cases}}{ "{{.Input.Word}}", {{.Expected}}}, // {{.Description}}
 {{end}}}
 `

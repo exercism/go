@@ -1,8 +1,8 @@
 package scrabble
 
 // Source: exercism/problem-specifications
-// Commit: 11ed503 scrabble-score: Make canonical-data.json compliant
-// Problem Specifications Version: 1.0.0
+// Commit: 0d882ed scrabble-score: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 type scrabbleTest struct {
 	input    string
