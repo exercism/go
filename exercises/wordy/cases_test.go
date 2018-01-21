@@ -1,8 +1,8 @@
 package wordy
 
 // Source: exercism/problem-specifications
-// Commit: 5b8ad58 wordy: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: df75482 wordy: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 type wordyTest struct {
 	description string
