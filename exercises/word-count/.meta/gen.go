@@ -22,8 +22,10 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       string
-		Expected    map[string]int
+		Input       struct {
+			Sentence string
+		}
+		Expected map[string]int
 	}
 }
 
@@ -39,7 +41,7 @@ var testCases = []struct {
 }{
 	{{range .J.Cases}}{
 	{{printf "%q" .Description}},
-	{{printf "%q" .Input}},
+	{{printf "%q" .Input.Sentence}},
 	Frequency{ {{range $key, $val := .Expected}} {{printf "%q: %d, " $key $val}} {{end}} },
 },
 {{end}}}
