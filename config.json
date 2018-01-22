@@ -589,6 +589,22 @@
     },
     {
       "core": false,
+      "difficulty": 4,
+      "slug": "rail-fence-cipher",
+      "topics": [
+        "algorithms",
+        "cryptography",
+        "loops",
+        "sorting",
+        "strings",
+        "text_formatting",
+        "transforming"
+      ],
+      "unlocked_by": "ledger",
+      "uuid": "bafd87ad-1dc5-4bbe-b853-ed330c3f155a"
+    },
+    {
+      "core": false,
       "difficulty": 2,
       "slug": "rna-transcription",
       "topics": [
