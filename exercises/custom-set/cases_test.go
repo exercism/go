@@ -1,8 +1,8 @@
 package stringset
 
 // Source: exercism/problem-specifications
-// Commit: 390a769 custom-set: add test for inequality of subset (#991)
-// Problem Specifications Version: 1.1.0
+// Commit: 1ef368e custom-set: apply "input" policy
+// Problem Specifications Version: 1.3.0
 
 // Returns true if the set contains no elements
 var emptyCases = []unaryBoolCase{

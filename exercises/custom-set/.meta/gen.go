@@ -86,11 +86,13 @@ type TestGroups []struct {
 type OneCase struct {
 	Description string
 	Property    string
-	Set         []int       // "empty"/"contains"/"add" cases
-	Set1        []int       // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
-	Set2        []int       // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
-	Element     int         // "contains"/"add" cases
-	Expected    interface{} // bool or []int
+	Input       struct {
+		Set     []int // "empty"/"contains"/"add" cases
+		Set1    []int // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
+		Set2    []int // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
+		Element int   // "contains"/"add" cases
+	}
+	Expected interface{} // bool or []int
 }
 
 func (c OneCase) PropertyMatch(property string) bool { return c.Property == property }
@@ -127,7 +129,7 @@ var tmpl = `
 // {{ .GroupComment $property}}
 var {{$property}}Cases = []unaryBoolCase{ {{range .}} {{range .Cases}}
 {{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Set | printf "%#v"}},
+	{{strs .Input.Set | printf "%#v"}},
 	{{.Expected}},
 },
 {{- end}}{{end}}{{end}}
@@ -138,8 +140,8 @@ var {{$property}}Cases = []unaryBoolCase{ {{range .}} {{range .Cases}}
 // {{ .GroupComment $property}}
 var {{$property}}Cases = []eleBoolCase{ {{range .}} {{range .Cases}}
 {{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Set | printf "%#v"}},
-	{{str .Element | printf "%q"}},
+	{{strs .Input.Set | printf "%#v"}},
+	{{str .Input.Element | printf "%q"}},
 	{{.Expected}},
 },
 {{- end}}{{end}}{{end}}
@@ -150,8 +152,8 @@ var {{$property}}Cases = []eleBoolCase{ {{range .}} {{range .Cases}}
 // {{ .GroupComment $property}}
 var {{$property}}Cases = []eleOpCase{ {{range .}} {{range .Cases}}
 {{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Set | printf "%#v"}},
-	{{str .Element | printf "%q"}},
+	{{strs .Input.Set | printf "%#v"}},
+	{{str .Input.Element | printf "%q"}},
 	{{istrs .Expected | printf "%#v"}},
 },
 {{- end}}{{end}}{{end}}
@@ -162,8 +164,8 @@ var {{$property}}Cases = []eleOpCase{ {{range .}} {{range .Cases}}
 // {{ .GroupComment $property}}
 var {{$property}}Cases = []binBoolCase{ {{range .}} {{range .Cases}}
 {{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Set1 | printf "%#v"}},
-	{{strs .Set2 | printf "%#v"}},
+	{{strs .Input.Set1 | printf "%#v"}},
+	{{strs .Input.Set2 | printf "%#v"}},
 	{{.Expected}},
 },
 {{- end}}{{end}}{{end}}
@@ -174,8 +176,8 @@ var {{$property}}Cases = []binBoolCase{ {{range .}} {{range .Cases}}
 // {{ .GroupComment $property}}
 var {{$property}}Cases = []binOpCase{ {{range .}} {{range .Cases}}
 {{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Set1 | printf "%#v"}},
-	{{strs .Set2 | printf "%#v"}},
+	{{strs .Input.Set1 | printf "%#v"}},
+	{{strs .Input.Set2 | printf "%#v"}},
 	{{istrs .Expected | printf "%#v"}},
 },
 {{- end}}{{end}}{{end}}
