@@ -1250,6 +1250,20 @@
       "uuid": "ec5dab72-dd96-4dce-8886-aff52a6eb090"
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "rectangles",
+      "topics": [
+        "arrays",
+        "control-flow (conditionals)",
+        "control-flow (loops)",
+        "matrices",
+        "strings"
+      ],
+      "unlocked_by": "tournament",
+      "uuid": "e7e207dc-bf8b-4bbf-b06e-edd674e09a06"
+    },
+    {
       "deprecated": true,
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d"
