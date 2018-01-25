@@ -44,13 +44,17 @@ func TestAddMinutes(t *testing.T) {
 				a.h, a.m, a.a, got, a.want)
 		}
 	}
+	t.Log(len(addTests), "test cases")
+}
+
+func TestSubtractMinutes(t *testing.T) {
 	for _, a := range subtractTests {
-		if got := New(a.h, a.m).Add(a.a); got.String() != a.want {
+		if got := New(a.h, a.m).Subtract(a.a); got.String() != a.want {
 			t.Fatalf("New(%d, %d).Add(%d) = %q, want %q",
 				a.h, a.m, a.a, got, a.want)
 		}
 	}
-	t.Log(len(addTests), "test cases")
+	t.Log(len(subtractTests), "test cases")
 }
 
 func TestCompareClocks(t *testing.T) {
@@ -77,6 +81,16 @@ func BenchmarkAddMinutes(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, a := range addTests {
 			c.Add(a.a)
+		}
+	}
+}
+
+func BenchmarkSubtractMinutes(b *testing.B) {
+	c := New(12, 0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		for _, a := range subtractTests {
+			c.Subtract(a.a)
 		}
 	}
 }
