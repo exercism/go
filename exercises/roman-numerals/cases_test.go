@@ -1,8 +1,8 @@
 package romannumerals
 
 // Source: exercism/problem-specifications
-// Commit: 070e8d5 roman-numerals: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 3c78ac4 Add test case for input value 49 to test double-normalization
+// Problem Specifications Version: 1.2.0
 
 type romanNumeralTest struct {
 	arabic   int
@@ -20,6 +20,7 @@ var romanNumeralTests = []romanNumeralTest{
 	{9, "IX", false},
 	{27, "XXVII", false},
 	{48, "XLVIII", false},
+	{49, "XLIX", false},
 	{59, "LIX", false},
 	{93, "XCIII", false},
 	{141, "CXLI", false},
