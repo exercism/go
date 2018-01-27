@@ -12,10 +12,23 @@ Given an age in seconds, calculate how old someone would be on:
    - Neptune: orbital period 164.79132 Earth years
 
 So if you were told someone were 1,000,000,000 seconds old, you should
-be able to say that they're 31.69 Earth-years old.
+be able to say that they're 31.69 Earth-years old. Round all ages to
+the nearest hundredth of a year.
 
 If you're wondering why Pluto didn't make the cut, go watch [this
 youtube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
+
+## No Stub
+
+This may be the first Go track exercise you encounter without a stub: a
+pre-existing `space_age.go` file for your solution. You may not see stubs in
+the future and should begin to get comfortable with creating your own Go files
+for your solutions.
+
+One way to figure out what the function signature(s) you would need is to look
+at the corresponding \*\_test.go file. It will show you what the package level
+functions(s) should be that the test will use to verify the solution.
+
 
 ## Running the tests
 

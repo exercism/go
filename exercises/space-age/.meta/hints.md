@@ -1,7 +1,7 @@
 ## No Stub
 
 This may be the first Go track exercise you encounter without a stub: a
-pre-existing `raindrops.go` file for your solution. You may not see stubs in
+pre-existing `space_age.go` file for your solution. You may not see stubs in
 the future and should begin to get comfortable with creating your own Go files
 for your solutions.
 
