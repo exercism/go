@@ -1,5 +1,9 @@
 package twobucket
 
+import (
+	"errors"
+)
+
 type bucket int
 
 const (
@@ -31,6 +35,11 @@ type state struct {
 	numSteps     int
 }
 
+const (
+	FirstBucketName  = "one"
+	SecondBucketName = "two"
+)
+
 // Solve uses given bucket sizes, the goal amount, and starting bucket to
 // solve the two-bucket problem to measure exactly the goal mount,
 // returning the goal bucket name "one" or "two",
@@ -38,14 +47,18 @@ type state struct {
 func Solve(sizeBucketOne,
 	sizeBucketTwo,
 	goalAmount int,
-	startBucket string) (goalBucket string, numSteps, otherBucketLevel int) {
+	startBucket string) (goalBucket string, numSteps, otherBucketLevel int, e error) {
+
+	if e = validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount, startBucket); e != nil {
+		return "", 0, 0, e
+	}
 
 	p := problem{
 		capacity: [2]int{sizeBucketOne, sizeBucketTwo},
 		goal:     goalAmount,
 	}
 	var s state
-	if startBucket == "one" {
+	if startBucket == FirstBucketName {
 		p.start = bOne
 		performStep(p, &s, fillOne)
 	} else {
@@ -57,9 +70,25 @@ func Solve(sizeBucketOne,
 		s = findGoal(p, s)
 	}
 	if s.level[bOne] == p.goal {
-		return "one", s.numSteps, s.level[bTwo]
+		return FirstBucketName, s.numSteps, s.level[bTwo], nil
 	}
-	return "two", s.numSteps, s.level[bOne]
+	return SecondBucketName, s.numSteps, s.level[bOne], nil
+}
+
+func validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount int, startBucket string) error {
+	if sizeBucketOne <= 0 {
+		return errors.New("sizeBucketOne invalid")
+	}
+	if sizeBucketTwo <= 0 {
+		return errors.New("sizeBucketTwo invalid")
+	}
+	if goalAmount <= 0 {
+		return errors.New("goalAmount invalid")
+	}
+	if startBucket != FirstBucketName && startBucket != SecondBucketName {
+		return errors.New("startBucket invalid")
+	}
+	return nil
 }
 
 func isSolution(p problem, s state) bool {

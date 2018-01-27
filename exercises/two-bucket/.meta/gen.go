@@ -50,12 +50,13 @@ type bucketTestCase struct {
 	goalBucket	string
 	moves		int
 	otherBucket	int
+	errorExpected   bool // always false for generated test cases.
 }
 
 var testCases = []bucketTestCase {
 {{range .J.Cases}}{
 	"{{.Description}}",
-	{{.Input.BucketOne}}, {{.Input.BucketTwo}}, {{.Input.Goal}}, "{{.Input.StartBucket}}", "{{.Expected.GoalBucket}}", {{.Expected.Moves}}, {{.Expected.OtherBucket}},
+	{{.Input.BucketOne}}, {{.Input.BucketTwo}}, {{.Input.Goal}}, "{{.Input.StartBucket}}", "{{.Expected.GoalBucket}}", {{.Expected.Moves}}, {{.Expected.OtherBucket}}, false,
 },
 {{end}}}
 `
