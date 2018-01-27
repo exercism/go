@@ -1225,6 +1225,18 @@
     },
     {
       "core": false,
+      "difficulty": 5,
+      "slug": "two-bucket",
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "searching"
+      ],
+      "unlocked_by": "binary-search",
+      "uuid": "549bf4a0-b8eb-4f66-8990-7df6cdfaee0c"
+    },
+    {
+      "core": false,
       "difficulty": 4,
       "slug": "grep",
       "topics": [
