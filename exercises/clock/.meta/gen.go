@@ -29,19 +29,32 @@ type testGroup struct {
 	Description string
 	Cases       []json.RawMessage `property:"RAW"`
 	CreateCases []struct {
-		Description  string
-		Hour, Minute int
-		Expected     string
+		Description string
+		Input       struct {
+			Hour, Minute int
+		}
+		Expected string
 	} `property:"create"`
 	AddCases []struct {
-		Description       string
-		Hour, Minute, Add int
-		Expected          string
+		Description string
+		Input       struct {
+			Hour, Minute, Value int
+		}
+		Expected string
 	} `property:"add"`
+	SubtractCases []struct {
+		Description string
+		Input       struct {
+			Hour, Minute, Value int
+		}
+		Expected string
+	} `property:"subtract"`
 	EqCases []struct {
-		Description    string
-		Clock1, Clock2 struct{ Hour, Minute int }
-		Expected       bool
+		Description string
+		Input       struct {
+			Clock1, Clock2 struct{ Hour, Minute int }
+		}
+		Expected bool
 	} `property:"equal"`
 }
 
@@ -62,7 +75,7 @@ var tmpl = `package clock
 			want string
 		}{
 			{{- range .CreateCases }}
-				{ {{.Hour}}, {{.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
 			{{- end }}
 		}
 	{{- end }}
@@ -73,7 +86,18 @@ var tmpl = `package clock
 			want string
 		}{
 			{{- range .AddCases }}
-				{ {{.Hour}}, {{.Minute}}, {{.Add}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+			{{- end }}
+		}
+	{{- end }}
+
+	{{- if .SubtractCases }}
+		var {{ .GroupShortName }}Tests = []struct {
+			h, m, a int
+			want string
+		}{
+			{{- range .SubtractCases }}
+				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
 			{{- end }}
 		}
 	{{- end }}
@@ -87,8 +111,8 @@ var tmpl = `package clock
 			{{- range .EqCases }}
 				// {{.Description}}
 				{
-					hm{ {{.Clock1.Hour}}, {{.Clock1.Minute}}},
-					hm{ {{.Clock2.Hour}}, {{.Clock2.Minute}}},
+					hm{ {{.Input.Clock1.Hour}}, {{.Input.Clock1.Minute}}},
+					hm{ {{.Input.Clock2.Hour}}, {{.Input.Clock2.Minute}}},
 					{{.Expected}},
 				},
 			{{- end }}
