@@ -10,7 +10,7 @@ func ExampleClock_new() {
 	// Output: 10:30
 }
 
-func ExampleClock_Add_add() {
+func ExampleClock_Add() {
 	// create a clock
 	clock := New(10, 30)
 
@@ -21,12 +21,12 @@ func ExampleClock_Add_add() {
 	// Output: 11:00
 }
 
-func ExampleClock_Add_subtract() {
+func ExampleClock_Subtract() {
 	// create a clock
 	clock := New(10, 30)
 
 	// subtract an hour and a half from it
-	clock = clock.Add(-90)
+	clock = clock.Subtract(90)
 	fmt.Println(clock.String())
 
 	// Output: 09:00
