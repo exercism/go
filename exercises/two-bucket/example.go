@@ -160,14 +160,14 @@ func pour(p problem, s *state, a, b bucket) {
 
 func getPossibleSteps(p problem, s state) (list []step) {
 	for x := emptyOne; x <= pourTwoToOne; x++ {
-		if canPeformStep(p, s, x) {
+		if canPerformStep(p, s, x) {
 			list = append(list, x)
 		}
 	}
 	return list
 }
 
-func canPeformStep(p problem, s state, x step) bool {
+func canPerformStep(p problem, s state, x step) bool {
 	switch x {
 	case emptyOne:
 		if s.previousStep == fillOne || s.previousStep == pourOneToTwo {
