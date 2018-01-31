@@ -1,8 +1,8 @@
 package prime
 
 // Source: exercism/problem-specifications
-// Commit: bf5bb2b prime-factors: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: d928874 prime-factors: apply "input" policy
+// Problem Specifications Version: 1.1.0
 
 var tests = []struct {
 	description string
