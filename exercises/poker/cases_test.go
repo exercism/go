@@ -1,8 +1,8 @@
 package poker
 
 // Source: exercism/problem-specifications
-// Commit: d078ba8 poker: Add canonical-data (#793)
-// Problem Specifications Version: 1.0.0
+// Commit: 8e97630 poker: apply "input" policy
+// Problem Specifications Version: 1.1.0
 
 type validTestCase struct {
 	name  string
