@@ -35,9 +35,11 @@ type testGroup struct {
 type oneCase struct {
 	Description string
 	Property    string
-	Message     string `json:"msg"`
-	Rails       int
-	Expected    string
+	Input       struct {
+		Message string `json:"msg"`
+		Rails   int
+	}
+	Expected string
 }
 
 // Template to generate test cases.
@@ -59,8 +61,8 @@ type testCase struct {
 			{{- range .EncodeCases }}
 
 				{ {{.Description | printf "%q"}},
-				{{.Message | printf "%q"}},
-				{{.Rails}},
+				{{.Input.Message | printf "%q"}},
+				{{.Input.Rails}},
 				{{.Expected | printf "%q"}}},
 			{{- end }}
 		}
@@ -71,8 +73,8 @@ type testCase struct {
 			{{- range .DecodeCases }}
 
 				{ {{.Description | printf "%q"}},
-				{{.Message | printf "%q"}},
-				{{.Rails}},
+				{{.Input.Message | printf "%q"}},
+				{{.Input.Rails}},
 				{{.Expected | printf "%q"}}},
 			{{- end }}
 		}

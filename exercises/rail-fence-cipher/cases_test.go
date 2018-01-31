@@ -1,8 +1,8 @@
 package railfence
 
 // Source: exercism/problem-specifications
-// Commit: c01f9ca rail-fence-cipher 1.0.1: Remove "test to" from all descriptions
-// Problem Specifications Version: 1.0.1
+// Commit: 88db37b rail-fence-cipher: apply "input" policy
+// Problem Specifications Version: 1.1.0
 
 type testCase struct {
 	description string
