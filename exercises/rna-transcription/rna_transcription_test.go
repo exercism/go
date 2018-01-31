@@ -5,9 +5,10 @@ import "testing"
 func TestRNATranscription(t *testing.T) {
 	for _, test := range rnaTests {
 		if actual := ToRNA(test.input); actual != test.expected {
-			t.Errorf("ToRNA(%s): %s, expected %s",
-				test.input, actual, test.expected)
+			t.Fatalf("FAIL: %s - ToRNA(%q): %q, expected %q",
+				test.description, test.input, actual, test.expected)
 		}
+		t.Logf("PASS: %s", test.description)
 	}
 }
 
