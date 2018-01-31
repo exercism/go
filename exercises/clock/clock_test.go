@@ -50,7 +50,7 @@ func TestAddMinutes(t *testing.T) {
 func TestSubtractMinutes(t *testing.T) {
 	for _, a := range subtractTests {
 		if got := New(a.h, a.m).Subtract(a.a); got.String() != a.want {
-			t.Fatalf("New(%d, %d).Add(%d) = %q, want %q",
+			t.Fatalf("New(%d, %d).Subtract(%d) = %q, want %q",
 				a.h, a.m, a.a, got, a.want)
 		}
 	}
