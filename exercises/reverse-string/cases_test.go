@@ -1,8 +1,8 @@
 package reverse
 
 // Source: exercism/problem-specifications
-// Commit: ae82c90 More consistent reverse-string canonical data
-// Problem Specifications Version: 1.0.1
+// Commit: 2f77985 reverse-string: apply "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
