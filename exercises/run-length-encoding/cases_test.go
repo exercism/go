@@ -1,8 +1,8 @@
 package encode
 
 // Source: exercism/problem-specifications
-// Commit: 503a57a run-length-encoding: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 1b7900e run-length-encoding: apply "input" policy
+// Problem Specifications Version: 1.1.0
 
 // run-length encode a string
 var encodeTests = []struct {
