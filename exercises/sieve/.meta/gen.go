@@ -22,8 +22,10 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Limit       int
-		Expected    []int
+		Input       struct {
+			Limit int
+		}
+		Expected []int
 	}
 }
 
@@ -39,7 +41,7 @@ var testCases = []struct {
 }{
 {{range .J.Cases}}{
 	"{{.Description}}",
-	{{.Limit}},
+	{{.Input.Limit}},
 	{{printf "%#v" .Expected}},
 },
 {{end}}}

@@ -1,8 +1,8 @@
 package sieve
 
 // Source: exercism/problem-specifications
-// Commit: f2b2693 sieve: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 8bbb634 sieve: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
