@@ -29,18 +29,24 @@ type testGroup struct {
 	Cases       []json.RawMessage `property:"RAW"`
 	EncodeCases []struct {
 		Description string
-		Input       string
-		Expected    string
+		Input       struct {
+			String string
+		}
+		Expected string
 	} `property:"encode"`
 	DecodeCases []struct {
 		Description string
-		Input       string
-		Expected    string
+		Input       struct {
+			String string
+		}
+		Expected string
 	} `property:"decode"`
 	EncodeDecodeCases []struct {
 		Description string
-		Input       string
-		Expected    string
+		Input       struct {
+			String string
+		}
+		Expected string
 	} `property:"consistency"`
 }
 
@@ -58,7 +64,7 @@ var tmpl = `package encode
 			description string
 		}{
 			{{- range .EncodeCases }}
-				{ {{.Input | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
+				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
 			{{- end }}
 		}
 	{{- end }}
@@ -70,7 +76,7 @@ var tmpl = `package encode
 			description string
 		}{
 			{{- range .DecodeCases }}
-				{ {{.Input | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
+				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
 			{{- end }}
 		}
 	{{- end }}
@@ -82,7 +88,7 @@ var tmpl = `package encode
 			description string
 		}{
 			{{- range .EncodeDecodeCases }}
-				{ {{.Input | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
+				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
 			{{- end }}
 		}
 	{{- end }}
