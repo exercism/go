@@ -21,7 +21,9 @@ func main() {
 // The JSON structure we expect to be able to unmarshal into
 type js struct {
 	Cases []struct {
-		Number   int
+		Input struct {
+			Number int
+		}
 		Expected string
 	}
 }
@@ -35,6 +37,6 @@ var tests = []struct {
 	input    int
 	expected string
 }{
-{{range .J.Cases}}{ {{.Number}}, "{{.Expected}}"},
+{{range .J.Cases}}{ {{.Input.Number}}, "{{.Expected}}"},
 {{end}}}
 `
