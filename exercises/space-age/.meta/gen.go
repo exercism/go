@@ -30,9 +30,11 @@ type js struct {
 type oneCase struct {
 	Description string
 	Property    string
-	Planet      space.Planet
-	Seconds     float64
-	Expected    float64
+	Input       struct {
+		Planet  space.Planet
+		Seconds float64
+	}
+	Expected float64
 }
 
 // Template to generate test cases.
@@ -48,8 +50,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
-	planet:		{{printf "%#v"  .Planet}},
-	seconds:		{{printf "%.0f"  .Seconds}},
+	planet:		{{printf "%#v"  .Input.Planet}},
+	seconds:		{{printf "%.0f"  .Input.Seconds}},
 	expected:	{{printf "%.2f"  .Expected}},
 },{{end}}
 }
