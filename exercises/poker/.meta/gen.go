@@ -26,8 +26,10 @@ func main() {
 type js struct {
 	Cases []struct {
 		Description string
-		Input       []string
-		Expected    []string
+		Input       struct {
+			Hands []string
+		}
+		Expected []string
 	}
 }
 
@@ -68,7 +70,7 @@ var validTestCases = []validTestCase {
 {{range .J.Cases}}{
 	name:  "{{.Description}}",
 	hands: []string{
-		{{range pokerHands .Input}} {{printf "%q" .}},
+		{{range pokerHands .Input.Hands}} {{printf "%q" .}},
 {{end}} },
 	best:  {{pokerHands .Expected | printf "%#v"}},
 },
