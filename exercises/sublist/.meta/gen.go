@@ -30,9 +30,11 @@ type js struct {
 type oneCase struct {
 	Description string
 	Property    string
-	ListOne     []int `json:"listOne"`
-	ListTwo     []int `json:"listTwo"`
-	Expected    sublist.Relation
+	Input       struct {
+		ListOne []int `json:"listOne"`
+		ListTwo []int `json:"listTwo"`
+	}
+	Expected sublist.Relation
 }
 
 // Template to generate test cases.
@@ -48,8 +50,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
-	listOne:		{{printf "%#v"  .ListOne}},
-	listTwo:		{{printf "%#v"  .ListTwo}},
+	listOne:		{{printf "%#v"  .Input.ListOne}},
+	listTwo:		{{printf "%#v"  .Input.ListTwo}},
 	expected:	{{printf "%#v"  .Expected}},
 },{{end}}
 }
