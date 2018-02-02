@@ -1,8 +1,8 @@
 package sublist
 
 // Source: exercism/problem-specifications
-// Commit: 71e24b5 sublist: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 1854cd4 sublist: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
