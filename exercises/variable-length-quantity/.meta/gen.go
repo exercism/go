@@ -43,9 +43,11 @@ type TestGroup struct {
 
 type OneCase struct {
 	Description string
-	Property    string   // "encode" or "decode"
-	Input       []uint32 // supports both []byte and []uint32 in JSON.
-	Expected    []uint32 // supports []byte, []uint32, or null in JSON.
+	Property    string // "encode" or "decode"
+	Input       struct {
+		Integers []uint32 // supports both []byte and []uint32 in JSON.
+	}
+	Expected []uint32 // supports []byte, []uint32, or null in JSON.
 }
 
 // PropertyMatch returns true when given test case c has .Property field matching property;
@@ -85,7 +87,7 @@ var encodeTestCases = []struct {
 }{ {{range .J.Groups}} {{range .Cases}}
 	{{if .PropertyMatch "encode"}} {
 		{{printf "%q" .Description}},
-		{{printf "%#v" .Input }},
+		{{printf "%#v" .Input.Integers }},
 		{{byteSlice .Expected | printf "%#v" }},
 	},{{- end}}{{end}}{{end}}
 }
@@ -98,7 +100,7 @@ var decodeTestCases = []struct {
 }{ {{range .J.Groups}} {{range .Cases}}
 	{{if .PropertyMatch "decode"}} {
 		{{printf "%q" .Description}},
-		{{byteSlice .Input | printf "%#v" }},
+		{{byteSlice .Input.Integers | printf "%#v" }},
 		{{printf "%#v" .Expected }},
 	},{{- end}}{{end}}{{end}}
 }
