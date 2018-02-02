@@ -1,8 +1,8 @@
 package space
 
 // Source: exercism/problem-specifications
-// Commit: 7c63e40 space-age: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: 8d4df79 space-age: Apply new "input" policy
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
