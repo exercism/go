@@ -47,6 +47,5 @@ different specs, so the results from these benchmark tests may vary.
 For more detailed information about the Go track, including how to get help if
 you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
 
-
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
