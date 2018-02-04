@@ -69,10 +69,13 @@ func Solve(sizeBucketOne,
 	if !isSolution(p, s) {
 		s = findGoal(p, s)
 	}
-	if s.level[bOne] == p.goal {
+	switch {
+	case s.level[bOne] == p.goal:
 		return FirstBucketName, s.numSteps, s.level[bTwo], nil
+	case s.level[bTwo] == p.goal:
+		return SecondBucketName, s.numSteps, s.level[bOne], nil
 	}
-	return SecondBucketName, s.numSteps, s.level[bOne], nil
+	return "", 0, 0, errors.New("no solution")
 }
 
 func validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount int, startBucket string) error {
@@ -110,7 +113,7 @@ func findGoal(p problem, s state) (g state) {
 		visited[[2]int{p.capacity[bOne], 0}] = true
 	}
 
-	for {
+	for len(searchList) != 0 {
 		// Pop one item from the searchList each pass.
 		current := searchList[0]
 		searchList = searchList[1:]
@@ -127,6 +130,7 @@ func findGoal(p problem, s state) (g state) {
 			}
 		}
 	}
+	return state{}
 }
 
 func performStep(p problem, s *state, x step) {
@@ -160,14 +164,14 @@ func pour(p problem, s *state, a, b bucket) {
 
 func getPossibleSteps(p problem, s state) (list []step) {
 	for x := emptyOne; x <= pourTwoToOne; x++ {
-		if canPeformStep(p, s, x) {
+		if canPerformStep(p, s, x) {
 			list = append(list, x)
 		}
 	}
 	return list
 }
 
-func canPeformStep(p problem, s state, x step) bool {
+func canPerformStep(p problem, s state, x step) bool {
 	switch x {
 	case emptyOne:
 		if s.previousStep == fillOne || s.previousStep == pourOneToTwo {
