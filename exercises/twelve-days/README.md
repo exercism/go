@@ -2,7 +2,7 @@
 
 Output the lyrics to 'The Twelve Days of Christmas'.
 
-```
+```text
 On the first day of Christmas my true love gave to me, a Partridge in a Pear Tree.
 
 On the second day of Christmas my true love gave to me, two Turtle Doves, and a Partridge in a Pear Tree.
@@ -47,8 +47,7 @@ you're having trouble, please visit the exercism.io [Go language page](http://ex
 
 ## Source
 
-Wikipedia [http://en.wikipedia.org/wiki/The*Twelve_Days_of_Christmas*(song)](<http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)>)
+Wikipedia [http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)](http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song))
 
 ## Submitting Incomplete Solutions
-
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.

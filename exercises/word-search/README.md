@@ -5,7 +5,7 @@ words in them.
 
 For example:
 
-```
+```text
 jefblpepre
 camdcimgtc
 oivokprjsm
