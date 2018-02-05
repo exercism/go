@@ -18,7 +18,7 @@ computes the winner (or lack thereof). Note that all games need not be "fair".
 The boards look like this (with spaces added for readability, which won't be in
 the representation passed to your code):
 
-```        
+```text
 . O . X .
  . X X O .
   O O O X .
@@ -46,7 +46,6 @@ different specs, so the results from these benchmark tests may vary.
 
 For more detailed information about the Go track, including how to get help if
 you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
-
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.

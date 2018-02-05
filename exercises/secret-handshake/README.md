@@ -6,7 +6,7 @@
 You and your fellow cohort of those in the "know" when it comes to
 binary decide to come up with a secret "handshake".
 
-```
+```text
 1 = wink
 10 = double blink
 100 = close your eyes
