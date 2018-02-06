@@ -40,11 +40,13 @@ var tmpl = `package reverse
 
 {{.Header}}
 
-var testCases = []struct {
+type reverseTestCase struct {
 	description	string
 	input		string
 	expected	string
-}{ {{range .J.Cases}}
+}
+
+var testCases = []reverseTestCase{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
 	input:		{{printf "%q"  .Input.Value}},

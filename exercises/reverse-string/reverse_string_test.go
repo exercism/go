@@ -6,7 +6,7 @@ import (
 )
 
 func TestReverse(t *testing.T) {
-	for _, testCase := range testCases {
+	for _, testCase := range append(testCases, multiByteCases...) {
 		if res := String(testCase.input); res != testCase.expected {
 			t.Fatalf("FAIL: %s(%s)\nExpected: %q\nActual: %q",
 				testCase.description, testCase.input, testCase.expected, res)
@@ -30,4 +30,15 @@ func BenchmarkReverse(b *testing.B) {
 			String(test.input)
 		}
 	}
+}
+
+// mutiByteCases adds UTF-8 multi-byte case,
+// since the canonical-data.json (generator data source for cases_test.go)
+// doesn't have any such cases.
+var multiByteCases = []reverseTestCase{
+	{
+		description: "a multi-byte test case",
+		input:       "Hello, 世界",
+		expected:    "界世 ,olleH",
+	},
 }
