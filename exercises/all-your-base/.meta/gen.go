@@ -30,9 +30,9 @@ type oneCase struct {
 	Description string
 	Property    string
 	Input       struct {
-		InputBase  int   `json:"input_base"`
+		InputBase  int   `json:"inputBase"`
 		Digits     []int `json:"digits"`
-		OutputBase int   `json:"output_base"`
+		OutputBase int   `json:"outputBase"`
 	}
 	Expected interface{}
 }
