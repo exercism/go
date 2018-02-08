@@ -1,8 +1,8 @@
 package allyourbase
 
 // Source: exercism/problem-specifications
-// Commit: bf4052e all-your-base: Update json to reflect changes to schema
-// Problem Specifications Version: 2.1.0
+// Commit: dc0c431 all-your-base: apply lowerCamelCase policy
+// Problem Specifications Version: 2.2.0
 
 var testCases = []struct {
 	description string
