@@ -259,7 +259,7 @@
       "slug": "sublist",
       "topics": [
         "arrays",
-        "control-flow (loops)"
+        "control_flow_loops"
       ],
       "unlocked_by": "matrix",
       "uuid": "4174c0c6-cb8a-474c-9327-737b7a86326e"
@@ -1131,10 +1131,10 @@
       "difficulty": 1,
       "slug": "collatz-conjecture",
       "topics": [
-        "control-flow (loops)",
+        "conditionals",
+        "control_flow_loops",
         "integers",
-        "mathematics",
-        "conditionals"
+        "mathematics"
       ],
       "unlocked_by": null,
       "uuid": "0c17444e-65b0-4bc8-a7e1-ee6ab8c2e078"
@@ -1144,8 +1144,8 @@
       "difficulty": 4,
       "slug": "spiral-matrix",
       "topics": [
-        "loops",
         "arrays",
+        "loops",
         "matrices"
       ],
       "unlocked_by": "matrix",
@@ -1156,11 +1156,11 @@
       "difficulty": 8,
       "slug": "book-store",
       "topics": [
+        "algorithms",
+        "floating_point_numbers",
         "integers",
         "lists",
-        "algorithms",
-        "mathematics",
-        "floating_point_numbers"
+        "mathematics"
       ],
       "unlocked_by": "flatten-array",
       "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097"
@@ -1170,12 +1170,24 @@
       "difficulty": 2,
       "slug": "rotational-cipher",
       "topics": [
+        "cryptography",
         "integers",
-        "strings",
-        "cryptography"
+        "strings"
       ],
       "unlocked_by": "luhn",
       "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
+    },
+    {
+      "core": false,
+      "difficulty": 4,
+      "slug": "proverb",
+      "topics": [
+        "arrays",
+        "loops",
+        "strings"
+      ],
+      "unlocked_by": "two-fer",
+      "uuid": "b6d05e8f-542b-4789-9cbc-7ba132a5f03d"
     },
     {
       "difficulty": 2,
@@ -1191,8 +1203,8 @@
       "difficulty": 6,
       "slug": "zebra-puzzle",
       "topics": [
-        "arrays",
         "algorithms",
+        "arrays",
         "searching"
       ],
       "unlocked_by": "bank-account",
@@ -1255,8 +1267,8 @@
       "slug": "rectangles",
       "topics": [
         "arrays",
-        "control-flow (conditionals)",
-        "control-flow (loops)",
+        "control_flow_conditionals",
+        "control_flow_loops",
         "matrices",
         "strings"
       ],
