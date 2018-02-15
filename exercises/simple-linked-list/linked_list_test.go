@@ -177,7 +177,7 @@ func BenchmarkListPush(b *testing.B) {
 		b.StopTimer()
 		list := New([]int{})
 		b.StartTimer()
-		for k := 0; k < 100; k++ {
+		for k := 0; k < 1000; k++ {
 			list.Push(k)
 		}
 	}
@@ -187,11 +187,11 @@ func BenchmarkListPop(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
 		list := New([]int{})
-		for k := 0; k < 100; k++ {
+		for k := 0; k < 1000; k++ {
 			list.Push(k)
 		}
 		b.StartTimer()
-		for k := 0; k < 100; k++ {
+		for k := 0; k < 1000; k++ {
 			_, _ = list.Pop()
 		}
 	}
