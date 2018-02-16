@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: 9bf041b forth: Add tests for case-insensitivity (#979)
-// Problem Specifications Version: 1.4.0
+// Commit: 01257bd forth: Apply new "input" policy
+// Problem Specifications Version: 1.5.0
 
 type testGroup struct {
 	group string

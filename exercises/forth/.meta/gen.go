@@ -32,8 +32,10 @@ type Group struct {
 // One test case.
 type OneCase struct {
 	Description string
-	Input       []string
-	Expected    []int
+	Input       struct {
+		Instructions []string
+	}
+	Expected []int
 }
 
 // template applied to above data structure generates the Go test cases
@@ -58,7 +60,7 @@ group: {{printf "%q"  .Name}},
 tests: []testCase{
 {{range .Cases}}{
 {{printf "%q"  .Description}},
-{{printf "%#v" .Input}},
+{{printf "%#v" .Input.Instructions}},
 {{printf "%#v" .Expected}},
 },
 {{end}}
