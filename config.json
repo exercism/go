@@ -1178,6 +1178,18 @@
       "uuid": "37821140-c0d0-4da8-8f50-47356705a615"
     },
     {
+      "core": false,
+      "difficulty": 4,
+      "slug": "proverb",
+      "topics": [
+        "arrays",
+        "loops",
+        "strings"
+      ],
+      "unlocked_by": "two-fer",
+      "uuid": "b6d05e8f-542b-4789-9cbc-7ba132a5f03d"
+    },
+    {
       "difficulty": 2,
       "slug": "isbn-verifier",
       "topics": [
