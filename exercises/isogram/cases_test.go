@@ -1,8 +1,8 @@
 package isogram
 
 // Source: exercism/problem-specifications
-// Commit: f9e0ebb isogram: Update canonical-data.json as in #919 (#920)
-// Problem Specifications Version: 1.2.0
+// Commit: 79f1357 isogram: Apply new "input" policy (#1180)
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description string
