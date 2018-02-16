@@ -28,29 +28,31 @@ type js struct {
 type testGroup struct {
 	Description string
 	Cases       []json.RawMessage `property:"RAW"`
-	SquareCases []SquareCase      `property:"square"`
+	SquareCases []squareCase      `property:"square"`
 	// Note: canonical-data.json has a element of "cases"
 	// which includes a test for property 'total', but it is ignored here,
 	// since "expected" is a single known value.
 }
 
-type SquareCase struct {
+type squareCase struct {
 	Description string
-	Input       int
-	Expected    interface{}
+	Input       struct {
+		Square int
+	}
+	Expected interface{}
 }
 
-func (c SquareCase) HasAnswer() bool {
+func (c squareCase) HasAnswer() bool {
 	hasAnswer, _ := determineExpected(c.Expected)
 	return hasAnswer
 }
 
-func (c SquareCase) Answer() uint64 {
+func (c squareCase) Answer() uint64 {
 	_, answer := determineExpected(c.Expected)
 	return answer
 }
 
-func (c SquareCase) EditedDescription() string {
+func (c squareCase) EditedDescription() string {
 	// Go doesn't raise exceptions, so replace the wording in .Description.
 	return strings.Replace(c.Description, "raises an exception", "returns an error", 1)
 }
@@ -85,7 +87,7 @@ var tmpl = `package grains
 			{{- range .SquareCases}}
 			{
 				description: "{{.EditedDescription}}",
-				input: {{.Input}},
+				input: {{.Input.Square}},
 				{{- if .HasAnswer}}
 					expectedVal: {{.Answer}},
 				{{- else}}
