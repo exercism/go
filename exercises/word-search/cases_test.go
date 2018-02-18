@@ -1,8 +1,8 @@
 package wordsearch
 
 // Source: exercism/problem-specifications
-// Commit: c741e35 Add tests to support TDD workflow (#899)
-// Problem Specifications Version: 1.1.0
+// Commit: 5ac9949 word-search: Apply new "input" policy
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string

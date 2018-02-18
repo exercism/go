@@ -40,11 +40,13 @@ type Position struct {
 }
 
 type OneCase struct {
-	Description      string
-	Property         string
-	Grid             []string
-	WordsToSearchFor []string
-	Expected         map[string]Position
+	Description string
+	Property    string
+	Input       struct {
+		Grid             []string
+		WordsToSearchFor []string
+	}
+	Expected map[string]Position
 }
 
 func (p Position) NullPosition() bool {
@@ -84,8 +86,8 @@ var testCases = []struct {
 }{ {{range .J.Cases}}
 {
 	{{printf "%q"  .Description}},
-	{{printf "%#v" .Grid}},
-	{{printf "%#v"  .WordsToSearchFor}},
+	{{printf "%#v" .Input.Grid}},
+	{{printf "%#v"  .Input.WordsToSearchFor}},
 	{{if .ErrorExpected}} map[string][2][2]int{ },
 	true,
 	{{else}} map[string][2][2]int{ {{ range $key, $value := .Expected }} "{{ $key }}": { { {{ $value.Start.Column.Minus1 }}, {{ $value.Start.Row.Minus1 }}, }, { {{ $value.End.Column.Minus1 }}, {{ $value.End.Row.Minus1 }} } }, {{ end }} },
