@@ -186,6 +186,82 @@ func TestWriteTotalReadWriter(t *testing.T) {
 	testWriteTotal(t, NewReadWriteCounter(rw))
 }
 
+func TestReadCountConsistencyReader(t *testing.T) {
+	var r nopReader
+	testReadCountConsistency(t, NewReadCounter(r))
+}
+
+func TestReadCountConsistencyReadWriter(t *testing.T) {
+	var rw nopReadWriter
+	testReadCountConsistency(t, NewReadWriteCounter(rw))
+}
+
+func testReadCountConsistency(t *testing.T, rc ReadCounter) {
+	const numGo = 4000
+	const numBytes = 50
+	p := make([]byte, numBytes)
+
+	wg := new(sync.WaitGroup)
+	wg.Add(2 * numGo)
+	start := make(chan struct{})
+	for i := 0; i < numGo; i++ {
+		go func() {
+			<-start
+			rc.Read(p)
+			wg.Done()
+		}()
+		go func() {
+			<-start
+			n, nops := rc.ReadCount()
+			expectedOps := n / numBytes
+			if int64(nops) != expectedOps {
+				t.Errorf("expected %d ops@%d bytes read; %d ops reported", expectedOps, n, nops)
+			}
+			wg.Done()
+		}()
+	}
+	close(start)
+	wg.Wait()
+}
+
+func TestWriteCountConsistencyWriter(t *testing.T) {
+	var w nopWriter
+	testWriteCountConsistency(t, NewWriteCounter(w))
+}
+
+func TestWriteCountConsistencyReadWriter(t *testing.T) {
+	var rw nopReadWriter
+	testWriteCountConsistency(t, NewReadWriteCounter(rw))
+}
+
+func testWriteCountConsistency(t *testing.T, wc WriteCounter) {
+	const numGo = 4000
+	const numBytes = 50
+	p := make([]byte, numBytes)
+
+	wg := new(sync.WaitGroup)
+	wg.Add(2 * numGo)
+	start := make(chan struct{})
+	for i := 0; i < numGo; i++ {
+		go func() {
+			<-start
+			wc.Write(p)
+			wg.Done()
+		}()
+		go func() {
+			<-start
+			n, nops := wc.WriteCount()
+			expectedOps := n / numBytes
+			if int64(nops) != n/numBytes {
+				t.Errorf("expected %d nops@%d bytes written; %d ops reported", expectedOps, n, nops)
+			}
+			wg.Done()
+		}()
+	}
+	close(start)
+	wg.Wait()
+}
+
 type nopWriter struct{ error }
 
 func (w nopWriter) Write(p []byte) (int, error) {
