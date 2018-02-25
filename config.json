@@ -523,8 +523,8 @@
       "unlocked_by": null,
       "difficulty": 3,
       "topics": [
-        "strings",
-        "pattern_matching"
+        "pattern_matching",
+        "strings"
       ]
     },
     {

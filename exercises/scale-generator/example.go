@@ -1,4 +1,4 @@
-// package scale provides a sample implementation
+// Package scale provides a sample implementation
 package scale
 
 import "strings"
@@ -30,11 +30,11 @@ func printScale(tonic, interval string, start int, arr []string) []string {
 	var res []string
 	res = append(res, tonic)
 	for _, e := range interval[0 : len(interval)-1] {
-		if e == 'm'-0 {
+		if e == 'm' {
 			start++
-		} else if e == 'M'-0 {
+		} else if e == 'M' {
 			start += 2
-		} else if e == 'A'-0 {
+		} else if e == 'A' {
 			start += 3
 		}
 		res = append(res, arr[start%12])
