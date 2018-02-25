@@ -18,7 +18,7 @@ sudo: false
 # but since Travis only runs five jobs at a time throughout all of Exercism,
 # it is better citizenship to not test the additional versions.
 go:
-  - 1.8.x
+  - 1.9.x
   - 1.x
   - tip
 
