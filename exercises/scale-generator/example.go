@@ -16,20 +16,18 @@ func Scale(tonic, interval string) []string {
 		interval = strings.Repeat("m", 12)
 	}
 	ft := formatTonic(tonic)
-	// chromatic scale
+	start := findStart(ft, chromaticScale)
 	if flatKey(tonic, flatKeys) {
-		start := findStart(ft, flatChromaticScale)
+		start = findStart(ft, flatChromaticScale)
 		return printScale(ft, interval, start, flatChromaticScale)
 	}
-	start := findStart(ft, chromaticScale)
 	return printScale(ft, interval, start, chromaticScale)
 
 }
 
 func printScale(tonic, interval string, start int, arr []string) []string {
-	var res []string
-	res = append(res, tonic)
-	for _, e := range interval[0 : len(interval)-1] {
+	res := []string{tonic}
+	for _, e := range interval[:len(interval)-1] {
 		if e == 'm' {
 			start++
 		} else if e == 'M' {
@@ -52,17 +50,12 @@ func findStart(tonic string, arr []string) int {
 }
 
 func flatKey(tonic string, arr []string) bool {
-	for i := range arr {
-		if arr[i] == tonic {
-			return true
-		}
-	}
-	return false
+	return findStart(tonic, arr) > -1
 }
 
 func formatTonic(tonic string) string {
 	if len(tonic) == 1 {
 		return strings.ToUpper(tonic)
 	}
-	return strings.ToUpper(tonic[0:1]) + tonic[1:]
+	return strings.Title(tonic)
 }
