@@ -1,7 +1,9 @@
 // Package scale provides a sample implementation
 package scale
 
-import "strings"
+import (
+	"strings"
+)
 
 var chromaticScale = []string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A",
 	"A#", "B"}
@@ -16,12 +18,11 @@ func Scale(tonic, interval string) []string {
 		interval = strings.Repeat("m", 12)
 	}
 	ft := formatTonic(tonic)
-	start := findStart(ft, chromaticScale)
 	scale := chromaticScale
 	if flatKey(tonic, flatKeys) {
-		start = findStart(ft, flatChromaticScale)
 		scale = flatChromaticScale
 	}
+	start := findStart(ft, scale)
 	return printScale(ft, interval, start, scale)
 
 }
