@@ -17,11 +17,12 @@ func Scale(tonic, interval string) []string {
 	}
 	ft := formatTonic(tonic)
 	start := findStart(ft, chromaticScale)
+	scale := chromaticScale
 	if flatKey(tonic, flatKeys) {
 		start = findStart(ft, flatChromaticScale)
-		return printScale(ft, interval, start, flatChromaticScale)
+		scale = flatChromaticScale
 	}
-	return printScale(ft, interval, start, chromaticScale)
+	return printScale(ft, interval, start, scale)
 
 }
 
