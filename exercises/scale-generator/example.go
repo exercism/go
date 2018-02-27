@@ -24,7 +24,6 @@ func Scale(tonic, interval string) []string {
 	}
 	start := findStart(ft, scale)
 	return printScale(ft, interval, start, scale)
-
 }
 
 func printScale(tonic, interval string, start int, arr []string) []string {
