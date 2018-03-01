@@ -1,8 +1,8 @@
 package bowling
 
 // Source: exercism/problem-specifications
-// Commit: dfdc0e2 bowling: bump version
-// Problem Specifications Version: 1.1.0
+// Commit: 1806718 bowling: add tests for rolling after bonus rolls
+// Problem Specifications Version: 1.2.0
 
 var scoreTestCases = []struct {
 	description   string
@@ -220,6 +220,21 @@ var rollTestCases = []struct {
 		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		false,
 		0,
+		"Cannot roll after game is over",
+	},
+
+	{
+		"cannot roll after bonus roll for spare",
+		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 2},
+		false,
+		2,
+		"Cannot roll after game is over",
+	},
+	{
+		"cannot roll after bonus rolls for strike",
+		[]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 2},
+		false,
+		2,
 		"Cannot roll after game is over",
 	},
 }
