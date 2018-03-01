@@ -1,8 +1,8 @@
 package grep
 
 // Source: exercism/problem-specifications
-// Commit: af7f929 grep: Fix canonical-data.json formatting
-// Problem Specifications Version: 1.0.0
+// Commit: e893e0b grep: Apply new "input" policy (#1182)
+// Problem Specifications Version: 1.1.0
 
 var fileContentData = []string{
 	"                                                     ",
