@@ -517,6 +517,17 @@
       "uuid": "10f091b1-deda-4fec-8e3c-9dabb080d473"
     },
     {
+      "uuid": "478d8d31-454d-4a8a-af01-96864186d5f2",
+      "slug": "scale-generator",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "pattern_matching",
+        "strings"
+      ]
+    },
+    {
       "core": false,
       "difficulty": 3,
       "slug": "protein-translation",
