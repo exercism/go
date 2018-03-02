@@ -29,10 +29,12 @@ type js struct {
 		Description string
 		Cases       []struct {
 			Description string
-			Pattern     string
-			Flags       []string
-			Files       []string
-			Expected    []string
+			Input       struct {
+				Pattern string
+				Flags   []string
+				Files   []string
+			}
+			Expected []string
 		}
 	}
 }
@@ -66,9 +68,9 @@ var testCases = []struct {
 {{range .J.Cases}}
 	{{range .Cases}}{
 		description: {{printf "%q" .Description}},
-		pattern: {{printf "%q" .Pattern}},
-		flags: {{printf "%#v" .Flags}},
-		files: {{printf "%#v" .Files}},
+		pattern: {{printf "%q" .Input.Pattern}},
+		flags: {{printf "%#v" .Input.Flags}},
+		files: {{printf "%#v" .Input.Files}},
 		expected: {{printf "%#v" .Expected}},
 },
 {{end}}{{end}}
