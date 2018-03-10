@@ -1,1 +1,53 @@
+# Yacht
 
+The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from the same family as Poker dice, Generala and particularly Yahtzee, of which it is a precursor. In the game, five dice are rolled and the result can be entered in any of twelve categories. The score of a collection of dice depends on category chosen.
+
+## Scores in Yacht
+
+    Category    Score                   Example
+    Ones            1 × number of one       1 1 1 4 5 scores 3
+    Twos            2 × number of twos      2 2 3 4 5 scores 4
+    Threes          3 × number of threes    3 3 3 3 3 scores 15
+    Fours           4 × number of fours     1 2 3 3 5 scores 0
+    Fives           5 × number of fives     5 1 5 2 5 scores 15
+    Sixes           6 × number of sixes     2 3 4 5 6 scores 6
+    Full House      Total of the dice       3 3 3 5 5 scores 25
+    Four of a Kind  Total of the four dice  4 4 4 4 6 scores 16
+    Little Straight 30 points               1 2 3 4 5 scores 30 
+    Big Straight    30 points               2 3 4 5 6 scores 30
+    Choice          Sum of the dice         2 3 3 4 6 scores 18
+    Yacht           50                      4 4 4 4 4 scores 50
+
+
+## Task
+Given a list of values of the dice and a category you should return the score of the dice in that category. If the dice don't satifythe requirements of the category you should return 0. You can assume that you will receive the values of five dice and the value of each will be between one and six. You should not assume that the dice are ordered.
+
+## Bonus tasks
+
+* Adapt the program for other similar games.
+
+* Create a function that finds the highest scoring category for five dice.
+
+## Running the tests
+
+To run the tests run the command `go test` from within the exercise directory.
+
+If the test suite contains benchmarks, you can run these with the `-bench`
+flag:
+
+    go test -bench .
+
+Keep in mind that each reviewer will run benchmarks on a different machine, with
+different specs, so the results from these benchmark tests may vary.
+
+## Further information
+
+For more detailed information about the Go track, including how to get help if
+you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
+
+## Source
+
+Processing a list of integers and identifying patterns in a relatable real world example.
+
+## Submitting Incomplete Solutions
+It's possible to submit an incomplete solution so you can see how others have completed the exercise.
