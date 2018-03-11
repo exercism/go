@@ -27,7 +27,7 @@ func Encode(pt string) string {
 		cols[i%numCols] += string(r)
 	}
 	for i := 0; i < padding; i++ {
-		cols[numCols-i-1] += string(' ')
+		cols[numCols-i-1] += " "
 	}
 	return strings.Join(cols, " ")
 }
