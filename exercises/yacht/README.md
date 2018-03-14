@@ -1,6 +1,10 @@
 # Yacht
 
-The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from the same family as Poker dice, Generala and particularly Yahtzee, of which it is a precursor. In the game, five dice are rolled and the result can be entered in any of twelve categories. The score of a collection of dice depends on category chosen.
+The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from
+the same family as Poker dice, Generala and particularly Yahtzee, of which it
+is a precursor. In the game, five dice are rolled and the result can be entered
+in any of twelve categories. The score of a collection of dice depends on
+category chosen.
 
 ## Scores in Yacht
 
@@ -16,11 +20,15 @@ The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from t
     Little Straight 30 points               1 2 3 4 5 scores 30 
     Big Straight    30 points               2 3 4 5 6 scores 30
     Choice          Sum of the dice         2 3 3 4 6 scores 18
-    Yacht           50                      4 4 4 4 4 scores 50
+    Yacht           50 points               4 4 4 4 4 scores 50
 
 
-## Task
-Given a list of values of the dice and a category you should return the score of the dice in that category. If the dice don't satifythe requirements of the category you should return 0. You can assume that you will receive the values of five dice and the value of each will be between one and six. You should not assume that the dice are ordered.
+## Task 
+Given a list of values of the dice and a category you should return the
+score of the dice in that category. If the dice don't satify the requirements
+of the category you should return 0. You can assume that you will receive the
+values of five dice and the value of each will be between one and six. You
+should not assume that the dice are ordered.
 
 ## Bonus tasks
 
@@ -46,7 +54,6 @@ For more detailed information about the Go track, including how to get help if
 you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
 
 ## Source
-
 Processing a list of integers and identifying patterns in a relatable real world example.
 
 ## Submitting Incomplete Solutions
