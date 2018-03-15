@@ -29,8 +29,8 @@ type js struct {
 
 type Dominoe [2]int
 
-func (d Dominoe) String() string {
-	return fmt.Sprintf("Dominoe{%d, %d}", d[0], d[1])
+func (d Domino) String() string {
+	return fmt.Sprintf("Domino{%d, %d}", d[0], d[1])
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,7 +39,7 @@ type OneCase struct {
 	Description string
 	Comments    []string
 	Input       struct {
-		Dominoes []Dominoe
+		Dominoes []Domino
 	}
 	Expected bool
 }
@@ -52,13 +52,13 @@ var tmpl = `package dominoes
 
 var testCases = []struct {
 	description    string
-	dominoes  []Dominoe
+	dominoes  []Domino
 	valid          bool     // true => can chain, false => cannot chain
 }{ {{range .J.Cases}}
 {
 	{{printf "%q"  .Description}},
 	{{range .Comments}}//{{.}}
-	{{end}}[]Dominoe{ {{range .Input.Dominoes}} {{printf "%v" .}}, {{end}} },
+	{{end}}[]Domino{ {{range .Input.Dominoes}} {{printf "%v" .}}, {{end}} },
 	{{printf "%v"  .Expected}},
 }, {{end}}
 }
