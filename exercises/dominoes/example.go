@@ -1,13 +1,13 @@
 package dominoes
 
-type Dominoe [2]int
+type Domino [2]int
 
 // MakeChain returns a chain and true if the dominoes in input
 // can be arranged in a legal chain; otherwise it returns nil, false.
-func MakeChain(input []Dominoe) (chain []Dominoe, ok bool) {
+func MakeChain(input []Domino) (chain []Domino, ok bool) {
 	switch len(input) {
 	case 0:
-		return []Dominoe{}, true
+		return []Domino{}, true
 	case 1:
 		// A single is legal if the ends match.
 		if input[0][0] == input[0][1] {
@@ -15,16 +15,16 @@ func MakeChain(input []Dominoe) (chain []Dominoe, ok bool) {
 		}
 		return nil, false
 	}
-	chain, ok = buildDominoeChain(input)
+	chain, ok = buildDominoChain(input)
 	if !ok {
 		return nil, false
 	}
 	return chain, true
 }
 
-// buildDominoeChain looks for a matching dominoe chain using the 2 or more dominoes in d.
-func buildDominoeChain(d []Dominoe) ([]Dominoe, bool) {
-	permuteList := dominoePermutations(d, len(d))
+// buildDominoChain looks for a matching domino chain using the 2 or more dominoes in d.
+func buildDominoChain(d []Domino) ([]Domino, bool) {
+	permuteList := dominoPermutations(d, len(d))
 	for _, p := range permuteList {
 		chain, ok := arrangeChain(p)
 		if ok {
@@ -35,38 +35,38 @@ func buildDominoeChain(d []Dominoe) ([]Dominoe, bool) {
 }
 
 // arrangeChain uses the dominoes positionally in d[] attempting to make a matching chain;
-// reversing of sides of any dominoe is permitted, but the order of dominoes in d remains
+// reversing of sides of any domino is permitted, but the order of dominoes in d remains
 // the same left to right.
-func arrangeChain(d []Dominoe) (chain []Dominoe, ok bool) {
+func arrangeChain(d []Domino) (chain []Domino, ok bool) {
 	// A good chain will match length of d, so preallocate the chain.
-	chain = make([]Dominoe, len(d))
+	chain = make([]Domino, len(d))
 	n := 0
-	// Put first dominoe into the chain for starting point.
+	// Put first domino into the chain for starting point.
 	chain[n] = d[0]
 	// Loop through the remaining dominoes in d, attempting to add them into the chain,
-	// allowing a reverse of either single one in chain or the new dominoe t at each step.
+	// allowing a reverse of either single one in chain or the new domino t at each step.
 	for i := 1; i < len(d); i++ {
 		t := d[i]
 		last := chain[n]
 		if n == 0 && last[0] == t[0] {
 			// reverse first and only item in chain to match t, and add t to chain.
-			chain[n] = reverseDominoe(last)
+			chain[n] = reverseDomino(last)
 			chain[n+1] = t
 		} else if n == 0 && last[0] == t[1] {
 			// reverse only item in chain and t to match, and add reversed t to chain.
-			chain[n] = reverseDominoe(last)
-			chain[n+1] = reverseDominoe(t)
+			chain[n] = reverseDomino(last)
+			chain[n+1] = reverseDomino(t)
 		} else if last[1] == t[0] {
 			// add t as-is into chain.
 			chain[n+1] = t
 		} else if last[1] == t[1] {
 			// reverse t to match last one in chain, and add reversed t to chain.
-			chain[n+1] = reverseDominoe(t)
+			chain[n+1] = reverseDomino(t)
 		} else {
 			// no match for this chain configuration of d, even with swapping.
 			return nil, false
 		}
-		// chain is now filled in with one more dominoe.
+		// chain is now filled in with one more domino.
 		n++
 	}
 	// Both ends of the chain must also match.
@@ -76,14 +76,14 @@ func arrangeChain(d []Dominoe) (chain []Dominoe, ok bool) {
 	return chain, true
 }
 
-// reverseDominoe returns given Dominoe x, with its sides reversed/rotated.
-func reverseDominoe(x Dominoe) Dominoe {
-	return Dominoe{x[1], x[0]}
+// reverseDomino returns given Domino x, with its sides reversed/rotated.
+func reverseDomino(x Domino) Domino {
+	return Domino{x[1], x[0]}
 }
 
-// dominoePermutations returns a slice containing the r length permutations of the elements in iterable.
+// dominoPermutations returns a slice containing the r length permutations of the elements in iterable.
 // The implementation is modeled after the Python itertools.permutations().
-func dominoePermutations(iterable []Dominoe, r int) (perms [][]Dominoe) {
+func dominoPermutations(iterable []Domino, r int) (perms [][]Domino) {
 	pool := iterable
 	n := len(pool)
 
@@ -101,12 +101,12 @@ func dominoePermutations(iterable []Dominoe, r int) (perms [][]Dominoe) {
 		cycles[i] = n - i
 	}
 
-	result := make([]Dominoe, r)
+	result := make([]Domino, r)
 	for i, el := range indices[:r] {
 		result[i] = pool[el]
 	}
 
-	p := make([]Dominoe, len(result))
+	p := make([]Domino, len(result))
 	copy(p, result)
 	perms = append(perms, p)
 
@@ -129,7 +129,7 @@ func dominoePermutations(iterable []Dominoe, r int) (perms [][]Dominoe) {
 					result[k] = pool[indices[k]]
 				}
 
-				p = make([]Dominoe, len(result))
+				p = make([]Domino, len(result))
 				copy(p, result)
 				perms = append(perms, p)
 
