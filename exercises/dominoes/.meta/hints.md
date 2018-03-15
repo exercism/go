@@ -6,14 +6,14 @@ of dominoes and attempts to construct a legal chain of dominoes.
 MakeChain should have the following signature:
 
 ```
-type Dominoe [2]int
+type Domino [2]int
 
-func MakeChain(input []Dominoe) (chain []Dominoe, ok bool)
+func MakeChain(input []Domino) (chain []Domino, ok bool)
 ```
 
-The 'ok' bool result indicates whether the given input dominoe list
+The 'ok' bool result indicates whether the given input domino list
 could be arranged in a legal chain. An empty input list is considered legal,
-and a single dominoe whose sides are the same is also considered legal.
+and a single domino whose sides are the same is also considered legal.
 
 The 'chain' result is a slice of zero or more dominoes
 arranged in an order which shows the legal chain.
