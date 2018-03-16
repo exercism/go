@@ -27,7 +27,7 @@ type js struct {
 	Cases    []OneCase
 }
 
-type Dominoe [2]int
+type Domino [2]int
 
 func (d Domino) String() string {
 	return fmt.Sprintf("Domino{%d, %d}", d[0], d[1])
