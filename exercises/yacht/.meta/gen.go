@@ -54,7 +54,6 @@ var testCases = []struct {
 	dice: {{.Input.Dice | printf "%#v"}} ,
 	category: {{printf "%q" .Input.Category}},
 	expected: {{printf "%d" .Expected}},
-}, 
-{{end}}
+},{{end}}
 }
 `
