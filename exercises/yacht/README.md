@@ -7,7 +7,7 @@ category chosen.
 
 ## Scores in Yacht
 
-    Category    Score                   Example
+    Category        Score                   Example
     Ones            1 × number of ones      1 1 1 4 5 scores 3
     Twos            2 × number of twos      2 2 3 4 5 scores 4
     Threes          3 × number of threes    3 3 3 3 3 scores 15
@@ -31,8 +31,8 @@ the score of the dice for that category. If the dice do not satisfy the requirem
 of the category your solution should return 0. You can assume that five values
 will always be presented, and the value of each will be between one and six
 inclusively. You should not assume that the dice are ordered.
-## Bonus tasks
 
+## Bonus tasks
 * Adapt the program for other similar games.
 
 * Create a function that finds the highest scoring category for five dice.
