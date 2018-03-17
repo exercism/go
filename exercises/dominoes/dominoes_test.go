@@ -32,7 +32,7 @@ var (
 	errChainSetNotSameAsInputSet = errors.New("chain dominoes not same as input")
 )
 
-func verifyChain(input []Dominoe, chain []Dominoe) error {
+func verifyChain(input []Domino, chain []Domino) error {
 	if len(input) != len(chain) {
 		return errWrongLengthChain
 	}
@@ -72,9 +72,9 @@ func verifyChain(input []Dominoe, chain []Dominoe) error {
 	return nil
 }
 
-func copyDominoes(d []Dominoe) (c []Dominoe) {
-	c = make([]Dominoe, len(d))
-	// Put each dominoe in "canonical position" [a,b] where a <= b.
+func copyDominoes(d []Domino) (c []Domino) {
+	c = make([]Domino, len(d))
+	// Put each domino in "canonical position" [a,b] where a <= b.
 	for i := range d {
 		c[i] = d[i]
 		if c[i][0] > c[i][1] {
@@ -84,7 +84,7 @@ func copyDominoes(d []Dominoe) (c []Dominoe) {
 	return c
 }
 
-func sortDominoes(d []Dominoe) {
+func sortDominoes(d []Domino) {
 	sort.Slice(d,
 		func(i, j int) bool {
 			if d[i][0] < d[j][0] {
