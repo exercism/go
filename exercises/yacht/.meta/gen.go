@@ -26,8 +26,8 @@ type js struct {
 	Cases    []OneCase
 }
 
-// template applied to above data structure generates the Go test cases
-
+// OneCase is a go structure for storing the json information
+// of a single test case
 type OneCase struct {
 	Description string
 	Input       struct {
@@ -37,7 +37,6 @@ type OneCase struct {
 	Expected int
 }
 
-//func (c OneCase)
 // Template to generate list of test cases.
 var tmpl = `package yacht
 

@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestCost(t *testing.T) {
+func TestScore(t *testing.T) {
 	for _, testCase := range testCases {
 		score := Score(testCase.dice, testCase.category)
 		if testCase.expected != score {
@@ -16,7 +16,7 @@ func TestCost(t *testing.T) {
 	}
 }
 
-func BenchmarkCost(b *testing.B) {
+func BenchmarkScore(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, testCase := range testCases {
 			Score(testCase.dice, testCase.category)
