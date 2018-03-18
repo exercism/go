@@ -340,7 +340,7 @@
         "conditionals",
         "logic"
       ],
-      "unlocked_by": "leap",
+      "unlocked_by": "two-fer",
       "uuid": "6769557a-33fa-4257-adbf-e66dc8c06f85"
     },
     {
@@ -611,7 +611,7 @@
         "text_formatting",
         "transforming"
       ],
-      "unlocked_by": "ledger",
+      "unlocked_by": "tree-building",
       "uuid": "bafd87ad-1dc5-4bbe-b853-ed330c3f155a"
     },
     {
@@ -734,7 +734,7 @@
         "filtering",
         "loops"
       ],
-      "unlocked_by": "accumulate",
+      "unlocked_by": "raindrops",
       "uuid": "7fbb0d9d-71d1-4654-8ca0-bb07ddbe6cb5"
     },
     {
@@ -746,7 +746,7 @@
         "strings",
         "transforming"
       ],
-      "unlocked_by": "phone-number",
+      "unlocked_by": "clock",
       "uuid": "4fe8ba14-20ba-4aa3-b134-7aed799a7522"
     },
     {
@@ -770,7 +770,7 @@
         "integers",
         "mathematics"
       ],
-      "unlocked_by": "prime-factors",
+      "unlocked_by": "clock",
       "uuid": "b3f06c57-c0de-4b8f-bd16-782b2ce3f478"
     },
     {
@@ -933,7 +933,7 @@
         "structs",
         "trees"
       ],
-      "unlocked_by": "binary-search",
+      "unlocked_by": "tree-building",
       "uuid": "ac680609-4e52-468d-bf17-afbf7b2fa74b"
     },
     {
@@ -1041,7 +1041,7 @@
         "loops",
         "searching"
       ],
-      "unlocked_by": "minesweeper",
+      "unlocked_by": "matrix",
       "uuid": "395116bc-5be9-4140-a2ef-c7e8689149f2"
     },
     {
@@ -1122,7 +1122,7 @@
         "arrays",
         "conditionals"
       ],
-      "unlocked_by": "poker",
+      "unlocked_by": "tournament",
       "uuid": "8d5aaf47-7503-4797-85ed-d35a8755cfd4"
     },
     {
@@ -1173,7 +1173,7 @@
         "mathematics",
         "floating_point_numbers"
       ],
-      "unlocked_by": "flatten-array",
+      "unlocked_by": "error-handling",
       "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097"
     },
     {
@@ -1230,7 +1230,7 @@
         "arrays",
         "searching"
       ],
-      "unlocked_by": "flatten-array",
+      "unlocked_by": "error-handling",
       "uuid": "2e5c9e76-decd-49db-be4b-353ebeb46b73"
     },
     {
@@ -1243,7 +1243,7 @@
         "mathematics",
         "searching"
       ],
-      "unlocked_by": "flatten-array",
+      "unlocked_by": "error-handling",
       "uuid": "6b313720-104a-46c2-8290-4b4af121101f "
     },
     {
@@ -1255,7 +1255,7 @@
         "conditionals",
         "searching"
       ],
-      "unlocked_by": "binary-search",
+      "unlocked_by": "tree-building",
       "uuid": "549bf4a0-b8eb-4f66-8990-7df6cdfaee0c"
     },
     {
