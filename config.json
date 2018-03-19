@@ -1060,6 +1060,21 @@
       "unlocked_by": "tree-building",
       "uuid": "7aa53a27-4ff3-4891-809f-2af728eb55a0"
     },
+    { 
+      "core": false,
+      "difficulty": 4,
+      "slug": "yacht",
+      "topics": [
+        "equality",
+        "games",
+        "integers",
+        "parsing",
+        "pattern_matching",
+        "sequences"
+      ],
+      "unlocked_by": "tournament",
+      "uuid": "37980ffd-acc7-44f4-ad32-43e0624457a8"
+    },
     {
       "core": false,
       "difficulty": 5,
