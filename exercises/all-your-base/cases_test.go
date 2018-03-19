@@ -1,8 +1,8 @@
 package allyourbase
 
 // Source: exercism/problem-specifications
-// Commit: dc0c431 all-your-base: apply lowerCamelCase policy
-// Problem Specifications Version: 2.2.0
+// Commit: c21ffd7 all-your-base: improve "input base is one" test
+// Problem Specifications Version: 2.3.0
 
 var testCases = []struct {
 	description string
@@ -111,7 +111,7 @@ var testCases = []struct {
 	{
 		description: "input base is one",
 		inputBase:   1,
-		inputDigits: []int{},
+		inputDigits: []int{0},
 		outputBase:  10,
 		expected:    []int(nil),
 		err:         "input base must be >= 2",
