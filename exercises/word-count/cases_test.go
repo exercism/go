@@ -1,8 +1,8 @@
 package wordcount
 
 // Source: exercism/problem-specifications
-// Commit: 5559f34 word-count: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 77623ec word-count: Use camel-case for property name word-count: remove newline from eof
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
