@@ -1,7 +1,7 @@
 package yacht
 
 // Source: exercism/problem-specifications
-// Commit: ea4689d yacht: create problem specification for scoring a single hand of yacht
+// Commit: ea4689d yacht: create problem specification for scoring a single hand of yacht. (#1207)
 // Problem Specifications Version: 1.0.0
 
 var testCases = []struct {
