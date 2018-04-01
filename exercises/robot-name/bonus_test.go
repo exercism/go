@@ -5,31 +5,26 @@ package robotname
 import "testing"
 
 func TestCollisions(t *testing.T) {
-	m := map[string]bool{}
 	// Test uniqueness for new robots.
 	// 10k should be plenty to catch names generated
 	// randomly without a uniqueness check.
-	for i := 0; i < 10000; i++ {
-		n, err := New().Name()
-		if err != nil {
-			t.Fatalf("Name() returned unexpected error: %v", err)
-		}
-		if m[n] {
-			t.Fatalf("Name %s reissued after %d robots.", n, i)
-		}
-		m[n] = true
+	for i := len(seen); i <= maxNames-600000; i++ {
+		_ = New().getName(t, false)
 	}
+
 	// Test that names aren't recycled either.
 	r := New()
-	for i := 0; i < 10000; i++ {
+	for i := len(seen); i < maxNames; i++ {
 		r.Reset()
-		n, err := r.Name()
-		if err != nil {
-			t.Fatalf("Name() returned unexpected error: %v", err)
-		}
-		if m[n] {
-			t.Fatalf("Name %s reissued after Reset.", n)
-		}
-		m[n] = true
+		_ = r.getName(t, false)
 	}
+
+	// Test that name exhaustion is handled more or less correctly.
+	defer func() {
+		if r := recover(); r == nil {
+			t.Errorf("Code should panic if namespace is exhausted.")
+		}
+	}()
+
+	_ = New().getName(t, false)
 }
