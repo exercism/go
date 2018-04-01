@@ -6,8 +6,6 @@ import "testing"
 
 func TestCollisions(t *testing.T) {
 	// Test uniqueness for new robots.
-	// 10k should be plenty to catch names generated
-	// randomly without a uniqueness check.
 	for i := len(seen); i <= maxNames-600000; i++ {
 		_ = New().getName(t, false)
 	}
