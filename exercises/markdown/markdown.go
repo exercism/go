@@ -1,77 +1,64 @@
 package markdown
 
 import (
-	"bytes"
 	"fmt"
-	"regexp"
-)
-
-type charType int
-
-// used to keep track of which tag to close
-const (
-	none charType = iota
-	hash
-	star
+	"strings"
 )
 
 // Render translates markdown to HTML
-func Render(markdown string) (html string) {
-	//first the easy one, via regexp substitution
-	reStrong := regexp.MustCompile("(__)(.*)(__)")
-	s := reStrong.ReplaceAll([]byte(markdown), []byte("<strong>$2</strong>"))
-	reEm := regexp.MustCompile("(_)(.*)(_)")
-	s = reEm.ReplaceAll(s, []byte("<em>$2</em>"))
-	//now manage <li> and <hN>
-	var output bytes.Buffer
-	starcount := 0
-	hcount := 0
-	needtoClose := none
-	i := 0
+func Render(markdown string) string {
+	header := 0
+	markdown = strings.Replace(markdown, "__", "<strong>", 1)
+	markdown = strings.Replace(markdown, "__", "</strong>", 1)
+	markdown = strings.Replace(markdown, "_", "<em>", 1)
+	markdown = strings.Replace(markdown, "_", "</em>", 1)
+	pos := 0
+	list := 0
+	html := ""
 	for {
-		switch s[i] {
-		case '#':
-			for s[i] == '#' {
-				hcount++
-				i++
+		char := markdown[pos]
+		if char == '#' {
+			for char == '#' {
+				header++
+				pos++
+				char = markdown[pos]
 			}
-			output.WriteString(fmt.Sprintf("<h%d>", hcount))
-			needtoClose = hash
-		case '*':
-			if starcount == 0 {
-				output.WriteString("<ul>")
-			}
-			i++
-			starcount++
-			output.WriteString("<li>")
-			needtoClose = star
-		case '\n':
-			if needtoClose == hash {
-				output.WriteString(fmt.Sprintf("</h%d>", hcount))
-			}
-			if needtoClose == star {
-				output.WriteString("</li>")
-			}
-
-		default:
-			output.WriteByte(s[i])
-
+			html += fmt.Sprintf("<h%d>", header)
+			pos++
+			continue
 		}
-		if i < len(s)-1 {
-			i++
-		} else {
+		if char == '*' {
+			if list == 0 {
+				html += "<ul>"
+			}
+			html += "<li>"
+			list++
+			pos += 2
+			continue
+		}
+		if char == '\n' {
+			if list > 0 {
+				html += "</li>"
+			}
+			if header > 0 {
+				html += fmt.Sprintf("</h%d>", header)
+				header = 0
+			}
+			pos++
+			continue
+		}
+		html += string(char)
+		pos++
+		if pos >= len(markdown) {
 			break
 		}
+	}
+	if header > 0 {
+		return html + fmt.Sprintf("</h%d>", header)
+	}
+	if list > 0 {
+		return html + "</li></ul>"
+	}
+	return "<p>" + html + "</p>"
 
-	}
-	if starcount > 0 || hcount > 0 {
-		if needtoClose == hash {
-			output.WriteString(fmt.Sprintf("</h%d>", hcount))
-		}
-		if needtoClose == star {
-			output.WriteString("</li></ul>")
-		}
-		return output.String()
-	}
-	return fmt.Sprintf("<p>%s</p>", string(s))
 }
