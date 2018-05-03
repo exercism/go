@@ -1,5 +1,7 @@
 package markdown
 
+// implementation to refactor
+
 import (
 	"fmt"
 	"strings"

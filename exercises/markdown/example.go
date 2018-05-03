@@ -28,7 +28,7 @@ func Render(markdown string) (html string) {
 	hcount := 0
 	needtoClose := none
 	i := 0
-	for {
+	for i < len(s) {
 		switch s[i] {
 		case '#':
 			for s[i] == '#' {
@@ -57,12 +57,7 @@ func Render(markdown string) (html string) {
 			output.WriteByte(s[i])
 
 		}
-		if i < len(s)-1 {
-			i++
-		} else {
-			break
-		}
-
+		i++
 	}
 	if starcount > 0 || hcount > 0 {
 		if needtoClose == hash {
