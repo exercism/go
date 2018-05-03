@@ -13,3 +13,12 @@ func TestMarkdown(t *testing.T) {
 		fmt.Printf("PASS: %s\n", test.description)
 	}
 }
+
+func BenchmarkMarkdown(b *testing.B) {
+	// Benchmark time to parse all the test cases
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
+			Render(test.input)
+		}
+	}
+}
