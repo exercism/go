@@ -1,16 +1,13 @@
 package markdown
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestMarkdown(t *testing.T) {
 	for _, test := range testCases {
 		if html := Render(test.input); html != test.expected {
 			t.Fatalf("FAIL: Render(%q) = %q, want %q.", test.input, html, test.expected)
 		}
-		fmt.Printf("PASS: %s\n", test.description)
+		t.Logf("PASS: %s\n", test.description)
 	}
 }
 
