@@ -1060,6 +1060,18 @@
       "unlocked_by": "tree-building",
       "uuid": "7aa53a27-4ff3-4891-809f-2af728eb55a0"
     },
+    {
+      "core": false,
+      "difficulty": 4,
+      "slug": "markdown",
+      "topics": [
+        "refactoring",
+        "strings",
+        "text_formatting"
+      ],
+      "unlocked_by": "twelve-days",
+      "uuid": "a7469032-c4d0-4e15-aa0c-4e9f6588b4c8"
+    },
     { 
       "core": false,
       "difficulty": 4,
