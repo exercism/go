@@ -1,8 +1,8 @@
 package brackets
 
 // Source: exercism/problem-specifications
-// Commit: 5c16d05 bracket-push: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 9027186 bracket-push: Add test case "partially paired brackets" (#1219)
+// Problem Specifications Version: 1.3.0
 
 type bracketTest struct {
 	input    string
@@ -39,6 +39,11 @@ var testCases = []bracketTest{
 		// paired with whitespace
 		"{ }",
 		true,
+	},
+	{
+		// partially paired brackets
+		"{[])",
+		false,
 	},
 	{
 		// simple nested brackets
