@@ -4,31 +4,31 @@ import (
 	"errors"
 )
 
-// ListNode is a node in a linked list.
-type ListNode struct {
+// Node is a node in a linked list.
+type Node struct {
 	Val  interface{}
-	Next *ListNode
-	Prev *ListNode
+	Next *Node
+	Prev *Node
 }
 
-// NewListNode constructs a new ListNode with the given value & no next/prev links.
-func NewListNode(v interface{}) *ListNode {
-	return &ListNode{
+// NewNode constructs a new Node with the given value & no next/prev links.
+func NewNode(v interface{}) *Node {
+	return &Node{
 		Val:  v,
 		Next: nil,
 		Prev: nil,
 	}
 }
 
-// DoublyLinkedList is a doubly-linked list with Head and Tail.
-type DoublyLinkedList struct {
-	Head *ListNode
-	Tail *ListNode
+// List is a doubly-linked list with Head and Tail.
+type List struct {
+	Head *Node
+	Tail *Node
 }
 
-// NewDoublyLinkedList constructs a doubly linked list from a sequence of integers.
-func NewDoublyLinkedList(vs ...interface{}) *DoublyLinkedList {
-	ll := &DoublyLinkedList{
+// NewList constructs a doubly linked list from a sequence of integers.
+func NewList(vs ...interface{}) *List {
+	ll := &List{
 		Head: nil,
 		Tail: nil,
 	}
@@ -37,7 +37,7 @@ func NewDoublyLinkedList(vs ...interface{}) *DoublyLinkedList {
 		return ll
 	}
 
-	ll.Head = NewListNode(vs[0])
+	ll.Head = NewNode(vs[0])
 	ll.Tail = ll.Head
 
 	if len(vs) == 1 {
@@ -46,7 +46,7 @@ func NewDoublyLinkedList(vs ...interface{}) *DoublyLinkedList {
 
 	cur := ll.Head
 	for i := 1; i < len(vs); i++ {
-		cur.Next = NewListNode(vs[i])
+		cur.Next = NewNode(vs[i])
 		cur.Next.Prev = cur
 		cur = cur.Next
 	}
@@ -57,13 +57,13 @@ func NewDoublyLinkedList(vs ...interface{}) *DoublyLinkedList {
 }
 
 // Reverse reverses the given linked list in-place.
-func (ll *DoublyLinkedList) Reverse() {
+func (ll *List) Reverse() {
 	if ll.Head == nil || ll.Head.Next == nil {
 		return
 	}
 
 	// construct singly-linked list from the back
-	dummy := NewListNode(-1)
+	dummy := NewNode(-1)
 	cur := dummy
 	n := ll.Tail
 	for n != nil {
@@ -90,8 +90,8 @@ func (ll *DoublyLinkedList) Reverse() {
 }
 
 // PushFront pushes a new value before Head.
-func (ll *DoublyLinkedList) PushFront(v interface{}) {
-	n := NewListNode(v)
+func (ll *List) PushFront(v interface{}) {
+	n := NewNode(v)
 
 	switch {
 	default:
@@ -108,8 +108,8 @@ func (ll *DoublyLinkedList) PushFront(v interface{}) {
 }
 
 // PushBack pushes a new value after Tail.
-func (ll *DoublyLinkedList) PushBack(v interface{}) {
-	n := NewListNode(v)
+func (ll *List) PushBack(v interface{}) {
+	n := NewNode(v)
 
 	switch {
 	default:
@@ -130,7 +130,7 @@ var (
 )
 
 // PopFront posp the element at Head. It returns error if the linked list is empty.
-func (ll *DoublyLinkedList) PopFront() (interface{}, error) {
+func (ll *List) PopFront() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
@@ -152,7 +152,7 @@ func (ll *DoublyLinkedList) PopFront() (interface{}, error) {
 }
 
 // PopBack pops the element at Tail. It returns error if the linked list is empty.
-func (ll *DoublyLinkedList) PopBack() (interface{}, error) {
+func (ll *List) PopBack() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")

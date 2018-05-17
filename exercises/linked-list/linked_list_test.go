@@ -36,7 +36,7 @@ func TestNew(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			actual := NewDoublyLinkedList(tc.in...)
+			actual := NewList(tc.in...)
 
 			checkDoublyLinkedList(t, actual, tc.expected)
 		})
@@ -73,7 +73,7 @@ func TestReverse(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			actual := NewDoublyLinkedList(tc.in...)
+			actual := NewList(tc.in...)
 			actual.Reverse()
 
 			checkDoublyLinkedList(t, actual, tc.expected)
@@ -82,22 +82,22 @@ func TestReverse(t *testing.T) {
 }
 
 // checkedAction calls a function of the linked list and (possibly) checks the result
-type checkedAction func(*testing.T, *DoublyLinkedList)
+type checkedAction func(*testing.T, *List)
 
 func pushFront(arg interface{}) checkedAction {
-	return func(t *testing.T, ll *DoublyLinkedList) {
+	return func(t *testing.T, ll *List) {
 		ll.PushFront(arg)
 	}
 }
 
 func pushBack(arg interface{}) checkedAction {
-	return func(t *testing.T, ll *DoublyLinkedList) {
+	return func(t *testing.T, ll *List) {
 		ll.PushBack(arg)
 	}
 }
 
 func popFront(expected interface{}, expectedErr error) checkedAction {
-	return func(t *testing.T, ll *DoublyLinkedList) {
+	return func(t *testing.T, ll *List) {
 		v, err := ll.PopFront()
 		if err != expectedErr {
 			t.Errorf("PopFront() returned wrong, expected no error, got= %v", err)
@@ -110,7 +110,7 @@ func popFront(expected interface{}, expectedErr error) checkedAction {
 }
 
 func popBack(expected interface{}, expectedErr error) checkedAction {
-	return func(t *testing.T, ll *DoublyLinkedList) {
+	return func(t *testing.T, ll *List) {
 		v, err := ll.PopBack()
 		if err != expectedErr {
 			t.Errorf("PopBack() returned wrong, expected no error, got= %v", err)
@@ -216,7 +216,7 @@ func TestOps(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			actual := NewDoublyLinkedList(tc.in...)
+			actual := NewList(tc.in...)
 			for _, ac := range tc.actions {
 				ac(t, actual)
 			}
@@ -227,7 +227,7 @@ func TestOps(t *testing.T) {
 }
 
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
-func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected []interface{}) {
+func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 	// check that length and elements are correct (scan once from begin -> end)
 	elem, count, idx := ll.Head, 0, 0
 	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next, count+1, idx+1 {
@@ -277,7 +277,7 @@ func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected []interf
 }
 
 // debugString prints the linked list with both node's value, Next & Prev pointers.
-func (ll *DoublyLinkedList) debugString() string {
+func (ll *List) debugString() string {
 	buf := bytes.NewBuffer([]byte{'{'})
 	buf.WriteString(fmt.Sprintf("Head= %p; ", ll.Head))
 
