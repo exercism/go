@@ -1,9 +1,7 @@
 package linkedlist
 
 import (
-	"bytes"
 	"errors"
-	"fmt"
 )
 
 // ListNode is a node in a linked list.
@@ -89,33 +87,6 @@ func (ll *DoublyLinkedList) Reverse() {
 	// update Head & Tail
 	ll.Head, ll.Tail = ll.Tail, ll.Head
 	ll.Head.Prev = nil
-}
-
-func (ll *DoublyLinkedList) String() string {
-	buf := bytes.NewBuffer([]byte{'{'})
-
-	for cur := ll.Head; cur != nil; cur = cur.Next {
-		buf.WriteString(fmt.Sprintf("%v <-> ", cur.Val))
-	}
-
-	buf.WriteByte('}')
-
-	return buf.String()
-}
-
-// DebugString prints the linked list with both node's value, next & prev pointers.
-func (ll *DoublyLinkedList) DebugString() string {
-	buf := bytes.NewBuffer([]byte{'{'})
-	buf.WriteString(fmt.Sprintf("Head= %p; ", ll.Head))
-
-	for cur := ll.Head; cur != nil; cur = cur.next {
-		buf.WriteString(fmt.Sprintf("[prev= %p, val= %p (%v), next= %p] <-> ", cur.prev, cur, cur.val, cur.next))
-	}
-
-	buf.WriteString(fmt.Sprintf("; Tail= %p; ", ll.Tail))
-	buf.WriteByte('}')
-
-	return buf.String()
 }
 
 // PushFront pushes a new value before Head.

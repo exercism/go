@@ -1,6 +1,8 @@
 package linkedlist
 
 import (
+	"bytes"
+	"fmt"
 	"testing"
 )
 
@@ -8,27 +10,27 @@ func TestNew(t *testing.T) {
 	var testCases = []struct {
 		name     string
 		in       []int
-		expected string
+		expected []int
 	}{
 		{
-			name:     "from []int (5 elements)",
+			name:     "from 5 elements",
 			in:       []int{1, 2, 3, 4, 5},
-			expected: "{1 <-> 2 <-> 3 <-> 4 <-> 5 <-> }",
+			expected: []int{1, 2, 3, 4, 5},
 		},
 		{
-			name:     "from []int (2 elements)",
+			name:     "from 2 elements",
 			in:       []int{1, 2},
-			expected: "{1 <-> 2 <-> }",
+			expected: []int{1, 2},
 		},
 		{
-			name:     "from empty []int",
+			name:     "from no element",
 			in:       []int{},
-			expected: "{}",
+			expected: []int{},
 		},
 		{
-			name:     "from 1-element []int",
+			name:     "from 1 element",
 			in:       []int{999},
-			expected: "{999 <-> }",
+			expected: []int{999},
 		},
 	}
 
@@ -45,27 +47,27 @@ func TestReverse(t *testing.T) {
 	var testCases = []struct {
 		name     string
 		in       []int
-		expected string
+		expected []int
 	}{
 		{
-			name:     "from []int (5 elements)",
+			name:     "from 5 elements",
 			in:       []int{1, 2, 3, 4, 5},
-			expected: "{5 <-> 4 <-> 3 <-> 2 <-> 1 <-> }",
+			expected: []int{5, 4, 3, 2, 1},
 		},
 		{
-			name:     "from []int (2 elements)",
+			name:     "from 2 elements",
 			in:       []int{1, 2},
-			expected: "{2 <-> 1 <-> }",
+			expected: []int{2, 1},
 		},
 		{
-			name:     "from empty []int",
+			name:     "from no element",
 			in:       []int{},
-			expected: "{}",
+			expected: []int{},
 		},
 		{
-			name:     "from 1-element []int",
+			name:     "from 1 element",
 			in:       []int{999},
-			expected: "{999 <-> }",
+			expected: []int{999},
 		},
 	}
 
@@ -125,7 +127,7 @@ func TestOps(t *testing.T) {
 		name     string
 		in       []int
 		actions  []checkedAction
-		expected string
+		expected []int
 	}{
 		{
 			name: "PushFront only",
@@ -136,7 +138,7 @@ func TestOps(t *testing.T) {
 				pushFront(2),
 				pushFront(1),
 			},
-			expected: "{1 <-> 2 <-> 3 <-> 4 <-> }",
+			expected: []int{1, 2, 3, 4},
 		},
 		{
 			name: "PushBack only",
@@ -147,7 +149,7 @@ func TestOps(t *testing.T) {
 				pushBack(3),
 				pushBack(4),
 			},
-			expected: "{1 <-> 2 <-> 3 <-> 4 <-> }",
+			expected: []int{1, 2, 3, 4},
 		},
 		{
 			name: "PopFront only, pop some elements",
@@ -156,7 +158,7 @@ func TestOps(t *testing.T) {
 				popFront(1, nil),
 				popFront(2, nil),
 			},
-			expected: "{3 <-> 4 <-> }",
+			expected: []int{3, 4},
 		},
 		{
 			name: "PopFront only, pop till empty",
@@ -168,7 +170,7 @@ func TestOps(t *testing.T) {
 				popFront(4, nil),
 				popFront(0, ErrEmptyList),
 			},
-			expected: "{}",
+			expected: []int{},
 		},
 		{
 			name: "PopBack only, pop some elements",
@@ -177,7 +179,7 @@ func TestOps(t *testing.T) {
 				popBack(4, nil),
 				popBack(3, nil),
 			},
-			expected: "{1 <-> 2 <-> }",
+			expected: []int{1, 2},
 		},
 		{
 			name: "PopBack only, pop till empty",
@@ -189,7 +191,7 @@ func TestOps(t *testing.T) {
 				popBack(1, nil),
 				popBack(0, ErrEmptyList),
 			},
-			expected: "{}",
+			expected: []int{},
 		},
 		{
 			name: "mixed actions",
@@ -208,7 +210,7 @@ func TestOps(t *testing.T) {
 				pushFront(9),
 				pushBack(6),
 			},
-			expected: "{9 <-> 8 <-> 7 <-> 6 <-> }",
+			expected: []int{9, 8, 7, 6},
 		},
 	}
 
@@ -225,17 +227,22 @@ func TestOps(t *testing.T) {
 }
 
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
-func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected string) {
-	// quick check by looking at the element's value
-	if ll.String() != expected {
-		t.Errorf("expected= %s, got= %v", expected, ll)
+func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected []int) {
+	// check that length and elements are correct (scan once from begin -> end)
+	elem, count, idx := ll.Head, 0, 0
+	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next, count+1, idx+1 {
+		if elem.Val != expected[idx] {
+			t.Errorf("wrong value from %d-th element, expected= %v, got= %v", idx, expected[idx], elem.Val)
+		}
+	}
+	if !(elem == nil && idx == len(expected)) {
+		t.Errorf("expected %d elements, got= %d", len(expected), count)
 	}
 
-	// if they are the same, we also need to examine the links (next & prev)
+	// if elements are the same, we also need to examine the links (next & prev)
 	switch {
-	// TODO(exklamationmark): add more patterns. the current ones are not exhaustive -> might have edge cases
 	case ll.Head == nil && ll.Tail == nil: // empty list
-		return // NOP
+		return
 	case ll.Head != nil && ll.Tail != nil && ll.Head.Next == nil: // 1 element
 		valid := ll.Head == ll.Tail &&
 			ll.Head.Next == nil &&
@@ -244,12 +251,11 @@ func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected string) 
 			ll.Tail.Prev == nil
 
 		if !valid {
-			t.Errorf("expected to only have 1 element and no links, got= %v", ll.DebugString())
+			t.Errorf("expected to only have 1 element and no links, got= %v", ll.debugString())
 		}
 	}
 
 	// >1 element
-
 	if ll.Head.Prev != nil {
 		t.Errorf("expected Head.prev == nil, got= %v", ll.Head.Prev)
 	}
@@ -268,4 +274,19 @@ func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected string) 
 	if ll.Tail.Next != nil {
 		t.Errorf("expected Tail.next == nil, got= %v", ll.Head.Prev)
 	}
+}
+
+// debugString prints the linked list with both node's value, Next & Prev pointers.
+func (ll *DoublyLinkedList) debugString() string {
+	buf := bytes.NewBuffer([]byte{'{'})
+	buf.WriteString(fmt.Sprintf("Head= %p; ", ll.Head))
+
+	for cur := ll.Head; cur != nil; cur = cur.Next {
+		buf.WriteString(fmt.Sprintf("[Prev= %p, Val= %p (%v), Next= %p] <-> ", cur.Prev, cur, cur.Val, cur.Next))
+	}
+
+	buf.WriteString(fmt.Sprintf("; Tail= %p; ", ll.Tail))
+	buf.WriteByte('}')
+
+	return buf.String()
 }
