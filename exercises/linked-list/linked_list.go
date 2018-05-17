@@ -8,17 +8,17 @@ import (
 
 // ListNode is a node in a linked list.
 type ListNode struct {
-	val  int
-	next *ListNode
-	prev *ListNode
+	Val  int
+	Next *ListNode
+	Prev *ListNode
 }
 
 // NewListNode constructs a new ListNode with the given value & no next/prev links.
 func NewListNode(v int) *ListNode {
 	return &ListNode{
-		val:  v,
-		next: nil,
-		prev: nil,
+		Val:  v,
+		Next: nil,
+		Prev: nil,
 	}
 }
 
@@ -48,9 +48,9 @@ func NewDoublyLinkedList(vs ...int) *DoublyLinkedList {
 
 	cur := ll.Head
 	for i := 1; i < len(vs); i++ {
-		cur.next = NewListNode(vs[i])
-		cur.next.prev = cur
-		cur = cur.next
+		cur.Next = NewListNode(vs[i])
+		cur.Next.Prev = cur
+		cur = cur.Next
 	}
 
 	ll.Tail = cur
@@ -60,7 +60,7 @@ func NewDoublyLinkedList(vs ...int) *DoublyLinkedList {
 
 // Reverse reverses the given linked list in-place.
 func (ll *DoublyLinkedList) Reverse() {
-	if ll.Head == nil || ll.Head.next == nil {
+	if ll.Head == nil || ll.Head.Next == nil {
 		return
 	}
 
@@ -69,33 +69,33 @@ func (ll *DoublyLinkedList) Reverse() {
 	cur := dummy
 	n := ll.Tail
 	for n != nil {
-		cur.next = n
+		cur.Next = n
 
-		cur = cur.next
-		n = n.prev
+		cur = cur.Next
+		n = n.Prev
 	}
-	cur.next = nil // cur will be the new ll.Tail -> set .next = nil
+	cur.Next = nil // cur will be the new ll.Tail -> set .Next = nil
 
 	// add prev -> doubly-linked list
-	prev := dummy.next
-	n = dummy.next.next
+	prev := dummy.Next
+	n = dummy.Next.Next
 	for n != nil {
-		n.prev = prev
+		n.Prev = prev
 
-		n = n.next
-		prev = prev.next
+		n = n.Next
+		prev = prev.Next
 	}
 
 	// update Head & Tail
 	ll.Head, ll.Tail = ll.Tail, ll.Head
-	ll.Head.prev = nil
+	ll.Head.Prev = nil
 }
 
 func (ll *DoublyLinkedList) String() string {
 	buf := bytes.NewBuffer([]byte{'{'})
 
-	for cur := ll.Head; cur != nil; cur = cur.next {
-		buf.WriteString(fmt.Sprintf("%v <-> ", cur.val))
+	for cur := ll.Head; cur != nil; cur = cur.Next {
+		buf.WriteString(fmt.Sprintf("%v <-> ", cur.Val))
 	}
 
 	buf.WriteByte('}')
@@ -129,8 +129,8 @@ func (ll *DoublyLinkedList) PushFront(v int) {
 		ll.Head = n
 		ll.Tail = n
 	case ll.Head != nil && ll.Tail != nil: // non-empty list
-		n.next = ll.Head
-		ll.Head.prev = n
+		n.Next = ll.Head
+		ll.Head.Prev = n
 
 		ll.Head = n
 	}
@@ -147,8 +147,8 @@ func (ll *DoublyLinkedList) PushBack(v int) {
 		ll.Head = n
 		ll.Tail = n
 	case ll.Head != nil && ll.Tail != nil: // non-empty list
-		ll.Tail.next = n
-		n.prev = ll.Tail
+		ll.Tail.Next = n
+		n.Prev = ll.Tail
 
 		ll.Tail = n
 	}
@@ -165,16 +165,16 @@ func (ll *DoublyLinkedList) PopFront() (int, error) {
 		panic("bad PopFront implementation")
 	case ll.Head == nil && ll.Tail == nil: // empty list
 		return 0, ErrEmptyList
-	case ll.Head != nil && ll.Tail != nil && ll.Head.next == nil: // 1 element
-		v := ll.Head.val
+	case ll.Head != nil && ll.Tail != nil && ll.Head.Next == nil: // 1 element
+		v := ll.Head.Val
 		ll.Head = nil
 		ll.Tail = nil
 
 		return v, nil
-	case ll.Head != nil && ll.Tail != nil && ll.Head.next != nil: // >1 element
-		v := ll.Head.val
-		ll.Head.next.prev = nil
-		ll.Head = ll.Head.next
+	case ll.Head != nil && ll.Tail != nil && ll.Head.Next != nil: // >1 element
+		v := ll.Head.Val
+		ll.Head.Next.Prev = nil
+		ll.Head = ll.Head.Next
 
 		return v, nil
 	}
@@ -187,16 +187,16 @@ func (ll *DoublyLinkedList) PopBack() (int, error) {
 		panic("bad PopBack implementation")
 	case ll.Head == nil && ll.Tail == nil: // empty list
 		return 0, ErrEmptyList
-	case ll.Head != nil && ll.Tail != nil && ll.Tail.prev == nil: // 1 element
-		v := ll.Tail.val
+	case ll.Head != nil && ll.Tail != nil && ll.Tail.Prev == nil: // 1 element
+		v := ll.Tail.Val
 		ll.Head = nil
 		ll.Tail = nil
 
 		return v, nil
-	case ll.Head != nil && ll.Tail != nil && ll.Tail.prev != nil: // >1 element
-		v := ll.Tail.val
-		ll.Tail.prev.next = nil
-		ll.Tail = ll.Tail.prev
+	case ll.Head != nil && ll.Tail != nil && ll.Tail.Prev != nil: // >1 element
+		v := ll.Tail.Val
+		ll.Tail.Prev.Next = nil
+		ll.Tail = ll.Tail.Prev
 
 		return v, nil
 	}

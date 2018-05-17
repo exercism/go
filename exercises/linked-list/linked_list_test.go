@@ -236,12 +236,12 @@ func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected string) 
 	// TODO(exklamationmark): add more patterns. the current ones are not exhaustive -> might have edge cases
 	case ll.Head == nil && ll.Tail == nil: // empty list
 		return // NOP
-	case ll.Head != nil && ll.Tail != nil && ll.Head.next == nil: // 1 element
+	case ll.Head != nil && ll.Tail != nil && ll.Head.Next == nil: // 1 element
 		valid := ll.Head == ll.Tail &&
-			ll.Head.next == nil &&
-			ll.Head.prev == nil &&
-			ll.Tail.next == nil &&
-			ll.Tail.prev == nil
+			ll.Head.Next == nil &&
+			ll.Head.Prev == nil &&
+			ll.Tail.Next == nil &&
+			ll.Tail.Prev == nil
 
 		if !valid {
 			t.Errorf("expected to only have 1 element and no links, got= %v", ll.DebugString())
@@ -250,22 +250,22 @@ func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected string) 
 
 	// >1 element
 
-	if ll.Head.prev != nil {
-		t.Errorf("expected Head.prev == nil, got= %v", ll.Head.prev)
+	if ll.Head.Prev != nil {
+		t.Errorf("expected Head.prev == nil, got= %v", ll.Head.Prev)
 	}
 
 	prev := ll.Head
-	cur := ll.Head.next
+	cur := ll.Head.Next
 	for idx := 0; cur != nil; idx++ {
-		if !(prev.next == cur && cur.prev == prev) {
+		if !(prev.Next == cur && cur.Prev == prev) {
 			t.Errorf("%d-th element's links is wrong", idx)
 		}
 
 		prev = cur
-		cur = cur.next
+		cur = cur.Next
 	}
 
-	if ll.Tail.next != nil {
-		t.Errorf("expected Tail.next == nil, got= %v", ll.Head.prev)
+	if ll.Tail.Next != nil {
+		t.Errorf("expected Tail.next == nil, got= %v", ll.Head.Prev)
 	}
 }
