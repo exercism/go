@@ -9,28 +9,28 @@ import (
 func TestNew(t *testing.T) {
 	var testCases = []struct {
 		name     string
-		in       []int
-		expected []int
+		in       []interface{}
+		expected []interface{}
 	}{
 		{
 			name:     "from 5 elements",
-			in:       []int{1, 2, 3, 4, 5},
-			expected: []int{1, 2, 3, 4, 5},
+			in:       []interface{}{1, 2, 3, 4, 5},
+			expected: []interface{}{1, 2, 3, 4, 5},
 		},
 		{
 			name:     "from 2 elements",
-			in:       []int{1, 2},
-			expected: []int{1, 2},
+			in:       []interface{}{1, 2},
+			expected: []interface{}{1, 2},
 		},
 		{
 			name:     "from no element",
-			in:       []int{},
-			expected: []int{},
+			in:       []interface{}{},
+			expected: []interface{}{},
 		},
 		{
 			name:     "from 1 element",
-			in:       []int{999},
-			expected: []int{999},
+			in:       []interface{}{999},
+			expected: []interface{}{999},
 		},
 	}
 
@@ -46,28 +46,28 @@ func TestNew(t *testing.T) {
 func TestReverse(t *testing.T) {
 	var testCases = []struct {
 		name     string
-		in       []int
-		expected []int
+		in       []interface{}
+		expected []interface{}
 	}{
 		{
 			name:     "from 5 elements",
-			in:       []int{1, 2, 3, 4, 5},
-			expected: []int{5, 4, 3, 2, 1},
+			in:       []interface{}{1, 2, 3, 4, 5},
+			expected: []interface{}{5, 4, 3, 2, 1},
 		},
 		{
 			name:     "from 2 elements",
-			in:       []int{1, 2},
-			expected: []int{2, 1},
+			in:       []interface{}{1, 2},
+			expected: []interface{}{2, 1},
 		},
 		{
 			name:     "from no element",
-			in:       []int{},
-			expected: []int{},
+			in:       []interface{}{},
+			expected: []interface{}{},
 		},
 		{
 			name:     "from 1 element",
-			in:       []int{999},
-			expected: []int{999},
+			in:       []interface{}{999},
+			expected: []interface{}{999},
 		},
 	}
 
@@ -84,19 +84,19 @@ func TestReverse(t *testing.T) {
 // checkedAction calls a function of the linked list and (possibly) checks the result
 type checkedAction func(*testing.T, *DoublyLinkedList)
 
-func pushFront(arg int) checkedAction {
+func pushFront(arg interface{}) checkedAction {
 	return func(t *testing.T, ll *DoublyLinkedList) {
 		ll.PushFront(arg)
 	}
 }
 
-func pushBack(arg int) checkedAction {
+func pushBack(arg interface{}) checkedAction {
 	return func(t *testing.T, ll *DoublyLinkedList) {
 		ll.PushBack(arg)
 	}
 }
 
-func popFront(expected int, expectedErr error) checkedAction {
+func popFront(expected interface{}, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *DoublyLinkedList) {
 		v, err := ll.PopFront()
 		if err != expectedErr {
@@ -109,7 +109,7 @@ func popFront(expected int, expectedErr error) checkedAction {
 	}
 }
 
-func popBack(expected int, expectedErr error) checkedAction {
+func popBack(expected interface{}, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *DoublyLinkedList) {
 		v, err := ll.PopBack()
 		if err != expectedErr {
@@ -125,44 +125,44 @@ func popBack(expected int, expectedErr error) checkedAction {
 func TestOps(t *testing.T) {
 	var testCases = []struct {
 		name     string
-		in       []int
+		in       []interface{}
 		actions  []checkedAction
-		expected []int
+		expected []interface{}
 	}{
 		{
 			name: "PushFront only",
-			in:   []int{},
+			in:   []interface{}{},
 			actions: []checkedAction{
 				pushFront(4),
 				pushFront(3),
 				pushFront(2),
 				pushFront(1),
 			},
-			expected: []int{1, 2, 3, 4},
+			expected: []interface{}{1, 2, 3, 4},
 		},
 		{
 			name: "PushBack only",
-			in:   []int{},
+			in:   []interface{}{},
 			actions: []checkedAction{
 				pushBack(1),
 				pushBack(2),
 				pushBack(3),
 				pushBack(4),
 			},
-			expected: []int{1, 2, 3, 4},
+			expected: []interface{}{1, 2, 3, 4},
 		},
 		{
 			name: "PopFront only, pop some elements",
-			in:   []int{1, 2, 3, 4},
+			in:   []interface{}{1, 2, 3, 4},
 			actions: []checkedAction{
 				popFront(1, nil),
 				popFront(2, nil),
 			},
-			expected: []int{3, 4},
+			expected: []interface{}{3, 4},
 		},
 		{
 			name: "PopFront only, pop till empty",
-			in:   []int{1, 2, 3, 4},
+			in:   []interface{}{1, 2, 3, 4},
 			actions: []checkedAction{
 				popFront(1, nil),
 				popFront(2, nil),
@@ -170,20 +170,20 @@ func TestOps(t *testing.T) {
 				popFront(4, nil),
 				popFront(0, ErrEmptyList),
 			},
-			expected: []int{},
+			expected: []interface{}{},
 		},
 		{
 			name: "PopBack only, pop some elements",
-			in:   []int{1, 2, 3, 4},
+			in:   []interface{}{1, 2, 3, 4},
 			actions: []checkedAction{
 				popBack(4, nil),
 				popBack(3, nil),
 			},
-			expected: []int{1, 2},
+			expected: []interface{}{1, 2},
 		},
 		{
 			name: "PopBack only, pop till empty",
-			in:   []int{1, 2, 3, 4},
+			in:   []interface{}{1, 2, 3, 4},
 			actions: []checkedAction{
 				popBack(4, nil),
 				popBack(3, nil),
@@ -191,11 +191,11 @@ func TestOps(t *testing.T) {
 				popBack(1, nil),
 				popBack(0, ErrEmptyList),
 			},
-			expected: []int{},
+			expected: []interface{}{},
 		},
 		{
 			name: "mixed actions",
-			in:   []int{2, 3},
+			in:   []interface{}{2, 3},
 			actions: []checkedAction{
 				pushFront(1),
 				pushBack(4),
@@ -210,7 +210,7 @@ func TestOps(t *testing.T) {
 				pushFront(9),
 				pushBack(6),
 			},
-			expected: []int{9, 8, 7, 6},
+			expected: []interface{}{9, 8, 7, 6},
 		},
 	}
 
@@ -227,7 +227,7 @@ func TestOps(t *testing.T) {
 }
 
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
-func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected []int) {
+func checkDoublyLinkedList(t *testing.T, ll *DoublyLinkedList, expected []interface{}) {
 	// check that length and elements are correct (scan once from begin -> end)
 	elem, count, idx := ll.Head, 0, 0
 	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next, count+1, idx+1 {

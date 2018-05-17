@@ -6,13 +6,13 @@ import (
 
 // ListNode is a node in a linked list.
 type ListNode struct {
-	Val  int
+	Val  interface{}
 	Next *ListNode
 	Prev *ListNode
 }
 
 // NewListNode constructs a new ListNode with the given value & no next/prev links.
-func NewListNode(v int) *ListNode {
+func NewListNode(v interface{}) *ListNode {
 	return &ListNode{
 		Val:  v,
 		Next: nil,
@@ -27,7 +27,7 @@ type DoublyLinkedList struct {
 }
 
 // NewDoublyLinkedList constructs a doubly linked list from a sequence of integers.
-func NewDoublyLinkedList(vs ...int) *DoublyLinkedList {
+func NewDoublyLinkedList(vs ...interface{}) *DoublyLinkedList {
 	ll := &DoublyLinkedList{
 		Head: nil,
 		Tail: nil,
@@ -90,7 +90,7 @@ func (ll *DoublyLinkedList) Reverse() {
 }
 
 // PushFront pushes a new value before Head.
-func (ll *DoublyLinkedList) PushFront(v int) {
+func (ll *DoublyLinkedList) PushFront(v interface{}) {
 	n := NewListNode(v)
 
 	switch {
@@ -108,7 +108,7 @@ func (ll *DoublyLinkedList) PushFront(v int) {
 }
 
 // PushBack pushes a new value after Tail.
-func (ll *DoublyLinkedList) PushBack(v int) {
+func (ll *DoublyLinkedList) PushBack(v interface{}) {
 	n := NewListNode(v)
 
 	switch {
@@ -130,7 +130,7 @@ var (
 )
 
 // PopFront posp the element at Head. It returns error if the linked list is empty.
-func (ll *DoublyLinkedList) PopFront() (int, error) {
+func (ll *DoublyLinkedList) PopFront() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
@@ -152,7 +152,7 @@ func (ll *DoublyLinkedList) PopFront() (int, error) {
 }
 
 // PopBack pops the element at Tail. It returns error if the linked list is empty.
-func (ll *DoublyLinkedList) PopBack() (int, error) {
+func (ll *DoublyLinkedList) PopBack() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")
