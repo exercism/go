@@ -150,6 +150,17 @@
       "uuid": "8b29da0e-8ead-4e72-a12a-d448c8434767"
     },
     {
+      "core": false,
+      "difficulty": 2,
+      "slug": "linked-list",
+      "topics": [
+        "pointer",
+        "data_structure"
+      ],
+      "unlocked_by": null,
+      "uuid": "4368df53-39fb-4f36-97c2-39c399cd6d25"
+    },
+	{
       "core": true,
       "difficulty": 2,
       "slug": "grains",
@@ -196,7 +207,7 @@
         "sorting",
         "trees"
       ],
-      "unlocked_by": null,
+      "unlocked_by": "linked-list",
       "uuid": "d0a2afab-e30d-4617-b646-413a44ecf2ed"
     },
     {
@@ -1072,7 +1083,7 @@
       "unlocked_by": "twelve-days",
       "uuid": "a7469032-c4d0-4e15-aa0c-4e9f6588b4c8"
     },
-    { 
+    {
       "core": false,
       "difficulty": 4,
       "slug": "yacht",
@@ -1340,7 +1351,6 @@
     }
   ],
   "foregone": [
-    "linked-list"
   ],
   "ignore_pattern": "example(?!.*test)",
   "language": "Go"
