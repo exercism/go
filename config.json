@@ -149,17 +149,6 @@
       "unlocked_by": null,
       "uuid": "8b29da0e-8ead-4e72-a12a-d448c8434767"
     },
-    {
-      "core": false,
-      "difficulty": 2,
-      "slug": "linked-list",
-      "topics": [
-        "pointer",
-        "data_structure"
-      ],
-      "unlocked_by": null,
-      "uuid": "4368df53-39fb-4f36-97c2-39c399cd6d25"
-    },
 	{
       "core": true,
       "difficulty": 2,
@@ -207,7 +196,7 @@
         "sorting",
         "trees"
       ],
-      "unlocked_by": "linked-list",
+      "unlocked_by": null,
       "uuid": "d0a2afab-e30d-4617-b646-413a44ecf2ed"
     },
     {
@@ -919,6 +908,18 @@
       "unlocked_by": "error-handling",
       "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae"
     },
+    {
+      "core": false,
+      "difficulty": 4,
+      "slug": "linked-list",
+      "topics": [
+        "pointer",
+        "data_structure"
+      ],
+      "unlocked_by": "tree-building",
+      "uuid": "4368df53-39fb-4f36-97c2-39c399cd6d25"
+    },
+
     {
       "core": false,
       "difficulty": 5,
