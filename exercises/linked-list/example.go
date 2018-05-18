@@ -7,86 +7,124 @@ import (
 // Node is a node in a linked list.
 type Node struct {
 	Val  interface{}
-	Next *Node
-	Prev *Node
+	next *Node
+	prev *Node
 }
 
 // NewNode constructs a new Node with the given value & no next/prev links.
 func NewNode(v interface{}) *Node {
 	return &Node{
 		Val:  v,
-		Next: nil,
-		Prev: nil,
+		next: nil,
+		prev: nil,
 	}
+}
+
+// Next returns a pointer to the next node in the linked list.
+func (n *Node) Next() *Node {
+	return n.next
+}
+
+// Prev returns a pointer to the previous node in the linked list.
+func (n *Node) Prev() *Node {
+	return n.prev
+}
+
+// First returns a pointer to the first node in the linked list (head).
+func (n *Node) First() *Node {
+	cur := n
+	for ; cur.prev != nil; cur = cur.prev {
+	}
+
+	return cur
+}
+
+// Last returns a pointer to the last node in the linked list (tail).
+func (n *Node) Last() *Node {
+	cur := n
+	for ; cur.next != nil; cur = cur.next {
+	}
+
+	return cur
 }
 
 // List is a doubly-linked list with Head and Tail.
 type List struct {
-	Head *Node
-	Tail *Node
+	head *Node
+	tail *Node
 }
 
 // NewList constructs a doubly linked list from a sequence of integers.
 func NewList(vs ...interface{}) *List {
 	ll := &List{
-		Head: nil,
-		Tail: nil,
+		head: nil,
+		tail: nil,
 	}
 
 	if len(vs) < 1 {
 		return ll
 	}
 
-	ll.Head = NewNode(vs[0])
-	ll.Tail = ll.Head
+	ll.head = NewNode(vs[0])
+	ll.tail = ll.head
 
 	if len(vs) == 1 {
 		return ll
 	}
 
-	cur := ll.Head
+	cur := ll.head
 	for i := 1; i < len(vs); i++ {
-		cur.Next = NewNode(vs[i])
-		cur.Next.Prev = cur
-		cur = cur.Next
+		cur.next = NewNode(vs[i])
+		cur.next.prev = cur
+		cur = cur.next
 	}
 
-	ll.Tail = cur
+	ll.tail = cur
 
 	return ll
 }
 
+// First returns a pointer to the first node in the linked list (head).
+func (ll *List) First() *Node {
+	return ll.head
+}
+
+// Last returns a pointer to the last node in the linked list (tail).
+func (ll *List) Last() *Node {
+	return ll.tail
+}
+
 // Reverse reverses the given linked list in-place.
 func (ll *List) Reverse() {
-	if ll.Head == nil || ll.Head.Next == nil {
+	if ll.head == nil || ll.head.next == nil {
 		return
 	}
 
 	// construct singly-linked list from the back
 	dummy := NewNode(-1)
 	cur := dummy
-	n := ll.Tail
+	n := ll.tail
 	for n != nil {
-		cur.Next = n
+		cur.next = n
 
-		cur = cur.Next
-		n = n.Prev
+		cur = cur.next
+		n = n.prev
 	}
-	cur.Next = nil // cur will be the new ll.Tail -> set .Next = nil
+	cur.next = nil // cur will be the new ll.Tail -> set .next = nil
 
 	// add prev -> doubly-linked list
-	prev := dummy.Next
-	n = dummy.Next.Next
+	prev := dummy.next
+	n = dummy.next.next
 	for n != nil {
-		n.Prev = prev
+		n.prev = prev
 
-		n = n.Next
-		prev = prev.Next
+		n = n.next
+		prev = prev.next
 	}
 
 	// update Head & Tail
-	ll.Head, ll.Tail = ll.Tail, ll.Head
-	ll.Head.Prev = nil
+	ll.head, ll.tail = ll.tail, ll.head
+	ll.head.prev = nil
 }
 
 // PushFront pushes a new value before Head.
@@ -96,14 +134,14 @@ func (ll *List) PushFront(v interface{}) {
 	switch {
 	default:
 		panic("bad PushFront implementation")
-	case ll.Head == nil && ll.Tail == nil: // empty list
-		ll.Head = n
-		ll.Tail = n
-	case ll.Head != nil && ll.Tail != nil: // non-empty list
-		n.Next = ll.Head
-		ll.Head.Prev = n
+	case ll.head == nil && ll.tail == nil: // empty list
+		ll.head = n
+		ll.tail = n
+	case ll.head != nil && ll.tail != nil: // non-empty list
+		n.next = ll.head
+		ll.head.prev = n
 
-		ll.Head = n
+		ll.head = n
 	}
 }
 
@@ -114,14 +152,14 @@ func (ll *List) PushBack(v interface{}) {
 	switch {
 	default:
 		panic("bad PushBack implementation")
-	case ll.Head == nil && ll.Tail == nil: // empty list
-		ll.Head = n
-		ll.Tail = n
-	case ll.Head != nil && ll.Tail != nil: // non-empty list
-		ll.Tail.Next = n
-		n.Prev = ll.Tail
+	case ll.head == nil && ll.tail == nil: // empty list
+		ll.head = n
+		ll.tail = n
+	case ll.head != nil && ll.tail != nil: // non-empty list
+		ll.tail.next = n
+		n.prev = ll.tail
 
-		ll.Tail = n
+		ll.tail = n
 	}
 }
 
@@ -134,18 +172,18 @@ func (ll *List) PopFront() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
-	case ll.Head == nil && ll.Tail == nil: // empty list
+	case ll.head == nil && ll.tail == nil: // empty list
 		return 0, ErrEmptyList
-	case ll.Head != nil && ll.Tail != nil && ll.Head.Next == nil: // 1 element
-		v := ll.Head.Val
-		ll.Head = nil
-		ll.Tail = nil
+	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
+		v := ll.head.Val
+		ll.head = nil
+		ll.tail = nil
 
 		return v, nil
-	case ll.Head != nil && ll.Tail != nil && ll.Head.Next != nil: // >1 element
-		v := ll.Head.Val
-		ll.Head.Next.Prev = nil
-		ll.Head = ll.Head.Next
+	case ll.head != nil && ll.tail != nil && ll.head.next != nil: // >1 element
+		v := ll.head.Val
+		ll.head.next.prev = nil
+		ll.head = ll.head.next
 
 		return v, nil
 	}
@@ -156,18 +194,18 @@ func (ll *List) PopBack() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")
-	case ll.Head == nil && ll.Tail == nil: // empty list
+	case ll.head == nil && ll.tail == nil: // empty list
 		return 0, ErrEmptyList
-	case ll.Head != nil && ll.Tail != nil && ll.Tail.Prev == nil: // 1 element
-		v := ll.Tail.Val
-		ll.Head = nil
-		ll.Tail = nil
+	case ll.head != nil && ll.tail != nil && ll.tail.prev == nil: // 1 element
+		v := ll.tail.Val
+		ll.head = nil
+		ll.tail = nil
 
 		return v, nil
-	case ll.Head != nil && ll.Tail != nil && ll.Tail.Prev != nil: // >1 element
-		v := ll.Tail.Val
-		ll.Tail.Prev.Next = nil
-		ll.Tail = ll.Tail.Prev
+	case ll.head != nil && ll.tail != nil && ll.tail.prev != nil: // >1 element
+		v := ll.tail.Val
+		ll.tail.prev.next = nil
+		ll.tail = ll.tail.prev
 
 		return v, nil
 	}

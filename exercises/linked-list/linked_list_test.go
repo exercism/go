@@ -6,6 +6,35 @@ import (
 	"testing"
 )
 
+func TestNodeTraversal(t *testing.T) {
+	ll := NewList(1, 2, 3, 4, 5)
+	node := ll.head.next.next
+
+	if want, got := ll.head, node.First(); want != got {
+		t.Errorf("%#v.First() is wrong, expected= %#v, got= %#v", node, want, got)
+	}
+	if want, got := ll.tail, node.Last(); want != got {
+		t.Errorf("%#v.Last() is wrong, expected= %#v, got= %#v", node, want, got)
+	}
+	if want, got := ll.tail.prev, node.Next(); want != got {
+		t.Errorf("%#v.Next() is wrong, expected= %#v, got= %#v", node, want, got)
+	}
+	if want, got := ll.head.next, node.Prev(); want != got {
+		t.Errorf("%#v.Prev() is wrong, expected= %#v, got= %#v", node, want, got)
+	}
+}
+
+func TestListTraversal(t *testing.T) {
+	ll := NewList(1, 2, 3, 4, 5)
+
+	if want, got := ll.head, ll.First(); want != got {
+		t.Errorf("%#v.First() is wrong, expected= %#v, got= %#v", ll, want, got)
+	}
+	if want, got := ll.tail, ll.Last(); want != got {
+		t.Errorf("%#v.First() is wrong, expected= %#v, got= %#v", ll, want, got)
+	}
+}
+
 func TestNew(t *testing.T) {
 	for _, tc := range newListTestCases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -43,8 +72,8 @@ func TestPushPop(t *testing.T) {
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
 func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 	// check that length and elements are correct (scan once from begin -> end)
-	elem, count, idx := ll.Head, 0, 0
-	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next, count+1, idx+1 {
+	elem, count, idx := ll.head, 0, 0
+	for ; elem != nil && idx < len(expected); elem, count, idx = elem.next, count+1, idx+1 {
 		if elem.Val != expected[idx] {
 			t.Errorf("wrong value from %d-th element, expected= %v, got= %v", idx, expected[idx], elem.Val)
 		}
@@ -53,16 +82,16 @@ func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 		t.Errorf("expected %d elements, got= %d", len(expected), count)
 	}
 
-	// if elements are the same, we also need to examine the links (Next & Prev)
+	// if elements are the same, we also need to examine the links (next & prev)
 	switch {
-	case ll.Head == nil && ll.Tail == nil: // empty list
+	case ll.head == nil && ll.tail == nil: // empty list
 		return
-	case ll.Head != nil && ll.Tail != nil && ll.Head.Next == nil: // 1 element
-		valid := ll.Head == ll.Tail &&
-			ll.Head.Next == nil &&
-			ll.Head.Prev == nil &&
-			ll.Tail.Next == nil &&
-			ll.Tail.Prev == nil
+	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
+		valid := ll.head == ll.tail &&
+			ll.head.next == nil &&
+			ll.head.prev == nil &&
+			ll.tail.next == nil &&
+			ll.tail.prev == nil
 
 		if !valid {
 			t.Errorf("expected to only have 1 element and no links, got= %v", ll.debugString())
@@ -70,36 +99,36 @@ func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 	}
 
 	// >1 element
-	if ll.Head.Prev != nil {
-		t.Errorf("expected Head.prev == nil, got= %v", ll.Head.Prev)
+	if ll.head.prev != nil {
+		t.Errorf("expected Head.prev == nil, got= %v", ll.head.prev)
 	}
 
-	prev := ll.Head
-	cur := ll.Head.Next
+	prev := ll.head
+	cur := ll.head.next
 	for idx := 0; cur != nil; idx++ {
-		if !(prev.Next == cur && cur.Prev == prev) {
+		if !(prev.next == cur && cur.prev == prev) {
 			t.Errorf("%d-th element's links is wrong", idx)
 		}
 
 		prev = cur
-		cur = cur.Next
+		cur = cur.next
 	}
 
-	if ll.Tail.Next != nil {
-		t.Errorf("expected Tail.next == nil, got= %v", ll.Head.Prev)
+	if ll.tail.next != nil {
+		t.Errorf("expected Tail.next == nil, got= %v", ll.head.prev)
 	}
 }
 
-// debugString prints the linked list with both node's Val, Next & Prev pointers.
+// debugString prints the linked list with both node's Val, next & prev pointers.
 func (ll *List) debugString() string {
 	buf := bytes.NewBuffer([]byte{'{'})
-	buf.WriteString(fmt.Sprintf("Head= %p; ", ll.Head))
+	buf.WriteString(fmt.Sprintf("Head= %p; ", ll.head))
 
-	for cur := ll.Head; cur != nil; cur = cur.Next {
-		buf.WriteString(fmt.Sprintf("[Prev= %p, Val= %p (%v), Next= %p] <-> ", cur.Prev, cur, cur.Val, cur.Next))
+	for cur := ll.head; cur != nil; cur = cur.next {
+		buf.WriteString(fmt.Sprintf("[prev= %p, Val= %p (%v), next= %p] <-> ", cur.prev, cur, cur.Val, cur.next))
 	}
 
-	buf.WriteString(fmt.Sprintf("; Tail= %p; ", ll.Tail))
+	buf.WriteString(fmt.Sprintf("; Tail= %p; ", ll.tail))
 	buf.WriteByte('}')
 
 	return buf.String()
