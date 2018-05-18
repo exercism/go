@@ -14,21 +14,23 @@ You will write an implementation of a doubly linked list. Implement a
 implement a `List` which holds references to the first and last node and
 offers functions for adding and removing items.
 
-Your `Node` should have the following fields:
+Your `Node` should have the following fields and functions:
 
 * `Val`: the node's value (we will use `interface{}`).
-* `Next`: the next node.
-* `Prev`: the previous node.
+* `Next()`: pointer to the next node.
+* `Prev()`: pointer to the previous node.
+* `First()`: pointer to the first node (head).
+* `Last()`: pointer to the last node (tail).
 
 Your `List` should have the following fields and functions:
 
-* `Head`: the first element in the linked list.
-* `Tail`: the last element in the linked list.
-* `PushBack(v interface{})`: *insert value at back*.
-* `PopBack() (interface{}, error)`: *remove value at back*.
-* `PushFront(v interface{}) `: *remove value at front*.
-* `PopFront() (interface{}, error)`: *insert value at front*.
-* `Reverse()`: reverse the linked list (Head, Tail = Tail, Head).
+* `First()`: pointer to the first node (head).
+* `Last()`: pointer to the last node (tail).
+* `PushBack(v interface{})`: insert value at back.
+* `PopBack() (interface{}, error)`: remove value at back.
+* `PushFront(v interface{}) `: remove value at front.
+* `PopFront() (interface{}, error)`: insert value at front.
+* `Reverse()`: reverse the linked list.
 
 Instead of not covering error conditions, like calling `PopBack` or `PopFront` on an empty list,
 we will follow Go's idiomatic style and implement the error checks as well.
