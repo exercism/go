@@ -74,4 +74,9 @@ var testCases = []struct {
 		"091",
 		true,
 	},
+	{
+		"strings with non-digits is invalid",
+		":9",
+		false,
+	},
 }
