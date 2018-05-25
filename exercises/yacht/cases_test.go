@@ -1,8 +1,8 @@
 package yacht
 
 // Source: exercism/problem-specifications
-// Commit: ea4689d yacht: create problem specification for scoring a single hand of yacht. (#1207)
-// Problem Specifications Version: 1.0.0
+// Commit: 6eb19d2 yacht: Add "Four of a kind is not a full house" test case (#1232)
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
@@ -85,6 +85,12 @@ var testCases = []struct {
 	{
 		description: "Two pair is not a full house",
 		dice:        []int{2, 2, 4, 4, 5},
+		category:    "full house",
+		expected:    0,
+	},
+	{
+		description: "Four of a kind is not a full house",
+		dice:        []int{1, 4, 4, 4, 4},
 		category:    "full house",
 		expected:    0,
 	},
