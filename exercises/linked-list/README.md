@@ -50,7 +50,7 @@ Keep in mind that each reviewer will run benchmarks on a different machine, with
 different specs, so the results from these benchmark tests may vary.
 
 ## Further information
-If you are not familar with linked list, try [this tutorial];dhttps://visualgo.net/en/list).
+If you are not familar with linked list, try [this tutorial](https://visualgo.net/en/list).
 
 ## Source
 Classic CS data structure.
