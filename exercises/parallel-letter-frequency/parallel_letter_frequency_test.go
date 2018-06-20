@@ -40,11 +40,27 @@ O say does that star-spangled banner yet wave,
 O'er the land of the free and the home of the brave?`
 )
 
+func OriginalFrequency(s string) FreqMap {
+	m := FreqMap{}
+	for _, r := range s {
+		m[r]++
+	}
+	return m
+}
+
 func TestConcurrentFrequency(t *testing.T) {
-	seq := Frequency(euro + dutch + us)
+	seq := OriginalFrequency(euro + dutch + us)
 	con := ConcurrentFrequency([]string{euro, dutch, us})
 	if !reflect.DeepEqual(con, seq) {
 		t.Fatal("ConcurrentFrequency wrong result")
+	}
+}
+
+func TestSequentialFrequency(t *testing.T) {
+	oSeq := OriginalFrequency(euro + dutch + us)
+	seq := Frequency(euro + dutch + us)
+	if !reflect.DeepEqual(oSeq, seq) {
+		t.Fatal("Frequency wrong result")
 	}
 }
 
