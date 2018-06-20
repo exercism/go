@@ -30,7 +30,7 @@ type js struct {
 type Domino [2]int
 
 func (d Domino) String() string {
-	return fmt.Sprintf("Domino{%d, %d}", d[0], d[1])
+	return fmt.Sprintf("{%d, %d}", d[0], d[1])
 }
 
 // template applied to above data structure generates the Go test cases

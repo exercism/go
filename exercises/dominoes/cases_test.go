@@ -16,27 +16,27 @@ var testCases = []struct {
 	},
 	{
 		"singleton input = singleton output",
-		[]Domino{Domino{1, 1}},
+		[]Domino{{1, 1}},
 		true,
 	},
 	{
 		"singleton that can't be chained",
-		[]Domino{Domino{1, 2}},
+		[]Domino{{1, 2}},
 		false,
 	},
 	{
 		"three elements",
-		[]Domino{Domino{1, 2}, Domino{3, 1}, Domino{2, 3}},
+		[]Domino{{1, 2}, {3, 1}, {2, 3}},
 		true,
 	},
 	{
 		"can reverse dominoes",
-		[]Domino{Domino{1, 2}, Domino{1, 3}, Domino{2, 3}},
+		[]Domino{{1, 2}, {1, 3}, {2, 3}},
 		true,
 	},
 	{
 		"can't be chained",
-		[]Domino{Domino{1, 2}, Domino{4, 1}, Domino{2, 3}},
+		[]Domino{{1, 2}, {4, 1}, {2, 3}},
 		false,
 	},
 	{
@@ -46,17 +46,17 @@ var testCases = []struct {
 		//Nevertheless, there is no chain here, as there's no way to get from 1 to 2.
 		//This test (and the two following) prevent solutions from using the even-degree test as the sole criterion,
 		//as that is not a sufficient condition.
-		[]Domino{Domino{1, 1}, Domino{2, 2}},
+		[]Domino{{1, 1}, {2, 2}},
 		false,
 	},
 	{
 		"disconnected - double loop",
-		[]Domino{Domino{1, 2}, Domino{2, 1}, Domino{3, 4}, Domino{4, 3}},
+		[]Domino{{1, 2}, {2, 1}, {3, 4}, {4, 3}},
 		false,
 	},
 	{
 		"disconnected - single isolated",
-		[]Domino{Domino{1, 2}, Domino{2, 3}, Domino{3, 1}, Domino{4, 4}},
+		[]Domino{{1, 2}, {2, 3}, {3, 1}, {4, 4}},
 		false,
 	},
 	{
@@ -66,17 +66,17 @@ var testCases = []struct {
 		//there is no chain possible.
 		//There is indeed a chain here, so this test checks for this line of reasoning.
 		//You need to place the (2, 4) after the (1, 2) rather than the (2, 3).
-		[]Domino{Domino{1, 2}, Domino{2, 3}, Domino{3, 1}, Domino{2, 4}, Domino{2, 4}},
+		[]Domino{{1, 2}, {2, 3}, {3, 1}, {2, 4}, {2, 4}},
 		true,
 	},
 	{
 		"separate loops",
-		[]Domino{Domino{1, 2}, Domino{2, 3}, Domino{3, 1}, Domino{1, 1}, Domino{2, 2}, Domino{3, 3}},
+		[]Domino{{1, 2}, {2, 3}, {3, 1}, {1, 1}, {2, 2}, {3, 3}},
 		true,
 	},
 	{
 		"nine elements",
-		[]Domino{Domino{1, 2}, Domino{5, 3}, Domino{3, 1}, Domino{1, 2}, Domino{2, 4}, Domino{1, 6}, Domino{2, 3}, Domino{3, 4}, Domino{5, 6}},
+		[]Domino{{1, 2}, {5, 3}, {3, 1}, {1, 2}, {2, 4}, {1, 6}, {2, 3}, {3, 4}, {5, 6}},
 		true,
 	},
 }
