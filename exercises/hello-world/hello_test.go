@@ -18,7 +18,7 @@ func TestHelloWorld(t *testing.T) {
 // form `func BenchmarkXxx(*testing.B)` and can be used to test the performance
 // of your implementation. They may not be present in every exercise, but when
 // they are you can run them by including the `-bench` flag with the `go test`
-// command, like so: `go test -bench .`
+// command, like so: `go test -v --bench . --benchmem`
 //
 // You will see output similar to the following:
 //
