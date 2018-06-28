@@ -1,4 +1,7 @@
 # Yacht
+
+# Score a single throw of dice in *Yacht*
+
 The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from
 the same family as Poker Dice, Generala and particularly Yahtzee, of which it
 is a precursor. In the game, five dice are rolled and the result can be entered
@@ -7,7 +10,7 @@ category chosen.
 
 ## Scores in Yacht
 
-    Category        Score                   Example
+    Category    Score                   Example
     Ones            1 × number of ones      1 1 1 4 5 scores 3
     Twos            2 × number of twos      2 2 3 4 5 scores 4
     Threes          3 × number of threes    3 3 3 3 3 scores 15
@@ -32,11 +35,6 @@ of the category your solution should return 0. You can assume that five values
 will always be presented, and the value of each will be between one and six
 inclusively. You should not assume that the dice are ordered.
 
-## Bonus tasks
-* Adapt the program for other similar games.
-
-* Create a function that finds the highest scoring category for five dice.
-
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
@@ -55,7 +53,8 @@ For more detailed information about the Go track, including how to get help if
 you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
 
 ## Source
-Processing a list of integers and identifying patterns in a relatable real world example.
+
+James Kilfiger, using wikipedia [https://en.wikipedia.org/wiki/Yacht_(dice_game)](https://en.wikipedia.org/wiki/Yacht_(dice_game))
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
