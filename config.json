@@ -1329,6 +1329,19 @@
       ]
     },
     {
+      "slug": "list-ops",
+      "uuid": "13d25b60-e8e1-42da-a54f-ce020a2b86e9",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+          "recursion",
+          "type_conversion",
+          "lists",
+          "functional_programming"
+      ]
+    },
+    {
       "slug": "binary",
       "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d",
       "core": false,
