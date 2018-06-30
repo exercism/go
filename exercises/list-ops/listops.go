@@ -3,6 +3,7 @@ package listops
 type IntSlice []int
 type predFunc func(int) bool
 type binFunc func(int, int) int
+type unaryFunc func(int) int
 
 // Foldl applies a left fold to the list given a binary function and an initial
 // value
@@ -46,4 +47,12 @@ func (s IntSlice) Filter(fn predFunc) IntSlice {
 func (s IntSlice) Length() int {
 	// anything else is just ridiculous
 	return len(s)
+}
+
+func (s IntSlice) Map(fn unaryFunc) IntSlice {
+	newSlice := make([]int, len(s))
+	for idx, elt := range s {
+		newSlice[idx] = fn(elt)
+	}
+	return newSlice
 }

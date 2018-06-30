@@ -140,3 +140,36 @@ func TestLengthMethod(t *testing.T) {
 		}
 	}
 }
+
+var mapTestCases = []struct {
+	name     string
+	property string
+	list     IntSlice
+	fn       unaryFunc
+	want     IntSlice
+}{
+	{
+		name:     "empty list",
+		property: "map",
+		list:     []int{},
+		fn:       func(x int) int { return x + 1 },
+		want:     []int{},
+	},
+	{
+		name:     "non-empty list",
+		property: "map",
+		list:     []int{1, 3, 5, 7},
+		fn:       func(x int) int { return x + 1 },
+		want:     []int{2, 4, 6, 8},
+	},
+}
+
+func TestMapMethod(t *testing.T) {
+	for _, tt := range mapTestCases {
+		got := tt.list.Map(tt.fn)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
+				tt.name, tt.property, got, tt.want)
+		}
+	}
+}
