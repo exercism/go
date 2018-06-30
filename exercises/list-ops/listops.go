@@ -56,3 +56,12 @@ func (s IntSlice) Map(fn unaryFunc) IntSlice {
 	}
 	return newSlice
 }
+
+func (s IntSlice) Reverse() IntSlice {
+	last := len(s) - 1
+	newSlice := make([]int, last+1)
+	for idx, elt := range s {
+		newSlice[last-idx] = elt
+	}
+	return newSlice
+}

@@ -173,3 +173,33 @@ func TestMapMethod(t *testing.T) {
 		}
 	}
 }
+
+var reverseTestCases = []struct {
+	name     string
+	property string
+	list     IntSlice
+	want     IntSlice
+}{
+	{
+		name:     "empty list",
+		property: "reverse",
+		list:     []int{},
+		want:     []int{},
+	},
+	{
+		name:     "non-empty list",
+		property: "reverse",
+		list:     []int{1, 3, 5, 7},
+		want:     []int{7, 5, 3, 1},
+	},
+}
+
+func TestReverseMethod(t *testing.T) {
+	for _, tt := range reverseTestCases {
+		got := tt.list.Reverse()
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
+				tt.name, tt.property, got, tt.want)
+		}
+	}
+}
