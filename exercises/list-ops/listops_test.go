@@ -203,3 +203,76 @@ func TestReverseMethod(t *testing.T) {
 		}
 	}
 }
+
+var appendTestCases = []struct {
+	name       string
+	property   string
+	list       IntSlice
+	appendThis IntSlice
+	want       IntSlice
+}{
+	{
+		name:       "empty list",
+		property:   "append",
+		list:       []int{},
+		appendThis: []int{},
+		want:       []int{},
+	},
+	{
+		name:       "empty list to list",
+		property:   "append",
+		list:       []int{},
+		appendThis: []int{1, 2, 3, 4},
+		want:       []int{1, 2, 3, 4},
+	},
+	{
+		name:       "non-empty lists",
+		property:   "append",
+		list:       []int{1, 2},
+		appendThis: []int{2, 3, 4, 5},
+		want:       []int{1, 2, 2, 3, 4, 5},
+	},
+}
+
+func TestAppendMethod(t *testing.T) {
+	for _, tt := range appendTestCases {
+		got := tt.list.Append(tt.appendThis)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
+				tt.name, tt.property, got, tt.want)
+		}
+	}
+}
+
+var concatTestCases = []struct {
+	name     string
+	property string
+	list     IntSlice
+	args     []IntSlice
+	want     IntSlice
+}{
+	{
+		name:     "empty list",
+		property: "append",
+		list:     []int{},
+		args:     []IntSlice{},
+		want:     []int{},
+	},
+	{
+		name:     "list of lists",
+		property: "append",
+		list:     []int{1, 2},
+		args:     []IntSlice{[]int{3}, []int{}, []int{4, 5, 6}},
+		want:     []int{1, 2, 3, 4, 5, 6},
+	},
+}
+
+func TestConcatMethod(t *testing.T) {
+	for _, tt := range concatTestCases {
+		got := tt.list.Concat(tt.args)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
+				tt.name, tt.property, got, tt.want)
+		}
+	}
+}
