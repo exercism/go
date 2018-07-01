@@ -1,12 +1,13 @@
 package listops
 
-type IntSlice []int
+//
+type IntList []int
 type predFunc func(int) bool
 type binFunc func(int, int) int
 type unaryFunc func(int) int
 
 // Foldl folds (reduces) the given list from the left with a function
-func (s IntSlice) Foldl(fn binFunc, initial int) int {
+func (s IntList) Foldl(fn binFunc, initial int) int {
 	if len(s) == 0 {
 		return initial
 	}
@@ -15,12 +16,12 @@ func (s IntSlice) Foldl(fn binFunc, initial int) int {
 }
 
 // Foldr folds (reduces) the given list from the right with a function
-func (s IntSlice) Foldr(fn binFunc, initial int) int {
+func (s IntList) Foldr(fn binFunc, initial int) int {
 	flippedFunc := func(x, y int) int { return fn(y, x) }
 	return reverseInt(s).Foldl(flippedFunc, initial)
 }
 
-func reverseInt(ints IntSlice) IntSlice {
+func reverseInt(ints IntList) IntList {
 	c := make([]int, len(ints))
 	c = append([]int(nil), ints...)
 	for left, right := 0, len(ints)-1; left < right; left, right = left+1, right-1 {
@@ -30,10 +31,10 @@ func reverseInt(ints IntSlice) IntSlice {
 }
 
 // Filter list returning only values that satisfy the filter function
-func (s IntSlice) Filter(fn predFunc) IntSlice {
+func (s IntList) Filter(fn predFunc) IntList {
 	filtered := make([]int, 0, len(s))
-	var filterAcc func(predFunc, IntSlice, IntSlice) IntSlice
-	filterAcc = func(fn predFunc, acc IntSlice, lst IntSlice) IntSlice {
+	var filterAcc func(predFunc, IntList, IntList) IntList
+	filterAcc = func(fn predFunc, acc IntList, lst IntList) IntList {
 		if len(lst) == 0 {
 			return acc
 		}
@@ -47,13 +48,13 @@ func (s IntSlice) Filter(fn predFunc) IntSlice {
 }
 
 // Length returns the length of a list
-func (s IntSlice) Length() int {
+func (s IntList) Length() int {
 	// anything else is just ridiculous
 	return len(s)
 }
 
 // Map returns a list of elements whose values equal the list value transformed by the mapping function
-func (s IntSlice) Map(fn unaryFunc) IntSlice {
+func (s IntList) Map(fn unaryFunc) IntList {
 	newSlice := make([]int, len(s))
 	for idx, elt := range s {
 		newSlice[idx] = fn(elt)
@@ -62,7 +63,7 @@ func (s IntSlice) Map(fn unaryFunc) IntSlice {
 }
 
 // Reverse reverses the list
-func (s IntSlice) Reverse() IntSlice {
+func (s IntList) Reverse() IntList {
 	last := len(s) - 1
 	newSlice := make([]int, last+1)
 	for idx, elt := range s {
@@ -72,7 +73,7 @@ func (s IntSlice) Reverse() IntSlice {
 }
 
 // Append adds the elements of the argument list to the receiver
-func (s IntSlice) Append(lst IntSlice) IntSlice {
+func (s IntList) Append(lst IntList) IntList {
 	offset := len(s)
 	newSlice := make([]int, offset+len(lst))
 	copy(newSlice, s)
@@ -83,8 +84,8 @@ func (s IntSlice) Append(lst IntSlice) IntSlice {
 }
 
 // Concat concatenates a list of lists
-func (s IntSlice) Concat(lists []IntSlice) IntSlice {
-	// totalLength := foldl(func(acc int, x IntSlice) int { return acc + x.Length() }, 0, lists)
+func (s IntList) Concat(lists []IntList) IntList {
+	// totalLength := foldl(func(acc int, x IntList) int { return acc + x.Length() }, 0, lists)
 	newSlice := make([]int, len(s))
 	copy(newSlice, s)
 	for _, l := range lists {

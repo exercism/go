@@ -8,7 +8,7 @@ var foldTestCases = []struct {
 	property string
 	fn       binFunc
 	initial  int
-	list     IntSlice
+	list     IntList
 	want     int
 }{
 	{
@@ -102,9 +102,9 @@ var filterTestCases = []struct {
 
 func TestFilterMethod(t *testing.T) {
 	for _, tt := range filterTestCases {
-		in := IntSlice(tt.list)
+		in := IntList(tt.list)
 		got := in.Filter(tt.fn)
-		if !reflect.DeepEqual(IntSlice(tt.want), got) {
+		if !reflect.DeepEqual(IntList(tt.want), got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
 		}
@@ -114,7 +114,7 @@ func TestFilterMethod(t *testing.T) {
 var lengthTestCases = []struct {
 	name     string
 	property string
-	list     IntSlice
+	list     IntList
 	want     int
 }{
 	{
@@ -144,9 +144,9 @@ func TestLengthMethod(t *testing.T) {
 var mapTestCases = []struct {
 	name     string
 	property string
-	list     IntSlice
+	list     IntList
 	fn       unaryFunc
-	want     IntSlice
+	want     IntList
 }{
 	{
 		name:     "empty list",
@@ -177,8 +177,8 @@ func TestMapMethod(t *testing.T) {
 var reverseTestCases = []struct {
 	name     string
 	property string
-	list     IntSlice
-	want     IntSlice
+	list     IntList
+	want     IntList
 }{
 	{
 		name:     "empty list",
@@ -207,9 +207,9 @@ func TestReverseMethod(t *testing.T) {
 var appendTestCases = []struct {
 	name       string
 	property   string
-	list       IntSlice
-	appendThis IntSlice
-	want       IntSlice
+	list       IntList
+	appendThis IntList
+	want       IntList
 }{
 	{
 		name:       "empty list",
@@ -247,22 +247,22 @@ func TestAppendMethod(t *testing.T) {
 var concatTestCases = []struct {
 	name     string
 	property string
-	list     IntSlice
-	args     []IntSlice
-	want     IntSlice
+	list     IntList
+	args     []IntList
+	want     IntList
 }{
 	{
 		name:     "empty list",
 		property: "append",
 		list:     []int{},
-		args:     []IntSlice{},
+		args:     []IntList{},
 		want:     []int{},
 	},
 	{
 		name:     "list of lists",
 		property: "append",
 		list:     []int{1, 2},
-		args:     []IntSlice{[]int{3}, []int{}, []int{4, 5, 6}},
+		args:     []IntList{[]int{3}, []int{}, []int{4, 5, 6}},
 		want:     []int{1, 2, 3, 4, 5, 6},
 	},
 }
