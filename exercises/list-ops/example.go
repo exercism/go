@@ -1,6 +1,6 @@
 package listops
 
-//
+// IntList is an abstraction of a list of integers
 type IntList []int
 type predFunc func(int) bool
 type binFunc func(int, int) int
@@ -18,16 +18,8 @@ func (s IntList) Foldl(fn binFunc, initial int) int {
 // Foldr folds (reduces) the given list from the right with a function
 func (s IntList) Foldr(fn binFunc, initial int) int {
 	flippedFunc := func(x, y int) int { return fn(y, x) }
-	return reverseInt(s).Foldl(flippedFunc, initial)
-}
-
-func reverseInt(ints IntList) IntList {
-	c := make([]int, len(ints))
-	c = append([]int(nil), ints...)
-	for left, right := 0, len(ints)-1; left < right; left, right = left+1, right-1 {
-		c[left], c[right] = c[right], c[left]
-	}
-	return c
+	// Note: This relies on s being finite
+	return s.Reverse().Foldl(flippedFunc, initial)
 }
 
 // Filter list returning only values that satisfy the filter function
@@ -49,8 +41,21 @@ func (s IntList) Filter(fn predFunc) IntList {
 
 // Length returns the length of a list
 func (s IntList) Length() int {
-	// anything else is just ridiculous
-	return len(s)
+	// for fun, let's do this with recursion
+	var lengthAcc func(IntList, int) int
+	var isEmpty func(IntList) bool
+	// yeah, this is kind of cheaty, but it's hard to determine if a slice is
+	// empty without using len, so walling it off
+	isEmpty = func(l IntList) bool {
+		return len(l) == 0
+	}
+	lengthAcc = func(lst IntList, acc int) int {
+		if isEmpty(lst) {
+			return acc
+		}
+		return lengthAcc(lst[1:], acc+1)
+	}
+	return lengthAcc(s, 0)
 }
 
 // Map returns a list of elements whose values equal the list value transformed by the mapping function
@@ -85,7 +90,6 @@ func (s IntList) Append(lst IntList) IntList {
 
 // Concat concatenates a list of lists
 func (s IntList) Concat(lists []IntList) IntList {
-	// totalLength := foldl(func(acc int, x IntList) int { return acc + x.Length() }, 0, lists)
 	newSlice := make([]int, len(s))
 	copy(newSlice, s)
 	for _, l := range lists {
