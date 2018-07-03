@@ -31,9 +31,10 @@ The Hamming distance between these two DNA strands is 7.
 
 # Implementation notes
 
-The Hamming distance is only defined for sequences of equal length. This means
-that based on the definition, each language could deal with getting sequences
-of equal length differently.
+The Hamming distance is only defined for sequences of equal length, so
+an attempt to calculate it between sequences of different lengths should
+not work. The general handling of this situation (e.g., raising an
+exception vs returning a special value) may differ between languages.
 
 You may be wondering about the `cases_test.go` file. We explain it in the
 [leap exercise][leap-exercise-readme].
@@ -45,10 +46,10 @@ You may be wondering about the `cases_test.go` file. We explain it in the
 
 To run the tests run the command `go test` from within the exercise directory.
 
-If the test suite contains benchmarks, you can run these with the `-bench`
-flag:
+If the test suite contains benchmarks, you can run these with the `--bench` and `--benchmem`
+flags:
 
-    go test -bench .
+    go test -v --bench . --benchmem
 
 Keep in mind that each reviewer will run benchmarks on a different machine, with
 different specs, so the results from these benchmark tests may vary.
