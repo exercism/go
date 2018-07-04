@@ -70,7 +70,7 @@ func (s IntList) Map(fn unaryFunc) IntList {
 // Reverse reverses the list
 func (s IntList) Reverse() IntList {
 	last := len(s) - 1
-	newSlice := make([]int, last+1)
+	newSlice := make([]int, len(s))
 	for idx, elt := range s {
 		newSlice[last-idx] = elt
 	}
