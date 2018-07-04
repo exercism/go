@@ -70,8 +70,7 @@ func TestFold(t *testing.T) {
 			got = tt.list.Foldl(tt.fn, tt.initial)
 		}
 		if got != tt.want {
-			t.Fatalf("Build for test case %q for property %s returned %d but was expected to return %d",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %d, actual: %d", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -108,8 +107,7 @@ func TestFilterMethod(t *testing.T) {
 		in := IntList(tt.list)
 		got := in.Filter(tt.fn)
 		if !reflect.DeepEqual(IntList(tt.want), got) {
-			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -141,8 +139,7 @@ func TestLengthMethod(t *testing.T) {
 	for _, tt := range lengthTestCases {
 		got := tt.list.Length()
 		if tt.want != got {
-			t.Fatalf("Build for test case %q for property %s returned %d but was expected to return %d",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %d, actual: %d", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -177,8 +174,7 @@ func TestMapMethod(t *testing.T) {
 	for _, tt := range mapTestCases {
 		got := tt.list.Map(tt.fn)
 		if !reflect.DeepEqual(tt.want, got) {
-			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -210,8 +206,7 @@ func TestReverseMethod(t *testing.T) {
 	for _, tt := range reverseTestCases {
 		got := tt.list.Reverse()
 		if !reflect.DeepEqual(tt.want, got) {
-			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -253,8 +248,7 @@ func TestAppendMethod(t *testing.T) {
 	for _, tt := range appendTestCases {
 		got := tt.list.Append(tt.appendThis)
 		if !reflect.DeepEqual(tt.want, got) {
-			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
@@ -271,14 +265,14 @@ var concatTestCases = []struct {
 }{
 	{
 		name:     "empty list",
-		property: "append",
+		property: "concat",
 		list:     []int{},
 		args:     []IntList{},
 		want:     []int{},
 	},
 	{
 		name:     "list of lists",
-		property: "append",
+		property: "concat",
 		list:     []int{1, 2},
 		args:     []IntList{[]int{3}, []int{}, []int{4, 5, 6}},
 		want:     []int{1, 2, 3, 4, 5, 6},
@@ -289,8 +283,7 @@ func TestConcatMethod(t *testing.T) {
 	for _, tt := range concatTestCases {
 		got := tt.list.Concat(tt.args)
 		if !reflect.DeepEqual(tt.want, got) {
-			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
-				tt.name, tt.property, got, tt.want)
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
