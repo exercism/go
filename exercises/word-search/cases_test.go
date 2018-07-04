@@ -1,8 +1,8 @@
 package wordsearch
 
 // Source: exercism/problem-specifications
-// Commit: 5ac9949 word-search: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 2b02251 word-search: Remove unneeded exception case comment
+// Problem Specifications Version: 1.2.1
 
 var testCases = []struct {
 	description string
