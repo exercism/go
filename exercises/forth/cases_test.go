@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: 01257bd forth: Apply new "input" policy
-// Problem Specifications Version: 1.5.0
+// Commit: c853973 forth: add tests for word redefinition (#1243)
+// Problem Specifications Version: 1.6.0
 
 type testGroup struct {
 	group string
@@ -248,6 +248,16 @@ var testGroups = []testGroup{
 				"can override built-in operators",
 				[]string{": + * ;", "3 4 +"},
 				[]int{12},
+			},
+			{
+				"can use different words with the same name",
+				[]string{": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"},
+				[]int{5, 6},
+			},
+			{
+				"can define word that uses word with the same name",
+				[]string{": foo 10 ;", ": foo foo 1 + ;", "foo"},
+				[]int{11},
 			},
 			{
 				"cannot redefine numbers",
