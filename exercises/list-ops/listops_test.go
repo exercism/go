@@ -72,7 +72,10 @@ func TestFold(t *testing.T) {
 		if got != tt.want {
 			t.Fatalf("Build for test case %q for property %s returned %d but was expected to return %d",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 
 }
@@ -107,7 +110,10 @@ func TestFilterMethod(t *testing.T) {
 		if !reflect.DeepEqual(IntList(tt.want), got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 }
 
@@ -137,7 +143,10 @@ func TestLengthMethod(t *testing.T) {
 		if tt.want != got {
 			t.Fatalf("Build for test case %q for property %s returned %d but was expected to return %d",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 }
 
@@ -170,7 +179,10 @@ func TestMapMethod(t *testing.T) {
 		if !reflect.DeepEqual(tt.want, got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 }
 
@@ -200,7 +212,10 @@ func TestReverseMethod(t *testing.T) {
 		if !reflect.DeepEqual(tt.want, got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 }
 
@@ -240,7 +255,10 @@ func TestAppendMethod(t *testing.T) {
 		if !reflect.DeepEqual(tt.want, got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
+
 	}
 }
 
@@ -273,6 +291,8 @@ func TestConcatMethod(t *testing.T) {
 		if !reflect.DeepEqual(tt.want, got) {
 			t.Fatalf("Build for test case %q for property %s returned %v but was expected to return %v",
 				tt.name, tt.property, got, tt.want)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
 	}
 }
