@@ -1,8 +1,8 @@
 package isbn
 
 // Source: exercism/problem-specifications
-// Commit: adb99f7 isbn-verifier: Add test case with only 9 digits (#1221)
-// Problem Specifications Version: 2.4.0
+// Commit: 3134243 isbn-verifier: Crafted input to catch more incorrect algorithms (#1255)
+// Problem Specifications Version: 2.7.0
 
 var testCases = []struct {
 	isbn        string
@@ -19,9 +19,11 @@ var testCases = []struct {
 	{"359821507X", true, "isbn without separating dashes and X as check digit"},
 	{"359821507", false, "isbn without check digit and dashes"},
 	{"3598215078X", false, "too long isbn and no dashes"},
+	{"00", false, "too short isbn"},
 	{"3-598-21507", false, "isbn without check digit"},
-	{"3-598-21507-XX", false, "too long isbn"},
 	{"3-598-21515-X", false, "check digit of X should not be used for 0"},
 	{"", false, "empty isbn"},
 	{"134456729", false, "input is 9 characters"},
+	{"3132P34035", false, "invalid characters are not ignored"},
+	{"98245726788", false, "input is too long but contains a valid isbn"},
 }
