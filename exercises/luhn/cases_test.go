@@ -1,8 +1,8 @@
 package luhn
 
 // Source: exercism/problem-specifications
-// Commit: e0358d3 luhn: Apply new "input" policy (#1054)
-// Problem Specifications Version: 1.1.0
+// Commit: 3930b0a luhn: add a test case of strings with non-digits (#1246)
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
@@ -73,5 +73,10 @@ var testCases = []struct {
 		"input digit 9 is correctly converted to output digit 9",
 		"091",
 		true,
+	},
+	{
+		"strings with non-digits is invalid",
+		":9",
+		false,
 	},
 }
