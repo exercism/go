@@ -6,28 +6,102 @@ import (
 )
 
 type codonCase struct {
-	input    string
-	expected string
+	input         string
+	expected      string
+	errorExpected error
 }
 
 var codonTestCases = []codonCase{
-	{"AUG", "Methionine"},
-	{"UUU", "Phenylalanine"},
-	{"UUC", "Phenylalanine"},
-	{"UUA", "Leucine"},
-	{"UUG", "Leucine"},
-	{"UCU", "Serine"},
-	{"UCC", "Serine"},
-	{"UCA", "Serine"},
-	{"UCG", "Serine"},
-	{"UAU", "Tyrosine"},
-	{"UAC", "Tyrosine"},
-	{"UGU", "Cysteine"},
-	{"UGC", "Cysteine"},
-	{"UGG", "Tryptophan"},
-	{"UAA", "STOP"},
-	{"UAG", "STOP"},
-	{"UGA", "STOP"},
+	{
+		"AUG",
+		"Methionine",
+		nil,
+	},
+	{
+		"UUU",
+		"Phenylalanine",
+		nil,
+	},
+	{
+		"UUC",
+		"Phenylalanine",
+		nil,
+	},
+	{
+		"UUA",
+		"Leucine",
+		nil,
+	},
+	{
+		"UUG",
+		"Leucine",
+		nil,
+	},
+	{
+		"UCG",
+		"Serine",
+		nil,
+	},
+	{
+		"UAU",
+		"Tyrosine",
+		nil,
+	},
+	{
+		"UAC",
+		"Tyrosine",
+		nil,
+	},
+	{
+		"UGU",
+		"Cysteine",
+		nil,
+	},
+	{
+		"UGG",
+		"Tryptophan",
+		nil,
+	},
+	{
+		"UAA",
+		"",
+		STOP,
+	},
+	{
+		"UAG",
+		"",
+		STOP,
+	},
+	{
+		"UGA",
+		"",
+		STOP,
+	},
+	{
+		"ABC",
+		"",
+		ErrInvalidBase,
+	},
+}
+
+func TestCodon(t *testing.T) {
+	for _, test := range codonTestCases {
+		actual, err := FromCodon(test.input)
+		if test.errorExpected != nil {
+			if test.errorExpected != err {
+				t.Errorf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
+					test.input, test.errorExpected, err)
+			}
+		} else if err != nil {
+			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
+				test.input, test.expected, err)
+		}
+		if actual != test.expected {
+			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
+				test.input, test.expected, actual)
+		}
+		t.Logf("PASS: %s", test.input)
+	}
 }
 
 type rnaCase struct {
@@ -42,20 +116,11 @@ var proteinTestCases = []rnaCase{
 	{"UGGUGUUAUUAAUGGUUU", []string{"Tryptophan", "Cysteine", "Tyrosine"}},
 }
 
-func TestCodon(t *testing.T) {
-	for _, test := range codonTestCases {
-		actual := FromCodon(test.input)
-		if actual != test.expected {
-			t.Errorf("Protein Translation test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
-		}
-	}
-}
-
 func TestProtein(t *testing.T) {
 	for _, test := range proteinTestCases {
 		actual := FromRNA(test.input)
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Errorf("Protein Translation test [%s], expected %q, actual %q", test.input, test.expected, actual)
+			t.Errorf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
 		}
 	}
 }
