@@ -89,38 +89,70 @@ func TestCodon(t *testing.T) {
 		actual, err := FromCodon(test.input)
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
-				t.Errorf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
+				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
 					test.input, test.errorExpected, err)
 			}
 		} else if err != nil {
-			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
 				test.input, test.expected, err)
 		}
 		if actual != test.expected {
-			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
 				test.input, test.expected, actual)
 		}
-		t.Logf("PASS: %s", test.input)
+		t.Logf("PASS: Protein translation test: %s", test.input)
 	}
 }
 
 type rnaCase struct {
-	input    string
-	expected []string
+	input         string
+	expected      []string
+	errorExpected error
 }
 
 var proteinTestCases = []rnaCase{
-	{"AUGUUUUCUUAAAUG", []string{"Methionine", "Phenylalanine", "Serine"}},
-	{"AUGUUUUGG", []string{"Methionine", "Phenylalanine", "Tryptophan"}},
-	{"AUGUUUUAA", []string{"Methionine", "Phenylalanine"}},
-	{"UGGUGUUAUUAAUGGUUU", []string{"Tryptophan", "Cysteine", "Tyrosine"}},
+	{
+		"AUGUUUUCUUAAAUG",
+		[]string{"Methionine", "Phenylalanine", "Serine"},
+		nil,
+	},
+	{
+		"AUGUUUUGG",
+		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
+		nil,
+	},
+	{
+		"AUGUUUUAA",
+		[]string{"Methionine", "Phenylalanine"},
+		nil,
+	},
+	{
+		"UGGUGUUAUUAAUGGUUU",
+		[]string{"Tryptophan", "Cysteine", "Tyrosine"},
+		nil,
+	},
+	{
+		"UGGAGAAUUAAUGGUUU",
+		[]string{"Tryptophan"},
+		ErrInvalidBase,
+	},
 }
 
 func TestProtein(t *testing.T) {
 	for _, test := range proteinTestCases {
-		actual := FromRNA(test.input)
-		if !reflect.DeepEqual(actual, test.expected) {
-			t.Errorf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+		actual, err := FromRNA(test.input)
+		if test.errorExpected != nil {
+			if test.errorExpected != err {
+				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
+					test.input, test.errorExpected, err)
+			}
+		} else if err != nil {
+			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
+				test.input, test.expected, err)
 		}
+		if !reflect.DeepEqual(actual, test.expected) {
+			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+		}
+		t.Logf("PASS: RNA translation test: %s", test.input)
 	}
 }

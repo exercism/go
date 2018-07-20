@@ -1,7 +1,9 @@
 // Package protein translates RNA sequences into proteins.
 package protein
 
-import "errors"
+import (
+	"errors"
+)
 
 var (
 	STOP           = errors.New("stop")
@@ -16,7 +18,7 @@ func IsStopCodon(c string) bool {
 
 // FromCodon returns the protein for the given codon.
 // If the codon is a stop codon, it returns STOP.
-// If the codon is unrecognized, it returns invalidBase.
+// If the codon is unrecognized, it returns ErrInvalidBase.
 func FromCodon(c string) (string, error) {
 	if IsStopCodon(c) {
 		return "", STOP
@@ -57,15 +59,20 @@ func FromCodon(c string) (string, error) {
 }
 
 // FromRNA returns the protein sequence for an RNA strand.
-func FromRNA(s string) []string {
+// If the sequence contains invalid characters, it returns ErrInvalidBase.
+func FromRNA(s string) ([]string, error) {
 	var proteins []string
 	bases := []rune(s)
 	for i := 0; i < len(bases); i += 3 {
 		p, err := FromCodon(string(bases[i : i+3]))
-		if err == STOP {
-			break
+		switch err {
+		case STOP:
+			return proteins, nil
+		case ErrInvalidBase:
+			return proteins, err
+		default:
+			proteins = append(proteins, p)
 		}
-		proteins = append(proteins, p)
 	}
-	return proteins
+	return proteins, nil
 }
