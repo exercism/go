@@ -39,12 +39,37 @@ In particular, please read the [Pull Request Guidelines](https://github.com/exer
 
 ## Exercism Go style
 
-Let's walk through an example, non-existent, exercise, which we'll call `fizzbuzz` to see what could be included in its implementation.
+Let's walk through an example, non-existent, exercise, which we'll call
+`fizzbuzz` to see what could be included in its implementation.
 
-In any exercise you may see a number of files present:
+### Exercise configuration
+
+An exercise is [configured](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
+via an entry in the exercises array in [config.json file](/config.json). If `fizzbuzz` is an optional
+exercise, it would have an entry below the core exercises that might look like:
+
+```json
+{
+  "slug": "fizzbuzz",
+  "uuid": "mumblety-peg-whatever",
+  "core": false,
+  "unlocked_by": "two-fer",
+  "difficulty": 1,
+  "topics": [
+    "conditionals"
+  ]
+},
+```
+
+See [Exercise Configuration](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
+for more info.
+
+### Exercise files: Overview
+
+For any exercise you may see a number of files present in a directory under `exercises/`:
 
 ```sh
-~/exercism/go/fizzbuzz
+~/go/exercises/fizzbuzz
 $ tree -a
 .
 ├── cases_test.go
