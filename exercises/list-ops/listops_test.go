@@ -44,7 +44,7 @@ var foldTestCases = []struct {
 		list:     []int{},
 	},
 	{
-		name:     "direction dependent function applied to non-empty list",
+		name:     "direction independent function applied to non-empty list",
 		property: "foldr",
 		fn:       func(x, y int) int { return x + y },
 		initial:  5,
