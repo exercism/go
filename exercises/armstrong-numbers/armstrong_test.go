@@ -10,3 +10,13 @@ func TestArmstrong(t *testing.T) {
 		t.Logf("PASS: %s", tc.description)
 	}
 }
+
+func BenchmarkIsNumber(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+
+		for _, tc := range testCases {
+			IsNumber(tc.input)
+		}
+
+	}
+}
