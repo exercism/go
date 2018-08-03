@@ -13,6 +13,8 @@ anything.
 
 He answers 'Whatever.' to anything else.
 
+Bob's conversational partner is a purist when it comes to written communication and always follows normal rules regarding sentence punctuation in English.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
@@ -28,7 +30,7 @@ different specs, so the results from these benchmark tests may vary.
 ## Further information
 
 For more detailed information about the Go track, including how to get help if
-you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
+you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/resources).
 
 ## Source
 
