@@ -54,7 +54,7 @@ different specs, so the results from these benchmark tests may vary.
 ## Further information
 
 For more detailed information about the Go track, including how to get help if
-you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/about).
+you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/resources).
 
 ## Source
 
