@@ -156,3 +156,19 @@ func TestProtein(t *testing.T) {
 		t.Logf("PASS: RNA translation test: %s", test.input)
 	}
 }
+
+func BenchmarkCodon(b *testing.B) {
+	for _, test := range codonTestCases {
+		for i := 0; i < b.N; i++ {
+			FromCodon(test.input)
+		}
+	}
+}
+
+func BenchmarkProtein(b *testing.B) {
+	for _, test := range proteinTestCases {
+		for i := 0; i < b.N; i++ {
+			FromRNA(test.input)
+		}
+	}
+}
