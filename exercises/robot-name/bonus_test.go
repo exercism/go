@@ -18,11 +18,8 @@ func TestCollisions(t *testing.T) {
 	}
 
 	// Test that name exhaustion is handled more or less correctly.
-	defer func() {
-		if r := recover(); r == nil {
-			t.Errorf("Code should panic if namespace is exhausted.")
-		}
-	}()
-
-	_ = New().getName(t, false)
+	_, err := New().Name()
+	if err == nil {
+		t.Fatalf("should return error if namespace is exhausted")
+	}
 }
