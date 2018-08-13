@@ -24,6 +24,19 @@ func Build(records []Record) (*Node, error) {
 	if len(records) == 0 {
 		return nil, nil
 	}
+	dupe := make(map[int]*Record)
+	for _, r := range records {
+		temp := dupe[r.ID]
+
+		if temp == nil {
+			dupe[r.ID] = &r
+			continue
+		}
+
+		if temp.Parent == r.Parent {
+			return nil, fmt.Errorf("Node is a duplicate - {ID: %d, Parent: %d}", r.ID, r.Parent)
+		}
+	}
 	root := &Node{}
 	todo := []*Node{root}
 	n := 1
