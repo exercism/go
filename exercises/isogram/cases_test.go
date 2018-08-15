@@ -54,4 +54,9 @@ var testCases = []struct {
 		input:       "accentor",
 		expected:    false,
 	},
+	{
+		description: "longest German isogram",
+		input:       "Heizölrückstoßabdämpfung",
+		expected:    true,
+	},
 }
