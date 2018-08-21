@@ -1,6 +1,9 @@
 package bookstore
 
-import "math"
+import (
+	"math"
+	"sort"
+)
 
 const bookPrice = 800 // 800 cents = $8.00
 
@@ -8,7 +11,43 @@ var discountTiers = [...]int{0, 5, 10, 20, 25}
 
 // Cost implements the book store exercise.
 func Cost(books []int) int {
+	organize(books)
 	return cost(books, 0)
+}
+
+// rework the input array so all the repetitions
+// are together at first
+//
+func organize(books []int) {
+	//used for sorting
+	type kv struct {
+		Key   int
+		Value int
+	}
+
+	//calc book frequency: how many 1's ,2's and so on
+	freq := make(map[int]int)
+	for i := 0; i < len(books); i++ {
+		freq[books[i]]++
+	}
+	//sort frequency in descending order
+	var ss []kv
+	for k, v := range freq {
+		ss = append(ss, kv{k, v})
+	}
+	sort.Slice(ss, func(i, j int) bool {
+		return ss[i].Value > ss[j].Value
+	})
+	//transform the frequencies back to repetitions
+	//e.g. 4*1,3*2 -> 1,1,1,1,2,2,2
+	p := 0
+	for _, kv := range ss {
+		for i := 0; i < kv.Value; i++ {
+			books[p] = kv.Key
+			p++
+		}
+	}
+	//give back the modified array
 }
 
 func cost(books []int, priceSoFar int) int {

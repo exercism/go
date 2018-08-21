@@ -1,8 +1,8 @@
 package bookstore
 
 // Source: exercism/problem-specifications
-// Commit: a2ed4f7 book-store: Clarify expected monetary denomination
-// Problem Specifications Version: 1.3.0
+// Commit: 33c6b60 book-store: Add test case to thwart list-order greedy solutions (#1297)
+// Problem Specifications Version: 1.4.0
 
 var testCases = []struct {
 	description string
@@ -47,6 +47,11 @@ var testCases = []struct {
 	{
 		description: "Two groups of four is cheaper than group of five plus group of three",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 5},
+		expected:    5120,
+	},
+	{
+		description: "Two groups of four is cheaper than groups of five and three",
+		basket:      []int{1, 1, 2, 3, 4, 4, 5, 5},
 		expected:    5120,
 	},
 	{
