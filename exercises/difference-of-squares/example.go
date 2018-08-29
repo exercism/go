@@ -1,6 +1,6 @@
 package diffsquares
 
-func SquareOfSums(n int) int {
+func SquareOfSum(n int) int {
 	s := 0
 	for i := 0; i <= n; i++ {
 		s += i
@@ -16,5 +16,5 @@ func SumOfSquares(n int) (s int) {
 }
 
 func Difference(n int) int {
-	return SquareOfSums(n) - SumOfSquares(n)
+	return SquareOfSum(n) - SumOfSquares(n)
 }
