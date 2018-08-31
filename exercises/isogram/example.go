@@ -3,11 +3,11 @@ package isogram
 import "strings"
 
 func IsIsogram(word string) bool {
-	for i, r := range strings.ToLower(word) {
-		if r != ' ' && r != '-' && i < strings.LastIndex(word, string(r)) {
+	lowerWord := strings.ToLower(word)
+	for i, r := range lowerWord {
+		if r != ' ' && r != '-' && i < strings.LastIndex(lowerWord, string(r)) {
 			return false
 		}
 	}
-
 	return true
 }
