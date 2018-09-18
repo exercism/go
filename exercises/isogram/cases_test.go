@@ -1,8 +1,8 @@
 package isogram
 
 // Source: exercism/problem-specifications
-// Commit: 79f1357 isogram: Apply new "input" policy (#1180)
-// Problem Specifications Version: 1.3.0
+// Commit: 63f3d96 Isogram: adding test to close #1303 (#1307)
+// Problem Specifications Version: 1.5.0
 
 var testCases = []struct {
 	description string
@@ -25,6 +25,11 @@ var testCases = []struct {
 		expected:    false,
 	},
 	{
+		description: "word with one duplicated character from the end of the alphabet",
+		input:       "zzyzx",
+		expected:    false,
+	},
+	{
 		description: "longest reported english isogram",
 		input:       "subdermatoglyphic",
 		expected:    true,
@@ -32,6 +37,11 @@ var testCases = []struct {
 	{
 		description: "word with duplicated character in mixed case",
 		input:       "Alphabet",
+		expected:    false,
+	},
+	{
+		description: "word with duplicated character in mixed case, lowercase first",
+		input:       "alphAbet",
 		expected:    false,
 	},
 	{
