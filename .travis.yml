@@ -54,6 +54,10 @@ script:
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
   - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
+  - if [ -n "$STATIC_CHECKERS" ]; then
+        curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | bash -s -- -b $GOPATH/bin v1.10;
+        golangci-lint run --disable=errcheck,megacheck --enable=goimports,goconst,gocyclo;
+    fi;
 
 # special cases for the build matrix are STATIC_CHECKERS gets its own entry
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
