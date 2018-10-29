@@ -33,13 +33,9 @@ env:
   - TESTARCH=amd64 RACE=-race
   - TESTARCH=386
 
-# Travis doc for the install step says it is for any dependencies of the
-# build.  We don't have any build dependencies so we can disable this with
-# `install: true`.  (Actually we have to specify either true or something else
-# here because the default step for this is currently `go get -t ./...` which
-# doesn't work for us because some of our stub files have invalid Go syntax
-# or duplicate definitions of the example files)
-install: true
+install: 
+  - go get -u github.com/alecthomas/gometalinter
+  - gometalinter --install
 
 # Configlet tests a number of things like config.json.
 # See https://github.com/exercism/configlet.
@@ -54,6 +50,7 @@ script:
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
   - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
+  - gometalinter --fast ./...
 
 # special cases for the build matrix are STATIC_CHECKERS gets its own entry
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
