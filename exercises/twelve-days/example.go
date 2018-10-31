@@ -39,8 +39,10 @@ func Verse(i int) string {
 	for from := i; from > 0; from-- {
 		if i != 1 && from == 1 {
 			gifts = fmt.Sprintf("%s, and %s", gifts, verse[wording[from]])
-		} else {
+		} else if i != from {
 			gifts = fmt.Sprintf("%s, %s", gifts, verse[wording[from]])
+		} else {
+			gifts = fmt.Sprintf("%s: %s", gifts, verse[wording[from]])
 		}
 	}
 	return fmt.Sprintf("On the %s day of Christmas my true love gave to me%s", wording[i], gifts)
