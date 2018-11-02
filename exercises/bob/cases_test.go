@@ -42,7 +42,7 @@ var testCases = []struct {
 	{
 		"talking forcefully",
 		"Let's go make out behind the gym!",
-		"Whatever.",
+		"Whoa, chill out!",
 	},
 	{
 		"using acronyms in regular speech",
