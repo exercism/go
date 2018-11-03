@@ -65,19 +65,19 @@ var tmpl = `package binarysearch
 
 {{.Header}}
 
-var testCases = []struct {
+var testCases =	[]struct {
 	description	string
 	slice		[]int
-	key		int
-	x	int
-	err	string
+	key			int
+	x			int
+	err			string
 }{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
 	slice:		{{printf "%#v" .Input.Array}},
-	key:		{{printf "%d"  .Input.Value}},
-	x:	{{printf "%d"  .Expected.ValueInt}},
-	err:	{{printf "%q"  .Expected.ValueString}},
+	key:			{{printf "%d"  .Input.Value}},
+	x:			{{printf "%d"  .Expected.ValueInt}},
+	err:			{{printf "%q"  .Expected.ValueString}},
 },{{end}}
 }
 `
