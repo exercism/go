@@ -1,8 +1,8 @@
 package say
 
 // Source: exercism/problem-specifications
-// Commit: c1467a0 say: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: a0cee46 say: add mention of 'error' to comment
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string

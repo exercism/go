@@ -40,11 +40,13 @@ type OneCase struct {
 func (c OneCase) ErrorExpected() bool {
 	switch value := c.Expected.(type) {
 	case float64: // you'd think int but no, JSON uses float for numbers
-		if value == -1 {
+		if value == -1 || value > 999999999999 {
 			return true
 		}
 	case string:
 		return false
+	case map[string]interface{}:
+		return true
 	}
 
 	panic(fmt.Sprintf("Unexpected error value: %T => %v", c.Expected, c.Expected))
