@@ -1,8 +1,8 @@
 package anagram
 
 // Source: exercism/problem-specifications
-// Commit: b8359f9 Anagram canonical-data: Update version
-// Problem Specifications Version: 1.2.0
+// Commit: baaf092 anagram: words are not anagrams of themselves
+// Problem Specifications Version: 1.4.0
 
 var testCases = []struct {
 	description string
@@ -117,10 +117,12 @@ var testCases = []struct {
 		expected: []string{},
 	},
 	{
-		description: "capital word is not own anagram",
+		description: "words are not anagrams of themselves (case-insensitive)",
 		subject:     "BANANA",
 		candidates: []string{
-			"Banana"},
+			"BANANA",
+			"Banana",
+			"banana"},
 		expected: []string{},
 	},
 }
