@@ -1,14 +1,17 @@
 package strand
 
 // Source: exercism/problem-specifications
-// Commit: b4c24e6 rna-transcription: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 294c831 rna-transcription: add test for empty sequence (#1266)
+// Problem Specifications Version: 1.3.0
 
 var rnaTests = []struct {
 	description string
 	input       string
 	expected    string
 }{
+	{"Empty RNA sequence",
+		"", "",
+	},
 	{"RNA complement of cytosine is guanine",
 		"C", "G",
 	},
