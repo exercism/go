@@ -1,8 +1,8 @@
 package grep
 
 // Source: exercism/problem-specifications
-// Commit: e893e0b grep: Apply new "input" policy (#1182)
-// Problem Specifications Version: 1.1.0
+// Commit: 4f2efaa grep: add test cases for conflicting flags (#1356)
+// Problem Specifications Version: 1.2.0
 
 var fileContentData = []string{
 	"                                                     ",
@@ -135,6 +135,20 @@ var testCases = []struct {
 		files:       []string{"iliad.txt"},
 		expected:    []string{},
 	},
+	{
+		description: "One file, one match, file flag takes precedence over line flag",
+		pattern:     "ten",
+		flags:       []string{"-n", "-l"},
+		files:       []string{"iliad.txt"},
+		expected:    []string{"iliad.txt"},
+	},
+	{
+		description: "One file, several matches, inverted and match entire lines flags",
+		pattern:     "Illustrious into Ades premature,",
+		flags:       []string{"-x", "-v"},
+		files:       []string{"iliad.txt"},
+		expected:    []string{"Achilles sing, O Goddess! Peleus' son;", "His wrath pernicious, who ten thousand woes", "Caused to Achaia's host, sent many a soul", "And Heroes gave (so stood the will of Jove)", "To dogs and to all ravening fowls a prey,", "When fierce dispute had separated once", "The noble Chief Achilles from the son", "Of Atreus, Agamemnon, King of men."},
+	},
 
 	{
 		description: "Multiple files, one match, no flags",
@@ -198,5 +212,19 @@ var testCases = []struct {
 		flags:       []string{"-n", "-l", "-x", "-i"},
 		files:       []string{"iliad.txt", "midsummer-night.txt", "paradise-lost.txt"},
 		expected:    []string{},
+	},
+	{
+		description: "Multiple files, several matches, file flag takes precedence over line number flag",
+		pattern:     "who",
+		flags:       []string{"-n", "-l"},
+		files:       []string{"iliad.txt", "midsummer-night.txt", "paradise-lost.txt"},
+		expected:    []string{"iliad.txt", "paradise-lost.txt"},
+	},
+	{
+		description: "Multiple files, several matches, inverted and match entire lines flags",
+		pattern:     "Illustrious into Ades premature,",
+		flags:       []string{"-x", "-v"},
+		files:       []string{"iliad.txt", "midsummer-night.txt", "paradise-lost.txt"},
+		expected:    []string{"iliad.txt:Achilles sing, O Goddess! Peleus' son;", "iliad.txt:His wrath pernicious, who ten thousand woes", "iliad.txt:Caused to Achaia's host, sent many a soul", "iliad.txt:And Heroes gave (so stood the will of Jove)", "iliad.txt:To dogs and to all ravening fowls a prey,", "iliad.txt:When fierce dispute had separated once", "iliad.txt:The noble Chief Achilles from the son", "iliad.txt:Of Atreus, Agamemnon, King of men.", "midsummer-night.txt:I do entreat your grace to pardon me.", "midsummer-night.txt:I know not by what power I am made bold,", "midsummer-night.txt:Nor how it may concern my modesty,", "midsummer-night.txt:In such a presence here to plead my thoughts;", "midsummer-night.txt:But I beseech your grace that I may know", "midsummer-night.txt:The worst that may befall me in this case,", "midsummer-night.txt:If I refuse to wed Demetrius.", "paradise-lost.txt:Of Mans First Disobedience, and the Fruit", "paradise-lost.txt:Of that Forbidden Tree, whose mortal tast", "paradise-lost.txt:Brought Death into the World, and all our woe,", "paradise-lost.txt:With loss of Eden, till one greater Man", "paradise-lost.txt:Restore us, and regain the blissful Seat,", "paradise-lost.txt:Sing Heav'nly Muse, that on the secret top", "paradise-lost.txt:Of Oreb, or of Sinai, didst inspire", "paradise-lost.txt:That Shepherd, who first taught the chosen Seed"},
 	},
 }
