@@ -1,8 +1,8 @@
 package brackets
 
 // Source: exercism/problem-specifications
-// Commit: 9027186 bracket-push: Add test case "partially paired brackets" (#1219)
-// Problem Specifications Version: 1.3.0
+// Commit: 602c610 bracket-push: Add test to prevent early return true (#1300)
+// Problem Specifications Version: 1.4.0
 
 type bracketTest struct {
 	input    string
@@ -73,6 +73,11 @@ var testCases = []bracketTest{
 	{
 		// paired and wrong nested brackets
 		"[({]})",
+		false,
+	},
+	{
+		// paired and incomplete brackets
+		"{}[",
 		false,
 	},
 	{
