@@ -1,8 +1,8 @@
 package isogram
 
 // Source: exercism/problem-specifications
-// Commit: 63f3d96 Isogram: adding test to close #1303 (#1307)
-// Problem Specifications Version: 1.5.0
+// Commit: 7cea153 isogram: add test case with same first and last character (#1308)
+// Problem Specifications Version: 1.6.0
 
 var testCases = []struct {
 	description string
@@ -62,6 +62,11 @@ var testCases = []struct {
 	{
 		description: "duplicated character in the middle",
 		input:       "accentor",
+		expected:    false,
+	},
+	{
+		description: "same first and last characters",
+		input:       "angola",
 		expected:    false,
 	},
 }
