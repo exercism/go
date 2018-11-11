@@ -1,8 +1,8 @@
 package alphametics
 
 // Source: exercism/problem-specifications
-// Commit: a86a774 alphametics: apply input policy to final test case
-// Problem Specifications Version: 1.2.0
+// Commit: 361cf3c alphametics: v1.3.0 Add test for two digits carry (#1344)
+// Problem Specifications Version: 1.3.0
 
 // Solve the alphametics puzzle
 var testCases = []struct {
@@ -25,6 +25,11 @@ var testCases = []struct {
 		description:   "leading zero solution is invalid",
 		input:         "ACA + DD == BD",
 		errorExpected: true,
+	},
+	{
+		description: "puzzle with two digits final carry",
+		input:       "A + A + A + A + A + A + A + A + A + A + A + B == BCC",
+		expected:    map[string]int{"A": 9, "B": 1, "C": 0},
 	},
 	{
 		description: "puzzle with four letters",
