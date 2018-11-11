@@ -1,8 +1,8 @@
 package collatzconjecture
 
 // Source: exercism/problem-specifications
-// Commit: 7bb0a64 collatz-conjecture: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: d94e348 collatz-conjecture: fix capitalized description (#1292)
+// Problem Specifications Version: 1.2.1
 
 var testCases = []struct {
 	description string
@@ -26,7 +26,7 @@ var testCases = []struct {
 		expected:    9,
 	},
 	{
-		description: "Large number of even and odd steps",
+		description: "large number of even and odd steps",
 		input:       1000000,
 		expected:    152,
 	},
