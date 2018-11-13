@@ -1,8 +1,8 @@
 package clock
 
 // Source: exercism/problem-specifications
-// Commit: 8b96944 clock: remove obsolete sentence from comment
-// Problem Specifications Version: 2.2.1
+// Commit: 1680779 clock: add test case for comparing 24:00 and 00:00 clocks (#1306)
+// Problem Specifications Version: 2.3.0
 
 // Create a new clock with an initial time
 var timeTests = []struct {
@@ -155,6 +155,12 @@ var eqTests = []struct {
 	{
 		hm{18, 7},
 		hm{-54, -11513},
+		true,
+	},
+	// full clock and zeroed clock
+	{
+		hm{24, 0},
+		hm{0, 0},
 		true,
 	},
 }

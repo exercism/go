@@ -1,8 +1,8 @@
 package allergies
 
 // Source: exercism/problem-specifications
-// Commit: 85dcb59 allergies: Update json for new "input" policy (#1033)
-// Problem Specifications Version: 1.1.0
+// Commit: 17a2ab2 added allergies test case (#1275)
+// Problem Specifications Version: 1.2.0
 
 // allergicTo
 type allergicResult struct {
@@ -38,6 +38,16 @@ var allergicToTests = []struct {
 			{"eggs", true},
 			{"shellfish", true},
 			{"strawberries", false},
+		},
+	},
+	{
+		description: "allergic to strawberries but not peanuts",
+		score:       9,
+		expected: []allergicResult{
+			{"eggs", true},
+			{"peanuts", false},
+			{"shellfish", false},
+			{"strawberries", true},
 		},
 	},
 }

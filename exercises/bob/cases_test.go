@@ -1,8 +1,8 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: 6dc2014 bob: apply "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: ca79943 Bob: Fix grammatical error in testdata (#1319)
+// Problem Specifications Version: 1.4.0
 
 var testCases = []struct {
 	description string
@@ -60,12 +60,12 @@ var testCases = []struct {
 		"Whoa, chill out!",
 	},
 	{
-		"only numbers",
+		"no letters",
 		"1, 2, 3",
 		"Whatever.",
 	},
 	{
-		"question with only numbers",
+		"question with no letters",
 		"4?",
 		"Sure.",
 	},
@@ -76,7 +76,7 @@ var testCases = []struct {
 	},
 	{
 		"shouting with no exclamation mark",
-		"I HATE YOU",
+		"I HATE THE DMV",
 		"Whoa, chill out!",
 	},
 	{
@@ -111,7 +111,7 @@ var testCases = []struct {
 	},
 	{
 		"multiple line question",
-		"\nDoes this cryogenic chamber make me look fat?\nno",
+		"\nDoes this cryogenic chamber make me look fat?\nNo.",
 		"Whatever.",
 	},
 	{
