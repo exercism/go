@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: c853973 forth: add tests for word redefinition (#1243)
-// Problem Specifications Version: 1.6.0
+// Commit: 5ba35c7 forth: add mention of 'error' to comment
+// Problem Specifications Version: 1.7.0
 
 type testGroup struct {
 	group string

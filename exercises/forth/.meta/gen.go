@@ -35,7 +35,31 @@ type OneCase struct {
 	Input       struct {
 		Instructions []string
 	}
-	Expected []int
+	Expected interface{}
+}
+
+// IntSlice converts an .Expected interface{} object
+// to either nil when an error is indicated by a map[string]interface{} in the JSON,
+// or a slice of integers.
+func (c OneCase) IntSlice() (list []int) {
+	_, ok := c.Expected.(map[string]interface{})
+	if ok {
+		return nil
+	}
+	ilist, ok := c.Expected.([]interface{})
+	if !ok {
+		return nil
+	}
+	list = make([]int, 0)
+	for _, iv := range ilist {
+		// The literals from the JSON are unmarshalled to float64 values,
+		// which are converted to int for the template output.
+		v, isFloat64 := iv.(float64)
+		if isFloat64 {
+			list = append(list, int(v))
+		}
+	}
+	return list
 }
 
 // template applied to above data structure generates the Go test cases
@@ -61,7 +85,7 @@ tests: []testCase{
 {{range .Cases}}{
 {{printf "%q"  .Description}},
 {{printf "%#v" .Input.Instructions}},
-{{printf "%#v" .Expected}},
+{{printf "%#v" .IntSlice}},
 },
 {{end}}
 },
