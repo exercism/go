@@ -16,14 +16,20 @@ Node to hold a value and pointers to the next and previous nodes. Then
 implement a List which holds references to the first and last node and
 offers an array-like interface for adding and removing items:
 
-* `push` (*insert value at back*);
-* `pop` (*remove value at back*);
-* `shift` (*remove value at front*).
-* `unshift` (*insert value at front*);
+* `PushBack` (*insert value at back*);
+* `PopBack` (*remove value at back*);
+* `PopFront` (*remove value at front*).
+* `PushFront` (*insert value at front*);
 
-To keep your implementation simple, the tests will not cover error
-conditions. Specifically: `pop` or `shift` will never be called on an
-empty list.
+The List should be initialized with a sequence of values to be held in
+initial nodes. This sequence can be empty.
+
+The implementation of `PopBack` and `PopFront` should return the popped
+value and an error code. The case where the List is empty should return
+0 and the error `ErrEmptyList`.
+
+Finally, implement a `Reverse` method that reverses the order of the List's
+nodes.
 
 If you want to know more about linked lists, check [Wikipedia](https://en.wikipedia.org/wiki/Linked_list).
 
