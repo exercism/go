@@ -10,7 +10,8 @@ func TestIsValidISBN(t *testing.T) {
 		if observed != test.expected {
 			t.Errorf("FAIL: %s\nIsValidISBN(%q)\nExpected: %t, Actual: %t",
 				test.description, test.isbn, test.expected, observed)
+		} else {
+			t.Logf("PASS: %s", test.description)
 		}
-		t.Logf("PASS: %s", test.description)
 	}
 }
