@@ -1,8 +1,8 @@
 package acronym
 
 // Source: exercism/problem-specifications
-// Commit: 5ae1dba Acronym canonical-data: Remove redundant test case
-// Problem Specifications Version: 1.3.0
+// Commit: 2e46654b Acronym: New test case for apostrophe (#1377)
+// Problem Specifications Version: 1.6.0
 
 type acronymTest struct {
 	input    string
@@ -29,5 +29,17 @@ var stringTestCases = []acronymTest{
 	{
 		input:    "Complementary metal-oxide semiconductor",
 		expected: "CMOS",
+	},
+	{
+		input:    "Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me",
+		expected: "ROTFLSHTMDCOALM",
+	},
+	{
+		input:    "Something - I made up from thin air",
+		expected: "SIMUFTA",
+	},
+	{
+		input:    "Halley's Comet",
+		expected: "HC",
 	},
 }
