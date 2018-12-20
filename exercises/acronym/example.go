@@ -6,7 +6,7 @@ import (
 )
 
 func Abbreviate(s string) string {
-	regex := regexp.MustCompile("[A-Z]+[a-z]*|[a-z]+")
+	regex := regexp.MustCompile("[A-Z]+[a-z']*|[a-z]+")
 	words := regex.FindAllString(s, -1)
 
 	var abbr []string
