@@ -121,7 +121,7 @@ func TestCallDefrobAndCloseOnFrobError(t *testing.T) {
 
 // Use should call Close but not Defrob on non-FrobError panic from Frob
 // and return the error.
-func TestCallCloseNonOnFrobError(t *testing.T) {
+func TestCallCloseOnNonFrobError(t *testing.T) {
 	var closeCalled bool
 	var defrobCalled bool
 	mr := mockResource{
