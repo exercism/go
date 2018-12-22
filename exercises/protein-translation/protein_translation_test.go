@@ -65,17 +65,17 @@ var codonTestCases = []codonCase{
 	{
 		"UAA",
 		"",
-		STOP,
+		ErrStop,
 	},
 	{
 		"UAG",
 		"",
-		STOP,
+		ErrStop,
 	},
 	{
 		"UGA",
 		"",
-		STOP,
+		ErrStop,
 	},
 	{
 		"ABC",
