@@ -1,8 +1,8 @@
 package luhn
 
 // Source: exercism/problem-specifications
-// Commit: 3930b0a luhn: add a test case of strings with non-digits (#1246)
-// Problem Specifications Version: 1.2.0
+// Commit: 06b37c1 luhn: Add test case for valid number with even length (fixes #1391)
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description string
@@ -43,6 +43,11 @@ var testCases = []struct {
 		"invalid credit card",
 		"8273 1232 7352 0569",
 		false,
+	},
+	{
+		"valid number with an even number of digits",
+		"095 245 88",
+		true,
 	},
 	{
 		"valid strings with a non-digit included become invalid",
