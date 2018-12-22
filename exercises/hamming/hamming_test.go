@@ -5,13 +5,13 @@ import "testing"
 func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
 		got, err := Distance(tc.s1, tc.s2)
-		if tc.want < 0 {
+		if tc.expectError {
 			// check if err is of error type
 			var _ error = err
 
 			// we expect error
 			if err == nil {
-				t.Fatalf("Distance(%q, %q). error is nil.",
+				t.Fatalf("Distance(%q, %q); expected error, got nil.",
 					tc.s1, tc.s2)
 			}
 		} else {
@@ -22,7 +22,7 @@ func TestHamming(t *testing.T) {
 
 			// we do not expect error
 			if err != nil {
-				t.Fatalf("Distance(%q, %q) returned error: %v when expecting none.",
+				t.Fatalf("Distance(%q, %q) returned unexpected error: %v",
 					tc.s1, tc.s2, err)
 			}
 		}

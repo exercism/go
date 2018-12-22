@@ -1,87 +1,55 @@
 package hamming
 
 // Source: exercism/problem-specifications
-// Commit: b5d154b hamming: move inputs (strand1, strand2) to input object
-// Problem Specifications Version: 2.1.0
+// Commit: 4c453c8 hamming: remove redundant test cases
+// Problem Specifications Version: 2.2.0
 
 var testCases = []struct {
-	s1   string
-	s2   string
-	want int
+	s1          string
+	s2          string
+	want        int
+	expectError bool
 }{
 	{ // empty strands
 		"",
 		"",
 		0,
+		false,
 	},
-	{ // identical strands
+	{ // single letter identical strands
 		"A",
 		"A",
 		0,
+		false,
+	},
+	{ // single letter different strands
+		"G",
+		"T",
+		1,
+		false,
 	},
 	{ // long identical strands
-		"GGACTGA",
-		"GGACTGA",
+		"GGACTGAAATCTG",
+		"GGACTGAAATCTG",
 		0,
+		false,
 	},
-	{ // complete distance in single nucleotide strands
-		"A",
-		"G",
-		1,
-	},
-	{ // complete distance in small strands
-		"AG",
-		"CT",
-		2,
-	},
-	{ // small distance in small strands
-		"AT",
-		"CT",
-		1,
-	},
-	{ // small distance
-		"GGACG",
-		"GGTCG",
-		1,
-	},
-	{ // small distance in long strands
-		"ACCAGGG",
-		"ACTATGG",
-		2,
-	},
-	{ // non-unique character in first strand
-		"AAG",
-		"AAA",
-		1,
-	},
-	{ // non-unique character in second strand
-		"AAA",
-		"AAG",
-		1,
-	},
-	{ // same nucleotides in different positions
-		"TAG",
-		"GAT",
-		2,
-	},
-	{ // large distance
-		"GATACA",
-		"GCATAA",
-		4,
-	},
-	{ // large distance in off-by-one strand
+	{ // long different strands
 		"GGACGGATTCTG",
 		"AGGACGGATTCT",
 		9,
+		false,
 	},
 	{ // disallow first strand longer
 		"AATG",
 		"AAA",
-		-1,
+		0,
+		true,
 	},
 	{ // disallow second strand longer
 		"ATA",
 		"AGTG",
-		-1,
+		0,
+		true,
 	},
 }
