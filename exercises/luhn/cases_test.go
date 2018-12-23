@@ -1,8 +1,8 @@
 package luhn
 
 // Source: exercism/problem-specifications
-// Commit: 06b37c1 luhn: Add test case for valid number with even length (fixes #1391)
-// Problem Specifications Version: 1.3.0
+// Commit: 4a80663 luhn: non-digit at end is invalid
+// Problem Specifications Version: 1.4.0
 
 var testCases = []struct {
 	description string
@@ -52,6 +52,11 @@ var testCases = []struct {
 	{
 		"valid strings with a non-digit included become invalid",
 		"055a 444 285",
+		false,
+	},
+	{
+		"valid strings with a non-digit added at the end become invalid",
+		"059a",
 		false,
 	},
 	{
