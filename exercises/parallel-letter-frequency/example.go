@@ -1,5 +1,6 @@
 package letter
 
+// ConcurrentFrequency is a (not necessarily ideal) example of how to call Frequency() concurrently.
 func ConcurrentFrequency(l []string) FreqMap {
 	switch len(l) {
 	case 0:
