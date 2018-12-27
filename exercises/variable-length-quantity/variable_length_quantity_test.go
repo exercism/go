@@ -10,8 +10,7 @@ func TestDecodeVarint(t *testing.T) {
 	for i, tc := range decodeTestCases {
 		o, err := DecodeVarint(tc.input)
 		if err != nil {
-			var _ error = err
-			if tc.output != nil {
+			if !tc.shouldfail {
 				t.Fatalf("FAIL: case %d | %s\nexpected %#v got error: %q\n", i, tc.description, tc.output, err)
 			}
 		} else if tc.output == nil {
