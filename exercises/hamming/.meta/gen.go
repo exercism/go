@@ -37,7 +37,13 @@ func (o oneCase) Want() int {
 	if ok {
 		return int(d)
 	}
-	return -1
+	// A non-nil error value is expected, so the data value should be zero, idiomatically.
+	return 0
+}
+
+func (o oneCase) ExpectError() bool {
+	_, ok := o.Expected.(float64)
+	return !ok
 }
 
 // template applied to above data structure generates the Go test cases
@@ -46,14 +52,16 @@ var tmpl = `package hamming
 {{.Header}}
 
 var testCases = []struct {
-	s1   string
-	s2   string
-	want int
+	s1          string
+	s2          string
+	want        int
+	expectError bool
 }{
 {{range .J.Cases}}{ // {{.Description}}
 	{{printf "%q" .Input.Strand1}},
 	{{printf "%q" .Input.Strand2}},
 	{{.Want}},
+	{{.ExpectError}},
 },
 {{end}}}
 `
