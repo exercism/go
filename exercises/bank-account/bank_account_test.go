@@ -65,6 +65,12 @@ func TestSeqOpenBalanceClose(t *testing.T) {
 		t.Log("Balance still available on closed account.")
 		t.Fatalf("a.Balance() = %d, %t.  Want ok == false", b, ok)
 	}
+
+	// verify closing balance is 0
+	if b, _ := a.Balance(); b != 0 {
+		t.Log("Balance after close is non-zero.")
+		t.Fatalf("After a.Close() balance is %d and not 0", b)
+	}
 }
 
 func TestSeqOpenDepositClose(t *testing.T) {
