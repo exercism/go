@@ -5,10 +5,11 @@ import (
 	"errors"
 )
 
-var (
-	STOP           = errors.New("stop")
-	ErrInvalidBase = errors.New("invalid base")
-)
+// ErrStop indicates that one of the stop codons was read.
+var ErrStop = errors.New("stop")
+
+// ErrInvalidBase indicates that an unrecognized codon was read.
+var ErrInvalidBase = errors.New("invalid base")
 
 // IsStopCodon checks whether a codon is a stop codon.
 func IsStopCodon(c string) bool {
@@ -17,11 +18,11 @@ func IsStopCodon(c string) bool {
 }
 
 // FromCodon returns the protein for the given codon.
-// If the codon is a stop codon, it returns STOP.
+// If the codon is a stop codon, it returns ErrStop.
 // If the codon is unrecognized, it returns ErrInvalidBase.
 func FromCodon(c string) (string, error) {
 	if IsStopCodon(c) {
-		return "", STOP
+		return "", ErrStop
 	}
 
 	switch c {
@@ -66,7 +67,7 @@ func FromRNA(s string) ([]string, error) {
 	for i := 0; i < len(bases); i += 3 {
 		p, err := FromCodon(string(bases[i : i+3]))
 		switch err {
-		case STOP:
+		case ErrStop:
 			return proteins, nil
 		case ErrInvalidBase:
 			return proteins, err
