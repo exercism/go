@@ -3,6 +3,7 @@
 package robotname
 
 import (
+	"errors"
 	"fmt"
 	"math/rand"
 )
@@ -13,9 +14,9 @@ type Robot struct {
 
 var issued = map[string]bool{}
 
-func (r *Robot) Name() string {
+func (r *Robot) Name() (string, error) {
 	if r.name > "" {
-		return r.name
+		return r.name, nil
 	}
 	a1 := rand.Intn(26)
 	a2 := rand.Intn(26)
@@ -30,11 +31,11 @@ func (r *Robot) Name() string {
 		}
 		r.name = fmt.Sprintf("%c%c%03d", 'A'+byte(a1), 'A'+byte(a2), n)
 		if r.name == start {
-			panic("all valid robot names issued")
+			return "", errors.New("all valid robot names issued")
 		}
 	}
 	issued[r.name] = true
-	return r.name
+	return r.name, nil
 }
 
 func (r *Robot) Reset() {
