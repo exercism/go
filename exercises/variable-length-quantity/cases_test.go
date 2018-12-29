@@ -107,7 +107,7 @@ var decodeTestCases = []struct {
 	description string
 	input       []byte
 	output      []uint32 // nil slice indicates error expected.
-	shouldfail  bool
+	shouldFail  bool
 }{
 
 	{
