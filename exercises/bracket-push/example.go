@@ -24,7 +24,7 @@ type charInfo struct {
 
 // Bracket returns whether all the brackets in the input string are
 // correctly nested.
-func Bracket(input string) (bool, error) {
+func Bracket(input string) bool {
 	var stack []bracketKind
 	for _, char := range input {
 		ci := info(char)
@@ -35,15 +35,15 @@ func Bracket(input string) (bool, error) {
 			stack = append(stack, ci.kind)
 		} else {
 			if len(stack) == 0 {
-				return false, nil
+				return false
 			} else if stack[len(stack)-1] == ci.kind {
 				stack = stack[:len(stack)-1]
 			} else {
-				return false, nil
+				return false
 			}
 		}
 	}
-	return len(stack) == 0, nil
+	return len(stack) == 0
 }
 
 func info(char rune) charInfo {
