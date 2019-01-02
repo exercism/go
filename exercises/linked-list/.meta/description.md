@@ -36,4 +36,3 @@ Instead of not covering error conditions, like calling `PopBack` or `PopFront` o
 we will follow Go's idiomatic style and implement the error checks as well.
 
 If you want to know more about linked lists, check [Wikipedia](https://en.wikipedia.org/wiki/Linked_list).
-
