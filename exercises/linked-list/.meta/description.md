@@ -1,5 +1,3 @@
-# Linked List
-
 Implement a doubly linked list.
 
 Like an array, a linked list is a simple linear data structure. Several
@@ -38,27 +36,3 @@ Instead of not covering error conditions, like calling `PopBack` or `PopFront` o
 we will follow Go's idiomatic style and implement the error checks as well.
 
 If you want to know more about linked lists, check [Wikipedia](https://en.wikipedia.org/wiki/Linked_list).
-
-## Running the tests
-
-To run the tests run the command `go test` from within the exercise directory.
-
-If the test suite contains benchmarks, you can run these with the `--bench` and `--benchmem`
-flags:
-
-    go test -v --bench . --benchmem
-
-Keep in mind that each reviewer will run benchmarks on a different machine, with
-different specs, so the results from these benchmark tests may vary.
-
-## Further information
-
-For more detailed information about the Go track, including how to get help if
-you're having trouble, please visit the exercism.io [Go language page](http://exercism.io/languages/go/resources).
-
-## Source
-
-Classic computer science topic
-
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
