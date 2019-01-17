@@ -41,11 +41,6 @@ type card struct {
 	suit rune
 }
 
-type parsedHand struct {
-	hand  string
-	cards []card
-}
-
 type rankCount struct {
 	rank  int
 	count int
