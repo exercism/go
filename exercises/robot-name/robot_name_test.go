@@ -6,14 +6,28 @@ import (
 )
 
 var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
+var seen = map[string]int{}
+var maxNames = 26 * 26 * 10 * 10 * 10
 
 func New() *Robot { return new(Robot) }
 
-func TestNameValid(t *testing.T) {
-	n, err := New().Name()
+// getName is a test helper function to facilitate optionally checking for seen
+// robot names.
+func (r *Robot) getName(t testing.TB, expectSeen bool) string {
+	newName, err := r.Name()
 	if err != nil {
-		t.Errorf("Name() returned unexpected error: %v", err)
+		t.Fatalf("Name() returned unexpected error: %v", err)
 	}
+	_, chk := seen[newName]
+	if !expectSeen && chk {
+		t.Fatalf("Name %s reissued after %d robots.", newName, len(seen))
+	}
+	seen[newName] = 0
+	return newName
+}
+
+func TestNameValid(t *testing.T) {
+	n := New().getName(t, false)
 	if !namePat.MatchString(n) {
 		t.Errorf(`Invalid robot name %q, want form "AA###".`, n)
 	}
@@ -21,27 +35,26 @@ func TestNameValid(t *testing.T) {
 
 func TestNameSticks(t *testing.T) {
 	r := New()
-	n1, _ := r.Name()
-	n2, _ := r.Name()
+	n1 := r.getName(t, false)
+	n2 := r.getName(t, true)
 	if n2 != n1 {
 		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
 	}
 }
 
 func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
-	n1, _ := New().Name()
-	n2, _ := New().Name()
-	if n2 == n1 {
+	n1 := New().getName(t, false)
+	n2 := New().getName(t, false)
+	if n1 == n2 {
 		t.Errorf(`Robots with same name.  Two %s's.`, n1)
 	}
 }
 
 func TestResetName(t *testing.T) {
 	r := New()
-	n1, _ := r.Name()
+	n1 := r.getName(t, false)
 	r.Reset()
-	n2, _ := r.Name()
-	if n2 == n1 {
+	if r.getName(t, false) == n1 {
 		t.Errorf(`Robot name not cleared on reset.  Still %s.`, n1)
 	}
 }
@@ -51,6 +64,6 @@ func TestResetName(t *testing.T) {
 func BenchmarkName(b *testing.B) {
 	// Benchmark combined time to create robot and name.
 	for i := 0; i < b.N; i++ {
-		New().Name()
+		New().getName(b, false)
 	}
 }
