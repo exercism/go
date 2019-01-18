@@ -1299,7 +1299,7 @@
       "slug": "grep",
       "uuid": "ec5dab72-dd96-4dce-8886-aff52a6eb090",
       "core": false,
-      "unlocked_by": "hamming",
+      "unlocked_by": "tournament",
       "difficulty": 4,
       "topics": [
         "algorithms",
