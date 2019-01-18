@@ -15,6 +15,8 @@ type mockResource struct {
 	defrob func(string)
 }
 
+const hello = "hello"
+
 func (mr mockResource) Close() error      { return mr.close() }
 func (mr mockResource) Frob(input string) { mr.frob(input) }
 func (mr mockResource) Defrob(tag string) { mr.defrob(tag) }
@@ -28,13 +30,12 @@ func TestNoErrors(t *testing.T) {
 		frob:  func(input string) { frobInput = input },
 	}
 	opener := func() (Resource, error) { return mr, nil }
-	inp := "hello"
-	err := Use(opener, inp)
+	err := Use(opener, hello)
 	if err != nil {
 		t.Fatalf("Unexpected error from Use: %v", err)
 	}
-	if frobInput != inp {
-		t.Fatalf("Wrong string passed to Frob: got %v, expected %v", frobInput, inp)
+	if frobInput != hello {
+		t.Fatalf("Wrong string passed to Frob: got %v, expected %v", frobInput, hello)
 	}
 	if !closeCalled {
 		t.Fatalf("Close was not called")
@@ -56,13 +57,12 @@ func TestKeepTryOpenOnTransient(t *testing.T) {
 		}
 		return mr, nil
 	}
-	inp := "hello"
-	err := Use(opener, inp)
+	err := Use(opener, hello)
 	if err != nil {
 		t.Fatalf("Unexpected error from Use: %v", err)
 	}
-	if frobInput != inp {
-		t.Fatalf("Wrong string passed to Frob: got %v, expected %v", frobInput, inp)
+	if frobInput != hello {
+		t.Fatalf("Wrong string passed to Frob: got %v, expected %v", frobInput, hello)
 	}
 }
 
@@ -76,8 +76,7 @@ func TestFailOpenOnNonTransient(t *testing.T) {
 		}
 		return nil, errors.New("too awesome")
 	}
-	inp := "hello"
-	err := Use(opener, inp)
+	err := Use(opener, hello)
 	if err == nil {
 		t.Fatalf("Unexpected lack of error from Use")
 	}
@@ -103,8 +102,7 @@ func TestCallDefrobAndCloseOnFrobError(t *testing.T) {
 		},
 	}
 	opener := func() (Resource, error) { return mr, nil }
-	inp := "hello"
-	err := Use(opener, inp)
+	err := Use(opener, hello)
 	if err == nil {
 		t.Fatalf("Unexpected lack of error from Use")
 	}
@@ -130,8 +128,7 @@ func TestCallCloseOnNonFrobError(t *testing.T) {
 		defrob: func(tag string) { defrobCalled = true },
 	}
 	opener := func() (Resource, error) { return mr, nil }
-	inp := "hello"
-	err := Use(opener, inp)
+	err := Use(opener, hello)
 	if err == nil {
 		t.Fatalf("Unexpected lack of error from Use")
 	}
