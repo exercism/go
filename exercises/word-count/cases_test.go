@@ -35,6 +35,11 @@ var testCases = []struct {
 		Frequency{"one": 1, "three": 1, "two": 1},
 	},
 	{
+		"handles expanded lists with leading space",
+		" one,\n two,\n three",
+		Frequency{"one": 1, "three": 1, "two": 1},
+	},
+	{
 		"ignore punctuation",
 		"car: carpet as java: javascript!!&@$%^&",
 		Frequency{"as": 1, "car": 1, "carpet": 1, "java": 1, "javascript": 1},
