@@ -12,7 +12,7 @@
 
 for dir in exercises/*/; do
   stub=$(echo $(basename $dir) | tr - _)
-  file="$dir/$stub.go"
+  file="$dir$stub.go"
   if [ -f $file ]; then
     echo "moving stub $file"
     mv $file "$dir/$stub.notgo"
