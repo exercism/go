@@ -46,6 +46,7 @@ install: true
 before_script:
   - bin/fetch-configlet
   - bin/configlet lint .
+  - bin/fetch-golangci-lint v1.13
 
 # Our "build" is to run `go test` which is what our users do.
 # -cpu 2 is for our problems that involve concurrency to test that they
@@ -54,6 +55,9 @@ script:
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
   - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
+  - if [ -n "$STATIC_CHECKERS" ]; then
+        ./bin/test-without-stubs lint '--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo';
+    fi
 
 # special cases for the build matrix are STATIC_CHECKERS gets its own entry
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
