@@ -15,7 +15,7 @@ var tests = []struct {
 func TestShareWith(t *testing.T) {
 	for _, test := range tests {
 		if observed := ShareWith(test.name); observed != test.expected {
-			t.Fatalf("ShareWith(%s) = %v, want %v", test.name, observed, test.expected)
+			t.Fatalf("ShareWith(%s) = \"%v\", want \"%v\"", test.name, observed, test.expected)
 		}
 	}
 }
