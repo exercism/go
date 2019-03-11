@@ -1,7 +1,7 @@
 // API:
 //
 // type Element struct
-// type List struct 
+// type List struct
 // var ErrEmptyList
 //
 // func (e *Element) Next() *Element
