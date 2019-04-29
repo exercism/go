@@ -19,7 +19,7 @@ func runTestCase(t *testing.T, tc bucketTestCase) {
 				tc.goalBucket, tc.moves, tc.otherBucket,
 				g, m, other)
 		}
-	} else if e != nil {
+	} else {
 		if !tc.errorExpected {
 			t.Fatalf("FAIL: %s\nSolve(%d, %d, %d, %q)\nExpected: %q, %d, %d\nGot Error %q",
 				tc.description,
