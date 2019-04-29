@@ -46,7 +46,7 @@ install: true
 before_script:
   - bin/fetch-configlet
   - bin/configlet lint .
-  - bin/fetch-golangci-lint v1.13
+  - bin/fetch-golangci-lint v1.16.0
 
 # Our "build" is to run `go test` which is what our users do.
 # -cpu 2 is for our problems that involve concurrency to test that they
