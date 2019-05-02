@@ -7,7 +7,6 @@ import (
 
 var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
 var seen = map[string]int{}
-var maxNames = 26 * 26 * 10 * 10 * 10
 
 func New() *Robot { return new(Robot) }
 

@@ -4,3 +4,5 @@
 tmp
 bin/configlet
 bin/configlet.exe
+bin/golangci-lint
+bin/golangci-lint.exe

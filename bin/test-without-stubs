@@ -62,6 +62,21 @@ if [ "$1" = "vet" ]; then
   exit 0
 fi
 
+if [ "$1" = "lint" ]; then
+  # Let $2 (if given) specify the golangci-lint option parameters; otherwise default them.
+  LINT_OPTS="$2"
+  if [ -z "$LINT_OPTS" ] ; then
+    LINT_OPTS="--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo"
+  fi
+  ./bin/golangci-lint --version
+  # Invoke golangci-lint from top directory which will also lint the gen/ directory and all exercises.
+  if ! ./bin/golangci-lint run $LINT_OPTS; then
+    echo "please correct the 'golangci-lint' issues reported." >&2
+    exit 1
+  fi
+  exit 0
+fi
+
 # This is the last command in the file,
 # so the exit status of this script is the exit status of go test.
 # If this ever changes, remember to preserve the exit status accordingly.

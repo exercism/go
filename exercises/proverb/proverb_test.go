@@ -9,8 +9,10 @@ func TestProverb(t *testing.T) {
 	for _, test := range stringTestCases {
 		actual := Proverb(test.input)
 		if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", test.expected) {
-			t.Fatalf("Proverb test [%s], expected [%s], actual [%s]", test.input, test.expected, actual)
+			t.Fatalf("FAIL %s - Proverb test [%s]\n\texpected: [%s],\n\tactual:   [%s]",
+				test.description, test.input, test.expected, actual)
 		}
+		t.Logf("PASS %s", test.description)
 	}
 }
 

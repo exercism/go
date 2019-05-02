@@ -33,42 +33,62 @@ func Score(dice []int, category string) int {
 	case "ones", "twos", "threes", "fours", "fives", "sixes":
 		return scoreN(dice, diceValueMap[category])
 	case "full house":
-		//Note, a yacht scores zero as a full house
-		if dice[0] == dice[1] && dice[2] == dice[3] && dice[3] == dice[4] && dice[1] != dice[2] {
-			return scoreAll(dice)
-		}
-		if dice[0] == dice[1] && dice[1] == dice[2] && dice[3] == dice[4] && dice[2] != dice[3] {
-			return scoreAll(dice)
-		}
-		return 0
+		return fullHouseScore(dice)
 	case "four of a kind":
-		//Note, a yacht can score as four of a kind, but only 4 dice are counted
-		if dice[0] == dice[1] && dice[1] == dice[2] && dice[2] == dice[3] {
-			return dice[0] * 4
-		}
-		if dice[1] == dice[2] && dice[2] == dice[3] && dice[3] == dice[4] {
-			return dice[1] * 4
-		}
-		return 0
+		return fourOfaKindScore(dice)
 	case "little straight":
-		if dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4 && dice[4] == 5 {
-			return 30
-		}
-		return 0
+		return littleStraightScore(dice)
 	case "big straight":
-		if dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5 && dice[4] == 6 {
-			return 30
-		}
-		return 0
+		return bigStraightScore(dice)
 	case "choice":
 		return scoreAll(dice)
 	case "yacht":
-		if dice[0] == dice[1] && dice[1] == dice[2] && dice[2] == dice[3] && dice[3] == dice[4] {
-			return 50
-		}
-		return 0
+		return yachtScore(dice)
 	default:
 		//This can't happen, so panic is appropriate
 		panic("Unknown category")
 	}
+}
+
+func fullHouseScore(dice []int) int {
+	//Note, a yacht scores zero as a full house
+	if dice[0] == dice[1] && dice[2] == dice[3] && dice[3] == dice[4] && dice[1] != dice[2] {
+		return scoreAll(dice)
+	}
+	if dice[0] == dice[1] && dice[1] == dice[2] && dice[3] == dice[4] && dice[2] != dice[3] {
+		return scoreAll(dice)
+	}
+	return 0
+}
+
+func fourOfaKindScore(dice []int) int {
+	//Note, a yacht can score as four of a kind, but only 4 dice are counted
+	if dice[0] == dice[1] && dice[1] == dice[2] && dice[2] == dice[3] {
+		return dice[0] * 4
+	}
+	if dice[1] == dice[2] && dice[2] == dice[3] && dice[3] == dice[4] {
+		return dice[1] * 4
+	}
+	return 0
+}
+
+func littleStraightScore(dice []int) int {
+	if dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4 && dice[4] == 5 {
+		return 30
+	}
+	return 0
+}
+
+func bigStraightScore(dice []int) int {
+	if dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5 && dice[4] == 6 {
+		return 30
+	}
+	return 0
+}
+
+func yachtScore(dice []int) int {
+	if dice[0] == dice[1] && dice[1] == dice[2] && dice[2] == dice[3] && dice[3] == dice[4] {
+		return 50
+	}
+	return 0
 }

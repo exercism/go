@@ -14,8 +14,7 @@ const (
 type step int
 
 const (
-	none step = iota
-	emptyOne
+	emptyOne step = iota
 	emptyTwo
 	fillOne
 	fillTwo
