@@ -1,8 +1,8 @@
 package scale
 
 // Source: exercism/problem-specifications
-// Commit: 1b1c0e4 scale generator: Add canonical data (#1156)
-// Problem Specifications Version: 1.0.0
+// Commit: 65cc51b Update scale-generator version to 2.0.0
+// Problem Specifications Version: 2.0.0
 
 type scaleTest struct {
 	description string

@@ -1,8 +1,8 @@
 package phonenumber
 
 // Source: exercism/problem-specifications
-// Commit: fc57696 Phone-Number: Resolve inconsistencies in error messages. (#1361)
-// Problem Specifications Version: 1.6.1
+// Commit: 435b472 phone-number: improve error message for letters
+// Problem Specifications Version: 1.7.0
 
 // Cleanup user-entered phone numbers
 var numberTests = []struct {
@@ -71,7 +71,7 @@ var numberTests = []struct {
 		description:      "invalid with letters",
 		input:            "123-abc-7890",
 		expectErr:        true,
-		errorDescription: "alphanumerics not permitted",
+		errorDescription: "letters not permitted",
 	},
 	{
 		description:      "invalid with punctuations",

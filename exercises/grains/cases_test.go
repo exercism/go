@@ -1,8 +1,8 @@
 package grains
 
 // Source: exercism/problem-specifications
-// Commit: f079c2d grains: Move input (square) to input object (#1191)
-// Problem Specifications Version: 1.1.0
+// Commit: 2ec42ab Grains: Fixed canonical data to have standard error indicator (#1322)
+// Problem Specifications Version: 1.2.0
 
 // returns the number of grains on the square
 var squareTests = []struct {

@@ -1,8 +1,8 @@
 package acronym
 
 // Source: exercism/problem-specifications
-// Commit: 2e46654b Acronym: New test case for apostrophe (#1377)
-// Problem Specifications Version: 1.6.0
+// Commit: cacf1f1 Acronym: add underscore test case (#1436)
+// Problem Specifications Version: 1.7.0
 
 type acronymTest struct {
 	input    string
@@ -41,5 +41,9 @@ var stringTestCases = []acronymTest{
 	{
 		input:    "Halley's Comet",
 		expected: "HC",
+	},
+	{
+		input:    "The Road _Not_ Taken",
+		expected: "TRNT",
 	},
 }

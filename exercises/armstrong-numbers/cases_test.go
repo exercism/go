@@ -1,14 +1,19 @@
 package armstrong
 
 // Source: exercism/problem-specifications
-// Commit: 5c3baae armstrong-numbers: new exercise (#1018)
-// Problem Specifications Version: 1.0.0
+// Commit: b3c2522 armstrong-numbers: Zero is an Armstrong number and requires specific testing (#1505)
+// Problem Specifications Version: 1.1.0
 
 var testCases = []struct {
 	description string
 	input       int
 	expected    bool
 }{
+	{
+		description: "Zero is an Armstrong number",
+		input:       0,
+		expected:    true,
+	},
 	{
 		description: "Single digit numbers are Armstrong numbers",
 		input:       5,

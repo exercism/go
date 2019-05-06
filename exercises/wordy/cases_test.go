@@ -1,8 +1,8 @@
 package wordy
 
 // Source: exercism/problem-specifications
-// Commit: df75482 wordy: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 51c9b0b wordy: Test question `What is?` because it's too short
+// Problem Specifications Version: 1.5.0
 
 type wordyTest struct {
 	description string
@@ -12,6 +12,12 @@ type wordyTest struct {
 }
 
 var tests = []wordyTest{
+	{
+		"just a number",
+		"What is 5?",
+		true,
+		5,
+	},
 	{
 		"addition",
 		"What is 1 plus 1?",
@@ -105,6 +111,42 @@ var tests = []wordyTest{
 	{
 		"Non math question",
 		"Who is the President of the United States?",
+		false,
+		0,
+	},
+	{
+		"reject problem missing an operand",
+		"What is 1 plus?",
+		false,
+		0,
+	},
+	{
+		"reject problem with no operands or operators",
+		"What is?",
+		false,
+		0,
+	},
+	{
+		"reject two operations in a row",
+		"What is 1 plus plus 2?",
+		false,
+		0,
+	},
+	{
+		"reject two numbers in a row",
+		"What is 1 plus 2 1?",
+		false,
+		0,
+	},
+	{
+		"reject postfix notation",
+		"What is 1 2 plus?",
+		false,
+		0,
+	},
+	{
+		"reject prefix notation",
+		"What is plus 1 2?",
 		false,
 		0,
 	},

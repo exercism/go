@@ -1,8 +1,8 @@
 package change
 
 // Source: exercism/problem-specifications
-// Commit: 044d09a change: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 258c807 change: Use error object instead of sentinel -1 (#1340)
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description    string

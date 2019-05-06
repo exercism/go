@@ -1,8 +1,8 @@
 package isogram
 
 // Source: exercism/problem-specifications
-// Commit: 7cea153 isogram: add test case with same first and last character (#1308)
-// Problem Specifications Version: 1.6.0
+// Commit: 74869e8 isogram: Add test case for dupe after non-letter (fixes #1390)
+// Problem Specifications Version: 1.7.0
 
 var testCases = []struct {
 	description string
@@ -48,6 +48,11 @@ var testCases = []struct {
 		description: "hypothetical isogrammic word with hyphen",
 		input:       "thumbscrew-japingly",
 		expected:    true,
+	},
+	{
+		description: "hypothetical word with duplicated character following hyphen",
+		input:       "thumbscrew-jappingly",
+		expected:    false,
 	},
 	{
 		description: "isogram with duplicated hyphen",

@@ -1,8 +1,8 @@
 package pangram
 
 // Source: exercism/problem-specifications
-// Commit: c319f15 pangram: Apply new "input" policy
-// Problem Specifications Version: 1.4.0
+// Commit: 2c020bc Fix typo
+// Problem Specifications Version: 1.4.1
 
 var testCases = []struct {
 	description string

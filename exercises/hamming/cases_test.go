@@ -1,8 +1,8 @@
 package hamming
 
 // Source: exercism/problem-specifications
-// Commit: 4c453c8 hamming: remove redundant test cases
-// Problem Specifications Version: 2.2.0
+// Commit: 4119671 Hamming: Add a tests to avoid wrong recursion solution (#1450)
+// Problem Specifications Version: 2.3.0
 
 var testCases = []struct {
 	s1          string
@@ -49,6 +49,18 @@ var testCases = []struct {
 	{ // disallow second strand longer
 		"ATA",
 		"AGTG",
+		0,
+		true,
+	},
+	{ // disallow left empty strand
+		"",
+		"G",
+		0,
+		true,
+	},
+	{ // disallow right empty strand
+		"G",
+		"",
 		0,
 		true,
 	},
