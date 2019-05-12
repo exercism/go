@@ -1,8 +1,8 @@
 package forth
 
 // Source: exercism/problem-specifications
-// Commit: 5ba35c7 forth: add mention of 'error' to comment
-// Problem Specifications Version: 1.7.0
+// Commit: 75f4c0a Corrected minor typos in the error msg expectation (doesn't match other similar error patterns and so breaks auto generated tests)
+// Problem Specifications Version: 1.7.1
 
 type testGroup struct {
 	group string

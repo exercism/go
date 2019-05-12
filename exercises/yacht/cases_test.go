@@ -1,8 +1,8 @@
 package yacht
 
 // Source: exercism/problem-specifications
-// Commit: 6eb19d2 yacht: Add "Four of a kind is not a full house" test case (#1232)
-// Problem Specifications Version: 1.1.0
+// Commit: 69f0783 yacht: Add "No pairs but not a big straight" test case (#1508)
+// Problem Specifications Version: 1.2.0
 
 var testCases = []struct {
 	description string
@@ -158,6 +158,12 @@ var testCases = []struct {
 		description: "Big Straight as little straight",
 		dice:        []int{6, 5, 4, 3, 2},
 		category:    "little straight",
+		expected:    0,
+	},
+	{
+		description: "No pairs but not a big straight",
+		dice:        []int{6, 5, 4, 3, 1},
+		category:    "big straight",
 		expected:    0,
 	},
 	{

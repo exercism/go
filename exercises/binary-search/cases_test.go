@@ -1,8 +1,8 @@
 package binarysearch
 
 // Source: exercism/problem-specifications
-// Commit: e0ffb00 binary-search: Use error object instead of sentinel -1 (#1338)
-// Problem Specifications Version: 1.2.0
+// Commit: bfb218f binary-search: test description tweak
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description string
@@ -61,23 +61,30 @@ var testCases = []struct {
 		err:         "value not in array",
 	},
 	{
-		description: "a value smaller than the array's smallest value is not included",
+		description: "a value smaller than the array's smallest value is not found",
 		slice:       []int{1, 3, 4, 6, 8, 9, 11},
 		key:         0,
 		x:           -1,
 		err:         "value not in array",
 	},
 	{
-		description: "a value larger than the array's largest value is not included",
+		description: "a value larger than the array's largest value is not found",
 		slice:       []int{1, 3, 4, 6, 8, 9, 11},
 		key:         13,
 		x:           -1,
 		err:         "value not in array",
 	},
 	{
-		description: "nothing is included in an empty array",
+		description: "nothing is found in an empty array",
 		slice:       []int{},
 		key:         1,
+		x:           -1,
+		err:         "value not in array",
+	},
+	{
+		description: "nothing is found when the left and right bounds cross",
+		slice:       []int{1, 2},
+		key:         0,
 		x:           -1,
 		err:         "value not in array",
 	},

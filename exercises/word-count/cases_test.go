@@ -1,8 +1,8 @@
 package wordcount
 
 // Source: exercism/problem-specifications
-// Commit: 77623ec word-count: Use camel-case for property name word-count: remove newline from eof
-// Problem Specifications Version: 1.2.0
+// Commit: d793398 word-count: check counting of empty words (#1446)
+// Problem Specifications Version: 1.3.0
 
 var testCases = []struct {
 	description string
@@ -63,5 +63,10 @@ var testCases = []struct {
 		"multiple spaces not detected as a word",
 		" multiple   whitespaces",
 		Frequency{"multiple": 1, "whitespaces": 1},
+	},
+	{
+		"alternating word separators not detected as a word",
+		",\n,one,\n ,two \n 'three'",
+		Frequency{"one": 1, "three": 1, "two": 1},
 	},
 }
