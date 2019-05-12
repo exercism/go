@@ -13,7 +13,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j js
-	if err := gen.Gen("bracket-push", &j, t); err != nil {
+	if err := gen.Gen("matching-brackets", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
