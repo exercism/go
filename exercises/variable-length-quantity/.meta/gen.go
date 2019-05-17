@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"text/template"
 
@@ -47,7 +48,31 @@ type OneCase struct {
 	Input       struct {
 		Integers []uint32 // supports both []byte and []uint32 in JSON.
 	}
-	Expected []uint32 // supports []byte, []uint32, or null in JSON.
+	Expected ExpectedType // can be {"error": "message"} or [x,y,z]
+}
+
+type ExpectedType struct {
+	ValueSlice     []uint32
+	ValueErrorFlag bool
+}
+
+func (e *ExpectedType) UnmarshalJSON(b []byte) error {
+	if b[0] == '[' {
+		var values []uint32
+		if err := json.Unmarshal(b, &values); err != nil {
+			return err
+		}
+		e.ValueSlice = values
+		e.ValueErrorFlag = false
+	} else {
+		var s map[string]string
+		if err := json.Unmarshal(b, &s); err != nil {
+			return err
+		}
+		e.ValueSlice = []uint32{}
+		e.ValueErrorFlag = true
+	}
+	return nil
 }
 
 // PropertyMatch returns true when given test case c has .Property field matching property;
@@ -88,20 +113,22 @@ var encodeTestCases = []struct {
 	{{if .PropertyMatch "encode"}} {
 		{{printf "%q" .Description}},
 		{{printf "%#v" .Input.Integers }},
-		{{byteSlice .Expected | printf "%#v" }},
+		{{byteSlice .Expected.ValueSlice | printf "%#v" }},
 	},{{- end}}{{end}}{{end}}
 }
 
 // {{GroupComment .J.Groups "decode"}}
 var decodeTestCases = []struct {
 	description string
-	input	[]byte
-	output	[]uint32 // nil slice indicates error expected.
+	input			[]byte
+	output			[]uint32 // nil slice indicates error expected.
+	errorExpected	bool
 }{ {{range .J.Groups}} {{range .Cases}}
 	{{if .PropertyMatch "decode"}} {
 		{{printf "%q" .Description}},
 		{{byteSlice .Input.Integers | printf "%#v" }},
-		{{printf "%#v" .Expected }},
+		{{printf "%#v" .Expected.ValueSlice }},
+		{{printf "%#v" .Expected.ValueErrorFlag }},
 	},{{- end}}{{end}}{{end}}
 }
 `
