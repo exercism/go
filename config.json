@@ -553,7 +553,7 @@
       ]
     },
     {
-      "slug": "bracket-push",
+      "slug": "matching-brackets",
       "uuid": "6c2499f7-d42c-4d0f-9680-f5f7650023ff",
       "core": false,
       "unlocked_by": "tree-building",

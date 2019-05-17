@@ -1,8 +1,8 @@
 package brackets
 
 // Source: exercism/problem-specifications
-// Commit: 20dd1648 bracket-push: Add test case v1.5.0
-// Problem Specifications Version: 1.5.0
+// Commit: 51418ec bracket-push: rename to matching-brackets (#1501)
+// Problem Specifications Version: 2.0.0
 
 type bracketTest struct {
 	input    string
