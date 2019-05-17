@@ -7,7 +7,7 @@ import (
 
 func TestReverse(t *testing.T) {
 	for _, testCase := range append(testCases, multiByteCases...) {
-		if res := String(testCase.input); res != testCase.expected {
+		if res := Reverse(testCase.input); res != testCase.expected {
 			t.Fatalf("FAIL: %s(%s)\nExpected: %q\nActual: %q",
 				testCase.description, testCase.input, testCase.expected, res)
 		}
@@ -17,7 +17,7 @@ func TestReverse(t *testing.T) {
 
 func TestReverseOfReverse(t *testing.T) {
 	assertion := func(s string) bool {
-		return s == String(String(s))
+		return s == Reverse(Reverse(s))
 	}
 	if err := quick.Check(assertion, nil); err != nil {
 		t.Fatal(err)
@@ -27,7 +27,7 @@ func TestReverseOfReverse(t *testing.T) {
 func BenchmarkReverse(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, test := range testCases {
-			String(test.input)
+			Reverse(test.input)
 		}
 	}
 }
