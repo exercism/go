@@ -1,8 +1,8 @@
 package reverse
 
 // Source: exercism/problem-specifications
-// Commit: 2f77985 reverse-string: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 6c95c2e reverse-string: Add a test with an even-sized word (#1519)
+// Problem Specifications Version: 1.2.0
 
 type reverseTestCase struct {
 	description string
@@ -35,5 +35,10 @@ var testCases = []reverseTestCase{
 		description: "a palindrome",
 		input:       "racecar",
 		expected:    "racecar",
+	},
+	{
+		description: "an even-sized word",
+		input:       "drawer",
+		expected:    "reward",
 	},
 }
