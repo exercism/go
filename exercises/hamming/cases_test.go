@@ -64,4 +64,10 @@ var testCases = []struct {
 		0,
 		true,
 	},
+	{ // check for runes
+		"èà",
+		"èò",
+		1,
+		true,
+	},
 }
