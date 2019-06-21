@@ -60,6 +60,11 @@ var testCases = []struct {
 		expected:    true,
 	},
 	{
+		description: "isogram with duplicated hyphen and duplicated character",
+		input:       "six-years-old",
+		expected:    false,
+	},
+	{
 		description: "made-up name that is an isogram",
 		input:       "Emily Jung Schwartzkopf",
 		expected:    true,
