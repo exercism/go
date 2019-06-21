@@ -1,8 +1,8 @@
 package luhn
 
 // Source: exercism/problem-specifications
-// Commit: d7fdadc Luhn: Add a test with an odd number of spaces (#1500)
-// Problem Specifications Version: 1.6.0
+// Commit: f375a46 luhn: Update non-ASCII test case
+// Problem Specifications Version: 1.6.1
 
 var testCases = []struct {
 	description string
@@ -66,7 +66,7 @@ var testCases = []struct {
 	},
 	{
 		"valid strings with symbols included become invalid",
-		"055£ 444$ 285",
+		"055# 444$ 285",
 		false,
 	},
 	{
