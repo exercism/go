@@ -1,8 +1,8 @@
 package darts
 
 // Source: exercism/problem-specifications
-// Commit: efcb2c8 Darts: Flatten sub-cases to single level - to simplify code generation (#1510)
-// Problem Specifications Version: 2.0.0
+// Commit: 212baa3 [Darts] Slim down generated method names (#1530)
+// Problem Specifications Version: 2.2.0
 
 var testCases = []struct {
 	description string
@@ -11,63 +11,81 @@ var testCases = []struct {
 	expected    int
 }{
 	{
-		description: "A dart lands outside the target",
+		description: "Missed target",
 		x:           -9.0,
 		y:           9.0,
 		expected:    0,
 	},
 	{
-		description: "A dart lands just in the border of the target",
+		description: "On the outer circle",
 		x:           0.0,
 		y:           10.0,
 		expected:    1,
 	},
 	{
-		description: "A dart lands in the outer circle",
-		x:           4.0,
-		y:           4.0,
-		expected:    1,
-	},
-	{
-		description: "A dart lands right in the border between outer and middle circles",
-		x:           5.0,
+		description: "On the middle circle",
+		x:           -5.0,
 		y:           0.0,
 		expected:    5,
 	},
 	{
-		description: "A dart lands in the middle circle",
-		x:           0.8,
-		y:           -0.8,
-		expected:    5,
-	},
-	{
-		description: "A dart lands right in the border between middle and inner circles",
+		description: "On the inner circle",
 		x:           0.0,
 		y:           -1.0,
 		expected:    10,
 	},
 	{
-		description: "A dart lands in the inner circle",
+		description: "Exactly on centre",
+		x:           0.0,
+		y:           0.0,
+		expected:    10,
+	},
+	{
+		description: "Near the centre",
 		x:           -0.1,
 		y:           -0.1,
 		expected:    10,
 	},
 	{
-		description: "A dart whose coordinates sum to > 1 but whose radius to origin is <= 1 is scored in the inner circle",
-		x:           0.4,
-		y:           0.8,
+		description: "Just within the inner circle",
+		x:           0.7,
+		y:           0.7,
 		expected:    10,
 	},
 	{
-		description: "A dart whose coordinates sum to > 5 but whose radius to origin is <= 5 is scored in the middle circle",
-		x:           2.0,
-		y:           4.0,
+		description: "Just outside the inner circle",
+		x:           0.8,
+		y:           -0.8,
 		expected:    5,
 	},
 	{
-		description: "A dart whose coordinates sum to > 10 but whose radius to origin is <= 10 is scored in the outer circle",
-		x:           4.0,
-		y:           8.0,
+		description: "Just within the middle circle",
+		x:           -3.5,
+		y:           3.5,
+		expected:    5,
+	},
+	{
+		description: "Just outside the middle circle",
+		x:           -3.6,
+		y:           -3.6,
 		expected:    1,
+	},
+	{
+		description: "Just within the outer circle",
+		x:           -7.0,
+		y:           7.0,
+		expected:    1,
+	},
+	{
+		description: "Just outside the outer circle",
+		x:           7.1,
+		y:           -7.1,
+		expected:    0,
+	},
+	{
+		description: "Asymmetric position between the inner and middle circles",
+		x:           0.5,
+		y:           -4.0,
+		expected:    5,
 	},
 }
