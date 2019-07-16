@@ -6,11 +6,12 @@ import (
 
 func TestScore(t *testing.T) {
 	for _, tc := range testCases {
-		actual := Score(tc.x, tc.y)
-		if actual != tc.expected {
-			t.Fatalf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Score(tc.x, tc.y)
+			if actual != tc.expected {
+				t.Errorf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
+			}
+		})
 	}
 }
 
