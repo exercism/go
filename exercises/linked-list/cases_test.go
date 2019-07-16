@@ -101,7 +101,7 @@ var pushPopTestCases = []struct {
 			popFront(2, nil),
 			popFront(3, nil),
 			popFront(4, nil),
-			popFront(0, ErrEmptyList),
+			popFront(nil, ErrEmptyList),
 		},
 		expected: []interface{}{},
 	},
@@ -122,7 +122,7 @@ var pushPopTestCases = []struct {
 			popBack(3, nil),
 			popBack(2, nil),
 			popBack(1, nil),
-			popBack(0, ErrEmptyList),
+			popBack(nil, ErrEmptyList),
 		},
 		expected: []interface{}{},
 	},
@@ -136,8 +136,8 @@ var pushPopTestCases = []struct {
 			popFront(2, nil),
 			popBack(4, nil),
 			popBack(3, nil),
-			popBack(0, ErrEmptyList),
-			popFront(0, ErrEmptyList),
+			popBack(nil, ErrEmptyList),
+			popFront(nil, ErrEmptyList),
 			pushFront(8),
 			pushBack(7),
 			pushFront(9),
@@ -169,7 +169,7 @@ func popFront(expected interface{}, expectedErr error) checkedAction {
 			t.Errorf("PopFront() returned wrong, expected no error, got= %v", err)
 		}
 
-		if v != expected {
+		if expectedErr == nil && v != expected {
 			t.Errorf("PopFront() returned wrong, expected= %v, got= %v", expected, v)
 		}
 	}
@@ -182,7 +182,7 @@ func popBack(expected interface{}, expectedErr error) checkedAction {
 			t.Errorf("PopBack() returned wrong, expected no error, got= %v", err)
 		}
 
-		if v != expected {
+		if expectedErr == nil && v != expected {
 			t.Errorf("PopBack() returned wrong, expected= %v, got= %v", expected, v)
 		}
 	}

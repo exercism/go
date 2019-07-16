@@ -173,7 +173,7 @@ func (ll *List) PopFront() (interface{}, error) {
 	default:
 		panic("bad PopFront implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
-		return 0, ErrEmptyList
+		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
 		v := ll.head.Val
 		ll.head = nil
@@ -195,7 +195,7 @@ func (ll *List) PopBack() (interface{}, error) {
 	default:
 		panic("bad PopBack implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
-		return 0, ErrEmptyList
+		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.tail.prev == nil: // 1 element
 		v := ll.tail.Val
 		ll.head = nil
