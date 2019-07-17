@@ -69,35 +69,47 @@ var tmpl = `package clock
 {{range .J.Groups}}
 	// {{ .Description }}
 
-	{{- if .CreateCases }}
-		var timeTests = []struct {
+{{- if .CreateCases }}
+	var timeTests = []struct {
+			n string
 			h, m int
 			want string
 		}{
 			{{- range .CreateCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+				{
+				  {{ printf "%q" .Description }},
+				  {{.Input.Hour}}, {{.Input.Minute}}, {{.Expected | printf "%#v"}},
+				},
 			{{- end }}
 		}
 	{{- end }}
 
 	{{- if .AddCases }}
 		var {{ .GroupShortName }}Tests = []struct {
+			n string
 			h, m, a int
 			want string
 		}{
 			{{- range .AddCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+				{
+				  {{ printf "%q" .Description}},
+				  {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}},
+				 },
 			{{- end }}
 		}
 	{{- end }}
 
 	{{- if .SubtractCases }}
 		var {{ .GroupShortName }}Tests = []struct {
+			n string
 			h, m, a int
 			want string
 		}{
 			{{- range .SubtractCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
+			    {
+				  {{ printf "%q" .Description}},
+				  {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}},
+				},
 			{{- end }}
 		}
 	{{- end }}
@@ -105,12 +117,13 @@ var tmpl = `package clock
 	{{- if .EqCases }}
 		type hm struct{ h, m int }
 		var eqTests = []struct {
+			n string
 			c1, c2 hm
 			want   bool
 		}{
 			{{- range .EqCases }}
-				// {{.Description}}
 				{
+				  {{ printf "%q" .Description}},
 					hm{ {{.Input.Clock1.Hour}}, {{.Input.Clock1.Minute}}},
 					hm{ {{.Input.Clock2.Hour}}, {{.Input.Clock2.Minute}}},
 					{{.Expected}},
