@@ -9,7 +9,8 @@ func TestScore(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Score(tc.x, tc.y)
 			if actual != tc.expected {
-				t.Errorf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
+				t.Errorf("Score(%#v, %#v) = %#v, want: %#v",
+					tc.x, tc.y, actual, tc.expected)
 			}
 		})
 	}
