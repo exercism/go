@@ -50,9 +50,9 @@ func Verse(i int) string {
 }
 
 func Song() string {
-	var song []string
+	var song = make([]string, 12)
 	for i := 1; i <= 12; i++ {
-		song = append(song, Verse(i))
+		song[i-1] = Verse(i)
 	}
 	return strings.Join(song, "\n")
 }
