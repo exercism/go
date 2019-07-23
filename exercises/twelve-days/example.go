@@ -2,6 +2,7 @@ package twelve
 
 import (
 	"fmt"
+	"strings"
 )
 
 var verse = map[string]string{
@@ -49,9 +50,9 @@ func Verse(i int) string {
 }
 
 func Song() string {
-	var song = ""
+	var song = make([]string, 12)
 	for i := 1; i <= 12; i++ {
-		song += Verse(i) + "\n"
+		song[i-1] = Verse(i)
 	}
-	return song
+	return strings.Join(song, "\n")
 }
