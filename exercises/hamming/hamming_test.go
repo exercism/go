@@ -15,16 +15,16 @@ func TestHamming(t *testing.T) {
 					tc.s1, tc.s2)
 			}
 		} else {
-			if got != tc.want {
-				t.Fatalf("Distance(%q, %q) = %d, want %d.",
-					tc.s1, tc.s2, got, tc.want)
-			}
-
 			// we do not expect error
 			if err != nil {
 				t.Fatalf("Distance(%q, %q) returned unexpected error: %v",
 					tc.s1, tc.s2, err)
 			}
+			if got != tc.want {
+				t.Fatalf("Distance(%q, %q) = %d, want %d.",
+					tc.s1, tc.s2, got, tc.want)
+			}
+
 		}
 	}
 }
