@@ -1,19 +1,19 @@
 // API:
 //
-// type Element struct
+// type Node struct
 // type List struct
 // var ErrEmptyList
 //
-// func (e *Element) Next() *Element
-// func (e *Element) Prev() *Element
+// func (e *Node) Next() *Node
+// func (e *Node) Prev() *Node
 // func NewList(args ...interface{}) *List
 // func (l *List) PushFront(v interface{})
 // func (l *List) PushBack(v interface{})
 // func (l *List) PopFront() (interface{}, error)
 // func (l *List) PopBack() (interface{}, error)
 // func (l *List) Reverse() *List
-// func (l *List) First() *Element
-// func (l *List) Last() *Element
+// func (l *List) First() *Node
+// func (l *List) Last() *Node
 package linkedlist
 
 import (

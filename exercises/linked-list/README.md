@@ -26,12 +26,13 @@ Your `Node` should have the following fields and functions:
 
 Your `List` should have the following fields and functions:
 
+* `NewList(args ...interface{}) *List`: creates a new linked list preserving the order of the values.
 * `First()`: pointer to the first node (head).
 * `Last()`: pointer to the last node (tail).
 * `PushBack(v interface{})`: insert value at back.
 * `PopBack() (interface{}, error)`: remove value at back.
-* `PushFront(v interface{}) `: remove value at front.
-* `PopFront() (interface{}, error)`: insert value at front.
+* `PushFront(v interface{}) `: insert value at front.
+* `PopFront() (interface{}, error)`: remove value at front.
 * `Reverse()`: reverse the linked list.
 
 Instead of not covering error conditions, like calling `PopBack` or `PopFront` on an empty list,
