@@ -26,6 +26,7 @@ Your `Node` should have the following fields and functions:
 
 Your `List` should have the following fields and functions:
 
+* `NewList(args ...interface{}) *List`: creates a new linked list preserving the order of the values.
 * `First()`: pointer to the first node (head).
 * `Last()`: pointer to the last node (tail).
 * `PushBack(v interface{})`: insert value at back.
