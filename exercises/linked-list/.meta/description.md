@@ -28,8 +28,8 @@ Your `List` should have the following fields and functions:
 * `Last()`: pointer to the last node (tail).
 * `PushBack(v interface{})`: insert value at back.
 * `PopBack() (interface{}, error)`: remove value at back.
-* `PushFront(v interface{}) `: remove value at front.
-* `PopFront() (interface{}, error)`: insert value at front.
+* `PushFront(v interface{}) `: insert value at front.
+* `PopFront() (interface{}, error)`: remove value at front.
 * `Reverse()`: reverse the linked list.
 
 Instead of not covering error conditions, like calling `PopBack` or `PopFront` on an empty list,
