@@ -93,7 +93,7 @@ func TestSubtractMinutesStringless(t *testing.T) {
 				a.h, a.m, a.a, got, want)
 		}
 	}
-	t.Log(len(addTests), "test cases")
+	t.Log(len(subtractTests), "test cases")
 }
 
 func TestCompareClocks(t *testing.T) {
