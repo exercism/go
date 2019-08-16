@@ -22,7 +22,7 @@ var periods = map[Planet]float64{
 	PlanetMars:    593542.944,
 	PlanetJupiter: 3743357.76,
 	PlanetSaturn:  9295966.08,
-	PlanetUranus:  26610418.08,
+	PlanetUranus:  26307031.65,
 	PlanetNeptune: 52004185.92,
 }
 
