@@ -70,3 +70,17 @@ func TestVerse(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkVerse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range testCases {
+			Verse(test.input)
+		}
+	}
+}
+
+func BenchmarkSong(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Song()
+	}
+}
