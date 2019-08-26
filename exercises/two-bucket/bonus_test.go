@@ -1,3 +1,4 @@
+
 // +build bonus
 
 package twobucket
@@ -13,13 +14,22 @@ var noSolutionCases = []bucketTestCase{
 		"No solution case 2",
 		3, 6, 1, "one", "", 0, 0, true,
 	},
-	{	"Adding Complexity",
-		3333333, 6666667, 1, "one", "one", 19999992, 6666667, false,
+}
+
+var bonusCases = []bucketTestCase{
+	{"Adding Complexity",
+		333333, 666667, 1, "one", "one", 1999992, 666667, false,
 	},
 }
 
-func TestSolve_bonus(t *testing.T) {
+func TestSolve_noSolution(t *testing.T) {
 	for _, tc := range noSolutionCases {
+		runTestCase(t, tc)
+	}
+}
+
+func TestSolve_bonus(t *testing.T) {
+	for _, tc := range bonusCases {
 		runTestCase(t, tc)
 	}
 }
