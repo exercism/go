@@ -7,9 +7,9 @@ import (
 )
 
 type board struct {
-	a []int
-	b []int
-	c []int
+	from []int
+	to   []int
+	via  []int
 }
 
 func TestTowerOfHanoi(t *testing.T) {
@@ -27,11 +27,11 @@ func testDisks(t *testing.T, disks int) error {
 	// create board
 	b := board{}
 	for i := disks; i > 0; i-- {
-		b.a = append(b.a, i) // push disks into rod A
+		b.from = append(b.from, i) // push disks into rod A
 	}
 
 	// get moves from solution
-	moves := Solve(disks, "a", "b", "c")
+	moves := Solve(disks, "from", "to", "via")
 
 	// apply moves to board
 	err := apply(t, disks, &b, moves)
@@ -40,14 +40,14 @@ func testDisks(t *testing.T, disks int) error {
 	}
 
 	// check board
-	if len(b.a) != 0 {
-		return fmt.Errorf("rod A has %d disks: %v", len(b.a), b.a)
+	if len(b.from) != 0 {
+		return fmt.Errorf("rod FROM has %d disks: %v", len(b.from), b.from)
 	}
-	if len(b.b) != 0 {
-		return fmt.Errorf("rod B has %d disks: %v", len(b.b), b.b)
+	if len(b.to) != disks {
+		return fmt.Errorf("rod TO has %d disks: %v", len(b.to), b.to)
 	}
-	if len(b.c) != disks {
-		return fmt.Errorf("rod C has %d disks: %v", len(b.c), b.c)
+	if len(b.via) != 0 {
+		return fmt.Errorf("rod VIA has %d disks: %v", len(b.via), b.via)
 	}
 
 	return nil
@@ -67,55 +67,55 @@ func apply(t *testing.T, disks int, b *board, moves []string) error {
 		}
 		var disk int
 		switch rod1 {
-		case "a":
-			if len(b.a) == 0 {
-				return fmt.Errorf("invalid move from empty rod A %d: [%s]", i, m)
+		case "from":
+			if len(b.from) == 0 {
+				return fmt.Errorf("invalid move from empty rod FROM %d: [%s]", i, m)
 			}
-			last := len(b.a) - 1
-			disk, b.a = b.a[last], b.a[:last]
-		case "b":
-			if len(b.b) == 0 {
-				return fmt.Errorf("invalid move from empty rod B %d: [%s]", i, m)
+			last := len(b.from) - 1
+			disk, b.from = b.from[last], b.from[:last]
+		case "to":
+			if len(b.to) == 0 {
+				return fmt.Errorf("invalid move from empty rod TO %d: [%s]", i, m)
 			}
-			last := len(b.b) - 1
-			disk, b.b = b.b[last], b.b[:last]
-		case "c":
-			if len(b.c) == 0 {
-				return fmt.Errorf("invalid move from empty rod C %d: [%s]", i, m)
+			last := len(b.to) - 1
+			disk, b.to = b.to[last], b.to[:last]
+		case "via":
+			if len(b.via) == 0 {
+				return fmt.Errorf("invalid move from empty rod VIA %d: [%s]", i, m)
 			}
-			last := len(b.c) - 1
-			disk, b.c = b.c[last], b.c[:last]
+			last := len(b.via) - 1
+			disk, b.via = b.via[last], b.via[:last]
 		default:
 			return fmt.Errorf("invalid source rod %d: [%s]", i, m)
 		}
 		switch rod2 {
-		case "a":
-			if len(b.a) > 0 {
-				last := len(b.a) - 1
-				top := b.a[last]
+		case "from":
+			if len(b.from) > 0 {
+				last := len(b.from) - 1
+				top := b.from[last]
 				if disk > top {
-					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod A %d: [%s]", disk, top, i, m)
+					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod FROM %d: [%s]", disk, top, i, m)
 				}
 			}
-			b.a = append(b.a, disk)
-		case "b":
-			if len(b.b) > 0 {
-				last := len(b.b) - 1
-				top := b.b[last]
+			b.from = append(b.from, disk)
+		case "to":
+			if len(b.to) > 0 {
+				last := len(b.to) - 1
+				top := b.to[last]
 				if disk > top {
-					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod A %d: [%s]", disk, top, i, m)
+					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod TO %d: [%s]", disk, top, i, m)
 				}
 			}
-			b.b = append(b.b, disk)
-		case "c":
-			if len(b.c) > 0 {
-				last := len(b.c) - 1
-				top := b.c[last]
+			b.to = append(b.to, disk)
+		case "via":
+			if len(b.via) > 0 {
+				last := len(b.via) - 1
+				top := b.via[last]
 				if disk > top {
-					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod A %d: [%s]", disk, top, i, m)
+					return fmt.Errorf("invalid move disk=%d is greater than top=%d of rod VIA %d: [%s]", disk, top, i, m)
 				}
 			}
-			b.c = append(b.c, disk)
+			b.via = append(b.via, disk)
 		default:
 			return fmt.Errorf("invalid destination rod %d: [%s]", i, m)
 		}

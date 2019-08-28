@@ -17,10 +17,10 @@ Example:
 Input:
 - number of disks: 2
 - source rod: "a"
-- helper rod: "b"
-- target rod: "c"
+- target rod: "b"
+- helper rod: "c"
 
-Output: {"a -> b", "a -> c", "b -> c"}
+Output: []string{"a -> c", "a -> b", "c -> b"}
 
 ## Running the tests
 
