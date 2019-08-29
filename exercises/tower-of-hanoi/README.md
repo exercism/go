@@ -10,17 +10,17 @@ The objective of the puzzle is to move the entire stack to another rod, obeying 
 - Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
 - No larger disk may be placed on top of a smaller disk.
 
-Your implementation will accept the amount of disks, the names for the three rods, then issue a list of moves for solving the puzzle.
+Your implementation will accept the amount of disks, IDs for the three rods, then issue a list of moves for solving the puzzle.
 
 Example:
 
 Input:
 - number of disks: 2
-- source rod: "a"
-- target rod: "b"
-- helper rod: "c"
+- source rod: 1
+- target rod: 2
+- helper rod: 3
 
-Output: []string{"a -> c", "a -> b", "c -> b"}
+Output: list of three moves: {1,3}, {1,2}, {3,2} 
 
 ## Running the tests
 
