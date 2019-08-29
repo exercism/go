@@ -1391,6 +1391,18 @@
       "difficulty": 0,
       "topics": null,
       "deprecated": true
+    },
+    {
+      "slug": "tower-of-hanoi",
+      "uuid": "ae946961-3929-4f79-8e22-1e65c983e57b",
+      "core": false,
+      "unlocked_by": "binary-search-tree",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "searching",
+        "recursion"
+      ]
     }
   ]
 }
