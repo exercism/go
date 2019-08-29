@@ -1396,7 +1396,7 @@
       "slug": "tower-of-hanoi",
       "uuid": "ae946961-3929-4f79-8e22-1e65c983e57b",
       "core": false,
-      "unlocked_by": "binary-search-tree",
+      "unlocked_by": "tree-building",
       "difficulty": 5,
       "topics": [
         "algorithms",
