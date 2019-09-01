@@ -53,6 +53,11 @@ And if we then added 1, 5, and 7, it would look like this
      / \     / \
     1   3   5   7
 
+## Coding the solution
+
+Look for a stub file having the name binary_search_tree.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

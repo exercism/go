@@ -28,6 +28,11 @@ On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, 
 On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
 ```
 
+## Coding the solution
+
+Look for a stub file having the name twelve_days.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

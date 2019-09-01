@@ -7,6 +7,11 @@ type, like a set. In this exercise you will define your own set. How it
 works internally doesn't matter, as long as it behaves like a set of
 unique elements.
 
+## Coding the solution
+
+Look for a stub file having the name custom_set.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

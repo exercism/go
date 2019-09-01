@@ -59,6 +59,11 @@ While asking for Bob's plants would yield:
 
 - Clover, grass, clover, clover
 
+## Coding the solution
+
+Look for a stub file having the name kindergarten_garden.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

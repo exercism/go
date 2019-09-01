@@ -13,9 +13,6 @@ on every year that is evenly divisible by 4
 For example, 1997 is not a leap year, but 1996 is.  1900 is not a leap
 year, but 2000 is.
 
-If your language provides a method in the standard library that does
-this look-up, pretend it doesn't exist and implement it yourself.
-
 ## Notes
 
 Though our exercise adopts some very simple rules, there is more to
@@ -41,6 +38,11 @@ file. The Go specific transformation of that data lives in the `cases_test.go` f
 [problem-specifications-leap-json]: https://github.com/exercism/problem-specifications/blob/master/exercises/leap/canonical-data.json
 [local-leap-gen]: https://github.com/exercism/go/blob/master/exercises/leap/.meta/gen.go
 
+
+## Coding the solution
+
+Look for a stub file having the name leap.go
+and place your solution code in that file.
 
 ## Running the tests
 

@@ -6,6 +6,11 @@ You should be able to add and subtract minutes to it.
 
 Two clocks that represent the same time should be equal to each other.
 
+## Coding the solution
+
+Look for a stub file having the name clock.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

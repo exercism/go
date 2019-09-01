@@ -34,6 +34,11 @@ excellent write up about it
 [here](https://splice.com/blog/iota-elegant-constants-golang/).
 
 
+## Coding the solution
+
+Look for a stub file having the name triangle.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

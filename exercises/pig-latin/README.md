@@ -17,6 +17,11 @@ variants too.
 
 See <http://en.wikipedia.org/wiki/Pig_latin> for more details.
 
+## Coding the solution
+
+Look for a stub file having the name pig_latin.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

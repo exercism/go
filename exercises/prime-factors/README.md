@@ -29,6 +29,11 @@ You can check this yourself:
 - = 60
 - Success!
 
+## Coding the solution
+
+Look for a stub file having the name prime_factors.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

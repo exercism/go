@@ -26,6 +26,11 @@ vertical and diagonal.
 Given a puzzle and a list of words return the location of the first and last
 letter of each word.
 
+## Coding the solution
+
+Look for a stub file having the name word_search.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

@@ -1,6 +1,6 @@
 # Scrabble Score
 
-Given a word, compute the scrabble score for that word.
+Given a word, compute the Scrabble score for that word.
 
 ## Letter Values
 
@@ -38,6 +38,11 @@ And to total:
 
 - You can play a double or a triple letter.
 - You can play a double or a triple word.
+
+## Coding the solution
+
+Look for a stub file having the name scrabble_score.go
+and place your solution code in that file.
 
 ## Running the tests
 

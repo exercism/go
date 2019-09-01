@@ -10,6 +10,11 @@ input: [1,[2,3,null,4],[null],5]
 
 output: [1,2,3,4,5]
 
+## Coding the solution
+
+Look for a stub file having the name flatten_array.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

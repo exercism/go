@@ -15,8 +15,7 @@ Your goal is to build a program that given a simple representation of a board
 computes the winner (or lack thereof). Note that all games need not be "fair".
 (For example, players may have mismatched piece counts.)
 
-The boards look like this (with spaces added for readability, which won't be in
-the representation passed to your code):
+The boards look like this:
 
 ```text
 . O . X .
@@ -29,6 +28,11 @@ the representation passed to your code):
 "Player `O`" plays from top to bottom, "Player `X`" plays from left to right. In
 the above example `O` has made a connection from left to right but nobody has
 won since `O` didn't connect top and bottom.
+
+## Coding the solution
+
+Look for a stub file having the name connect.go
+and place your solution code in that file.
 
 ## Running the tests
 

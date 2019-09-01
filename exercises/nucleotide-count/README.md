@@ -34,6 +34,11 @@ You may be wondering about the `cases_test.go` file. We explain it in the
 
 
 
+## Coding the solution
+
+Look for a stub file having the name nucleotide_count.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

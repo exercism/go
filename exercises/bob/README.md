@@ -2,9 +2,9 @@
 
 Bob is a lackadaisical teenager. In conversation, his responses are very limited.
 
-Bob answers 'Sure.' if you ask him a question.
+Bob answers 'Sure.' if you ask him a question, such as "How are you?".
 
-He answers 'Whoa, chill out!' if you yell at him.
+He answers 'Whoa, chill out!' if you YELL AT HIM (in all capitals).
 
 He answers 'Calm down, I know what I'm doing!' if you yell a question at him.
 
@@ -14,6 +14,11 @@ anything.
 He answers 'Whatever.' to anything else.
 
 Bob's conversational partner is a purist when it comes to written communication and always follows normal rules regarding sentence punctuation in English.
+
+## Coding the solution
+
+Look for a stub file having the name bob.go
+and place your solution code in that file.
 
 ## Running the tests
 

@@ -13,6 +13,11 @@ Examples of isograms:
 
 The word *isograms*, however, is not an isogram, because the s repeats.
 
+## Coding the solution
+
+Look for a stub file having the name isogram.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

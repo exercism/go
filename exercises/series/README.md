@@ -64,6 +64,11 @@ in Go. For example you see it in
 [type assertions](https://tour.golang.org/methods/15).
 
 
+## Coding the solution
+
+Look for a stub file having the name series.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

@@ -50,6 +50,11 @@ the buffer is once again full.
 
     [D][7][8][9][A][B][C]
 
+## Coding the solution
+
+Look for a stub file having the name circular_buffer.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

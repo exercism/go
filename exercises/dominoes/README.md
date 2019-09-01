@@ -4,8 +4,8 @@ Make a chain of dominoes.
 
 Compute a way to order a given set of dominoes in such a way that they form a
 correct domino chain (the dots on one half of a stone match the dots on the
-neighbouring half of an adjacent stone) and that dots on the halfs of the stones
-which don't have a neighbour (the first and last stone) match each other.
+neighbouring half of an adjacent stone) and that dots on the halves of the
+stones which don't have a neighbour (the first and last stone) match each other.
 
 For example given the stones `[2|1]`, `[2|3]` and `[1|3]` you should compute something
 like `[1|2] [2|3] [3|1]` or `[3|2] [2|1] [1|3]` or `[1|3] [3|2] [2|1]` etc, where the first and last numbers are the same.
@@ -44,6 +44,11 @@ Since there may be more than one legal chain arrangement for a given input list,
 when ok is true, the test program will check the chain for validity only.
 
 
+
+## Coding the solution
+
+Look for a stub file having the name dominoes.go
+and place your solution code in that file.
 
 ## Running the tests
 

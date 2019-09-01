@@ -78,6 +78,11 @@ Update your program to handle multiple numbers, one per line. When converting se
 
 Is converted to "123,456,789"
 
+## Coding the solution
+
+Look for a stub file having the name ocr_numbers.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

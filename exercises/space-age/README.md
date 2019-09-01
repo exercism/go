@@ -34,6 +34,11 @@ You will need to implement this custom type yourself.
 Implementing this new custom type as a string should suffice.
 
 
+## Coding the solution
+
+Look for a stub file having the name space_age.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

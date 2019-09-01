@@ -23,6 +23,11 @@ root (ID: 0, parent ID: 0)
 +-- child3 (ID: 5, parent ID: 0)
 ```
 
+## Coding the solution
+
+Look for a stub file having the name tree_building.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

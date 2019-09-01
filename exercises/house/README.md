@@ -105,6 +105,11 @@ that ate the malt
 that lay in the house that Jack built.
 ```
 
+## Coding the solution
+
+Look for a stub file having the name house.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

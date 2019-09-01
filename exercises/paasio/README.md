@@ -13,6 +13,11 @@ statistics. The wrapper must report:
 
 [PaaS]: http://en.wikipedia.org/wiki/Platform_as_a_service
 
+## Coding the solution
+
+Look for a stub file having the name paasio.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

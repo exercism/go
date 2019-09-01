@@ -48,6 +48,11 @@ interval, written "A", has two interceding notes (e.g., from A to C or
 Db to E). There are also smaller and larger intervals, but they will not
 figure into this exercise.
 
+## Coding the solution
+
+Look for a stub file having the name scale_generator.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

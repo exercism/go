@@ -60,6 +60,11 @@ support two operations:
 * `score() : int` is called only at the very end of the game.  It
   returns the total score for that game.
 
+## Coding the solution
+
+Look for a stub file having the name bowling.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

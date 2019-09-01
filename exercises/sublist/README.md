@@ -17,6 +17,11 @@ Examples:
  * A = [1, 2, 3, 4, 5], B = [2, 3, 4], A is a superlist of B
  * A = [1, 2, 4], B = [1, 2, 3, 4, 5], A is not a superlist of, sublist of or equal to B
 
+## Coding the solution
+
+Look for a stub file having the name sublist.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
