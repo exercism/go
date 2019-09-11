@@ -49,14 +49,8 @@ func testDisks(t *testing.T, disks int) error {
 	}
 
 	// check board
-	if len(b.from) != 0 {
-		return fmt.Errorf("rod FROM has %d disks: %v", len(b.from), b.from)
-	}
 	if len(b.to) != disks {
-		return fmt.Errorf("rod TO has %d disks: %v", len(b.to), b.to)
-	}
-	if len(b.via) != 0 {
-		return fmt.Errorf("rod VIA has %d disks: %v", len(b.via), b.via)
+		return fmt.Errorf("rod TO has %d disks, should have %d: %v", len(b.to), disks, b.to)
 	}
 
 	return nil
