@@ -14,9 +14,6 @@ package towerofhanoi
 // Example
 // Solve(1, 'A', 'B', 'C') could return a list with a single move:
 //  [][2]int{{'A', 'B'}} // move disk from rod 'A' to rod 'B'
-//
-// Hint: Use 'go test -v' to see the generated moves.
-//
 func Solve(disks, from, to, via int) [][2]int {
 
 	if disks < 1 {
