@@ -14,8 +14,8 @@ Example:
 
 Input:
 - number of disks: 2
-- source rod: 1
-- target rod: 2
-- helper rod: 3
+- source rod: A
+- target rod: B
+- helper rod: C
 
-Output: list of three moves: {1,3}, {1,2}, {3,2} 
+Output: list of three moves: {A,C}, {A,B}, {C,B} 
