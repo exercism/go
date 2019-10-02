@@ -2,6 +2,8 @@ package clock
 
 import (
 	"reflect"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -51,6 +53,44 @@ func TestSubtractMinutes(t *testing.T) {
 		if got := New(a.h, a.m).Subtract(a.a); got.String() != a.want {
 			t.Fatalf("New(%d, %d).Subtract(%d) = %q, want %q",
 				a.h, a.m, a.a, got, a.want)
+		}
+	}
+	t.Log(len(subtractTests), "test cases")
+}
+
+func TestAddMinutesStringless(t *testing.T) {
+	for _, a := range addTests {
+		var wantHour, wantMin int
+		split := strings.SplitN(a.want, ":", 2)
+		if len(split) > 0 {
+			wantHour, _ = strconv.Atoi(split[0])
+		}
+		if len(split) > 1 {
+			wantMin, _ = strconv.Atoi(split[1])
+		}
+		want := New(wantHour, wantMin)
+		if got := New(a.h, a.m).Add(a.a); !reflect.DeepEqual(got, want) {
+			t.Fatalf("New(%d, %d).Add(%d) = %v, want %v",
+				a.h, a.m, a.a, got, want)
+		}
+	}
+	t.Log(len(addTests), "test cases")
+}
+
+func TestSubtractMinutesStringless(t *testing.T) {
+	for _, a := range subtractTests {
+		var wantHour, wantMin int
+		split := strings.SplitN(a.want, ":", 2)
+		if len(split) > 0 {
+			wantHour, _ = strconv.Atoi(split[0])
+		}
+		if len(split) > 1 {
+			wantMin, _ = strconv.Atoi(split[1])
+		}
+		want := New(wantHour, wantMin)
+		if got := New(a.h, a.m).Subtract(a.a); !reflect.DeepEqual(got, want) {
+			t.Fatalf("New(%d, %d).Add(%d) = %v, want %v",
+				a.h, a.m, a.a, got, want)
 		}
 	}
 	t.Log(len(subtractTests), "test cases")
