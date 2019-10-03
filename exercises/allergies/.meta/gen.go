@@ -32,12 +32,10 @@ type testGroup struct {
 	AllergicToCases []struct {
 		Description string
 		Input       struct {
+			Item  string
 			Score uint
 		}
-		Expected []struct {
-			Substance string
-			Result    bool
-		}
+		Expected bool
 	} `property:"allergicTo"`
 	ListCases []struct {
 		Description string
@@ -52,41 +50,44 @@ var tmpl = `package allergies
 
 {{.Header}}
 
+type aTest struct {
+	description string
+	item string
+	score uint
+	expected bool
+}
+
+type lTest struct {
+	description string
+	score uint
+	expected []string
+}
+
+
+func getTests() ([]aTest,[]lTest) {
+
+	var allergicToTests []aTest
+	var listTests []lTest
+
 {{range .J.Groups}}
 	// {{ .Description }}
-
 	{{- if .AllergicToCases }}
-		type allergicResult struct{
-			substance string
-			result bool
-		}
-		var allergicToTests = []struct {
-			description string
-			score uint
-			expected []allergicResult
-		}{
+	allergicToTests = append(allergicToTests,
 			{{- range .AllergicToCases }}
-				{
+			aTest{
 					description: {{.Description | printf "%q"}},
+					item: {{.Input.Item | printf "%q" }},
 					score: {{.Input.Score}},
-					expected: []allergicResult{ {{range .Expected}}
-					  { {{.Substance | printf "%q"}}, {{.Result}} },{{end}}
-					},
-				},
+					expected: {{.Expected}},
+			},	
 			{{- end }}
-		}
-	{{- end }}
-
+	){{- end }}
 	{{- if .ListCases }}
-		var listTests = []struct {
-			description string
-			score uint
-			expected []string
-		}{
+		listTests = append(listTests,
 			{{- range .ListCases }}
-				{ {{.Description | printf "%q"}}, {{.Input.Score}}, {{.Expected | printf "%#v"}}},
+				lTest{ {{.Description | printf "%q"}}, {{.Input.Score}}, {{.Expected | printf "%#v"}}},
 			{{- end }}
-		}
-	{{- end }}
+		){{- end }}
 {{end}}
-`
+return allergicToTests,listTests
+}`
