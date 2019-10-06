@@ -1139,6 +1139,17 @@
       ]
     },
     {
+      "slug": "complex-numbers",
+      "uuid": "ef947390-7aa7-422c-8974-63dc5a7b52b2",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 8,
+      "topics": [
+        "floating_point_numbers",
+        "math"
+      ]
+    },
+    {
       "slug": "change",
       "uuid": "94a21509-ebd5-4a66-bb0e-0341e57e3c73",
       "core": false,
