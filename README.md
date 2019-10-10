@@ -137,7 +137,7 @@ an exercise is fetched. These are:
 * The *.meta* directory and anything within it.
 * Any file that matches the `ignore_pattern` defined in [config.json file](/config.json).
     This currently matches any filename that contains the word `example`, **unless**
-    it is followed by the word `test`, with any number of characters inbetween.
+    it is followed by the word `test`, with any number of characters in between.
 
 
 ### Example solutions
