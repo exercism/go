@@ -11,8 +11,8 @@ type SearchTreeData struct {
 	right *SearchTreeData
 }
 
-// Bst creates and returns a new SearchTreeData.
-func Bst(i int) SearchTreeData {
+// NewBst creates and returns a new SearchTreeData.
+func NewBst(i int) SearchTreeData {
 	// Write some code here to pass the test suite.
 	// Then remove all the stock comments.
 	// They're here to help you get started but they only clutter a finished solution.
