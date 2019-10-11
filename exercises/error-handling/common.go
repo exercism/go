@@ -3,7 +3,7 @@ package erratum
 import "io"
 
 // These are the support types and interface definitions used in the
-// implementation if your Use function. See the test suite file at
+// implementation of your Use function. See the test suite file at
 // for information on the expected implementation.
 //
 // Because this is part of the package "erratum", if your solution file
