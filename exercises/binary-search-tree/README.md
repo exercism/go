@@ -53,6 +53,11 @@ And if we then added 1, 5, and 7, it would look like this
      / \     / \
     1   3   5   7
 
+## Implementation
+
+There is a stub file named `binary_search_tree.go` that contains an explanation of the 
+functions and data types necessary to pass the test suite.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
