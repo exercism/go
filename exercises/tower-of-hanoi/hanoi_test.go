@@ -68,18 +68,18 @@ func rod(r int, rodLetter bool) string {
 	return fmt.Sprintf("%v", r)
 }
 
-func move(m [2]int, rodLetter bool) string {
+func move(m Move, rodLetter bool) string {
 	if rodLetter {
-		return fmt.Sprintf("[%c %c]", m[0], m[1])
+		return fmt.Sprintf("{%c %c}", m.from, m.to)
 	}
 	return fmt.Sprintf("%v", m)
 }
 
-func apply(t *testing.T, disks int, b *board, moves [][2]int, rodLetter bool) error {
+func apply(t *testing.T, disks int, b *board, moves []Move, rodLetter bool) error {
 	for i, m := range moves {
 		t.Logf("disks=%d move=%v before: %v", disks, move(m, rodLetter), *b)
-		rod1 := m[0]
-		rod2 := m[1]
+		rod1 := m.from
+		rod2 := m.to
 		if rod1 == rod2 {
 			return fmt.Errorf("invalid null move %d: %v", i, move(m, rodLetter))
 		}

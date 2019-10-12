@@ -9,7 +9,7 @@ package towerofhanoi
 // 'to' is the id for the destination rod.
 // 'via' is the id for the helper rod.
 //
-// A move is a [2]int value specifying source and destination rods.
+// A Move value specifies source and destination rods.
 //
 // Example
 //
@@ -23,8 +23,8 @@ package towerofhanoi
 // )
 //
 // Solve(1, A, B, C) could return a list with a single move:
-//  [][2]int{{A, B}} // move disk from rod A to rod B
-func Solve(disks, from, to, via int) [][2]int {
+//  []Move{{A, B}} // move disk from rod A to rod B
+func Solve(disks, from, to, via int) []Move {
 
 	if disks < 1 {
 		return nil // refuse less than 1 disk
@@ -34,10 +34,10 @@ func Solve(disks, from, to, via int) [][2]int {
 		return nil // refuse dup rods
 	}
 
-	fromTo := [2]int{from, to}
+	fromTo := Move{from, to}
 
 	if disks == 1 {
-		return [][2]int{fromTo} // single disk on rod FROM
+		return []Move{fromTo} // single disk on rod FROM
 	}
 
 	// freeze largest disk on rod FROM,
