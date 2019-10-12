@@ -1,6 +1,6 @@
 package towerofhanoi
 
-// This is an stub file. Remove this comment and
+// This is a stub file. Remove this comment and
 // implement the function Solve below.
 
 // Solve returns list of moves for solving the Tower of Hanoi puzzle.
