@@ -59,7 +59,7 @@ chunks with a single trailing space.
 ```
 
 Notice that were we to stack these, we could visually decode the
-cyphertext back in to the original message:
+ciphertext back in to the original message:
 
 ```text
 "imtgdvs"
@@ -71,6 +71,11 @@ cyphertext back in to the original message:
 "aohghn "
 "sseoau "
 ```
+
+## Coding the solution
+
+Look for a stub file having the name crypto_square.go
+and place your solution code in that file.
 
 ## Running the tests
 

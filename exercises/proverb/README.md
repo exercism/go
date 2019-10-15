@@ -16,6 +16,11 @@ And all for the want of a nail.
 
 Note that the list of inputs may vary; your solution should be able to handle lists of arbitrary length and content. No line of the output text should be a static, unchanging string; all should vary according to the input given.
 
+## Coding the solution
+
+Look for a stub file having the name proverb.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

@@ -14,6 +14,11 @@ The objectives are simple:
 
 If everything goes well, you will be ready to fetch your first real exercise.
 
+## Coding the solution
+
+Look for a stub file having the name hello_world.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

@@ -1,10 +1,9 @@
-## No Stub
+## Simple Stub
 
-This may be the first Go track exercise you encounter without a stub: a
-pre-existing `raindrops.go` file for your solution. You may not see stubs in
-the future and should begin to get comfortable with creating your own Go files
-for your solutions.
+The raindrops.go "stub file" contains only one line with the correct
+package name and nothing more.  This will be the usual pattern for future
+exercises.  You will need to figure out the function signature(s).
 
-One way to figure out what the function signature(s) you would need is to look
-at the corresponding \*\_test.go file. It will show you what the package level
-functions(s) should be that the test will use to verify the solution.
+One way to figure out the function signature(s) is to look
+at the corresponding \*\_test.go file. It will show the package level
+functions(s) that the test will use to verify the solution.

@@ -42,6 +42,11 @@ you started. We recommend looking over these before starting this exercise:
 For a really deep dive you can try the book [Concurrency in Go](http://shop.oreilly.com/product/0636920046189.do) by [@kat-co](https://github.com/kat-co).
 
 
+## Coding the solution
+
+Look for a stub file having the name parallel_letter_frequency.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

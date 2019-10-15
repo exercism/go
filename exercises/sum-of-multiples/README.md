@@ -8,6 +8,11 @@ we get 3, 5, 6, 9, 10, 12, 15, and 18.
 
 The sum of these multiples is 78.
 
+## Coding the solution
+
+Look for a stub file having the name sum_of_multiples.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

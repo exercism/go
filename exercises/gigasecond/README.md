@@ -1,8 +1,14 @@
 # Gigasecond
 
-Calculate the moment when someone has lived for 10^9 seconds.
+Given a moment, determine the moment that would be after a gigasecond
+has passed.
 
 A gigasecond is 10^9 (1,000,000,000) seconds.
+
+## Coding the solution
+
+Look for a stub file having the name gigasecond.go
+and place your solution code in that file.
 
 ## Running the tests
 

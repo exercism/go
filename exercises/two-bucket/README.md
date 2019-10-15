@@ -67,6 +67,11 @@ are not ones which allow the three operations to succeed in creating the goal am
 which occurs when the two bucket sizes are not relatively prime to one another.
 
 
+## Coding the solution
+
+Look for a stub file having the name two_bucket.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

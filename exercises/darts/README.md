@@ -24,6 +24,11 @@ A real dartboard avoids this issue by using lines made of wire; the dart cannot
 land on a wire, but goes to one side or the other.
 
 
+## Coding the solution
+
+Look for a stub file having the name darts.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

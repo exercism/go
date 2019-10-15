@@ -26,6 +26,11 @@ it.
 
 Have fun!
 
+## Coding the solution
+
+Look for a stub file having the name bank_account.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

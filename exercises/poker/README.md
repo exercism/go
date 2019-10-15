@@ -14,6 +14,11 @@ of a tie, the best hands. Each hand should be a string in the same
 format as given to you initially as input.
 
 
+## Coding the solution
+
+Look for a stub file having the name poker.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

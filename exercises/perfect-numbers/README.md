@@ -38,6 +38,11 @@ Create an error named ErrOnlyPositive
 which is returned when the input is not a positive integer.
 
 
+## Coding the solution
+
+Look for a stub file having the name perfect_numbers.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

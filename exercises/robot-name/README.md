@@ -17,10 +17,10 @@ every existing robot has a unique name.
 
 ### Bonus exercise
 
-Once you get `go test` passing, try `go test -tags bonus -run TestCollisions`.
-This uses a *build tag* to enable a test that wasn't previously enabled. Build
-tags control which files should be included in the package. You can read more
-about those at [the Go documentation](https://golang.org/pkg/go/build/#hdr-Build_Constraints).
+Once you get `go test` passing, try `go test -tags bonus`.  This uses a *build
+tag* to enable a test that wasn't previously enabled. Build tags control which
+files should be included in the package. You can read more about those at [the
+Go documentation](https://golang.org/pkg/go/build/#hdr-Build_Constraints).
 
 For this exercise it limits `go test` to only build the tests in the
 `robot_name_test.go` file. We can then include the bonus test in the
@@ -29,6 +29,11 @@ For this exercise it limits `go test` to only build the tests in the
 To get the bonus test to pass you'll have to ensure a robot's name has not been
 used before.
 
+
+## Coding the solution
+
+Look for a stub file having the name robot_name.go
+and place your solution code in that file.
 
 ## Running the tests
 

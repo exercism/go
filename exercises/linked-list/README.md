@@ -40,6 +40,11 @@ we will follow Go's idiomatic style and implement the error checks as well.
 
 If you want to know more about linked lists, check [Wikipedia](https://en.wikipedia.org/wiki/Linked_list).
 
+## Coding the solution
+
+Look for a stub file having the name linked_list.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

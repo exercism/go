@@ -64,6 +64,11 @@ Sum the digits
 
 57 is not evenly divisible by 10, so this number is not valid.
 
+## Coding the solution
+
+Look for a stub file having the name luhn.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

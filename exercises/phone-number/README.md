@@ -35,6 +35,11 @@ and an AreaCode() function should output
 
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
+## Coding the solution
+
+Look for a stub file having the name phone_number.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

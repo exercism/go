@@ -37,6 +37,11 @@ Bob calculates
 The calculations produce the same result!  Alice and Bob now share
 secret s.
 
+## Coding the solution
+
+Look for a stub file having the name diffie_hellman.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

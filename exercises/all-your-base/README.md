@@ -46,6 +46,11 @@ returns one of following messages:
 * all digits must satisfy 0 <= d < input base
 
 
+## Coding the solution
+
+Look for a stub file having the name all_your_base.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

@@ -4,6 +4,11 @@ Given a string containing brackets `[]`, braces `{}`, parentheses `()`,
 or any combination thereof, verify that any and all pairs are matched
 and nested correctly.
 
+## Coding the solution
+
+Look for a stub file having the name matching_brackets.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.

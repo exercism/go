@@ -63,6 +63,11 @@ The above diagram contains 6 rectangles:
 You may assume that the input is always a proper rectangle (i.e. the length of
 every line equals the length of the first line).
 
+## Coding the solution
+
+Look for a stub file having the name rectangles.go
+and place your solution code in that file.
+
 ## Running the tests
 
 To run the tests run the command `go test` from within the exercise directory.
