@@ -117,6 +117,13 @@ var validBoards = []string{
 }
 
 var badBoards = []string{
+	// One border
+	`
++++`,
+	// Unaligned borders
+	`
+++
++`,
 	// Unaligned
 	`
 +-+
@@ -130,6 +137,24 @@ var badBoards = []string{
 +-----+
 *   * |
 +-- --+`,
+
+	// Mine on corner
+	`
++-----*
+|   * |
++-----+`,
+
+	// Mine on upper border
+	`
++--*--+
+|   * |
++-----+`,
+
+	// Mine on left border
+	`
++-----+
+*   * |
++-----+`,
 
 	// Unknown characters
 	`
