@@ -25,3 +25,11 @@ func TestConvertToBase(t *testing.T) {
 		t.Logf("PASS: %s", c.description)
 	}
 }
+
+func BenchmarkConvertToBase(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, c := range testCases {
+			_, _ = ConvertToBase(c.inputBase, c.inputDigits, c.outputBase)
+		}
+	}
+}
