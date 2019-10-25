@@ -104,6 +104,18 @@ func TestSong(t *testing.T) {
 	}
 }
 
+func BenchmarkVerse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Verse(1)
+	}
+}
+
+func BenchmarkVerses(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Verses(1, 3)
+	}
+}
+
 func BenchmarkSong(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Song()
