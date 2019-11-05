@@ -1,76 +1,45 @@
-# Exercism Go Track
+# Khan Go Contest
 
-[![Build Status](https://travis-ci.org/exercism/go.png?branch=master)](https://travis-ci.org/exercism/go)
-[![Gitter chat](https://badges.gitter.im/exercism/go.png)](https://gitter.im/exercism/go)
+This repository is literally and liberally stolen from the [Exercism.io](http://exercism.io) track.
 
-Exercism exercises in Go
+Fork this repo, solve the exercises, and submit a pull request for judging with the description containing your personal Tally. No more commits after the time limit, but you can fuss with your Pull Request more.
 
-## Issues
+Please notify the judges which if any your fully 100% passing solutions should be considered for Special Awards:
++ **Greased Lightning Performance Award** - for exercises with benchmarks showing that you made yours go so dang fast
++ **Elegant Étude Award** - for exceptional cleverness, radical simplicity, and amazing aesthetics to your solutions.
 
-We welcome issues filed at https://github.com/exercism/go/issues for problems of any size.  Feel free to report
-typographical errors or poor wording.  We are most interested in improving the quality of the test suites.
-You can greatly help us improve the quality of the exercises by filing reports of invalid solutions that
-pass tests or of valid solutions that fail tests.
+# Contest Scoring rubric:
+
+Each exercise in this repository is worth 0 to 5 points. A solution that will pass all the tests will get 5 points, and -1 point for every test or test case, or example test that fails. The minimum score for each exercise is 0.  
+
+Some exercises are easier and quicker to solve than others (Hint: Start with Darts). A good developer skill to practice is recognizing a tar pit and avoiding it!
+
+If you are reading past this before you tried it and got stuck, you are wasting precious time!
 
 ## Development setup
 
-Beyond filing issues, if you would like to contribute directly to the Go code in the Exercism Go track, you should follow some
-standard Go development practices.  You should have a [recent version of Go](http://golang.org/doc/install)
-installed, ideally either the current release, the previous release, or tip.
-
-You will need a github account and you will need to fork exercism/go to your account.
+You will need a github account and you will need to fork StevenACoffman/go to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
 Clone your fork with the command: `git clone https://github.com/<you>/go`.
-Test your clone by cding to the go directory and typing
+Test your clone by `cd`ing to the go directory and typing
 `bin/test-without-stubs`. You should see tests pass for all exercises.
 
-Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
-This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
+This repo only imports from the standard library and isn't expected to be imported by other packages. Please keep your solutions that way.
 
 Your Go code should be formatted using the [gofmt](https://golang.org/cmd/gofmt/) tool. For the other file types in the repository you may want to copy the setup used in the [.editorconfig](http://editorconfig.org/) file from [the exercism.io repository](https://github.com/exercism/exercism.io/blob/master/.editorconfig).
 
-There is a [misspelling tool](https://github.com/client9/misspell). You can install and occasionally run it to
-find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) It's not added into CI since it could give false positives.
-
-## Contributing Guide
-
-Please be familiar with the [contributing guide](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks)
-in the docs repository.  This describes some great ways to get involved.
-In particular, please read the [Pull Request Guidelines](https://github.com/exercism/docs/blob/master/contributing/pull-request-guidelines.md) before opening a pull request.
 
 ## Exercism Go style
 
 Let's walk through an example, non-existent, exercise, which we'll call
 `fizzbuzz` to see what could be included in its implementation.
 
-### Exercise configuration
-
-An exercise is [configured](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
-via an entry in the exercises array in [config.json file](/config.json). If `fizzbuzz` is an optional
-exercise, it would have an entry below the core exercises that might look like:
-
-```json
-{
-  "slug": "fizzbuzz",
-  "uuid": "mumblety-peg-whatever",
-  "core": false,
-  "unlocked_by": "two-fer",
-  "difficulty": 1,
-  "topics": [
-    "conditionals"
-  ]
-},
-```
-
-See [Exercise Configuration](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
-for more info.
-
 ### Exercise files: Overview
 
-For any exercise you may see a number of files present in a directory under `exercises/`:
+For any exercise you may see a number of files present in a directory under each exercise directory:
 
 ```sh
-~/go/exercises/fizzbuzz
+~/go/fizzbuzz
 $ tree -a
 .
 ├── cases_test.go
@@ -96,7 +65,7 @@ Let's briefly describe each file:
 
 * **cases_test.go** - Contains [generated test cases](#generating-test-cases),
   using test data sourced from the problem-specifications repository.
-  Only in some exercises. Automatically generated by `.meta/gen.go`.
+  Only in some exercises.
 
 * **example.go** - An [example solution](#example-solutions) for
   the exercise used to verify the test suite. Ignored
@@ -107,56 +76,16 @@ Let's briefly describe each file:
 
 * **fizzbuzz_test.go** - The main test file for the exercise.
 
-* **.meta/** - Contains files not to be included when a user fetches an
-  exercise: See also [ignored files](#ignored-files).
-
 * **.meta/description.md** - Use to generate a [track specific description](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md) of the exercise in the exercise's README.
-
-* **.meta/gen.go** - Generates `cases_test.go` when present.
-  See also [generating test cases](#generating-test-cases).
 
 * **.meta/hints.md** - Use to add track specific information in
   addition to the generic exercise's problem-specification
   description in the README.
 
-* **.meta/metadata.yml** - Track specific exercise metadata,
-  overrides the exercise metadata from the problem-specifications
-  repository.
-
-In some exercises there can be extra files, for instance the
-[series](exercises/series/) exercise contains extra test files.
-
-### Ignored files
-
-When a user fetches an exercise, they do not need to get all the files within an
-exercise directory. For instance; the *example.go* files that contain an
-example solution, or the *gen.go* files used to generate an exercise's test
-cases. Therefore there are certain files and directories that are ignored when
-an exercise is fetched. These are:
-
-* The *.meta* directory and anything within it.
-* Any file that matches the `ignore_pattern` defined in [config.json file](/config.json).
-    This currently matches any filename that contains the word `example`, **unless**
-    it is followed by the word `test`, with any number of characters inbetween.
-
-
-### Example solutions
-
-*example.go* is a reference solution. It is a valid solution that
-[Travis](https://travis-ci.org/exercism/go), the CI (continuous integration)
-service, can run tests against. Files with *"example"* in the file name are
-skipped by the `exercism fetch` command. Because of this, there is less need for
-this code to be a model of style, expression and readability, or to use the best
-algorithm.  Examples can be plain, simple, concise, even naïve, as long as they
-are correct.
-
 ### Stub files
 
 Stub files, such as *leap.go*, are a starting point for solutions. Not all exercises
 need to have a stub file, only exercises early in the syllabus.
-By convention, the stub file for an exercise with slug `exercise-slug`
-must be named `exercise_slug.go`. This is because CI needs to delete stub files
-to avoid conflicting definitions.
 
 ### Tests
 
@@ -206,73 +135,3 @@ it is idiomatic in Go to think about performance. There is no critical use for
 these though. Usually they will just bench the combined time to run over all
 the test data rather than attempt precise timings on single function calls. They
 are useful if they let the solver try a change and see a performance effect.
-
-## Generating test cases
-
-Some problems that are implemented in multiple tracks use the same inputs and
-outputs to define the test suites. Where the [problem-specifications](https://github.com/exercism/problem-specifications)
-repository contains a *canonical-data.json* file with these inputs and outputs,
-we can generate the test cases programmatically.
-
-See the *gen.go* file in the `leap` exercise for an example of how this
-can be done.
-
-Test case generators are named *gen.go* and are kept in a special *.meta*
-directory within each exercise that makes use of a test cases generator. This
-*.meta* directory will be ignored when a user fetches an exercise.
-
-Whenever the shared JSON data changes, the test cases will need to be regenerated.
-The generator will first look for a local copy of the **problem-specifications** repository.
-If there isn't one it will attempt to get the relevant json data for the
-exercise from the **problem-specifications** repository on GitHub. The generator
-uses the GitHub API to find some information about exercises when it cannot
-find a local copy of **problem-specifications**. This can cause throttling
-issues if working with a large number of exercise. *We therefore recommend
-using a local copy of the repository when possible* (remember to keep it
-current :smile:).
-
-To use a local copy of the **problem-specifications** repository, make sure that it has been
-cloned into the same parent-directory as the **go** repository.
-
-```sh
-$ tree -L 1 .
-.
-├── problem-specifications
-└── go
-```
-
-To regenerate the test cases, navigate into the **go** directory and run
-`go run exercises/<exercise>/.meta/gen.go`. You should see that the
-`<exercise>/cases_test.go` file has changed. Commit the change.
-
-## Pull requests
-
-Pull requests are welcome.  You forked, cloned, coded and tested and you have something good?  Awesome!  Use git
-to add, commit, and push to your repository.  Checkout your repository on the web now.  You should see your commit
-and the invitation to submit a pull request!
-
-<img src="img/mars1.png">
-
-Click on that big green button.  You have a chance to add more explanation to your pull request here, then send
-it.  Looking at the exercism/go repository now instead of your own, you see this.
-
-<img src="img/mars2.png">
-
-That inconspicuous orange dot is important!  Hover over it (no, not on this image, on a real page) and you can see
-it's indicating that a Travis CI build is in progress.  After a few minutes (usually) that dot will turn green
-indicating that tests passed.  If there's a problem, it comes up red:
-
-<img src="img/mars3.png">
-
-This means you've still got work to do.  Click on "details" to go to the Travis site and look over the build log
-for clues.  Usually error messages will be helpful and you can correct the problem.
-
-## Direction
-
-Directions are unlimited.  This code is fresh and evolving.  Explore the existing code and you will see some new
-directions being tried.  Your fresh ideas and contributions are welcome.  :sparkles:
-
-
-### Go icon
-
-The Go logo was designed by Renée French, and has been released under the Creative Commons 3.0 Attributions license.

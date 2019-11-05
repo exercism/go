@@ -1,0 +1,207 @@
+# For the full list of configuration options, see
+# https://github.com/golangci/golangci-lint#config-file
+
+# options for analysis running
+run:
+  # Regexp is applied on full path.
+  # Note that we keep skip-dirs-use-default's default value of True,
+  # so these dirs are automatically skipped as well:
+  #   vendor$, third_party$, testdata$, examples$, Godeps$, builtin$
+  skip-dirs:
+    - generated$
+  skip-files:
+    - path/to/file$
+
+# output configuration options
+output:
+  # colored-line-number|line-number|json|tab|checkstyle|code-climate
+  format: colored-line-number
+
+# The full list of linters, including links to each linter's github
+# repo, is at https://github.com/golangci/golangci-lint#supported-linters
+linters:
+  fast: false
+  disable-all: true
+  enable:
+    # golangci enables these by default.
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - typecheck
+    # TODO(csilvers): re-enable once this issue has been resolved:
+    #                 https://github.com/golangci/golangci-lint/issues/824
+    # - unused
+    - varcheck
+    # golangci disables these by default, but we use them.
+    - bodyclose
+    - depguard
+    - gocritic
+    - goimports
+    - gofmt
+    - lll
+    # TODO(csilvers): enable `maligned` but just for structs stored in memory
+    - nakedret
+    - scopelint
+    - stylecheck
+    - unconvert
+    - unparam
+    - whitespace
+
+# all available settings of specific linters
+linters-settings:
+  errcheck:
+    # report about not checking of errors in type assetions:
+    # `a := b.(MyStruct)`;
+    check-type-assertions: true
+
+  govet:
+    # report about shadowed variables
+    check-shadowing: true
+    enable-all: true
+
+  golint:
+    # minimal confidence for issues
+    min-confidence: 0.8
+
+  gofmt:
+    # simplify code: gofmt with `-s` option, true by default
+    simplify: true
+
+  goimports:
+    # put imports beginning with prefix after 3rd-party packages;
+    # it's a comma-separated list of prefixes
+    local-prefixes: github.com/Khan/webapp/
+
+  maligned:
+    # print struct with more effective memory layout or not.  We'll try it!
+    suggest-new: true
+
+  depguard:
+    list-type: blacklist
+    include-go-root: false
+
+    packages:
+      - github.com/sirupsen/logrus
+      - log
+      - cloud.google.com/go/datastore
+      - github.com/stretchr/testify/suite
+      - github.com/stretchr/testify/assert
+      - github.com/stretchr/testify/require
+
+    # TODO(benkraft_: Are these actually getting used?
+    packages-with-error-messages:
+      github.com/sirupsen/logrus: "Use pkg/lib/log for logging"
+      log: "Use pkg/lib/log for logging"
+      cloud.google.com/go/datastore: "Use pkg/gcloud/datastore for datastore access"
+      github.com/stretchr/testify/suite: "Use dev/khantest for test suites"
+      github.com/stretchr/testify/assert: "Use suite.Assert() instead of testify/assert"
+      github.com/stretchr/testify/require: "Use suite.Require() instead of testify/require"
+
+  lll:
+    line-length: 100
+    tab-width: 4
+
+  nakedret:
+    # Make an issue if func has more lines of code than this setting
+    # and it has naked returns.  Let's try this!  I'm not sure I like
+    # naked returns at all, but definitely not for long functions.
+    max-func-lines: 40
+
+  gocritic:
+    # Which checks should be enabled:
+    # See https://go-critic.github.io/overview#checks-overview
+    # and https://github.com/go-critic/go-critic#usage -> section "Tags".
+    # To check which checks are enabled: `GL_DEBUG=gocritic golangci-lint run`
+    enabled-tags:
+      - diagnostic
+      - performance
+      - style
+
+    disabled-checks:
+      - builtinShadow
+      - commentedOutCode
+      - importShadow
+      - paramTypeCombine
+
+    settings: # settings passed to gocritic
+      captLocal: # must be valid enabled check name
+        paramsOnly: true
+
+issues:
+  # List of regexps of issue texts to exclude, empty list by default.
+  # But independently from this option we use default exclude patterns,
+  # it can be disabled by `exclude-use-default: false`. To list all
+  # excluded by default patterns execute `golangci-lint run --help`
+  exclude:
+    - abcdef_NONE_YET_fedcba
+
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    # Exclude some linters from running on tests files.
+    - linters:
+        - errcheck
+      path: _test\.go
+
+    # SA9003: empty body in if/else branch.  Sometimes that's useful!
+    # SA1012: passing in `nil` for context.  We do that for our logging lib.
+    - linters:
+        - staticcheck
+      text: "SA9003:|SA1012:"
+
+    # ST1003: underscores in package names.  We do that for our services.
+    - linters:
+        - stylecheck
+      text: "ST1003:"
+
+    # Our disallowed packages are typically allowed in exactly one
+    # place, which is the package we define that replaces it.
+    # The 'pkg/' is optional in `path` because the path is taken
+    # relative to where lint is run, and sometimes we run it from
+    # pkg/ instead of webapp-root.
+    - linters:
+        - depguard
+      text: "cloud.google.com/go/datastore"
+      path: pkg/gcloud/datastore/.*
+
+    - linters:
+        - depguard
+      text: "github.com/sirupsen/logrus"
+      path: pkg/lib/log/.*
+
+    - linters:
+        - depguard
+      text: "github.com/stretchr/testify"
+      path: dev/khantest/.*
+
+    # Exclude lll issues for:
+    # - long lines with go:generate
+    # - lines that include a url (though not if the url is followed by a space)
+    - linters:
+        - lll
+      source: "^//go:generate |https?://[^\\s]*$"
+
+    # This code has a long line because it's being cute.
+    - linters:
+        - lll
+      path: pkg/gcloud/secrets/doc.go
+
+    # We don't care about expensive operations in tests.
+    - linters:
+        - gocritic
+      text: "rangeValCopy:|rangeExprCopy:|indexAlloc:|hugeParam:"
+      path: _test\.go
+
+  # Independently from option `exclude` we use default exclude patterns,
+  # it can be disabled by this option. To list all
+  # excluded by default patterns execute `golangci-lint run --help`.
+  exclude-use-default: true
+
+  # Maximum issues count per one linter. Set to 0 to disable.
+  max-issues-per-linter: 0
+
+  # Maximum count of issues with the same text. Set to 0 to disable.
+  max-same-issues: 0
