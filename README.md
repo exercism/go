@@ -4,7 +4,7 @@ This repository is literally and liberally stolen from the [Exercism.io](http://
 
 Fork this repo, solve the exercises, and submit a pull request for judging with the description containing your personal Tally. No more commits after the time limit, but you can fuss with your Pull Request more.
 
-Please notify the judges which if any your fully 100% passing solutions should be considered for Special Awards:
+Please notify the judges in Slack the `#go-contest` channel which one, if any of your fully 100% passing solutions, should be considered for Special Awards:
 + **Greased Lightning Performance Award** - for exercises with benchmarks showing that you made yours go so dang fast
 + **Elegant Étude Award** - for exceptional cleverness, radical simplicity, and amazing aesthetics to your solutions.
 
