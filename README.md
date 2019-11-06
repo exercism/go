@@ -50,5 +50,6 @@ Such tests will include their test cases in `cases_test.go`, and the code that r
 Some exercises can contain [Example tests](https://blog.golang.org/examples) that document the exercise API.
 
 Most of the exercises also include benchmark tests.
-You can run these with e.g. `go test -bench .`.
+You can run these with
+    go test -v --bench . --benchmem
 They are not required, but take a look at them if you want to compete for the **Greased Lightning Award**.
