@@ -89,7 +89,7 @@ func TestSubtractMinutesStringless(t *testing.T) {
 		}
 		want := New(wantHour, wantMin)
 		if got := New(a.h, a.m).Subtract(a.a); !reflect.DeepEqual(got, want) {
-			t.Fatalf("New(%d, %d).Add(%d) = %v, want %v",
+			t.Fatalf("New(%d, %d).Subtract(%d) = %v, want %v",
 				a.h, a.m, a.a, got, want)
 		}
 	}
