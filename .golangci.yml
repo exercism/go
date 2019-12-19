@@ -1,0 +1,8 @@
+linters:
+  disable-all: true
+  enable:
+    - goconst
+    - gocyclo
+    - goimports
+    - gofmt
+    - govet
