@@ -1,6 +1,5 @@
 ---
 language: go
-sudo: false
 
 # We expect users to use something fairly recent so we test the last two
 # versions plus tip.  Update these freely as new versions of Go are released.
@@ -18,9 +17,8 @@ sudo: false
 # but since Travis only runs five jobs at a time throughout all of Exercism,
 # it is better citizenship to not test the additional versions.
 go:
-  - 1.11.x
   - 1.12.x
-  - master
+  - 1.13.x
 
 # Travis runs in a 64 bit environment but beginning with Go 1.5, building a
 # 32 bit target is as easy as specifying GOARCH.  We test both to accommodate
@@ -55,9 +53,7 @@ script:
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
   - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
   - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
-  - if [ -n "$STATIC_CHECKERS" ]; then
-        ./bin/test-without-stubs lint '--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo';
-    fi
+  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs lint '--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo'; fi
 
 # special cases for the build matrix are STATIC_CHECKERS gets its own entry
 # and that tip is allowed to fail.  Broken tips are extremely rare these days
@@ -65,7 +61,5 @@ script:
 matrix:
   include:
     # Keep this in sync with the latest version.
-    - go: 1.12.x
+    - go: 1.13.x
       env: STATIC_CHECKERS=1
-  allow_failures:
-    - go: tip
