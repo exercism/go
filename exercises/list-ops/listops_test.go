@@ -1,7 +1,9 @@
 package listops
 
-import "reflect"
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 var foldTestCases = []struct {
 	name     string
