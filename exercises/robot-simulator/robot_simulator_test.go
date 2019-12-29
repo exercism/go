@@ -9,7 +9,7 @@ package robot
 //
 //    go test                      # run all tests
 //    go test -tags step1          # run just step 1 tests.
-//    go test -tags 'step1 step2'  # run step1 and step2 tests
+//    go test -tags step1,step2    # run step1 and step2 tests
 //
 // This source file contains step 1 tests only.  For other tests see
 // robot_simulator_step2_test.go and robot_simulator_step3_test.go.
