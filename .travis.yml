@@ -50,16 +50,4 @@ before_script:
 # -cpu 2 is for our problems that involve concurrency to test that they
 # perform as expected on multiple cores.
 script:
-  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs fmt; fi
-  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs vet; fi
-  - if [ -z "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs; fi
-  - if [ -n "$STATIC_CHECKERS" ]; then ./bin/test-without-stubs lint '--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo'; fi
-
-# special cases for the build matrix are STATIC_CHECKERS gets its own entry
-# and that tip is allowed to fail.  Broken tips are extremely rare these days
-# but anyway, it could happen and it wouldn't be our problem.
-matrix:
-  include:
-    # Keep this in sync with the latest version.
-    - go: 1.13.x
-      env: STATIC_CHECKERS=1
+  - ./bin/test-without-stubs
