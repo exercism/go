@@ -90,6 +90,16 @@
       "link_url": "https://www.sborza.com/",
       "avatar_url": null,
       "bio": "I'm a Canadian (based in Chicago) golang, C and python developer working on projects within the gaming, finance and data-science worlds respectively. My favorite freetime task is coding challenges and I'm more than happy to help people talk through solutions!"
+    },
+    {
+      "github_username": "tehsphinx",
+      "alumnus": true,
+      "show_on_website": true,
+      "name": "Gabriel Nelle",
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": null,
+      "bio": "Since early 2016 I'm a professional Go developer. I love it because it's so simple and yet so powerful. Before Go if have worked with a lot of other languages. At least one year of experience I have in Python, PHP, JavaScript and several Basic languages from QBasic to VB.Net."
     }
   ]
 }
