@@ -83,7 +83,7 @@
     },
     {
       "github_username": "sebito91",
-      "alumnus": true,
+      "alumnus": false,
       "show_on_website": true,
       "name": "Sebastian Borza",
       "link_text": "sborza.com",
