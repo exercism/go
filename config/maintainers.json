@@ -43,7 +43,7 @@
     },
     {
       "github_username": "tleen",
-      "alumnus": false,
+      "alumnus": true,
       "show_on_website": true,
       "name": "Tom Leen",
       "link_text": "thomasleen.com",
