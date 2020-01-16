@@ -29,28 +29,6 @@ type teamResult struct {
 	points int
 }
 
-type TeamResultSlice []teamResult
-
-// sort.Interface implementation, sorts on points, descending
-func (s TeamResultSlice) Len() int {
-	return len(s)
-}
-
-func (s TeamResultSlice) Less(i, j int) bool {
-	switch {
-	case s[i].points != s[j].points:
-		return s[i].points > s[j].points
-	case s[i].wins != s[j].wins:
-		return s[i].wins > s[j].wins
-	default:
-		return s[i].team < s[j].team
-	}
-}
-
-func (s TeamResultSlice) Swap(i, j int) {
-	s[i], s[j] = s[j], s[i]
-}
-
 func readInput(reader io.Reader) ([]inputEntry, error) {
 	var entries []inputEntry
 	csvReader := csv.NewReader(reader)
@@ -116,11 +94,23 @@ func tallyEntries(entries []inputEntry) map[string]teamResult {
 }
 
 func report(writer io.Writer, resultMap map[string]teamResult) {
-	var entries TeamResultSlice = make([]teamResult, 0, len(resultMap))
+	entries := make([]teamResult, 0, len(resultMap))
 	for _, entry := range resultMap {
 		entries = append(entries, entry)
 	}
-	sort.Sort(entries)
+
+	sort.Slice(entries, func(i, j int) bool {
+		a, b := entries[i], entries[j]
+		switch {
+		case a.points != b.points:
+			return a.points > b.points
+		case a.wins != b.wins:
+			return a.wins > b.wins
+		default:
+			return a.team < b.team
+		}
+	})
+
 	fmt.Fprintf(writer, "Team                           | MP |  W |  D |  L |  P\n")
 	for _, entry := range entries {
 		fmt.Fprintf(writer, "%-30s | %2d | %2d | %2d | %2d | %2d\n",
@@ -128,11 +118,11 @@ func report(writer io.Writer, resultMap map[string]teamResult) {
 	}
 }
 
-func Tally(reader io.Reader, writer io.Writer) error {
-	entries, err := readInput(reader)
+func Tally(r io.Reader, w io.Writer) error {
+	entries, err := readInput(r)
 	if err != nil {
 		return err
 	}
-	report(writer, tallyEntries(entries))
+	report(w, tallyEntries(entries))
 	return nil
 }
