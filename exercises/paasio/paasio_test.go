@@ -265,7 +265,7 @@ func testWriteCountConsistency(t *testing.T, wc WriteCounter) {
 type nopWriter struct{ error }
 
 func (w nopWriter) Write(p []byte) (int, error) {
-	time.Sleep(1)
+	time.Sleep(time.Nanosecond)
 	if w.error != nil {
 		return 0, w.error
 	}
@@ -275,7 +275,7 @@ func (w nopWriter) Write(p []byte) (int, error) {
 type nopReader struct{ error }
 
 func (r nopReader) Read(p []byte) (int, error) {
-	time.Sleep(1)
+	time.Sleep(time.Nanosecond)
 	if r.error != nil {
 		return 0, r.error
 	}

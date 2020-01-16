@@ -43,10 +43,9 @@ func (s IntList) Filter(fn predFunc) IntList {
 func (s IntList) Length() int {
 	// for fun, let's do this with recursion
 	var lengthAcc func(IntList, int) int
-	var isEmpty func(IntList) bool
 	// yeah, this is kind of cheaty, but it's hard to determine if a slice is
 	// empty without using len, so walling it off
-	isEmpty = func(l IntList) bool {
+	isEmpty := func(l IntList) bool {
 		return len(l) == 0
 	}
 	lengthAcc = func(lst IntList, acc int) int {

@@ -194,7 +194,7 @@ func isStraight(counts []rankCount) bool {
 	}
 	first := counts[0].rank
 	if first == Ace {
-		for i := 1; i < len(counts); i++ {
+		for i := 1; i < len(counts); i++ { //nolint: staticcheck
 			if counts[i].rank != 6-i {
 				goto normal
 			}

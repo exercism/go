@@ -25,7 +25,7 @@ func TestDecodeVarint(t *testing.T) {
 
 func TestEncodeVarint(t *testing.T) {
 	for i, tc := range encodeTestCases {
-		if encoded := EncodeVarint(tc.input); bytes.Compare(encoded, tc.output) != 0 {
+		if encoded := EncodeVarint(tc.input); !bytes.Equal(encoded, tc.output) {
 			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, encoded)
 		}
 		t.Logf("PASS: case %d | %s\n", i, tc.description)
