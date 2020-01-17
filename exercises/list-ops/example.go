@@ -40,22 +40,7 @@ func (s IntList) Filter(fn predFunc) IntList {
 }
 
 // Length returns the length of a list
-func (s IntList) Length() int {
-	// for fun, let's do this with recursion
-	var lengthAcc func(IntList, int) int
-	// yeah, this is kind of cheaty, but it's hard to determine if a slice is
-	// empty without using len, so walling it off
-	isEmpty := func(l IntList) bool {
-		return len(l) == 0
-	}
-	lengthAcc = func(lst IntList, acc int) int {
-		if isEmpty(lst) {
-			return acc
-		}
-		return lengthAcc(lst[1:], acc+1)
-	}
-	return lengthAcc(s, 0)
-}
+func (s IntList) Length() int { return len(s) }
 
 // Map returns a list of elements whose values equal the list value transformed by the mapping function
 func (s IntList) Map(fn unaryFunc) IntList {
