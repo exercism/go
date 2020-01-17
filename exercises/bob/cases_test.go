@@ -1,8 +1,8 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: ca79943 Bob: Fix grammatical error in testdata (#1319)
-// Problem Specifications Version: 1.4.0
+// Commit: 1904e91 Bob: Cleans up language on a couple of test cases
+// Problem Specifications Version: 1.5.0
 
 var testCases = []struct {
 	description string
@@ -41,7 +41,7 @@ var testCases = []struct {
 	},
 	{
 		"talking forcefully",
-		"Let's go make out behind the gym!",
+		"Hi there!",
 		"Whatever.",
 	},
 	{
@@ -51,7 +51,7 @@ var testCases = []struct {
 	},
 	{
 		"forceful question",
-		"WHAT THE HELL WERE YOU THINKING?",
+		"WHAT'S GOING ON?",
 		"Calm down, I know what I'm doing!",
 	},
 	{
