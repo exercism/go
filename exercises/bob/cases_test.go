@@ -1,8 +1,8 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: ca79943 Bob: Fix grammatical error in testdata (#1319)
-// Problem Specifications Version: 1.4.0
+// Commit: [33m1904e91[m Bob: Cleans up language on a couple of test cases
+// Problem Specifications Version: 1.5.0
 
 var testCases = []struct {
 	description string
