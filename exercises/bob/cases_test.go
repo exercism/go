@@ -1,7 +1,7 @@
 package bob
 
 // Source: exercism/problem-specifications
-// Commit: [33m1904e91[m Bob: Cleans up language on a couple of test cases
+// Commit: 1904e91 Bob: Cleans up language on a couple of test cases
 // Problem Specifications Version: 1.5.0
 
 var testCases = []struct {
