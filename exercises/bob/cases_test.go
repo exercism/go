@@ -41,7 +41,7 @@ var testCases = []struct {
 	},
 	{
 		"talking forcefully",
-		"Let's go make out behind the gym!",
+		"Hi there!",
 		"Whatever.",
 	},
 	{
@@ -51,7 +51,7 @@ var testCases = []struct {
 	},
 	{
 		"forceful question",
-		"WHAT THE HELL WERE YOU THINKING?",
+		"WHAT'S GOING ON?",
 		"Calm down, I know what I'm doing!",
 	},
 	{
