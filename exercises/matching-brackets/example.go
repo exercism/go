@@ -34,11 +34,12 @@ func Bracket(input string) bool {
 		if ci.form == formOpen {
 			stack = append(stack, ci.kind)
 		} else {
-			if len(stack) == 0 {
+			switch {
+			case len(stack) == 0:
 				return false
-			} else if stack[len(stack)-1] == ci.kind {
+			case stack[len(stack)-1] == ci.kind:
 				stack = stack[:len(stack)-1]
-			} else {
+			default:
 				return false
 			}
 		}

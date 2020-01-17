@@ -38,11 +38,12 @@ var wording = map[int]string{
 func Verse(i int) string {
 	var gifts = ""
 	for from := i; from > 0; from-- {
-		if i != 1 && from == 1 {
+		switch {
+		case i != 1 && from == 1:
 			gifts = fmt.Sprintf("%s, and %s", gifts, verse[wording[from]])
-		} else if i != from {
+		case i != from:
 			gifts = fmt.Sprintf("%s, %s", gifts, verse[wording[from]])
-		} else {
+		default:
 			gifts = fmt.Sprintf("%s: %s", gifts, verse[wording[from]])
 		}
 	}

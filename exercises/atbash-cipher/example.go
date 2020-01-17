@@ -12,10 +12,8 @@ func Atbash(s string) string {
 }
 
 func chunk(s string) string {
-	reg, _ := regexp.Compile(".{1,5}")
-	value := reg.FindAllString(s, -1)
-	s = strings.Join(value, " ")
-	return s
+	value := regexp.MustCompile(".{1,5}").FindAllString(s, -1)
+	return strings.Join(value, " ")
 }
 
 func convert(s string) string {
@@ -28,9 +26,9 @@ func convert(s string) string {
 		char := inputSlice[i]
 		index := indexOf(originalSlice, char)
 		if index > -1 {
-			result = result + reversedSlice[index]
+			result += reversedSlice[index]
 		} else {
-			result = result + char
+			result += char
 		}
 	}
 	return result
@@ -38,9 +36,7 @@ func convert(s string) string {
 
 func normalize(s string) string {
 	s = strings.ToLower(s)
-	reg, _ := regexp.Compile("[^a-z0-9]")
-	s = reg.ReplaceAllString(s, "")
-	return s
+	return regexp.MustCompile("[^a-z0-9]").ReplaceAllString(s, "")
 }
 
 func reverse(s string) string {
@@ -51,9 +47,9 @@ func reverse(s string) string {
 	return string(runes)
 }
 
-func indexOf(slice []string, string string) int {
+func indexOf(slice []string, s string) int {
 	for p, v := range slice {
-		if v == string {
+		if v == s {
 			return p
 		}
 	}

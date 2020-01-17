@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func equal(a []string, b []string) bool {
+func equal(a, b []string) bool {
 	if len(b) != len(a) {
 		return false
 	}
@@ -34,13 +34,9 @@ func TestDetectAnagrams(t *testing.T) {
 }
 
 func BenchmarkDetectAnagrams(b *testing.B) {
-
 	for i := 0; i < b.N; i++ {
-
 		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)
 		}
-
 	}
-
 }

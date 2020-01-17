@@ -14,8 +14,8 @@ func createFiles(content []string) (filenames []string) {
 	var f *os.File
 	for _, d := range content {
 		t := strings.TrimSpace(d)
-		if len(t) == 0 {
-			if len(filename) == 0 {
+		if t == "" {
+			if filename == "" {
 				continue
 			}
 			// Close file

@@ -10,14 +10,15 @@ import (
 func TestSolve(t *testing.T) {
 	for _, tc := range testCases {
 		actual, err := Solve(tc.words, tc.puzzle)
-		if err != nil {
+		switch {
+		case err != nil:
 			var _ error = err
 			if !tc.expectError {
 				t.Fatalf("FAIL: %s\nExpected %#v\nGot error: %v", tc.description, tc.expected, err)
 			}
-		} else if tc.expectError {
+		case tc.expectError:
 			t.Fatalf("FAIL: %s\nExpected error\nGot %v", tc.description, actual)
-		} else if !reflect.DeepEqual(actual, tc.expected) {
+		case !reflect.DeepEqual(actual, tc.expected):
 			t.Fatalf("FAIL: %s\nExpected %v,\nGot %v", tc.description, tc.expected, actual)
 		}
 		t.Logf("PASS: %s", tc.description)

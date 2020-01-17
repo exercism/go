@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	".."
+	space ".."
 	"../../../gen"
 )
 

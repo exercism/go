@@ -20,7 +20,7 @@ func Sentence(s string) string {
 
 // Word translates a single word
 func Word(s string) (result string) {
-	//special case for y as a vowel
+	// special case for y as a vowel
 	if containsy.MatchString(s) {
 		pos := containsy.FindStringSubmatchIndex(s)
 		return s[pos[3]:] + s[:pos[3]] + "ay"

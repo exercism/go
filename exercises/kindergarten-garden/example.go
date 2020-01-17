@@ -15,7 +15,7 @@ func (g *Garden) Plants(child string) ([]string, bool) {
 
 func NewGarden(diagram string, children []string) (*Garden, error) {
 	rows := strings.Split(diagram, "\n")
-	if len(rows) != 3 || len(rows[0]) != 0 {
+	if len(rows) != 3 || rows[0] != "" {
 		return nil, errors.New("diagram must have two rows")
 	}
 	if len(rows[1]) != len(rows[2]) {

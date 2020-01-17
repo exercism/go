@@ -17,12 +17,13 @@ func Number(s string) (string, error) {
 	// Extract just the digits.
 	n := make([]rune, 0, len(s))
 	for _, c := range s {
-		if c == ' ' || c == '+' || c == '(' || c == ')' || c == '-' || c == '.' {
-			continue
-		} else if unicode.IsDigit(c) {
+		switch c {
+		case ' ', '+', '(', ')', '-', '.': // do nothing
+		default:
+			if !unicode.IsDigit(c) {
+				return "", fmt.Errorf("Phone number %q has invalid characters", s)
+			}
 			n = append(n, c)
-		} else {
-			return "", fmt.Errorf("Phone number %q has invalid characters", s)
 		}
 	}
 	clean := string(n)

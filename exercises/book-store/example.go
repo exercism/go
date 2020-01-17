@@ -19,18 +19,18 @@ func Cost(books []int) int {
 // are together at first, ordering by most repeated
 // e.g. [1,1,2,3,4,4,5,4,2] -> [4,4,4,1,1,2,2,3,5]
 func organize(books []int) {
-	//used for sorting
+	// used for sorting
 	type kv struct {
 		Key   int
 		Value int
 	}
 
-	//calc book frequency: how many 1's ,2's and so on
+	// calc book frequency: how many 1's ,2's and so on
 	freq := make(map[int]int)
 	for i := range books {
 		freq[books[i]]++
 	}
-	//sort frequency in descending order
+	// sort frequency in descending order
 	ss := make([]kv, len(freq))
 	for k, v := range freq {
 		ss = append(ss, kv{k, v})
@@ -38,8 +38,8 @@ func organize(books []int) {
 	sort.Slice(ss, func(i, j int) bool {
 		return ss[i].Value > ss[j].Value
 	})
-	//transform the frequencies back to repetitions
-	//e.g. 4*1, 3*2 -> 1,1,1,1,2,2,2
+	// transform the frequencies back to repetitions
+	// e.g. 4*1, 3*2 -> 1,1,1,1,2,2,2
 	p := 0
 	for _, kv := range ss {
 		for i := 0; i < kv.Value; i++ {
@@ -47,7 +47,7 @@ func organize(books []int) {
 			p++
 		}
 	}
-	//give back the modified array
+	// give back the modified array
 }
 
 func cost(books []int, priceSoFar int) int {
@@ -72,7 +72,7 @@ func cost(books []int, priceSoFar int) int {
 	return minPrice
 }
 
-func getDistinctBooks(books []int) (distinct []int, remaining []int) {
+func getDistinctBooks(books []int) (distinct, remaining []int) {
 	exists := make(map[int]bool)
 	for _, book := range books {
 		if exists[book] {

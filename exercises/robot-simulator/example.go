@@ -137,7 +137,8 @@ func Room3(extent Rect, robots []Step3Robot, act chan Action3, rep chan []Step3R
 			px[np] = x
 			da.Pos = np
 		case beep:
-			if done++; done == len(robots) {
+			done++
+			if done == len(robots) {
 				return
 			}
 		default:

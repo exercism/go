@@ -107,13 +107,14 @@ func (g *Game) Score() (int, error) {
 	frameStart := 0
 
 	for frame := 0; frame < framesPerGame; frame++ {
-		if g.isStrike(frameStart) {
+		switch {
+		case g.isStrike(frameStart):
 			score += pinsPerFrame + g.strikeBonus(frameStart)
 			frameStart++
-		} else if g.isSpare(frameStart) {
+		case g.isSpare(frameStart):
 			score += pinsPerFrame + g.spareBonus(frameStart)
 			frameStart += maxRollsPerFrame
-		} else {
+		default:
 			score += g.rawFrameScore(frameStart)
 			frameStart += maxRollsPerFrame
 		}

@@ -20,9 +20,9 @@ func AllergicTo(i uint, allergen string) bool {
 	return (i & x) > 0
 }
 
-func indexOf(slice []string, string string) int {
+func indexOf(slice []string, s string) int {
 	for p, v := range slice {
-		if v == string {
+		if v == s {
 			return p
 		}
 	}

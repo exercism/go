@@ -36,7 +36,7 @@ func recognizeDigit(lines []string, start int) byte {
 
 func Recognize(s string) []string {
 	lines := strings.Split(s, "\n")
-	if len(lines[0]) == 0 {
+	if lines[0] == "" {
 		lines = lines[1:]
 	}
 	r := make([]string, (len(lines)+3)/4)

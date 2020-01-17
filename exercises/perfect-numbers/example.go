@@ -25,7 +25,7 @@ func Classify(n int64) (Classification, error) {
 	var sum int64
 	for i := int64(1); i < n; i++ {
 		if n%i == 0 {
-			if sum = sum + i; sum > n {
+			if sum += i; sum > n {
 				return ClassificationAbundant, nil
 			}
 		}

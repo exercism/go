@@ -34,7 +34,7 @@ func Verse(v int) string {
 	return s + verse[1].comment
 }
 
-func Verses(start int, end int) string {
+func Verses(start, end int) string {
 	if start < 1 || start > end || end > 8 {
 		return Verse(0)
 	}

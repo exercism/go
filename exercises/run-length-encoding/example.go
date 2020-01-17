@@ -13,12 +13,12 @@ func RunLengthEncode(s string) string {
 			if rune(s[i-1]) == c {
 				count++
 			} else {
-				count, output = encode(count, i, s, output)
+				count, output = 1, output+encode(count, i, s)
 			}
 		}
 	}
-	if len(s) != 0 {
-		_, output = encode(count, len(s), s, output)
+	if s != "" {
+		_, output = 1, output+encode(count, len(s), s)
 	}
 	return output
 }
@@ -43,11 +43,9 @@ func RunLengthDecode(s string) string {
 	return output
 }
 
-func encode(count, i int, s, output string) (int, string) {
+func encode(count, i int, s string) string {
 	if count > 1 {
-		output += fmt.Sprintf("%d%c", count, s[i-1])
-		return 1, output
+		return fmt.Sprintf("%d%c", count, s[i-1])
 	}
-	output += fmt.Sprintf("%c", s[i-1])
-	return 1, output
+	return fmt.Sprintf("%c", s[i-1])
 }

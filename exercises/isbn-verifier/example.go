@@ -33,12 +33,13 @@ func dropHyphen(isbn string) string {
 func strToSlice(isbn string) (result []int, err error) {
 
 	for pos, char := range isbn {
-		if unicode.IsLetter(char) && (char != 'X' || pos != 9) {
+		switch {
+		case unicode.IsLetter(char) && (char != 'X' || pos != 9):
 			err = errors.New("invalid character")
 			return
-		} else if char == 'X' {
+		case char == 'X':
 			result = append(result, 10)
-		} else {
+		default:
 			i, _ := strconv.Atoi(string(char))
 			result = append(result, i)
 		}

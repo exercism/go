@@ -156,13 +156,14 @@ func evalHand(counts []rankCount, cards []card) handValue {
 	// messed up as flushes aren't based on ranks but on suits. The
 	// best way to get around that is to special case non-straight
 	// flushes.
-	if kind == flush {
+	switch {
+	case kind == flush:
 		for _, card := range cards {
 			discrs = append(discrs, card.rank)
 		}
 		sort.Sort(sort.Reverse(sort.IntSlice(discrs)))
-	} else if (kind == straight || kind == straightFlush) &&
-		counts[0].rank == Ace && counts[1].rank == 5 {
+	case (kind == straight || kind == straightFlush) &&
+		counts[0].rank == Ace && counts[1].rank == 5:
 		// For a straight with an Ace through 5,
 		// adjust down the discrs value of the Ace to be 1.
 		for i := 1; i < len(cards); i++ {
@@ -170,7 +171,7 @@ func evalHand(counts []rankCount, cards []card) handValue {
 		}
 		// Ace becomes a 1 in a low straight with Ace.
 		discrs = append(discrs, 1)
-	} else {
+	default:
 		for _, rc := range counts {
 			discrs = append(discrs, rc.rank)
 		}
@@ -194,7 +195,7 @@ func isStraight(counts []rankCount) bool {
 	}
 	first := counts[0].rank
 	if first == Ace {
-		for i := 1; i < len(counts); i++ { //nolint: staticcheck
+		for i := 1; i < len(counts); i++ { //nolint // false positive
 			if counts[i].rank != 6-i {
 				goto normal
 			}

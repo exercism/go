@@ -75,7 +75,7 @@ func init() {
 
 // outputSource puts the src text into given fileName
 // and outputs a log message with given [status].
-func outputSource(status string, fileName string, src []byte) error {
+func outputSource(status, fileName string, src []byte) error {
 	ioerr := ioutil.WriteFile(fileName, src, 0666)
 	if ioerr != nil {
 		log.Printf("[FAILED] %s\n", ioerr)
@@ -186,24 +186,24 @@ func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
 	// repository.  For development however, accept a file in current directory
 	// if there is no .json in source control.  Also allow an override in any
 	// case by environment variable.
-	const local_file = "local file"
+	const localFile = "local file"
 	if jPath := os.Getenv("EXTEST"); jPath > "" {
-		return jPath, local_file, "" // override
+		return jPath, localFile, "" // override
 	}
 	c := exec.Command("git", "log", "-1", "--oneline", jFile)
 	c.Dir = dirMetadata
 	origin, err := c.Output()
 	if err != nil {
-		return "", local_file, "" // no source control
+		return "", localFile, "" // no source control
 	}
 	if _, err = os.Stat(filepath.Join(c.Dir, jFile)); err != nil {
-		return "", local_file, "" // not in source control
+		return "", localFile, "" // not in source control
 	}
 	// good.  return source control dir and commit.
 	return c.Dir, "exercism/problem-specifications", string(bytes.TrimSpace(origin))
 }
 
-func getRemote(exercise string) (body []byte, jOrigin string, jCommit string, err error) {
+func getRemote(exercise string) (body []byte, jOrigin, jCommit string, err error) {
 	url := fmt.Sprintf(canonicalDataURL, exercise)
 	resp, err := genClient.Get(url)
 	if err != nil {

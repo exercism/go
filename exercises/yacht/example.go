@@ -1,12 +1,12 @@
-//Package yacht is a sample solution to the yacht exercise for go
+// Package yacht is a sample solution to the yacht exercise for go
 package yacht
 
 import (
 	"sort"
 )
 
-//scoreN calculates the score of the lower categories
-//It returns the total of those dice that equal n
+// scoreN calculates the score of the lower categories
+// It returns the total of those dice that equal n
 func scoreN(dice []int, n int) int {
 	score := 0
 	for _, d := range dice {
@@ -17,7 +17,7 @@ func scoreN(dice []int, n int) int {
 	return score
 }
 
-//scoreAll adds up and returns the total of the five dice
+// scoreAll adds up and returns the total of the five dice
 func scoreAll(dice []int) int {
 	return dice[0] + dice[1] + dice[2] + dice[3] + dice[4]
 }
@@ -26,7 +26,7 @@ var diceValueMap = map[string]int{
 	"ones": 1, "twos": 2, "threes": 3, "fours": 4, "fives": 5, "sixes": 6,
 }
 
-//Score returns the total score of a hand of Yacht dice in a given category.
+// Score returns the total score of a hand of Yacht dice in a given category.
 func Score(dice []int, category string) int {
 	sort.Ints(dice)
 	switch category {
@@ -45,13 +45,13 @@ func Score(dice []int, category string) int {
 	case "yacht":
 		return yachtScore(dice)
 	default:
-		//This can't happen, so panic is appropriate
+		// This can't happen, so panic is appropriate
 		panic("Unknown category")
 	}
 }
 
 func fullHouseScore(dice []int) int {
-	//Note, a yacht scores zero as a full house
+	// Note, a yacht scores zero as a full house
 	if dice[0] == dice[1] && dice[2] == dice[3] && dice[3] == dice[4] && dice[1] != dice[2] {
 		return scoreAll(dice)
 	}
@@ -62,7 +62,7 @@ func fullHouseScore(dice []int) int {
 }
 
 func fourOfaKindScore(dice []int) int {
-	//Note, a yacht can score as four of a kind, but only 4 dice are counted
+	// Note, a yacht can score as four of a kind, but only 4 dice are counted
 	if dice[0] == dice[1] && dice[1] == dice[2] && dice[2] == dice[3] {
 		return dice[0] * 4
 	}

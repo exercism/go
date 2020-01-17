@@ -32,7 +32,7 @@ var (
 	errChainSetNotSameAsInputSet = errors.New("chain dominoes not same as input")
 )
 
-func verifyChain(input []Domino, chain []Domino) error {
+func verifyChain(input, chain []Domino) error {
 	if len(input) != len(chain) {
 		return errWrongLengthChain
 	}

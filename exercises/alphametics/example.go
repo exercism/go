@@ -114,7 +114,7 @@ func (p *problem) isPuzzleSolution(values []int) bool {
 			}
 		}
 		carry = sum / 10
-		sum = sum % 10
+		sum %= 10
 		// Check the result sum against the answer row digit.
 		r = p.vDigits[len(p.vDigits)-1][d]
 		if r == 0 || sum != p.letterValues[r-1] {
@@ -149,7 +149,7 @@ func permutations(iterable []int, r int) (perms [][]int) {
 		for i := (n - r); i > 1; i-- {
 			d *= i
 		}
-		nperm = nperm / d
+		nperm /= d
 	}
 	perms = make([][]int, 0, nperm)
 

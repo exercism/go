@@ -52,13 +52,14 @@ func (g *Graph) ChangeRoot(oldRoot, newRoot string) *Graph {
 		}
 		a := g.arcs[n]
 		for i, to := range a {
-			if f(to) {
-				last := len(a) - 1
-				a[i] = a[last]
-				g.arcs[n] = a[:last]
-				g.arcs[to] = append(g.arcs[to], n)
-				return true
+			if !f(to) {
+				continue
 			}
+			last := len(a) - 1
+			a[i] = a[last]
+			g.arcs[n] = a[:last]
+			g.arcs[to] = append(g.arcs[to], n)
+			return true
 		}
 		return false
 	}

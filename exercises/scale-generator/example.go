@@ -29,11 +29,12 @@ func Scale(tonic, interval string) []string {
 func printScale(tonic, interval string, start int, arr []string) []string {
 	res := []string{tonic}
 	for _, e := range interval[:len(interval)-1] {
-		if e == 'm' {
+		switch e {
+		case 'm':
 			start++
-		} else if e == 'M' {
+		case 'M':
 			start += 2
-		} else if e == 'A' {
+		case 'A':
 			start += 3
 		}
 		res = append(res, arr[start%12])

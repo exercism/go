@@ -40,12 +40,13 @@ func (list *List) Push(elem int) {
 
 func (list *List) Pop() (int, error) {
 	var elem int
-	if list.size == 0 {
+	switch list.size {
+	case 0:
 		return 0, errors.New("Cannot call pop on empty list")
-	} else if list.size == 1 {
+	case 1:
 		elem = list.head.data
 		list.head = nil
-	} else {
+	default:
 		node := list.head
 		for node.next.next != nil {
 			node = node.next

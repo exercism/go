@@ -13,8 +13,8 @@ var config = &quick.Config{Rand: rand.New(rand.NewSource(time.Now().UnixNano()))
 
 type correctChar byte
 
-func (c correctChar) Generate(rand *rand.Rand, _ int) reflect.Value {
-	return reflect.ValueOf(correctChar('A' + rand.Intn('Z'-'A'+1)))
+func (c correctChar) Generate(r *rand.Rand, _ int) reflect.Value {
+	return reflect.ValueOf(correctChar('A' + r.Intn('Z'-'A'+1)))
 }
 
 func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *testing.T) {
@@ -71,7 +71,7 @@ func TestAllRowsIdenticalLettersExceptFirstAndLast(t *testing.T) {
 func TestAllRowsHaveSameTrailingSpaces(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		for _, row := range rows {
-			if len(row) == 0 {
+			if row == "" {
 				return false
 			}
 			for i, j := 0, len(row)-1; i < j && row[i] == ' '; i, j = i+1, j-1 {
@@ -181,11 +181,12 @@ func TestDiamondFourCornersAreTriangle(t *testing.T) {
 		for i, row := range rows {
 			s := strings.IndexFunc(row, notSpace)
 			e := len(row) - strings.LastIndexFunc(row, notSpace) - 1
-			if s != e {
+			switch {
+			case s != e:
 				return false
-			} else if i == 0 {
+			case i == 0:
 				n = s
-			} else {
+			default:
 				if i > len(rows)/2 && n >= s {
 					return false
 				} else if i <= len(rows)/2 && n <= s {
@@ -201,9 +202,9 @@ func TestDiamondFourCornersAreTriangle(t *testing.T) {
 
 type wrongChar byte
 
-func (c wrongChar) Generate(rand *rand.Rand, _ int) reflect.Value {
+func (c wrongChar) Generate(r *rand.Rand, _ int) reflect.Value {
 	b := rand.Intn(256)
-	for ; b >= 'A' && b <= 'Z'; b = rand.Intn(256) {
+	for ; b >= 'A' && b <= 'Z'; b = r.Intn(256) {
 	}
 	return reflect.ValueOf(wrongChar(b))
 }
