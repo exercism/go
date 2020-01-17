@@ -29,7 +29,7 @@ func BenchmarkPrimeFactors(b *testing.B) {
 }
 
 func ascending(list []int64) func(int, int) bool {
-	return func(ii, jj int) bool {
-		return list[ii] < list[jj]
+	return func(i, j int) bool {
+		return list[i] < list[j]
 	}
 }
