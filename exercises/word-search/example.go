@@ -2,7 +2,7 @@ package wordsearch
 
 import "fmt"
 
-func Solve(words []string, puzzle []string) (map[string][2][2]int, error) {
+func Solve(words, puzzle []string) (map[string][2][2]int, error) {
 	positions := make(map[string][2][2]int, len(words))
 	for _, word := range words {
 		span, err := find(word, puzzle)

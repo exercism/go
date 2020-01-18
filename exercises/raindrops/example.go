@@ -13,7 +13,7 @@ func Convert(number int) string {
 	if number%7 == 0 {
 		s += "Plong"
 	}
-	if len(s) == 0 {
+	if s == "" {
 		s = strconv.Itoa(number)
 	}
 	return s

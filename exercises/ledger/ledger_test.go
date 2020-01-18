@@ -260,7 +260,7 @@ func TestFormatLedgerSuccess(t *testing.T) {
 		expected := tt.expected[1:] // Strip initial newline
 		if actual != expected {
 			t.Fatalf("FormatLedger for input named %q was expected to return...\n%s\n...but returned...\n%s",
-				tt.name, strings.Replace(expected, " ", "_", -1), strings.Replace(actual, " ", "_", -1))
+				tt.name, strings.ReplaceAll(expected, " ", "_"), strings.ReplaceAll(actual, " ", "_"))
 		}
 	}
 }

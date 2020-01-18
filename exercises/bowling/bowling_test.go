@@ -8,10 +8,9 @@ const previousRollErrorMessage = `FAIL: %s
 	test case: %v
 	The error was returned from Roll(%d) for previousRolls[%d].`
 
-func applyPreviousRolls(g *Game, rolls []int) (int, int, error) {
+func applyPreviousRolls(g *Game, rolls []int) (index, pins int, err error) {
 	for index, pins := range rolls {
-		var err error
-		if err = g.Roll(pins); err != nil {
+		if err := g.Roll(pins); err != nil {
 			return index, pins, err
 		}
 	}
@@ -32,11 +31,9 @@ func TestScore(t *testing.T) {
 			if err != nil {
 				t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected %d, got error %s",
 					tc.description, tc.previousRolls, tc.score, err)
-			} else {
-				if score != tc.score {
-					t.Fatalf("%s : Score() after Previous Rolls: %#v expected %d, got %d",
-						tc.description, tc.previousRolls, tc.score, score)
-				}
+			} else if score != tc.score {
+				t.Fatalf("%s : Score() after Previous Rolls: %#v expected %d, got %d",
+					tc.description, tc.previousRolls, tc.score, score)
 			}
 		} else if err == nil {
 			t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected an error, got score %d\n\tExplanation: %s",

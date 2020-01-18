@@ -3,9 +3,9 @@ package strand
 import "strings"
 
 func ToRNA(dna string) string {
-	dna = strings.Replace(dna, "A", "u", -1)
-	dna = strings.Replace(dna, "T", "a", -1)
-	dna = strings.Replace(dna, "C", "g", -1)
-	dna = strings.Replace(dna, "G", "c", -1)
+	dna = strings.ReplaceAll(dna, "A", "u")
+	dna = strings.ReplaceAll(dna, "T", "a")
+	dna = strings.ReplaceAll(dna, "C", "g")
+	dna = strings.ReplaceAll(dna, "G", "c")
 	return strings.ToUpper(dna)
 }

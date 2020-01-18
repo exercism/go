@@ -79,7 +79,7 @@ func (c *counter) addBytes(n int) {
 	c.ops++
 }
 
-func (c *counter) count() (int64, int) {
+func (c *counter) count() (n int64, ops int) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	return c.bytes, c.ops

@@ -8,15 +8,16 @@ import (
 func TestSolve(t *testing.T) {
 	for _, tc := range testCases {
 		s, err := Solve(tc.input)
-		if tc.errorExpected {
+		switch {
+		case tc.errorExpected:
 			if err == nil {
 				t.Fatalf("FAIL: %s\nSolve(%q)\nExpected error\nActual: %#v",
 					tc.description, tc.input, s)
 			}
-		} else if err != nil {
+		case err != nil:
 			t.Fatalf("FAIL: %s\nSolve(%q)\nExpected: %#v\nGot error: %q",
 				tc.description, tc.input, tc.expected, err)
-		} else if !reflect.DeepEqual(s, tc.expected) {
+		case !reflect.DeepEqual(s, tc.expected):
 			t.Fatalf("FAIL: %s\nSolve(%q)\nExpected: %#v\nActual: %#v",
 				tc.description, tc.input, tc.expected, s)
 		}

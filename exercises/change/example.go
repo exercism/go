@@ -71,7 +71,7 @@ func updateSolution(newsolution []int, solution *[]int, bestsize *int) {
 
 // findUsingPartialSolution takes a partial solution, and coin list c looking to meet target
 // while updating solution s to include partial plus the coins meeting target.
-func findUsingPartialSolution(partial []int, c []int, target int, s *[]int, bestsize *int) {
+func findUsingPartialSolution(partial, c []int, target int, s *[]int, bestsize *int) {
 	// We want to consider coins in c in largest to smallest order.
 	sort.Sort(sort.Reverse(sort.IntSlice(c)))
 
@@ -124,7 +124,7 @@ func findUsingPartialSolution(partial []int, c []int, target int, s *[]int, best
 
 // Find the largest coin in coins not yet used in solution, not including coin 'omit'.
 // The coins are in largest to smallest order.
-func largestNotUsed(coins []int, solution []int, omit int) int {
+func largestNotUsed(coins, solution []int, omit int) int {
 coinLoop:
 	for _, coin := range coins {
 		if coin == omit {
@@ -142,7 +142,7 @@ coinLoop:
 }
 
 // nCoins returns a list(slice) of length n of a specific coin value.
-func nCoins(n int, coin int) []int {
+func nCoins(n, coin int) []int {
 	coins := make([]int, n)
 	for i := 0; i < n; i++ {
 		coins[i] = coin

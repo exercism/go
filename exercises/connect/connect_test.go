@@ -10,7 +10,7 @@ import (
 func prepare(lines []string) []string {
 	newLines := make([]string, len(lines))
 	for i, l := range lines {
-		newLines[i] = strings.Replace(l, " ", "", -1)
+		newLines[i] = strings.ReplaceAll(l, " ", "")
 	}
 	return newLines
 }

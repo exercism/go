@@ -6,10 +6,9 @@ func Use(opener ResourceOpener, input string) (err error) {
 		r, err = opener()
 		if err == nil {
 			break
-		} else {
-			if _, ok := err.(TransientError); !ok {
-				return err
-			}
+		}
+		if _, ok := err.(TransientError); !ok {
+			return err
 		}
 	}
 	defer r.Close()

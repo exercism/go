@@ -51,7 +51,7 @@ var transformTests = []struct {
 	},
 }
 
-func equal(actual map[string]int, expectation map[string]int) bool {
+func equal(actual, expectation map[string]int) bool {
 	if len(actual) != len(expectation) {
 		return false
 	}

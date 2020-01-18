@@ -246,9 +246,9 @@ func TestMakeTreeFailure(t *testing.T) {
 }
 
 func shuffleRecords(records []Record) []Record {
-	rand := rand.New(rand.NewSource(42))
+	gen := rand.New(rand.NewSource(42))
 	newRecords := make([]Record, len(records))
-	for i, idx := range rand.Perm(len(records)) {
+	for i, idx := range gen.Perm(len(records)) {
 		newRecords[i] = records[idx]
 	}
 	return newRecords

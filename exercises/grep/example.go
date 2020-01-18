@@ -28,7 +28,7 @@ func Search(pattern string, flags, files []string) []string {
 
 // searchFile performs a search for pattern in the given file
 // and returns the output according to the options.
-func searchFile(pattern string, file string, options *options) (output []string) {
+func searchFile(pattern, file string, options *options) (output []string) {
 	f, err := os.Open(file)
 	if err != nil {
 		return nil
@@ -56,21 +56,21 @@ func searchFile(pattern string, file string, options *options) (output []string)
 			}
 		}
 		if match && !options.invertPatternMatch {
-			if options.printFilenamesOnly {
-				output = append(output, file)
-				break
-			} else if options.printLineNumbers {
+			switch {
+			case options.printFilenamesOnly:
+				return append(output, file)
+			case options.printLineNumbers:
 				output = append(output, filePrefix+strconv.Itoa(lineNum)+":"+line)
-			} else {
+			default:
 				output = append(output, filePrefix+line)
 			}
 		} else if !match && options.invertPatternMatch {
-			if options.printFilenamesOnly {
-				output = append(output, file)
-				break
-			} else if options.printLineNumbers {
+			switch {
+			case options.printFilenamesOnly:
+				return append(output, file)
+			case options.printLineNumbers:
 				output = append(output, filePrefix+strconv.Itoa(lineNum)+":"+line)
-			} else {
+			default:
 				output = append(output, filePrefix+line)
 			}
 		}

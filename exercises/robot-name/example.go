@@ -88,7 +88,7 @@ func intToMultiBaseString(id int, digitSpec []string) string {
 		result += string(digitChars[pos])
 
 		// Calculate the remainder to be used for the next digit.
-		rmndr = rmndr % minVal
+		rmndr %= minVal
 	}
 
 	return result

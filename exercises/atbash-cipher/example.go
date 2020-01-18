@@ -7,15 +7,18 @@ import (
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
+var (
+	reChunk     = regexp.MustCompile(".{1,5}")
+	reNormalize = regexp.MustCompile("[^a-z0-9]")
+)
+
 func Atbash(s string) string {
 	return chunk(convert(normalize(s)))
 }
 
 func chunk(s string) string {
-	reg, _ := regexp.Compile(".{1,5}")
-	value := reg.FindAllString(s, -1)
-	s = strings.Join(value, " ")
-	return s
+	value := reChunk.FindAllString(s, -1)
+	return strings.Join(value, " ")
 }
 
 func convert(s string) string {
@@ -28,19 +31,16 @@ func convert(s string) string {
 		char := inputSlice[i]
 		index := indexOf(originalSlice, char)
 		if index > -1 {
-			result = result + reversedSlice[index]
+			result += reversedSlice[index]
 		} else {
-			result = result + char
+			result += char
 		}
 	}
 	return result
 }
 
 func normalize(s string) string {
-	s = strings.ToLower(s)
-	reg, _ := regexp.Compile("[^a-z0-9]")
-	s = reg.ReplaceAllString(s, "")
-	return s
+	return reNormalize.ReplaceAllString(strings.ToLower(s), "")
 }
 
 func reverse(s string) string {
@@ -51,9 +51,9 @@ func reverse(s string) string {
 	return string(runes)
 }
 
-func indexOf(slice []string, string string) int {
+func indexOf(slice []string, s string) int {
 	for p, v := range slice {
-		if v == string {
+		if v == s {
 			return p
 		}
 	}

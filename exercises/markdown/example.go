@@ -17,12 +17,12 @@ const (
 
 // Render translates markdown to HTML
 func Render(markdown string) (html string) {
-	//first the easy one, via regexp substitution
+	// first the easy one, via regexp substitution
 	reStrong := regexp.MustCompile("(__)(.*)(__)")
 	s := reStrong.ReplaceAll([]byte(markdown), []byte("<strong>$2</strong>"))
 	reEm := regexp.MustCompile("(_)(.*)(_)")
 	s = reEm.ReplaceAll(s, []byte("<em>$2</em>"))
-	//now manage <li> and <hN>
+	// now manage <li> and <hN>
 	var output bytes.Buffer
 	starcount := 0
 	hcount := 0

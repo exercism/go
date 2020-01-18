@@ -46,10 +46,10 @@ const (
 func Solve(sizeBucketOne,
 	sizeBucketTwo,
 	goalAmount int,
-	startBucket string) (goalBucket string, numSteps, otherBucketLevel int, e error) {
+	startBucket string) (goalBucket string, numSteps, otherBucketLevel int, err error) {
 
-	if e = validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount, startBucket); e != nil {
-		return "", 0, 0, e
+	if err := validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount, startBucket); err != nil {
+		return "", 0, 0, err
 	}
 
 	p := problem{

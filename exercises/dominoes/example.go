@@ -48,21 +48,22 @@ func arrangeChain(d []Domino) (chain []Domino, ok bool) {
 	for i := 1; i < len(d); i++ {
 		t := d[i]
 		last := chain[n]
-		if n == 0 && last[0] == t[0] {
+		switch {
+		case n == 0 && last[0] == t[0]:
 			// reverse first and only item in chain to match t, and add t to chain.
 			chain[n] = reverseDomino(last)
 			chain[n+1] = t
-		} else if n == 0 && last[0] == t[1] {
+		case n == 0 && last[0] == t[1]:
 			// reverse only item in chain and t to match, and add reversed t to chain.
 			chain[n] = reverseDomino(last)
 			chain[n+1] = reverseDomino(t)
-		} else if last[1] == t[0] {
+		case last[1] == t[0]:
 			// add t as-is into chain.
 			chain[n+1] = t
-		} else if last[1] == t[1] {
+		case last[1] == t[1]:
 			// reverse t to match last one in chain, and add reversed t to chain.
 			chain[n+1] = reverseDomino(t)
-		} else {
+		default:
 			// no match for this chain configuration of d, even with swapping.
 			return nil, false
 		}

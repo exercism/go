@@ -14,7 +14,7 @@ type Entry struct {
 	Change      int // in cents
 }
 
-func FormatLedger(currency string, locale string, entries []Entry) (string, error) {
+func FormatLedger(currency, locale string, entries []Entry) (string, error) {
 	symbol, found := currencySymbols[currency]
 	if !found {
 		return "", fmt.Errorf("Invalid or unknown currency %q", currency)
@@ -62,7 +62,7 @@ type localeInfo struct {
 func (f localeInfo) currencyString(symbol string, cents int) string {
 	negative := false
 	if cents < 0 {
-		cents = cents * -1
+		cents *= -1
 		negative = true
 	}
 	return f.currency(symbol, cents, negative)

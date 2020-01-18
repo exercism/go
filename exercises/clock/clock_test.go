@@ -116,17 +116,17 @@ func TestCompareClocks(t *testing.T) {
 
 func TestAddAndCompare(t *testing.T) {
 	clock1 := New(15, 45).Add(16)
-	clock2 := New(16, 01)
+	clock2 := New(16, 1)
 	if !reflect.DeepEqual(clock1, clock2) {
-		t.Errorf("clock.New(15,45).Add(16) differs from clock.New(16,01)")
+		t.Errorf("clock.New(15,45).Add(16) differs from clock.New(16,1)")
 	}
 }
 
 func TestSubtractAndCompare(t *testing.T) {
-	clock1 := New(16, 01).Subtract(16)
+	clock1 := New(16, 1).Subtract(16)
 	clock2 := New(15, 45)
 	if !reflect.DeepEqual(clock1, clock2) {
-		t.Errorf("clock.New(16,01).Subtract(16) differs from clock.New(15,45)")
+		t.Errorf("clock.New(16,1).Subtract(16) differs from clock.New(15,45)")
 	}
 }
 

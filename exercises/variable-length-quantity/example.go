@@ -59,7 +59,7 @@ func decodeInt(buf []byte) (x uint32, n int, err error) {
 
 	var b byte
 	for n, b = range buf {
-		x = x << 7
+		x <<= 7
 		x |= uint32(b) & 0x7f
 		if (b & 0x80) == 0 {
 			return x, n + 1, nil

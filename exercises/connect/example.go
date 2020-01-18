@@ -76,7 +76,7 @@ func newBoard(lines []string) (board, error) {
 //
 // Returns both whether there is a stone of the correct color and
 // whether the connected flag was set for it.
-func (b board) at(c coord, cf colorFlags) (bool, bool) {
+func (b board) at(c coord, cf colorFlags) (isCorrectColor, isConnected bool) {
 	f := b.fields[c.y][c.x]
 	return f&cf.color == cf.color,
 		f&cf.connected == cf.connected
@@ -146,19 +146,20 @@ func (b board) dump() {
 		spaces := strings.Repeat(" ", y)
 		chars := make([]string, b.width)
 		for x := 0; x < b.width; x++ {
-			if b.fields[y][x]&white == white {
+			switch {
+			case b.fields[y][x]&white == white:
 				if b.fields[y][x]&connectedWhite == connectedWhite {
 					chars[x] = "O"
 				} else {
 					chars[x] = "o"
 				}
-			} else if b.fields[y][x]&black == black {
+			case b.fields[y][x]&black == black:
 				if b.fields[y][x]&connectedBlack == connectedBlack {
 					chars[x] = "X"
 				} else {
 					chars[x] = "x"
 				}
-			} else {
+			default:
 				chars[x] = "."
 			}
 		}

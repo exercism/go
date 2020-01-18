@@ -2,11 +2,11 @@ package queenattack
 
 import "fmt"
 
-func CanQueenAttack(w, b string) (attack bool, err error) {
-	if err = valSq(w); err != nil {
+func CanQueenAttack(w, b string) (bool, error) {
+	if err := valSq(w); err != nil {
 		return false, err
 	}
-	if err = valSq(b); err != nil {
+	if err := valSq(b); err != nil {
 		return false, err
 	}
 	if w == b {

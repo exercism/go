@@ -1,11 +1,9 @@
 package rectangles
 
-import "strings"
-
 func checkHorizontalSide(diagram []string, start, end, rowIndex int) bool {
-	const pattern = "+-"
 	for i := start; i < end; i++ {
-		if !strings.Contains(pattern, diagram[rowIndex][i:i+1]) {
+		s := diagram[rowIndex][i]
+		if s != '+' && s != '-' {
 			return false
 		}
 	}
@@ -13,9 +11,9 @@ func checkHorizontalSide(diagram []string, start, end, rowIndex int) bool {
 }
 
 func checkVerticalSide(diagram []string, start, end, colIndex int) bool {
-	const pattern = "+|"
 	for i := start; i < end; i++ {
-		if !strings.Contains(pattern, diagram[i][colIndex:colIndex+1]) {
+		s := diagram[i][colIndex]
+		if s != '+' && s != '|' {
 			return false
 		}
 	}

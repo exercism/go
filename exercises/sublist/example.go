@@ -17,14 +17,16 @@ const (
 // returns equal, sublist, superlist or unequal according
 // to their relation to each other.
 func Sublist(l1, l2 []int) Relation {
-	if reflect.DeepEqual(l1, l2) {
+	switch {
+	case reflect.DeepEqual(l1, l2):
 		return RelationEqual
-	} else if contains(l1, l2) {
+	case contains(l1, l2):
 		return RelationSuperlist
-	} else if contains(l2, l1) {
+	case contains(l2, l1):
 		return RelationSublist
+	default:
+		return RelationUnequal
 	}
-	return RelationUnequal
 }
 
 func contains(l1, l2 []int) bool {
