@@ -140,6 +140,16 @@
       "link_url": null,
       "avatar_url": null,
       "bio": "Data Scientist with Operations Research background. Started learning Go to improve my software development skills and ended up loving it for its simplicity and amazing community."
+    },
+    {
+      "github_username": "Prounckk",
+      "alumnus": true,
+      "show_on_website": false,
+      "name": "Sergei Eremeev",
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": null,
+      "bio": "SRE, Gopher and nerd"
     }
   ]
 }
