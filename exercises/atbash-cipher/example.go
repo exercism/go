@@ -7,12 +7,17 @@ import (
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
+var (
+	reChunk     = regexp.MustCompile(".{1,5}")
+	reNormalize = regexp.MustCompile("[^a-z0-9]")
+)
+
 func Atbash(s string) string {
 	return chunk(convert(normalize(s)))
 }
 
 func chunk(s string) string {
-	value := regexp.MustCompile(".{1,5}").FindAllString(s, -1)
+	value := reChunk.FindAllString(s, -1)
 	return strings.Join(value, " ")
 }
 
@@ -35,8 +40,7 @@ func convert(s string) string {
 }
 
 func normalize(s string) string {
-	s = strings.ToLower(s)
-	return regexp.MustCompile("[^a-z0-9]").ReplaceAllString(s, "")
+	return reNormalize.ReplaceAllString(strings.ToLower(s), "")
 }
 
 func reverse(s string) string {

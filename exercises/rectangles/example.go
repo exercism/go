@@ -2,8 +2,8 @@ package rectangles
 
 func checkHorizontalSide(diagram []string, start, end, rowIndex int) bool {
 	for i := start; i < end; i++ {
-		s := diagram[rowIndex][i : i+1]
-		if s != "+" && s != "-" {
+		s := diagram[rowIndex][i]
+		if s != '+' && s != '-' {
 			return false
 		}
 	}
@@ -12,8 +12,8 @@ func checkHorizontalSide(diagram []string, start, end, rowIndex int) bool {
 
 func checkVerticalSide(diagram []string, start, end, colIndex int) bool {
 	for i := start; i < end; i++ {
-		s := diagram[i][colIndex : colIndex+1]
-		if s != "+" && s != "|" {
+		s := diagram[i][colIndex]
+		if s != '+' && s != '|' {
 			return false
 		}
 	}

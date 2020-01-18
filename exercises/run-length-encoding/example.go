@@ -18,7 +18,7 @@ func RunLengthEncode(s string) string {
 		}
 	}
 	if s != "" {
-		_, output = 1, output+encode(count, len(s), s)
+		output += encode(count, len(s), s)
 	}
 	return output
 }

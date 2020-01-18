@@ -18,8 +18,10 @@ func WordCount(phrase string) Frequency {
 	return freq
 }
 
+// allow for apostrophes in words
+var reNormalize = regexp.MustCompile(`[^\w|']`)
+
 func normalize(phrase string) string {
 	phrase = strings.ToLower(phrase)
-	// allow for apostrophes in words
-	return regexp.MustCompile(`[^\w|']`).ReplaceAllLiteralString(phrase, " ")
+	return reNormalize.ReplaceAllLiteralString(phrase, " ")
 }
