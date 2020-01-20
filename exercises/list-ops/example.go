@@ -2,12 +2,18 @@ package listops
 
 // IntList is an abstraction of a list of integers
 type IntList []int
-type predFunc func(int) bool
-type binFunc func(int, int) int
-type unaryFunc func(int) int
+
+// PredFunc function to filter values
+type PredFunc func(int) bool
+
+// BinFunc function to combine values
+type BinFunc func(int, int) int
+
+// UnaryFunc function to transform values
+type UnaryFunc func(int) int
 
 // Foldl folds (reduces) the given list from the left with a function
-func (s IntList) Foldl(fn binFunc, initial int) int {
+func (s IntList) Foldl(fn BinFunc, initial int) int {
 	if len(s) == 0 {
 		return initial
 	}
@@ -16,17 +22,17 @@ func (s IntList) Foldl(fn binFunc, initial int) int {
 }
 
 // Foldr folds (reduces) the given list from the right with a function
-func (s IntList) Foldr(fn binFunc, initial int) int {
+func (s IntList) Foldr(fn BinFunc, initial int) int {
 	flippedFunc := func(x, y int) int { return fn(y, x) }
 	// Note: This relies on s being finite
 	return s.Reverse().Foldl(flippedFunc, initial)
 }
 
 // Filter list returning only values that satisfy the filter function
-func (s IntList) Filter(fn predFunc) IntList {
+func (s IntList) Filter(fn PredFunc) IntList {
 	filtered := make([]int, 0, len(s))
-	var filterAcc func(predFunc, IntList, IntList) IntList
-	filterAcc = func(fn predFunc, acc IntList, lst IntList) IntList {
+	var filterAcc func(PredFunc, IntList, IntList) IntList
+	filterAcc = func(fn PredFunc, acc IntList, lst IntList) IntList {
 		if len(lst) == 0 {
 			return acc
 		}
@@ -43,7 +49,7 @@ func (s IntList) Filter(fn predFunc) IntList {
 func (s IntList) Length() int { return len(s) }
 
 // Map returns a list of elements whose values equal the list value transformed by the mapping function
-func (s IntList) Map(fn unaryFunc) IntList {
+func (s IntList) Map(fn UnaryFunc) IntList {
 	newSlice := make([]int, len(s))
 	for idx, elt := range s {
 		newSlice[idx] = fn(elt)

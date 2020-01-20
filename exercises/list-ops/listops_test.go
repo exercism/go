@@ -8,7 +8,7 @@ import (
 var foldTestCases = []struct {
 	name     string
 	property string
-	fn       binFunc
+	fn       BinFunc
 	initial  int
 	list     IntList
 	want     int
@@ -76,15 +76,13 @@ func TestFold(t *testing.T) {
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
-
 	}
-
 }
 
 var filterTestCases = []struct {
 	name     string
 	property string
-	fn       predFunc
+	fn       PredFunc
 	list     []int
 	want     []int
 }{
@@ -113,7 +111,6 @@ func TestFilterMethod(t *testing.T) {
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
-
 	}
 }
 
@@ -145,7 +142,6 @@ func TestLengthMethod(t *testing.T) {
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
-
 	}
 }
 
@@ -153,7 +149,7 @@ var mapTestCases = []struct {
 	name     string
 	property string
 	list     IntList
-	fn       unaryFunc
+	fn       UnaryFunc
 	want     IntList
 }{
 	{
@@ -212,7 +208,6 @@ func TestReverseMethod(t *testing.T) {
 		} else {
 			t.Logf("PASS: %s: %s", tt.property, tt.name)
 		}
-
 	}
 }
 
