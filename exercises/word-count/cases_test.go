@@ -69,4 +69,9 @@ var testCases = []struct {
 		",\n,one,\n ,two \n 'three'",
 		Frequency{"one": 1, "three": 1, "two": 1},
 	},
+	{
+		"multiple apostrophes treated as normal punctuation",
+		"''hey''",
+		Frequency{"hey": 1},
+	},
 }
