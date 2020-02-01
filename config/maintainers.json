@@ -160,6 +160,16 @@
       "link_url": null,
       "avatar_url": null,
       "bio": "Started learning Go since late 2018 and loved and used in personal projects it ever since. I'm currently working in C++ backends and previously I worked on Java backends for e-commerce sites."
+    },
+    {
+      "github_username": "DavyJ0nes",
+      "alumnus": false,
+      "show_on_website": false,
+      "name": "Davy Jones",
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": null,
+      "bio": "Have been using Go profesionally for about 3 years building backend systems and developer tooling. I love its simplicity and lack of magic!"
     }
   ]
 }
