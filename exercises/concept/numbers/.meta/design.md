@@ -4,7 +4,7 @@
 
 The goal of this exercise is to teach the student how to deal with numbers in Go.
 
-## Things to teach
+## Learning objectives
 
 - This should introduce the `int` and `float64` types (be basic number types in Go).
 - It should introduce operations with numbers like multiplication, division, etc.

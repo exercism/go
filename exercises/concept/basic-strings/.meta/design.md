@@ -4,14 +4,14 @@
 
 The goal of this exercise is to teach the student the basics of the Concept of Strings in Go.
 
-## Things to teach
+## Learning objectives
 
 - Know of the existence of the `string` type.
 - Know how to create a string.
 - Know of some basic `strings` methods (like `Split`, `Index`, `TrimSpace`).
 - Know how to do basic string formatting: `fmt.Sprintf`
 
-## Things not to teach
+## Out of scope
 
 - iteration of strings
 - immutability of strings
