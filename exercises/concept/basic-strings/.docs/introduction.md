@@ -1,5 +1,3 @@
-# Introduction
-
 ### Strings
 
 A `string` in Go is a sequence of `bytes`, which doesn't necessarily have to represent characters.
@@ -12,7 +10,7 @@ Runes, bytes, and their connection to strings will be handled more in-depth in a
 
 The underlying type (aka representation) for `string` in Go is the `[]byte` slice, which allows for some commonalities with slices in general.
 For example, you can get a `byte` at position `i` from a `string` called `s` with sub-indexing, like `s[i]`.
-With that said, string types are immutable so operations like s[i] = 'a' are not available and will result in a compilation error.        
+With that said, string types are immutable so operations like s[i] = 'a' are not available and will result in a compilation error.
 
 [Strings, bytes, runes and characters in Go](https://blog.golang.org/strings) provides a deep dive into this topic.
 

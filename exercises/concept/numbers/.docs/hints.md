@@ -1,5 +1,3 @@
-# Hints
-
 ### Arithmetic Operators in Go
 
 Below shows the set of arithmetic operators available in Go in use:
@@ -23,5 +21,4 @@ fmt.Println("10 % 2 = ", 10%2)    // Remainder
 
 For more information please see the [Go language Spec][go-lang-spec-arithmetic-operators]
 
-
-[go-lang-spec-arithmetic-operators]:https://golang.org/ref/spec#Arithmetic_operators
+[go-lang-spec-arithmetic-operators]: https://golang.org/ref/spec#Arithmetic_operators
