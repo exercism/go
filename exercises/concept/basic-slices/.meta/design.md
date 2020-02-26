@@ -31,7 +31,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 
 ## Implementing
 
-Here you can find the [Implementation Guide](https://github.com/exercism/v3/blob/master/languages/go/docs/implementing-a-concept-exercise.md).
+Here you can find the [Implementation Guide](https://github.com/exercism/v3/blob/master/languages/go/reference/implementing-a-concept-exercise.md).
 
 ## Help
 
