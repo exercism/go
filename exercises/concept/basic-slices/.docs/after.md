@@ -1,5 +1,3 @@
-# After
-
 ## Indexes in slices
 
 Working with indexes of slices should always be protected in some way by a check that makes sure the index actually exists.

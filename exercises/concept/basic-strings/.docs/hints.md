@@ -1,5 +1,3 @@
-# Hints
-
 ### General
 
 - Strings in Go are based on `[]byte`. For example getting a substring works the same as getting a subslice.
