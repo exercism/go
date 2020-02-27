@@ -2,7 +2,7 @@
 
 The goal of this exercise is to teach the student the basics on how to work with slices in Go.
 
-## Things to teach
+## Learning objectives
 
 - instantiate (len, cap)
 - append
@@ -13,7 +13,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 - subslices
 - expanding slices (e.g. in `append(slice1, slice2...)`)
 
-## Things not to teach
+## Out of scope
 
 - deep dive into the inner workings of slices
 - arrays
