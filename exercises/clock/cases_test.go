@@ -44,6 +44,7 @@ var addTests = []struct {
 	{23, 59, 2, "00:01"},   // add across midnight
 	{5, 32, 1500, "06:32"}, // add more than one day (1500 min = 25 hrs)
 	{1, 1, 3500, "11:21"},  // add more than two days
+	{1, 1, -10, "00:51"},   // add negative minutes
 }
 
 // Subtract minutes
@@ -59,6 +60,7 @@ var subtractTests = []struct {
 	{6, 15, 160, "03:35"},  // subtract more than two hours with borrow
 	{5, 32, 1500, "04:32"}, // subtract more than one day (1500 min = 25 hrs)
 	{2, 20, 3000, "00:20"}, // subtract more than two days
+	{1, 1, -10, "01:11"},   // subtract negative minutes
 }
 
 // Compare two clocks for equality
