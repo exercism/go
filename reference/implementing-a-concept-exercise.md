@@ -65,6 +65,9 @@ If you have any questions regarding implementing the exercise, please post them 
 [representer]: https://github.com/exercism/go-representer
 [concept-exercises]: ../exercises/concept/README.md
 [how-to-implement-a-concept-exercise]: ../../../docs/maintainers/generic-how-to-implement-a-concept-exercise.md
+[docs-concept-exercises]: ../../../docs/concept-exercises.md
+[docs-rationale-for-v3]: ../../../docs/rationale-for-v3.md
+[docs-features-of-v3]: ../../../docs/features-of-v3.md
 [concept-exercise-basic-strings]: ../exercises/concept/basic-strings
 [concept-exercise-numbers]: ../exercises/concept/numbers
 [reference]: ../../../reference
