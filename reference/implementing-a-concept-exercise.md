@@ -1,6 +1,18 @@
 # How to implement a Go concept exercise
 
-This document describes how to implement a concept exercise for the Go track. As this document is exercise generic, the following placeholders are used:
+This document describes how to implement a concept exercise for the Go track.
+
+**Please please please read the docs before starting.** Posting PRs without reading these docs will be a lot more frustrating for you during the review cycle, and exhaust Exercism's maintainers' time. So, before diving into the implementation, please read the following documents:
+
+- [The features of v3][docs-features-of-v3].
+- [Rationale for v3][docs-rationale-for-v3].
+- [What are concept exercise and how they are structured?][docs-concept-exercises]
+
+Please also watch the following video:
+
+- [The Anatomy of a Concept Exercise][anatomy-of-a-concept-exercise].
+
+As this document is exercise generic, the following placeholders are used:
 
 - `<SLUG>`: the name of the exercise in kebab-case (e.g. `basic-strings`).
 - `<NAME>`: the name of the exercise in snake_case (e.g. `basic_strings`).
@@ -68,6 +80,7 @@ If you have any questions regarding implementing the exercise, please post them 
 [docs-concept-exercises]: ../../../docs/concept-exercises.md
 [docs-rationale-for-v3]: ../../../docs/rationale-for-v3.md
 [docs-features-of-v3]: ../../../docs/features-of-v3.md
+[anatomy-of-a-concept-exercise]: https://www.youtube.com/watch?v=gkbBqd7hPrA
 [concept-exercise-basic-strings]: ../exercises/concept/basic-strings
 [concept-exercise-numbers]: ../exercises/concept/numbers
 [reference]: ../../../reference
