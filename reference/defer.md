@@ -91,5 +91,6 @@ Extending this function with more functionality does not require to think about 
 That has been taken care of.
 
 ### Pro Tip
+
 The trick of using `defer` successfully lies in scoping functions accordingly.
 If defer does not fit in, restructuring should be considered.

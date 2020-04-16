@@ -6,6 +6,6 @@ When a test fails, a message is displayed describing what went wrong and for whi
 fmt.Println("Debug message")
 ```
 
-[fmt-println]: https://golang.org/pkg/fmt/#Println 
+[fmt-println]: https://golang.org/pkg/fmt/#Println
 
 Note: When debugging with the in-browser editor, using e.g. `fmt.Print` will not add a newline after the output which can provoke a bug in `go test --json` and result in messed up test output.

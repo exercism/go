@@ -2,7 +2,7 @@
 
 > In Go, error handling is important. The language's design and conventions encourage you to explicitly check for errors
 > where they occur (as distinct from the convention in other languages of throwing exceptions and sometimes catching them).
->[Error handling and Go](https://blog.golang.org/error-handling-and-go)
+> [Error handling and Go](https://blog.golang.org/error-handling-and-go)
 
 As the quote already hints at: Error handling in Go is different than in most other languages. It actually has almost
 nothing in common with the typical catching of exceptions. The difference becomes clear, when looking at how to deal with errors in Go.
@@ -47,6 +47,7 @@ At some point up the chain we would then decide to log the error or deal with it
 An error should however not be dealt with and returned up the chain at the same time.
 
 Don't do:
+
 ```go
     f, err := os.Open(file)
     if err != nil {
@@ -59,6 +60,7 @@ Don't do:
 ## Advanced Error Handling
 
 There is a lot more to errors than can be covered here. The following links will get you started:
+
 - [Error Handling and Go](https://blog.golang.org/error-handling-and-go)
 - [Standard errors Package](https://golang.org/pkg/errors/)
 - [Don't just check errors, handle them gracefully (Dave Chaney)](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
