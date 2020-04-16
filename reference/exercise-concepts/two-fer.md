@@ -14,7 +14,7 @@ It's the first time most students work with Go, and many have not yet used `gofm
 
 It's the first time most students work with Go, and many have not yet used `golint`. Linting already provides some hints
 on what (not) to do, e.g. use of variable names, not using else if the the regular condition ends with return, and missing
-documentation on exported function (or in the wrong format). 
+documentation on exported function (or in the wrong format).
 
 ### Comments
 
@@ -35,7 +35,6 @@ The parameter passed is a string. For the default value, a check needs to be mad
 - how to do an idiomatic check for empty string
 - how to concatenate strings, either using a simple `+`, or the `fmt` package
 
-
 ### Variables / Assignment / Scope
 
 The parameters are passed by value, so in the scope of the function they can be altered.
@@ -47,7 +46,6 @@ The parameters are passed by value, so in the scope of the function they can be 
 The code needs to check whether the parameter is empty.
 
 No else branch is needed. Keeps the code simpler.
-
 
 ### Return value
 

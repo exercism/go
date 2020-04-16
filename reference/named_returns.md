@@ -19,7 +19,7 @@ With `named returns` also `naked returns` can be used. Although there are 3 retu
 func getPosition() (lat, long float64, err error) {
     lat = 4.534
     long = 3.5273
-    
+
     return
 }
 ```

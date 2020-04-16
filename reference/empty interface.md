@@ -1,4 +1,4 @@
-# Empty  `interface{}`
+# Empty `interface{}`
 
 The empty interface can hold any type of data.
 It is a special case of using [interfaces](TODO:_link_to_interface) where no method is specified and therefore any type can satisfy the empty interface.
@@ -30,17 +30,18 @@ func double(v interface{}) interface{} {
 ```
 
 This function has the following problems:
+
 - Every type that can be multiplied by 2 needs to be handled separately. `v` cannot be multiplied by 2 directly as it
-could be any type including a `string`. There are a lot more numerical types in Go than just the ones implemented above.
+  could be any type including a `string`. There are a lot more numerical types in Go than just the ones implemented above.
 - Reflection is needed to check the type of the variable. In this case this is done with the `type switch`. In other cases
-using the `reflect` package might be necessary. Reflection is expensive.
+  using the `reflect` package might be necessary. Reflection is expensive.
 - Calling this function needs type casting afterwards `double(5).(int)` as the returned empty interface is of unknown type.
-Not casting the type afterwards will litter the entire code base with variables of unknown type.
-A variable of type `interface{}` cannot be used, unless casted to its underlying type first.
+  Not casting the type afterwards will litter the entire code base with variables of unknown type.
+  A variable of type `interface{}` cannot be used, unless casted to its underlying type first.
 - Using `interface{}` disables type checks at compile time and introduces failures at runtime.
-When using the function above with a non-supported type it will return the special "not a number" (`float64`) value.
-Not checking for that after every call to the function is a big risk. Especially if the variable passed to the function
-is already of type `interface{}` and with that its type unknown to the compiler and to the developer.
+  When using the function above with a non-supported type it will return the special "not a number" (`float64`) value.
+  Not checking for that after every call to the function is a big risk. Especially if the variable passed to the function
+  is already of type `interface{}` and with that its type unknown to the compiler and to the developer.
 
 ## Useful Usage
 
