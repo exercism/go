@@ -20,7 +20,7 @@ The goal of this exercise is to teach the student the basics of the Concept of S
 
 ## Concepts
 
-- `basic-strings`
+- `strings`
 
 ## Prequisites
 

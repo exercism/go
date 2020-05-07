@@ -20,7 +20,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 
 ## Concepts
 
-- `basic-slices`
+- `slices`
 
 ## Prerequisites
 
