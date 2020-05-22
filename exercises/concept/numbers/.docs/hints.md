@@ -1,4 +1,4 @@
-### Arithmetic Operators in Go
+## Arithmetic Operators in Go
 
 Below shows the set of arithmetic operators available in Go in use:
 

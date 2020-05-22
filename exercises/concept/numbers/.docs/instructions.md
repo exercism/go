@@ -17,7 +17,7 @@ following table shows how speed influences the success rate:
 
 You have two tasks:
 
-### 1. Calculate the production rate per hour
+## 1. Calculate the production rate per hour
 
 Implement a function to calculate the assembly line's production rate per hour.
 
@@ -29,7 +29,7 @@ fmt.Println(rate)
 
 > Note that the value returned is of type `float64`
 
-### 2. Calculate the number of working items produced per minute
+## 2. Calculate the number of working items produced per minute
 
 Implement a function to calculate how many cars are produced each minute:
 
