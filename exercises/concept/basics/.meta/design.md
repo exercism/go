@@ -47,7 +47,7 @@ This exercise does not require any specific representation logic to be added to 
 This exercise could benefit from the following rules added to the [analyzer][analyzer]:
 
 - Verify that the `RemainingOvenTime()` function calls the `OvenTime()` function.
-- Verify that the `TotalTime()` function calls the `PreparationTime()` function.
+- Verify that the `ElapsedTime()` function calls the `PreparationTime()` function.
 
 [analyzer]: https://github.com/exercism/go-analyzer
 [representer]: https://github.com/exercism/go-representer
