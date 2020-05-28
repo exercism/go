@@ -6,4 +6,4 @@ package basics
 
 // TODO: define the 'PreparationTime()' function
 
-// TODO: define the 'TotalTime()' function
+// TODO: define the 'ElapsedTime()' function

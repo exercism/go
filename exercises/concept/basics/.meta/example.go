@@ -15,7 +15,7 @@ func PreparationTime(numberOfLayers int) int {
 	return numberOfLayers * 2
 }
 
-// TotalTime calculates the total time needed to create and bake a lasagna.
-func TotalTime(numberOfLayers, actualMinutesInOven int) int {
+// ElapsedTime calculates the total time needed to create and bake a lasagna.
+func ElapsedTime(numberOfLayers, actualMinutesInOven int) int {
 	return PreparationTime(numberOfLayers) + actualMinutesInOven
 }
