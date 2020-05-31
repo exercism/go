@@ -28,33 +28,44 @@ func ParseCard(card string) int {
 	}
 }
 
-// Blackjack returns true if the player has a blackjack, false otherwise.
-func Blackjack(card1, card2 string) bool {
+// IsBlackjack returns true if the player has a blackjack, false otherwise.
+func IsBlackjack(card1, card2 string) bool {
 	return ParseCard(card1)+ParseCard(card2) == 21
 }
 
-// FirstTurn returns the "optimal" decision for the first turn, given the cards of the player and the dealer.
-func FirstTurn(card1, card2, dealerCard string) string {
-	handScore := ParseCard(card1) + ParseCard(card2)
-	// Single if statement
-	if handScore == 22 {
-		return "P"
-	}
-	dealerScore := ParseCard(dealerCard)
+// LargeHand implements the decision tree for hand scores larger than 20 points.
+func LargeHand(isBlackjack bool, dealerScore int) string {
 	// Nested if statement (no else)
-	if Blackjack(card1, card2) {
+	if isBlackjack {
 		if dealerScore < 10 {
 			return "W"
 		}
 		return "S"
 	}
+	return "P"
+}
+
+// SmallHand implements the decision tree for hand scores with less than 21 points.
+func SmallHand(handScore int, dealerScore int) string {
 	// Switch statement
 	switch {
-	case (handScore >= 17) || (handScore >= 12 && dealerScore <= 6):
+	case (handScore >= 17) || (handScore >= 12 && dealerScore < 7):
 		return "S"
-	case (handScore <= 11) || (handScore >= 12 && dealerScore > 6):
+	case (handScore <= 11) || (handScore >= 12 && dealerScore >= 7):
 		return "H"
 	default:
 		return ""
 	}
+}
+
+// FirstTurn implements the logic for the first turn with the help of the other implemented functions.
+// This function is already implemented and does not need to be edited.
+func FirstTurn(card1, card2, dealerCard string) string {
+	handScore := ParseCard(card1) + ParseCard(card2)
+	dealerScore := ParseCard(dealerCard)
+
+	if 20 < handScore {
+		return LargeHand(IsBlackjack(card1, card2), dealerScore)
+	}
+	return SmallHand(handScore, dealerScore)
 }
