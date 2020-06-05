@@ -1,7 +1,7 @@
 # Exercism Go Track
 
-[![Build Status](https://travis-ci.org/exercism/go.png?branch=master)](https://travis-ci.org/exercism/go)
-[![Gitter chat](https://badges.gitter.im/exercism/go.png)](https://gitter.im/exercism/go)
+[![Build Status](https://travis-ci.org/exercism/go.svg?branch=master)](https://travis-ci.org/exercism/go)
+[![Gitter chat](https://badges.gitter.im/exercism/go.svg)](https://gitter.im/exercism/go)
 
 Exercism exercises in Go
 
