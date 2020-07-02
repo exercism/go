@@ -222,26 +222,30 @@ func (n Node) String() string {
 
 func TestMakeTreeSuccess(t *testing.T) {
 	for _, tt := range successTestCases {
-		actual, err := Build(tt.input)
-		if err != nil {
-			var _ error = err
-			t.Fatalf("Build for test case %q returned error %q. Error not expected.",
-				tt.name, err)
-		}
-		if !reflect.DeepEqual(actual, tt.expected) {
-			t.Fatalf("Build for test case %q returned %s but was expected to return %s.",
-				tt.name, actual, tt.expected)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			actual, err := Build(tt.input)
+			if err != nil {
+				var _ error = err
+				t.Fatalf("Build for test case %q returned error %q. Error not expected.",
+					tt.name, err)
+			}
+			if !reflect.DeepEqual(actual, tt.expected) {
+				t.Fatalf("Build for test case %q returned %s but was expected to return %s.",
+					tt.name, actual, tt.expected)
+			}
+		})
 	}
 }
 
 func TestMakeTreeFailure(t *testing.T) {
 	for _, tt := range failureTestCases {
-		actual, err := Build(tt.input)
-		if err == nil {
-			t.Fatalf("Build for test case %q returned %s but was expected to fail.",
-				tt.name, actual)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			actual, err := Build(tt.input)
+			if err == nil {
+				t.Fatalf("Build for test case %q returned %s but was expected to fail.",
+					tt.name, actual)
+			}
+		})
 	}
 }
 
