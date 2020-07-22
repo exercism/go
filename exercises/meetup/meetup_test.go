@@ -4,7 +4,7 @@ import "testing"
 
 /* API
 package meetup
-type Weekschedule
+type WeekSchedule
 WeekSchedule First
 WeekSchedule Second
 WeekSchedule Third
