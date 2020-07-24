@@ -1,21 +1,16 @@
 package strings
 
-// Message extracts the message from the provided log line.
-func Message(line string) string {
-	panic("not implemented")
+// Welcome greets a person by name.
+func Welcome(name string) string {
+	panic("Please implement the Welcome function")
 }
 
-// MessageLen counts the amount of characters (runes) in the message of the log line.
-func MessageLen(line string) int {
-	panic("not implemented")
+// HappyBirthday wishes happy birthday to the birthday person and stands out his age.
+func HappyBirthday(name string, age int) string {
+	panic("Please implement the HappyBirthday function")
 }
 
-// LogLevel extracts the log level string from the provided log line.
-func LogLevel(line string) string {
-	panic("not implemented")
-}
-
-// Reformat reformats the log line in the format `message (logLevel)`.
-func Reformat(line string) string {
-	panic("not implemented")
+// AssignTable assigns a table to each guest.
+func AssignTable(name string, table int, neighbour string, direction string, distance float64) string {
+	panic("Please implement the AssignTable function")
 }

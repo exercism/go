@@ -1,33 +1,22 @@
 package _meta
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
-// Message extracts the message from the provided log line.
-func Message(line string) string {
-	parts := strings.Split(line, ":")
-	if len(parts) < 2 {
-		return ""
-	}
-
-	return strings.TrimSpace(parts[1])
+// Welcome greets a person by name.
+func Welcome(name string) string {
+	return fmt.Sprintf("Welcome to my party, %s!", name)
 }
 
-// MessageLen counts the amount of characters (runes) in the message of the log line.
-func MessageLen(line string) int {
-	return len([]rune(Message(line)))
+// HappyBirthday wishes happy birthday to the birthday person and stands out his age.
+func HappyBirthday(name string, age int) string {
+	return fmt.Sprintf("Happy birthday %s! You are now %d years old!", name, age)
 }
 
-// LogLevel extracts the log level string from the provided log line.
-func LogLevel(line string) string {
-	part1 := strings.Split(line, ":")[0]
-	logLevel := strings.Trim(part1, "[]")
-	return strings.ToLower(logLevel)
-}
-
-// Reformat reformats the log line in the format `message (logLevel)`.
-func Reformat(line string) string {
-	return fmt.Sprintf("%s (%s)", Message(line), LogLevel(line))
+// AssignTable assigns a table to each guest.
+func AssignTable(name string, table int, neighbour string, direction string, distance float64) string {
+	info := Welcome(name) + "\n"
+	info += fmt.Sprintf("You have been assigned to table %X. ", table)
+	info += fmt.Sprintf("Your table is %s, exactly %.1f meters from here.\n", direction, distance)
+	info += fmt.Sprintf("You will be sitting next to %s.", neighbour)
+	return info
 }
