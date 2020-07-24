@@ -1,54 +1,41 @@
-In this exercise you'll be processing log-lines.
+Once there was an eccentric programmer living in a strange house with barred windows.
+One day he accepted a job from an online job board to build a party robot. The
+robot is supposed to greet people and help them to their seats. The first edition
+was very technical and showed the programmer's lack of human interaction. Some of
+which also made it into the next edition.
 
-Each log line is a string formatted as follows: `"[<LEVEL>]: <MESSAGE>"`.
+## 1. Welcome a new guest to the party
 
-There are three different log levels:
-
-- `INFO`
-- `WARNING`
-- `ERROR`
-
-You have three tasks, each of which will take a log line and ask you to do something with it.
-
-## 1. Get message from a log line
-
-Implement a method to return a log line's message:
+Implement the `Welcome` function to return a welcome message using the given name:
 
 ```go
-Message("[ERROR]: Invalid operation")
-// Returns: "Invalid operation"
+Welcome("Christiane")
+// Returns:
+// Welcome to my party, Christiane!
 ```
 
-Any leading or trailing white space should be removed:
+## 2. Welcome a new guest to the party whose birthday is today
+
+Implement the `HappyBirthday` function to return a birthday message using the given name and age of the person.
+Unfortunately the programmer is a bit of a show-off, so the robot has to demonstrate its
+knowledge of every guest's birthday.
 
 ```go
-Message("[WARNING]:  Disk almost full\r\n")
-// Returns: "Disk almost full"
+HappyBirthday("Frank", 58)
+// Returns:
+// Happy birthday Frank! You are now 58 years old!
 ```
 
-## 2. Get the message length in characters
+## 3. Give directions
 
-Implement a method to return a log line's message length:
-
-```go
-Strings.LogLevel("[ERROR]: Invalid operation \n")
-// Returns: 17
-```
-
-## 3. Get log level from a log line
-
-Implement a method to return a log line's log level, which should be returned in lowercase:
+Implement the `AssignTable` function to give directions. The robot provides the table number in hex (uppercase)
+due to a misalignment of its creator and the rest of the world. Fortunately the precision on the distance
+was limited to 1 digit.
 
 ```go
-Strings.LogLevel("[ERROR]: Invalid operation")
-// Returns: "error"
-```
-
-## 4. Reformat a log line
-
-Implement a method that reformats the log line, putting the message first and the log level after it in parentheses:
-
-```go
-Strings.Reformat("[INFO]: Operation completed")
-// Returns: "Operation completed (info)"
+AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
+// Returns:
+// Welcome to my party, Christiane!
+// You have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.
+// You will be sitting next to Frank.
 ```

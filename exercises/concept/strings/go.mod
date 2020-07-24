@@ -1,3 +1,3 @@
-module basic_strings
+module strings
 
 go 1.13

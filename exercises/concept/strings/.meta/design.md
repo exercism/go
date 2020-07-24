@@ -1,19 +1,18 @@
 ## Goal
 
-The goal of this exercise is to teach the student the basics of the Concept of Strings in Go.
+The goal of this exercise is to teach the student the basics on `strings` in Go. Focusses on formatting.
 
 ## Learning objectives
 
 - Know of the existence of the `string` type.
 - Know how to create a string.
-- Know of some basic `strings` methods (like `Split`, `Index`, `TrimSpace`).
-- Know how to do basic string formatting: `fmt.Sprintf`
+- Know how to do string formatting: `fmt.Sprintf`
 
 ## Out of scope
 
 - iteration of strings
+- strings package
 - immutability of strings
-- advanced string formatting (e.g. formatting floats)
 - bytes and runes
 
 ## Concepts
@@ -22,8 +21,4 @@ The goal of this exercise is to teach the student the basics of the Concept of S
 
 ## Prequisites
 
-- `slices`
-
-## Analyzer
-
-See https://github.com/exercism/v3/issues/355.
+- `basics`
