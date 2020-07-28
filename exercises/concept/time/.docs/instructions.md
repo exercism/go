@@ -8,7 +8,7 @@ Implement the `Schedule` function to parse a textual representation of an appoin
 
 ```go
 Schedule("7/25/2019 13:45:00")
-// => 2019-07-25 13:45:00 +0000 UTC
+// Output: 2019-07-25 13:45:00 +0000 UTC
 ```
 
 ## 2. Check if an appointment has already passed
@@ -17,7 +17,7 @@ Implement the `HasPassed` function that takes an appointment date and checks if 
 
 ```go
 HasPassed("July 25, 2019 13:45:00")
-// => true
+// Output: true
 ```
 
 ## 3. Check if appointment is in the afternoon
@@ -26,7 +26,7 @@ Implement the `IsAfternoonAppointment` function that takes an appointment date a
 
 ```go
 IsAfternoonAppointment("Thursday, July 25, 2019 13:45:00:00")
-// => true
+// Output: true
 ```
 
 ## 4. Describe the time and date of the appointment
@@ -35,7 +35,7 @@ Implement the `Description` function that takes an appointment date and returns 
 
 ```go
 Description("7/25/2019 13:45:00")
-// => "You have an appointment on Thursday, July 25, 2019, at 13:45."
+// Output: "You have an appointment on Thursday, July 25, 2019, at 13:45."
 ```
 
 ## 5. Return the anniversary date
@@ -44,5 +44,5 @@ Implement the `AnniversaryDate` function that returns this year's anniversary da
 
 ```go
 AnniversaryDate()
-// => 2020-09-15
+// Output: 2020-09-15
 ```

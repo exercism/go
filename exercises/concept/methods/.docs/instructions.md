@@ -22,7 +22,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car.Drive()
-// => Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
 Note: If a car's battery is below its battery drain percentage, you can't drive the car anymore.
@@ -40,7 +40,7 @@ distance := 100
 raceTrack := NewTrack(distance)
 
 car.CanFinish(raceTrack)
-// => true
+// Output: true
 ```
 
 ## 2. Display the distance driven
@@ -53,7 +53,7 @@ batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 car.DisplayDistance()
-// => "Driven 0 meters"
+// Output: "Driven 0 meters"
 ```
 
 ## 3. Display the battery percentage
@@ -66,5 +66,5 @@ batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 car.DisplayBattery()
-// => "Battery at 100%"
+// Output: "Battery at 100%"
 ```

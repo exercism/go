@@ -35,7 +35,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car = Drive(car)
-// => Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
 ## 4. Check if a remote control car can finish a race
@@ -51,5 +51,5 @@ distance := 100
 raceTrack := NewTrack(distance)
 
 CanFinish(car, raceTrack)
-// => true
+// Output: true
 ```

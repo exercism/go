@@ -16,14 +16,14 @@ Implement the `Message` function to return a log line's message:
 
 ```go
 Message("[ERROR]: Invalid operation")
-// Returns: "Invalid operation"
+// Output: "Invalid operation"
 ```
 
 Any leading or trailing white space should be removed:
 
 ```go
 Message("[WARNING]:  Disk almost full\r\n")
-// Returns: "Disk almost full"
+// Output: "Disk almost full"
 ```
 
 ## 2. Get the message length in characters
@@ -32,7 +32,7 @@ Implement the `LogLevel` function to return a log line's message length:
 
 ```go
 Strings.LogLevel("[ERROR]: Invalid operation \n")
-// Returns: 17
+// Output: 17
 ```
 
 ## 3. Get log level from a log line
@@ -41,7 +41,7 @@ Implement the `LogLevel` function to return a log line's log level, which should
 
 ```go
 Strings.LogLevel("[ERROR]: Invalid operation")
-// Returns: "error"
+// Output: "error"
 ```
 
 ## 4. Reformat a log line
@@ -50,5 +50,5 @@ Implement the `Reformat` function that reformats the log line, putting the messa
 
 ```go
 Strings.Reformat("[INFO]: Operation completed")
-// Returns: "Operation completed (info)"
+// Output: "Operation completed (info)"
 ```
