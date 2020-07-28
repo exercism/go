@@ -10,7 +10,7 @@ Implement the `Welcome` function to return a welcome message using the given nam
 
 ```go
 Welcome("Christiane")
-// Returns:
+// Output:
 // Welcome to my party, Christiane!
 ```
 
@@ -22,7 +22,7 @@ knowledge of every guest's birthday.
 
 ```go
 HappyBirthday("Frank", 58)
-// Returns:
+// Output:
 // Happy birthday Frank! You are now 58 years old!
 ```
 
@@ -34,7 +34,7 @@ was limited to 1 digit.
 
 ```go
 AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
-// Returns:
+// Output:
 // Welcome to my party, Christiane!
 // You have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.
 // You will be sitting next to Frank.

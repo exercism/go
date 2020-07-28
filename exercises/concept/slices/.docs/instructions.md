@@ -8,7 +8,7 @@ Return the card at position `index` from the given stack.
 
 ```go
 GetItem([]uint8{1, 2, 4, 1}, 2)
-// Returns: 4
+// Output: 4
 ```
 
 ## 2. Exchange a card in the stack
@@ -20,7 +20,7 @@ Note that this will also change the input slice which is ok.
 index := 2
 new_card := 6
 SetItem([]uint8{1, 2, 4, 1}, index, new_card)
-// Returns: []uint8{1, 2, 6, 1}
+// Output: []uint8{1, 2, 6, 1}
 ```
 
 ## 3. Create a stack of cards
@@ -29,7 +29,7 @@ Create a stack of given `length` and fill it with cards of the given `value`.
 
 ```go
 PrefilledSlice(8, 3)
-// Returns: []int{8, 8, 8}
+// Output: []int{8, 8, 8}
 ```
 
 ## 4. Remove a card from the stack
@@ -38,5 +38,5 @@ Remove the card at position `index` from the stack and return the stack.
 
 ```go
 RemoveItem([]int{3, 2, 6, 4, 8}, 2)
-// Returns: []int{3, 2, 4, 8}
+// Output: []int{3, 2, 4, 8}
 ```

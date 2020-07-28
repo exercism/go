@@ -8,7 +8,7 @@ Define the `OvenTime()` function that does not take any parameters and returns h
 
 ```go
 OvenTime()
-// => 40
+// Output: 40
 ```
 
 ## 2. Calculate the remaining oven time in minutes
@@ -17,7 +17,7 @@ Define the `RemainingOvenTime()` function that takes the actual minutes the lasa
 
 ```go
 RemainingOvenTime(30)
-// => 10
+// Output: 10
 ```
 
 ## 3. Calculate the preparation time in minutes
@@ -26,7 +26,7 @@ Define the `PreparationTime()` function that takes the number of layers you adde
 
 ```go
 PreparationTime(2)
-// => 4
+// Output: 4
 ```
 
 ## 4. Calculate the elapsed working time in minutes
@@ -35,5 +35,5 @@ Define the `ElapsedTime()` function that takes two parameters: the first paramet
 
 ```go
 ElapsedTime(3, 20)
-// => 26
+// Output: 26
 ```
