@@ -117,7 +117,7 @@ func TestTallyHappy(t *testing.T) {
 				tt.description, err)
 		}
 		if actual != tt.expected {
-			t.Fatalf("Tally for input named %q was expected to return...\n%s\n...but returned...\n%s",
+			t.Fatalf("Tally for input named %q was expected to return...\n\n%q\n\n...but returned...\n\n%q",
 				tt.description, tt.expected, actual)
 		}
 	}
