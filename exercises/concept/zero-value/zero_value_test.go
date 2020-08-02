@@ -1,4 +1,4 @@
-package nil
+package zero_value
 
 import (
 	"reflect"
