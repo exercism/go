@@ -1,4 +1,4 @@
-package nil
+package zero_value
 
 // EmptyInterface returns an empty (zero value) interface
 func EmptyInterface() interface{} {
