@@ -264,3 +264,47 @@ func TestSet(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkNew(b *testing.B) {
+	var matrix Matrix
+	for i := 0; i < b.N; i++ {
+		var err error
+		matrix, err = New("1 2 3 10 11\n4 5 6 11 12\n7 8 9 12 13\n 8 7 6 13 14")
+		if err != nil {
+			b.Fatalf("Failed to create the matrix: %v", err)
+		}
+	}
+	if matrix == nil {
+		b.Fatalf("No matrix parsed")
+	}
+}
+
+func BenchmarkRows(b *testing.B) {
+	matrix, err := New("1 2 3\n4 5 6\n7 8 9\n 8 7 6")
+	if err != nil {
+		b.Fatalf("Failed to create the matrix: %v", err)
+	}
+	b.ResetTimer()
+	var rows [][]int
+	for i := 0; i < b.N; i++ {
+		rows = matrix.Rows()
+	}
+	if len(rows) != 4 {
+		b.Fatalf("Incorrect number of rows returned: %v", rows)
+	}
+}
+
+func BenchmarkCols(b *testing.B) {
+	matrix, err := New("1 2 3 10 11\n4 5 6 11 12\n7 8 9 12 13\n 8 7 6 13 14")
+	if err != nil {
+		b.Fatalf("Failed to create the matrix: %v", err)
+	}
+	b.ResetTimer()
+	var cols [][]int
+	for i := 0; i < b.N; i++ {
+		cols = matrix.Cols()
+	}
+	if len(cols) != 5 {
+		b.Fatalf("Incorrect number of columns returned: %v", cols)
+	}
+}
