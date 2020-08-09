@@ -11,7 +11,7 @@ import (
 
 type Matrix [][]int
 
-func New(s string) (*Matrix, error) {
+func New(s string) (Matrix, error) {
 	var err error
 	lines := strings.Split(s, "\n")
 	m := make(Matrix, len(lines))
@@ -28,7 +28,7 @@ func New(s string) (*Matrix, error) {
 		}
 		m[i] = row
 	}
-	return &m, nil
+	return m, nil
 }
 
 func (m *Matrix) Set(row, col, val int) (ok bool) {
