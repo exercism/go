@@ -1,7 +1,7 @@
 package _meta
 
-// CrateCar creates a new car with given specifications.
-func CrateCar(speed, batteryDrain int) Car {
+// NewCar creates a new car with given specifications.
+func NewCar(speed, batteryDrain int) Car {
 	return Car{
 		speed:        speed,
 		batteryDrain: batteryDrain,
@@ -18,16 +18,12 @@ type Car struct {
 	distance int
 }
 
-// CreateTrack creates a new track with given distance.
-func CreateTrack(distance int) Track {
+
+// NewTrack creates a new track with given distance.
+func NewTrack(distance int) Track {
 	return Track{
 		distance: distance,
 	}
-}
-
-// Track implements a race track.
-type Track struct {
-	distance int
 }
 
 // Drive drives the car one time. If there is not enough battry to drive on more time,
