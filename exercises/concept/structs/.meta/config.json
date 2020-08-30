@@ -5,5 +5,11 @@
       "exercism_username": "tehsphinx"
     }
   ],
+  "contributors": [
+    {
+      "github_username": "oanaOM",
+      "exercism_username": "oanaOM"
+    }
+  ],
   "forked_from": ["csharp/constructors"]
 }
