@@ -10,20 +10,17 @@ Implement the `Welcome` function to return a welcome message using the given nam
 
 ```go
 Welcome("Christiane")
-// Output:
-// Welcome to my party, Christiane!
+// Output: Welcome to my party, Christiane!
 ```
 
 ## 2. Welcome a new guest to the party whose birthday is today
 
 Implement the `HappyBirthday` function to return a birthday message using the given name and age of the person.
-Unfortunately the programmer is a bit of a show-off, so the robot has to demonstrate its
-knowledge of every guest's birthday.
+Unfortunately the programmer is a bit of a show-off, so the robot has to demonstrate its knowledge of every guest's birthday.
 
 ```go
 HappyBirthday("Frank", 58)
-// Output:
-// Happy birthday Frank! You are now 58 years old!
+// Output: Happy birthday Frank! You are now 58 years old!
 ```
 
 ## 3. Give directions
