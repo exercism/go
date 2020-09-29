@@ -180,6 +180,17 @@
       "link_url": null,
       "avatar_url": null,
       "bio": "I've started to learn Go in late 2019 and fall in love with it for his simplicity, readability and productivity. So far I've been using it only in personal projects but I'm looking forward to use it professionally."
+    },
+    {
+      "github_username": "micuffaro",
+      "alumnus": false,
+      "show_on_website": false,
+      "name": "Michael Cuffaro",
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": null,
+      "bio": "Gopher since 2019. Passionate about code, devops and the cloud."
     }
   ]
 }
+
