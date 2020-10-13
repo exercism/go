@@ -1,4 +1,4 @@
-package acronym
+package resistorcolor
 
 import (
 	"regexp"
