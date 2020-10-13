@@ -1395,6 +1395,17 @@
       "difficulty": 0,
       "topics": null,
       "deprecated": true
+    },
+    {
+      "slug": "resistor-color",
+      "uuid": "53be6837-c224-45f1-bff3-d7f74d6285ce",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "arrays",
+        "strings"
+      ]
     }
   ]
 }
