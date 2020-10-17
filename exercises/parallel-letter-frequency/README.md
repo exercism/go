@@ -49,7 +49,7 @@ and place your solution code in that file.
 
 ## Running the tests
 
-To run the tests run the command `go test` from within the exercise directory.
+To run the tests run the command `go test -race` from within the exercise directory.
 
 If the test suite contains benchmarks, you can run these with the `--bench` and `--benchmem`
 flags:
