@@ -1,0 +1,47 @@
+name: Exercise tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Go ${{ matrix.julia-version }} - ${{ matrix.os }} - ${{ github.event_name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        go-version: [1.14.x, 1.15.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        test-arch: [amd64, '386']
+        race: ['', '-race']
+
+        # Race detection is valuable for our problems that involve concurrency.
+        # The race detector isn't supported on 386 though.
+        exclude:
+          - test-arch: '386'
+            race: -race
+          - test-arch: amd64
+            race: ''
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v2
+        with:
+          version: ${{ matrix.go-version }}
+
+      - name: Lint 
+        uses: golangci/golangci-lint-action@e868220d9fd3b523f1a8fcfb69749e8c7521ba14
+        with:
+          version: v1.29
+
+      - name: Test exercises
+        env:
+          TESTARCH: ${{ test-arch }}
+        run: |
+          ./bin/test-without-stubs

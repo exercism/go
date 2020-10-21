@@ -1,6 +1,7 @@
 # Exercism Go Track
 
-[![Build Status](https://travis-ci.org/exercism/go.svg?branch=master)](https://travis-ci.org/exercism/go)
+[![Configlet Status](https://github.com/exercism/go/workflows/Configlet%20CI/badge.svg)]
+[![Exercise Test Status](https://github.com/exercism/go/workflows/Exercise%20tests/badge.svg)]
 [![Gitter chat](https://badges.gitter.im/exercism/go.svg)](https://gitter.im/exercism/go)
 
 Exercism exercises in Go
