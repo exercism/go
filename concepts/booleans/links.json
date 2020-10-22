@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "url": "https://golang.org/ref/spec#Logical_operators",
+    "description": "logical operators"
+  },
+  { "url": "https://golang.org/ref/spec#Operators", "description": "operators" }
+]
