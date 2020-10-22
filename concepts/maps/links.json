@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "url": "https://golang.org/ref/spec#Map_types",
+    "description": "gospec-map"
+  },
+  { "url": "https://blog.golang.org/maps", "description": "goblog-map" },
+  {
+    "url": "https://golang.org/ref/spec#Comparison_operators",
+    "description": "gospec-comparable"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Comparison_operators",
+    "description": "gospec-comparable"
+  },
+  {
+    "url": "https://golang.org/doc/articles/race_detector.html",
+    "description": "godoc-race-detector"
+  },
+  {
+    "url": "https://blog.golang.org/race-detector",
+    "description": "goblog-race-detector"
+  }
+]
