@@ -1,6 +1,7 @@
 package protein
 
 import (
+	"errors"
 	"reflect"
 	"testing"
 )
@@ -10,6 +11,9 @@ type codonCase struct {
 	expected      string
 	errorExpected error
 }
+
+var MockErrStop = errors.New("stop")
+var MockErrInvalidBase = errors.New("invalid base")
 
 var codonTestCases = []codonCase{
 	{
@@ -65,22 +69,22 @@ var codonTestCases = []codonCase{
 	{
 		"UAA",
 		"",
-		ErrStop,
+		MockErrStop,
 	},
 	{
 		"UAG",
 		"",
-		ErrStop,
+		MockErrStop,
 	},
 	{
 		"UGA",
 		"",
-		ErrStop,
+		MockErrStop,
 	},
 	{
 		"ABC",
 		"",
-		ErrInvalidBase,
+		MockErrInvalidBase,
 	},
 }
 
