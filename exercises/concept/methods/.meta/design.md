@@ -15,6 +15,6 @@ The Concepts this exercise unlocks are:
 
 - `methods`
 
-## Prequisites
+## Prerequisites
 
 - `structs`
