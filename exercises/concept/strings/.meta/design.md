@@ -19,6 +19,6 @@ The goal of this exercise is to teach the student the basics on `strings` in Go.
 
 - `strings`
 
-## Prequisites
+## Prerequisites
 
 - `basics`

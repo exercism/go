@@ -25,7 +25,7 @@ The Concepts this exercise unlocks are:
 
 - `errors.basics`
 
-## Prequisites
+## Prerequisites
 
 - `constants`, `types`
 
