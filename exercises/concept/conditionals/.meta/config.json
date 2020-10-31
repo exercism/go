@@ -10,5 +10,9 @@
       "exercism_username": "tehsphinx"
     }
   ],
-  "forked_from": []
+  "forked_from": [],
+  "editor": {
+    "solution_files": ["conditionals.go"],
+    "test_files": ["conditionals_test.go"]
+  }
 }

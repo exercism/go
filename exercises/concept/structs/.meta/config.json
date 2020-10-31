@@ -11,5 +11,9 @@
       "exercism_username": "oanaOM"
     }
   ],
-  "forked_from": ["csharp/constructors"]
+  "forked_from": ["csharp/constructors"],
+  "editor": {
+    "solution_files": ["structs.go"],
+    "test_files": ["structs_test.go"]
+  }
 }

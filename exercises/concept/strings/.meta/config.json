@@ -10,5 +10,9 @@
       "github_username": "oanaOM",
       "exercism_username": "oanaOM"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["strings.go"],
+    "test_files": ["strings_test.go"]
+  }
 }

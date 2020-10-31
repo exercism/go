@@ -5,5 +5,9 @@
       "exercism_username": "jamessouth"
     }
   ],
-  "forked_from": ["csharp/datetimes"]
+  "forked_from": ["csharp/datetimes"],
+  "editor": {
+    "solution_files": ["time.go"],
+    "test_files": ["time_test.go"]
+  }
 }

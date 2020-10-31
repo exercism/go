@@ -4,5 +4,9 @@
       "github_username": "chocopowwwa",
       "exercism_username": "chocopowwwa"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["maps.go"],
+    "test_files": ["maps_test.go"]
+  }
 }
