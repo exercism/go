@@ -127,11 +127,10 @@ func TestTallyError(t *testing.T) {
 	for _, s := range errorTestCases {
 		reader := strings.NewReader(s)
 		var buffer bytes.Buffer
-		err := Tally(reader, &buffer)
+		var err error = Tally(reader, &buffer)
 		if err == nil {
 			t.Fatalf("Tally for input %q should have failed but didn't.", s)
 		}
-		var _ error = err
 	}
 }
 
