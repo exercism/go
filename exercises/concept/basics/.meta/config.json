@@ -5,5 +5,9 @@
       "exercism_username": "tehsphinx"
     }
   ],
-  "forked_from": ["csharp/basics"]
+  "forked_from": ["csharp/basics"],
+  "editor": {
+    "solution_files": ["basics.go"],
+    "test_files": ["basics_test.go"]
+  }
 }

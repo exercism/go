@@ -4,5 +4,9 @@
       "github_username": "tehsphinx",
       "exercism_username": "tehsphinx"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["slices.go"],
+    "test_files": ["slices_test.go"]
+  }
 }

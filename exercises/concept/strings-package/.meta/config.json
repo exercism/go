@@ -4,5 +4,9 @@
       "github_username": "tehsphinx",
       "exercism_username": "tehsphinx"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["strings.go"],
+    "test_files": ["strings_test.go"]
+  }
 }

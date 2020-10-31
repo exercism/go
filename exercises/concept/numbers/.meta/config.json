@@ -10,5 +10,9 @@
       "github_username": "tehsphinx",
       "exercism_username": "tehsphinx"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["numbers.go"],
+    "test_files": ["numbers_test.go"]
+  }
 }

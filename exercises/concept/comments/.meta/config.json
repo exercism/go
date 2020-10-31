@@ -4,5 +4,9 @@
       "github_username": "nikimanoledaki",
       "exercism_username": "niki-01"
     }
-  ]
+  ],
+  "editor": {
+    "solution_files": ["comments.go"],
+    "test_files": []
+  }
 }
