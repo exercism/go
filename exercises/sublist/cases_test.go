@@ -112,4 +112,10 @@ var testCases = []struct {
 		listTwo:     []int{10, 1},
 		expected:    "unequal",
 	},
+	{
+		description: "unfinished sequence",
+		listOne:     []int{1, 2, 5},
+		listTwo:     []int{0, 3, 1, 2},
+		expected:    "unequal",
+	},
 }
