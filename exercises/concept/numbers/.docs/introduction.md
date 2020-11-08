@@ -1,4 +1,6 @@
-## Numbers
+## numbers
+## conditionals
+
 
 Go contains basic numeric types that can represent sets of either integer or
 floating-point values. There a different types depending on the size of value
@@ -26,7 +28,6 @@ following resources:
 Go supports the standard set of arithmetic operators of `+`, `-`, `*`, `/`
 and `%` (remainder not modulo).
 
-## Type Conversion
 
 In Go, assignment of a value between different types requires explicit
 conversion. For example, to convert an `int` to a `float64` you would need to

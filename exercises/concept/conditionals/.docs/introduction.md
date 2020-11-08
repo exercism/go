@@ -1,8 +1,10 @@
-## Logical Operators
+## conditionals-if
+## conditionals-switch
+## booleans
+
 
 Go supports the three logical operators `&&` (AND), `||` (OR), and `!` (NOT).
 
-## If statement
 
 Conditionals in Go are similar to conditionals in other languages. The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`. Conditionals are often used as flow control mechanisms to check for various conditions. For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
 
@@ -26,7 +28,6 @@ if value == "val" {
 }
 ```
 
-## Switch statement
 
 Go also provides a `switch` statement for more advanced scenarios.
 
