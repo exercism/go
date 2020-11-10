@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "url": "https://golang.org/ref/spec#Switch_statements",
+    "description": "switch_statement"
+  },
+  {
+    "url": "https://gobyexample.com/switch",
+    "description": "go_by_example_switch"
+  }
+]
