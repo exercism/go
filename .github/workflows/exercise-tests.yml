@@ -35,13 +35,8 @@ jobs:
         with:
           version: ${{ matrix.go-version }}
 
-      - name: Lint
-        uses: golangci/golangci-lint-action@e868220d9fd3b523f1a8fcfb69749e8c7521ba14
-        with:
-          version: v1.29
-
       - name: Test exercises
         env:
-          TESTARCH: ${{ matrix.test-arch }}
+          GOARCH: ${{ matrix.test-arch }}
         run: |
           ./bin/test-without-stubs
