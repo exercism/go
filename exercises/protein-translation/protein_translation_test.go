@@ -7,98 +7,107 @@ import (
 )
 
 type codonCase struct {
-	input         string
-	expected      string
-	errorExpected error
+	input    string
+	expected string
 }
 
-var MockErrStop = errors.New("stop")
-var MockErrInvalidBase = errors.New("invalid base")
-
-var codonTestCases = []codonCase{
+var codonSuccessCases = []codonCase{
 	{
 		"AUG",
 		"Methionine",
-		nil,
 	},
 	{
 		"UUU",
 		"Phenylalanine",
-		nil,
 	},
 	{
 		"UUC",
 		"Phenylalanine",
-		nil,
 	},
 	{
 		"UUA",
 		"Leucine",
-		nil,
 	},
 	{
 		"UUG",
 		"Leucine",
-		nil,
 	},
 	{
 		"UCG",
 		"Serine",
-		nil,
 	},
 	{
 		"UAU",
 		"Tyrosine",
-		nil,
 	},
 	{
 		"UAC",
 		"Tyrosine",
-		nil,
 	},
 	{
 		"UGU",
 		"Cysteine",
-		nil,
 	},
 	{
 		"UGG",
 		"Tryptophan",
-		nil,
 	},
+}
+
+var codonInvalidBaseCases = []codonCase{
+	{
+		"ABC",
+		"",
+	},
+}
+
+var codonStopCases = []codonCase{
 	{
 		"UAA",
 		"",
-		MockErrStop,
 	},
 	{
 		"UAG",
 		"",
-		MockErrStop,
 	},
 	{
 		"UGA",
 		"",
-		MockErrStop,
-	},
-	{
-		"ABC",
-		"",
-		MockErrInvalidBase,
 	},
 }
 
 func TestCodon(t *testing.T) {
-	for _, test := range codonTestCases {
+	for _, test := range codonSuccessCases {
 		actual, err := FromCodon(test.input)
-		if test.errorExpected != nil {
-			if test.errorExpected.Error() != err.Error() {
-				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
-			}
-		} else if err != nil {
+		if err != nil {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
 				test.input, test.expected, err)
+		}
+		if actual != test.expected {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
+				test.input, test.expected, actual)
+		}
+		t.Logf("PASS: Protein translation test: %s", test.input)
+	}
+
+	for _, test := range codonInvalidBaseCases {
+		actual, err := FromCodon(test.input)
+		if !errors.As(err, &ErrInvalidBase{}) {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
+				test.input, ErrInvalidBase{}, err)
+		}
+		if actual != test.expected {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
+				test.input, test.expected, actual)
+		}
+		t.Logf("PASS: Protein translation test: %s", test.input)
+	}
+
+	for _, test := range codonStopCases {
+		actual, err := FromCodon(test.input)
+		if !errors.As(err, &ErrStop{}) {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
+				test.input, ErrStop{}, err)
 		}
 		if actual != test.expected {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
@@ -109,50 +118,53 @@ func TestCodon(t *testing.T) {
 }
 
 type rnaCase struct {
-	input         string
-	expected      []string
-	errorExpected error
+	input    string
+	expected []string
 }
 
-var proteinTestCases = []rnaCase{
+var proteinSuccessCases = []rnaCase{
 	{
 		"AUGUUUUCUUAAAUG",
 		[]string{"Methionine", "Phenylalanine", "Serine"},
-		nil,
 	},
 	{
 		"AUGUUUUGG",
 		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
-		nil,
 	},
 	{
 		"AUGUUUUAA",
 		[]string{"Methionine", "Phenylalanine"},
-		nil,
 	},
 	{
 		"UGGUGUUAUUAAUGGUUU",
 		[]string{"Tryptophan", "Cysteine", "Tyrosine"},
-		nil,
 	},
+}
+
+var proteinInvalidBaseCases = []rnaCase{
 	{
 		"UGGAGAAUUAAUGGUUU",
 		[]string{"Tryptophan"},
-		ErrInvalidBase,
 	},
 }
 
 func TestProtein(t *testing.T) {
-	for _, test := range proteinTestCases {
+	for _, test := range proteinSuccessCases {
 		actual, err := FromRNA(test.input)
-		if test.errorExpected != nil {
-			if test.errorExpected != err {
-				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
-			}
-		} else if err != nil {
-			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
+		if err != nil {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
 				test.input, test.expected, err)
+		}
+		if !reflect.DeepEqual(actual, test.expected) {
+			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+		}
+		t.Logf("PASS: RNA translation test: %s", test.input)
+	}
+	for _, test := range proteinInvalidBaseCases {
+		actual, err := FromRNA(test.input)
+		if !errors.As(err, &ErrInvalidBase{}) {
+			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
+				test.input, ErrInvalidBase{}, err)
 		}
 		if !reflect.DeepEqual(actual, test.expected) {
 			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
@@ -162,7 +174,17 @@ func TestProtein(t *testing.T) {
 }
 
 func BenchmarkCodon(b *testing.B) {
-	for _, test := range codonTestCases {
+	for _, test := range codonSuccessCases {
+		for i := 0; i < b.N; i++ {
+			FromCodon(test.input)
+		}
+	}
+	for _, test := range codonInvalidBaseCases {
+		for i := 0; i < b.N; i++ {
+			FromCodon(test.input)
+		}
+	}
+	for _, test := range codonStopCases {
 		for i := 0; i < b.N; i++ {
 			FromCodon(test.input)
 		}
@@ -170,7 +192,12 @@ func BenchmarkCodon(b *testing.B) {
 }
 
 func BenchmarkProtein(b *testing.B) {
-	for _, test := range proteinTestCases {
+	for _, test := range proteinSuccessCases {
+		for i := 0; i < b.N; i++ {
+			FromRNA(test.input)
+		}
+	}
+	for _, test := range proteinInvalidBaseCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)
 		}

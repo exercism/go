@@ -1,20 +1,21 @@
 // Package protein translates RNA sequences into proteins.
 package protein
 
-import (
-	"errors"
-)
+import "errors"
 
 // ErrStop indicates that one of the stop codons was read.
-var ErrStop = errors.New("stop")
+type ErrStop struct{}
+
+func (e ErrStop) Error() string { return "invalid base" }
 
 // ErrInvalidBase indicates that an unrecognized codon was read.
-var ErrInvalidBase = errors.New("invalid base")
+type ErrInvalidBase struct{}
+
+func (e ErrInvalidBase) Error() string { return "stop" }
 
 // IsStopCodon checks whether a codon is a stop codon.
 func IsStopCodon(c string) bool {
 	return c == "UAA" || c == "UAG" || c == "UGA"
-
 }
 
 // FromCodon returns the protein for the given codon.
@@ -22,7 +23,7 @@ func IsStopCodon(c string) bool {
 // If the codon is unrecognized, it returns ErrInvalidBase.
 func FromCodon(c string) (string, error) {
 	if IsStopCodon(c) {
-		return "", ErrStop
+		return "", ErrStop{}
 	}
 
 	switch c {
@@ -55,7 +56,7 @@ func FromCodon(c string) (string, error) {
 		"UGG":
 		return "Tryptophan", nil
 	default:
-		return "", ErrInvalidBase
+		return "", ErrInvalidBase{}
 	}
 }
 
@@ -66,14 +67,13 @@ func FromRNA(s string) ([]string, error) {
 	bases := []rune(s)
 	for i := 0; i < len(bases); i += 3 {
 		p, err := FromCodon(string(bases[i : i+3]))
-		switch err {
-		case ErrStop:
+		if errors.As(err, &ErrStop{}) {
 			return proteins, nil
-		case ErrInvalidBase:
-			return proteins, err
-		default:
-			proteins = append(proteins, p)
 		}
+		if errors.As(err, &ErrInvalidBase{}) {
+			return proteins, err
+		}
+		proteins = append(proteins, p)
 	}
 	return proteins, nil
 }
