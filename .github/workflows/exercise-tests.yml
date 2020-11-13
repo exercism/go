@@ -39,4 +39,5 @@ jobs:
         env:
           GOARCH: ${{ matrix.test-arch }}
         run: |
+          ./bin/fetch-golangci-lint
           ./bin/test-without-stubs
