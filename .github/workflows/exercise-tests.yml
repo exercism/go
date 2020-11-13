@@ -17,15 +17,15 @@ jobs:
       matrix:
         go-version: [1.14.x, 1.15.x]
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        test-arch: [amd64, '386']
-        race: ['', '-race']
+        test-arch: [amd64]
+        race: ['-race']
 
-        # Race detection is valuable for our problems that involve concurrency.
-        # The race detector isn't supported on 386 though.
-        exclude:
+        include:
           - test-arch: '386'
-            race: -race
-          - test-arch: amd64
+            os: ubuntu-latest
+            race: ''
+          - test-arch: '386'
+            os: windows-latest
             race: ''
 
     steps:
