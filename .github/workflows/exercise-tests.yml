@@ -33,9 +33,9 @@ jobs:
 
       - uses: actions/setup-go@v2
         with:
-          version: ${{ matrix.go-version }}
+          go-version: ${{ matrix.go-version }}
 
-      - name: Test exercises
+      - name: Lint and Test exercises
         env:
           GOARCH: ${{ matrix.test-arch }}
         run: |
