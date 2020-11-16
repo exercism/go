@@ -17,6 +17,6 @@ jobs:
 
     - name: Fetch configlet
       uses: exercism/github-actions/configlet-ci@master
-        
+
     - name: Configlet Linter
       run: configlet lint .

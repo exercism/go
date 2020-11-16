@@ -36,7 +36,7 @@ func alphabets(current int) string {
 	if current == 0 {
 		return "A"
 	}
-	c := current + startIndex
+	c := rune(current + startIndex)
 	return string(c) + spaces(current*2-1) + string(c)
 }
 
