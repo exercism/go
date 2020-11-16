@@ -13,6 +13,7 @@ func New() *Robot { return new(Robot) }
 // getName is a test helper function to facilitate optionally checking for seen
 // robot names.
 func (r *Robot) getName(t testing.TB, expectSeen bool) string {
+	t.Helper()
 	newName, err := r.Name()
 	if err != nil {
 		t.Fatalf("Name() returned unexpected error: %v", err)
