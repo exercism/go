@@ -80,36 +80,30 @@ func TestCodon(t *testing.T) {
 	for _, test := range codonSuccessCases {
 		actual, err := FromCodon(test.input)
 		if err != nil {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
+			t.Fatalf("FromCodon(%q): %v", test.input, err)
 		}
 		if actual != test.expected {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
-				test.input, test.expected, actual)
+			t.Fatalf("FromCodon(%q) Expected: %q VS Actual: %q", test.input, test.expected, actual)
 		}
 	}
 
 	for _, test := range codonInvalidBaseCases {
 		actual, err := FromCodon(test.input)
 		if !errors.As(err, &ErrInvalidBase{}) {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
-				test.input, ErrInvalidBase{}, err)
+			t.Fatalf("FromCodon(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
 		}
 		if actual != test.expected {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
-				test.input, test.expected, actual)
+			t.Fatalf("FromCodon(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 
 	for _, test := range codonStopCases {
 		actual, err := FromCodon(test.input)
 		if !errors.As(err, &ErrStop{}) {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
-				test.input, ErrStop{}, err)
+			t.Fatalf("FromCodon(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
 		}
 		if actual != test.expected {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
-				test.input, test.expected, actual)
+			t.Fatalf("FromCodon(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 }
@@ -149,21 +143,19 @@ func TestProtein(t *testing.T) {
 	for _, test := range proteinSuccessCases {
 		actual, err := FromRNA(test.input)
 		if err != nil {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
+			t.Fatalf("FromRNA(%q): %v", test.input, err)
 		}
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+			t.Fatalf("FromRNA(%q) Expected: %q VS Actual: %q", test.input, test.expected, actual)
 		}
 	}
 	for _, test := range proteinInvalidBaseCases {
 		actual, err := FromRNA(test.input)
 		if !errors.As(err, &ErrInvalidBase{}) {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected type error: %T\nActual type error: %T",
-				test.input, ErrInvalidBase{}, err)
+			t.Fatalf("FromRNA(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
 		}
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+			t.Fatalf("FromRNA(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 }
