@@ -87,7 +87,6 @@ func TestCodon(t *testing.T) {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
 				test.input, test.expected, actual)
 		}
-		t.Logf("PASS: Protein translation test: %s", test.input)
 	}
 
 	for _, test := range codonInvalidBaseCases {
@@ -100,7 +99,6 @@ func TestCodon(t *testing.T) {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
 				test.input, test.expected, actual)
 		}
-		t.Logf("PASS: Protein translation test: %s", test.input)
 	}
 
 	for _, test := range codonStopCases {
@@ -113,7 +111,6 @@ func TestCodon(t *testing.T) {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
 				test.input, test.expected, actual)
 		}
-		t.Logf("PASS: Protein translation test: %s", test.input)
 	}
 }
 
@@ -158,7 +155,6 @@ func TestProtein(t *testing.T) {
 		if !reflect.DeepEqual(actual, test.expected) {
 			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
 		}
-		t.Logf("PASS: RNA translation test: %s", test.input)
 	}
 	for _, test := range proteinInvalidBaseCases {
 		actual, err := FromRNA(test.input)
@@ -169,7 +165,6 @@ func TestProtein(t *testing.T) {
 		if !reflect.DeepEqual(actual, test.expected) {
 			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
 		}
-		t.Logf("PASS: RNA translation test: %s", test.input)
 	}
 }
 
