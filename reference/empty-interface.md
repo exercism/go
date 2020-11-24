@@ -1,7 +1,7 @@
 # Empty `interface{}`
 
 The empty interface can hold any type of data.
-It is a special case of using [interfaces](TODO:_link_to_interface) where no method is specified and therefore any type can satisfy the empty interface.
+It is a special case of using interfaces<!-- TODO: Link to interface --> where no method is specified and therefore any type can satisfy the empty interface.
 
 To a programmer being used to a language like python (dynamically typed) or javascript (weakly typed) this sounds perfect.
 But I'd recommend not using the empty interface at all, until one has figured out how to use Go's type system without it.
