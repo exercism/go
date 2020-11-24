@@ -1,6 +1,5 @@
 ## errors
 
-
 An `error` is a built-in interface type in the Go language.
 
 In other languages, whether or not a function will throw an exception is unknown.
