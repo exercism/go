@@ -88,22 +88,16 @@ func TestCodon(t *testing.T) {
 	}
 
 	for _, test := range codonInvalidBaseCases {
-		actual, err := FromCodon(test.input)
+		_, err := FromCodon(test.input)
 		if !errors.As(err, &ErrInvalidBase{}) {
 			t.Fatalf("FromCodon(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
-		}
-		if actual != test.expected {
-			t.Fatalf("FromCodon(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 
 	for _, test := range codonStopCases {
-		actual, err := FromCodon(test.input)
+		_, err := FromCodon(test.input)
 		if !errors.As(err, &ErrStop{}) {
 			t.Fatalf("FromCodon(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
-		}
-		if actual != test.expected {
-			t.Fatalf("FromCodon(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 }
@@ -150,12 +144,9 @@ func TestProtein(t *testing.T) {
 		}
 	}
 	for _, test := range proteinInvalidBaseCases {
-		actual, err := FromRNA(test.input)
+		_, err := FromRNA(test.input)
 		if !errors.As(err, &ErrInvalidBase{}) {
 			t.Fatalf("FromRNA(%q): Wrong type of error. Expected: %T VS Actual: %T", test.input, ErrInvalidBase{}, err)
-		}
-		if !reflect.DeepEqual(actual, test.expected) {
-			t.Fatalf("FromRNA(%q): The return should be empty, but was: %q", test.input, actual)
 		}
 	}
 }
