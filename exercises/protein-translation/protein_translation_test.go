@@ -157,25 +157,10 @@ func BenchmarkCodon(b *testing.B) {
 			FromCodon(test.input)
 		}
 	}
-	for _, test := range codonInvalidBaseCases {
-		for i := 0; i < b.N; i++ {
-			FromCodon(test.input)
-		}
-	}
-	for _, test := range codonStopCases {
-		for i := 0; i < b.N; i++ {
-			FromCodon(test.input)
-		}
-	}
 }
 
 func BenchmarkProtein(b *testing.B) {
 	for _, test := range proteinSuccessCases {
-		for i := 0; i < b.N; i++ {
-			FromRNA(test.input)
-		}
-	}
-	for _, test := range proteinInvalidBaseCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)
 		}
