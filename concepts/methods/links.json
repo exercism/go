@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "url": "https://tour.golang.org/methods/1",
+    "description": "methods"
+  },
+  {
+    "url": "https://tour.golang.org/methods/4",
+    "description": "Pointer receivers"
+  },
+  {
+    "url": "https://www.callicoder.com/golang-methods-tutorial/",
+    "description": "Methods tutorial"
+  }
+]
