@@ -2,15 +2,6 @@ package _meta
 
 import "fmt"
 
-// CrateCar creates a new car with given specifications.
-func CrateCar(speed, batteryDrain int) *Car {
-	return &Car{
-		speed:        speed,
-		batteryDrain: batteryDrain,
-		battery:      100,
-	}
-}
-
 // Car implements a remote controlled car.
 type Car struct {
 	speed        int
@@ -20,16 +11,25 @@ type Car struct {
 	distance int
 }
 
+// Track implements a race track.
+type Track struct {
+	distance int
+}
+
+// CreateCar creates a new car with given specifications.
+func CreateCar(speed, batteryDrain int) *Car {
+	return &Car{
+		speed:        speed,
+		batteryDrain: batteryDrain,
+		battery:      100,
+	}
+}
+
 // CreateTrack creates a new track with given distance.
 func CreateTrack(distance int) Track {
 	return Track{
 		distance: distance,
 	}
-}
-
-// Track implements a race track.
-type Track struct {
-	distance int
 }
 
 // Drive drives the car one time. If there is not enough battry to drive on more time,
@@ -41,11 +41,12 @@ func (car *Car) Drive() {
 
 	car.distance += car.speed
 	car.battery -= car.batteryDrain
+
 }
 
 // CanFinish checks if a car is able to finish a certain track.
 func (car *Car) CanFinish(track Track) bool {
-	maxDistance := car.battery / car.batteryDrain * car.distance
+	maxDistance := car.battery / car.batteryDrain * car.speed
 	return track.distance <= maxDistance
 }
 

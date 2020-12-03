@@ -1,3 +1,5 @@
+## methods
+
 A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
@@ -14,6 +16,12 @@ type Name string
 func (s Name) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", s)
 }
+
+func main() {
+	s := Name("Bronson")
+	fmt.Println(s.Greetings())
+}
+// Output: Welcome Bronson !
 ```
 
 Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
@@ -24,7 +32,6 @@ You can declare methods with pointer receivers in order to modify the value to w
 type rect struct {
 	width, height int
 }
-
 func (r *rect) squareIt() {
 	r.height = r.width
 }

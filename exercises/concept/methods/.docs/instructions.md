@@ -27,22 +27,6 @@ car.Drive()
 
 Note: If a car's battery is below its battery drain percentage, you can't drive the car anymore.
 
-## 2. Check if a remote control car can finish a race
-
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
-
-```go
-speed := 5
-batteryDrain := 2
-car := NewCar(speed, batteryDrain)
-
-distance := 100
-raceTrack := NewTrack(distance)
-
-car.CanFinish(raceTrack)
-// Output: true
-```
-
 ## 2. Display the distance driven
 
 Implement a `DisplayDistance` method on `Car` to return the distance as displayed on the LED display:
@@ -67,4 +51,20 @@ car := NewCar(speed, batteryDrain)
 
 car.DisplayBattery()
 // Output: "Battery at 100%"
+```
+
+## 4. Check if a remote control car can finish a race
+
+To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
+
+```go
+speed := 5
+batteryDrain := 2
+car := NewCar(speed, batteryDrain)
+
+distance := 100
+raceTrack := NewTrack(distance)
+
+car.CanFinish(raceTrack)
+// Output: true
 ```
