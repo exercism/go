@@ -91,9 +91,9 @@ var testCases = []struct {
 			"    |",
 			"+-+-+",
 			"| | -",
-			"+-+-+",
+			"+|+-+",
 		},
-		expected: 1,
+		expected: 0,
 	},
 	{
 		description: "rectangles can be of different sizes",
