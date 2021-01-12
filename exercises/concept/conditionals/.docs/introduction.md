@@ -1,8 +1,8 @@
-## conditionals-if
+## Conditionals If
 
-## conditionals-switch
+## Conditionals Switch
 
-## booleans
+## Booleans
 
 Go supports the three logical operators `&&` (AND), `||` (OR), and `!` (NOT).
 
