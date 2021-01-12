@@ -1,5 +1,3 @@
-## strings
-
 A `string` in Go is an immutable sequence of bytes. Strings may contain arbitrary bytes but usually they contain human-readable text.
 Text strings are conventionally interpreted as UTF-8 encoded sequence of Unicode code points (runes) which will be explained in a future exercise.
 A `string` value can be written as a string literal, which is a sequence of bytes enclosed in double quotes:

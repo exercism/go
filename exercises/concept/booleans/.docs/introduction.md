@@ -1,5 +1,3 @@
-## booleans
-
 Booleans in Go are represented by the predeclared boolean type `bool`, which values can be either `true` or `false`.
 It's a defined type.
 

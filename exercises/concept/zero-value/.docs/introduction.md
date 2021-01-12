@@ -1,6 +1,6 @@
-## zero-value
+## Zero Value
 
-## nil
+## Nil
 
 In Go, uninitialized variables and their elements are given default values.
 
