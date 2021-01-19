@@ -1,4 +1,4 @@
-In the previous exercise, we saw that there are two ways to write comments in Go: single-line comments that are preceded by `//`, and multiline comment blocks that are wrapped with `/*` and `*/`.
+Go supports two types of [comments][comments]. Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
 
 ## Documentation comments
 
@@ -65,3 +65,4 @@ To use the `golint` command globally, make sure that it is in your `$PATH`.
 [exported identifiers]: https://www.ardanlabs.com/blog/2014/03/exportedunexported-identifiers-in-go.html
 [golint]: https://github.com/golang/lint
 [effective go]: https://golang.org/doc/effective_go.html
+[comments]: https://golang.org/ref/spec#Comments
