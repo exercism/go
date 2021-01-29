@@ -11,8 +11,9 @@
       "exercism_username": "tehsphinx"
     }
   ],
-  "editor": {
-    "solution_files": ["zero_value.go"],
-    "test_files": ["zero_value_test.go"]
+  "files": {
+    "solution": ["zero_value.go"],
+    "test": ["zero_value_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

@@ -4,5 +4,10 @@
       "github_username": "jamessouth",
       "exercism_username": "jamessouth"
     }
-  ]
+  ],
+  "files": {
+    "solution": [],
+    "test": [],
+    "exemplar": [".meta/exemplar.go"]
+  }
 }

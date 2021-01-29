@@ -11,8 +11,9 @@
       "exercism_username": "oanaOM"
     }
   ],
-  "editor": {
-    "solution_files": ["strings.go"],
-    "test_files": ["strings_test.go"]
+  "files": {
+    "solution": ["strings.go"],
+    "test": ["strings_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

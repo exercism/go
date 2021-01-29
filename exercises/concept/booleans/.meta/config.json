@@ -6,8 +6,9 @@
     }
   ],
   "forked_from": ["csharp/booleans"],
-  "editor": {
-    "solution_files": ["booleans.go"],
-    "test_files": ["booleans_test.go"]
+  "files": {
+    "solution": ["booleans.go"],
+    "test": ["booleans_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

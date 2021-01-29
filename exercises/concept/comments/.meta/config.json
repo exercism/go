@@ -5,8 +5,9 @@
       "exercism_username": "niki-01"
     }
   ],
-  "editor": {
-    "solution_files": ["comments.go"],
-    "test_files": []
+  "files": {
+    "solution": ["comments.go"],
+    "test": [],
+    "exemplar": [".meta/exemplar.go"]
   }
 }
