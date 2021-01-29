@@ -1850,5 +1850,265 @@
         ]
       }
     ]
-  }
+  },
+  "concepts": [
+    {
+      "uuid": "2149c74b-b05f-45b1-8e64-8ff66110c402",
+      "slug": "anonymous-functions",
+      "name": "Anonymous Functions",
+      "blurb": "TODO: add blurb for anonymous-functions concept"
+    },
+    {
+      "uuid": "ab3da6c2-9cc8-4019-90d7-b592787787e7",
+      "slug": "application-timing",
+      "name": "Application Timing",
+      "blurb": "TODO: add blurb for application-timing concept"
+    },
+    {
+      "uuid": "142cf89f-c109-4a05-8108-60b5051294de",
+      "slug": "booleans",
+      "name": "Booleans",
+      "blurb": "TODO: add blurb for booleans concept"
+    },
+    {
+      "uuid": "16c5d4d5-05a0-4e89-8846-6d8f50e09520",
+      "slug": "bytes",
+      "name": "Bytes",
+      "blurb": "TODO: add blurb for bytes concept"
+    },
+    {
+      "uuid": "092a3fad-e75a-44bd-8d66-4f48cde0e0b5",
+      "slug": "channels",
+      "name": "Channels",
+      "blurb": "TODO: add blurb for channels concept"
+    },
+    {
+      "uuid": "159f921c-f379-45c5-871b-da7cc8f3a8cc",
+      "slug": "comments",
+      "name": "Comments",
+      "blurb": "TODO: add blurb for comments concept"
+    },
+    {
+      "uuid": "d74a04ba-0eb8-481d-9e2f-2e6a4694d482",
+      "slug": "conditionals",
+      "name": "Conditionals",
+      "blurb": "TODO: add blurb for conditionals concept"
+    },
+    {
+      "uuid": "c0bb612b-2571-40a1-9fbe-81819e49d267",
+      "slug": "conditionals-if",
+      "name": "Conditionals If",
+      "blurb": "TODO: add blurb for conditionals-if concept"
+    },
+    {
+      "uuid": "c24b971e-e344-490e-aacc-2ea29bd60822",
+      "slug": "conditionals-switch",
+      "name": "Conditionals Switch",
+      "blurb": "TODO: add blurb for conditionals-switch concept"
+    },
+    {
+      "uuid": "288e3276-8ef4-4719-99a1-94882345d8aa",
+      "slug": "constants",
+      "name": "Constants",
+      "blurb": "TODO: add blurb for constants concept"
+    },
+    {
+      "uuid": "4007b59c-0860-4535-adbd-9c035e8eb8e0",
+      "slug": "context",
+      "name": "Context",
+      "blurb": "TODO: add blurb for context concept"
+    },
+    {
+      "uuid": "ee2a475f-461a-4931-b35b-6ab43ec446f1",
+      "slug": "defer",
+      "name": "Defer",
+      "blurb": "TODO: add blurb for defer concept"
+    },
+    {
+      "uuid": "dcd62cda-450f-48b6-bf1c-01bbb3eea13b",
+      "slug": "duration",
+      "name": "Duration",
+      "blurb": "TODO: add blurb for duration concept"
+    },
+    {
+      "uuid": "b9686994-4978-4588-9734-1d2137fadd6d",
+      "slug": "empty-interface",
+      "name": "Empty Interface",
+      "blurb": "TODO: add blurb for empty-interface concept"
+    },
+    {
+      "uuid": "95f9c430-dc4a-4eff-b2cc-5c6ea93a6960",
+      "slug": "errors",
+      "name": "Errors",
+      "blurb": "TODO: add blurb for errors concept"
+    },
+    {
+      "uuid": "ecb157d1-9e1e-4dd1-9a51-2074e598937d",
+      "slug": "errors-handling",
+      "name": "Errors Handling",
+      "blurb": "TODO: add blurb for errors-handling concept"
+    },
+    {
+      "uuid": "08c88d5c-a74c-451f-ab51-5c2c252a0988",
+      "slug": "floating-point",
+      "name": "Floating Point",
+      "blurb": "TODO: add blurb for floating-point concept"
+    },
+    {
+      "uuid": "28c60820-b6cc-49e3-8e23-e3321aa5c210",
+      "slug": "functions",
+      "name": "Functions",
+      "blurb": "TODO: add blurb for functions concept"
+    },
+    {
+      "uuid": "bcdf181d-b245-40b5-b5a6-09c1b1cfe466",
+      "slug": "goroutines",
+      "name": "Goroutines",
+      "blurb": "TODO: add blurb for goroutines concept"
+    },
+    {
+      "uuid": "05d17798-a93b-4b1e-a9e0-b287fffe9c8b",
+      "slug": "interfaces",
+      "name": "Interfaces",
+      "blurb": "TODO: add blurb for interfaces concept"
+    },
+    {
+      "uuid": "65728435-33ae-446a-8a08-77ed51b3d69c",
+      "slug": "iteration",
+      "name": "Iteration",
+      "blurb": "TODO: add blurb for iteration concept"
+    },
+    {
+      "uuid": "e02ef56e-6ede-481f-8098-ecd2ae984d2c",
+      "slug": "maps",
+      "name": "Maps",
+      "blurb": "TODO: add blurb for maps concept"
+    },
+    {
+      "uuid": "8918289f-5383-42c5-be15-290065d821ed",
+      "slug": "methods",
+      "name": "Methods",
+      "blurb": "TODO: add blurb for methods concept"
+    },
+    {
+      "uuid": "21628cd6-e215-47be-923d-91de47665c46",
+      "slug": "mutex",
+      "name": "Mutex",
+      "blurb": "TODO: add blurb for mutex concept"
+    },
+    {
+      "uuid": "8d34e7cf-2621-4985-b10e-1995201cf870",
+      "slug": "nil",
+      "name": "Nil",
+      "blurb": "TODO: add blurb for nil concept"
+    },
+    {
+      "uuid": "a7d2277b-a3be-4ffd-914c-75e8ca2de01e",
+      "slug": "numbers",
+      "name": "Numbers",
+      "blurb": "TODO: add blurb for numbers concept"
+    },
+    {
+      "uuid": "f4ab745a-a02e-48f5-b104-faa060f41fcf",
+      "slug": "packages",
+      "name": "Packages",
+      "blurb": "TODO: add blurb for packages concept"
+    },
+    {
+      "uuid": "48938b85-9bd8-40e4-9226-836020811e45",
+      "slug": "panic",
+      "name": "Panic",
+      "blurb": "TODO: add blurb for panic concept"
+    },
+    {
+      "uuid": "034d13fd-88d4-450e-968e-e124478ff39c",
+      "slug": "pointers",
+      "name": "Pointers",
+      "blurb": "TODO: add blurb for pointers concept"
+    },
+    {
+      "uuid": "99310096-1130-4a06-96a5-af94906bcc83",
+      "slug": "range-iteration",
+      "name": "Range Iteration",
+      "blurb": "TODO: add blurb for range-iteration concept"
+    },
+    {
+      "uuid": "c4a36ddb-e594-4ae1-91de-d25e274465d9",
+      "slug": "recover",
+      "name": "Recover",
+      "blurb": "TODO: add blurb for recover concept"
+    },
+    {
+      "uuid": "47eef38f-8f1b-4b3f-a3c6-b0011da61436",
+      "slug": "reflection",
+      "name": "Reflection",
+      "blurb": "TODO: add blurb for reflection concept"
+    },
+    {
+      "uuid": "0844c19c-97a7-4efb-a5ef-2cbac1f19684",
+      "slug": "runes",
+      "name": "Runes",
+      "blurb": "TODO: add blurb for runes concept"
+    },
+    {
+      "uuid": "4bb55d2f-628c-4ddc-9bde-ebf54277e01a",
+      "slug": "select",
+      "name": "Select",
+      "blurb": "TODO: add blurb for select concept"
+    },
+    {
+      "uuid": "d76c163c-2fc2-4af9-b1e1-33813ada91b7",
+      "slug": "slices",
+      "name": "Slices",
+      "blurb": "TODO: add blurb for slices concept"
+    },
+    {
+      "uuid": "c4d03633-94e3-4fc9-b230-816c56153189",
+      "slug": "strings",
+      "name": "Strings",
+      "blurb": "TODO: add blurb for strings concept"
+    },
+    {
+      "uuid": "bab4029c-d016-44d6-b51a-31a8384bd580",
+      "slug": "strings-package",
+      "name": "Strings Package",
+      "blurb": "TODO: add blurb for strings-package concept"
+    },
+    {
+      "uuid": "156ea093-0a5d-4207-b54d-119c9808928f",
+      "slug": "structs",
+      "name": "Structs",
+      "blurb": "TODO: add blurb for structs concept"
+    },
+    {
+      "uuid": "673104d9-bc95-45e7-88e8-73990438ada5",
+      "slug": "time",
+      "name": "Time",
+      "blurb": "TODO: add blurb for time concept"
+    },
+    {
+      "uuid": "f27dc295-c02a-4dc5-80c1-0301592ef961",
+      "slug": "type-assertion",
+      "name": "Type Assertion",
+      "blurb": "TODO: add blurb for type-assertion concept"
+    },
+    {
+      "uuid": "0789fe42-8af2-43c8-9922-d845017a08a6",
+      "slug": "type-conversion",
+      "name": "Type Conversion",
+      "blurb": "TODO: add blurb for type-conversion concept"
+    },
+    {
+      "uuid": "9bfb0484-6307-4c98-bf90-da1c0851e403",
+      "slug": "variables",
+      "name": "Variables",
+      "blurb": "TODO: add blurb for variables concept"
+    },
+    {
+      "uuid": "b38e16a2-2645-4d46-a7e7-a11efd15bcf8",
+      "slug": "zero-value",
+      "name": "Zero Value",
+      "blurb": "TODO: add blurb for zero-value concept"
+    }
+  ]
 }
