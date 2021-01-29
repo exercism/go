@@ -1,5 +1,6 @@
 {
   "language": "Go",
+  "slug": "go",
   "active": true,
   "status": {
     "concept_exercises": false,
