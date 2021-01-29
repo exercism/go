@@ -1,6 +1,6 @@
 # Structs
 
-See also [records](../../../reference/types/record.md)
+See also [records](https://github.com/exercism/v3/blob/main/reference/types/record.md)
 
 # Classes
 
