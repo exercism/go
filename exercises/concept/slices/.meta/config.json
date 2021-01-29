@@ -5,8 +5,9 @@
       "exercism_username": "tehsphinx"
     }
   ],
-  "editor": {
-    "solution_files": ["slices.go"],
-    "test_files": ["slices_test.go"]
+  "files": {
+    "solution": ["slices.go"],
+    "test": ["slices_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

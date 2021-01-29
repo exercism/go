@@ -6,8 +6,9 @@
     }
   ],
   "forked_from": ["csharp/datetimes"],
-  "editor": {
-    "solution_files": ["time.go"],
-    "test_files": ["time_test.go"]
+  "files": {
+    "solution": ["time.go"],
+    "test": ["time_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

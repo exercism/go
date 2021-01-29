@@ -11,8 +11,9 @@
     }
   ],
   "forked_from": [],
-  "editor": {
-    "solution_files": ["conditionals.go"],
-    "test_files": ["conditionals_test.go"]
+  "files": {
+    "solution": ["conditionals.go"],
+    "test": ["conditionals_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

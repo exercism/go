@@ -5,8 +5,9 @@
       "exercism_username": "micuffaro"
     }
   ],
-  "editor": {
-    "solution_files": [],
-    "test_files": []
+  "files": {
+    "solution": [],
+    "test": [],
+    "exemplar": []
   }
 }

@@ -5,8 +5,9 @@
       "exercism_username": "chocopowwwa"
     }
   ],
-  "editor": {
-    "solution_files": ["maps.go"],
-    "test_files": ["maps_test.go"]
+  "files": {
+    "solution": ["maps.go"],
+    "test": ["maps_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }

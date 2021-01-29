@@ -12,8 +12,9 @@
     }
   ],
   "forked_from": ["csharp/classes"],
-  "editor": {
-    "solution_files": ["methods.go"],
-    "test_files": ["methods_test.go"]
+  "files": {
+    "solution": ["methods.go"],
+    "test": ["methods_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }
