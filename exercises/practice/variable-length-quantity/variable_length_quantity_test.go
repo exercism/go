@@ -15,8 +15,8 @@ func TestDecodeVarint(t *testing.T) {
 			if !tc.errorExpected {
 				t.Fatalf("FAIL: case %d | %s\nexpected %#v got error: %q\n", i, tc.description, tc.output, err)
 			}
-		case tc.output == nil:
-			t.Fatalf("FAIL: case %d | %s\nexpected error, got %#v\n", i, tc.description, o)
+		case tc.errorExpected && err == nil:
+			t.Fatalf("FAIL: case %d | %s\nexpected error, got %#v\n", i, tc.description, err)
 		case !reflect.DeepEqual(o, tc.output):
 			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, o)
 		}
