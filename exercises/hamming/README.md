@@ -20,8 +20,44 @@ The Hamming Distance is useful for lots of things in science, not just biology, 
 
 The Hamming distance is only defined for sequences of equal length, so
 an attempt to calculate it between sequences of different lengths should
-not work. The general handling of this situation (e.g., raising an
-exception vs returning a special value) may differ between languages.
+not work, returning an error. 
+
+With this exercise, you are introduced to the use of 
+[multiple return](https://tour.golang.org/basics/6) feature and here there 
+is an example:
+
+    func Foo(a, b string) (string, error) {
+        if len(a) > len(b) {
+            return "", errors.New("An error occured!")
+        }
+    
+        // No errors:
+        return fmt.Sprintf("%s - %s", a, b), nil
+    }
+    
+
+The caller can now easily check if everything was OK:
+
+    foo, err := Foo(a, b)
+    if err != nil {
+        fmt.Println(err)
+        
+        // other logic, if needed
+        return
+    }
+    
+    fmt.Println(foo)
+
+There are multiple ways to create an error:
+
+    errors.New("Some description")
+    fmt.Errorf("Error %d occured", 503)
+    
+    // worth then mention but should be avoided:
+    errors.New(fmt.Sprintf("Error %d occured", 503)
+    
+Did you know? The entire errors package in Go is only 4 
+[lines of code](https://go.googlesource.com/go/+/go1.15.7/src/errors/errors.go).
 
 You may be wondering about the `cases_test.go` file. We explain it in the
 [leap exercise][leap-exercise-readme].
