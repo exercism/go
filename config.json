@@ -1399,11 +1399,9 @@
     {
       "slug": "complex-numbers",
       "uuid": "0e643dd5-fa2a-49d0-9e48-5dd05037a220",
-      "core": false,
       "unlocked_by": null,
-      "difficulty": 0,
-      "topics": null,
-      "deprecated": true
+      "difficulty": 1,
+      "topics": null
     }
   ]
 }
