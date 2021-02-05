@@ -1848,6 +1848,16 @@
           "pattern_matching",
           "strings"
         ]
+      },
+      {
+        "slug": "complex-numbers",
+        "name": "Complex Numbers",
+        "uuid": "0e643dd5-fa2a-49d0-9e48-5dd05037a220",
+        "prerequisites": [],
+        "difficulty": 2,
+        "topics": [
+          "math"
+        ]
       }
     ]
   },
