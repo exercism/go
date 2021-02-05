@@ -2111,6 +2111,37 @@
       "blurb": "TODO: add blurb for zero-value concept"
     }
   ],
-  "key_features": [],
+  "key_features": [
+    {
+      "title": "Speed",
+      "content": "Working with Go is intended to be fast (for computers and humans). A robust set of tooling provides efficient compilation, testing, package management, race detection, formatting, and much more.",
+      "icon": "features-speed"
+    },
+    {
+      "title": "Concurrency",
+      "content": "Go's concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines.",
+      "icon": "features-concurrency"
+    },
+    {
+      "title": "Statically Typed",
+      "content": "Go provides an expressive yet lightweight type system which enables flexible and modular program construction.",
+      "icon": "features-typed"
+    },
+    {
+      "title": "Portable",
+      "content": "Go compiles to a single static executable, and cross-compilation is easy.",
+      "icon": "features-portable"
+    },
+    {
+      "title": "Minimal",
+      "content": "Go's design reduces clutter and complexity. Your favorite feature may be missing because it doesn't fit, because it affects compilation speed or clarity of design, or because it would make the fundamental system model too difficult.",
+      "icon": "features-minimal"
+    },
+    {
+      "title": "Modern",
+      "content": "Go combines the ease of programming of an interpreted, dynamically typed language with the efficiency and safety of a statically typed, compiled language. Go also supports modern programming paradigms such as networking and multi-core computing. Since its release in 2009, Go has amassed over one million developers and every major cloud provider uses core infrastructure written in Go. Examples include Docker, Etcd, Istio, Kubernetes, Prometheus, and Terraform.",
+      "icon": "features-modern"
+    }
+  ],
   "tags": []
 }
