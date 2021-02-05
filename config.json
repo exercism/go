@@ -69,7 +69,7 @@
       },
       {
         "slug": "bytes-and-runes",
-        "uuid": null,
+        "uuid": "F07E3AD9-3BCE-4F35-A9FB-7D151D9F99EB",
         "concepts": [
           "bytes",
           "runes"
@@ -84,7 +84,7 @@
       },
       {
         "slug": "channels",
-        "uuid": null,
+        "uuid": "0839FDAC-96F1-4345-B098-7D7F1A6A13BB",
         "concepts": [
           "channels"
         ],
@@ -122,7 +122,7 @@
       },
       {
         "slug": "constants",
-        "uuid": null,
+        "uuid": "5FDAA543-A85F-4E02-8EDA-1D75942D0D0C",
         "concepts": [
           "constants"
         ],
@@ -134,7 +134,7 @@
       },
       {
         "slug": "context",
-        "uuid": null,
+        "uuid": "7EEEE7FF-1EBE-42EF-9F68-6B496599AF1B",
         "concepts": [
           "context"
         ],
@@ -150,7 +150,7 @@
       },
       {
         "slug": "defer",
-        "uuid": null,
+        "uuid": "92C647DF-0AF3-4602-8104-20D48DDB48FE",
         "concepts": [
           "defer"
         ],
@@ -162,7 +162,7 @@
       },
       {
         "slug": "duration",
-        "uuid": null,
+        "uuid": "A247FAA5-1554-42EF-9ADD-F9624472A260",
         "concepts": [
           "duration"
         ],
@@ -174,7 +174,7 @@
       },
       {
         "slug": "empty-interface",
-        "uuid": null,
+        "uuid": "3D054BB2-8C4B-494B-A568-3CDDF8D52A6B",
         "concepts": [
           "empty-interface"
         ],
@@ -196,7 +196,7 @@
       },
       {
         "slug": "errors-handling",
-        "uuid": null,
+        "uuid": "F90F7562-D7F8-4C89-A382-5B82D3B6ED05",
         "concepts": [
           "errors-handling"
         ],
@@ -221,7 +221,7 @@
       },
       {
         "slug": "goroutines",
-        "uuid": null,
+        "uuid": "FF3F2AB2-6305-40B7-B839-DC692EA7ED29",
         "concepts": [
           "goroutines"
         ],
@@ -234,7 +234,7 @@
       },
       {
         "slug": "interfaces",
-        "uuid": null,
+        "uuid": "9A049507-5F3B-449B-8A57-3E21711F1034",
         "concepts": [
           "interfaces"
         ],
@@ -247,7 +247,7 @@
       },
       {
         "slug": "iteration",
-        "uuid": null,
+        "uuid": "A151E3E2-5BC3-4EDC-9B91-7A2B1331397B",
         "concepts": [
           "iteration"
         ],
@@ -284,7 +284,7 @@
       },
       {
         "slug": "mutex",
-        "uuid": null,
+        "uuid": "63369677-811B-40A5-B945-2AD58351F984",
         "concepts": [
           "mutex"
         ],
@@ -307,7 +307,7 @@
       },
       {
         "slug": "panic-and-recover",
-        "uuid": null,
+        "uuid": "7B1F727B-4567-43CE-84EF-37ECCB785C46",
         "concepts": [
           "panic",
           "recover"
@@ -332,7 +332,7 @@
       },
       {
         "slug": "range-iteration",
-        "uuid": null,
+        "uuid": "D9143554-EAAC-4458-92CD-9880CB342271",
         "concepts": [
           "range-iteration"
         ],
@@ -345,7 +345,7 @@
       },
       {
         "slug": "reflection",
-        "uuid": null,
+        "uuid": "1F1A1E40-BBB4-464A-A3AD-96CC95387287",
         "concepts": [
           "reflection"
         ],
@@ -357,7 +357,7 @@
       },
       {
         "slug": "select",
-        "uuid": null,
+        "uuid": "7C5ED220-C847-4FE0-BBE0-F022B23207B2",
         "concepts": [
           "select"
         ],
@@ -427,7 +427,7 @@
       },
       {
         "slug": "type-assertion",
-        "uuid": null,
+        "uuid": "ADBD0758-B8A3-4B25-BB2F-69AB04255A2C",
         "concepts": [
           "type-assertion"
         ],
@@ -438,7 +438,7 @@
       },
       {
         "slug": "type-conversion",
-        "uuid": null,
+        "uuid": "454D3197-C748-4803-925E-05B079B2101A",
         "concepts": [
           "type-conversion"
         ],
@@ -1727,51 +1727,6 @@
           "interfaces",
           "reactive_programming"
         ]
-      },
-      {
-        "slug": "binary",
-        "name": "Binary",
-        "uuid": "bf2dcbc4-266f-4cad-9cd7-76d446360a5d",
-        "prerequisites": [],
-        "difficulty": 0,
-        "topics": null,
-        "status": "deprecated"
-      },
-      {
-        "slug": "counter",
-        "name": "Counter",
-        "uuid": "9a06556b-a661-4329-97a1-b5d0f0c7590c",
-        "prerequisites": [],
-        "difficulty": 0,
-        "topics": null,
-        "status": "deprecated"
-      },
-      {
-        "slug": "hexadecimal",
-        "name": "Hexadecimal",
-        "uuid": "0c9cef3d-57f6-479a-aca4-25f310426d6a",
-        "prerequisites": [],
-        "difficulty": 0,
-        "topics": null,
-        "status": "deprecated"
-      },
-      {
-        "slug": "octal",
-        "name": "Octal",
-        "uuid": "4840c889-ebe5-4082-98c0-b9ed8618f6eb",
-        "prerequisites": [],
-        "difficulty": 0,
-        "topics": null,
-        "status": "deprecated"
-      },
-      {
-        "slug": "trinary",
-        "name": "Trinary",
-        "uuid": "52af9f03-8b6b-4d75-a363-124f3269dccd",
-        "prerequisites": [],
-        "difficulty": 0,
-        "topics": null,
-        "status": "deprecated"
       },
       {
         "slug": "collatz-conjecture",
