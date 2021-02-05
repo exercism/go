@@ -3,8 +3,8 @@
   "slug": "go",
   "active": true,
   "status": {
-    "concept_exercises": false,
-    "test_runner": false,
+    "concept_exercises": true,
+    "test_runner": true,
     "representer": false,
     "analyzer": false
   },
@@ -18,8 +18,9 @@
   "exercises": {
     "concept": [
       {
+        "uuid": "F7E278FC-6D26-4DB6-90D7-8338E66FC190",
         "slug": "anonymous-functions",
-        "uuid": null,
+        "name": "Anonymous Functions",
         "concepts": [
           "anonymous-functions"
         ],
@@ -29,8 +30,8 @@
         "status": "wip"
       },
       {
+        "uuid": "C6A89083-6876-4664-BA78-4A3AA843B9D5",
         "slug": "application-timing",
-        "uuid": null,
         "concepts": [
           "application-timing"
         ],
@@ -43,26 +44,28 @@
         "status": "wip"
       },
       {
-        "slug": "basics",
         "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
+        "slug": "basics",
+        "name": "Basics",
         "concepts": [
           "packages",
           "functions",
           "variables"
         ],
         "prerequisites": [],
-        "status": "wip"
+        "status": "beta"
       },
       {
-        "slug": "booleans",
         "uuid": "d09a49d4-b69c-40a2-ae7e-8fde4ba4c7c7",
+        "slug": "booleans",
+        "name": "Booleans",
         "concepts": [
           "booleans"
         ],
         "prerequisites": [
           "variables"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "bytes-and-runes",
@@ -376,15 +379,16 @@
         "status": "wip"
       },
       {
-        "slug": "strings",
         "uuid": "e09523d2-c91f-11ea-87d0-0242ac130003",
+        "slug": "strings",
+        "name", "Strings",
         "concepts": [
           "strings"
         ],
         "prerequisites": [
           "variables"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "strings-package",
@@ -463,11 +467,12 @@
     ],
     "practice": [
       {
+        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
         "slug": "hello-world",
         "name": "Hello World",
-        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
         "prerequisites": [],
         "difficulty": 1,
+        "status": "beta",
         "topics": [
           "strings"
         ]
