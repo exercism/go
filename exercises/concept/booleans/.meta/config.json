@@ -1,0 +1,14 @@
+{
+  "authors": [
+    {
+      "github_username": "oanaOM",
+      "exercism_username": "oanaOM"
+    }
+  ],
+  "forked_from": ["csharp/booleans"],
+  "files": {
+    "solution": ["booleans.go"],
+    "test": ["booleans_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}

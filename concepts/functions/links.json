@@ -1,0 +1,35 @@
+[
+  {
+    "url": "https://golang.org/ref/spec#Assignments",
+    "description": "assignment"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Assignments",
+    "description": "assignment"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Operators",
+    "description": "operators"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Exported_identifiers",
+    "description": "public-vs-private"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Method_declarations",
+    "description": "methods"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Exported_identifiers",
+    "description": "public-vs-private"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Return_statements",
+    "description": "return"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Exported_identifiers",
+    "description": "public-vs-private"
+  },
+  { "url": "https://golang.org/ref/spec#Comments", "description": "comments" }
+]

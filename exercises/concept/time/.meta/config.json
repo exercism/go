@@ -1,0 +1,14 @@
+{
+  "authors": [
+    {
+      "github_username": "jamessouth",
+      "exercism_username": "jamessouth"
+    }
+  ],
+  "forked_from": ["csharp/datetimes"],
+  "files": {
+    "solution": ["time.go"],
+    "test": ["time_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}
