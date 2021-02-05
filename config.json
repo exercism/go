@@ -381,7 +381,7 @@
       {
         "uuid": "e09523d2-c91f-11ea-87d0-0242ac130003",
         "slug": "strings",
-        "name", "Strings",
+        "name": "Strings",
         "concepts": [
           "strings"
         ],
