@@ -18,9 +18,9 @@
   "exercises": {
     "concept": [
       {
-        "uuid": "F7E278FC-6D26-4DB6-90D7-8338E66FC190",
-        "slug": "anonymous-functions",
         "name": "Anonymous Functions",
+        "slug": "anonymous-functions",
+        "uuid": "F7E278FC-6D26-4DB6-90D7-8338E66FC190",
         "concepts": [
           "anonymous-functions"
         ],
@@ -30,8 +30,9 @@
         "status": "wip"
       },
       {
-        "uuid": "C6A89083-6876-4664-BA78-4A3AA843B9D5",
+        "name": "Application Timing",
         "slug": "application-timing",
+        "uuid": "C6A89083-6876-4664-BA78-4A3AA843B9D5",
         "concepts": [
           "application-timing"
         ],
@@ -44,9 +45,9 @@
         "status": "wip"
       },
       {
-        "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
-        "slug": "basics",
         "name": "Basics",
+        "slug": "basics",
+        "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
         "concepts": [
           "packages",
           "functions",
@@ -68,6 +69,7 @@
         "status": "beta"
       },
       {
+        "name": "Bytes and Runes",
         "slug": "bytes-and-runes",
         "uuid": "F07E3AD9-3BCE-4F35-A9FB-7D151D9F99EB",
         "concepts": [
@@ -83,6 +85,7 @@
         "status": "wip"
       },
       {
+        "name": "Channels",
         "slug": "channels",
         "uuid": "0839FDAC-96F1-4345-B098-7D7F1A6A13BB",
         "concepts": [
@@ -95,6 +98,7 @@
         "status": "wip"
       },
       {
+        "name": "Comments",
         "slug": "comments",
         "uuid": "60186dfa-6a63-4859-a4c4-1e1ed1acf384",
         "concepts": [
@@ -109,6 +113,7 @@
       {
         "slug": "conditionals",
         "uuid": "9e71eb44-1189-423c-b2bb-ba7e92cc98c7",
+        "name": "Conditionals",
         "concepts": [
           "conditionals-if",
           "conditionals-switch",
@@ -121,6 +126,7 @@
         "status": "wip"
       },
       {
+        "name": "Constants",
         "slug": "constants",
         "uuid": "5FDAA543-A85F-4E02-8EDA-1D75942D0D0C",
         "concepts": [
@@ -133,6 +139,7 @@
         "status": "wip"
       },
       {
+        "name": "Context",
         "slug": "context",
         "uuid": "7EEEE7FF-1EBE-42EF-9F68-6B496599AF1B",
         "concepts": [
@@ -149,6 +156,7 @@
         "status": "wip"
       },
       {
+        "name": "Defer",
         "slug": "defer",
         "uuid": "92C647DF-0AF3-4602-8104-20D48DDB48FE",
         "concepts": [
@@ -161,6 +169,7 @@
         "status": "wip"
       },
       {
+        "name": "Duration",
         "slug": "duration",
         "uuid": "A247FAA5-1554-42EF-9ADD-F9624472A260",
         "concepts": [
@@ -173,6 +182,7 @@
         "status": "wip"
       },
       {
+        "name": "Empty Interface",
         "slug": "empty-interface",
         "uuid": "3D054BB2-8C4B-494B-A568-3CDDF8D52A6B",
         "concepts": [
@@ -184,6 +194,7 @@
         "status": "wip"
       },
       {
+        "name": "Errors",
         "slug": "errors",
         "uuid": "397dc808-7016-4d40-8ac7-4395e12bd19f",
         "concepts": [
@@ -195,6 +206,7 @@
         "status": "wip"
       },
       {
+        "name": "Error Handling",
         "slug": "errors-handling",
         "uuid": "F90F7562-D7F8-4C89-A382-5B82D3B6ED05",
         "concepts": [
@@ -208,6 +220,7 @@
         "status": "wip"
       },
       {
+        "name": "Floating Point",
         "slug": "floating-point",
         "uuid": "aa8dbe3e-8395-45b9-a4f6-62e12070ec4f",
         "concepts": [
@@ -220,6 +233,7 @@
         "status": "wip"
       },
       {
+        "name": "Goroutines",
         "slug": "goroutines",
         "uuid": "FF3F2AB2-6305-40B7-B839-DC692EA7ED29",
         "concepts": [
@@ -233,6 +247,7 @@
         "status": "wip"
       },
       {
+        "name": "Interfaces",
         "slug": "interfaces",
         "uuid": "9A049507-5F3B-449B-8A57-3E21711F1034",
         "concepts": [
@@ -246,6 +261,7 @@
         "status": "wip"
       },
       {
+        "name": "Iteration",
         "slug": "iteration",
         "uuid": "A151E3E2-5BC3-4EDC-9B91-7A2B1331397B",
         "concepts": [
@@ -258,6 +274,7 @@
         "status": "wip"
       },
       {
+        "name": "Maps",
         "slug": "maps",
         "uuid": "8c1da631-3600-405b-83f7-21fa76bf05b6",
         "concepts": [
@@ -270,6 +287,7 @@
         "status": "wip"
       },
       {
+        "name": "Methods",
         "slug": "methods",
         "uuid": "29761fda-6238-4dba-a229-2dbaa661515f",
         "concepts": [
@@ -283,6 +301,7 @@
         "status": "wip"
       },
       {
+        "name": "Mutex",
         "slug": "mutex",
         "uuid": "63369677-811B-40A5-B945-2AD58351F984",
         "concepts": [
@@ -294,6 +313,7 @@
         "status": "wip"
       },
       {
+        "name": "Numbers",
         "slug": "numbers",
         "uuid": "88215fa2-eba8-430e-988f-21a924f18f7b",
         "concepts": [
@@ -306,6 +326,7 @@
         "status": "wip"
       },
       {
+        "name": "Panic and Recover",
         "slug": "panic-and-recover",
         "uuid": "7B1F727B-4567-43CE-84EF-37ECCB785C46",
         "concepts": [
@@ -320,6 +341,7 @@
         "status": "wip"
       },
       {
+        "name": "Pointers",
         "slug": "pointers",
         "uuid": "b1619ab0-2306-4d1d-bbcd-1d70ea38fa98",
         "concepts": [
@@ -331,6 +353,7 @@
         "status": "wip"
       },
       {
+        "name": "Range Iteration",
         "slug": "range-iteration",
         "uuid": "D9143554-EAAC-4458-92CD-9880CB342271",
         "concepts": [
@@ -344,6 +367,7 @@
         "status": "wip"
       },
       {
+        "name": "Reflection",
         "slug": "reflection",
         "uuid": "1F1A1E40-BBB4-464A-A3AD-96CC95387287",
         "concepts": [
@@ -356,6 +380,7 @@
         "status": "wip"
       },
       {
+        "name": "Select",
         "slug": "select",
         "uuid": "7C5ED220-C847-4FE0-BBE0-F022B23207B2",
         "concepts": [
@@ -367,6 +392,7 @@
         "status": "wip"
       },
       {
+        "name": "Slices",
         "slug": "slices",
         "uuid": "8bc0c6f6-1891-4688-9ed7-a63e3702f655",
         "concepts": [
@@ -379,9 +405,9 @@
         "status": "wip"
       },
       {
-        "uuid": "e09523d2-c91f-11ea-87d0-0242ac130003",
-        "slug": "strings",
         "name": "Strings",
+        "slug": "strings",
+        "uuid": "e09523d2-c91f-11ea-87d0-0242ac130003",
         "concepts": [
           "strings"
         ],
@@ -391,6 +417,7 @@
         "status": "beta"
       },
       {
+        "name": "Strings Package",
         "slug": "strings-package",
         "uuid": "b97a271c-4036-4ea8-8c6a-094715a48627",
         "concepts": [
@@ -402,6 +429,7 @@
         "status": "wip"
       },
       {
+        "name": "Structs",
         "slug": "structs",
         "uuid": "2508aa96-e4e9-444e-9e6b-8b748c4f9305",
         "concepts": [
@@ -414,6 +442,7 @@
         "status": "wip"
       },
       {
+        "name": "Time",
         "slug": "time",
         "uuid": "1c1414d4-3688-4e9d-bc38-908eb7adf970",
         "concepts": [
@@ -426,6 +455,7 @@
         "status": "wip"
       },
       {
+        "name": "Type Assertion",
         "slug": "type-assertion",
         "uuid": "ADBD0758-B8A3-4B25-BB2F-69AB04255A2C",
         "concepts": [
@@ -437,6 +467,7 @@
         "status": "wip"
       },
       {
+        "name": "Type Conversion",
         "slug": "type-conversion",
         "uuid": "454D3197-C748-4803-925E-05B079B2101A",
         "concepts": [
@@ -449,6 +480,7 @@
         "status": "wip"
       },
       {
+        "name": "Zero Value",
         "slug": "zero-value",
         "uuid": "7b265cc8-8f88-4de1-b653-10a384e6c7e2",
         "concepts": [
@@ -467,9 +499,9 @@
     ],
     "practice": [
       {
-        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
-        "slug": "hello-world",
         "name": "Hello World",
+        "slug": "hello-world",
+        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
         "prerequisites": [],
         "difficulty": 1,
         "status": "beta",
@@ -478,8 +510,8 @@
         ]
       },
       {
-        "slug": "two-fer",
         "name": "Two Fer",
+        "slug": "two-fer",
         "uuid": "08a6c476-9ffe-4ae3-9996-cd299cc82fca",
         "prerequisites": [],
         "difficulty": 1,
@@ -489,8 +521,8 @@
         ]
       },
       {
-        "slug": "hamming",
         "name": "Hamming",
+        "slug": "hamming",
         "uuid": "52582415-8f7f-4ac5-857f-5c160ec48134",
         "prerequisites": [],
         "difficulty": 1,
@@ -501,8 +533,8 @@
         ]
       },
       {
-        "slug": "raindrops",
         "name": "Raindrops",
+        "slug": "raindrops",
         "uuid": "2f51e32a-9b1f-4100-9eec-517115c858e9",
         "prerequisites": [],
         "difficulty": 1,
@@ -513,8 +545,8 @@
         ]
       },
       {
-        "slug": "scrabble-score",
         "name": "Scrabble Score",
+        "slug": "scrabble-score",
         "uuid": "20cbd8f9-f8e3-4767-a0f5-94810ba3f902",
         "prerequisites": [],
         "difficulty": 1,
@@ -525,8 +557,8 @@
         ]
       },
       {
-        "slug": "isogram",
         "name": "Isogram",
+        "slug": "isogram",
         "uuid": "c2064df8-cce5-4f03-9d85-0818b4e34112",
         "prerequisites": [],
         "difficulty": 2,
@@ -536,8 +568,8 @@
         ]
       },
       {
-        "slug": "difference-of-squares",
         "name": "Difference Of Squares",
+        "slug": "difference-of-squares",
         "uuid": "19628c8a-a89f-457e-9526-3d400024a927",
         "prerequisites": [],
         "difficulty": 2,
@@ -547,8 +579,8 @@
         ]
       },
       {
-        "slug": "luhn",
         "name": "Luhn",
+        "slug": "luhn",
         "uuid": "8b29da0e-8ead-4e72-a12a-d448c8434767",
         "prerequisites": [],
         "difficulty": 2,
@@ -559,8 +591,8 @@
         ]
       },
       {
-        "slug": "grains",
         "name": "Grains",
+        "slug": "grains",
         "uuid": "b4f6b08b-a132-447b-b447-66bf37ab20c6",
         "prerequisites": [],
         "difficulty": 2,
@@ -572,8 +604,8 @@
         ]
       },
       {
-        "slug": "clock",
         "name": "Clock",
+        "slug": "clock",
         "uuid": "7d2de21e-bf67-495e-8d90-05e1a35d5b99",
         "prerequisites": [],
         "difficulty": 3,
@@ -584,8 +616,8 @@
         ]
       },
       {
-        "slug": "parallel-letter-frequency",
         "name": "Parallel Letter Frequency",
+        "slug": "parallel-letter-frequency",
         "uuid": "bf366b19-63bf-4a75-9a35-08b881af6951",
         "prerequisites": [],
         "difficulty": 3,
@@ -594,8 +626,8 @@
         ]
       },
       {
-        "slug": "tree-building",
         "name": "Tree Building",
+        "slug": "tree-building",
         "uuid": "d0a2afab-e30d-4617-b646-413a44ecf2ed",
         "prerequisites": [],
         "difficulty": 3,
@@ -607,8 +639,8 @@
         ]
       },
       {
-        "slug": "robot-name",
         "name": "Robot Name",
+        "slug": "robot-name",
         "uuid": "86b8f1e6-e088-403e-984a-abd360f5dcef",
         "prerequisites": [],
         "difficulty": 3,
@@ -617,8 +649,8 @@
         ]
       },
       {
-        "slug": "tournament",
         "name": "Tournament",
+        "slug": "tournament",
         "uuid": "572d03ec-d763-400e-ba4f-5a6a92d5af98",
         "prerequisites": [],
         "difficulty": 3,
@@ -633,8 +665,8 @@
         ]
       },
       {
-        "slug": "twelve-days",
         "name": "Twelve Days",
+        "slug": "twelve-days",
         "uuid": "75b6e2e8-1e20-4f53-b7c5-e32f9f7eea58",
         "prerequisites": [],
         "difficulty": 4,
@@ -647,8 +679,8 @@
         ]
       },
       {
-        "slug": "matrix",
         "name": "Matrix",
+        "slug": "matrix",
         "uuid": "62aa3d20-65d8-440f-9d08-48bbc823f4fe",
         "prerequisites": [],
         "difficulty": 4,
@@ -661,8 +693,8 @@
         ]
       },
       {
-        "slug": "error-handling",
         "name": "Error Handling",
+        "slug": "error-handling",
         "uuid": "cd05b63b-df20-4c8d-8743-53033acf7696",
         "prerequisites": [],
         "difficulty": 5,
@@ -671,8 +703,8 @@
         ]
       },
       {
-        "slug": "bank-account",
         "name": "Bank Account",
+        "slug": "bank-account",
         "uuid": "7cb6c78e-44e9-499b-a745-3ecb73bea3ab",
         "prerequisites": [],
         "difficulty": 4,
@@ -682,8 +714,8 @@
         ]
       },
       {
-        "slug": "space-age",
         "name": "Space Age",
+        "slug": "space-age",
         "uuid": "5a6baa1c-8ca8-4ebe-a1d2-1e0687ca846a",
         "prerequisites": [],
         "difficulty": 2,
@@ -693,8 +725,8 @@
         ]
       },
       {
-        "slug": "leap",
         "name": "Leap",
+        "slug": "leap",
         "uuid": "fee57b09-2b67-4483-a2e5-3dfec0568b15",
         "prerequisites": [],
         "difficulty": 1,
@@ -706,8 +738,8 @@
         ]
       },
       {
-        "slug": "triangle",
         "name": "Triangle",
+        "slug": "triangle",
         "uuid": "6769557a-33fa-4257-adbf-e66dc8c06f85",
         "prerequisites": [],
         "difficulty": 3,
@@ -718,8 +750,8 @@
         ]
       },
       {
-        "slug": "proverb",
         "name": "Proverb",
+        "slug": "proverb",
         "uuid": "b6d05e8f-542b-4789-9cbc-7ba132a5f03d",
         "prerequisites": [],
         "difficulty": 4,
@@ -730,8 +762,8 @@
         ]
       },
       {
-        "slug": "nucleotide-count",
         "name": "Nucleotide Count",
+        "slug": "nucleotide-count",
         "uuid": "5911d90f-ba2f-482f-8c92-c01c112d6fdd",
         "prerequisites": [],
         "difficulty": 2,
@@ -742,8 +774,8 @@
         ]
       },
       {
-        "slug": "rna-transcription",
         "name": "Rna Transcription",
+        "slug": "rna-transcription",
         "uuid": "9bef2163-2a24-4d50-9610-e3cac2e7772a",
         "prerequisites": [],
         "difficulty": 2,
@@ -753,8 +785,8 @@
         ]
       },
       {
-        "slug": "accumulate",
         "name": "Accumulate",
+        "slug": "accumulate",
         "uuid": "fb03948c-11e8-440d-9a5d-979396451270",
         "prerequisites": [],
         "difficulty": 1,
@@ -763,8 +795,8 @@
         ]
       },
       {
-        "slug": "roman-numerals",
         "name": "Roman Numerals",
+        "slug": "roman-numerals",
         "uuid": "eccfd2b3-93cf-41a8-b39b-c29596469e8e",
         "prerequisites": [],
         "difficulty": 2,
@@ -774,8 +806,8 @@
         ]
       },
       {
-        "slug": "strain",
         "name": "Strain",
+        "slug": "strain",
         "uuid": "7fbb0d9d-71d1-4654-8ca0-bb07ddbe6cb5",
         "prerequisites": [],
         "difficulty": 2,
@@ -786,8 +818,8 @@
         ]
       },
       {
-        "slug": "etl",
         "name": "Etl",
+        "slug": "etl",
         "uuid": "73da448c-33b7-4565-ab48-1de5020d65ab",
         "prerequisites": [],
         "difficulty": 1,
@@ -798,8 +830,8 @@
         ]
       },
       {
-        "slug": "protein-translation",
         "name": "Protein Translation",
+        "slug": "protein-translation",
         "uuid": "0b9e07de-c8e4-4d28-b589-897a7ef8062a",
         "prerequisites": [],
         "difficulty": 3,
@@ -810,8 +842,8 @@
         ]
       },
       {
-        "slug": "pangram",
         "name": "Pangram",
+        "slug": "pangram",
         "uuid": "d14c6283-e57c-472c-8181-87f82d9088dd",
         "prerequisites": [],
         "difficulty": 2,
@@ -821,8 +853,8 @@
         ]
       },
       {
-        "slug": "reverse-string",
         "name": "Reverse String",
+        "slug": "reverse-string",
         "uuid": "e2df2756-7a48-4b45-b601-91be91027dbd",
         "prerequisites": [],
         "difficulty": 2,
@@ -832,8 +864,8 @@
         ]
       },
       {
-        "slug": "anagram",
         "name": "Anagram",
+        "slug": "anagram",
         "uuid": "f1db7190-a53d-411d-b538-8dc3f75ddc32",
         "prerequisites": [],
         "difficulty": 3,
@@ -845,8 +877,8 @@
         ]
       },
       {
-        "slug": "word-count",
         "name": "Word Count",
+        "slug": "word-count",
         "uuid": "b765fde9-84b4-44cc-bdf1-f66ac1ab8e2c",
         "prerequisites": [],
         "difficulty": 3,
@@ -856,8 +888,8 @@
         ]
       },
       {
-        "slug": "run-length-encoding",
         "name": "Run Length Encoding",
+        "slug": "run-length-encoding",
         "uuid": "29ea064e-9d2a-11e7-abc4-cec278b6b50a",
         "prerequisites": [],
         "difficulty": 4,
@@ -868,8 +900,8 @@
         ]
       },
       {
+        "name": "ISBN Verifier",
         "slug": "isbn-verifier",
-        "name": "Isbn Verifier",
         "uuid": "3530f2f0-ee5f-46a3-a8ee-e9927a637253",
         "prerequisites": [],
         "difficulty": 2,
@@ -878,8 +910,8 @@
         ]
       },
       {
-        "slug": "largest-series-product",
         "name": "Largest Series Product",
+        "slug": "largest-series-product",
         "uuid": "8ec72d61-d830-48cf-819d-cd4faf0cf67d",
         "prerequisites": [],
         "difficulty": 3,
@@ -891,8 +923,8 @@
         ]
       },
       {
-        "slug": "nth-prime",
         "name": "Nth Prime",
+        "slug": "nth-prime",
         "uuid": "128e0b12-0ad2-431a-971c-ad4ab098b42d",
         "prerequisites": [],
         "difficulty": 3,
@@ -914,8 +946,8 @@
         ]
       },
       {
-        "slug": "sum-of-multiples",
         "name": "Sum Of Multiples",
+        "slug": "sum-of-multiples",
         "uuid": "f0c25fde-960e-4161-a642-4414925b4d0a",
         "prerequisites": [],
         "difficulty": 5,
@@ -925,8 +957,8 @@
         ]
       },
       {
-        "slug": "rotational-cipher",
         "name": "Rotational Cipher",
+        "slug": "rotational-cipher",
         "uuid": "37821140-c0d0-4da8-8f50-47356705a615",
         "prerequisites": [],
         "difficulty": 2,
@@ -937,8 +969,8 @@
         ]
       },
       {
-        "slug": "atbash-cipher",
         "name": "Atbash Cipher",
+        "slug": "atbash-cipher",
         "uuid": "84bda80c-b82c-45f6-95d4-5568d23a22dd",
         "prerequisites": [],
         "difficulty": 3,
@@ -950,8 +982,8 @@
         ]
       },
       {
-        "slug": "crypto-square",
         "name": "Crypto Square",
+        "slug": "crypto-square",
         "uuid": "a1c065d9-6971-4286-8413-c944e2dddefa",
         "prerequisites": [],
         "difficulty": 3,
@@ -964,8 +996,8 @@
         ]
       },
       {
-        "slug": "simple-cipher",
         "name": "Simple Cipher",
+        "slug": "simple-cipher",
         "uuid": "7b9201fa-92d2-43fd-8b35-4c552336570b",
         "prerequisites": [],
         "difficulty": 3,
@@ -978,8 +1010,8 @@
         ]
       },
       {
-        "slug": "diffie-hellman",
         "name": "Diffie Hellman",
+        "slug": "diffie-hellman",
         "uuid": "f3058f8b-7e0e-4adb-9add-1df23607d4ed",
         "prerequisites": [],
         "difficulty": 5,
@@ -992,8 +1024,8 @@
         ]
       },
       {
-        "slug": "all-your-base",
         "name": "All Your Base",
+        "slug": "all-your-base",
         "uuid": "932a7ed0-c331-49b1-917b-a197198f642a",
         "prerequisites": [],
         "difficulty": 3,
@@ -1004,8 +1036,8 @@
         ]
       },
       {
-        "slug": "sieve",
         "name": "Sieve",
+        "slug": "sieve",
         "uuid": "c3469a26-b133-43b4-ab7d-32ea04fa5ce4",
         "prerequisites": [],
         "difficulty": 3,
@@ -1018,8 +1050,8 @@
         ]
       },
       {
-        "slug": "allergies",
         "name": "Allergies",
+        "slug": "allergies",
         "uuid": "cbfd4cfb-abe7-45f9-80e4-3de3b2639fc8",
         "prerequisites": [],
         "difficulty": 4,
@@ -1029,8 +1061,8 @@
         ]
       },
       {
-        "slug": "perfect-numbers",
         "name": "Perfect Numbers",
+        "slug": "perfect-numbers",
         "uuid": "362f93ab-51e8-4d6a-bd2f-b46432843eb9",
         "prerequisites": [],
         "difficulty": 4,
@@ -1042,8 +1074,8 @@
         ]
       },
       {
-        "slug": "secret-handshake",
         "name": "Secret Handshake",
+        "slug": "secret-handshake",
         "uuid": "9a1870e0-dce7-496e-9521-2f2b606ac6c5",
         "prerequisites": [],
         "difficulty": 5,
@@ -1054,8 +1086,8 @@
         ]
       },
       {
-        "slug": "variable-length-quantity",
         "name": "Variable Length Quantity",
+        "slug": "variable-length-quantity",
         "uuid": "333231db-2605-438e-9eb0-d1bdc51c7419",
         "prerequisites": [],
         "difficulty": 5,
@@ -1066,8 +1098,8 @@
         ]
       },
       {
-        "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
+        "slug": "armstrong-numbers",
         "uuid": "b3f06c57-c0de-4b8f-bd16-782b2ce3f478",
         "prerequisites": [],
         "difficulty": 3,
@@ -1078,8 +1110,8 @@
         ]
       },
       {
-        "slug": "meetup",
         "name": "Meetup",
+        "slug": "meetup",
         "uuid": "fcf735fe-a659-40ae-858e-6d1e834a4faf",
         "prerequisites": [],
         "difficulty": 3,
@@ -1091,8 +1123,8 @@
         ]
       },
       {
-        "slug": "phone-number",
         "name": "Phone Number",
+        "slug": "phone-number",
         "uuid": "458053ea-43a9-409f-a1a6-a7f31329aca4",
         "prerequisites": [],
         "difficulty": 3,
@@ -1105,8 +1137,8 @@
         ]
       },
       {
-        "slug": "prime-factors",
         "name": "Prime Factors",
+        "slug": "prime-factors",
         "uuid": "dbf4d64e-c02d-4bdf-8be1-43f9acb5f2ad",
         "prerequisites": [],
         "difficulty": 3,
@@ -1117,8 +1149,8 @@
         ]
       },
       {
-        "slug": "pig-latin",
         "name": "Pig Latin",
+        "slug": "pig-latin",
         "uuid": "4fe8ba14-20ba-4aa3-b134-7aed799a7522",
         "prerequisites": [],
         "difficulty": 4,
@@ -1129,8 +1161,8 @@
         ]
       },
       {
-        "slug": "series",
         "name": "Series",
+        "slug": "series",
         "uuid": "2c5fb577-a9ce-4c4c-8fc8-fffb38d020d6",
         "prerequisites": [],
         "difficulty": 3,
@@ -1141,8 +1173,8 @@
         ]
       },
       {
-        "slug": "ledger",
         "name": "Ledger",
+        "slug": "ledger",
         "uuid": "7aa53a27-4ff3-4891-809f-2af728eb55a0",
         "prerequisites": [],
         "difficulty": 4,
@@ -1157,8 +1189,8 @@
         ]
       },
       {
-        "slug": "linked-list",
         "name": "Linked List",
+        "slug": "linked-list",
         "uuid": "4368df53-39fb-4f36-97c2-39c399cd6d25",
         "prerequisites": [],
         "difficulty": 4,
@@ -1168,8 +1200,8 @@
         ]
       },
       {
-        "slug": "rail-fence-cipher",
         "name": "Rail Fence Cipher",
+        "slug": "rail-fence-cipher",
         "uuid": "bafd87ad-1dc5-4bbe-b853-ed330c3f155a",
         "prerequisites": [],
         "difficulty": 4,
@@ -1184,8 +1216,8 @@
         ]
       },
       {
-        "slug": "binary-search",
         "name": "Binary Search",
+        "slug": "binary-search",
         "uuid": "31c77516-6702-417e-9c6e-19c7e965d513",
         "prerequisites": [],
         "difficulty": 5,
@@ -1197,8 +1229,8 @@
         ]
       },
       {
-        "slug": "binary-search-tree",
         "name": "Binary Search Tree",
+        "slug": "binary-search-tree",
         "uuid": "ac680609-4e52-468d-bf17-afbf7b2fa74b",
         "prerequisites": [],
         "difficulty": 5,
@@ -1212,8 +1244,8 @@
         ]
       },
       {
-        "slug": "two-bucket",
         "name": "Two Bucket",
+        "slug": "two-bucket",
         "uuid": "549bf4a0-b8eb-4f66-8990-7df6cdfaee0c",
         "prerequisites": [],
         "difficulty": 5,
@@ -1224,8 +1256,8 @@
         ]
       },
       {
-        "slug": "matching-brackets",
         "name": "Matching Brackets",
+        "slug": "matching-brackets",
         "uuid": "6c2499f7-d42c-4d0f-9680-f5f7650023ff",
         "prerequisites": [],
         "difficulty": 7,
@@ -1235,8 +1267,8 @@
         ]
       },
       {
+        "name": "POV",
         "slug": "pov",
-        "name": "Pov",
         "uuid": "cdbadf95-66ff-455f-bea3-eff5024afcb7",
         "prerequisites": [],
         "difficulty": 7,
@@ -1249,8 +1281,8 @@
         ]
       },
       {
-        "slug": "wordy",
         "name": "Wordy",
+        "slug": "wordy",
         "uuid": "1eb7d7b2-6367-4038-bb86-7dc6c682b6a3",
         "prerequisites": [],
         "difficulty": 3,
@@ -1263,8 +1295,8 @@
         ]
       },
       {
-        "slug": "palindrome-products",
         "name": "Palindrome Products",
+        "slug": "palindrome-products",
         "uuid": "10f091b1-deda-4fec-8e3c-9dabb080d473",
         "prerequisites": [],
         "difficulty": 6,
@@ -1274,8 +1306,8 @@
         ]
       },
       {
-        "slug": "say",
         "name": "Say",
+        "slug": "say",
         "uuid": "5d742499-b130-458a-ba3e-a4c3d75419c3",
         "prerequisites": [],
         "difficulty": 7,
@@ -1287,8 +1319,8 @@
         ]
       },
       {
-        "slug": "kindergarten-garden",
         "name": "Kindergarten Garden",
+        "slug": "kindergarten-garden",
         "uuid": "4282b1f6-d1a2-41b4-9a7f-a9a145fb283b",
         "prerequisites": [],
         "difficulty": 3,
@@ -1301,8 +1333,8 @@
         ]
       },
       {
-        "slug": "diamond",
         "name": "Diamond",
+        "slug": "diamond",
         "uuid": "47b9ad32-e9d9-4cbc-b106-540f3afbfa80",
         "prerequisites": [],
         "difficulty": 4,
@@ -1315,8 +1347,8 @@
         ]
       },
       {
-        "slug": "grep",
         "name": "Grep",
+        "slug": "grep",
         "uuid": "ec5dab72-dd96-4dce-8886-aff52a6eb090",
         "prerequisites": [],
         "difficulty": 4,
@@ -1329,8 +1361,8 @@
         ]
       },
       {
+        "name": "Pascal's Triangle",
         "slug": "pascals-triangle",
-        "name": "Pascals Triangle",
         "uuid": "92e2a192-5ee9-422a-8699-c231a7136b10",
         "prerequisites": [],
         "difficulty": 4,
@@ -1342,8 +1374,8 @@
         ]
       },
       {
-        "slug": "rectangles",
         "name": "Rectangles",
+        "slug": "rectangles",
         "uuid": "e7e207dc-bf8b-4bbf-b06e-edd674e09a06",
         "prerequisites": [],
         "difficulty": 4,
@@ -1356,8 +1388,8 @@
         ]
       },
       {
-        "slug": "yacht",
         "name": "Yacht",
+        "slug": "yacht",
         "uuid": "37980ffd-acc7-44f4-ad32-43e0624457a8",
         "prerequisites": [],
         "difficulty": 4,
@@ -1371,8 +1403,8 @@
         ]
       },
       {
-        "slug": "bowling",
         "name": "Bowling",
+        "slug": "bowling",
         "uuid": "8d5aaf47-7503-4797-85ed-d35a8755cfd4",
         "prerequisites": [],
         "difficulty": 5,
@@ -1383,8 +1415,8 @@
         ]
       },
       {
-        "slug": "poker",
         "name": "Poker",
+        "slug": "poker",
         "uuid": "9be60690-39bb-4173-a2ed-faa4acd8f38f",
         "prerequisites": [],
         "difficulty": 5,
@@ -1398,8 +1430,8 @@
         ]
       },
       {
+        "name": "OCR Numbers",
         "slug": "ocr-numbers",
-        "name": "Ocr Numbers",
         "uuid": "13e58d89-4dbb-4384-9268-2f8083588d7a",
         "prerequisites": [],
         "difficulty": 7,
@@ -1409,8 +1441,8 @@
         ]
       },
       {
-        "slug": "beer-song",
         "name": "Beer Song",
+        "slug": "beer-song",
         "uuid": "094ea17e-1759-443a-9117-7c72c6f68b8d",
         "prerequisites": [],
         "difficulty": 3,
@@ -1421,8 +1453,8 @@
         ]
       },
       {
-        "slug": "food-chain",
         "name": "Food Chain",
+        "slug": "food-chain",
         "uuid": "12a16ab5-35fc-4fb2-a018-504953f3ad80",
         "prerequisites": [],
         "difficulty": 4,
@@ -1435,8 +1467,8 @@
         ]
       },
       {
-        "slug": "house",
         "name": "House",
+        "slug": "house",
         "uuid": "11008fb0-4ef9-4aff-befb-c56f4084f96e",
         "prerequisites": [],
         "difficulty": 4,
@@ -1447,8 +1479,8 @@
         ]
       },
       {
-        "slug": "markdown",
         "name": "Markdown",
+        "slug": "markdown",
         "uuid": "a7469032-c4d0-4e15-aa0c-4e9f6588b4c8",
         "prerequisites": [],
         "difficulty": 4,
@@ -1459,8 +1491,8 @@
         ]
       },
       {
-        "slug": "sublist",
         "name": "Sublist",
+        "slug": "sublist",
         "uuid": "4174c0c6-cb8a-474c-9327-737b7a86326e",
         "prerequisites": [],
         "difficulty": 3,
@@ -1470,8 +1502,8 @@
         ]
       },
       {
-        "slug": "spiral-matrix",
         "name": "Spiral Matrix",
+        "slug": "spiral-matrix",
         "uuid": "4fc21001-2ada-41f6-92b6-cf0152df18bf",
         "prerequisites": [],
         "difficulty": 4,
@@ -1482,8 +1514,8 @@
         ]
       },
       {
-        "slug": "word-search",
         "name": "Word Search",
+        "slug": "word-search",
         "uuid": "7fdf352b-e5a3-452e-91a2-03587be48ad0",
         "prerequisites": [],
         "difficulty": 4,
@@ -1494,8 +1526,8 @@
         ]
       },
       {
-        "slug": "minesweeper",
         "name": "Minesweeper",
+        "slug": "minesweeper",
         "uuid": "3bf049f8-7283-4370-aa0c-e10e99d9ef80",
         "prerequisites": [],
         "difficulty": 5,
@@ -1508,8 +1540,8 @@
         ]
       },
       {
-        "slug": "queen-attack",
         "name": "Queen Attack",
+        "slug": "queen-attack",
         "uuid": "95f49a88-6f01-4905-a8b1-a3fcec1f535a",
         "prerequisites": [],
         "difficulty": 5,
@@ -1521,8 +1553,8 @@
         ]
       },
       {
-        "slug": "saddle-points",
         "name": "Saddle Points",
+        "slug": "saddle-points",
         "uuid": "c78102b0-aaa3-4edb-a315-4fcdc26ccae8",
         "prerequisites": [],
         "difficulty": 5,
@@ -1534,8 +1566,8 @@
         ]
       },
       {
-        "slug": "transpose",
         "name": "Transpose",
+        "slug": "transpose",
         "uuid": "7f19ebbd-b072-45e5-ad67-2fff8ad1c9e2",
         "prerequisites": [],
         "difficulty": 5,
@@ -1546,8 +1578,8 @@
         ]
       },
       {
-        "slug": "connect",
         "name": "Connect",
+        "slug": "connect",
         "uuid": "395116bc-5be9-4140-a2ef-c7e8689149f2",
         "prerequisites": [],
         "difficulty": 9,
@@ -1560,8 +1592,8 @@
         ]
       },
       {
-        "slug": "flatten-array",
         "name": "Flatten Array",
+        "slug": "flatten-array",
         "uuid": "40cc79a6-a6ea-45a0-944e-b4f3baabebc2",
         "prerequisites": [],
         "difficulty": 3,
@@ -1571,8 +1603,8 @@
         ]
       },
       {
-        "slug": "custom-set",
         "name": "Custom Set",
+        "slug": "custom-set",
         "uuid": "ad12bbf9-e0c8-433a-8a6b-847ff2d36acf",
         "prerequisites": [],
         "difficulty": 4,
@@ -1583,8 +1615,8 @@
         ]
       },
       {
-        "slug": "dominoes",
         "name": "Dominoes",
+        "slug": "dominoes",
         "uuid": "2e5c9e76-decd-49db-be4b-353ebeb46b73",
         "prerequisites": [],
         "difficulty": 4,
@@ -1595,8 +1627,8 @@
         ]
       },
       {
-        "slug": "simple-linked-list",
         "name": "Simple Linked List",
+        "slug": "simple-linked-list",
         "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae",
         "prerequisites": [],
         "difficulty": 4,
@@ -1606,8 +1638,8 @@
         ]
       },
       {
-        "slug": "alphametics",
         "name": "Alphametics",
+        "slug": "alphametics",
         "uuid": "6b313720-104a-46c2-8290-4b4af121101f ",
         "prerequisites": [],
         "difficulty": 5,
@@ -1618,8 +1650,8 @@
         ]
       },
       {
-        "slug": "circular-buffer",
         "name": "Circular Buffer",
+        "slug": "circular-buffer",
         "uuid": "c13edd0a-cd39-4f25-970c-c1f9e32bac2c",
         "prerequisites": [],
         "difficulty": 5,
@@ -1629,8 +1661,8 @@
         ]
       },
       {
-        "slug": "book-store",
         "name": "Book Store",
+        "slug": "book-store",
         "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097",
         "prerequisites": [],
         "difficulty": 8,
@@ -1642,8 +1674,8 @@
         ]
       },
       {
-        "slug": "change",
         "name": "Change",
+        "slug": "change",
         "uuid": "94a21509-ebd5-4a66-bb0e-0341e57e3c73",
         "prerequisites": [],
         "difficulty": 5,
@@ -1655,8 +1687,8 @@
         ]
       },
       {
-        "slug": "grade-school",
         "name": "Grade School",
+        "slug": "grade-school",
         "uuid": "aa598f3e-9d2b-4f9f-8c14-46e0ac27d5be",
         "prerequisites": [],
         "difficulty": 5,
@@ -1667,8 +1699,8 @@
         ]
       },
       {
-        "slug": "paasio",
         "name": "Paasio",
+        "slug": "paasio",
         "uuid": "5dbec590-7a50-4398-987b-7252734216a2",
         "prerequisites": [],
         "difficulty": 5,
@@ -1679,8 +1711,8 @@
         ]
       },
       {
-        "slug": "robot-simulator",
         "name": "Robot Simulator",
+        "slug": "robot-simulator",
         "uuid": "fc0e4034-0744-43f8-9969-7789cff0607f",
         "prerequisites": [],
         "difficulty": 6,
@@ -1693,8 +1725,8 @@
         ]
       },
       {
-        "slug": "zebra-puzzle",
         "name": "Zebra Puzzle",
+        "slug": "zebra-puzzle",
         "uuid": "e31199ac-e657-4997-b931-63893a575c08",
         "prerequisites": [],
         "difficulty": 6,
@@ -1705,8 +1737,8 @@
         ]
       },
       {
-        "slug": "forth",
         "name": "Forth",
+        "slug": "forth",
         "uuid": "09d0d78f-f262-4f34-b1de-c2acd7ed80cd",
         "prerequisites": [],
         "difficulty": 8,
@@ -1717,8 +1749,8 @@
         ]
       },
       {
-        "slug": "react",
         "name": "React",
+        "slug": "react",
         "uuid": "4b168cb9-605b-465d-8f89-3a3b760c1402",
         "prerequisites": [],
         "difficulty": 9,
@@ -1729,8 +1761,8 @@
         ]
       },
       {
-        "slug": "collatz-conjecture",
         "name": "Collatz Conjecture",
+        "slug": "collatz-conjecture",
         "uuid": "0c17444e-65b0-4bc8-a7e1-ee6ab8c2e078",
         "prerequisites": [],
         "difficulty": 1,
@@ -1742,8 +1774,8 @@
         ]
       },
       {
-        "slug": "gigasecond",
         "name": "Gigasecond",
+        "slug": "gigasecond",
         "uuid": "ea390e58-6ac5-4219-89bb-648852712a6a",
         "prerequisites": [],
         "difficulty": 1,
@@ -1752,8 +1784,8 @@
         ]
       },
       {
-        "slug": "bob",
         "name": "Bob",
+        "slug": "bob",
         "uuid": "efdf07a1-e329-4d0f-90a1-374b9b8af748",
         "prerequisites": [],
         "difficulty": 2,
@@ -1763,8 +1795,8 @@
         ]
       },
       {
-        "slug": "darts",
         "name": "Darts",
+        "slug": "darts",
         "uuid": "ea1f15aa-43b8-416e-9add-bf3852f6a158",
         "prerequisites": [],
         "difficulty": 2,
@@ -1774,8 +1806,8 @@
         ]
       },
       {
-        "slug": "acronym",
         "name": "Acronym",
+        "slug": "acronym",
         "uuid": "b39d9e79-dee0-4c70-a6c3-114bee8083f2",
         "prerequisites": [],
         "difficulty": 3,
@@ -1786,8 +1818,8 @@
         ]
       },
       {
-        "slug": "list-ops",
         "name": "List Ops",
+        "slug": "list-ops",
         "uuid": "13d25b60-e8e1-42da-a54f-ce020a2b86e9",
         "prerequisites": [],
         "difficulty": 3,
@@ -1799,8 +1831,8 @@
         ]
       },
       {
-        "slug": "scale-generator",
         "name": "Scale Generator",
+        "slug": "scale-generator",
         "uuid": "478d8d31-454d-4a8a-af01-96864186d5f2",
         "prerequisites": [],
         "difficulty": 3,
@@ -1813,261 +1845,261 @@
   },
   "concepts": [
     {
-      "uuid": "2149c74b-b05f-45b1-8e64-8ff66110c402",
-      "slug": "anonymous-functions",
       "name": "Anonymous Functions",
+      "slug": "anonymous-functions",
+      "uuid": "2149c74b-b05f-45b1-8e64-8ff66110c402",
       "blurb": "TODO: add blurb for anonymous-functions concept"
     },
     {
-      "uuid": "ab3da6c2-9cc8-4019-90d7-b592787787e7",
-      "slug": "application-timing",
       "name": "Application Timing",
+      "slug": "application-timing",
+      "uuid": "ab3da6c2-9cc8-4019-90d7-b592787787e7",
       "blurb": "TODO: add blurb for application-timing concept"
     },
     {
-      "uuid": "142cf89f-c109-4a05-8108-60b5051294de",
-      "slug": "booleans",
       "name": "Booleans",
+      "slug": "booleans",
+      "uuid": "142cf89f-c109-4a05-8108-60b5051294de",
       "blurb": "TODO: add blurb for booleans concept"
     },
     {
-      "uuid": "16c5d4d5-05a0-4e89-8846-6d8f50e09520",
-      "slug": "bytes",
       "name": "Bytes",
+      "slug": "bytes",
+      "uuid": "16c5d4d5-05a0-4e89-8846-6d8f50e09520",
       "blurb": "TODO: add blurb for bytes concept"
     },
     {
-      "uuid": "092a3fad-e75a-44bd-8d66-4f48cde0e0b5",
-      "slug": "channels",
       "name": "Channels",
+      "slug": "channels",
+      "uuid": "092a3fad-e75a-44bd-8d66-4f48cde0e0b5",
       "blurb": "TODO: add blurb for channels concept"
     },
     {
-      "uuid": "159f921c-f379-45c5-871b-da7cc8f3a8cc",
-      "slug": "comments",
       "name": "Comments",
+      "slug": "comments",
+      "uuid": "159f921c-f379-45c5-871b-da7cc8f3a8cc",
       "blurb": "TODO: add blurb for comments concept"
     },
     {
-      "uuid": "d74a04ba-0eb8-481d-9e2f-2e6a4694d482",
-      "slug": "conditionals",
       "name": "Conditionals",
+      "slug": "conditionals",
+      "uuid": "d74a04ba-0eb8-481d-9e2f-2e6a4694d482",
       "blurb": "TODO: add blurb for conditionals concept"
     },
     {
-      "uuid": "c0bb612b-2571-40a1-9fbe-81819e49d267",
-      "slug": "conditionals-if",
       "name": "Conditionals If",
+      "slug": "conditionals-if",
+      "uuid": "c0bb612b-2571-40a1-9fbe-81819e49d267",
       "blurb": "TODO: add blurb for conditionals-if concept"
     },
     {
-      "uuid": "c24b971e-e344-490e-aacc-2ea29bd60822",
-      "slug": "conditionals-switch",
       "name": "Conditionals Switch",
+      "slug": "conditionals-switch",
+      "uuid": "c24b971e-e344-490e-aacc-2ea29bd60822",
       "blurb": "TODO: add blurb for conditionals-switch concept"
     },
     {
-      "uuid": "288e3276-8ef4-4719-99a1-94882345d8aa",
-      "slug": "constants",
       "name": "Constants",
+      "slug": "constants",
+      "uuid": "288e3276-8ef4-4719-99a1-94882345d8aa",
       "blurb": "TODO: add blurb for constants concept"
     },
     {
-      "uuid": "4007b59c-0860-4535-adbd-9c035e8eb8e0",
-      "slug": "context",
       "name": "Context",
+      "slug": "context",
+      "uuid": "4007b59c-0860-4535-adbd-9c035e8eb8e0",
       "blurb": "TODO: add blurb for context concept"
     },
     {
-      "uuid": "ee2a475f-461a-4931-b35b-6ab43ec446f1",
-      "slug": "defer",
       "name": "Defer",
+      "slug": "defer",
+      "uuid": "ee2a475f-461a-4931-b35b-6ab43ec446f1",
       "blurb": "TODO: add blurb for defer concept"
     },
     {
-      "uuid": "dcd62cda-450f-48b6-bf1c-01bbb3eea13b",
-      "slug": "duration",
       "name": "Duration",
+      "slug": "duration",
+      "uuid": "dcd62cda-450f-48b6-bf1c-01bbb3eea13b",
       "blurb": "TODO: add blurb for duration concept"
     },
     {
-      "uuid": "b9686994-4978-4588-9734-1d2137fadd6d",
-      "slug": "empty-interface",
       "name": "Empty Interface",
+      "slug": "empty-interface",
+      "uuid": "b9686994-4978-4588-9734-1d2137fadd6d",
       "blurb": "TODO: add blurb for empty-interface concept"
     },
     {
-      "uuid": "95f9c430-dc4a-4eff-b2cc-5c6ea93a6960",
-      "slug": "errors",
       "name": "Errors",
+      "slug": "errors",
+      "uuid": "95f9c430-dc4a-4eff-b2cc-5c6ea93a6960",
       "blurb": "TODO: add blurb for errors concept"
     },
     {
-      "uuid": "ecb157d1-9e1e-4dd1-9a51-2074e598937d",
-      "slug": "errors-handling",
       "name": "Errors Handling",
+      "slug": "errors-handling",
+      "uuid": "ecb157d1-9e1e-4dd1-9a51-2074e598937d",
       "blurb": "TODO: add blurb for errors-handling concept"
     },
     {
-      "uuid": "08c88d5c-a74c-451f-ab51-5c2c252a0988",
-      "slug": "floating-point",
       "name": "Floating Point",
+      "slug": "floating-point",
+      "uuid": "08c88d5c-a74c-451f-ab51-5c2c252a0988",
       "blurb": "TODO: add blurb for floating-point concept"
     },
     {
-      "uuid": "28c60820-b6cc-49e3-8e23-e3321aa5c210",
-      "slug": "functions",
       "name": "Functions",
+      "slug": "functions",
+      "uuid": "28c60820-b6cc-49e3-8e23-e3321aa5c210",
       "blurb": "TODO: add blurb for functions concept"
     },
     {
-      "uuid": "bcdf181d-b245-40b5-b5a6-09c1b1cfe466",
-      "slug": "goroutines",
       "name": "Goroutines",
+      "slug": "goroutines",
+      "uuid": "bcdf181d-b245-40b5-b5a6-09c1b1cfe466",
       "blurb": "TODO: add blurb for goroutines concept"
     },
     {
-      "uuid": "05d17798-a93b-4b1e-a9e0-b287fffe9c8b",
-      "slug": "interfaces",
       "name": "Interfaces",
+      "slug": "interfaces",
+      "uuid": "05d17798-a93b-4b1e-a9e0-b287fffe9c8b",
       "blurb": "TODO: add blurb for interfaces concept"
     },
     {
-      "uuid": "65728435-33ae-446a-8a08-77ed51b3d69c",
-      "slug": "iteration",
       "name": "Iteration",
+      "slug": "iteration",
+      "uuid": "65728435-33ae-446a-8a08-77ed51b3d69c",
       "blurb": "TODO: add blurb for iteration concept"
     },
     {
-      "uuid": "e02ef56e-6ede-481f-8098-ecd2ae984d2c",
-      "slug": "maps",
       "name": "Maps",
+      "slug": "maps",
+      "uuid": "e02ef56e-6ede-481f-8098-ecd2ae984d2c",
       "blurb": "TODO: add blurb for maps concept"
     },
     {
-      "uuid": "8918289f-5383-42c5-be15-290065d821ed",
-      "slug": "methods",
       "name": "Methods",
+      "slug": "methods",
+      "uuid": "8918289f-5383-42c5-be15-290065d821ed",
       "blurb": "TODO: add blurb for methods concept"
     },
     {
-      "uuid": "21628cd6-e215-47be-923d-91de47665c46",
-      "slug": "mutex",
       "name": "Mutex",
+      "slug": "mutex",
+      "uuid": "21628cd6-e215-47be-923d-91de47665c46",
       "blurb": "TODO: add blurb for mutex concept"
     },
     {
-      "uuid": "8d34e7cf-2621-4985-b10e-1995201cf870",
-      "slug": "nil",
       "name": "Nil",
+      "slug": "nil",
+      "uuid": "8d34e7cf-2621-4985-b10e-1995201cf870",
       "blurb": "TODO: add blurb for nil concept"
     },
     {
-      "uuid": "a7d2277b-a3be-4ffd-914c-75e8ca2de01e",
-      "slug": "numbers",
       "name": "Numbers",
+      "slug": "numbers",
+      "uuid": "a7d2277b-a3be-4ffd-914c-75e8ca2de01e",
       "blurb": "TODO: add blurb for numbers concept"
     },
     {
-      "uuid": "f4ab745a-a02e-48f5-b104-faa060f41fcf",
-      "slug": "packages",
       "name": "Packages",
+      "slug": "packages",
+      "uuid": "f4ab745a-a02e-48f5-b104-faa060f41fcf",
       "blurb": "TODO: add blurb for packages concept"
     },
     {
-      "uuid": "48938b85-9bd8-40e4-9226-836020811e45",
-      "slug": "panic",
       "name": "Panic",
+      "slug": "panic",
+      "uuid": "48938b85-9bd8-40e4-9226-836020811e45",
       "blurb": "TODO: add blurb for panic concept"
     },
     {
-      "uuid": "034d13fd-88d4-450e-968e-e124478ff39c",
-      "slug": "pointers",
       "name": "Pointers",
+      "slug": "pointers",
+      "uuid": "034d13fd-88d4-450e-968e-e124478ff39c",
       "blurb": "TODO: add blurb for pointers concept"
     },
     {
-      "uuid": "99310096-1130-4a06-96a5-af94906bcc83",
-      "slug": "range-iteration",
       "name": "Range Iteration",
+      "slug": "range-iteration",
+      "uuid": "99310096-1130-4a06-96a5-af94906bcc83",
       "blurb": "TODO: add blurb for range-iteration concept"
     },
     {
-      "uuid": "c4a36ddb-e594-4ae1-91de-d25e274465d9",
-      "slug": "recover",
       "name": "Recover",
+      "slug": "recover",
+      "uuid": "c4a36ddb-e594-4ae1-91de-d25e274465d9",
       "blurb": "TODO: add blurb for recover concept"
     },
     {
-      "uuid": "47eef38f-8f1b-4b3f-a3c6-b0011da61436",
-      "slug": "reflection",
       "name": "Reflection",
+      "slug": "reflection",
+      "uuid": "47eef38f-8f1b-4b3f-a3c6-b0011da61436",
       "blurb": "TODO: add blurb for reflection concept"
     },
     {
-      "uuid": "0844c19c-97a7-4efb-a5ef-2cbac1f19684",
-      "slug": "runes",
       "name": "Runes",
+      "slug": "runes",
+      "uuid": "0844c19c-97a7-4efb-a5ef-2cbac1f19684",
       "blurb": "TODO: add blurb for runes concept"
     },
     {
-      "uuid": "4bb55d2f-628c-4ddc-9bde-ebf54277e01a",
-      "slug": "select",
       "name": "Select",
+      "slug": "select",
+      "uuid": "4bb55d2f-628c-4ddc-9bde-ebf54277e01a",
       "blurb": "TODO: add blurb for select concept"
     },
     {
-      "uuid": "d76c163c-2fc2-4af9-b1e1-33813ada91b7",
-      "slug": "slices",
       "name": "Slices",
+      "slug": "slices",
+      "uuid": "d76c163c-2fc2-4af9-b1e1-33813ada91b7",
       "blurb": "TODO: add blurb for slices concept"
     },
     {
-      "uuid": "c4d03633-94e3-4fc9-b230-816c56153189",
-      "slug": "strings",
       "name": "Strings",
+      "slug": "strings",
+      "uuid": "c4d03633-94e3-4fc9-b230-816c56153189",
       "blurb": "TODO: add blurb for strings concept"
     },
     {
-      "uuid": "bab4029c-d016-44d6-b51a-31a8384bd580",
-      "slug": "strings-package",
       "name": "Strings Package",
+      "slug": "strings-package",
+      "uuid": "bab4029c-d016-44d6-b51a-31a8384bd580",
       "blurb": "TODO: add blurb for strings-package concept"
     },
     {
-      "uuid": "156ea093-0a5d-4207-b54d-119c9808928f",
-      "slug": "structs",
       "name": "Structs",
+      "slug": "structs",
+      "uuid": "156ea093-0a5d-4207-b54d-119c9808928f",
       "blurb": "TODO: add blurb for structs concept"
     },
     {
-      "uuid": "673104d9-bc95-45e7-88e8-73990438ada5",
-      "slug": "time",
       "name": "Time",
+      "slug": "time",
+      "uuid": "673104d9-bc95-45e7-88e8-73990438ada5",
       "blurb": "TODO: add blurb for time concept"
     },
     {
-      "uuid": "f27dc295-c02a-4dc5-80c1-0301592ef961",
-      "slug": "type-assertion",
       "name": "Type Assertion",
+      "slug": "type-assertion",
+      "uuid": "f27dc295-c02a-4dc5-80c1-0301592ef961",
       "blurb": "TODO: add blurb for type-assertion concept"
     },
     {
-      "uuid": "0789fe42-8af2-43c8-9922-d845017a08a6",
-      "slug": "type-conversion",
       "name": "Type Conversion",
+      "slug": "type-conversion",
+      "uuid": "0789fe42-8af2-43c8-9922-d845017a08a6",
       "blurb": "TODO: add blurb for type-conversion concept"
     },
     {
-      "uuid": "9bfb0484-6307-4c98-bf90-da1c0851e403",
-      "slug": "variables",
       "name": "Variables",
+      "slug": "variables",
+      "uuid": "9bfb0484-6307-4c98-bf90-da1c0851e403",
       "blurb": "TODO: add blurb for variables concept"
     },
     {
-      "uuid": "b38e16a2-2645-4d46-a7e7-a11efd15bcf8",
-      "slug": "zero-value",
       "name": "Zero Value",
+      "slug": "zero-value",
+      "uuid": "b38e16a2-2645-4d46-a7e7-a11efd15bcf8",
       "blurb": "TODO: add blurb for zero-value concept"
     }
   ],
