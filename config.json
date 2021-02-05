@@ -2116,6 +2116,50 @@
       "blurb": "TODO: add blurb for zero-value concept"
     }
   ],
-  "key_features": [],
-  "tags": []
+  "key_features": [
+    {
+      "title": "Speed",
+      "content": "Go is fast for computers and humans. Go provides fast compilation, testing, package mgmt, and more",
+      "icon": "features-speed"
+    },
+    {
+      "title": "Concurrency",
+      "content": "Go's concurrency mechanisms make it easy to write programs for multicore and networked machines",
+      "icon": "features-concurrency"
+    },
+    {
+      "title": "Statically Typed",
+      "content": "Go's type system is expressive yet lightweight, enabling flexible and modular program construction",
+      "icon": "features-typed"
+    },
+    {
+      "title": "Portable",
+      "content": "Go compiles to a single static executable, and cross-compilation is easy",
+      "icon": "features-portable"
+    },
+    {
+      "title": "Minimal",
+      "content": "Go's design reduces clutter and complexity. Your favorite feature may be missing, by design!",
+      "icon": "features-minimal"
+    },
+    {
+      "title": "Modern",
+      "content": "Go has > 1 million developers and every major cloud provider uses core infrastructure written in Go",
+      "icon": "features-modern"
+    }
+  ],
+  "tags": [
+    "paradigm/procedural",
+    "paradigm/imperative",
+    "typing/static",
+    "typing/strong",
+    "execution_mode/compiled",
+    "platform/windows",
+    "platform/mac",
+    "platform/linux",
+    "runtime/standalone_executable",
+    "used_for/backends",
+    "used_for/cross_platform_development",
+    "used_for/web_development"
+  ]
 }
