@@ -2112,5 +2112,18 @@
     }
   ],
   "key_features": [],
-  "tags": []
+  "tags": [
+    "paradigm/procedural",
+    "paradigm/imperative",
+    "typing/static",
+    "typing/strong",
+    "execution_mode/compiled",
+    "platform/windows",
+    "platform/mac",
+    "platform/linux",
+    "runtime/standalone_executable",
+    "used_for/backends",
+    "used_for/cross_platform_development",
+    "used_for/web_development"
+  ]
 }
