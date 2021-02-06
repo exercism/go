@@ -18,6 +18,209 @@
   "exercises": {
     "concept": [
       {
+        "name": "Anonymous Functions",
+        "slug": "anonymous-functions",
+        "uuid": "F7E278FC-6D26-4DB6-90D7-8338E66FC190",
+        "concepts": [
+          "anonymous-functions"
+        ],
+        "prerequisites": [
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Application Timing",
+        "slug": "application-timing",
+        "uuid": "C6A89083-6876-4664-BA78-4A3AA843B9D5",
+        "concepts": [
+          "application-timing"
+        ],
+        "prerequisites": [
+          "time",
+          "duration",
+          "select",
+          "channels"
+        ],
+        "status": "wip"
+      },
+      {
+        "uuid": "d09a49d4-b69c-40a2-ae7e-8fde4ba4c7c7",
+        "slug": "booleans",
+        "name": "Booleans",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "variables"
+        ],
+        "status": "beta"
+      },
+      {
+        "name": "Bytes and Runes",
+        "slug": "bytes-and-runes",
+        "uuid": "F07E3AD9-3BCE-4F35-A9FB-7D151D9F99EB",
+        "concepts": [
+          "bytes",
+          "runes"
+        ],
+        "prerequisites": [
+          "strings",
+          "iteration",
+          "conditionals",
+          "slices"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Channels",
+        "slug": "channels",
+        "uuid": "0839FDAC-96F1-4345-B098-7D7F1A6A13BB",
+        "concepts": [
+          "channels"
+        ],
+        "prerequisites": [
+          "goroutines",
+          "iteration"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Comments",
+        "slug": "comments",
+        "uuid": "60186dfa-6a63-4859-a4c4-1e1ed1acf384",
+        "concepts": [
+          "comments"
+        ],
+        "prerequisites": [
+          "packages",
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "conditionals",
+        "uuid": "9e71eb44-1189-423c-b2bb-ba7e92cc98c7",
+        "name": "Conditionals",
+        "concepts": [
+          "conditionals-if",
+          "conditionals-switch",
+          "booleans"
+        ],
+        "prerequisites": [
+          "numbers",
+          "strings"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Constants",
+        "slug": "constants",
+        "uuid": "5FDAA543-A85F-4E02-8EDA-1D75942D0D0C",
+        "concepts": [
+          "constants"
+        ],
+        "prerequisites": [
+          "strings",
+          "numbers"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Context",
+        "slug": "context",
+        "uuid": "7EEEE7FF-1EBE-42EF-9F68-6B496599AF1B",
+        "concepts": [
+          "context"
+        ],
+        "prerequisites": [
+          "time",
+          "duration",
+          "channels",
+          "select",
+          "defer",
+          "type-assertion"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Defer",
+        "slug": "defer",
+        "uuid": "92C647DF-0AF3-4602-8104-20D48DDB48FE",
+        "concepts": [
+          "defer"
+        ],
+        "prerequisites": [
+          "anonymous-functions",
+          "functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Duration",
+        "slug": "duration",
+        "uuid": "A247FAA5-1554-42EF-9ADD-F9624472A260",
+        "concepts": [
+          "duration"
+        ],
+        "prerequisites": [
+          "time",
+          "numbers"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Empty Interface",
+        "slug": "empty-interface",
+        "uuid": "3D054BB2-8C4B-494B-A568-3CDDF8D52A6B",
+        "concepts": [
+          "empty-interface"
+        ],
+        "prerequisites": [
+          "variables"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Errors",
+        "slug": "errors",
+        "uuid": "397dc808-7016-4d40-8ac7-4395e12bd19f",
+        "concepts": [
+          "errors"
+        ],
+        "prerequisites": [
+          "constants"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Error Handling",
+        "slug": "errors-handling",
+        "uuid": "F90F7562-D7F8-4C89-A382-5B82D3B6ED05",
+        "concepts": [
+          "errors-handling"
+        ],
+        "prerequisites": [
+          "errors",
+          "nil",
+          "zero-value"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Floating Point",
+        "slug": "floating-point",
+        "uuid": "aa8dbe3e-8395-45b9-a4f6-62e12070ec4f",
+        "concepts": [
+          "floating-point"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals"
+        ],
+        "status": "wip"
+      },
+      {
         "name": "Gopher's Gorgeous Lasanga",
         "slug": "gophers-gorgeous-lasagna",
         "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
@@ -26,6 +229,270 @@
         ],
         "prerequisites": [],
         "status": "active"
+      },
+      {
+        "name": "Goroutines",
+        "slug": "goroutines",
+        "uuid": "FF3F2AB2-6305-40B7-B839-DC692EA7ED29",
+        "concepts": [
+          "goroutines"
+        ],
+        "prerequisites": [
+          "functions",
+          "iteration",
+          "anonymous-functions"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Interfaces",
+        "slug": "interfaces",
+        "uuid": "9A049507-5F3B-449B-8A57-3E21711F1034",
+        "concepts": [
+          "interfaces"
+        ],
+        "prerequisites": [
+          "methods",
+          "empty-interface",
+          "nil"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Iteration",
+        "slug": "iteration",
+        "uuid": "A151E3E2-5BC3-4EDC-9B91-7A2B1331397B",
+        "concepts": [
+          "iteration"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Maps",
+        "slug": "maps",
+        "uuid": "8c1da631-3600-405b-83f7-21fa76bf05b6",
+        "concepts": [
+          "maps"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Methods",
+        "slug": "methods",
+        "uuid": "29761fda-6238-4dba-a229-2dbaa661515f",
+        "concepts": [
+          "methods"
+        ],
+        "prerequisites": [
+          "functions",
+          "pointers",
+          "structs"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Mutex",
+        "slug": "mutex",
+        "uuid": "63369677-811B-40A5-B945-2AD58351F984",
+        "concepts": [
+          "mutex"
+        ],
+        "prerequisites": [
+          "defer"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Numbers",
+        "slug": "numbers",
+        "uuid": "88215fa2-eba8-430e-988f-21a924f18f7b",
+        "concepts": [
+          "numbers",
+          "conditionals"
+        ],
+        "prerequisites": [
+          "variables"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Panic and Recover",
+        "slug": "panic-and-recover",
+        "uuid": "7B1F727B-4567-43CE-84EF-37ECCB785C46",
+        "concepts": [
+          "panic",
+          "recover"
+        ],
+        "prerequisites": [
+          "defer",
+          "type-assertion",
+          "errors"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Pointers",
+        "slug": "pointers",
+        "uuid": "b1619ab0-2306-4d1d-bbcd-1d70ea38fa98",
+        "concepts": [
+          "pointers"
+        ],
+        "prerequisites": [
+          "variables"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Range Iteration",
+        "slug": "range-iteration",
+        "uuid": "D9143554-EAAC-4458-92CD-9880CB342271",
+        "concepts": [
+          "range-iteration"
+        ],
+        "prerequisites": [
+          "iteration",
+          "maps",
+          "slices"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Reflection",
+        "slug": "reflection",
+        "uuid": "1F1A1E40-BBB4-464A-A3AD-96CC95387287",
+        "concepts": [
+          "reflection"
+        ],
+        "prerequisites": [
+          "interfaces",
+          "empty-interface"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Select",
+        "slug": "select",
+        "uuid": "7C5ED220-C847-4FE0-BBE0-F022B23207B2",
+        "concepts": [
+          "select"
+        ],
+        "prerequisites": [
+          "channels"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Slices",
+        "slug": "slices",
+        "uuid": "8bc0c6f6-1891-4688-9ed7-a63e3702f655",
+        "concepts": [
+          "slices"
+        ],
+        "prerequisites": [
+          "iteration",
+          "numbers"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Strings",
+        "slug": "strings",
+        "uuid": "e09523d2-c91f-11ea-87d0-0242ac130003",
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "variables"
+        ],
+        "status": "beta"
+      },
+      {
+        "name": "Strings Package",
+        "slug": "strings-package",
+        "uuid": "b97a271c-4036-4ea8-8c6a-094715a48627",
+        "concepts": [
+          "strings-package"
+        ],
+        "prerequisites": [
+          "slices"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Structs",
+        "slug": "structs",
+        "uuid": "2508aa96-e4e9-444e-9e6b-8b748c4f9305",
+        "concepts": [
+          "structs"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Time",
+        "slug": "time",
+        "uuid": "1c1414d4-3688-4e9d-bc38-908eb7adf970",
+        "concepts": [
+          "time"
+        ],
+        "prerequisites": [
+          "numbers",
+          "strings"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Type Assertion",
+        "slug": "type-assertion",
+        "uuid": "ADBD0758-B8A3-4B25-BB2F-69AB04255A2C",
+        "concepts": [
+          "type-assertion"
+        ],
+        "prerequisites": [
+          "interfaces"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Type Conversion",
+        "slug": "type-conversion",
+        "uuid": "454D3197-C748-4803-925E-05B079B2101A",
+        "concepts": [
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "strings",
+          "numbers"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Zero Value",
+        "slug": "zero-value",
+        "uuid": "7b265cc8-8f88-4de1-b653-10a384e6c7e2",
+        "concepts": [
+          "zero-value",
+          "nil"
+        ],
+        "prerequisites": [
+          "functions",
+          "numbers",
+          "strings",
+          "pointers",
+          "booleans"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [

@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://golang.org/doc/#getting-started",
+    "description": "Official \"Getting Started\" Docs"
+  },
+  {
+    "url": "https://tour.golang.org/",
+    "description": "A Tour of Go"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Function_declarations",
+    "description": "Function Declarations"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Return_statements",
+    "description": "Return Statements"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Operators",
+    "description": "Operators"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Integer_literals",
+    "description": "Integers"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Calls",
+    "description": "Calls"
+  }
+]
