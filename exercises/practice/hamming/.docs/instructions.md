@@ -27,5 +27,5 @@ With this exercise, you are introduced to the use of
 is an example with [errors](https://tour.golang.org/methods/19):
 
     func Foo(a, b string) (string, error) {
-        return "", errors.New("An error occured!")
+        return "", errors.New("An error occurred!")
     }
