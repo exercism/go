@@ -1,0 +1,13 @@
+{
+  "authors": [
+    {
+      "github_username": "chocopowwwa",
+      "exercism_username": "chocopowwwa"
+    }
+  ],
+  "files": {
+    "solution": ["maps.go"],
+    "test": ["maps_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}

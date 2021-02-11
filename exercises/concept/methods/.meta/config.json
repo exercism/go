@@ -1,0 +1,20 @@
+{
+  "authors": [
+    {
+      "github_username": "tehsphinx",
+      "exercism_username": "tehsphinx"
+    }
+  ],
+  "contributors": [
+    {
+      "github_username": "oanaOM",
+      "exercism_username": "oanaOM"
+    }
+  ],
+  "forked_from": ["csharp/classes"],
+  "files": {
+    "solution": ["methods.go"],
+    "test": ["methods_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}

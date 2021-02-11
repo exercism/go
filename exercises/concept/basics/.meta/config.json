@@ -1,0 +1,14 @@
+{
+  "authors": [
+    {
+      "github_username": "tehsphinx",
+      "exercism_username": "tehsphinx"
+    }
+  ],
+  "forked_from": ["csharp/basics"],
+  "files": {
+    "solution": ["basics.go"],
+    "test": ["basics_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}

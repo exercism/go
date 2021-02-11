@@ -1,0 +1,9 @@
+[
+  { "url": "https://golang.org/pkg/time/#Time", "description": "time" },
+  { "url": "https://golang.org/pkg/time/#Now", "description": "now" },
+  { "url": "https://golang.org/pkg/time/#Parse", "description": "parse" },
+  {
+    "url": "https://www.pauladamsmith.com/blog/2011/05/go_time.html",
+    "description": "article"
+  }
+]

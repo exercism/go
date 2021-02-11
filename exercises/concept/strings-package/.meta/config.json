@@ -1,0 +1,13 @@
+{
+  "authors": [
+    {
+      "github_username": "tehsphinx",
+      "exercism_username": "tehsphinx"
+    }
+  ],
+  "files": {
+    "solution": ["strings.go"],
+    "test": ["strings_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}
