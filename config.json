@@ -19,7 +19,7 @@
     "concept": [
       {
         "name": "Gopher's Gorgeous Lasanga",
-        "slug": "gophers-gorgeous-lasagna",
+        "slug": "lasagna",
         "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
         "concepts": [
           "basics"
@@ -36,7 +36,7 @@
       "name": "Basics",
       "slug": "basics",
       "uuid": "13A25814-67F6-44BC-A3FE-6DD240549701",
-      "blurb": "Introduction to Go Packages, Functions, and Variables"
+      "blurb": "Introduction to Packages, Functions, and Variables"
     }
   ],
   "key_features": [
