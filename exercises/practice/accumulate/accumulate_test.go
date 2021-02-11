@@ -21,16 +21,41 @@ var tests = []struct {
 	description string
 }{
 	{[]string{}, []string{}, echo, "echo"},
-	{[]string{"echo", "echo", "echo", "echo"}, []string{"echo", "echo", "echo", "echo"}, echo, "echo"},
-	{[]string{"First", "Letter", "Only"}, []string{"first", "letter", "only"}, capitalize, "capitalize"},
-	{[]string{"HELLO", "WORLD"}, []string{"hello", "world"}, strings.ToUpper, "strings.ToUpper"},
+	{
+		[]string{"echo", "echo", "echo", "echo"},
+		[]string{"echo", "echo", "echo", "echo"},
+		echo,
+		"echo",
+	},
+	{
+		[]string{"First", "Letter", "Only"},
+		[]string{"first", "letter", "only"},
+		capitalize,
+		"capitalize",
+	},
+	{
+		[]string{"HELLO", "WORLD"},
+		[]string{"hello", "world"},
+		strings.ToUpper,
+		"strings.ToUpper",
+	},
 }
 
 func TestAccumulate(t *testing.T) {
 	for _, test := range tests {
-		actual := Accumulate(test.given, test.converter)
+		in := make([]string, len(test.given))
+		copy(in, test.given)
+		actual := Accumulate(in, test.converter)
 		if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", test.expected) {
-			t.Fatalf("Accumulate(%q, %q): expected %q, actual %q", test.given, test.description, test.expected, actual)
+			t.Fatalf("Accumulate(%q, %q): expected %q, actual %q",
+				test.given, test.description, test.expected, actual)
+		}
+
+		// check in place replacement
+		for i, s := range in {
+			if test.given[i] != s {
+				t.Fatalf("Accumulate should return a new slice")
+			}
 		}
 	}
 }
