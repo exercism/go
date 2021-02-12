@@ -1,3 +1,5 @@
+# About
+
 Go supports two types of [comments][comments]. Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
 
 ## Documentation comments

@@ -1,3 +1,5 @@
+# Introduction
+
 TODO: the content below is copied from the exercise introduction and probably needs rewriting to a proper concept introduction
 
 In Go, a constant is a simple, unchanging value assigned to a name with the `const` keyword:

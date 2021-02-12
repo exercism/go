@@ -1,3 +1,5 @@
+# Introduction
+
 In go, `map` is a built-in data type that maps keys to values. In other programming language, you might be familiar with the concept of `map` as a dictionary, hash table, key/value store or an associative array.
 
 Syntactically, `map` looks like this:

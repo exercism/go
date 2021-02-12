@@ -1,3 +1,5 @@
+# Instructions
+
 In this exercise you'll be writing code to analyse the production of an
 assembly line in a car factory. The assembly line's speed can range from `0`
 (off) to `10` (maximum).

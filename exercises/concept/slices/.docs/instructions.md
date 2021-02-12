@@ -1,3 +1,5 @@
+# Instructions
+
 As a magician-to-be, Elyse needs to practice some basics. She has a stack of cards that she wants to manipulate.
 
 To make things a bit easier she only uses the cards 1 to 10.

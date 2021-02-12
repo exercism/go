@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 Conditionals are used to check for certain conditions and/or criteria. The most basic way of performing a conditional operation is using a single `if` statement.

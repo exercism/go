@@ -1,3 +1,5 @@
+# Instructions append
+
 ### Bonus exercise
 
 Once you get `go test` passing, try `go test -tags bonus`.  This uses a *build

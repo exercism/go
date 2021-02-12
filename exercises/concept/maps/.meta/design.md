@@ -1,3 +1,5 @@
+# Design
+
 ## Goal
 
 The goal is to introduce the student to maps.

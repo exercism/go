@@ -1,3 +1,5 @@
+# Instructions
+
 Once there was an eccentric programmer living in a strange house with barred windows.
 One day he accepted a job from an online job board to build a party robot. The
 robot is supposed to greet people and help them to their seats. The first edition

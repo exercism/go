@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - [Constants][const]

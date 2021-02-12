@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - slices in Go are zero-based. The first index in a slice is `0`.

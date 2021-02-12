@@ -1,3 +1,5 @@
+# Instructions append
+
 Your function will receive an array of strings. Each string represents
 a hand composed of 5 cards separated by spaces. A card is represented
 by a number and its suit.
