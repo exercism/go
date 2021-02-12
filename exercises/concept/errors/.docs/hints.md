@@ -1,3 +1,5 @@
+# Hints
+
 ## Errors
 
 ## Hints to write:

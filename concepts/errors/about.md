@@ -1,4 +1,4 @@
-## Errors
+# Errors
 
 References to append:
 

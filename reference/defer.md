@@ -4,7 +4,7 @@ In Go the `defer` statement defers the execution of a function until the surroun
 The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
 This is a very simple, yet very powerful concept enabling clean code and preventing a lot of bugs from happening in the first place.
 
-### Without Defer
+## Without Defer
 
 In this example all data is being read from a file with a typical read loop. Then the file needs to be closed.
 In this case that means calling `f.Close` in 3 different places.
@@ -48,7 +48,7 @@ If the function needs extending possibly with another case that returns early,
 the developer has to remember to call `f.Close` in that case as well or the file descriptor will not be closed.
 This is a typical example where `defer` makes the code cleaner and easier to maintain, thereby preventing future bugs.
 
-### Using Defer
+## Using Defer
 
 The defer statement is used right after the file was opened successfully. First the error needs to be checked in case
 `os.Open` failed and then `defer f.Close()` is used to make sure the file is closed when the function returns -
@@ -90,7 +90,7 @@ func readFile(file string) ([]byte, error) {
 Extending this function with more functionality does not require to think about closing the file any more.
 That has been taken care of.
 
-### Pro Tip
+## Pro Tip
 
 The trick of using `defer` successfully lies in scoping functions accordingly.
 If defer does not fit in, restructuring should be considered.

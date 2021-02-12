@@ -1,4 +1,4 @@
-## Implementation
+# Implementation
 
 Define a single Go func, MakeChain, which accepts a slice
 of dominoes and attempts to construct a legal chain of dominoes.

@@ -1,3 +1,5 @@
+# Instructions append
+
 ## Implementation
 
 You should define a custom type 'DNA' with a function 'Counts' that outputs two values: 

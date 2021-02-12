@@ -1,4 +1,6 @@
-### Bonus exercise
+# Instructions append
+
+## Bonus exercise
 
 Once you get `go test` passing, try `go test -tags bonus`.  This uses a *build
 tag* to enable a test that wasn't previously enabled. Build tags control which

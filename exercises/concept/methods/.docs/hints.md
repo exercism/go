@@ -1,3 +1,5 @@
+# Hints
+
 ## 1. Drive a car
 
 - Add a field to the `Car` struct that keeps track of the driven distance

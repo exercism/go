@@ -1,3 +1,5 @@
+# Instructions
+
 In this exercise, we will write some simple functions that return zero values for various Go types. Some types
 you might not have seen before. They will be introduced in detail in later exercises.
 

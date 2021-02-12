@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - A [documentation comment][comment] should be written directly before the entity that it is describing, start with the name of what it is describing, take the form of a sentence, and end with a period.
