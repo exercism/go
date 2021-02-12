@@ -17,7 +17,7 @@ count = 2  // Update to new value
 // count = false
 ```
 
-### Integers
+## Integers
 
 TODO: decide what to do with this section
 

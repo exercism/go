@@ -7,11 +7,11 @@ $ cd exercism/project/directory/go/leap
 $ go test
 ```
 
-### Running benchmarks
+## Running benchmarks
 
 Most exercises contain benchmarks, that you can use to determine how changes to your solution affect its performance. To run the benchmarks for an exercise use the command `go test -v --bench . --benchmem` inside the exercise directory.
 
-### Testable examples
+## Testable examples
 
 [Example tests](https://blog.golang.org/examples) are used in some exercises and
 are run alongside the standard exercise tests. These examples are used for
