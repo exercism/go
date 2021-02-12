@@ -101,7 +101,7 @@ func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 
 		counter++
 		if counter > 100 {
-			t.Errorf("You have an infinite loop in your code. Please consider checking your .Next() implementation")
+			t.Errorf("Possible infinite loop detected and stopped. Check the .Next() implementation.")
 			return
 		}
 
@@ -124,7 +124,7 @@ func (ll *List) debugString() string {
 	for cur := ll.First(); cur != nil; cur = cur.Next() {
 		counter++
 		if counter > 100 {
-			panic("Infinite loop. Please consider checking .Next() implementation")
+			panic("Possible infinite loop detected and stopped. Check the .Next() implementation")
 		}
 		buf.WriteString(fmt.Sprintf("[Prev()= %p, Val= %p (%v), Next()= %p] <-> ", cur.Prev(), cur, cur.Val, cur.Next()))
 	}
