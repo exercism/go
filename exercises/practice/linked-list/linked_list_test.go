@@ -92,9 +92,17 @@ func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
 
 	prev := ll.First()
 	cur := ll.First().Next()
+	counter := 0
+
 	for idx := 0; cur != nil; idx++ {
 		if !(prev.Next() == cur && cur.Prev() == prev) {
 			t.Errorf("%d-th element's links is wrong", idx)
+		}
+
+		counter++
+		if counter > 100 {
+			t.Errorf("Possible infinite loop detected and stopped. Check the .Next() implementation.")
+			return
 		}
 
 		prev = cur
@@ -111,7 +119,13 @@ func (ll *List) debugString() string {
 	buf := bytes.NewBuffer([]byte{'{'})
 	buf.WriteString(fmt.Sprintf("First()= %p; ", ll.First()))
 
+	counter := 0
+
 	for cur := ll.First(); cur != nil; cur = cur.Next() {
+		counter++
+		if counter > 100 {
+			panic("Possible infinite loop detected and stopped. Check the .Next() implementation")
+		}
 		buf.WriteString(fmt.Sprintf("[Prev()= %p, Val= %p (%v), Next()= %p] <-> ", cur.Prev(), cur, cur.Val, cur.Next()))
 	}
 
