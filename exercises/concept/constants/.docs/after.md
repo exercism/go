@@ -1,3 +1,5 @@
+# After
+
 Constants in Go are simple, [unchanging values][const] created with the `const` keyword. Constants may be given an explicit type:
 
 ```go

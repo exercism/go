@@ -1,4 +1,4 @@
-## Zero Values
+# Zero Values
 
 Unlike some other languages, Go has no empty/null/undefined state for uninitialized variables. Every type has a [zero value][zero_values] that uninitialized variables will hold upon declaration.
 

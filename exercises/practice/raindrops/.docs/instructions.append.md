@@ -1,4 +1,4 @@
-## Simple Stub
+# Simple Stub
 
 The raindrops.go "stub file" contains only one line with the correct
 package name and nothing more.  This will be the usual pattern for future

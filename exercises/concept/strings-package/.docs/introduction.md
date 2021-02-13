@@ -1,3 +1,5 @@
+# Introduction
+
 A `string` in Go is a sequence of `bytes`, which doesn't necessarily have to represent characters.
 That being said, `UTF-8` is a central part of `strings` in Go. It is easy to convert a string to `runes` (`UTF-8` characters) or iterate over `runes` in a string.
 This makes dealing with different languages or other special characters in Go very simple.

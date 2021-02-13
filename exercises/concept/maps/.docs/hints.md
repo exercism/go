@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - [Go by example map][gobyexample-map]

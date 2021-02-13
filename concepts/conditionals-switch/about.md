@@ -1,3 +1,5 @@
+# About
+
 Go also provides a [`switch` statement][switch_statement] for more advanced scenarios. It can be used to switch on a variable's content or as a replacement for `if ... else if` statements. There is a third application for `switch` statements which will be introduced later: the `type switch`. A switch statement can have a `default` case which is executed if no other case applies.
 
 If there are three or more cases in a single `if` (e.g. `if ... else if ... else`), it should be replaced by a `switch` statement. A `switch` with a single case should be replaced by an `if` statement.

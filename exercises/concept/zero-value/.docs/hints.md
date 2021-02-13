@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - To [return][returns] a value from a function in Go, use the keyword `return` followed by the value:

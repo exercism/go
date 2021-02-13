@@ -1,3 +1,5 @@
+# About
+
 Fans of Go (called *gophers*) describe Go as having the expressiveness of dynamic languages like Python or Ruby, with the performance of compiled languages like C or C++.
 
 The language is open source, and was started by engineers at Google.
