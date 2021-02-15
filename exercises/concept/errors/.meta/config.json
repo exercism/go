@@ -6,8 +6,8 @@
     }
   ],
   "files": {
-    "solution": [],
-    "test": [],
-    "exemplar": []
+    "solution": ["errors.go"],
+    "test": ["errors_test.go"],
+    "exemplar": [".meta/exemplar.go"]
   }
 }
