@@ -12,6 +12,10 @@
     "description": "Function Declarations"
   },
   {
+    "url": "https://golang.org/ref/spec#Calls",
+    "description": "Calls"
+  },
+  {
     "url": "https://golang.org/ref/spec#Return_statements",
     "description": "Return Statements"
   },
@@ -22,9 +26,5 @@
   {
     "url": "https://golang.org/ref/spec#Integer_literals",
     "description": "Integers"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Calls",
-    "description": "Calls"
   }
 ]

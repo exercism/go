@@ -1,50 +1,69 @@
 # Introduction
 
+[Go](https://golang.org) is a statically typed, compiled programming language.
+This exercise introduces three major language features: Packages, Functions, and Variables.
+
 ## Packages
+
+Go applications are organized in packages.
+A package is a collection of source files located in the same directory.
+All source files in a directory must share the same package name.
+
+```go
+package lasagna
+```
 
 ## Functions
 
-## Variables
+Go functions accept zero or more parameters.
+Parameters must be explicitly typed, there is no type inference.
 
-In Go an application is organized in packages. A package is a collection of source files located in the same folder. All source files in a folder must have the same package name at the top of the file. The package name is preferred to be the same as the folder it is located in.
+Functions may have multiple (explicitly typed) return values.
+Values are returned from functions using the `return` keyword.
 
-```go
-package greeting
-```
+A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
+When a package is imported, only functions starting with a capital letter can
+be used / accessed.
 
-Go is a statically-typed language, which means that everything has a type at compile-time. Assigning a value to a name is referred to as defining a variable. A variable can be defined either by explicitly specifying its type, or by assigning a value to have the Go compiler infer its type based on the assigned value.
-
-```go
-var explicit int // Explicitly typed
-implicit := 10   // Implicitly typed
-```
-
-The value of a variable can be assigned using the `:=` and updated using the `=`. Once defined, a variable's type can never change.
-
-```go
-count := 1 // Assign initial value
-count = 2  // Update to new value
-
-// Compiler error when assigning different type
-// count = false
-```
-
-A function can have zero or more parameters. All parameters must be explicitly typed, there is no type inference for parameters. A function can also have multiple return values which must also be explicitly typed. Values are returned from functions using the `return` keyword. To allow a function to be called by code in other packages, the name of the function must start with a capital letter.
+Note that Go supports two types of comments.
+Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
 
 ```go
 package greeting
 
 // Hello is a public function
-func Hello(name string) string {
-    return hello(name)
+func Hello (name string) string {
+    return hi(name)
 }
 
-// hello is a private function
-func hello(name string) string {
-    return "Hello " + name
+// hi is a private function
+func hi (name string) string {
+    return "hi " + name
 }
 ```
 
-Invoking a function is done by specifying the function name and passing arguments for each of the function's parameters.
+## Variables
 
-Go supports two types of comments. Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
+Go is statically-typed, which means all variables [must have a defined type](https://en.wikipedia.org/wiki/Type_system) at compile-time.
+
+Variables can be defined by explicitly specifying a type:
+
+```go
+var explicit int // Explicitly typed
+```
+
+You can also use an initializer, and the compiler will assign the variable type to match the type of the initializer.
+
+```go
+implicit := 10   // Implicitly typed as an int
+```
+
+Once declared, variables can be assigned values using the `=` operator.
+Once declared, a variable's type can never change.
+
+```go
+count := 1 // Assign initial value
+count = 2  // Update to new value
+
+count = false // This throws a compiler error due to assigning a non `int` type
+```

@@ -5,7 +5,13 @@
       "exercism_username": "tehsphinx"
     }
   ],
-  "forked_from": ["csharp/basics"],
+  "contributors": [
+    {
+      "github_username": "ekingery",
+      "exercism_username": "ekingery"
+    }
+  ],
+  "forked_from": ["csharp/lucians-luscious-lasagna"],
   "files": {
     "solution": ["lasagna.go"],
     "test": ["lasagna_test.go"],
