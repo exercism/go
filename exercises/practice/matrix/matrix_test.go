@@ -1,15 +1,17 @@
 // For the Matrix exercise in Go you have to do a few things not mentioned
 // in the README.
 //
-// 1. You must implement a constructor and methods Rows() and Cols() as
-//    described in the README, but Rows() and Cols must return results that
-//    are independent from the original matrix.  That is, you should be able
-//    to do as you please with the results without affecting the matrix.
+// 1. Implement the type Matrix
 //
-// 2. You must implement a method Set(row, col, val) for setting a matrix
-//    element.
+// 2. Write a method with signature: New(s string) (Matrix, error)
 //
-// 3. As usual in Go, you must detect and return error conditions.
+// 3. Decorate the Matrix type, with three methods:
+//      - Cols() [][]int
+//      - Rows() [][]int
+//      - Set(row, column, value int) bool
+//    Cols and Rows must return the results without affecting the matrix.
+//
+// Detect and return error when it is expected.
 
 package matrix
 
