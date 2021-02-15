@@ -1,4 +1,4 @@
-package basics
+package lasagna
 
 // OvenTime returns the expected baking time in minutes.
 func OvenTime() int {

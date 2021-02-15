@@ -1,4 +1,4 @@
-package basics
+package lasagna
 
 import "testing"
 
