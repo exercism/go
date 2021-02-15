@@ -4,6 +4,10 @@ import (
 	"testing"
 )
 
+const Jan = 1
+const Mar = 3
+const Oct = 10
+
 func TestGetFixedInterestRate(t *testing.T) {
 	tests := map[string]struct {
 		want float32
