@@ -1,3 +1,5 @@
+# Learning
+
 Exercism provides exercises and feedback but can be difficult to jump into for those learning Go for the first time. These resources can help you get started:
 
 * [A Tour of Go](http://tour.golang.org)

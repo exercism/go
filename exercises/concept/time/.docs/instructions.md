@@ -1,3 +1,5 @@
+# Instructions
+
 In this exercise you'll be working on an appointment scheduler for a beauty salon that opened on September 15th in 2012.
 
 You have five tasks, which will all involve appointment dates.

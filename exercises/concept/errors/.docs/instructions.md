@@ -1,4 +1,4 @@
-## Errors
+# Errors
 
 In this exercise, we will be implementing the programming logic in a package `deepthought`,
 which checks whether an input equals to the absolute answer to life, the universe and everything.

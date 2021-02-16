@@ -1,3 +1,5 @@
+# Design
+
 ## Goal
 
 The goal of this exercise is to teach the student the basics of programming in Go.
@@ -30,7 +32,7 @@ The goal of this exercise is to teach the student the basics of programming in G
 
 The Concepts this exercise unlocks are:
 
-- `basics`: know what a package is. know about the package declaration. know how to import other packages. know what a variable is. know how to define a variable. know how to update a variable. know how to use type inference for variables. know how to define a function. know how to return a value from a function. know how to call a function. know how to export a function. know how to define an integer. know how to use mathematical operators on integers. know how to define single- and multiline comments.
+- `Basics`: Know what a package is. Know about the package declaration. Know how to import other packages. Know what a variable is. Know how to define a variable. Know how to update a variable. Know how to use type inference for variables. Know how to define a function. Know how to return a value from a function. Know how to call a function. Know how to export a function. Know how to define an integer. Know how to use mathematical operators on integers. Know how to define single and multiline comments.
 
 ## Prerequisites
 

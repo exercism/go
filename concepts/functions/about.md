@@ -1,3 +1,5 @@
+# About
+
 Functions in Go are considered [first class citizens][first-class-functions] making them very powerful. They can be used as:
 
 - [public and private][public-vs-private] functions of a package

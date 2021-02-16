@@ -1,3 +1,5 @@
+# About
+
 A [`Time`][time] in Go is a type describing a moment in time. The date and time information can be accessed, compared, and manipulated through its methods, but there are also some functions called on the `time` package itself. The current date and time can be retrieved through the [`time.Now`][now] function.
 
 The [`time.Parse`][parse] function parses strings into `Time` types using the particular format string `Mon Jan 2 15:04:05 -0700 MST 2006`. More on how this works can be found [here][article].

@@ -1,4 +1,4 @@
-## Implementation
+# Implementation
 
 Assumptions:
 1. Zero is always represented in outputs as [0] instead of [].

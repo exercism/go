@@ -1,3 +1,5 @@
+# Instructions
+
 Note: This exercise is a continuation of the `structs` exercise.
 
 In this exercise you'll be organizing races between various types of remote controlled cars. Each car has its own speed and battery drain characteristics.

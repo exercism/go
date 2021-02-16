@@ -1,0 +1,20 @@
+{
+  "authors": [
+    {
+      "github_username": "tehsphinx",
+      "exercism_username": "tehsphinx"
+    }
+  ],
+  "contributors": [
+    {
+      "github_username": "ekingery",
+      "exercism_username": "ekingery"
+    }
+  ],
+  "forked_from": ["csharp/lucians-luscious-lasagna"],
+  "files": {
+    "solution": ["lasagna.go"],
+    "test": ["lasagna_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  }
+}

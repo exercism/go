@@ -1,4 +1,4 @@
-## Implementation
+# Implementation
 
 Define a single Go func, Cost, which calculates the cost
 for a given list of books based on the defined discounts.

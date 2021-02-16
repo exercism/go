@@ -1,3 +1,5 @@
+# Hints
+
 ## General
 
 - [Use the methods found in the time package.][time]

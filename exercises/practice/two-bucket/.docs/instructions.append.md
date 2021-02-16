@@ -1,4 +1,4 @@
-## Implementation
+# Implementation
 
 In package twobucket, implement a Go func, Solve, with
 the following signature:
@@ -18,7 +18,7 @@ Solve should also return an error when a solution cannot be found,
 but this error relates only to the bonus exercise below, so you may
 ignore that error case for your initial solution.
 
-### Bonus exercise
+## Bonus exercise
 
 Once you get `go test` passing, try `go test -tags bonus`.  This uses a *build
 tag* to enable tests that were not previously enabled. Build tags control which
