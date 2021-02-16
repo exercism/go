@@ -21,11 +21,3 @@ The Hamming Distance is useful for lots of things in science, not just biology, 
 The Hamming distance is only defined for sequences of equal length, so
 an attempt to calculate it between sequences of different lengths should
 not work, returning an error.
-
-With this exercise, you are introduced to the use of
-[multiple results](https://tour.golang.org/basics/6) feature and here there
-is an example with [errors](https://tour.golang.org/methods/19):
-
-    func Foo(a, b string) (string, error) {
-        return "", errors.New("An error occurred!")
-    }
