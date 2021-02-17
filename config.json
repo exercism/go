@@ -20,7 +20,7 @@
       "%{snake_slug}.go"
     ],
     "test": [
-      "{snake_slug}_test.go"
+      "%{snake_slug}_test.go"
     ],
     "example": [
       ".meta/example.go"
