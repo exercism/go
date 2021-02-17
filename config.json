@@ -15,6 +15,20 @@
     "indent_style": "tab",
     "indent_size": 4
   },
+  "files": {
+    "solution": [
+      "%{snake_slug}.go"
+    ],
+    "test": [
+      "%{snake_slug}_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
   "exercises": {
     "concept": [
       {
