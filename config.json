@@ -17,10 +17,10 @@
   },
   "files": {
     "solution": [
-      "%{kebab_slug}.go"
+      "%{snake_slug}.go"
     ],
     "test": [
-      "{kebab_slug}_test.go"
+      "{snake_slug}_test.go"
     ],
     "example": [
       ".meta/example.go"
