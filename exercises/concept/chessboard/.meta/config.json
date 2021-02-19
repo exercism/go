@@ -1,16 +1,11 @@
 {
   "authors": [
     {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
-  ],
-  "contributors": [
-    {
       "github_username": "brugnara",
       "exercism_username": "brugnara"
     }
   ],
+  "contributors": [ ],
   "forked_from": ["Elixir/chessboard"],
   "files": {
     "solution": ["chessboard.go"],

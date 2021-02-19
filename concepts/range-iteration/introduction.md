@@ -66,7 +66,7 @@ for _, x := range xi {
 ```
 
 Now, if you want to only print the index, you can replace the `x` with `_`,
-or simply omit the declaration at all:
+or simply omit the declaration:
 
 
 ```go
