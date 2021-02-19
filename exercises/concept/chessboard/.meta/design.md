@@ -11,7 +11,7 @@ The goal of this exercise is to make the student familiar with the range loop on
 - Know how and when to omit the index with _
 - Know how and when to omit the value by just providing one variable (don't use _ to omit the value!)
 - Know how and when to omit both, index and value
-- Know how about the random order of map iteration
+- Know about the random order of map iteration
 
 ## Out of scope
 
