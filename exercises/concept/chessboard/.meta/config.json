@@ -3,9 +3,13 @@
     {
       "github_username": "brugnara",
       "exercism_username": "brugnara"
+    },
+    {
+      "github_username": "tehsphinx",
+      "exercism_username": "tehsphinx"
     }
   ],
-  "contributors": [ ],
+  "contributors": [],
   "forked_from": ["Elixir/chessboard"],
   "files": {
     "solution": ["chessboard.go"],
