@@ -1,7 +1,7 @@
 # Introduction
 
-In Go, you can iterate a [slice](slices) using `for` but you could also use
-`range`. You will find this useful to iterate over a [map](maps).
+In Go, you can iterate a `slice` using `for` but you could also use
+`range`. You will find this useful to iterate over a `map`.
 
 Every iteration returns two values: the index/key and a copy of the element at
 that index/key.

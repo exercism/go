@@ -31,8 +31,18 @@ It should count how many squares are present in the chessboard and returns
 an integer. Since you don't need to check the content of the squares,
 consider using range omitting both `index` and `value`.
 
+```go
+CountCells()
+// => 64
+```
+
 ## 4. Count how many squares are occupied in the given chessboard
 
-Decorate the Chessboard type with the `CountOccupied() int` function.
+Decorate the `Chessboard` type with the `CountOccupied() int` function.
 It should count how many squares are occupied in the chessboard.
 Return an integer.
+
+```go
+CountOccupied()
+// => 15
+```
