@@ -40,6 +40,22 @@
         ],
         "prerequisites": [],
         "status": "active"
+      },
+      {
+        "name": "Chessboard",
+        "slug": "chessboard",
+        "uuid": "<todo>",
+        "concepts": [
+          "range-iteration"
+        ],
+        "prerequisites": [
+          "basics",
+          "conditionals",
+          "functions",
+          "maps",
+          "slices"
+        ],
+        "status": "active"
       }
     ],
     "practice": [
