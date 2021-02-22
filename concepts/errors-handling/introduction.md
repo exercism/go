@@ -53,7 +53,7 @@ these are not required later.
 For the sake of this example, we want to check for errors only:
 
 ```go
-_, err := os.Getwd()
+err := os.Rename(from, to)
 if err != nil {
   return nil, err
 }
@@ -63,7 +63,7 @@ if err != nil {
 So this is the preferred way to consume this error:
 
 ```go
-if _, err := os.Getwd(); err != nil {
+if err := os.Rename(from, to); err != nil {
   return nil, err
 }
 // err is not in-scope here
