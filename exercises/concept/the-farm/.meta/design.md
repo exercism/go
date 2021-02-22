@@ -4,5 +4,5 @@
 
 - Know how to create an error
 - Know how to return an error
-- Know how to check an error
-- Know when and how to return as soon as an error occurs.
+- Know how to check for errors
+- Know when and how to properly handle errors.
