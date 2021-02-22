@@ -1,8 +1,8 @@
 # Introduction
 
-In Go, errors must be the last value returned in a multiple returns function.
+In Go, errors are by convention the last value returned in a multiple returns function.
 
-Always return the default value for the type, if returning an error:
+Always return the zero value for the type, if returning an error:
 
 ```go
 func Foo() (int, error) {
@@ -39,7 +39,7 @@ than using `else`. The example below shows a bad practice:
 ```go
 file, err := os.Open("./users.csv")
 if err != nil {
-  // do something wit err
+  // do something with err
 } else {
   // do something with file
 }
@@ -57,14 +57,14 @@ _, err := os.Getwd()
 if err != nil {
   return nil, err
 }
-// at this point, err is still visible.
+// err remains in-scope here, even though it's not used or needed.
 ```
 
 So this is the preferred way to consume this error:
 
 ```go
 if _, err := os.Getwd(); err != nil {
-  return
+  return nil, err
 }
-// err is now out of this scope.
+// err is not in-scope here
 ```
