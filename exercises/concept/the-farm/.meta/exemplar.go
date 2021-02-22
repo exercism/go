@@ -5,12 +5,11 @@ import "errors"
 // DivideFood computes the fodder amount for the given cows
 func DivideFood(weightFodder WeightFodder, cows int) (float64, error) {
 	fodder, err := weightFodder()
-	if errors.Is(err, ErrWeight) {
-		fodder *= 2
-	} else {
-		if err != nil {
+	if err != nil {
+		if !errors.Is(err, ErrWeight) {
 			return 0, err
 		}
+		fodder *= 2
 	}
 	if fodder < 0 {
 		return 0, errors.New("Negative fodder")
