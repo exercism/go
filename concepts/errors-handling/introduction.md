@@ -33,6 +33,15 @@ if err != nil {
 // do something with file
 ```
 
+You can also compare an error using the built-in `errors.Is()`
+
+```go
+ErrCustom := errors.New("custom error")
+// ..
+errors.Is(err, ErrCustom)
+// true || false
+```
+
 It is best practise to stop the execution when an error is encountered rather
 than using `else`. The example below shows a bad practice:
 

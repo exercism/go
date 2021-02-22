@@ -15,3 +15,7 @@ The error for no cows and for negative number of cows must be different.
 
 The `WeightFodder` type is a `func() (float64, error)`. The weight scale
 sometimes could fail.
+
+## How to check an error?
+
+Try using `errors.Is(error, error) bool`.

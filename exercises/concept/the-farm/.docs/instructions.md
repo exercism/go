@@ -21,8 +21,12 @@ pocket, you want to catch the division by zero returning an error.
 Implement the `DivideFood` function.
 
 You will be passed a `weightFodder` function which returns the amount of fodder
-available but also an error, sometimes. You should not handle that error,
-return it to the `FEED-M-ALL`, instead.
+available but also an error, sometimes.
+
+The error may be generic but sometimes a `ErrWeight` is returned. If that's the
+case you should handle this doubling the fodder amount you read from the method.
+
+You should not handle any other error, return it to the `FEED-M-ALL`, instead.
 
 Return an error when there are no cows at all, preventing a division by zero.
 

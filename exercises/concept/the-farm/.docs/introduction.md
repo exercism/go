@@ -1,6 +1,6 @@
 # Introduction
 
-In Go, errors must be the last value returned in a multiple returns function.
+In Go, errors are by convention the last value returned in a multiple returns function.
 
 Always return the default value for the type, if returning an error:
 
@@ -31,6 +31,15 @@ if err != nil {
     return // or continue
 }
 // do something with file
+```
+
+You can also compare an error using the built-in `errors.Is()`
+
+```go
+ErrCustom := errors.New("custom error")
+// ..
+errors.Is(err, ErrCustom)
+// true || false
 ```
 
 It is best practise to stop the execution when an error is encountered rather

@@ -75,3 +75,17 @@ func TestDivideFoodWeightErrors(t *testing.T) {
 		t.Error("Returned value, in case of error, must be the default for the type: 0")
 	}
 }
+
+// Should handle error
+func TestDivideFoodHandlingError(t *testing.T) {
+	value, err := DivideFood(func() (float64, error) {
+		return 250, ErrWeight
+	}, 10)
+	if err != nil {
+		t.Error("Not expected an error here")
+	}
+	if value != 50 {
+		t.Errorf("DivideFood(500, ErrWeight) returned (%v, %v) while (%v, %v) was expected",
+			value, err, 50, nil)
+	}
+}
