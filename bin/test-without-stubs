@@ -19,6 +19,9 @@ for dir in exercises/*/; do
   fi
 done
 
+# This raises many problems since it's an empty file
+mv exercises/concept/lasagna/lasagna_test.go exercises/concept/lasagna/lasagna_test.notgo
+
 root=$(pwd)
 
 cleanup () {
@@ -29,7 +32,10 @@ cleanup () {
 
   # could use `rename` here, but it's not uniform among platforms.
   # some renames take two arguments while others take a single regex.
-  for file in exercises/*/*.notgo; do
+  # for file in exercises/*/*.notgo; do # not working, neither with **
+
+  find . -name '*.notgo' | while read -r file; do
+    echo "moving: $file"
     dir=$(dirname $file)
     base=$(basename $file .notgo)
     mv "$dir/$base.notgo" "$dir/$base.go"

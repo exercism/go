@@ -52,7 +52,7 @@ func TestAssignTable(t *testing.T) {
 		name          string
 		direction     string
 		tableNumber   int
-		distance      float32
+		distance      float64
 		neighbourName string
 		want          string
 	}{
@@ -68,7 +68,13 @@ func TestAssignTable(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
-			if got := AssignTable(tt.name, tt.tableNumber, tt.direction, tt.distance, tt.neighbourName); got != tt.want {
+			if got := AssignTable(
+				tt.name,
+				tt.tableNumber,
+				tt.neighbourName,
+				tt.direction,
+				tt.distance,
+			); got != tt.want {
 				t.Errorf("AssignTable(%s,%s,%s,%s) = %d, want %d", tt.name, tt.tableNumber, tt.direction, tt.distance, tt.neighbourName, got, tt.want)
 			}
 		})

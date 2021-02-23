@@ -1,6 +1,11 @@
 package constants
 
 import (
+	"go/ast"
+	"go/parser"
+	"go/token"
+	"go/types"
+	"strconv"
 	"testing"
 )
 
@@ -35,16 +40,41 @@ func TestGetDaysPerYear(t *testing.T) {
 }
 
 func TestGetMonth(t *testing.T) {
+	fset := token.NewFileSet()
+	f, err := parser.ParseFile(fset, "./constants.go", nil, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var conf types.Config
+	pkg, err := conf.Check("P", fset, []*ast.File{f}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	tests := map[string]struct {
-		arg, want int
+		arg  string
+		want int
 	}{
-		"GetMonth(Jan)": {arg: Jan, want: 1},
-		"GetMonth(Mar)": {arg: Mar, want: 3},
-		"GetMonth(Oct)": {arg: Oct, want: 10},
+		"GetMonth(Jan)": {arg: "Jan", want: 1},
+		"GetMonth(Mar)": {arg: "Mar", want: 3},
+		"GetMonth(Oct)": {arg: "Oct", want: 10},
 	}
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			if got := GetMonth(tc.arg); got != tc.want {
+			tv, err := types.Eval(fset, pkg, 0, tc.arg)
+			if err != nil {
+				t.Errorf("Eval(%s) failed: %v", tc.arg, err)
+			}
+			if tv.Type.String() != "untyped int" {
+				t.Error("Invalid const type:", tv.Type.String())
+			}
+			value, err := strconv.Atoi(tv.Value.String())
+			if err != nil {
+				t.Error("Invalid const type 2")
+			}
+
+			if got := GetMonth(value); got != tc.want {
 				t.Errorf("GetMonth(%v) = %v, want %v", tc.arg, got, tc.want)
 			}
 		})
