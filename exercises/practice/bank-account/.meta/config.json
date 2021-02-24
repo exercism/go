@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "bank_account.go"
+    ],
+    "test": [
+      "bank_account_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

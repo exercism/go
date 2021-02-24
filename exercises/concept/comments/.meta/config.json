@@ -6,8 +6,14 @@
     }
   ],
   "files": {
-    "solution": ["comments.go"],
-    "test": [],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "comments.go"
+    ],
+    "test": [
+      "comments_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

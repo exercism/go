@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "simple_cipher.go"
+    ],
+    "test": [
+      "simple_cipher_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Substitution Cipher at Wikipedia",
   "source_url": "http://en.wikipedia.org/wiki/Substitution_cipher"

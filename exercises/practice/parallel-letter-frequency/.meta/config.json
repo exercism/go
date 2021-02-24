@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "parallel_letter_frequency.go"
+    ],
+    "test": [
+      "parallel_letter_frequency_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

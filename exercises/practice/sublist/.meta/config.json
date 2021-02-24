@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "sublist.go"
+    ],
+    "test": [
+      "sublist_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

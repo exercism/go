@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "word_search.go"
+    ],
+    "test": [
+      "word_search_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

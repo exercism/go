@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "matching_brackets.go"
+    ],
+    "test": [
+      "matching_brackets_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Ginna Baker"
 }

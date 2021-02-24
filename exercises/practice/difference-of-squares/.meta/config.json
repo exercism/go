@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "difference_of_squares.go"
+    ],
+    "test": [
+      "difference_of_squares_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Problem 6 at Project Euler",
   "source_url": "http://projecteuler.net/problem=6"

@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "protein_translation.go"
+    ],
+    "test": [
+      "protein_translation_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Tyler Long"
 }
