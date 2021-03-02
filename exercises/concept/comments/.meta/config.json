@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for comments exercise",
   "authors": [
     {
       "github_username": "nikimanoledaki",
@@ -6,8 +7,12 @@
     }
   ],
   "files": {
-    "solution": ["comments.go"],
+    "solution": [
+      "comments.go"
+    ],
     "test": [],
-    "exemplar": [".meta/exemplar.go"]
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

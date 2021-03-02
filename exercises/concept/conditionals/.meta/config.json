@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for conditionals exercise",
   "authors": [
     {
       "github_username": "andres-zartab"
@@ -12,8 +13,14 @@
   ],
   "forked_from": [],
   "files": {
-    "solution": ["conditionals.go"],
-    "test": ["conditionals_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "conditionals.go"
+    ],
+    "test": [
+      "conditionals_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for constants exercise",
   "authors": [
     {
       "github_username": "jamessouth",
@@ -8,6 +9,8 @@
   "files": {
     "solution": [],
     "test": [],
-    "exemplar": [".meta/exemplar.go"]
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }
