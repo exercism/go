@@ -1,6 +1,6 @@
 # About
 
-As seen, errors must be the last value returned in a multiple returns function.
+As demonstrated, errors must be the last value returned when a function contains multiple return values.
 
 Always return the default value for the type, if returning an error:
 
@@ -14,7 +14,7 @@ func Foo() (int, error) {
 }
 ```
 
-When no errors have to be returned, return `nil`:
+When no errors are encountered, return `nil`:
 
 ```go
 func Foo() (int, error) {
@@ -39,7 +39,7 @@ than using `else`. The example below shows a bad practice:
 ```go
 file, err := os.Open("./users.csv")
 if err != nil {
-  // do something wit err
+  // do something with err
 } else {
   // do something with file
 }
