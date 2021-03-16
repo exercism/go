@@ -2,7 +2,7 @@
 
 In Go, errors are by convention the last value returned in a multiple returns function.
 
-Always return the zero value for the type, if returning an error:
+Always return the default value for the type, if returning an error:
 
 ```go
 func Foo() (int, error) {
@@ -48,7 +48,7 @@ than using `else`. The example below shows a bad practice:
 ```go
 file, err := os.Open("./users.csv")
 if err != nil {
-  // do something with err
+  // do something wit err
 } else {
   // do something with file
 }
@@ -62,18 +62,18 @@ these are not required later.
 For the sake of this example, we want to check for errors only:
 
 ```go
-err := os.Rename(from, to)
+_, err := os.Getwd()
 if err != nil {
   return nil, err
 }
-// err remains in-scope here, even though it's not used or needed.
+// at this point, err is still visible.
 ```
 
 So this is the preferred way to consume this error:
 
 ```go
-if err := os.Rename(from, to); err != nil {
-  return nil, err
+if _, err := os.Getwd(); err != nil {
+  return
 }
-// err is not in-scope here
+// err is now out of this scope.
 ```
