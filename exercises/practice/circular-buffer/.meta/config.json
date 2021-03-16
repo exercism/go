@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "circular_buffer.go"
+    ],
+    "test": [
+      "circular_buffer_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Wikipedia",
   "source_url": "http://en.wikipedia.org/wiki/Circular_buffer"

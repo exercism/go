@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "robot_simulator.go"
+    ],
+    "test": [
+      "robot_simulator_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Inspired by an interview question at a famous company.",
   "source_url": ""

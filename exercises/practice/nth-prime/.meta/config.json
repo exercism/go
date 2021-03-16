@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "nth_prime.go"
+    ],
+    "test": [
+      "nth_prime_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "A variation on Problem 7 at Project Euler",
   "source_url": "http://projecteuler.net/problem=7"

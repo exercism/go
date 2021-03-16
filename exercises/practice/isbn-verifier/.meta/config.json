@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "isbn_verifier.go"
+    ],
+    "test": [
+      "isbn_verifier_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Converting a string into a number and some basic processing utilizing a relatable real world example.",
   "source_url": "https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-10_check_digit_calculation"

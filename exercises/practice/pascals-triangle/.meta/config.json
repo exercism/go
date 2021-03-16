@@ -1,9 +1,15 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "pascals_triangle.go"
+    ],
+    "test": [
+      "pascals_triangle_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Pascal's Triangle at Wolfram Math World",
   "source_url": "http://mathworld.wolfram.com/PascalsTriangle.html"

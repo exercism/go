@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "react.go"
+    ],
+    "test": [
+      "react_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

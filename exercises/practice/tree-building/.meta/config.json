@@ -1,8 +1,14 @@
 {
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "tree_building.go"
+    ],
+    "test": [
+      "tree_building_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }
