@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for strings exercise",
   "authors": [
     {
       "github_username": "tehsphinx",
@@ -12,8 +13,14 @@
     }
   ],
   "files": {
-    "solution": ["strings.go"],
-    "test": ["strings_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "strings.go"
+    ],
+    "test": [
+      "strings_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

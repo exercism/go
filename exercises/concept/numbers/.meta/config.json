@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for numbers exercise",
   "authors": [
     {
       "github_username": "DavyJ0nes",
@@ -12,8 +13,14 @@
     }
   ],
   "files": {
-    "solution": ["numbers.go"],
-    "test": ["numbers_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "numbers.go"
+    ],
+    "test": [
+      "numbers_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for structs exercise",
   "authors": [
     {
       "github_username": "tehsphinx",
@@ -11,10 +12,18 @@
       "exercism_username": "oanaOM"
     }
   ],
-  "forked_from": ["csharp/constructors"],
+  "forked_from": [
+    "csharp/constructors"
+  ],
   "files": {
-    "solution": ["structs.go"],
-    "test": ["structs_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "structs.go"
+    ],
+    "test": [
+      "structs_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

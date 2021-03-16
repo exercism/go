@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for zero-value exercise",
   "authors": [
     {
       "github_username": "jamessouth",
@@ -12,8 +13,14 @@
     }
   ],
   "files": {
-    "solution": ["zero_value.go"],
-    "test": ["zero_value_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "zero_value.go"
+    ],
+    "test": [
+      "zero_value_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

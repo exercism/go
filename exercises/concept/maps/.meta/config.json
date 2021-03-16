@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for maps exercise",
   "authors": [
     {
       "github_username": "chocopowwwa",
@@ -6,8 +7,14 @@
     }
   ],
   "files": {
-    "solution": ["maps.go"],
-    "test": ["maps_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "maps.go"
+    ],
+    "test": [
+      "maps_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

@@ -1,14 +1,23 @@
 {
+  "blurb": "TODO: add blurb for booleans exercise",
   "authors": [
     {
       "github_username": "oanaOM",
       "exercism_username": "oanaOM"
     }
   ],
-  "forked_from": ["csharp/booleans"],
+  "forked_from": [
+    "csharp/booleans"
+  ],
   "files": {
-    "solution": ["booleans.go"],
-    "test": ["booleans_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "booleans.go"
+    ],
+    "test": [
+      "booleans_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

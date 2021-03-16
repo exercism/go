@@ -1,14 +1,23 @@
 {
+  "blurb": "TODO: add blurb for time exercise",
   "authors": [
     {
       "github_username": "jamessouth",
       "exercism_username": "jamessouth"
     }
   ],
-  "forked_from": ["csharp/datetimes"],
+  "forked_from": [
+    "csharp/datetimes"
+  ],
   "files": {
-    "solution": ["time.go"],
-    "test": ["time_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "time.go"
+    ],
+    "test": [
+      "time_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

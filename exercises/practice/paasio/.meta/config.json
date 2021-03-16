@@ -1,4 +1,5 @@
 {
+  "blurb": "Report network IO statistics",
   "authors": [],
   "files": {
     "solution": [

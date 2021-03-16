@@ -1,4 +1,5 @@
 {
+  "blurb": "TODO: add blurb for methods exercise",
   "authors": [
     {
       "github_username": "tehsphinx",
@@ -11,10 +12,18 @@
       "exercism_username": "oanaOM"
     }
   ],
-  "forked_from": ["csharp/classes"],
+  "forked_from": [
+    "csharp/classes"
+  ],
   "files": {
-    "solution": ["methods.go"],
-    "test": ["methods_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "methods.go"
+    ],
+    "test": [
+      "methods_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }
