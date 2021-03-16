@@ -2,9 +2,15 @@
   "blurb": "Implement a doubly linked list",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "linked_list.go"
+    ],
+    "test": [
+      "linked_list_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Classic computer science topic"
 }

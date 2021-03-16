@@ -2,8 +2,14 @@
   "blurb": "Create a custom set type.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "custom_set.go"
+    ],
+    "test": [
+      "custom_set_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

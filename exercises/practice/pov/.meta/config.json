@@ -2,9 +2,15 @@
   "blurb": "Reparent a graph on a selected node",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "pov.go"
+    ],
+    "test": [
+      "pov_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Adaptation of exercise from 4clojure",
   "source_url": "https://www.4clojure.com/"

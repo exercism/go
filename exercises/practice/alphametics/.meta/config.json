@@ -2,8 +2,14 @@
   "blurb": "Write a function to solve alphametics puzzles.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "alphametics.go"
+    ],
+    "test": [
+      "alphametics_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

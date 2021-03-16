@@ -7,8 +7,12 @@
     }
   ],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "constants.go"
+    ],
+    "test": [
+      "constants_test.go"
+    ],
     "exemplar": [
       ".meta/exemplar.go"
     ]

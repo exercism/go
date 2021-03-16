@@ -2,8 +2,14 @@
   "blurb": "Tally the results of a small football competition.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "tournament.go"
+    ],
+    "test": [
+      "tournament_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

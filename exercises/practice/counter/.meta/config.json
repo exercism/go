@@ -2,8 +2,14 @@
   "blurb": "Design a test suite for a line/letter/character counter tool.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "counter.go"
+    ],
+    "test": [
+      "counter_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

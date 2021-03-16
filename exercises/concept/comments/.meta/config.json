@@ -10,7 +10,9 @@
     "solution": [
       "comments.go"
     ],
-    "test": [],
+    "test": [
+      "comments_test.go"
+    ],
     "exemplar": [
       ".meta/exemplar.go"
     ]

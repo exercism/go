@@ -2,8 +2,14 @@
   "blurb": "Implement basic list operations",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "list_ops.go"
+    ],
+    "test": [
+      "list_ops_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   }
 }

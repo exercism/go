@@ -2,9 +2,15 @@
   "blurb": "Pick the best hand(s) from a list of poker hands.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "poker.go"
+    ],
+    "test": [
+      "poker_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Inspired by the training course from Udacity.",
   "source_url": "https://www.udacity.com/course/viewer#!/c-cs212/"

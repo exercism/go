@@ -2,9 +2,15 @@
   "blurb": "Report network IO statistics",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "paasio.go"
+    ],
+    "test": [
+      "paasio_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
   },
   "source": "Brian Matsuo",
   "source_url": "https://github.com/bmatsuo"
