@@ -1,15 +1,10 @@
 {
   "blurb": "TODO: add blurb for conditionals exercise",
   "authors": [
-    {
-      "github_username": "andres-zartab"
-    }
+    "andres-zartab"
   ],
   "contributors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "forked_from": [],
   "files": {

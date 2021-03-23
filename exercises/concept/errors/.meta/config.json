@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for errors exercise",
   "authors": [
-    {
-      "github_username": "micuffaro",
-      "exercism_username": "micuffaro"
-    }
+    "micuffaro"
   ],
   "files": {
     "solution": [

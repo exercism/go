@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for maps exercise",
   "authors": [
-    {
-      "github_username": "chocopowwwa",
-      "exercism_username": "chocopowwwa"
-    }
+    "chocopowwwa"
   ],
   "files": {
     "solution": [

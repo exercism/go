@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for time exercise",
   "authors": [
-    {
-      "github_username": "jamessouth",
-      "exercism_username": "jamessouth"
-    }
+    "jamessouth"
   ],
   "forked_from": [
     "csharp/datetimes"

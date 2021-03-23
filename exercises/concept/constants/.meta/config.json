@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for constants exercise",
   "authors": [
-    {
-      "github_username": "jamessouth",
-      "exercism_username": "jamessouth"
-    }
+    "jamessouth"
   ],
   "files": {
     "solution": [
