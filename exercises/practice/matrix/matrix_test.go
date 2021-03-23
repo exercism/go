@@ -181,8 +181,8 @@ func TestRows(t *testing.T) {
 		if len(r[0]) == 0 {
 			continue // not currently in test data, but anyway
 		}
-		r[0][0]++
-		if !reflect.DeepEqual(m.Rows(), test.rows) {
+		r[0][0]++ // updating a row's element and testing if Rows() contains updated element (i.e. are equal)
+		if reflect.DeepEqual(m.Rows(), test.rows) {
 			t.Fatalf("Matrix.Rows() returned slice based on Matrix " +
 				"representation.  Want independent copy of element data.")
 		}
@@ -208,8 +208,8 @@ func TestCols(t *testing.T) {
 		if len(c[0]) == 0 {
 			continue // not currently in test data, but anyway
 		}
-		c[0][0]++
-		if !reflect.DeepEqual(m.Cols(), test.cols) {
+		c[0][0]++ // updating a column's element and testing if Cols() contains updated element (i.e. are equal)
+		if reflect.DeepEqual(m.Cols(), test.cols) {
 			t.Fatalf("Matrix.Cols() returned slice based on Matrix " +
 				"representation.  Want independent copy of element data.")
 		}
@@ -268,7 +268,7 @@ func TestSet(t *testing.T) {
 }
 
 func BenchmarkNew(b *testing.B) {
-	var matrix Matrix
+	var matrix *Matrix
 	for i := 0; i < b.N; i++ {
 		var err error
 		matrix, err = New("1 2 3 10 11\n4 5 6 11 12\n7 8 9 12 13\n 8 7 6 13 14")
