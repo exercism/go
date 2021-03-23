@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for strings-package exercise",
   "authors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "files": {
     "solution": [

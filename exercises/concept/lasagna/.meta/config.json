@@ -1,16 +1,10 @@
 {
   "blurb": "TODO: add blurb for lasagna exercise",
   "authors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "contributors": [
-    {
-      "github_username": "ekingery",
-      "exercism_username": "ekingery"
-    }
+    "ekingery"
   ],
   "forked_from": [
     "csharp/lucians-luscious-lasagna"

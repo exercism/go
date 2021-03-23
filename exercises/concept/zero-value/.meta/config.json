@@ -1,16 +1,10 @@
 {
   "blurb": "TODO: add blurb for zero-value exercise",
   "authors": [
-    {
-      "github_username": "jamessouth",
-      "exercism_username": "jamessouth"
-    }
+    "jamessouth"
   ],
   "contributors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "files": {
     "solution": [
