@@ -1,6 +1,16 @@
 {
   "blurb": "Count the rectangles in an ASCII diagram.",
-  "authors": [],
+  "authors": [
+    "ferhatelmas"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "leenipper",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "rectangles.go"

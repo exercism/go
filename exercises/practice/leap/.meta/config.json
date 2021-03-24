@@ -1,6 +1,26 @@
 {
   "blurb": "Given a year, report if it is a leap year.",
-  "authors": [],
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "k4rtik",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen",
+    "tompao",
+    "zabawaba99"
+  ],
   "files": {
     "solution": [
       "leap.go"

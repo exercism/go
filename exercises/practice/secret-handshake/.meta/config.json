@@ -1,6 +1,26 @@
 {
   "blurb": "Given a decimal number, convert it to the appropriate sequence of events for a secret handshake.",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "calebthompson",
+    "dustingraham",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "mkoppmann",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "sjwarner-bp",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "secret_handshake.go"

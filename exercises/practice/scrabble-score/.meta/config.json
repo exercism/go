@@ -1,6 +1,25 @@
 {
   "blurb": "Given a word, compute the Scrabble score for that word.",
-  "authors": [],
+  "authors": [
+    "nathany"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "HaraldNordgren",
+    "hilary",
+    "ilmanzo",
+    "kotp",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "sjakobi",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "scrabble_score.go"

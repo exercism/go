@@ -1,6 +1,23 @@
 {
   "blurb": "Report network IO statistics",
-  "authors": [],
+  "authors": [
+    "bmatsuo"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "eraserix",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "paasio.go"

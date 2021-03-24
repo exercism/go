@@ -1,6 +1,18 @@
 {
   "blurb": "Reverse a string",
-  "authors": [],
+  "authors": [
+    "ferhatelmas"
+  ],
+  "contributors": [
+    "billglover",
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "sbromberger",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "reverse_string.go"

@@ -1,6 +1,25 @@
 {
   "blurb": "We are going to do the `Transform` step of an Extract-Transform-Load.",
-  "authors": [],
+  "authors": [
+    "mikegehard"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "nathany",
+    "petertseng",
+    "rmetzler",
+    "robphoenix",
+    "sebito91",
+    "strangeman",
+    "tleen",
+    "tompao"
+  ],
   "files": {
     "solution": [
       "etl.go"

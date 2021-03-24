@@ -1,6 +1,18 @@
 {
   "blurb": "Make a chain of dominoes.",
-  "authors": [],
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "sebito91",
+    "tleen",
+    "zeimusu"
+  ],
   "files": {
     "solution": [
       "dominoes.go"

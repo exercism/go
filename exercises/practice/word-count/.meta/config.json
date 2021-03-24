@@ -1,6 +1,25 @@
 {
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
-  "authors": [],
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "loslch",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tompao",
+    "turnkey-commerce"
+  ],
   "files": {
     "solution": [
       "word_count.go"

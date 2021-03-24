@@ -1,6 +1,25 @@
 {
   "blurb": "Make sure the brackets and braces all match.",
-  "authors": [],
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "rpottsoh",
+    "sebito91",
+    "strangeman",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "matching_brackets.go"

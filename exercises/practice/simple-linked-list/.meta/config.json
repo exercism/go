@@ -1,6 +1,17 @@
 {
   "blurb": "Write a simple linked list implementation that uses Elements and a List",
-  "authors": [],
+  "authors": [
+    "ngochai94"
+  ],
+  "contributors": [
+    "bitfield",
+    "Daveed9",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "simple_linked_list.go"

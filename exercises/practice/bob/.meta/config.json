@@ -1,6 +1,26 @@
 {
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",
-  "authors": [],
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "alebaffa",
+    "austinlyons",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "levicook",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "strangeman",
+    "tleen",
+    "tompao",
+    "Tonkpils"
+  ],
   "files": {
     "solution": [
       "bob.go"

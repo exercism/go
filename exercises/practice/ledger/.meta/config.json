@@ -1,6 +1,23 @@
 {
   "blurb": "Refactor a ledger printer.",
-  "authors": [],
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "ledger.go"

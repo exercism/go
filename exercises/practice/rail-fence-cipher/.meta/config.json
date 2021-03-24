@@ -1,6 +1,15 @@
 {
   "blurb": "Implement encoding and decoding for the rail fence cipher.",
-  "authors": [],
+  "authors": [
+    "ferhatelmas"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "rail_fence_cipher.go"

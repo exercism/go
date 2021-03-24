@@ -1,6 +1,24 @@
 {
   "blurb": "Count the frequency of letters in texts using parallel computation.",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "ooransoy",
+    "petertseng",
+    "robphoenix",
+    "rootulp",
+    "roundand",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "parallel_letter_frequency.go"

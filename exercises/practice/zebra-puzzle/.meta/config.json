@@ -1,6 +1,14 @@
 {
   "blurb": "Solve the zebra puzzle.",
-  "authors": [],
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "zebra_puzzle.go"

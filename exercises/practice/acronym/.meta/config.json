@@ -1,6 +1,29 @@
 {
   "blurb": "Convert a long phrase to its acronym",
-  "authors": [],
+  "authors": [
+    "Akasurde"
+  ],
+  "contributors": [
+    "alebaffa",
+    "antimatter96",
+    "bitfield",
+    "colinking",
+    "da-edra",
+    "ekingery",
+    "felixbuenemann",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "mattcbaker",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "strangeman",
+    "tleen",
+    "usmanismail"
+  ],
   "files": {
     "solution": [
       "acronym.go"
