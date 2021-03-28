@@ -25,5 +25,5 @@ var tests = []struct {
 	{"123", 0, 1, true, ""},
 	{"", 1, -1, false, "span must be smaller than string length"},
 	{"1234a5", 2, -1, false, "digits input must only contain digits"},
-	{"12345", -1, -1, false, "span must be greater than zero"},
+	{"12345", -1, -1, false, "span must not be negative"},
 }
