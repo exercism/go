@@ -181,7 +181,8 @@ func TestRows(t *testing.T) {
 		if len(r[0]) == 0 {
 			continue // not currently in test data, but anyway
 		}
-		r[0][0]++ // updating a row's element and testing if Rows() contains updated element (i.e. are equal)
+		// updating a row's element and testing if Rows() contains updated element (i.e. are equal)
+		r[0][0]++
 		if reflect.DeepEqual(m.Rows(), test.rows) {
 			t.Fatalf("Matrix.Rows() returned slice based on Matrix " +
 				"representation.  Want independent copy of element data.")
@@ -208,7 +209,8 @@ func TestCols(t *testing.T) {
 		if len(c[0]) == 0 {
 			continue // not currently in test data, but anyway
 		}
-		c[0][0]++ // updating a column's element and testing if Cols() contains updated element (i.e. are equal)
+		// updating a column's element and testing if Cols() contains updated element (i.e. are equal)
+		c[0][0]++
 		if reflect.DeepEqual(m.Cols(), test.cols) {
 			t.Fatalf("Matrix.Cols() returned slice based on Matrix " +
 				"representation.  Want independent copy of element data.")
