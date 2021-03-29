@@ -1,15 +1,18 @@
 {
   "authors": [
-    {
-      "github_username": "brugnara",
-      "exercism_username": "brugnara"
-    }
+    "brugnara"
   ],
   "contributors": [],
   "forked_from": [],
   "files": {
-    "solution": ["the_farm.go"],
-    "test": ["the_farm_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "the_farm.go"
+    ],
+    "test": [
+      "the_farm_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   }
 }

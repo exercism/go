@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for comments exercise",
   "authors": [
-    {
-      "github_username": "nikimanoledaki",
-      "exercism_username": "niki-01"
-    }
+    "nikimanoledaki"
   ],
   "files": {
     "solution": [

@@ -1,10 +1,7 @@
 {
   "blurb": "TODO: add blurb for booleans exercise",
   "authors": [
-    {
-      "github_username": "oanaOM",
-      "exercism_username": "oanaOM"
-    }
+    "oanaOM"
   ],
   "forked_from": [
     "csharp/booleans"

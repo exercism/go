@@ -1,16 +1,10 @@
 {
   "blurb": "TODO: add blurb for structs exercise",
   "authors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "contributors": [
-    {
-      "github_username": "oanaOM",
-      "exercism_username": "oanaOM"
-    }
+    "oanaOM"
   ],
   "forked_from": [
     "csharp/constructors"

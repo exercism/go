@@ -1,16 +1,10 @@
 {
   "blurb": "TODO: add blurb for numbers exercise",
   "authors": [
-    {
-      "github_username": "DavyJ0nes",
-      "exercism_username": "DavyJ0nes"
-    }
+    "DavyJ0nes"
   ],
   "contributors": [
-    {
-      "github_username": "tehsphinx",
-      "exercism_username": "tehsphinx"
-    }
+    "tehsphinx"
   ],
   "files": {
     "solution": [
