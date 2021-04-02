@@ -1566,8 +1566,7 @@
     {
       "name": "Basics",
       "slug": "basics",
-      "uuid": "13A25814-67F6-44BC-A3FE-6DD240549701",
-      "blurb": "Introduction to Packages, Functions, and Variables"
+      "uuid": "13A25814-67F6-44BC-A3FE-6DD240549701"
     }
   ],
   "key_features": [
