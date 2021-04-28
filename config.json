@@ -483,7 +483,7 @@
       {
         "slug": "run-length-encoding",
         "name": "Run Length Encoding",
-        "uuid": "29ea064e-9d2a-11e7-abc4-cec278b6b50a",
+        "uuid": "a361d183-d920-42b4-8f75-50d40982b785",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -1280,7 +1280,7 @@
       {
         "slug": "simple-linked-list",
         "name": "Simple Linked List",
-        "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae",
+        "uuid": "cc196d9d-bbd7-4dab-9dc2-b67d7ec8d4b2",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -1292,7 +1292,7 @@
       {
         "slug": "alphametics",
         "name": "Alphametics",
-        "uuid": "6b313720-104a-46c2-8290-4b4af121101f ",
+        "uuid": "132ae8aa-eede-4254-b2d1-3c36d6315f70",
         "practices": [],
         "prerequisites": [],
         "difficulty": 5,
@@ -1566,7 +1566,7 @@
     {
       "name": "Basics",
       "slug": "basics",
-      "uuid": "13A25814-67F6-44BC-A3FE-6DD240549701"
+      "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626"
     }
   ],
   "key_features": [
