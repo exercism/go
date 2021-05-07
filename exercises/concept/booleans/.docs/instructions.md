@@ -13,8 +13,6 @@ Having found the kidnappers, Annalyn considers which of the following actions sh
 
 You have four tasks: to implement the logic for determining if the above actions are available based on the state of the three characters found in the forest and whether Annalyn's pet dog is present or not.
 
-## Tasks
-
 ## 1. Check if a fast attack can be made
 
 Define the `CanFastAttack()` function that takes a boolean value that indicates if the knight is awake. This function returns `true` if a fast attack can be made based on the state of the knight. Otherwise, returns `false`:
