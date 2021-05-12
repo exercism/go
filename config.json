@@ -15,6 +15,9 @@
     "indent_style": "tab",
     "indent_size": 4
   },
+  "test_runner": {
+    "average_run_time": 3.0
+  },
   "files": {
     "solution": [
       "%{snake_slug}.go"
