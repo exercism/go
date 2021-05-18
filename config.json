@@ -13,7 +13,9 @@
   "ignore_pattern": "example(?!.*test)",
   "online_editor": {
     "indent_style": "tab",
-    "indent_size": 4
+    "indent_size": 4,
+    "ace_editor_language": "golang",
+    "highlightjs_language": "golang"
   },
   "test_runner": {
     "average_run_time": 3.0
