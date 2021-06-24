@@ -16,7 +16,7 @@
 ## 3. Check if a signal action can be made
 
 - Logical operators execute in the order of their precedence (from highest to lowest): `!`, `&&`, `||`.
-- For more details check out the Operator Precendence section on the [oficial golang documentation][operators] and the [truth table][truth table].
+- For more details check out the Operator Precedence section on the [official golang documentation][operators] and the [truth table][truth table].
 
 [logical operators]: https://golang.org/ref/spec#Logical_operators
 [operators]: https://golang.org/ref/spec#Operators

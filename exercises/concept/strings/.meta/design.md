@@ -2,7 +2,7 @@
 
 ## Goal
 
-The goal of this exercise is to teach the student the basics on `strings` in Go. Focusses on formatting.
+The goal of this exercise is to teach the student the basics on `strings` in Go. Focuses on formatting.
 
 ## Learning objectives
 
