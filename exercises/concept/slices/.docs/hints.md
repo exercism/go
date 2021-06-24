@@ -8,8 +8,7 @@
 
 - To get the `n`th item of a slice [use an index][go-slices].
 - To check if an item exists in a slice use a conditional and compare the index with the [length of the slice][len-builtin].
-
-Note: a slice always starts with index `0`, `1`, `2`, etc.
+- Note: a slice always starts with index `0`, `1`, `2`, etc.
 
 ## 2. Exchange a card in the stack
 

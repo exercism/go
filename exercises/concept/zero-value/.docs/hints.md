@@ -3,12 +3,11 @@
 ## General
 
 - To [return][returns] a value from a function in Go, use the keyword `return` followed by the value:
-
-```go
-func myFunc() int {
-    return 7
-}
-```
+    ```go
+    func myFunc() int {
+        return 7
+    }
+    ```
 
 ## 1. Return an empty bool
 
