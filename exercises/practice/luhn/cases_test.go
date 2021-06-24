@@ -85,6 +85,11 @@ var testCases = []struct {
 		true,
 	},
 	{
+		"valid number with an odd number of digits and non-zero first digit",
+		"109",
+		true,
+	},
+	{
 		"using ascii value for non-doubled non-digit isn't allowed",
 		"055b 444 285",
 		false,
