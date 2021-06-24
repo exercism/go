@@ -12,7 +12,7 @@ Strings in Go are made up of runes. Runes are Go's equivalent to the concept of 
 
 ### String iteration
 
-- When iterating over strings using the range operator, runes are yielded. When dealing with ASCII runes, strings can be safely ranged using the string[i] syntax. However when non ASCII characters are present this is unsafe as only one byte of the corresponing rune is returned.
+- When iterating over strings using the range operator, runes are yielded. When dealing with ASCII runes, strings can be safely ranged using the string[i] syntax. However when non ASCII characters are present this is unsafe as only one byte of the corresponding rune is returned.
 
 ### String conversion
 

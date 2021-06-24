@@ -13,7 +13,7 @@ Note: a slice always starts with index `0`, `1`, `2`, etc.
 
 ## 2. Exchange a card in the stack
 
-- To set the `n`th item in a slice [use an index][go-slices] and asign a new value to it.
+- To set the `n`th item in a slice [use an index][go-slices] and assign a new value to it.
 - To add a new item to a list use the builtin [`append`][append-builtin] function.
 
 ## 3. Create a stack of cards

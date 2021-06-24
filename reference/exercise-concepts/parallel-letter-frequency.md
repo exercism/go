@@ -6,7 +6,7 @@ The goal of this exercise is to learn to write concurrent code to count the lett
 
 ## Goroutines
 
-In order to count concurrent the apppearance of different letters in separate texts it is important to be able to create goroutines with the `go` keyword, one for each text where the letters are counted.
+In order to count concurrent the appearance of different letters in separate texts it is important to be able to create goroutines with the `go` keyword, one for each text where the letters are counted.
 
 ## Channel
 
@@ -26,4 +26,4 @@ To iterate on the texts and on the frequency map a plain `for` clause is no more
 
 ## Map
 
-The type `FreqMap` is itself a map so students have to familarize with it and with operations such as accessing via `[]` ,looping and its zero-value when the key requested does not exists
+The type `FreqMap` is itself a map so students have to familiarize with it and with operations such as accessing via `[]` ,looping and its zero-value when the key requested does not exists

@@ -40,7 +40,7 @@ The overall logic has already been implemented. You have four tasks:
 
 ## 1. Calculate the score of any given card.
 
-Implement a function to calculate the numerical value of a card given its name using coditionals.
+Implement a function to calculate the numerical value of a card given its name using conditionals.
 
 ```go
 value := ParseCard("ace")
