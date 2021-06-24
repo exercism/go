@@ -1,4 +1,6 @@
-# General
+# Hints
+
+## General
 
 - A `struct` is a sequence of named elements, called fields, each one having a name and a type.
 

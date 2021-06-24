@@ -1,4 +1,6 @@
-# General
+# Hints
+
+## General
 
 - The `fmt` package of the standard library has some [formatting functionality for strings][fmt-package].
 
