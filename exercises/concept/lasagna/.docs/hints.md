@@ -22,7 +22,7 @@
 - You need to define a [function][functions] with a single parameter.
 - You have to [explicitly return an integer][return] from a function.
 - The function's parameter is an [integer][integers].
-- You can use the [mathematical operator for multiplicaton][operators] to multiply values.
+- You can use the [mathematical operator for multiplication][operators] to multiply values.
 
 ## 4. Calculate the total working time in minutes
 

@@ -2,8 +2,6 @@
 
 ## Numbers
 
-## Conditionals
-
 Go contains basic numeric types that can represent sets of either integer or
 floating-point values. There a different types depending on the size of value
 you require and the architecture of the computer where the application is
