@@ -28,15 +28,11 @@
 ## 4. Implement the decision logic for hand scores with less than 21 points.
 
 - The `SmallHand` function is only called if there are no Aces on the hand (`handScore` is less than 21).
-- Implement every condition using [logical operators][logical_operators] if necessary:
-  - [If][if_statement] your cards sum up to 17 or higher you should always _stand_.
-  - [If][if_statement] your cards sum up to 11 or lower you should always _hit_.
-  - [If][if_statement] your cards sum up to a value within the range [12, 16] you should always _stand_ if the dealer has a 6 or lower.
-  - [If][if_statement] your cards sum up to a value within the range [12, 16] you should always _hit_ if the dealer has a 7 or higher.
-- (optional) Try to optimize the conditions:
-  - Pull together the conditions for _stand_ into one.
-  - Pull together the conditions for _hit_ into one.
-  - Remove redundant parts of the conditions (e.g. `A || !A && B` can be `A || B`).
+- Implement every condition using [logical operators][logical_operators] if necessary.
+- [If][if_statement] your cards sum up to 17 or higher you should always _stand_.
+- [If][if_statement] your cards sum up to 11 or lower you should always _hit_.
+- [If][if_statement] your cards sum up to a value within the range [12, 16] you should always _stand_ if the dealer has a 6 or lower.
+- [If][if_statement] your cards sum up to a value within the range [12, 16] you should always _hit_ if the dealer has a 7 or higher.
 
 [logical_operators]: https://golang.org/ref/spec#Logical_operators
 [if_statement]: https://golang.org/ref/spec#If_statements
