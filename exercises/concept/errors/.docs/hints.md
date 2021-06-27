@@ -1,5 +1,7 @@
 # Hints
 
+TODO: write hints
+
 ## Errors
 
 ## Hints to write:
