@@ -1,6 +1,17 @@
 {
   "blurb": "Score a single throw of dice in the game Yacht",
-  "authors": [],
+  "authors": [
+    "zeimusu"
+  ],
+  "contributors": [
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "yacht.go"

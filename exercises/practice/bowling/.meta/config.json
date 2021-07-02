@@ -1,6 +1,17 @@
 {
   "blurb": "Score a bowling game",
-  "authors": [],
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "robphoenix",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "bowling.go"

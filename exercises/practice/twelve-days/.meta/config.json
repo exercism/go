@@ -1,6 +1,23 @@
 {
   "blurb": "Output the lyrics to 'The Twelve Days of Christmas'",
-  "authors": [],
+  "authors": [
+    "Akasurde"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "IsaacG",
+    "leenipper",
+    "mcaci",
+    "nywilken",
+    "PatrickMcSweeny",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "twelve_days.go"

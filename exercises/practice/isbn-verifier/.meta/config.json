@@ -1,6 +1,19 @@
 {
   "blurb": "Check if a given string is a valid ISBN-10 number.",
-  "authors": [],
+  "authors": [
+    "creaaa"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "h311ion",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "sebito91",
+    "tinsch"
+  ],
   "files": {
     "solution": [
       "isbn_verifier.go"

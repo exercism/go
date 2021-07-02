@@ -1,6 +1,21 @@
 {
   "blurb": "Take input text and output it transposed.",
-  "authors": [],
+  "authors": [
+    "robphoenix"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "sebito91",
+    "strangeman",
+    "tapank",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "transpose.go"

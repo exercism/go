@@ -1,6 +1,27 @@
 {
   "blurb": "Implement a clock that handles times without dates.",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "cwithmichael",
+    "da-edra",
+    "dmgawel",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "nywilken",
+    "petertseng",
+    "pminten",
+    "robphoenix",
+    "sebito91",
+    "thenickcox",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "clock.go"

@@ -1,6 +1,19 @@
 {
   "blurb": "Create a sentence of the form \"One for X, one for me.\"",
-  "authors": [],
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "R4wm",
+    "robphoenix",
+    "sebito91",
+    "ZapAnton"
+  ],
   "files": {
     "solution": [
       "two_fer.go"

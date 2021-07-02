@@ -1,6 +1,25 @@
 {
   "blurb": "Implement variable length quantity encoding and decoding.",
-  "authors": [],
+  "authors": [
+    "mattetti"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "jbsmith7741",
+    "kytrinyx",
+    "leenipper",
+    "lfritz",
+    "Ngo-The-Trung",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "voroskoi"
+  ],
   "files": {
     "solution": [
       "variable_length_quantity.go"

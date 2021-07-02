@@ -1,6 +1,27 @@
 {
   "blurb": "Given a word and a list of possible anagrams, select the correct sublist.",
-  "authors": [],
+  "authors": [
+    "mikegehard"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "henrik",
+    "hilary",
+    "ilmanzo",
+    "kf8a",
+    "kytrinyx",
+    "leenipper",
+    "markijbema",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "strangeman",
+    "tleen",
+    "tompao"
+  ],
   "files": {
     "solution": [
       "anagram.go"
