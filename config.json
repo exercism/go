@@ -135,11 +135,10 @@
           "range-iteration"
         ],
         "prerequisites": [
-          "basics",
-          "conditionals",
-          "functions",
+          "conditionals-if",
           "maps",
-          "slices"
+          "slices",
+          "iteration"
         ],
         "status": "active"
       }
@@ -1683,6 +1682,11 @@
       "name": "Errors",
       "slug": "errors",
       "uuid": "a960da78-c940-4725-8069-929f42564cdb"
+    },
+    {
+      "name": "Iteration",
+      "slug": "iteration",
+      "uuid": "e18ca160-bbb8-4cd0-882a-0e67f1e60b47"
     },
     {
       "name": "Maps",
