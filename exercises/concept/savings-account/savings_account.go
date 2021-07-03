@@ -1,4 +1,4 @@
-package constants
+package savings_account
 
 // FixedInterestRate has a value of 5% (5/100)
 

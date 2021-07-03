@@ -1,4 +1,4 @@
-package constants
+package savings_account
 
 import (
 	"testing"

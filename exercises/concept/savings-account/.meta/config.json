@@ -1,14 +1,14 @@
 {
-  "blurb": "TODO: add blurb for constants exercise",
+  "blurb": "Learn about constants by managing a savings account.",
   "authors": [
     "jamessouth"
   ],
   "files": {
     "solution": [
-      "constants.go"
+      "savings_account.go"
     ],
     "test": [
-      "constants_test.go"
+      "savings_account_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

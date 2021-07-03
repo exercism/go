@@ -1,4 +1,4 @@
-package _meta
+package savings_account
 
 // FixedInterestRate has a value of 5%
 const FixedInterestRate = 0.05

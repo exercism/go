@@ -70,6 +70,20 @@
         "status": "wip"
       },
       {
+        "slug": "savings-account",
+        "name": "Savings Account",
+        "uuid": "13f6b5ab-f4bb-453a-a6a9-50132a1d4885",
+        "concepts": [
+          "constants"
+        ],
+        "prerequisites": [
+          "basics",
+          "comments",
+          "strings"
+        ],
+        "status": "active"
+      },
+      {
         "slug": "blackjack",
         "name": "Blackjack",
         "uuid": "628308fc-34e9-46ae-9661-9e0ebceeef34",
@@ -1630,6 +1644,11 @@
       "name": "Conditionals Switch",
       "slug": "conditionals-switch",
       "uuid": "6a4103e0-e7a9-427e-b1bd-716870580c45"
+    },
+    {
+      "name": "Constants",
+      "slug": "constants",
+      "uuid": "b56f68de-44ef-4bd4-8b14-2c50b2a366dd"
     }
   ],
   "key_features": [

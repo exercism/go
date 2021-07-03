@@ -15,8 +15,7 @@ The goal of this exercise is to teach the student about constants in Go.
 
 ## Concepts
 
-- `const`
-- `iota`
+- `constants`
 
 ## Prerequisites
 
