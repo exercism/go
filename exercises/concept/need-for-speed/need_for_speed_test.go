@@ -1,4 +1,4 @@
-package structs
+package need_for_speed
 
 import "testing"
 
@@ -13,7 +13,7 @@ func TestNewCar(t *testing.T){
 			car: Car{
 				speed: 5,
 				batteryDrain: 2,
-				battery: 100, 
+				battery: 100,
 			},
 			expected: Car{
 				speed: 5,
@@ -86,7 +86,7 @@ func TestDrive(t *testing.T){
 			car: Car{
 				speed: 5,
 				batteryDrain: 2,
-				battery: 100, 
+				battery: 100,
 				distance: 0,
 			},
 			expected: Car{
@@ -102,7 +102,7 @@ func TestDrive(t *testing.T){
 			car: Car{
 				speed: 5,
 				batteryDrain: 5,
-				battery: 4, 
+				battery: 4,
 				distance: 0,
 			},
 			expected: Car{
@@ -139,7 +139,7 @@ func TestCanFinish(t *testing.T){
 			car: Car{
 				speed: 5,
 				batteryDrain: 2,
-				battery: 100, 
+				battery: 100,
 				distance: 20,
 			},
 			track: Track{
@@ -152,7 +152,7 @@ func TestCanFinish(t *testing.T){
 			car: Car{
 				speed: 5,
 				batteryDrain: 5,
-				battery: 100, 
+				battery: 100,
 				distance: 20,
 			},
 			track: Track{
@@ -165,7 +165,7 @@ func TestCanFinish(t *testing.T){
 			car: Car{
 				speed: 2,
 				batteryDrain: 10,
-				battery: 100, 
+				battery: 100,
 				distance: 5,
 			},
 			track: Track{

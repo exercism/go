@@ -99,6 +99,19 @@
         "status": "active"
       },
       {
+        "name": "Need For Speed",
+        "slug": "need-for-speed",
+        "uuid": "b165c8b4-429f-4e9f-b157-a636d22b217f",
+        "concepts": [
+          "structs"
+        ],
+        "prerequisites": [
+          "conditionals-if",
+          "numbers"
+        ],
+        "status": "active"
+      },
+      {
         "slug": "gross-store",
         "name": "Gross Store",
         "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
@@ -1692,6 +1705,11 @@
       "name": "Maps",
       "slug": "maps",
       "uuid": "625aa065-b006-4fc5-b276-28e048376b46"
+    },
+    {
+      "name": "Structs",
+      "slug": "structs",
+      "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd"
     }
   ],
   "key_features": [

@@ -1,4 +1,4 @@
-package structs
+package need_for_speed
 
 // Car implements a remote controlled car.
 type Car struct {
@@ -26,7 +26,7 @@ type Track struct{
 
 // NewTrack created a new track
 func NewTrack(distance int) Track{
-	panic("Please implement the NewTrack function") 
+	panic("Please implement the NewTrack function")
 }
 
 // Drive drives the car one time. If there is not enough battry to drive on more time,

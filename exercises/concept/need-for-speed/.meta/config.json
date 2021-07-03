@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for structs exercise",
+  "blurb": "Learn about structs by racing remote controlled cars.",
   "authors": [
     "tehsphinx"
   ],
@@ -7,14 +7,14 @@
     "oanaOM"
   ],
   "forked_from": [
-    "csharp/constructors"
+    "csharp/need-for-speed"
   ],
   "files": {
     "solution": [
-      "structs.go"
+      "need_for_speed.go"
     ],
     "test": [
-      "structs_test.go"
+      "need_for_speed_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

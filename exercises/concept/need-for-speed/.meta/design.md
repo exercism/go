@@ -20,4 +20,4 @@
 ## Prerequisites
 
 - `numbers`
-- `conditionals`
+- `conditionals-if`
