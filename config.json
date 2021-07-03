@@ -99,6 +99,19 @@
         "status": "active"
       },
       {
+        "slug": "deep-thought",
+        "name": "Deep Thought",
+        "uuid": "097176e2-5024-44e7-ab86-9bc0ec245347",
+        "concepts": [
+          "errors"
+        ],
+        "prerequisites": [
+          "constants",
+          "types"
+        ],
+        "status": "wip"
+      },
+      {
         "name": "Chessboard",
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
@@ -1649,6 +1662,11 @@
       "name": "Constants",
       "slug": "constants",
       "uuid": "b56f68de-44ef-4bd4-8b14-2c50b2a366dd"
+    },
+    {
+      "name": "Errors",
+      "slug": "errors",
+      "uuid": "a960da78-c940-4725-8069-929f42564cdb"
     }
   ],
   "key_features": [

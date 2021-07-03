@@ -1,14 +1,14 @@
 {
-  "blurb": "TODO: add blurb for errors exercise",
+  "blurb": "Learn about errors by the absolute answer to life, the universe, and everything.",
   "authors": [
     "micuffaro"
   ],
   "files": {
     "solution": [
-      "errors.go"
+      "deep_thought.go"
     ],
     "test": [
-      "errors_test.go"
+      "deep_thought_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

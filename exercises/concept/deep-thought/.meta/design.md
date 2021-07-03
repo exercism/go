@@ -23,11 +23,12 @@ The goal of this exercise is to teach the student how to work with `errors` in G
 
 The Concepts this exercise unlocks are:
 
-- `errors.basics`
+- `errors`
 
 ## Prerequisites
 
-- `constants`, `types`
+- `constants`
+- `types`
 
 ## Representer
 
