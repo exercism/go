@@ -1,14 +1,14 @@
 {
-  "blurb": "TODO: add blurb for comments exercise",
+  "blurb": "Learn about comments by helping a weather station manage their weather forecasting program.",
   "authors": [
     "nikimanoledaki"
   ],
   "files": {
     "solution": [
-      "comments.go"
+      "weather.go"
     ],
     "test": [
-      "comments_test.go"
+      "weather_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
