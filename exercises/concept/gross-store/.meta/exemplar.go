@@ -1,6 +1,6 @@
-package maps
+package gross_store
 
-// Units store the Dozen Store unit measurement
+// Units store the Gross Store unit measurement
 func Units() map[string]int {
 	return map[string]int{
 		"quarter_of_a_dozen": 3,

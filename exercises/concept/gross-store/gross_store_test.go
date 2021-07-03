@@ -1,4 +1,4 @@
-package maps
+package gross_store
 
 import (
 	"testing"

@@ -99,6 +99,22 @@
         "status": "active"
       },
       {
+        "slug": "gross-store",
+        "name": "Gross Store",
+        "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
+        "concepts": [
+          "conditionals-if",
+          "conditionals-switch"
+        ],
+        "prerequisites": [
+          "basics",
+          "conditionals-if",
+          "conditionals-switch",
+          "numbers"
+        ],
+        "status": "active"
+      },
+      {
         "slug": "deep-thought",
         "name": "Deep Thought",
         "uuid": "097176e2-5024-44e7-ab86-9bc0ec245347",
@@ -1667,6 +1683,11 @@
       "name": "Errors",
       "slug": "errors",
       "uuid": "a960da78-c940-4725-8069-929f42564cdb"
+    },
+    {
+      "name": "Maps",
+      "slug": "maps",
+      "uuid": "625aa065-b006-4fc5-b276-28e048376b46"
     }
   ],
   "key_features": [
