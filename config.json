@@ -46,6 +46,18 @@
         "status": "active"
       },
       {
+        "slug": "annalyns-infiltration",
+        "name": "Annalyn's Infiltration",
+        "uuid": "8833b0c0-1008-4426-8225-1dc2b4852d52",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "basics"
+        ],
+        "status": "active"
+      },
+      {
         "name": "Chessboard",
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
@@ -1571,6 +1583,11 @@
       "name": "Basics",
       "slug": "basics",
       "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626"
+    },
+    {
+      "name": "Booleans",
+      "slug": "booleans",
+      "uuid": "e3942921-34ec-41eb-a999-a5d85a6623fd"
     }
   ],
   "key_features": [
