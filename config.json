@@ -99,6 +99,22 @@
         "status": "active"
       },
       {
+        "slug": "gross-store",
+        "name": "Gross Store",
+        "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
+        "concepts": [
+          "conditionals-if",
+          "conditionals-switch"
+        ],
+        "prerequisites": [
+          "basics",
+          "conditionals-if",
+          "conditionals-switch",
+          "numbers"
+        ],
+        "status": "active"
+      },
+      {
         "name": "Need For Speed",
         "slug": "need-for-speed",
         "uuid": "b165c8b4-429f-4e9f-b157-a636d22b217f",
@@ -112,18 +128,15 @@
         "status": "active"
       },
       {
-        "slug": "gross-store",
-        "name": "Gross Store",
-        "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
+        "name": "Elon's Toys",
+        "slug": "elons-toys",
+        "uuid": "18fb2aa2-9748-481e-a321-6b6844c1deb6",
         "concepts": [
-          "conditionals-if",
-          "conditionals-switch"
+          "methods"
         ],
         "prerequisites": [
-          "basics",
-          "conditionals-if",
-          "conditionals-switch",
-          "numbers"
+          "structs",
+          "pointers"
         ],
         "status": "active"
       },
@@ -1705,6 +1718,11 @@
       "name": "Maps",
       "slug": "maps",
       "uuid": "625aa065-b006-4fc5-b276-28e048376b46"
+    },
+    {
+      "name": "Methods",
+      "slug": "methods",
+      "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
     },
     {
       "name": "Structs",

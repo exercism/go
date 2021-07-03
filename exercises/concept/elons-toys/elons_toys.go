@@ -1,4 +1,4 @@
-package methods
+package elons_toys
 
 // Car implements a remote controlled car.
 type Car struct {

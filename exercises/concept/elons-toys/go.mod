@@ -1,4 +1,4 @@
-module methods
+module elons_toys
 
 go 1.13
 

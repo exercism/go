@@ -20,5 +20,4 @@ The Concepts this exercise unlocks are:
 ## Prerequisites
 
 - `structs`
-- `functions`
 - `pointers`

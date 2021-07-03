@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for methods exercise",
+  "blurb": "Learn about methods by playing with Elon's toys",
   "authors": [
     "tehsphinx"
   ],
@@ -7,14 +7,14 @@
     "oanaOM"
   ],
   "forked_from": [
-    "csharp/classes"
+    "csharp/elons-toys"
   ],
   "files": {
     "solution": [
-      "methods.go"
+      "elons_toys.go"
     ],
     "test": [
-      "methods_test.go"
+      "elons_toys_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
