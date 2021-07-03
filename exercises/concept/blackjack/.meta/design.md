@@ -19,13 +19,13 @@ The goal of this exercise is to teach the student the basics of the Concept of C
 
 ## Concepts
 
-- `booleans`
 - `conditionals-if`
 - `conditionals-switch`
 
 ## Prerequisites
 
-- `basic-strings`
+- `booleans`
+- `strings`
 - `numbers`
 
 ## Analyzer

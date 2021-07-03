@@ -70,6 +70,21 @@
         "status": "wip"
       },
       {
+        "slug": "blackjack",
+        "name": "Blackjack",
+        "uuid": "628308fc-34e9-46ae-9661-9e0ebceeef34",
+        "concepts": [
+          "conditionals-if",
+          "conditionals-switch"
+        ],
+        "prerequisites": [
+          "booleans",
+          "strings",
+          "numbers"
+        ],
+        "status": "active"
+      },
+      {
         "name": "Chessboard",
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
@@ -1605,6 +1620,16 @@
       "name": "Comments",
       "slug": "comments",
       "uuid": "9ee93eab-b413-442c-b7fb-76bf044eea2d"
+    },
+    {
+      "name": "Conditionals If",
+      "slug": "conditionals-if",
+      "uuid": "b3731323-f5bb-4b38-931c-2d734667bf8d"
+    },
+    {
+      "name": "Conditionals Switch",
+      "slug": "conditionals-switch",
+      "uuid": "6a4103e0-e7a9-427e-b1bd-716870580c45"
     }
   ],
   "key_features": [

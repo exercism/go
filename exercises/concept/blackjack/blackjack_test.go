@@ -1,4 +1,4 @@
-package conditionals
+package blackjack
 
 import "testing"
 

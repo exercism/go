@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for conditionals exercise",
+  "blurb": "Learn about conditionals by playing Blackjack.",
   "authors": [
     "andres-zartab"
   ],
@@ -9,10 +9,10 @@
   "forked_from": [],
   "files": {
     "solution": [
-      "conditionals.go"
+      "blackjack.go"
     ],
     "test": [
-      "conditionals_test.go"
+      "blackjack_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
