@@ -18,6 +18,10 @@ func (r *Robot) getName(t testing.TB, expectSeen bool) string {
 	if err != nil {
 		t.Fatalf("Name() returned unexpected error: %v", err)
 	}
+	if len(newName) != 5 {
+		t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", newName, len(newName))
+	}
+
 	_, chk := seen[newName]
 	if !expectSeen && chk {
 		t.Fatalf("Name %s reissued after %d robots.", newName, len(seen))
