@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for zero-value exercise",
+  "blurb": "Learn about zero values.",
   "authors": [
     "jamessouth"
   ],
@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "zero_value.go"
+      "zero_zilch_nada.go"
     ],
     "test": [
-      "zero_value_test.go"
+      "zero_zilch_nada_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

@@ -19,7 +19,7 @@ The goal of this exercise is to teach the student about `nil` and other zero val
 ## Concepts
 
 - `nil`
-- zero values
+- `zero-values`
 
 ## Prerequisites
 

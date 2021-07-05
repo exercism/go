@@ -231,6 +231,19 @@
           "iteration"
         ],
         "status": "beta"
+      },
+      {
+        "name": "Zero, Zilch, Nada",
+        "slug": "zero-zilch-nada",
+        "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
+        "concepts": [
+          "nil",
+          "zero-values"
+        ],
+        "prerequisites": [
+          "types"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
@@ -1789,6 +1802,11 @@
       "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
     },
     {
+      "name": "Nil",
+      "slug": "nil",
+      "uuid": "c4d16fac-3e46-41ac-adf8-ce8f3f73f745"
+    },
+    {
       "name": "Numbers",
       "slug": "numbers",
       "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
@@ -1817,11 +1835,16 @@
       "name": "Time",
       "slug": "time",
       "uuid": "4673000c-7822-4252-88c5-723f47d6ad06"
-    },,
+    },
     {
       "name": "Type Conversion",
       "slug": "type-conversion",
       "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
+    },
+    {
+      "name": "Zero Values",
+      "slug": "zero-values",
+      "uuid": "a50b4ed6-6198-4ab2-8075-3770900db4c9"
     }
   ],
   "key_features": [

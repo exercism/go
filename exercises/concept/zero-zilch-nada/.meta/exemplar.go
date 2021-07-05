@@ -1,4 +1,4 @@
-package _meta
+package zero
 
 // EmptyBool returns an empty (zero value) bool
 func EmptyBool() bool {
