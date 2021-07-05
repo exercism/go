@@ -125,8 +125,8 @@
         "status": "beta"
       },
       {
-        "slug": "car-factory",
-        "name": "Car Factory",
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
         "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
         "concepts": [
           "numbers",
