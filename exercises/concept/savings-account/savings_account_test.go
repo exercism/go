@@ -1,4 +1,4 @@
-package savings_account
+package savings
 
 import (
 	"testing"

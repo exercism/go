@@ -1,3 +1,3 @@
-module gross_store
+module gross
 
 go 1.13

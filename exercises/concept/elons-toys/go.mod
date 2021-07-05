@@ -1,4 +1,4 @@
-module elons_toys
+module elon
 
 go 1.13
 

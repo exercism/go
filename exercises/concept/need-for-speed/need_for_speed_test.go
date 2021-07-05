@@ -1,4 +1,4 @@
-package need_for_speed
+package speed
 
 import "testing"
 

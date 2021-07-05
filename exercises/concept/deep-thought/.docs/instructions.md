@@ -1,6 +1,6 @@
 # Errors
 
-In this exercise, we will be implementing the programming logic in a package `deep_thought`,
+In this exercise, we will be implementing the programming logic in a package `deepthought`,
 which checks whether an input equals to [the absolute answer to life, the universe, and everything][deep-thought].
 
 We have a constant `answer` which represents the answer to life, and a function `AnswerToLife` which checks the user input

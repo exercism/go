@@ -1,4 +1,4 @@
-package need_for_speed
+package speed
 
 // Car implements a remote controlled car.
 type Car struct {

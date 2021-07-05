@@ -1,4 +1,4 @@
-package elons_toys
+package elon
 
 import "fmt"
 

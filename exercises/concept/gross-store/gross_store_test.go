@@ -1,4 +1,4 @@
-package gross_store
+package gross
 
 import (
 	"testing"

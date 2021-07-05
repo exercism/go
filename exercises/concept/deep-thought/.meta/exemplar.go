@@ -1,4 +1,4 @@
-package deep_thought
+package deepthought
 
 import (
 	"errors"

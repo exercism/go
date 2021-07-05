@@ -1,4 +1,4 @@
-package gross_store
+package gross
 
 // Units store the Gross Store unit measurement
 func Units() map[string]int {
