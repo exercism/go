@@ -1,4 +1,4 @@
-package strings_package
+package logs
 
 import (
 	"strings"

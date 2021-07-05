@@ -1,14 +1,14 @@
 {
-  "blurb": "TODO: add blurb for strings-package exercise",
+  "blurb": "Learn about the strings package by parsing logs.",
   "authors": [
     "tehsphinx"
   ],
   "files": {
     "solution": [
-      "strings.go"
+      "logs.go"
     ],
     "test": [
-      "strings_test.go"
+      "logs_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

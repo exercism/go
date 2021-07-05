@@ -16,7 +16,7 @@ The goal of this exercise is to teach the student about the strings package.
 
 ## Concepts
 
-- `strings`
+- `strings-package`
 
 ## Prerequisites
 

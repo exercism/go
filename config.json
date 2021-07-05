@@ -192,6 +192,18 @@
         "status": "beta"
       },
       {
+        "name": "Logs, Logs, Logs!",
+        "slug": "logs-logs-logs",
+        "uuid": "81230a7c-4e47-4a4d-a004-14eae32ec914",
+        "concepts": [
+          "strings-package"
+        ],
+        "prerequisites": [
+          "slices"
+        ],
+        "status": "beta"
+      },
+      {
         "name": "Chessboard",
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
@@ -1776,6 +1788,11 @@
       "name": "Strings",
       "slug": "strings",
       "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7"
+    },
+    {
+      "name": "Strings Package",
+      "slug": "strings-package",
+      "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c"
     },
     {
       "name": "Structs",

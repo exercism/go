@@ -14,5 +14,3 @@ With that said, string types are immutable so operations like s[i] = 'a' are not
 
 [Strings, bytes, runes and characters in Go](https://blog.golang.org/strings) provides a deep dive into this topic.
 
-This exercise also introduces _conditionals_. Here is a little intro:
-[Go by Example: If/Else](https://gobyexample.com/if-else)
