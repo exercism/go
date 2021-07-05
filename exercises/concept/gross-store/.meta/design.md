@@ -26,7 +26,6 @@ The goal is to introduce the student to maps.
 - `basics`
 - `numbers`
 - `conditionals-if`
-- `conditionals-switch`
 
 ## Representer
 

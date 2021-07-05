@@ -117,13 +117,11 @@
         "name": "Gross Store",
         "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
         "concepts": [
-          "conditionals-if",
-          "conditionals-switch"
+          "maps"
         ],
         "prerequisites": [
           "basics",
           "conditionals-if",
-          "conditionals-switch",
           "numbers"
         ],
         "status": "active"
