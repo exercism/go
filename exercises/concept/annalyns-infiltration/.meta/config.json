@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about booleans by helping Annalyn free her best friend.",
+  "authors": [
+    "oanaOM"
+  ],
+  "forked_from": [
+    "csharp/annalyns-infiltration"
+  ],
+  "files": {
+    "solution": [
+      "annalyns_infiltration.go"
+    ],
+    "test": [
+      "annalyns_infiltration_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

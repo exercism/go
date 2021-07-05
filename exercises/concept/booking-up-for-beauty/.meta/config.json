@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about time by handling appointments in a beauty salon.",
+  "authors": [
+    "jamessouth"
+  ],
+  "forked_from": [
+    "csharp/booking-up-for-beauty"
+  ],
+  "files": {
+    "solution": [
+      "booking_up_for_beauty.go"
+    ],
+    "test": [
+      "booking_up_for_beauty_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

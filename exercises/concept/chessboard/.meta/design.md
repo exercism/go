@@ -20,10 +20,11 @@ The goal of this exercise is to make the student familiar with the range loop on
 
 ## Concepts
 
-- range-iteration
+- `range-iteration`
 
 ## Prerequisites
 
-- slices
-- maps
-- iteration
+- `slices`
+- `maps`
+- `conditionals-if`
+- `iteration`

@@ -93,8 +93,8 @@ If you have any questions regarding implementing the exercise, please post them 
 [docs-rationale-for-v3]: https://github.com/exercism/v3/blob/main/docs/rationale-for-v3.md
 [docs-features-of-v3]: https://github.com/exercism/v3/blob/main/docs/features-of-v3.md
 [anatomy-of-a-concept-exercise]: https://www.youtube.com/watch?v=gkbBqd7hPrA
-[concept-exercise-basic-strings]: ../exercises/concept/strings-package
-[concept-exercise-numbers]: ../exercises/concept/numbers
+[concept-exercise-basic-strings]: ../exercises/concept/logs-logs-logs
+[concept-exercise-numbers]: ../exercises/concept/cars-assemble
 [reference]: https://github.com/exercism/v3/blob/main/reference
 [style guide]: ../docs/style-guide.md
 [implemented-exercises]: ../exercises/concept/README.md#implemented-exercises

@@ -1,20 +1,20 @@
 {
-  "blurb": "Learn about packages, functions, and variables by helping Gopher cook lasagna.",
+  "blurb": "Learn about methods by playing with Elon's toys",
   "authors": [
     "tehsphinx"
   ],
   "contributors": [
-    "ekingery"
+    "oanaOM"
   ],
   "forked_from": [
-    "csharp/lucians-luscious-lasagna"
+    "csharp/elons-toys"
   ],
   "files": {
     "solution": [
-      "lasagna.go"
+      "elons_toys.go"
     ],
     "test": [
-      "lasagna_test.go"
+      "elons_toys_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
