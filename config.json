@@ -43,7 +43,7 @@
           "basics"
         ],
         "prerequisites": [],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "annalyns-infiltration",
@@ -55,7 +55,7 @@
         "prerequisites": [
           "basics"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "weather-forecast",
@@ -81,7 +81,7 @@
           "comments",
           "strings"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "blackjack",
@@ -96,7 +96,7 @@
           "strings",
           "numbers"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "car-factory",
@@ -110,7 +110,7 @@
           "constants",
           "conditionals-if"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "gross-store",
@@ -124,7 +124,7 @@
           "conditionals-if",
           "numbers"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "name": "Need For Speed",
@@ -137,7 +137,7 @@
           "conditionals-if",
           "numbers"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "name": "Elon's Toys",
@@ -150,7 +150,7 @@
           "structs",
           "pointers"
         ],
-        "status": "active"
+        "status": "beta"
       },
       {
         "slug": "deep-thought",
@@ -178,7 +178,7 @@
           "slices",
           "iteration"
         ],
-        "status": "active"
+        "status": "beta"
       }
     ],
     "practice": [
