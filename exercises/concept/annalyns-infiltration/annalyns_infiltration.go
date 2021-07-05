@@ -1,4 +1,4 @@
-package annalyns_infiltration
+package annalyn
 
 // CanFastAttack can be executed only when the knight is sleeping
 func CanFastAttack(knightIsAwake bool) bool {

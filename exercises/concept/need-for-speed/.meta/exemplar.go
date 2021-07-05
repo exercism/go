@@ -1,4 +1,4 @@
-package _meta
+package speed
 
 // NewCar creates a new car with given specifications.
 func NewCar(speed, batteryDrain int) Car {

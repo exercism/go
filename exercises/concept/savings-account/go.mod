@@ -1,3 +1,3 @@
-module savings_account
+module savings
 
 go 1.14
