@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for strings exercise",
+  "blurb": "Learn about strings by programming a party robot.",
   "authors": [
     "tehsphinx"
   ],
@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "strings.go"
+      "party_robot.go"
     ],
     "test": [
-      "strings_test.go"
+      "party_robot_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

@@ -1,4 +1,4 @@
-package _meta
+package partyrobot
 
 import "fmt"
 

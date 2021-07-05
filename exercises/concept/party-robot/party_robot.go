@@ -1,4 +1,4 @@
-package strings
+package partyrobot
 
 // Welcome greets a person by name.
 func Welcome(name string) string {
