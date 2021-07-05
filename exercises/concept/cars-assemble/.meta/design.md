@@ -20,4 +20,4 @@ My suggestion is to copy C# `numbers` exercise: https://github.com/exercism/v3/t
 ## Prerequisites
 
 - `constants`
-- `confitionals-if`
+- `conditionals-if`
