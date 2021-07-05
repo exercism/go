@@ -3,7 +3,7 @@
 ## Numbers
 
 Go contains basic numeric types that can represent sets of either integer or
-floating-point values. There are of different types depending on the size of value
+floating-point values. There are different types depending on the size of value
 you require and the architecture of the computer where the application is
 running (e.g. 32-bit and 64-bit).
 
