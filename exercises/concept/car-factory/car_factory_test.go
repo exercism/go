@@ -1,4 +1,4 @@
-package numbers_test
+package factory
 
 import (
 	"numbers"

@@ -16,3 +16,8 @@ My suggestion is to copy C# `numbers` exercise: https://github.com/exercism/v3/t
 
 - `numbers`
 - `type-conversion`
+
+## Prerequisites
+
+- `constants`
+- `confitionals-if`

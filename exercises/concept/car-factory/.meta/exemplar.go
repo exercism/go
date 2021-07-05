@@ -1,15 +1,19 @@
-package numbers
+package factory
 
 // CalculateProductionRatePerHour for the assembly line, taking into account
 // its success rate
 func CalculateProductionRatePerHour(speed int) float64 {
-	panic("not implemented")
+	const defaultRate = 221.0
+
+	rateForSpeed := defaultRate * float64(speed)
+
+	return rateForSpeed * successRate(speed)
 }
 
 // CalculateProductionRatePerMinute describes how many working items are
 // produced by the assembly line every minute
 func CalculateProductionRatePerMinute(speed int) int {
-	panic("not implemented")
+	return int(CalculateProductionRatePerHour(speed) / 60)
 }
 
 // successRate is used to calculate the ratio of an item being created without

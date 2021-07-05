@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for numbers exercise",
+  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory.",
   "authors": [
     "DavyJ0nes"
   ],
@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "numbers.go"
+      "car_factory.go"
     ],
     "test": [
-      "numbers_test.go"
+      "car_factory_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

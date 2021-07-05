@@ -99,6 +99,20 @@
         "status": "active"
       },
       {
+        "slug": "car-factory",
+        "name": "Car Factory",
+        "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
+        "concepts": [
+          "numbers",
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "constants",
+          "conditionals-if"
+        ],
+        "status": "active"
+      },
+      {
         "slug": "gross-store",
         "name": "Gross Store",
         "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
@@ -1725,9 +1739,19 @@
       "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
     },
     {
+      "name": "Numbers",
+      "slug": "numbers",
+      "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+    },
+    {
       "name": "Structs",
       "slug": "structs",
       "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd"
+    },
+    {
+      "name": "Type Conversion",
+      "slug": "type-conversion",
+      "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
     }
   ],
   "key_features": [
