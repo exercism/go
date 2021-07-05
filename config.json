@@ -166,6 +166,20 @@
         "status": "wip"
       },
       {
+        "name": "Card Tricks",
+        "slug": "card-tricks",
+        "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
+        "concepts": [
+          "slices"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals-if",
+          "iteration"
+        ],
+        "status": "beta"
+      },
+      {
         "name": "Chessboard",
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
@@ -1740,6 +1754,11 @@
       "name": "Numbers",
       "slug": "numbers",
       "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+    },
+    {
+      "name": "Slices",
+      "slug": "slices",
+      "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
     },
     {
       "name": "Structs",

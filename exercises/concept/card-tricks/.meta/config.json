@@ -1,14 +1,14 @@
 {
-  "blurb": "TODO: add blurb for slices exercise",
+  "blurb": "Learn about slices by doing card tricks.",
   "authors": [
     "tehsphinx"
   ],
   "files": {
     "solution": [
-      "slices.go"
+      "card_tricks.go"
     ],
     "test": [
-      "slices_test.go"
+      "card_tricks_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
