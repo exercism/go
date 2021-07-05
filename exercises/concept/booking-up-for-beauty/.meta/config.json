@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb for time exercise",
+  "blurb": "Learn about time by handling appointments in a beauty salon.",
   "authors": [
     "jamessouth"
   ],
@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "time.go"
+      "booking_up_for_beauty.go"
     ],
     "test": [
-      "time_test.go"
+      "booking_up_for_beauty_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

@@ -1,4 +1,4 @@
-package _meta
+package booking
 
 import (
 	"fmt"

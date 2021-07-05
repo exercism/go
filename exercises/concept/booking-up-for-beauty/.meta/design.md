@@ -26,4 +26,3 @@ The goal of this exercise is to teach the student how to use time in Go.
 - `basics`
 - `numbers`
 - `strings`
-- `functions`

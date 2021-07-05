@@ -111,6 +111,20 @@
         "status": "beta"
       },
       {
+        "slug": "Booking up for Beauty",
+        "name": "Blackjack",
+        "uuid": "57ae07c8-8d7a-4f16-bd25-81a9646dac39",
+        "concepts": [
+          "time"
+        ],
+        "prerequisites": [
+          "basics",
+          "strings",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
         "slug": "car-factory",
         "name": "Car Factory",
         "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
@@ -1799,6 +1813,11 @@
       "slug": "structs",
       "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd"
     },
+    {
+      "name": "Time",
+      "slug": "time",
+      "uuid": "4673000c-7822-4252-88c5-723f47d6ad06"
+    },,
     {
       "name": "Type Conversion",
       "slug": "type-conversion",
