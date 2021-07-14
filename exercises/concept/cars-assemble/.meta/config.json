@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "car_factory.go"
+      "cars_assemble.go"
     ],
     "test": [
-      "car_factory_test.go"
+      "cars_assemble_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
