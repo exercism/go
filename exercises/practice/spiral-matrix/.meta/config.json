@@ -1,6 +1,16 @@
 {
   "blurb": " Given the size, return a square matrix of numbers in spiral order.",
-  "authors": [],
+  "authors": [
+    "magic003"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "spiral_matrix.go"

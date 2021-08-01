@@ -1,6 +1,28 @@
 {
   "blurb": "Refactor a tree building algorithm.",
-  "authors": [],
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "Daveed9",
+    "devillexio",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "jeffguorg",
+    "kytrinyx",
+    "leenipper",
+    "object88",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tbrisker",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "tree_building.go"

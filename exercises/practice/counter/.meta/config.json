@@ -1,6 +1,17 @@
 {
   "blurb": "Design a test suite for a line/letter/character counter tool.",
-  "authors": [],
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "kytrinyx",
+    "petertseng",
+    "robphoenix",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "counter.go"

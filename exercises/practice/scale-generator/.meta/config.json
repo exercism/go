@@ -1,6 +1,17 @@
 {
   "blurb": "Generate musical scales, given a starting note and a set of intervals. ",
-  "authors": [],
+  "authors": [
+    "sunilgopinath"
+  ],
+  "contributors": [
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "scale_generator.go"

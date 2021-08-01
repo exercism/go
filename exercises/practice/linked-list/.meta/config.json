@@ -1,6 +1,18 @@
 {
   "blurb": "Implement a doubly linked list",
-  "authors": [],
+  "authors": [
+    "exklamationmark"
+  ],
+  "contributors": [
+    "bitfield",
+    "brugnara",
+    "ekingery",
+    "hilary",
+    "Hiyorimi",
+    "kytrinyx",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "linked_list.go"

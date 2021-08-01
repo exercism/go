@@ -1,6 +1,25 @@
 {
   "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "homelinen",
+    "JensChrG",
+    "juergenhoetzel",
+    "kytrinyx",
+    "leenipper",
+    "parroty",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "bank_account.go"

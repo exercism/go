@@ -1,6 +1,21 @@
 {
   "blurb": "The classical introductory exercise. Just say \"Hello, World!\"",
-  "authors": [],
+  "authors": [
+    "k4rtik"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "SebastianKristof",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "hello_world.go"

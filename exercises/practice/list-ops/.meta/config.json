@@ -1,6 +1,17 @@
 {
   "blurb": "Implement basic list operations",
-  "authors": [],
+  "authors": [
+    "ljagged"
+  ],
+  "contributors": [
+    "bitfield",
+    "Daveed9",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ivenk",
+    "leenipper"
+  ],
   "files": {
     "solution": [
       "list_ops.go"

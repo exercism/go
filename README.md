@@ -60,7 +60,7 @@ exercise, it would have an entry below the core exercises that might look like:
   "topics": [
     "conditionals"
   ]
-},
+}
 ```
 
 See [Exercise Configuration](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)

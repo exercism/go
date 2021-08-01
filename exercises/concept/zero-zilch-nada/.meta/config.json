@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about zero values.",
+  "authors": [
+    "jamessouth"
+  ],
+  "contributors": [
+    "tehsphinx"
+  ],
+  "files": {
+    "solution": [
+      "zero_zilch_nada.go"
+    ],
+    "test": [
+      "zero_zilch_nada_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

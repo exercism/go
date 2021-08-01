@@ -1,6 +1,23 @@
 {
   "blurb": "Create a program to solve a word search puzzle.",
-  "authors": [],
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "Akasurde",
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys"
+  ],
   "files": {
     "solution": [
       "word_search.go"

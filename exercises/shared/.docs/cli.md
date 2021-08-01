@@ -7,7 +7,7 @@ Initially, only the first test will be enabled. This is to encourage you to solv
 
 Once none of the tests are skipped and they are all passing, you can submit your solution by opening a command prompt in the exercise's directory and running the using [`exercism submit` command][docs-exercism-cli].
 
-For further reading there is an introduction to [testing in Go][testing-in-go] including on how to write tests youself.
+For further reading there is an introduction to [testing in Go][testing-in-go] including on how to write tests yourself.
 
 [docs-go-test]: https://golang.org/cmd/go/#hdr-Test_packages
 [docs-exercism-cli]: https://exercism.io/cli

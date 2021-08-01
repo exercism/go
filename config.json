@@ -10,10 +10,13 @@
   },
   "blurb": "Go is a compiled, open source programming language with a small, consistent syntax, a powerful standard library, and fantastic tooling. It's a great fit for web backends and command-line tools.",
   "version": 3,
-  "ignore_pattern": "example(?!.*test)",
   "online_editor": {
     "indent_style": "tab",
-    "indent_size": 4
+    "indent_size": 4,
+    "highlightjs_language": "golang"
+  },
+  "test_runner": {
+    "average_run_time": 3.0
   },
   "files": {
     "solution": [
@@ -39,7 +42,179 @@
           "basics"
         ],
         "prerequisites": [],
-        "status": "active"
+        "status": "beta"
+      },
+      {
+        "slug": "annalyns-infiltration",
+        "name": "Annalyn's Infiltration",
+        "uuid": "8833b0c0-1008-4426-8225-1dc2b4852d52",
+        "concepts": [
+          "booleans"
+        ],
+        "prerequisites": [
+          "basics"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "party-robot",
+        "name": "Party Robot",
+        "uuid": "b3594c44-1a68-489d-a446-16369247c84c",
+        "concepts": [
+          "strings"
+        ],
+        "prerequisites": [
+          "basics"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "weather-forecast",
+        "name": "Weather Forecast",
+        "uuid": "63415c33-658e-4722-bd81-0b80060aecc9",
+        "concepts": [
+          "comments"
+        ],
+        "prerequisites": [
+          "basics"
+        ],
+        "status": "wip"
+      },
+      {
+        "slug": "savings-account",
+        "name": "Savings Account",
+        "uuid": "13f6b5ab-f4bb-453a-a6a9-50132a1d4885",
+        "concepts": [
+          "constants"
+        ],
+        "prerequisites": [
+          "basics",
+          "comments",
+          "strings"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "blackjack",
+        "name": "Blackjack",
+        "uuid": "628308fc-34e9-46ae-9661-9e0ebceeef34",
+        "concepts": [
+          "conditionals-if",
+          "conditionals-switch"
+        ],
+        "prerequisites": [
+          "booleans",
+          "strings",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "booking-up-for-beauty",
+        "name": "Booking up for Beauty",
+        "uuid": "57ae07c8-8d7a-4f16-bd25-81a9646dac39",
+        "concepts": [
+          "time"
+        ],
+        "prerequisites": [
+          "basics",
+          "strings",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "cars-assemble",
+        "name": "Cars Assemble",
+        "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
+        "concepts": [
+          "numbers",
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "constants",
+          "conditionals-if"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "gross-store",
+        "name": "Gross Store",
+        "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",
+        "concepts": [
+          "maps"
+        ],
+        "prerequisites": [
+          "basics",
+          "conditionals-if",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
+        "name": "Need For Speed",
+        "slug": "need-for-speed",
+        "uuid": "b165c8b4-429f-4e9f-b157-a636d22b217f",
+        "concepts": [
+          "structs"
+        ],
+        "prerequisites": [
+          "conditionals-if",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
+        "name": "Elon's Toys",
+        "slug": "elons-toys",
+        "uuid": "18fb2aa2-9748-481e-a321-6b6844c1deb6",
+        "concepts": [
+          "methods"
+        ],
+        "prerequisites": [
+          "structs",
+          "pointers"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "deep-thought",
+        "name": "Deep Thought",
+        "uuid": "097176e2-5024-44e7-ab86-9bc0ec245347",
+        "concepts": [
+          "errors"
+        ],
+        "prerequisites": [
+          "constants",
+          "types"
+        ],
+        "status": "wip"
+      },
+      {
+        "name": "Card Tricks",
+        "slug": "card-tricks",
+        "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
+        "concepts": [
+          "slices"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals-if",
+          "iteration"
+        ],
+        "status": "beta"
+      },
+      {
+        "name": "Logs, Logs, Logs!",
+        "slug": "logs-logs-logs",
+        "uuid": "81230a7c-4e47-4a4d-a004-14eae32ec914",
+        "concepts": [
+          "strings-package"
+        ],
+        "prerequisites": [
+          "slices"
+        ],
+        "status": "beta"
       },
       {
         "name": "Chessboard",
@@ -49,13 +224,25 @@
           "range-iteration"
         ],
         "prerequisites": [
-          "basics",
-          "conditionals",
-          "functions",
+          "conditionals-if",
           "maps",
-          "slices"
+          "slices",
+          "iteration"
         ],
-        "status": "active"
+        "status": "beta"
+      },
+      {
+        "name": "Zero, Zilch, Nada",
+        "slug": "zero-zilch-nada",
+        "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
+        "concepts": [
+          "nil",
+          "zero-values"
+        ],
+        "prerequisites": [
+          "types"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
@@ -483,7 +670,7 @@
       {
         "slug": "run-length-encoding",
         "name": "Run Length Encoding",
-        "uuid": "29ea064e-9d2a-11e7-abc4-cec278b6b50a",
+        "uuid": "a361d183-d920-42b4-8f75-50d40982b785",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -1280,7 +1467,7 @@
       {
         "slug": "simple-linked-list",
         "name": "Simple Linked List",
-        "uuid": "408f235e-f1ce-11e7-8c3f-9a214cf093ae",
+        "uuid": "cc196d9d-bbd7-4dab-9dc2-b67d7ec8d4b2",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -1292,7 +1479,7 @@
       {
         "slug": "alphametics",
         "name": "Alphametics",
-        "uuid": "6b313720-104a-46c2-8290-4b4af121101f ",
+        "uuid": "132ae8aa-eede-4254-b2d1-3c36d6315f70",
         "practices": [],
         "prerequisites": [],
         "difficulty": 5,
@@ -1566,8 +1753,97 @@
     {
       "name": "Basics",
       "slug": "basics",
-      "uuid": "13A25814-67F6-44BC-A3FE-6DD240549701",
-      "blurb": "Introduction to Packages, Functions, and Variables"
+      "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626"
+    },
+    {
+      "name": "Booleans",
+      "slug": "booleans",
+      "uuid": "e3942921-34ec-41eb-a999-a5d85a6623fd"
+    },
+    {
+      "name": "Comments",
+      "slug": "comments",
+      "uuid": "9ee93eab-b413-442c-b7fb-76bf044eea2d"
+    },
+    {
+      "name": "Conditionals If",
+      "slug": "conditionals-if",
+      "uuid": "b3731323-f5bb-4b38-931c-2d734667bf8d"
+    },
+    {
+      "name": "Conditionals Switch",
+      "slug": "conditionals-switch",
+      "uuid": "6a4103e0-e7a9-427e-b1bd-716870580c45"
+    },
+    {
+      "name": "Constants",
+      "slug": "constants",
+      "uuid": "b56f68de-44ef-4bd4-8b14-2c50b2a366dd"
+    },
+    {
+      "name": "Errors",
+      "slug": "errors",
+      "uuid": "a960da78-c940-4725-8069-929f42564cdb"
+    },
+    {
+      "name": "Iteration",
+      "slug": "iteration",
+      "uuid": "e18ca160-bbb8-4cd0-882a-0e67f1e60b47"
+    },
+    {
+      "name": "Maps",
+      "slug": "maps",
+      "uuid": "625aa065-b006-4fc5-b276-28e048376b46"
+    },
+    {
+      "name": "Methods",
+      "slug": "methods",
+      "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
+    },
+    {
+      "name": "Nil",
+      "slug": "nil",
+      "uuid": "c4d16fac-3e46-41ac-adf8-ce8f3f73f745"
+    },
+    {
+      "name": "Numbers",
+      "slug": "numbers",
+      "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+    },
+    {
+      "name": "Slices",
+      "slug": "slices",
+      "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
+    },
+    {
+      "name": "Strings",
+      "slug": "strings",
+      "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7"
+    },
+    {
+      "name": "Strings Package",
+      "slug": "strings-package",
+      "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c"
+    },
+    {
+      "name": "Structs",
+      "slug": "structs",
+      "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd"
+    },
+    {
+      "name": "Time",
+      "slug": "time",
+      "uuid": "4673000c-7822-4252-88c5-723f47d6ad06"
+    },
+    {
+      "name": "Type Conversion",
+      "slug": "type-conversion",
+      "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
+    },
+    {
+      "name": "Zero Values",
+      "slug": "zero-values",
+      "uuid": "a50b4ed6-6198-4ab2-8075-3770900db4c9"
     }
   ],
   "key_features": [

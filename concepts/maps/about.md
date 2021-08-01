@@ -12,7 +12,7 @@ map[KeyType]ElementType
 
 _`KeyType` must be any [comparable type][gospec-comparable], while `ElementType` can be any valid type in go, which means you can store anything from primitive variable to a slice._
 
-It's important to remember that `map` in go is **unordered**, if you try to loop trough a `map` and print the element, you might surprize yourself seeing that your elements printed in random order (give it a try if you like).
+It's important to remember that `map` in go is **unordered**, if you try to loop trough a `map` and print the element, you might surprise yourself seeing that your elements printed in random order (give it a try if you like).
 
 It is also important to know that each key is unique, meaning that assigning the same key twice will overwrite the value of the corresponding key.
 

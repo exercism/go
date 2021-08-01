@@ -1,0 +1,80 @@
+# ----------------------------------------------------------------------------------------- #
+# These are the repository-specific labels that augment the Exercise-wide labels defined in #
+# https://github.com/exercism/org-wide-files/blob/main/global-files/.github/labels.yml.     #
+# ----------------------------------------------------------------------------------------- #
+
+- name: "README/discrepancy"
+  description: ""
+  color: "d93f0b"
+
+- name: "README/inadequate"
+  description: ""
+  color: "d93f0b"
+
+- name: "bug"
+  description: ""
+  color: "fc2929"
+
+- name: "dependencies"
+  description: "Pull requests that update a dependency file"
+  color: "0366d6"
+
+- name: "duplicate"
+  description: ""
+  color: "cccccc"
+
+- name: "enhancement"
+  description: ""
+  color: "84b6eb"
+
+- name: "good first issue"
+  description: ""
+  color: "7057ff"
+
+- name: "hacktoberfest"
+  description: ""
+  color: "cc8744"
+
+- name: "help wanted"
+  description: ""
+  color: "5319e7"
+
+- name: "in-progress"
+  description: ""
+  color: "9FDB12"
+
+- name: "invalid"
+  description: ""
+  color: "e6e6e6"
+
+- name: "on hold"
+  description: ""
+  color: "d4c5f9"
+
+- name: "per-exercise"
+  description: ""
+  color: "0052cc"
+
+- name: "pinned"
+  description: ""
+  color: "fef2c0"
+
+- name: "problem-spec"
+  description: "Needs updating to pass updated problem specifications"
+  color: "0846af"
+
+- name: "question"
+  description: ""
+  color: "cc317c"
+
+- name: "test suite"
+  description: ""
+  color: "f9d0c4"
+
+- name: "v3"
+  description: ""
+  color: "13B0D1"
+
+- name: "wontfix"
+  description: ""
+  color: "ffffff"

@@ -1,6 +1,19 @@
 {
   "blurb": "Determine if a number is an Armstrong number",
-  "authors": [],
+  "authors": [
+    "ilmanzo"
+  ],
+  "contributors": [
+    "bitfield",
+    "da-edra",
+    "Daveed9",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "armstrong_numbers.go"

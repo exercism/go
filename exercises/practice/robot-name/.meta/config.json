@@ -1,6 +1,24 @@
 {
   "blurb": "Manage robot factory settings.",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "h311ion",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "papahmsolo",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen",
+    "waynr"
+  ],
   "files": {
     "solution": [
       "robot_name.go"

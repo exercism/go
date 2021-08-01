@@ -1,6 +1,20 @@
 {
   "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",
   "authors": [],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "house.go"

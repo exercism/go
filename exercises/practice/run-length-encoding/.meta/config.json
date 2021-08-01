@@ -1,6 +1,17 @@
 {
   "blurb": "Implement run-length encoding and decoding.",
-  "authors": [],
+  "authors": [
+    "MatForsberg"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "run_length_encoding.go"

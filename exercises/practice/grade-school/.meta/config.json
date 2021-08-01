@@ -1,6 +1,22 @@
 {
   "blurb": "Given students' names along with the grade that they are in, create a roster for the school",
-  "authors": [],
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "jcbwlkr",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
   "files": {
     "solution": [
       "grade_school.go"

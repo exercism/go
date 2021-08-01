@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory.",
+  "authors": [
+    "DavyJ0nes"
+  ],
+  "contributors": [
+    "tehsphinx"
+  ],
+  "files": {
+    "solution": [
+      "cars_assemble.go"
+    ],
+    "test": [
+      "cars_assemble_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

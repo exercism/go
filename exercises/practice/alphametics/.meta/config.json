@@ -1,6 +1,15 @@
 {
   "blurb": "Write a function to solve alphametics puzzles.",
-  "authors": [],
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "sebito91"
+  ],
   "files": {
     "solution": [
       "alphametics.go"
