@@ -1,34 +1,6 @@
 # Introduction
 
-Conditionals in Go are similar to conditionals in other languages. The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`. Conditionals are often used as flow control mechanisms to check for various conditions.
-
-## Conditionals If
-
-For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
-
-```go
-var value string
-
-if value == "val" {
-    // conditional code
-}
-```
-
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
-
-```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
-} else {
-    // default code
-}
-```
-
-## Conditionals Switch
-
-Go also provides a `switch` statement for more advanced scenarios.
+Instead of using an `if` statement for conditional logic, Go also provides a `switch` statement for more advanced scenarios.
 
 ```go
 var value string

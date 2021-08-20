@@ -99,13 +99,13 @@
         "name": "Blackjack",
         "uuid": "628308fc-34e9-46ae-9661-9e0ebceeef34",
         "concepts": [
-          "conditionals-if",
           "conditionals-switch"
         ],
         "prerequisites": [
           "booleans",
           "strings",
-          "numbers"
+          "numbers",
+          "conditionals-if"
         ],
         "status": "beta"
       },
@@ -129,11 +129,11 @@
         "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
         "concepts": [
           "numbers",
-          "type-conversion"
+          "type-conversion",
+          "conditionals-if"
         ],
         "prerequisites": [
-          "constants",
-          "conditionals-if"
+          "constants"
         ],
         "status": "beta"
       },
