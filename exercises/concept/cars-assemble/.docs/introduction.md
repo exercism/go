@@ -45,6 +45,32 @@ fmt.Printf("f is of type: %s\n", reflect.TypeOf(f))
 // Output: f is of type: float64
 ```
 
+## Conditionals If
+
+Conditionals in Go are similar to conditionals in other languages. The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`. Conditionals are often used as flow control mechanisms to check for various conditions.
+
+For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
+
+```go
+var value string
+
+if value == "val" {
+    // conditional code
+}
+```
+
+In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
+
+```go
+if value == "val" {
+    // conditional code
+} else if value == "val2" {
+    // conditional code
+} else {
+    // default code
+}
+```
+
 [go-builtins]: https://github.com/golang/go/blob/master/src/builtin/builtin.go
 [do-understanding-types]: https://www.digitalocean.com/community/tutorials/understanding-data-types-in-go
 [arden-understanding-types]: https://www.ardanlabs.com/blog/2013/07/understanding-type-in-go.html
