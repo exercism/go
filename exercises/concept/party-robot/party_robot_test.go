@@ -9,7 +9,7 @@ func TestWelcome(t *testing.T) {
 		want        string
 	}{
 		{
-			description: "Greed the guest with a welcoming message",
+			description: "Greet the guest with a welcoming message",
 			name:        "Christiane",
 			want:        "Welcome to my party, Christiane!",
 		},
@@ -57,7 +57,7 @@ func TestAssignTable(t *testing.T) {
 		want          string
 	}{
 		{
-			description:   "With Happy Birthday using the given name and age of the person",
+			description:   "Greet the guest and give them directions to their seat",
 			name:          "Christiane",
 			direction:     "on the left",
 			tableNumber:   27,
