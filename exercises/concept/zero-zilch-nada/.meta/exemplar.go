@@ -1,46 +1,46 @@
 package zero
 
-// EmptyBool returns an empty (zero value) bool
-func EmptyBool() bool {
+// ZeroBool returns a bool set to its zero value.
+func ZeroBool() bool {
 	return false
 }
 
-// EmptyInt returns an empty (zero value) int
-func EmptyInt() int {
+// ZeroInt returns an int set to its zero value.
+func ZeroInt() int {
 	return 0
 }
 
-// EmptyString returns an empty (zero value) string
-func EmptyString() string {
+// ZeroString returns a string set to its zero value.
+func ZeroString() string {
 	return ""
 }
 
-// EmptyFunc returns an empty (zero value) func
-func EmptyFunc() func() {
+// ZeroFunc returns a func set to its zero value.
+func ZeroFunc() func() {
 	return nil
 }
 
-// EmptyPointer returns an empty (zero value) pointer
-func EmptyPointer() *int {
+// ZeroPointer returns a pointer set to its zero value.
+func ZeroPointer() *int {
 	return nil
 }
 
-// EmptyMap returns an empty (zero value) map
-func EmptyMap() map[int]int {
+// ZeroMap returns a map set to its zero value.
+func ZeroMap() map[int]int {
 	return nil
 }
 
-// EmptySlice returns an empty (zero value) slice
-func EmptySlice() []int {
+// ZeroSlice returns a slice set to its zero value.
+func ZeroSlice() []int {
 	return nil
 }
 
-// EmptyChannel returns an empty (zero value) channel
-func EmptyChannel() chan int {
+// ZeroChannel returns a channel set to its zero value.
+func ZeroChannel() chan int {
 	return nil
 }
 
-// EmptyInterface returns an empty (zero value) interface
-func EmptyInterface() interface{} {
+// ZeroInterface returns an interface set to its zero value.
+func ZeroInterface() interface{} {
 	return nil
 }

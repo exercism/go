@@ -5,137 +5,137 @@ import (
 	"testing"
 )
 
-func TestEmptyInterface(t *testing.T) {
+func TestZeroInterface(t *testing.T) {
 	test := struct {
 		name string
 		want interface{}
 	}{
-		"EmptyInterface",
+		"ZeroInterface",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyInterface(); got != test.want {
-			t.Errorf("EmptyInterface() = %v, want %v", got, test.want)
+		if got := ZeroInterface(); got != test.want {
+			t.Errorf("ZeroInterface() = %v, want %v", got, test.want)
 		}
 	})
 }
 
-func TestEmptyMap(t *testing.T) {
+func TestZeroMap(t *testing.T) {
 	test := struct {
 		name string
 		want map[int]int
 	}{
-		"EmptyMap",
+		"ZeroMap",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyMap(); got != nil {
-			t.Errorf("EmptyMap() = %v, want %v", got, test.want)
+		if got := ZeroMap(); got != nil {
+			t.Errorf("ZeroMap() = %v, want %v", got, test.want)
 		}
 	})
 }
 
-func TestEmptySlice(t *testing.T) {
+func TestZeroSlice(t *testing.T) {
 	test := struct {
 		name string
 		want []int
 	}{
-		"EmptySlice",
+		"ZeroSlice",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptySlice(); got != nil {
-			t.Errorf("EmptySlice() = %p, want %p", got, test.want)
+		if got := ZeroSlice(); got != nil {
+			t.Errorf("ZeroSlice() = %p, want %p", got, test.want)
 		}
 	})
 }
 
-func TestEmptyString(t *testing.T) {
+func TestZeroString(t *testing.T) {
 	test := struct {
 		name string
 		want string
 	}{
-		"EmptyString",
+		"ZeroString",
 		"",
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyString(); got != test.want {
-			t.Errorf("EmptyString() = %s, want %s", got, test.want)
+		if got := ZeroString(); got != test.want {
+			t.Errorf("ZeroString() = %s, want %s", got, test.want)
 		}
 	})
 }
 
-func TestEmptyChannel(t *testing.T) {
+func TestZeroChannel(t *testing.T) {
 	test := struct {
 		name string
 		want chan int
 	}{
-		"EmptyChannel",
+		"ZeroChannel",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyChannel(); got != test.want {
-			t.Errorf("EmptyChannel() = %v, want %v", got, test.want)
+		if got := ZeroChannel(); got != test.want {
+			t.Errorf("ZeroChannel() = %v, want %v", got, test.want)
 		}
 	})
 }
 
-func TestEmptyPointer(t *testing.T) {
+func TestZeroPointer(t *testing.T) {
 	test := struct {
 		name string
 		want *int
 	}{
-		"EmptyPointer",
+		"ZeroPointer",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyPointer(); got != test.want {
-			t.Errorf("EmptyPointer() = %v, want %v", got, test.want)
+		if got := ZeroPointer(); got != test.want {
+			t.Errorf("ZeroPointer() = %v, want %v", got, test.want)
 		}
 	})
 }
 
-func TestEmptyBool(t *testing.T) {
+func TestZeroBool(t *testing.T) {
 	test := struct {
 		name string
 		want bool
 	}{
-		"EmptyBool",
+		"ZeroBool",
 		false,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyBool(); got != test.want {
-			t.Errorf("EmptyBool() = %t, want %t", got, test.want)
+		if got := ZeroBool(); got != test.want {
+			t.Errorf("ZeroBool() = %t, want %t", got, test.want)
 		}
 	})
 }
 
-func TestEmptyFunc(t *testing.T) {
+func TestZeroFunc(t *testing.T) {
 	test := struct {
 		name string
 		want func()
 	}{
-		"EmptyFunc",
+		"ZeroFunc",
 		nil,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyFunc(); !reflect.DeepEqual(got, test.want) {
-			t.Errorf("EmptyFunc() = %p, want nil", got)
+		if got := ZeroFunc(); !reflect.DeepEqual(got, test.want) {
+			t.Errorf("ZeroFunc() = %p, want nil", got)
 		}
 	})
 }
 
-func TestEmptyInt(t *testing.T) {
+func TestZeroInt(t *testing.T) {
 	test := struct {
 		name string
 		want int
 	}{
-		"EmptyInt",
+		"ZeroInt",
 		0,
 	}
 	t.Run(test.name, func(t *testing.T) {
-		if got := EmptyInt(); got != test.want {
-			t.Errorf("EmptyInt() = %d, want %d", got, test.want)
+		if got := ZeroInt(); got != test.want {
+			t.Errorf("ZeroInt() = %d, want %d", got, test.want)
 		}
 	})
 }

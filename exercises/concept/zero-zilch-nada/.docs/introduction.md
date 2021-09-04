@@ -1,12 +1,12 @@
 # Introduction
 
-## Zero Value
+Go does not have a concept of undefined for variable values. Variables declared without an explicit initial value default to the [zero value][zero_values] for their respective type.
 
-## Nil
+The zero value for primative types such as booleans, numeric types, and strings are `false`, `0`, and `""`, respectively.
 
-In Go, uninitialized variables and their elements are given default values.
+The identifier `nil`, meaning zero, is the zero value for more complex types such as pointers, interfaces, channels, maps, slices, and functions.
 
-These default values are called the zero values for their respective types:
+The following table details the zero value for Go's types.
 
 | Type      | Zero Value |
 | --------- | ---------- |
@@ -14,10 +14,54 @@ These default values are called the zero values for their respective types:
 | numeric   | 0          |
 | string    | ""         |
 | pointer   | nil        |
-| func      | nil        |
 | interface | nil        |
-| slice     | nil        |
 | channel   | nil        |
 | map       | nil        |
+| slice     | nil        |
+| func      | nil        |
 
-The identifier `nil`, meaning zero, is the zero value for the more complex types in Go.
+## Zero Value Construction
+
+The `var` keyword can be used to construct any type to its zero value:
+
+```go
+func main() {
+  var myBool bool
+  fmt.Println(myBool)
+}
+```
+
+```go
+func main() {
+  var myMap map[int]int
+  fmt.Println(myMap)
+}
+```
+
+## Comparing Types to Nil
+
+Comparing a type whose zero value is not `nil` to `nil` is an error:
+
+```go
+func main() {
+  var myString string
+
+  if myString != nil { // invalid operation: myString != nil (mismatched types string and nil)
+    fmt.Println(myString)
+  }
+}
+```
+
+However, comparing a type whose zero value is `nil` to `nil` is acceptable:
+
+```go
+func main() {
+  var mySlice []int
+
+  if mySlice != nil {
+    fmt.Println(mySlice)
+  }
+}
+```
+
+[zero_values]: https://golang.org/ref/spec#The_zero_value

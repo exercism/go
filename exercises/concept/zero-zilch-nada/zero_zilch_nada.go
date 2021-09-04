@@ -1,46 +1,46 @@
 package zero
 
-// EmptyBool returns an empty (zero value) bool
-func EmptyBool() bool {
-	panic("please implement the EmptyBool function")
+// ZeroBool returns a bool set to its zero value.
+func ZeroBool() bool {
+	panic("please implement the ZeroBool function")
 }
 
-// EmptyInt returns an empty (zero value) int
-func EmptyInt() int {
-	panic("please implement the EmptyInt function")
+// ZeroInt returns an int set to its zero value.
+func ZeroInt() int {
+	panic("please implement the ZeroInt function")
 }
 
-// EmptyString returns an empty (zero value) string
-func EmptyString() string {
-	panic("please implement the EmptyString function")
+// ZeroString returns a string set to its zero value.
+func ZeroString() string {
+	panic("please implement the ZeroString function")
 }
 
-// EmptyFunc returns an empty (zero value) func
-func EmptyFunc() func() {
-	panic("please implement the EmptyFunc function")
+// ZeroFunc returns a func set to its zero value.
+func ZeroFunc() func() {
+	panic("please implement the ZeroFunc function")
 }
 
-// EmptyPointer returns an empty (zero value) pointer
-func EmptyPointer() *int {
-	panic("please implement the EmptyPointer function")
+// ZeroPointer returns a pointer set to its zero value
+func ZeroPointer() *int {
+	panic("please implement the ZeroPointer function")
 }
 
-// EmptyMap returns an empty (zero value) map
-func EmptyMap() map[int]int {
-	panic("please implement the EmptyMap function")
+// ZeroMap returns a map set to its zero value.
+func ZeroMap() map[int]int {
+	panic("please implement the ZeroMap function")
 }
 
-// EmptySlice returns an empty (zero value) slice
-func EmptySlice() []int {
-	panic("please implement the EmptySlice function")
+// ZeroSlice returns a slice set to its zero value.
+func ZeroSlice() []int {
+	panic("please implement the ZeroSlice function")
 }
 
-// EmptyChannel returns an empty (zero value) channel
-func EmptyChannel() chan int {
-	panic("please implement the EmptyChannel function")
+// ZeroChannel returns a channel set to its zero value.
+func ZeroChannel() chan int {
+	panic("please implement the ZeroChannel function")
 }
 
-// EmptyInterface returns an empty (zero value) interface
-func EmptyInterface() interface{} {
-	panic("please implement the EmptyInterface function")
+// ZeroInterface returns an interface set to its zero value.
+func ZeroInterface() interface{} {
+	panic("please implement the ZeroInterface function")
 }

@@ -9,39 +9,39 @@
     }
     ```
 
-## 1. Return an empty bool
+## 1. Return a bool set to its zero value
 
 - The zero value for the bool type is `false`.
 
-## 2. Return an empty int
+## 2. Return an int set to its zero value
 
-- The zero value for numeric types is 0.
+- The zero value for numeric types is `0`.
 
-## 3. Return an empty string
+## 3. Return a string set to its zero value
 
-- The zero value for the string type is the empty string "".
+- The zero value for the string type is the empty string `""`.
 
-## 4. Return an empty func
+## 4. Return a func set to its zero value
 
 - The zero value for the func type is `nil`.
 
-## 5. Return an empty pointer
+## 5. Return a pointer set to its zero value
 
 - The zero value for the pointer type is `nil`.
 
-## 6. Return an empty map
+## 6. Return a map set to its zero value
 
 - The zero value for the map type is `nil`.
 
-## 7. Return an empty slice
+## 7. Return a slice set to its zero value
 
 - The zero value for the slice type is `nil`.
 
-## 8. Return an empty channel
+## 8. Return a channel set to its zero value
 
 - The zero value for the channel type is `nil`.
 
-## 9. Return an empty interface
+## 9. Return an interface set to its zero value
 
 - The zero value for the interface type is `nil`.
 
