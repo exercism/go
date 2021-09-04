@@ -9,7 +9,7 @@ func TestWelcome(t *testing.T) {
 		want        string
 	}{
 		{
-			description: "Greed the guest with a welcoming message",
+			description: "Greet the guest with a welcoming message",
 			name:        "Christiane",
 			want:        "Welcome to my party, Christiane!",
 		},
@@ -17,7 +17,7 @@ func TestWelcome(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
 			if got := Welcome(tt.name); got != tt.want {
-				t.Errorf("Welcome(%s) = %d, want %d", tt.name, got, tt.want)
+				t.Errorf("Welcome(%s) = %s, want %s", tt.name, got, tt.want)
 			}
 		})
 	}
@@ -40,7 +40,7 @@ func TestHappyBirthday(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
 			if got := HappyBirthday(tt.name, tt.age); got != tt.want {
-				t.Errorf("HappyBirthday(%s) = %d, want %d", tt.name, tt.age, got, tt.want)
+				t.Errorf("HappyBirthday(%s, %d) = %s, want %s", tt.name, tt.age, got, tt.want)
 			}
 		})
 	}
@@ -52,24 +52,24 @@ func TestAssignTable(t *testing.T) {
 		name          string
 		direction     string
 		tableNumber   int
-		distance      float32
+		distance      float64
 		neighbourName string
 		want          string
 	}{
 		{
-			description:   "With Happy Birthday using the given name and age of the person",
+			description:   "Greet the guest and give them directions to their seat",
 			name:          "Christiane",
 			direction:     "on the left",
 			tableNumber:   27,
 			distance:      23.7834298,
 			neighbourName: "Frank",
-			want:          "Welcome to my party, Christiane! You have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here. You will be sitting next to Frank.",
+			want:          "Welcome to my party, Christiane!\nYou have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.\nYou will be sitting next to Frank.",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
-			if got := AssignTable(tt.name, tt.tableNumber, tt.direction, tt.distance, tt.neighbourName); got != tt.want {
-				t.Errorf("AssignTable(%s,%s,%s,%s) = %d, want %d", tt.name, tt.tableNumber, tt.direction, tt.distance, tt.neighbourName, got, tt.want)
+			if got := AssignTable(tt.name, tt.tableNumber, tt.neighbourName, tt.direction, tt.distance); got != tt.want {
+				t.Errorf("AssignTable(%s,%d,%s,%s,%f) = %s, want %s", tt.name, tt.tableNumber, tt.neighbourName, tt.direction, tt.distance, got, tt.want)
 			}
 		})
 	}
