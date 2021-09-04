@@ -20,7 +20,7 @@ func ZeroFunc() func() {
 	panic("please implement the ZeroFunc function")
 }
 
-// ZeroPointer returns a pointer set to its zero value
+// ZeroPointer returns a pointer set to its zero value.
 func ZeroPointer() *int {
 	panic("please implement the ZeroPointer function")
 }
