@@ -89,7 +89,6 @@
         ],
         "prerequisites": [
           "basics",
-          "comments",
           "strings"
         ],
         "status": "beta"
