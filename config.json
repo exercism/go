@@ -171,8 +171,7 @@
           "methods"
         ],
         "prerequisites": [
-          "structs",
-          "pointers"
+          "structs"
         ],
         "status": "beta"
       },
@@ -184,8 +183,7 @@
           "errors"
         ],
         "prerequisites": [
-          "constants",
-          "types"
+          "constants"
         ],
         "status": "wip"
       },
@@ -198,8 +196,7 @@
         ],
         "prerequisites": [
           "numbers",
-          "conditionals-if",
-          "iteration"
+          "conditionals-if"
         ],
         "status": "beta"
       },
@@ -225,8 +222,7 @@
         "prerequisites": [
           "conditionals-if",
           "maps",
-          "slices",
-          "iteration"
+          "slices"
         ],
         "status": "beta"
       },
@@ -239,7 +235,7 @@
           "zero-values"
         ],
         "prerequisites": [
-          "types"
+          "maps"
         ],
         "status": "beta"
       }
