@@ -1,8 +1,11 @@
 package cars
 
 import (
+	"math"
 	"testing"
 )
+
+const FloatEqualityThreshold = 1e-9
 
 func TestCalculateProductionRatePerHour(t *testing.T) {
 	tests := []struct {
@@ -40,7 +43,7 @@ func TestCalculateProductionRatePerHour(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := CalculateProductionRatePerHour(tt.speed)
-			if got != tt.want {
+			if math.Abs(got-tt.want) > FloatEqualityThreshold {
 				t.Errorf(
 					"CalculateProductionRatePerHour(%d) = %f, want %f",
 					tt.speed,
