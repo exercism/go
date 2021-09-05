@@ -40,7 +40,8 @@ To implement this, you'll need to:
 
 ```go
 bill := NewBill()
-ok := AddItem(bill, "carrot", "dozen")
+units := Units()
+ok := AddItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
 // Output: true or false
 ```
@@ -59,7 +60,8 @@ To implement this, you'll need to:
 
 ```go
 bill := NewBill()
-ok := RemoveItem(bill, "carrot", "dozen")
+units := Units()
+ok := RemoveItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
 // Output: true or false
 ```
