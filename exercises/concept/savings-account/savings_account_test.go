@@ -36,11 +36,12 @@ func TestGetDaysPerYear(t *testing.T) {
 
 func TestGetMonth(t *testing.T) {
 	tests := map[string]struct {
-		arg, want int
+		arg string
+		want int
 	}{
-		"GetMonth(Jan)": {arg: Jan, want: 1},
-		"GetMonth(Mar)": {arg: Mar, want: 3},
-		"GetMonth(Oct)": {arg: Oct, want: 10},
+		"GetMonth(Jan)": {arg: "Jan", want: 1},
+		"GetMonth(Mar)": {arg: "Mar", want: 3},
+		"GetMonth(Oct)": {arg: "Oct", want: 10},
 	}
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
