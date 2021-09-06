@@ -17,7 +17,7 @@ func GetDaysPerYear() int {
 // Jan-Dec have values of 1-12
 
 // GetMonth returns the value for the given month
-func GetMonth(month int) int {
+func GetMonth(month string) int {
 	panic("Please use a block and the Go enumerator in the outer scope to create twelve consecutive untyped numeric constants, one for each month of the year. January should have a value of 1. Name them 'Jan', 'Feb', 'Mar', etc., and then implement the GetMonth function")
 }
 
