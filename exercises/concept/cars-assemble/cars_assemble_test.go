@@ -1,7 +1,6 @@
 package cars
 
 import (
-	"numbers"
 	"testing"
 )
 
@@ -40,7 +39,7 @@ func TestCalculateProductionRatePerHour(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := numbers.CalculateProductionRatePerHour(tt.speed)
+			got := CalculateProductionRatePerHour(tt.speed)
 			if got != tt.want {
 				t.Errorf(
 					"CalculateProductionRatePerHour(%d) = %f, want %f",
@@ -88,7 +87,7 @@ func TestCalculateProductionRatePerMinute(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := numbers.CalculateProductionRatePerMinute(tt.speed)
+			got := CalculateProductionRatePerMinute(tt.speed)
 			if got != tt.want {
 				t.Errorf(
 					"CalculateWorkingItemsRate(%d) = %d, want %d",
