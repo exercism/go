@@ -11,16 +11,16 @@ func NewBill() map[string]int {
 }
 
 // AddItem add item to customer bill
-func AddItem(bill map[string]int, item string, unit string) bool {
+func AddItem(bill,units map[string]int, item, unit string) bool {
 	panic("Please implement the AddItem() function")
 }
 
 // RemoveItem remove item from customer bill
-func RemoveItem(bill map[string]int, item string, unit string) bool {
+func RemoveItem(bill,units map[string]int, item, unit string) bool {
 	panic("Please implement the RemoveItem() function")
 }
 
 // GetItem return the quantity of item that the customer has in his/her bill
-func GetItem(bill map[string]int, item string) (int, bool) {
+func GetItem(bill,units map[string]int, item string) (int, bool) {
 	panic("Please implement the GetItem() function")
 }
