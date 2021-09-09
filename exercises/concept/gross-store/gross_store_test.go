@@ -66,12 +66,12 @@ func TestAddItem(t *testing.T) {
 			true,
 		},
 	}
-	units := Units()
+	
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			bill := NewBill()
 			for _, item := range tt.entry {
-				ok := AddItem(bill, units, item.name, item.unit)
+				ok := AddItem(bill, item.name, item.unit)
 				if ok != tt.expected {
 					t.Errorf("Expected %t from AddItem, found %t at %v", tt.expected, ok, item.name)
 				}
@@ -147,12 +147,11 @@ func TestRemoveItem(t *testing.T) {
 		},
 	}
 
-	units := Units()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			bill := setupInitialBillData()
 			for _, item := range tt.remove {
-				ok := RemoveItem(bill, units, item.name, item.unit)
+				ok := RemoveItem(bill, item.name, item.unit)
 				if ok != tt.expected {
 					t.Errorf("Expected %t from RemoveItem, found %t at %v", tt.expected, ok, item.name)
 				}
