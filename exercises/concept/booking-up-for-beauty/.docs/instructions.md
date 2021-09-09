@@ -27,7 +27,7 @@ HasPassed("July 25, 2019 13:45:00")
 Implement the `IsAfternoonAppointment` function that takes an appointment date and checks if the appointment is in the afternoon (>= 12:00 and < 18:00):
 
 ```go
-IsAfternoonAppointment("Thursday, July 25, 2019 13:45:00:00")
+IsAfternoonAppointment("Thursday, July 25, 2019 13:45:00")
 // Output: true
 ```
 
