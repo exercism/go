@@ -1,41 +1,39 @@
 # Instructions
 
-In this exercise, we will write some functions that return the zero value for
-Go's types. You may not have seen some of the types yet. They will be
-introduced in detail in later exercises.
+In this exercise, we will write some functions that determine whether or not the function parameter is the zero value for its respective type.
 
-## 1. Return a bool set to its zero value
+## 1. Determine if a boolean is set to its zero value
 
-Adjust the `ZeroBool` function to return the zero value for a bool.
+Adjust the `IsZeroBool` function to return `true` if the passed in `bool` is set to its zero value and `false` if it is not.
 
-## 2. Return an int set to its zero value
+## 2. Determine if an integer is set to its zero value
 
-Adjust the `ZeroInt` function to return the zero value for an int.
+Adjust the `IsZeroInt` function to return `true` if the passed in `int` is set to its zero value and `false` if it is not.
 
-## 3. Return a string set to its zero value
+## 3. Determine if a string is set to its zero value
 
-Adjust the `ZeroString` function to return the zero value for a string.
+Adjust the `IsZeroString` function to return `true` if the passed in `string` is set to its zero value and `false` if it is not.
 
-## 4. Return a func set to its zero value
+## 4. Determine if a pointer is set to its zero value
 
-Adjust the `ZeroFunc` function to return the zero value for a func.
+Adjust the `IsZeroPointer` function to return `true` if the passed in pointer is set to its zero value and `false` if it is not.
 
-## 5. Return a pointer set to its zero value
+## 5. Determine if a function is set to its zero value
 
-Adjust the `ZeroPointer` function to return the zero value for a pointer.
+Adjust the `IsZeroFunc` function to return `true` if the passed in `func` is set to its zero value and `false` if it is not.
 
-## 6. Return a map set to its zero value
+## 6. Determine if an interface is set to its zero value
 
-Adjust the `ZeroMap` function to return the zero value for a map.
+Adjust the `IsZeroInterface` function to return `true` if the passed in interface is set to its zero value and `false` if it is not.
 
-## 7. Return a slice set to its zero value
+## 7. Determine if a slice is set to its zero value
 
-Adjust the `ZeroSlice` function to return the zero value for a slice.
+Adjust the `IsZeroSlice` function to return `true` if the passed in slice is set to its zero value and `false` if it is not.
 
-## 8. Return a channel set to its zero value
+## 8. Determine if a channel is set to its zero value
 
-Adjust the `ZeroChannel` function to return the zero value for a channel.
+Adjust the `IsZeroChannel` function to return `true` if the passed in channel is set to its zero value and `false` if it is not.
 
-## 9. Return an interface set to its zero value
+## 9. Determine if a map is set to its zero value
 
-Adjust the `ZeroInterface` function to return the zero value for an interface.
+Adjust the `IsZeroMap` function to return `true` if the passed in map is set to its zero value and `false` if it is not.

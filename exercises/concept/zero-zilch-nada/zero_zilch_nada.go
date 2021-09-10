@@ -1,46 +1,46 @@
 package zero
 
-// ZeroBool returns a bool set to its zero value.
-func ZeroBool() bool {
-	panic("please implement the ZeroBool function")
+// IsZeroBool determines if a given bool is set to its zero value.
+func IsZeroBool(b bool) bool {
+	panic("please implement the IsZeroBool function")
 }
 
-// ZeroInt returns an int set to its zero value.
-func ZeroInt() int {
-	panic("please implement the ZeroInt function")
+// IsZeroInt determines if a given int is set to its zero value.
+func IsZeroInt(i int) bool {
+	panic("please implement the IsZeroInt function")
 }
 
-// ZeroString returns a string set to its zero value.
-func ZeroString() string {
-	panic("please implement the ZeroString function")
+// IsZeroString determines if a given string is set to its zero value.
+func IsZeroString(s string) bool {
+	panic("please implement the IsZeroString function")
 }
 
-// ZeroFunc returns a func set to its zero value.
-func ZeroFunc() func() {
-	panic("please implement the ZeroFunc function")
+// IsZeroPointer determines if a given pointer is set to its zero value.
+func IsZeroPointer(i *int) bool {
+	panic("please implement the IsZeroPointer function")
 }
 
-// ZeroPointer returns a pointer set to its zero value.
-func ZeroPointer() *int {
-	panic("please implement the ZeroPointer function")
+// IsZeroFunc determines if a given function is set to its zero value.
+func IsZeroFunc(f func()) bool {
+	panic("please implement the IsZeroFunc function")
 }
 
-// ZeroMap returns a map set to its zero value.
-func ZeroMap() map[int]int {
-	panic("please implement the ZeroMap function")
+// IsZeroInterface determines if a given interface is set to its zero value.
+func IsZeroInterface(i interface{}) bool {
+	panic("please implement the IsZeroInterface function")
 }
 
-// ZeroSlice returns a slice set to its zero value.
-func ZeroSlice() []int {
-	panic("please implement the ZeroSlice function")
+// IsZeroSlice determines if a given slice is set to its zero value.
+func IsZeroSlice(i []int) bool {
+	panic("please implement the IsZeroSlice function")
 }
 
-// ZeroChannel returns a channel set to its zero value.
-func ZeroChannel() chan int {
-	panic("please implement the ZeroChannel function")
+// IsZeroChannel determines if a given channel is set to its zero value.
+func IsZeroChannel(c chan int) bool {
+	panic("please implement the IsZeroChannel function")
 }
 
-// ZeroInterface returns an interface set to its zero value.
-func ZeroInterface() interface{} {
-	panic("please implement the ZeroInterface function")
+// IsZeroMap determines if a given map is set to its zero value.
+func IsZeroMap(map[string]int) bool {
+	panic("please implement the IsZeroMap function")
 }

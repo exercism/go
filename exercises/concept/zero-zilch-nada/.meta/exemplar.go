@@ -1,46 +1,73 @@
 package zero
 
-// ZeroBool returns a bool set to its zero value.
-func ZeroBool() bool {
+// IsZeroBool determines if a given bool is set to its zero value.
+func IsZeroBool(b bool) bool {
+	if b == false {
+		return true
+	}
 	return false
 }
 
-// ZeroInt returns an int set to its zero value.
-func ZeroInt() int {
-	return 0
+// IsZeroInt determines if a given int is set to its zero value.
+func IsZeroInt(i int) bool {
+	if i == 0 {
+		return true
+	}
+	return false
 }
 
-// ZeroString returns a string set to its zero value.
-func ZeroString() string {
-	return ""
+// IsZeroString determines if a given string is set to its zero value.
+func IsZeroString(s string) bool {
+	if s == "" {
+		return true
+	}
+	return false
 }
 
-// ZeroFunc returns a func set to its zero value.
-func ZeroFunc() func() {
-	return nil
+// IsZeroFunc determines if a given function is set to its zero value.
+func IsZeroFunc(f func()) bool {
+	if f == nil {
+		return true
+	}
+	return false
 }
 
-// ZeroPointer returns a pointer set to its zero value.
-func ZeroPointer() *int {
-	return nil
+// IsZeroPointer determines if a given pointer is set to its zero value.
+func IsZeroPointer(i *int) bool {
+	if i == nil {
+		return true
+	}
+	return false
 }
 
-// ZeroMap returns a map set to its zero value.
-func ZeroMap() map[int]int {
-	return nil
+// IsZeroMap determines if a given map is set to its zero value.
+func IsZeroMap(m map[string]int) bool {
+	if m == nil {
+		return true
+	}
+	return false
 }
 
-// ZeroSlice returns a slice set to its zero value.
-func ZeroSlice() []int {
-	return nil
+// IsZeroSlice determines if a given slice is set to its zero value.
+func IsZeroSlice(i []int) bool {
+	if i == nil {
+		return true
+	}
+	return false
 }
 
-// ZeroChannel returns a channel set to its zero value.
-func ZeroChannel() chan int {
-	return nil
+// IsZeroChannel determines if a given channel is set to its zero value.
+func IsZeroChannel(c chan int) bool {
+	if c == nil {
+		return true
+	}
+	return false
 }
 
-// ZeroInterface returns an interface set to its zero value.
-func ZeroInterface() interface{} {
-	return nil
+// IsZeroInterface determines if a given interface is set to its zero value.
+func IsZeroInterface(i interface{}) bool {
+	if i == nil {
+		return true
+	}
+	return false
 }

@@ -13,7 +13,6 @@ The goal of this exercise is to teach the student about the zero value of Go's t
 ## Out of scope
 
 - Error checking.
-- `nil` checking.
 - Usage of the above-mentioned types.
 
 ## Concepts

@@ -1,141 +1,169 @@
 package zero
 
 import (
-	"reflect"
 	"testing"
 )
 
-func TestZeroInterface(t *testing.T) {
-	test := struct {
-		name string
-		want interface{}
+func TestIsZeroBool(t *testing.T) {
+	tests := []struct {
+		name  string
+		value bool
+		want  bool
 	}{
-		"ZeroInterface",
-		nil,
+		{"ZeroBool", false, true},
+		{"NonZeroBool", true, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroInterface(); got != test.want {
-			t.Errorf("ZeroInterface() = %v, want %v", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroBool(test.value); got != test.want {
+				t.Errorf("IsZeroBool() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroMap(t *testing.T) {
-	test := struct {
-		name string
-		want map[int]int
+func TestIsZeroInt(t *testing.T) {
+	tests := []struct {
+		name  string
+		value int
+		want  bool
 	}{
-		"ZeroMap",
-		nil,
+		{"ZeroInt", 0, true},
+		{"NonZeroInt", 42, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroMap(); got != nil {
-			t.Errorf("ZeroMap() = %v, want %v", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroInt(test.value); got != test.want {
+				t.Errorf("IsZeroInt() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroSlice(t *testing.T) {
-	test := struct {
-		name string
-		want []int
+func TestIsZeroString(t *testing.T) {
+	tests := []struct {
+		name  string
+		value string
+		want  bool
 	}{
-		"ZeroSlice",
-		nil,
+		{"ZeroString", "", true},
+		{"NonZeroString", "exercism", false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroSlice(); got != nil {
-			t.Errorf("ZeroSlice() = %p, want %p", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroString(test.value); got != test.want {
+				t.Errorf("IsZeroString() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroString(t *testing.T) {
-	test := struct {
-		name string
-		want string
+func TestIsZeroPointer(t *testing.T) {
+	i := 42
+
+	tests := []struct {
+		name  string
+		value *int
+		want  bool
 	}{
-		"ZeroString",
-		"",
+		{"ZeroPointer", nil, true},
+		{"NonZeroPointer", &i, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroString(); got != test.want {
-			t.Errorf("ZeroString() = %s, want %s", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroPointer(test.value); got != test.want {
+				t.Errorf("IsZeroPointer() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroChannel(t *testing.T) {
-	test := struct {
-		name string
-		want chan int
+func TestIsZeroFunc(t *testing.T) {
+	tests := []struct {
+		name  string
+		value func()
+		want  bool
 	}{
-		"ZeroChannel",
-		nil,
+		{"ZeroFunc", nil, true},
+		{"NonZeroFunc", func() {}, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroChannel(); got != test.want {
-			t.Errorf("ZeroChannel() = %v, want %v", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroFunc(test.value); got != test.want {
+				t.Errorf("IsZeroFunc() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroPointer(t *testing.T) {
-	test := struct {
-		name string
-		want *int
+func TestIsZeroInterface(t *testing.T) {
+	tests := []struct {
+		name  string
+		value interface{}
+		want  bool
 	}{
-		"ZeroPointer",
-		nil,
+		{"ZeroInterface", nil, true},
+		{"NonZeroInterface", "exercism", false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroPointer(); got != test.want {
-			t.Errorf("ZeroPointer() = %v, want %v", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroInterface(test.value); got != test.want {
+				t.Errorf("IsZeroInterface() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroBool(t *testing.T) {
-	test := struct {
-		name string
-		want bool
+func TestIsZeroSlice(t *testing.T) {
+	tests := []struct {
+		name  string
+		value []int
+		want  bool
 	}{
-		"ZeroBool",
-		false,
+		{"ZeroSlice", nil, true},
+		{"NonZeroSlice", []int{}, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroBool(); got != test.want {
-			t.Errorf("ZeroBool() = %t, want %t", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroSlice(test.value); got != test.want {
+				t.Errorf("IsZeroSlice() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroFunc(t *testing.T) {
-	test := struct {
-		name string
-		want func()
+func TestIsZeroChannel(t *testing.T) {
+	tests := []struct {
+		name  string
+		value chan int
+		want  bool
 	}{
-		"ZeroFunc",
-		nil,
+		{"ZeroChannel", nil, true},
+		{"NonZeroChannel", make(chan int), false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroFunc(); !reflect.DeepEqual(got, test.want) {
-			t.Errorf("ZeroFunc() = %p, want nil", got)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroChannel(test.value); got != test.want {
+				t.Errorf("IsZeroChannel() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
 
-func TestZeroInt(t *testing.T) {
-	test := struct {
-		name string
-		want int
+func TestIsZeroMap(t *testing.T) {
+	tests := []struct {
+		name  string
+		value map[string]int
+		want  bool
 	}{
-		"ZeroInt",
-		0,
+		{"ZeroMap", nil, true},
+		{"NonZeroMap", map[string]int{}, false},
 	}
-	t.Run(test.name, func(t *testing.T) {
-		if got := ZeroInt(); got != test.want {
-			t.Errorf("ZeroInt() = %d, want %d", got, test.want)
-		}
-	})
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := IsZeroMap(test.value); got != test.want {
+				t.Errorf("IsZeroMap() = %t, want %t", got, test.want)
+			}
+		})
+	}
 }
