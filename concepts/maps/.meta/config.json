@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
+  "blurb": "Maps are a bultin type in Go that associates values with keys.",
   "authors": ["chocopowwwa"],
   "contributors": []
 }
