@@ -290,7 +290,7 @@ func TestRemoveItem(t *testing.T) {
 
 func copySlice(s []int) []int {
 	if s == nil {
-		return s
+		return nil
 	}
 	var slice = make([]int, len(s))
 	copy(slice, s)

@@ -46,7 +46,7 @@ func LargeHand(isBlackjack bool, dealerScore int) string {
 }
 
 // SmallHand implements the decision tree for hand scores with less than 21 points.
-func SmallHand(handScore int, dealerScore int) string {
+func SmallHand(handScore, dealerScore int) string {
 	// Switch statement
 	switch {
 	case (handScore >= 17) || (handScore >= 12 && dealerScore < 7):

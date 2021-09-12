@@ -31,6 +31,6 @@ func Description(date string) string {
 
 // AnniversaryDate returns a Time with this year's anniversary
 func AnniversaryDate() time.Time {
-	t, _ := time.Parse("1/2/2006", "9/15/2020")
-	return t
+	t, _ := time.Parse("1/2/2006", "9/15/2012")
+	return t.AddDate(time.Now().Year()-2012, 0, 0)
 }
