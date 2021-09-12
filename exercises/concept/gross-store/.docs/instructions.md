@@ -40,7 +40,7 @@ To implement this, you'll need to:
 
 ```go
 bill := NewBill()
-ok := AddItem(bill, "carrot", "dozen")
+ok := AddItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
 // Output: true or false
 ```
@@ -53,25 +53,25 @@ To implement this, you'll need to:
 
 - Check whether the given item is in the bill
 - Check whether the given unit of measurement is correct
-- Check whether the new quantity is less than 0, is so return `false`
-- Check whether the new quantity is 0, is so return remove the item from the customer bill
-- Otherwise reduce the quantity of the item
+- Check whether the new quantity is less than 0 and if so, don't remove the item and return `false`
+- Check whether the new quantity is 0 and if so, remove the item from the customer bill and return `true`
+- Otherwise, reduce the quantity of the item by the amount of the `unit`
 
 ```go
 bill := NewBill()
-ok := RemoveItem(bill, "carrot", "dozen")
+ok := RemoveItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
 // Output: true or false
 ```
 
 > Note that the returned value is type of `bool`
 
-## 5. Return the number of specific item that is in the customer bill
+## 5. Return the quantity of a specific item that is in the customer bill
 
 To implement this, you'll need to:
 
 - Check whether the given item is in the bill
-- Otherwise, return the quantity of the item
+- If it's in the bill, return the quantity of the item
 
 ```go
 bill := NewBill()
