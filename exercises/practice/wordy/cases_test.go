@@ -150,4 +150,10 @@ var tests = []wordyTest{
 		false,
 		0,
 	},
+	{
+		"reject using default 0 minus number",
+		"What is minus 10?",
+		false,
+		0,
+	},
 }
