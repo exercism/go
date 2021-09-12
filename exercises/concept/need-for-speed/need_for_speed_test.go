@@ -161,7 +161,7 @@ func TestCanFinish(t *testing.T){
 			expected: true,
 		},
 		{
-			name: "Car cannot finish the track distrance.",
+			name: "Car cannot finish the track distance.",
 			car: Car{
 				speed: 2,
 				batteryDrain: 10,
