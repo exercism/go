@@ -41,7 +41,7 @@ func TestComments(t *testing.T) {
 func testPackageComment(t *testing.T, node *ast.File) {
 	t.Helper()
 	if node.Doc == nil {
-		t.Errorf("Package weather doesn't have a comment")
+		t.Errorf("Package weather should have a comment")
 	}
 
 	want := "Package"
@@ -62,7 +62,7 @@ func testFunctionComment(t *testing.T, node *ast.FuncDecl) {
 	t.Helper()
 	funcName := node.Name.Name
 	if node.Doc == nil {
-		t.Errorf("Exported function %s() has no comment", funcName)
+		t.Errorf("Exported function %s() should have a comment", funcName)
 	}
 	funcComment := node.Doc.Text()
 	if !strings.HasPrefix(node.Doc.Text(), funcName) {
