@@ -1,0 +1,26 @@
+{
+  "blurb": "Implement basic list operations",
+  "authors": [
+    "ljagged"
+  ],
+  "contributors": [
+    "bitfield",
+    "Daveed9",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ivenk",
+    "leenipper"
+  ],
+  "files": {
+    "solution": [
+      "list_ops.go"
+    ],
+    "test": [
+      "list_ops_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  }
+}

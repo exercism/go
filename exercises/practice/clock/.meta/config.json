@@ -1,0 +1,38 @@
+{
+  "blurb": "Implement a clock that handles times without dates.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "cwithmichael",
+    "da-edra",
+    "dmgawel",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "nywilken",
+    "petertseng",
+    "pminten",
+    "robphoenix",
+    "sebito91",
+    "thenickcox",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "clock.go"
+    ],
+    "test": [
+      "clock_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Pairing session with Erin Drummond",
+  "source_url": "https://twitter.com/ebdrummond"
+}

@@ -1,0 +1,28 @@
+{
+  "blurb": "Score a bowling game",
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "robphoenix",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "bowling.go"
+    ],
+    "test": [
+      "bowling_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "The Bowling Game Kata at but UncleBob",
+  "source_url": "http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata"
+}

@@ -1,0 +1,25 @@
+{
+  "blurb": "Solve the zebra puzzle.",
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "zebra_puzzle.go"
+    ],
+    "test": [
+      "zebra_puzzle_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Zebra_Puzzle"
+}

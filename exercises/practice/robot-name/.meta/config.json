@@ -1,0 +1,34 @@
+{
+  "blurb": "Manage robot factory settings.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "h311ion",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "papahmsolo",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen",
+    "waynr"
+  ],
+  "files": {
+    "solution": [
+      "robot_name.go"
+    ],
+    "test": [
+      "robot_name_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "A debugging session with Paul Blackwell at gSchool."
+}

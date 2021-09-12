@@ -1,0 +1,32 @@
+{
+  "blurb": "Compute the result for a game of Hex / Polygon",
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "jonatas",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "connect.go"
+    ],
+    "test": [
+      "connect_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  }
+}

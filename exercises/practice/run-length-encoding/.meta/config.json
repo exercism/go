@@ -1,0 +1,28 @@
+{
+  "blurb": "Implement run-length encoding and decoding.",
+  "authors": [
+    "MatForsberg"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "run_length_encoding.go"
+    ],
+    "test": [
+      "run_length_encoding_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Run-length_encoding"
+}

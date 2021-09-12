@@ -1,0 +1,22 @@
+name: Configlet CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  configlet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Fetch configlet
+      uses: exercism/github-actions/configlet-ci@main
+
+    - name: Configlet Linter
+      run: configlet lint

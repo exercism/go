@@ -1,0 +1,31 @@
+{
+  "blurb": "Given a number from 0 to 999,999,999,999, spell out that number in English.",
+  "authors": [],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "say.go"
+    ],
+    "test": [
+      "say_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "A variation on JavaRanch CattleDrive, exercise 4a",
+  "source_url": "http://www.javaranch.com/say.jsp"
+}

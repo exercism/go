@@ -1,0 +1,26 @@
+{
+  "blurb": "Search a file for lines matching a regular expression pattern. Return the line number and contents of each matching line.",
+  "authors": [
+    "leenipper"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "grep.go"
+    ],
+    "test": [
+      "grep_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Conversation with Nate Foster.",
+  "source_url": "http://www.cs.cornell.edu/Courses/cs3110/2014sp/hw/0/ps0.pdf"
+}

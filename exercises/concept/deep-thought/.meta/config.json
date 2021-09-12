@@ -1,0 +1,17 @@
+{
+  "blurb": "Learn about errors by finding the absolute answer to life, the universe, and everything.",
+  "authors": [
+    "micuffaro"
+  ],
+  "files": {
+    "solution": [
+      "deep_thought.go"
+    ],
+    "test": [
+      "deep_thought_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "blurb": "Learn about the strings package by parsing logs.",
+  "authors": [
+    "tehsphinx"
+  ],
+  "files": {
+    "solution": [
+      "logs.go"
+    ],
+    "test": [
+      "logs_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

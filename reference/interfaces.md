@@ -1,0 +1,3 @@
+# Interfaces
+
+The main difference to many other languages is that Go's interfaces are _implicitly_ implemented...

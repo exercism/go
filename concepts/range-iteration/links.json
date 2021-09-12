@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://golang.org/ref/spec#For_range",
+    "description": "For statements with range clause"
+  },
+  {
+    "url": "https://tour.golang.org/moretypes/16",
+    "description": "Range"
+  },
+  {
+    "url": "https://tour.golang.org/moretypes/17",
+    "description": "Range, omit variables"
+  }
+]

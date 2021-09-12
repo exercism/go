@@ -1,0 +1,35 @@
+{
+  "blurb": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "brugnara",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "suzaku",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "matrix.go"
+    ],
+    "test": [
+      "matrix_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Warmup to the `saddle-points` warmup.",
+  "source_url": "http://jumpstartlab.com"
+}

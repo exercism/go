@@ -1,6 +1,7 @@
 # Exercism Go Track
 
-[![Build Status](https://travis-ci.org/exercism/go.svg?branch=master)](https://travis-ci.org/exercism/go)
+[![Configlet Status](https://github.com/exercism/go/workflows/Configlet%20CI/badge.svg)](https://github.com/exercism/go/actions?query=workflow%3A%22Configlet+CI%22)
+[![Exercise Test Status](https://github.com/exercism/go/workflows/Exercise%20tests/badge.svg)](https://github.com/exercism/go/actions?query=workflow%3A%22Exercise+tests%22)
 [![Gitter chat](https://badges.gitter.im/exercism/go.svg)](https://gitter.im/exercism/go)
 
 Exercism exercises in Go
@@ -34,9 +35,9 @@ find low hanging typo problems. [#570](https://github.com/exercism/go/pull/570) 
 
 ## Contributing Guide
 
-Please be familiar with the [contributing guide](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks)
+Please be familiar with the [contributing guide](https://github.com/exercism/legacy-docs/tree/main/contributing-to-language-tracks)
 in the docs repository.  This describes some great ways to get involved.
-In particular, please read the [Pull Request Guidelines](https://github.com/exercism/docs/blob/master/contributing/pull-request-guidelines.md) before opening a pull request.
+In particular, please read the [Pull Request Guidelines](https://github.com/exercism/legacy-docs/blob/main/contributing/pull-request-guidelines.md) before opening a pull request.
 
 ## Exercism Go style
 
@@ -59,7 +60,7 @@ exercise, it would have an entry below the core exercises that might look like:
   "topics": [
     "conditionals"
   ]
-},
+}
 ```
 
 See [Exercise Configuration](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
