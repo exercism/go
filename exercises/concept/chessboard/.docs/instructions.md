@@ -26,13 +26,13 @@ CountInFile(2)
 
 ## 3. Count how many squares are present in the given chessboard
 
-Decorate the `Chessboard` type with the `CountCells() int` function.
+Decorate the `Chessboard` type with the `CountAll() int` function.
 It should count how many squares are present in the chessboard and returns
 an integer. Since you don't need to check the content of the squares,
 consider using range omitting both `index` and `value`.
 
 ```go
-CountCells()
+CountAll()
 // => 64
 ```
 
