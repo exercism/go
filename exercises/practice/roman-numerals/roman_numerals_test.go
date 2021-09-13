@@ -3,11 +3,12 @@ package romannumerals
 import "testing"
 
 func TestRomanNumerals(t *testing.T) {
-	tc := append(romanNumeralTests, []romanNumeralTest{
+	tc := []romanNumeralTest{
 		{0, "", true},
 		{-1, "", true},
 		{3001, "", true},
-	}...)
+	}
+	tc = append(tc, romanNumeralTests...)
 
 	for _, test := range tc {
 		actual, err := ToRomanNumeral(test.arabic)

@@ -21,7 +21,7 @@ func ComputerState(isReady bool) error {
 // AnswerToLife checks if the given number is the answer to life
 func AnswerToLife(number int) (bool, error) {
 	if number != answer {
-		return false, fmt.Errorf("%s: wrong answer to life: %s", ErrCalculation.Error(), number)
+		return false, fmt.Errorf("%s: wrong answer to life: %d", ErrCalculation.Error(), number)
 	}
 	return true, nil
 }

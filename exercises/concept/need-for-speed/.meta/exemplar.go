@@ -18,6 +18,10 @@ type Car struct {
 	distance int
 }
 
+// Track implements a race track.
+type Track struct {
+	distance int
+}
 
 // NewTrack creates a new track with given distance.
 func NewTrack(distance int) Track {
