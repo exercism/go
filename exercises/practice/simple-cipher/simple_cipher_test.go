@@ -173,7 +173,8 @@ func BenchmarkNewShift(b *testing.B) {
 
 func BenchmarkEncodeShift(b *testing.B) {
 	s := NewShift(5)
-	all := append(caesarTests, NSATests...)
+	all := caesarTests
+	all = append(all, NSATests...)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, test := range all {
@@ -184,7 +185,8 @@ func BenchmarkEncodeShift(b *testing.B) {
 
 func BenchmarkDecodeShift(b *testing.B) {
 	s := NewShift(5)
-	all := append(caesarTests, NSATests...)
+	all := caesarTests
+	all = append(all, NSATests...)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, test := range all {

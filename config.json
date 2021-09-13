@@ -1807,6 +1807,11 @@
       "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
     },
     {
+      "name": "Range Iteration",
+      "slug": "range-iteration",
+      "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
+    },
+    {
       "name": "Slices",
       "slug": "slices",
       "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"

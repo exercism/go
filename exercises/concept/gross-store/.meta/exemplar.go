@@ -18,7 +18,7 @@ func NewBill() map[string]int {
 }
 
 // AddItem add item to customer bill
-func AddItem(bill map[string]int, units map[string]int, item string, unit string) bool {
+func AddItem(bill, units map[string]int, item, unit string) bool {
 	if _, ok := units[unit]; !ok {
 		return false
 	}
@@ -29,7 +29,7 @@ func AddItem(bill map[string]int, units map[string]int, item string, unit string
 }
 
 // RemoveItem remove item from customer bill
-func RemoveItem(bill map[string]int, units map[string]int, item string, unit string) bool {
+func RemoveItem(bill, units map[string]int, item, unit string) bool {
 	if _, ok := bill[item]; !ok {
 		return false
 	}
@@ -39,11 +39,12 @@ func RemoveItem(bill map[string]int, units map[string]int, item string, unit str
 	}
 
 	newUnit := bill[item] - units[unit]
-	if newUnit < 0 {
+	switch {
+	case newUnit < 0:
 		return false
-	} else if newUnit == 0 {
+	case newUnit == 0:
 		delete(bill, item)
-	} else {
+	default:
 		bill[item] -= units[unit]
 	}
 

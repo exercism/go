@@ -26,7 +26,7 @@ Implement a function to calculate the assembly line's production rate per hour.
 ```go
 rate := CalculateProductionRatePerHour(7)
 fmt.Println(rate)
-// Output: 10829.0
+// Output: 1392.3
 ```
 
 > Note that the value returned is of type `float64`
@@ -38,7 +38,7 @@ Implement a function to calculate how many cars are produced each minute:
 ```go
 rate := CalculateProductionRatePerMinute(5)
 fmt.Println(rate)
-// Output: 92
+// Output: 16
 ```
 
 > Note that the value returned is of type `int`.
