@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Maintenance note:  This file exists as both matrix/example.go and
-// saddle-points/matrix_example.go.  When changing one file, copy to the other.
+// Maintenance note: This should generally match the equivalent section in
+// exercises/practice/saddle-points/.meta/example.go.
 
 type Matrix [][]int
 
