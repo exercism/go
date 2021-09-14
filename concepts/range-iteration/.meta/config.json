@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
+  "blurb": "Go has a special \"for range\" loop to easily iterate over collections of data.",
   "authors": [
     "brugnara",
     "tehsphinx"

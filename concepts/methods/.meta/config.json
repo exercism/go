@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
+  "blurb": "Methods are functions with a special receiver argument that can be called on an instance of the receiver type.",
   "authors": [
     "tehsphinx"
   ],
