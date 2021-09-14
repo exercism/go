@@ -78,7 +78,7 @@
         "prerequisites": [
           "basics"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "savings-account",
@@ -89,6 +89,7 @@
         ],
         "prerequisites": [
           "basics",
+          "comments",
           "strings"
         ],
         "status": "beta"
