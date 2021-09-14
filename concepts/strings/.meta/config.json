@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
+  "blurb": "Immutable sequence of UTF-8 characters.",
   "authors": ["tehsphinx"],
   "contributors": []
 }
