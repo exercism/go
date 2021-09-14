@@ -1,5 +1,5 @@
 {
-  "blurb": "Learn about boolean operations.",
+  "blurb": "Representation of true and false. Booleans can be combined into expressions using operators AND, OR and NOT.",
   "authors": ["oanaOM"],
   "contributors": []
 }
