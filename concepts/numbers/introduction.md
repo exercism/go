@@ -1,11 +1,5 @@
 # Introduction
 
-TODO: the content below is copied from the exercise introduction and probably needs rewriting to a proper concept introduction
-
-## numbers
-
-## conditionals
-
 Go contains basic numeric types that can represent sets of either integer or
 floating-point values. There a different types depending on the size of value
 you require and the architecture of the computer where the application is
