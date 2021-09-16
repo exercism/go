@@ -9,7 +9,7 @@ To make things a bit easier she only uses the cards 1 to 10.
 Return the card at position `index` from the given stack.
 
 ```go
-GetItem([]uint8{1, 2, 4, 1}, 2)
+GetItem([]int{1, 2, 4, 1}, 2)
 // Output: 4
 ```
 
@@ -21,8 +21,8 @@ Note that this will also change the input slice which is ok.
 ```go
 index := 2
 new_card := 6
-SetItem([]uint8{1, 2, 4, 1}, index, new_card)
-// Output: []uint8{1, 2, 6, 1}
+SetItem([]int{1, 2, 4, 1}, index, new_card)
+// Output: []int{1, 2, 6, 1}
 ```
 
 ## 3. Create a stack of cards
