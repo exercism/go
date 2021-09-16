@@ -110,6 +110,9 @@ func TestPalindromeProducts(t *testing.T) {
 }
 
 func BenchmarkPalindromeProducts(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range testData {
 			Products(test.fmin, test.fmax)

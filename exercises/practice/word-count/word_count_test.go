@@ -23,6 +23,9 @@ func TestWordCount(t *testing.T) {
 }
 
 func BenchmarkWordCount(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, tt := range testCases {
 			WordCount(tt.input)

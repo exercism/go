@@ -27,6 +27,9 @@ func TestCollatzConjecture(t *testing.T) {
 }
 
 func BenchmarkCollatzConjecture(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, testCase := range testCases {
 			CollatzConjecture(testCase.input)

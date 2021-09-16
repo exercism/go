@@ -61,12 +61,18 @@ func TestSum(t *testing.T) {
 }
 
 func BenchmarkRange(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		Range(1, 100)
 	}
 }
 
 func BenchmarkSum(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		Sum(1000)
 	}

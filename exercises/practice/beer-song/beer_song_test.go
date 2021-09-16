@@ -110,6 +110,9 @@ func TestSeveralVerses(t *testing.T) {
 }
 
 func BenchmarkSeveralVerses(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 
 		for _, tt := range versesTestCases {
@@ -144,6 +147,9 @@ func TestEntireSong(t *testing.T) {
 }
 
 func BenchmarkEntireSong(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		Song()
 	}

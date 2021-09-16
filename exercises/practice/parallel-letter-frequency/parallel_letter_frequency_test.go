@@ -65,12 +65,18 @@ func TestSequentialFrequency(t *testing.T) {
 }
 
 func BenchmarkSequentialFrequency(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		Frequency(euro + dutch + us)
 	}
 }
 
 func BenchmarkConcurrentFrequency(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		ConcurrentFrequency([]string{euro, dutch, us})
 	}

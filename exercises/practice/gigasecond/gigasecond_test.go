@@ -52,6 +52,9 @@ func parse(s string, t *testing.T) time.Time {
 }
 
 func BenchmarkAddGigasecond(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		AddGigasecond(time.Time{})
 	}

@@ -32,6 +32,9 @@ func TestResultOf(t *testing.T) {
 }
 
 func BenchmarkResultOf(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 
 	b.StopTimer()
 

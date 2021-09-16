@@ -13,6 +13,9 @@ func TestSumMultiples(t *testing.T) {
 }
 
 func BenchmarkSumMultiples(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range varTests {
 			SumMultiples(test.limit, test.divisors...)

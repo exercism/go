@@ -15,6 +15,9 @@ func TestArmstrong(t *testing.T) {
 }
 
 func BenchmarkIsNumber(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for _, tc := range testCases {
 		b.Run(fmt.Sprintf("%d", tc.input), func(b *testing.B) {
 			for i := 0; i < b.N; i++ {

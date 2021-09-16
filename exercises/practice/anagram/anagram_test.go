@@ -34,6 +34,9 @@ func TestDetectAnagrams(t *testing.T) {
 }
 
 func BenchmarkDetectAnagrams(b *testing.B) {
+	if testing.Short() {
+		t.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)
