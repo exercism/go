@@ -44,7 +44,7 @@ func TestResetName(t *testing.T) {
 // meaningful.  Bonus thought exercise, why won't it be meaningful?
 func BenchmarkName(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	// Benchmark combined time to create robot and name.
 	for i := 0; i < b.N; i++ {

@@ -159,7 +159,7 @@ func TestProtein(t *testing.T) {
 
 func BenchmarkCodon(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for _, test := range codonTestCases {
 		for i := 0; i < b.N; i++ {
@@ -170,7 +170,7 @@ func BenchmarkCodon(b *testing.B) {
 
 func BenchmarkProtein(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for _, test := range proteinTestCases {
 		for i := 0; i < b.N; i++ {

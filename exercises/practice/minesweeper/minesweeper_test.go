@@ -175,7 +175,7 @@ func TestBad(t *testing.T) {
 
 func BenchmarkCount(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	m := clear(`
 +------+

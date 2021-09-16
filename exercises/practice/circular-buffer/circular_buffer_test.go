@@ -189,7 +189,7 @@ func TestAlternateReadAndOverwrite(t *testing.T) {
 
 func BenchmarkOverwrite(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := NewBuffer(100)
 	b.ResetTimer()
@@ -201,7 +201,7 @@ func BenchmarkOverwrite(b *testing.B) {
 
 func BenchmarkWriteRead(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := NewBuffer(100)
 	b.ResetTimer()

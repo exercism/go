@@ -54,7 +54,7 @@ func format(t [][]int) (s string) {
 // solution using triangles of fixed size 20.
 func BenchmarkPascalsTriangleFixed(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		Triangle(testSize) // same length as the test for correctness above
@@ -65,7 +65,7 @@ func BenchmarkPascalsTriangleFixed(b *testing.B) {
 // solution using triangles of an increasingly larger size from 1 to 20.
 func BenchmarkPascalsTriangleIncreasing(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		for x := 0; x <= testSize; x++ {

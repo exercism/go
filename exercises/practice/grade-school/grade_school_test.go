@@ -131,7 +131,7 @@ const (
 
 func BenchmarkAddStudents(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	const pool = 1e6 // pool of students
 	names := make([]string, pool)
@@ -155,7 +155,7 @@ func BenchmarkAddStudents(b *testing.B) {
 
 func BenchmarkEnrollment(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	const pool = 1000 // pool of schools
 	ss := make([]*School, pool)

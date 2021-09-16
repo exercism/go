@@ -145,7 +145,7 @@ func TestVigenere(t *testing.T) {
 // Note other ciphers test different data; times cannot be compared.
 func BenchmarkEncodeCaesar(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := NewCaesar()
 	b.ResetTimer()
@@ -158,7 +158,7 @@ func BenchmarkEncodeCaesar(b *testing.B) {
 
 func BenchmarkDecodeCaesar(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := NewCaesar()
 	b.ResetTimer()
@@ -171,7 +171,7 @@ func BenchmarkDecodeCaesar(b *testing.B) {
 
 func BenchmarkNewShift(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		for s := -27; s <= 27; s++ {
@@ -182,7 +182,7 @@ func BenchmarkNewShift(b *testing.B) {
 
 func BenchmarkEncodeShift(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	s := NewShift(5)
 	all := caesarTests
@@ -197,7 +197,7 @@ func BenchmarkEncodeShift(b *testing.B) {
 
 func BenchmarkDecodeShift(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	s := NewShift(5)
 	all := caesarTests
@@ -212,7 +212,7 @@ func BenchmarkDecodeShift(b *testing.B) {
 
 func BenchmarkNewVigenere(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range vtests {
@@ -223,7 +223,7 @@ func BenchmarkNewVigenere(b *testing.B) {
 
 func BenchmarkEncVigenere(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	v := make([]Cipher, len(vtests))
 	for i, test := range vtests {
@@ -245,7 +245,7 @@ func BenchmarkEncVigenere(b *testing.B) {
 
 func BenchmarkDecVigenere(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	v := make([]Cipher, len(vtests))
 	for i, test := range vtests {

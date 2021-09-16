@@ -17,7 +17,7 @@ func TestAllergies(t *testing.T) {
 
 func BenchmarkAllergies(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 
@@ -42,7 +42,7 @@ func TestAllergicTo(t *testing.T) {
 
 func BenchmarkAllergicTo(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range allergicToTests {

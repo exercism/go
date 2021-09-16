@@ -31,7 +31,7 @@ func TestHamming(t *testing.T) {
 
 func BenchmarkHamming(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	// bench combined time to run through all test cases
 	for i := 0; i < b.N; i++ {

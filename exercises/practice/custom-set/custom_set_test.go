@@ -190,7 +190,7 @@ func BenchmarkNewFromSlice1e4(b *testing.B) { bench(1e4, b) }
 
 func bench(nAdd int, b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	s := make([]string, nAdd)
 	for i := range s {

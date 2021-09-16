@@ -160,7 +160,7 @@ func TestNewPair(t *testing.T) {
 
 func BenchmarkPrivateKey(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		PrivateKey(biggerTest.p)
@@ -169,7 +169,7 @@ func BenchmarkPrivateKey(b *testing.B) {
 
 func BenchmarkPublicKey(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		PublicKey(biggerTest.a, biggerTest.p, biggerTest.g)
@@ -178,7 +178,7 @@ func BenchmarkPublicKey(b *testing.B) {
 
 func BenchmarkNewPair(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		NewPair(biggerTest.p, biggerTest.g)
@@ -187,7 +187,7 @@ func BenchmarkNewPair(b *testing.B) {
 
 func BenchmarkSecretKey(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		SecretKey(biggerTest.a, biggerTest.B, biggerTest.p)

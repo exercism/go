@@ -37,7 +37,7 @@ func newQuery(n int) (query, error) {
 
 func runBenchmark(n int, b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	q, err := newQuery(n)
 	if err != nil {

@@ -37,7 +37,7 @@ func TestDifference(t *testing.T) {
 // to avoid overhead of iterating over tests.
 func BenchmarkSquareOfSum(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		SquareOfSum(100)
@@ -46,7 +46,7 @@ func BenchmarkSquareOfSum(b *testing.B) {
 
 func BenchmarkSumOfSquares(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		SumOfSquares(100)
@@ -55,7 +55,7 @@ func BenchmarkSumOfSquares(b *testing.B) {
 
 func BenchmarkDifference(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		Difference(100)

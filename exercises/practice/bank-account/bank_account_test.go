@@ -335,7 +335,7 @@ func TestConcDeposit(t *testing.T) {
 // benchmark.
 func BenchmarkAccountOperations(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	a := Open(0)
 	defer a.Close()
@@ -347,7 +347,7 @@ func BenchmarkAccountOperations(b *testing.B) {
 
 func BenchmarkAccountOperationsParallel(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	a := Open(0)
 	defer a.Close()

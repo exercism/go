@@ -132,7 +132,7 @@ func TestSubtractAndCompare(t *testing.T) {
 
 func BenchmarkAddMinutes(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := New(12, 0)
 	b.ResetTimer()
@@ -145,7 +145,7 @@ func BenchmarkAddMinutes(b *testing.B) {
 
 func BenchmarkSubtractMinutes(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	c := New(12, 0)
 	b.ResetTimer()
@@ -158,7 +158,7 @@ func BenchmarkSubtractMinutes(b *testing.B) {
 
 func BenchmarkCreateClocks(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
 		for _, n := range timeTests {

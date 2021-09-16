@@ -73,7 +73,7 @@ func TestSearch(t *testing.T) {
 
 func BenchmarkSearch(b *testing.B) {
 	if testing.Short() {
-		t.Skip("skipping benchmark in short mode.")
+		b.Skip("skipping benchmark in short mode.")
 	}
 	files := createFiles(fileContentData)
 	defer deleteFiles(files)
