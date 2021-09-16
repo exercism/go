@@ -66,7 +66,6 @@ for _, x := range xi {
 Now, if you want to only print the index, you can replace the `x` with `_`,
 or simply omit the declaration at all:
 
-
 ```go
 xi := []int{10, 20, 30}
 // for i, _ := range xi {
@@ -91,4 +90,34 @@ for range xi {
 }
 // count value:
 // 3
+```
+
+## Non-struct types
+
+You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define reciever functions on them to extend them in the same way as struct types.
+
+```go
+type Name string
+func (n Name) SayHello() {
+  fmt.Printf("Hello %s\n", n)
+}
+n := Name("Fred")
+n.SayHello()
+// Output: Hello Fred
+```
+
+You can also define non-struct types composed of arrays and maps.
+
+```go
+type Names []string
+func (n Names) SayHello() {
+  for _, name := range n {
+    fmt.Printf("Hello %s\n", name)
+  }
+}
+n := Names([]string{"Fred", "Bill"})
+n.SayHello()
+// Output:
+// Hello Fred
+// Hello Bill
 ```
