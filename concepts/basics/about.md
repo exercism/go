@@ -70,3 +70,13 @@ count = 2  // Update to new value
 
 count = false // This throws a compiler error due to assigning a non `int` type
 ```
+
+## Constants
+
+Constants hold a piece of data just like variables, but their value cannot change during the execution of the program.
+
+Constants are defined using the `const` keyword and can be numbers, characters, strings or booleans:
+
+```go
+const Age = 21 // Defines a numeric constant 'Age' with the value of 21
+```
