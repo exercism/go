@@ -4,28 +4,30 @@ A method is a function with a special _receiver_ argument. The receiver appears 
 
 ```go
 func (receiver type) MethodName(parameters) (returnTypes) {
-
 }
 ```
 
-You can only define a method with a receiver whose type is defined in the same package as the method. The receiver can be either a struct type or a non-struct type as in the example below.
+You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-type Name string
+type Person struct {
+	Name string
+}
 
-func (s Name) Greetings() string {
+func (p Person) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", s)
 }
 
-
-s := Name("Bronson")
-fmt.Println(s.Greetings())
+p := Person{Name: "Bronson"}
+fmt.Println(p.Greetings())
 // Output: Welcome Bronson !
 ```
 
-Notice the way we called the method Greetings() on the Name instance s. It’s exactly like the way you call methods in an object-oriented programming language.
+Notice the way we called the method `Greetings()` on the `Person` instance `p`.
+It’s exactly like the way you call methods in an object-oriented programming language.
 
-Remember: a method is just a function with a receiver argument. Methods help to avoid naming conflicts - since a method is tied to a particular reciever type, you can have the same method name on different types.
+Remember: a method is just a function with a receiver argument.
+Methods help to avoid naming conflicts - since a method is tied to a particular reciever type, you can have the same method name on different types.
 
 ```go
 import "math"
@@ -47,7 +49,10 @@ func (c circle) area() float64 {
 
 All the methods we have seen so far have a value receiver which means they on a copy of the value passed to the method, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
-You can declare methods with pointer receivers in order to modify the value to which the receiver points. This is done by prefixing the type name with a `*`, for example with the `rect` type, a pointer reciever would be declared as `*rect`. Such modifications are visible to the caller or the method as well.
+You can declare methods with pointer receivers in order to modify the value to which the receiver points.
+This is done by prefixing the type name with a `*`.
+For example with the `rect` type, a pointer reciever would be declared as `*rect`.
+Such modifications are visible to the caller or the method as well.
 
 ```go
 type rect struct {
