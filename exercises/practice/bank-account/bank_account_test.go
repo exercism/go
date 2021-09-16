@@ -334,6 +334,9 @@ func TestConcDeposit(t *testing.T) {
 // and see how their implementation changes the results of the parallel
 // benchmark.
 func BenchmarkAccountOperations(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	a := Open(0)
 	defer a.Close()
 	for n := 0; n < b.N; n++ {
@@ -343,6 +346,9 @@ func BenchmarkAccountOperations(b *testing.B) {
 }
 
 func BenchmarkAccountOperationsParallel(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	a := Open(0)
 	defer a.Close()
 	b.RunParallel(func(pb *testing.PB) {

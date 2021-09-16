@@ -11,6 +11,9 @@ func TestValid(t *testing.T) {
 }
 
 func BenchmarkValid(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		Valid("2323 2005 7766 3554")
 	}

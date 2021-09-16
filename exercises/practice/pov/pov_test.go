@@ -274,6 +274,9 @@ func TestChangeRoot(t *testing.T) {
 }
 
 func BenchmarkConstructOnlyNoChange(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, tc := range testCases {
 			tc.graph()
@@ -282,6 +285,9 @@ func BenchmarkConstructOnlyNoChange(b *testing.B) {
 }
 
 func BenchmarkConstructAndChangeRoot(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, tc := range testCases {
 			tc.graph().ChangeRoot(tc.root, "x")
