@@ -10,7 +10,7 @@ Once none of the tests are skipped and they are all passing, you can submit your
 For further reading there is an introduction to [testing in Go][testing-in-go] including on how to write tests yourself.
 
 [docs-go-test]: https://golang.org/cmd/go/#hdr-Test_packages
-[docs-exercism-cli]: https://exercism.io/cli
+[docs-exercism-cli]: https://exercism.org/docs/using/solving-exercises/working-locally
 [docs-run-unit-tests-visual-studio-code]: https://code.visualstudio.com/docs/languages/go#_test
 [docs-run-unit-tests-goland]: https://www.jetbrains.com/help/go/performing-tests.html
 [testing-in-go]: ../../../reference/testing.md

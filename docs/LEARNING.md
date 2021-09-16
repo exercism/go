@@ -6,7 +6,7 @@ Exercism provides exercises and feedback but can be difficult to jump into for t
 * [Go By Example](https://gobyexample.com/)
 * [Effective Go](https://golang.org/doc/effective_go.html)
 * [Go Language Specification](http://golang.org/ref/spec)
-* [Go Standard Library](http://golang.org/pkg/)
+* [Go Standard Library](https://pkg.go.dev/std)
 * [Go Resources](http://golang.org/help)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/go)
 * [Awesome Go](https://github.com/avelino/awesome-go): [E-Books](https://github.com/avelino/awesome-go#e-books) and [Tutorials](https://github.com/avelino/awesome-go#tutorials)

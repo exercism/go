@@ -84,7 +84,8 @@ func findUsingPartialSolution(partial, c []int, target int, s *[]int, bestsize *
 			if (k * coin) == target {
 				// k coin(s) completes a solution.
 				if (len(partial) + k) < *bestsize {
-					list := append(partial, nCoins(k, coin)...)
+					list := partial
+					list = append(list, nCoins(k, coin)...)
 					updateSolution(list, s, bestsize)
 				}
 				// No need to consider smaller k for coin, so exit this loop.
@@ -111,7 +112,8 @@ func findUsingPartialSolution(partial, c []int, target int, s *[]int, bestsize *
 					}
 					if potentialSize < *bestsize {
 						// Put k instances of coin in a new partial solution.
-						newPartial := append(partial, nCoins(k, coin)...)
+						newPartial := partial
+						newPartial = append(newPartial, nCoins(k, coin)...)
 						d := append(append([]int{}, c[:e]...), c[e+1:]...)
 						// Now look for solution meeting *new* target.
 						findUsingPartialSolution(newPartial, d, newtarget, s, bestsize)

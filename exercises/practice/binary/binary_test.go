@@ -55,6 +55,9 @@ func TestParseBinary(t *testing.T) {
 
 // Benchmark combined time for all tests
 func BenchmarkBinary(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	for i := 0; i < b.N; i++ {
 		for _, tt := range testCases {
 			ParseBinary(tt.binary)

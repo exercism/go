@@ -78,3 +78,7 @@
 - name: "wontfix"
   description: ""
   color: "ffffff"
+
+- name: "september-sprint"
+  description: "Part of the September sprint to get the Go track in great shape"
+  color: "0846af"

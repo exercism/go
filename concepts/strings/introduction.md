@@ -15,6 +15,6 @@ In Go floating point values are conveniently printed with Printf's verbs: `%g` (
 
 ```go
 f := 4.3242
-fmt.Printf("%.4", f)
+fmt.Printf("%.2f", f)
 // Output: 4.32
 ```

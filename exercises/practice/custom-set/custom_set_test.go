@@ -189,6 +189,9 @@ func BenchmarkNewFromSlice1e3(b *testing.B) { bench(1e3, b) }
 func BenchmarkNewFromSlice1e4(b *testing.B) { bench(1e4, b) }
 
 func bench(nAdd int, b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	s := make([]string, nAdd)
 	for i := range s {
 		s[i] = strconv.Itoa(rand.Intn(len(s)))

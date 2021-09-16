@@ -78,7 +78,7 @@
         "prerequisites": [
           "basics"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "savings-account",
@@ -172,8 +172,7 @@
           "methods"
         ],
         "prerequisites": [
-          "structs",
-          "pointers"
+          "structs"
         ],
         "status": "beta"
       },
@@ -185,8 +184,7 @@
           "errors"
         ],
         "prerequisites": [
-          "constants",
-          "types"
+          "constants"
         ],
         "status": "wip"
       },
@@ -199,8 +197,7 @@
         ],
         "prerequisites": [
           "numbers",
-          "conditionals-if",
-          "iteration"
+          "conditionals-if"
         ],
         "status": "beta"
       },
@@ -226,8 +223,7 @@
         "prerequisites": [
           "conditionals-if",
           "maps",
-          "slices",
-          "iteration"
+          "slices"
         ],
         "status": "beta"
       },
@@ -240,7 +236,7 @@
           "zero-values"
         ],
         "prerequisites": [
-          "types"
+          "maps"
         ],
         "status": "beta"
       }
@@ -1809,6 +1805,11 @@
       "name": "Numbers",
       "slug": "numbers",
       "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+    },
+    {
+      "name": "Range Iteration",
+      "slug": "range-iteration",
+      "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
     },
     {
       "name": "Slices",

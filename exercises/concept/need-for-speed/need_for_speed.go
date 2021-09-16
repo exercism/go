@@ -10,11 +10,7 @@ type Car struct {
 
 // NewCar creates a new remote controlled car with full battery and given specifications.
 func NewCar(speed, batteryDrain int) Car {
-	return Car{
-		speed:        speed,
-		batteryDrain: batteryDrain,
-		battery:      100,
-	}
+	panic("Please implement the NewCar function")
 }
 
 
@@ -29,8 +25,8 @@ func NewTrack(distance int) Track{
 	panic("Please implement the NewTrack function")
 }
 
-// Drive drives the car one time. If there is not enough battry to drive on more time,
-// the car will not move but use the leftover battery.
+// Drive drives the car one time. If there is not enough battery to drive on more time,
+// the car will not move.
 func Drive(car Car) Car {
 	panic("Please implement the Drive function")
 }

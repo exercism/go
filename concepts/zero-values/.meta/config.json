@@ -1,6 +1,7 @@
 {
-  "blurb": "Learn about zero values.",
+  "blurb": "When a variable is created without a value, it gets assigned the zero value of its type.",
   "authors": [
+    "ErikSchierboom",
     "sudomateo"
   ],
   "contributors": []

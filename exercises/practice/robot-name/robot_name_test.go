@@ -1,3 +1,4 @@
+//go:build !bonus
 // +build !bonus
 
 package robotname
@@ -42,6 +43,9 @@ func TestResetName(t *testing.T) {
 // Note if you go for bonus points, this benchmark likely won't be
 // meaningful.  Bonus thought exercise, why won't it be meaningful?
 func BenchmarkName(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
 	// Benchmark combined time to create robot and name.
 	for i := 0; i < b.N; i++ {
 		New().getName(b, false)

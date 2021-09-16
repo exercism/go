@@ -1,7 +1,8 @@
 {
   "blurb": "Learn about comments by helping a weather station manage their weather forecasting program.",
   "authors": [
-    "nikimanoledaki"
+    "nikimanoledaki",
+    "micuffaro"
   ],
   "files": {
     "solution": [
