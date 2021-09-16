@@ -228,8 +228,8 @@
         "status": "beta"
       },
       {
-        "name": "Zero, Zilch, Nada",
-        "slug": "zero-zilch-nada",
+        "name": "Census",
+        "slug": "census",
         "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
         "concepts": [
           "nil",

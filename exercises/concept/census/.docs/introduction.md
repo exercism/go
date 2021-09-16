@@ -4,7 +4,7 @@ Go does not have a concept of empty, null, or undefined for variable values. Var
 
 The zero value for primative types such as booleans, numeric types, and strings are `false`, `0`, and `""`, respectively.
 
-The identifier `nil`, meaning zero, is the zero value for more complex types such as pointers, functions, interfaces, slices, channels, and maps
+The identifier `nil`, meaning zero, is the zero value for more complex types such as pointers, functions, interfaces, slices, channels, and maps.
 
 The following table details the zero value for Go's types.
 
