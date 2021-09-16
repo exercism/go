@@ -1,6 +1,6 @@
 package lasagna
 
-// TODO: define the 'OvenTime()' function
+// TODO: define the 'OvenTime' constant
 
 // TODO: define the 'RemainingOvenTime()' function
 
