@@ -2,13 +2,13 @@ package cards
 
 // GetItem retrieves an item from a slice at given position. The second return value indicates whether
 // a the given index existed in the slice or not.
-func GetItem(slice []uint8, index int) (uint8, bool) {
+func GetItem(slice []int, index int) (int, bool) {
 	panic("Please implement the GetItem function")
 }
 
 // SetItem writes an item to a slice at given position overwriting an existing value.
 // If the index is out of range it is be appended.
-func SetItem(slice []uint8, index int, value uint8) []uint8 {
+func SetItem(slice []int, index int, value int) []int {
 	panic("Please implement the SetItem function")
 }
 
