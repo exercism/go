@@ -40,7 +40,7 @@ for parentdir in concept practice; do
       cat << EOD
 module $stub
 
-go 1.14
+go 1.15
 EOD
       exit 1
     elif [ -f "${dir}${stub}.go" ] ; then
