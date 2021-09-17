@@ -172,7 +172,8 @@
           "methods"
         ],
         "prerequisites": [
-          "structs"
+          "structs",
+          "strings"
         ],
         "status": "beta"
       },
