@@ -61,7 +61,7 @@
         "name": "Party Robot",
         "uuid": "b3594c44-1a68-489d-a446-16369247c84c",
         "concepts": [
-          "strings"
+          "string-formatting"
         ],
         "prerequisites": [
           "basics"
@@ -90,7 +90,7 @@
         "prerequisites": [
           "basics",
           "comments",
-          "strings"
+          "string-formatting"
         ],
         "status": "beta"
       },
@@ -103,7 +103,7 @@
         ],
         "prerequisites": [
           "booleans",
-          "strings",
+          "string-formatting",
           "numbers",
           "conditionals-if"
         ],
@@ -118,7 +118,7 @@
         ],
         "prerequisites": [
           "basics",
-          "strings",
+          "string-formatting",
           "numbers"
         ],
         "status": "beta"
@@ -173,7 +173,7 @@
         ],
         "prerequisites": [
           "structs",
-          "strings"
+          "string-formatting"
         ],
         "status": "beta"
       },
@@ -1827,8 +1827,8 @@
       "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
     },
     {
-      "name": "Strings",
-      "slug": "strings",
+      "name": "String Formatting",
+      "slug": "string-formatting",
       "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7"
     },
     {
