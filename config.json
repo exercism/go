@@ -64,7 +64,9 @@
           "strings"
         ],
         "prerequisites": [
-          "basics"
+          "basics",
+          "strings",
+          "numbers"
         ],
         "status": "beta"
       },
