@@ -99,4 +99,9 @@ var testCases = []struct {
 		":9",
 		false,
 	},
+	{
+		"a long number that should overflow int64",
+		"9999 9999 9999 9999 9999 9999 9999 9999 9999 9999",
+		true,
+	},
 }
