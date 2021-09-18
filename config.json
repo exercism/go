@@ -61,7 +61,8 @@
         "name": "Party Robot",
         "uuid": "b3594c44-1a68-489d-a446-16369247c84c",
         "concepts": [
-          "string-formatting"
+          "string-formatting",
+          "packages"
         ],
         "prerequisites": [
           "basics"
@@ -1820,6 +1821,11 @@
       "name": "Numbers",
       "slug": "numbers",
       "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+    },
+    {
+      "name": "Packages",
+      "slug": "packages",
+      "uuid": "2062bff8-33ed-4081-8ad6-774b3410c450"
     },
     {
       "name": "Range Iteration",

@@ -8,12 +8,6 @@ TODO: the content below is copied from the exercise introduction and probably ne
 
 ## variables
 
-In Go an application is organized in packages. A package is a collection of source files located in the same folder. All source files in a folder must have the same package name at the top of the file. The package name is preferred to be the same as the folder it is located in.
-
-```go
-package greeting
-```
-
 Go is a statically-typed language, which means that everything has a type at compile-time. Assigning a value to a name is referred to as defining a variable. A variable can be defined either by explicitly specifying its type, or by assigning a value to have the Go compiler infer its type based on the assigned value.
 
 ```go
