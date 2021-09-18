@@ -52,7 +52,7 @@ All the methods we have seen so far have a value receiver which means they on a 
 You can declare methods with pointer receivers in order to modify the value to which the receiver points.
 This is done by prefixing the type name with a `*`.
 For example with the `rect` type, a pointer reciever would be declared as `*rect`.
-Such modifications are visible to the caller or the method as well.
+Such modifications are visible to the caller of the method as well.
 
 ```go
 type rect struct {
