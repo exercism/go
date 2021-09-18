@@ -8,7 +8,8 @@ A `string` value can be written as a string literal, which is a sequence of byte
 s := "Hello World!"
 ```
 
-Go provides an in-built package called `fmt` (format package) which offers a variety of functions to manipulate the format of input and output. The most commonly used function is `Sprinf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
+Go provides an in-built package called `fmt` (format package) which offers a variety of functions to manipulate the format of input and output.
+The most commonly used function is `Sprinf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
 
 ```go
 food := "taco"
@@ -24,3 +25,5 @@ f := 4.3242
 fmt.Sprintf("%.2f", f)
 // Returns: 4.32
 ```
+
+`fmt` contains other functions for working with strings, such as `Println` which simply prints the input received and `Printf` which formats the input in the same was as `Sprintf` beford print it.
