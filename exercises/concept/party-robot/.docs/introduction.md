@@ -26,4 +26,4 @@ fmt.Sprintf("%.2f", f)
 // Returns: 4.32
 ```
 
-`fmt` contains other functions for working with strings, such as `Println` which simply prints the input received and `Printf` which formats the input in the same was as `Sprintf` beford print it.
+`fmt` contains other functions for working with strings, such as `Println` which simply prints the arguments it receives to the console and `Printf` which formats the input in the same way as `Sprintf` before printing it.
