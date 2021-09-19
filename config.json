@@ -147,7 +147,10 @@
         "prerequisites": [
           "basics",
           "conditionals-if",
-          "numbers"
+          "numbers",
+          "strings",
+          "conditionals-switch",
+          "multiple-return-values"
         ],
         "status": "beta"
       },
