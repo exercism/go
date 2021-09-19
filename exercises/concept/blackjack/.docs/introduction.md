@@ -1,25 +1,33 @@
 # Introduction
 
-Instead of using an `if` statement for conditional logic, Go also provides a `switch` statement for more advanced scenarios.
+Like other languages, Go also provides a `switch` statement. Switch statements are a shorter way to write long `if ... else if` statements. To make a switch, we start by using the keyword `switch` followed by a value or expression. We then declare each one of the conditions with the `case` keyword. We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
 
 ```go
-var value string
+operatingSystem := "windows"
 
-// switch statement on variable content
-switch value {
-case "val1":
-    // conditional code
-case "val2", "val3", "foo":
-    // conditional code
+switch operatingSystem {
+case "windows":
+    // do something if the operating system is windows
+case "linux":
+    // do something if the operating system is linux
+case "macos":
+    // do something if the operating system is macos
 default:
-    // default code
-}
+    // do something if the operating system is none of the above
+} 
+```
 
-// switch statement using conditions (can replace `if ... else if` statements)
+One interesting thing about switch statements, is that the value after the `switch` keyword can be omitted, and we can have boolean conditions for each `case`:
+
+```go
+age := 21
+
 switch {
-case value == "val1":
-    // conditional code
-case strings.HasPrefix(value, "val") || strings.HasPrefix(value, "foo"):
-    // conditional code
+case age > 20 && age < 30:
+    // do something if age is between 20 and 30
+case age == 10:
+    // do something if age is equal to 10
+default:
+    // do something else for every other case
 }
 ```
