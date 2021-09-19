@@ -84,11 +84,11 @@ You've previously seen defining struct types, but it's also possible to define n
 
 ```go
 type Name string
-func (n Name) SayHello() {
+func SayHello(n Name) {
   fmt.Printf("Hello %s\n", n)
 }
 n := Name("Fred")
-n.SayHello()
+SayHello(n)
 // Output: Hello Fred
 ```
 
@@ -96,13 +96,13 @@ You can also define non-struct types composed of arrays and maps.
 
 ```go
 type Names []string
-func (n Names) SayHello() {
+func SayHello(n Names) {
   for _, name := range n {
     fmt.Printf("Hello %s\n", name)
   }
 }
 n := Names([]string{"Fred", "Bill"})
-n.SayHello()
+SayHello(n)
 // Output:
 // Hello Fred
 // Hello Bill

@@ -173,7 +173,8 @@
         ],
         "prerequisites": [
           "structs",
-          "string-formatting"
+          "string-formatting",
+          "type-definitions"
         ],
         "status": "beta"
       },
@@ -219,12 +220,14 @@
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
         "concepts": [
-          "range-iteration"
+          "range-iteration",
+          "type-definitions"
         ],
         "prerequisites": [
           "conditionals-if",
           "maps",
-          "slices"
+          "slices",
+          "structs"
         ],
         "status": "beta"
       },
@@ -1849,6 +1852,11 @@
       "name": "Type Conversion",
       "slug": "type-conversion",
       "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
+    },
+    {
+      "name": "Type Definitions",
+      "slug": "type-definitions",
+      "uuid": "ef4bfcfb-fa81-4d80-be63-a50c47653490"
     },
     {
       "name": "Zero Values",
