@@ -78,20 +78,6 @@ for i := range xi {
 // 2
 ```
 
-Last but not least, if you are required to perform some action but you are not
-interested in values nor keys of the slice or map, you can omit both index and
-value:
-
-```go
-xi := []int{10, 20, 30}
-count := 0
-for range xi {
-  count++
-}
-// count value:
-// 3
-```
-
 ## Non-struct types
 
 You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define reciever functions on them to extend them in the same way as struct types.
