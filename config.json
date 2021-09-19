@@ -224,8 +224,7 @@
         "prerequisites": [
           "conditionals-if",
           "maps",
-          "slices",
-          "methods"
+          "slices"
         ],
         "status": "beta"
       },

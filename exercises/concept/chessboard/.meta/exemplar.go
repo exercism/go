@@ -8,7 +8,7 @@ type Chessboard map[int]Rank
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func (cb Chessboard) CountInRank(rank int) (ret int) {
+func CountInRank(cb Chessboard, rank int) (ret int) {
 	for _, r := range cb[rank] {
 		if r {
 			ret++
@@ -19,7 +19,7 @@ func (cb Chessboard) CountInRank(rank int) (ret int) {
 
 // CountInFile returns how many squares are occupied in the chessboard,
 // within the given file
-func (cb Chessboard) CountInFile(file int) (ret int) {
+func CountInFile(cb Chessboard, file int) (ret int) {
 	if file < 1 || file > 8 {
 		return
 	}
@@ -32,7 +32,7 @@ func (cb Chessboard) CountInFile(file int) (ret int) {
 }
 
 // CountAll should count how many squares are present in the chessboard
-func (cb Chessboard) CountAll() (ret int) {
+func CountAll(cb Chessboard) (ret int) {
 	for _, rank := range cb {
 		for range rank {
 			ret++
@@ -42,9 +42,9 @@ func (cb Chessboard) CountAll() (ret int) {
 }
 
 // CountOccupied returns how many squares are occupied in the chessboard
-func (cb Chessboard) CountOccupied() (ret int) {
+func CountOccupied(cb Chessboard) (ret int) {
 	for rank := range cb {
-		ret += cb.CountInRank(rank)
+		ret += CountInRank(cb, rank)
 	}
 	return ret
 }

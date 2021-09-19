@@ -16,8 +16,8 @@ import (
 // 7 _ _ _ # _ _ _ _ 7
 // 8 # # # # # # _ # 8
 //   1 2 3 4 5 6 7 8
-func newChessboard() *Chessboard {
-	return &Chessboard{
+func newChessboard() Chessboard {
+	return Chessboard{
 		1: Rank{true, false, true, false, false, false, false, true},
 		2: Rank{false, false, false, false, true, false, false, false},
 		3: Rank{false, false, true, false, false, false, false, false},
@@ -45,9 +45,9 @@ func TestCountInRank(t *testing.T) {
 		{8, 7},
 		{9, 0},
 	} {
-		if out := cb.CountInRank(test.in); out != test.out {
+		if out := CountInRank(cb, test.in); out != test.out {
 			t.Errorf(
-				"CountInRank(%v) returned %v while %v was expected\n",
+				"CountInRank(chessboard, %v) returned %v while %v was expected\n",
 				test.in,
 				out,
 				test.out,
@@ -72,9 +72,9 @@ func TestCountInFile(t *testing.T) {
 		{8, 3},
 		{100, 0},
 	} {
-		if out := cb.CountInFile(test.in); out != test.out {
+		if out := CountInFile(cb, test.in); out != test.out {
 			t.Errorf(
-				"CountInFile(%v) returned %v while %v was expected\n",
+				"CountInFile(chessboard, %v) returned %v while %v was expected\n",
 				test.in,
 				out,
 				test.out,
@@ -86,15 +86,15 @@ func TestCountInFile(t *testing.T) {
 func TestCountAll(t *testing.T) {
 	cb := newChessboard()
 	wanted := 64
-	if out := cb.CountAll(); out != wanted {
-		t.Errorf("CountAll() returned %v while %v was expected", out, wanted)
+	if out := CountAll(cb); out != wanted {
+		t.Errorf("CountAll(chessboard) returned %v while %v was expected", out, wanted)
 	}
 }
 
 func TestCountOccupied(t *testing.T) {
 	cb := newChessboard()
 	wanted := 15
-	if out := cb.CountOccupied(); out != wanted {
-		t.Errorf("CountOccupied() returned %v while %v was expected", out, wanted)
+	if out := CountOccupied(cb); out != wanted {
+		t.Errorf("CountOccupied(chessboard) returned %v while %v was expected", out, wanted)
 	}
 }
