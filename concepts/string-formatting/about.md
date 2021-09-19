@@ -1,29 +1,5 @@
 # About
 
-A `string` in Go is an immutable sequence of bytes. Strings may contain arbitrary bytes but usually they contain human-readable text.
-Text strings are conventionally interpreted as UTF-8 encoded sequence of Unicode code points (runes) which will be explained in a future exercise.
-A `string` value can be written as a string literal, which is a sequence of bytes enclosed in double quotes:
-
-```go
-s := "Hello World!"
-```
-
-The `+` operator makes a new string by [concatenating][string concatenation] two strings:
-
-```go
-fmt.Println("Hello" + " world!")
-```
-
-String values are immutable: the byte sequence contained in a string value can never be changed, though of course we can assign a new value to a string variable.
-To append one string to another, we can use the `+=` statement:
-
-```go
-s := "Hello"
-s += " word."
-fmt.Println(s)
-// Output: Hello world.
-```
-
 Go provides an in-built package called `fmt` (format package) which offers a variety of functions to manipulate the format of input and output. The most common used functions to print output are `Println` and `Printf`.
 `Println` simply prints the input received on the console screen while `Printf` formats the input, using verbs like `%s` for strings, before printing it on the console.
 
