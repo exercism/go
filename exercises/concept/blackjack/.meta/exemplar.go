@@ -57,15 +57,3 @@ func SmallHand(handScore, dealerScore int) string {
 		return ""
 	}
 }
-
-// FirstTurn implements the logic for the first turn with the help of the other implemented functions.
-// This function is already implemented and does not need to be edited.
-func FirstTurn(card1, card2, dealerCard string) string {
-	handScore := ParseCard(card1) + ParseCard(card2)
-	dealerScore := ParseCard(dealerCard)
-
-	if 20 < handScore {
-		return LargeHand(IsBlackjack(card1, card2), dealerScore)
-	}
-	return SmallHand(handScore, dealerScore)
-}
