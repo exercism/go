@@ -8,11 +8,7 @@ Syntactically, `map` looks like this:
 map[KeyType]ElementType
 ```
 
-_`KeyType` must be any [comparable type][gospec-comparable], while `ElementType` can be any valid type in go, which means you can store anything from primitive variable to a slice._
-
 It is also important to know that each key is unique, meaning that assigning the same key twice will overwrite the value of the corresponding key.
-
-`map` is reference type, which means if you pass it around, go won't copy the whole map. Instead what go will do is go copy the pointer of the map, this makes passing map to a function or variable cheap. The value of an uninitialized map is `nil`.
 
 To create a map, you can do:
 
@@ -48,5 +44,3 @@ If you're trying to retrieve a non existed key, will return the zero value of yo
   // If the key "baz" doesn't exists,
   // value: 0; exists: false
 ```
-
-[gospec-comparable]: https://golang.org/ref/spec#Comparison_operators
