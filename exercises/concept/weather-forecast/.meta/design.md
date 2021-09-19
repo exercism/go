@@ -30,7 +30,7 @@ None
 
 The following rule could be added to the analyzer.
 
-Verify that there are no comments written about the local variables in function Log().
+Verify that there are no comments written about the local variables in function Forecast().
 If there is, a reply could be:
 
 `Variables inside of functions are private and do not require comments for the user of the package. Adding a comment here may still be useful for the maintainers of this package.`
