@@ -15,17 +15,5 @@ func CalculateProductionRatePerMinute(speed int) int {
 // successRate is used to calculate the ratio of an item being created without
 // error for a given speed
 func successRate(speed int) float64 {
-	if speed == 0 {
-		return 0.0
-	}
-
-	if speed < 5 {
-		return 1.0
-	}
-
-	if speed >= 9 {
-		return 0.77
-	}
-
-	return 0.9
+	panic("not implemented")
 }
