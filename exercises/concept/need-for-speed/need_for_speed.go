@@ -1,24 +1,16 @@
 package speed
 
-// Car implements a remote controlled car.
-type Car struct {
-	speed        int
-	batteryDrain int
-	battery  int
-	distance int
-}
+// TODO: define the 'Car' type struct
 
 // NewCar creates a new remote controlled car with full battery and given specifications.
 func NewCar(speed, batteryDrain int) Car {
 	panic("Please implement the NewCar function")
 }
 
-
 // Track implements a race track.
 type Track struct{
 	distance int
 }
-
 
 // NewTrack created a new track
 func NewTrack(distance int) Track{
