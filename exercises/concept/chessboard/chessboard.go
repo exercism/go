@@ -3,12 +3,12 @@ package chessboard
 // Rank stores if a square is occupied by a piece
 type Rank []bool
 
-// Chessboard contains eight Ranks, accessed with values from 'A' to 'H'
-type Chessboard map[byte]Rank
+// Chessboard contains eight Ranks, accessed with values from '0' to '7'
+type Chessboard map[int]Rank
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func (cb Chessboard) CountInRank(rank byte) (ret int) {
+func (cb Chessboard) CountInRank(rank int) (ret int) {
 	panic("Please implement CountInRank()")
 }
 
