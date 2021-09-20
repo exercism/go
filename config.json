@@ -200,6 +200,7 @@
           "slices"
         ],
         "prerequisites": [
+          "booleans",
           "numbers",
           "conditionals-if"
         ],
