@@ -1,29 +1,27 @@
 package chessboard
 
-// Rank stores if a square is occupied by a piece
-type Rank []bool
+// Declare a type named Rank which stores if a square is occupied by a piece - this will be a slice of bools
 
-// Chessboard contains eight Ranks, accessed with values from 'A' to 'H'
-type Chessboard map[byte]Rank
+// Declare a type named Chessboard contains a map of eight Ranks, accessed with values from 1 to 8
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func (cb Chessboard) CountInRank(rank byte) (ret int) {
+func CountInRank(cb Chessboard, rank int) (ret int) {
 	panic("Please implement CountInRank()")
 }
 
 // CountInFile returns how many squares are occupied in the chessboard,
 // within the given file
-func (cb Chessboard) CountInFile(file int) (ret int) {
+func CountInFile(cb Chessboard, file int) (ret int) {
 	panic("Please implement CountInFile()")
 }
 
 // CountAll should count how many squares are present in the chessboard
-func (cb Chessboard) CountAll() (ret int) {
+func CountAll(cb Chessboard) (ret int) {
 	panic("Please implement CountAll()")
 }
 
 // CountOccupied returns how many squares are occupied in the chessboard
-func (cb Chessboard) CountOccupied() (ret int) {
+func CountOccupied(cb Chessboard) (ret int) {
 	panic("Please implement CountOccupied()")
 }

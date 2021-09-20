@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://tour.golang.org/moretypes/2",
+    "description": "A Tour of Go"
+  },
+  {
+    "url": "https://go101.org/article/type-system-overview.html",
+    "description": "Go Type System Overview"
+  },
+  {
+    "url": "https://medium.com/rungo/structures-in-go-76377cc106a2",
+    "description": "Structures in Go"
+  },
+  {
+    "url": "https://gobyexample.com/structs",
+    "description": "Go by Example: Structs"
+  }
+]

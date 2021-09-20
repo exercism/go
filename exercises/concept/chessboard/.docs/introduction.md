@@ -78,31 +78,17 @@ for i := range xi {
 // 2
 ```
 
-Last but not least, if you are required to perform some action but you are not
-interested in values nor keys of the slice or map, you can omit both index and
-value:
-
-```go
-xi := []int{10, 20, 30}
-count := 0
-for range xi {
-  count++
-}
-// count value:
-// 3
-```
-
 ## Non-struct types
 
 You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define reciever functions on them to extend them in the same way as struct types.
 
 ```go
 type Name string
-func (n Name) SayHello() {
+func SayHello(n Name) {
   fmt.Printf("Hello %s\n", n)
 }
 n := Name("Fred")
-n.SayHello()
+SayHello(n)
 // Output: Hello Fred
 ```
 
@@ -110,13 +96,13 @@ You can also define non-struct types composed of arrays and maps.
 
 ```go
 type Names []string
-func (n Names) SayHello() {
+func SayHello(n Names) {
   for _, name := range n {
     fmt.Printf("Hello %s\n", name)
   }
 }
 n := Names([]string{"Fred", "Bill"})
-n.SayHello()
+SayHello(n)
 // Output:
 // Hello Fred
 // Hello Bill
