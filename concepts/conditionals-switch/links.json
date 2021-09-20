@@ -1,10 +1,14 @@
 [
   {
-    "url": "https://golang.org/ref/spec#Switch_statements",
-    "description": "switch_statement"
+    "url": "https://tour.golang.org/flowcontrol/9",
+    "description": "Tour of Go: Switch"
   },
   {
     "url": "https://gobyexample.com/switch",
-    "description": "go_by_example_switch"
+    "description": "Go by Example: Switch"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Switch_statements",
+    "description": "Language Spec: Switch Statements"
   }
 ]
