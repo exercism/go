@@ -61,15 +61,6 @@ func TestGetItem(t *testing.T) {
 			want:   0,
 			wantOk: false,
 		},
-		{
-			name: "Slice is nill",
-			args: args{
-				slice: nil,
-				index: 0,
-			},
-			want:   0,
-			wantOk: false,
-		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -140,15 +131,6 @@ func TestSetItem(t *testing.T) {
 			},
 			want: []int{5, 2, 10, 6, 8, 7, 0, 9, 8},
 		},
-		{
-			name: "Slice is nill",
-			args: args{
-				slice: nil,
-				index: 7,
-				value: 8,
-			},
-			want: []int{8},
-		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -192,7 +174,7 @@ func TestPrefilledSlice(t *testing.T) {
 				value:  3,
 				length: 0,
 			},
-			want: nil,
+			want: []int{},
 		},
 		{
 			name: "Negative length",
@@ -200,16 +182,12 @@ func TestPrefilledSlice(t *testing.T) {
 				value:  3,
 				length: -3,
 			},
-			want: nil,
+			want: []int{},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := PrefilledSlice(tt.args.value, tt.args.length); !reflect.DeepEqual(got, tt.want) {
-				if tt.want == nil {
-					t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want nil", tt.args.value, tt.args.length, got)
-					return
-				}
 				t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want %v", tt.args.value, tt.args.length, got, tt.want)
 			}
 		})
@@ -251,14 +229,6 @@ func TestRemoveItem(t *testing.T) {
 			want: []int{3, 4, 5},
 		},
 		{
-			name: "Remove an item from a nil slice",
-			args: args{
-				slice: nil,
-				index: 1,
-			},
-			want: nil,
-		},
-		{
 			name: "Remove out of bounds index",
 			args: args{
 				slice: []int{3, 4, 5, 6},
@@ -278,10 +248,6 @@ func TestRemoveItem(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := RemoveItem(copySlice(tt.args.slice), tt.args.index); !reflect.DeepEqual(got, tt.want) {
-				if tt.want == nil {
-					t.Errorf("RemoveItem(slice:%v, index:%v) = %v, want nil", tt.args.slice, tt.args.index, got)
-					return
-				}
 				t.Errorf("RemoveItem(slice:%v, index:%v) = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
 			}
 		})
@@ -289,9 +255,6 @@ func TestRemoveItem(t *testing.T) {
 }
 
 func copySlice(s []int) []int {
-	if s == nil {
-		return nil
-	}
 	var slice = make([]int, len(s))
 	copy(slice, s)
 	return slice
