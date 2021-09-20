@@ -3,6 +3,9 @@
   "authors": [
     "chocopowwwa"
   ],
+  "contributors": [
+    "MiroslavGatsanoga"
+  ],
   "files": {
     "solution": [
       "gross_store.go"

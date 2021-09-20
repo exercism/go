@@ -147,7 +147,9 @@
         "prerequisites": [
           "basics",
           "conditionals-if",
-          "numbers"
+          "numbers",
+          "string-formatting",
+          "conditionals-switch"
         ],
         "status": "beta"
       },
