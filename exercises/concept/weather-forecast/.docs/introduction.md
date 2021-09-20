@@ -35,21 +35,3 @@ func CelsiusFreezingTemp() int {
 	return 0
 }
 ```
-
-## Golint
-
-`golint` is a great tool to check for missing comments and other common stylistic issues.
-
-You can install `golint` on your machine with the following command:
-
-```
-go get -u golang.org/x/lint/golint
-```
-
-It's a good idea to configure your editor to run `golint` for you. Otherwise, you can invoke it like this:
-
-```
-golint weather.go
-```
-
-To use the `golint` command globally, make sure that it is on your `$PATH`.
