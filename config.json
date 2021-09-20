@@ -148,9 +148,8 @@
           "basics",
           "conditionals-if",
           "numbers",
-          "strings",
-          "conditionals-switch",
-          "multiple-return-values"
+          "string-formatting",
+          "conditionals-switch"
         ],
         "status": "beta"
       },
