@@ -2,19 +2,27 @@
 
 ## 1. Create a new resident
 
-- Revisit the [structs concept][concept-structs] for information on how to create structs.
+- Revisit the structs concept for information on how to create structs.
+
+[concept:go/structs]()
 
 ## 2. Validate resident information
 
 - The zero value for a string is `""`.
 - The zero value for a map is `nil`.
-- Revisit the [maps concept][concept-maps] for information on how to determine if a map key exists.
+- Revisit the maps concept for information on how to determine if a map key exists.
+
+[concept:go/maps]()
 
 ## 3. Delete resident information
 
 - A resident is considered deleted when all of their fields are set to their zero value.
-- Revisit the [zero-values concept][concept-zero-values] for the zero value for each Go type.
+- Revisit the zero-values concept for the zero value for each Go type.
+
+[concept:go/zero-values]()
 
 ## 4. Count the residents
 
-- Revisit the [range-iteration concept][concept-range-iteration] for information on how to range over a slice.
+- Revisit the range-iteration concept for information on how to range over a slice.
+
+[concept:go/range-iteration]()

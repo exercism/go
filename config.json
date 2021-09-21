@@ -235,9 +235,7 @@
           "nil",
           "zero-values"
         ],
-        "prerequisites": [
-          "maps"
-        ],
+        "prerequisites": [ "maps", "structs", "numbers", "strings", "pointers", "booleans", "methods", "slices", "conditionals-if", "nil" ],
         "status": "beta"
       }
     ],

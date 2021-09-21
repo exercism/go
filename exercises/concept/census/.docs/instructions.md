@@ -1,19 +1,17 @@
 # Instructions
 
-It is your job to prepare the city's IT system for an upcoming census. Specifically, you are responsible for the program that will injest the data from the census workers.
+It is your job to prepare the city's IT system for an upcoming census. Specifically, you are responsible for the program that will process the data from the census workers.
 
 The program must be able to create a new resident in the system when given a resident's information. Additionally, you will create functions that ensure the required information is present in the resident's data and delete a resident's data. Lastly, you will count the residents to provide an accurate census count.
 
 ## 1. Create a new resident
 
-When a census worker collects a resident's information, they need register that resident by entering their name, age, and address into the system.
+When a census worker collects a resident's information, they need to register that resident by entering their name, age, and address into the system.
 
 Implement the function `NewResident` that accepts three arguments:
 
 - The name of the resident.
-
 - The age of the resident.
-
 - The address of the resident.
 
 The function should return a pointer to a `Resident` struct that holds this information.
