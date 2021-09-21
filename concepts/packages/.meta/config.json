@@ -1,5 +1,5 @@
 {
-  "blurb": "Packages are the unit of code reuse in Go",
+  "blurb": "Packages are the unit of code reuse in Go.",
   "authors": ["bobtfish"],
   "contributors": []
 }
