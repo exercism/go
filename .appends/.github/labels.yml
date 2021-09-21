@@ -11,6 +11,10 @@
   description: ""
   color: "d93f0b"
 
+- name: "action/stale"
+  description: "Applied (and removed) automatically by the stale workflow to indicate an issue or pull request is stale"
+  color: "d93f0b"
+
 - name: "bug"
   description: ""
   color: "fc2929"
