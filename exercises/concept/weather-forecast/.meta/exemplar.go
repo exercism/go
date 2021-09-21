@@ -9,9 +9,9 @@ var (
 	CurrentLocation string
 )
 
-// Log returns a statement about the weather
+// Forecast returns a statement about the weather
 // based on a given city and weather condition.
-func Log(city, condition string) string {
+func Forecast(city, condition string) string {
 	CurrentLocation, CurrentCondition = city, condition
 	return CurrentLocation + " - current weather condition: " + CurrentCondition
 }

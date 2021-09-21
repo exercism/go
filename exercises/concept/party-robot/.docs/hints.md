@@ -8,7 +8,7 @@
 
 ```go
 s := "Hello"
-s += " word."
+s += " world."
 fmt.Println(s)
 // Output: Hello world.
 ```

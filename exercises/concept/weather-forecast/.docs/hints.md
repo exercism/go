@@ -16,7 +16,7 @@
 
 - The [variable comment][variable comment] should be written right before the variable that it is describing, start with its name, and end with a period.
 
-## 4. Document the Log() function
+## 4. Document the Forecast() function
 
 - The [function comment][comment] should come directly before the function, start with the name of the function and end with a period.
 

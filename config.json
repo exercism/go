@@ -61,7 +61,7 @@
         "name": "Party Robot",
         "uuid": "b3594c44-1a68-489d-a446-16369247c84c",
         "concepts": [
-          "strings"
+          "string-formatting"
         ],
         "prerequisites": [
           "basics"
@@ -90,7 +90,7 @@
         "prerequisites": [
           "basics",
           "comments",
-          "strings"
+          "string-formatting"
         ],
         "status": "beta"
       },
@@ -103,7 +103,7 @@
         ],
         "prerequisites": [
           "booleans",
-          "strings",
+          "string-formatting",
           "numbers",
           "conditionals-if"
         ],
@@ -118,7 +118,7 @@
         ],
         "prerequisites": [
           "basics",
-          "strings",
+          "string-formatting",
           "numbers"
         ],
         "status": "beta"
@@ -147,7 +147,9 @@
         "prerequisites": [
           "basics",
           "conditionals-if",
-          "numbers"
+          "numbers",
+          "string-formatting",
+          "conditionals-switch"
         ],
         "status": "beta"
       },
@@ -172,7 +174,9 @@
           "methods"
         ],
         "prerequisites": [
-          "structs"
+          "structs",
+          "string-formatting",
+          "type-definitions"
         ],
         "status": "beta"
       },
@@ -196,6 +200,7 @@
           "slices"
         ],
         "prerequisites": [
+          "booleans",
           "numbers",
           "conditionals-if"
         ],
@@ -218,14 +223,24 @@
         "slug": "chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
         "concepts": [
-          "range-iteration"
+          "range-iteration",
+          "type-definitions"
         ],
         "prerequisites": [
           "conditionals-if",
           "maps",
-          "slices"
+          "slices",
+          "structs"
         ],
         "status": "beta"
+      },
+      {
+        "name": "The Farm",
+        "slug": "the-farm",
+        "uuid": "43e12a9e-ed8e-4552-a889-d86e284b21c0",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "wip"
       },
       {
         "name": "Census",
@@ -1815,8 +1830,8 @@
       "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
     },
     {
-      "name": "Strings",
-      "slug": "strings",
+      "name": "String Formatting",
+      "slug": "string-formatting",
       "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7"
     },
     {
@@ -1838,6 +1853,11 @@
       "name": "Type Conversion",
       "slug": "type-conversion",
       "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
+    },
+    {
+      "name": "Type Definitions",
+      "slug": "type-definitions",
+      "uuid": "ef4bfcfb-fa81-4d80-be63-a50c47653490"
     },
     {
       "name": "Zero Values",

@@ -16,6 +16,6 @@ This should tell any user of the package what information the variable stores, a
 
 Just like the previous step, write a comment for `CurrentLocation`.
 
-## 4. Document the Log() function
+## 4. Document the Forecast() function
 
-Write a function comment for `Log()`.
+Write a function comment for `Forecast()`.

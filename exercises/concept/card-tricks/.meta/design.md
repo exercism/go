@@ -27,7 +27,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 ## Prerequisites
 
 - `iteration`: fill a slice (Not yet available: `range iteration`)
-- `numbers`: integers (uint8 and int) to represent cards
+- `numbers`: integers (`int`) to represent cards
 - `conditionals-if`: mostly to check for existing indexes
 
 ## Implementing

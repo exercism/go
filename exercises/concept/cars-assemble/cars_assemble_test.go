@@ -93,7 +93,7 @@ func TestCalculateProductionRatePerMinute(t *testing.T) {
 			got := CalculateProductionRatePerMinute(tt.speed)
 			if got != tt.want {
 				t.Errorf(
-					"CalculateWorkingItemsRate(%d) = %d, want %d",
+					"CalculateProductionRatePerMinute(%d) = %d, want %d",
 					tt.speed,
 					got,
 					tt.want,

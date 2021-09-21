@@ -1,57 +1,38 @@
 # Introduction
 
-TODO: the content below is copied from the exercise introduction and probably needs rewriting to a proper concept introduction
-
-## conditionals-if
-
-## conditionals-switch
-
-## booleans
-
-Go supports the three logical operators `&&` (AND), `||` (OR), and `!` (NOT).
-
-Conditionals in Go are similar to conditionals in other languages. The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`. Conditionals are often used as flow control mechanisms to check for various conditions. For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
+Like other languages, Go also provides a [`switch` statement][switch_statement]. Switch statements are a shorter way to write long `if ... else if` statements. To make a switch, we start by using the keyword `switch` followed by a value or expression. We then declare each one of the conditions with the `case` keyword. We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
 
 ```go
-var value string
+operatingSystem := "windows"
 
-if value == "val" {
-    // conditional code
-}
-```
-
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
-
-```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
-} else {
-    // default code
-}
-```
-
-Go also provides a `switch` statement for more advanced scenarios.
-
-```go
-var value string
-
-// switch statement on variable content
-switch value {
-case "val1":
-    // conditional code
-case "val2", "val3", "foo":
-    // conditional code
+switch operatingSystem {
+case "windows":
+    // do something if the operating system is windows
+case "linux":
+    // do something if the operating system is linux
+case "macos":
+    // do something if the operating system is macos
 default:
-    // default code
-}
+    // do something if the operating system is none of the above
+} 
+```
 
-// switch statement using conditions (can replace `if ... else if` statements)
+One interesting thing about switch statements, is that the value after the `switch` keyword can be omitted, and we can have boolean conditions for each `case`:
+
+```go
+age := 21
+
 switch {
-case value == "val1":
-    // conditional code
-case strings.HasPrefix(value, "val") || strings.HasPrefix(value, "foo"):
-    // conditional code
+case age > 20 && age < 30:
+    // do something if age is between 20 and 30
+case age == 10:
+    // do something if age is equal to 10
+default:
+    // do something else for every other case
 }
 ```
+
+To learn more about this topic, check [Go by Example: Switch][go_by_example_switch] or [Tour of Go: Switch][switch_statement].
+
+[switch_statement]: https://tour.golang.org/flowcontrol/9
+[go_by_example_switch]: https://gobyexample.com/switch

@@ -1,32 +1,58 @@
 # Introduction
 
-A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
+A method is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
-func (receiver type) MethodName(parameters) (returnTypes){
-
+func (receiver type) MethodName(parameters) (returnTypes) {
 }
 ```
 
-You can only define a method with a receiver whose type is defined in the same package as the method. The receiver can be either a struct type or a non-struct type as in the example below.
+You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-type Name string
+type Person struct {
+	Name string
+}
 
-func (s Name) Greetings() string {
+func (p Person) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", s)
 }
 
-func main() {
-	s := Name("Bronson")
-	fmt.Println(s.Greetings())
-}
+p := Person{Name: "Bronson"}
+fmt.Println(p.Greetings())
 // Output: Welcome Bronson !
 ```
 
-Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
+Notice the way we called the method `Greetings()` on the `Person` instance `p`.
+It’s exactly like the way you call methods in an object-oriented programming language.
 
-You can declare methods with pointer receivers in order to modify the value to which the receiver points. Such modifications are visible to the caller or the method as well.
+Remember: a method is just a function with a receiver argument.
+Methods help to avoid naming conflicts - since a method is tied to a particular reciever type, you can have the same method name on different types.
+
+```go
+import "math"
+
+type rect struct {
+	width, hight int
+}
+func (r rect) area() int {
+	return r.width * r.height
+}
+
+type circle struct {
+	radius int
+}
+func (c circle) area() float64 {
+	return 2*c.radius*math.Pi
+}
+```
+
+All the methods we have seen so far have a value receiver which means they on a copy of the value passed to the method, meaning that any modification done to the receiver inside the method is not visible to the caller.
+
+You can declare methods with pointer receivers in order to modify the value to which the receiver points.
+This is done by prefixing the type name with a `*`.
+For example with the `rect` type, a pointer reciever would be declared as `*rect`.
+Such modifications are visible to the caller of the method as well.
 
 ```go
 type rect struct {
@@ -36,21 +62,11 @@ func (r *rect) squareIt() {
 	r.height = r.width
 }
 
-func main() {
-	r := rect{width: 10, height: 20}
-	fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-	// Output: Width: 10, Height: 20
+r := rect{width: 10, height: 20}
+fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
+// Output: Width: 10, Height: 20
 
-	r.squareIt()
-	fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-	// Output: Width: 10, Height: 10
-}
+r.squareIt()
+fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
+// Output: Width: 10, Height: 10
 ```
-
-You can find several examples [here][pointers_receivers]. Also checkout this short tutorial about [methods][methods_tutorial].
-
-Remember: a method is just a function with a receiver argument.
-
-[methods]: https://tour.golang.org/methods/1
-[pointers_receivers]: https://tour.golang.org/methods/4
-[methods_tutorial]: https://www.callicoder.com/golang-methods-tutorial/

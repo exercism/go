@@ -2,15 +2,15 @@
 
 As a chess enthusiast, you would like to write your own version of the game. Yes, there maybe plenty of implementations of chess available online already, but yours will be unique!
 
-Each square of the chessboard is identified by a letter-number pair. The vertical columns of squares, called files, are labeled A through H. The horizontal rows of squares, called ranks, are numbered 1 to 8.
+Each square of the chessboard is identified by a letter-number pair. The vertical columns of squares, called files, are numbered 1 through 8. The horizontal rows of squares, called ranks, are numbered 1 to 8.
 
 ## 1. Given a Chessboard and a Rank, count how many squares are occupied
 
-Decorate the `Chessboard` type with the `CountInRank(rank byte) int` function.
+Decorate the `Chessboard` type with the `CountInRank(rank int) int` function.
 It should count occupied squares ranging over a map. Return an integer.
 
 ```go
-CountInRank('A')
+CountInRank(1)
 // => 6
 ```
 
