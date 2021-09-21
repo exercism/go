@@ -18,7 +18,7 @@ package greeting
 import "fmt"
 ```
 
-Multiple packages can be imported at once by encoding them in brackets.
+Multiple packages can be imported at once by encoding them in parentheses.
 
 ```go
 package greeting
