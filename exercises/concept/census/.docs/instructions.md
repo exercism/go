@@ -19,7 +19,7 @@ The function should return a pointer to a `Resident` struct that holds this info
 ```go
 name := "Matthew Sanabria"
 age := 29
-address := map[string]string{"street": "Main St.",}
+address := map[string]string{"street": "Main St."}
 
 NewResident(name, age, address)
 // => &{Matthew Sanabria 29 map[street:Main St.]}
@@ -34,7 +34,7 @@ In order to be counted, a resident must provide a non-zero value for their name 
 ```go
 name := "Matthew Sanabria"
 age := 0
-address := make(map[string]string, 0)
+address := make(map[string]string)
 
 resident := NewResident(name, age, address)
 
@@ -51,7 +51,7 @@ Implement the `Delete` method that sets all of the fields the resident to their 
 ```go
 name := "Matthew Sanabria"
 age := 29
-address := map[string]string{"street": "Main St.",}
+address := map[string]string{"street": "Main St."}
 
 resident := NewResident(name, age, address)
 
@@ -77,17 +77,17 @@ The function should return an integer indicating the number of residents that we
 ```go
 name1 := "Matthew Sanabria"
 age1 := 29
-address1 := map[string]string{"street": "Main St.",}
+address1 := map[string]string{"street": "Main St."}
 
 resident1 := NewResident(name1, age1, address1)
 
 name2 := "Rob Pike"
 age2 := 0
-address2 := make(map[string]string, 0)
+address2 := make(map[string]string)
 
 resident2 := NewResident(name2, age2, address2)
 
-residents := []*Resident{resident1, resident2,}
+residents := []*Resident{resident1, resident2}
 
 Count(residents)
 // => 1

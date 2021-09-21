@@ -250,7 +250,7 @@
           "nil",
           "zero-values"
         ],
-        "prerequisites": [ "maps", "structs", "numbers", "strings", "pointers", "booleans", "methods", "slices", "conditionals-if", "nil" ],
+        "prerequisites": [ "maps", "structs", "numbers", "strings", "pointers", "booleans", "methods", "slices", "conditionals-if" ],
         "status": "beta"
       }
     ],

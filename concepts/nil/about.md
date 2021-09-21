@@ -20,9 +20,9 @@ The following table details the zero value for Go's types.
 | channel   | `nil`      |
 | map       | `nil`      |
 
-## Comparing Types to Nil
+## Comparing with Nil
 
-Comparing a type whose zero value is not `nil` to `nil` is an error:
+If you try to compare a type whose zero value is not `nil` to `nil`, your code will not compile. You will see a compiler error because booleans, numeric types, and strings can never be `nil` in Go.
 
 ```go
 func main() {

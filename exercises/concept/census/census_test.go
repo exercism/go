@@ -2,141 +2,204 @@ package census_test
 
 import (
 	"census"
+	"reflect"
 	"testing"
 )
 
-// rawCensusData contains the information collected by census workers.
-type rawCensusData struct {
-	name    string
-	age     int
-	address map[string]string
-	deleted bool
-}
+// TestNewResident tests the census.NewResident function.
+func TestNewResident(t *testing.T) {
+	tests := []struct {
+		name     string
+		resident *census.Resident
+	}{
+		{
+			name:     "no data collected",
+			resident: &census.Resident{},
+		},
+		{
+			name: "all data collected",
+			resident: &census.Resident{
+				Name: "Matthew Sanabria",
+				Age:  29,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+		},
+	}
 
-// tests holds the various test cases to test the census package.
-var tests = []struct {
-	name          string
-	rawCensusData []rawCensusData
-	want          int
-}{
-	{
-		name:          "no_data",
-		rawCensusData: []rawCensusData{},
-		want:          0,
-	},
-	{
-		name: "all_valid_data",
-		rawCensusData: []rawCensusData{
-			{
-				name: "Matthew Sanabria",
-				age:  29,
-				address: map[string]string{
-					"street": "Main St.",
-				},
-			},
-			{
-				name: "Rob Pike",
-				age:  64,
-				address: map[string]string{
-					"street": "Gopher Ave.",
-				},
-			},
-		},
-		want: 2,
-	},
-	{
-		name: "some_valid_data",
-		rawCensusData: []rawCensusData{
-			{
-				name:    "Matthew Sanabria",
-				age:     29,
-				address: map[string]string{},
-			},
-			{
-				name: "Rob Pike",
-				age:  0,
-				address: map[string]string{
-					"street": "Gopher Ave.",
-				},
-			},
-		},
-		want: 1,
-	},
-	{
-		name: "all_invalid_data",
-		rawCensusData: []rawCensusData{
-			{
-				name:    "",
-				age:     0,
-				address: nil,
-			},
-		},
-		want: 0,
-	},
-	{
-		name: "all_deleted",
-		rawCensusData: []rawCensusData{
-			{
-				name: "Matthew Sanabria",
-				age:  29,
-				address: map[string]string{
-					"street": "Main St.",
-				},
-				deleted: true,
-			},
-			{
-				name: "Rob Pike",
-				age:  64,
-				address: map[string]string{
-					"street": "Gopher Ave.",
-				},
-				deleted: true,
-			},
-		},
-		want: 0,
-	},
-	{
-		name: "some_deleted",
-		rawCensusData: []rawCensusData{
-			{
-				name: "Matthew Sanabria",
-				age:  29,
-				address: map[string]string{
-					"street": "Main St.",
-				},
-			},
-			{
-				name: "Rob Pike",
-				age:  64,
-				address: map[string]string{
-					"street": "Gopher Ave.",
-				},
-				deleted: true,
-			},
-		},
-		want: 1,
-	},
-}
-
-// TestCensus tests the census package.
-func TestCensus(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 
-			residents := make([]*census.Resident, 0, len(test.rawCensusData))
+			resident := census.NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
 
-			for _, censusData := range test.rawCensusData {
-				resident := census.NewResident(censusData.name, censusData.age, censusData.address)
-
-				if censusData.deleted {
-					resident.Delete()
-				}
-
-				residents = append(residents, resident)
+			if !reflect.DeepEqual(resident, test.resident) {
+				t.Errorf("NewResident() = %v, want %v", resident, test.resident)
 			}
+		})
+	}
+}
 
-			if got := census.Count(residents); got != test.want {
-				t.Errorf("Count() = %d, want %d", got, test.want)
+// TestHasRequiredInfo tests the census.HasRequiredInfo method.
+func TestHasRequiredInfo(t *testing.T) {
+	tests := []struct {
+		name     string
+		resident *census.Resident
+		want     bool
+	}{
+		{
+			name:     "no data collected",
+			resident: &census.Resident{},
+			want:     false,
+		},
+		{
+			name: "all data collected",
+			resident: &census.Resident{
+				Name: "Matthew Sanabria",
+				Age:  29,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: true,
+		},
+		{
+			name: "missing street",
+			resident: &census.Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: map[string]string{},
+			},
+			want: false,
+		},
+		{
+			name: "missing name",
+			resident: &census.Resident{
+				Name: "",
+				Age:  29,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: false,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+
+			if got := test.resident.HasRequiredInfo(); got != test.want {
+				t.Errorf("resident.HasRequiredInfo() = %t, want %t", got, test.want)
+			}
+		})
+	}
+}
+
+// TestDelete tests the census.Delete method.
+func TestDelete(t *testing.T) {
+	tests := []struct {
+		name     string
+		resident *census.Resident
+		want     *census.Resident
+	}{
+		{
+			name:     "no data collected",
+			resident: &census.Resident{},
+			want:     &census.Resident{},
+		},
+		{
+			name: "all data collected",
+			resident: &census.Resident{
+				Name: "Matthew Sanabria",
+				Age:  29,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: &census.Resident{},
+		},
+		{
+			name: "some data collected",
+			resident: &census.Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: map[string]string{},
+			},
+			want: &census.Resident{},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+
+			test.resident.Delete()
+
+			if test.resident.Name != "" ||
+				test.resident.Age != 0 ||
+				test.resident.Address != nil {
+				t.Errorf("resident.Delete() = %v, want %v", test.resident, test.want)
+			}
+		})
+	}
+}
+
+// TestCount tests the census.Count function.
+func TestCount(t *testing.T) {
+	tests := []struct {
+		name      string
+		residents []*census.Resident
+		want      int
+	}{
+		{
+			name: "no data collected",
+			residents: []*census.Resident{
+				{},
+			},
+			want: 0,
+		},
+		{
+			name: "all data collected",
+			residents: []*census.Resident{
+				{
+					Name: "Matthew Sanabria",
+					Age:  29,
+					Address: map[string]string{
+						"street": "Main St.",
+					},
+				},
+			},
+			want: 1,
+		},
+		{
+			name: "some data collected",
+			residents: []*census.Resident{
+				{
+					Name: "Matthew Sanabria",
+					Age:  29,
+					Address: map[string]string{
+						"street": "Main St.",
+					},
+				},
+				{
+					Name:    "Rob Pike",
+					Age:     0,
+					Address: map[string]string{},
+				},
+				{
+					Name:    "",
+					Age:     0,
+					Address: map[string]string{},
+				},
+			},
+			want: 1,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+
+			if got := census.Count(test.residents); got != test.want {
+				t.Errorf("census.Count() = %d, want %d", got, test.want)
 			}
 		})
 	}
