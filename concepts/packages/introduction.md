@@ -18,3 +18,10 @@ package greeting
 import "fmt"
 ```
 
+An imported package is then addressed with the package name:
+
+```go
+world := "World"
+fmt.Sprintf("Hello %s", world)
+```
+
