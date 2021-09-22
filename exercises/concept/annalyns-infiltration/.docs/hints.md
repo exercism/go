@@ -9,11 +9,11 @@
 
 - The logical NOT operator (`!`) can be placed before an expression to negate its value.
 
-## 2. Check if a spy action can be made
+## 2. Check if the group can be spied upon
 
 - Logical operators are typically used to evaluate whether two or more expressions are true or not true.
 
-## 3. Check if a signal action can be made
+## 3. Check if the prisoner can be signalled
 
 - Logical operators execute in the order of their precedence (from highest to lowest): `!`, `&&`, `||`.
 - For more details check out the Operator Precedence section on the [official golang documentation][operators] and the [truth table][truth table].
