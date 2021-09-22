@@ -1,5 +1,0 @@
-{
-  "blurb": "nil is a special value in Go to represent the absence of a value.",
-  "authors": ["ErikSchierboom"],
-  "contributors": []
-}

@@ -1,17 +1,18 @@
 {
   "blurb": "Learn about zero values.",
   "authors": [
-    "jamessouth"
+    "jamessouth",
+    "sudomateo"
   ],
   "contributors": [
     "tehsphinx"
   ],
   "files": {
     "solution": [
-      "zero_zilch_nada.go"
+      "census.go"
     ],
     "test": [
-      "zero_zilch_nada_test.go"
+      "census_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

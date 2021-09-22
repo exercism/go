@@ -1,5 +1,8 @@
 {
   "blurb": "When a variable is created without a value, it gets assigned the zero value of its type.",
-  "authors": ["ErikSchierboom"],
+  "authors": [
+    "ErikSchierboom",
+    "sudomateo"
+  ],
   "contributors": []
 }

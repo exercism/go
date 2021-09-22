@@ -245,16 +245,13 @@
         "status": "wip"
       },
       {
-        "name": "Zero, Zilch, Nada",
-        "slug": "zero-zilch-nada",
+        "name": "Census",
+        "slug": "census",
         "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
         "concepts": [
-          "nil",
           "zero-values"
         ],
-        "prerequisites": [
-          "maps"
-        ],
+        "prerequisites": [ "maps", "structs", "numbers", "string-formatting", "booleans", "methods", "slices", "conditionals-if" ],
         "status": "beta"
       }
     ],
@@ -1817,11 +1814,6 @@
       "name": "Multiple Return Values",
       "slug": "multiple-return-values",
       "uuid": "ba2c60fd-7dc5-4852-93d0-83cc25554163"
-    },
-    {
-      "name": "Nil",
-      "slug": "nil",
-      "uuid": "c4d16fac-3e46-41ac-adf8-ce8f3f73f745"
     },
     {
       "name": "Numbers",
