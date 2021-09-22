@@ -1,1 +1,6 @@
-[]
+[
+  {
+    "url": "https://pkg.go.dev/strings",
+    "description": "strings package"
+  }
+]
