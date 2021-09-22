@@ -1,25 +1,24 @@
-// Package census_test tests the census package.
-package census_test
+// Package census tests the census package.
+package census
 
 import (
-	"census"
 	"reflect"
 	"testing"
 )
 
-// TestNewResident tests the census.NewResident function.
+// TestNewResident tests the NewResident function.
 func TestNewResident(t *testing.T) {
 	tests := []struct {
 		name     string
-		resident *census.Resident
+		resident *Resident
 	}{
 		{
 			name:     "no data collected",
-			resident: &census.Resident{},
+			resident: &Resident{},
 		},
 		{
 			name: "all data collected",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
 				Address: map[string]string{
@@ -32,7 +31,7 @@ func TestNewResident(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 
-			resident := census.NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
+			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
 
 			if !reflect.DeepEqual(resident, test.resident) {
 				t.Errorf("NewResident() = %v, want %v", resident, test.resident)
@@ -41,21 +40,21 @@ func TestNewResident(t *testing.T) {
 	}
 }
 
-// TestHasRequiredInfo tests the census.HasRequiredInfo method.
+// TestHasRequiredInfo tests the Resident.HasRequiredInfo method.
 func TestHasRequiredInfo(t *testing.T) {
 	tests := []struct {
 		name     string
-		resident *census.Resident
+		resident *Resident
 		want     bool
 	}{
 		{
 			name:     "no data collected",
-			resident: &census.Resident{},
+			resident: &Resident{},
 			want:     false,
 		},
 		{
 			name: "all data collected",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
 				Address: map[string]string{
@@ -66,7 +65,7 @@ func TestHasRequiredInfo(t *testing.T) {
 		},
 		{
 			name: "missing street",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name:    "Rob Pike",
 				Age:     0,
 				Address: map[string]string{},
@@ -75,7 +74,7 @@ func TestHasRequiredInfo(t *testing.T) {
 		},
 		{
 			name: "missing name",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name: "",
 				Age:  29,
 				Address: map[string]string{
@@ -96,37 +95,37 @@ func TestHasRequiredInfo(t *testing.T) {
 	}
 }
 
-// TestDelete tests the census.Delete method.
+// TestDelete tests the Resident.Delete method.
 func TestDelete(t *testing.T) {
 	tests := []struct {
 		name     string
-		resident *census.Resident
-		want     *census.Resident
+		resident *Resident
+		want     *Resident
 	}{
 		{
 			name:     "no data collected",
-			resident: &census.Resident{},
-			want:     &census.Resident{},
+			resident: &Resident{},
+			want:     &Resident{},
 		},
 		{
 			name: "all data collected",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
 				Address: map[string]string{
 					"street": "Main St.",
 				},
 			},
-			want: &census.Resident{},
+			want: &Resident{},
 		},
 		{
 			name: "some data collected",
-			resident: &census.Resident{
+			resident: &Resident{
 				Name:    "Rob Pike",
 				Age:     0,
 				Address: map[string]string{},
 			},
-			want: &census.Resident{},
+			want: &Resident{},
 		},
 	}
 
@@ -142,23 +141,23 @@ func TestDelete(t *testing.T) {
 	}
 }
 
-// TestCount tests the census.Count function.
+// TestCount tests the Count function.
 func TestCount(t *testing.T) {
 	tests := []struct {
 		name      string
-		residents []*census.Resident
+		residents []*Resident
 		want      int
 	}{
 		{
 			name: "no data collected",
-			residents: []*census.Resident{
+			residents: []*Resident{
 				{},
 			},
 			want: 0,
 		},
 		{
 			name: "all data collected",
-			residents: []*census.Resident{
+			residents: []*Resident{
 				{
 					Name: "Matthew Sanabria",
 					Age:  29,
@@ -171,7 +170,7 @@ func TestCount(t *testing.T) {
 		},
 		{
 			name: "some data collected",
-			residents: []*census.Resident{
+			residents: []*Resident{
 				{
 					Name: "Matthew Sanabria",
 					Age:  29,
@@ -197,8 +196,8 @@ func TestCount(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 
-			if got := census.Count(test.residents); got != test.want {
-				t.Errorf("census.Count() = %d, want %d", got, test.want)
+			if got := Count(test.residents); got != test.want {
+				t.Errorf("Count() = %d, want %d", got, test.want)
 			}
 		})
 	}
