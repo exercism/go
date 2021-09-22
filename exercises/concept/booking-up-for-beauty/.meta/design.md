@@ -23,6 +23,6 @@ The goal of this exercise is to teach the student how to use time in Go.
 
 ## Prerequisites
 
-- `basics`
+- `string-formatting`
 - `numbers`
-- `strings`
+- `multiple-return-values`
