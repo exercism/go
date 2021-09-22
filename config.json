@@ -247,7 +247,6 @@
         "slug": "census",
         "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
         "concepts": [
-          "nil",
           "zero-values"
         ],
         "prerequisites": [ "maps", "structs", "numbers", "strings", "pointers", "booleans", "methods", "slices", "conditionals-if" ],
@@ -1808,11 +1807,6 @@
       "name": "Methods",
       "slug": "methods",
       "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
-    },
-    {
-      "name": "Nil",
-      "slug": "nil",
-      "uuid": "c4d16fac-3e46-41ac-adf8-ce8f3f73f745"
     },
     {
       "name": "Numbers",
