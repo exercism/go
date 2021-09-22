@@ -249,7 +249,7 @@
         "concepts": [
           "zero-values"
         ],
-        "prerequisites": [ "maps", "structs", "numbers", "strings", "pointers", "booleans", "methods", "slices", "conditionals-if" ],
+        "prerequisites": [ "maps", "structs", "numbers", "string-formatting", "booleans", "methods", "slices", "conditionals-if" ],
         "status": "beta"
       }
     ],
