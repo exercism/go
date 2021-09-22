@@ -151,6 +151,22 @@
   description: ""
   color: "d93f0b"
 
+- name: "action/stale"
+  description: "Applied (and removed) automatically by the stale workflow to indicate an issue or pull request is stale"
+  color: "d93f0b"
+
+- name: "status/awaiting-maintainer"
+  description: "This pull request is waiting on one or more maintainers."
+  color: "4231af"
+
+- name: "status/awaiting-contributor"
+  description: "This pull request is waiting on the contributor."
+  color: "4231af"
+
+- name: "status/future"
+  description: "This pull request needs to be reconsidered at some point in the future."
+  color: "4231af"
+
 - name: "bug"
   description: ""
   color: "fc2929"
