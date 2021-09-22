@@ -198,7 +198,8 @@
         "slug": "card-tricks",
         "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
         "concepts": [
-          "slices"
+          "slices",
+          "multiple-return-values"
         ],
         "prerequisites": [
           "booleans",
@@ -1811,6 +1812,11 @@
       "name": "Methods",
       "slug": "methods",
       "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
+    },
+    {
+      "name": "Multiple Return Values",
+      "slug": "multiple-return-values",
+      "uuid": "ba2c60fd-7dc5-4852-93d0-83cc25554163"
     },
     {
       "name": "Nil",
