@@ -65,7 +65,7 @@
           "packages"
         ],
         "prerequisites": [
-          "basics"
+          "strings"
         ],
         "status": "beta"
       },
@@ -252,6 +252,20 @@
           "zero-values"
         ],
         "prerequisites": [ "maps", "structs", "numbers", "string-formatting", "booleans", "methods", "slices", "conditionals-if" ],
+        "status": "beta"
+      },
+
+      {
+        "name": "Welcome To Tech Palace!",
+        "slug": "welcome-to-tech-palace",
+        "uuid": "934af0f6-87b3-424b-a255-60a9002360d4",
+        "concepts": [
+          "strings",
+          "strings-package"
+        ],
+        "prerequisites": [
+          "basics"
+        ],
         "status": "beta"
       }
     ],
@@ -1839,6 +1853,11 @@
       "name": "Slices",
       "slug": "slices",
       "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
+    },
+    {
+      "name": "Strings",
+      "slug": "strings",
+      "uuid": "43374ffa-090d-4295-802c-a3d9efc22c99"
     },
     {
       "name": "String Formatting",
