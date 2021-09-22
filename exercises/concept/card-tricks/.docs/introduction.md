@@ -1,5 +1,7 @@
 # Introduction
 
+## Slices
+
 Slices in Go are similar to lists or arrays in other languages. They hold a number of elements of a specific type (or interface).
 
 Slices in Go are based on arrays. Arrays have a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array.
@@ -24,4 +26,29 @@ If you don't specify an ending index, it defaults to the length of the slice.
 
 ```go
 newSlice := withData[2:4] // newSlice == []int{2,3}
+```
+
+## Multiple Return Values
+
+Go functions and methods can return multiple values.
+Very often, a second return value is used to return an error.
+For example:
+
+```go
+func GetCard() (Card, error) { ... }
+```
+
+The assignment for multiple return values just uses a comma to separate the variables:
+
+```go
+card, err := GetCard()
+```
+
+If statements can use an initializer before the condition separated by a semicolon.
+This is a common idiom seen for error handling:
+
+```go
+if card, err := GetCard(); err != nil {
+    // handle the error
+}
 ```

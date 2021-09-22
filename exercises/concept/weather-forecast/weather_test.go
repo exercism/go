@@ -28,8 +28,12 @@ func TestComments(t *testing.T) {
 	ast.Inspect(f, func(node ast.Node) bool {
 		switch n := node.(type) {
 		case *ast.GenDecl:
-			for _, v := range n.Specs {
-				testIdentifierComment(t, v.(*ast.ValueSpec))
+			if n.Lparen.IsValid() {
+				for _, v := range n.Specs {
+					testBlockIdentifierComment(t, v.(*ast.ValueSpec))
+				}
+			} else {
+				testIdentifierComment(t, n)
 			}
 		case *ast.FuncDecl:
 			testFunctionComment(t, n)
@@ -50,8 +54,13 @@ func testPackageComment(t *testing.T, node *ast.File) {
 		t.Errorf("Package comment should start with '// %s ...': got %s", want, packageComment)
 	}
 }
-
-func testIdentifierComment(t *testing.T, node *ast.ValueSpec) {
+func testIdentifierComment(t *testing.T, node *ast.GenDecl) {
+	t.Helper()
+	if node.Doc == nil {
+		t.Errorf("Exported identifier %s should have a comment", node.Specs[0].(*ast.ValueSpec).Names[0])
+	}
+}
+func testBlockIdentifierComment(t *testing.T, node *ast.ValueSpec) {
 	t.Helper()
 	if node.Doc == nil {
 		t.Errorf("Exported identifier %s should have a comment", node.Names[0])

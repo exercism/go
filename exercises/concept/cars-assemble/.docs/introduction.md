@@ -13,12 +13,6 @@ For the sake of this exercise you will only be dealing with:
 
 - `float64`: e.g. `0.0`, `3.14`. Contains the set of all 64-bit floating-point numbers.
 
-For a full list of the available numeric types and more detail see the following resources:
-
-- [Go builtin type declarations][go-builtins]
-- [Digital Ocean - Understanding Data Types in Go][do-understanding-types]
-- [Arden Labs - Understanding Type in Go][arden-understanding-types]
-
 Go supports the standard set of arithmetic operators of `+`, `-`, `*`, `/` and `%` (remainder not modulo).
 
 ## Type Conversion
@@ -59,7 +53,3 @@ if value == "val" {
     // default code
 }
 ```
-
-[go-builtins]: https://github.com/golang/go/blob/master/src/builtin/builtin.go
-[do-understanding-types]: https://www.digitalocean.com/community/tutorials/understanding-data-types-in-go
-[arden-understanding-types]: https://www.ardanlabs.com/blog/2013/07/understanding-type-in-go.html

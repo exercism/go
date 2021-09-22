@@ -4,6 +4,8 @@ Go provides an in-built package called `fmt` (format package) which offers a var
 The most commonly used function is `Sprinf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
 
 ```go
+import "fmt"
+
 food := "taco"
 fmt.Sprintf("Bring me a %s", food)
 // Returns: Bring me a taco
@@ -13,6 +15,8 @@ In Go floating point values are conveniently formatted with Sprintf's verbs: `%g
 All three verbs allow the field's width and numeric position to be controlled.
 
 ```go
+import "fmt"
+
 f := 4.3242
 fmt.Sprintf("%.2f", f)
 // Returns: 4.32
