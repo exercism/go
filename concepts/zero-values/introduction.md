@@ -19,3 +19,5 @@ The following table details the zero value for Go's types.
 | slice     | `nil`      |
 | channel   | `nil`      |
 | map       | `nil`      |
+
+You may have noticed struct types are absent from the above table. That is because the zero value for a struct type depends on its fields. Structs are set to their zero value when all of its fields are set to their respective zero value.

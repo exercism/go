@@ -20,22 +20,22 @@ The following table details the zero value for Go's types.
 | channel   | `nil`      |
 | map       | `nil`      |
 
+You may have noticed struct types are absent from the above table. That is because the zero value for a struct type depends on its fields. Structs are set to their zero value when all of its fields are set to their respective zero value.
+
 ## Zero Value Construction
 
 The `var` keyword can be used to construct any type to its zero value:
 
 ```go
-func main() {
-  var myBool bool
-  fmt.Println("Zero value boolean:", myBool)
-}
+var myBool bool
+fmt.Printf("Zero value boolean: %#v", myBool)
+// Output: Zero value boolean: false
 ```
 
 ```go
-func main() {
-  var mySlice []int
-  fmt.Println("Zero value slice:", mySlice)
-}
+var mySlice []int
+fmt.Printf("Zero value slice: %#v", mySlice)
+// Output: Zero value slice: []int(nil)
 ```
 
 When constructing the zero value for a struct type, all of the struct's fields will be set to their zero value:
@@ -46,12 +46,29 @@ type Person struct {
   Age  int
 }
 
-func main() {
-  var myPerson Person
-  fmt.Println("Zero value Person:", myPerson)
+var myPerson Person
+fmt.Printf("Zero value Person: %#v", myPerson)
+// Output: Zero value Person: main.Person{Name:"", Age:0}
+```
+
+## Comparing with Nil
+
+If you try to compare a type whose zero value is not `nil` to `nil`, your code will not compile. You will see a compiler error because booleans, numeric types, and strings can never be `nil` in Go.
+
+```go
+var myString string
+
+if myString != nil { // invalid operation: myString != nil (mismatched types string and nil)
+  fmt.Println("Do some work here.")
 }
 ```
 
-## Related Concepts
+However, comparing a type whose zero value is `nil` to `nil` is acceptable:
 
-- [concept:go/nil]()
+```go
+var mySlice []int
+
+if mySlice != nil {
+  fmt.Println("Do some work here.")
+}
+```
