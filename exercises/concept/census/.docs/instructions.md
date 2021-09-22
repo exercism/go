@@ -91,6 +91,4 @@ residents := []*Resident{resident1, resident2}
 
 Count(residents)
 // => 1
-}
-
 ```
