@@ -1,3 +1,4 @@
+// Package census_test tests the census package.
 package census_test
 
 import (
@@ -134,9 +135,7 @@ func TestDelete(t *testing.T) {
 
 			test.resident.Delete()
 
-			if test.resident.Name != "" ||
-				test.resident.Age != 0 ||
-				test.resident.Address != nil {
+			if test.resident.Name != "" || test.resident.Age != 0 || test.resident.Address != nil {
 				t.Errorf("resident.Delete() = %v, want %v", test.resident, test.want)
 			}
 		})
