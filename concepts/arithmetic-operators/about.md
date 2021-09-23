@@ -48,3 +48,6 @@ a++ // same as a += 1, a == 11
 b := 10
 b-- // same as b -= 1, b == 9
 ```
+
+NOTE: these are statements and cannot be used as expressions (ie. they do not return a value).
+Also, only the postfix notation is allowed (ie. no `++a` or `--a`).
