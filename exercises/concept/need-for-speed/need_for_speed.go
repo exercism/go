@@ -7,13 +7,10 @@ func NewCar(speed, batteryDrain int) Car {
 	panic("Please implement the NewCar function")
 }
 
-// Track implements a race track.
-type Track struct{
-	distance int
-}
+// TODO: define the 'Track' type struct
 
 // NewTrack created a new track
-func NewTrack(distance int) Track{
+func NewTrack(distance int) Track {
 	panic("Please implement the NewTrack function")
 }
 
