@@ -19,9 +19,8 @@ The goal of this exercise is to teach the student about constants in Go.
 
 ## Prerequisites
 
-- `basics`
-- `comments`
-- `strings`
+- `numbers`
+- `type-definitions`
 
 ## Representer
 

@@ -27,8 +27,8 @@ The Concepts this exercise unlocks are:
 
 ## Prerequisites
 
-- `constants`
-- `types`
+- `string-formatting`
+- `multiple-return-values`
 
 ## Representer
 

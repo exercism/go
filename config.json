@@ -89,9 +89,8 @@
           "constants"
         ],
         "prerequisites": [
-          "basics",
-          "comments",
-          "string-formatting"
+          "numbers",
+          "type-definitions"
         ],
         "status": "beta"
       },
@@ -118,9 +117,9 @@
           "time"
         ],
         "prerequisites": [
-          "basics",
           "string-formatting",
-          "numbers"
+          "numbers",
+          "multiple-return-values"
         ],
         "status": "beta"
       },
@@ -135,7 +134,7 @@
           "conditionals-if"
         ],
         "prerequisites": [
-          "constants"
+          "basics"
         ],
         "status": "beta"
       },
@@ -147,7 +146,6 @@
           "maps"
         ],
         "prerequisites": [
-          "basics",
           "conditionals-if",
           "numbers",
           "string-formatting",
@@ -190,7 +188,8 @@
           "errors"
         ],
         "prerequisites": [
-          "constants"
+          "string-formatting",
+          "multiple-return-values"
         ],
         "status": "wip"
       },
