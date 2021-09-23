@@ -9,22 +9,22 @@ func TestWelcomeMessage(t *testing.T) {
 		expected string
 	}{
 		{
-			name: "Welcome message for customer with first letter capitalized",
+			name:     "Welcome message for customer with first letter capitalized",
 			customer: "Judy",
 			expected: "Welcome to the Tech Palace, JUDY",
 		},
 		{
-			name: "Welcome message for customer with only lowercase letters",
+			name:     "Welcome message for customer with only lowercase letters",
 			customer: "lars",
 			expected: "Welcome to the Tech Palace, LARS",
 		},
 		{
-			name: "Welcome message for customer with dash in name",
+			name:     "Welcome message for customer with dash in name",
 			customer: "Peter-James",
 			expected: "Welcome to the Tech Palace, PETER-JAMES",
 		},
 		{
-			name: "Welcome message for customer with only uppercase letters",
+			name:     "Welcome message for customer with only uppercase letters",
 			customer: "MJ",
 			expected: "Welcome to the Tech Palace, MJ",
 		},
@@ -41,22 +41,22 @@ func TestWelcomeMessage(t *testing.T) {
 
 func TestAddBorder(t *testing.T) {
 	tests := []struct {
-		name     string
-		welcomeMessage string
+		name            string
+		welcomeMessage  string
 		numStarsPerLine int
-		expected string
+		expected        string
 	}{
 		{
-			name: "Add border with 10 stars per line",
-			welcomeMessage: "Welcome!",
+			name:            "Add border with 10 stars per line",
+			welcomeMessage:  "Welcome!",
 			numStarsPerLine: 10,
-			expected: "**********\nWelcome!\n**********",
+			expected:        "**********\nWelcome!\n**********",
 		},
 		{
-			name: "Add border with 2 stars per line",
-			welcomeMessage: "Hi",
+			name:            "Add border with 2 stars per line",
+			welcomeMessage:  "Hi",
 			numStarsPerLine: 2,
-			expected: "**\nHi\n**",
+			expected:        "**\nHi\n**",
 		},
 	}
 
@@ -71,24 +71,24 @@ func TestAddBorder(t *testing.T) {
 
 func TestCleanupMessage(t *testing.T) {
 	tests := []struct {
-		name     string
+		name       string
 		oldMessage string
-		expected string
+		expected   string
 	}{
 		{
-			name: "Cleanup message with many stars and leading and trailing whitespace",
+			name:       "Cleanup message with many stars and leading and trailing whitespace",
 			oldMessage: "**************************\n*    BUY NOW, SAVE 10%   *\n**************************",
-			expected: "BUY NOW, SAVE 10%",
+			expected:   "BUY NOW, SAVE 10%",
 		},
 		{
-			name: "Cleanup message without leading or trailing whitespace",
+			name:       "Cleanup message without leading or trailing whitespace",
 			oldMessage: "**********\n*DISCOUNT*\n**********",
-			expected: "DISCOUNT",
+			expected:   "DISCOUNT",
 		},
 		{
-			name: "Cleanup message without leading whitespace",
+			name:       "Cleanup message without leading whitespace",
 			oldMessage: "*****\n SALE\n*****",
-			expected: "SALE",
+			expected:   "SALE",
 		},
 	}
 
