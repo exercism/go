@@ -1,20 +1,17 @@
 {
-  "blurb": "Learn about packages, functions, and variables by helping Gopher cook lasagna.",
+  "blurb": "Learn about strings and the strings package by generating text for a store's new display.",
   "authors": [
-    "tehsphinx"
+    "erikschierboom",
+    "junedev"
   ],
   "contributors": [
-    "ekingery"
-  ],
-  "forked_from": [
-    "csharp/lucians-luscious-lasagna"
   ],
   "files": {
     "solution": [
-      "lasagna.go"
+      "welcome_to_tech_palace.go"
     ],
     "test": [
-      "lasagna_test.go"
+      "welcome_to_tech_palace_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
