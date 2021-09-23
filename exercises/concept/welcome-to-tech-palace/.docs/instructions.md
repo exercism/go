@@ -17,7 +17,7 @@ WelcomeMessage("Judy")
 
 ## 2. Add a fancy border
 
-For loyal customers that buy a lot at the store, the owner wants the welcome display to be more fancy. They want a line of stars before and after the welcome message. The owner is not sure yet how many stars should be in the lines so they want that to be configurable.
+For loyal customers that buy a lot at the store, the owner wants the welcome display to be more fancy by adding a line of stars before and after the welcome message. They are not sure yet how many stars should be in the lines so they want that to be configurable.
 
 Write a function `AddBorder` that accepts a welcome message (a string) and the number of stars per line (type `int`) as arguments. It should return a string that consists of 3 lines, a line with the desired number of stars, then the welcome message as it was passed in, then another line of stars.
 
