@@ -1,7 +1,7 @@
 # Introduction
 
 Go provides an in-built package called `fmt` (format package) which offers a variety of functions to manipulate the format of input and output.
-The most commonly used function is `Sprinf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
+The most commonly used function is `Sprintf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
 
 ```go
 import "fmt"
