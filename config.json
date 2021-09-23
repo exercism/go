@@ -213,7 +213,7 @@
         "slug": "logs-logs-logs",
         "uuid": "81230a7c-4e47-4a4d-a004-14eae32ec914",
         "concepts": [
-          "strings-package"
+          "runes"
         ],
         "prerequisites": [
           "slices"
@@ -1848,6 +1848,11 @@
       "name": "Range Iteration",
       "slug": "range-iteration",
       "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
+    },
+    {
+      "name": "Runes",
+      "slug": "runes",
+      "uuid": "6b221481-bbb3-4ccf-8be1-a5e0a20bbd01"
     },
     {
       "name": "Slices",
