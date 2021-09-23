@@ -1,6 +1,6 @@
 # Instructions
 
-There is an appliance store called "Tech Palace" nearby. The owner of the store installed a big display that consists of lots of small LED lights. The display can show multiple lines of text and the store owner wants to use it to show a special greetings in case a customer scans their loyalty card at the entrance.
+There is an appliance store called "Tech Palace" nearby. The owner of the store recently installed a big display to use for marketing messages and to show a special greetings when customers scan their loyalty cards at the entrance. The display consists of lots of small LED lights and can show multiple lines of text.
 
 The store owner needs your help with the code that is used to generate the text for the new display.
 
