@@ -2,93 +2,89 @@ package techpalace
 
 import "testing"
 
-type lasagnaTests struct {
-	name                   string
-	layers, time, expected int
-}
-
-func TestOvenTime(t *testing.T) {
-	tests := []lasagnaTests{
+func TestWelcomeMessage(t *testing.T) {
+	tests := []struct {
+		customer string
+		expected string
+	}{
 		{
-			name:     "Calculates how many minutes the lasagna should be in the oven",
-			layers:   0,
-			time:     40,
-			expected: 40,
+			customer: "Judy",
+			expected: "Welcome to the Tech Palace, JUDY"
+		},
+		{
+			customer: "Lars",
+			expected: "Welcome to the Tech Palace, LARS"
+		},
+		{
+			customer: "Peter-James",
+			expected: "Welcome to the Tech Palace, PETER-JAMES"
+		},
+		{
+			customer: "MJ",
+			expected: "Welcome to the Tech Palace, MJ"
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := OvenTime(); got != tt.expected {
-				t.Errorf("OvenTime(%d)  = %d; want %d", tt.expected, got, tt.expected)
+			if got := WelcomeMessage(tt.customer); got != tt.expected {
+				t.Errorf("WelcomeMessage(\"%s\") = \"%s\", expected \"%s\"", tt.customer, got, tt.expected)
 			}
 		})
 	}
 }
 
-func TestRemainingOvenTime(t *testing.T) {
-	tests := []lasagnaTests{
+func TestAddBorder(t *testing.T) {
+	tests := []struct {
+		welcomeMessage string
+		numStarsPerLine int
+		expected string
+	}{
 		{
-			name:     "Remaining minutes in oven",
-			layers:   0,
-			time:     15,
-			expected: 15,
+			welcomeMessage: "Welcome!",
+			numStarsPerLine: 10,
+			expected: "**********\nWelcome!\n**********"
 		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := RemainingOvenTime(25); got != tt.time {
-				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.expected, got, tt.expected)
-			}
-		})
+		{
+			welcomeMessage: "Hi",
+			numStarsPerLine: 2,
+			expected: "**\nHi\n**"
+		},
 	}
 
-}
-func TestPreparationTime(t *testing.T) {
-	tests := []lasagnaTests{
-		{
-			name:     "Preparation time in minutes for one layer",
-			layers:   1,
-			time:     0,
-			expected: 2,
-		},
-		{
-			name:     "Preparation time in minutes for multiple layer",
-			layers:   4,
-			time:     0,
-			expected: 8,
-		},
-	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := PreparationTime(tt.layers); got != tt.expected {
-				t.Errorf("PreparationTime(%d) = %d; want %d", tt.layers, got, tt.expected)
+			if got := AddBorder(tt.welcomeMessage, tt.numStarsPerLine); got != tt.expected {
+				t.Errorf("AddBorder(\"%s\", %d) = \"%s\", expected \"%s\"", tt.welcomeMessage, tt.numStarsPerLine, got, tt.expected)
 			}
 		})
-
 	}
 }
 
-func TestElapsedTime(t *testing.T) {
-	tests := []lasagnaTests{
+func TestCleanupMessage(t *testing.T) {
+	tests := []struct {
+		oldMessage string
+		expected string
+	}{
 		{
-			name:     "Total time in minutes for one layer",
-			layers:   1,
-			time:     30,
-			expected: 32,
+			oldMessage: "**************************\n*    BUY NOW, SAVE 10%   *\n**************************",
+			expected: "BUY NOW, SAVE 10%"
 		},
 		{
-			name:     "Total time in minutes for multiple layer",
-			layers:   4,
-			time:     8,
-			expected: 16,
+			oldMessage: "**********\n*DISCOUNT*\n**********",
+			expected: "DISCOUNT"
+		},
+		{
+			oldMessage: "*****\n SALE\n*****",
+			expected: "SALE"
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := ElapsedTime(tt.layers, tt.time); got != tt.expected {
-				t.Errorf("ElapsedTime(%d, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
+			if got := CleanupMessage(tt.oldMessage); got != tt.expected {
+				t.Errorf("CleanupMessage(\"%s\") = \"%s\", expected \"%s\"", tt.oldMessage, got, tt.expected)
 			}
 		})
-
 	}
 }
