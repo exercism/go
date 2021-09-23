@@ -9,19 +9,19 @@ func TestWelcomeMessage(t *testing.T) {
 	}{
 		{
 			customer: "Judy",
-			expected: "Welcome to the Tech Palace, JUDY"
+			expected: "Welcome to the Tech Palace, JUDY",
 		},
 		{
 			customer: "Lars",
-			expected: "Welcome to the Tech Palace, LARS"
+			expected: "Welcome to the Tech Palace, LARS",
 		},
 		{
 			customer: "Peter-James",
-			expected: "Welcome to the Tech Palace, PETER-JAMES"
+			expected: "Welcome to the Tech Palace, PETER-JAMES",
 		},
 		{
 			customer: "MJ",
-			expected: "Welcome to the Tech Palace, MJ"
+			expected: "Welcome to the Tech Palace, MJ",
 		},
 	}
 
@@ -43,12 +43,12 @@ func TestAddBorder(t *testing.T) {
 		{
 			welcomeMessage: "Welcome!",
 			numStarsPerLine: 10,
-			expected: "**********\nWelcome!\n**********"
+			expected: "**********\nWelcome!\n**********",
 		},
 		{
 			welcomeMessage: "Hi",
 			numStarsPerLine: 2,
-			expected: "**\nHi\n**"
+			expected: "**\nHi\n**",
 		},
 	}
 
@@ -68,15 +68,15 @@ func TestCleanupMessage(t *testing.T) {
 	}{
 		{
 			oldMessage: "**************************\n*    BUY NOW, SAVE 10%   *\n**************************",
-			expected: "BUY NOW, SAVE 10%"
+			expected: "BUY NOW, SAVE 10%",
 		},
 		{
 			oldMessage: "**********\n*DISCOUNT*\n**********",
-			expected: "DISCOUNT"
+			expected: "DISCOUNT",
 		},
 		{
 			oldMessage: "*****\n SALE\n*****",
-			expected: "SALE"
+			expected: "SALE",
 		},
 	}
 
