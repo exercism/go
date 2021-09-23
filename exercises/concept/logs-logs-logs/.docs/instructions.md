@@ -30,10 +30,10 @@ Message("[WARNING]:  Disk almost full\r\n")
 
 ## 2. Get the message length in characters
 
-Implement the `LogLevel` function to return a log line's message length:
+Implement the `MessageLen` function to return a log line's message length:
 
 ```go
-Strings.LogLevel("[ERROR]: Invalid operation \n")
+MessageLen("[ERROR]: Invalid operation \n")
 // Output: 17
 ```
 
@@ -42,7 +42,7 @@ Strings.LogLevel("[ERROR]: Invalid operation \n")
 Implement the `LogLevel` function to return a log line's log level, which should be returned in lowercase:
 
 ```go
-Strings.LogLevel("[ERROR]: Invalid operation")
+LogLevel("[ERROR]: Invalid operation")
 // Output: "error"
 ```
 
@@ -51,6 +51,6 @@ Strings.LogLevel("[ERROR]: Invalid operation")
 Implement the `Reformat` function that reformats the log line, putting the message first and the log level after it in parentheses:
 
 ```go
-Strings.Reformat("[INFO]: Operation completed")
+Reformat("[INFO]: Operation completed")
 // Output: "Operation completed (info)"
 ```
