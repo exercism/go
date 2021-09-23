@@ -13,8 +13,6 @@ For the sake of this exercise you will only be dealing with:
 
 - `float64`: e.g. `0.0`, `3.14`. Contains the set of all 64-bit floating-point numbers.
 
-Go supports the standard set of arithmetic operators of `+`, `-`, `*`, `/` and `%` (remainder not modulo).
-
 ## Arithmetic Operators
 
 Go supports many standard arithmetic operators:
@@ -28,6 +26,9 @@ Go supports many standard arithmetic operators:
 | `%`      | `13 % 3 == 1`  |
 
 For integer division, the remainder is dropped (eg. `5 / 2 == 2`).
+
+Go has shorthand assignment for the operators above (e.g. `a += 5` is short for `a = a + 5`).
+Go also supports the increment and decrement statements `++` and `--` (e.g. `a++`).
 
 ## Type Conversion
 
