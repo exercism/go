@@ -6,7 +6,7 @@ The store owner needs your help with the code that is used to generate the text 
 
 ## 1. Create the welcome message
 
-For the normal customers, the store owner wants to see `Welcome to the Tech Palace, ` following by the name of the customer in capital letters on the display.
+For most customers who scan their loyalty cards, the store owner wants to see `Welcome to the Tech Palace, ` following by the name of the customer in capital letters on the display.
 
 Implement the function `WelcomeMessage` that accepts the name of the customer as string as an argument and returns the desired message.
 
