@@ -129,6 +129,7 @@
         "name": "Cars Assemble",
         "uuid": "7ab1692d-b7e8-4f11-9bbd-2b855501e5ce",
         "concepts": [
+          "arithmetic-operators",
           "numbers",
           "type-conversion",
           "conditionals-if"
@@ -1760,6 +1761,11 @@
     ]
   },
   "concepts": [
+    {
+      "name": "Arithmetic Operators",
+      "slug": "arithmetic-operators",
+      "uuid": "e01b00b9-5814-4784-a2f2-06182e8d9f7e"
+    },
     {
       "name": "Basics",
       "slug": "basics",
