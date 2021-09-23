@@ -8,13 +8,13 @@ func WelcomeMessage(customer string) string {
 }
 
 // AddBorder add a border to a welcome message.
-func AddBorder(welcomeMessage string, int numStarsPerLine) string {
-	stars := strings.Repeat("*", num)
-	return stars + "\n" + text + "\n" + stars
+func AddBorder(welcomeMsg string, numStarsPerLine int) string {
+	stars := strings.Repeat("*", numStarsPerLine)
+	return stars + "\n" + welcomeMsg + "\n" + stars
 }
 
 // CleanupMessage cleans up an old marketing message.
-func CleanupMessage(oldMessage string) string {
-	msgWithoutStars := strings.ReplaceAll(message, "*", "")
+func CleanupMessage(oldMsg string) string {
+	msgWithoutStars := strings.ReplaceAll(oldMsg, "*", "")
 	return strings.TrimSpace(msgWithoutStars)
 }
