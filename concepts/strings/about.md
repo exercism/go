@@ -24,7 +24,7 @@ Some values need to be escaped:
 | `\"`  | Double quote         |
 
 ```go
-const daltons = "Joe\nWilliam\nJack\nAverell`"
+const daltons = "Joe\nWilliam\nJack\nAverell"
 ```
 
 Raw string literals use backticks (`) as their delimiter instead of double quotes and are interpreted literally, meaning that there is no need to escape characters or newlines.
@@ -33,5 +33,5 @@ Raw string literals use backticks (`) as their delimiter instead of double quote
 const daltons = `Joe
 William
 Jack
-Averell`
+Averell
 ```
