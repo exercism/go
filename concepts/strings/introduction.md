@@ -19,11 +19,3 @@ Some special characters need to be escaped with a leading backspace:
 ```go
 question := "\t or spaces?"
 ```
-
-The `strings` package contains many useful functions to work on strings.
-
-```go
-import "strings"
-
-strings.ToUpper("test") // Output: "TEST"
-```
