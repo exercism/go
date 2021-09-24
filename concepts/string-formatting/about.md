@@ -6,8 +6,8 @@ Go provides an in-built package called `fmt` (format package) which offers a var
 In Go floating point values are conveniently printed with Printf's verbs: `%g` (compact representation), `%e` (exponent) or `%f` (non exponent). All three verbs allow the field's width and numeric position to be controlled.
 
 ```go
-f := 4.3242
-fmt.Printf("%.4", f)
+number := 4.3242
+fmt.Printf("%.2f", number)
 // Output: 4.32
 ```
 
