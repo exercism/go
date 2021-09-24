@@ -14,7 +14,7 @@ Strings can be concatenated via the `+` operator:
 fullName := "Jane" + " " + "Austen"
 ```
 
-Some special characters need to be escaped with a leading backspace:
+Some special characters need to be escaped with a leading backslash:
 
 ```go
 question := "\t or spaces?"
