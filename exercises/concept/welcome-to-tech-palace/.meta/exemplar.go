@@ -7,7 +7,7 @@ func WelcomeMessage(customer string) string {
 	return "Welcome to the Tech Palace, " + strings.ToUpper(customer)
 }
 
-// AddBorder add a border to a welcome message.
+// AddBorder adds a border to a welcome message.
 func AddBorder(welcomeMsg string, numStarsPerLine int) string {
 	stars := strings.Repeat("*", numStarsPerLine)
 	return stars + "\n" + welcomeMsg + "\n" + stars
