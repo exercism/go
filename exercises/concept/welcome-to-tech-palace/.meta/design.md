@@ -9,6 +9,7 @@ The goal of this exercise is to teach the student the basics of strings and the 
 - Know how to define string literals
 - Know how to concatenate string literals
 - Know how to use escape characters
+- Know how to use the `strings` package
 
 ## Out of scope
 
