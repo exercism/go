@@ -103,7 +103,7 @@
         ],
         "prerequisites": [
           "booleans",
-          "string-formatting",
+          "strings",
           "numbers",
           "conditionals-if"
         ],
@@ -148,7 +148,7 @@
         "prerequisites": [
           "conditionals-if",
           "numbers",
-          "string-formatting",
+          "strings",
           "conditionals-switch"
         ],
         "status": "beta"
