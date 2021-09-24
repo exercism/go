@@ -17,8 +17,8 @@ All three verbs allow the field's width and numeric position to be controlled.
 ```go
 import "fmt"
 
-f := 4.3242
-fmt.Sprintf("%.2f", f)
+number := 4.3242
+fmt.Sprintf("%.2f", number)
 // Returns: 4.32
 ```
 
