@@ -1,6 +1,8 @@
 # Instructions
 
-There is an appliance store called "Tech Palace" nearby. The owner of the store recently installed a big display to use for marketing messages and to show a special greetings when customers scan their loyalty cards at the entrance. The display consists of lots of small LED lights and can show multiple lines of text.
+There is an appliance store called "Tech Palace" nearby.
+The owner of the store recently installed a big display to use for marketing messages and to show a special greetings when customers scan their loyalty cards at the entrance.
+The display consists of lots of small LED lights and can show multiple lines of text.
 
 The store owner needs your help with the code that is used to generate the text for the new display.
 
@@ -33,9 +35,14 @@ AddBorder("Welcome!", 10)
 
 ## 3. Clean up old marketing messages
 
-Before installing this new display, the store had a similar display that could only show non-configurable, static lines. The owner would like to reuse some of the old marketing messages on the new display. However, the data already includes a star border and some unfortunate whitespaces. Your task is to clean up the messages so they can be re-used.
+Before installing this new display, the store had a similar display that could only show non-configurable, static lines.
+The owner would like to reuse some of the old marketing messages on the new display.
+However, the data already includes a star border and some unfortunate whitespaces.
+Your task is to clean up the messages so they can be re-used.
 
-Implement a function `CleanUpMessage` that accepts the old marketing message as a string. The function should first remove all stars from the text and afterwards remove the leading and trailing whitespaces from the remaining text. The function should then return the cleaned up message.
+Implement a function `CleanUpMessage` that accepts the old marketing message as a string.
+The function should first remove all stars from the text and afterwards remove the leading and trailing whitespaces from the remaining text.
+The function should then return the cleaned up message.
 
 ```go
 message := `
