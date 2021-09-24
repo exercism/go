@@ -20,11 +20,11 @@ For any other error, return `0` and the error.
 
 ## 2. Return an error for negative fodder
 
-If the scale is broken and returning negative amounts of fodder, return a helpful error.
+If the scale is broken and returning negative amounts of fodder, return an error saying "Negative fodder".
 
 ## 3. Prevent division by zero
 
-After checking `weightFodder`, prevent a division by zero by returning an error when there are no cows at all.
+After checking `weightFodder`, prevent a division by zero by returning an error when there are no cows at all saying "Division by zero".
 
 ## 4. Return a `SillyNephew` error for a negative number of cows
 
