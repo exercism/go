@@ -33,5 +33,5 @@ Raw string literals use backticks (`) as their delimiter instead of double quote
 const daltons = `Joe
 William
 Jack
-Averell
+Averell`
 ```
