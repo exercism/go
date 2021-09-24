@@ -131,7 +131,8 @@
           "arithmetic-operators",
           "numbers",
           "type-conversion",
-          "conditionals-if"
+          "conditionals-if",
+          "comparison"
         ],
         "prerequisites": [
           "basics"
@@ -1898,6 +1899,11 @@
       "name": "Zero Values",
       "slug": "zero-values",
       "uuid": "a50b4ed6-6198-4ab2-8075-3770900db4c9"
+    },
+    {
+      "name": "Comparison",
+      "slug": "comparison",
+      "uuid": "f7abb288-9526-447d-9eb8-45d756f2ae9b"
     }
   ],
   "key_features": [
