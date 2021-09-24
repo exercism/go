@@ -65,7 +65,8 @@
           "packages"
         ],
         "prerequisites": [
-          "strings"
+          "strings",
+          "numbers"
         ],
         "status": "beta"
       },
