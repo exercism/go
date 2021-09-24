@@ -18,10 +18,14 @@ You will be passed a `weightFodder` function which returns the amount of fodder 
 If an `ErrWeight` error is returned by `weightFodder`, double the fodder amount returned by `weightFodder`.
 For any other error, return `0` and the error.
 
-## 2. Prevent division by zero
+## 2. Return an error for negative fodder
+
+If the scale is broken and returning negative amounts of fodder, return a helpful error.
+
+## 3. Prevent division by zero
 
 After checking `weightFodder`, prevent a division by zero by returning an error when there are no cows at all.
 
-## 3. Return a `SillyNephew` error for a negative number of cows
+## 4. Return a `SillyNephew` error for a negative number of cows
 
 Help your nephew by returning a `SillyNephew` error if there are a negative number of cows.

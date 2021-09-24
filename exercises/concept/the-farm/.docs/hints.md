@@ -6,10 +6,14 @@
 * use `errors.Is(error, error) bool` to check if it is an `ErrWeight` error
 * for any other error, return that back to the caller, with no computed value for division
 
-## 2. Prevent division by zero
+## 2. Return an error for negative fodder
 
 * use `errors.New(string)` to return a custom error for this case
 
-## 3. Return a `SillyNephew` error for a negative number of cows
+## 3. Prevent division by zero
+
+* use `errors.New(string)` to return a custom error for this case
+
+## 4. Return a `SillyNephew` error for a negative number of cows
 
 * return the custom `SillyNephew` error for this case
