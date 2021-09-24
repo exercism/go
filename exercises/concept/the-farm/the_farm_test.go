@@ -107,7 +107,8 @@ func TestDivideFood(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.description, func(t *testing.T) {
 			gotAmount, gotErr := DivideFood(test.weightFodder, test.cows)
-			if gotAmount != test.wantAmount {
+			switch {
+			case gotAmount != test.wantAmount:
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got (%v, %v) wanted (%v, %v)",
 					test.weightFodderDescription,
@@ -117,21 +118,21 @@ func TestDivideFood(t *testing.T) {
 					test.wantAmount,
 					test.wantErr,
 				)
-			} else if gotErr != nil && test.wantErr == nil {
+			case gotErr != nil && test.wantErr == nil:
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got an unexpected error (%v)",
 					test.weightFodderDescription,
 					test.cows,
 					gotErr,
 				)
-			} else if gotErr == nil && test.wantErr != nil {
+			case gotErr == nil && test.wantErr != nil:
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got no error, but wanted an error (%v)",
 					test.weightFodderDescription,
 					test.cows,
 					test.wantErr,
 				)
-			} else if !errorsAreEqual(gotErr, test.wantErr) {
+			case !errorsAreEqual(gotErr, test.wantErr):
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
 					test.weightFodderDescription,
