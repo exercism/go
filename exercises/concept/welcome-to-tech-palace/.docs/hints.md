@@ -18,7 +18,7 @@
 
 ## 3. Clean up old marketing messages
 
-- There is a function to [replace strings within a `string`][replace].
+- There is a function to [replace strings within a `string`][replace-all].
 - There is a function to [trim leading and trailing spaces from a `string`][trim-space].
 
 [strings-package]: https://pkg.go.dev/strings
