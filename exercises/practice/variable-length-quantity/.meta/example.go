@@ -3,6 +3,7 @@ package variablelengthquantity
 import "errors"
 
 var ErrUnterminatedSequence = errors.New("unterminated sequence")
+var ErrTooLong = errors.New("sequence too long for 32 bits")
 
 // encodeInt returns the varint encoding of x.
 func encodeInt(x uint32) []byte {
@@ -59,6 +60,9 @@ func decodeInt(buf []byte) (x uint32, n int, err error) {
 
 	var b byte
 	for n, b = range buf {
+		if x>>(32-7) != 0 {
+			return x, 0, ErrTooLong
+		}
 		x <<= 7
 		x |= uint32(b) & 0x7f
 		if (b & 0x80) == 0 {
