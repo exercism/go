@@ -141,6 +141,12 @@ var decodeTestCases = []struct {
 		false,
 	},
 	{
+		"value not fitting in 32 bits causes error",
+		[]byte{0x9f, 0xff, 0xff, 0xff, 0x7f},
+		[]uint32{},
+		true,
+	},
+	{
 		"incomplete sequence causes error",
 		[]byte{0xff},
 		[]uint32{},
