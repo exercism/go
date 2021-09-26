@@ -115,7 +115,7 @@ func TestDrive(t *testing.T) {
 			got := Drive(tt.car)
 
 			if got != tt.expected {
-				t.Errorf("NewCar(%v) = %v; expected %v", tt.car, got, tt.expected)
+				t.Errorf("Drive(%v) = %v; expected %v", tt.car, got, tt.expected)
 			}
 		})
 	}
@@ -174,7 +174,7 @@ func TestCanFinish(t *testing.T) {
 			got := CanFinish(tt.car, tt.track)
 
 			if got != tt.expected {
-				t.Errorf("NewCar(%v, %v) = %v; expected %v", tt.car, tt.track, got, tt.expected)
+				t.Errorf("CanFinish(%v, %v) = %v; expected %v", tt.car, tt.track, got, tt.expected)
 			}
 		})
 	}
