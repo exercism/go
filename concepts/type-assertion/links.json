@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "url": "https://tour.golang.org/methods/15",
+        "description": "A Tour of Go: Type Assertions"
+    },
+    {
+        "url": "https://golangdocs.com/type-assertions-in-golang",
+        "description": "GoDocs: Type Assertions in GoLang"
+    }
+]
