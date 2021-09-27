@@ -6,7 +6,7 @@ Conditionals in Go are similar to conditionals in other languages. The underlyin
 var value string
 
 if value == "val" {
-    // conditional code
+    return "was val"
 }
 ```
 
@@ -14,13 +14,14 @@ In scenarios involving more than one case many `if` statements can be chained to
 
 ```go
 var number int
+result := "This number is "
 
 if number > 0 {
-    return "positive"
+    result += "positive"
 } else if number < 0 {
-    return "negative"
+    result += "negative"
 } else {
-    return "zero"
+    result += "zero"
 }
 ```
 
