@@ -33,7 +33,7 @@ if err != nil {
 // do something with file
 ```
 
-It is best practise to stop the execution when an error is encountered rather
+It is best practice to stop the execution when an error is encountered rather
 than using `else`. The example below shows a bad practice:
 
 ```go

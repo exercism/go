@@ -7,7 +7,7 @@ import (
 
 // Please review the README for this exercise carefully before implementation.
 
-// Little helper to let us customize behaviour of the resource on a per-test
+// Little helper to let us customize behavior of the resource on a per-test
 // basis.
 type mockResource struct {
 	close  func() error

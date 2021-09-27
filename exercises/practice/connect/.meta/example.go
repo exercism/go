@@ -90,7 +90,7 @@ func (b board) validCoord(c coord) bool {
 	return c.x >= 0 && c.x < b.width && c.y >= 0 && c.y < b.height
 }
 
-func (b board) neighbours(c coord) []coord {
+func (b board) neighbors(c coord) []coord {
 	coords := make([]coord, 0, 6)
 	dirs := []coord{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {-1, 1}, {1, -1}}
 	for _, dir := range dirs {
@@ -131,7 +131,7 @@ func (b board) evaluate(c coord, cf colorFlags) bool {
 		if b.isTargetCoord(c, cf) {
 			return true
 		}
-		for _, nc := range b.neighbours(c) {
+		for _, nc := range b.neighbors(c) {
 			if b.evaluate(nc, cf) {
 				return true
 			}
