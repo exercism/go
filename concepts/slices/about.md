@@ -14,7 +14,7 @@ var empty []int                 // an empty slice
 withData := []int{0,1,2,3,4,5}  // a slice pre-filled with some data
 ```
 
-You can get/set an element at a given zero-based index using square-bracket notation:
+You can get or set an element at a given zero-based index using square-bracket notation:
 
 ```go
 withData[1] = 5
