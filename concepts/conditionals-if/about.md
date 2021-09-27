@@ -13,12 +13,14 @@ if value == "val" {
 In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
 
 ```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
+var number int
+
+if number > 0 {
+    return "positive"
+} else if number < 0 {
+    return "negative"
 } else {
-    // default code
+    return "zero"
 }
 ```
 

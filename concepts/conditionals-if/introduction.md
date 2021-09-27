@@ -9,9 +9,18 @@ if value == "val" {
     return "was val"
 }
 
+```
+
+In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
+
+```go
 var number int
 
 if number > 0 {
-    return "positive"
+   return "positive"
+} else if number < 0 {
+    return "negative"
+} else {
+   return "zero"
 }
 ```
