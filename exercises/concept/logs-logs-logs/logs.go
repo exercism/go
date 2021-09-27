@@ -1,21 +1,11 @@
 package logs
 
-// Message extracts the message from the provided log line.
-func Message(line string) string {
-	panic("Please implement the Message() function")
+// LogApplication identifies the application emitting the given log.
+func LogApplication(log string) string {
+	panic("Please implement the LogApplication() function")
 }
 
-// MessageLen counts the amount of characters (runes) in the message of the log line.
-func MessageLen(line string) int {
-	panic("Please implement the MessageLen() function")
-}
-
-// LogLevel extracts the log level string from the provided log line.
-func LogLevel(line string) string {
-	panic("Please implement the LogLevel() function")
-}
-
-// Reformat reformats the log line in the format `message (logLevel)`.
-func Reformat(line string) string {
-	panic("Please implement the Reformat() function")
+// LogClean cleans the given log by removing all instances of invalid runes.
+func LogClean(log string, invalid []rune) string {
+	panic("Please implement the LogApplication() function")
 }
