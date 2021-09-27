@@ -6,19 +6,22 @@ Conditionals in Go are similar to conditionals in other languages. The underlyin
 var value string
 
 if value == "val" {
-    // conditional code
+    return "was val"
 }
 ```
 
 In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
 
 ```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
+var number int
+result := "This number is "
+
+if number > 0 {
+    result += "positive"
+} else if number < 0 {
+    result += "negative"
 } else {
-    // default code
+    result += "zero"
 }
 ```
 

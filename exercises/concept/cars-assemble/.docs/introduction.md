@@ -41,7 +41,7 @@ var x int = 42 // x has type int
 f := float64(x) // f has type float64 (ie. 42.0)
 ```
 
-## Conditionals If
+## If Statements
 
 Conditionals in Go are similar to conditionals in other languages.
 The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`.
@@ -53,18 +53,21 @@ For checking a particular case an `if` statement can be used, which executes its
 var value string
 
 if value == "val" {
-    // conditional code
+    return "was val"
 }
 ```
 
 In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
 
 ```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
+var number int
+result := "This number is "
+
+if number > 0 {
+    result += "positive"
+} else if number < 0 {
+    result += "negative"
 } else {
-    // default code
+    result += "zero"
 }
 ```
