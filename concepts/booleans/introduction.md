@@ -1,6 +1,7 @@
 # Introduction
 
-Booleans in Go are represented by the `bool` type, which values can be either `true` or `false`.
+Booleans in Go are represented by the `bool` type.
+A `bool` is either `true` or `false`.
 
 Go supports three boolean operators: `!` (NOT), `&&` (AND), and `||` (OR).
 
