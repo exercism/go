@@ -1,49 +1,18 @@
 # Introduction
 
-Go supports the three logical operators `&&` (AND), `||` (OR), and `!` (NOT).
+Booleans in Go are represented by the `bool` type, which values can be either `true` or `false`.
 
-Conditionals in Go are similar to conditionals in other languages. The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`. Conditionals are often used as flow control mechanisms to check for various conditions. For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
+Go supports three boolean operators: `!` (NOT), `&&` (AND), and `||` (OR).
 
 ```go
-var value string
-
-if value == "val" {
-    // conditional code
-}
+true || false // Output: true
+true && false // Output: false
+!true // Output: false
 ```
 
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
+The three boolean operators each have a different _operator precedence_. As a consequence, they are evaluated in this order: `!` first, `&&` second, and finally `||`. If you want to 'escape' these rules, you can enclose a boolean expression in parentheses (`()`), as the parentheses have an even higher operator precedence.
 
 ```go
-if value == "val" {
-    // conditional code
-} else if value == "val2" {
-    // conditional code
-} else {
-    // default code
-}
-```
-
-Go also provides a `switch` statement for more advanced scenarios.
-
-```go
-var value string
-
-// switch statement on variable content
-switch value {
-case "val1":
-    // conditional code
-case "val2", "val3", "foo":
-    // conditional code
-default:
-    // default code
-}
-
-// switch statement using conditions (can replace `if ... else if` statements)
-switch {
-case value == "val1":
-    // conditional code
-case strings.HasPrefix(value, "val") || strings.HasPrefix(value, "foo"):
-    // conditional code
-}
+!true && false   // Output: false
+!(true && false) // Output: true
 ```
