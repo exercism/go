@@ -11,6 +11,6 @@ func HappyBirthday(name string, age int) string {
 }
 
 // AssignTable assigns a table to each guest.
-func AssignTable(name string, table int, neighbour, direction string, distance float64) string {
+func AssignTable(name string, table int, neighbor, direction string, distance float64) string {
 	panic("Please implement the AssignTable function")
 }

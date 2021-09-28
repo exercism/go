@@ -80,7 +80,7 @@ for i := range xi {
 
 ## Non-struct types
 
-You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define reciever functions on them to extend them in the same way as struct types.
+You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define receiver functions on them to extend them in the same way as struct types.
 
 ```go
 type Name string
