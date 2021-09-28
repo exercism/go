@@ -31,24 +31,24 @@ func DescribeNumberBox(nb NumberBox) string {
 // DescribeBooleanBox should return a string describing the BooleanBox.
 func DescribeBooleanBox(bb BooleanBox) string {
 	if bb.Boolean() {
-		return "This box is true"
+		return "This box contains true"
 	}
-	return "This box is false"
+	return "This box contains false"
 }
 
 // DescribeAnything should return a string describing whatever it contains.
 func DescribeAnything(i interface{}) string {
-	switch i.(type) {
+	switch v := i.(type) {
 	case int:
-		return DescribeNumber(float64(i))
+		return DescribeNumber(float64(v))
 	case float64:
-		return DescribeNumber(i)
+		return DescribeNumber(v)
 	case bool:
-		return DescribeBoolean(i)
+		return DescribeBoolean(v)
 	case NumberBox:
-		return DescribeNumberBox(i)
+		return DescribeNumberBox(v)
 	case BooleanBox:
-		return DescribeBooleanBox(i)
+		return DescribeBooleanBox(v)
 	default:
 		return "Return to sender"
 	}
