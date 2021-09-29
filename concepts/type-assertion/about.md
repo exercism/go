@@ -13,11 +13,11 @@ var input interface{} = 12
 str := input.(string) // panic at runtime since input is not a string!
 ```
 
-We can test whether an interface value holds a specific concrete type by returning two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+We can test whether an interface value holds a specific concrete type by making use of both return values of the type assertion: the underlying value and a boolean value that reports whether the assertion succeeded.
 For example:
 
 ```go
-str, ok := input.(string) // no panic if input is a string
+str, ok := input.(string) // no panic if input is not a string
 ```
 
 If `input` holds a `string`, then `str` will be the underlying value and `ok` will be true.
@@ -30,5 +30,22 @@ It is common to see this sort of idiom:
 str, ok := input.(string)
 if !ok {
     str = "a default value"
+}
+```
+
+## Type Switches
+
+A **type switch** can perform several type assertions in a row.
+It has the same syntax as a type assertion (`interfaceVariable.(concreteType)`), but instead of a specific `concreteType` it uses the keyword `type`.
+Here is an example:
+
+```go
+switch v := i.(type) {
+case int:
+    fmt.Println("the integer %d", v)
+case string:
+    fmt.Println("the string %s", v)
+default:
+    fmt.Println("some type we did not handle explicitly")
 }
 ```
