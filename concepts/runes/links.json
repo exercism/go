@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "url": "https://wikipedia.org/wiki/Unicode",
+    "description": "Wikipedia page for Unicode."
+  },
+  {
+    "url": "https://wikipedia.org/wiki/UTF-8",
+    "description": "Wikipedia page for UTF-8."
+  },
+  {
+    "url": "https://wikipedia.org/wiki/List_of_Unicode_characters",
+    "description": "Wikipedia page listing Unicode characters."
+  }
+]
