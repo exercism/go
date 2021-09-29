@@ -1,33 +1,31 @@
 # Instructions
 
-The day you waited so long finally came over and you are now the proud owner
-of a beautiful farm in the Alps.
+The day you waited so long finally came and you are now the proud owner of a beautiful farm in the Alps.
 
-You still don't like to wake up too early in the morning to feed your cows and
-because you are an excellent engineer, you build a food dispenser, the
-`FEED-M-ALL`.
+You still do not like to wake up too early in the morning to feed your cows and because you are an excellent engineer, you build a food dispenser, the `FEED-M-ALL`.
 
-The last thing required in order to finish your project, is a piece of code
-that, given the number of cows and the amount of fodder for the day, does a
-division so each cow has the same quantity: you need to avoid conflicts,
-cows are very sensitive.
+The last thing required in order to finish your project, is a piece of code that, given the number of cows and the amount of fodder for the day, does a division so each cow has the same quantity: you need to avoid conflicts, cows are very sensitive.
 
-Depending on the day, some cows prefer to eat fresh grass instead of fodder,
-sometime no cows at all want to eat fodder. While this is good for your
-pocket, you want to catch the division by zero returning an error.
+Depending on the day, some cows prefer to eat fresh grass instead of fodder, sometime no cows at all want to eat fodder.
+While this is good for your pocket, you want to catch the division by zero returning an error.
 
-## Implement the required method
+Also, your silly nephew (who has just learned about negative numbers) sometimes will say that there are a negative number of cows.
+You love your nephew so you want to return a helpful error when he does that.
 
-Implement the `DivideFood` function.
+## 1. Get the amount of fodder from the `weightFodder` function
 
-You will be passed a `weightFodder` function which returns the amount of fodder
-available but also an error, sometimes.
+You will be passed a `weightFodder` function which returns the amount of fodder available and possibly an error.
+If an `ErrWeight` error is returned by `weightFodder`, double the fodder amount returned by `weightFodder`.
+For any other error, return `0` and the error.
 
-The error may be generic but sometimes a `ErrWeight` is returned. If that's the
-case you should handle this doubling the fodder amount you read from the method.
+## 2. Return an error for negative fodder
 
-You should not handle any other error, return it to the `FEED-M-ALL`, instead.
+If the scale is broken and returning negative amounts of fodder, return an error saying "Negative fodder".
 
-Return an error when there are no cows at all, preventing a division by zero.
+## 3. Prevent division by zero
 
-Return a different error if cows are a negative number.
+After checking `weightFodder`, prevent a division by zero by returning an error when there are no cows at all saying "Division by zero".
+
+## 4. Return a `SillyNephew` error for a negative number of cows
+
+Help your nephew by returning a `SillyNephew` error if there are a negative number of cows.

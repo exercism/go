@@ -1,25 +1,19 @@
 # Hints
 
-TODO: write hints for tasks, as lists
+## 1. Get the amount of fodder from the `weightFodder` function
 
-## General
+* read fodder weight and error from the supplied `weightFodder` function
+* use `errors.Is(error, error) bool` to check if it is an `ErrWeight` error
+* for any other error, return that back to the caller, with no computed value for division
 
-You need to read fodder weight from the given method as parameter. This could
-also return an error so you have to return that back to the caller, with no
-computed value for division.
+## 2. Return an error for negative fodder
 
-Since you can not divide fodder by zero cows, return an error preventing
-a division by zero.
+* use `errors.New(string)` to return a custom error for this case
 
-A negative number of cows, also indicates an error.
+## 3. Prevent division by zero
 
-The error for no cows and for negative number of cows must be different.
+* use `errors.New(string)` to return a custom error for this case
 
-### What is WeightFodder?
+## 4. Return a `SillyNephew` error for a negative number of cows
 
-The `WeightFodder` type is a `func() (float64, error)`. The weight scale
-sometimes could fail.
-
-### How to check an error?
-
-Try using `errors.Is(error, error) bool`.
+* return the custom `SillyNephew` error for this case
