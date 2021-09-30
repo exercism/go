@@ -1,5 +1,7 @@
 # Introduction
 
+Go programs are organized into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package. Similar to program languages like Java that use access modifiers such as `public` and `private`, Go determines if an item is exported and unexported through how it is declared. To allow an item to be called by code in other packages, the name must start with a capital letter.
+
 Go provides an in-built package called `fmt` (format package) which offers a variety of functions to manipulate the format of input and output.
 The most commonly used function is `Sprintf`, which uses verbs like `%s` to interpolate values into a string and returns that string.
 
