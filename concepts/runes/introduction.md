@@ -21,7 +21,7 @@ The following table contains example Unicode characters along with their Unicode
 
 ## UTF-8
 
-UTF-8 is a variable-width character encoding that is used to encode every Unicode code point as 1, 2, 3, or 4 bytes. Since a Unicode code point can be encoded as a maximum of 4 bytes, the `rune` type needs to be able to hold up to 4 bytes of data. That is why the `rune` type is an alias for `int32` since an `int32` type is capable of holding up to 4 bytes of data.
+UTF-8 is a variable-width character encoding that is used to encode every Unicode code point as 1, 2, 3, or 4 bytes. Since a Unicode code point can be encoded as a maximum of 4 bytes, the `rune` type needs to be able to hold up to 4 bytes of data. That is why the `rune` type is an alias for `int32` as an `int32` type is capable of holding up to 4 bytes of data.
 
 Go source code files are encoded using UTF-8.
 
@@ -41,7 +41,7 @@ fmt.Printf("myRune type: %T\n", myRune)
 // Output: myRune type: int32
 ```
 
-Similarly, printing a rune's value will yield the underlying integer value:
+Similarly, printing a rune's value will yield the underlying integer (decimal) value:
 
 ```go
 myRune := '¿'
