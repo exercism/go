@@ -72,6 +72,76 @@ func TestDescribeNumberBox(t *testing.T) {
 	}
 }
 
+struct differentFancyNumber {
+	num string
+}
+
+func (i differentFancyNumber) Value() string {
+	return i.num
+}
+
+func TestExtractFancyNumber(t *testing.T) {
+	tests := []struct {
+		description string
+		input       FancyNumberBox
+		want        int
+	}{
+		{
+			description: "Extract fancy number 11",
+			input:       FancyNumber{"11"},
+			want:        11,
+		},
+		{
+			description: "Extract fancy number 0",
+			input:       FancyNumber{"0"},
+			want:        0,
+		},
+		{
+			description: "Extract a different fancy number returns 0",
+			input:       differentFancyNumber{"two"},
+			want:        0,
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.description, func(t *testing.T) {
+			if got := ExtractFancyNumber(test.input); got != test.want {
+				t.Errorf("ExtractFancyNumber(%v) = %v; want %v", test.input, got, test.want)
+			}
+		})
+	}
+}
+
+func TestDescribeFancyNumberBox(t *testing.T) {
+	tests := []struct {
+		description string
+		input       FancyNumberBox
+		want        string
+	}{
+		{
+			description: "Describe fancy number 11",
+			input:       FancyNumber{"12"},
+			want:        "This is a fancy box containing the number 12.0",
+		},
+		{
+			description: "Describe fancy number 0",
+			input:       FancyNumber{"0"},
+			want:        "This is a fancy box containing the number 0.0",
+		},
+		{
+			description: "Describe a different fancy number",
+			input:       differentFancyNumber{"three"},
+			want:        "This is a fancy box containing the number 0.0",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.description, func(t *testing.T) {
+			if got := DescribeFancyNumberBox(test.input); got != test.want {
+				t.Errorf("DescribeFancyNumberBox(%v) = %v; want %v", test.input, got, test.want)
+			}
+		})
+	}
+}
+
 func TestDescribeAnything(t *testing.T) {
 	tests := []struct {
 		description string
@@ -87,6 +157,16 @@ func TestDescribeAnything(t *testing.T) {
 			description: "Describe NumberBox with 16",
 			input:       testNumberBox{16},
 			want:        "This is a box containing the number 16.0",
+		},
+		{
+			description: "Describe FancyBox with 16",
+			input:       FancyBox{"16"},
+			want:        "This is a fancy box containing the number 16.0",
+		},
+		{
+			description: "Describe a different FancyNumberBox",
+			input:       differentFancyNumber{"ten"},
+			want:        "This is a fancy box containing the number 0.0",
 		},
 		{
 			description: "Something unknown is labelled return to sender",
