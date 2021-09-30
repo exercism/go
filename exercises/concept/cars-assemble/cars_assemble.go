@@ -3,7 +3,7 @@ package cars
 // SuccessRate is used to calculate the ratio of an item being created without
 // error for a given speed
 func SuccessRate(speed int) float64 {
-	panic("not implemented")
+	panic("SuccessRate not implemented")
 }
 
 // CalculateProductionRatePerHour for the assembly line, taking into account
