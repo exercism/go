@@ -131,7 +131,6 @@
         "concepts": [
           "arithmetic-operators",
           "numbers",
-          "type-conversion",
           "conditionals-if",
           "comparison"
         ],
@@ -221,6 +220,20 @@
           "slices"
         ],
         "status": "beta"
+      },
+      {
+        "name": "Sorting Room",
+        "slug": "sorting-room",
+        "uuid": "411f4f1e-7ee2-4f11-955d-8af86da69c2a",
+        "concepts": [
+          "type-assertion",
+          "type-conversion"
+        ],
+        "prerequisites": [
+          "interfaces",
+          "string-formatting"
+        ],
+        "status": "wip"
       },
       {
         "name": "Chessboard",
@@ -1817,6 +1830,11 @@
       "uuid": "a960da78-c940-4725-8069-929f42564cdb"
     },
     {
+      "name": "Interfaces",
+      "slug": "interfaces",
+      "uuid": "a492060c-11e7-448e-bdbd-6a907cec9493"
+    },
+    {
       "name": "Iteration",
       "slug": "iteration",
       "uuid": "e18ca160-bbb8-4cd0-882a-0e67f1e60b47"
@@ -1885,6 +1903,11 @@
       "name": "Time",
       "slug": "time",
       "uuid": "4673000c-7822-4252-88c5-723f47d6ad06"
+    },
+    {
+      "name": "Type Assertion",
+      "slug": "type-assertion",
+      "uuid": "601911e6-ecb8-4e37-bc11-395aaa2be3ce"
     },
     {
       "name": "Type Conversion",
