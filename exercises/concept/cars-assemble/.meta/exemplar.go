@@ -25,7 +25,7 @@ func CalculateProductionRatePerHour(speed int) float64 {
 
 	rateForSpeed := defaultRate * float64(speed)
 
-	return rateForSpeed * successRate(speed)
+	return rateForSpeed * SuccessRate(speed)
 }
 
 // CalculateProductionRatePerMinute describes how many working items are
