@@ -1,79 +1,174 @@
 package logs
 
 import (
-	"strings"
 	"testing"
 )
 
-func TestLogApplication(t *testing.T) {
+func TestApplication(t *testing.T) {
 	tests := []struct {
 		name string
 		log  string
 		want string
 	}{
 		{
-			name: "single sequence recommendation",
-			log:  "❗❗ recommended product",
+			name: "single character recommendation",
+			log:  "❗ recommended product",
 			want: "recommendation",
 		},
 		{
-			name: "single sequence search",
-			log:  "executed search 🔍🔎",
+			name: "single character search",
+			log:  "executed search 🔍",
 			want: "search",
 		},
 		{
-			name: "single sequence weather",
-			log:  "forecast: ☁☀ rain",
+			name: "single character weather",
+			log:  "forecast: ☀ sunny",
 			want: "weather",
 		},
 		{
-			name: "no sequence default",
+			name: "no characters default",
 			log:  "error: could not proceed",
 			want: "default",
 		},
 		{
-			name: "multiple sequences recommendation",
-			log:  "❗❗ recommended search product 🔍🔎",
+			name: "multiple characters recommendation",
+			log:  "❗ recommended search product 🔍",
 			want: "recommendation",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LogApplication(tt.log); got != tt.want {
-				t.Errorf("LogApplication(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.log), got, tt.want)
+			if got := Application(tt.log); got != tt.want {
+				t.Errorf("Application(\"%s\") = \"%s\", want \"%s\"", tt.log, got, tt.want)
 			}
 		})
 	}
 }
 
-func TestLogCLean(t *testing.T) {
+func TestRedact(t *testing.T) {
 	tests := []struct {
-		name    string
-		log     string
-		invalid []rune
-		want    string
+		name       string
+		log        string
+		redactions []rune
+		want       string
 	}{
 		{
-			name:    "single invalid character",
-			log:     "❗❗ recommended product",
-			invalid: []rune{'❗'},
-			want:    " recommended product",
+			name:       "single occurance single invalid character",
+			log:        "❗ recommended product",
+			redactions: []rune{'❗'},
+			want:       " recommended product",
+		},
+		{
+			name:       "multiple occurances single redactions character",
+			log:        "❗❗ recommended product",
+			redactions: []rune{'❗'},
+			want:       " recommended product",
+		},
+		{
+			name:       "single occurance multiple redactions characters",
+			log:        "❗ recommended product",
+			redactions: []rune{'❗', 'e'},
+			want:       " rcommndd product",
+		},
+		{
+			name:       "multiple occurances multiple redactions characters",
+			log:        "❗❗ recommended product",
+			redactions: []rune{'❗', 'e'},
+			want:       " rcommndd product",
+		},
+		{
+			name:       "no occurances no redactions characters",
+			log:        "❗❗ recommended product",
+			redactions: []rune{},
+			want:       "❗❗ recommended product",
+		},
+		{
+			name:       "no occurances single redactions characters",
+			log:        "recommended product",
+			redactions: []rune{'❗'},
+			want:       "recommended product",
+		},
+		{
+			name:       "no occurances multiple redactions characters",
+			log:        "recommended product",
+			redactions: []rune{'❗', '!'},
+			want:       "recommended product",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LogClean(tt.log, tt.invalid); got != tt.want {
-				t.Errorf("LogClean(\"%s\", \"%v\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.log), tt.invalid, got, tt.want)
+			if got := Redact(tt.log, tt.redactions); got != tt.want {
+				t.Errorf("Redact(\"%s\", %c) = \"%s\", want \"%s\"", tt.log, tt.redactions, got, tt.want)
 			}
 		})
 	}
 }
 
-func escapeWhiteSpace(s string) string {
-	s = strings.ReplaceAll(s, "\\", "\\\\")
-	s = strings.ReplaceAll(s, "\n", "\\n")
-	s = strings.ReplaceAll(s, "\r", "\\r")
-	return strings.ReplaceAll(s, "\t", "\\t")
+func TestReplace(t *testing.T) {
+	tests := []struct {
+		name    string
+		log     string
+		oldChar rune
+		newChar rune
+		want    string
+	}{
+		{
+			name:    "single occurance of replacement",
+			log:     "❗ recommended product",
+			oldChar: '❗',
+			newChar: '?',
+			want:    "? recommended product",
+		},
+		{
+			name:    "multiple occurances of replacement",
+			log:     "❗ recommended product ❗",
+			oldChar: '❗',
+			newChar: '?',
+			want:    "? recommended product ?",
+		},
+		{
+			name:    "no occurances of replacement",
+			log:     "❗ recommended product ❗",
+			oldChar: '?',
+			newChar: '?',
+			want:    "❗ recommended product ❗",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Replace(tt.log, tt.oldChar, tt.newChar); got != tt.want {
+				t.Errorf("Replace(\"%s\", '%c', '%c') = \"%s\", want \"%s\"", tt.log, tt.oldChar, tt.newChar, got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCount(t *testing.T) {
+	tests := []struct {
+		name string
+		log  string
+		want int
+	}{
+		{
+			name: "single byte characters",
+			log:  "exercism",
+			want: 8,
+		},
+		{
+			name: "multiple byte characters",
+			log:  "🧠exercism❗",
+			want: 10,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Count(tt.log); got != tt.want {
+				t.Errorf("Count(\"%s\") = %d, want %d", tt.log, got, tt.want)
+			}
+		})
+	}
 }

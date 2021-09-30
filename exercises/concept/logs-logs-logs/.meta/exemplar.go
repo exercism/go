@@ -1,33 +1,66 @@
 package logs
 
-import (
-	"fmt"
-	"strings"
-)
+import "strings"
 
-// Message extracts the message from the provided log line.
-func Message(line string) string {
-	parts := strings.Split(line, ":")
-	if len(parts) < 2 {
-		return ""
+func Application(log string) string {
+	runeToApp := make(map[rune]string)
+
+	runeToApp['❗'] = "recommendation"
+	runeToApp['🔍'] = "search"
+	runeToApp['☀'] = "weather"
+
+	for _, char := range log {
+		if _, ok := runeToApp[char]; ok {
+			return runeToApp[char]
+		}
 	}
 
-	return strings.TrimSpace(parts[1])
+	return "default"
 }
 
-// MessageLen counts the amount of characters (runes) in the message of the log line.
-func MessageLen(line string) int {
-	return len([]rune(Message(line)))
+func Redact(log string, redactions []rune) string {
+	var result strings.Builder
+
+	for _, char := range log {
+		mustRedact := false
+
+		for _, redaction := range redactions {
+			if char == redaction {
+				mustRedact = true
+				break
+			}
+		}
+
+		if mustRedact {
+			continue
+		}
+
+		result.WriteRune(char)
+	}
+
+	return result.String()
 }
 
-// LogLevel extracts the log level string from the provided log line.
-func LogLevel(line string) string {
-	part1 := strings.Split(line, ":")[0]
-	logLevel := strings.Trim(part1, "[]")
-	return strings.ToLower(logLevel)
+func Replace(log string, old, new rune) string {
+	var result strings.Builder
+
+	for _, char := range log {
+		if char == old {
+			char = new
+		}
+
+		result.WriteRune(char)
+	}
+
+	return result.String()
 }
 
-// Reformat reformats the log line in the format `message (logLevel)`.
-func Reformat(line string) string {
-	return fmt.Sprintf("%s (%s)", Message(line), LogLevel(line))
+func Count(log string) int {
+	var count int
+
+	for range log {
+		count++
+	}
+
+	return count
 }
