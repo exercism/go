@@ -38,32 +38,6 @@ func TestDescribeNumber(t *testing.T) {
 	}
 }
 
-func TestDescribeBoolean(t *testing.T) {
-	tests := []struct {
-		description string
-		input       bool
-		want        string
-	}{
-		{
-			description: "Describe true",
-			input:       true,
-			want:        "This is true",
-		},
-		{
-			description: "Describe false",
-			input:       false,
-			want:        "This is false",
-		},
-	}
-	for _, test := range tests {
-		t.Run(test.description, func(t *testing.T) {
-			if got := DescribeBoolean(test.input); got != test.want {
-				t.Errorf("DescribeBoolean(%v) = %v; want %v", test.input, got, test.want)
-			}
-		})
-	}
-}
-
 type testNumberBox struct {
 	n int
 }
@@ -98,40 +72,6 @@ func TestDescribeNumberBox(t *testing.T) {
 	}
 }
 
-type testBooleanBox struct {
-	b bool
-}
-
-func (bb testBooleanBox) Boolean() bool {
-	return bb.b
-}
-
-func TestDescribeBooleanBox(t *testing.T) {
-	tests := []struct {
-		description string
-		input       BooleanBox
-		want        string
-	}{
-		{
-			description: "Describe BooleanBox with true",
-			input:       testBooleanBox{true},
-			want:        "This box contains true",
-		},
-		{
-			description: "Describe false",
-			input:       testBooleanBox{false},
-			want:        "This box contains false",
-		},
-	}
-	for _, test := range tests {
-		t.Run(test.description, func(t *testing.T) {
-			if got := DescribeBooleanBox(test.input); got != test.want {
-				t.Errorf("DescribeBooleanBox(%v) = %v; want %v", test.input, got, test.want)
-			}
-		})
-	}
-}
-
 func TestDescribeAnything(t *testing.T) {
 	tests := []struct {
 		description string
@@ -144,19 +84,9 @@ func TestDescribeAnything(t *testing.T) {
 			want:        "This is the number 7.2",
 		},
 		{
-			description: "Describe false",
-			input:       false,
-			want:        "This is false",
-		},
-		{
 			description: "Describe NumberBox with 16",
 			input:       testNumberBox{16},
 			want:        "This is a box containing the number 16.0",
-		},
-		{
-			description: "BooleanBox with true",
-			input:       testBooleanBox{true},
-			want:        "This box contains true",
 		},
 		{
 			description: "Something unknown is labelled return to sender",
