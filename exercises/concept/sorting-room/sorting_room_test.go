@@ -159,8 +159,8 @@ func TestDescribeAnything(t *testing.T) {
 			want:        "This is a box containing the number 16.0",
 		},
 		{
-			description: "Describe FancyBox with 16",
-			input:       FancyBox{"16"},
+			description: "Describe FancyNumber with 16",
+			input:       FancyNumber{"16"},
 			want:        "This is a fancy box containing the number 16.0",
 		},
 		{
