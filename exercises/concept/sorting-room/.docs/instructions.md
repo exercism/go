@@ -2,7 +2,7 @@
 
 Jen is working in the sorting room in a large factory.
 The sorting room needs to process anything that comes into it by categorizing it with a label.
-She needs a program to help her with the sorting.
+Jen is responsible for things that were pre-categorized as numbers and needs a program to help her with the sorting.
 
 Most primitive values should get straight-forward labels.
 For numbers, she wants strings saying `"This is the number 2.0"` (if the number was 2).
