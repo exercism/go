@@ -7,11 +7,11 @@
 
 ## 1. Welcome a new guest to the party
 
-- `fmt`s `Sprintf` lets you use a [template to create a string][Sprintf].
+- `fmt.Sprintf` lets you use a [template to create a string][Sprintf].
 
 ## 2. Welcome a new guest to the party whose birthday is today
 
-- `Sprintf` can interpolate [more than one value into your string][Sprintf-multiple-values]!
+- `fmt.Sprintf` can interpolate [more than one value into your string][Sprintf-multiple-values]!
 
 ## 3. Give directions
 
