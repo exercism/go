@@ -3,6 +3,9 @@
   "authors": [
     "jmrunkle"
   ],
+  "contributors": [
+    "junedev"
+  ],
   "files": {
     "solution": [
       "sorting_room.go"
