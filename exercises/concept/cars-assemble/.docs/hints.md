@@ -1,28 +1,14 @@
 # Hints
 
-TODO: write hints
+## 1. Calculate the success rate
 
-## Arithmetic Operators in Go
+- Use if conditionals to return the values in the table.
 
-Below shows the set of arithmetic operators available in Go in use:
+## 2. Calculate the production rate per hour
 
-```go
-fmt.Println("1 + 2  = ", 1 + 2)   // Addition
-// Output: 1 + 2 = 3
+- Use the `successRate` method coupled with the base rate (221 times the speed).
 
-fmt.Println("10 - 2 = ", 10 - 2)  // Subtraction
-// Output: 10 - 2 = 8
+## 3. Calculate the number of working items produced per minute
 
-fmt.Println("5 * 2  = ", 5 * 2)   // Multiplication
-// Output: 5 * 2 = 10
-
-fmt.Println("10 / 2 = ", 10 / 2)  // Division
-// Output: 10 / 2 = 5
-
-fmt.Println("10 % 2 = ", 10%2)    // Remainder
-// Output: 10 % 2 = 0
-```
-
-For more information please see the [Go language Spec][go-lang-spec-arithmetic-operators]
-
-[go-lang-spec-arithmetic-operators]: https://golang.org/ref/spec#Arithmetic_operators
+- Use the `CalculateProductionRatePerHour` function.
+- Remember to cast the result to an `int`.

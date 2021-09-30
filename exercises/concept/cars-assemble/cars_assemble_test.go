@@ -7,6 +7,54 @@ import (
 
 const FloatEqualityThreshold = 1e-9
 
+func TestSuccessRate(t *testing.T) {
+	tests := []struct {
+		name  string
+		speed int
+		want  float64
+	}{
+		{
+			name:  "calculate success rate for speed zero",
+			speed: 0,
+			want:  0.0,
+		},
+		{
+			name:  "calculate success rate for speed one",
+			speed: 1,
+			want:  1.0,
+		},
+		{
+			name:  "calculate success rate for speed four",
+			speed: 4,
+			want:  1.0,
+		},
+		{
+			name:  "calculate success rate for speed seven",
+			speed: 7,
+			want:  0.9,
+		},
+		{
+			name:  "calculate success rate for speed nine",
+			speed: 9,
+			want:  0.77,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := SuccessRate(tt.speed)
+			if math.Abs(got-tt.want) > FloatEqualityThreshold {
+				t.Errorf(
+					"SuccessRate(%d) = %f, want %f",
+					tt.speed,
+					got,
+					tt.want,
+				)
+			}
+		})
+	}
+}
+
 func TestCalculateProductionRatePerHour(t *testing.T) {
 	tests := []struct {
 		name  string
