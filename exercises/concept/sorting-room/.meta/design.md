@@ -5,6 +5,7 @@
 - How to convert from one type to another
 - How to assert a type
 - How to assert an interface type
+- How to use a type switch
 
 ## Out of scope
 
@@ -20,3 +21,4 @@
 This exercise's prerequisites Concepts are:
 
 - `interfaces`: what is an interface and how to use them
+- `string-formatting`: how to format strings
