@@ -72,7 +72,7 @@ func TestDescribeNumberBox(t *testing.T) {
 	}
 }
 
-struct differentFancyNumber {
+type differentFancyNumber struct {
 	num string
 }
 
