@@ -11,7 +11,7 @@ likelihood that faulty cars are produced, which then have to be discarded.
 
 ## 1. Calculate the success rate
 
-Implement a function (`successRate`) to calculate the ratio of an item being created without error for a given speed.
+Implement a function (`SuccessRate`) to calculate the ratio of an item being created without error for a given speed.
 The following table shows how speed influences the success rate:
 
 - `0`: 0% success rate.
@@ -20,7 +20,7 @@ The following table shows how speed influences the success rate:
 - `9` - `10`: 77% success rate.
 
 ```go
-rate := successRate(6)
+rate := SuccessRate(6)
 fmt.Println(rate)
 // Output: 0.9
 ```
