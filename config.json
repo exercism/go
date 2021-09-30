@@ -131,7 +131,6 @@
         "concepts": [
           "arithmetic-operators",
           "numbers",
-          "type-conversion",
           "conditionals-if",
           "comparison"
         ],
@@ -231,9 +230,10 @@
           "type-conversion"
         ],
         "prerequisites": [
-          "interfaces"
+          "interfaces",
+          "string-formatting"
         ],
-        "status": "wip"
+        "status": "active"
       },
       {
         "name": "Chessboard",
