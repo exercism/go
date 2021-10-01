@@ -35,7 +35,7 @@ fmt.Println(rate)
 // Output: 1392.3
 ```
 
-> Note that the value returned is of type `float64`
+> Note that the value returned is of type `float64`.
 
 ## 3. Calculate the number of working items produced per minute
 

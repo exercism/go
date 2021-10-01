@@ -46,7 +46,7 @@ fmt.Println(ok)
 // Output: true (since dozen is a valid unit)
 ```
 
-> Note that the returned value is type of `bool`
+> Note that the returned value is type of `bool`.
 
 ## 4. Remove item from the customer bill
 
@@ -66,7 +66,7 @@ fmt.Println(ok)
 // Output: false (because there are no carrots in the bill)
 ```
 
-> Note that the returned value is type of `bool`
+> Note that the returned value is type of `bool`.
 
 ## 5. Return the number of specific item that is in the customer bill
 
@@ -84,6 +84,6 @@ fmt.Println(ok)
 // Output: true
 ```
 
-> Note that the returned value are types of `int` and `bool`
+> Note that the returned value are types of `int` and `bool`.
 
 [gross-unit]: https://en.wikipedia.org/wiki/Gross_(unit)
