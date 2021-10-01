@@ -1,4 +1,4 @@
-# Introduction
+# About
 
 The `rune` type in Go is an alias for `int32`. Given this underlying `int32` type, the `rune` type holds a signed 32-bit integer value. However, unlike an `int32` type, the integer value stored in a `rune` type is meant to represent a single Unicode character.
 
@@ -6,7 +6,7 @@ The `rune` type in Go is an alias for `int32`. Given this underlying `int32` typ
 
 Unicode is a superset of ASCII that represents characters by assigning a unique number to every character. This unique number is called a Unicode code point. Unicode aims to represent all the world's characters including various alphabets, numbers, symbols, and even emoji as Unicode code points.
 
-In Go, the `rune` type is meant to represent a single Unicode code point.
+In Go, the `rune` type represents a single Unicode code point.
 
 The following table contains example Unicode characters along with their Unicode code point and decimal values:
 
@@ -33,7 +33,7 @@ Variables of type `rune` are declared by placing a character inside single quote
 myRune := '¿'
 ```
 
-Since the underlying type of a rune is `int32`, printing a rune's type will yield `int32`:
+Since `rune` is just an alias for `int32`, printing a rune's type will yield `int32`:
 
 ```go
 myRune := '¿'
@@ -41,7 +41,7 @@ fmt.Printf("myRune type: %T\n", myRune)
 // Output: myRune type: int32
 ```
 
-Similarly, printing a rune's value will yield the underlying integer (decimal) value:
+Similarly, printing a rune's value will yield its integer (decimal) value:
 
 ```go
 myRune := '¿'
@@ -72,31 +72,29 @@ Since Go source code files are encoded using UTF-8, strings in Go are also encod
 To iterate over the runes of a given string, use `range`. In this example, the `index` variable represents the starting index of the current rune's byte sequence and the `char` variable represents the current rune:
 
 ```go
-myString := "exercism"
+myString := "❗hello"
 for index, char := range myString {
   fmt.Printf("Index: %d\tCharacter: %c\t\tCode Point: %U\n", index, char, char)
 }
 // Output:
-// Index: 0	Character: e		Code Point: U+0065
-// Index: 1	Character: x		Code Point: U+0078
-// Index: 2	Character: e		Code Point: U+0065
-// Index: 3	Character: r		Code Point: U+0072
-// Index: 4	Character: c		Code Point: U+0063
-// Index: 5	Character: i		Code Point: U+0069
-// Index: 6	Character: s		Code Point: U+0073
-// Index: 7	Character: m		Code Point: U+006D
+// Index: 0	Character: ❗		Code Point: U+2757
+// Index: 3	Character: h		Code Point: U+0068
+// Index: 4	Character: e		Code Point: U+0065
+// Index: 5	Character: l		Code Point: U+006C
+// Index: 6	Character: l		Code Point: U+006C
+// Index: 7	Character: o		Code Point: U+006F
 ```
 
 Since runes can be stored as 1, 2, 3, or 4 bytes, the length of a string may not always equal the number of characters in the string:
 
 ```go
-myString1 := "exercism"
-myString2 := "🧠exercism"
+myString1 := "hello"
+myString2 := "❗hello"
 fmt.Printf("myString1 length: %d\n", len(myString1))
 fmt.Printf("myString2 length: %d\n", len(myString2))
 // Output:
-// myString1 length: 8
-// myString2 length: 12
+// myString1 length: 5
+// myString2 length: 8
 ```
 
 ## Type Converting Runes
@@ -110,7 +108,7 @@ fmt.Println(myString)
 // Output: exercism
 ```
 
-Similarly, a string can be type converted to a slice of runes. Remember, without formatting verbs, printing a rune yields its underlying integer value:
+Similarly, a string can be type converted to a slice of runes. Remember, without formatting verbs, printing a rune yields its integer (decimal) value:
 
 ```go
 myString := "exercism"
