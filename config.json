@@ -282,6 +282,23 @@
           "basics"
         ],
         "status": "beta"
+      },
+      {
+        "name": "Election Day",
+        "slug": "election-day",
+        "uuid": "b9f43f40-2540-48be-b721-71117dee2250",
+        "concepts": [
+          "pointers"
+        ],
+        "prerequisites": [
+          "structs",
+          "slices",
+          "maps",
+          "arithmetic-operators",
+          "string-formatting",
+          "packages"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
@@ -1928,6 +1945,11 @@
       "name": "Comparison",
       "slug": "comparison",
       "uuid": "f7abb288-9526-447d-9eb8-45d756f2ae9b"
+    },
+    {
+      "name": "Pointers",
+      "slug": "pointers",
+      "uuid": "57477550-cecf-4334-903a-85a6c32d61d0"
     }
   ],
   "key_features": [
