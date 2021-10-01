@@ -3,6 +3,7 @@
 When a test fails, a message is displayed describing what went wrong and for which input. You can also use the fact that [console output][fmt-println] will be shown too. You can write to the console using:
 
 ```go
+import "fmt"
 fmt.Println("Debug message")
 ```
 
