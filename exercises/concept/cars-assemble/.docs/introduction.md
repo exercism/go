@@ -30,15 +30,16 @@ For integer division, the remainder is dropped (eg. `5 / 2 == 2`).
 Go has shorthand assignment for the operators above (e.g. `a += 5` is short for `a = a + 5`).
 Go also supports the increment and decrement statements `++` and `--` (e.g. `a++`).
 
-## Type Conversion
+## Converting between int and float64
 
-In Go, assignment of a value between different types requires explicit conversion.
 Converting between types is done via a function with the name of the type to convert to.
-For example, to convert an `int` to a `float64` you would need to do the following:
+For example:
 
 ```go
 var x int = 42 // x has type int
 f := float64(x) // f has type float64 (ie. 42.0)
+var y float64 = 11.9 // y has type float64
+i := int(y) // i has type int (ie. 11)
 ```
 
 ## If Statements
