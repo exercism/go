@@ -328,6 +328,20 @@
           "maps",
           "arithmetic-operators",
           "string-formatting",
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "interest-is-interesting",
+        "name": "Interest is Interesting",
+        "uuid": "8e373428-e988-4672-953d-d0794e9a3a16",
+        "concepts": [
+          "floating-point-numbers"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals-if",
+          "for-loops",
           "packages"
         ],
         "status": "beta"
