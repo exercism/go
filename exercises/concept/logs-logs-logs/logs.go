@@ -5,19 +5,14 @@ func Application(log string) string {
 	panic("Please implement the Application() function")
 }
 
-// Redact removes all occurances of the runes in redactions from the given log,
-// returning the redacted log to the caller.
-func Redact(log string, redactions []rune) string {
-	panic("Please implement the Redact() function")
-}
-
-// Replace replaces all occurances old with new, returning the modified log to
-// the caller.
+// Replace replaces all occurances of old with new, returning the modified log
+// to the caller.
 func Replace(log string, old, new rune) string {
 	panic("Please implement the Replace() function")
 }
 
-// Count determines the number of characters in log.
-func Count(log string) int {
-	panic("Please implement the Count() function")
+// WithinLimit determines whether or not the number of characters in log is
+// within the limit.
+func WithinLimit(log string, limit int) bool {
+	panic("Please implement the WithinLimit() function")
 }

@@ -46,66 +46,6 @@ func TestApplication(t *testing.T) {
 	}
 }
 
-func TestRedact(t *testing.T) {
-	tests := []struct {
-		name       string
-		log        string
-		redactions []rune
-		want       string
-	}{
-		{
-			name:       "single occurance single invalid character",
-			log:        "❗ recommended product",
-			redactions: []rune{'❗'},
-			want:       " recommended product",
-		},
-		{
-			name:       "multiple occurances single redactions character",
-			log:        "❗❗ recommended product",
-			redactions: []rune{'❗'},
-			want:       " recommended product",
-		},
-		{
-			name:       "single occurance multiple redactions characters",
-			log:        "❗ recommended product",
-			redactions: []rune{'❗', 'e'},
-			want:       " rcommndd product",
-		},
-		{
-			name:       "multiple occurances multiple redactions characters",
-			log:        "❗❗ recommended product",
-			redactions: []rune{'❗', 'e'},
-			want:       " rcommndd product",
-		},
-		{
-			name:       "no occurances no redactions characters",
-			log:        "❗❗ recommended product",
-			redactions: []rune{},
-			want:       "❗❗ recommended product",
-		},
-		{
-			name:       "no occurances single redactions characters",
-			log:        "recommended product",
-			redactions: []rune{'❗'},
-			want:       "recommended product",
-		},
-		{
-			name:       "no occurances multiple redactions characters",
-			log:        "recommended product",
-			redactions: []rune{'❗', '!'},
-			want:       "recommended product",
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Redact(tt.log, tt.redactions); got != tt.want {
-				t.Errorf("Redact(\"%s\", %c) = \"%s\", want \"%s\"", tt.log, tt.redactions, got, tt.want)
-			}
-		})
-	}
-}
-
 func TestReplace(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -146,28 +86,37 @@ func TestReplace(t *testing.T) {
 	}
 }
 
-func TestCount(t *testing.T) {
+func TestWithinLimit(t *testing.T) {
 	tests := []struct {
-		name string
-		log  string
-		want int
+		name  string
+		log   string
+		limit int
+		want  bool
 	}{
 		{
-			name: "single byte characters",
-			log:  "exercism",
-			want: 8,
+			name:  "exact limit",
+			log:   "exercism❗",
+			limit: 9,
+			want:  true,
 		},
 		{
-			name: "multiple byte characters",
-			log:  "🧠exercism❗",
-			want: 10,
+			name:  "under limit",
+			log:   "exercism❗",
+			limit: 10,
+			want:  true,
+		},
+		{
+			name:  "over limit",
+			log:   "exercism❗",
+			limit: 8,
+			want:  false,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Count(tt.log); got != tt.want {
-				t.Errorf("Count(\"%s\") = %d, want %d", tt.log, got, tt.want)
+			if got := WithinLimit(tt.log, tt.limit); got != tt.want {
+				t.Errorf("WithinLimit(\"%s\", %d) = %t, want %t", tt.log, tt.limit, got, tt.want)
 			}
 		})
 	}

@@ -1,13 +1,14 @@
 package logs
 
-import "strings"
+import "unicode/utf8"
 
+// Application identifies the application emitting the given log.
 func Application(log string) string {
-	runeToApp := make(map[rune]string)
-
-	runeToApp['❗'] = "recommendation"
-	runeToApp['🔍'] = "search"
-	runeToApp['☀'] = "weather"
+	runeToApp := map[rune]string{
+		'❗': "recommendation",
+		'🔍': "search",
+		'☀': "weather",
+	}
 
 	for _, char := range log {
 		if _, ok := runeToApp[char]; ok {
@@ -18,49 +19,25 @@ func Application(log string) string {
 	return "default"
 }
 
-func Redact(log string, redactions []rune) string {
-	var result strings.Builder
-
-	for _, char := range log {
-		mustRedact := false
-
-		for _, redaction := range redactions {
-			if char == redaction {
-				mustRedact = true
-				break
-			}
-		}
-
-		if mustRedact {
-			continue
-		}
-
-		result.WriteRune(char)
-	}
-
-	return result.String()
-}
-
+// Replace replaces all occurances of old with new, returning the modified log
+// to the caller.
 func Replace(log string, old, new rune) string {
-	var result strings.Builder
+	var modifiedLog string
 
 	for _, char := range log {
 		if char == old {
 			char = new
 		}
 
-		result.WriteRune(char)
+		modifiedLog += string(char)
 	}
 
-	return result.String()
+	return modifiedLog
 }
 
-func Count(log string) int {
-	var count int
-
-	for range log {
-		count++
-	}
-
-	return count
+// WithinLimit determines whether or not the number of characters in log is
+// within the limit.
+func WithinLimit(log string, limit int) bool {
+	runeCount := utf8.RuneCountInString(log)
+	return runeCount <= limit
 }
