@@ -52,3 +52,18 @@ errors.New("Connection not established")
 // using the errors package located at github.com/pkg/errors by alias
 errs.New("Connection not established")
 ```
+
+Similar to program languages like Java that use access modifiers such as `public` and `private`, Go determines if an item is exported and unexported through how it is declared. 
+To allow an item to be called by code in other packages (i.e. [export an identifier](https://golang.org/ref/spec#Exported_identifiers) , the name must start with a capital letter:
+
+```go
+package greeting
+// Hello is a public function (callable from other packages)
+func Hello(name string) string {
+    return "Hello " + name
+}
+// hello is a private function (not callable from other packages)
+func hello(name string) string {
+    return "Hello " + name
+}
+```
