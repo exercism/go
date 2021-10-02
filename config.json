@@ -155,6 +155,22 @@
         "status": "beta"
       },
       {
+        "name": "Lasagna Master",
+        "slug": "lasagna-master",
+        "uuid": "41167bbf-c2e6-4946-83d8-0ea108e5ce8d",
+        "concepts": [
+          "functions"
+        ],
+        "prerequisites": [
+          "conditionals-if",
+          "numbers",
+          "strings",
+          "comparison",
+          "slices"
+        ],
+        "status": "beta"
+      },
+      {
         "name": "Need For Speed",
         "slug": "need-for-speed",
         "uuid": "b165c8b4-429f-4e9f-b157-a636d22b217f",
@@ -1850,6 +1866,11 @@
       "name": "Interfaces",
       "slug": "interfaces",
       "uuid": "a492060c-11e7-448e-bdbd-6a907cec9493"
+    },
+    {
+      "name": "Functions",
+      "slug": "functions",
+      "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
     },
     {
       "name": "Iteration",

@@ -13,9 +13,19 @@ func PrintHello() {
     fmt.Println("Hello")
 }
 
-// One parameter
-func PrintHelloName(name string) {
-  fmt.Println("Hello " + name)
+// Two parameters
+func PrintGreetingName(greeting string, name string) {
+  fmt.Println(greeting + " " + name)
+}
+```
+
+Parameters of the same type can be declared together, followed by a single type declaration.
+
+```go
+import "fmt"
+
+func PrintGreetingName(greeting, name string) {
+  fmt.Println(greeting + " " + name)
 }
 ```
 
@@ -81,3 +91,33 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 }
 ```
 
+## Pointers
+
+Functions in go pass their arguments by value.
+This means that the arguments are copied, and any changes to those arguments within the function will not be seen outside the function.
+
+```go
+val := 2
+func MultiplyByTwo(v int) int {
+    v = v * 2
+    return v
+}
+newval := MultiplyByTwo(val)
+// newval is 4, val is 2
+```
+
+To affect the values a function is called with, it is possible to pass pointer arguments, using the `*` syntax in the function, and the `&` syntax to generate a pointer.
+
+```go
+func swap(x, y *int) {
+    var temp int
+    temp = *x
+    *x = *y
+    *y = temp
+}
+
+var a int = 100
+var b int = 200
+swap(&a, &b)
+// a = 200, b = 100
+```
