@@ -1,5 +1,9 @@
 # Hints
 
+## General
+
+- [Basic types][basic types] and [Type converstions][type converstions] tutorials.
+
 ## 1. Calculate the success rate
 
 - Use if conditionals to return the values in the table.
@@ -13,3 +17,6 @@
 
 - Use the `CalculateProductionRatePerHour` function.
 - Remember to cast the result to an `int`.
+
+[basic types]: https://tour.golang.org/basics/11
+[type converstions]: https://tour.golang.org/basics/13
