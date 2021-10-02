@@ -8,6 +8,8 @@ In principle, the production increases linearly.
 So with the speed set to `4`, it should produce `4 * 221 = 884` cars per hour.
 However, higher speeds increase the likelihood that faulty cars are produced, which then have to be discarded.
 
+Also, there are times when the assembly line has an artificially imposed limit on the throughput (meaning no more than the limit can be produced per hour).
+
 ## 1. Calculate the success rate
 
 Implement a function (`SuccessRate`) to calculate the ratio of an item being created without error for a given speed.
@@ -26,7 +28,7 @@ fmt.Println(rate)
 
 ## 2. Calculate the production rate per hour
 
-Implement a function to calculate the assembly line's production rate per hour.
+Implement a function to calculate the assembly line's production rate per hour:
 
 ```go
 rate := CalculateProductionRatePerHour(7)
@@ -47,3 +49,19 @@ fmt.Println(rate)
 ```
 
 > Note that the value returned is of type `int`.
+
+## 4. Calculate the artificially-limited production rate
+
+Implement a function to calculate the assembly line's production rate per hour:
+
+```go
+rate := CalculateLimitedProductionRatePerHour(2, 1000.0)
+fmt.Println(rate)
+// Output: 442.0
+rate := CalculateLimitedProductionRatePerHour(7, 1000.0)
+fmt.Println(rate)
+// Output: 1000.0
+```
+
+> Note that the value returned is of type `float64`.
+  This should call the `CalculateProductionRatePerHour` function exactly once.
