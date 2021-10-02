@@ -22,7 +22,6 @@ package lasagna
 Go functions accept zero or more parameters.
 Parameters must be explicitly typed, there is no type inference.
 
-Functions may have multiple (explicitly typed) return values.
 Values are returned from functions using the `return` keyword. 
 
 A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
