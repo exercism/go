@@ -17,3 +17,9 @@ func CalculateProductionRatePerHour(speed int) float64 {
 func CalculateProductionRatePerMinute(speed int) int {
 	panic("CalculateProductionRatePerMinute not implemented")
 }
+
+// CalculateLimitedProductionRatePerHour describes how many working items are
+// produced per hour with an upper limit on how many can be produced per hour
+func CalculateLimitedProductionRatePerHour(speed int, limit float64) float64 {
+	panic("CalculateLimitedProductionRatePerHour not implemented")
+}

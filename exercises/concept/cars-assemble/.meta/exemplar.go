@@ -33,3 +33,12 @@ func CalculateProductionRatePerHour(speed int) float64 {
 func CalculateProductionRatePerMinute(speed int) int {
 	return int(CalculateProductionRatePerHour(speed) / 60)
 }
+
+// CalculateLimitedProductionRatePerHour describes how many working items are
+// produced per hour with an upper limit on how many can be produced per hour
+func CalculateLimitedProductionRatePerHour(speed int, limit float64) float64 {
+	if rate := CalculateProductionRatePerHour(speed); rate <= limit {
+		return rate
+	}
+	return limit
+}

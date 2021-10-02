@@ -150,3 +150,52 @@ func TestCalculateProductionRatePerMinute(t *testing.T) {
 		})
 	}
 }
+
+func TestCalculateLimitedProductionRatePerHour(t *testing.T) {
+	tests := []struct {
+		name  string
+		speed int
+		limit float64
+		want  float64
+	}{
+		{
+			name:  "calculate limited production rate per hour for speed zero",
+			speed: 0,
+			limit: 500.0,
+			want:  0.0,
+		},
+		{
+			name:  "calculate limited production rate per hour below limit",
+			speed: 1,
+			limit: 500.0,
+			want:  221.0,
+		},
+		{
+			name:  "calculate limited production rate per hour above limit",
+			speed: 9,
+			limit: 500.0,
+			want:  500.0,
+		},
+		{
+			name:  "calculate limited production rate per hour at limit",
+			speed: 3,
+			limit: 663.0,
+			want:  663.0,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CalculateLimitedProductionRatePerHour(tt.speed, tt.limit)
+			if math.Abs(got-tt.want) > FloatEqualityThreshold {
+				t.Errorf(
+					"CalculateLimitedProductionRatePerHour(%d, %f) = %f, want %f",
+					tt.speed,
+					tt.limit,
+					got,
+					tt.want,
+				)
+			}
+		})
+	}
+}
