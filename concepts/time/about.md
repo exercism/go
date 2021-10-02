@@ -4,7 +4,7 @@ A [`Time`][time] in Go is a type describing a moment in time. The date and time 
 
 The [`time.Parse`][parse] function parses strings into `Time` types using the particular format string `Mon Jan 2 15:04:05 -0700 MST 2006`. More on how this works can be found [here][article].
 
-The `time` package includes another type, `Duration`, representing elapsed time, plus support for locations/time zones, timers, and other related functionality that will be covered in a later exercise.
+The `time` package includes another type, `Duration`, representing elapsed time, plus support for locations/time zones, timers, and other related functionality that will be covered in a concept.
 
 [time]: https://golang.org/pkg/time/#Time
 [now]: https://golang.org/pkg/time/#Now

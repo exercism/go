@@ -10,7 +10,8 @@ Documentation comments are about `what` the thing does and contains, whereas oth
 
 ## Comments for exported identifiers
 
-Documentation comments should precede packages as well as [exported identifier][exported identifiers]s, for example exported functions, methods, package variables, constants, and structs, which you will learn more about in the next exercises. Comments written for packages and exported identifiers are useful for the users who import and use these packages.
+Documentation comments should precede packages as well as [exported identifier][exported identifiers]s, for example exported functions, methods, package variables, constants, and structs, which you will learn more about in further concepts.
+Comments written for packages and exported identifiers are useful for the users who import and use these packages.
 
 Note, however, that identifiers (such as variables) that are declared inside of functions and methods are private and do not necessarily require comments for the users of the packages.
 
