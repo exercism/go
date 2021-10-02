@@ -37,6 +37,7 @@ Replace(log, '👎', '👍')
 ```
 
 ## 3. Determine if a log can be displayed
+
 Systems responsible for displaying logs have a limit on the number of characters that be be displayed per log line. As such, users are asking for this library to include a helper function to determine whether or not a log line is within a specific character limit.
 
 Implement the `WithinLimit` function that takes a log line and character limit and returns whether or not the log line is within the character limit.
