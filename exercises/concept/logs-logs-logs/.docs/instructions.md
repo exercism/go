@@ -1,56 +1,48 @@
 # Instructions
 
-In this exercise you'll be processing log-lines.
+You have been tasked with creating a log library to assist with managing your organization's logs. This library will allow users to identify which application emitted a given log, to fix corrupted logs, and to determine if a given log line is within a certain character limit.
 
-Each log line is a string formatted as follows: `"[<LEVEL>]: <MESSAGE>"`.
+## 1. Identify which application emitted a log
 
-There are three different log levels:
+Logs come from multiple applications that each use their own proprietary log format. The application emitting a log must be identified before it can be stored in a log aggregation system.
 
-- `INFO`
-- `WARNING`
-- `ERROR`
+Implement the `Application` function that takes a log line and returns the application that emitted the log line.
 
-You have three tasks, each of which will take a log line and ask you to do something with it.
+To identify which application emitted a given log line, search the log line for a specific character as specified by the following table:
 
-## 1. Get message from a log line
+| Application      | Character | Unicode Code Point |
+|------------------|-----------|--------------------|
+| `recommendation` | ❗        | `U+2757`           |
+| `search`         | 🔍        | `U+1F50D`          |
+| `weather`        | ☀         | `U+2600`           |
 
-Implement the `Message` function to return a log line's message:
+If a log line does not contain one of the characters from the above table, return `default` to the caller. If a log line contains more than one character in the above table, return the application corresponding to the first character found in the log line starting from left to right.
 
 ```go
-Message("[ERROR]: Invalid operation")
-// Output: "Invalid operation"
+Application("❗ recommended search product 🔍")
+// Output: recommendation
 ```
 
-Any leading or trailing white space should be removed:
+## 2. Fix corrupted logs
+
+Due to a rare but persistent bug in the logging infrastructure, certain characters in logs can become corrupted. After spending time identifying the corrupted characters and their original value, you decide to update the log library to assist in fixing corrupted logs.
+
+Implement the `Replace` function that takes a log line, a corrupted character, and the original value and return a modified log line that has all occurances of the corrupted character replaced with the original value.
 
 ```go
-Message("[WARNING]:  Disk almost full\r\n")
-// Output: "Disk almost full"
+log := "please replace '👎' with '👍'"
+
+Replace(log, '👎', '👍')
+// Output: please replace '👍' with '👍'"
 ```
 
-## 2. Get the message length in characters
+## 3. Determine if a log can be displayed
 
-Implement the `MessageLen` function to return a log line's message length:
+Systems responsible for displaying logs have a limit on the number of characters that be be displayed per log line. As such, users are asking for this library to include a helper function to determine whether or not a log line is within a specific character limit.
 
-```go
-MessageLen("[ERROR]: Invalid operation \n")
-// Output: 17
-```
-
-## 3. Get log level from a log line
-
-Implement the `LogLevel` function to return a log line's log level, which should be returned in lowercase:
+Implement the `WithinLimit` function that takes a log line and character limit and returns whether or not the log line is within the character limit.
 
 ```go
-LogLevel("[ERROR]: Invalid operation")
-// Output: "error"
-```
-
-## 4. Reformat a log line
-
-Implement the `Reformat` function that reformats the log line, putting the message first and the log level after it in parentheses:
-
-```go
-Reformat("[INFO]: Operation completed")
-// Output: "Operation completed (info)"
+WithinLimit("hello❗", 6)
+// Output: true
 ```
