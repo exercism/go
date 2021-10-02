@@ -11,8 +11,8 @@ Comments should precede packages as well as exported identifiers, for example ex
 A package-level variable can look like this:
 
 ```go
-// TemperatureFahrenheit represents a certain temperature in degrees Fahrenheit.
-var TemperatureFahrenheit float64
+// TemperatureCelsius represents a certain temperature in degrees Celsius.
+var TemperatureCelsius float64
 ```
 
 ## Package comments
