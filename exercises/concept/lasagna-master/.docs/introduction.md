@@ -43,7 +43,7 @@ func Hello(name string) string {
   return "Hello " + name
 }
 
-func HelloAndGoodbye(name string) (string. string) {
+func HelloAndGoodbye(name string) (string, string) {
   return "Hello " + name, "Goodbye " + name
 }
 ```
