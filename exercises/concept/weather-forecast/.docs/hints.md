@@ -4,7 +4,7 @@
 
 - A [documentation comment][comment] should be written directly before the entity that it is describing, start with the name of what it is describing, take the form of a sentence, and end with a period.
 
-## 1. Document the package
+## 1. Document package weather
 
 - The [package comment][comment] should be written directly before the package, start with `Package x`, and end with a period.
 
