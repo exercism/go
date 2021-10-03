@@ -22,7 +22,15 @@ The goal of this exercise is to teach the student about the zero value of Go's t
 
 ## Prerequisites
 
-- `types`
+- `maps`
+- `structs`
+- `numbers`
+- `string-formatting`
+- `booleans`
+- `methods`
+- `slices`
+- `conditionals-if`
+- `pointers`
 
 ## Representer
 

@@ -18,10 +18,11 @@ The goal of this exercise is to teach the student about runes.
 
 ## Prerequisites
 
+- `strings`
 - `conditionals-if`
+- `slices`
 - `maps`
 - `range-iteration`
-- `strings`
 
 ## Analyzer
 
