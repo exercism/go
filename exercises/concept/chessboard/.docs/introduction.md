@@ -1,14 +1,13 @@
 # Introduction
 
-In Go, you can iterate a `slice` using `for` but you could also use
-`range`. You will find this useful to iterate over a `map`.
+In Go, you can iterate over a `slice` using `for` and an index, or you can use `range`.
+`range` also allows you to iterate over a `map`.
 
-Every iteration returns two values: the index/key and a copy of the element at
-that index/key.
+Every iteration returns two values: the index/key and a copy of the element at that index/key.
 
-## Iterate a slice
+## Iterate over a slice
 
-Easy as pie, loops a slice, ordered as expected.
+Easy as pie, loops over a slice, ordered as expected.
 
 ```go
 xi := []int{10, 20, 30}
@@ -21,9 +20,9 @@ for i, x := range xi {
 // 2, 30
 ```
 
-## Iterate a map
+## Iterate over a map
 
-Iterating a map raises a new problem. The order is now random.
+Iterating over a map raises a new problem. The order is now random.
 
 ```go
 hash := map[int]int{0: 10, 1: 20, 2: 30}
@@ -38,8 +37,8 @@ for k, v := range hash {
 
 ## Iteration omitting key or value
 
-In Go an unused variable will raise an error at build time, so if you only
-need to use the value, as per the first example:
+In Go an unused variable will raise an error at build time.
+Sometimes you only need the value, as per the first example:
 
 ```go
 xi := []int{10, 20, 30}
@@ -49,8 +48,7 @@ for i, x := range xi {
 // Go build failed: i declared but not used
 ```
 
-So, let's replace the `i` with `_` telling the compiler we don't use that
-value at all:
+You can replace the `i` with `_` which tells the compiler we don't use that value:
 
 ```go
 xi := []int{10, 20, 30}
@@ -63,8 +61,8 @@ for _, x := range xi {
 // 30
 ```
 
-Now, if you want to only print the index, you can replace the `x` with `_`,
-or simply omit the declaration at all:
+If you want to only print the index, you can replace the `x` with `_`,
+or simply omit the declaration:
 
 ```go
 xi := []int{10, 20, 30}
@@ -80,7 +78,8 @@ for i := range xi {
 
 ## Non-struct types
 
-You've previously seen defining struct types, but it's also possible to define non-struct types which you can use as an alias for a built in type declaration, and you can define receiver functions on them to extend them in the same way as struct types.
+You've previously seen defining struct types.
+It is also possible to define non-struct types which you can use as an alias for a built-in type declaration, and you can define receiver functions on them to extend them in the same way as struct types.
 
 ```go
 type Name string
