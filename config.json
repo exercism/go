@@ -151,7 +151,8 @@
           "conditionals-if",
           "numbers",
           "strings",
-          "conditionals-switch"
+          "conditionals-switch",
+          "functions"
         ],
         "status": "beta"
       },
@@ -194,7 +195,8 @@
         "prerequisites": [
           "structs",
           "string-formatting",
-          "type-definitions"
+          "type-definitions",
+          "pointers"
         ],
         "status": "beta"
       },
@@ -234,7 +236,8 @@
           "runes"
         ],
         "prerequisites": [
-          "slices"
+          "slices",
+          "range-iteration"
         ],
         "status": "beta"
       },
@@ -283,10 +286,19 @@
         "concepts": [
           "zero-values"
         ],
-        "prerequisites": [ "maps", "structs", "numbers", "string-formatting", "booleans", "methods", "slices", "conditionals-if" ],
+        "prerequisites": [
+          "maps",
+          "structs",
+          "numbers",
+          "string-formatting",
+          "booleans",
+          "methods",
+          "slices",
+          "conditionals-if",
+          "pointers"
+        ],
         "status": "beta"
       },
-
       {
         "name": "Welcome To Tech Palace!",
         "slug": "welcome-to-tech-palace",
