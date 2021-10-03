@@ -23,10 +23,11 @@ func PrintHelloName(name string) {
 
 The function arguments are followed by zero or more return values which must also be explicitly typed.
 Single return values are left bare, multiple return values are wrapped in parenthesis.
-Values are returned to the calling code from functions using the `return` keyword.
+Values are returned to the calling code from functions using the [`return` keyword][return].
 There can be multiple `return` statements in a function.
 The execution of the function ends as soon as it hits one of those `return`s.
 If multiple values are to be returned from a function, they are comma seperated.
+More information about idiomatic use of [multiple return values][concept-multiple-return-values] can be found in the linked concept.
 
 ```go
 func Hello(name string) string {
@@ -81,3 +82,11 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 }
 ```
 
+## Other types of functions
+
+Functions in Go are considered [first class citizens][first-class-functions] making them very powerful.
+There are a number of other concepts around functions like [concept:go/methods]() and anonymous functions which you will meet later in your journey.
+
+[first-class-functinos]: https://golangbot.com/first-class-functions
+[return]: https://golang.org/ref/spec#Return_statements
+[concept-multiple-return-values]: /tracks/go/concepts/multiple-return-values
