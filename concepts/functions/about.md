@@ -2,8 +2,8 @@
 
 A function allows you to group code into a reusable unit.
 It consists of the `func` keyword, the name of the function, and a comma-separated list of zero or more parameters and types in round brackets.
-All parameters must be explicitly typed, there is no type inference for parameters.
-There are no default values for parameters, all function parameters are required.
+All parameters must be explicitly typed; there is no type inference for parameters.
+There are no default values for parameters so all function parameters are required.
 
 ```go
 import "fmt"
