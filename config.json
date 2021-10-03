@@ -236,7 +236,10 @@
           "runes"
         ],
         "prerequisites": [
+          "strings",
+          "conditionals-if",
           "slices",
+          "maps",
           "range-iteration"
         ],
         "status": "beta"
