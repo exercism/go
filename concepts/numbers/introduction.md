@@ -3,7 +3,7 @@
 Go contains basic numeric types that can represent sets of either integer or
 floating-point values.
 
-For the sake of this conceptt you will only be dealing with:
+This concept will concentrate on two number types:
 
 - `int`: e.g. `0`, `255`, `2147483647`. A signed integer that is at least 32
   bits in size (value range of: -2147483648 through 2147483647). But this will
