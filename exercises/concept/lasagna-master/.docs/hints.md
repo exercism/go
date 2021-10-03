@@ -2,7 +2,7 @@
 
 ## 1. Estimate the preparation time
 
-- Use the `len()` keyword to determine the number of layers (length of the layers array).
+- Use the [`len()` built-in function][len-builtin] to determine the number of layers (length of the layers array).
 
 ## 2. Compute the amounts of noodles and sauce needed
 
@@ -18,7 +18,9 @@
 ## 4. Scale the recipe
 
 - First make a new slice of the same size as the input slice
-- Use a [for range loop][concept-range-iteration] to iterate through the input slice and generate the output slice
+- Use a [for loop][for-loop] to iterate through the input slice and generate the output slice
 
+[len-builtin]: https://pkg.go.dev/builtin#len
 [concept-conditonals-if]: /tracks/go/concepts/conditionals-if
 [concept-slices]: /tracks/go/concepts/slices
+[for-loop]: https://tour.golang.org/flowcontrol/1
