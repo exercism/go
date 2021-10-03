@@ -46,7 +46,7 @@ or
 >
 > Therefore it's important to initialize a map before using it
 
-Here are some operations that you can do with a `map`
+Here are some operations that you can do with a map
 
 ```go
   // Add a value in a map with the `=` operator:
@@ -59,7 +59,7 @@ Here are some operations that you can do with a `map`
   delete(foo, "bar")
 ```
 
-If you try to retrieve the value for a key which does not exist in the `map`, it will return the zero value of the value type.
+If you try to retrieve the value for a key which does not exist in the map, it will return the zero value of the value type.
 This can confuse you, especially if the default value of your `ElementType` (for example, 0 for an int), is a valid value.
 To check whether a key exists in your map, you can use
 
@@ -69,7 +69,7 @@ To check whether a key exists in your map, you can use
   // value: 0; exists: false
 ```
 
-As we've seen before, detecting whether a map `map` is initialized or not is easy, we can simply compare them to `nil` but what about other maps? Well, since `maps` isn't a comparable, we can't use `==` operator, but `reflect` package has something to rescue us, it's called `DeepEqual`, we can use it like
+As we've seen before, detecting whether a `map` is initialized or not is easy, we can simply compare them to `nil` but what about other maps? Well, since `map` isn't a comparable, we can't use `==` operator, but `reflect` package has something to rescue us, it's called `DeepEqual`, we can use it like
 
 ```go
 import "reflect"
