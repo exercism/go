@@ -71,7 +71,8 @@ aplusb, atimesb := SumAndMultiply(a, b)
 ## Named Return Values and Naked Return
 
 As well as parameters, return values can optionally be named.
-If named return values are used, a `return` statement without arguments will return those values, this is known as a 'naked' return.
+If named return values are used, a `return` statement without arguments will return those values.
+This is known as a 'naked' return.
 
 ```go
 func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
