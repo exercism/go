@@ -10,7 +10,7 @@ map[KeyType]ElementType
 
 It is also important to know that each key is unique, meaning that assigning the same key twice will overwrite the value of the corresponding key.
 
-To create a map, you can do:
+To create a `map`, you can do:
 
 ```go
   // With map literal
@@ -24,23 +24,25 @@ or
   foo := make(map[string]int)
 ```
 
-Here are some operations that you can use with map
+Here are some operations that you can do with a `map`
 
 ```go
-  // Add a value in a map, you can use the `=` operator:
+  // Add a value in a map with the `=` operator:
   foo["bar"] = 42
   // Here we update the element of `bar`
   foo["bar"] = 73
-  // To retrieve a value map, you can use
+  // To retrieve a map value, you can use
   baz := foo["bar"]
   // To delete an item from a map, you can use
   delete(foo, "bar")
 ```
 
-If you're trying to retrieve a non existed key, will return the zero value of your value type, it can confuse you, especially if your element is the same as the `ElementType` default value (for example, 0 for an int), to check whether the key exists in your map, you can use
+If you try to retrieve the value for a key which does not exist in the `map`, it will return the zero value of the value type.
+This can confuse you, especially if the default value of your `ElementType` (for example, 0 for an int), is a valid value.
+To check whether a key exists in your map, you can use
 
 ```go
   value, exists := foo["baz"]
-  // If the key "baz" doesn't exists,
+  // If the key "baz" does not exist,
   // value: 0; exists: false
 ```

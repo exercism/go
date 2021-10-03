@@ -1,6 +1,11 @@
 # Instructions
 
-A friend of you has an old wholesale store called **Gross Store**, the name came from the quantity of the item that the store sell, it's all in [gross unit][gross-unit]. Your friend asked you to implement a point of sale (POS) system for his store, **but first, you want to build a prototype for it, in your prototype, your system will only record the quantity**. Your friend gave you a list of measurements to help you:
+A friend of yours has an old wholesale store called **Gross Store**.
+The name comes from the quantity of the item that the store sell: it's all in [gross unit][gross-unit].
+Your friend asked you to implement a point of sale (POS) system for his store.
+**First, you want to build a prototype for it.**
+**In your prototype, your system will only record the quantity.**
+Your friend gave you a list of measurements to help you:
 
 | Unit               | Score |
 | ------------------ | ----- |
@@ -31,12 +36,12 @@ fmt.Println(bill)
 // Output: map[]
 ```
 
-## 3. Add item to the customer bill
+## 3. Add an item to the customer bill
 
 To implement this, you'll need to:
 
 - Return `false` if the given `unit` is not in the `units` map.
-- Add the item to the customer `bill`, indexed by the item name and return `true`.
+- Otherwise add the item to the customer `bill`, indexed by the item name, then return `true`.
 
 ```go
 bill := NewBill()
@@ -46,9 +51,9 @@ fmt.Println(ok)
 // Output: true (since dozen is a valid unit)
 ```
 
-> Note that the returned value is type of `bool`.
+> Note that the returned value is type `bool`.
 
-## 4. Remove item from the customer bill
+## 4. Remove an item from the customer bill
 
 To implement this, you'll need to:
 
@@ -66,9 +71,9 @@ fmt.Println(ok)
 // Output: false (because there are no carrots in the bill)
 ```
 
-> Note that the returned value is type of `bool`.
+> Note that the returned value is type `bool`.
 
-## 5. Return the number of specific item that is in the customer bill
+## 5. Return the quantity of a specific item that is in the customer bill
 
 To implement this, you'll need to:
 
@@ -84,6 +89,6 @@ fmt.Println(ok)
 // Output: true
 ```
 
-> Note that the returned value are types of `int` and `bool`.
+> Note that the returned value are types `int` and `bool`.
 
 [gross-unit]: https://en.wikipedia.org/wiki/Gross_(unit)
