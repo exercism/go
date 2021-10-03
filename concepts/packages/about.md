@@ -68,3 +68,5 @@ func hello(name string) string {
     return "Hello " + name
 }
 ```
+
+The same applies for field names in custom `struct` types - field names beginning in a capital letter are externally visible, those beginning in a lower case letter are not.
