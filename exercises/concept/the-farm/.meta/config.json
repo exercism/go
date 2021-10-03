@@ -1,7 +1,8 @@
 {
-  "blurb": "TODO: add blurb for the-farm exercise",
+  "blurb": "Learn about errors and interfaces while feeding cows on the farm.",
   "authors": [
-    "brugnara"
+    "brugnara",
+    "jmrunkle"
   ],
   "contributors": [],
   "forked_from": [],
@@ -14,6 +15,9 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "editor": [
+      "the_farm_types.go"
     ]
   }
 }

@@ -278,8 +278,13 @@
         "name": "The Farm",
         "slug": "the-farm",
         "uuid": "43e12a9e-ed8e-4552-a889-d86e284b21c0",
-        "concepts": [],
-        "prerequisites": [],
+        "concepts": [
+          "interfaces",
+          "errors"
+        ],
+        "prerequisites": [
+          "methods"
+        ],
         "status": "wip"
       },
       {
