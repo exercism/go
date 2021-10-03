@@ -8,6 +8,7 @@ This exercise introduces three major language features: Packages, Functions, and
 Go applications are organized in packages.
 A package is a collection of source files located in the same directory.
 All source files in a directory must share the same package name.
+When a package is imported, only entities (functions, types, variables, constants) who's name starts with a capital letter can be used / accessed.
 
 ```go
 package lasagna
@@ -57,8 +58,6 @@ Parameters must be explicitly typed, there is no type inference.
 Values are returned from functions using the `return` keyword.
 
 A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
-When a package is imported, only functions starting with a capital letter can
-be used / accessed.
 
 Note that Go supports two types of comments.
 Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
