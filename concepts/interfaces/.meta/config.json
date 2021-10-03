@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
+  "blurb": "Interfaces define method sets that are implemented implicitly.",
   "authors": ["jmrunkle"],
-  "contributors": []
+  "contributors": ["junedev"]
 }

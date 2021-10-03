@@ -6,6 +6,10 @@
     {
       "url": "https://gobyexample.com/interfaces",
       "description": "Go by Example: Interfaces"
+    },
+    {
+      "url": "https://golang.org/doc/effective_go#interfaces",
+      "description": "Effective Go: Interfaces"
     }
   ]
   
