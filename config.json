@@ -120,7 +120,8 @@
         "prerequisites": [
           "string-formatting",
           "numbers",
-          "multiple-return-values"
+          "multiple-return-values",
+          "booleans"
         ],
         "status": "beta"
       },
