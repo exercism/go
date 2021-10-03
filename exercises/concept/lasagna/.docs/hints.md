@@ -4,9 +4,19 @@
 
 - An [integer value][integers] can be defined as one or more consecutive digits.
 
+If you see a `panic:` error when running the tests, this is as you haven't implemented one of the functions (it should say which one) or you have left the boilerplate in place, you need to remove the `panic(...)` line from the supplied code.
+
 ## 1. Define the expected oven time in minutes
 
 - You need to define a [constant][constants] and assign it the expected oven time in minutes.
+
+If you see an `undefined: OvenTime` error then double check that you have the constant defined.
+
+If you see an `invalid operation: got != tt.expected (mismatched types float64 and int)` error then you've put a decimal point into the `OvenTime` - remove the decimal so that it'll be an integer.
+
+If you see a `syntax error: non-declaration statement outside function body` error then this is as you forgot the `const` keyword.
+
+If you see an `syntax error: unexpected :=, expecting =` error then this is as you are trying to assign to the constant like a variable; contants are assigned using `=` not `:=`.
 
 ## 2. Calculate the remaining oven time in minutes
 
