@@ -27,7 +27,7 @@ Application("❗ recommended search product 🔍")
 
 Due to a rare but persistent bug in the logging infrastructure, certain characters in logs can become corrupted. After spending time identifying the corrupted characters and their original value, you decide to update the log library to assist in fixing corrupted logs.
 
-Implement the `Replace` function that takes a log line, a corrupted character, and the original value and return a modified log line that has all occurances of the corrupted character replaced with the original value.
+Implement the `Replace` function that takes a log line, a corrupted character, and the original value and returns a modified log line that has all occurances of the corrupted character replaced with the original value.
 
 ```go
 log := "please replace '👎' with '👍'"
@@ -38,7 +38,7 @@ Replace(log, '👎', '👍')
 
 ## 3. Determine if a log can be displayed
 
-Systems responsible for displaying logs have a limit on the number of characters that be be displayed per log line. As such, users are asking for this library to include a helper function to determine whether or not a log line is within a specific character limit.
+Systems responsible for displaying logs have a limit on the number of characters that can be displayed per log line. As such, users are asking for this library to include a helper function to determine whether or not a log line is within a specific character limit.
 
 Implement the `WithinLimit` function that takes a log line and character limit and returns whether or not the log line is within the character limit.
 
