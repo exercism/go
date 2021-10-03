@@ -72,3 +72,18 @@ if number > 0 {
     result += "zero"
 }
 ```
+
+If statements can also include a short initialization statement that can be used to initialize one or more variables for the if statement.
+For example:
+
+```go
+num := 7
+if v := 2 * num; v > 10 {
+    fmt.Println(v)
+} else {
+    fmt.Println(num)
+}
+// Output: 7
+```
+
+> Note: any variables created in the initialization statement go out of scope after the end of the if statement.

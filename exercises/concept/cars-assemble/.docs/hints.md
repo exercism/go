@@ -18,5 +18,10 @@
 - Use the `CalculateProductionRatePerHour` function.
 - Remember to cast the result to an `int`.
 
+## 4. Calculate the artificially-limited production rate
+
+- Use the `CalculateProductionRatePerHour` function.
+- Use an initializer statement for the if condition.
+
 [basic types]: https://tour.golang.org/basics/11
 [type converstions]: https://tour.golang.org/basics/13
