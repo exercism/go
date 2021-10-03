@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
-  "authors": ["ErikSchierboom"],
+  "blurb": "Functions split a program up into logical units of computation. They optionally take arguments and return values.",
+  "authors": ["bobtfish"],
   "contributors": []
 }

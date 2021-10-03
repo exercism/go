@@ -1,33 +1,43 @@
 package logs
 
-import (
-	"fmt"
-	"strings"
-)
+import "unicode/utf8"
 
-// Message extracts the message from the provided log line.
-func Message(line string) string {
-	parts := strings.Split(line, ":")
-	if len(parts) < 2 {
-		return ""
+// Application identifies the application emitting the given log.
+func Application(log string) string {
+	runeToApp := map[rune]string{
+		'❗': "recommendation",
+		'🔍': "search",
+		'☀': "weather",
 	}
 
-	return strings.TrimSpace(parts[1])
+	for _, char := range log {
+		if _, ok := runeToApp[char]; ok {
+			return runeToApp[char]
+		}
+	}
+
+	return "default"
 }
 
-// MessageLen counts the amount of characters (runes) in the message of the log line.
-func MessageLen(line string) int {
-	return len([]rune(Message(line)))
+// Replace replaces all occurances of old with new, returning the modified log
+// to the caller.
+func Replace(log string, old, new rune) string {
+	var modifiedLog string
+
+	for _, char := range log {
+		if char == old {
+			char = new
+		}
+
+		modifiedLog += string(char)
+	}
+
+	return modifiedLog
 }
 
-// LogLevel extracts the log level string from the provided log line.
-func LogLevel(line string) string {
-	part1 := strings.Split(line, ":")[0]
-	logLevel := strings.Trim(part1, "[]")
-	return strings.ToLower(logLevel)
-}
-
-// Reformat reformats the log line in the format `message (logLevel)`.
-func Reformat(line string) string {
-	return fmt.Sprintf("%s (%s)", Message(line), LogLevel(line))
+// WithinLimit determines whether or not the number of characters in log is
+// within the limit.
+func WithinLimit(log string, limit int) bool {
+	runeCount := utf8.RuneCountInString(log)
+	return runeCount <= limit
 }

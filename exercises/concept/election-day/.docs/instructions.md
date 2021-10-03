@@ -1,7 +1,7 @@
 # Instructions
 
 A local school near you has a very active students' association.
-The student's association is managed by a president and once every 2 years,
+The students' association is managed by a president and once every 2 years,
 elections are run to elect a new president.
 
 In this year's election, it was decided that a new digital system to
@@ -99,7 +99,7 @@ Create a function `DisplayResult` that will receive an `*ElectionResult` as an a
 var result *ElectionResult
 result = &ElectionResult{
     Name: "John",
-    Votes: 32
+    Votes: 32,
 }
 
 DisplayResult(result)

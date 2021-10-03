@@ -153,6 +153,8 @@ fmt.Println(ages)
 
 The same applies when changing an existing item in a slice.
 
-However, actions that return a new slice like `append` are a special case and **might not** modify the slice outside of the function. This is due to the way slices work internally, but we won't cover this in detail in this exercise, as this is a more advanced topic. If you are really curious you can read more about this in [Go Blog: Mechanics of 'append'][mechanics-of-append]
+However, actions that return a new slice like `append` are a special case and **might not** modify the slice outside of the function.
+This is due to the way slices work internally, but we won't cover this in detail, as this is a more advanced topic.
+If you are really curious you can read more about this in [Go Blog: Mechanics of 'append'][mechanics-of-append]
 
 [mechanics-of-append]: https://go.dev/blog/slices
