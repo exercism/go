@@ -1,0 +1,11 @@
+{
+  "blurb": "Professionalize counting the birds in your garden with for loops and increment/decrement operators",
+  "authors": ["sachinmk27"],
+  "contributors": [],
+  "files": {
+    "solution": ["bird_watcher.go"],
+    "test": ["bird_watcher_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  },
+  "forked_from": ["javascript/bird-watcher"]
+}
