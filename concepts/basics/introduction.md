@@ -4,7 +4,7 @@
 Go is syntactically similar to C.
 The language is often referred to as Golang because of its domain name, golang.org, but the proper name is Go.
 
-The Basics concept and corresponding exercises will introduce three major language features: Packages, Functions, and Variables.
+The Basics concept will introduce three major language features: Packages, Functions, and Variables.
 
 ## Packages
 

@@ -3,7 +3,7 @@
 In Go, you can iterate a `slice` using `for` but you could also use
 `range`. `Range` allows you to also iterate through a `map` or a
 `channel`. While iterating over a `channel` is out of the
-scope for this exercise, you will find useful to iterate over a `map`.
+scope for this concept, you will find useful to iterate over a `map`.
 
 Every iteration returns two values: the index/key and a copy of the element at
 that index/key.

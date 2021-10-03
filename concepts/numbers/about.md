@@ -5,7 +5,7 @@ floating-point values. There a different types depending on the size of value
 you require and the architecture of the computer where the application is
 running (e.g. 32-bit and 64-bit).
 
-For the sake of this exercise you will only be dealing with:
+This concept will concentrate on two number types:
 
 - `int`: e.g. `0`, `255`, `2147483647`. A signed integer that is at least 32
   bits in size (value range of: -2147483648 through 2147483647). But this will
