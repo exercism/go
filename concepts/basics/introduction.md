@@ -17,34 +17,6 @@ It is conventional for the package name to be the last directory in the import p
 package lasagna
 ```
 
-## Functions
-
-Go functions accept zero or more parameters.
-Parameters must be explicitly typed, there is no type inference.
-
-Values are returned from functions using the `return` keyword. 
-
-A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
-When a package is imported, only functions starting with a capital letter can
-be used / accessed.
-
-Note that Go supports two types of comments.
-Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
-
-```go
-package greeting
-
-// Hello is a public function
-func Hello (name string) string {
-    return hi(name)
-}
-
-// hi is a private function
-func hi (name string) string {
-    return "hi " + name
-}
-```
-
 ## Variables
 
 Go is statically-typed, which means all variables [must have a defined type](https://en.wikipedia.org/wiki/Type_system) at compile-time.
@@ -79,4 +51,32 @@ Constants are defined using the `const` keyword and can be numbers, characters, 
 
 ```go
 const Age = 21 // Defines a numeric constant 'Age' with the value of 21
+```
+
+## Functions
+
+Go functions accept zero or more parameters.
+Parameters must be explicitly typed, there is no type inference.
+
+Values are returned from functions using the `return` keyword.
+
+A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
+When a package is imported, only functions starting with a capital letter can
+be used / accessed.
+
+Note that Go supports two types of comments.
+Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
+
+```go
+package greeting
+
+// Hello is a public function
+func Hello (name string) string {
+    return hi(name)
+}
+
+// hi is a private function
+func hi (name string) string {
+    return "hi " + name
+}
 ```
