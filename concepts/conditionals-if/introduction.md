@@ -29,7 +29,7 @@ if number > 0 {
 }
 ```
 
-If statements can also use a short initialization statement that can be used to initialize one or more variables for the if statement.
+If statements can also include a short initialization statement that can be used to initialize one or more variables for the if statement.
 For example:
 
 ```go
