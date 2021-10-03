@@ -1,6 +1,6 @@
 # Introduction
 
-The `rune` type in Go is an alias for `int32`. Given this underlying `int32` type, the `rune` type holds a signed 32-bit integer value. However, unlike an `int32` type, the integer value stored in a `rune` type is represents a single Unicode character.
+The `rune` type in Go is an alias for `int32`. Given this underlying `int32` type, the `rune` type holds a signed 32-bit integer value. However, unlike an `int32` type, the integer value stored in a `rune` type represents a single Unicode character.
 
 ## Unicode and Unicode Code Points
 
@@ -85,7 +85,7 @@ for index, char := range myString {
 // Index: 7	Character: o		Code Point: U+006F
 ```
 
-Since runes can be stored as 1, 2, 3, or 4 bytes, the length of a string may not always equal the number of characters in the string. Use the builtin `len` functiont to get the length of a string in bytes and the `utf8.RuneCountInString` function to get the number of runes in a string:
+Since runes can be stored as 1, 2, 3, or 4 bytes, the length of a string may not always equal the number of characters in the string. Use the builtin `len` function to get the length of a string in bytes and the `utf8.RuneCountInString` function to get the number of runes in a string:
 
 ```go
 myString := "❗hello"
