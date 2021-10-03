@@ -2,20 +2,11 @@ package thefarm
 
 import "errors"
 
-// WeightFodder returns the amount of available fodder.
-type WeightFodder func() (float64, error)
-
-// ErrWeight
-var ErrWeight = errors.New("sensor error")
-
-// SillyNephew
-var SillyNephew = errors.New("silly nephew, cows cannot be negative")
-
-// DivideFood computes the fodder amount for the given cows
+// DivideFood computes the fodder amount per cow for the given cows
 func DivideFood(weightFodder WeightFodder, cows int) (float64, error) {
-	fodder, err := weightFodder()
+	fodder, err := weightFodder.FodderAmount()
 	if err != nil {
-		if !errors.Is(err, ErrWeight) {
+		if !errors.Is(err, ScaleError{}) {
 			return 0, err
 		}
 		fodder *= 2
@@ -27,7 +18,7 @@ func DivideFood(weightFodder WeightFodder, cows int) (float64, error) {
 		return 0, errors.New("Division by zero")
 	}
 	if cows < 0 {
-		return 0, SillyNephew
+		return 0, SillyNephewError{cows}
 	}
 	return fodder / float64(cows), nil
 }
