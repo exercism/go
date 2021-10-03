@@ -71,7 +71,7 @@ Implement a function `ScaleRecipe` that takes two parameters.
 
 The function should return a slice of `float64` of the amounts needed for the desired number of portions.
 You want to keep the original recipe though.
-This means amounts argument should not be modified in this function.
+This means the `amounts` argument should not be modified in this function.
 
 ```go
 quantities := []float64{ 1.2, 3.6, 10.5 }
