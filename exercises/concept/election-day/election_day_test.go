@@ -114,7 +114,7 @@ func TestNewElectionResult(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := NewElectionResult(tt.candidateName, tt.votes)
 
-			if tt.wanted.Name != tt.candidateName && tt.wanted.Votes != tt.votes {
+			if result == nil || result.Name != tt.wanted.Name || result.Votes != tt.wanted.Votes {
 				t.Errorf("NewElectionResult(\"%s\", %d) = %#v, wanted %#v",
 					tt.candidateName, tt.votes, result, tt.wanted)
 			}
