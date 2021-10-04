@@ -7,7 +7,7 @@ import (
 
 func TestAllergies(t *testing.T) {
 	for _, test := range listTests {
-		if actual := Allergies(test.score); !reflect.DeepEqual(actual, test.expected) && (len(actual) > 0 || len(test.expected) > 0) {
+		if actual := Allergies(test.score); !sameSliceElements(actual, test.expected) {
 			t.Fatalf("FAIL: Allergies(%d): expected %#v, actual %#v", test.score, test.expected, actual)
 		} else {
 			t.Logf("PASS: Allergic to %#v", test.expected)
@@ -52,4 +52,28 @@ func BenchmarkAllergicTo(b *testing.B) {
 			}
 		}
 	}
+}
+
+// stringSet is a set of strings
+type stringSet map[string]bool
+
+// sameSliceElements checks if the slices have the same number of elements
+// regardless of their order
+func sameSliceElements(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	return reflect.DeepEqual(sliceSet(a), sliceSet(b))
+}
+
+// sliceSet creates a new stringSet from a slice of strings
+func sliceSet(list []string) stringSet {
+	set := make(stringSet)
+
+	for _, elem := range list {
+		set[elem] = true
+	}
+
+	return set
 }
