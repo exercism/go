@@ -29,11 +29,6 @@ func (car *Car) Drive() {
 	panic("Please implement Drive() method")
 }
 
-// CanFinish checks if a car is able to finish a certain track.
-func (car *Car) CanFinish(track Track) bool {
-	panic("Please implement CanFinish() method")
-}
-
 // DisplayDistance displays the distance the car is driven.
 func (car *Car) DisplayDistance() string {
 	panic("Please implement DisplayDistance() method")
@@ -42,4 +37,9 @@ func (car *Car) DisplayDistance() string {
 // DisplayBattery displays the battery level.
 func (car *Car) DisplayBattery() string {
 	panic("Please implement DisplayBattery() method")
+}
+
+// CanFinish checks if a car is able to finish a certain track.
+func (car *Car) CanFinish(track Track) bool {
+	panic("Please implement CanFinish() method")
 }

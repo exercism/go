@@ -2,6 +2,7 @@
 
 ## 1. Drive a car
 
+- Create a [function][functions] that creates a Car struct and returns its pointer
 - Add a field to the `Car` struct that keeps track of the driven distance
 - Create a [method][method] that has a receiver of type `Car` and updates the driven distance
 
@@ -17,7 +18,9 @@
 
 ## 4. Check if a remote car can finish a race
 
+- Create a [function][functions] that creates a Track struct
 - Remember the car has a [method][method] to retrieve the distance it has driven
 - Consider what to do when the battery has been drained before reaching the finish line
 
+[functions]: https://tour.golang.org/basics/4
 [method]: https://tour.golang.org/methods/1
