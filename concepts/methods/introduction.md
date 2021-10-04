@@ -4,7 +4,7 @@ A method is a function with a special _receiver_ argument.
 The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
-func (receiver type) MethodName(parameters) (returnTypes){
+func (receiver type) MethodName(parameters) (returnTypes) {
 
 }
 ```
@@ -19,7 +19,6 @@ type Person {
 func (p Person) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", p.Name)
 }
-
 
 s := Person{Name: "Bronson"}
 fmt.Println(s.Greetings())
