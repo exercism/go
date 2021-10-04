@@ -27,6 +27,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "interface.go"
     ]
   },
   "source": "Brian Matsuo",
