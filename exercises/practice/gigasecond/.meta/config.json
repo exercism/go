@@ -24,7 +24,8 @@
       "gigasecond.go"
     ],
     "test": [
-      "gigasecond_test.go"
+      "gigasecond_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

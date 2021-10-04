@@ -15,7 +15,8 @@
       "rail_fence_cipher.go"
     ],
     "test": [
-      "rail_fence_cipher_test.go"
+      "rail_fence_cipher_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

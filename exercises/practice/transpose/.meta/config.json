@@ -21,7 +21,8 @@
       "transpose.go"
     ],
     "test": [
-      "transpose_test.go"
+      "transpose_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

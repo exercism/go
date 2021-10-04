@@ -22,7 +22,8 @@
       "perfect_numbers.go"
     ],
     "test": [
-      "perfect_numbers_test.go"
+      "perfect_numbers_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

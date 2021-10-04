@@ -26,7 +26,8 @@
       "secret_handshake.go"
     ],
     "test": [
-      "secret_handshake_test.go"
+      "secret_handshake_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

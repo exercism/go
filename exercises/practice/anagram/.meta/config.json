@@ -27,7 +27,8 @@
       "anagram.go"
     ],
     "test": [
-      "anagram_test.go"
+      "anagram_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

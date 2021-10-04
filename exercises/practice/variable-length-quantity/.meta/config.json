@@ -25,7 +25,8 @@
       "variable_length_quantity.go"
     ],
     "test": [
-      "variable_length_quantity_test.go"
+      "variable_length_quantity_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

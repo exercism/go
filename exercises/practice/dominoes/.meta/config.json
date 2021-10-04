@@ -18,7 +18,8 @@
       "dominoes.go"
     ],
     "test": [
-      "dominoes_test.go"
+      "dominoes_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

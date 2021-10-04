@@ -25,7 +25,8 @@
       "matching_brackets.go"
     ],
     "test": [
-      "matching_brackets_test.go"
+      "matching_brackets_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

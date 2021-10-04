@@ -22,7 +22,8 @@
       "raindrops.go"
     ],
     "test": [
-      "raindrops_test.go"
+      "raindrops_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

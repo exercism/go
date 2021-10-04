@@ -17,7 +17,8 @@
       "yacht.go"
     ],
     "test": [
-      "yacht_test.go"
+      "yacht_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
