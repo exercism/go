@@ -1,6 +1,10 @@
 package partyrobot
 
-import "testing"
+import (
+	"fmt"
+	"math/rand"
+	"testing"
+)
 
 func TestWelcome(t *testing.T) {
 	tests := []struct {
@@ -47,6 +51,7 @@ func TestHappyBirthday(t *testing.T) {
 }
 
 func TestAssignTable(t *testing.T) {
+	tableNumber := rand.Intn(100)
 	tests := []struct {
 		description   string
 		name          string
@@ -60,10 +65,10 @@ func TestAssignTable(t *testing.T) {
 			description:   "Greet the guest and give them directions to their seat",
 			name:          "Christiane",
 			direction:     "on the left",
-			tableNumber:   27,
+			tableNumber:   tableNumber,
 			distance:      23.7834298,
 			neighbourName: "Frank",
-			want:          "Welcome to my party, Christiane!\nYou have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.\nYou will be sitting next to Frank.",
+			want:          fmt.Sprintf("Welcome to my party, Christiane!\nYou have been assigned to table %03d. Your table is on the left, exactly 23.8 meters from here.\nYou will be sitting next to Frank.", tableNumber),
 		},
 	}
 	for _, tt := range tests {

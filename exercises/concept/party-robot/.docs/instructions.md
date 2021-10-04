@@ -27,14 +27,12 @@ HappyBirthday("Frank", 58)
 
 ## 3. Give directions
 
-Implement the `AssignTable` function to give directions. The robot provides the table number in hex (uppercase)
-due to a misalignment of its creator and the rest of the world. Fortunately the precision on the distance
-was limited to 1 digit.
+Implement the `AssignTable` function to give directions. The robot provides the table number in a 3 digits format. If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (eg. 3 becomes 003). The robot mentions too the distance of the table with but only with a precision that's limited to 1 digit.
 
 ```go
 AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
 // Output:
 // Welcome to my party, Christiane!
-// You have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.
+// You have been assigned to table 027. Your table is on the left, exactly 23.8 meters from here.
 // You will be sitting next to Frank.
 ```
