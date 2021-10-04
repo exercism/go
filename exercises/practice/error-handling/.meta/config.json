@@ -28,6 +28,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "common.go"
     ]
   }
 }

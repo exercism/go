@@ -26,6 +26,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "defs.go"
     ]
   },
   "source": "Inspired by an interview question at a famous company."
