@@ -27,7 +27,7 @@ fmt.Println(s.Greetings())
 
 Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
-You can declare methods with pointer receivers in order to modify the value to which the receiver points. Such modifications are visible to the caller or the method as well.
+You can declare methods with pointer receivers in order to modify the value to which the receiver points. Such modifications are visible to the caller of the method as well.
 
 ```go
 type rect struct {
