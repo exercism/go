@@ -134,7 +134,7 @@ Slices and maps are special types because they already have pointers in their im
 
 
 ```go
-func incrementPeterAge(m map[string]int){
+func incrementPeterAge(m map[string]int) {
 	m["Peter"] += 1
 }
 ```
