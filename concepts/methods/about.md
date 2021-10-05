@@ -3,7 +3,7 @@
 A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
-func (receiver type) MethodName(parameters) (returnTypes){
+func (receiver type) MethodName(parameters) (returnTypes) {
 
 }
 ```
