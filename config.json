@@ -327,7 +327,7 @@
           "slices",
           "maps",
           "arithmetic-operators",
-          "string-formatting",
+          "string-formatting"
         ],
         "status": "beta"
       },
