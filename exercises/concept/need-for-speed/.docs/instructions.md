@@ -19,7 +19,7 @@ Define a `Car` struct with the following `int` type fields:
 - speed
 - distance
 
-Allow creating a remote controller car by defining a function `NewCar` that takes the speed of the car in meters,
+Allow creating a remote controlled car by defining a function `NewCar` that takes the speed of the car in meters,
 and the battery drain percentage as its two parameters (both of type `int`) and returns a `Car` instance:
 
 ```go
