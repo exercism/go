@@ -25,7 +25,8 @@
       "prime_factors.go"
     ],
     "test": [
-      "prime_factors_test.go"
+      "prime_factors_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

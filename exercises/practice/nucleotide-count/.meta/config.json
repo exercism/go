@@ -25,7 +25,8 @@
       "nucleotide_count.go"
     ],
     "test": [
-      "nucleotide_count_test.go"
+      "nucleotide_count_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

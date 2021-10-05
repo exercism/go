@@ -21,7 +21,8 @@
       "meetup.go"
     ],
     "test": [
-      "meetup_test.go"
+      "meetup_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

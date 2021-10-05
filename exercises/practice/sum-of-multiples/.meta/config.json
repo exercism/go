@@ -23,7 +23,8 @@
       "sum_of_multiples.go"
     ],
     "test": [
-      "sum_of_multiples_test.go"
+      "sum_of_multiples_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

@@ -17,7 +17,8 @@
       "book_store.go"
     ],
     "test": [
-      "book_store_test.go"
+      "book_store_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

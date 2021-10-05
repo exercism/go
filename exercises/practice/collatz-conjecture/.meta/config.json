@@ -16,7 +16,8 @@
       "collatz_conjecture.go"
     ],
     "test": [
-      "collatz_conjecture_test.go"
+      "collatz_conjecture_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

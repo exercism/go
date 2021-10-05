@@ -26,7 +26,8 @@
       "grains.go"
     ],
     "test": [
-      "grains_test.go"
+      "grains_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

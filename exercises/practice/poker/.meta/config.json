@@ -24,7 +24,8 @@
       "poker.go"
     ],
     "test": [
-      "poker_test.go"
+      "poker_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

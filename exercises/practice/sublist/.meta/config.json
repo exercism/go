@@ -16,7 +16,8 @@
       "sublist.go"
     ],
     "test": [
-      "sublist_test.go"
+      "sublist_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

@@ -22,7 +22,8 @@
       "wordy.go"
     ],
     "test": [
-      "wordy_test.go"
+      "wordy_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
