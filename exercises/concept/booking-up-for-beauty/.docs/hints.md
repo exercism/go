@@ -20,9 +20,9 @@
 
 - Convert the given string to a `Time` then format the answer string accordingly, using the appropriate [methods][time] to extract the needed constituents.
 
-## 5. Return the anniversary date
+## 5. Return the anniversary date of the salon's opening
 
-- Create a `Time` of the anniversary date.
+- Create a `Time` of the anniversary date of the salon's opening for the current year.
 
 [time]: https://golang.org/pkg/time/#pkg-index
 [time.parse]: https://golang.org/pkg/time/#Parse
