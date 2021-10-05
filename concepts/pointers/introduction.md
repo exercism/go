@@ -27,7 +27,7 @@ Similarly, when we need to change the value in the piece of memory of `a`, we ca
 a = 3
 ```
 
-The piece of memory that is associated with `a` will now will now be storing the value `3`.
+The piece of memory that is associated with `a` will now be storing the value `3`.
 
 ## Pointers
 
