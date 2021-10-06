@@ -52,7 +52,7 @@ var votes int
 votes = 3
 
 IncrementVoteCount(&votes, 2)
-*votes == 5 // true
+votes == 5 // true
 ```
 
 ## 4. Create the election results
