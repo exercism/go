@@ -169,7 +169,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 			DecrementVotesOfCandidate(tt.results, tt.candidate)
 			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.wanted {
 				t.Errorf("DecrementVotesOfCandidate(%v) | wanted %d, got %d",
-					tt.results, votes, tt.wanted)
+					tt.results, tt.wanted, votes)
 			}
 		})
 	}
