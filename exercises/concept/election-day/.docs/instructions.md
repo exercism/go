@@ -53,8 +53,13 @@ Create a function `IncrementVoteCount` that will take a counter (`*int`) as an a
 var votes int
 votes = 3
 
-IncrementVoteCount(&votes, 2)
-votes == 5 // true
+var voteCounter *int
+voteCounter = &votes
+
+IncrementVoteCount(voteCounter, 2)
+
+votes == 5          // true
+*voteCounter == 5   // true
 ```
 
 ## 4. Create the election results
