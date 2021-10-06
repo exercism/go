@@ -31,9 +31,8 @@ Create a function `VoteCount` that will take a counter (`*int`) as an argument a
 
 ```go
 votes := 3
-voteCounter := &votes
 
-VoteCount(&voteCounter)
+VoteCount(&votes)
 // Output: 3
 
 var nilVoteCounter *int
