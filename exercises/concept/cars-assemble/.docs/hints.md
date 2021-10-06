@@ -2,7 +2,7 @@
 
 ## General
 
-- [Basic types][basic types] and [Type converstions][type converstions] tutorials.
+- [Basic types][basic types] and [Type conversions][type conversions] tutorials.
 
 ## 1. Calculate the success rate
 
@@ -24,4 +24,4 @@
 - Use an initializer statement for the if condition.
 
 [basic types]: https://tour.golang.org/basics/11
-[type converstions]: https://tour.golang.org/basics/13
+[type conversions]: https://tour.golang.org/basics/13
