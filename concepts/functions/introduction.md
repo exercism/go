@@ -26,7 +26,7 @@ Single return values are left bare, multiple return values are wrapped in parent
 Values are returned to the calling code from functions using the `return` keyword.
 There can be multiple `return` statements in a function.
 The execution of the function ends as soon as it hits one of those `return`s.
-If multiple values are to be returned from a function, they are comma seperated.
+If multiple values are to be returned from a function, they are comma separated.
 
 ```go
 func Hello(name string) string {
