@@ -32,7 +32,10 @@ Create a function `VoteCount` that will take a counter (`*int`) as an argument a
 ```go
 votes := 3
 
-VoteCount(&votes)
+var voteCounter *int
+voteCounter = &votes
+
+VoteCount(voteCounter)
 // Output: 3
 
 var nilVoteCounter *int
