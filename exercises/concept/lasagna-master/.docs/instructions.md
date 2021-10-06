@@ -2,8 +2,20 @@
 
 In this exercise you are going to write some more code related to preparing and cooking your brilliant lasagna from your favorite cookbook.
 
-You have four tasks.
+You have four tasks, prefixed with a test preparation step.
 The first one is related to the cooking itself, the other three are about the perfect preparation.
+
+## 0. Prepare the empty functions
+
+To allow the tests to work you will need to create stubs for the four functions.
+The specific details are in the later steps.
+
+|Function|Arguments|Result|Default return|
+|-|-|-|-|
+|PreparationTime| layers - which is a list of strings, average prep time - which is an integer| integer|0|
+|Quantities| ingredients - which is a list of strings| noodles as int, sauce as a float| 0, 0.0|
+|AddSecretIngredient| two lists of strings (friends and yours) | list of strings| [] |
+|ScaleRecipe| list of floats and a number of portions (int)| list of floats | [0.0]|
 
 ## 1. Estimate the preparation time
 
