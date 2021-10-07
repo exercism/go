@@ -10,12 +10,13 @@ The first one is related to the cooking itself, the other three are about the pe
 To allow the tests to work you will need to create stubs for the four functions.
 The specific details are in the later steps.
 
-|Function|Arguments|Result|Default return|
-|-|-|-|-|
-|PreparationTime| layers - which is a list of strings, average prep time - which is an integer| integer|0|
-|Quantities| ingredients - which is a list of strings| noodles as int, sauce as a float| 0, 0.0|
-|AddSecretIngredient| two lists of strings (friends and yours) | list of strings| [] |
-|ScaleRecipe| list of floats and a number of portions (int)| list of floats | [0.0]|
+|PreparationTime| layers - a list of `string`, average prep time - an `int`| `int`|0|
+
+|Quantities| ingredients - a list of `string`| noodles as `int`, sauce as a `float64`| 0, 0.0|
+
+|AddSecretIngredient| friends list - a list of `string`, my list - a list of `string` | list of `string`| [] |
+
+|ScaleRecipe| amounts needed for two portions - a list of `float64`, number of portions - an `int` | list of `float64` | [0.0]|
 
 ## 1. Estimate the preparation time
 
