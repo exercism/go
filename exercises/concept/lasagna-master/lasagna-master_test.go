@@ -174,7 +174,7 @@ type scaleRecipeTest struct {
 	expected []float64
 }
 
-func TestScaleRecipeTest(t *testing.T) {
+func TestScaleRecipe(t *testing.T) {
 	tests := []scaleRecipeTest{
 		scaleRecipeTest{
 			name:     "scales up correctly",
