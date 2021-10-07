@@ -8,7 +8,8 @@ Different floating-point types can store different numbers of digits after the d
 Go has two floating-point types:
 
 - `float32`: 32 bits (~6-9 digits precision).
-- `float64`: 64 bits (~15-17 digits precision). This is the default floating-point type.
+- `float64`: 64 bits (~15-17 digits precision).
+  This is the default floating-point type.
 
 As can be seen, both types can store a different number of digits. This means that trying to store PI in a `float32` will only store the first 6 to 9 digits (with the last digit being rounded).
 
