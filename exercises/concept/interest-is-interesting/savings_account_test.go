@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-const FloatEqualityThreshold = 1e-5
+const floatEqualityThreshold = 1e-5
 
 func TestInterestRate(t *testing.T) {
 	tests := []struct {
@@ -83,7 +83,7 @@ func TestInterestRate(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := InterestRate(tt.balance)
-			if math.Abs(float64(got-tt.want)) > FloatEqualityThreshold {
+			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
 				t.Errorf(
 					"InterestRate(%f) = %f, want %f",
 					tt.balance,
@@ -126,7 +126,7 @@ func TestInterest(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := Interest(tt.balance)
-			if math.Abs(float64(got-tt.want)) > FloatEqualityThreshold {
+			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
 				t.Errorf(
 					"Interest(%f) = %f, want %f",
 					tt.balance,
@@ -184,7 +184,7 @@ func TestAnnualBalanceUpdate(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := AnnualBalanceUpdate(tt.balance)
-			if math.Abs(float64(got-tt.want)) > FloatEqualityThreshold {
+			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
 				t.Errorf(
 					"AnnualBalanceUpdate(%f) = %f, want %f",
 					tt.balance,
