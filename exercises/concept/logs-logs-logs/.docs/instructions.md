@@ -27,7 +27,7 @@ Application("❗ recommended search product 🔍")
 
 Due to a rare but persistent bug in the logging infrastructure, certain characters in logs can become corrupted. After spending time identifying the corrupted characters and their original value, you decide to update the log library to assist in fixing corrupted logs.
 
-Implement the `Replace` function that takes a log line, a corrupted character, and the original value and returns a modified log line that has all occurances of the corrupted character replaced with the original value.
+Implement the `Replace` function that takes a log line, a corrupted character, and the original value and returns a modified log line that has all occurrences of the corrupted character replaced with the original value.
 
 ```go
 log := "please replace '👎' with '👍'"

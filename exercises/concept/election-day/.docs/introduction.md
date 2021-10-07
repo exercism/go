@@ -69,7 +69,7 @@ b = *p // b == 2
 
 The operation `*p` fetches the value stored at the memory address stored in `p`. This operation is often called "dereferencing".
 
-We can also use the derefering operator to assign a new value to the memory address referenced by the pointer:
+We can also use the dereference operator to assign a new value to the memory address referenced by the pointer:
 
 ```go
 var a int

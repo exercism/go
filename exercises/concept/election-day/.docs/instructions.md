@@ -12,7 +12,7 @@ count the votes was needed. The school needs your help building this new system.
 One of the first things that the new voting system needs is a vote counter.
 This counter is a way to keep track of the votes a particular candidate has.
 
-Create a function `NewVoteCounter` that accepts the number of initial votes for a candidate and returns a pointer refering to an `int`, initialized with the given number of intial votes.
+Create a function `NewVoteCounter` that accepts the number of initial votes for a candidate and returns a pointer referring to an `int`, initialized with the given number of initial votes.
 
 ```go
 var initialVotes int
@@ -61,7 +61,7 @@ IncrementVoteCount(voteCounter, 2)
 ## 4. Create the election results
 
 With all the votes now counted, it's time to prepare the result announcement to the whole school.
-For this, you notice that having only counters for the votes is insuficient.
+For this, you notice that having only counters for the votes is insufficient.
 There needs to be a way to associate the number of votes with a particular candidate.
 
 Create a function `NewElectionResult` that receives the name of a candidate and their number of votes and 

@@ -4,8 +4,8 @@
 
 - `*T` can be used to declared variables that are pointers to some type `T`, e.g `var i *int` declares a variable `i` that is a pointer to an `int`
 - You can get a pointer for a variable (its memory address) by using the `&` operator, e.g `mypointer := &anIntVariable`.
-- You can get the value stored in a pointer by using the `*` operator on a pointer, e.eg `var i int = *aPointerToInt`. This is called dereferencing the pointer.
-- You check if a pointer is not `nil` before derefencing it. Attempting to dereference a `nil` pointer will give you a runtime error. 
+- You can get the value stored in a pointer by using the `*` operator on a pointer, eg. `var i int = *aPointerToInt`. This is called dereferencing the pointer.
+- You check if a pointer is not `nil` before dereferencing it. Attempting to dereference a `nil` pointer will give you a runtime error.
 - If you are unsure how pointers work, try reading [Tour of Go: Pointers][go-tour-pointers] or [Go by Example: Pointers][go-by-example-pointers]
 
 ## 1. Create a vote counter
@@ -17,7 +17,7 @@
 ## 2. Get number of votes from a counter
 
 - You can use the `*` operator on a pointer to dereference it and get its value, e.g `*myPointer`
-- Derefencing `nil` pointers will give you a runtime error. Always make sure a pointer is not `nil` before dereferencing it.
+- Dereferencing `nil` pointers will give you a runtime error. Always make sure a pointer is not `nil` before dereferencing it.
 
 ## 3. Increment the votes of a counter
 
@@ -32,7 +32,7 @@
 ## 5. Announce the results
 
 - Although you are receiving a pointer to an `ElectionResult`, you can access its fields with the dot `.` notation, like if it wasn't a pointer!
-- Build the message by accesing the `Name` and `Value` fields on the struct.
+- Build the message by accessing the `Name` and `Value` fields on the struct.
 - Even though you are accessing fields from a pointer to a struct, you don't need to do any dereferencing. Go will automatically dereference the pointer for you, like in this example:
 
 ```go
