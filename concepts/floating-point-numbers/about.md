@@ -1,6 +1,7 @@
 # About
 
-A floating-point number is a number with zero or more digits behind the decimal separator. Examples are `-2.4`, `0.1`, `3.14`, `16.984025` and `1024.0`.
+A floating-point number is a number with zero or more digits behind the decimal separator.
+Examples are `-2.4`, `0.1`, `3.14`, `16.984025` and `1024.0`.
 
 Different floating-point types can store different numbers of digits after the digit separator - this is referred to as its precision.
 
