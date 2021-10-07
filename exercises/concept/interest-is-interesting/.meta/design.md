@@ -24,3 +24,4 @@ This exercise's prerequisites Concepts are:
 - `conditionals-if`: conditionally execute code based on value of floating-point numbers.
 - `for-loops`: repeatedly execute code until a condition is met.
 - `packages`: import the "math" package
+- `type-conversion`: know how to convert between types

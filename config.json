@@ -342,7 +342,8 @@
           "numbers",
           "conditionals-if",
           "for-loops",
-          "packages"
+          "packages",
+          "type-conversion"
         ],
         "status": "beta"
       }
