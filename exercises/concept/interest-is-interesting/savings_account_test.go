@@ -7,6 +7,10 @@ import (
 
 const floatEqualityThreshold = 1e-5
 
+func floatingPointEquals(got, want float64) bool {
+	return math.Abs(got-want) <= floatEqualityThreshold
+}
+
 func TestInterestRate(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -83,7 +87,7 @@ func TestInterestRate(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := InterestRate(tt.balance)
-			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
+			if !floatingPointEquals(float64(got), float64(tt.want)) {
 				t.Errorf(
 					"InterestRate(%f) = %f, want %f",
 					tt.balance,
@@ -126,7 +130,7 @@ func TestInterest(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := Interest(tt.balance)
-			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
+			if !floatingPointEquals(got, tt.want) {
 				t.Errorf(
 					"Interest(%f) = %f, want %f",
 					tt.balance,
@@ -184,7 +188,7 @@ func TestAnnualBalanceUpdate(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := AnnualBalanceUpdate(tt.balance)
-			if math.Abs(float64(got-tt.want)) > floatEqualityThreshold {
+			if !floatingPointEquals(got, tt.want) {
 				t.Errorf(
 					"AnnualBalanceUpdate(%f) = %f, want %f",
 					tt.balance,
