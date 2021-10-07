@@ -232,7 +232,7 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := YearsBeforeDesiredBalance(tt.balance, tt.targetBalance)
-			if math.Abs(float64(got-tt.want)) > FloatEqualityThreshold {
+			if got != tt.want {
 				t.Errorf(
 					"YearsBeforeDesiredBalance(%f, %f) = %d, want %d",
 					tt.balance,
