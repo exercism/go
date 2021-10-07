@@ -22,7 +22,8 @@ By default, Go will use `float64` for floating-point numbers, unless the floatin
 
 Always be careful when checking the values of floating-point types for equality, as values that can appear to represent the same value could actually be different.
 
-You can find a short introduction to floating-point numbers at [0.30000000000000004.com][0.30000000000000004.com]. The [Float Toy page][evanw.github.io-float-toy] has a nice, graphical explanation how a floating-point numbers' bits are converted to an actual floating-point value.
+You can find a short introduction to floating-point numbers at [0.30000000000000004.com][0.30000000000000004.com].
+The [Float Toy page][evanw.github.io-float-toy] has a nice, graphical explanation how a floating-point numbers' bits are converted to an actual floating-point value.
 
 [0.30000000000000004.com]: https://0.30000000000000004.com/
 [evanw.github.io-float-toy]: https://evanw.github.io/float-toy/
