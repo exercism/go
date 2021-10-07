@@ -33,3 +33,18 @@ For example:
 a := 10
 a++ // same as a += 1, a == 11
 ```
+
+## Arithmetic operations on different types
+
+In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an arror.
+For example:
+
+```go
+var x int = 42
+
+// this line produces an error
+value := float32(2.0) * x // invalid operation: mismatched types float32 and int
+
+// you must convert int type to float32 before performing arithmetic operation
+value := float32(2.0) * float32(x)
+```
