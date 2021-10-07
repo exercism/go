@@ -127,6 +127,30 @@ func TestCanFinish(t *testing.T) {
 			},
 			expected: true,
 		},
+		{
+			name: "Car has 40% battery. Car can finish the race",
+			car: Car{
+				speed:        5,
+				batteryDrain: 2,
+				battery:      40,
+			},
+			track: Track{
+				distance: 100,
+			},
+			expected: true,
+		},
+		{
+			name: "Car has 30% battery. Car cannot finish the race",
+			car: Car{
+				speed:        5,
+				batteryDrain: 2,
+				battery:      30,
+			},
+			track: Track{
+				distance: 100,
+			},
+			expected: false,
+		},
 	}
 
 	for _, tt := range tests {
