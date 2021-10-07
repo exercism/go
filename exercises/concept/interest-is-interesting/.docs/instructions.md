@@ -27,7 +27,7 @@ Note that the value returned is a `float32`.
 Implement the `Interest()` function to calculate the interest based on the specified balance:
 
 ```go
-Interest(balance: 200.75)
+Interest(200.75)
 // Output: 9.0375
 ```
 
@@ -38,7 +38,7 @@ Note that the value returned is a `float64`.
 Implement the `AnnualBalanceUpdate()` function to calculate the annual balance update, taking into account the interest rate:
 
 ```go
-AnnualBalanceUpdate(balance: 200.75)
+AnnualBalanceUpdate(200.75)
 // Output: 201.75375
 ```
 
@@ -49,7 +49,9 @@ Note that the value returned is a `float64`.
 Implement the `YearsBeforeDesiredBalance()` function to calculate the minimum number of years required to reach the desired balance:
 
 ```go
-YearsBeforeDesiredBalance(balance: 200.75, targetBalance: 214.88)
+balance := 200.75
+targetBalance := 214.88
+YearsBeforeDesiredBalance(balance, targetBalance)
 // Output: 14
 ```
 
