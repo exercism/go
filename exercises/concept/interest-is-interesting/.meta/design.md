@@ -13,7 +13,8 @@
 
 ## Concepts
 
-- `floating-point-numbers`: know of the existing of the two floating point types: `float32` and `float64`. know when to use which floating point type.
+- `floating-point-numbers`: know of the existing of the two floating point types: `float32` and `float64`.
+  Know when to use which floating point type.
 
 ## Prerequisites
 
