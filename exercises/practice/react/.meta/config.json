@@ -26,6 +26,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "interfaces.go"
     ]
   }
 }

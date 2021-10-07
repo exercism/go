@@ -1,5 +1,5 @@
 {
-  "blurb": "Go allows to convert values from one type to another.",
-  "authors": ["ErikSchierboom"],
+  "blurb": "Go requires explicit conversion between different types.",
+  "authors": ["jmrunkle"],
   "contributors": []
 }

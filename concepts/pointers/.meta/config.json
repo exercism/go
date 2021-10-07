@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
-  "authors": ["ErikSchierboom"],
+  "blurb": "Pointers hold the memory address of a value.",
+  "authors": ["andrerfcsantos"],
   "contributors": []
 }

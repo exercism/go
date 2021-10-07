@@ -1,6 +1,10 @@
 # Introduction
 
-Like other languages, Go also provides a [`switch` statement][switch_statement]. Switch statements are a shorter way to write long `if ... else if` statements. To make a switch, we start by using the keyword `switch` followed by a value or expression. We then declare each one of the conditions with the `case` keyword. We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
+Like other languages, Go also provides a `switch` statement.
+Switch statements are a shorter way to write long `if ... else if` statements.
+To make a switch, we start by using the keyword `switch` followed by a value or expression.
+We then declare each one of the conditions with the `case` keyword.
+We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
 
 ```go
 operatingSystem := "windows"
@@ -14,7 +18,7 @@ case "macos":
     // do something if the operating system is macos
 default:
     // do something if the operating system is none of the above
-} 
+}
 ```
 
 One interesting thing about switch statements, is that the value after the `switch` keyword can be omitted, and we can have boolean conditions for each `case`:
@@ -31,8 +35,3 @@ default:
     // do something else for every other case
 }
 ```
-
-To learn more about this topic, check [Go by Example: Switch][go_by_example_switch] or [Tour of Go: Switch][switch_statement].
-
-[switch_statement]: https://tour.golang.org/flowcontrol/9
-[go_by_example_switch]: https://gobyexample.com/switch

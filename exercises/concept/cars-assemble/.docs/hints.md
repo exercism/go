@@ -1,28 +1,27 @@
 # Hints
 
-TODO: write hints
+## General
 
-## Arithmetic Operators in Go
+- [Basic types][basic types] and [Type converstions][type converstions] tutorials.
 
-Below shows the set of arithmetic operators available in Go in use:
+## 1. Calculate the success rate
 
-```go
-fmt.Println("1 + 2  = ", 1 + 2)   // Addition
-// Output: 1 + 2 = 3
+- Use if conditionals to return the values in the table.
 
-fmt.Println("10 - 2 = ", 10 - 2)  // Subtraction
-// Output: 10 - 2 = 8
+## 2. Calculate the production rate per hour
 
-fmt.Println("5 * 2  = ", 5 * 2)   // Multiplication
-// Output: 5 * 2 = 10
+- Use the `successRate` method coupled with the base rate (221 times the speed).
+- When multiplying two numbers by one another, they both need to be of the same type.
 
-fmt.Println("10 / 2 = ", 10 / 2)  // Division
-// Output: 10 / 2 = 5
+## 3. Calculate the number of working items produced per minute
 
-fmt.Println("10 % 2 = ", 10%2)    // Remainder
-// Output: 10 % 2 = 0
-```
+- Use the `CalculateProductionRatePerHour` function.
+- Remember to cast the result to an `int`.
 
-For more information please see the [Go language Spec][go-lang-spec-arithmetic-operators]
+## 4. Calculate the artificially-limited production rate
 
-[go-lang-spec-arithmetic-operators]: https://golang.org/ref/spec#Arithmetic_operators
+- Use the `CalculateProductionRatePerHour` function.
+- Use an initializer statement for the if condition.
+
+[basic types]: https://tour.golang.org/basics/11
+[type converstions]: https://tour.golang.org/basics/13

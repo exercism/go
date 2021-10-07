@@ -67,6 +67,8 @@ person := Person{
 // Output: too few values in Person{...}
 ```
 
+Field names in structs follow the Go convention - fields whose name starts with a lower case letter are only visible to code in the same package, whereas those whose name starts with an upper case letter are visible in other packages.
+
 To dive deeper into this type, you can check these resources: [Go by example: Structs], [A Tour of Go] or [Structures in Go (structs)]
 
 [go by example: structs]: https://gobyexample.com/structs

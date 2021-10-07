@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "url": "https://tour.golang.org/moretypes/1",
+        "description": "Tour of Go: Pointers"
+    },
+    {
+        "url": "https://gobyexample.com/pointers",
+        "description": "Go by Example: Pointers"
+    }
+]

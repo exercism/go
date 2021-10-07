@@ -2,90 +2,156 @@ package thefarm
 
 import (
 	"errors"
-	"fmt"
 	"testing"
 )
 
-// Valid cases only here
 func TestDivideFood(t *testing.T) {
-	for _, test := range []struct {
-		fodder WeightFodder
-		cows   int
-		out    float64
-		err    bool
+	scaleError := errors.New("scale error")
+	tests := []struct {
+		description             string
+		weightFodder            WeightFodder
+		weightFodderDescription string
+		cows                    int
+		wantAmount              float64
+		wantErr                 error
 	}{
-		{func() (float64, error) { return 100, nil }, 10, 10, false},
-		{func() (float64, error) { return 10, nil }, 10, 1, false},
-		{func() (float64, error) { return 10.5, nil }, 2, 5.25, false},
-		{func() (float64, error) { return 5, nil }, 2, 2.5, false},
-		{func() (float64, error) { return 0, nil }, 2, 0, false},
-		{func() (float64, error) { return -1, nil }, 2, 0, true},
-	} {
-		if out, err := DivideFood(test.fodder, test.cows); out != test.out ||
-			(err != nil) != test.err {
-			expectedErr := "nil"
-			if test.err {
-				expectedErr = "<error>"
+		{
+			description:             "100 fodder for 10 cows",
+			weightFodder:            func() (float64, error) { return 100, nil },
+			weightFodderDescription: "100 fodder, no error",
+			cows:                    10,
+			wantAmount:              10,
+			wantErr:                 nil,
+		},
+		{
+			description:             "10 fodder for 10 cows",
+			weightFodder:            func() (float64, error) { return 10, nil },
+			weightFodderDescription: "10 fodder, no error",
+			cows:                    10,
+			wantAmount:              1,
+			wantErr:                 nil,
+		},
+		{
+			description:             "10.5 fodder for 2 cows",
+			weightFodder:            func() (float64, error) { return 10.5, nil },
+			weightFodderDescription: "10.5 fodder, no error",
+			cows:                    2,
+			wantAmount:              5.25,
+			wantErr:                 nil,
+		},
+		{
+			description:             "10 fodder for 10 cows",
+			weightFodder:            func() (float64, error) { return 5, nil },
+			weightFodderDescription: "5 fodder, no error",
+			cows:                    2,
+			wantAmount:              2.5,
+			wantErr:                 nil,
+		},
+		{
+			description:             "0 fodder for 2 cows",
+			weightFodder:            func() (float64, error) { return 0, nil },
+			weightFodderDescription: "0 fodder, no error",
+			cows:                    2,
+			wantAmount:              0,
+			wantErr:                 nil,
+		},
+		{
+			description:             "Generic scale error",
+			weightFodder:            func() (float64, error) { return 10, scaleError },
+			weightFodderDescription: "10 fodder, generic error",
+			cows:                    2,
+			wantAmount:              0,
+			wantErr:                 scaleError,
+		},
+		{
+			description:             "Scale returns 10 with ErrWeight for 2 cows",
+			weightFodder:            func() (float64, error) { return 10, ErrWeight },
+			weightFodderDescription: "10 fodder, ErrWeight",
+			cows:                    2,
+			wantAmount:              10,
+			wantErr:                 nil,
+		},
+		{
+			description:             "Scale returns 5 with ErrWeight for 10 cows",
+			weightFodder:            func() (float64, error) { return 5, ErrWeight },
+			weightFodderDescription: "5 fodder, ErrWeight",
+			cows:                    10,
+			wantAmount:              1,
+			wantErr:                 nil,
+		},
+		{
+			description:             "Negative fodder",
+			weightFodder:            func() (float64, error) { return -1, nil },
+			weightFodderDescription: "-1 fodder, no error",
+			cows:                    2,
+			wantAmount:              0,
+			wantErr:                 errors.New("Negative fodder"),
+		},
+		{
+			description:             "Zero cows",
+			weightFodder:            func() (float64, error) { return 100, nil },
+			weightFodderDescription: "100 fodder, no error",
+			cows:                    0,
+			wantAmount:              0,
+			wantErr:                 errors.New("Division by zero"),
+		},
+		{
+			description:             "Negative cows",
+			weightFodder:            func() (float64, error) { return 100, nil },
+			weightFodderDescription: "100 fodder, no error",
+			cows:                    -10,
+			wantAmount:              0,
+			wantErr:                 SillyNephew,
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.description, func(t *testing.T) {
+			gotAmount, gotErr := DivideFood(test.weightFodder, test.cows)
+			switch {
+			case gotAmount != test.wantAmount:
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got (%v, %v) wanted (%v, %v)",
+					test.weightFodderDescription,
+					test.cows,
+					gotAmount,
+					gotErr,
+					test.wantAmount,
+					test.wantErr,
+				)
+			case gotErr != nil && test.wantErr == nil:
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got an unexpected error (%v)",
+					test.weightFodderDescription,
+					test.cows,
+					gotErr,
+				)
+			case gotErr == nil && test.wantErr != nil:
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got no error, but wanted an error (%v)",
+					test.weightFodderDescription,
+					test.cows,
+					test.wantErr,
+				)
+			case !errorsAreEqual(gotErr, test.wantErr):
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
+					test.weightFodderDescription,
+					test.cows,
+					gotErr,
+					test.wantErr,
+				)
 			}
-			t.Errorf(
-				"DivideFood(%v, %v) returned (%v, %v) while (%v, %v) was expected",
-				test.fodder,
-				test.cows,
-				out,
-				err,
-				test.out,
-				expectedErr,
-			)
-		}
+		})
 	}
 }
 
-// Errors should be returned
-func TestDivideFoodErrors(t *testing.T) {
-	val1, err1 := DivideFood(func() (float64, error) { return 100, nil }, 0)
-	val2, err2 := DivideFood(func() (float64, error) { return 100, nil }, -10)
-	// 1
-	if err1 == nil {
-		t.Errorf("DivideFood(100, 0) should return an error.")
+func errorsAreEqual(got, want error) bool {
+	if got == want {
+		return true
 	}
-	if val1 != 0 || val2 != 0 {
-		t.Error("Returned value, in case of error, must be the default for the type: 0")
+	// Only accept exact equality for the SillyNephew error
+	if errors.Is(want, SillyNephew) {
+		return false
 	}
-	// 2
-	if err2 == nil {
-		t.Errorf("DivideFood(100, -10) should return an error.")
-	}
-	if fmt.Sprint(err1) == fmt.Sprint(err2) {
-		t.Errorf("DivideFood() should return different errors for division by zero and negative cows.")
-	}
-}
-
-// Checking errors from weight reader
-func TestDivideFoodWeightErrors(t *testing.T) {
-	errMsg := "Generic error"
-	value, err := DivideFood(func() (float64, error) {
-		return 100, errors.New(errMsg)
-	}, 10)
-
-	if err == nil || fmt.Sprint(err) != errMsg {
-		t.Errorf("Expected the error from weightFodder func to be returned")
-	}
-
-	if value != 0 {
-		t.Error("Returned value, in case of error, must be the default for the type: 0")
-	}
-}
-
-// Should handle error
-func TestDivideFoodHandlingError(t *testing.T) {
-	value, err := DivideFood(func() (float64, error) {
-		return 250, ErrWeight
-	}, 10)
-	if err != nil {
-		t.Error("Not expected an error here")
-	}
-	if value != 50 {
-		t.Errorf("DivideFood(500, ErrWeight) returned (%v, %v) while (%v, %v) was expected",
-			value, err, 50, nil)
-	}
+	return got.Error() == want.Error()
 }

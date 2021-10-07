@@ -20,7 +20,8 @@
       "say.go"
     ],
     "test": [
-      "say_test.go"
+      "say_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

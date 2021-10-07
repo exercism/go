@@ -21,7 +21,8 @@
       "sieve.go"
     ],
     "test": [
-      "sieve_test.go"
+      "sieve_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

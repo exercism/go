@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "url": "https://tour.golang.org/methods/15",
+        "description": "A Tour of Go: Type Assertions"
+    },
+    {
+        "url": "https://tour.golang.org/methods/16",
+        "description": "A Tour of Go: Type Switches"
+    },
+    {
+        "url": "https://golangdocs.com/type-assertions-in-golang",
+        "description": "GoDocs: Type Assertions in GoLang"
+    }
+]

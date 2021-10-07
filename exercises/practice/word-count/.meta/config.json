@@ -25,7 +25,8 @@
       "word_count.go"
     ],
     "test": [
-      "word_count_test.go"
+      "word_count_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

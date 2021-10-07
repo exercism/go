@@ -15,7 +15,8 @@
       "grep.go"
     ],
     "test": [
-      "grep_test.go"
+      "grep_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

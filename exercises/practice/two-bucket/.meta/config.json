@@ -16,7 +16,8 @@
       "two_bucket.go"
     ],
     "test": [
-      "two_bucket_test.go"
+      "two_bucket_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

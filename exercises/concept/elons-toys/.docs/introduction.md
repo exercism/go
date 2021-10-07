@@ -27,7 +27,7 @@ Notice the way we called the method `Greetings()` on the `Person` instance `p`.
 It’s exactly like the way you call methods in an object-oriented programming language.
 
 Remember: a method is just a function with a receiver argument.
-Methods help to avoid naming conflicts - since a method is tied to a particular reciever type, you can have the same method name on different types.
+Methods help to avoid naming conflicts - since a method is tied to a particular receiver type, you can have the same method name on different types.
 
 ```go
 import "math"
@@ -51,7 +51,7 @@ All the methods we have seen so far have a value receiver which means they on a 
 
 You can declare methods with pointer receivers in order to modify the value to which the receiver points.
 This is done by prefixing the type name with a `*`.
-For example with the `rect` type, a pointer reciever would be declared as `*rect`.
+For example with the `rect` type, a pointer receiver would be declared as `*rect`.
 Such modifications are visible to the caller of the method as well.
 
 ```go

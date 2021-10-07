@@ -17,7 +17,7 @@ func TestSchedule(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := Schedule(tc.in); !got.Equal(tc.want) {
-				t.Errorf("Schedule(%s) = %v, want %v", tc.in, got, tc.want)
+				t.Errorf("Schedule(%s) = '%v', want '%v'", tc.in, got, tc.want)
 			}
 		})
 	}
@@ -35,7 +35,7 @@ func TestHasPassed(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := HasPassed(tc.in); got != tc.want {
-				t.Errorf("HasPassed(%s) = %v, want %v", tc.in, got, tc.want)
+				t.Errorf("HasPassed(%s) = '%v', want '%v'", tc.in, got, tc.want)
 			}
 		})
 	}
@@ -53,7 +53,7 @@ func TestIsAfternoonAppointment(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := IsAfternoonAppointment(tc.in); got != tc.want {
-				t.Errorf("IsAfternoonAppointment(%s) = %v, want %v", tc.in, got, tc.want)
+				t.Errorf("IsAfternoonAppointment(%s) = '%v', want '%v'", tc.in, got, tc.want)
 			}
 		})
 	}
@@ -70,7 +70,7 @@ func TestDescription(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := Description(tc.in); got != tc.want {
-				t.Errorf("Description(%s) = %v, want %v", tc.in, got, tc.want)
+				t.Errorf("Description(%s) = '%v', want '%v'", tc.in, got, tc.want)
 			}
 		})
 	}
@@ -85,7 +85,7 @@ func TestAnniversaryDate(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := AnniversaryDate(); !got.Equal(tc.want) {
-				t.Errorf("AnniversaryDate(%s) = %v, want %v", tc.in, got, tc.want)
+				t.Errorf("AnniversaryDate(%s) = '%v', want '%v'", tc.in, got, tc.want)
 			}
 		})
 	}

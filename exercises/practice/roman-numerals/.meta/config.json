@@ -25,7 +25,8 @@
       "roman_numerals.go"
     ],
     "test": [
-      "roman_numerals_test.go"
+      "roman_numerals_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

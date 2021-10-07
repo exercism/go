@@ -23,9 +23,11 @@ The goal is to introduce the student to maps.
 
 ## Prerequisites
 
-- `basics`
-- `numbers`
 - `conditionals-if`
+- `numbers`
+- `strings`
+- `conditionals-switch`
+- `functions`
 
 ## Representer
 

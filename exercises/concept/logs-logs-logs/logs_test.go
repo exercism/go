@@ -1,201 +1,123 @@
 package logs
 
 import (
-	"strings"
 	"testing"
 )
 
-func TestMessage(t *testing.T) {
-	type args struct {
-		line string
-	}
+func TestApplication(t *testing.T) {
 	tests := []struct {
 		name string
-		args args
+		log  string
 		want string
 	}{
 		{
-			name: "Extract message from error message",
-			args: args{
-				line: "[ERROR]: Stack overflow",
-			},
-			want: "Stack overflow",
+			name: "single character recommendation",
+			log:  "❗ recommended product",
+			want: "recommendation",
 		},
 		{
-			name: "Extract message from warning message",
-			args: args{
-				line: "[WARNING]: Disk almost full",
-			},
-			want: "Disk almost full",
+			name: "single character search",
+			log:  "executed search 🔍",
+			want: "search",
 		},
 		{
-			name: "Extract message from info message",
-			args: args{
-				line: "[INFO]: File moved",
-			},
-			want: "File moved",
+			name: "single character weather",
+			log:  "forecast: ☀ sunny",
+			want: "weather",
 		},
 		{
-			name: "Extract message without extra whitespace",
-			args: args{
-				line: "[WARNING]:   \tTimezone not set  \r\n",
-			},
-			want: "Timezone not set",
+			name: "no characters default",
+			log:  "error: could not proceed",
+			want: "default",
+		},
+		{
+			name: "multiple characters recommendation",
+			log:  "❗ recommended search product 🔍",
+			want: "recommendation",
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Message(tt.args.line); got != tt.want {
-				t.Errorf("Message(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
+			if got := Application(tt.log); got != tt.want {
+				t.Errorf("Application(\"%s\") = \"%s\", want \"%s\"", tt.log, got, tt.want)
 			}
 		})
 	}
 }
 
-func TestMessageLen(t *testing.T) {
-	type args struct {
-		line string
-	}
+func TestReplace(t *testing.T) {
 	tests := []struct {
-		name string
-		args args
-		want int
+		name    string
+		log     string
+		oldChar rune
+		newChar rune
+		want    string
 	}{
 		{
-			name: "Message length from error message",
-			args: args{
-				line: "[ERROR]: Stack overflow",
-			},
-			want: 14,
+			name:    "single occurance of replacement",
+			log:     "❗ recommended product",
+			oldChar: '❗',
+			newChar: '?',
+			want:    "? recommended product",
 		},
 		{
-			name: "Message length from warning message",
-			args: args{
-				line: "[WARNING]: Disk almost full",
-			},
-			want: 16,
+			name:    "multiple occurances of replacement",
+			log:     "❗ recommended product ❗",
+			oldChar: '❗',
+			newChar: '?',
+			want:    "? recommended product ?",
 		},
 		{
-			name: "Message length from info message",
-			args: args{
-				line: "[INFO]: File moved",
-			},
-			want: 10,
-		},
-		{
-			name: "Message length without extra whitespace",
-			args: args{
-				line: "[WARNING]:   \tTimezone not set  \r\n",
-			},
-			want: 16,
-		},
-		{
-			name: "Message length with special characters",
-			args: args{
-				line: "[INFO]: Hello, 世界!",
-			},
-			want: 10,
+			name:    "no occurances of replacement",
+			log:     "❗ recommended product ❗",
+			oldChar: '?',
+			newChar: '?',
+			want:    "❗ recommended product ❗",
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := MessageLen(tt.args.line); got != tt.want {
-				t.Errorf("MessageLen(\"%v\") = \"%v\", want \"%v\"", escapeWhiteSpace(tt.args.line), got, tt.want)
+			if got := Replace(tt.log, tt.oldChar, tt.newChar); got != tt.want {
+				t.Errorf("Replace(\"%s\", '%c', '%c') = \"%s\", want \"%s\"", tt.log, tt.oldChar, tt.newChar, got, tt.want)
 			}
 		})
 	}
 }
 
-func TestLogLevel(t *testing.T) {
-	type args struct {
-		line string
-	}
+func TestWithinLimit(t *testing.T) {
 	tests := []struct {
-		name string
-		args args
-		want string
+		name  string
+		log   string
+		limit int
+		want  bool
 	}{
 		{
-			name: "Extract log level from error",
-			args: args{
-				line: "[ERROR]: Disk full",
-			},
-			want: "error",
+			name:  "exact limit",
+			log:   "exercism❗",
+			limit: 9,
+			want:  true,
 		},
 		{
-			name: "Extract log level from warning",
-			args: args{
-				line: "[WARNING]: Unsafe password",
-			},
-			want: "warning",
+			name:  "under limit",
+			log:   "exercism❗",
+			limit: 10,
+			want:  true,
 		},
 		{
-			name: "Extract log level from info",
-			args: args{
-				line: "[INFO]: Timezone changed",
-			},
-			want: "info",
+			name:  "over limit",
+			log:   "exercism❗",
+			limit: 8,
+			want:  false,
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LogLevel(tt.args.line); got != tt.want {
-				t.Errorf("LogLevel(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
+			if got := WithinLimit(tt.log, tt.limit); got != tt.want {
+				t.Errorf("WithinLimit(\"%s\", %d) = %t, want %t", tt.log, tt.limit, got, tt.want)
 			}
 		})
 	}
-}
-
-func TestReformat(t *testing.T) {
-	type args struct {
-		line string
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
-		{
-			name: "Reformat error message",
-			args: args{
-				line: "[ERROR]: Segmentation fault",
-			},
-			want: "Segmentation fault (error)",
-		},
-		{
-			name: "Reformat warning message",
-			args: args{
-				line: "[WARNING]: Decreased performance",
-			},
-			want: "Decreased performance (warning)",
-		},
-		{
-			name: "Reformat info message",
-			args: args{
-				line: "[INFO]: Disk defragmented",
-			},
-			want: "Disk defragmented (info)",
-		},
-		{
-			name: "Reformat message with extra whitespace",
-			args: args{
-				line: "[ERROR]: \t Corrupt disk\t \t \r\n",
-			},
-			want: "Corrupt disk (error)",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Reformat(tt.args.line); got != tt.want {
-				t.Errorf("Reformat(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
-			}
-		})
-	}
-}
-
-func escapeWhiteSpace(s string) string {
-	s = strings.ReplaceAll(s, "\\", "\\\\")
-	s = strings.ReplaceAll(s, "\n", "\\n")
-	s = strings.ReplaceAll(s, "\r", "\\r")
-	return strings.ReplaceAll(s, "\t", "\\t")
 }

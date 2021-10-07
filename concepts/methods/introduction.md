@@ -1,9 +1,10 @@
 # Introduction
 
-A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
+A method is a function with a special _receiver_ argument.
+The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
-func (receiver type) MethodName(parameters) (returnTypes){
+func (receiver type) MethodName(parameters) (returnTypes) {
 
 }
 ```
@@ -19,7 +20,6 @@ func (p Person) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", p.Name)
 }
 
-
 s := Person{Name: "Bronson"}
 fmt.Println(s.Greetings())
 // Output: Welcome Bronson !
@@ -28,7 +28,6 @@ fmt.Println(s.Greetings())
 Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
 You can declare methods with pointer receivers in order to modify the value to which the receiver points.
-Such modifications are visible to the caller or the method as well.
 This is done by prefixing the type name with a `*`, for example with the `rect` type, a pointer receiver would be declared as `*rect`.
 Such modifications are visible to the caller of the method as well.
 
@@ -49,11 +48,3 @@ fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
 // Output: Width: 10, Height: 10
 
 ```
-
-You can find several examples [here][pointers_receivers]. Also checkout this short tutorial about [methods][methods_tutorial].
-
-Remember: a method is just a function with a receiver argument.
-
-[methods]: https://tour.golang.org/methods/1
-[pointers_receivers]: https://tour.golang.org/methods/4
-[methods_tutorial]: https://www.callicoder.com/golang-methods-tutorial/

@@ -83,6 +83,17 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "missing age",
+			resident: &Resident{
+				Name: "Rob Pike",
+				Age:  0,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: true,
+		},
 	}
 
 	for _, test := range tests {
@@ -135,7 +146,7 @@ func TestDelete(t *testing.T) {
 			test.resident.Delete()
 
 			if test.resident.Name != "" || test.resident.Age != 0 || test.resident.Address != nil {
-				t.Errorf("resident.Delete() = %v, want %v", test.resident, test.want)
+				t.Errorf("resident.Delete() = %#v, want %#v", test.resident, test.want)
 			}
 		})
 	}

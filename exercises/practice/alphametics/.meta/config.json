@@ -15,7 +15,8 @@
       "alphametics.go"
     ],
     "test": [
-      "alphametics_test.go"
+      "alphametics_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

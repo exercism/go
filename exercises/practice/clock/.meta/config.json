@@ -27,7 +27,8 @@
       "clock.go"
     ],
     "test": [
-      "clock_test.go"
+      "clock_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

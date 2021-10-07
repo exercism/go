@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -134,7 +133,7 @@ func TestSetItem(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SetItem(tt.args.slice, tt.args.index, tt.args.value); !reflect.DeepEqual(got, tt.want) {
+			if got := SetItem(tt.args.slice, tt.args.index, tt.args.value); !slicesEqual(got, tt.want) {
 				t.Errorf("SetItem(slice:%v, index:%v, value:%v) = %v, want %v",
 					tt.args.slice, tt.args.index, tt.args.value, got, tt.want)
 			}
@@ -187,7 +186,7 @@ func TestPrefilledSlice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := PrefilledSlice(tt.args.value, tt.args.length); !reflect.DeepEqual(got, tt.want) {
+			if got := PrefilledSlice(tt.args.value, tt.args.length); !slicesEqual(got, tt.want) {
 				t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want %v", tt.args.value, tt.args.length, got, tt.want)
 			}
 		})
@@ -247,11 +246,30 @@ func TestRemoveItem(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := RemoveItem(copySlice(tt.args.slice), tt.args.index); !reflect.DeepEqual(got, tt.want) {
+			if got := RemoveItem(copySlice(tt.args.slice), tt.args.index); !slicesEqual(got, tt.want) {
 				t.Errorf("RemoveItem(slice:%v, index:%v) = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
 			}
 		})
 	}
+}
+
+func slicesEqual(a, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	if len(a) == 0 {
+		return true
+	}
+
+	size := len(a)
+	for i := 0; i < size; i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+
+	return true
 }
 
 func copySlice(s []int) []int {
