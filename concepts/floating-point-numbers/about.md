@@ -17,7 +17,7 @@ This means that trying to store PI in a `float32` will only store the first 6 to
 By default, Go will use `float64` for floating-point numbers, unless the floating-point number is:
 
 1. assigned to a variable with type `float32`, or
-2. returned from a function which return type is `float32`, or
+2. returned from a function with return type `float32`, or
 3. passed as an argument to the `float32()` function.
 
 Always be careful when checking the values of floating-point types for equality, as values that can appear to represent the same value could actually be different.

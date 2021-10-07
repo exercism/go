@@ -14,7 +14,7 @@ As can be seen, both types can store a different number of digits. This means th
 By default, Go will use `float64` for floating-point numbers, unless the floating-point number is:
 
 1. assigned to a variable with type `float32`, or
-2. returned from a function which return type is `float32`, or
+2. returned from a function with return type `float32`, or
 3. passed as an argument to the `float32()` function.
 
 The `math` package contains many helpful mathematical functions.
