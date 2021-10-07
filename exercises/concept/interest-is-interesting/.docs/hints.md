@@ -2,11 +2,13 @@
 
 ## 1. Calculate the interest rate
 
-- By default, any floating-point number defined in Go code is treated as a `float64`. As the return type of the `InterestRate` function is `float32`, you don't need to do any type conversions.
+- By default, any floating-point number defined in Go code is treated as a `float64`.
+  As the return type of the `InterestRate` function is `float32`, you don't need to do any type conversions.
 
 ## 2. Calculate the interest
 
-- When calculating interest, it might be helpful to convert a negative balance to a positive one. One could use arithmetic here, or one of the methods in the [`Math` package](https://pkg.go.dev/math).
+- When calculating interest, it might be helpful to convert a negative balance to a positive one.
+  One could use arithmetic here, or one of the methods in the [`Math` package](https://pkg.go.dev/math).
 
 ## 3. Calculate the annual balance update
 

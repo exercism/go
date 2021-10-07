@@ -1,6 +1,8 @@
 # Instructions
 
-In this exercise you'll be working with savings accounts. Each year, the balance of your savings account is updated based on its interest rate. The interest rate your bank gives you depends on the amount of money in your account (its balance):
+In this exercise you'll be working with savings accounts.
+Each year, the balance of your savings account is updated based on its interest rate.
+The interest rate your bank gives you depends on the amount of money in your account (its balance):
 
 - -3.213% for a negative balance.
 - 0.5% for a positive balance less than `1000` dollars.
@@ -14,7 +16,7 @@ You have four tasks, each of which will deal your balance and its interest rate.
 Implement the `InterestRate()` function to calculate the interest rate based on the specified balance:
 
 ```go
-InterestRate(balance: 200.75)
+InterestRate(200.75)
 // Output: 0.5
 ```
 
