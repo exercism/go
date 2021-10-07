@@ -30,10 +30,13 @@ You now have a way to create new counters! But now you realize the new system wi
 Create a function `VoteCount` that will take a counter (`*int`) as an argument and will return the number of votes in the counter. If the counter is `nil` you should assume the counter has no votes:
 
 ```go
-votes := 3
-voteCounter := &votes
+var votes int
+votes = 3
 
-VoteCount(&voteCounter)
+var voteCounter *int
+voteCounter = &votes
+
+VoteCount(voteCounter)
 // Output: 3
 
 var nilVoteCounter *int
@@ -55,7 +58,9 @@ var voteCounter *int
 voteCounter = &votes
 
 IncrementVoteCount(voteCounter, 2)
-*voteCounter == 5 // true
+
+votes == 5          // true
+*voteCounter == 5   // true
 ```
 
 ## 4. Create the election results
