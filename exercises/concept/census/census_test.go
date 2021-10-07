@@ -83,6 +83,17 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "missing age",
+			resident: &Resident{
+				Name: "Rob Pike",
+				Age:  0,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: true,
+		},
 	}
 
 	for _, test := range tests {
