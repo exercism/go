@@ -150,7 +150,7 @@ func TestCanFinish(t *testing.T) {
 				distance:     20,
 			},
 			track: Track{
-				distance: 20,
+				distance: 100,
 			},
 			expected: true,
 		},
