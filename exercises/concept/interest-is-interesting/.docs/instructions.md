@@ -46,7 +46,10 @@ Note that the value returned is a `float64`.
 
 ## 4. Calculate the years before reaching the desired balance
 
-Implement the `YearsBeforeDesiredBalance()` function to calculate the minimum number of years required to reach the desired balance:
+Implement the `YearsBeforeDesiredBalance()` function to calculate the minimum number of years required to reach the desired balance, taking into account that each year, interest is added to the balance.
+This means that the balance after one year is: start balance + interest for start balance.
+The balance after the second year is: balance after one year + interest for balance after one year.
+And so on, until the current year's balance is greater than or equal to the target balance.
 
 ```go
 balance := 200.75
