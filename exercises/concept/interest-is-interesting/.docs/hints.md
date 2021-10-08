@@ -8,7 +8,7 @@
 ## 2. Calculate the interest
 
 - When calculating interest, it might be helpful to convert a negative balance to a positive one.
-  One could use arithmetic here, or one of the methods in the [`Math` package](https://pkg.go.dev/math).
+  One could use arithmetic here, or one of the methods in the [`math` package](https://pkg.go.dev/math).
 
 ## 3. Calculate the annual balance update
 
