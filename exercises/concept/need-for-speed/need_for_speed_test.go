@@ -142,7 +142,7 @@ func TestCanFinish(t *testing.T) {
 			expected: true,
 		},
 		{
-			name: "Car can finish the track distance just before battery drained.",
+			name: "Car can finish the track distance just as the battery is drained.",
 			car: Car{
 				speed:        5,
 				batteryDrain: 5,
@@ -150,7 +150,7 @@ func TestCanFinish(t *testing.T) {
 				distance:     20,
 			},
 			track: Track{
-				distance: 20,
+				distance: 100,
 			},
 			expected: true,
 		},
