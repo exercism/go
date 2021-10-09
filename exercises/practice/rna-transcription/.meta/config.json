@@ -23,11 +23,13 @@
       "rna_transcription.go"
     ],
     "test": [
-      "rna_transcription_test.go",
-      "cases_test.go"
+      "rna_transcription_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Hyperphysics",

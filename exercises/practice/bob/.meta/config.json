@@ -26,11 +26,13 @@
       "bob.go"
     ],
     "test": [
-      "bob_test.go",
-      "cases_test.go"
+      "bob_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial.",

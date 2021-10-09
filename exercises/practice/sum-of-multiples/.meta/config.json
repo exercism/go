@@ -23,11 +23,13 @@
       "sum_of_multiples.go"
     ],
     "test": [
-      "sum_of_multiples_test.go",
-      "cases_test.go"
+      "sum_of_multiples_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A variation on Problem 1 at Project Euler",

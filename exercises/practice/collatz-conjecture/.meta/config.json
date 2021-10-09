@@ -16,11 +16,13 @@
       "collatz_conjecture.go"
     ],
     "test": [
-      "collatz_conjecture_test.go",
-      "cases_test.go"
+      "collatz_conjecture_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "An unsolved problem in mathematics named after mathematician Lothar Collatz",

@@ -15,11 +15,13 @@
       "grep.go"
     ],
     "test": [
-      "grep_test.go",
-      "cases_test.go"
+      "grep_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Conversation with Nate Foster.",

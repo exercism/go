@@ -21,11 +21,13 @@
       "transpose.go"
     ],
     "test": [
-      "transpose_test.go",
-      "cases_test.go"
+      "transpose_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Reddit r/dailyprogrammer challenge #270 [Easy].",

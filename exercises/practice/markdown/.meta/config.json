@@ -16,11 +16,13 @@
       "markdown.go"
     ],
     "test": [
-      "markdown_test.go",
-      "cases_test.go"
+      "markdown_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   }
 }

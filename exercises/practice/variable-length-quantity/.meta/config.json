@@ -25,11 +25,13 @@
       "variable_length_quantity.go"
     ],
     "test": [
-      "variable_length_quantity_test.go",
-      "cases_test.go"
+      "variable_length_quantity_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A poor Splice developer having to implement MIDI encoding/decoding.",
