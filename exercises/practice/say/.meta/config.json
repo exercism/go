@@ -20,11 +20,13 @@
       "say.go"
     ],
     "test": [
-      "say_test.go",
-      "cases_test.go"
+      "say_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A variation on JavaRanch CattleDrive, exercise 4a",

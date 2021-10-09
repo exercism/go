@@ -18,11 +18,13 @@
       "reverse_string.go"
     ],
     "test": [
-      "reverse_string_test.go",
-      "cases_test.go"
+      "reverse_string_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Introductory challenge to reverse an input string",

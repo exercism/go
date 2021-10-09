@@ -28,11 +28,13 @@
       "hamming.go"
     ],
     "test": [
-      "hamming_test.go",
-      "cases_test.go"
+      "hamming_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "The Calculating Point Mutations problem at Rosalind",

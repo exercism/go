@@ -20,11 +20,13 @@
       "custom_set.go"
     ],
     "test": [
-      "custom_set_test.go",
-      "cases_test.go"
+      "custom_set_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   }
 }
