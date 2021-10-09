@@ -242,14 +242,14 @@ Looking at the exercism/go repository now instead of your own, you see this.
 <img src="img/mars2.png">
 
 That inconspicuous orange dot is important!
-Hover over it (no, not on this image, on a real page) and you can see it's indicating that a Travis CI build is in progress.
+Hover over it (no, not on this image, on a real page) and you can see it's indicating that a CI build is in progress.
 After a few minutes (usually) that dot will turn green indicating that tests passed.
 If there's a problem, it comes up red:
 
 <img src="img/mars3.png">
 
 This means you've still got work to do.
-Click on "details" to go to the Travis site and look over the build log for clues.
+Click on "details" to go to the CI build details. Look over the build log for clues.
 Usually error messages will be helpful and you can correct the problem.
 
 ## Direction
