@@ -4,19 +4,19 @@
     "description": "A Tour of Go: Slices"
   },
   {
-    "url": "https://go.dev/blog/slices-intro",
-    "description": "Go Slices: usage and internals"
-  },
-  {
     "url": "https://gobyexample.com/slices",
     "description": "Go by Example: Slices"
   },
   {
-    "url": "https://golang.org/ref/spec#Slice_types",
-    "description": "Slice Types"
+    "url": "https://go.dev/blog/slices-intro",
+    "description": "Go Dev Blog: Slices - Usage and internals"
   },
   {
     "url": "https://github.com/golang/go/wiki/SliceTricks",
     "description": "Slice Tricks"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Slice_types",
+    "description": "Go Language Spec: Slice Types"
   }
 ]

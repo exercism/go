@@ -1,15 +1,14 @@
 [
-    {
-      "url": "https://tour.golang.org/methods/9",
-      "description": "A Tour of Go: Interfaces"
-    },
-    {
-      "url": "https://gobyexample.com/interfaces",
-      "description": "Go by Example: Interfaces"
-    },
-    {
-      "url": "https://golang.org/doc/effective_go#interfaces",
-      "description": "Effective Go: Interfaces"
-    }
-  ]
-  
+  {
+    "url": "https://tour.golang.org/methods/9",
+    "description": "A Tour of Go: Interfaces"
+  },
+  {
+    "url": "https://gobyexample.com/interfaces",
+    "description": "Go by Example: Interfaces"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go#interfaces",
+    "description": "Effective Go: Interfaces"
+  }
+]
