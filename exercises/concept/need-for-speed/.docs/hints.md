@@ -4,7 +4,7 @@
 
 - A `struct` is a sequence of named elements, called fields, each one having a name and a type.
 
-## 1. Creating a new remote controlled car
+## 1. Creating a remote controlled car
 
 - Instantiate a new [struct][struct] and fill the fields except `distance`.
 - Create a function that returns the type of the newly created struct and update the fields accordingly

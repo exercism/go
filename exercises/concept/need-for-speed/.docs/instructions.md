@@ -52,7 +52,7 @@ car = Drive(car)
 // Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
-## 4. Check if a remote control car can finish a race
+## 4. Check if a remote controlled car can finish a race
 
 To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
 
