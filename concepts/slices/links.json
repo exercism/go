@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "url": "https://tour.golang.org/moretypes/7",
+    "description": "A Tour of Go: Slices"
+  },
+  {
+    "url": "https://go.dev/blog/slices-intro",
+    "description": "Go Slices: usage and internals"
+  },
+  {
+    "url": "https://gobyexample.com/slices",
+    "description": "Go by Example: Slices"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Slice_types",
+    "description": "Slice Types"
+  }
+]
