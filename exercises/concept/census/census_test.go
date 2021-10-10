@@ -34,7 +34,7 @@ func TestNewResident(t *testing.T) {
 			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
 
 			if !reflect.DeepEqual(resident, test.resident) {
-				t.Errorf("NewResident() = %v, want %v", resident, test.resident)
+				t.Errorf("NewResident() = %#v, want %#v", resident, test.resident)
 			}
 		})
 	}
@@ -84,7 +84,7 @@ func TestHasRequiredInfo(t *testing.T) {
 			want: false,
 		},
 		{
-			name: "missing age",
+			name: "age is optional",
 			resident: &Resident{
 				Name: "Rob Pike",
 				Age:  0,
@@ -100,7 +100,7 @@ func TestHasRequiredInfo(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 
 			if got := test.resident.HasRequiredInfo(); got != test.want {
-				t.Errorf("resident.HasRequiredInfo() = %t, want %t", got, test.want)
+				t.Errorf("%#v.HasRequiredInfo() = %t, want %t", test.resident, got, test.want)
 			}
 		})
 	}
