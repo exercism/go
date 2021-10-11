@@ -327,7 +327,20 @@
           "slices",
           "maps",
           "arithmetic-operators",
-          "string-formatting",
+          "string-formatting"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "interest-is-interesting",
+        "name": "Interest is Interesting",
+        "uuid": "8e373428-e988-4672-953d-d0794e9a3a16",
+        "concepts": [
+          "floating-point-numbers"
+        ],
+        "prerequisites": [
+          "numbers",
+          "conditionals-if",
           "packages"
         ],
         "status": "beta"
@@ -1887,6 +1900,11 @@
       "name": "Functions",
       "slug": "functions",
       "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
+    },
+    {
+      "name": "Floating-point numbers",
+      "slug": "floating-point-numbers",
+      "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7"
     },
     {
       "name": "Iteration",
