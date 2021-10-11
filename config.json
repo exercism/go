@@ -341,9 +341,7 @@
         "prerequisites": [
           "numbers",
           "conditionals-if",
-          "for-loops",
-          "packages",
-          "type-conversion"
+          "packages"
         ],
         "status": "beta"
       }
