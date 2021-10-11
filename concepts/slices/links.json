@@ -14,5 +14,9 @@
   {
     "url": "https://golang.org/ref/spec#Slice_types",
     "description": "Slice Types"
+  },
+  {
+    "url": "https://github.com/golang/go/wiki/SliceTricks",
+    "description": "Slice Tricks"
   }
 ]
