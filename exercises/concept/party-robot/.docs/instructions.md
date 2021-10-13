@@ -27,7 +27,21 @@ HappyBirthday("Frank", 58)
 
 ## 3. Give directions
 
-Implement the `AssignTable` function to give directions. The robot provides the table number in a 3 digits format. If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (eg. 3 becomes 003). The robot mentions too the distance of the table with but only with a precision that's limited to 1 digit.
+Implement the `AssignTable` function to give directions.
+It should accept 5 parameters.
+
+- The name of the new guest to greet (`string`)
+- The table number (`int`)
+- The name of the seatmate (`string`)
+- The direction where to find the table (`string`)
+- The distance to the table (`float64`)
+
+The exact result format can be seen in the example below.
+
+The robot provides the table number in a 3 digits format.
+If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (eg. 3 becomes 003).
+The robot also mentions the distance of the table.
+Fortunately only with a precision that's limited to 1 digit.
 
 ```go
 AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)

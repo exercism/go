@@ -17,6 +17,7 @@
 
 - You can use [newline characters in your string][string-newline].
 - Padding with zeroes could be achieved with one the [formatting verbs][formatting-verbs]
+- The shorthand assignment operator `+=` can help you built up your result via string concatenation.
 
 [fmt-package]: https://golang.org/pkg/fmt/
 [string-concatenation]: https://golang.org/ref/spec#String_concatenation
