@@ -28,7 +28,7 @@ Implement the `Interest()` function to calculate the interest based on the speci
 
 ```go
 Interest(200.75)
-// Output: 9.0375
+// Output: 1.00375
 ```
 
 Note that the value returned is a `float64`.
