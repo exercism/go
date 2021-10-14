@@ -1,10 +1,14 @@
 [
   {
+    "url": "https://tour.golang.org/basics/12",
+    "description": "A Tour of Go: Zero values"
+  },
+  {
     "url": "https://golang.org/ref/spec#The_zero_value",
-    "description": "Go language specification about zero value."
+    "description": "Go Language Spec: The zero value"
   },
   {
     "url": "https://dave.cheney.net/2013/01/19/what-is-the-zero-value-and-why-is-it-useful",
-    "description": "What is the zero value, and what is it useful?"
+    "description": "Blog Post: What is the zero value, and what is it useful?"
   }
 ]
