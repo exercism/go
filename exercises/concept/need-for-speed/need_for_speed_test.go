@@ -167,6 +167,32 @@ func TestCanFinish(t *testing.T) {
 			},
 			expected: false,
 		},
+		{
+			name: "Car can finish the track distance with initial battery less than 100%",
+			car: Car{
+				speed:        2,
+				batteryDrain: 3,
+				battery:      25,
+				distance:     0,
+			},
+			track: Track{
+				distance: 16,
+			},
+			expected: true,
+		},
+		{
+			name: "Car cannot finish the track distance with initial battery less than 100%",
+			car: Car{
+				speed:        2,
+				batteryDrain: 3,
+				battery:      25,
+				distance:     0,
+			},
+			track: Track{
+				distance: 24,
+			},
+			expected: false,
+		},
 	}
 
 	for _, tt := range tests {
@@ -174,7 +200,7 @@ func TestCanFinish(t *testing.T) {
 			got := CanFinish(tt.car, tt.track)
 
 			if got != tt.expected {
-				t.Errorf("CanFinish(%v, %v) = %v; expected %v", tt.car, tt.track, got, tt.expected)
+				t.Errorf("CanFinish(%#v, %#v) = %v; expected %v", tt.car, tt.track, got, tt.expected)
 			}
 		})
 	}
