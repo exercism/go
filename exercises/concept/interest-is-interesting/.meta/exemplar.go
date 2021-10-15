@@ -2,7 +2,7 @@ package savings
 
 import "math"
 
-// InterestRate calculates the interest rate for the provided balance.
+// InterestRate returns the interest rate for the provided balance.
 func InterestRate(balance float64) float32 {
 	if balance < 0.0 {
 		return -3.213
@@ -19,7 +19,7 @@ func InterestRate(balance float64) float32 {
 	return 2.475
 }
 
-// InterestRate calculates the interest for the provided balance.
+// Interest calculates the interest for the provided balance.
 func Interest(balance float64) float64 {
 	return math.Abs(balance) * (float64(InterestRate(balance)) / 100.0)
 }

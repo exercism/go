@@ -148,7 +148,7 @@ ages := map[string]int{
 incrementPeterAge(ages)
 fmt.Println(ages)
 // Output: map[Peter:22]
-// The changes the function 'addPeterAge' made to the map are visible after the function ends!
+// The changes the function 'incrementPeterAge' made to the map are visible after the function ends!
 ```
 
 The same applies when changing an existing item in a slice.

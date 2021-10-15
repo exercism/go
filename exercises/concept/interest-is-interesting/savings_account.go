@@ -1,11 +1,11 @@
 package savings
 
-// InterestRate calculates the interest rate for the provided balance.
+// InterestRate returns the interest rate for the provided balance.
 func InterestRate(balance float64) float32 {
 	panic("Please implement the InterestRate function")
 }
 
-// InterestRate calculates the interest for the provided balance.
+// Interest calculates the interest for the provided balance.
 func Interest(balance float64) float64 {
 	panic("Please implement the Interest function")
 }
