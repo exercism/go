@@ -15,7 +15,6 @@ func NewCar(speed, batteryDrain int) *Car {
 		speed:        speed,
 		batteryDrain: batteryDrain,
 		battery:      100,
-		distance:     0,
 	}
 }
 
