@@ -26,14 +26,14 @@ for i, x := range xi {
 Iterating over a map raises a new problem. The order is now random.
 
 ```go
-hash := map[int]int{0: 10, 1: 20, 2: 30}
+hash := map[int]int{9: 10, 99: 20, 999: 30}
 for k, v := range hash {
   fmt.Println(k, v)
 }
 // outputs, for example:
-// 1 20
-// 2 30
-// 0 10
+// 99 20
+// 999 30
+// 9 10
 ```
 
 ## Iteration omitting key or value
