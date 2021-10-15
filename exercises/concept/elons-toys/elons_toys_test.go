@@ -84,8 +84,8 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      100,
-				distance:     100,
 			},
+			distance: 100,
 			expected: true,
 		},
 		{
@@ -94,8 +94,8 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      40,
-				distance:     100,
 			},
+			distance: 100,
 			expected: true,
 		},
 		{
@@ -104,8 +104,8 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      30,
-				distance:     100,
 			},
+			distance: 100,
 			expected: false,
 		},
 	}
