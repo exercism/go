@@ -7,7 +7,8 @@ Each square of the chessboard is identified by a letter-number pair. The vertica
 ## 1. Given a Chessboard and a Rank, count how many squares are occupied
 
 Implement the `CountInRank(board Chessboard, rank int) int` function.
-It should count occupied squares ranging over a map. Return an integer.
+It should count the total number of occupied squares by ranging over a map. Return an integer.
+Return a count of zero (`0`) if the given rank is not a valid one (not between  `1` and `8`, inclusive).
 
 ```go
 CountInRank(board, 1)
@@ -17,7 +18,8 @@ CountInRank(board, 1)
 ## 2. Given a Chessboard and a File, count how many squares are occupied
 
 Implement the `CountInFile(board Chessboard, file int) int` function.
-It should count occupied squares ranging over the given file. Return an integer.
+It should count the total number of occupied squares by ranging over the given file. Return an integer.
+Return a count of zero (`0`) if the given file is not a valid one (not between `1` and `8`, inclusive).
 
 ```go
 CountInFile(board, 2)
