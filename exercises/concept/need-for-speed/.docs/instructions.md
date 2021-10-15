@@ -19,7 +19,7 @@ Define a `Car` struct with the following `int` type fields:
 - speed
 - distance
 
-Allow creating a remote controller car by defining a function `NewCar` that takes the speed of the car in meters,
+Allow creating a remote controlled car by defining a function `NewCar` that takes the speed of the car in meters,
 and the battery drain percentage as its two parameters (both of type `int`) and returns a `Car` instance:
 
 ```go
@@ -52,9 +52,9 @@ car = Drive(car)
 // Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
-## 4. Check if a remote control car can finish a race
+## 4. Check if a remote controlled car can finish a race
 
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
+To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`. Assume the car is just starting the race:
 
 ```go
 speed := 5

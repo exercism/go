@@ -25,6 +25,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial.",

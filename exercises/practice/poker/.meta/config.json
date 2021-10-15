@@ -28,6 +28,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Inspired by the training course from Udacity.",

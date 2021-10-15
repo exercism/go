@@ -29,6 +29,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Inspired by the Extreme Startup game",

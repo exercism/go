@@ -1,10 +1,18 @@
 [
   {
-    "url": "https://golang.org/ref/spec#If_statements",
-    "description": "if_statement"
+    "url": "https://gobyexample.com/if-else",
+    "description": "Go by Example: If/Else"
   },
   {
-    "url": "https://gobyexample.com/if-else",
-    "description": "go_by_example_if"
+    "url": "https://tour.golang.org/flowcontrol/7",
+    "description": "A Tour of Go: If and else"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go#if",
+    "description": "Effective Go: If"
+  },
+  {
+    "url": "https://golang.org/ref/spec#If_statements",
+    "description": "Go Language Spec: If Statements"
   }
 ]

@@ -29,6 +29,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A poor Splice developer having to implement MIDI encoding/decoding.",

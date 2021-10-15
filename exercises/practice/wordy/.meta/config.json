@@ -26,6 +26,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Inspired by one of the generated questions in the Extreme Startup game.",

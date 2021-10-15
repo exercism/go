@@ -30,6 +30,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "JavaRanch Cattle Drive, exercise 6",

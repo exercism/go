@@ -26,6 +26,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Taken from Chapter 2 of Functional Thinking by Neal Ford.",

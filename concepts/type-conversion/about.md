@@ -39,7 +39,7 @@ var number int = 12
 var s string = strconv.Itoa(number)
 ```
 
-WARNING: using the stardard casting method does not have this behavior.
+WARNING: using the standard casting method does not have this behavior.
 For example:
 
 ```go

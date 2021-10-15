@@ -24,6 +24,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Software Craftsmanship - Coin Change Kata",

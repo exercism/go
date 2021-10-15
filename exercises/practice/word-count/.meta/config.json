@@ -29,6 +29,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour."

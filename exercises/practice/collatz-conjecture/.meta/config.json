@@ -20,6 +20,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "An unsolved problem in mathematics named after mathematician Lothar Collatz",

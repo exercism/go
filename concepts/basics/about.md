@@ -1,6 +1,6 @@
 # Basics About
 
-The Basics concept introduced [Go](https://golang.org) as a statically typed, compiled programming language. 
+The Basics concept introduced [Go](https://golang.org) as a statically typed, compiled programming language.
 The language is often referred to as Golang because of its domain name, golang.org, but the proper name is Go.
 
 The Basics concept introduces three major language features: Packages, Functions, and Variables.
@@ -11,38 +11,11 @@ Go applications are organized in packages.
 A package is a collection of source files located in the same directory.
 All source files in a directory must share the same package name.
 It is conventional for the package name to be the last directory in the import path. For example, the files in the ["math/rand" package](https://golang.org/src/math/rand/) begin with the statement `package rand`.
+When a package is imported, only entities (functions, types, variables, constants) who's name starts with a capital letter can be used / accessed.
+The recommended style of naming in Go is that identifiers will be named using `camelCase`, except for those meant to be accessible across packages which should be `CamelCase`.
 
 ```go
 package lasagna
-```
-
-## Functions
-
-Go functions accept zero or more parameters.
-Parameters must be explicitly typed, there is no type inference.
-
-Functions may have multiple (explicitly typed) return values.
-Values are returned from functions using the `return` keyword. 
-
-A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
-When a package is imported, only functions starting with a capital letter can
-be used / accessed.
-
-Note that Go supports two types of comments.
-Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
-
-```go
-package greeting
-
-// Hello is a public function
-func Hello (name string) string {
-    return hi(name)
-}
-
-// hi is a private function
-func hi (name string) string {
-    return "hi " + name
-}
 ```
 
 ## Variables
@@ -79,4 +52,30 @@ Constants are defined using the `const` keyword and can be numbers, characters, 
 
 ```go
 const Age = 21 // Defines a numeric constant 'Age' with the value of 21
+```
+
+## Functions
+
+Go functions accept zero or more parameters.
+Parameters must be explicitly typed, there is no type inference.
+
+Values are returned from functions using the `return` keyword.
+
+A function is invoked by specifying the function name and passing arguments for each of the function's parameters.
+
+Note that Go supports two types of comments.
+Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
+
+```go
+package greeting
+
+// Hello is a public function
+func Hello (name string) string {
+    return hi(name)
+}
+
+// hi is a private function
+func hi (name string) string {
+    return "hi " + name
+}
 ```

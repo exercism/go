@@ -4,7 +4,7 @@
 
 - A `struct` is a sequence of named elements, called fields, each one having a name and a type.
 
-## 1. Creating a new remote controlled car
+## 1. Creating a remote controlled car
 
 - Instantiate a new [struct][struct] and fill the fields except `distance`.
 - Create a function that returns the type of the newly created struct and update the fields accordingly
@@ -21,7 +21,8 @@
 
 ## 4. Check if a remote controlled car can finish a race
 
-- You need to calculate the maximum distance a car can drive
-- We assume that the cars' battery is charged to 100% initially
+- Assume the car is just starting the race
+- You need to calculate the maximum distance a car can drive with the current level of battery
+- Knowing the maximum distance the car can drive, compare it with the distance of the race track
 
 [struct]: https://tour.golang.org/moretypes/2

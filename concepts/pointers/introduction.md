@@ -27,7 +27,7 @@ Similarly, when we need to change the value in the piece of memory of `a`, we ca
 a = 3
 ```
 
-The piece of memory that is associated with `a` will now will now be storing the value `3`.
+The piece of memory that is associated with `a` will now be storing the value `3`.
 
 ## Pointers
 
@@ -69,7 +69,7 @@ b = *p // b == 2
 
 The operation `*p` fetches the value stored at the memory address stored in `p`. This operation is often called "dereferencing".
 
-We can also use the derefering operator to assign a new value to the memory address referenced by the pointer:
+We can also use the dereference operator to assign a new value to the memory address referenced by the pointer:
 
 ```go
 var a int
@@ -134,7 +134,7 @@ Slices and maps are special types because they already have pointers in their im
 
 
 ```go
-func incrementPeterAge(m map[string]int){
+func incrementPeterAge(m map[string]int) {
 	m["Peter"] += 1
 }
 ```
@@ -148,7 +148,7 @@ ages := map[string]int{
 incrementPeterAge(ages)
 fmt.Println(ages)
 // Output: map[Peter:22]
-// The changes the function 'addPeterAge' made to the map are visible after the function ends!
+// The changes the function 'incrementPeterAge' made to the map are visible after the function ends!
 ```
 
 The same applies when changing an existing item in a slice.

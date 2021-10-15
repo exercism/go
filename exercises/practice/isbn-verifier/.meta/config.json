@@ -23,6 +23,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Converting a string into a number and some basic processing utilizing a relatable real world example.",

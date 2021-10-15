@@ -16,6 +16,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Inspired by an exercise created by a professor Della Paolera in Argentina"

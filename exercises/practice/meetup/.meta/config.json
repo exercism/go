@@ -25,6 +25,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Jeremy Hinegardner mentioned a Boulder meetup that happens on the Wednesteenth of every month",

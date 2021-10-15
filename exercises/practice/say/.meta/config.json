@@ -24,6 +24,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A variation on JavaRanch CattleDrive, exercise 4a",

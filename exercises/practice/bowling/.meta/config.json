@@ -21,6 +21,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "The Bowling Game Kata at but UncleBob",

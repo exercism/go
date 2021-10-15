@@ -122,10 +122,10 @@ func TestQuantities(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			gotNoodles, gotSauce := Quantities(tt.layers)
 			if gotNoodles != tt.expNoodles {
-				t.Errorf("quantities(%v) = %d noodles; want %d", tt.layers, tt.expNoodles, gotNoodles)
+				t.Errorf("quantities(%v) = %d noodles; want %d", tt.layers, gotNoodles, tt.expNoodles)
 			}
 			if gotSauce != tt.expSauce {
-				t.Errorf("quantities(%v) = %f sauce; want %f", tt.layers, tt.expSauce, gotSauce)
+				t.Errorf("quantities(%v) = %f sauce; want %f", tt.layers, gotSauce, tt.expSauce)
 			}
 		})
 	}
@@ -174,7 +174,7 @@ type scaleRecipeTest struct {
 	expected []float64
 }
 
-func TestSscaleRecipeTest(t *testing.T) {
+func TestScaleRecipe(t *testing.T) {
 	tests := []scaleRecipeTest{
 		scaleRecipeTest{
 			name:     "scales up correctly",
