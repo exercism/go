@@ -1,6 +1,7 @@
 package weather
 
 import (
+	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -48,23 +49,47 @@ func testPackageComment(t *testing.T, node *ast.File) {
 		t.Errorf("Package weather should have a comment")
 	}
 
-	want := "Package"
+	packageName := node.Name.Name
+	want := "Package " + packageName
 	packageComment := node.Doc.Text()
-	if !strings.HasPrefix(packageComment, want) {
-		t.Errorf("Package comment should start with '// %s ...': got %s", want, packageComment)
+
+	if ok, errStr := testComment("Package", packageName, packageComment, want); !ok {
+		t.Error(errStr)
 	}
+
 }
 func testIdentifierComment(t *testing.T, node *ast.GenDecl) {
 	t.Helper()
+
+	identifierName := node.Specs[0].(*ast.ValueSpec).Names[0].Name
 	if node.Doc == nil {
-		t.Errorf("Exported identifier %s should have a comment", node.Specs[0].(*ast.ValueSpec).Names[0])
+		t.Errorf("Exported identifier %s should have a comment", identifierName)
+	}
+
+	identifierComment := node.Doc.Text()
+	want := identifierName
+
+	if ok, errStr := testComment("Variable", identifierName, identifierComment, want); !ok {
+		t.Error(errStr)
 	}
 }
+
+
 func testBlockIdentifierComment(t *testing.T, node *ast.ValueSpec) {
 	t.Helper()
+
+	identifierName := node.Names[0].Name
 	if node.Doc == nil {
-		t.Errorf("Exported identifier %s should have a comment", node.Names[0])
+		t.Errorf("Exported identifier %s should have a comment", identifierName)
 	}
+
+	identifierComment := node.Doc.Text()
+	want := identifierName
+
+	if ok, errStr := testComment("Variable", identifierName, identifierComment, want); !ok {
+		t.Error(errStr)
+	}
+
 }
 
 func testFunctionComment(t *testing.T, node *ast.FuncDecl) {
@@ -73,8 +98,44 @@ func testFunctionComment(t *testing.T, node *ast.FuncDecl) {
 	if node.Doc == nil {
 		t.Errorf("Exported function %s() should have a comment", funcName)
 	}
+
 	funcComment := node.Doc.Text()
-	if !strings.HasPrefix(node.Doc.Text(), funcName) {
-		t.Errorf("Function comment for function %s should start with `// %s ...`: got %s", funcName, funcName, funcComment)
+	want := funcName
+
+	if ok, errStr := testComment("Function", funcName, funcComment, want); !ok {
+		t.Error(errStr)
 	}
+}
+
+func testComment(entityKind, entityName, comment, wantedPrefix string) (ok bool, errString string) {
+
+	trimmedComment := strings.TrimSpace(comment)
+	lowerEntity := strings.ToLower(entityKind)
+
+	// Check if comment has wanted prefix
+	if !strings.HasPrefix(comment, wantedPrefix) {
+		errorString := fmt.Sprintf("%s comment for %s '%s' should start with '// %s ...': got '// %s'",
+			entityKind, lowerEntity, entityName, wantedPrefix, trimmedComment)
+		return false, errorString
+	}
+
+	// Check if comment content is empty
+	commentContent := strings.TrimPrefix(trimmedComment, wantedPrefix)
+	commentContent = strings.TrimSpace(commentContent)
+	commentContent = strings.TrimSuffix(commentContent, ".")
+
+	if commentContent == "" {
+		lowerEntity := strings.ToLower(entityKind)
+		errorString := fmt.Sprintf("%s comment of '%s' should provide a description of the %s, e.g '// %s <%s_description>'",
+			entityKind, entityName, lowerEntity, wantedPrefix, lowerEntity)
+		return false, errorString
+	}
+
+	// Check if comment ends in a period
+	if !strings.HasSuffix(trimmedComment, ".") {
+		return false, fmt.Sprintf("%s comment for %s '%s' should end with a period (.)",
+			entityKind, lowerEntity, entityName)
+	}
+
+	return true, ""
 }
