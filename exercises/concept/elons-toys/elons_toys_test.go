@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestCreateCar(t *testing.T) {
+func TestNewCar(t *testing.T) {
 	tests := []struct {
 		name     string
 		car      Car
@@ -28,46 +28,9 @@ func TestCreateCar(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := CreateCar(tt.car.speed, tt.car.batteryDrain)
+			got := NewCar(tt.car.speed, tt.car.batteryDrain)
 			if !reflect.DeepEqual(got, tt.expected) {
-				t.Errorf("CreateCar(%v,%v) = %v; expected %v", tt.car.speed, tt.car.batteryDrain, got, tt.expected)
-			}
-		})
-	}
-}
-
-func TestCreateTrack(t *testing.T) {
-	tests := []struct {
-		name     string
-		track    Track
-		expected Track
-	}{
-		{
-			name: "Create a new track.",
-			track: Track{
-				distance: 800,
-			},
-			expected: Track{
-				distance: 800,
-			},
-		},
-		{
-			name: "Create a new track.",
-			track: Track{
-				distance: 360,
-			},
-			expected: Track{
-				distance: 360,
-			},
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CreateTrack(tt.track.distance)
-
-			if got != tt.expected {
-				t.Errorf("CreateTrack(%v) = %v; expected %v", tt.track.distance, tt.track, tt.expected)
+				t.Errorf("NewCar(%v,%v) = %v; expected %v", tt.car.speed, tt.car.batteryDrain, got, tt.expected)
 			}
 		})
 	}
@@ -112,7 +75,7 @@ func TestCanFinish(t *testing.T) {
 	tests := []struct {
 		name     string
 		car      Car
-		track    Track
+		distance int
 		expected bool
 	}{
 		{
@@ -121,9 +84,7 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      100,
-			},
-			track: Track{
-				distance: 100,
+				distance:     100,
 			},
 			expected: true,
 		},
@@ -133,9 +94,7 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      40,
-			},
-			track: Track{
-				distance: 100,
+				distance:     100,
 			},
 			expected: true,
 		},
@@ -145,9 +104,7 @@ func TestCanFinish(t *testing.T) {
 				speed:        5,
 				batteryDrain: 2,
 				battery:      30,
-			},
-			track: Track{
-				distance: 100,
+				distance:     100,
 			},
 			expected: false,
 		},
@@ -155,10 +112,10 @@ func TestCanFinish(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := tt.car.CanFinish(tt.track)
+			got := tt.car.CanFinish(tt.distance)
 
 			if got != tt.expected {
-				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.track, got, tt.expected)
+				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.distance, got, tt.expected)
 			}
 		})
 	}
@@ -168,7 +125,7 @@ func TestDisplayDistance(t *testing.T) {
 	tests := []struct {
 		name     string
 		car      Car
-		track    Track
+		distance int
 		expected string
 	}{
 		{
@@ -198,7 +155,7 @@ func TestDisplayBattery(t *testing.T) {
 	tests := []struct {
 		name     string
 		car      Car
-		track    Track
+		distance int
 		expected string
 	}{
 		{
