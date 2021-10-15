@@ -94,11 +94,11 @@ func TestCodon(t *testing.T) {
 			}
 		} else if err != nil {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
+				test.expected, test.input, err)
 		}
 		if actual != test.expected {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
-				test.input, test.expected, actual)
+				test.expected, test.input, actual)
 		}
 		t.Logf("PASS: Protein translation test: %s", test.input)
 	}
@@ -144,14 +144,14 @@ func TestProtein(t *testing.T) {
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
 				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
+					test.errorExpected, test.input, err)
 			}
 		} else if err != nil {
 			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
+				test.expected, test.input, err)
 		}
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.expected, test.input, actual)
 		}
 		t.Logf("PASS: RNA translation test: %s", test.input)
 	}
