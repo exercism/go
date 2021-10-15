@@ -90,7 +90,7 @@ func TestCodon(t *testing.T) {
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
 				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
+					test.errorExpected, test.input, err)
 			}
 		} else if err != nil {
 			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
