@@ -22,7 +22,7 @@ Implement the `Drive` method on the `Car` that updates the number of meters driv
 ```go
 speed := 5
 batteryDrain := 2
-car := NewCar(speed, batteryDrain)
+car := CreateCar(speed, batteryDrain)
 car.Drive()
 // Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
@@ -36,7 +36,7 @@ Implement a `DisplayDistance` method on `Car` to return the distance as displaye
 ```go
 speed := 5
 batteryDrain := 2
-car := NewCar(speed, batteryDrain)
+car := CreateCar(speed, batteryDrain)
 
 car.DisplayDistance()
 // Output: "Driven 0 meters"
@@ -49,7 +49,7 @@ Implement the `DisplayBattery` method on `Car` to return the distance as display
 ```go
 speed := 5
 batteryDrain := 2
-car := NewCar(speed, batteryDrain)
+car := CreateCar(speed, batteryDrain)
 
 car.DisplayBattery()
 // Output: "Battery at 100%"
@@ -62,10 +62,10 @@ To finish a race, a car has to be able to drive the race's distance. This means 
 ```go
 speed := 5
 batteryDrain := 2
-car := NewCar(speed, batteryDrain)
+car := CreateCar(speed, batteryDrain)
 
 distance := 100
-raceTrack := NewTrack(distance)
+raceTrack := CreateTrack(distance)
 
 car.CanFinish(raceTrack)
 // Output: true
