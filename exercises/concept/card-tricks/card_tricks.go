@@ -1,7 +1,7 @@
 package cards
 
 // GetItem retrieves an item from a slice at given position. The second return value indicates whether
-// a the given index existed in the slice or not.
+// the given index existed in the slice or not.
 func GetItem(slice []int, index int) (int, bool) {
 	panic("Please implement the GetItem function")
 }
