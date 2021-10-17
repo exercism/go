@@ -2,7 +2,21 @@
 
 As a chess enthusiast, you would like to write your own version of the game. Yes, there may be plenty of implementations of chess available online already, but yours will be unique!
 
-Each square of the chessboard is identified by a letter-number pair. The vertical columns of squares, called files, are numbered 1 through 8. The horizontal rows of squares, called ranks, are numbered 1 to 8.
+Each square of the chessboard is identified by a letter-number pair:
+ - The vertical columns of squares, called files, are numbered 1 through 8.
+ - The horizontal rows of squares, called ranks, are numbered 1 to 8.
+
+|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | # |   | # |   |   |   |   |   | 1 |
+| 2 |   |   |   |   | # |   |   |   | 2 |
+| 3 |   |   | # |   |   |   |   |   | 3 |
+| 4 |   |   |   |   |   |   |   |   | 4 |
+| 5 |   |   |   |   |   | # |   | # | 5 |
+| 6 |   |   |   |   |   |   |   |   | 6 |
+| 7 |   |   |   | # |   |   |   |   | 7 |
+| 8 | # | # | # | # | # | # |   | # | 8 |
+|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |
 
 ## 1. Given a Chessboard and a Rank, count how many squares are occupied
 
