@@ -6,10 +6,10 @@
   ],
   "files": {
     "solution": [
-      "weather.go"
+      "weather_forecast.go"
     ],
     "test": [
-      "weather_test.go"
+      "weather_forecast_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

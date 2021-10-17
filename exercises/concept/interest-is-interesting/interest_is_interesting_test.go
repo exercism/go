@@ -1,4 +1,4 @@
-package savings
+package interest
 
 import (
 	"math"

@@ -43,7 +43,9 @@ module $stub
 go 1.15
 EOD
       exit 1
-    elif [ -f "${dir}${stub}.go" ] ; then
+    fi
+
+    if [ -f "${dir}${stub}.go" ] ; then
       tmpstub=$tmp/$parentdir/$stub
       mkdir -p $tmpstub
       echo "copy base files and tests to $tmpstub"
@@ -53,8 +55,13 @@ EOD
       echo "copy module $mod to $tmpstub"
       cp $mod $tmpstub
       echo "put everything in the same module"
+      original_module=`head -n1 $tmpstub/go.mod | awk '{ print $2 }'`
       sed -i'.bak' "s|package .*|package ${stub}|" $tmpstub/*.go
+      sed -i'.bak' "s|// Package ${original_module}|// Package ${stub}|" $tmpstub/*.go
       sed -i'.bak' "s|module .*|module ${stub}|" $tmpstub/go.mod
+    else
+      echo "${dir}${stub}.go not found: expected a file ${dir}${stub}.go since the exercise is in a folder named $stub"
+      exit 1
     fi
   done
 done
