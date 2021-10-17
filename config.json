@@ -196,7 +196,8 @@
           "structs",
           "string-formatting",
           "type-definitions",
-          "pointers"
+          "pointers",
+          "functions"
         ],
         "status": "beta"
       },
