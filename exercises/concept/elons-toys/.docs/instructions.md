@@ -24,7 +24,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car.Drive()
-// car == Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// car is now Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
 Note: If a car's battery is below its battery drain percentage, you can't drive the car anymore.
