@@ -10,7 +10,7 @@ import (
 )
 
 func TestComments(t *testing.T) {
-	filename := "weather.go"
+	filename := "weather_forecast.go"
 
 	fs := token.NewFileSet()
 	f, err := parser.ParseFile(fs, filename, nil, parser.ParseComments)
@@ -73,7 +73,6 @@ func testIdentifierComment(t *testing.T, node *ast.GenDecl) {
 		t.Error(errStr)
 	}
 }
-
 
 func testBlockIdentifierComment(t *testing.T, node *ast.ValueSpec) {
 	t.Helper()

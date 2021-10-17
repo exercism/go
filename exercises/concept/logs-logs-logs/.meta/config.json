@@ -6,10 +6,10 @@
   ],
   "files": {
     "solution": [
-      "logs.go"
+      "logs_logs_logs.go"
     ],
     "test": [
-      "logs_test.go"
+      "logs_logs_logs_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"

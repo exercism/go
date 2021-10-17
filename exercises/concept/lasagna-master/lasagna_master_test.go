@@ -71,13 +71,13 @@ type quantitiesTest struct {
 
 func TestQuantities(t *testing.T) {
 	tests := []quantitiesTest{
-		quantitiesTest{
+		{
 			name:       "few layers",
 			layers:     []string{"noodles", "sauce", "noodles"},
 			expNoodles: 100,
 			expSauce:   0.2,
 		},
-		quantitiesTest{
+		{
 			name: "many layers",
 			layers: []string{
 				"sauce",
@@ -95,7 +95,7 @@ func TestQuantities(t *testing.T) {
 			expNoodles: 150,
 			expSauce:   0.4,
 		},
-		quantitiesTest{
+		{
 			name: "no noodles",
 			layers: []string{
 				"sauce",
@@ -106,7 +106,7 @@ func TestQuantities(t *testing.T) {
 			expNoodles: 0,
 			expSauce:   0.4,
 		},
-		quantitiesTest{
+		{
 			name: "no sauce",
 			layers: []string{
 				"noodles",
@@ -140,7 +140,7 @@ type secretTest struct {
 
 func TestAddSecretIngredient(t *testing.T) {
 	tests := []secretTest{
-		secretTest{
+		{
 			name:        "Adds secret ingredient",
 			friendsList: []string{"sauce", "noodles", "béchamel", "marjoram"},
 			myList:      []string{"sauce", "noodles", "meat", "tomatoes"},
@@ -176,25 +176,25 @@ type scaleRecipeTest struct {
 
 func TestScaleRecipe(t *testing.T) {
 	tests := []scaleRecipeTest{
-		scaleRecipeTest{
+		{
 			name:     "scales up correctly",
 			input:    []float64{0.5, 250, 150, 3, 0.5},
 			portions: 6,
 			expected: []float64{1.5, 750, 450, 9, 1.5},
 		},
-		scaleRecipeTest{
+		{
 			name:     "scales up correctly (2)",
 			input:    []float64{0.6, 300, 1, 0.5, 50, 0.1, 100},
 			portions: 3,
 			expected: []float64{0.9, 450, 1.5, 0.75, 75, 0.15, 150},
 		},
-		scaleRecipeTest{
+		{
 			name:     "scales down correctly",
 			input:    []float64{0.5, 250, 150, 3, 0.5},
 			portions: 1,
 			expected: []float64{0.25, 125, 75, 1.5, 0.25},
 		},
-		scaleRecipeTest{
+		{
 			name:     "empty recipe",
 			input:    []float64{},
 			portions: 100,

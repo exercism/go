@@ -7,7 +7,7 @@ func Application(log string) string {
 
 // Replace replaces all occurances of old with new, returning the modified log
 // to the caller.
-func Replace(log string, old, new rune) string {
+func Replace(log string, oldRune, newRune rune) string {
 	panic("Please implement the Replace() function")
 }
 
