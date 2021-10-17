@@ -1,4 +1,4 @@
-package savings
+package interest
 
 // InterestRate returns the interest rate for the provided balance.
 func InterestRate(balance float64) float32 {
