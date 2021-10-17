@@ -19,5 +19,6 @@ The Concepts this exercise unlocks are:
 
 ## Prerequisites
 
-- `structs`
-- `pointers`
+- `structs` since the introduction and exercise define methods on structs
+- `pointers` to understand pointer receivers
+- `functions` because in that exercise the student practiced writing function signatures
