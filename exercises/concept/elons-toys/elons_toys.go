@@ -9,37 +9,10 @@ type Car struct {
 	distance int
 }
 
-// Track implements a race track.
-type Track struct {
-	distance int
-}
+// TODO: define the 'Drive()' method
 
-// CreateCar creates a new car with given specifications.
-func CreateCar(speed, batteryDrain int) *Car {
-	panic("Please implement CreateCar() method")
-}
+// TODO: define the 'CanFinish(trackDistance int) bool' method
 
-// CreateTrack creates a new track with given distance.
-func CreateTrack(distance int) Track {
-	panic("Please implement CreateTrack() method")
-}
+// TODO: define the 'DisplayDistance() string' method
 
-// Drive drives the car one time.
-func (car *Car) Drive() {
-	panic("Please implement Drive() method")
-}
-
-// CanFinish checks if a car is able to finish a certain track.
-func (car *Car) CanFinish(track Track) bool {
-	panic("Please implement CanFinish() method")
-}
-
-// DisplayDistance displays the distance the car is driven.
-func (car *Car) DisplayDistance() string {
-	panic("Please implement DisplayDistance() method")
-}
-
-// DisplayBattery displays the battery level.
-func (car *Car) DisplayBattery() string {
-	panic("Please implement DisplayBattery() method")
-}
+// TODO: define the 'DisplayBattery() string' method
