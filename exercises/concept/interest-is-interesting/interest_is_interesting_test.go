@@ -63,24 +63,24 @@ func TestInterestRate(t *testing.T) {
 			want:    float32(2.475),
 		},
 		{
-			name:    "Minimal negative interest rate",
+			name:    "Rate on minimal negative balance",
 			balance: -0.000001,
-			want:    float32(-3.213),
+			want:    float32(3.213),
 		},
 		{
-			name:    "Small negative interest rate",
+			name:    "Rate on small negative balance",
 			balance: -0.123,
-			want:    float32(-3.213),
+			want:    float32(3.213),
 		},
 		{
-			name:    "Regular negative interest rate",
+			name:    "Rate on regular negative balance",
 			balance: -300.0,
-			want:    float32(-3.213),
+			want:    float32(3.213),
 		},
 		{
-			name:    "Large negative interest rate",
+			name:    "Rate on large negative balance",
 			balance: -152964.231,
-			want:    float32(-3.213),
+			want:    float32(3.213),
 		},
 	}
 
