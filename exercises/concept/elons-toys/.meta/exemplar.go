@@ -11,15 +11,6 @@ type Car struct {
 	distance int
 }
 
-// NewCar creates a new car with given specifications.
-func NewCar(speed, batteryDrain int) *Car {
-	return &Car{
-		speed:        speed,
-		batteryDrain: batteryDrain,
-		battery:      100,
-	}
-}
-
 // Drive drives the car one time. If there is not enough battry to drive on more time,
 // the car will not move but use the leftover battery.
 func (car *Car) Drive() {
@@ -31,10 +22,10 @@ func (car *Car) Drive() {
 	car.battery -= car.batteryDrain
 }
 
-// CanFinish checks if a car is able to travel a certain distance
-func (car *Car) CanFinish(distance int) bool {
+// CanFinish checks if a car is able to finish a track of a certain distance.
+func (car *Car) CanFinish(trackDistance int) bool {
 	maxDistance := car.battery / car.batteryDrain * car.speed
-	return distance <= maxDistance
+	return trackDistance <= maxDistance
 }
 
 // DisplayDistance displays the distance the car is driven.

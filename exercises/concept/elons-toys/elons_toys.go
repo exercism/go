@@ -9,18 +9,9 @@ type Car struct {
 	distance int
 }
 
-// NewCar creates a new car with given specifications.
-func NewCar(speed, batteryDrain int) *Car {
-	return &Car{
-		speed:        speed,
-		batteryDrain: batteryDrain,
-		battery:      100,
-	}
-}
-
 // TODO: define the 'Drive()' method
 
-// TODO: define the 'CanFinish(distance int) bool' method
+// TODO: define the 'CanFinish(trackDistance int) bool' method
 
 // TODO: define the 'DisplayDistance() string' method
 
