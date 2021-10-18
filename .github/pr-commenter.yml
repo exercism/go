@@ -1,0 +1,68 @@
+comment:
+  on-update: edit
+  glob-options:
+    dot: true
+
+  header: |
+    ### Dear {{ prAuthor }}
+    Thank you for contributing to the Go track on Exercism! 💙
+    You will see some automated feedback below 🤖. It would be great if you can make sure your PR covers those points. This will save your reviewer some time and your change can be merged quicker.
+
+  footer: |
+
+    <sub>Automated comment created by [PR Commenter](https://github.com/exercism/pr-commenter-action) 🤖.</sub>
+
+  snippets:
+    - id: concept-changes
+      files:
+        - 'exercises/concept/*/.docs/introduction.md'
+        - 'concepts/*/introduction.md'
+        - 'concepts/*/about.md'
+      body: |
+        - 📜 The following files usually contain very similar content.
+          - `concepts/<concept>/about.md`
+          - `concepts/<concept>/introduction.md`
+          - `exercises/concept/<exercise>/.docs/introduction.md`
+
+          Please check whether the changes you made to one of these also need to be applied to the others.
+
+    - id: exemplar-or-stub-changes
+      files:
+        - 'exercises/concept/*/.meta/*.go'
+        - any:
+            - 'exercises/concept/*/*.go'
+            - '!exercises/concept/*/*_test.go'
+      body: |
+        - 🧦 If you changed the function signature or the function comment in the exemplar file or the sub file (`<exercise>.go`), make sure the change is applied to both files.
+
+    - id: problem-spec-related
+      files:
+        - 'exercises/practice/*/*_test.go'
+        - 'exercises/practice/*/.docs/instructions.md'
+      body: |
+        - ⬆️ The instructions and test cases for many practice exercises originate in the Exercism-wide [problem-specifications repo](https://github.com/exercism/problem-specifications). If the exercise you changed is listed there in the [exercises folder](https://github.com/exercism/problem-specifications/tree/main/exercises), please consider the following.
+          - Improvements to the `instructions.md` file should be made in the problem-spec repo so that all tracks can benefit.
+            You can open a PR there instead.
+          - If you want to add some language specific information, use the `instructions.append.md` file (see [Practice Exercise Docs](https://exercism.org/docs/building/tracks/practice-exercises)).
+          - Test cases selected in the `.meta/tests.toml` file need to be implemented in the `<exercise>_test.go` file according to the specification in [`canonical-data.json`](https://github.com/exercism/problem-specifications#test-data-canonical-datajson).
+
+    - id: note-for-contributors
+      files:
+        - '*'
+        - '**/*'
+      body: |
+        - ✍️ If your PR is not related to an existing issue (and is not self-explaining like a typo fix), please make sure the description explains why the change you made is necessary.
+
+        - 🔤 If your PR fixes an easy to identify typo, if would be great if you could check for that typo in the whole repo. For example, if you found `Unicdoe`, use "replace all" in your editor (or command line magic) to fix it consistently.
+
+    - id: note-for-maintainers
+      files:
+        - '*'
+        - '**/*'
+      body: |
+        ### Dear Reviewer/Maintainer
+        - 📏 Make sure you set the appropriate **`x:size` label** for the PR. (This also works after merging, in case you forgot about it.)
+
+        - 🔍 **Don't be too nit-picky.** If the PR is a clear improvement compared to the status quo, it should be approved as clear signal this is good to be merged even if the minor comments you might have are not addressed by the contributor. Further improvement ideas can be captured in issues (if important enough) and implemented via additional PRs.
+
+        - 🤔 After reviewing the diff in the "Files changed" section, take a moment to think about whether there are **changes missing** from the diff. Does something need to be adjusted in other places so the code or content stays consistent?
