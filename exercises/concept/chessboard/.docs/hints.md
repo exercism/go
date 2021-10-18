@@ -31,3 +31,4 @@
 [operators]: https://golang.org/ref/spec#Operators
 [integers]: https://golang.org/ref/spec#Integer_literals
 [calls]: https://golang.org/ref/spec#Calls
+[maps]: /tracks/go/concepts/maps
