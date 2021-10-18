@@ -4,11 +4,11 @@ package chessboard
 type Rank []bool
 
 // Chessboard contains eight Ranks, accessed with values from '0' to '7'
-type Chessboard map[int]Rank
+type Chessboard map[byte]Rank
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func CountInRank(cb Chessboard, rank int) int {
+func CountInRank(cb Chessboard, rank byte) (ret int) {
 	count := 0
 	for _, r := range cb[rank] {
 		if r {

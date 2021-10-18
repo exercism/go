@@ -7,48 +7,48 @@ import (
 // newChessboard return a *Chessboard for tests
 //
 //   1 2 3 4 5 6 7 8
-// 1 # _ # _ _ _ _ # 1
-// 2 _ _ _ _ # _ _ _ 2
-// 3 _ _ # _ _ _ _ _ 3
-// 4 _ _ _ _ _ _ _ _ 4
-// 5 _ _ _ _ _ # _ # 5
-// 6 _ _ _ _ _ _ _ _ 6
-// 7 _ _ _ # _ _ _ _ 7
-// 8 # # # # # # _ # 8
+// A # _ # _ _ _ _ # A
+// B _ _ _ _ # _ _ _ B
+// C _ _ # _ _ _ _ _ C
+// D _ _ _ _ _ _ _ _ D
+// E _ _ _ _ _ # _ # E
+// F _ _ _ _ _ _ _ _ F
+// G _ _ _ # _ _ _ _ G
+// H # # # # # # _ # H
 //   1 2 3 4 5 6 7 8
 func newChessboard() Chessboard {
 	return Chessboard{
-		1: Rank{true, false, true, false, false, false, false, true},
-		2: Rank{false, false, false, false, true, false, false, false},
-		3: Rank{false, false, true, false, false, false, false, false},
-		4: Rank{false, false, false, false, false, false, false, false},
-		5: Rank{false, false, false, false, false, true, false, true},
-		6: Rank{false, false, false, false, false, false, false, false},
-		7: Rank{false, false, false, true, false, false, false, false},
-		8: Rank{true, true, true, true, true, true, false, true},
+		'A': Rank{true, false, true, false, false, false, false, true},
+		'B': Rank{false, false, false, false, true, false, false, false},
+		'C': Rank{false, false, true, false, false, false, false, false},
+		'D': Rank{false, false, false, false, false, false, false, false},
+		'E': Rank{false, false, false, false, false, true, false, true},
+		'F': Rank{false, false, false, false, false, false, false, false},
+		'G': Rank{false, false, false, true, false, false, false, false},
+		'H': Rank{true, true, true, true, true, true, false, true},
 	}
 }
 
 func TestCountInRank(t *testing.T) {
 	cb := newChessboard()
 	for _, test := range []struct {
-		in  int
+		in  byte
 		out int
 	}{
-		{1, 3},
-		{2, 1},
-		{3, 1},
-		{4, 0},
-		{5, 2},
-		{6, 0},
-		{7, 1},
-		{8, 7},
-		{9, 0},
+		{'A', 3},
+		{'B', 1},
+		{'C', 1},
+		{'D', 0},
+		{'E', 2},
+		{'F', 0},
+		{'G', 1},
+		{'H', 7},
+		{'Z', 0},
 	} {
 		if out := CountInRank(cb, test.in); out != test.out {
 			t.Errorf(
-				"CountInRank(chessboard, %v) returned %v while %v was expected\n",
-				test.in,
+				"CountInRank(chessboard, '%v') returned %v while %v was expected\n",
+				string(test.in),
 				out,
 				test.out,
 			)
