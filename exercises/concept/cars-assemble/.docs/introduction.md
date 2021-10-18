@@ -43,7 +43,7 @@ i := int(y) // i has type int (ie. 11)
 ```
 ## Arithmetic operations on different types
 
-In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an arror.
+In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an error.
 For example:
 
 ```go
