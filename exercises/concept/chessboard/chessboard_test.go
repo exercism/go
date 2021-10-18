@@ -18,37 +18,37 @@ import (
 //   1 2 3 4 5 6 7 8
 func newChessboard() Chessboard {
 	return Chessboard{
-		'A': Rank{true, false, true, false, false, false, false, true},
-		'B': Rank{false, false, false, false, true, false, false, false},
-		'C': Rank{false, false, true, false, false, false, false, false},
-		'D': Rank{false, false, false, false, false, false, false, false},
-		'E': Rank{false, false, false, false, false, true, false, true},
-		'F': Rank{false, false, false, false, false, false, false, false},
-		'G': Rank{false, false, false, true, false, false, false, false},
-		'H': Rank{true, true, true, true, true, true, false, true},
+		"A": Rank{true, false, true, false, false, false, false, true},
+		"B": Rank{false, false, false, false, true, false, false, false},
+		"C": Rank{false, false, true, false, false, false, false, false},
+		"D": Rank{false, false, false, false, false, false, false, false},
+		"E": Rank{false, false, false, false, false, true, false, true},
+		"F": Rank{false, false, false, false, false, false, false, false},
+		"G": Rank{false, false, false, true, false, false, false, false},
+		"H": Rank{true, true, true, true, true, true, false, true},
 	}
 }
 
 func TestCountInRank(t *testing.T) {
 	cb := newChessboard()
 	for _, test := range []struct {
-		in  byte
+		in  string
 		out int
 	}{
-		{'A', 3},
-		{'B', 1},
-		{'C', 1},
-		{'D', 0},
-		{'E', 2},
-		{'F', 0},
-		{'G', 1},
-		{'H', 7},
-		{'Z', 0},
+		{"A", 3},
+		{"B", 1},
+		{"C", 1},
+		{"D", 0},
+		{"E", 2},
+		{"F", 0},
+		{"G", 1},
+		{"H", 7},
+		{"Z", 0},
 	} {
 		if out := CountInRank(cb, test.in); out != test.out {
 			t.Errorf(
 				"CountInRank(chessboard, '%v') returned %v while %v was expected\n",
-				string(test.in),
+				test.in,
 				out,
 				test.out,
 			)

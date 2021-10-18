@@ -20,12 +20,12 @@ Each square of the chessboard is identified by a letter-number pair:
 
 ## 1. Given a Chessboard and a Rank, count how many squares are occupied
 
-Implement the `CountInRank(board Chessboard, rank byte) int` function.
+Implement the `CountInRank(board Chessboard, rank string) int` function.
 It should count the total number of occupied squares by ranging over a map. Return an integer.
-Return a count of zero (`0`) if the given rank is not a valid one (not between  `'A'` and `'H'`, inclusive).
+Return a count of zero (`0`) if the given rank is not a valid one (not between  `"A"` and `"H"`, inclusive).
 
 ```go
-CountInRank(board, 'A')
+CountInRank(board, "A")
 // => 6
 ```
 

@@ -6,7 +6,7 @@ package chessboard
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func CountInRank(cb Chessboard, rank byte) (ret int) {
+func CountInRank(cb Chessboard, rank string) (ret int) {
 	panic("Please implement CountInRank()")
 }
 
