@@ -6,17 +6,18 @@ Each square of the chessboard is identified by a letter-number pair:
  - The vertical columns of squares, called files, are numbered 1 through 8.
  - The horizontal rows of squares, called ranks, are labelled A through H.
 
-|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |
-|---|---|---|---|---|---|---|---|---|---|
-| A | # |   | # |   |   |   |   |   | A |
-| B |   |   |   |   | # |   |   |   | B |
-| C |   |   | # |   |   |   |   |   | C |
-| D |   |   |   |   |   |   |   |   | D |
-| E |   |   |   |   |   | # |   | # | E |
-| F |   |   |   |   |   |   |   |   | F |
-| G |   |   |   | # |   |   |   |   | G |
-| H | # | # | # | # | # | # |   | # | H |
-|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |
+```
+  1 2 3 4 5 6 7 8
+A # _ # _ _ _ _ # A
+B _ _ _ _ # _ _ _ B
+C _ _ # _ _ _ _ _ C
+D _ _ _ _ _ _ _ _ D
+E _ _ _ _ _ # _ # E
+F _ _ _ _ _ _ _ _ F
+G _ _ _ # _ _ _ _ G
+H # # # # # # _ # H
+  1 2 3 4 5 6 7 8
+```
 
 ## 1. Given a Chessboard and a Rank, count how many squares are occupied
 
