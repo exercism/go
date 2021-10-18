@@ -25,11 +25,13 @@
       "allergies.go"
     ],
     "test": [
-      "allergies_test.go",
-      "cases_test.go"
+      "allergies_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Jumpstart Lab Warm-up",

@@ -21,11 +21,13 @@
       "meetup.go"
     ],
     "test": [
-      "meetup_test.go",
-      "cases_test.go"
+      "meetup_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Jeremy Hinegardner mentioned a Boulder meetup that happens on the Wednesteenth of every month",

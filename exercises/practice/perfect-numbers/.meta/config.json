@@ -22,11 +22,13 @@
       "perfect_numbers.go"
     ],
     "test": [
-      "perfect_numbers_test.go",
-      "cases_test.go"
+      "perfect_numbers_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Taken from Chapter 2 of Functional Thinking by Neal Ford.",

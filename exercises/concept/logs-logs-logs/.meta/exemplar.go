@@ -21,12 +21,12 @@ func Application(log string) string {
 
 // Replace replaces all occurances of old with new, returning the modified log
 // to the caller.
-func Replace(log string, old, new rune) string {
+func Replace(log string, oldRune, newRune rune) string {
 	var modifiedLog string
 
 	for _, char := range log {
-		if char == old {
-			char = new
+		if char == oldRune {
+			char = newRune
 		}
 
 		modifiedLog += string(char)

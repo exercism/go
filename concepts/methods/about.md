@@ -11,7 +11,7 @@ func (receiver type) MethodName(parameters) (returnTypes) {
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-type Person {
+type Person struct {
 	Name string
 }
 

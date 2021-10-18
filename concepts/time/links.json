@@ -1,9 +1,26 @@
 [
-  { "url": "https://golang.org/pkg/time/#Time", "description": "time" },
-  { "url": "https://golang.org/pkg/time/#Now", "description": "now" },
-  { "url": "https://golang.org/pkg/time/#Parse", "description": "parse" },
+  {
+    "url": "https://gobyexample.com/time",
+    "description": "Go by Example: Time"
+  },
   {
     "url": "https://www.pauladamsmith.com/blog/2011/05/go_time.html",
-    "description": "article"
+    "description": "Blog Post: Parsing and formating dates/time in Go"
+  },
+  {
+    "url": "https://golang.org/pkg/time",
+    "description": "Go packages: time package"
+  },
+  {
+    "url": "https://golang.org/pkg/time/#Time",
+    "description": "Go packages: time.Time type"
+  },
+  {
+    "url": "https://golang.org/pkg/time/#Now",
+    "description": "Go packages: time.Now function"
+  },
+  {
+    "url": "https://golang.org/pkg/time/#Parse",
+    "description": "Go packages: time.Parse function"
   }
 ]

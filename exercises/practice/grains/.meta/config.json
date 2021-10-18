@@ -26,11 +26,13 @@
       "grains.go"
     ],
     "test": [
-      "grains_test.go",
-      "cases_test.go"
+      "grains_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "JavaRanch Cattle Drive, exercise 6",

@@ -3,7 +3,7 @@
 //
 // 1. Implement the type Matrix
 //
-// 2. Write a method with signature: New(s string) (Matrix, error)
+// 2. Write a method with signature: New(s string) (*Matrix, error)
 //
 // 3. Decorate the Matrix type, with three methods:
 //      - Cols() [][]int

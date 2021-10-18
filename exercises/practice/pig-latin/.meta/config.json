@@ -20,11 +20,13 @@
       "pig_latin.go"
     ],
     "test": [
-      "pig_latin_test.go",
-      "cases_test.go"
+      "pig_latin_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "The Pig Latin exercise at Test First Teaching by Ultrasaurus",

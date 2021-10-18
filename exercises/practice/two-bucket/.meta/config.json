@@ -16,11 +16,13 @@
       "two_bucket.go"
     ],
     "test": [
-      "two_bucket_test.go",
-      "cases_test.go"
+      "two_bucket_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Water Pouring Problem",

@@ -1,6 +1,14 @@
 [
   {
+    "url": "https://tour.golang.org/basics/11",
+    "description": "A Tour of Go: Basic Types"
+  },
+  {
     "url": "https://tour.golang.org/basics/13",
-    "description": "type-conversion"
+    "description": "A Tour of Go: Type Conversion"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Numeric_types",
+    "description": "Go Language Spec: Numeric types"
   }
 ]

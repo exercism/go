@@ -3,8 +3,8 @@
   "authors": ["bobtfish"],
   "contributors": [],
   "files": {
-    "solution": ["lasagna-master.go"],
-    "test": ["lasagna-master_test.go"],
+    "solution": ["lasagna_master.go"],
+    "test": ["lasagna_master_test.go"],
     "exemplar": [".meta/exemplar.go"]
   },
   "forked_from": ["javascript/lasagna-master"]

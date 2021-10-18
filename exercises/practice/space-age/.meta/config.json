@@ -21,11 +21,13 @@
       "space_age.go"
     ],
     "test": [
-      "space_age_test.go",
-      "cases_test.go"
+      "space_age_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial.",

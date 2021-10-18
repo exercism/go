@@ -21,11 +21,13 @@
       "largest_series_product.go"
     ],
     "test": [
-      "largest_series_product_test.go",
-      "cases_test.go"
+      "largest_series_product_test.go"
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "A variation on Problem 8 at Project Euler",
