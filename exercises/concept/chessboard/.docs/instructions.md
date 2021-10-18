@@ -23,7 +23,7 @@ H # # # # # # _ # H
 
 Implement the `CountInRank(board Chessboard, rank string) int` function.
 It should count the total number of occupied squares by ranging over a map. Return an integer.
-Return a count of zero (`0`) if the given rank is not a valid one (not between  `"A"` and `"H"`, inclusive).
+Return a count of zero (`0`) if the given rank cannot be found in the map.
 
 ```go
 CountInRank(board, "A")

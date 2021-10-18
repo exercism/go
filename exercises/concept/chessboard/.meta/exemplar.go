@@ -8,7 +8,7 @@ type Chessboard map[string]Rank
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
-func CountInRank(cb Chessboard, rank string) (ret int) {
+func CountInRank(cb Chessboard, rank string) int {
 	count := 0
 	for _, r := range cb[rank] {
 		if r {
