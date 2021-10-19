@@ -61,7 +61,7 @@ To print the Unicode code point represented by the rune, use the `%U` formatting
 
 ```go
 myRune := '¿'
-fmt.Printf("myRune Unicdoe code point: %U\n", myRune)
+fmt.Printf("myRune Unicode code point: %U\n", myRune)
 // Output: myRune Unicode code point: U+00BF
 ```
 
