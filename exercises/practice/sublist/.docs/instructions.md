@@ -10,9 +10,9 @@ that's completely equal to A.
 
 Examples:
 
- * A = [1, 2, 3], B = [1, 2, 3, 4, 5], A is a sublist of B
- * A = [3, 4, 5], B = [1, 2, 3, 4, 5], A is a sublist of B
- * A = [3, 4], B = [1, 2, 3, 4, 5], A is a sublist of B
- * A = [1, 2, 3], B = [1, 2, 3], A is equal to B
- * A = [1, 2, 3, 4, 5], B = [2, 3, 4], A is a superlist of B
- * A = [1, 2, 4], B = [1, 2, 3, 4, 5], A is not a superlist of, sublist of or equal to B
+* A = [1, 2, 3], B = [1, 2, 3, 4, 5], A is a sublist of B
+* A = [3, 4, 5], B = [1, 2, 3, 4, 5], A is a sublist of B
+* A = [3, 4], B = [1, 2, 3, 4, 5], A is a sublist of B
+* A = [1, 2, 3], B = [1, 2, 3], A is equal to B
+* A = [1, 2, 3, 4, 5], B = [2, 3, 4], A is a superlist of B
+* A = [1, 2, 4], B = [1, 2, 3, 4, 5], A is not a superlist of, sublist of or equal to B
