@@ -15,7 +15,7 @@ Cipher: zyxwvutsrqponmlkjihgfedcba
 ```
 
 It is a very weak cipher because it only has one possible key, and it is
-a simple monoalphabetic substitution cipher. However, this may not have
+a simple mono-alphabetic substitution cipher. However, this may not have
 been an issue in the cipher's time.
 
 Ciphertext is written out in groups of fixed length, the traditional group size
