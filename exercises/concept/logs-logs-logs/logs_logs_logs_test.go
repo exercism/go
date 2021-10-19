@@ -55,21 +55,21 @@ func TestReplace(t *testing.T) {
 		want    string
 	}{
 		{
-			name:    "single occurance of replacement",
+			name:    "single occurrence of replacement",
 			log:     "❗ recommended product",
 			oldChar: '❗',
 			newChar: '?',
 			want:    "? recommended product",
 		},
 		{
-			name:    "multiple occurances of replacement",
+			name:    "multiple occurrences of replacement",
 			log:     "❗ recommended product ❗",
 			oldChar: '❗',
 			newChar: '?',
 			want:    "? recommended product ?",
 		},
 		{
-			name:    "no occurances of replacement",
+			name:    "no occurrences of replacement",
 			log:     "❗ recommended product ❗",
 			oldChar: '?',
 			newChar: '?',
