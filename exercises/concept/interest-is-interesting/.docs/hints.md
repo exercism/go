@@ -8,7 +8,8 @@
 ## 2. Calculate the interest
 
 - When calculating interest, it might be helpful to notice that `InterestRate` returns a percentage.
-  One could use arithmetic here, or one of the methods in the [`math` package](https://pkg.go.dev/math).
+- You can use the function defined in the previous task (`InterestRate`) to calculate the interest.
+- You might need to convert the result `InterestRate` to a `float64`.
 
 ## 3. Calculate the annual balance update
 
