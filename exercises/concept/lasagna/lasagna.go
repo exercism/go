@@ -3,7 +3,7 @@ package lasagna
 // TODO: define the 'OvenTime' constant
 
 // RemainingOvenTime returns the remaining minutes based on the `actual` minutes already in the oven.
-func RemainingOvenTime(t int) int {
+func RemainingOvenTime(actualMinutesInOven int) int {
 	panic("RemainingOvenTime not implemented")
 }
 
