@@ -2,7 +2,7 @@ package chessboard
 
 // Declare a type named Rank which stores if a square is occupied by a piece - this will be a slice of bools
 
-// Declare a type named Chessboard contains a map of eight Ranks, accessed with values from 1 to 8
+// Declare a type named Chessboard contains a map of eight Ranks, accessed with values from A to H
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank
