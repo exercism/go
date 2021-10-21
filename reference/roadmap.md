@@ -45,7 +45,41 @@ This document provides an overview of the main topics that contributors and main
 - `string-formatting`
 - `packages` (import/export)
 - `time`
+- `time-duration`
+- `integer-types`
 
 ### Potential Future Concepts
 
-- ...
+- `bytes`
+- `bitwise-operators`
+- `goroutines`
+- `waitgroups`
+- `mutexes`
+- `channels` and `select`
+- `closures`/`anonymous-functions`/`higher-order-functions`
+- `rest-and-spread` (introduces the `...` operator)
+- `JSON`
+- `panic-recover`
+- `defer`
+- `randomness`
+- `regular-expressions`
+- `stringers`
+- `Buffer`, `io.Reader`/`io.Writer`
+- error wrapping (errors.Is, errors.As) and custom errors
+- `generics` (once they become available)
+- `context`
+- time helpers (ticket, sleep, etc.)
+- `reflection`
+- `unsafe`
+- `init`
+- functional patterns
+- embedding files
+
+Additional topics that might be out of scope for Exercism:
+
+- tooling (go fmt, go vet, go doc etc.)
+- writing tests and examples
+- benchmarking
+- profiling
+- go generate
+- compiler options
