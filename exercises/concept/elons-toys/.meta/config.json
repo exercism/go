@@ -14,6 +14,9 @@
     "solution": [
       "elons_toys.go"
     ],
+    "editor": [
+      "car.go"
+    ],
     "test": [
       "elons_toys_test.go"
     ],
