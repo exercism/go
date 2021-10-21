@@ -2,15 +2,6 @@ package elon
 
 import "fmt"
 
-// Car implements a remote controlled car.
-type Car struct {
-	speed        int
-	batteryDrain int
-
-	battery  int
-	distance int
-}
-
 // Drive drives the car one time. If there is not enough battry to drive on more time,
 // the car will not move but use the leftover battery.
 func (car *Car) Drive() {
