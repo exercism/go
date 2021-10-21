@@ -29,7 +29,7 @@ This document provides an overview of the main topics that contributors and main
 - `structs`
 - `type-definitions`
 - `slices`
-- `interation` (for loop)
+- `iteration` (for loop)
 - `functions` (incl. multiple return values)
 - `maps`
 - `range-iteration`
