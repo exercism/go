@@ -94,7 +94,7 @@ func intToMultiBaseString(id int, digitSpec []string) string {
 	return result
 }
 
-// getUniqueID returns a random unused ID and panics if none are left.
+// getUniqueID returns a random unused ID and returns an error if none are left.
 func getUniqueID() (int, error) {
 	numAvailable := len(availableIDs)
 	if numAvailable == 0 {
@@ -112,7 +112,7 @@ func getUniqueID() (int, error) {
 	return uniqueID, nil
 }
 
-// generateUniqueName panics if there are no valid unique names left, returns a
+// generateUniqueName returns an error if there are no valid unique names left, returns a
 // valid unique name otherwise.
 func generateUniqueName() (string, error) {
 	id, err := getUniqueID()
