@@ -14,3 +14,6 @@ respond with a new random name.
 The names must be random: they should not follow a predictable sequence.
 Using random names means a risk of collisions. Your solution must ensure that
 every existing robot has a unique name.
+
+It is possible to run out of robot names - once every possible robot name has
+been allocated then an error shoulr be returned.
