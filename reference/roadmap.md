@@ -47,6 +47,7 @@ This document provides an overview of the main topics that contributors and main
 - `time`
 - `time-duration`
 - `integer-types`
+- `panic-recover`
 
 ### Potential Future Concepts
 
@@ -59,7 +60,6 @@ This document provides an overview of the main topics that contributors and main
 - `closures`/`anonymous-functions`/`higher-order-functions`
 - `rest-and-spread` (introduces the `...` operator)
 - `JSON`
-- `panic-recover`
 - `defer`
 - `randomness`
 - `regular-expressions`
@@ -72,10 +72,10 @@ This document provides an overview of the main topics that contributors and main
 - `reflection`
 - `unsafe`
 - `init`
-- functional patterns
+- functional options pattern
 - embedding files
 
-Additional topics that might be out of scope for Exercism:
+Additional topics that might be out of scope for concept exercises:
 
 - tooling (go fmt, go vet, go doc etc.)
 - writing tests and examples
