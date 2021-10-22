@@ -13,6 +13,7 @@ This document provides an overview of the main topics that contributors and main
 - Add analyzer comments for all existing concept exercises
 - Add more mentor notes for practice exercises
 - Improve/update/proof-read various documentation (contributing guidelines, docs, exercises/shared, reference folder)
+- Sync tests with [problem specs](https://github.com/exercism/problem-specifications)
 
 ## Syllabus Overview
 
