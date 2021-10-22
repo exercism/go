@@ -40,14 +40,31 @@ func TestResetName(t *testing.T) {
 	}
 }
 
-// Note if you go for bonus points, this benchmark likely won't be
-// meaningful.  Bonus thought exercise, why won't it be meaningful?
-func BenchmarkName(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
+var maxNames = 26 * 26 * 10 * 10 * 10
+
+func TestCollisions(t *testing.T) {
+	var name string
+	// Test uniqueness for new robots.
+	for i := len(seen); i <= maxNames-600000; i++ {
+		name = New().getName(t, false)
+		if len(name) != 5 {
+			t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", name, len(name))
+		}
 	}
-	// Benchmark combined time to create robot and name.
-	for i := 0; i < b.N; i++ {
-		New().getName(b, false)
+
+	// Test that names aren't recycled either.
+	r := New()
+	for i := len(seen); i < maxNames; i++ {
+		r.Reset()
+		name = r.getName(t, false)
+		if len(name) != 5 {
+			t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", name, len(name))
+		}
+	}
+
+	// Test that name exhaustion is handled more or less correctly.
+	_, err := New().Name()
+	if err == nil {
+		t.Fatalf("should return error if namespace is exhausted")
 	}
 }
