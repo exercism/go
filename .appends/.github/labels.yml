@@ -3,14 +3,6 @@
 # https://github.com/exercism/org-wide-files/blob/main/global-files/.github/labels.yml.     #
 # ----------------------------------------------------------------------------------------- #
 
-- name: "README/discrepancy"
-  description: ""
-  color: "d93f0b"
-
-- name: "README/inadequate"
-  description: ""
-  color: "d93f0b"
-
 - name: "action/stale"
   description: "Applied (and removed) automatically by the stale workflow to indicate an issue or pull request is stale"
   color: "d93f0b"
@@ -23,12 +15,8 @@
   description: "This pull request is waiting on the contributor."
   color: "4231af"
 
-- name: "status/future"
-  description: "This pull request needs to be reconsidered at some point in the future."
-  color: "4231af"
-
 - name: "bug"
-  description: ""
+  description: "Marks that something is broken and needs to be fixed."
   color: "fc2929"
 
 - name: "dependencies"
@@ -47,17 +35,9 @@
   description: ""
   color: "7057ff"
 
-- name: "hacktoberfest"
-  description: ""
-  color: "cc8744"
-
 - name: "help wanted"
   description: ""
   color: "5319e7"
-
-- name: "in-progress"
-  description: ""
-  color: "9FDB12"
 
 - name: "invalid"
   description: ""
@@ -72,7 +52,11 @@
   color: "0052cc"
 
 - name: "pinned"
-  description: ""
+  description: "Shown at the top of the issue page"
+  color: "fef2c0"
+
+- name: "discussion"
+  description: "This is a topic for a longer discussion. The issue can stay open for a while."
   color: "fef2c0"
 
 - name: "problem-spec"
@@ -83,18 +67,14 @@
   description: ""
   color: "cc317c"
 
-- name: "test suite"
-  description: ""
-  color: "f9d0c4"
-
-- name: "v3"
-  description: ""
-  color: "13B0D1"
-
 - name: "wontfix"
   description: ""
   color: "ffffff"
 
-- name: "september-sprint"
-  description: "Part of the September sprint to get the Go track in great shape"
-  color: "0846af"
+- name: "abandoned"
+  description: "The creator of this issue or PR does not respond anymore."
+  color: "c7c5c5"
+
+- name: "chore"
+  description: "Some cleanup/house-keeping needs to be done here."
+  color: "495747"
