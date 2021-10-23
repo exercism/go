@@ -61,6 +61,31 @@ var successTestCases = []struct {
 		},
 	},
 	{
+		name: "three levels of nesting",
+		input: []Record{
+			{ID: 2, Parent: 1},
+			{ID: 1, Parent: 0},
+			{ID: 3, Parent: 2},
+			{ID: 0},
+		},
+		expected: &Node{
+			ID: 0,
+			Children: []*Node{
+				{
+					ID: 1,
+					Children: []*Node{
+						{
+							ID: 2,
+							Children: []*Node{
+								{ID: 3},
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	{
 		name: "more than two children",
 		input: []Record{
 			{ID: 3, Parent: 0},
