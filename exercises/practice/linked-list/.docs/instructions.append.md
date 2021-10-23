@@ -8,10 +8,8 @@ offers functions for adding and removing items.
 Your `Node` should have the following fields and functions:
 
 * `Val`: the node's value (we will use `interface{}`).
-* `Next()`: pointer to the next node.
-* `Prev()`: pointer to the previous node.
-* `First()`: pointer to the first node (head).
-* `Last()`: pointer to the last node (tail).
+* `Next() *Node`: pointer to the next node.
+* `Prev() *Node`: pointer to the previous node.
 
 You should have a function `NewList()` that creates and returns a `List`:
 
