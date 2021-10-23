@@ -1,0 +1,29 @@
+{
+  "blurb": "Implement encoding and decoding for the rail fence cipher.",
+  "authors": [
+    "ferhatelmas"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "rail_fence_cipher.go"
+    ],
+    "test": [
+      "rail_fence_cipher_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://tour.golang.org/moretypes/16",
+    "description": "A Tour of Go: Range"
+  },
+  {
+    "url": "https://gobyexample.com/range",
+    "description": "Go by Example: Range"
+  },
+  {
+    "url": "https://golang.org/ref/spec#For_range",
+    "description": "Go Language Spec: For statements with range clause"
+  }
+]

@@ -1,0 +1,30 @@
+run:
+  timeout: 5m
+linters:
+  disable-all: true
+  enable:
+    - goconst
+    - gocritic
+    - gocyclo
+    - goimports
+    - gofmt
+    - gosimple
+    - govet
+    - staticcheck
+linters-settings:
+  gocritic:
+    disabled-checks:
+      - yodaStyleExpr
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+      - experimental
+      - opinionated
+    settings:
+      hugeParam:
+        sizeThreshold: 384
+      rangeValCopy:
+        sizeThreshold: 384
+  gofmt:
+    simplify: true

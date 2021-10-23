@@ -1,0 +1,34 @@
+{
+  "blurb": "A data structure that uses a single, fixed-size buffer as if it were connected end-to-end.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "dchapes",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "manavo",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "circular_buffer.go"
+    ],
+    "test": [
+      "circular_buffer_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "http://en.wikipedia.org/wiki/Circular_buffer"
+}

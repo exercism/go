@@ -23,11 +23,12 @@ func classifyByProperty(group interface{}) error {
 	for i := 0; i < t.NumField(); i++ {
 		tag := t.Field(i).Tag.Get(tagName)
 		field := e.Field(i)
-		if tag == "RAW" {
+		switch {
+		case tag == "RAW":
 			raws = field.Interface().([]json.RawMessage)
-		} else if tag != "" {
+		case tag != "":
 			properties[tag] = field
-		} else {
+		default:
 			switch field.Kind() {
 			case reflect.Slice:
 				elem := field.Type().Elem()

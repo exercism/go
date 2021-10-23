@@ -1,0 +1,35 @@
+{
+  "blurb": "Insert and search for numbers in a binary tree.",
+  "authors": [
+    "zilkey"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "jcbwlkr",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "sjakobi",
+    "tapank",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "binary_search_tree.go"
+    ],
+    "test": [
+      "binary_search_tree_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Josh Cheek",
+  "source_url": "https://twitter.com/josh_cheek"
+}

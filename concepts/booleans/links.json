@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://golangdocs.com/booleans-in-golang",
+    "description": "Article: Booleans in Golang"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Logical_operators",
+    "description": "Go Language Spec: Logical Operators"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Operators",
+    "description": "Go Language Spec: Operators"
+  }
+]

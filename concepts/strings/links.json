@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://golangbot.com/strings/",
+    "description": "Article: Introduction to Strings in Go"
+  },
+  {
+    "url": "https://go101.org/article/string.html",
+    "description": "Article: Strings in Go"
+  },
+  {
+    "url": "https://pkg.go.dev/strings",
+    "description": "Go Packages: strings package"
+  },
+  {
+    "url": "https://gobyexample.com/string-functions",
+    "description": "Go by Example: String Functions"
+  }
+]

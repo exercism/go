@@ -1,0 +1,28 @@
+{
+  "blurb": "Write a function to determine if a list is a sublist of another list.",
+  "authors": [
+    "ferhatelmas"
+  ],
+  "contributors": [
+    "andreybutko",
+    "bitfield",
+    "ekingery",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "sublist.go"
+    ],
+    "test": [
+      "sublist_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  }
+}

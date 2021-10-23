@@ -1,0 +1,38 @@
+{
+  "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "leenipper",
+    "loslch",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tompao",
+    "turnkey-commerce"
+  ],
+  "files": {
+    "solution": [
+      "word_count.go"
+    ],
+    "test": [
+      "word_count_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour."
+}

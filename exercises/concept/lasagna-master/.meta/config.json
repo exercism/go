@@ -1,0 +1,11 @@
+{
+  "blurb": "Dive deeper into Go functions while preparing to cook the perfect lasagna.",
+  "authors": ["bobtfish"],
+  "contributors": [],
+  "files": {
+    "solution": ["lasagna_master.go"],
+    "test": ["lasagna_master_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  },
+  "forked_from": ["javascript/lasagna-master"]
+}

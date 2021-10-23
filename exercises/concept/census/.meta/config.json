@@ -1,0 +1,21 @@
+{
+  "blurb": "Learn about zero values.",
+  "authors": [
+    "jamessouth",
+    "sudomateo"
+  ],
+  "contributors": [
+    "tehsphinx"
+  ],
+  "files": {
+    "solution": [
+      "census.go"
+    ],
+    "test": [
+      "census_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

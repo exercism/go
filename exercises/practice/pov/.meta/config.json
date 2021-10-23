@@ -1,0 +1,33 @@
+{
+  "blurb": "Reparent a graph on a selected node",
+  "authors": [
+    "skeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "pov.go"
+    ],
+    "test": [
+      "pov_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Adaptation of exercise from 4clojure",
+  "source_url": "https://www.4clojure.com/"
+}

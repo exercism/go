@@ -1,0 +1,39 @@
+{
+  "blurb": "Given a word, compute the Scrabble score for that word.",
+  "authors": [
+    "nathany"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "HaraldNordgren",
+    "hilary",
+    "ilmanzo",
+    "kotp",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "sjakobi",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "scrabble_score.go"
+    ],
+    "test": [
+      "scrabble_score_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "Inspired by the Extreme Startup game",
+  "source_url": "https://github.com/rchatley/extreme_startup"
+}

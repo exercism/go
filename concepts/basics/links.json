@@ -1,0 +1,34 @@
+[
+  {
+    "url": "https://golang.org/doc/#getting-started",
+    "description": "Official \"Getting Started\" Docs"
+  },
+  {
+    "url": "https://tour.golang.org/",
+    "description": "A Tour of Go"
+  },
+  {
+    "url": "https://gobyexample.com/",
+    "description": "Go by Example"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go.html",
+    "description": "Effective Go"
+  },
+  {
+    "url": "https://play.golang.org/",
+    "description": "Go Playground"
+  },
+  {
+    "url": "https://pkg.go.dev/",
+    "description": "Go Packages"
+  },
+  {
+    "url": "https://github.com/avelino/awesome-go",
+    "description": "Awesome Go"
+  },
+  {
+    "url": "https://golang.org/ref/spec",
+    "description": "Go Language Specification"
+  }
+]

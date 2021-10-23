@@ -1,0 +1,14 @@
+[
+    {
+      "url": "https://www.tutorialspoint.com/go/go_arithmetic_operators.htm",
+      "description": "Go - Arithmetic Operators"
+    },
+    {
+      "url": "https://golang.org/ref/spec#Arithmetic_operators",
+      "description": "Go Language Spec: Arithmetic operators"
+    },
+    {
+      "url": "https://golang.org/ref/spec#IncDec_statements",
+      "description": "Go Language Spec: IncDec statements"
+    }
+]

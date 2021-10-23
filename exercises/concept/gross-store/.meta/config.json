@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about maps by selling items by the dozen at the Gross Store.",
+  "authors": [
+    "chocopowwwa"
+  ],
+  "contributors": [
+    "MiroslavGatsanoga"
+  ],
+  "files": {
+    "solution": [
+      "gross_store.go"
+    ],
+    "test": [
+      "gross_store_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

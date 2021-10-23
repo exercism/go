@@ -1,0 +1,27 @@
+{
+  "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
+  "authors": [
+    "magic003"
+  ],
+  "contributors": [
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "rotational_cipher.go"
+    ],
+    "test": [
+      "rotational_cipher_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Caesar_cipher"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://golang.org/doc/effective_go#commentary",
+    "description": "Effective Go: Commentary"
+  },
+  {
+    "url": "https://dave.cheney.net/practical-go/presentations/qcon-china.html#_dont_comment_bad_code_rewrite_it",
+    "description": "Blog Post: Don’t comment bad code, rewrite it"
+  },
+  {
+    "url": "https://pkg.go.dev/cmd/go#hdr-Show_documentation_for_package_or_symbol",
+    "description": "Go tools: godoc"
+  },
+  {
+    "url": "https://github.com/golang/lint",
+    "description": "Go tools: golint"
+  }
+]

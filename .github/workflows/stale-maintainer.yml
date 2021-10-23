@@ -1,0 +1,48 @@
+# This workflow warns for stale PRs that are waiting for action from the maintainer(s).
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: Stale PRs awaiting maintainer
+
+on:
+  schedule:
+  - cron: '41 3 * * *'
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/stale@v4
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        # Ignore issues
+        days-before-issue-stale: -1
+        days-before-issue-close: -1
+        # Mark PRs as stale every month, never close.
+        days-before-pr-stale: 30
+        days-before-pr-close: -1
+
+        # Milestones on an issue or a PR exempted from being marked as stale.
+        exempt-milestones: true
+        # Exempt all issues with milestones from being marked as stale.
+        exempt-all-issue-milestones: true
+        # PRs with status/future should be ignored.
+        exempt-pr-labels: 'status/future,status/awaiting-contributor'
+        # Exempt drafts because they can be open for some time during development.
+        exempt-draft-pr: true
+
+        stale-pr-label: 'action/stale'
+        stale-pr-message: >
+          Hello maintainer!
+          
+          This pull request has been automatically marked as `stale` because it
+          has not had recent activity. Please update the PR when you are able.
+
+          If this pull request is waiting on the contributor, please apply the
+          `status/awaiting-contributor` label.

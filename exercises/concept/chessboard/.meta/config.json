@@ -1,0 +1,22 @@
+{
+  "blurb": "Learn about iterating ranges by generating a chessboard.",
+  "authors": [
+    "brugnara",
+    "tehsphinx"
+  ],
+  "contributors": [],
+  "forked_from": [
+    "elixir/chessboard"
+  ],
+  "files": {
+    "solution": [
+      "chessboard.go"
+    ],
+    "test": [
+      "chessboard_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://pkg.go.dev/strings",
+    "description": "Go Packages: strings package"
+  },
+  {
+    "url": "https://gobyexample.com/string-functions",
+    "description": "Go by Example: String Functions"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "blurb": "Given a number, find the sum of all the multiples of particular numbers up to but not including that number.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "duffn",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "sum_of_multiples.go"
+    ],
+    "test": [
+      "sum_of_multiples_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "A variation on Problem 1 at Project Euler",
+  "source_url": "http://projecteuler.net/problem=1"
+}

@@ -1,0 +1,31 @@
+{
+  "blurb": "Score a single throw of dice in the game Yacht",
+  "authors": [
+    "zeimusu"
+  ],
+  "contributors": [
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "leenipper",
+    "sebito91"
+  ],
+  "files": {
+    "solution": [
+      "yacht.go"
+    ],
+    "test": [
+      "yacht_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "James Kilfiger, using wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Yacht_(dice_game)"
+}
