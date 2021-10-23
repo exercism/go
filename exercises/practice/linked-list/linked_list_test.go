@@ -11,7 +11,7 @@
 // func (l *List) PushBack(v interface{})
 // func (l *List) PopFront() (interface{}, error)
 // func (l *List) PopBack() (interface{}, error)
-// func (l *List) Reverse() *List
+// func (l *List) Reverse()
 // func (l *List) First() *Node
 // func (l *List) Last() *Node
 package linkedlist
