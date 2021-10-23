@@ -18,5 +18,9 @@
   {
     "url": "https://golang.org/ref/spec#Slice_types",
     "description": "Go Language Spec: Slice Types"
-  }
+  },
+  {
+  "url": "https://ueokande.github.io/go-slice-tricks/",
+  "description": "Go Slice Tricks Cheat Sheet"
+  } 
 ]
