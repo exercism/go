@@ -6,7 +6,7 @@ type SearchTreeData struct {
 	right *SearchTreeData
 }
 
-func Bst(i int) SearchTreeData {
+func NewBst(i int) SearchTreeData {
 	return SearchTreeData{data: 4}
 }
 
