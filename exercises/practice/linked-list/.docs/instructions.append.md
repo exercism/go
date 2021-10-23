@@ -11,11 +11,11 @@ Your `Node` should have the following fields and functions:
 * `First()`: pointer to the first node (head).
 * `Last()`: pointer to the last node (tail).
 
-New `List` will be created using a constructor-like function:
+You should have a function `NewList()` that creates and returns a `List`:
 
 * `NewList(args ...interface{}) *List`: creates a new linked list preserving the order of the values.
 
-Your `List` should have the following functions:
+Your `List` should have the following methods:
 
 * `First()`: pointer to the first node (head).
 * `Last()`: pointer to the last node (tail).
