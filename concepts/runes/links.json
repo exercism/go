@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://go.dev/blog/strings",
+    "description": "Go Dev Blog: Strings, bytes, runes and characters in Go."
+  },
+  {
+    "url": "https://golangdocs.com/rune-in-golang",
+    "description": "Article: What is rune in GoLang?"
+  },
+  {
+    "url": "https://wikipedia.org/wiki/Unicode",
+    "description": "Wikipedia: Unicode."
+  },
+  {
+    "url": "https://wikipedia.org/wiki/UTF-8",
+    "description": "Wikipedia: UTF-8."
+  },
+  {
+    "url": "https://wikipedia.org/wiki/List_of_Unicode_characters",
+    "description": "Wikipedia: List of Unicode characters."
+  }
+]

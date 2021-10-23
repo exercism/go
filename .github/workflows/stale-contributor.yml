@@ -1,0 +1,60 @@
+# This workflow warns then closes stale PRs that are waiting for action from the contributor.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: Stale PRs awaiting contributor
+
+on:
+  schedule:
+  - cron: '47 3 * * *'
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/stale@v4
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        # Ignore issues
+        days-before-issue-stale: -1
+        days-before-issue-close: -1
+        # Mark PRs as stale every month, close after 7 days.
+        days-before-pr-stale: 30
+        days-before-pr-close: 7
+
+        # Milestones on an issue or a PR exempted from being marked as stale.
+        exempt-milestones: true
+        # Exempt all issues with milestones from being marked as stale.
+        exempt-all-issue-milestones: true
+        # PRs with status/future should be ignored.
+        exempt-pr-labels: 'status/future,status/awaiting-maintainer'
+        # Exempt drafts because they can be open for some time during development.
+        exempt-draft-pr: true
+
+        only-labels: 'status/awaiting-contributor'
+
+        stale-pr-label: 'action/stale'
+        stale-pr-message: >
+          Hello contributor and thank you for your contribution!
+          
+          This pull request has been automatically marked as `stale` because it
+          has not had recent activity. Please update the PR when you are able.
+
+          If this pull request is waiting on the maintainer, please apply the
+          `status/awaiting-maintainer` label (and remove the
+          `status/awaiting-contributor` label).
+
+          If no action is taken in the next week, this pull request will be
+          automatically closed.
+        close-pr-message: >
+          Hello contributor!
+
+          No action has been taken since this pull request was marked stale so
+          it will now be closed. If you are still working on this, please reopen
+          this pull request.

@@ -1,0 +1,5 @@
+{
+  "blurb": "A string in Go is an immutable sequence of bytes, which don't necessarily have to represent characters.",
+  "authors": ["tehsphinx", "erikschierboom"],
+  "contributors": []
+}

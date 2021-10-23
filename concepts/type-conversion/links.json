@@ -1,0 +1,10 @@
+[
+    {
+        "url": "https://tour.golang.org/basics/13",
+        "description": "A Tour of Go: Type Conversions"
+    },
+    {
+        "url": "https://golangdocs.com/type-casting-in-golang",
+        "description": "GoDocs: Type-casting in GoLang"
+    }
+]

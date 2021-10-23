@@ -1,0 +1,25 @@
+{
+  "blurb": "Learn about packages, functions, and variables by helping Gopher cook lasagna.",
+  "authors": [
+    "tehsphinx"
+  ],
+  "contributors": [
+    "ekingery",
+    "andrerfcsantos",
+    "bobtfish"
+  ],
+  "forked_from": [
+    "csharp/lucians-luscious-lasagna"
+  ],
+  "files": {
+    "solution": [
+      "lasagna.go"
+    ],
+    "test": [
+      "lasagna_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

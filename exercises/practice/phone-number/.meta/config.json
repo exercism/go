@@ -1,0 +1,42 @@
+{
+  "blurb": "Clean up user-entered phone numbers so that they can be sent SMS messages.",
+  "authors": [
+    "mikegehard"
+  ],
+  "contributors": [
+    "Akasurde",
+    "alebaffa",
+    "bitfield",
+    "da-edra",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "johngb",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "strangeman",
+    "tleen",
+    "tompao"
+  ],
+  "files": {
+    "solution": [
+      "phone_number.go"
+    ],
+    "test": [
+      "phone_number_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "Event Manager by JumpstartLab",
+  "source_url": "http://tutorials.jumpstartlab.com/projects/eventmanager.html"
+}

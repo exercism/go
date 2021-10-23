@@ -1,0 +1,32 @@
+{
+  "blurb": "Detect palindrome products in a given range.",
+  "authors": [
+    "soniakeys"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "palindrome_products.go"
+    ],
+    "test": [
+      "palindrome_products_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "source": "Problem 4 at Project Euler",
+  "source_url": "http://projecteuler.net/problem=4"
+}

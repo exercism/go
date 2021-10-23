@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://golangdocs.com/floating-point-numbers-in-golang",
+    "description": "Article: Floating-Point Numbers in GoLang"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Floating-point_literals",
+    "description": "Go Language Spec: Floating-point literals"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Numeric_types",
+    "description": "Go Language Spec: Numeric Types"
+  }
+]

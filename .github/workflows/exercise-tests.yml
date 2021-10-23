@@ -1,0 +1,43 @@
+name: Exercise tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Go ${{ matrix.go-version }} - ${{ matrix.os }} - ${{ github.event_name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        go-version: [1.14.x, 1.15.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        test-arch: [amd64]
+        race: ['-race']
+
+        include:
+          - test-arch: '386'
+            os: ubuntu-latest
+            race: ''
+          - test-arch: '386'
+            os: windows-latest
+            race: ''
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Lint and Test exercises
+        env:
+          GOARCH: ${{ matrix.test-arch }}
+        run: |
+          ./bin/fetch-golangci-lint
+          ./bin/test-without-stubs

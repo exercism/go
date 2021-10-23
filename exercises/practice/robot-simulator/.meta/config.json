@@ -1,0 +1,35 @@
+{
+  "blurb": "Write a robot simulator.",
+  "authors": [],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "jbsmith7741",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "pminten",
+    "robphoenix",
+    "sebito91",
+    "soniakeys",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "robot_simulator.go"
+    ],
+    "test": [
+      "robot_simulator_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "defs.go"
+    ]
+  },
+  "source": "Inspired by an interview question at a famous company."
+}

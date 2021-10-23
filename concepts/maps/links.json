@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://tour.golang.org/moretypes/19",
+    "description": "A Tour of Go: Maps"
+  },
+  {
+    "url": "https://gobyexample.com/maps",
+    "description": "Go by Example: Maps"
+  },
+  {
+    "url": "https://go.dev/blog/maps",
+    "description": "Go Dev Blog: Go maps in action"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go#maps",
+    "description": "Effective Go: Maps"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Map_types",
+    "description": "Go Language Spec: Map Types"
+  }
+]

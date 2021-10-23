@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://tour.golang.org/basics/4",
+    "description": "A Tour of Go: Functions"
+  },
+  {
+    "url": "https://gobyexample.com/functions",
+    "description": "Go by Example: Functions"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Return_statements",
+    "description": "Go Language Spec: Return Statements"
+  }
+]

@@ -1,0 +1,24 @@
+# This is an auto-generated file. Regular comments will be removed when this
+# file is regenerated. Regenerating will not touch any manually added keys,
+# so comments can be added in a "comment" key.
+
+[924fc966-a8f5-4288-82f2-6b9224819ccd]
+description = "no factors"
+
+[17e30670-b105-4305-af53-ddde182cb6ad]
+description = "prime number"
+
+[f59b8350-a180-495a-8fb1-1712fbee1158]
+description = "square of a prime"
+
+[bc8c113f-9580-4516-8669-c5fc29512ceb]
+description = "cube of a prime"
+
+[00485cd3-a3fe-4fbe-a64a-a4308fc1f870]
+description = "product of primes and non-primes"
+
+[02251d54-3ca1-4a9b-85e1-b38f4b0ccb91]
+description = "product of primes"
+
+[070cf8dc-e202-4285-aa37-8d775c9cd473]
+description = "factors include a large prime"

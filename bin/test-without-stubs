@@ -1,84 +1,86 @@
-#!/bin/sh
+#!/bin/bash
 
-# This file moves all stub files out of the way so that they don't get built,
-# runs the tests, then moves the stub files back.
+# This test suite:
+# (1) moves all go files (and modules) into a tmp directory,
+# (2) overwrites the stub with the exemplar solution
+# (3) runs the various linters
+# (4) runs the tests
+# (5) then deletes the tmp directory.
 
 # We use this instead of build constraints to have less noise in stub files.
 # Newcomers to go might be confused by build constraints
 
-# It's useful to move the stub files back instead of outright deleting them.
-# That way no maintainer will mistakenly commit the deleted files,
-# which could otherwise happen after running tests locally.
-
-for dir in exercises/*/; do
-  stub=$(echo $(basename $dir) | tr - _)
-  file="$dir$stub.go"
-  if [ -f $file ]; then
-    echo "moving stub $file"
-    mv $file "$dir/$stub.notgo"
-  fi
-done
+# We copy everything into a test directory rather than doing this in the actual
+# directories to simplify cleanup and make it far less likely that we will
+# accidentally commit an unintended change to the source files.
+# One downside to this is that the errors generated reference the temporary
+# file locations rather than the real ones, but we deemed this cost acceptable.
 
 root=$(pwd)
+tmp=tmp/lint
+mkdir -p $tmp
+
+for parentdir in concept practice; do
+  for dir in exercises/$parentdir/*/; do
+    stub=$(echo $(basename $dir) | tr - _)
+    if [ -f "${dir}.meta/.skip_tests" ]; then
+      continue
+    fi
+    exemplar="${dir}.meta/exemplar.go"
+    if [ ! -f $exemplar ]; then
+      exemplar="${dir}.meta/example.go"
+    fi
+    if [ ! -f $exemplar ]; then
+      echo "Missing examplar in ${dir}.meta called exemplar.go or example.go"
+      exit 1
+    fi
+    mod="${dir}go.mod"
+    if [ ! -f $mod ]; then
+      echo "Please add a basic go module at $mod, like this:"
+      cat << EOD
+module $stub
+
+go 1.15
+EOD
+      exit 1
+    fi
+
+    if [ -f "${dir}${stub}.go" ] ; then
+      tmpstub=$tmp/$parentdir/$stub
+      mkdir -p $tmpstub
+      echo "copy base files and tests to $tmpstub"
+      cp $dir/*.go $tmpstub
+      echo "copy exemplar $exemplar to $tmpstub"
+      cp $exemplar "${tmpstub}/${stub}.go"
+      echo "copy module $mod to $tmpstub"
+      cp $mod $tmpstub
+      echo "put everything in the same module"
+      original_module=`head -n1 $tmpstub/go.mod | awk '{ print $2 }'`
+      sed -i'.bak' "s|package .*|package ${stub}|" $tmpstub/*.go
+      sed -i'.bak' "s|// Package ${original_module}|// Package ${stub}|" $tmpstub/*.go
+      sed -i'.bak' "s|module .*|module ${stub}|" $tmpstub/go.mod
+    else
+      echo "${dir}${stub}.go not found: expected a file ${dir}${stub}.go since the exercise is in a folder named $stub"
+      exit 1
+    fi
+  done
+done
 
 cleanup () {
-  echo "moving stub files back"
+  echo "deleting ${tmp}"
   # the cd for go fmt or go vet could leave us in an unexpected place.
   # cd to a known place.
   cd "$root"
 
-  # could use `rename` here, but it's not uniform among platforms.
-  # some renames take two arguments while others take a single regex.
-  for file in exercises/*/*.notgo; do
-    dir=$(dirname $file)
-    base=$(basename $file .notgo)
-    mv "$dir/$base.notgo" "$dir/$base.go"
-  done
+  rm -rf $tmp
 }
 
 trap cleanup EXIT INT TERM
 
-if [ "$1" = "fmt" ]; then
-  for dir in exercises/*/; do
-    cd $dir
-    if [ -n "$(go fmt)" ]; then
-      echo "please run 'go fmt' on $dir" >&2
-      exit 1
-    fi
-    cd "$root"
-  done
-  exit 0
-fi
-
-if [ "$1" = "vet" ]; then
-  for dir in exercises/*/; do
-    cd $dir
-    if ! go vet; then
-      echo "please follow the 'go vet' suggestions in $dir" >&2
-      exit 1
-    fi
-    cd "$root"
-  done
-  exit 0
-fi
-
-if [ "$1" = "lint" ]; then
-  # Let $2 (if given) specify the golangci-lint option parameters; otherwise default them.
-  LINT_OPTS="$2"
-  if [ -z "$LINT_OPTS" ] ; then
-    LINT_OPTS="--disable=errcheck,megacheck --enable=goimports,goconst,gocyclo"
-  fi
-  ./bin/golangci-lint --version
-  # Invoke golangci-lint from top directory which will also lint the gen/ directory and all exercises.
-  if ! ./bin/golangci-lint run $LINT_OPTS; then
-    echo "please correct the 'golangci-lint' issues reported." >&2
-    exit 1
-  fi
-  exit 0
-fi
-
 # This is the last command in the file,
 # so the exit status of this script is the exit status of go test.
 # If this ever changes, remember to preserve the exit status accordingly.
-# Otherwise Travis may falsely report a test as passed when it has failed.
-go test -cpu 2 $RACE ./...
+# Otherwise CI may falsely report a test as passed when it has failed.
+# Run lint which is configured by .golangci.yml at the root of the repo
+# and if it's successful, run tests
+bin/golangci-lint run ./$tmp/... && go test -cpu 2 ./$tmp/...

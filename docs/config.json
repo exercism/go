@@ -1,0 +1,32 @@
+{
+  "docs": [
+    {
+      "uuid": "55cd8548-f68d-4de9-b3ca-b9cb48f31e3d",
+      "slug": "installation",
+      "path": "docs/INSTALLATION.md",
+      "title": "Installing Go locally",
+      "blurb": "Learn how to install Go locally to solve Exercism's exercises on your own machine"
+    },
+    {
+      "uuid": "a6eb6a26-6f5f-4e3d-81c1-98ef01c8c5a9",
+      "slug": "learning",
+      "path": "docs/LEARNING.md",
+      "title": "How to learn Go",
+      "blurb": "An overview of how to get started from scratch with Go"
+    },
+    {
+      "uuid": "945d38c5-cc14-4b28-8ab9-e4d487f8996a",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the Go track",
+      "blurb": "Learn how to test your Go exercises on Exercism"
+    },
+    {
+      "uuid": "ecfc606f-cb29-483d-ad38-f3150cafa31e",
+      "slug": "resources",
+      "path": "docs/RESOURCES.md",
+      "title": "Useful Go resources",
+      "blurb": "A collection of useful resources to help you master Go"
+    }
+  ]
+}

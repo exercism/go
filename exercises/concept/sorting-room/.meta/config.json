@@ -1,0 +1,20 @@
+{
+  "blurb": "Learn about type casting and type assertions in the sorting room.",
+  "authors": [
+    "jmrunkle"
+  ],
+  "contributors": [
+    "junedev"
+  ],
+  "files": {
+    "solution": [
+      "sorting_room.go"
+    ],
+    "test": [
+      "sorting_room_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

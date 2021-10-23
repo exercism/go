@@ -1,0 +1,39 @@
+{
+  "blurb": "Implement variable length quantity encoding and decoding.",
+  "authors": [
+    "mattetti"
+  ],
+  "contributors": [
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "ilmanzo",
+    "jbsmith7741",
+    "kytrinyx",
+    "leenipper",
+    "lfritz",
+    "Ngo-The-Trung",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "voroskoi"
+  ],
+  "files": {
+    "solution": [
+      "variable_length_quantity.go"
+    ],
+    "test": [
+      "variable_length_quantity_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "A poor Splice developer having to implement MIDI encoding/decoding.",
+  "source_url": "https://splice.com"
+}

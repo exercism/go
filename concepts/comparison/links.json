@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://golang.org/ref/spec#Comparison_operators",
+    "description": "Go Language Spec: Comparison Operators"
+  },
+  {
+    "url": "https://medium.com/golangspec/comparison-operators-in-go-910d9d788ec0",
+    "description": "Article: Comparison Operators in Go"
+  }
+]

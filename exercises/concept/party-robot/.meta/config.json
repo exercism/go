@@ -1,0 +1,21 @@
+{
+  "blurb": "Learn about strings by programming a party robot.",
+  "authors": [
+    "tehsphinx"
+  ],
+  "contributors": [
+    "oanaOM",
+    "bobtfish"
+  ],
+  "files": {
+    "solution": [
+      "party_robot.go"
+    ],
+    "test": [
+      "party_robot_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

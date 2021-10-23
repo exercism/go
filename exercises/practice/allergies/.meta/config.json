@@ -1,0 +1,39 @@
+{
+  "blurb": "Given a person's allergy score, determine whether or not they're allergic to a given item, and their full list of allergies.",
+  "authors": [
+    "zilkey"
+  ],
+  "contributors": [
+    "aarti",
+    "alebaffa",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "mkoppmann",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "strangeman",
+    "tleen",
+    "tompao"
+  ],
+  "files": {
+    "solution": [
+      "allergies.go"
+    ],
+    "test": [
+      "allergies_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ]
+  },
+  "source": "Jumpstart Lab Warm-up",
+  "source_url": "http://jumpstartlab.com"
+}

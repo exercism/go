@@ -1,0 +1,17 @@
+{
+  "blurb": "Learn about constants by managing a savings account.",
+  "authors": [
+    "jamessouth"
+  ],
+  "files": {
+    "solution": [
+      "savings_account.go"
+    ],
+    "test": [
+      "savings_account_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}

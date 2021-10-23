@@ -1,0 +1,36 @@
+{
+  "blurb": "Implement various kinds of error handling and resource management",
+  "authors": [
+    "pminten"
+  ],
+  "contributors": [
+    "alebaffa",
+    "antimatter96",
+    "b10s",
+    "bitfield",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
+    "petertseng",
+    "robphoenix",
+    "sebito91",
+    "tehsphinx",
+    "tleen"
+  ],
+  "files": {
+    "solution": [
+      "error_handling.go"
+    ],
+    "test": [
+      "error_handling_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "editor": [
+      "common.go"
+    ]
+  }
+}
