@@ -29,8 +29,9 @@ func NewVigenere(key string) Cipher { }
 ```
 
 Argument for `NewShift` must be in the range 1 to 25 or -1 to -25.
-Zero is disallowed. For invalid arguments `NewShift` returns nil.
+Zero is disallowed.  For invalid arguments `NewShift` returns nil.
 
 Argument for `NewVigenere` must consist of lower case letters a-z
-only. Values consisting entirely of the letter 'a' are disallowed.
+only.  Values consisting entirely of the letter 'a' are disallowed.
 For invalid arguments `NewVigenere` returns nil.
+
