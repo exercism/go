@@ -65,24 +65,20 @@ func TestResetName(t *testing.T) {
 
 var maxNames = 26 * 26 * 10 * 10 * 10
 
+const lotsOfNames = 76000
+
 func TestCollisions(t *testing.T) {
-	var name string
 	// Test uniqueness for new robots.
-	for i := len(seen); i <= maxNames-600000; i++ {
-		name = New().getName(t, false)
-		if len(name) != 5 {
-			t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", name, len(name))
-		}
+	for i := len(seen); i <= lotsOfNames; i++ {
+		New().getName(t, false)
 	}
 
 	// Test that names aren't recycled either.
+	// Note that this runs till names are exhausted.
 	r := New()
 	for i := len(seen); i < maxNames; i++ {
 		r.Reset()
-		name = r.getName(t, false)
-		if len(name) != 5 {
-			t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", name, len(name))
-		}
+		r.getName(t, false)
 	}
 
 	// Test that name exhaustion is handled more or less correctly.
