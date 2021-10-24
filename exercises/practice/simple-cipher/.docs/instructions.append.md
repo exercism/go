@@ -1,7 +1,9 @@
-# Implementation
+# Instructions Append
+
+## Implementation Notes
 
 The definition of the Cipher interface is located in
-[cipher.go](./cipher.go).
+`cipher.go`.
 
 Your implementations should conform to the Cipher interface.
 
