@@ -31,7 +31,7 @@ if number > 0 {
 However, it is convention to avoid `else` statements as Go promotes early returns:
 
 ```go
-function getVal(connected bool) int {
+func getVal(connected bool) int {
     // The exceptional case should be in the `if` statemeent.
     // In this case being `connected` is the default, `readLocalVal` the fallback.
     if !connected {
