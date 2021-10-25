@@ -1,3 +1,5 @@
 package raindrops
 
-// Write the function Convert
+func Convert(number int) string {
+	panic("Please implement the Convert function")
+}
