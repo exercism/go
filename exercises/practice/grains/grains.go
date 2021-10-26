@@ -1,6 +1,6 @@
 package grains
 
-func Square(number int) (uint64 error) {
+func Square(number int) (uint64, error) {
 	panic("Please implement the Square function")
 }
 
