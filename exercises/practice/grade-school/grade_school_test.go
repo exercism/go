@@ -1,15 +1,3 @@
-// API:
-//
-// type Grade struct {
-// 	int, []string
-// }
-//
-// type School
-// func New() *School
-// func (s *School) Add(string, int)
-// func (s *School) Grade(int) []string
-// func (s *School) Enrollment() []Grade
-
 package school
 
 import (
