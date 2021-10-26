@@ -1,4 +1,8 @@
-To satisfy the README requirement about clocks being equal, values of
+# Instructions append
+
+## Implementation Notes
+
+To satisfy the requirement in the instructions about clocks being equal, values of
 your Clock type need to work with the == operator. This means that if your
 New function returns a pointer rather than a value, your clocks will
 probably not work with ==.
