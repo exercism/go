@@ -1,12 +1,6 @@
 package account
 
-import "sync"
-
-type Account struct {
-	sync.RWMutex
-	open    bool
-	balance int64
-}
+// Define the Account type here.
 
 func Open(amt int64) *Account {
 	panic("Please implement the Open function")

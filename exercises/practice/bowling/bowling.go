@@ -1,19 +1,6 @@
 package bowling
 
-const (
-	pinsPerFrame      = 10
-	framesPerGame     = 10
-	maxRollsPerFrame  = 2
-	maxRollsLastFrame = 3
-	maxRolls          = (maxRollsPerFrame * (framesPerGame - 1)) + maxRollsLastFrame
-)
-
-type Game struct {
-	rolls       [maxRolls]int // storage for the rolls
-	nRolls      int           // counts the rolls accumulated.
-	nFrames     int           // counts completed frames, up to framesPerGame.
-	rFrameStart int           // tracks the starting roll of each frame.
-}
+// Define the Game type here.
 
 func NewGame() *Game {
 	panic("Please implement the NewGame function")

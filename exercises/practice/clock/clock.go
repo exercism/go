@@ -1,6 +1,6 @@
 package clock
 
-type Clock int
+// Define the Clock type here.
 
 func New(h, m int) Clock {
 	panic("Please implement the New function")

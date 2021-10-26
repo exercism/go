@@ -1,10 +1,6 @@
 package circular
 
-import "container/ring"
-
-type Buffer struct {
-	start, end *ring.Ring
-}
+// Define the Buffer type here.
 
 func NewBuffer(size int) *Buffer {
 	panic("Please implement the NewBuffer function")
