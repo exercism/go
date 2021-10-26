@@ -1,5 +1,5 @@
 package accumulate
 
-func Accumulate(s []string, f func(st string) string) []string {
+func Accumulate(list []string, transform func(string) string) []string {
 	panic("Please implement the Accumulate function")
 }

@@ -4,7 +4,7 @@ package stringset
 //
 // For Set.String, use '{' and '}', output elements as double-quoted strings
 // safely escaped with Go syntax, and use a comma and a single space between
-// elements.  For example {"a", "b"}.
+// elements. For example, a set with 2 elements, "a" and "b", should be formatted as {"a", "b"}.
 // Format the empty set as {}.
 
 // Define the Set type here.
@@ -25,11 +25,11 @@ func (s Set) IsEmpty() bool {
 	panic("Please implement the IsEmpty function")
 }
 
-func (s Set) Has(e string) bool {
+func (s Set) Has(elem string) bool {
 	panic("Please implement the Has function")
 }
 
-func (s Set) Add(e string) {
+func (s Set) Add(elem string) {
 	panic("Please implement the Add function")
 }
 

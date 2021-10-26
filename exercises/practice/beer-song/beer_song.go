@@ -1,6 +1,6 @@
 package beer
 
-func Song() (result string) {
+func Song() string {
 	panic("Please implement the Song function")
 }
 
