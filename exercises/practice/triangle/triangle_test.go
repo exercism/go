@@ -1,7 +1,6 @@
 package triangle
 
 import (
-	"math"
 	"testing"
 )
 
@@ -29,24 +28,6 @@ var testData = []testCase{
 	{NaT, 1, 1, 3},    // fails triangle inequality
 	{NaT, 2, 5, 2},    // another
 	{NaT, 7, 3, 2},    // another
-}
-
-// generate cases with NaN and Infs, append to basic cases
-func init() {
-	nan := math.NaN()
-	pinf := math.Inf(1)
-	ninf := math.Inf(-1)
-	nf := make([]testCase, 4*4*4)
-	i := 0
-	for _, a := range []float64{3, nan, pinf, ninf} {
-		for _, b := range []float64{4, nan, pinf, ninf} {
-			for _, c := range []float64{5, nan, pinf, ninf} {
-				nf[i] = testCase{NaT, a, b, c}
-				i++
-			}
-		}
-	}
-	testData = append(testData, nf[1:]...)
 }
 
 // Test that the kinds are not equal to each other.
