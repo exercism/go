@@ -63,11 +63,22 @@ func TestResetName(t *testing.T) {
 	}
 }
 
+// Test 1000 naems are unique - this should run reasonably quickly even with a sub-optimal solution
+// (e.g. pick a random name, then pick a new name if it's been seen before)
+func TestMultipleNames(t *testing.T) {
+	// Test uniqueness for new robots.
+	for i := len(seen); i <= 1000; i++ {
+		New().getName(t, false)
+	}
+}
+
 var maxNames = 26 * 26 * 10 * 10 * 10
 
 const lotsOfNames = 76000
 
 func TestCollisions(t *testing.T) {
+	t.Skip("skipping test as it can take a long time to run if solution is sub-optimal.")
+
 	// Test uniqueness for new robots.
 	for i := len(seen); i <= lotsOfNames; i++ {
 		New().getName(t, false)
