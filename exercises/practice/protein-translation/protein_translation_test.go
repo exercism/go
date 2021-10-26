@@ -5,6 +5,15 @@ import (
 	"testing"
 )
 
+func TestErrorsNotNil(t *testing.T) {
+	if ErrStop == nil {
+		t.Fatalf("FAIL: ErrStop cannot be nil")
+	}
+	if ErrInvalidBase == nil {
+		t.Fatalf("FAIL: ErrInvalidBase cannot be nil")
+	}
+}
+
 type codonCase struct {
 	input         string
 	expected      string
