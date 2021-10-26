@@ -1,12 +1,5 @@
 package circular
 
-// Implement a circular buffer of bytes supporting both overflow-checked writes
-// and unconditional, possibly overwriting, writes.
-//
-// We chose the provided API so that Buffer implements io.ByteReader
-// and io.ByteWriter and can be used (size permitting) as a drop in
-// replacement for anything using that interface.
-
 import (
 	"io"
 	"testing"

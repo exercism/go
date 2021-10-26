@@ -1,5 +1,12 @@
 package stringset
 
+// Implement Set as a collection of unique string values.
+//
+// For Set.String, use '{' and '}', output elements as double-quoted strings
+// safely escaped with Go syntax, and use a comma and a single space between
+// elements.  For example {"a", "b"}.
+// Format the empty set as {}.
+
 // Define the Set type here.
 
 func New() Set {

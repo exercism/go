@@ -2,6 +2,9 @@ package diffiehellman
 
 import "math/big"
 
+// Diffie-Hellman-Merkle key exchange
+// Private keys should be generated randomly.
+
 func PrivateKey(p *big.Int) *big.Int {
 	panic("Please implement the PrivateKey function")
 }

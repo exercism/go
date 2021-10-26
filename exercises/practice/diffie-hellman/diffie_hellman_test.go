@@ -1,7 +1,3 @@
-// Diffie-Hellman-Merkle key exchange
-//
-// Private keys should be generated randomly.
-
 package diffiehellman
 
 import (
