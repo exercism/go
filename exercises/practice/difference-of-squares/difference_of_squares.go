@@ -4,7 +4,7 @@ func SquareOfSum(n int) int {
 	panic("Please implement the SquareOfSum function")
 }
 
-func SumOfSquares(n int) (s int) {
+func SumOfSquares(n int) int {
 	panic("Please implement the SumOfSquares function")
 }
 
