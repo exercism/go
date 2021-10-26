@@ -1,1 +1,51 @@
 package stringset
+
+// Define the Set type here.
+
+func New() Set {
+	panic("Please implement the New function")
+}
+
+func NewFromSlice(l []string) Set {
+	panic("Please implement the NewFromSlice function")
+}
+
+func (s Set) String() string {
+	panic("Please implement the String function")
+}
+
+func (s Set) IsEmpty() bool {
+	panic("Please implement the IsEmpty function")
+}
+
+func (s Set) Has(e string) bool {
+	panic("Please implement the Has function")
+}
+
+func (s Set) Add(e string) {
+	panic("Please implement the Add function")
+}
+
+func Subset(s1, s2 Set) bool {
+	panic("Please implement the Subset function")
+}
+
+func Disjoint(s1, s2 Set) bool {
+	panic("Please implement the Disjoint function")
+}
+
+func Equal(s1, s2 Set) bool {
+	panic("Please implement the Equal function")
+}
+
+func Intersection(s1, s2 Set) Set {
+	panic("Please implement the Intersection function")
+}
+
+func Difference(s1, s2 Set) Set {
+	panic("Please implement the Difference function")
+}
+
+func Union(s1, s2 Set) Set {
+	panic("Please implement the Union function")
+}
