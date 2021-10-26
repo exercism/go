@@ -7,14 +7,6 @@ import (
 	"testing"
 )
 
-// Clock API:
-//
-// type Clock                      // define the clock type
-// New(hour, minute int) Clock     // a "constructor"
-// (Clock) String() string         // a "stringer"
-// (Clock) Add(minutes int) Clock
-// (Clock) Subtract(minutes int) Clock
-//
 // To satisfy the README requirement about clocks being equal, values of
 // your Clock type need to work with the == operator. This means that if your
 // New function returns a pointer rather than a value, your clocks will

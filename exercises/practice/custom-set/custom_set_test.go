@@ -2,21 +2,6 @@ package stringset
 
 // Implement Set as a collection of unique string values.
 //
-// API:
-//
-// New() Set
-// NewFromSlice([]string) Set
-// (s Set) String() string
-// (s Set) IsEmpty() bool
-// (s Set) Has(string) bool
-// Subset(s1, s2 Set) bool
-// Disjoint(s1, s2 Set) bool
-// Equal(s1, s2 Set) bool
-// (s Set) Add(string)
-// Intersection(s1, s2 Set) Set
-// Difference(s1, s2 Set) Set
-// Union(s1, s2 Set) Set
-//
 // For Set.String, use '{' and '}', output elements as double-quoted strings
 // safely escaped with Go syntax, and use a comma and a single space between
 // elements.  For example {"a", "b"}.

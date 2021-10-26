@@ -3,14 +3,7 @@ package circular
 // Implement a circular buffer of bytes supporting both overflow-checked writes
 // and unconditional, possibly overwriting, writes.
 //
-//   type Buffer
-//   func NewBuffer(size int) *Buffer
-//   func (*Buffer) ReadByte() (byte, error)
-//   func (*Buffer) WriteByte(c byte) error
-//   func (*Buffer) Overwrite(c byte)
-//   func (*Buffer) Reset() // put buffer in an empty state
-//
-// We chose the above API so that Buffer implements io.ByteReader
+// We chose the provided API so that Buffer implements io.ByteReader
 // and io.ByteWriter and can be used (size permitting) as a drop in
 // replacement for anything using that interface.
 
