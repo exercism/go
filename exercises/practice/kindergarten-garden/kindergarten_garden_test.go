@@ -1,21 +1,3 @@
-// Kindergarten garden
-//
-// You must define a type Garden with constructor
-//
-//    func NewGarden(diagram string, children []string) (*Garden, error)
-//
-// and method
-//
-//    func (g *Garden) Plants(child string) ([]string, bool)
-//
-// The diagram argument starts each row with a '\n'.  This allows Go's
-// raw string literals to present diagrams in source code nicely as two
-// rows flush left, for example,
-//
-//     diagram := `
-//     VVCCGG
-//     VVCCGG`
-
 package kindergarten
 
 import (
