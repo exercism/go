@@ -11,4 +11,4 @@ To get the test to run, remove this line:
 t.Skip("skipping test as it can take a long time to run if solution is sub-optimal.")
 ```
 
-To get the test to pass you'll have to ensure a robot's name has not been used before and that names can be alloctaed efficiently.
+To get this test to pass you'll have to ensure a robot's name has not been used before and that names can be allocated efficiently.
