@@ -1,15 +1,14 @@
 # Instructions append
 
-## Bonus exercise
+It is possible to run out of robot names - once every possible robot name has been allocated then an error should be returned.
 
-Once you get `go test` passing, try `go test -tags bonus`.  This uses a *build
-tag* to enable a test that wasn't previously enabled. Build tags control which
-files should be included in the package. You can read more about those at [the
-Go documentation](https://golang.org/pkg/go/build/#hdr-Build_Constraints).
+## Bonus test 
 
-For this exercise it limits `go test` to only build the tests in the
-`robot_name_test.go` file. We can then include the bonus test in the
-`bonus_test.go` file with the tags flag as described above.
+Once you get `go test` passing, you will find that there is a test in the test suite named `TestCollisions` which is skipped by default since it can take a long time. This test creates new robots until no more new names can be assigned to the robot.
 
-To get the bonus test to pass you'll have to ensure a robot's name has not been
-used before.
+To get the test to run, remove this line:
+```go
+t.Skip("skipping test as it can take a long time to run if solution is sub-optimal.")
+```
+
+To get this test to pass you'll have to ensure a robot's name has not been used before and that names can be allocated efficiently.
