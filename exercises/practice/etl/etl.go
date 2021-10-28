@@ -1,7 +1,5 @@
 package etl
 
-// Define the legacy type here.
-
-func Transform(in legacy) map[string]int {
+func Transform(in map[int][]string) map[string]int {
 	panic("Please implement the Transform function")
 }
