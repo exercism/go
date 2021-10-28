@@ -1,9 +1,5 @@
 package forth
 
-// API:
-// func Forth([]string) ([]int, error)
-//
-
 import (
 	"reflect"
 	"testing"
