@@ -1,3 +1,13 @@
+// Your solution must include the following definitions:
+//
+// func ParseHex(string) (int64, error)
+// func HandleErrors([]string) []string
+//
+// HandleErrors takes a list of inputs for ParseHex and returns a matching list
+// of error cases.  It must call ParseHex on each input, handle the error result,
+// and put one of three strings, "none", "syntax", or "range" in the result list
+// according to the error.
+
 package hexadecimal
 
 import (
