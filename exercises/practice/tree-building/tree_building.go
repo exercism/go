@@ -1,13 +1,8 @@
 package tree
 
-type Record struct {
-  ID, Parent int
-}
+// Define the Record type
 
-type Node struct {
-  ID int
-  Children []*Node
-}
+// Define the Node type
 
 func Build(records []Record) (*Node, error) {
   panic("Please implement the Build function")
