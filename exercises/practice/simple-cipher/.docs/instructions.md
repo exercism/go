@@ -50,7 +50,7 @@ distance.
 You will implement a more generic Shift Cipher with a flexible shift
 distance.
 
-# Step 3
+## Step 3
 
 With only 26 true possible shift values, your kid sister will figure
 this out too. Next lets define a more complex cipher using a string as
