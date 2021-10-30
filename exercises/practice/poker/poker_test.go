@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-// Define a function BestHand([]string) ([]string, error).
-
 var invalidTestCases = []struct {
 	name string
 	hand string
