@@ -1,18 +1,3 @@
-// For the Matrix exercise in Go you have to do a few things not mentioned
-// in the README.
-//
-// 1. Implement the type Matrix
-//
-// 2. Write a method with signature: New(s string) (*Matrix, error)
-//
-// 3. Decorate the Matrix type, with three methods:
-//      - Cols() [][]int
-//      - Rows() [][]int
-//      - Set(row, column, value int) bool
-//    Cols and Rows must return the results without affecting the matrix.
-//
-// Detect and return error when it is expected.
-
 package matrix
 
 import (
