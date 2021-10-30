@@ -1,24 +1,5 @@
 package pythagorean
 
-// Use this type definition,
-//
-//    type Triplet [3]int
-//
-// and implement two functions,
-//
-//    Range(min, max int) []Triplet
-//    Sum(p int) []Triplet
-//
-// Range returns a list of all Pythagorean triplets with sides in the
-// range min to max inclusive.
-//
-// Sum returns a list of all Pythagorean triplets where the sum a+b+c
-// (the perimeter) is equal to p.
-//
-// The three elements of each returned triplet must be in order,
-// t[0] <= t[1] <= t[2], and the list of triplets must be in lexicographic
-// order.
-
 import (
 	"reflect"
 	"testing"
