@@ -2,18 +2,6 @@ package meetup
 
 import "testing"
 
-/* API
-package meetup
-type WeekSchedule
-WeekSchedule First
-WeekSchedule Second
-WeekSchedule Third
-WeekSchedule Fourth
-WeekSchedule Last
-WeekSchedule Teenth
-func Day(WeekSchedule, time.Weekday, time.Month, int) int
-*/
-
 var weekName = map[WeekSchedule]string{
 	First:  "first",
 	Second: "second",
