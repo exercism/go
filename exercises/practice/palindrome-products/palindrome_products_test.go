@@ -7,16 +7,6 @@ import (
 	"testing"
 )
 
-/* API to implement:
-
-type Product struct {
-	Product int // palindromic, of course
-	Factorizations [][2]int //list of all possible two-factor factorizations of Product, within given limits, in order
- }
-
- func Products(fmin, fmax int) (pmin, pmax Product, error)
-*/
-
 var testData = []struct {
 	// input to Products(): range limits for factors of the palindrome
 	fmin, fmax int
