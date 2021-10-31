@@ -2,11 +2,11 @@
 
 ## Implementation Notes
 
-Define a function recognizeDigit as README Step 1 except make it recognize
+Define a function recognizeDigit as described in Step 1 of instructions except make it recognize
 all ten digits 0 to 9.  Pick what you like for parameters and return values
-but make it useful as a subroutine for README step 2.
+but make it useful as a subroutine for step 2.
 
-For README Step 2 define,
+For Step 2 define,
 
    func Recognize(string) []string
 
