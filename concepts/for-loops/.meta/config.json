@@ -1,5 +1,8 @@
 {
-  "blurb": "TODO: add blurb",
-  "authors": ["sachinmk27"],
+  "blurb": "Execute the same piece of code several times",
+  "authors": [
+    "sachinmk27",
+    "andrerfcsantos"
+  ],
   "contributors": []
 }
