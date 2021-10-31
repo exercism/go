@@ -26,7 +26,7 @@ for i := 1; i < 10; i++ {
 }
 ```
 
-This loop will print the numbers from `1` to `9` inclusivé. 
+This loop will print the numbers from `1` to `9` (including `9`). 
 Defining the step is often done using an increment or decrement statement, as shown in the example above.
 
 ## Optional components of the header
@@ -87,7 +87,7 @@ for {
 }
 ```
 
-This loop will never end and will only ever finish if the program exits or has a `break` in its body.
+This loop will only ever finish if the program exits or has a `break` in its body.
 
 ## Labels and goto
 

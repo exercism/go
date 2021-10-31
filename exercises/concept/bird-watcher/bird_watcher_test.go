@@ -93,15 +93,10 @@ func TestFixBirdCount(t *testing.T) {
 			birdCounts: []int{2, 8, 4, 1, 3, 5, 0, 4, 1, 6, 0, 3, 0, 1, 5, 4, 1, 1, 2, 6},
 			want:       []int{3, 8, 5, 1, 4, 5, 1, 4, 2, 6, 1, 3, 1, 1, 6, 4, 2, 1, 3, 6},
 		},
-		{
-			name:       "does not create new slice",
-			birdCounts: []int{3, 0, 5, 1, 0, 4, 1, 0, 3, 4, 3, 0},
-			want:       []int{4, 0, 6, 1, 1, 4, 2, 0, 4, 4, 4, 0},
-		},
 	}
 
 	// Test normal cases - last test needs to be tested differently
-	for _, tt := range tests[:len(tests)-1] {
+	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := FixBirdCountLog(tt.birdCounts); !reflect.DeepEqual(tt.want, got) {
 				t.Errorf("FixBirdCountLog(%v) = %v; want %v", tt.birdCounts, got, tt.want)
@@ -111,9 +106,9 @@ func TestFixBirdCount(t *testing.T) {
 
 	// Test special case
 	t.Run("does not create new slice", func(t *testing.T) {
-		tt := tests[len(tests)-1]
-		got := FixBirdCountLog(tt.birdCounts)
-		if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.birdCounts).Pointer() {
+		counts := []int{4, 0, 6, 1, 1, 4, 2, 0, 4, 4, 4, 0}
+		got := FixBirdCountLog(counts)
+		if reflect.ValueOf(got).Pointer() != reflect.ValueOf(counts).Pointer() {
 			t.Error("it looks like that you are creating a new slice in the function FixBirdCountLog - " +
 				"please make sure you are modifying the slice passed as argument")
 		}
