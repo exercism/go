@@ -33,7 +33,7 @@ comment:
             - 'exercises/concept/*/*.go'
             - '!exercises/concept/*/*_test.go'
       body: |
-        - 🧦 If you changed the function signature or the function comment in the exemplar file or the sub file (`<exercise>.go`), make sure the change is applied to both files.
+        - 🧦 If you changed the function signature or the function comment in the exemplar file or the stub file (`<exercise>.go`), make sure the change is applied to both files.
 
     - id: problem-spec-related
       files:
