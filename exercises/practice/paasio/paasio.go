@@ -3,7 +3,7 @@ package paasio
 import "io"
 
 // Define readCounter and writeCounter types here.
-
+// For the return of the function NewReadWriteCounter, you must also define a type that satisfies the ReadWriteCounter interface.
 func NewWriteCounter(writer io.Writer) WriteCounter {
 	panic("Please implement the NewWriterCounter function")
 }
