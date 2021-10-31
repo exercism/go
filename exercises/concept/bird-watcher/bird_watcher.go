@@ -1,7 +1,7 @@
 package birdwatcher
 
 // TotalBirdCount return the total bird count by summing
-// all the items in the given array
+// the individual day's counts
 func TotalBirdCount(birdsPerDay []int) int {
 	panic("Please implement the TotalBirdCount() function")
 }
@@ -10,12 +10,10 @@ func TotalBirdCount(birdsPerDay []int) int {
 // only the items belonging to the given week
 func BirdsInWeek(birdsPerDay []int) int {
 	panic("Please implement the BirdsInWeek() function")
-
 }
 
-// FixBirdCountLog returns an array after correcting
-// the bird counts for alternate days in the given array
+// FixBirdCountLog returns the bird counts after correcting
+// the bird counts for alternate days
 func FixBirdCountLog(birdsPerDay []int) []int {
 	panic("Please implement the FixBirdCountLog() function")
-
 }
