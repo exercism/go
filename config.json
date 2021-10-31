@@ -226,7 +226,7 @@
           "conditionals-if", 
           "slices"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "name": "Card Tricks",
