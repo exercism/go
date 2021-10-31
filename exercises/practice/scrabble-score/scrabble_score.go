@@ -1,5 +1,5 @@
 package scrabble
 
 func Score(word string) int {
-  panic("implement me")
+  panic("Please implement the Score function")
 }
