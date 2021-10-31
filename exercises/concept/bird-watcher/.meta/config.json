@@ -1,11 +1,23 @@
 {
-  "blurb": "Professionalize counting the birds in your garden with for loops.",
-  "authors": ["sachinmk27"],
-  "contributors": [],
+  "blurb": "Count the birds in your garden with for loops.",
+  "authors": [
+    "sachinmk27"
+  ],
+  "contributors": [
+    "andrerfcsantos"
+  ],
   "files": {
-    "solution": ["bird_watcher.go"],
-    "test": ["bird_watcher_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "bird_watcher.go"
+    ],
+    "test": [
+      "bird_watcher_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   },
-  "forked_from": ["javascript/bird-watcher"]
+  "forked_from": [
+    "javascript/bird-watcher"
+  ]
 }

@@ -8,7 +8,7 @@ func TotalBirdCount(birdsPerDay []int) int {
 
 // BirdsInWeek returns the total bird count by summing
 // only the items belonging to the given week
-func BirdsInWeek(birdsPerDay []int) int {
+func BirdsInWeek(birdsPerDay []int, week int) int {
 	panic("Please implement the BirdsInWeek() function")
 }
 
