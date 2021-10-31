@@ -24,13 +24,6 @@ import "testing"
 // We want Robot to be an agent that performs actions, but we want Room to
 // maintain a coherent truth.
 //
-// Step 2 API:
-//
-// StartRobot(chan Command, chan Action)
-// Room(extent Rect, robot Step2Robot, act chan Action, rep chan Step2Robot)
-//
-// You get to define Action; see defs.go for other definitions.
-//
 // The test program creates the channels and starts both Room and Robot.
 // The test program then sends commands to Robot.  When it is done sending
 // commands, it closes the command channel.  Robot must accept commands and
