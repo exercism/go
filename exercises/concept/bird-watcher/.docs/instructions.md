@@ -27,7 +27,7 @@ It returns the total number of birds that you counted in that specific week.
 You can assume weeks are always tracked completely.
 
 ```go
-var birdsPerDay []int = []int{2, 5, 0, 7, 4, 1, 3, 0, 2, 5, 0, 1, 3, 1}
+birdsPerDay := []int{2, 5, 0, 7, 4, 1, 3, 0, 2, 5, 0, 1, 3, 1}
 BirdsInWeek(birdsPerDay, 2)
 // => 12
 ```
@@ -45,7 +45,7 @@ Your bird watcher intuition also tells you that the bird was in your garden on t
 Given this new information, write a function `FixBirdCountLog` that takes a slice of birds counted per day as an argument and returns the slice after correcting the counting mistake.
 
 ```go
-var birdsPerDay []int = []int{2, 5, 0, 7, 4, 1}
+birdsPerDay := []int{2, 5, 0, 7, 4, 1}
 FixBirdCountLog(birdsPerDay)
 // => [3 5 1 7 5 1]
 ```
