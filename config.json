@@ -215,6 +215,20 @@
         "status": "wip"
       },
       {
+        "slug": "bird-watcher",
+        "name": "Bird Watcher",
+        "uuid": "bdb493de-b07d-4669-9890-5bebeddbf1e8",
+        "concepts": [ 
+          "for-loops"
+        ],
+        "prerequisites": [
+          "numbers", 
+          "conditionals-if", 
+          "slices"
+        ],
+        "status": "beta"
+      },
+      {
         "name": "Card Tricks",
         "slug": "card-tricks",
         "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
@@ -1906,6 +1920,11 @@
       "name": "Floating-point numbers",
       "slug": "floating-point-numbers",
       "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7"
+    },
+    {
+      "name": "For Loops",
+      "slug": "for-loops",
+      "uuid": "9cf34401-7993-4b09-8a5e-55347acda4ca"
     },
     {
       "name": "Iteration",
