@@ -1,4 +1,5 @@
 # Introduction
+
 ## General syntax
 
 The for loop is one of the most commonly used statements to repeatedly execute some logic. In Go it consists of the `for` keyword, a header and a code block that contains the body of the loop wrapped in curly brackets. The header consists of 3 components separated by semicolons `;`: initilization, condition and step.

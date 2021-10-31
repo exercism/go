@@ -42,9 +42,9 @@ fmt.Println(sum)
 // Output: 1024
 ```
 
-This is similar to a `while` loop in other languages.
-
-In Go, there is no `while` keyword. A `while` loop can be expressed in Go by writing a `for` loop without the init and post parts of the header, like in the example above.
+By omitting the init and post component in a for loop like shown above, you create a while loop in Go.
+There is no `while` keyword.
+This is an example of Go's principle that concepts should be orthogonal. Since there is already a concept to achieve the behavior of a while loop, namely the for loop, `while` was not added as an additional concept.
 
 ## Break and Continue
 
@@ -111,4 +111,4 @@ Using labels with `continue` would also work, in which case, Go would continue i
 
 Go also has a `goto` keyword that works in a similar way and allows us to jump to from a piece of code to another labeled piece of code.
 
-**Warning:** Even though Go allows to jump to a piece of code marked with a label with `continue`, `break` or `goto`, using this feature of the language can easily make the code very hard to read. For this reason, using labels is often not recommended.
+**Warning:** Even though Go allows to jump to a piece of code marked with a label, using this feature of the language can easily make the code very hard to read. For this reason, using labels is often not recommended.
