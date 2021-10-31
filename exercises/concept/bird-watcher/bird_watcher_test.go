@@ -95,7 +95,6 @@ func TestFixBirdCount(t *testing.T) {
 		},
 	}
 
-	// Test normal cases - last test needs to be tested differently
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := FixBirdCountLog(tt.birdCounts); !reflect.DeepEqual(tt.want, got) {
@@ -104,13 +103,13 @@ func TestFixBirdCount(t *testing.T) {
 		})
 	}
 
-	// Test special case
-	t.Run("does not create new slice", func(t *testing.T) {
-		counts := []int{4, 0, 6, 1, 1, 4, 2, 0, 4, 4, 4, 0}
-		got := FixBirdCountLog(counts)
-		if reflect.ValueOf(got).Pointer() != reflect.ValueOf(counts).Pointer() {
-			t.Error("it looks like that you are creating a new slice in the function FixBirdCountLog - " +
-				"please make sure you are modifying the slice passed as argument")
-		}
-	})
+}
+
+func TestFixBirdCountDoesNotCreateNewSlice(t *testing.T) {
+	counts := []int{4, 0, 6, 1, 1, 4, 2, 0, 4, 4, 4, 0}
+	got := FixBirdCountLog(counts)
+	if reflect.ValueOf(got).Pointer() != reflect.ValueOf(counts).Pointer() {
+		t.Error("it looks like that you are creating a new slice in the function FixBirdCountLog - " +
+			"please make sure you are modifying the slice passed as argument")
+	}
 }
