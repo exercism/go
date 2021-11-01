@@ -6,7 +6,7 @@ func TestAtbash(t *testing.T) {
 	for _, test := range tests {
 		actual := Atbash(test.s)
 		if actual != test.expected {
-			t.Errorf("Atbash(%s): expected %s, actual %s", test.s, test.expected, actual)
+			t.Errorf("Atbash('%s'): expected '%s', actual '%s'", test.s, test.expected, actual)
 		}
 	}
 }
