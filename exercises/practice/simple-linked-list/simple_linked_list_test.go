@@ -59,7 +59,7 @@ func TestListHasCorrectSizeAfterPop(t *testing.T) {
 	_, _ = list.Pop()
 
 	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of list from [1, 2, 3] after pop(), pop(), pop(): %d, expected: %d", size, 0)
+		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got %d, expected: %d", size, 0)
 	}
 }
 
