@@ -71,7 +71,7 @@ func TestListHasCorrectSizeAfterPush(t *testing.T) {
 	list.Push(3)
 
 	if size := list.Size(); size != 3 {
-		t.Fatalf("Size of list from [] after push(1) push(2), push(3): %d, expected: %d", size, 3)
+		t.Fatalf("Size of list from [] after 3 calls to push(): got %d, expected: %d", size, 3)
 	}
 }
 
