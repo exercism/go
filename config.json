@@ -680,7 +680,8 @@
         "difficulty": 1,
         "topics": [
           "lists"
-        ]
+        ],
+        "status": "deprecated"
       },
       {
         "slug": "roman-numerals",
