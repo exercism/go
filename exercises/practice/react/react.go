@@ -1,6 +1,7 @@
 package react
 
 // Define reactor, cell and canceler types here.
+// These types will implement the Reactor, Cell and Canceler interfaces, respectively.
 
 func (c *canceler) Cancel() {
 	panic("Please implement the Cancel function")

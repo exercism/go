@@ -1,6 +1,6 @@
 package matrix
 
-// Define the Matrix and Pair type here.
+// Define the Matrix and Pair types here.
 
 func New(s string) (*Matrix, error) {
 	panic("Please implement the New function")
