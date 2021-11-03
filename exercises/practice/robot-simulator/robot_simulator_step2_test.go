@@ -5,41 +5,6 @@ package robot
 
 import "testing"
 
-// For step 1 you implemented robot movements, but it's not much of a simulation.
-// For example where in the source code is "the robot"?  Where is "the grid"?
-// Where are the computations that turn robot actions into grid positions,
-// in the robot, or in the grid?  The physical world is different.
-//
-// Step 2 introduces a "room."  It seems a small addition, but we'll make
-// big changes to clarify the roles of "room", "robot", and "test program"
-// and begin to clarify the physics of the simulation.  You will define Room
-// and Robot as functions which the test program "brings into existence" by
-// launching them as goroutines.  Information moves between test program,
-// robot, and room over Go channels.
-//
-// Think of Room as a "physics engine," something that models and simulates
-// a physical room with walls and a robot.  It should somehow model the
-// coordinate space of the room, the location of the robot and the walls,
-// and ensure for example that the robot doesn't walk through walls.
-// We want Robot to be an agent that performs actions, but we want Room to
-// maintain a coherent truth.
-//
-// Step 2 API:
-//
-// StartRobot(chan Command, chan Action)
-// Room(extent Rect, robot Step2Robot, act chan Action, rep chan Step2Robot)
-//
-// You get to define Action; see defs.go for other definitions.
-//
-// The test program creates the channels and starts both Room and Robot.
-// The test program then sends commands to Robot.  When it is done sending
-// commands, it closes the command channel.  Robot must accept commands and
-// inform Room of actions it is attempting.  When it senses the command channel
-// closing, it must shut itself down.  The room must interpret the physical
-// consequences of the robot actions.  When it senses the robot shutting down,
-// it sends a final report back to the test program, telling the robot's final
-// position and direction.
-
 var test2 = []struct {
 	Command
 	Step2Robot

@@ -3,23 +3,8 @@
 
 package robot
 
-// Tests are separated into 3 steps.
-//
-// Run all tests with `go test` or run specific tests with the -tags option.
-// Examples,
-//
-//    go test                      # run all tests
-//    go test -tags step1          # run just step 1 tests.
-//    go test -tags 'step1 step2'  # run step1 and step2 tests
-//
 // This source file contains step 1 tests only.  For other tests see
 // robot_simulator_step2_test.go and robot_simulator_step3_test.go.
-//
-// You are given the source file defs.go which defines a number of things
-// the test program requires.  It is organized into three sections by step.
-//
-// To complete step 1 you will define Right, Left, Advance, N, S, E, W,
-// and Dir.String.  Complete step 1 before moving on to step 2.
 
 import (
 	"runtime"
