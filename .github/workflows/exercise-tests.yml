@@ -36,6 +36,7 @@ jobs:
           go-version: ${{ matrix.go-version }}
 
       - name: Lint and Test exercises
+        shell: bash
         env:
           GOARCH: ${{ matrix.test-arch }}
         run: |
