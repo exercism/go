@@ -2,6 +2,7 @@ package robot
 
 // See defs.go for other definitions
 
+// Step 1
 // Define Dir type here.
 // Define N, E, S, W here.
 
@@ -21,6 +22,7 @@ func (d Dir) String() string {
 	panic("Please implement the String function")
 }
 
+// Step 2
 // Define Action type here.
 
 func StartRobot(command chan Command, action chan Action) {
@@ -31,6 +33,7 @@ func Room(extent Rect, robot Step2Robot, action chan Action, report chan Step2Ro
 	panic("Please implement the Room function")
 }
 
+// Step 3
 // Define Action3 type here.
 
 func StartRobot3(name, script string, action chan Action3, log chan string) {
