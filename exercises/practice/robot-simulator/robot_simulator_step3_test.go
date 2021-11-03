@@ -5,25 +5,6 @@ package robot
 
 import "testing"
 
-// Step 3 has three major changes:
-//
-// *  Robots run scripts rather than respond to individual commands.
-// *  A log channel allows robots and the room to log messages.
-// *  The room allows multiple robots to exist and operate concurrently.
-//
-// For the final position report sent from StartRobot3, you can return the same slice
-// received from the robots channel, just with updated positions and directions.
-//
-// Messages must be sent on the log channel for
-// *  A robot without a name
-// *  Duplicate robot names
-// *  Robots placed at the same place
-// *  A robot placed outside of the room
-// *  An undefined command in a script
-// *  An action from an unknown robot
-// *  A robot attempting to advance into a wall
-// *  A robot attempting to advance into another robot
-
 var testOneRobot = []struct {
 	cmd byte
 	Step2Robot
