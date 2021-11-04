@@ -19,7 +19,6 @@ linters-settings:
       - diagnostic
       - style
       - performance
-      - experimental
       - opinionated
     settings:
       hugeParam:
