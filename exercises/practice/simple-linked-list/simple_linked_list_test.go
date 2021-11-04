@@ -1,22 +1,3 @@
-// API:
-//
-// type Element struct {
-//  data int
-//  next *Element
-// }
-//
-// type List struct {
-//  head *Element
-//  size int
-// }
-//
-// func New([]int) *List
-// func (*List) Size() int
-// func (*List) Push(int)
-// func (*List) Pop() (int, error)
-// func (*List) Array() []int
-// func (*List) Reverse() *List
-
 package linkedlist
 
 import (
