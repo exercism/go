@@ -37,4 +37,4 @@ There will be a few places in your Use function where errors may occur:
   function_. Either way `Use` should return the error.
 
 - _Also note_: if the Resource was opened successfully make sure to call its
-  Close function no matter what (even if errors have occurred).
+  Close function exactly once no matter what (even if errors have occurred).
