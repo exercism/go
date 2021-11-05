@@ -65,6 +65,16 @@ func TestAddItem(t *testing.T) {
 			},
 			true,
 		},
+		{
+			"check quantity of item added twice",
+			[]entry{
+				{"peas", "quarter_of_a_dozen", 3},
+				{"peas", "quarter_of_a_dozen", 6},
+				{"tomato", "half_of_a_dozen", 6},
+				{"tomato", "quarter_of_a_dozen", 9},
+			},
+			true,
+		},
 	}
 	units := Units()
 	for _, tt := range tests {
