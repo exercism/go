@@ -44,7 +44,7 @@ car.DisplayDistance()
 
 ## 3. Display the battery percentage
 
-Implement the `DisplayBattery` method on `Car` to return the distance as displayed on the LED display as a `string`:
+Implement the `DisplayBattery` method on `Car` to return the battery percentage as displayed on the LED display as a `string`:
 
 ```go
 speed := 5
