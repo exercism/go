@@ -110,13 +110,13 @@ func TestCanSignalPrisoner(t *testing.T) {
 			expected:        false,
 		},
 		{
-			desc:            "archer is sleeping, prisoner is awake",
+			desc:            "Archer is sleeping, prisoner is awake",
 			archerIsAwake:   false,
 			prisonerIsAwake: true,
 			expected:        true,
 		},
 		{
-			desc:            "archer is awake, prisoner is sleeping",
+			desc:            "Archer is awake, prisoner is sleeping",
 			archerIsAwake:   true,
 			prisonerIsAwake: false,
 			expected:        false,
