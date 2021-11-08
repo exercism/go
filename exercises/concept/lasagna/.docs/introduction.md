@@ -8,7 +8,7 @@ This exercise introduces three major language features: Packages, Functions, and
 Go applications are organized in packages.
 A package is a collection of source files located in the same directory.
 All source files in a directory must share the same package name.
-When a package is imported, only entities (functions, types, variables, constants) who's name starts with a capital letter can be used / accessed.
+When a package is imported, only entities (functions, types, variables, constants) whose names start with a capital letter can be used / accessed.
 The recommended style of naming in Go is that identifiers will be named using `camelCase`, except for those meant to be accessible across packages which should be `CamelCase`.
 
 ```go
