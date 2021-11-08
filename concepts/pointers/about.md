@@ -37,7 +37,7 @@ While variables allow us to refer to values in memory, sometimes it's useful to 
 var p *int // 'p' contains the memory address of an integer
 ```
 
-Here we declaring a variable `p` of type "pointer to int" (`*int`). This means that `p` will hold the memory address of an integer. The zero value of pointers is `nil` because a `nil` pointer holds no memory address.
+Here we declare a variable `p` of type "pointer to int" (`*int`). This means that `p` will hold the memory address of an integer. The zero value of pointers is `nil` because a `nil` pointer holds no memory address.
 
 ### Getting a pointer to a variable
 
