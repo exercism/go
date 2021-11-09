@@ -76,3 +76,27 @@ func hi (name string) string {
     return "hi " + name
 }
 ```
+
+### Named Return 
+ 
+Return values may be named. 
+This is great to document meaning of the return values. 
+
+```go 
+func sum(x, y int) (sum int) { 
+    return x + y 
+}
+```
+ 
+### Naked Return 
+ 
+When using named returns you may remove arguments from return statement since you have assigned named returns variables. 
+
+```go
+func sum(x, y int) (sum int) { 
+    sum = x + y 
+    return 
+} 
+```
+ 
+Be careful with this because you could harm code readability.
