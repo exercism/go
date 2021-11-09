@@ -8,7 +8,9 @@ import (
 const floatEqualityThreshold = 1e-5
 
 func floatingPointEquals(got, want float64) bool {
-	return math.Abs(got-want) <= floatEqualityThreshold
+	absoluteDifferenceBelowTreshold := math.Abs(got-want) <= floatEqualityThreshold
+	relativeDifferenceBelowTreshold := math.Abs(got-want)/(math.Abs(got)+math.Abs(want)) <= floatEqualityThreshold
+	return absoluteDifferenceBelowTreshold || relativeDifferenceBelowTreshold
 }
 
 func TestInterestRate(t *testing.T) {
