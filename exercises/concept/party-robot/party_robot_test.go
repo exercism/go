@@ -87,6 +87,15 @@ func TestAssignTable(t *testing.T) {
 			seatmate:    "Renée",
 			want:        "Welcome to my party, Xuân Jing!\nYou have been assigned to table 004. Your table is by the façade, exactly 23.5 meters from here.\nYou will be sitting next to Renée.",
 		},
+		{
+			description: "Greet Paula and give them directions to their seat",
+			name:        "Paula",
+			direction:   "on the right",
+			tableNumber: 101,
+			distance:    100.0,
+			seatmate:    "Chioma",
+			want:        "Welcome to my party, Paula!\nYou have been assigned to table 101. Your table is on the right, exactly 100.0 meters from here.\nYou will be sitting next to Chioma.",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
