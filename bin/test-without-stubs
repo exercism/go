@@ -77,6 +77,13 @@ cleanup () {
 
 trap cleanup EXIT INT TERM
 
+# Since Go 1.16 all go commands run in module-aware mode,
+# which would require a go.mod file to be present at the root
+# of the project.
+# Setting GO111MODULE to 'auto' makes the go commands run in
+# module-aware mode only in places where a go.mod is present.
+export GO111MODULE=auto
+
 # This is the last command in the file,
 # so the exit status of this script is the exit status of go test.
 # If this ever changes, remember to preserve the exit status accordingly.
