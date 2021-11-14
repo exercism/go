@@ -141,6 +141,22 @@
         "status": "beta"
       },
       {
+        "slug": "vehicle-purchase",
+        "name": "Vehicle Purchase",
+        "uuid": "7e2e4088-2038-4a78-895f-0536550fe671",
+        "concepts": [
+          "comparison",
+          "conditionals-if"
+        ],
+        "prerequisites": [
+          "strings",
+          "arithmetic-operators",
+          "booleans",
+          "numbers"
+        ],
+        "status": "beta"
+      },
+      {
         "slug": "gross-store",
         "name": "Gross Store",
         "uuid": "fb70cf92-fd2c-453b-896c-21a957cfb093",

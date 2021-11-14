@@ -1,0 +1,11 @@
+{
+  "blurb": "Learn about comparison and conditional-ifs while preparing for your next vehicle purchase",
+  "authors": ["kahgoh"],
+  "contributors": [],
+  "files": {
+    "solution": ["vehicle_purchase.go"],
+    "test": ["vehicle_purchase_test.go"],
+    "exemplar": [".meta/exemplar.go"]
+  },
+  "forked_from": ["javascript/vehicle-purchase"]
+}
