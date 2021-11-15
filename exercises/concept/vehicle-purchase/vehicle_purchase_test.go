@@ -1,8 +1,11 @@
 package purchase
 
 import (
+	"math"
 	"testing"
 )
+
+const floatEqualityThreshold = 1e-5
 
 func TestNeedsLicence(t *testing.T) {
 	tests := []struct {
@@ -149,11 +152,17 @@ func TestCalculateResellPrice(t *testing.T) {
 			age:           11,
 			expected:      25000,
 		},
+		{
+			name:          "float price is reduced to 70%% for age 8,",
+			originalPrice: 39000.000001,
+			age:           8,
+			expected:      27300.0000007,
+		},
 	}
 
 	for _, test := range tests {
 		actual := CalculateResellPrice(test.originalPrice, test.age)
-		if actual != test.expected {
+		if !floatingPointEquals(actual, test.expected) {
 			t.Errorf(
 				"CalculateResellPrice(%v, %v) = %v, want %v",
 				test.originalPrice,
@@ -162,4 +171,10 @@ func TestCalculateResellPrice(t *testing.T) {
 				test.expected)
 		}
 	}
+}
+
+func floatingPointEquals(got, want float64) bool {
+	absoluteDifferenceBelowTreshold := math.Abs(got-want) <= floatEqualityThreshold
+	relativeDifferenceBelowTreshold := math.Abs(got-want)/(math.Abs(got)+math.Abs(want)) <= floatEqualityThreshold
+	return absoluteDifferenceBelowTreshold || relativeDifferenceBelowTreshold
 }
