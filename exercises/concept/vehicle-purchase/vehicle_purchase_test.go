@@ -97,6 +97,17 @@ func TestChooseVehicle(t *testing.T) {
 					actual,
 					test.expected)
 			}
+
+			// The result should be independent of the order in which the choices are given.
+			actual = ChooseVehicle(test.choice2, test.choice1)
+			if actual != test.expected {
+				t.Errorf(
+					"ChooseVehicle(%q, %q) = %q, want %q",
+					test.choice2,
+					test.choice1,
+					actual,
+					test.expected)
+			}
 		})
 	}
 }
