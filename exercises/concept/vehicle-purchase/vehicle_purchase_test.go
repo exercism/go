@@ -42,7 +42,7 @@ func TestNeedsLicence(t *testing.T) {
 			actual := NeedsLicence(test.kind)
 			if actual != test.expected {
 				t.Errorf(
-					"NeedsLicence(\"%s\") = %t, want %t",
+					"NeedsLicence(%q) = %t, want %t",
 					test.kind,
 					actual,
 					test.expected)
@@ -86,7 +86,7 @@ func TestChooseVehicle(t *testing.T) {
 			actual := ChooseVehicle(test.expected, test.other)
 			if actual != expectedResponse {
 				t.Errorf(
-					"ChooseVehicle(\"%s\", \"%s\") = \"%s\", want \"%s\"",
+					"ChooseVehicle(%q, %q) = %q, want %q",
 					test.expected,
 					test.other,
 					actual,
