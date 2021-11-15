@@ -1,6 +1,6 @@
 # Hints
 
-## 1. Determine if you will need a drivers licence
+## 1. Determine if you will need a driver's licence
 
 - Use the [equals comparison operator][comparison-operators] to check whether your input equals a certain string.
 - Use one of the two [logical operators][logical-operators] you learned about in the boolean concept to combine the two requirements.
@@ -14,7 +14,7 @@
 
 ## 3. Calculate an estimation for the price of a used vehicle
 
-- Start with determining the percentage based on the age of the vehicle. Save it in a helper variable. Use an [if-else if-else statement][if-statement] as mentioned in the instructions.
+- Start with determining the percentage of the original price based on the age of the vehicle. Save it in a helper variable. Use an [if-else if-else statement][if-statement] as mentioned in the instructions.
 - In the two if conditions use [comparison operators][comparison-operators] to compare the age of the car to the threshold values.
 - To calculate the result, apply the percentage to the original price. For example `30% of x` can be calculated by dividing `30` by `100` and multiplying with `x`.
 

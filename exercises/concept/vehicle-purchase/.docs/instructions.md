@@ -4,9 +4,9 @@ In this exercise you are going to write some code to help you prepare to buy a v
 
 You have three tasks, one to determine if you need a licence, one to help you choose between two vehicles and one to estimate the acceptable price for a used vehicle.
 
-## 1. Determine if you will need a drivers licence
+## 1. Determine if you will need a driver's licence
 
-Some vehicle kinds require a drivers licence to operate them.
+Some vehicle kinds require a driver's licence to operate them.
 Assume only the kinds `'car'` and `'truck'` require a licence, everything else can be operated without a licence.
 
 Implement the `NeedsLicence(kind)` function that takes the kind of vehicle and returns a boolean indicating whether you need a licence for that kind of vehicle.
@@ -55,4 +55,4 @@ CalculateResellPrice(1000, 15);
 // => 500
 ```
 
-Note the value returned is is a `float64`.
+Note the value returned is a `float64`.
