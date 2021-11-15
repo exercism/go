@@ -12,11 +12,11 @@ Assume only the kinds `'car'` and `'truck'` require a licence, everything else c
 Implement the `NeedsLicence(kind)` function that takes the kind of vehicle and returns a boolean indicating whether you need a licence for that kind of vehicle.
 
 ```go
-NeedsLicence('car');
-// => true
+needLicence := NeedsLicence('car')
+// Output: true
 
-NeedsLicence('bike');
-// => false
+needLicence = NeedsLicence('bike')
+// Output: false
 ```
 
 ## 2. Choose between two potential vehicles to buy
@@ -26,11 +26,11 @@ You manage to narrow it down to two options but you need help making the final d
 For that implement the function `ChooseVehicle(option1, option2)` that takes two vehicles as arguments and returns a decision that includes the option that comes first in dictionary order.
 
 ```go
-ChooseVehicle('Wuling Hongguang', 'Toyota Corolla');
-// =>  'Toyota Corolla is clearly the better choice.'
+vehicle := ChooseVehicle('Wuling Hongguang', 'Toyota Corolla')
+// Output: "Toyota Corolla is clearly the better choice."
 
-ChooseVehicle('Volkswagen Beetle', 'Volkswagen Golf');
-// =>  'Volkswagen Beetle is clearly the better choice.'
+ChooseVehicle('Volkswagen Beetle', 'Volkswagen Golf')
+// Output: "Volkswagen Beetle is clearly the better choice."
 ```
 
 ## 3. Calculate an estimation for the price of a used vehicle
@@ -45,14 +45,14 @@ Implement the `CalculateResellPrice(originalPrice, age)` function that applies t
 It takes the original price and the age of the vehicle as arguments and returns the estimated price in the dealership.
 
 ```go
-CalculateResellPrice(1000, 1);
-// => 800
+CalculateResellPrice(1000, 1)
+// Output: 800
 
-CalculateResellPrice(1000, 5);
-// => 700
+CalculateResellPrice(1000, 5)
+// Output: 700
 
-CalculateResellPrice(1000, 15);
-// => 500
+CalculateResellPrice(1000, 15)
+// Output: 500
 ```
 
 Note the value returned is a `float64`.
