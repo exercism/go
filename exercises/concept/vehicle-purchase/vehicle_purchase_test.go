@@ -54,43 +54,48 @@ func TestNeedsLicence(t *testing.T) {
 func TestChooseVehicle(t *testing.T) {
 	tests := []struct {
 		name     string
+		choice1  string
+		choice2  string
 		expected string
-		other    string
 	}{
 		{
 			name:     "chooses Bugatti over Ford",
-			expected: "Bugatti Veyron",
-			other:    "Ford Pinto",
+			choice1:  "Bugatti Veyron",
+			choice2:  "Ford Pinto",
+			expected: "Bugatti Veyron is clearly the better choice.",
 		}, {
 			name:     "chooses Chery over Kia",
-			expected: "Chery EQ",
-			other:    "Kia Niro Elektro",
+			choice1:  "Chery EQ",
+			choice2:  "Kia Niro Elektro",
+			expected: "Chery EQ is clearly the better choice.",
 		}, {
 			name:     "chooses Ford Focus over Ford Pinto",
-			expected: "Ford Focus",
-			other:    "Ford Pinto",
+			choice1:  "Ford Focus",
+			choice2:  "Ford Pinto",
+			expected: "Ford Focus is clearly the better choice.",
 		}, {
 			name:     "chooses 2018 over 2020",
-			expected: "2018 Bergamont City",
-			other:    "2020 Gazelle Medeo",
+			choice1:  "2018 Bergamont City",
+			choice2:  "2020 Gazelle Medeo",
+			expected: "2018 Bergamont City is clearly the better choice.",
 		}, {
 			name:     "chooses Bugatti over ford",
-			expected: "Bugatti Veyron",
-			other:    "ford",
+			choice1:  "Bugatti Veyron",
+			choice2:  "ford",
+			expected: "Bugatti Veyron is clearly the better choice.",
 		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			expectedResponse := test.expected + " is clearly the better choice."
-			actual := ChooseVehicle(test.expected, test.other)
-			if actual != expectedResponse {
+			actual := ChooseVehicle(test.choice1, test.choice2)
+			if actual != test.expected {
 				t.Errorf(
 					"ChooseVehicle(%q, %q) = %q, want %q",
-					test.expected,
-					test.other,
+					test.choice1,
+					test.choice2,
 					actual,
-					expectedResponse)
+					test.expected)
 			}
 		})
 	}
