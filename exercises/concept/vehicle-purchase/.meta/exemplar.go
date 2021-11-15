@@ -13,7 +13,7 @@ func ChooseVehicle(first, second string) string {
 	} else {
 		choice = second
 	}
-	return choice + " is clearly the better choice"
+	return choice + " is clearly the better choice."
 }
 
 // CalculateResellPrice calculates how much a vehicle can resell for at a certain age.

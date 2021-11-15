@@ -82,7 +82,7 @@ func TestChooseVehicle(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			expectedResponse := test.expected + " is clearly the better choice"
+			expectedResponse := test.expected + " is clearly the better choice."
 			actual := ChooseVehicle(test.expected, test.other)
 			if actual != expectedResponse {
 				t.Errorf(
