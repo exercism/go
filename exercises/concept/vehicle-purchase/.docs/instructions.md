@@ -7,15 +7,15 @@ You have three tasks, one to determine if you need a licence, one to help you ch
 ## 1. Determine if you will need a driver's licence
 
 Some vehicle kinds require a driver's licence to operate them.
-Assume only the kinds `'car'` and `'truck'` require a licence, everything else can be operated without a licence.
+Assume only the kinds `"car"` and `"truck"` require a licence, everything else can be operated without a licence.
 
 Implement the `NeedsLicence(kind)` function that takes the kind of vehicle and returns a boolean indicating whether you need a licence for that kind of vehicle.
 
 ```go
-needLicence := NeedsLicence('car')
+needLicence := NeedsLicence("car")
 // Output: true
 
-needLicence = NeedsLicence('bike')
+needLicence = NeedsLicence("bike")
 // Output: false
 ```
 
@@ -26,10 +26,10 @@ You manage to narrow it down to two options but you need help making the final d
 For that implement the function `ChooseVehicle(option1, option2)` that takes two vehicles as arguments and returns a decision that includes the option that comes first in dictionary order.
 
 ```go
-vehicle := ChooseVehicle('Wuling Hongguang', 'Toyota Corolla')
+vehicle := ChooseVehicle("Wuling Hongguang", "Toyota Corolla")
 // Output: "Toyota Corolla is clearly the better choice."
 
-ChooseVehicle('Volkswagen Beetle', 'Volkswagen Golf')
+ChooseVehicle("Volkswagen Beetle", "Volkswagen Golf")
 // Output: "Volkswagen Beetle is clearly the better choice."
 ```
 
