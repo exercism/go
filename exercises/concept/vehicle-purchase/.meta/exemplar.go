@@ -19,7 +19,9 @@ func ChooseVehicle(first, second string) string {
 // CalculateResellPrice calculates how much a vehicle can resell for at a certain age.
 func CalculateResellPrice(originalPrice, age float64) float64 {
 	var percentage float64
-	//nolint:gocritic // To disable ifElseChain. The point of this exercise is to teach if-else-if-else, not switch.
+	// Disables ifElseChain rule of gocritic, which suggests convert the following code to a switch,
+	// however the point of this exercise is to teach if-else-if-else, not switch.
+	//nolint:gocritic
 	if age < 3 {
 		percentage = 0.8
 	} else if age < 10 {
