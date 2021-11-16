@@ -221,6 +221,6 @@ func TestMapIntWithComplexStructure(t *testing.T) {
 	actual := bst.MapInt(f)
 	expected := []int{1, 2, 3, 4, 5, 6, 7}
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("bst.MapString(): %v, want %v.", actual, expected)
+		t.Errorf("bst.MapInt(): %v, want %v.", actual, expected)
 	}
 }
