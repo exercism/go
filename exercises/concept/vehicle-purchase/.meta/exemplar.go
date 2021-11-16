@@ -6,12 +6,12 @@ func NeedsLicence(kind string) bool {
 }
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in dictionary order.
-func ChooseVehicle(first, second string) string {
+func ChooseVehicle(option1, option2 string) string {
 	var choice string
-	if first < second {
-		choice = first
+	if option1 < option2 {
+		choice = option1
 	} else {
-		choice = second
+		choice = option2
 	}
 	return choice + " is clearly the better choice."
 }

@@ -6,7 +6,7 @@ func NeedsLicence(kind string) bool {
 }
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in dictionary order.
-func ChooseVehicle(first, second string) string {
+func ChooseVehicle(option1, option2 string) string {
 	panic("ChooseVehicle not implemented")
 }
 
