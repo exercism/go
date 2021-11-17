@@ -141,7 +141,7 @@ func TestCalculateResellPrice(t *testing.T) {
 			expected:      28000,
 		},
 		{
-			name:          "price is reduced to 70%% for age 10",
+			name:          "price is reduced to 50%% for age 10",
 			originalPrice: 25000,
 			age:           10,
 			expected:      12500,
