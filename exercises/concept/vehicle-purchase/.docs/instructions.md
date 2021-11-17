@@ -1,6 +1,6 @@
 # Instructions
 
-In this exercise you are going to write some code to help you prepare to buy a vehicle.
+In this exercise, you are going to write some code to help you prepare to buy a vehicle.
 
 You have three tasks, one to determine if you need a license, one to help you choose between two vehicles and one to estimate the acceptable price for a used vehicle.
 
@@ -38,8 +38,8 @@ ChooseVehicle("Volkswagen Beetle", "Volkswagen Golf")
 Now that you made a decision, you want to make sure you get a fair price at the dealership.
 Since you are interested in buying a used vehicle, the price depends on how old the vehicle is.
 For a rough estimate, assume if the vehicle is less than 3 years old, it costs 80% of the original price it had when it was brand new.
-If it is more than 10 years old, it costs 50%.
-If the vehicle is at least 3 years old but not older than 10 years, it costs 70% of the original price.
+If it is at least 10 years old, it costs 50%.
+If the vehicle is at least 3 years old but less than 10 years, it costs 70% of the original price.
 
 Implement the `CalculateResellPrice(originalPrice, age)` function that applies this logic using `if`, `else if` and `else` (there are other ways if you want to practice).
 It takes the original price and the age of the vehicle as arguments and returns the estimated price in the dealership.
