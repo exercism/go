@@ -2,20 +2,20 @@
 
 In this exercise you are going to write some code to help you prepare to buy a vehicle.
 
-You have three tasks, one to determine if you need a licence, one to help you choose between two vehicles and one to estimate the acceptable price for a used vehicle.
+You have three tasks, one to determine if you need a license, one to help you choose between two vehicles and one to estimate the acceptable price for a used vehicle.
 
-## 1. Determine if you will need a driver's licence
+## 1. Determine if you will need a driver's license
 
-Some vehicle kinds require a driver's licence to operate them.
-Assume only the kinds `"car"` and `"truck"` require a licence, everything else can be operated without a licence.
+Some vehicle kinds require a driver's license to operate them.
+Assume only the kinds `"car"` and `"truck"` require a license, everything else can be operated without a license.
 
-Implement the `NeedsLicence(kind)` function that takes the kind of vehicle and returns a boolean indicating whether you need a licence for that kind of vehicle.
+Implement the `NeedsLicense(kind)` function that takes the kind of vehicle and returns a boolean indicating whether you need a license for that kind of vehicle.
 
 ```go
-needLicence := NeedsLicence("car")
+needLicense := NeedsLicense("car")
 // Output: true
 
-needLicence = NeedsLicence("bike")
+needLicense = NeedsLicense("bike")
 // Output: false
 ```
 

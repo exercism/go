@@ -1,6 +1,6 @@
 # Hints
 
-## 1. Determine if you will need a driver's licence
+## 1. Determine if you will need a driver's license
 
 - Use the [equals comparison operator][comparison-operators] to check whether your input equals a certain string.
 - Use one of the two [logical operators][logical-operators] you learned about in the boolean concept to combine the two requirements.

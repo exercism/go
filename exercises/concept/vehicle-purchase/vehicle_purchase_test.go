@@ -7,34 +7,34 @@ import (
 
 const floatEqualityThreshold = 1e-5
 
-func TestNeedsLicence(t *testing.T) {
+func TestNeedsLicense(t *testing.T) {
 	tests := []struct {
 		name     string
 		kind     string
 		expected bool
 	}{
 		{
-			name:     "need a licence for a car",
+			name:     "need a license for a car",
 			kind:     "car",
 			expected: true,
 		},
 		{
-			name:     "need a licence for a truck",
+			name:     "need a license for a truck",
 			kind:     "truck",
 			expected: true,
 		},
 		{
-			name:     "does not need a licence for a bike",
+			name:     "does not need a license for a bike",
 			kind:     "bike",
 			expected: false,
 		},
 		{
-			name:     "does not need a licence for a stroller",
+			name:     "does not need a license for a stroller",
 			kind:     "stroller",
 			expected: false,
 		},
 		{
-			name:     "does not need a licence for a e-scooter",
+			name:     "does not need a license for a e-scooter",
 			kind:     "e-scooter",
 			expected: false,
 		},
@@ -42,10 +42,10 @@ func TestNeedsLicence(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			actual := NeedsLicence(test.kind)
+			actual := NeedsLicense(test.kind)
 			if actual != test.expected {
 				t.Errorf(
-					"NeedsLicence(%q) = %t, want %t",
+					"NeedsLicense(%q) = %t, want %t",
 					test.kind,
 					actual,
 					test.expected)

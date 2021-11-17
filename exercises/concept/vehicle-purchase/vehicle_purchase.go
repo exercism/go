@@ -1,8 +1,8 @@
 package purchase
 
-// NeedsLicence determines whether a licence is need to drive a type of vehicle. Only "car" and "truck" require a licence.
-func NeedsLicence(kind string) bool {
-	panic("NeedsLicence not implemented")
+// NeedsLicense determines whether a license is need to drive a type of vehicle. Only "car" and "truck" require a license.
+func NeedsLicense(kind string) bool {
+	panic("NeedsLicense not implemented")
 }
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in dictionary order.
