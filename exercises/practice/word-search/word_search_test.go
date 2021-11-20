@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-// Define a function Solve(words []string, puzzle []string) (map[string][2][2]int, error).
-
 func TestSolve(t *testing.T) {
 	for _, tc := range testCases {
 		actual, err := Solve(tc.words, tc.puzzle)
