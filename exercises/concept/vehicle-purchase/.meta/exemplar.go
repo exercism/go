@@ -1,6 +1,6 @@
 package purchase
 
-// NeedsLicense determines whether a license is need to drive a type of vehicle. Only "car" and "truck" require a license.
+// NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
 func NeedsLicense(kind string) bool {
 	return kind == "car" || kind == "truck"
 }
