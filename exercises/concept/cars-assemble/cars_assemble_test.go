@@ -7,46 +7,53 @@ import (
 
 const FloatEqualityThreshold = 1e-9
 
-func TestSuccessRate(t *testing.T) {
+func TestCalculateWorkingCarsPerHour(t *testing.T) {
 	tests := []struct {
-		name  string
-		speed int
-		want  float64
+		name           string
+		productionRate int
+		successRate    float64
+		want           float64
 	}{
 		{
-			name:  "calculate success rate for speed zero",
-			speed: 0,
-			want:  0.0,
+			name:           "calculate working cars per hour for production rate 0",
+			productionRate: 0,
+			successRate:    100,
+			want:           0.0,
 		},
 		{
-			name:  "calculate success rate for speed one",
-			speed: 1,
-			want:  1.0,
+			name:           "calculate working cars per hour for 100%% success rate",
+			productionRate: 221,
+			successRate:    100,
+			want:           221.0,
 		},
 		{
-			name:  "calculate success rate for speed four",
-			speed: 4,
-			want:  1.0,
+			name:           "calculate working cars per hour for 80%% success rate",
+			productionRate: 426,
+			successRate:    80,
+			want:           340.8,
 		},
 		{
-			name:  "calculate success rate for speed seven",
-			speed: 7,
-			want:  0.9,
+			name:           "calculate working cars per hour for 20.5%% success rate",
+			productionRate: 6824,
+			successRate:    20.5,
+			want:           1398.92,
 		},
 		{
-			name:  "calculate success rate for speed nine",
-			speed: 9,
-			want:  0.77,
+			name:           "calculate working cars per hour for 0%% success rate",
+			productionRate: 8000,
+			successRate:    0,
+			want:           0,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := SuccessRate(tt.speed)
+			got := CalculateWorkingCarsPerHour(tt.productionRate, tt.successRate)
 			if math.Abs(got-tt.want) > FloatEqualityThreshold {
 				t.Errorf(
-					"SuccessRate(%d) = %f, want %f",
-					tt.speed,
+					"CalculateWorkingCarsPerHour(%d, %f) = %f, want %f",
+					tt.productionRate,
+					tt.successRate,
 					got,
 					tt.want,
 				)
@@ -55,94 +62,53 @@ func TestSuccessRate(t *testing.T) {
 	}
 }
 
-func TestCalculateProductionRatePerHour(t *testing.T) {
+func TestCalculateWorkingCarsPerMinute(t *testing.T) {
 	tests := []struct {
-		name  string
-		speed int
-		want  float64
+		name           string
+		productionRate int
+		successRate    float64
+		want           int
 	}{
 		{
-			name:  "calculate production rate per hour for speed zero",
-			speed: 0,
-			want:  0.0,
+			name:           "calculate working cars per minute for production rate 0",
+			productionRate: 0,
+			successRate:    100,
+			want:           0,
 		},
 		{
-			name:  "calculate production rate per hour for speed one",
-			speed: 1,
-			want:  221.0,
+			name:           "calculate working cars per minute for 100%% success rate",
+			productionRate: 221,
+			successRate:    100,
+			want:           3,
 		},
 		{
-			name:  "calculate production rate per hour for speed four",
-			speed: 4,
-			want:  884.0,
+			name:           "calculate working cars per minute for 80%% success rate",
+			productionRate: 426,
+			successRate:    80,
+			want:           5,
 		},
 		{
-			name:  "calculate production rate per hour for speed seven",
-			speed: 7,
-			want:  1392.3,
+			name:           "calculate working cars per minute for 20.5%% success rate",
+			productionRate: 6824,
+			successRate:    20.5,
+			want:           23,
 		},
 		{
-			name:  "calculate production rate per hour for speed nine",
-			speed: 9,
-			want:  1531.53,
+			name:           "calculate working cars per minute for 0%% success rate",
+			productionRate: 8000,
+			successRate:    0,
+			want:           0,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateProductionRatePerHour(tt.speed)
-			if math.Abs(got-tt.want) > FloatEqualityThreshold {
-				t.Errorf(
-					"CalculateProductionRatePerHour(%d) = %f, want %f",
-					tt.speed,
-					got,
-					tt.want,
-				)
-			}
-		})
-	}
-}
-
-func TestCalculateProductionRatePerMinute(t *testing.T) {
-	tests := []struct {
-		name  string
-		speed int
-		want  int
-	}{
-		{
-			name:  "calculate production rate per minute for speed zero",
-			speed: 0,
-			want:  0,
-		},
-		{
-			name:  "calculate production rate per minute for speed one",
-			speed: 1,
-			want:  3,
-		},
-		{
-			name:  "calculate production rate per minute for speed five",
-			speed: 5,
-			want:  16,
-		},
-		{
-			name:  "calculate production rate per minute for speed eight",
-			speed: 8,
-			want:  26,
-		},
-		{
-			name:  "calculate production rate per minute for speed ten",
-			speed: 10,
-			want:  28,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateProductionRatePerMinute(tt.speed)
+			got := CalculateWorkingCarsPerMinute(tt.productionRate, tt.successRate)
 			if got != tt.want {
 				t.Errorf(
-					"CalculateProductionRatePerMinute(%d) = %d, want %d",
-					tt.speed,
+					"CalculateWorkingCarsPerMinute(%d, %f) = %d, want %d",
+					tt.productionRate,
+					tt.successRate,
 					got,
 					tt.want,
 				)
@@ -151,47 +117,81 @@ func TestCalculateProductionRatePerMinute(t *testing.T) {
 	}
 }
 
-func TestCalculateLimitedProductionRatePerHour(t *testing.T) {
+func TestCalculateCost(t *testing.T) {
 	tests := []struct {
-		name  string
-		speed int
-		limit float64
-		want  float64
+		name      string
+		carsCount int
+		want      uint
 	}{
 		{
-			name:  "calculate limited production rate per hour for speed zero",
-			speed: 0,
-			limit: 500.0,
-			want:  0.0,
+			name:      "calculate cost to produce 0 cars",
+			carsCount: 0,
+			want:      0,
 		},
 		{
-			name:  "calculate limited production rate per hour below limit",
-			speed: 1,
-			limit: 500.0,
-			want:  221.0,
+			name:      "calculate the cost of materials to produce 1 car",
+			carsCount: 1,
+			want:      10000,
 		},
 		{
-			name:  "calculate limited production rate per hour above limit",
-			speed: 9,
-			limit: 500.0,
-			want:  500.0,
+			name:      "calculate cost to produce 3 cars ",
+			carsCount: 3,
+			want:      29000,
 		},
 		{
-			name:  "calculate limited production rate per hour at limit",
-			speed: 3,
-			limit: 663.0,
-			want:  663.0,
+			name:      "calculate cost to produce 10 cars",
+			carsCount: 10,
+			want:      95000,
+		},
+		{
+			name:      "calculate cost to produce 2 cars",
+			carsCount: 2,
+			want:      20000,
+		},
+		{
+			name:      "calculate cost to produce 6 cars",
+			carsCount: 6,
+			want:      58000,
+		},
+		{
+			name:      "caulcate cost of materials to produce 9 cars",
+			carsCount: 9,
+			want:      87000,
+		},
+		{
+			name:      "calculate cost to produce 100 cars",
+			carsCount: 100,
+			want:      950000,
+		},
+		{
+			name:      "calculate cost to produce 21 cars",
+			carsCount: 21,
+			want:      200000,
+		},
+		{
+			name:      "calculate cost to produce 37 cars",
+			carsCount: 37,
+			want:      353000,
+		},
+		{
+			name:      "calculate cost to produce 56 cars",
+			carsCount: 56,
+			want:      533000,
+		},
+		{
+			name:      "calculate cost to produce 148 cars",
+			carsCount: 148,
+			want:      1408000,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateLimitedProductionRatePerHour(tt.speed, tt.limit)
-			if math.Abs(got-tt.want) > FloatEqualityThreshold {
+			got := CalculateCost(tt.carsCount)
+			if got != tt.want {
 				t.Errorf(
-					"CalculateLimitedProductionRatePerHour(%d, %f) = %f, want %f",
-					tt.speed,
-					tt.limit,
+					"CalculateCost(%d) = %d, want %d",
+					tt.carsCount,
 					got,
 					tt.want,
 				)

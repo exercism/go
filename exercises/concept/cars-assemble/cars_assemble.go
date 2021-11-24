@@ -1,25 +1,19 @@
 package cars
 
-// SuccessRate is used to calculate the ratio of an item being created without
-// error for a given speed
-func SuccessRate(speed int) float64 {
-	panic("SuccessRate not implemented")
+// CalculateWorkingCarsPerHour for the assembly line, taking into account
+// the production rate (in units per hour) and the success rate (as a percentage)
+func CalculateWorkingCarsPerHour(productionRate int, successRate float64) float64 {
+	panic("CalculateWorkingCarsPerHour not implemented")
 }
 
-// CalculateProductionRatePerHour for the assembly line, taking into account
-// its success rate
-func CalculateProductionRatePerHour(speed int) float64 {
-	panic("CalculateProductionRatePerHour not implemented")
-}
-
-// CalculateProductionRatePerMinute describes how many working items are
+// CalculateWorkingCarsPerMinute describes how many working items are
 // produced by the assembly line every minute
-func CalculateProductionRatePerMinute(speed int) int {
-	panic("CalculateProductionRatePerMinute not implemented")
+func CalculateWorkingCarsPerMinute(productionRate int, successRate float64) int {
+	panic("CalculateWorkingCarsPerMinute not implemented")
 }
 
-// CalculateLimitedProductionRatePerHour describes how many working items are
-// produced per hour with an upper limit on how many can be produced per hour
-func CalculateLimitedProductionRatePerHour(speed int, limit float64) float64 {
-	panic("CalculateLimitedProductionRatePerHour not implemented")
+// CalculateCost works out how much the materials to produce a
+// number of cars cost
+func CalculateCost(carsCount int) uint {
+	panic("CalculateCost not implemented")
 }
