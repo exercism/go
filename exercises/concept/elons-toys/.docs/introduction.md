@@ -33,7 +33,7 @@ Methods help to avoid naming conflicts - since a method is tied to a particular 
 import "math"
 
 type rect struct {
-	width, hight int
+	width, height int
 }
 func (r rect) area() int {
 	return r.width * r.height
