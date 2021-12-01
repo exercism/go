@@ -3,8 +3,8 @@
 In this exercise you'll be writing code to analyze the production in a car factory.
 
 ## 1. Calculate the number of working cars produced per hour
-The assembly line's speed is can be changed.
-But, a higher production rate can lead to more errors and, therefore, a lower success rate.
+
+The cars are produced in an assembly line. The assembly line has a certain speed, that can be changed. The faster the assembly line speed is, the more cars are produced. However, changing the speed of the assembly line also changes the number of cars that are produced successfully, that is cars without any errors in their production.
 
 Implement a function that takes in the number of cars produced per hour and the success rate (as a percentage) and calculates the number of successful cars made per hour:
 

@@ -6,7 +6,7 @@ func CalculateWorkingCarsPerHour(productionRate int, successRate float64) float6
 	panic("CalculateWorkingCarsPerHour not implemented")
 }
 
-// CalculateWorkingCarsPerMinute describes how many working items are
+// CalculateWorkingCarsPerMinute describes how many working cars are
 // produced by the assembly line every minute
 func CalculateWorkingCarsPerMinute(productionRate int, successRate float64) int {
 	panic("CalculateWorkingCarsPerMinute not implemented")
