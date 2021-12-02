@@ -1,7 +1,6 @@
 package protein
 
 import (
-	"reflect"
 	"testing"
 )
 
