@@ -142,7 +142,7 @@ var proteinTestCases = []rnaCase{
 	},
 	{
 		"UGGAGAAUUAAUGGUUU",
-		[]string{"Tryptophan"},
+		nil,
 		ErrInvalidBase,
 	},
 }
