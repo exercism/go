@@ -7,7 +7,7 @@ import (
 
 type testWeightFodder struct {
 	fodder float64
-	err error
+	err    error
 }
 
 func (wf testWeightFodder) FodderAmount() (float64, error) {
@@ -26,7 +26,7 @@ func TestDivideFood(t *testing.T) {
 	}{
 		{
 			description:             "100 fodder for 10 cows",
-			weightFodder:            testWeightFodder{ 100, nil },
+			weightFodder:            testWeightFodder{100, nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    10,
 			wantAmount:              10,
@@ -34,7 +34,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "10 fodder for 10 cows",
-			weightFodder:            testWeightFodder{ 10, nil },
+			weightFodder:            testWeightFodder{10, nil},
 			weightFodderDescription: "10 fodder, no error",
 			cows:                    10,
 			wantAmount:              1,
@@ -42,7 +42,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "10.5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{ 10.5, nil },
+			weightFodder:            testWeightFodder{10.5, nil},
 			weightFodderDescription: "10.5 fodder, no error",
 			cows:                    2,
 			wantAmount:              5.25,
@@ -50,7 +50,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{ 5, nil },
+			weightFodder:            testWeightFodder{5, nil},
 			weightFodderDescription: "5 fodder, no error",
 			cows:                    2,
 			wantAmount:              2.5,
@@ -58,7 +58,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "0 fodder for 2 cows",
-			weightFodder:            testWeightFodder{ 0, nil },
+			weightFodder:            testWeightFodder{0, nil},
 			weightFodderDescription: "0 fodder, no error",
 			cows:                    2,
 			wantAmount:              0,
@@ -66,7 +66,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Generic error from the scale is returned",
-			weightFodder:            testWeightFodder{ 10, nonScaleError },
+			weightFodder:            testWeightFodder{10, nonScaleError},
 			weightFodderDescription: "10 fodder, generic error",
 			cows:                    2,
 			wantAmount:              0,
@@ -74,7 +74,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Scale returns 10 with ScaleError for 2 cows",
-			weightFodder:            testWeightFodder{ 10, ScaleError{} },
+			weightFodder:            testWeightFodder{10, ScaleError{}},
 			weightFodderDescription: "10 fodder, ScaleError",
 			cows:                    2,
 			wantAmount:              10,
@@ -82,7 +82,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Scale returns 5 with ScaleError for 10 cows",
-			weightFodder:            testWeightFodder{ 5, ScaleError{} },
+			weightFodder:            testWeightFodder{5, ScaleError{}},
 			weightFodderDescription: "5 fodder, ScaleError",
 			cows:                    10,
 			wantAmount:              1,
@@ -90,7 +90,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Negative fodder",
-			weightFodder:            testWeightFodder{ -1, nil },
+			weightFodder:            testWeightFodder{-1, nil},
 			weightFodderDescription: "-1 fodder, no error",
 			cows:                    2,
 			wantAmount:              0,
@@ -98,7 +98,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Zero cows",
-			weightFodder:            testWeightFodder{ 100, nil },
+			weightFodder:            testWeightFodder{100, nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    0,
 			wantAmount:              0,
@@ -106,7 +106,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Negative ten cows",
-			weightFodder:            testWeightFodder{ 100, nil },
+			weightFodder:            testWeightFodder{100, nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    -10,
 			wantAmount:              0,
@@ -114,7 +114,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Negative seven cows",
-			weightFodder:            testWeightFodder{ 100, nil },
+			weightFodder:            testWeightFodder{100, nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    -7,
 			wantAmount:              0,

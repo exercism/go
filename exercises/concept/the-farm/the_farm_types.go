@@ -10,7 +10,7 @@ type WeightFodder interface {
 }
 
 // ScaleError indicates an error with the scale
-type ScaleError struct {}
+type ScaleError struct{}
 
 func (se ScaleError) Error() string {
 	return "sensor error"
