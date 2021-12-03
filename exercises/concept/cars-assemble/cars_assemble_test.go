@@ -5,7 +5,13 @@ import (
 	"testing"
 )
 
-const FloatEqualityThreshold = 1e-9
+const floatEqualityThreshold = 1e-9
+
+func floatingPointEquals(got, want float64) bool {
+	absoluteDifferenceBelowTreshold := math.Abs(got-want) <= floatEqualityThreshold
+	relativeDifferenceBelowTreshold := math.Abs(got-want)/(math.Abs(got)+math.Abs(want)) <= floatEqualityThreshold
+	return absoluteDifferenceBelowTreshold || relativeDifferenceBelowTreshold
+}
 
 func TestCalculateWorkingCarsPerHour(t *testing.T) {
 	tests := []struct {
@@ -49,7 +55,7 @@ func TestCalculateWorkingCarsPerHour(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := CalculateWorkingCarsPerHour(tt.productionRate, tt.successRate)
-			if math.Abs(got-tt.want) > FloatEqualityThreshold {
+			if !floatingPointEquals(got, tt.want) {
 				t.Errorf(
 					"CalculateWorkingCarsPerHour(%d, %f) = %f, want %f",
 					tt.productionRate,
