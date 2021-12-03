@@ -2,8 +2,8 @@
 
 ## General
 
-- To know more about types in Go, check [Tour of Go: Basic Types][basic types]
-- To know more about type conversions in Go, check [Tour of Go: Type Conversions][type conversions]
+- To learn more about types in Go, check [Tour of Go: Basic Types][basic types].
+- To learn more about type conversions in Go, check [Tour of Go: Type Conversions][type conversions].
 
 ## 1. Calculate the number of working cars produced per hour
 
@@ -14,7 +14,7 @@
 ## 2. Calculate the number of working cars produced per minute
 
 - Start by calculating the production of successful cars per hour. For this, you can use the `CalculateProductionRatePerHour` function you made from the previous step.
-- Knowing the production per hour of cars, you can get the production per minute by dividing the production per hour by 60 (the number of minutes in an hour)
+- Knowing the production per hour of cars, you can get the production per minute by dividing the production per hour by 60 (the number of minutes in an hour).
 - Remember to cast the result to an `int`.
 
 ## 3. Calculate the cost of production 
