@@ -134,29 +134,19 @@ func TestCalculateCost(t *testing.T) {
 			want:      10000,
 		},
 		{
-			name:      "calculate cost to produce 3 cars ",
-			carsCount: 3,
-			want:      29000,
-		},
-		{
-			name:      "calculate cost to produce 10 cars",
-			carsCount: 10,
-			want:      95000,
-		},
-		{
 			name:      "calculate cost to produce 2 cars",
 			carsCount: 2,
 			want:      20000,
 		},
 		{
-			name:      "calculate cost to produce 6 cars",
-			carsCount: 6,
-			want:      58000,
+			name:      "calculate cost to produce 9 cars",
+			carsCount: 9,
+			want:      90000,
 		},
 		{
-			name:      "caulcate cost of materials to produce 9 cars",
-			carsCount: 9,
-			want:      87000,
+			name:      "calculate cost to produce 10 cars",
+			carsCount: 10,
+			want:      95000,
 		},
 		{
 			name:      "calculate cost to produce 100 cars",
@@ -171,17 +161,17 @@ func TestCalculateCost(t *testing.T) {
 		{
 			name:      "calculate cost to produce 37 cars",
 			carsCount: 37,
-			want:      353000,
+			want:      355000,
 		},
 		{
 			name:      "calculate cost to produce 56 cars",
 			carsCount: 56,
-			want:      533000,
+			want:      535000,
 		},
 		{
 			name:      "calculate cost to produce 148 cars",
 			carsCount: 148,
-			want:      1408000,
+			want:      1410000,
 		},
 	}
 
