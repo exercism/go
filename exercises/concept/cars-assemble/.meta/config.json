@@ -1,11 +1,12 @@
 {
   "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory.",
   "authors": [
-    "DavyJ0nes"
+    "DavyJ0nes",
+    "kahgoh"
   ],
   "contributors": [
     "tehsphinx",
-    "kahgoh"
+    "andrerfcsantos"
   ],
   "files": {
     "solution": [
