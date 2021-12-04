@@ -53,7 +53,7 @@ func BadFoo() (int, error) {
 
 > NOTE: the standard library has an `errors` package can be used to create and check errors.
 
-When no errors have to be returned, return `nil` for the error:
+Return `nil` for the error when there are no errors:
 
 ```go
 func Foo() (int, error) {
@@ -106,7 +106,7 @@ if err != nil {
 
 ## Scope of error
 
-In Go, it is also a best practice to avoid declaring variables in a scope if these are not required later.
+In Go, it is also a best practice to avoid declaring variables in a scope if they are not required later.
 
 For the sake of this example, we want to check for errors only:
 

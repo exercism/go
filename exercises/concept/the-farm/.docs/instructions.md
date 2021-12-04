@@ -57,7 +57,7 @@ fodder, err := DivideFood(twentyFodderNoError, 0)
 
 ## 4. Return a `SillyNephewError` for a negative number of cows
 
-Help your nephew by returning a `SillyNephewError` if there are a negative number of cows.
+Help your nephew by returning a `SillyNephewError` if the number of cows is negative.
 
 ```go
 // twentyFodderNoError says there are 20.0 fodder
