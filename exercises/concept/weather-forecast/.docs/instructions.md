@@ -1,6 +1,6 @@
 # Instructions
 
-In this exercise, your task is to help a weather station manage their weather forecasting program.
+Being hired by a big Weather Forecast Company, your job is to maintain their Code Base. Scrolling through the Code you find it hard to follow what the Code is actually doing. Good thing you know just the right thing to do!  
 
 ## 1. Document package weather
 
