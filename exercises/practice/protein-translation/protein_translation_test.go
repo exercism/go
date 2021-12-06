@@ -1,7 +1,6 @@
 package protein
 
 import (
-	"protein"
 	"testing"
 )
 
@@ -95,7 +94,7 @@ var codonTestCases = []codonCase{
 
 func TestCodon(t *testing.T) {
 	for _, test := range codonTestCases {
-		actual, err := protein.FromCodon(test.input)
+		actual, err := FromCodon(test.input)
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
 				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
@@ -149,7 +148,7 @@ var proteinTestCases = []rnaCase{
 
 func TestProtein(t *testing.T) {
 	for _, test := range proteinTestCases {
-		actual, err := protein.FromRNA(test.input)
+		actual, err := FromRNA(test.input)
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
 				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
@@ -190,7 +189,7 @@ func BenchmarkCodon(b *testing.B) {
 	}
 	for _, test := range codonTestCases {
 		for i := 0; i < b.N; i++ {
-			protein.FromCodon(test.input)
+			FromCodon(test.input)
 		}
 	}
 }
@@ -201,7 +200,7 @@ func BenchmarkProtein(b *testing.B) {
 	}
 	for _, test := range proteinTestCases {
 		for i := 0; i < b.N; i++ {
-			protein.FromRNA(test.input)
+			FromRNA(test.input)
 		}
 	}
 }
