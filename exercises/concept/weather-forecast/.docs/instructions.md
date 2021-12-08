@@ -1,6 +1,6 @@
 # Instructions
 
-Being hired by a big Weather Forecast Company, your job is to maintain their Code Base. Scrolling through the Code you find it hard to follow what the Code is actually doing. Good thing you know just the right thing to do!  
+Being hired by a big weather forecast company, your job is to maintain their code base. Scrolling through the code, you find it hard to follow what the code is actually doing. Good thing you know just the right thing to do!
 
 ## 1. Document package weather
 
