@@ -3,7 +3,7 @@ package listops
 // IntList is an abstraction of a list of integers which we can define methods on
 type IntList []int
 
-func (s IntList) Foldl(fn func(int) bool, initial int) int {
+func (s IntList) Foldl(fn func(int, int) int, initial int) int {
 	panic("Please implement the Foldl function")
 }
 
