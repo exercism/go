@@ -56,6 +56,12 @@ PrefilledSlice(8, 3)
 // Output: []int{8, 8, 8}
 ```
 
+If the given `length` is negative or zero, return an empty stack.
+
+```go
+PrefilledSlice(5, -2)
+// Output: []int{}
+```
 ## 4. Remove a card from the stack
 
 Remove the card at position `index` from the stack and return the stack.
