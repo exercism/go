@@ -13,6 +13,7 @@ func SetItem(slice []int, index, value int) []int {
 }
 
 // PrefilledSlice creates a slice of given length and prefills it with the given value.
+// If the length is negative or zero, PrefilledSlice returns an empty slice.
 func PrefilledSlice(value, length int) []int {
 	panic("Please implement the PrefilledSlice function")
 }
