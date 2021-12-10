@@ -49,7 +49,7 @@ SetItem([]int{1, 2, 4, 1}, index, newCard)
 
 ## 3. Create a stack of cards
 
-Create a stack of given `length` and fill it with cards of the given `value`.
+Create a stack of given `length` and fill it with cards of the given `value`. If the given `length` is negative or zero, return an empty stack.
 
 ```go
 PrefilledSlice(8, 3)
