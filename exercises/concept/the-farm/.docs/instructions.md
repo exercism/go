@@ -23,11 +23,11 @@ fodder, err := DivideFood(twentyFodderNoError, 10)
 // err == nil
 ```
 
-If a `ScaleError` is returned by `FodderAmount`, double the fodder amount returned by `FodderAmount`.
+If `ErrScaleMalfunction` is returned by `FodderAmount`, double the fodder amount returned by `FodderAmount`.
 For any other error, return `0` and the error.
 
 ```go
-// twentyFodderNoError says there are 20.0 fodder and a ScaleError
+// twentyFodderNoError says there are 20.0 fodder and a ErrScaleMalfunction
 fodder, err := DivideFood(twentyFodderWithScaleError, 10)
 // fodder == 4.0
 // err == nil
@@ -55,13 +55,17 @@ fodder, err := DivideFood(twentyFodderNoError, 0)
 // err.Error() == "Division by zero"
 ```
 
-## 4. Return a `SillyNephewError` for a negative number of cows
+## 4. Handle negative cows
 
-Help your nephew by returning a `SillyNephewError` if the number of cows is negative.
+Define a custom error type called `SillyNephewError`.
+It should be returned in case the number of cows is negative.
+
+The error message should include the number of cows that was passed as argument.
+You can see the format of the error message in the example below.
 
 ```go
 // twentyFodderNoError says there are 20.0 fodder
 fodder, err := DivideFood(twentyFodderNoError, -5)
 // fodder == 0.0
-// err == SillyNephewError{-5}
+// err.Error() == "silly nephew, there cannot be -5 cows"
 ```

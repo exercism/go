@@ -1,5 +1,5 @@
 {
-  "blurb": "TODO: add blurb",
-  "authors": ["micuffaro"],
-  "contributors": []
+  "blurb": "Error handling is NOT done via exceptions in Go. Instead, errors are normal values that are returned as the last return value of a function.",
+  "authors": ["micuffaro", "brugnara"],
+  "contributors": ["jmrunkle", "junedev"]
 }
