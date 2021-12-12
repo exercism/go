@@ -19,7 +19,6 @@ result, err := doStuff(a, b)
 if err != nil {
     // handle the error
 }
-...
 ```
 
 The above is a very common snippet to come across.
