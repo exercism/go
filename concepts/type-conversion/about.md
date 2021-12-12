@@ -33,7 +33,7 @@ There is a `strconv` package for converting between primitive types (like `int`)
 import "strconv"
 
 var intString string = "42"
-var i int = strconv.Atoi(intString)
+var i, err = strconv.Atoi(intString)
 
 var number int = 12
 var s string = strconv.Itoa(number)
