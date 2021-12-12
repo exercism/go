@@ -4,7 +4,9 @@
     "brugnara",
     "jmrunkle"
   ],
-  "contributors": [],
+  "contributors": [
+    "junedev"
+  ],
   "forked_from": [],
   "files": {
     "solution": [
@@ -17,7 +19,7 @@
       ".meta/exemplar.go"
     ],
     "editor": [
-      "the_farm_types.go"
+      "types.go"
     ]
   }
 }

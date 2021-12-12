@@ -285,7 +285,7 @@
           "interfaces",
           "string-formatting"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "name": "Chessboard",
@@ -312,9 +312,14 @@
           "errors"
         ],
         "prerequisites": [
-          "methods"
+          "conditionals-if",
+          "functions",
+          "structs",
+          "string-formatting",
+          "methods",
+          "packages"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "name": "Census",
@@ -2047,8 +2052,8 @@
       "uuid": "57477550-cecf-4334-903a-85a6c32d61d0"
     },
     {
-      "name": "Error Handling",
-      "slug": "error-handling",
+      "name": "Error Wrapping",
+      "slug": "error-wrapping",
       "uuid": "a118d8e5-d9ed-4612-a0a4-97bcbfa9ab4c"
     },
     {

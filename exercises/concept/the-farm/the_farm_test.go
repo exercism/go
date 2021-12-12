@@ -26,7 +26,7 @@ func TestDivideFood(t *testing.T) {
 	}{
 		{
 			description:             "100 fodder for 10 cows",
-			weightFodder:            testWeightFodder{100, nil},
+			weightFodder:            testWeightFodder{fodder: 100, err: nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    10,
 			wantAmount:              10,
@@ -34,7 +34,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "10 fodder for 10 cows",
-			weightFodder:            testWeightFodder{10, nil},
+			weightFodder:            testWeightFodder{fodder: 10, err: nil},
 			weightFodderDescription: "10 fodder, no error",
 			cows:                    10,
 			wantAmount:              1,
@@ -42,7 +42,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "10.5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{10.5, nil},
+			weightFodder:            testWeightFodder{fodder: 10.5, err: nil},
 			weightFodderDescription: "10.5 fodder, no error",
 			cows:                    2,
 			wantAmount:              5.25,
@@ -50,7 +50,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{5, nil},
+			weightFodder:            testWeightFodder{fodder: 5, err: nil},
 			weightFodderDescription: "5 fodder, no error",
 			cows:                    2,
 			wantAmount:              2.5,
@@ -58,7 +58,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "0 fodder for 2 cows",
-			weightFodder:            testWeightFodder{0, nil},
+			weightFodder:            testWeightFodder{fodder: 0, err: nil},
 			weightFodderDescription: "0 fodder, no error",
 			cows:                    2,
 			wantAmount:              0,
@@ -66,7 +66,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Generic error from the scale is returned",
-			weightFodder:            testWeightFodder{10, nonScaleError},
+			weightFodder:            testWeightFodder{fodder: 10, err: nonScaleError},
 			weightFodderDescription: "10 fodder, generic error",
 			cows:                    2,
 			wantAmount:              0,
@@ -74,7 +74,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Scale returns 10 with ScaleError for 2 cows",
-			weightFodder:            testWeightFodder{10, ScaleError{}},
+			weightFodder:            testWeightFodder{fodder: 10, err: ErrScaleMalfunction},
 			weightFodderDescription: "10 fodder, ScaleError",
 			cows:                    2,
 			wantAmount:              10,
@@ -82,7 +82,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Scale returns 5 with ScaleError for 10 cows",
-			weightFodder:            testWeightFodder{5, ScaleError{}},
+			weightFodder:            testWeightFodder{fodder: 5, err: ErrScaleMalfunction},
 			weightFodderDescription: "5 fodder, ScaleError",
 			cows:                    10,
 			wantAmount:              1,
@@ -90,7 +90,7 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Negative fodder",
-			weightFodder:            testWeightFodder{-1, nil},
+			weightFodder:            testWeightFodder{fodder: -1, err: nil},
 			weightFodderDescription: "-1 fodder, no error",
 			cows:                    2,
 			wantAmount:              0,
@@ -98,27 +98,11 @@ func TestDivideFood(t *testing.T) {
 		},
 		{
 			description:             "Zero cows",
-			weightFodder:            testWeightFodder{100, nil},
+			weightFodder:            testWeightFodder{fodder: 100, err: nil},
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    0,
 			wantAmount:              0,
 			wantErr:                 errors.New("Division by zero"),
-		},
-		{
-			description:             "Negative ten cows",
-			weightFodder:            testWeightFodder{100, nil},
-			weightFodderDescription: "100 fodder, no error",
-			cows:                    -10,
-			wantAmount:              0,
-			wantErr:                 SillyNephewError{-10},
-		},
-		{
-			description:             "Negative seven cows",
-			weightFodder:            testWeightFodder{100, nil},
-			weightFodderDescription: "100 fodder, no error",
-			cows:                    -7,
-			wantAmount:              0,
-			wantErr:                 SillyNephewError{-7},
 		},
 	}
 	for _, test := range tests {
@@ -149,7 +133,7 @@ func TestDivideFood(t *testing.T) {
 					test.cows,
 					test.wantErr,
 				)
-			case !errorsAreEqual(gotErr, test.wantErr):
+			case !(gotErr == test.wantErr || gotErr.Error() == test.wantErr.Error()):
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
 					test.weightFodderDescription,
@@ -162,22 +146,44 @@ func TestDivideFood(t *testing.T) {
 	}
 }
 
-func errorsAreEqual(got, want error) bool {
-	if got == want {
-		return true
+func TestDivideFoodSillyNephewError(t *testing.T) {
+	tests := []struct {
+		description string
+		cows        int
+		wantErrMsg  string
+	}{
+		{
+			description: "Negative ten cows",
+			cows:        -10,
+			wantErrMsg:  "silly nephew, there cannot be -10 cows",
+		},
+		{
+			description: "Negative seven cows",
+			cows:        -7,
+			wantErrMsg:  "silly nephew, there cannot be -7 cows",
+		},
 	}
-	var wantSne *SillyNephewError
-	var gotSne *SillyNephewError
-	if errors.As(want, &wantSne) {
-		if errors.As(got, &gotSne) {
-			return wantSne.Cows == gotSne.Cows
-		}
-		return false
+	for _, test := range tests {
+		t.Run(test.description, func(t *testing.T) {
+			weightFodder := testWeightFodder{fodder: 100, err: nil}
+			gotAmount, gotErr := DivideFood(weightFodder, test.cows)
+			if gotAmount != 0 {
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got amount %v, but wanted amount 0",
+					"100 fodder, no error",
+					test.cows,
+					gotAmount,
+				)
+			}
+			if gotErr.Error() != test.wantErrMsg {
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got error msg %q, but wanted error msg %q",
+					"100 fodder, no error",
+					test.cows,
+					gotErr.Error(),
+					test.wantErrMsg,
+				)
+			}
+		})
 	}
-	// Got a SillyNephewError that we did not want
-	if errors.As(got, &gotSne) {
-		return false
-	}
-	// Otherwise, just comparer the error strings
-	return got.Error() == want.Error()
 }
