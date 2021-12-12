@@ -161,15 +161,17 @@ func TestCalculateResellPrice(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := CalculateResellPrice(test.originalPrice, test.age)
-		if !floatingPointEquals(actual, test.expected) {
-			t.Errorf(
-				"CalculateResellPrice(%v, %v) = %v, want %v",
-				test.originalPrice,
-				test.age,
-				actual,
-				test.expected)
-		}
+		t.Run(test.name, func(t *testing.T) {
+			actual := CalculateResellPrice(test.originalPrice, test.age)
+			if !floatingPointEquals(actual, test.expected) {
+				t.Errorf(
+					"CalculateResellPrice(%v, %v) = %v, want %v",
+					test.originalPrice,
+					test.age,
+					actual,
+					test.expected)
+			}
+		})
 	}
 }
 

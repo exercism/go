@@ -70,7 +70,7 @@ func FromRNA(s string) ([]string, error) {
 		case ErrStop:
 			return proteins, nil
 		case ErrInvalidBase:
-			return proteins, err
+			return nil, err
 		default:
 			proteins = append(proteins, p)
 		}
