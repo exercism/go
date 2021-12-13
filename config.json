@@ -297,6 +297,7 @@
         ],
         "prerequisites": [
           "conditionals-if",
+          "for-loops",
           "maps",
           "slices",
           "structs"
