@@ -94,6 +94,17 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "explicit zero-value for street",
+			resident: &Resident{
+				Name: "Hossein",
+				Age:  30,
+				Address: map[string]string{
+					"street": "",
+				},
+			},
+			want: false,
+		},
 	}
 
 	for _, test := range tests {
