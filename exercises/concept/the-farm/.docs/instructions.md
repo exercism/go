@@ -28,7 +28,7 @@ For any other error, return `0` and the error.
 
 ```go
 // twentyFodderNoError says there are 20.0 fodder and a ErrScaleMalfunction
-fodder, err := DivideFood(twentyFodderWithScaleError, 10)
+fodder, err := DivideFood(twentyFodderWithErrScaleMalfunction, 10)
 // fodder == 4.0
 // err == nil
 ```
