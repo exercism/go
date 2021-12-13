@@ -42,7 +42,7 @@ Description("7/25/2019 13:45:00")
 
 ## 5. Return the anniversary date of the salon's opening
 
-Implement the `AnniversaryDate` function that returns the anniversary date of the salon's opening for the current year.
+Implement the `AnniversaryDate` function that returns the anniversary date of the salon's opening for the current year in UTC.
 
 Assuming the current year is 2020:
 ```go
