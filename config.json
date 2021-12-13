@@ -1932,6 +1932,11 @@
       "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
     },
     {
+      "name": "First class functions",
+      "slug": "first-class-functions",
+      "uuid": "66968174-701b-484c-a84d-f919b4756022"
+    },
+    {
       "name": "Floating-point numbers",
       "slug": "floating-point-numbers",
       "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7"
