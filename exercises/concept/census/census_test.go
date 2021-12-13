@@ -64,7 +64,18 @@ func TestHasRequiredInfo(t *testing.T) {
 			want: true,
 		},
 		{
-			name: "missing street",
+			name: "missing name",
+			resident: &Resident{
+				Name: "",
+				Age:  29,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: false,
+		},
+		{
+			name: "empty map as address",
 			resident: &Resident{
 				Name:    "Rob Pike",
 				Age:     0,
@@ -73,12 +84,12 @@ func TestHasRequiredInfo(t *testing.T) {
 			want: false,
 		},
 		{
-			name: "missing name",
+			name: "missing street",
 			resident: &Resident{
-				Name: "",
-				Age:  29,
+				Name: "Hossein",
+				Age:  30,
 				Address: map[string]string{
-					"street": "Main St.",
+					"street": "",
 				},
 			},
 			want: false,
