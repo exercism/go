@@ -97,6 +97,14 @@ func TestDivideFood(t *testing.T) {
 			wantErr:                 errors.New("Negative fodder"),
 		},
 		{
+			description:             "Negative fodder with ScaleError",
+			weightFodder:            testWeightFodder{fodder: -1, err: ErrScaleMalfunction},
+			weightFodderDescription: "-1 fodder, ScaleError",
+			cows:                    2,
+			wantAmount:              0,
+			wantErr:                 errors.New("Negative fodder"),
+		},
+		{
 			description:             "Zero cows",
 			weightFodder:            testWeightFodder{fodder: 100, err: nil},
 			weightFodderDescription: "100 fodder, no error",
