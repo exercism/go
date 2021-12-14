@@ -50,6 +50,7 @@ This document provides an overview of the main topics that contributors and main
 - `integer-types`
 - `panic-recover`
 - `error-wrapping` (errors.Is, errors.As)
+- `variadic-functions` (introduces `...`)
 
 ### Potential Future Concepts
 
@@ -60,7 +61,6 @@ This document provides an overview of the main topics that contributors and main
 - `mutexes`
 - `channels` and `select`
 - `closures`/`anonymous-functions`/`higher-order-functions`
-- `rest-and-spread` (introduces the `...` operator)
 - `JSON`
 - `defer`
 - `randomness`
