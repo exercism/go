@@ -49,6 +49,7 @@ This document provides an overview of the main topics that contributors and main
 - `time-duration`
 - `integer-types`
 - `panic-recover`
+- `error-wrapping` (errors.Is, errors.As)
 
 ### Potential Future Concepts
 
@@ -66,8 +67,7 @@ This document provides an overview of the main topics that contributors and main
 - `regular-expressions`
 - `stringers`
 - `Buffer`, `io.Reader`/`io.Writer`
-- error wrapping (errors.Is, errors.As) and custom errors
-- `generics` (once they become available)
+- `typed-parameters` (generics)
 - `context`
 - time helpers (ticket, sleep, etc.)
 - `reflection`
