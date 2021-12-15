@@ -42,6 +42,7 @@ To implement this, you'll need to:
 
 - Return `false` if the given `unit` is not in the `units` map.
 - Otherwise add the item to the customer `bill`, indexed by the item name, then return `true`.
+- If the item is already present in the bill, increase its quantity by the amount that belongs to the provided `unit`.
 
 ```go
 bill := NewBill()
