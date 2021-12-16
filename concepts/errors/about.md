@@ -157,3 +157,7 @@ if _, err := os.Getwd(); err != nil {
 }
 // err is now out of this scope.
 ```
+
+[stackoverflow-errors]: https://stackoverflow.com/a/50333850
+[line-of-sight]: https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88
+

@@ -101,3 +101,6 @@ if err == ErrSomethingWrong {
 ```
 
 How to check for errors of a specific custom error type will be covered in later concepts.
+
+[stackoverflow-errors]: https://stackoverflow.com/a/50333850
+
