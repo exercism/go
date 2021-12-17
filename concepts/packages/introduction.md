@@ -26,7 +26,7 @@ fmt.Sprintf("Hello %s", world)
 ```
 
 Go determines if an item can be called by code in other packages through how it is declared.
-To make a function, type, variable, constant or struct field externally visible (known as `exported`) the name must start with a capital letter.
+To make a function, type, variable, constant or struct field externally visible (known as _exported_) the name must start with a capital letter.
 This is analogous to how other programming languages like Java that use access modifiers such as `public` and `private`.
 
 ```go
