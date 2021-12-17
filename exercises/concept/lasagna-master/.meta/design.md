@@ -28,11 +28,14 @@ The Concept this exercise unlocks is:
 
 ## Prerequisites
 
-- `strings` are needed in the exercise
-- `numbers` are needed in the exercise
-- `comparison` is needed in the exercise
-- `conditionals-if` is needed in the exercise
-- `slices` are needed in the exercise
+The following concepts are needed to solve the exercise:
+
+- `strings`
+- `numbers`
+- `comparison`
+- `conditionals-if`
+- `slices`
+- `for-loops`
 
 ## Notes
 
