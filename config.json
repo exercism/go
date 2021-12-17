@@ -182,7 +182,8 @@
           "numbers",
           "strings",
           "comparison",
-          "slices"
+          "slices",
+          "for-loops"
         ],
         "status": "beta"
       },
