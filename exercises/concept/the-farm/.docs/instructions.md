@@ -14,7 +14,7 @@ You love your nephew so you want to return a helpful error when he does that.
 
 ## 1. Get the amount of fodder from the `FodderAmount` method
 
-You will be passed a `WeightFodder` struct which has a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
+You will be passed a `WeightFodder` interface instance which has a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
 
 ## 2. Return an error for negative fodder
 
