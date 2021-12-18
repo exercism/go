@@ -14,7 +14,23 @@ You love your nephew so you want to return a helpful error when he does that.
 
 ## 1. Get the amount of fodder from the `FodderAmount` method
 
-You will be passed a `WeightFodder` interface instance which has a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
+You will be passed a value that fulfills the `WeightFodder` interface. `WeightFodder` includes a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
+
+```go
+// twentyFodderNoError says there are 20.0 fodder
+fodder, err := DivideFood(twentyFodderNoError, 10)
+// fodder == 2.0
+// err == nil
+```
+
+If `ErrScaleMalfunction` is returned by `FodderAmount` and the fodder amount is positive, double the fodder amount returned by `FodderAmount` before dividing it equally between the cows. For any other error, return `0` and the error.
+
+```go
+// twentyFodderWithErrScaleMalfunction says there are 20.0 fodder and a ErrScaleMalfunction
+fodder, err := DivideFood(twentyFodderWithErrScaleMalfunction, 10)
+// fodder == 4.0
+// err == nil
+```
 
 ## 2. Return an error for negative fodder
 
@@ -51,25 +67,4 @@ You can see the format of the error message in the example below.
 fodder, err := DivideFood(twentyFodderNoError, -5)
 // fodder == 0.0
 // err.Error() == "silly nephew, there cannot be -5 cows"
-```
-
-## 5. Handle ErrScaleMalfunction and other errors
-
-If `ErrScaleMalfunction` error is returned by `FodderAmount`, double the fodder amount returned by `FodderAmount` before dividing it between the cows.
-For any other error, return `0` and the error. 
-
-```go
-// twentyFodderWithErrScaleMalfunction says there are 20.0 fodder and a ErrScaleMalfunction
-fodder, err := DivideFood(twentyFodderWithErrScaleMalfunction, 10)
-// fodder == 4.0
-// err == nil
-```
-
-In case of `nil` error, return the fodder amount equally divided between the input number of cows.
-
-```go
-// twentyFodderNoError says there are 20.0 fodder
-fodder, err := DivideFood(twentyFodderNoError, 10)
-// fodder == 2.0
-// err == nil
 ```
