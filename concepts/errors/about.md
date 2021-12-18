@@ -44,7 +44,7 @@ func Foo() (int, error) {
 
 ## Custom Error Types
 
-If you want your error to include more information that just the error message string, you can create a custom error type.
+If you want your error to include more information than just the error message string, you can create a custom error type.
 As mentioned before, everything that implements the `error` interface (i.e. has an `Error() string` method) can serve as an error in Go.
 
 Usually, a struct is used to create a custom error type.
