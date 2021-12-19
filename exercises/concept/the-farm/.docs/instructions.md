@@ -14,7 +14,8 @@ You love your nephew so you want to return a helpful error when he does that.
 
 ## 1. Get the amount of fodder from the `FodderAmount` method
 
-You will be passed a value that fulfills the `WeightFodder` interface. `WeightFodder` includes a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
+You will be passed a value that fulfills the `WeightFodder` interface.
+`WeightFodder` includes a method called `FodderAmount` that returns the amount of fodder available and possibly an error.
 
 ```go
 // twentyFodderNoError says there are 20.0 fodder
@@ -23,7 +24,8 @@ fodder, err := DivideFood(twentyFodderNoError, 10)
 // err == nil
 ```
 
-If `ErrScaleMalfunction` is returned by `FodderAmount` and the fodder amount is positive, double the fodder amount returned by `FodderAmount` before dividing it equally between the cows. For any other error, return `0` and the error.
+If `ErrScaleMalfunction` is returned by `FodderAmount` and the fodder amount is positive, double the fodder amount returned by `FodderAmount` before dividing it equally between the cows.
+For any other error, return `0` and the error.
 
 ```go
 // twentyFodderWithErrScaleMalfunction says there are 20.0 fodder and a ErrScaleMalfunction
