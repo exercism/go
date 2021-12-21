@@ -8,7 +8,7 @@ func (s IntList) Foldl(fn func(int, int) int, initial int) int {
 }
 
 func (s IntList) Foldr(fn func(int, int) int, initial int) int {
-	panic("Please implement the Foldl function")
+	panic("Please implement the Foldr function")
 }
 
 func (s IntList) Filter(fn func(int) bool) IntList {
