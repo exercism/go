@@ -155,7 +155,7 @@ func TestDescribeAnything(t *testing.T) {
 		},
 		{
 			description: "Describe 42",
-			input:       "42",
+			input:       42,
 			want:        "This is the number 42.0",
 		},
 		{
