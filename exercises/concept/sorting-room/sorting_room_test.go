@@ -154,6 +154,11 @@ func TestDescribeAnything(t *testing.T) {
 			want:        "This is the number 7.2",
 		},
 		{
+			description: "Describe 42",
+			input:       42,
+			want:        "This is the number 42.0",
+		},
+		{
 			description: "Describe NumberBox with 16",
 			input:       testNumberBox{16},
 			want:        "This is a box containing the number 16.0",
