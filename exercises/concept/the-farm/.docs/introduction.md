@@ -128,7 +128,7 @@ You can compare error variables with the equality operator `==`:
 ```go
 var ErrResourceNotFound = errors.New("resource not found")
 // ...
-if err == ErrSomethingWrong {
+if err == ErrResourceNotFound {
   // do something about the resource-not-found error
 }
 ```
