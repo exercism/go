@@ -65,7 +65,7 @@ This is the main function Jen needs which takes any input (the empty interface m
 `DescribeAnything` should delegate to the other functions based on the type of the value passed in.
 More specifically:
 
-- `int` and `float64` should both delegate to `DescribeNumber`
+- `float64` should delegate to `DescribeNumber`
 - `NumberBox` should delegate to `DescribeNumberBox`
 - `FancyNumberBox` should delegate to `DescribeFancyNumberBox`
 - anything else should result in `"Return to sender"`
