@@ -94,7 +94,7 @@ func TestDivideFood(t *testing.T) {
 			weightFodderDescription: "-1 fodder, no error",
 			cows:                    2,
 			wantAmount:              0,
-			wantErr:                 errors.New("Negative fodder"),
+			wantErr:                 errors.New("negative fodder"),
 		},
 		{
 			description:             "Negative fodder with ScaleError",
@@ -102,7 +102,7 @@ func TestDivideFood(t *testing.T) {
 			weightFodderDescription: "-1 fodder, ScaleError",
 			cows:                    2,
 			wantAmount:              0,
-			wantErr:                 errors.New("Negative fodder"),
+			wantErr:                 errors.New("negative fodder"),
 		},
 		{
 			description:             "Zero cows",
@@ -110,7 +110,7 @@ func TestDivideFood(t *testing.T) {
 			weightFodderDescription: "100 fodder, no error",
 			cows:                    0,
 			wantAmount:              0,
-			wantErr:                 errors.New("Division by zero"),
+			wantErr:                 errors.New("division by zero"),
 		},
 	}
 	for _, test := range tests {

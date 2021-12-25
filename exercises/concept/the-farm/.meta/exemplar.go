@@ -25,10 +25,10 @@ func DivideFood(weightFodder WeightFodder, cows int) (float64, error) {
 		fodder *= 2
 	}
 	if fodder < 0 {
-		return 0, errors.New("Negative fodder")
+		return 0, errors.New("negative fodder")
 	}
 	if cows == 0 {
-		return 0, errors.New("Division by zero")
+		return 0, errors.New("division by zero")
 	}
 	if cows < 0 {
 		return 0, &SillyNephewError{Cows: cows}
