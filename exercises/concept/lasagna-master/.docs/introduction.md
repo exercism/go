@@ -94,7 +94,7 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 
 ## Pointers
 
-Functions in go pass their arguments by value.
+Functions in Go pass their arguments by value.
 This means that the arguments are copied, and any changes to those arguments within the function will not be seen outside the function.
 
 ```go
