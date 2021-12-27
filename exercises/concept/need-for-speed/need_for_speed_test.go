@@ -28,7 +28,7 @@ func TestNewCar(t *testing.T) {
 			got := NewCar(tt.car.speed, tt.car.batteryDrain)
 
 			if got != tt.expected {
-				t.Errorf("NewCar(%v,%v) = %v; expected %v", tt.car.speed, tt.car.batteryDrain, got, tt.expected)
+				t.Errorf("NewCar(%+v,%+v) = %+v; expected %+v", tt.car.speed, tt.car.batteryDrain, got, tt.expected)
 			}
 		})
 	}
@@ -66,7 +66,7 @@ func TestNewTrack(t *testing.T) {
 			got := NewTrack(tt.track.distance)
 
 			if got != tt.expected {
-				t.Errorf("NewTrack(%v) = %v; expected %v", tt.track.distance, tt.track, tt.expected)
+				t.Errorf("NewTrack(%+v) = %+v; expected %+v", tt.track.distance, tt.track, tt.expected)
 			}
 		})
 	}
@@ -130,7 +130,7 @@ func TestDrive(t *testing.T) {
 			got := Drive(tt.car)
 
 			if got != tt.expected {
-				t.Errorf("Drive(%v) = %v; expected %v", tt.car, got, tt.expected)
+				t.Errorf("Drive(%+v) = %+v; expected %+v", tt.car, got, tt.expected)
 			}
 		})
 	}
@@ -215,7 +215,7 @@ func TestCanFinish(t *testing.T) {
 			got := CanFinish(tt.car, tt.track)
 
 			if got != tt.expected {
-				t.Errorf("CanFinish(%#v, %#v) = %v; expected %v", tt.car, tt.track, got, tt.expected)
+				t.Errorf("CanFinish(%#v, %#v) = %+v; expected %+v", tt.car, tt.track, got, tt.expected)
 			}
 		})
 	}
