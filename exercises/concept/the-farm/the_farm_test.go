@@ -73,6 +73,14 @@ func TestDivideFood(t *testing.T) {
 			wantErr:                 nonScaleError,
 		},
 		{
+			description:             "Negative fodder with generic error from the scale is returned",
+			weightFodder:            testWeightFodder{fodder: -10, err: nonScaleError},
+			weightFodderDescription: "-10 fodder, generic error",
+			cows:                    2,
+			wantAmount:              0,
+			wantErr:                 nonScaleError,
+		},
+		{
 			description:             "Scale returns 10 with ErrScaleMalfunction for 2 cows",
 			weightFodder:            testWeightFodder{fodder: 10, err: ErrScaleMalfunction},
 			weightFodderDescription: "10 fodder, ErrScaleMalfunction",
