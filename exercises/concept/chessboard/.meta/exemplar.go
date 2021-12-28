@@ -3,7 +3,7 @@ package chessboard
 // Rank stores if a square is occupied by a piece
 type Rank []bool
 
-// Chessboard contains eight Ranks, accessed with values from "A" to "H"
+// Chessboard contains eight Ranks, accessed with keys from "A" to "H"
 type Chessboard map[string]Rank
 
 // CountInRank returns how many squares are occupied in the chessboard,
