@@ -16,7 +16,7 @@ rate := CalculateWorkingCarsPerHour(1547, 90)
 // Output: 1392.3
 ```
 
-**Note** the return value should be a `float64`.
+**Note:** the return value should be a `float64`.
 
 ## 2. Calculate the number of working cars produced per minute
 
@@ -27,7 +27,7 @@ rate := CalculateWorkingCarsPerMinute(1105, 90)
 // Output: 16
 ```
 
-**Note** the return value should be an `int`.
+**Note:** the return value should be an `int`.
 
 ## 3. Calculate the cost of production 
 
@@ -44,10 +44,10 @@ Implement the function `CalculateCost` that calculates the cost of producing a n
 
 ```go
 cost := CalculateCost(37)
-// Output: 355,000
+// Output: 355000
 
 cost = CalculateCost(21)
-// Output: 200,000
+// Output: 200000
 ```
 
-**Note** the return value should be an `uint`.
+**Note:** the return value should be an `uint`.
