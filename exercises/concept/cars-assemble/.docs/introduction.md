@@ -13,6 +13,10 @@ For the sake of this exercise you will only be dealing with:
 
 - `float64`: e.g. `0.0`, `3.14`. Contains the set of all 64-bit floating-point numbers.
 
+- `uint`: e.g. `0`, `255`. An unsigned integer that is the same size as `int` (value range of: 0 through 4294967295 for 32 bits and 0 through 18446744073709551615 for 64 bits)
+
+Numbers can be converted to other numeric types through Type Conversion.
+
 ## Arithmetic Operators
 
 Go supports many standard arithmetic operators:
@@ -30,7 +34,7 @@ For integer division, the remainder is dropped (eg. `5 / 2 == 2`).
 Go has shorthand assignment for the operators above (e.g. `a += 5` is short for `a = a + 5`).
 Go also supports the increment and decrement statements `++` and `--` (e.g. `a++`).
 
-## Converting between int and float64
+## Converting between types 
 
 Converting between types is done via a function with the name of the type to convert to.
 For example:
@@ -55,49 +59,3 @@ value := float32(2.0) * x // invalid operation: mismatched types float32 and int
 // you must convert int type to float32 before performing arithmetic operation
 value := float32(2.0) * float32(x)
 ```
-
-## If Statements
-
-Conditionals in Go are similar to conditionals in other languages.
-The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`.
-Conditionals are often used as flow control mechanisms to check for various conditions.
-
-For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
-
-```go
-var value string
-
-if value == "val" {
-    return "was val"
-}
-```
-
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
-
-```go
-var number int
-result := "This number is "
-
-if number > 0 {
-    result += "positive"
-} else if number < 0 {
-    result += "negative"
-} else {
-    result += "zero"
-}
-```
-
-If statements can also include a short initialization statement that can be used to initialize one or more variables for the if statement.
-For example:
-
-```go
-num := 7
-if v := 2 * num; v > 10 {
-    fmt.Println(v)
-} else {
-    fmt.Println(num)
-}
-// Output: 14
-```
-
-> Note: any variables created in the initialization statement go out of scope after the end of the if statement.
