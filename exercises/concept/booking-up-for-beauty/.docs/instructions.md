@@ -52,4 +52,4 @@ AnniversaryDate()
 // Output: 2020-09-15 00:00:00 +0000 UTC
 ```
 
-**Note** the return value is a `time.Time` and the time of day doesn't matter.
+**Note:** the return value is a `time.Time` and the time of day doesn't matter.
