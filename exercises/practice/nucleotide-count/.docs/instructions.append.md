@@ -14,7 +14,7 @@ Which is the best Go types to represent the output values ?
 Take a look at the test cases to get a hint about what could be the possible inputs.
 
 
-## note about the tests
+## Note about the tests
 You may be wondering about the `cases_test.go` file. We explain it in the
 [leap exercise][leap-exercise].
 
