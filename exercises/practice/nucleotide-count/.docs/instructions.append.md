@@ -16,7 +16,7 @@ Take a look at the test cases to get a hint about what could be the possible inp
 
 ## note about the tests
 You may be wondering about the `cases_test.go` file. We explain it in the
-[leap exercise][leap-exercise-readme].
+[leap exercise][leap-exercise].
 
-[leap-exercise-readme]: https://github.com/exercism/go/blob/master/exercises/leap/README.md
+[leap-exercise]: https://exercism.org/tracks/go/exercises/leap
 
