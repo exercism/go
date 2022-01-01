@@ -100,31 +100,12 @@ func (ll *List) Reverse() {
 		return
 	}
 
-	// construct singly-linked list from the back
-	dummy := NewNode(-1)
-	cur := dummy
-	n := ll.tail
-	for n != nil {
-		cur.next = n
-
-		cur = cur.next
-		n = n.prev
+	node := ll.tail
+	for node != nil {
+		node.next, node.prev = node.prev, node.next
+		node = node.next
 	}
-	cur.next = nil // cur will be the new ll.Tail -> set .next = nil
-
-	// add prev -> doubly-linked list
-	prev := dummy.next
-	n = dummy.next.next
-	for n != nil {
-		n.prev = prev
-
-		n = n.next
-		prev = prev.next
-	}
-
-	// update Head & Tail
 	ll.head, ll.tail = ll.tail, ll.head
-	ll.head.prev = nil
 }
 
 // PushFront pushes a new value before Head.

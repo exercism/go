@@ -1,6 +1,6 @@
 # About
 
-In go, `map` is a built-in data type that represent hash table. In other programming language, you might know map as `dict` or associative array or a key/value store. If you're not familiar with such concept, map you can think `map` like a dictionary, which every word is the `key` and the definition is the `element` of the map.
+In Go, `map` is a built-in data type that represent hash table. In other programming languages, you might know map as `dict` or associative array or a key/value store. If you're not familiar with such concept, map you can think `map` like a dictionary, which every word is the `key` and the definition is the `element` of the map.
 
 > Before we begin, I'd like to point you to [go spec for map][gospec-map] and [go blog for map][goblog-map] to dig further into `map`.
 
@@ -10,13 +10,13 @@ Syntactically, `map` looks like this:
 map[KeyType]ElementType
 ```
 
-_`KeyType` must be any [comparable type][gospec-comparable], while `ElementType` can be any valid type in go, which means you can store anything from primitive variable to a slice._
+_`KeyType` must be any [comparable type][gospec-comparable], while `ElementType` can be any valid type in Go, which means you can store anything from primitive variable to a slice._
 
-It's important to remember that `map` in go is **unordered**, if you try to loop trough a `map` and print the element, you might surprise yourself seeing that your elements printed in random order (give it a try if you like).
+It's important to remember that `map` in Go is **unordered**, if you try to loop trough a `map` and print the element, you might surprise yourself seeing that your elements printed in random order (give it a try if you like).
 
 It is also important to know that each key is unique, meaning that assigning the same key twice will overwrite the value of the corresponding key.
 
-`map` is reference type, which means if you pass it around, go won't copy the whole map. Instead what go will do is go copy the pointer of the map, this makes passing map to a function or variable cheap. The value of an uninitialized map is `nil`.
+`map` is reference type, which means if you pass it around, Go won't copy the whole map. Instead what Go will do is copy the pointer of the map, this makes passing map to a function or variable cheap. The value of an uninitialized map is `nil`.
 
 You can define map as follows (we also called this a **nil map**);
 
@@ -83,7 +83,7 @@ fmt.Println(equal)
 
 _But wait, if map isn't a comparable why are we able to compare them with `nil`? Well, the spec has made an exception for this, see the [comparable spec][gospec-comparable]_
 
-The last one, if you're trying to write to a `map` from multiple go routine, that will trigger the race detector, [see this link][godoc-race-detector] and [here][goblog-race-detector]. Alternatively, you can use `sync.Map` or `atomic` or `mutex` to work around this issue.
+The last one, if you're trying to write to a `map` from multiple goroutines, that will trigger the race detector, [see this link][godoc-race-detector] and [here][goblog-race-detector]. Alternatively, you can use `sync.Map` or `atomic` or `mutex` to work around this issue.
 
 [godoc-race-detector]: https://golang.org/doc/articles/race_detector.html
 [goblog-race-detector]: https://blog.golang.org/race-detector
