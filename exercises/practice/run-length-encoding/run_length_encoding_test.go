@@ -29,3 +29,19 @@ func TestRunLengthEncodeDecode(t *testing.T) {
 		t.Logf("PASS %s", test.description)
 	}
 }
+
+func BenchmarkRunLengthDecode(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range decodeTests {
+			RunLengthDecode(test.input)
+		}
+	}
+}
+
+func BenchmarkRunLengthEncode(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range decodeTests {
+			RunLengthEncode(test.input)
+		}
+	}
+}
