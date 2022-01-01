@@ -54,56 +54,6 @@ func TestDrive(t *testing.T) {
 	}
 }
 
-func TestCanFinish(t *testing.T) {
-	tests := []struct {
-		name          string
-		car           Car
-		trackDistance int
-		expected      bool
-	}{
-		{
-			name: "Car has 100% battery. Car can finish the race",
-			car: Car{
-				speed:        5,
-				batteryDrain: 2,
-				battery:      100,
-			},
-			trackDistance: 100,
-			expected:      true,
-		},
-		{
-			name: "Car has 40% battery. Car can finish the race",
-			car: Car{
-				speed:        5,
-				batteryDrain: 2,
-				battery:      40,
-			},
-			trackDistance: 100,
-			expected:      true,
-		},
-		{
-			name: "Car has 30% battery. Car cannot finish the race",
-			car: Car{
-				speed:        5,
-				batteryDrain: 2,
-				battery:      30,
-			},
-			trackDistance: 100,
-			expected:      false,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := tt.car.CanFinish(tt.trackDistance)
-
-			if got != tt.expected {
-				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.trackDistance, got, tt.expected)
-			}
-		})
-	}
-}
-
 func TestDisplayDistance(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -157,6 +107,56 @@ func TestDisplayBattery(t *testing.T) {
 
 			if got != tt.expected {
 				t.Errorf("method DisplayBattery() = %v; Expected value %v", got, tt.expected)
+			}
+		})
+	}
+}
+
+func TestCanFinish(t *testing.T) {
+	tests := []struct {
+		name          string
+		car           Car
+		trackDistance int
+		expected      bool
+	}{
+		{
+			name: "Car has 100% battery. Car can finish the race",
+			car: Car{
+				speed:        5,
+				batteryDrain: 2,
+				battery:      100,
+			},
+			trackDistance: 100,
+			expected:      true,
+		},
+		{
+			name: "Car has 40% battery. Car can finish the race",
+			car: Car{
+				speed:        5,
+				batteryDrain: 2,
+				battery:      40,
+			},
+			trackDistance: 100,
+			expected:      true,
+		},
+		{
+			name: "Car has 30% battery. Car cannot finish the race",
+			car: Car{
+				speed:        5,
+				batteryDrain: 2,
+				battery:      30,
+			},
+			trackDistance: 100,
+			expected:      false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := tt.car.CanFinish(tt.trackDistance)
+
+			if got != tt.expected {
+				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.trackDistance, got, tt.expected)
 			}
 		})
 	}
