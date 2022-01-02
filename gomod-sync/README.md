@@ -9,13 +9,29 @@ Some exercises must have its `go.mod` specify a Go version that is different fro
 This is supported by the `exceptions` key of the configuration file, where an entry must exist for each exercise
 that must not have the default version.
 
+## Quick start
+
+To update all go.mod files according to the config file (gomod-sync/config.json) run:
+
+```console
+$ cd gomod-sync
+$ go run main.go update
+```
+
+To check all exercise go.mod files specify the correct Go version, run:
+
+```console
+$ cd gomod-sync
+$ go run main.go check
+```
+
 ## Installing
 
 ### Compiling locally
 
 ```console
-cd gomod-sync
-go build
+$ cd gomod-sync
+$ go build
 ```
 
 This will create an executable `gomod-sync` (`gomod-sync.exe` in windows) in the current directory 
@@ -24,28 +40,26 @@ that you can run to execute the program.
 ### Running without compiling
 
 ```console
-cd gomod-sync
-go run main.go [command] [flags]
+$ cd gomod-sync
+$ go run main.go <command> [flags]
 ```
 
 ### Running the tests
 
 ```console
-cd gomod-sync
-go test ./...
+$ cd gomod-sync
+$ go test ./...
 ```
 
 ## Usage
 
 ```
-  gomod-sync command [flags]
+  gomod-sync commandUpdate gitig [flags]
 
 Available Commands:
   check       Checks if all go.mod files are in the target version
-  completion  generate the autocompletion script for the specified shell
-  help        Help about any command
-  list        List go.mod files and the Go version they specify
   update      Updates go.mod files to the target version
+  help        Help about any command
 
 ```
 
