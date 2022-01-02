@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -34,6 +34,7 @@ type Coordinates struct {
 	Column Int
 	Row    Int
 }
+
 type Position struct {
 	Start Coordinates
 	End   Coordinates

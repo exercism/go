@@ -5,7 +5,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -44,7 +44,7 @@ type OneCase struct {
 	Expected bool
 }
 
-//func (c OneCase)
+// func (c OneCase)
 // Template to generate list of test cases.
 var tmpl = `package dominoes
 

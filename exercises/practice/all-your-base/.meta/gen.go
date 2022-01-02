@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -49,6 +49,7 @@ func (o oneCase) Result() []int {
 	}
 	return res
 }
+
 func (o oneCase) Err() string {
 	m, ok := o.Expected.(map[string]interface{})
 	if !ok {
