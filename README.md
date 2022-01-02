@@ -222,7 +222,7 @@ $ tree -L 1 .
 ```
 
 To regenerate the test cases, navigate into the **go** directory and run
-`go run exercises/<exercise>/.meta/gen.go`. You should see that the
+`GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go`. You should see that the
 `<exercise>/cases_test.go` file has changed. Commit the change.
 
 ## Pull requests

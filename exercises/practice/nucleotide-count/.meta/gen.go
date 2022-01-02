@@ -7,7 +7,7 @@ import (
 	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -57,7 +57,6 @@ func (c OneCase) SortedMapString() string {
 		default:
 			log.Fatalf("unexpected type %T for %v", t, v)
 		}
-
 	}
 	sort.Strings(strs)
 	return strings.Join(strs, ",")

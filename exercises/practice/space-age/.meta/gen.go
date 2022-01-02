@@ -5,7 +5,7 @@ import (
 	"text/template"
 
 	space ".."
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
