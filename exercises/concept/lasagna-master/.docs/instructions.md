@@ -49,7 +49,7 @@ Now you want to add that secret ingredient to your recipe as well.
 Write a function `AddSecretIngredient` that accepts two arrays of ingredients of type `[]string` as parameters.
 The first parameter is the list your friend sent you, the second is the ingredient list of your own recipe.
 The last element in your ingredient list is always `"?"`. The function should replace it with the last item from your friends list.
-friendsList should not be modified. This function does not return anything.
+**Note:** `AddSecretIngredient` does not return anything - you should modify the list of your ingredients directly. The list with your friend's ingredients should **not** be modified.
 
 ```go
 friendsList := []string{"noodles", "sauce", "mozzarella", "kampot pepper"}
