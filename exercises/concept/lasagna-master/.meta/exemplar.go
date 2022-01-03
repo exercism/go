@@ -23,7 +23,7 @@ func Quantities(layers []string) (noodles int, sauce float64) {
 	return
 }
 
-// AddSecretIngredient adds the secret ingredient from the ingredient list that a friend provided to your ingredient list.
+// AddSecretIngredient replaces the secret ingredient of your list with the last ingredient from your friend's list.
 func AddSecretIngredient(friendsList, myList []string) {
 	myList[len(myList)-1] = friendsList[len(friendsList)-1]
 }
