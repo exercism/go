@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -27,6 +27,7 @@ type js struct {
 		Cases       []OneCase
 	}
 }
+
 type OneCase struct {
 	Description string
 	Input       struct {

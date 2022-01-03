@@ -38,7 +38,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
-car.DisplayDistance()
+fmt.Println(car.DisplayDistance())
 // Output: "Driven 0 meters"
 ```
 
@@ -51,7 +51,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
-car.DisplayBattery()
+fmt.Println(car.DisplayBattery())
 // Output: "Battery at 100%"
 ```
 

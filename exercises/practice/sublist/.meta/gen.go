@@ -5,7 +5,7 @@ import (
 	"text/template"
 
 	sublist ".."
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
