@@ -34,15 +34,7 @@ Function values can be compared with `nil`, but functional values are not compar
 ```go
 type greetingFunc func(string) string
 
-func greet(name string, f greetingFunc) string {
-  if f == nil {
-    return ""
-  }
-
-  return f(name)
-}
-
-func Greet(language, name string) string {
+func greetingLookup(language string) greetingFunc {
   var gf greetingFunc
   switch language: {
     case "eng", "ENG":
@@ -50,7 +42,18 @@ func Greet(language, name string) string {
     case "esp", "ESP":
       gf = spanishGreeting
   }
+  return gf
+}
 
+func greet(name string, f greetingFunc) string {
+  if f == nil {
+    return ""
+  }
+  return f(name)
+}
+
+func Greet(name, language string) string {
+  gf := greetingLookup(language)
   return greet(name, gf)
 }
 ```
