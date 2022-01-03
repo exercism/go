@@ -12,7 +12,7 @@
 
 ## 3. Add the secret ingredient
 
-- Revisit [slices][concept-slices] to find out how to retrieve an element from an slice and how to add something the end of a slice.
+- Revisit [slices][concept-slices] to find out how to retrieve an element from an slice and how to replace an element in a slice.
 - The index of the last element in an array `a` is `len(a) - 1`.
 
 ## 4. Scale the recipe

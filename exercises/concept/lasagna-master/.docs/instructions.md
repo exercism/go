@@ -47,16 +47,16 @@ The friend sent you the list of ingredients and told you the last item on the li
 Now you want to add that secret ingredient to your recipe as well.
 
 Write a function `AddSecretIngredient` that accepts two arrays of ingredients of type `[]string` as parameters.
-The first parameter is the list your friend sent you, the second is the ingredient list for your own recipe.
-The function should generate a new slice and add the last item from your friends list to the end of your list.
-Neither argument should be modified.
+The first parameter is the list your friend sent you, the second is the ingredient list of your own recipe.
+The last element in your ingredient list is always `?`. The function should replace it with the last item from your friends list.
+friendsList should not be modified. This function does not return anything.
 
 ```go
 friendsList := []string{"noodles", "sauce", "mozzarella", "kampot pepper"}
-myList := []string{"noodles", "meat", "sauce", "mozzarella"}
+myList := []string{"noodles", "meat", "sauce", "mozzarella","?"}
 
 AddSecretIngredient(friendsList, myList)
-// => []string{"noodles", "meat", "sauce", "mozzarella", "kampot pepper"}
+// myList => []string{"noodles", "meat", "sauce", "mozzarella", "kampot pepper"}
 ```
 
 ## 4. Scale the recipe

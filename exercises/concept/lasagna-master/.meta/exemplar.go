@@ -23,10 +23,9 @@ func Quantities(layers []string) (noodles int, sauce float64) {
 	return
 }
 
-// AddSecretIngredient adds the secret ingredient from the ingredient list that a friend provided to your ingredient list and returns your new ingredient list.
-func AddSecretIngredient(friendsList, myList []string) []string {
-	lastIndex := len(friendsList) - 1
-	return append(myList, friendsList[lastIndex])
+// AddSecretIngredient adds the secret ingredient from the ingredient list that a friend provided to your ingredient list.
+func AddSecretIngredient(friendsList, myList []string) {
+	myList[len(myList)-1] = friendsList[len(friendsList)-1]
 }
 
 // ScaleRecipe makes a new slice of float64s from an input slice scaled by a number of portions.
