@@ -1,4 +1,4 @@
 {
   "authors": ["antklim"],
-  "blurb": "Function values."
+  "blurb": "Go supports first-class functions: a fuction can be an argument to other functions, returned by another function, and assigned to variables."
 }
