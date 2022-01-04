@@ -143,7 +143,7 @@ func TestAddSecretIngredient(t *testing.T) {
 		{
 			name:        "Adds secret ingredient",
 			friendsList: []string{"sauce", "noodles", "béchamel", "marjoram"},
-			myList:      []string{"sauce", "noodles", "meat", "tomatoes"},
+			myList:      []string{"sauce", "noodles", "meat", "tomatoes", "?"},
 			expected:    []string{"sauce", "noodles", "meat", "tomatoes", "marjoram"},
 		},
 	}
@@ -153,15 +153,12 @@ func TestAddSecretIngredient(t *testing.T) {
 			copy(friendsList, tt.friendsList)
 			myList := make([]string, len(tt.myList))
 			copy(myList, tt.myList)
-			got := AddSecretIngredient(tt.friendsList, tt.myList)
-			if !reflect.DeepEqual(got, tt.expected) {
-				t.Errorf("addSecretIngredient(%v, %v) = %v want %v", tt.friendsList, tt.myList, got, tt.expected)
+			AddSecretIngredient(tt.friendsList, tt.myList)
+			if !reflect.DeepEqual(tt.myList, tt.expected) {
+				t.Errorf("addSecretIngredient(%v, %v) = %v want %v", tt.friendsList, myList, tt.myList, tt.expected)
 			}
 			if !reflect.DeepEqual(friendsList, tt.friendsList) {
 				t.Errorf("addSecretIngredient permuted friendsList (was %v, now %v), should not alter inputs", tt.friendsList, friendsList)
-			}
-			if !reflect.DeepEqual(myList, tt.myList) {
-				t.Errorf("addSecretIngredient permuted myList (was %v, now %v), should not alter inputs", tt.myList, myList)
 			}
 		})
 	}
