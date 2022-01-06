@@ -2,7 +2,7 @@
 
 ## 1. Estimate the preparation time
 
-- Use the [`len()` built-in function][len-builtin] to determine the number of layers (length of the layers array).
+- Use the [`len()` built-in function][len-builtin] to determine the number of layers (length of the layers slice).
 
 ## 2. Compute the amounts of noodles and sauce needed
 
@@ -13,7 +13,7 @@
 ## 3. Add the secret ingredient
 
 - Revisit [slices][concept-slices] to find out how to retrieve an element from an slice and how to replace an element in a slice.
-- The index of the last element in an array `a` is `len(a) - 1`.
+- The index of the last element in a slice `a` is `len(a) - 1`.
 
 ## 4. Scale the recipe
 
