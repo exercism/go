@@ -57,3 +57,8 @@ func Greet(name, language string) string {
   return greet(name, gf)
 }
 ```
+
+## Fist class function usage
+* Various events handlers - one of the most used is HTTP handler
+* Middlewares
+* Collection operations such as map, filter, reduce
