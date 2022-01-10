@@ -1,0 +1,17 @@
+{
+  "blurb": "Learn about first class functions",
+  "authors": [
+    "antklim"
+  ],
+  "files": {
+    "solution": [
+      "expenses.go"
+    ],
+    "test": [
+      "expenses_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}
