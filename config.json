@@ -386,6 +386,19 @@
           "for-loops"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "expenses",
+        "name": "Expenses",
+        "uuid": "7221b17b-7880-4228-a07a-121e5857c953",
+        "concepts": [
+          "first-class-functions"
+        ],
+        "prerequisites": [
+          "functions",
+          "type-definitions"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
