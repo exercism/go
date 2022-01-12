@@ -68,10 +68,16 @@ func infoSlicesEqual(a, b []gomod.Info) bool {
 
 	size := len(a)
 	for i := 0; i < size; i++ {
-		if !a[i].Equal(b[i]) {
+		if !equalInfos(a[i], b[i]) {
 			return false
 		}
 	}
 
 	return true
+}
+
+func equalInfos(a, b gomod.Info) bool {
+	return a.Path == b.Path &&
+		a.GoVersion == b.GoVersion &&
+		a.ExerciseSlug == b.ExerciseSlug
 }

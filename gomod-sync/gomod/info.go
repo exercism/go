@@ -15,13 +15,6 @@ type Info struct {
 	ExerciseSlug string
 }
 
-// Equal tests whether a gomod Info is equal to another one
-func (info *Info) Equal(other Info) bool {
-	return info.Path == other.Path &&
-		info.GoVersion == other.GoVersion &&
-		info.ExerciseSlug == other.ExerciseSlug
-}
-
 // Infos returns information about all the go.mod files
 // inside a given directory.
 func Infos(dirPath string) (info []Info, err error) {

@@ -1,6 +1,11 @@
 package config
 
-import "sort"
+// ExerciseVersion represents the version one particular exercise should
+// have in its go.mod file
+type ExerciseVersion struct {
+	Exercise string `json:"exercise"`
+	Version  string `json:"version"`
+}
 
 // VersionConfig represents the version configuration
 type VersionConfig struct {
@@ -20,41 +25,4 @@ func (vc *VersionConfig) ExerciseExpectedVersion(exercise string) string {
 		}
 	}
 	return vc.Default
-}
-
-// Equal tells if this VersionConfig is equal to another VersionConfig
-func (vc *VersionConfig) Equal(other VersionConfig) bool {
-	return vc.Default == other.Default && equalExceptions(vc.Exceptions, other.Exceptions)
-}
-
-// equalExceptions compares two lists of exercise versions and tells if they are equal.
-// Two exercise list versions are considered equal if they contain the same elements,
-// regardless of their order in both lists.
-func equalExceptions(a, b []ExerciseVersion) bool {
-	if len(a) != len(b) {
-		return false
-	}
-
-	// Copy slices
-	aCopy := make([]ExerciseVersion, len(a))
-	bCopy := make([]ExerciseVersion, len(b))
-	copy(aCopy, a)
-	copy(bCopy, b)
-	sort.Slice(aCopy, func(i, j int) bool { return aCopy[i].Exercise < aCopy[j].Exercise })
-	sort.Slice(bCopy, func(i, j int) bool { return bCopy[i].Exercise < bCopy[j].Exercise })
-
-	for i := range aCopy {
-		if aCopy[i] != bCopy[i] {
-			return false
-		}
-	}
-
-	return true
-}
-
-// ExerciseVersion represents the version one particular exercise should
-// have in its go.mod file
-type ExerciseVersion struct {
-	Exercise string `json:"exercise"`
-	Version  string `json:"version"`
 }

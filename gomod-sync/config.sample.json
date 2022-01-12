@@ -1,9 +1,0 @@
-{
-  "default": "1.16",
-  "exceptions": [
-    {
-      "exercise": "beer-song",
-      "version": "1.17"
-    }
-  ]
-}

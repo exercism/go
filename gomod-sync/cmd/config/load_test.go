@@ -21,7 +21,7 @@ func TestLoad(t *testing.T) {
 			ExpectError: true,
 		},
 		{
-			Name: "Loading non-existent config",
+			Name: "Loading config with no exceptions",
 			Path: filepath.Join("..", "..", "testdata", "version_config_no_exceptions.json"),
 			Expected: config.VersionConfig{
 				Default: "1.16",
@@ -49,11 +49,11 @@ func TestLoad(t *testing.T) {
 				Default: "1.16",
 				Exceptions: []config.ExerciseVersion{
 					{
-						Exercise: "exercise02",
+						Exercise: "exercise01",
 						Version:  "1.17",
 					},
 					{
-						Exercise: "exercise01",
+						Exercise: "exercise02",
 						Version:  "1.17",
 					},
 				},
@@ -74,9 +74,30 @@ func TestLoad(t *testing.T) {
 				t.Fatalf("didn't expect error, but got %v", err)
 			}
 
-			if !config.Equal(test.Expected) {
+			if !configEqual(config, test.Expected) {
 				t.Fatalf("expected config %+v, but got %+v", test.Expected, config)
 			}
 		})
 	}
+}
+
+func configEqual(a, b config.VersionConfig) bool {
+	return a.Default == b.Default && equalExceptions(a.Exceptions, b.Exceptions)
+}
+
+// equalExceptions compares two lists of exercise versions and tells if they are equal.
+// Two exercise list versions are considered equal if they contain the same elements
+// in the same order
+func equalExceptions(a, b []config.ExerciseVersion) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+
+	return true
 }

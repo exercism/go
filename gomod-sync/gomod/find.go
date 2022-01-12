@@ -26,5 +26,5 @@ func FindFiles(dirPath string) ([]string, error) {
 		return nil, fmt.Errorf("walking dir %q: %w", dirPath, err)
 	}
 
-	return files, err
+	return files, nil
 }
