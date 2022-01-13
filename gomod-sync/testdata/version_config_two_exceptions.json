@@ -1,0 +1,13 @@
+{
+  "default": "1.16",
+  "exceptions": [
+    {
+      "exercise": "exercise01",
+      "version": "1.17"
+    },
+    {
+      "exercise": "exercise02",
+      "version": "1.17"
+    }
+  ]
+}

@@ -225,6 +225,23 @@ To regenerate the test cases, navigate into the **go** directory and run
 `GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go`. You should see that the
 `<exercise>/cases_test.go` file has changed. Commit the change.
 
+## Managing the Go version
+
+For an easy managment of the Go version in the `go.mod` file in all exercises, we can use `gomod-sync`.
+This is a tool made in Go that can be seen in the `gomod-sync/` folder.
+
+To update all go.mod files according to the config file (`gomod-sync/config.json`) run:
+
+```console
+$ cd gomod-sync && go run main.go update
+```
+
+To check all exercise go.mod files specify the correct Go version, run:
+
+```console
+$ cd gomod-sync && go run main.go check
+```
+
 ## Pull requests
 
 Pull requests are welcome.
