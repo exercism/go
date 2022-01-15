@@ -520,7 +520,7 @@
         "uuid": "bf366b19-63bf-4a75-9a35-08b881af6951",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 3,
+        "difficulty": 4,
         "topics": [
           "concurrency"
         ]
