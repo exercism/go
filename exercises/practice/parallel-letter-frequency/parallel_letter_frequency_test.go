@@ -12,9 +12,8 @@ import (
 // Make concurrent calls to Frequency and combine results to obtain the answer.
 
 var (
-	dostoevsky1 = `I am a sick man.... I am a spiteful man.
-I am an unattractive man. I believe my liver is diseased.
-However, I know nothing at all about my disease, and do not
+	dostoevsky1 = `I am a sick man.... I am a spiteful man. I am an unattractive man.
+I believe my liver is diseased. However, I know nothing at all about my disease, and do not
 know for certain what ails me. I don't consult a doctor for it,
 and never have, though I have a respect for medicine and doctors.
 Besides, I am extremely superstitious, sufficiently so to respect medicine,
@@ -36,8 +35,8 @@ I will not scratch it out on purpose!) When petitioners used to come for
 information to the table at which I sat, I used to grind my teeth at them,
 and felt intense enjoyment when I succeeded in making anybody unhappy.
 I almost did succeed. For the most part they were all timid people - of course,
-they were petitioners. But of the uppish ones there was one officer in particular I could not endure.
-He simply would not be humble, and clanked his sword in a disgusting way.
+they were petitioners. But of the uppish ones there was one officer in particular
+I could not endure. He simply would not be humble, and clanked his sword in a disgusting way.
 I carried on a feud with him for eighteen months over that sword. At last I got the better of him.
 He left off clanking it. That happened in my youth, though. But do you know,
 gentlemen, what was the chief point about my spite? Why, the whole point,
@@ -46,25 +45,24 @@ I was inwardly conscious with shame that I was not only not a spiteful but not e
 that I was simply scaring sparrows at random and amusing myself by it.
 I might foam at the mouth, but bring me a doll to play with, give me a cup of tea with sugar in it,
 and maybe I should be appeased. I might even be genuinely touched,
-though probably I should grind my teeth at myself afterwards and lie awake at night with shame for months after.
-That was my way.
-I was lying when I said just now that I was a spiteful official. I was lying from spite.
-I was simply amusing myself with the petitioners and with the officer,
+though probably I should grind my teeth at myself afterwards and lie awake at night with shame for
+months after. That was my way. I was lying when I said just now that I was a spiteful official.
+I was lying from spite. I was simply amusing myself with the petitioners and with the officer,
 and in reality I never could become spiteful. I was conscious every moment in myself of many,
 very many elements absolutely opposite to that. I felt them positively swarming in me,
 these opposite elements. I knew that they had been swarming in me all my life and craving some outlet from me,
-but I would not let them, would not let them,
-purposely would not let them come out. They tormented me till I was ashamed: they drove me to convulsions and -
-sickened me, at last, how they sickened me!`
+but I would not let them, would not let them, purposely would not let them come out.
+They tormented me till I was ashamed: they drove me to convulsions and - sickened me, at last,
+how they sickened me!`
 
 	dostoevsky2 = `Gentlemen, I am joking, and I know myself that my jokes are not brilliant
 ,but you know one can take everything as a joke. I am, perhaps, jesting against the grain.
 Gentlemen, I am tormented by questions; answer them for me. You, for instance, want to cure men of their
 old habits and reform their will in accordance with science and good sense.
-But how do you know, not only that it is possible, but also that it is desirable to reform man in that way?
-And what leads you to the conclusion that man's inclinations need reforming?
-In short, how do you know that such a reformation will be a benefit to man? And to go to the root of the matter,
-why are you so positively convinced that not to act against
+But how do you know, not only that it is possible, but also that it is
+desirable to reform man in that way? And what leads you to the conclusion that man's
+inclinations need reforming? In short, how do you know that such a reformation will be a benefit to man?
+And to go to the root of the matter, why are you so positively convinced that not to act against
 his real normal interests guaranteed by the conclusions of reason and arithmetic is certainly always
 advantageous for man and must always be a law for mankind? So far, you know,
 this is only your supposition. It may be the law of logic, but not the law of humanity.
@@ -87,44 +85,46 @@ in love with it at close quarters; perhaps he only loves building it and does no
 but will leave it, when completed, for the use of les animaux domestiques -
 such as the ants, the sheep, and so on. Now the ants have quite a different taste.
 They have a marvellous edifice of that pattern which endures for ever - the ant-heap.
-With the ant-heap the respectable race of ants began and with the ant-heap they will probably end, which does the
-greatest credit to their perseverance and good sense. But man is a frivolous and incongruous creature, and perhaps,
-like a chess player, loves the process of the game, not the end of it. And who knows
-(there is no saying with certainty), perhaps the only goal on earth to which mankind is striving lies in this
-incessant process of attaining, in other words, in life itself, and not in the thing to be attained, which must
-always be expressed as a formula, as positive as twice two makes four, and such positiveness is not life, gentlemen,
+With the ant-heap the respectable race of ants began and with the ant-heap they will probably end,
+which does the greatest credit to their perseverance and good sense. But man is a frivolous and
+incongruous creature, and perhaps, like a chess player, loves the process of the game, not the end of it.
+And who knows (there is no saying with certainty), perhaps the only goal on earth
+to which mankind is striving lies in this incessant process of attaining, in other words,
+in life itself, and not in the thing to be attained, which must always be expressed as a formula,
+as positive as twice two makes four, and such positiveness is not life, gentlemen,
 but is the beginning of death.`
 
 	dostoevsky3 = `But these are all golden dreams. Oh, tell me, who was it first announced,
 who was it first proclaimed, that man only does nasty things because he does not know his own interests;
 and that if he were enlightened, if his eyes were opened to his real normal interests,
 man would at once cease to do nasty things, would at once become good and noble because,
-being enlightened and understanding his real advantage, he would see his own advantage in the good and nothing else,
-and we all know that not one man can, consciously, act against his own interests, consequently, so to say,
-through necessity, he would begin doing good? Oh, the babe! Oh, the pure, innocent child! Why, in the first place,
-when in all these thousands of years has there been a time when man has acted only from his own interest?
-What is to be done with the millions of facts that bear witness that men, consciously,
-that is fully understanding their real interests, have left them in the background and have rushed headlong
-on another path, to meet peril and danger, compelled to this course by nobody and by nothing, but,
-as it were, simply disliking the beaten track, and have obstinately, wilfully, struck out another difficult, absurd way,
-seeking it almost in the darkness. So, I suppose, this obstinacy and perversity were pleasanter to them than any advantage....
-Advantage! What is advantage? And will you take it upon yourself to define with
-perfect accuracy in what the advantage of man consists? And what if it so happens that a man's advantage,
-sometimes, not only may, but even must, consist in his desiring in certain
-cases what is harmful to himself and not advantageous. And if so, if there can be such a case,
-the whole principle falls into dust. What do you think - are there such cases? You laugh; laugh away, gentlemen, but only answer me:
-have man's advantages been reckoned up with perfect certainty?
-Are there not some which not only have not been included but cannot possibly be included under any classification?
-You see, you gentlemen have, to the best of my knowledge,
-taken your whole register of human advantages from the averages of statistical figures and politico-economical formulas.
-Your advantages are prosperity, wealth, freedom, peace - and so on, and so on. So that the man who should, for instance,
-go openly and knowingly in opposition to all that list would to your thinking, and indeed mine, too, of course,
-be an obscurantist or an absolute madman: would not he? But, you know, this is what is surprising:
-why does it so happen that all these statisticians,  sages and lovers of humanity, when they reckon up human
-advantages invariably leave out one? They don't even take it into their reckoning in the form in which it should be taken,
-and the whole reckoning depends upon that. It would be no greater matter, they would simply have to take it, this advantage,
-and add it to the list. But the trouble is, that this strange advantage does not fall under any classification and is not in place in any list.
-I have a friend for instance ... Ech! gentlemen, but of course he is your friend, too; and indeed there is no one, no one to whom he is not a friend!`
+being enlightened and understanding his real advantage, he would see his own advantage in the
+good and nothing else, and we all know that not one man can, consciously, act against his own interests,
+consequently, so to say, through necessity, he would begin doing good? Oh, the babe! Oh, the pure,
+innocent child! Why, in the first place, when in all these thousands of years has there been a time
+when man has acted only from his own interest? What is to be done with the millions of facts that bear
+witness that men, consciously, that is fully understanding their real interests, have left them in the
+background and have rushed headlong on another path, to meet peril and danger,
+compelled to this course by nobody and by nothing, but, as it were, simply disliking the beaten track,
+and have obstinately, wilfully, struck out another difficult, absurd way, seeking it almost in the darkness.
+So, I suppose, this obstinacy and perversity were pleasanter to them than any advantage....
+Advantage! What is advantage? And will you take it upon yourself to define with perfect accuracy in what the
+advantage of man consists? And what if it so happens that a man's advantage, sometimes, not only may,
+but even must,  consist in his desiring in certain cases what is harmful to himself and not advantageous.
+And if so, if there can be such a case, the whole principle falls into dust. What do you think -
+are there such cases? You laugh; laugh away, gentlemen, but only answer me: have man's advantages been
+reckoned up with perfect certainty? Are there not some which not only have not been included but cannot
+possibly be included under any classification? You see, you gentlemen have, to the best of my knowledge,
+taken your whole register of human advantages from the averages of statistical figures and
+politico-economical formulas. Your advantages are prosperity, wealth, freedom, peace - and so on, and so on.
+So that the man who should, for instance, go openly and knowingly in opposition to all that list would to your thinking,
+and indeed mine, too, of course, be an obscurantist or an absolute madman: would not he? But, you know, this is
+what is surprising: why does it so happen that all these statisticians,  sages and lovers of humanity,
+when they reckon up human advantages invariably leave out one? They don't even take it into their reckoning
+in the form in which it should be taken, and the whole reckoning depends upon that. It would be no greater matter,
+they would simply have to take it, this advantage, and add it to the list. But the trouble is, that this strange
+advantage does not fall under any classification and is not in place in any list. I have a friend for instance ...
+Ech! gentlemen, but of course he is your friend, too; and indeed there is no one, no one to whom he is not a friend!`
 
 	dostoevsky4 = `"Yes, but here I come to a stop! Gentlemen, you must excuse me for being over-philosophical;
 it's the result of forty years underground! Allow me to indulge my fancy. You see, gentlemen, reason is an excellent thing,
