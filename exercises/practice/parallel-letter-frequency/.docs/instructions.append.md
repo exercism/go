@@ -28,8 +28,16 @@ For more take a look at The Go Blog's post: [Concurrency is not parallelism](htt
 If you are new to the concurrency features in Go here are some resources to get
 you started. We recommend looking over these before starting this exercise:
 
-* [Concurrency in the Golang Book](https://www.golang-book.com/books/intro/10)
-* [A Tour of Go's concurrency section](https://tour.golang.org/concurrency/1)
-* [Go's sync.Map](https://medium.com/@deckarep/the-new-kid-in-town-gos-sync-map-de24a6bf7c2c)
+- [Concurrency in the Golang Book](https://www.golang-book.com/books/intro/10)
+- [A Tour of Go's concurrency section](https://tour.golang.org/concurrency/1)
+- [Go's sync.Map](https://medium.com/@deckarep/the-new-kid-in-town-gos-sync-map-de24a6bf7c2c)
 
 For a really deep dive you can try the book [Concurrency in Go](http://shop.oreilly.com/product/0636920046189.do) by [@kat-co](https://github.com/kat-co).
+
+## Testing
+
+For this exercise, the unit tests cannot determine whether you wrote a good concurrent solutions.
+Instead, it is best to solve this exercise [locally][cli] and execute the benchmarks with `go test -bench .`.
+For a good solution, you should see that the concurrent version shows a lower number of nano seconds per operation (`ns/op`) than the sequential version.
+
+[cli]: https://exercism.org/docs/using/solving-exercises/working-locally
