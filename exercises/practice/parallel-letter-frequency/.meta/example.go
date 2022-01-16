@@ -23,7 +23,6 @@ func ConcurrentFrequency(texts []string) FreqMap {
 	var wg sync.WaitGroup
 	wg.Add(len(texts))
 
-
 	for _, text := range texts {
 		go func(t string) {
 			ch <- Frequency(t)

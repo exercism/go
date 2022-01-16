@@ -44,9 +44,7 @@ and I create music. Music. The writing sings. It has a pleasant rhythm, a lilt, 
 And I use sentences of medium length. And sometimes, when I am certain the reader is rested, I will engage him with a sentence of considerable length,
 a sentence that burns with energy and builds with all the impetus of a crescendo, the roll of the drums, the crash of the cymbals–sounds that say listen
 to this, it is important.`
-
 )
-
 
 func OriginalFrequency(s string) FreqMap {
 	m := FreqMap{}
