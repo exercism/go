@@ -36,7 +36,7 @@ For a really deep dive you can try the book [Concurrency in Go](http://shop.orei
 
 ## Testing
 
-For this exercise, the unit tests cannot determine whether you wrote a good concurrent solutions.
+For this exercise, the unit tests cannot determine whether you wrote a good concurrent solution.
 Instead, it is best to solve this exercise [locally][cli] and execute the benchmarks with `go test -bench .`.
 For a good solution, you should see that the concurrent version shows a lower number of nano seconds per operation (`ns/op`) than the sequential version.
 
