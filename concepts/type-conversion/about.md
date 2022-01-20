@@ -22,7 +22,7 @@ The same applies to any custom types:
 ```go
 type Id int
 var number int = 121 // number has type int
-userId := Id(int) // userId now has type Id
+userId := Id(number) // userId now has type Id
 ```
 
 ## Converting between primitive types and strings
