@@ -20,7 +20,7 @@
 ## 3. Calculate the cost of production 
 
 - Start by working out how many groups of 10 cars there are. You can do this by dividing the number of cars by 10.
-- Then work out how many cars are remaining (the [operator][modulo operator] is useful for this).
+- Then work out how many cars are remaining (the [modulo operator][modulo operator] is useful for this).
 - To arrive at the cost, multiply the number of groups by the cost to produce 10 cars and then multiply the number of cars remaining by the cost to produce each individual car. Then sum the results of the multiplication together.
 
 [basic types]: https://tour.golang.org/basics/11
