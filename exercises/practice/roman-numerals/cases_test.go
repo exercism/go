@@ -30,4 +30,5 @@ var romanNumeralTests = []romanNumeralTest{
 	{911, "CMXI", false},
 	{1024, "MXXIV", false},
 	{3000, "MMM", false},
+	{3999, "MMMCMXCIX", false},
 }

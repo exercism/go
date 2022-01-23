@@ -20,8 +20,7 @@ into stone tablets).
  7  => VII
 ```
 
-There is no need to be able to convert numbers larger than about 3000.
-(The Romans themselves didn't tend to go any higher)
+The largest number that can be represented in this notation is 3,999.
 
 Wikipedia says: Modern Roman numerals ... are written by expressing each
 digit separately starting with the left most digit and skipping any
