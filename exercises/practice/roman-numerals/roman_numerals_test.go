@@ -6,7 +6,6 @@ func TestRomanNumerals(t *testing.T) {
 	tc := []romanNumeralTest{
 		{0, "", true},
 		{-1, "", true},
-		{3001, "", true},
 	}
 	tc = append(tc, romanNumeralTests...)
 
