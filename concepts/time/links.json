@@ -8,6 +8,10 @@
     "description": "Blog Post: Parsing and formating dates/time in Go"
   },
   {
+    "url": "https://yourbasic.org/golang/format-parse-string-time-date-example/",
+    "description": "Blog Post: Format a time or date"
+  },
+  {
     "url": "https://golang.org/pkg/time",
     "description": "Go packages: time package"
   },
