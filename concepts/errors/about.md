@@ -163,7 +163,7 @@ if _, err := os.Getwd(); err != nil {
 
 ## Encapsulating error types and values
 
-While it is advised above, to early return most errors that occur. There are occasions where defining behavior upon a specific type, or exported value of error is more appropriate. When that happens, only specific error types would not be immediately returned. This Encapsulation of errors is not unique to golang, but can be thought of as analogous to, catching an Exception in other languages. The purpose might be to differentiate between things in-scope of a library or framework; and things that have not (perhaps yet) been considered; or are deliberately excluded from a domain or context.
+While it is advised above, to early return most errors that occur. There are occasions where defining behavior upon a specific type, or exported value of error is more appropriate. When that happens, only the specified error types or values would not be immediately returned. This Encapsulation of errors is not unique to golang, but can be thought of as analogous to, catching an Exception in other languages. The purpose might be to differentiate between things in-scope of a library or framework; and things that have not (perhaps yet) been considered; or are deliberately excluded from a domain or context.
 
 ```go
     if err != nil && err != ErrSpecificCaseWeHandleOrEncapsulateWithOurOwnError {
