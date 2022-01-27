@@ -65,6 +65,15 @@ fmt.Printf("myRune Unicode code point: %U\n", myRune)
 // Output: myRune Unicode code point: U+00BF
 ```
 
+Using the table above, you can assign hexadecimal or decimal number:
+
+```go
+myRune := rune(0xbf)
+myRune = 191
+fmt.Printf("myRune Unicode character: %c\n", myRune)
+// Output: myRune Unicode character: ¿
+```
+
 ## Runes and Strings
 
 Strings in Go are encoded using UTF-8 which means they contain Unicode characters. Since the `rune` type represents a Unicode character, a string in Go is often referred to as a sequence of runes. However, runes are stored as 1, 2, 3, or 4 bytes depending on the character. Due to this, strings are really just a sequence of bytes. In Go, slices are used to represent sequences and these slices can be iterated over using `range`.
