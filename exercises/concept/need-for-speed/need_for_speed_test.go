@@ -173,7 +173,7 @@ func TestCanFinish(t *testing.T) {
 			name: "Car cannot finish the track distance.",
 			car: Car{
 				speed:        2,
-				batteryDrain: 10,
+				batteryDrain: 6,
 				battery:      100,
 				distance:     5,
 			},
