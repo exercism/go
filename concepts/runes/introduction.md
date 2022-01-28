@@ -65,7 +65,7 @@ fmt.Printf("myRune Unicode code point: %U\n", myRune)
 // Output: myRune Unicode code point: U+00BF
 ```
 
-Using the table above, you can assign hexadecimal or decimal number:
+Besides defining a rune by wrapping the character in single quotes, you can also specify the hexadecimal or decimal number:
 
 ```go
 myRune := rune(0xbf)
