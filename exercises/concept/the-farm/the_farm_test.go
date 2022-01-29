@@ -89,7 +89,7 @@ func TestDivideFood(t *testing.T) {
 			wantErr:                 nil,
 		},
 		{
-			description:             "Scale returns 5 with ErrScaleMalfunction for 10 cows",
+			description:             "Scale returns 1 with ErrScaleMalfunction for 10 cows",
 			weightFodder:            testWeightFodder{fodder: 5, err: ErrScaleMalfunction},
 			weightFodderDescription: "5 fodder, ErrScaleMalfunction",
 			cows:                    10,
