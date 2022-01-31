@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://go.dev/ref/spec#Function_types",
+    "description": "Go Dev: Variadic Functions"
+  },
+  {
+    "url": "https://gobyexample.com/variadic-functions",
+    "description": "Go by Example: Variadic Functions"
+  },
+  {
+    "url": "https://medium.com/rungo/variadic-function-in-go-5d9b23f4c01a",
+    "description": "Article: Variadic functions in Go"
+  }
+]
