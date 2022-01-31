@@ -2,25 +2,22 @@
 
 ## Goal
 
-The goal of this exercise is to teach the student the basics of programming in Ruby.
+The goal of this exercise is to teach the student about first class functions in Go.
 
 ## Learning objectives
 
-- Know what a variable is.
-- Know how to define a variable.
-- Know how to update a variable.
+- How to define a higher order function
+- How to invoke a higher order function
+- How to pass a function as a parameter to a function
+- How to return a function
 
 ## Out of scope
 
-- Memory and performance characteristics.
-- Method overloads.
-
 ## Concepts
-
-The Concepts this exercise unlocks are:
-
-- `basics`: know what a variable is; know how to define a variable; know how to update a variable.
 
 ## Prerequisites
 
-There are no prerequisites.
+- `for-loops` are needed in the exercise
+- `functions` are needed in the exercise
+- `structs` are needed in the exercise
+- `type-definitions` are needed in the exercise
