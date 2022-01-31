@@ -64,8 +64,8 @@ func byCategory(c string) func(Record) bool {
 }
 
 // Total returns total amount of expenses in collection a, within time period p.
-func Total(a Records, p Period) float64 {
-	periodExpenses := a.Filter(byPeriod(p))
+func Total(rr Records, p Period) float64 {
+	periodExpenses := rr.Filter(byPeriod(p))
 	var total float64
 	for _, r := range periodExpenses {
 		total += r.Amount
@@ -75,8 +75,8 @@ func Total(a Records, p Period) float64 {
 
 // TopCategoriesN returns top n categories of expenses in collection a, within
 // time period p.
-func TopCategoriesN(a Records, n int, p Period) []string {
-	periodExpenses := a.Filter(byPeriod(p))
+func TopCategoriesN(rr Records, n int, p Period) []string {
+	periodExpenses := rr.Filter(byPeriod(p))
 
 	// reduce records to categoryExpenses collection
 	catExp := map[string]float64{}
@@ -102,8 +102,8 @@ func TopCategoriesN(a Records, n int, p Period) []string {
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses collection a.
-func CategoryExpenses(a Records, c string, p Period) (float64, error) {
-	categoryExpenses := a.Filter(byCategory(c))
+func CategoryExpenses(rr Records, c string, p Period) (float64, error) {
+	categoryExpenses := rr.Filter(byCategory(c))
 	if len(categoryExpenses) == 0 {
 		return 0, fmt.Errorf("unknown category: %s", c)
 	}
