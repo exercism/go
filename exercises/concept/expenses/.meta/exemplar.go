@@ -14,6 +14,21 @@ type Record struct {
 	Category    string
 }
 
+// Records describes a collection of expenses events.
+type Records []Record
+
+// Filter creates a new records collection by applying predicate function to
+// collection items and keeping the items when the function returns true.
+func (rr Records) Filter(f func(Record) bool) Records {
+	var out Records
+	for _, r := range rr {
+		if f(r) {
+			out = append(out, r)
+		}
+	}
+	return out
+}
+
 // Period describes time period.
 type Period struct {
 	DateFrom time.Time
@@ -36,17 +51,6 @@ func (x byTotal) Len() int           { return len(x) }
 func (x byTotal) Less(i, j int) bool { return x[i].Total < x[j].Total }
 func (x byTotal) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
 
-// RecordsFilter filters a records collection according to a provided predicate.
-func RecordsFilter(in []Record, f func(Record) bool) []Record {
-	var out []Record
-	for _, v := range in {
-		if f(v) {
-			out = append(out, v)
-		}
-	}
-	return out
-}
-
 func byPeriod(p Period) func(Record) bool {
 	return func(r Record) bool {
 		return p.Includes(r.Date)
@@ -60,8 +64,8 @@ func byCategory(c string) func(Record) bool {
 }
 
 // Total returns total amount of expenses in collection a, within time period p.
-func Total(a []Record, p Period) float64 {
-	periodExpenses := RecordsFilter(a, byPeriod(p))
+func Total(a Records, p Period) float64 {
+	periodExpenses := a.Filter(byPeriod(p))
 	var total float64
 	for _, r := range periodExpenses {
 		total += r.Amount
@@ -71,8 +75,8 @@ func Total(a []Record, p Period) float64 {
 
 // TopCategoriesN returns top n categories of expenses in collection a, within
 // time period p.
-func TopCategoriesN(a []Record, n int, p Period) []string {
-	periodExpenses := RecordsFilter(a, byPeriod(p))
+func TopCategoriesN(a Records, n int, p Period) []string {
+	periodExpenses := a.Filter(byPeriod(p))
 
 	// reduce records to categoryExpenses collection
 	catExp := map[string]float64{}
@@ -98,8 +102,8 @@ func TopCategoriesN(a []Record, n int, p Period) []string {
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses collection a.
-func CategoryExpenses(a []Record, c string, p Period) (float64, error) {
-	categoryExpenses := RecordsFilter(a, byCategory(c))
+func CategoryExpenses(a Records, c string, p Period) (float64, error) {
+	categoryExpenses := a.Filter(byCategory(c))
 	if len(categoryExpenses) == 0 {
 		return 0, fmt.Errorf("unknown category: %s", c)
 	}
