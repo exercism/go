@@ -1,7 +1,7 @@
 # Basics About
 
 The Basics concept introduced [Go](https://golang.org) as a statically typed, compiled programming language.
-The language is often referred to as Golang because of its domain name, golang.org, but the proper name is Go.
+The language is often referred to as Golang because of its previous domain name, golang.org, but the proper name is Go.
 
 The Basics concept introduces three major language features: Packages, Functions, and Variables.
 
