@@ -2,7 +2,7 @@
 
 [Go](https://golang.org) is a statically typed, compiled programming language.
 Go is syntactically similar to C.
-The language is often referred to as Golang because of its domain name, golang.org, but the proper name is Go.
+The language is often referred to as Golang because of its previous domain name, golang.org, but the proper name is Go.
 
 The Basics concept will introduce three major language features: Packages, Functions, and Variables.
 
