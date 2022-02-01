@@ -8,9 +8,9 @@ import (
 const floatEqualityThreshold = 1e-9
 
 func floatingPointEquals(got, want float64) bool {
-	absoluteDifferenceBelowTreshold := math.Abs(got-want) <= floatEqualityThreshold
-	relativeDifferenceBelowTreshold := math.Abs(got-want)/(math.Abs(got)+math.Abs(want)) <= floatEqualityThreshold
-	return absoluteDifferenceBelowTreshold || relativeDifferenceBelowTreshold
+	absoluteDifferenceBelowThreshold := math.Abs(got-want) <= floatEqualityThreshold
+	relativeDifferenceBelowThreshold := math.Abs(got-want)/(math.Abs(got)+math.Abs(want)) <= floatEqualityThreshold
+	return absoluteDifferenceBelowThreshold || relativeDifferenceBelowThreshold
 }
 
 func TestCalculateWorkingCarsPerHour(t *testing.T) {
