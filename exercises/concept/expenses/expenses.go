@@ -31,19 +31,20 @@ type Period struct {
 	DateTo   time.Time
 }
 
-// Total returns total amount of expenses in collection a, within time period p.
+// Total returns total amount of expenses in collection of records rr
+// within time period p.
 func Total(rr Records, p Period) float64 {
 	panic("Total not implemented")
 }
 
-// TopCategoriesN returns top n categories of expenses in collection a, within
-// time period p.
+// TopCategoriesN returns top n categories of expenses in collection of records rr
+// within time period p.
 func TopCategoriesN(rr Records, n int, p Period) []string {
 	panic("TopCategoriesN not implemented")
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
-// error when a category is not present in expenses collection a.
+// error when a category is not present in expenses records.
 func CategoryExpenses(rr Records, c string, p Period) (float64, error) {
 	panic("CategoryExpenses not implemented")
 }
