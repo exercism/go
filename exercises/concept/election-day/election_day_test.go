@@ -155,7 +155,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 		wanted    int
 	}{
 		{
-			name:      "Call to DecrementVotesOfCandidate for Jonh with 5 votes",
+			name:      "Call to DecrementVotesOfCandidate for Jonh with 3 votes",
 			candidate: "John",
 			results: map[string]int{
 				"John": 3,
