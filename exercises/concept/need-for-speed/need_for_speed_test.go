@@ -123,6 +123,36 @@ func TestDrive(t *testing.T) {
 				distance:     0,
 			},
 		},
+		{
+			name: "Drive the car with positive initial distance and battery drained",
+			car: Car{
+				speed:        5,
+				batteryDrain: 3,
+				battery:      2,
+				distance:     1,
+			},
+			expected: Car{
+				speed:        5,
+				batteryDrain: 3,
+				battery:      2,
+				distance:     1,
+			},
+		},
+		{
+			name: "Drive the car with positive initial distance and full battery",
+			car: Car{
+				speed:        5,
+				batteryDrain: 3,
+				battery:      100,
+				distance:     1,
+			},
+			expected: Car{
+				speed:        5,
+				batteryDrain: 3,
+				battery:      97,
+				distance:     6,
+			},
+		},
 	}
 
 	for _, tt := range tests {
