@@ -14,7 +14,9 @@
 
 ## 3. Category expenses in period
 
-- Implement filter predicate `func byCategory(string) func(Record) bool` that takes category and returns a predicate function. The predicate function returns `true` when Record.Category matches provided category.
+- Similarly to filtering records by period, the records can be filtered by category. Implement a new functino that takes category as a parameter and returns `func(Record) bool`.
+- Use `Records.Filter` to select expenses in category.
+- Reuse `Total` to calculate category expenses.
 
 [sort-pkg]: https://pkg.go.dev/sort
 [sort-example]: https://gobyexample.com/sorting-by-functions
