@@ -51,4 +51,17 @@ Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
 
 ## 2. Find the top N expenses categories in period
 
+Implement `TopCategoriesN` function to return the categories that are responsible for the most spendings.  
+The categories should be sorted by the sum of expenses in descending order, i.e the most expensive category on the top of the list, etc. Categories with the same sum of expenses should be ordered alphabetically.
+
+```go
+// some examples
+```
+
+If there are less categories than parameter `N` the function should output all categories. Function should ignore non-positive `N` and output `nil` in such cases.
+
+```go
+// some examples
+```
+
 ## 3. Calculate the total amount of category expenses in period
