@@ -4,10 +4,9 @@ import "time"
 
 // Record describes a record of expense event.
 type Record struct {
-	Date        time.Time
-	Amount      float64
-	Description string
-	Category    string
+	Date     time.Time
+	Amount   float64
+	Category string
 }
 
 // Records describes a collection of expenses events.
@@ -39,12 +38,12 @@ func Total(rr Records, p Period) float64 {
 
 // TopCategoriesN returns top n categories of expenses in collection of records rr
 // within time period p.
-func TopCategoriesN(rr Records, n int, p Period) []string {
+func TopCategoriesN(rr Records, p Period, n int) []string {
 	panic("TopCategoriesN not implemented")
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses records.
-func CategoryExpenses(rr Records, c string, p Period) (float64, error) {
+func CategoryExpenses(rr Records, p Period, c string) (float64, error) {
 	panic("CategoryExpenses not implemented")
 }

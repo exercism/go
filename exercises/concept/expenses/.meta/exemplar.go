@@ -8,10 +8,9 @@ import (
 
 // Record describes a record of expense event.
 type Record struct {
-	Date        time.Time
-	Amount      float64
-	Description string
-	Category    string
+	Date     time.Time
+	Amount   float64
+	Category string
 }
 
 // Records describes a collection of expenses events.
@@ -75,7 +74,7 @@ func Total(rr Records, p Period) float64 {
 
 // TopCategoriesN returns top n categories of expenses in collection a, within
 // time period p.
-func TopCategoriesN(rr Records, n int, p Period) []string {
+func TopCategoriesN(rr Records, p Period, n int) []string {
 	periodExpenses := rr.Filter(byPeriod(p))
 
 	// reduce records to categoryExpenses collection
@@ -102,7 +101,7 @@ func TopCategoriesN(rr Records, n int, p Period) []string {
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses collection a.
-func CategoryExpenses(rr Records, c string, p Period) (float64, error) {
+func CategoryExpenses(rr Records, p Period, c string) (float64, error) {
 	categoryExpenses := rr.Filter(byCategory(c))
 	if len(categoryExpenses) == 0 {
 		return 0, fmt.Errorf("unknown category: %s", c)

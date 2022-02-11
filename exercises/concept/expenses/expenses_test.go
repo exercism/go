@@ -7,46 +7,39 @@ import (
 
 var testExpensesRecords = []Record{
 	{
-		Date:        time.Date(2021, time.December, 1, 10, 11, 12, 13, time.UTC),
-		Amount:      5.15,
-		Description: "bread",
-		Category:    "grocieries",
+		Date:     time.Date(2021, time.December, 1, 10, 11, 12, 13, time.UTC),
+		Amount:   5.15,
+		Category: "grocieries",
 	},
 	{
-		Date:        time.Date(2021, time.December, 1, 10, 11, 12, 13, time.UTC),
-		Amount:      3.45,
-		Description: "potato",
-		Category:    "grocieries",
+		Date:     time.Date(2021, time.December, 1, 10, 11, 12, 13, time.UTC),
+		Amount:   3.45,
+		Category: "grocieries",
 	},
 	{
-		Date:        time.Date(2021, time.December, 13, 11, 12, 13, 14, time.UTC),
-		Amount:      55.67,
-		Description: "mobile phone bill",
-		Category:    "utility-bills",
+		Date:     time.Date(2021, time.December, 13, 11, 12, 13, 14, time.UTC),
+		Amount:   55.67,
+		Category: "utility-bills",
 	},
 	{
-		Date:        time.Date(2021, time.December, 15, 8, 0, 0, 0, time.UTC),
-		Amount:      11,
-		Description: "netflix",
-		Category:    "entertainment",
+		Date:     time.Date(2021, time.December, 15, 8, 0, 0, 0, time.UTC),
+		Amount:   11,
+		Category: "entertainment",
 	},
 	{
-		Date:        time.Date(2021, time.December, 23, 9, 0, 0, 0, time.UTC),
-		Amount:      20.0,
-		Description: "gym",
-		Category:    "fitness",
+		Date:     time.Date(2021, time.December, 23, 9, 0, 0, 0, time.UTC),
+		Amount:   20.0,
+		Category: "fitness",
 	},
 	{
-		Date:        time.Date(2021, time.December, 25, 20, 0, 0, 0, time.UTC),
-		Amount:      24.65,
-		Description: "movie night",
-		Category:    "entertainment",
+		Date:     time.Date(2021, time.December, 25, 20, 0, 0, 0, time.UTC),
+		Amount:   24.65,
+		Category: "entertainment",
 	},
 	{
-		Date:        time.Date(2021, time.December, 30, 10, 0, 0, 0, time.UTC),
-		Amount:      1300,
-		Description: "rent",
-		Category:    "rent",
+		Date:     time.Date(2021, time.December, 30, 10, 0, 0, 0, time.UTC),
+		Amount:   1300,
+		Category: "rent",
 	},
 }
 
@@ -115,7 +108,7 @@ func TestTopCategoriesN(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got := TopCategoriesN(testExpensesRecords, tC.n, tC.p)
+		got := TopCategoriesN(testExpensesRecords, tC.p, tC.n)
 		if !stringsEqual(got, tC.expected) {
 			t.Errorf("TopCategoriesN(%v, %d, %v) = %v, want: %v",
 				testExpensesRecords, tC.n, tC.p, got, tC.expected)
@@ -150,7 +143,7 @@ func TestCategoryExpenses(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got, err := CategoryExpenses(testExpensesRecords, tC.category, tC.p)
+		got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
 		if tC.err != "" && (err == nil || tC.err != err.Error()) {
 			t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want: %s",
 				testExpensesRecords, tC.category, tC.p, err, tC.err)
