@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Go ${{ matrix.go-version }} - ${{ matrix.os }} - ${{ github.event_name }}
+    name: Go ${{ matrix.go-version }} - ${{ matrix.os }}/${{ matrix.test-arch }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -21,10 +21,12 @@ jobs:
         race: ['-race']
 
         include:
-          - test-arch: '386'
+          - go-version: 1.17.x
+            test-arch: '386'
             os: ubuntu-latest
             race: ''
-          - test-arch: '386'
+          - go-version: 1.17.x
+            test-arch: '386'
             os: windows-latest
             race: ''
 
