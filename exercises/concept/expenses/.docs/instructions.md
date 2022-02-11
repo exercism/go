@@ -1,0 +1,54 @@
+# Instructions
+
+Bob is a financial adviser and helps people to manage their expenses. His clients send expenses records and Bob analyses them. Bob has records for the previous periods, so that he can see changes in spending.
+
+Bob needs to build a report that contains top 3 categories of expenses and total amount of the expenses. Sometimes customers interested to see expenses in a particular category.  
+
+In this exercise you're going to build a program to help Bob.
+
+All functions will receive expenses records and period:
+```go
+// Expenses record.
+type Record struct {
+	Date        time.Time
+	Amount      float64
+	Category    string
+}
+
+// Expenses period.
+type Period struct {
+	DateFrom time.Time
+	DateTo   time.Time
+}
+```
+
+The period should include both dates, i.e:
+```go
+p := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
+// p includes "2000-10-01"
+// ...
+// p includes "2000-10-16"
+// ...
+// p includes "2000-10-31"
+//
+// p does not include "2000-09-30"
+// p does not include "2000-11-01"
+```
+
+## 1. Calculate the total amount of expenses in period
+
+Implement the `Total` function to return a sum of expenses in period:
+
+```go
+Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
+  Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"})
+// Output: 16
+
+Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
+  Period{DateFrom: "2000-11-01", DateTo: "2000-11-30"})
+// Output: 0
+```
+
+## 2. Find the top N expenses categories in period
+
+## 3. Calculate the total amount of category expenses in period
