@@ -2057,6 +2057,11 @@
       "name": "Variables",
       "slug": "variables",
       "uuid": "76e36f06-f809-4ce7-9ebd-4b1e010bc938"
+    },
+    {
+      "name": "Variadic Functions",
+      "slug": "variadic-functions",
+      "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
     }
   ],
   "key_features": [
