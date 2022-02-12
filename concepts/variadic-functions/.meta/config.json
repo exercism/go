@@ -1,5 +1,5 @@
 {
-  "blurb": "Variadic functions allow for an unknown number of parameters to be passed to a function",
+  "blurb": "Variadic functions allow for an arbitrary number of arguments to be passed to a function.",
   "authors": ["myworkcircle"],
   "contributors": []
 }
