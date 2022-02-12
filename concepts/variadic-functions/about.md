@@ -19,15 +19,19 @@ In the above function, parameter b is variadic and we can pass 0 or more argumen
     find(5)
 ```
 
-Note:
-    Variadic paramter should be the last parameter of the function.
+~~~~exercism/caution
+    Variadic parameter should be the last parameter of the function.
+~~~~~~
 
 ```go
     func find(...a int, b int) {}
 ```
+
+The above function will fail to compile with syntax error: `cannot use `...` with non-final parameter b.`
+
 In the above function, we can pass multiple arguments but all those arguments will assigned to a.
 
-`Hence, variadic parameters should be passed at the end`. The above function will fail to compile with error syntax error: cannot use `...` with non-final parameter b.
+`Hence, variadic parameters should be passed at the end`.
 
 Example:
 ```go
@@ -47,7 +51,7 @@ Example:
     }
 
     func main() {
-        find(89, 89, 90, 95)
+        find(89, 90, 95)
         find(45, 56, 67, 45, 90, 109)
         find(78, 38, 56, 98)
         find(87)
@@ -55,6 +59,6 @@ Example:
 ```
 The way variadic functions work is by converting the variable number of arguments to a slice of the type of the variadic parameter.
 
-For instance, in line no. 22 of the program above, the variable number of arguments to the find function are 89, 90, 95. The find function expects a variadic int argument.
- 
+For instance, in line `find(89, 90, 95)` of the program above, the variable number of arguments to the find function are 89, 90, 95. The find function expects a variadic int argument.
+
 Hence these three arguments will be converted by the compiler to a `slice of type int []int{89, 90, 95}` and then it will be passed to the find function.
