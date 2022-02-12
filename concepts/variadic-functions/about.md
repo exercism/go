@@ -27,9 +27,9 @@ In the above function, parameter b is variadic and we can pass 0 or more argumen
     func find(...a int, b int) {}
 ```
 
-The above function will fail to compile with syntax error: `cannot use `...` with non-final parameter b.`
+The above function will fail to compile with syntax error: `cannot use ... with non-final parameter b.`
 
-In the above function, we can pass multiple arguments but all those arguments will assigned to a.
+In the above function, we can pass multiple arguments but all those arguments will get assigned to a.
 
 `Hence, variadic parameters should be passed at the end`.
 
