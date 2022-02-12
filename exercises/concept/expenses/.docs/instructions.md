@@ -56,9 +56,9 @@ The categories should be sorted by the sum of expenses in descending order, i.e 
 
 ```go
 records := []Record{
-  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"}
-  {Date: "2000-10-26", Amount: 300, Category: "university"}
-  {Date: "2000-10-28", Amount: 1300, Category: "rent"}
+  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
+  {Date: "2000-10-26", Amount: 300, Category: "university"},
+  {Date: "2000-10-28", Amount: 1300, Category: "rent"},
 }
 period := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
 
