@@ -55,13 +55,34 @@ Implement `TopCategoriesN` function to return the categories that are responsibl
 The categories should be sorted by the sum of expenses in descending order, i.e the most expensive category on the top of the list, etc. Categories with the same sum of expenses should be ordered alphabetically.
 
 ```go
-// some examples
+records := []Record{
+  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"}
+  {Date: "2000-10-26", Amount: 300, Category: "university"}
+  {Date: "2000-10-28", Amount: 1300, Category: "rent"}
+}
+period := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
+
+TopCategoriesN(records, period, 1)
+// Output: [rent]
+
+TopCategoriesN(records, period, 2)
+// Output: [rent, university]
+
+TopCategoriesN(records, period, 3)
+// Output: [rent, university, utility-bills]
+
+TopCategoriesN(records, period, 4)
+// Output: [rent, university, utility-bills]
 ```
 
 If there are less categories than parameter `N` the function should output all categories. Function should ignore non-positive `N` and output `nil` in such cases.
 
 ```go
-// some examples
+TopCategoriesN(records, period, -1)
+// Output: nil
+
+TopCategoriesN(records, period, 0)
+// Output: nil
 ```
 
 ## 3. Calculate the total amount of category expenses in period
