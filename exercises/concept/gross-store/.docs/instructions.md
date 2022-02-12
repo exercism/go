@@ -82,7 +82,7 @@ To implement this, you'll need to:
 - Otherwise, return the quantity of the item in the `bill` and `true`.
 
 ```go
-bill := map[string]int{"carrot", 12, "grapes", 3}
+bill := map[string]int{"carrot": 12, "grapes": 3}
 qty, ok := GetItem(bill, "carrot")
 fmt.Println(qty)
 // Output: 12
