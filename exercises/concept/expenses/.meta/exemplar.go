@@ -50,6 +50,12 @@ func (x byTotal) Len() int           { return len(x) }
 func (x byTotal) Less(i, j int) bool { return x[i].Total < x[j].Total }
 func (x byTotal) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
 
+type byCategoryName []categoryExpenses
+
+func (x byCategoryName) Len() int           { return len(x) }
+func (x byCategoryName) Less(i, j int) bool { return x[i].Category < x[j].Category }
+func (x byCategoryName) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
+
 func byPeriod(p Period) func(Record) bool {
 	return func(r Record) bool {
 		return p.Includes(r.Date)
@@ -91,7 +97,10 @@ func TopCategoriesN(rr Records, p Period, n int) []string {
 		catsExps = append(catsExps, categoryExpenses{category, total})
 	}
 
-	// sort categoryExpenses
+	// sort categoryExpenses by category names
+	sort.Sort(byCategoryName(catsExps))
+
+	// reverse sort categoryExpenses by total expenses
 	sort.Sort(sort.Reverse(byTotal(catsExps)))
 
 	// map only the category names

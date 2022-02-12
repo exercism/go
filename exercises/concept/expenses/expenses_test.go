@@ -22,6 +22,11 @@ var testExpensesRecords = []Record{
 		Category: "utility-bills",
 	},
 	{
+		Date:     time.Date(2021, time.December, 18, 0, 0, 0, 0, time.UTC),
+		Amount:   244.33,
+		Category: "utility-bills",
+	},
+	{
 		Date:     time.Date(2021, time.December, 15, 8, 0, 0, 0, time.UTC),
 		Amount:   11,
 		Category: "entertainment",
@@ -40,6 +45,11 @@ var testExpensesRecords = []Record{
 		Date:     time.Date(2021, time.December, 30, 10, 0, 0, 0, time.UTC),
 		Amount:   1300,
 		Category: "rent",
+	},
+	{
+		Date:     time.Date(2021, time.December, 20, 0, 0, 0, 0, time.UTC),
+		Amount:   300,
+		Category: "university",
 	},
 }
 
@@ -81,7 +91,7 @@ func TestTotal(t *testing.T) {
 				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
 				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
-			total: 1419.92,
+			total: 1964.25,
 		},
 	}
 	for _, tC := range testCases {
@@ -120,7 +130,15 @@ func TestTopCategoriesN(t *testing.T) {
 				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			n:        2,
-			expected: []string{"rent", "utility-bills"},
+			expected: []string{"rent", "university"},
+		},
+		{
+			p: Period{
+				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			},
+			n:        3,
+			expected: []string{"rent", "university", "utility-bills"},
 		},
 	}
 	for _, tC := range testCases {
