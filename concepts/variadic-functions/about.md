@@ -51,9 +51,3 @@ Example:
 The way variadic functions work is by converting the variable number of arguments to a slice of the type of the variadic parameter. 
 For instance, in line no. 22 of the program above, the variable number of arguments to the find function are 89, 90, 95. The find function expects a variadic int argument. 
 Hence these three arguments will be converted by the compiler to a `slice of type int []int{89, 90, 95}` and then it will be passed to the find function.
-
-To dive deeper into this type, you can check these resources:
-
-[Go by example: Variadic Functions](https://gobyexample.com/variadic-functions)
-
-[Medium: Variadic functions](https://medium.com/rungo/variadic-function-in-go-5d9b23f4c01a)
