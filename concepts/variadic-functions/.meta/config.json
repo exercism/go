@@ -1,7 +1,5 @@
 {
-  "blurb": "Structs group pieces of related data together.",
-  "authors": [],
-  "contributors": [
-    "myworkcircle"
-  ]
+  "blurb": "Variadic functions allow for an unknown number of parameters to be passed to a function",
+  "authors": ["myworkcircle"],
+  "contributors": []
 }
