@@ -103,6 +103,22 @@ func TestTopCategoriesN(t *testing.T) {
 				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
 				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
+			n:        -1,
+			expected: nil,
+		},
+		{
+			p: Period{
+				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			},
+			n:        0,
+			expected: nil,
+		},
+		{
+			p: Period{
+				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			},
 			n:        2,
 			expected: []string{"rent", "utility-bills"},
 		},

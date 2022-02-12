@@ -75,6 +75,10 @@ func Total(rr Records, p Period) float64 {
 // TopCategoriesN returns top n categories of expenses in collection a, within
 // time period p.
 func TopCategoriesN(rr Records, p Period, n int) []string {
+	if n < 1 {
+		return nil
+	}
+
 	periodExpenses := rr.Filter(byPeriod(p))
 
 	// reduce records to categoryExpenses collection
