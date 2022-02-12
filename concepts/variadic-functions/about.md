@@ -5,15 +5,16 @@ If the last parameter of a function definition is prefixed by ellipsis `...`, th
 
 ```go
 func find(a int, b ...int) {
+    // ...
 }
 ```
 
 In the above function, parameter b is variadic and we can pass 0 or more arguments to b.
 
 ```go
-    func find(5, 6){}
-    func find(5, 6, 7){}
-    func find(5){}
+    find(5, 6)
+    find(5, 6, 7)
+    find(5)
 ```
 
 Note:
