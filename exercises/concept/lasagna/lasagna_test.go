@@ -74,13 +74,13 @@ func TestElapsedTime(t *testing.T) {
 			name:     "Total time in minutes for one layer",
 			layers:   1,
 			time:     30,
-			expected: 32,
+			expected: 12,
 		},
 		{
 			name:     "Total time in minutes for multiple layer",
 			layers:   4,
 			time:     8,
-			expected: 16,
+			expected: 40,
 		},
 	}
 	for _, tt := range tests {
