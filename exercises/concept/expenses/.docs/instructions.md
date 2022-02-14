@@ -1,12 +1,12 @@
 # Instructions
 
-Bob is a financial adviser and helps people to manage their expenses. His clients send expenses records and Bob analyses them. Bob has records for the previous periods, so that he can see changes in spending.
+Bob is a financial adviser and helps people to manage their expenses. His clients send expenses records and Bob analyses them. Bob has records for the previous periods so that he can see changes in spending.
 
-Bob needs to build a report that contains top 3 categories of expenses and total amount of the expenses. Sometimes customers interested to see expenses in a particular category.  
+Bob needs to build a report that contains the top 3 categories of expenses and the total amount of the expenses. Sometimes customers are interested to see expenses in a particular category.
 
-In this exercise you're going to build a program to help Bob.
+In this exercise, you're going to build a program to help Bob.
 
-All functions will receive expenses records and period:
+All functions receive expenses records and a date period:
 ```go
 // Expenses record.
 type Record struct {
@@ -51,7 +51,8 @@ Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
 
 ## 2. Find the top N expenses categories in period
 
-Implement `TopCategoriesN` function to return the categories that are responsible for the most spendings.  
+Implement the `TopCategoriesN` function to return the categories that are responsible for the most spending.
+
 The categories should be sorted by the sum of expenses in descending order, i.e the most expensive category on the top of the list, etc. Categories with the same sum of expenses should be ordered alphabetically.
 
 ```go
