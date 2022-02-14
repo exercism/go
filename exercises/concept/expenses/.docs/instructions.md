@@ -16,15 +16,15 @@ type Record struct {
 }
 
 // Expenses period.
-type Period struct {
-	DateFrom time.Time
-	DateTo   time.Time
+type DatePeriod struct {
+	From time.Time
+	To   time.Time
 }
 ```
 
 The period should include both dates, i.e:
 ```go
-p := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
+p := DarePeriod{From: "2000-10-01", To: "2000-10-31"}
 // p includes "2000-10-01"
 // ...
 // p includes "2000-10-16"
@@ -40,12 +40,14 @@ p := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
 Implement the `Total` function to return a sum of expenses in period:
 
 ```go
-Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
-  Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"})
+oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
+nov2000 := DatePeriod{From: "2000-11-01", To: "2000-11-30"}
+records := []Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}}
+
+Total(records, oct2000)
 // Output: 16
 
-Total([]Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}},
-  Period{DateFrom: "2000-11-01", DateTo: "2000-11-30"})
+Total(records, nov2000)
 // Output: 0
 ```
 
@@ -56,23 +58,23 @@ Implement the `TopCategoriesN` function to return the categories that are respon
 The categories should be sorted by the sum of expenses in descending order, i.e the most expensive category on the top of the list, etc. Categories with the same sum of expenses should be ordered alphabetically.
 
 ```go
+oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
 records := []Record{
   {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
   {Date: "2000-10-26", Amount: 300, Category: "university"},
   {Date: "2000-10-28", Amount: 1300, Category: "rent"},
 }
-period := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
 
-TopCategoriesN(records, period, 1)
+TopCategoriesN(records, oct2000, 1)
 // Output: [rent]
 
-TopCategoriesN(records, period, 2)
+TopCategoriesN(records, oct2000, 2)
 // Output: [rent, university]
 
-TopCategoriesN(records, period, 3)
+TopCategoriesN(records, oct2000, 3)
 // Output: [rent, university, utility-bills]
 
-TopCategoriesN(records, period, 4)
+TopCategoriesN(records, oct2000, 4)
 // Output: [rent, university, utility-bills]
 ```
 
@@ -92,6 +94,8 @@ Implement the `CategoryExpenses` function to return the category's expenses in t
 In case, when the category is not present the function should return an error.
 
 ```go
+oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
+nov2000 := DatePeriod{From: "2000-11-01", To: "2000-11-30"}
 records := []Record{
   {Date: "2000-10-01", Amount: 15, Category: "grocieries"},
   {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
@@ -99,15 +103,13 @@ records := []Record{
   {Date: "2000-10-26", Amount: 300, Category: "university"},
   {Date: "2000-10-28", Amount: 1300, Category: "rent"},
 }
-october := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
-november := Period{DateFrom: "2000-11-01", DateTo: "2000-11-30"}
 
-CategoryExpenses(records, october, "entertainment")
+CategoryExpenses(records, oct2000, "entertainment")
 // Output: 0, error(unknown category entertainment)
 
-CategoryExpenses(records, october, "rent")
+CategoryExpenses(records, oct2000, "rent")
 // Output: 1300, nil
 
-CategoryExpenses(records, november, "rent")
+CategoryExpenses(records, nov2000, "rent")
 // Output: 0, nil
 ```

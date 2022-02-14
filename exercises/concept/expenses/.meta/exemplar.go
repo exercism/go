@@ -28,15 +28,15 @@ func (rr Records) Filter(f func(Record) bool) Records {
 	return out
 }
 
-// Period describes time period.
-type Period struct {
-	DateFrom time.Time
-	DateTo   time.Time
+// DatePeriod describes time period.
+type DatePeriod struct {
+	From time.Time
+	To   time.Time
 }
 
-func (p Period) Includes(d time.Time) bool {
-	return (p.DateFrom.Before(d) || p.DateFrom.Equal(d)) &&
-		(p.DateTo.After(d) || p.DateTo.Equal(d))
+func (p DatePeriod) Includes(d time.Time) bool {
+	return (p.From.Before(d) || p.From.Equal(d)) &&
+		(p.To.After(d) || p.To.Equal(d))
 }
 
 type categoryExpenses struct {
@@ -56,7 +56,7 @@ func (x byCategoryName) Len() int           { return len(x) }
 func (x byCategoryName) Less(i, j int) bool { return x[i].Category < x[j].Category }
 func (x byCategoryName) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
 
-func byPeriod(p Period) func(Record) bool {
+func byDatePeriod(p DatePeriod) func(Record) bool {
 	return func(r Record) bool {
 		return p.Includes(r.Date)
 	}
@@ -69,8 +69,8 @@ func byCategory(c string) func(Record) bool {
 }
 
 // Total returns total amount of expenses in collection a, within time period p.
-func Total(rr Records, p Period) float64 {
-	periodExpenses := rr.Filter(byPeriod(p))
+func Total(rr Records, p DatePeriod) float64 {
+	periodExpenses := rr.Filter(byDatePeriod(p))
 	var total float64
 	for _, r := range periodExpenses {
 		total += r.Amount
@@ -80,12 +80,12 @@ func Total(rr Records, p Period) float64 {
 
 // TopCategoriesN returns top n categories of expenses in collection a, within
 // time period p.
-func TopCategoriesN(rr Records, p Period, n int) []string {
+func TopCategoriesN(rr Records, p DatePeriod, n int) []string {
 	if n < 1 {
 		return nil
 	}
 
-	periodExpenses := rr.Filter(byPeriod(p))
+	periodExpenses := rr.Filter(byDatePeriod(p))
 
 	// reduce records to categoryExpenses collection
 	catExp := map[string]float64{}
@@ -114,7 +114,7 @@ func TopCategoriesN(rr Records, p Period, n int) []string {
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses collection a.
-func CategoryExpenses(rr Records, p Period, c string) (float64, error) {
+func CategoryExpenses(rr Records, p DatePeriod, c string) (float64, error) {
 	categoryExpenses := rr.Filter(byCategory(c))
 	if len(categoryExpenses) == 0 {
 		return 0, fmt.Errorf("unknown category %s", c)

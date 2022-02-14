@@ -24,26 +24,26 @@ func (rr Records) Filter(f func(Record) bool) Records {
 	return out
 }
 
-// Period describes time period.
-type Period struct {
-	DateFrom time.Time
-	DateTo   time.Time
+// DatePeriod describes date period.
+type DatePeriod struct {
+	From time.Time
+	To   time.Time
 }
 
 // Total returns total amount of expenses in collection of records rr
 // within time period p.
-func Total(rr Records, p Period) float64 {
+func Total(rr Records, p DatePeriod) float64 {
 	panic("Total not implemented")
 }
 
 // TopCategoriesN returns top n categories of expenses in collection of records rr
 // within time period p.
-func TopCategoriesN(rr Records, p Period, n int) []string {
+func TopCategoriesN(rr Records, p DatePeriod, n int) []string {
 	panic("TopCategoriesN not implemented")
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses records.
-func CategoryExpenses(rr Records, p Period, c string) (float64, error) {
+func CategoryExpenses(rr Records, p DatePeriod, c string) (float64, error) {
 	panic("CategoryExpenses not implemented")
 }

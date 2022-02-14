@@ -69,27 +69,27 @@ func stringsEqual(a, b []string) bool {
 
 func TestTotal(t *testing.T) {
 	testCases := []struct {
-		p     Period
+		p     DatePeriod
 		total float64
 	}{
 		{
-			p: Period{
-				DateFrom: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
 			},
 			total: 0,
 		},
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 30, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 30, 0, 0, 0, 0, time.UTC),
 			},
 			total: 24.65,
 		},
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			total: 1964.25,
 		},
@@ -104,38 +104,38 @@ func TestTotal(t *testing.T) {
 
 func TestTopCategoriesN(t *testing.T) {
 	testCases := []struct {
-		p        Period
+		p        DatePeriod
 		n        int
 		expected []string
 	}{
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			n:        -1,
 			expected: nil,
 		},
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			n:        0,
 			expected: nil,
 		},
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			n:        2,
 			expected: []string{"rent", "university"},
 		},
 		{
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			n:        3,
 			expected: []string{"rent", "university", "utility-bills"},
@@ -153,24 +153,24 @@ func TestTopCategoriesN(t *testing.T) {
 func TestCategoryExpenses(t *testing.T) {
 	testCases := []struct {
 		category string
-		p        Period
+		p        DatePeriod
 		total    float64
 		err      string
 	}{
 		{
 			category: "food",
-			p: Period{
-				DateFrom: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
 			},
 			total: 0,
 			err:   "unknown category food",
 		},
 		{
 			category: "entertainment",
-			p: Period{
-				DateFrom: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				DateTo:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
 			},
 			total: 35.65,
 			err:   "",
