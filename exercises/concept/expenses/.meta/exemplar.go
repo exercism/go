@@ -117,7 +117,7 @@ func TopCategoriesN(rr Records, p Period, n int) []string {
 func CategoryExpenses(rr Records, p Period, c string) (float64, error) {
 	categoryExpenses := rr.Filter(byCategory(c))
 	if len(categoryExpenses) == 0 {
-		return 0, fmt.Errorf("unknown category: %s", c)
+		return 0, fmt.Errorf("unknown category %s", c)
 	}
 	return Total(categoryExpenses, p), nil
 }

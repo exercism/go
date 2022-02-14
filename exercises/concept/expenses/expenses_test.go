@@ -164,7 +164,7 @@ func TestCategoryExpenses(t *testing.T) {
 				DateTo:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
 			},
 			total: 0,
-			err:   "unknown category: food",
+			err:   "unknown category food",
 		},
 		{
 			category: "entertainment",
