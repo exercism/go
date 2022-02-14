@@ -86,3 +86,27 @@ TopCategoriesN(records, period, 0)
 ```
 
 ## 3. Calculate the total amount of category expenses in period
+
+Implement the `CategoryExpenses` function to return the category's expenses in the period. The function should differentiate a case when a category is not present in the expenses records and the case when there are no category's expenses in the provided period.
+In case, when the category is not present the function should return an error.
+
+```go
+records := []Record{
+  {Date: "2000-10-01", Amount: 15, Category: "grocieries"},
+  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
+  {Date: "2000-10-12", Amount: 28, Category: "grocieries"},
+  {Date: "2000-10-26", Amount: 300, Category: "university"},
+  {Date: "2000-10-28", Amount: 1300, Category: "rent"},
+}
+october := Period{DateFrom: "2000-10-01", DateTo: "2000-10-31"}
+november := Period{DateFrom: "2000-11-01", DateTo: "2000-11-30"}
+
+CategoryExpenses(records, october, "entertainment")
+// Output: 0, error(unknown category entertainment)
+
+CategoryExpenses(records, october, "rent")
+// Output: 1300, nil
+
+CategoryExpenses(records, november, "rent")
+// Output: 0, nil
+```
