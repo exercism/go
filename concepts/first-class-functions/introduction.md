@@ -23,7 +23,7 @@ fmt.Println(greeting("Sasha")) // "¡Hola Sasha, mucho gusto!"
 
 ## Function types
 The ability to use functions as parameters or variables' values is due to the function types support in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types.
-The value of an uninitialized variable of function type is `nil`. Therefore, calling a `nil` function value cases a panic.
+The value of an uninitialized variable of function type is `nil`. Therefore, calling a `nil` function value causes a panic.
 
 ```go
 var dutchGreeting func(string) string
