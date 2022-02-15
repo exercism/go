@@ -233,12 +233,12 @@
         "slug": "bird-watcher",
         "name": "Bird Watcher",
         "uuid": "bdb493de-b07d-4669-9890-5bebeddbf1e8",
-        "concepts": [ 
+        "concepts": [
           "for-loops"
         ],
         "prerequisites": [
-          "numbers", 
-          "conditionals-if", 
+          "numbers",
+          "conditionals-if",
           "slices"
         ],
         "status": "beta"
@@ -382,7 +382,8 @@
         "prerequisites": [
           "numbers",
           "conditionals-if",
-          "packages"
+          "packages",
+          "for-loops"
         ],
         "status": "beta"
       }
