@@ -104,8 +104,12 @@ func TopCategoriesN(rr Records, p DatePeriod, n int) []string {
 	sort.Sort(sort.Reverse(byTotal(catsExps)))
 
 	// map only the category names
-	categories := make([]string, 0, n)
-	for _, v := range catsExps[:n] {
+	minN := n
+	if len(catsExps) < n {
+		minN = len(catsExps)
+	}
+	categories := make([]string, 0, minN)
+	for _, v := range catsExps[:minN] {
 		categories = append(categories, v.Category)
 	}
 
