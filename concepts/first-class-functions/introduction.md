@@ -2,58 +2,57 @@
 
 Go supports functions as first-class values. It means a function can be an argument to other functions, returned by another function, and assigned to variables.
 
+It is possible thanks to the function types in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types. User-defined types can be declared on top of function types.
+
 For example:
 ```go
 import "fmt"
 
-func englishGreeting(name string) string {
-  return fmt.Sprintf("Hello %s, nice to meet you!", name)
+type speakingFunc func(string) string
+
+func engGreeting(name string) string { return fmt.Sprintf("Hello %s, nice to meet you!", name) }
+func engFarewell(name string) string { return fmt.Sprintf("Good bye %s :)", name) }
+func espGreeting(name string) string { return fmt.Sprintf("¡Hola %s, mucho gusto!", name) }
+func espFarewell(name string) string { return fmt.Sprintf("Adios %s :)", name) }
+
+var speakingFuncs = map[string][2]speakingFunc{
+	"eng": {engGreeting, engFarewell},
+	"esp": {espGreeting, espFarewell},
 }
 
-func spanishGreeting(name string) string {
-  return fmt.Sprintf("¡Hola %s, mucho gusto!", name)
+func speakingFuncsLookup(language string) (greeting, farewell speakingFunc) {
+  if funcs, ok := speakingFuncs[language]; ok {
+    greeting, farewell = funcs[0], funcs[1]
+  }
+  return
 }
 
-greeting := englishGreeting
-fmt.Println(greeting("Sasha")) // "Hello Sasha, nice to meet you!"
+func speakTo(name string, f speakingFunc) {
+  phrase := f(name)
+  fmt.Println(phrase)
+}
 
-greeting = spanishGreeting
-fmt.Println(greeting("Sasha")) // "¡Hola Sasha, mucho gusto!"
+func Greeting(name, language string) {
+  gf, ff := speakingFuncsLookup(language)
+  if gf == nil || ff == nil {
+		fmt.Printf("unsupported language %s\n", language)
+		return
+  }
+  speakTo(name, gf)
+  speakTo(name, ff)
+}
+
+Greeting("Alice", "eng")
+// Output:
+// Hello Alice, nice to meet you!
+// Good bye Alice :)
+
+Greeting("Alice", "abc")
+// Output: unsupported language abc
 ```
 
-## Function types
-The ability to use functions as parameters or variables' values is due to the function types support in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types.
-The value of an uninitialized variable of function type is `nil`. Therefore, calling a `nil` function value causes a panic.
-
+The value of an uninitialized variable of function type is `nil`. Therefore, calling a `nil` function value causes a panic. Function values can be compared with `nil` and it is used to avoid unnecessary program panics. But functional values are not comparable against each other.
 ```go
 var dutchGreeting func(string) string
-dutchGreeting("Sasha") // panic: call of nil function
-```
-
-Function values can be compared with `nil`, but functional values are not comparable against each other. User-defined types can be declared on top of function types.
-```go
-type greetingFunc func(string) string
-
-func greetingLookup(language string) greetingFunc {
-  var gf greetingFunc
-  switch language: {
-    case "eng", "ENG":
-      gf = englishGreeting
-    case "esp", "ESP":
-      gf = spanishGreeting
-  }
-  return gf
-}
-
-func greet(name string, f greetingFunc) string {
-  if f == nil {
-    return ""
-  }
-  return f(name)
-}
-
-func Greet(name, language string) string {
-  gf := greetingLookup(language)
-  return greet(name, gf)
-}
+dutchGreeting("Alice") // panic: call of nil function
 ```
