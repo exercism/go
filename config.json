@@ -395,7 +395,9 @@
           "first-class-functions"
         ],
         "prerequisites": [
+          "for-loops",
           "functions",
+          "structs",
           "type-definitions"
         ],
         "status": "wip"

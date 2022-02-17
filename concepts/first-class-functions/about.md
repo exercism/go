@@ -80,7 +80,7 @@ for i := 0; i < N; i++ {
 A call to fib initialises local variables n1, n2, and returns an anonymous function that, each time it is called, changes variables of the enclosing function. Nth call of the anonymous function returns the Nth number of the Fibonacci sequence starting from 0. It demonstrates that function values can have state. This feature is broadly used in JavaScript and is known as Immediately-Invoked Function Expression (IIFE).
 
 ## Fist class function usage
-* Events handlers - one of the most used is HTTP handler
+* Event handlers - one of the most used is HTTP handler
 * Middlewares
 * Collection operations such as map, filter, reduce
 
