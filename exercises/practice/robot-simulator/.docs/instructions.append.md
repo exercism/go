@@ -5,11 +5,14 @@
 Tests are separated into 3 steps.
 
 Run all tests with `go test` or run specific tests with the -tags option.
+
 Examples:
 
-   go test                      # run all tests
-   go test -tags step1          # run just step 1 tests.
-   go test -tags 'step1 step2'  # run step1 and step2 tests
+```bash
+go test                      # run all tests
+go test -tags step1          # run just step 1 tests.
+go test -tags 'step1 step2'  # run step1 and step2 tests
+```
 
 You are given the source file defs.go which defines a number of things
 the test program requires.  It is organized into three sections by step.
