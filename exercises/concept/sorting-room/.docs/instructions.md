@@ -29,7 +29,7 @@ Jen wants number boxes to return strings like `"This is a box containing the num
 
 ```go
 fmt.Println(DescribeNumberBox(numberBoxContaining{12}))
-// Output: This is a box containing the number 12
+// Output: This is a box containing the number 12.0
 ```
 
 ## 3. Implement a method extracting the number from a fancy number box
