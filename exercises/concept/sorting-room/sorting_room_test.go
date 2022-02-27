@@ -135,7 +135,7 @@ func TestDescribeFancyNumberBox(t *testing.T) {
 		{
 			description: "Describe a valid different fancy number",
 			input:       differentFancyNumber{"4"},
-			want:        "This is a fancy box containing the number 0.0",
+			want:        "This is a fancy box containing the number 4.0",
 		},
 	}
 	for _, test := range tests {
