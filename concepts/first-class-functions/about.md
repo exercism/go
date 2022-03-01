@@ -1,6 +1,6 @@
 # About
 
-Go supports functions as first-class values. It means a function can be an argument to other functions, returned by another function, and assigned to variables.
+In Go functions are first-class values. This means that you can do with functions the same things you can do with all other values - assign functions to variables, pass them as arguments to other functions, return functions from other functions, etc.
 
 It is possible thanks to the function types in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types. User-defined types can be declared on top of function types.
 
