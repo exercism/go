@@ -69,10 +69,12 @@ func stringsEqual(a, b []string) bool {
 
 func TestTotal(t *testing.T) {
 	testCases := []struct {
+		name  string
 		p     DatePeriod
 		total float64
 	}{
 		{
+			name: "total expenses is 0 when no records found in the provided date period",
 			p: DatePeriod{
 				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
 				To:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
@@ -80,6 +82,7 @@ func TestTotal(t *testing.T) {
 			total: 0,
 		},
 		{
+			name: "total expenses for partial date period",
 			p: DatePeriod{
 				From: time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
 				To:   time.Date(2021, time.December, 26, 0, 0, 0, 0, time.UTC),
@@ -87,6 +90,7 @@ func TestTotal(t *testing.T) {
 			total: 24.65,
 		},
 		{
+			name: "total expenses for the full date period",
 			p: DatePeriod{
 				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
 				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
@@ -95,10 +99,12 @@ func TestTotal(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got := Total(testExpensesRecords, tC.p)
-		if got != tC.total {
-			t.Errorf("Total(%v, %v) = %.2f, want %.2f", testExpensesRecords, tC.p, got, tC.total)
-		}
+		t.Run(tC.name, func(t *testing.T) {
+			got := Total(testExpensesRecords, tC.p)
+			if got != tC.total {
+				t.Errorf("Total(%v, %v) = %.2f, want %.2f", testExpensesRecords, tC.p, got, tC.total)
+			}
+		})
 	}
 }
 
@@ -160,12 +166,14 @@ func TestTopCategoriesN(t *testing.T) {
 
 func TestCategoryExpenses(t *testing.T) {
 	testCases := []struct {
+		name     string
 		category string
 		p        DatePeriod
 		total    float64
 		err      string
 	}{
 		{
+			name:     "returns error when no records with category found in any date period",
 			category: "food",
 			p: DatePeriod{
 				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
@@ -175,6 +183,7 @@ func TestCategoryExpenses(t *testing.T) {
 			err:   "unknown category food",
 		},
 		{
+			name:     "returns total category expenses in the provided date period",
 			category: "grocieries",
 			p: DatePeriod{
 				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
@@ -184,6 +193,7 @@ func TestCategoryExpenses(t *testing.T) {
 			err:   "",
 		},
 		{
+			name:     "returns 0 when no category expenses found in the provided date period",
 			category: "grocieries",
 			p: DatePeriod{
 				From: time.Date(2021, time.November, 1, 0, 0, 0, 0, time.UTC),
@@ -194,20 +204,22 @@ func TestCategoryExpenses(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-		got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
-		if tC.err != "" && (err == nil || tC.err != err.Error()) {
-			t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want: %s",
-				testExpensesRecords, tC.category, tC.p, err, tC.err)
-		}
+		t.Run(tC.name, func(t *testing.T) {
+			got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
+			if tC.err != "" && (err == nil || tC.err != err.Error()) {
+				t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want: %s",
+					testExpensesRecords, tC.category, tC.p, err, tC.err)
+			}
 
-		if tC.err == "" && err != nil {
-			t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want %.2f, %s",
-				testExpensesRecords, tC.category, tC.p, err, tC.total, tC.err)
-		}
+			if tC.err == "" && err != nil {
+				t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want %.2f, %s",
+					testExpensesRecords, tC.category, tC.p, err, tC.total, tC.err)
+			}
 
-		if tC.err == "" && err == nil && got != tC.total {
-			t.Errorf("CategoryExpenses(%v, %s, %v) = %.2f, want %.2f",
-				testExpensesRecords, tC.category, tC.p, got, tC.total)
-		}
+			if tC.err == "" && err == nil && got != tC.total {
+				t.Errorf("CategoryExpenses(%v, %s, %v) = %.2f, want %.2f",
+					testExpensesRecords, tC.category, tC.p, got, tC.total)
+			}
+		})
 	}
 }
