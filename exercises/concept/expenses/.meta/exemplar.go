@@ -2,7 +2,6 @@ package expenses
 
 import (
 	"fmt"
-	"sort"
 	"time"
 )
 
@@ -76,44 +75,6 @@ func Total(rr Records, p DatePeriod) float64 {
 		total += r.Amount
 	}
 	return total
-}
-
-// TopCategoriesN returns top n categories of expenses in collection a, within
-// time period p.
-func TopCategoriesN(rr Records, p DatePeriod, n int) []string {
-	if n < 1 {
-		return nil
-	}
-
-	periodExpenses := rr.Filter(byDatePeriod(p))
-
-	// reduce records to categoryExpenses collection
-	catExp := map[string]float64{}
-	for _, r := range periodExpenses {
-		catExp[r.Category] += r.Amount
-	}
-	catsExps := make([]categoryExpenses, 0, len(catExp))
-	for category, total := range catExp {
-		catsExps = append(catsExps, categoryExpenses{category, total})
-	}
-
-	// sort categoryExpenses by category names
-	sort.Sort(byCategoryName(catsExps))
-
-	// reverse sort categoryExpenses by total expenses
-	sort.Sort(sort.Reverse(byTotal(catsExps)))
-
-	// map only the category names
-	minN := n
-	if len(catsExps) < n {
-		minN = len(catsExps)
-	}
-	categories := make([]string, 0, minN)
-	for _, v := range catsExps[:minN] {
-		categories = append(categories, v.Category)
-	}
-
-	return categories
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns

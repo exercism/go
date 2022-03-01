@@ -36,12 +36,6 @@ func Total(rr Records, p DatePeriod) float64 {
 	panic("Total not implemented")
 }
 
-// TopCategoriesN returns top n categories of expenses in collection of records rr
-// within time period p.
-func TopCategoriesN(rr Records, p DatePeriod, n int) []string {
-	panic("TopCategoriesN not implemented")
-}
-
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses records.
 func CategoryExpenses(rr Records, p DatePeriod, c string) (float64, error) {

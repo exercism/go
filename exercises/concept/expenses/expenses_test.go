@@ -108,62 +108,6 @@ func TestTotal(t *testing.T) {
 	}
 }
 
-func TestTopCategoriesN(t *testing.T) {
-	testCases := []struct {
-		p        DatePeriod
-		n        int
-		expected []string
-	}{
-		{
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
-			},
-			n:        -1,
-			expected: nil,
-		},
-		{
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
-			},
-			n:        0,
-			expected: nil,
-		},
-		{
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
-			},
-			n:        2,
-			expected: []string{"rent", "university"},
-		},
-		{
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
-			},
-			n:        3,
-			expected: []string{"rent", "university", "utility-bills"},
-		},
-		{
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
-			},
-			n:        10,
-			expected: []string{"rent", "university", "utility-bills", "grocieries"},
-		},
-	}
-	for _, tC := range testCases {
-		got := TopCategoriesN(testExpensesRecords, tC.p, tC.n)
-		if !stringsEqual(got, tC.expected) {
-			t.Errorf("TopCategoriesN(%v, %d, %v) = %v, want: %v",
-				testExpensesRecords, tC.n, tC.p, got, tC.expected)
-		}
-	}
-}
-
 func TestCategoryExpenses(t *testing.T) {
 	testCases := []struct {
 		name     string

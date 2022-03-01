@@ -51,44 +51,7 @@ Total(records, nov2000)
 // Output: 0
 ```
 
-## 2. Find the top N expenses categories in period
-
-Implement the `TopCategoriesN` function to return the categories that are responsible for the most spending.
-
-The categories should be sorted by the sum of expenses in descending order, i.e the most expensive category on the top of the list, etc. Categories with the same sum of expenses should be ordered alphabetically.
-
-```go
-oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
-records := []Record{
-  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
-  {Date: "2000-10-26", Amount: 300, Category: "university"},
-  {Date: "2000-10-28", Amount: 1300, Category: "rent"},
-}
-
-TopCategoriesN(records, oct2000, 1)
-// Output: [rent]
-
-TopCategoriesN(records, oct2000, 2)
-// Output: [rent, university]
-
-TopCategoriesN(records, oct2000, 3)
-// Output: [rent, university, utility-bills]
-
-TopCategoriesN(records, oct2000, 4)
-// Output: [rent, university, utility-bills]
-```
-
-If there are less categories than parameter `N` the function should output all categories. Function should ignore non-positive `N` and output `nil` in such cases.
-
-```go
-TopCategoriesN(records, period, -1)
-// Output: nil
-
-TopCategoriesN(records, period, 0)
-// Output: nil
-```
-
-## 3. Calculate the total amount of category expenses in period
+## 2. Calculate the total amount of category expenses in period
 
 Implement the `CategoryExpenses` function to return the category's expenses in the period. The function should differentiate a case when a category is not present in the expenses records and the case when there are no category's expenses in the provided period.
 In case, when the category is not present the function should return an error.
