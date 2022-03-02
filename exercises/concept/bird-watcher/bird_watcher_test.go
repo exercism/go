@@ -97,8 +97,11 @@ func TestFixBirdCount(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			input := make([]int, len(tt.birdCounts))
+			copy(input, tt.birdCounts)
+
 			if got := FixBirdCountLog(tt.birdCounts); !reflect.DeepEqual(tt.want, got) {
-				t.Errorf("FixBirdCountLog(%v) = %v; want %v", tt.birdCounts, got, tt.want)
+				t.Errorf("FixBirdCountLog(%v) = %v; want %v", input, got, tt.want)
 			}
 		})
 	}
