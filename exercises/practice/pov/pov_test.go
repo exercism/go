@@ -1,260 +1,158 @@
 package pov
 
 import (
-	"reflect"
+	"fmt"
 	"sort"
 	"testing"
 )
 
-type arc struct{ fr, to string }
-
-type testCase struct {
-	description string
-	leaves      []string
-	arcPairs    []arc
-	root        string
-	arcStrings  []string
-	reRooted    []string
-}
-
-var testCases = []testCase{
-	{
-		description: "singleton",
-		leaves:      []string{"x"},
-		arcPairs:    nil,
-		root:        "x",
-		arcStrings:  nil,
-		reRooted:    nil,
-	},
-	{
-		description: "simple tree",
-		leaves:      []string{"sibling", "x"},
-		arcPairs: []arc{
-			{"parent", "sibling"},
-			{"parent", "x"},
-		},
-		root: "parent",
-		arcStrings: []string{
-			"parent -> sibling",
-			"parent -> x",
-		},
-		reRooted: []string{
-			"parent -> sibling",
-			"x -> parent",
-		},
-	},
-	{
-		description: "large flat",
-		leaves:      []string{"sib-a", "sib-b", "x", "sib-c", "sib-d"},
-		arcPairs: []arc{
-			{"parent", "sib-a"},
-			{"parent", "sib-b"},
-			{"parent", "x"},
-			{"parent", "sib-c"},
-			{"parent", "sib-d"},
-		},
-		root: "parent",
-		arcStrings: []string{
-			"parent -> sib-a",
-			"parent -> sib-b",
-			"parent -> sib-c",
-			"parent -> sib-d",
-			"parent -> x",
-		},
-		reRooted: []string{
-			"parent -> sib-a",
-			"parent -> sib-b",
-			"parent -> sib-c",
-			"parent -> sib-d",
-			"x -> parent",
-		},
-	},
-	{
-		description: "deeply nested",
-		leaves:      []string{"x"},
-		arcPairs: []arc{
-			{"level-4", "x"},
-			{"level-3", "level-4"},
-			{"level-2", "level-3"},
-			{"level-1", "level-2"},
-			{"level-0", "level-1"},
-		},
-		root: "level-0",
-		arcStrings: []string{
-			"level-0 -> level-1",
-			"level-1 -> level-2",
-			"level-2 -> level-3",
-			"level-3 -> level-4",
-			"level-4 -> x",
-		},
-		reRooted: []string{
-			"level-1 -> level-0",
-			"level-2 -> level-1",
-			"level-3 -> level-2",
-			"level-4 -> level-3",
-			"x -> level-4",
-		},
-	},
-	{
-		description: "cousins",
-		leaves:      []string{"sib-1", "x", "sib-2", "cousin-1", "cousin-2"},
-		arcPairs: []arc{
-			{"parent", "sib-1"},
-			{"parent", "x"},
-			{"parent", "sib-2"},
-			{"aunt", "cousin-1"},
-			{"aunt", "cousin-2"},
-			{"grand-parent", "parent"},
-			{"grand-parent", "aunt"},
-		},
-		root: "grand-parent",
-		arcStrings: []string{
-			"aunt -> cousin-1",
-			"aunt -> cousin-2",
-			"grand-parent -> aunt",
-			"grand-parent -> parent",
-			"parent -> sib-1",
-			"parent -> sib-2",
-			"parent -> x",
-		},
-		reRooted: []string{
-			"aunt -> cousin-1",
-			"aunt -> cousin-2",
-			"grand-parent -> aunt",
-			"parent -> grand-parent",
-			"parent -> sib-1",
-			"parent -> sib-2",
-			"x -> parent",
-		},
-	},
-	{
-		description: "target with children",
-		leaves: []string{"child-1", "child-2", "nephew", "niece",
-			"2nd-cousin-1", "2nd-cousin-2", "2nd-cousin-3", "2nd-cousin-4"},
-		arcPairs: []arc{
-			{"x", "child-1"},
-			{"x", "child-2"},
-			{"sibling", "nephew"},
-			{"sibling", "niece"},
-			{"cousin-1", "2nd-cousin-1"},
-			{"cousin-1", "2nd-cousin-2"},
-			{"cousin-2", "2nd-cousin-3"},
-			{"cousin-2", "2nd-cousin-4"},
-			{"parent", "x"},
-			{"parent", "sibling"},
-			{"aunt", "cousin-1"},
-			{"aunt", "cousin-2"},
-			{"grand-parent", "parent"},
-			{"grand-parent", "aunt"},
-		},
-		root: "grand-parent",
-		arcStrings: []string{
-			"aunt -> cousin-1",
-			"aunt -> cousin-2",
-			"cousin-1 -> 2nd-cousin-1",
-			"cousin-1 -> 2nd-cousin-2",
-			"cousin-2 -> 2nd-cousin-3",
-			"cousin-2 -> 2nd-cousin-4",
-			"grand-parent -> aunt",
-			"grand-parent -> parent",
-			"parent -> sibling",
-			"parent -> x",
-			"sibling -> nephew",
-			"sibling -> niece",
-			"x -> child-1",
-			"x -> child-2",
-		},
-		reRooted: []string{
-			"aunt -> cousin-1",
-			"aunt -> cousin-2",
-			"cousin-1 -> 2nd-cousin-1",
-			"cousin-1 -> 2nd-cousin-2",
-			"cousin-2 -> 2nd-cousin-3",
-			"cousin-2 -> 2nd-cousin-4",
-			"grand-parent -> aunt",
-			"parent -> grand-parent",
-			"parent -> sibling",
-			"sibling -> nephew",
-			"sibling -> niece",
-			"x -> child-1",
-			"x -> child-2",
-			"x -> parent",
-		},
-	},
-}
-
-func (tc testCase) graph() *Graph {
-	g := New()
-	for _, l := range tc.leaves {
-		g.AddNode(l)
-	}
-	for _, a := range tc.arcPairs {
-		g.AddArc(a.fr, a.to)
-	}
-	return g
-}
-
-func (tc testCase) testResult(got, want []string, msg string, t *testing.T) {
-	if len(got)+len(want) == 0 {
-		return
-	}
-	gs := append([]string{}, got...)
-	sort.Strings(gs)
-	if reflect.DeepEqual(gs, want) {
-		return
-	}
-	// test has failed
-	t.Log(tc.description, "test case")
-	t.Log(msg)
-	t.Logf("got %d arcs:", len(got))
-	for _, s := range got {
-		t.Log(" ", s)
-	}
-	t.Logf("that result sorted:")
-	for _, s := range gs {
-		t.Log(" ", s)
-	}
-	t.Logf("want %d arcs:", len(want))
-	for _, s := range want {
-		t.Log(" ", s)
-	}
-	t.FailNow()
-}
-
-func TestConstruction(t *testing.T) {
-	for _, tc := range testCases {
-		got := tc.graph().ArcList()
-		want := tc.arcStrings
-		tc.testResult(got, want, "incorrect graph construction", t)
+func treeEqual(tr1, tr2 *Tree) bool {
+	switch {
+	case tr1 == nil && tr2 == nil:
+		return true
+	case tr1 == nil && tr2 != nil:
+		return false
+	case tr1 != nil && tr2 == nil:
+		return false
+	default:
+		return tr1.Value() == tr2.Value() && treeSliceEqual(tr1.Children(), tr2.Children())
 	}
 }
 
-func TestChangeRoot(t *testing.T) {
-	for _, tc := range testCases {
-		got := tc.graph().ChangeRoot(tc.root, "x").ArcList()
-		want := tc.reRooted
-		tc.testResult(got, want, "incorrect root change", t)
+func treeSliceEqual(trs1, trs2 []*Tree) bool {
+	// allows permutation of children
+	if len(trs1) != len(trs2) {
+		return false
+	}
+	if len(trs1) == 0 && len(trs2) == 0 {
+		return true
+	}
+	sortByValue := func(xs []*Tree) func(int, int) bool {
+		return func(i, j int) bool {
+			return xs[i].Value() < xs[j].Value()
+		}
+	}
+	sort.Slice(trs1, sortByValue(trs1))
+	sort.Slice(trs2, sortByValue(trs2))
+	for i := range trs1 {
+		if !treeEqual(trs1[i], trs2[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+func stringSliceEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a) == 0 {
+		return true
+	}
+	for i := 0; i < len(a); i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+var newValueChildrenTestTrees = []string{"singleton", "parent and one sibling", "parent and kids"}
+
+func TestNewNotNil(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" not nil", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			if tree == nil {
+				t.Fatalf("tree should not be nil: %v", treeName)
+			}
+		})
 	}
 }
 
-func BenchmarkConstructOnlyNoChange(b *testing.B) {
+func TestValue(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" value", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			got := tree.Value()
+			want := testTrees[treeName].root
+			if want != got {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestChildren(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" Children", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			got := tree.Children()
+			want := testTrees[treeName].children
+			if !treeSliceEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestFromPov(t *testing.T) {
+	for _, tc := range fromPovTestCases {
+		t.Run(tc.treeName+" from "+tc.from, func(t *testing.T) {
+			tree := mkTestTree(tc.treeName)
+			got := tree.FromPov(tc.from)
+			want := tc.expected
+			if !treeEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestPathTo(t *testing.T) {
+	for _, tc := range pathToTestCases {
+		testName := tc.treeName + " from " + tc.from + " to " + tc.to
+		t.Run(testName, func(t *testing.T) {
+			tree := mkTestTree(tc.treeName)
+			got := tree.PathTo(tc.from, tc.to)
+			want := tc.expected
+			if !stringSliceEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+var benchmarkResultPov *Tree
+
+func BenchmarkFromPov(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
+	var result *Tree
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for _, tc := range testCases {
-			tc.graph()
-		}
+		tree := mkTestTree("complex tree with cousins")
+		from := "x"
+		result = tree.FromPov(from)
 	}
+	benchmarkResultPov = result
+	fmt.Println("benchmarkResultPov=", benchmarkResultPov)
 }
 
-func BenchmarkConstructAndChangeRoot(b *testing.B) {
+var benchmarkResultPathTo []string
+
+func BenchmarkPathTo(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
+	var result []string
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for _, tc := range testCases {
-			tc.graph().ChangeRoot(tc.root, "x")
-		}
+		tree := mkTestTree("complex tree with cousins")
+		from := "x"
+		to := "cousin-1"
+		result = tree.PathTo(from, to)
 	}
+	benchmarkResultPathTo = result
 }

@@ -1,7 +1,7 @@
 {
-  "blurb": "Reparent a graph on a selected node",
+  "blurb": "Reparent a tree on a selected node",
   "authors": [
-    "skeys"
+    "norvaer", "skeys"
   ],
   "contributors": [
     "alebaffa",

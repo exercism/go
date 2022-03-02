@@ -1,23 +1,11 @@
 package pov
 
-// Define the Graph type here.
-
-func New() *Graph {
-	panic("Please implement the New function")
+// FromPov returns the pov from the node specified in the argument
+func (tr *Tree) FromPov(from string) *Tree {
+	panic("Please implement this function")
 }
 
-func (g *Graph) AddNode(nodeLabel string) {
-	panic("Please implement the AddNode function")
-}
-
-func (g *Graph) AddArc(from, to string) {
-	panic("Please implement the AddArc function")
-}
-
-func (g *Graph) ArcList() []string {
-	panic("Please implement the ArcList function")
-}
-
-func (g *Graph) ChangeRoot(oldRoot, newRoot string) *Graph {
-	panic("Please implement the ChangeRoot function")
+// PathTo returns the shortest path between two nodes in the tree
+func (tr *Tree) PathTo(from, to string) []string {
+	panic("Please implement this function")
 }
