@@ -1,98 +1,107 @@
 package pov
 
-import (
-	"fmt"
-	"log"
-)
-
-type Graph struct {
-	arcs   [][]int
-	labels []string
-	nodes  map[string]int
+type Tree struct {
+	value    string
+	children []*Tree
+	parent   *Tree
 }
 
-func New() *Graph { return &Graph{nodes: map[string]int{}} }
-
-func (g *Graph) node(l string) int {
-	if n, ok := g.nodes[l]; ok {
-		return n
+func New(value string, children ...*Tree) *Tree {
+	if value == "" {
+		return nil
 	}
-	n := len(g.labels)
-	g.labels = append(g.labels, l)
-	g.arcs = append(g.arcs, nil)
-	g.nodes[l] = n
-	return n
-}
-
-func (g *Graph) AddNode(label string) {
-	g.node(label)
-}
-
-func (g *Graph) AddArc(from, to string) {
-	// use CI run to validate test cases
-	if _, ok := g.nodes[to]; !ok {
-		log.Println("AddArc from, to:", from, to)
-		log.Fatal("test program promises bottom-up construction")
-	}
-	fr := g.node(from)
-	g.arcs[fr] = append(g.arcs[fr], g.node(to))
-}
-
-func (g *Graph) ChangeRoot(oldRoot, newRoot string) *Graph {
-	// use CI run to validate test cases
-	if !g.isTree(oldRoot) {
-		log.Println("not a tree, or", oldRoot, "not root")
-		log.Fatal("test program promises to pass root of a tree")
-	}
-	nr := g.nodes[newRoot]
-	var f func(int) bool
-	f = func(n int) (found bool) {
-		if n == nr {
-			return true
-		}
-		a := g.arcs[n]
-		for i, to := range a {
-			if !f(to) {
-				continue
-			}
-			last := len(a) - 1
-			a[i] = a[last]
-			g.arcs[n] = a[:last]
-			g.arcs[to] = append(g.arcs[to], n)
-			return true
-		}
-		return false
-	}
-	f(g.nodes[oldRoot])
-	return g
-}
-
-func (g *Graph) ArcList() (s []string) {
-	for fr, to := range g.arcs {
-		for _, to := range to {
-			s = append(s, fmt.Sprintf("%s -> %s", g.labels[fr], g.labels[to]))
+	result := &Tree{value, children, nil}
+	for _, child := range children {
+		if child != nil {
+			child.parent = result
 		}
 	}
-	return
+	return result
 }
 
-func (g *Graph) isTree(root string) bool {
-	a := g.arcs
-	v := make([]bool, len(a))
-	nv := 0
-	var df func(int) bool
-	df = func(n int) bool {
-		if v[n] {
-			return false
+func (tr *Tree) Value() string {
+	if tr == nil {
+		return ""
+	} else {
+		return tr.value
+	}
+}
+
+func (tr *Tree) Children() []*Tree {
+	if tr == nil {
+		return nil
+	} else {
+		return tr.children
+	}
+}
+
+func (tr *Tree) FindNode(value string) *Tree {
+	if tr == nil || tr.value == value {
+		return tr
+	}
+	for _, child := range tr.children {
+		res := child.FindNode(value)
+		if res != nil {
+			return res
 		}
-		v[n] = true
-		nv++
-		for _, to := range a[n] {
-			if !df(to) {
-				return false
+	}
+	return nil
+}
+
+func (tree *Tree) FromPov(from string) *Tree {
+	node := tree.FindNode(from)
+	seen := make(map[string]bool)
+	var f func(*Tree) *Tree
+	f = func(tr *Tree) *Tree {
+		if tr == nil || seen[tr.value] {
+			return nil
+		}
+		seen[tr.value] = true
+		children := make([]*Tree, 0, len(tr.children)+1)
+		for _, child := range tr.children {
+			fChild := f(child)
+			if fChild != nil {
+				children = append(children, fChild)
 			}
 		}
-		return true
+		if tr.parent != nil {
+			fParent := f(tr.parent)
+			if fParent != nil {
+				children = append(children, fParent)
+			}
+		}
+		return New(tr.value, children...)
 	}
-	return df(g.nodes[root]) && nv == len(a)
+	return f(node)
+}
+
+func (tr *Tree) PathFromRoot(value string) []string {
+	node := tr.FindNode(value)
+	if node == nil {
+		return nil
+	}
+	result := make([]string, 0)
+	for node != tr {
+		result = append(result, node.value)
+		node = node.parent
+	}
+	result = append(result, tr.value)
+	for i, j := 0, len(result)-1; i < j; i, j = i+1, j-1 {
+		result[i], result[j] = result[j], result[i]
+	}
+	return result
+}
+
+func (tr *Tree) PathTo(from, to string) []string {
+	if tr == nil {
+		return nil
+	}
+	if from == to {
+		return []string{to}
+	}
+	tr1 := tr.FromPov(from)
+	if tr1 == nil {
+		return nil
+	}
+	return tr1.PathFromRoot(to)
 }
