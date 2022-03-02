@@ -40,9 +40,18 @@ p := DarePeriod{From: "2000-10-01", To: "2000-10-31"}
 Implement the `Total` function to return a sum of expenses in period:
 
 ```go
-oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
-nov2000 := DatePeriod{From: "2000-11-01", To: "2000-11-30"}
-records := []Record{{Date: "2000-10-11", Amount: 16, Category: "entertainment"}}
+import "time"
+
+from, _ := time.Parse("2006-01-02", "2000-10-01")
+to, _ := time.Parse("2006-01-02", "2000-10-31")
+oct2000 := DatePeriod{From: from, To: to}
+
+from, _ = time.Parse("2006-01-02", "2000-11-01")
+to, _ = time.Parse("2006-01-02", "2000-11-30")
+nov2000 := DatePeriod{From: from, To: to}
+
+recordDate, _ := time.Parse("2006-01-02", "2000-10-11")
+records := []Record{{Date: recordDate, Amount: 16, Category: "entertainment"}}
 
 Total(records, oct2000)
 // Output: 16
@@ -57,14 +66,25 @@ Implement the `CategoryExpenses` function to return the category's expenses in t
 In case, when the category is not present the function should return an error.
 
 ```go
-oct2000 := DatePeriod{From: "2000-10-01", To: "2000-10-31"}
-nov2000 := DatePeriod{From: "2000-11-01", To: "2000-11-30"}
+from, _ := time.Parse("2006-01-02", "2000-10-01")
+to, _ := time.Parse("2006-01-02", "2000-10-31")
+oct2000 := DatePeriod{From: from, To: to}
+
+from, _ = time.Parse("2006-01-02", "2000-11-01")
+to, _ = time.Parse("2006-01-02", "2000-11-30")
+nov2000 := DatePeriod{From: from, To: to}
+
 records := []Record{
-  {Date: "2000-10-01", Amount: 15, Category: "grocieries"},
-  {Date: "2000-10-11", Amount: 300, Category: "utility-bills"},
-  {Date: "2000-10-12", Amount: 28, Category: "grocieries"},
-  {Date: "2000-10-26", Amount: 300, Category: "university"},
-  {Date: "2000-10-28", Amount: 1300, Category: "rent"},
+  // 2000-10-01
+  {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
+  // 2000-10-11
+  {Date: time.Date(2000, time.October, 11, 0, 0, 0, 0, time.UTC), Amount: 300, Category: "utility-bills"},
+  // 2000-10-12
+  {Date: time.Date(2000, time.October, 12, 0, 0, 0, 0, time.UTC), Amount: 28, Category: "grocieries"},
+  // 2000-10-26
+  {Date: time.Date(2000, time.October, 26, 0, 0, 0, 0, time.UTC), Amount: 300, Category: "university"},
+  // 2000-10-28
+  {Date: time.Date(2000, time.October, 28, 0, 0, 0, 0, time.UTC), Amount: 1300, Category: "rent"},
 }
 
 CategoryExpenses(records, oct2000, "entertainment")
