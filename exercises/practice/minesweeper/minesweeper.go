@@ -4,4 +4,3 @@ package minesweeper
 func Annotate(board []string) []string {
 	panic("Please implement this function")
 } 
- 

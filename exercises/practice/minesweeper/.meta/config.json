@@ -1,14 +1,19 @@
 {
   "blurb": "Add the numbers to a minesweeper board",
-  "authors": [],
+  "authors": ["norbs57"],
   "contributors": [ 
-    "norbs57", 
-    "ErikSchierboom",
-    "rbasso",
-    "stevejb71",
+    "alebaffa",
+    "bitfield",
+    "dvrkps",
+    "ekingery",
+    "ferhatelmas",
+    "hilary",
+    "kytrinyx",
+    "leenipper",
     "petertseng",
-    "SaschaMann"
-    
+    "robphoenix",
+    "sebito91",
+    "tleen"
   ],
   "files": {
     "solution": [
@@ -18,8 +23,7 @@
       "minesweeper_test.go"
     ],
     "example": [
-      ".meta/example_1.go",
-      ".meta/example_2.go"
+      ".meta/example.go"
     ] 
   }
 }

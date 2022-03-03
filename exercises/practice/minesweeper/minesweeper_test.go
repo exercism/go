@@ -1,7 +1,6 @@
 package minesweeper
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -156,14 +155,28 @@ var minesweeperTestCases = []minesweeperTestCase{
 	},
 }
 
+func slicesEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a) == 0 {
+		return true
+	}
+	for i := 0; i < len(a); i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func TestAnnotate(t *testing.T) {
 	for _, tc := range minesweeperTestCases {
-		t.Run(tc.description, func(t *testing.T) { 
+		t.Run(tc.description, func(t *testing.T) {
 			got := Annotate(tc.minefield)
 			want := tc.expected
-			if !reflect.DeepEqual(want, got) {
+			if !slicesEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
-				t.FailNow()
 			}
 		})
 	}
