@@ -181,3 +181,25 @@ func TestAnnotate(t *testing.T) {
 		})
 	}
 }
+
+var benchmarkResult []string
+
+func BenchmarkAnnotate(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	var result []string
+	board := []string{
+		"1*22*1",
+		"12*322",
+		" 123*2",
+		"112*4*",
+		"1*22*2",
+		"111111",
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		result = Annotate(board)
+	}
+	benchmarkResult = result
+}
