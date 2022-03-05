@@ -1,6 +1,6 @@
 {
   "blurb": "Add the numbers to a minesweeper board",
-  "authors": [],
+  "authors": ["norbs57"],
   "contributors": [
     "alebaffa",
     "bitfield",
@@ -24,9 +24,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "board.go"
-    ]
+    ] 
   }
 }
