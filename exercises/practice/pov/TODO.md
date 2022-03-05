@@ -1,6 +1,6 @@
 ## Tree logic POV exercise 
 
-### Major Design Issues 
+### Some Design Decisions and Potential Alternatives 
 
 1. The exercise defines de-constructors Value() and Children(). These methods
    are mainly used for testing FromPov. Alternatively, we could: 
@@ -14,16 +14,17 @@
    1. ask learners to sort the Children slice by value
    2. change the result type of the Children method from a slice to a map. 
       
-3. There is a predefined String() method in tree.go. Its purpose is to make test
+3. There is a predefined String() method in pov.go. Its purpose is to make test
   outputs more readable. It makes use of methods Value() and Children() as
   defined by learners. Alternatively, we could: 
    1. ask learners to implement such a method.  
-  
-## Minor Design Issues 
-
-1. Tree nodes (= sub-trees) are identified via their unique "value" field.
-   Because of this, is "id" maybe a better field name than "value"? 
    
-2. There are currently no methods that checks uniqueness of values in a tree.
+4. The value at the root of a tree is currently referred to as "value". Given
+   that values are unique in a tree, each tree node (= sub-tree) is identified
+   by its unique "value" field. Alternatively: 
+   1. is "id" maybe a better field name than "value"? 
+   
+5. There are currently no methods that checks uniqueness of values in a tree.
    There is also no requirement to check that the first argument of New is
-   nonempty. Would it be useful to add such methods to the exercise?
+   nonempty. Alternatively: 
+   1. Would it be useful to add such methods to the exercise?

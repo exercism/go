@@ -1,16 +1,16 @@
 package pov
 
-type RoseTree struct {
+type Tree struct {
 	value    string
-	children []*RoseTree
-	parent   *RoseTree
+	children []*Tree
+	parent   *Tree
 }
 
-func New(value string, children ...*RoseTree) *RoseTree {
+func New(value string, children ...*Tree) *Tree {
 	if value == "" {
 		return nil
 	}
-	result := &RoseTree{value, children, nil}
+	result := &Tree{value, children, nil}
 	for _, child := range children {
 		if child != nil {
 			child.parent = result
@@ -19,7 +19,7 @@ func New(value string, children ...*RoseTree) *RoseTree {
 	return result
 }
 
-func (tr *RoseTree) Value() string {
+func (tr *Tree) Value() string {
 	if tr == nil {
 		return ""
 	} else {
@@ -27,7 +27,7 @@ func (tr *RoseTree) Value() string {
 	}
 }
 
-func (tr *RoseTree) Children() []*RoseTree {
+func (tr *Tree) Children() []*Tree {
 	if tr == nil {
 		return nil
 	} else {
@@ -35,7 +35,7 @@ func (tr *RoseTree) Children() []*RoseTree {
 	}
 }
 
-func (tr *RoseTree) FindNode(value string) *RoseTree {
+func (tr *Tree) FindNode(value string) *Tree {
 	if tr == nil || tr.value == value {
 		return tr
 	}
@@ -48,16 +48,16 @@ func (tr *RoseTree) FindNode(value string) *RoseTree {
 	return nil
 }
 
-func (tree *RoseTree) FromPov(from string) *RoseTree {
+func (tree *Tree) FromPov(from string) *Tree {
 	node := tree.FindNode(from)
 	seen := make(map[string]bool)
-	var f func(*RoseTree) *RoseTree
-	f = func(tr *RoseTree) *RoseTree {
+	var f func(*Tree) *Tree
+	f = func(tr *Tree) *Tree {
 		if tr == nil || seen[tr.value] {
 			return nil
 		}
 		seen[tr.value] = true
-		children := make([]*RoseTree, 0, len(tr.children)+1)
+		children := make([]*Tree, 0, len(tr.children)+1)
 		for _, child := range tr.children {
 			fChild := f(child)
 			if fChild != nil {
@@ -75,7 +75,7 @@ func (tree *RoseTree) FromPov(from string) *RoseTree {
 	return f(node)
 }
 
-func (tr *RoseTree) PathFromRoot(value string) []string {
+func (tr *Tree) PathFromRoot(value string) []string {
 	node := tr.FindNode(value)
 	if node == nil {
 		return nil
@@ -92,7 +92,7 @@ func (tr *RoseTree) PathFromRoot(value string) []string {
 	return result
 }
 
-func (tr *RoseTree) PathTo(from, to string) []string {
+func (tr *Tree) PathTo(from, to string) []string {
 	if tr == nil {
 		return nil
 	}

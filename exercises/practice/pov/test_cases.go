@@ -1,5 +1,7 @@
 package pov
 
+// source: problem-specification repo - POV exercise
+
 type TestTreeData struct {
 	description string
 	root        string
@@ -41,6 +43,8 @@ var testTrees = map[string]TestTreeData{
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1"))},
 	},
 }
+
+var newValueChildrenTestTrees = []string{"singleton", "parent and one sibling", "parent and kids"}
 
 func mkTestTree(treeName string) *Tree {
 	treeData := testTrees[treeName]

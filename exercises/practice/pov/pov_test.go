@@ -1,10 +1,11 @@
 package pov
 
 import (
-	"fmt"
 	"sort"
 	"testing"
 )
+
+// auxiliary functions
 
 func treeEqual(tr1, tr2 *Tree) bool {
 	switch {
@@ -56,8 +57,6 @@ func stringSliceEqual(a, b []string) bool {
 	}
 	return true
 }
-
-var newValueChildrenTestTrees = []string{"singleton", "parent and one sibling", "parent and kids"}
 
 func TestNewNotNil(t *testing.T) {
 	for _, treeName := range newValueChildrenTestTrees {
@@ -137,7 +136,6 @@ func BenchmarkFromPov(b *testing.B) {
 		result = tree.FromPov(from)
 	}
 	benchmarkResultPov = result
-	fmt.Println("benchmarkResultPov=", benchmarkResultPov)
 }
 
 var benchmarkResultPathTo []string
