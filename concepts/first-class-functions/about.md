@@ -1,60 +1,47 @@
 # About
 
 In Go functions are first-class values. This means that you can do with functions the same things you can do with all other values - assign functions to variables, pass them as arguments to other functions, return functions from other functions, etc.
-
-It is possible thanks to the function types in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types. User-defined types can be declared on top of function types.
-
 For example:
 ```go
 import "fmt"
 
-type speakingFunc func(string) string
-
 func engGreeting(name string) string { return fmt.Sprintf("Hello %s, nice to meet you!", name) }
-func engFarewell(name string) string { return fmt.Sprintf("Good bye %s :)", name) }
 func espGreeting(name string) string { return fmt.Sprintf("¡Hola %s, mucho gusto!", name) }
-func espFarewell(name string) string { return fmt.Sprintf("Adios %s :)", name) }
 
-var speakingFuncs = map[string][2]speakingFunc{
-	"eng": {engGreeting, engFarewell},
-	"esp": {espGreeting, espFarewell},
+greeting := engGreeting
+fmt.Println(greeting("Alice")) // Hello Alice, nice to meet you!
+
+greeting = espGreeting
+fmt.Println(greeting("Alice")) // ¡Hola Alice, mucho gusto!
+```
+
+Function values provide an opportunity to parametrize functions not with data only, but behaviour too. For example:
+```go
+func dialog(name string, greetingFunc func(string) string) {
+	fmt.Println(greetingFunc(name))
+	fmt.Println("I'm a dialog bot.")
 }
 
-func speakingFuncsLookup(language string) (greeting, farewell speakingFunc) {
-  if funcs, ok := speakingFuncs[language]; ok {
-    greeting, farewell = funcs[0], funcs[1]
-  }
-  return
-}
-
-func speakTo(name string, f speakingFunc) {
-  phrase := f(name)
-  fmt.Println(phrase)
-}
-
-func Greeting(name, language string) {
-  gf, ff := speakingFuncsLookup(language)
-  if gf == nil || ff == nil {
-		fmt.Printf("unsupported language %s\n", language)
-		return
-  }
-  speakTo(name, gf)
-  speakTo(name, ff)
-}
-
-Greeting("Alice", "eng")
+dialog("Alice", greeting)
 // Output:
-// Hello Alice, nice to meet you!
-// Good bye Alice :)
-
-Greeting("Alice", "abc")
-// Output: unsupported language abc
+// ¡Hola Alice, mucho gusto!
+// I'm a dialog bot.
 ```
 
 The value of an uninitialized variable of function type is `nil`. Therefore, calling a `nil` function value causes a panic. Function values can be compared with `nil` and it is used to avoid unnecessary program panics. But functional values are not comparable against each other.
 ```go
 var dutchGreeting func(string) string
 dutchGreeting("Alice") // panic: call of nil function
+```
+
+Using function values is possible thanks to the function types in Go. A function type denotes the set of all functions with the same sequence of parameter types and the same sequence of result types. User-defined types can be declared on top of function types. For instance, the `dialog` function from one of the previous examples can be updated as following:
+```go
+type greetingFunc func(string) string
+
+func dialog(name string, f greetingFunc) {
+	fmt.Println(f(name))
+	fmt.Println("I'm a dialog bot.")
+}
 ```
 
 Another powerful tool that is available thanks to first-class functions support is anonymous functions. Anonymous functions are defined at treir point of use, without a name following the `func` keyword. Such functions have access to the variables of the enclosing function. For example:
