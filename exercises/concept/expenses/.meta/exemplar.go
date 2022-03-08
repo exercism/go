@@ -23,13 +23,17 @@ func Filter(in []Record, f func(Record) bool) (out []Record) {
 	return out
 }
 
-func byDatePeriod(p DatePeriod) func(Record) bool {
+// ByDatePeriod returns predicate function. The predicate returns true when
+// Record.Date is within the date period.
+func ByDatePeriod(p DatePeriod) func(Record) bool {
 	return func(r Record) bool {
 		return p.Includes(r.Date)
 	}
 }
 
-func byCategory(c string) func(Record) bool {
+// ByCategory returns predicate function. The predicate returns true when
+// Record.Category is equal to the provided category.
+func ByCategory(c string) func(Record) bool {
 	return func(r Record) bool {
 		return r.Category == c
 	}
@@ -48,7 +52,7 @@ func (p DatePeriod) Includes(d time.Time) bool {
 
 // Total returns total amount of expenses in collection a, within time period p.
 func Total(in []Record, p DatePeriod) float64 {
-	periodExpenses := Filter(in, byDatePeriod(p))
+	periodExpenses := Filter(in, ByDatePeriod(p))
 	var total float64
 	for _, r := range periodExpenses {
 		total += r.Amount
@@ -59,7 +63,7 @@ func Total(in []Record, p DatePeriod) float64 {
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses collection a.
 func CategoryExpenses(in []Record, p DatePeriod, c string) (float64, error) {
-	categoryExpenses := Filter(in, byCategory(c))
+	categoryExpenses := Filter(in, ByCategory(c))
 	if len(categoryExpenses) == 0 {
 		return 0, fmt.Errorf("unknown category %s", c)
 	}

@@ -21,15 +21,15 @@ func Filter(in []Record, f func(Record) bool) (out []Record) {
 	panic("Filter not implemented")
 }
 
-// byDatePeriod returns predicate function. The predicate returns true when
+// ByDatePeriod returns predicate function. The predicate returns true when
 // Record.Date is within the date period.
-func byDatePeriod(p DatePeriod) func(Record) bool {
+func ByDatePeriod(p DatePeriod) func(Record) bool {
 	panic("byDatePeriod not implemented")
 }
 
-// byCategory returns predicate function. The predicate returns true when
+// ByCategory returns predicate function. The predicate returns true when
 // Record.Category is equal to the provided category.
-func byCategory(c string) func(Record) bool {
+func ByCategory(c string) func(Record) bool {
 	panic("byCategory not implemented")
 }
 

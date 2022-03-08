@@ -53,18 +53,121 @@ var testExpensesRecords = []Record{
 	},
 }
 
-func stringsEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
+func TestFilterByDate(t *testing.T) {
+	testCases := []struct {
+		name     string
+		p        DatePeriod
+		expected []Record
+	}{
+		{
+			name: "returns expenses records from 1st to 15th of December",
+			p: DatePeriod{
+				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+			},
+			expected: []Record{
+				{
+					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Amount:   5.15,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Amount:   3.45,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 13, 0, 0, 0, 0, time.UTC),
+					Amount:   55.67,
+					Category: "utility-bills",
+				},
+				{
+					Date:     time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+					Amount:   11,
+					Category: "grocieries",
+				},
+			},
+		},
+		{
+			name: "returns empty list for November",
+			p: DatePeriod{
+				From: time.Date(2021, time.November, 1, 0, 0, 0, 0, time.UTC),
+				To:   time.Date(2021, time.November, 30, 0, 0, 0, 0, time.UTC),
+			},
+		},
 	}
+	for _, tC := range testCases {
+		t.Run(tC.name, func(t *testing.T) {
+			got := Filter(testExpensesRecords, ByDatePeriod(tC.p))
+			if len(got) != len(tC.expected) {
+				t.Fatalf("Filter by period got %d records, want %d", len(got), len(tC.expected))
+			}
 
-	for i, v := range a {
-		if v != b[i] {
-			return false
-		}
+			for i, expected := range tC.expected {
+				if got[i] != expected {
+					t.Fatalf("Filter by period got %v, want %v", got, tC.expected)
+				}
+			}
+		})
 	}
+}
 
-	return true
+func TestFilterByCategory(t *testing.T) {
+	testCases := []struct {
+		name     string
+		category string
+		expected []Record
+	}{
+		{
+			name:     "returns expenses in grocieries category",
+			category: "grocieries",
+			expected: []Record{
+				{
+					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Amount:   5.15,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Amount:   3.45,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+					Amount:   11,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 23, 0, 0, 0, 0, time.UTC),
+					Amount:   20.0,
+					Category: "grocieries",
+				},
+				{
+					Date:     time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
+					Amount:   24.65,
+					Category: "grocieries",
+				},
+			},
+		},
+		{
+			name:     "returns empty list for unknown category",
+			category: "ABC",
+		},
+	}
+	for _, tC := range testCases {
+		t.Run(tC.name, func(t *testing.T) {
+			got := Filter(testExpensesRecords, ByCategory(tC.category))
+			if len(got) != len(tC.expected) {
+				t.Fatalf("Filter by category got %d records, want %d", len(got), len(tC.expected))
+			}
+
+			for i, expected := range tC.expected {
+				if got[i] != expected {
+					t.Fatalf("Filter by category got %v, want %v", got, tC.expected)
+				}
+			}
+		})
+	}
 }
 
 func TestTotal(t *testing.T) {

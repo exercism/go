@@ -44,8 +44,8 @@ The program operates with variable date periods and items categories. But the lo
 ## 1. Implement records filter
 Implement the generic `Filter` function. The filter accepts a collection of items and a predicate function. It iterates through the collection and applies a predicate to each item. When the predicate function returns true, the item is added to a new collection. Then the filter function returns the collection of filtered items.
 
-## 2. Implement filter predicate "byDatePeriod"
-Implement the `byDatePeriod` filter predicate. This function accepts date period and returns function of expenses record. Returned function returns true when record date is within provided date period.
+## 2. Implement filter predicate "ByDatePeriod"
+Implement the `ByDatePeriod` filter predicate. This function accepts date period and returns function of expenses record. Returned function returns true when record date is within provided date period.
 
 ```go
 import "time"
@@ -67,7 +67,7 @@ records := []Record{
   {Date: time.Date(2000, time.October, 28, 0, 0, 0, 0, time.UTC), Amount: 1300, Category: "rent"},
 }
 
-Filter(records, byPeriod(period))
+Filter(records, ByDatePeriod(period))
 // Output:
 // [
 //   {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
@@ -75,11 +75,11 @@ Filter(records, byPeriod(period))
 // ]
 ```
 
-## 3. Implement filter predicate "byCategory"
-Implement the `byCategory` filter predicate. This function accepts category and returns function of expenses record. Returned function returns true when record category is equal to a provided category.
+## 3. Implement filter predicate "ByCategory"
+Implement the `ByCategory` filter predicate. This function accepts category and returns function of expenses record. Returned function returns true when record category is equal to a provided category.
 
 ```go
-Filter(records, byCategory("grocieries"))
+Filter(records, ByCategory("grocieries"))
 // Output:
 // [
 //   {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
