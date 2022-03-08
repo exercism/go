@@ -24,13 +24,13 @@ func Filter(in []Record, f func(Record) bool) (out []Record) {
 // ByDatePeriod returns predicate function. The predicate returns true when
 // Record.Date is within the date period.
 func ByDatePeriod(p DatePeriod) func(Record) bool {
-	panic("byDatePeriod not implemented")
+	panic("ByDatePeriod not implemented")
 }
 
 // ByCategory returns predicate function. The predicate returns true when
 // Record.Category is equal to the provided category.
 func ByCategory(c string) func(Record) bool {
-	panic("byCategory not implemented")
+	panic("ByCategory not implemented")
 }
 
 // Total returns total amount of expenses in collection of records rr
