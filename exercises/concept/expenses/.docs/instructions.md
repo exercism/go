@@ -24,7 +24,7 @@ type DatePeriod struct {
 }
 ```
 
-The period should include both dates, i.e:
+The period includes both dates, i.e:
 ```go
 p := DarePeriod{From: "2000-10-01", To: "2000-10-31"}
 // p includes "2000-10-01"
