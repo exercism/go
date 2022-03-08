@@ -2,7 +2,9 @@
 
 Bob is a financial adviser and helps people to manage their expenses. His clients send expenses records and Bob analyses them. Bob has records for the previous periods so that he can see changes in spending.
 
-Bob needs to build a report that contains the top 3 categories of expenses and the total amount of the expenses. Sometimes customers are interested to see expenses in a particular category.
+Bob needs to build two reports:
+* total expenses in a date period
+* total expenses in a category in a date period
 
 In this exercise, you're going to build a program to help Bob.
 
@@ -35,9 +37,58 @@ p := DarePeriod{From: "2000-10-01", To: "2000-10-31"}
 // p does not include "2000-11-01"
 ```
 
-## 1. Calculate the total amount of expenses in period
+The program operates with variable date periods and items categories. But the logic of calculation of the items sum does not depend on these variables. Therefore, program's functionality can be split into two tasks:
+* Items filtration - by date period or category
+* Calculation of items sum
 
-Implement the `Total` function to return a sum of expenses in period:
+## 1. Implement records filter
+Implement the generic `Filter` function. The filter accepts a collection of items and a predicate function. It iterates through the collection and applies a predicate to each item. When the predicate function returns true, the item is added to a new collection. Then the filter function returns the collection of filtered items.
+
+## 2. Implement filter predicate "byDatePeriod"
+Implement the `byDatePeriod` filter predicate. This function accepts date period and returns function of expenses record. Returned function returns true when record date is within provided date period.
+
+```go
+import "time"
+
+from, _ := time.Parse("2006-01-02", "2000-10-01")
+to, _ := time.Parse("2006-01-02", "2000-10-15")
+period := DatePeriod{From: from, To: to}
+
+records := []Record{
+  // 2000-10-01
+  {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
+  // 2000-10-11
+  {Date: time.Date(2000, time.October, 11, 0, 0, 0, 0, time.UTC), Amount: 300, Category: "utility-bills"},
+  // 2000-10-12
+  {Date: time.Date(2000, time.October, 12, 0, 0, 0, 0, time.UTC), Amount: 28, Category: "grocieries"},
+  // 2000-10-26
+  {Date: time.Date(2000, time.October, 26, 0, 0, 0, 0, time.UTC), Amount: 300, Category: "university"},
+  // 2000-10-28
+  {Date: time.Date(2000, time.October, 28, 0, 0, 0, 0, time.UTC), Amount: 1300, Category: "rent"},
+}
+
+Filter(records, byPeriod(period))
+// Output:
+// [
+//   {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
+//   {Date: time.Date(2000, time.October, 11, 0, 0, 0, 0, time.UTC), Amount: 300, Category: "utility-bills"},
+// ]
+```
+
+## 3. Implement filter predicate "byCategory"
+Implement the `byCategory` filter predicate. This function accepts category and returns function of expenses record. Returned function returns true when record category is equal to a provided category.
+
+```go
+Filter(records, byCategory("grocieries"))
+// Output:
+// [
+//   {Date: time.Date(2000, time.October, 1, 0, 0, 0, 0, time.UTC), Amount: 15, Category: "grocieries"},
+//   {Date: time.Date(2000, time.October, 12, 0, 0, 0, 0, time.UTC), Amount: 28, Category: "grocieries"},
+// ]
+```
+
+## 4. Calculate the total amount of expenses in period
+Implement the `Total` function to return a sum of expenses in the date period:
 
 ```go
 import "time"
@@ -60,8 +111,7 @@ Total(records, nov2000)
 // Output: 0
 ```
 
-## 2. Calculate the total amount of category expenses in period
-
+## 5. Calculate the total amount of category expenses in period
 Implement the `CategoryExpenses` function to return the category's expenses in the period. The function should differentiate a case when a category is not present in the expenses records and the case when there are no category's expenses in the provided period.
 In case, when the category is not present the function should return an error.
 

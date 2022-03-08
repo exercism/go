@@ -9,16 +9,28 @@ type Record struct {
 	Category string
 }
 
-// Filter creates a new records collection by applying the predicate function to
-// records and keeping the records for which the function returns true.
-func Filter(in []Record, f func(Record) bool) (out []Record) {
-	panic("Total not implemented")
-}
-
 // DatePeriod describes date period.
 type DatePeriod struct {
 	From time.Time
 	To   time.Time
+}
+
+// Filter creates a new records collection by applying the predicate function to
+// records and keeping the records for which the function returns true.
+func Filter(in []Record, f func(Record) bool) (out []Record) {
+	panic("Filter not implemented")
+}
+
+// byDatePeriod returns predicate function. The predicate returns true when
+// Record.Date is within the date period.
+func byDatePeriod(p DatePeriod) func(Record) bool {
+	panic("byDatePeriod not implemented")
+}
+
+// byCategory returns predicate function. The predicate returns true when
+// Record.Category is equal to the provided category.
+func byCategory(c string) func(Record) bool {
+	panic("byCategory not implemented")
 }
 
 // Total returns total amount of expenses in collection of records rr
