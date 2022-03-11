@@ -8,16 +8,13 @@ import (
 
 // TestNewResident tests the NewResident function.
 func TestNewResident(t *testing.T) {
-	tests := []struct {
-		name     string
+	testCases := map[string]struct {
 		resident *Resident
 	}{
-		{
-			name:     "no data collected",
+		"no data collected": {
 			resident: &Resident{},
 		},
-		{
-			name: "all data collected",
+		"all data collected": {
 			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
@@ -28,13 +25,13 @@ func TestNewResident(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for testName, testCase := range testCases {
+		t.Run(testName, func(t *testing.T) {
 
-			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
+			resident := NewResident(testCase.resident.Name, testCase.resident.Age, testCase.resident.Address)
 
-			if !reflect.DeepEqual(resident, test.resident) {
-				t.Errorf("NewResident() = %#v, want %#v", resident, test.resident)
+			if !reflect.DeepEqual(resident, testCase.resident) {
+				t.Errorf("NewResident() = %#v, want %#v", resident, testCase.resident)
 			}
 		})
 	}
@@ -42,18 +39,15 @@ func TestNewResident(t *testing.T) {
 
 // TestHasRequiredInfo tests the Resident.HasRequiredInfo method.
 func TestHasRequiredInfo(t *testing.T) {
-	tests := []struct {
-		name     string
+	testCases := map[string]struct {
 		resident *Resident
 		want     bool
 	}{
-		{
-			name:     "no data collected",
+		"no data collected": {
 			resident: &Resident{},
 			want:     false,
 		},
-		{
-			name: "all data collected",
+		"all data collected": {
 			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
@@ -63,8 +57,7 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: true,
 		},
-		{
-			name: "missing name",
+		"missing name": {
 			resident: &Resident{
 				Name: "",
 				Age:  29,
@@ -74,8 +67,7 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
-		{
-			name: "empty map as address",
+		"empty map as address": {
 			resident: &Resident{
 				Name:    "Rob Pike",
 				Age:     0,
@@ -83,8 +75,7 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
-		{
-			name: "missing street",
+		"missing street": {
 			resident: &Resident{
 				Name: "Hossein",
 				Age:  30,
@@ -94,8 +85,7 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
-		{
-			name: "age is optional",
+		"age is optional": {
 			resident: &Resident{
 				Name: "Rob Pike",
 				Age:  0,
@@ -107,11 +97,11 @@ func TestHasRequiredInfo(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for testName, testCase := range testCases {
+		t.Run(testName, func(t *testing.T) {
 
-			if got := test.resident.HasRequiredInfo(); got != test.want {
-				t.Errorf("%#v.HasRequiredInfo() = %t, want %t", test.resident, got, test.want)
+			if got := testCase.resident.HasRequiredInfo(); got != testCase.want {
+				t.Errorf("%#v.HasRequiredInfo() = %t, want %t", testCase.resident, got, testCase.want)
 			}
 		})
 	}
@@ -119,18 +109,15 @@ func TestHasRequiredInfo(t *testing.T) {
 
 // TestDelete tests the Resident.Delete method.
 func TestDelete(t *testing.T) {
-	tests := []struct {
-		name     string
+	testCases := map[string]struct {
 		resident *Resident
 		want     *Resident
 	}{
-		{
-			name:     "no data collected",
+		"no data collected": {
 			resident: &Resident{},
 			want:     &Resident{},
 		},
-		{
-			name: "all data collected",
+		"all data collected": {
 			resident: &Resident{
 				Name: "Matthew Sanabria",
 				Age:  29,
@@ -140,8 +127,7 @@ func TestDelete(t *testing.T) {
 			},
 			want: &Resident{},
 		},
-		{
-			name: "some data collected",
+		"some data collected": {
 			resident: &Resident{
 				Name:    "Rob Pike",
 				Age:     0,
@@ -151,13 +137,13 @@ func TestDelete(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for testName, testCase := range testCases {
+		t.Run(testName, func(t *testing.T) {
 
-			test.resident.Delete()
+			testCase.resident.Delete()
 
-			if test.resident.Name != "" || test.resident.Age != 0 || test.resident.Address != nil {
-				t.Errorf("resident.Delete() = %#v, want %#v", test.resident, test.want)
+			if testCase.resident.Name != "" || testCase.resident.Age != 0 || testCase.resident.Address != nil {
+				t.Errorf("resident.Delete() = %#v, want %#v", testCase.resident, testCase.want)
 			}
 		})
 	}
@@ -165,20 +151,18 @@ func TestDelete(t *testing.T) {
 
 // TestCount tests the Count function.
 func TestCount(t *testing.T) {
-	tests := []struct {
+	testCases := map[string]struct {
 		name      string
 		residents []*Resident
 		want      int
 	}{
-		{
-			name: "no data collected",
+		"no data collected": {
 			residents: []*Resident{
 				{},
 			},
 			want: 0,
 		},
-		{
-			name: "all data collected",
+		"all data collected": {
 			residents: []*Resident{
 				{
 					Name: "Matthew Sanabria",
@@ -190,8 +174,7 @@ func TestCount(t *testing.T) {
 			},
 			want: 1,
 		},
-		{
-			name: "some data collected",
+		"some data collected": {
 			residents: []*Resident{
 				{
 					Name: "Matthew Sanabria",
@@ -215,11 +198,11 @@ func TestCount(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for testName, testCase := range testCases {
+		t.Run(testName, func(t *testing.T) {
 
-			if got := Count(test.residents); got != test.want {
-				t.Errorf("Count() = %d, want %d", got, test.want)
+			if got := Count(testCase.residents); got != testCase.want {
+				t.Errorf("Count() = %d, want %d", got, testCase.want)
 			}
 		})
 	}
