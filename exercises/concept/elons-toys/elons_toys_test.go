@@ -46,10 +46,10 @@ func TestDrive(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			car := tt.car
 			car.Drive()
+			
 			if car != tt.expected {
 				t.Errorf("method Drive() = %v; expected %v", car, tt.expected)
 			}
-
 		})
 	}
 }
