@@ -1,5 +1,7 @@
 # Instructions append
    
+## Implementation Notes
+
 The test program creates trees by repeated application of the variadic
 `New`-function. For example, the statement
 
