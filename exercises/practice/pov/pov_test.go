@@ -5,7 +5,101 @@ import (
 	"testing"
 )
 
-// auxiliary functions
+func TestNewNotNil(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" not nil", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			if tree == nil {
+				t.Fatalf("tree should not be nil: %v", treeName)
+			}
+		})
+	}
+}
+
+func TestValue(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" value", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			got := tree.Value()
+			want := testTrees[treeName].root
+			if want != got {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestChildren(t *testing.T) {
+	for _, treeName := range newValueChildrenTestTrees {
+		t.Run(treeName+" Children", func(t *testing.T) {
+			tree := mkTestTree(treeName)
+			got := tree.Children()
+			want := testTrees[treeName].children
+			if !treeSliceEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestFromPov(t *testing.T) {
+	for _, tc := range fromPovTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			tree := mkTestTree(tc.treeName)
+			got := tree.FromPov(tc.from)
+			want := tc.expected
+			if !treeEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+func TestPathTo(t *testing.T) {
+	for _, tc := range pathToTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			tree := mkTestTree(tc.treeName)
+			got := tree.PathTo(tc.from, tc.to)
+			want := tc.expected
+			if !stringSliceEqual(want, got) {
+				t.Fatalf("expected: %v, got: %v", want, got)
+			}
+		})
+	}
+}
+
+var benchmarkResultPov *Tree
+
+func BenchmarkFromPov(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	var result *Tree
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		tree := mkTestTree("complex tree with cousins")
+		from := "x"
+		result = tree.FromPov(from)
+	}
+	benchmarkResultPov = result
+}
+
+var benchmarkResultPathTo []string
+
+func BenchmarkPathTo(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	var result []string
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		tree := mkTestTree("complex tree with cousins")
+		from := "x"
+		to := "cousin-1"
+		result = tree.PathTo(from, to)
+	}
+	benchmarkResultPathTo = result
+}
 
 func treeEqual(tr1, tr2 *Tree) bool {
 	switch {
@@ -56,101 +150,4 @@ func stringSliceEqual(a, b []string) bool {
 		}
 	}
 	return true
-}
-
-func TestNewNotNil(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" not nil", func(t *testing.T) {
-			tree := mkTestTree(treeName)
-			if tree == nil {
-				t.Fatalf("tree should not be nil: %v", treeName)
-			}
-		})
-	}
-}
-
-func TestValue(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" value", func(t *testing.T) {
-			tree := mkTestTree(treeName)
-			got := tree.Value()
-			want := testTrees[treeName].root
-			if want != got {
-				t.Fatalf("expected: %v, got: %v", want, got)
-			}
-		})
-	}
-}
-
-func TestChildren(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" Children", func(t *testing.T) {
-			tree := mkTestTree(treeName)
-			got := tree.Children()
-			want := testTrees[treeName].children
-			if !treeSliceEqual(want, got) {
-				t.Fatalf("expected: %v, got: %v", want, got)
-			}
-		})
-	}
-}
-
-func TestFromPov(t *testing.T) {
-	for _, tc := range fromPovTestCases {
-		t.Run(tc.treeName+" from "+tc.from, func(t *testing.T) {
-			tree := mkTestTree(tc.treeName)
-			got := tree.FromPov(tc.from)
-			want := tc.expected
-			if !treeEqual(want, got) {
-				t.Fatalf("expected: %v, got: %v", want, got)
-			}
-		})
-	}
-}
-
-func TestPathTo(t *testing.T) {
-	for _, tc := range pathToTestCases {
-		testName := tc.treeName + " from " + tc.from + " to " + tc.to
-		t.Run(testName, func(t *testing.T) {
-			tree := mkTestTree(tc.treeName)
-			got := tree.PathTo(tc.from, tc.to)
-			want := tc.expected
-			if !stringSliceEqual(want, got) {
-				t.Fatalf("expected: %v, got: %v", want, got)
-			}
-		})
-	}
-}
-
-var benchmarkResultPov *Tree
-
-func BenchmarkFromPov(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	var result *Tree
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		tree := mkTestTree("complex tree with cousins")
-		from := "x"
-		result = tree.FromPov(from)
-	}
-	benchmarkResultPov = result
-}
-
-var benchmarkResultPathTo []string
-
-func BenchmarkPathTo(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	var result []string
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		tree := mkTestTree("complex tree with cousins")
-		from := "x"
-		to := "cousin-1"
-		result = tree.PathTo(from, to)
-	}
-	benchmarkResultPathTo = result
 }

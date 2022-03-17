@@ -52,105 +52,121 @@ func mkTestTree(treeName string) *Tree {
 }
 
 type fromPovTestCase struct {
-	treeName string
-	from     string
-	expected *Tree
+	description string // same as in canonical-data.json
+	treeName    string
+	from        string
+	expected    *Tree
 }
 
 var fromPovTestCases = []fromPovTestCase{
 	{
-		treeName: "singleton",
-		from:     "x",
-		expected: New("x"),
+		description: "Results in the same tree if the input tree is a singleton",
+		treeName:    "singleton",
+		from:        "x",
+		expected:    New("x"),
 	},
 	{
-		treeName: "parent and one sibling",
-		from:     "x",
-		expected: New("x", New("parent", New("sibling"))),
+		description: "Can reroot a tree with a parent and one sibling",
+		treeName:    "parent and one sibling",
+		from:        "x",
+		expected:    New("x", New("parent", New("sibling"))),
 	},
 	{
-		treeName: "parent and many siblings",
-		from:     "x",
-		expected: New("x", New("parent", New("a"), New("b"), New("c"))),
+		description: "Can reroot a tree with a parent and many siblings",
+		treeName:    "parent and many siblings",
+		from:        "x",
+		expected:    New("x", New("parent", New("a"), New("b"), New("c"))),
 	},
 	{
-		treeName: "linear tree",
-		from:     "x",
-		expected: New("x", New("level-3", New("level-2", New("level-1", New("level-0"))))),
+		treeName:    "linear tree",
+		description: "Can reroot a tree with new root deeply nested in tree",
+		from:        "x",
+		expected:    New("x", New("level-3", New("level-2", New("level-1", New("level-0"))))),
 	},
 	{
-		treeName: "parent and kids",
-		from:     "x",
-		expected: New("x", New("kid-0"), New("kid-1"), New("parent")),
+		description: "Moves children of the new root to same level as former parent",
+		treeName:    "parent and kids",
+		from:        "x",
+		expected:    New("x", New("kid-0"), New("kid-1"), New("parent")),
 	},
 	{
-		treeName: "complex tree with cousins",
-		from:     "x",
+		description: "Can reroot a complex tree with cousins",
+		treeName:    "complex tree with cousins",
+		from:        "x",
 		expected: New("x", New("kid-0"), New("kid-1"),
 			New("parent", New("sibling-0"), New("sibling-1"),
 				New("grandparent", New("uncle", New("cousin-0"), New("cousin-1"))))),
 	},
-	// target does not exist in tree
 	{
-		treeName: "singleton",
-		from:     "nonexistent",
-		expected: nil,
+		description: "Errors if target does not exist in a singleton tree",
+		treeName:    "singleton",
+		from:        "nonexistent",
+		expected:    nil,
 	},
 	{
-		treeName: "parent, kids and siblings",
-		from:     "nonexistent",
-		expected: nil,
+		description: "Errors if target does not exist in a large tree",
+		treeName:    "parent, kids and siblings",
+		from:        "nonexistent",
+		expected:    nil,
 	},
 }
 
 type pathToTestCase struct {
-	treeName string
-	from     string
-	to       string
-	expected []string
+	description string
+	treeName    string
+	from        string
+	to          string
+	expected    []string
 }
 
 var pathToTestCases = []pathToTestCase{
 	{
-		treeName: "parent and one sibling",
-		from:     "x",
-		to:       "parent",
-		expected: []string{"x", "parent"},
-	}, {
-		treeName: "parent and many siblings",
-		from:     "x",
-		to:       "b",
-		expected: []string{"x", "parent", "b"},
+		description: "Can find path to parent",
+		treeName:    "parent and one sibling",
+		from:        "x",
+		to:          "parent",
+		expected:    []string{"x", "parent"},
 	},
 	{
-		treeName: "complex tree with cousins",
-		from:     "x",
-		to:       "cousin-1",
-		expected: []string{"x", "parent", "grandparent", "uncle", "cousin-1"},
-	}, {
-		treeName: "grandparent, parent and siblings",
-		from:     "x",
-		to:       "sibling-1",
-		expected: []string{"x", "parent", "sibling-1"},
+		description: "Can find path to sibling",
+		treeName:    "parent and many siblings",
+		from:        "x",
+		to:          "b",
+		expected:    []string{"x", "parent", "b"},
 	},
 	{
-		treeName: "parent and many siblings",
-		from:     "a",
-		to:       "c",
-		expected: []string{"a", "parent", "c"},
+		description: "Can find path to cousin",
+		treeName:    "complex tree with cousins",
+		from:        "x",
+		to:          "cousin-1",
+		expected:    []string{"x", "parent", "grandparent", "uncle", "cousin-1"},
 	},
-	// target does not exist in tree
 	{
-		treeName: "parent, kids and siblings",
-		from:     "x",
-		to:       "nonexistent",
-		expected: nil,
+		description: "Can find path not involving root",
+		treeName:    "grandparent, parent and siblings",
+		from:        "x",
+		to:          "sibling-1",
+		expected:    []string{"x", "parent", "sibling-1"},
 	},
-	// source does not exist in tree
 	{
-		treeName: "parent, kids and siblings",
-		from:     "nonexistent",
-		to:       "x",
-		expected: nil,
+		description: "Can find path from nodes other than x",
+		treeName:    "parent and many siblings",
+		from:        "a",
+		to:          "c",
+		expected:    []string{"a", "parent", "c"},
+	},
+	{
+		description: "Errors if destination does not exist",
+		treeName:    "parent, kids and siblings",
+		from:        "x",
+		to:          "nonexistent",
+		expected:    nil,
+	},
+	{
+		description: "Errors if source does not exist",
+		treeName:    "parent, kids and siblings",
+		from:        "nonexistent",
+		to:          "x",
+		expected:    nil,
 	},
 }
