@@ -129,7 +129,7 @@ func TestDisplayResult(t *testing.T) {
 		wanted string
 	}{
 		{
-			name: "Call to DisplayResult for Jonh with 5 votes",
+			name: "Call to DisplayResult for John with 5 votes",
 			result: &ElectionResult{
 				Name:  "John",
 				Votes: 5,
@@ -155,7 +155,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 		wanted    int
 	}{
 		{
-			name:      "Call to DecrementVotesOfCandidate for Jonh with 3 votes",
+			name:      "Call to DecrementVotesOfCandidate for John with 3 votes",
 			candidate: "John",
 			results: map[string]int{
 				"John": 3,
