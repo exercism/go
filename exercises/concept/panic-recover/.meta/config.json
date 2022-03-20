@@ -1,0 +1,17 @@
+{
+  "blurb": "Learn about panic and handling panic using recover",
+  "authors": [
+    "myworkcircle"
+  ],
+  "files": {
+    "solution": [
+      "panic_recover.go"
+    ],
+    "test": [
+      "panic_recover_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}
