@@ -4,7 +4,7 @@ As a magician-to-be, Elyse needs to practice some basics. She has a stack of car
 
 To make things a bit easier she only uses the cards 1 to 10.
 
-## 1. Create a slice with certain cards
+## 1. FavoriteCards
 
 When practicing with her cards, Elyse likes to start with her favorite three cards of the deck: 2, 6 and 9.
 Write a function `FavoriteCards` that returns a slice with those cards in that order.

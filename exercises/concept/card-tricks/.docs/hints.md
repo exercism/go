@@ -29,7 +29,7 @@ fmt.Println(c)
 - To set the `n`th item in a slice [use an index][go-slices] and assign a new value to it.
 - To add a new item to then end of a slice use the `append` function.
 
-## 4. Prepend cards to the stack
+## 4. Add cards to the top of the stack
 
 - Adding items to the front of a slice can be done by appending the elements of the original slice to the `value` argument slice.
 
