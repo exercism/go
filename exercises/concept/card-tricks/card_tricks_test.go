@@ -1,12 +1,13 @@
 package cards
 
 import (
+	"reflect"
 	"testing"
 )
 
-func TestAllItems(t *testing.T) {
-	got := AllItems()
-	want := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+func TestFavoriteCards(t *testing.T) {
+	got := FavoriteCards()
+	want := []int{2, 6, 9}
 	if !slicesEqual(got, want) {
 		t.Errorf("NewCards() got = %v, want %v", got, want)
 	}
@@ -141,10 +142,72 @@ func TestSetItem(t *testing.T) {
 				for i := range got {
 					got[i] = -1
 				}
-				if !slicesEqual(got, tt.args.slice) {
+				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.args.slice).Pointer() {
 					t.Errorf("SetItem(slice:%v, index:%v) does not return the modified input slice)", tt.args.slice,
 						tt.args.value)
 				}
+			}
+		})
+	}
+}
+
+func TestPrependItems(t *testing.T) {
+	type args struct {
+		slice []int
+		value []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []int
+	}{
+		{
+			name: "Prepend one item",
+			args: args{
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{1},
+			},
+			want: []int{1, 5, 2, 10, 6, 8, 7, 0, 9},
+		},
+		{
+			name: "Prepend two items",
+			args: args{
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{0, 6},
+			},
+			want: []int{0, 6, 5, 2, 10, 6, 8, 7, 0, 9},
+		},
+		{
+			name: "prepend nil",
+			args: args{
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: nil,
+			},
+			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
+		},
+		{
+			name: "prepend zero items",
+			args: args{
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{},
+			},
+			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
+		},
+		{
+			name: "Prepend slice to itself",
+			args: args{
+				slice: []int{5, 2, 10, 6},
+				value: []int{5, 2, 10, 6},
+			},
+			want: []int{5, 2, 10, 6, 5, 2, 10, 6},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := PrependItems(tt.args.slice, tt.args.value...)
+			if !slicesEqual(got, tt.want) {
+				t.Errorf("PrependItems(slice:%v, value:%v) = %v, want %v",
+					tt.args.slice, tt.args.value, got, tt.want)
 			}
 		})
 	}
@@ -205,68 +268,6 @@ func TestRemoveItem(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := RemoveItem(copySlice(tt.args.slice), tt.args.index); !slicesEqual(got, tt.want) {
 				t.Errorf("RemoveItem(slice:%v, index:%v) = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
-			}
-		})
-	}
-}
-
-func TestPrependItems(t *testing.T) {
-	type args struct {
-		slice []int
-		value []int
-	}
-	tests := []struct {
-		name string
-		args args
-		want []int
-	}{
-		{
-			name: "prepend nil",
-			args: args{
-				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				value: nil,
-			},
-			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
-		},
-		{
-			name: "prepend zero items",
-			args: args{
-				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				value: []int{},
-			},
-			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
-		},
-		{
-			name: "Prepend one item",
-			args: args{
-				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				value: []int{1},
-			},
-			want: []int{1, 5, 2, 10, 6, 8, 7, 0, 9},
-		},
-		{
-			name: "Prepend two items",
-			args: args{
-				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				value: []int{0, 6},
-			},
-			want: []int{0, 6, 5, 2, 10, 6, 8, 7, 0, 9},
-		},
-		{
-			name: "Prepend slice to itself",
-			args: args{
-				slice: []int{5, 2, 10, 6},
-				value: []int{5, 2, 10, 6},
-			},
-			want: []int{5, 2, 10, 6, 5, 2, 10, 6},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := PrependItems(tt.args.slice, tt.args.value...)
-			if !slicesEqual(got, tt.want) {
-				t.Errorf("PrependItems(slice:%v, value:%v) = %v, want %v",
-					tt.args.slice, tt.args.value, got, tt.want)
 			}
 		})
 	}

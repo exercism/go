@@ -10,7 +10,7 @@ A slice is written like `[]T` with `T` being the type of the elements in the sli
 
 ```go
 var empty []int                 // an empty slice
-withData := []int{0,1,2,3,4,5}  // a slice pre-filled with some data
+withData := []int{0, 1, 2, 3, 4, 5}  // a slice pre-filled with some data
 ```
 
 You can get/set an element at a given zero-based index using square-bracket notation:
@@ -28,16 +28,16 @@ If you don't specify an ending index, it defaults to the length of the slice.
 newSlice := withData[2:4] // newSlice == []int{2,3}
 ```
 
-Go provides a built-in `append` function to append new elements to a slice: 
+It is common to add new elements to the end of a slice, and so Go provides a built-in [`append`][append-yourbasic] function.
 
-```go 
-a := []int{1,3}
-b := append(a,4,2)  // b == []int{1,3,4,2}
+```go
+a := []int{1, 3}
+b := append(a, 4, 2) // b == []int{1,3,4,2}
 ```
 
-Note that `append` is a variadic function, see details below. 
+Note that `append` is a variadic function, see details below.
 
-## Variadic Functions 
+## Variadic Functions
 
 Usually, functions in Go accept only a fixed number of arguments.
 However, it is also possible to write variadic functions in Go.
@@ -110,6 +110,8 @@ That will tell the compiler to use the slice as is inside the variadic function.
 The step described above where a slice is created will simply be omitted in this case.
 
 ```go
-list := []int{1,2,3}
+list := []int{1, 2, 3}
 find(1, list...) // "find" defined as shown above
 ```
+
+[append-yourbasic]: https://yourbasic.org/golang/append-explained/
