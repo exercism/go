@@ -14,7 +14,7 @@ fmt.Println(c)
 // Output: [1 3 4 2 6]
 ```
 
-## 1. FavoriteCards
+## 1. Create a slice with certain cards
 
 - To create a slice pre-filled with some data, use the slice literal notation:
   `s := []T{x1, x2, ..., xn}`
