@@ -18,29 +18,22 @@ You will receive two cards and will be able to see the face up card of the deale
 
 Depending on your two cards and the card of the dealer, there is a strategy for the first turn of the game, in which you have the following options:
 
-    - Stand (S)
-    - Hit (H)
-    - Split (P)
-    - Automatically win (W)
+- Stand (S)
+- Hit (H)
+- Split (P)
+- Automatically win (W)
 
 Although not optimal yet, you will follow the strategy your friend Alex has been developing, which is as follows:
 
-Category: Large Hand
-
 - If you have a pair of aces you must always split them.
 - If you have a Blackjack (two cards that sum up to a value of 21), and the dealer does not have an ace, a figure or a ten then you automatically win. If the dealer does have any of those cards then you'll have to stand and wait for the reveal of the other card.
-
-Category: Small Hand
-
-- If your cards sum up to 17 or higher you should always stand.
-- If your cards sum up to 11 or lower you should always hit.
+- If your cards sum up to a value within the range [17, 20] you should always stand.
 - If your cards sum up to a value within the range [12, 16] you should always stand unless the dealer has a 7 or higher, in which case you should always hit.
+- If your cards sum up to 11 or lower you should always hit.
 
-The overall logic has already been implemented. You have four tasks:
+## 1. Calculate the value of any given card.
 
-## 1. Calculate the score of any given card.
-
-Implement a function to calculate the numerical value of a card given its name using conditionals.
+Implement a function to calculate the numerical value of a card:
 
 ```go
 value := ParseCard("ace")
@@ -48,36 +41,18 @@ fmt.Println(value)
 // Output: 11
 ```
 
-## 2. Determine if two cards make up a Blackjack.
+## 2. Implement the decision logic for the first turn.
 
-Implement a function that returns `true` if two cards form a Blackjack, `false` otherwise.
+Write a function that implements the decision logic as described above:
 
 ```go
-isBlackjack := IsBlackjack("queen", "ace")
-fmt.Println(isBlackjack)
-// Output: true
+func FirstTurn(card1, card2, dealerCard string) string
 ```
 
-## 3. Implement the decision logic for hand scores larger than 20 points.
-
-Implement a function that returns the string representation of a decision given your cards. This function is only called if the `handScore` is larger than 20. It will receive 2 arguments: `isBlackJack` and `dealerScore`. It should implement the bulletpoints in the category "Large Hand" above.
+Here are some examples for the expected outcomes:
 
 ```go
-isBlackJack := true
-dealerScore := 7
-choice := LargeHand(isBlackJack, dealerScore)
-fmt.Println(choice)
-// Output: "W"
-```
-
-## 4. Implement the decision logic for hand scores with less than 21 points.
-
-Implement a function that returns the string representation of a decision given your cards. This function is only called if the `handScore` is less than 21. It will receive 2 arguments: `handScore` and `dealerScore`. It should implement the bulletpoints in the category "Small Hand" above.
-
-```go
-handScore := 15
-dealerScore := 12
-choice := SmallHand(handScore, dealerScore)
-fmt.Println(choice)
-// Output: "H"
+FirstTurn("ace", "ace", "jack") == "P"
+FirstTurn("ace", "king", "ace") == "S"
+FirstTurn("five", "queen", "ace") == "H"
 ```
