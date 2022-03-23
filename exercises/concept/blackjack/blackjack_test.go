@@ -74,7 +74,7 @@ func TestParseCard(t *testing.T) {
 			want: 10,
 		},
 		{
-			name: "parse invalid",
+			name: "parse other",
 			card: "joker",
 			want: 0,
 		},
