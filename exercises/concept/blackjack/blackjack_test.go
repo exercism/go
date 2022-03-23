@@ -73,6 +73,11 @@ func TestParseCard(t *testing.T) {
 			card: "king",
 			want: 10,
 		},
+		{
+			name: "parse other",
+			card: "joker",
+			want: 0,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
