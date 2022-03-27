@@ -1,4 +1,4 @@
-package panic_recover
+package go/exercises/concept/panic-recover
 
 // Add condition to panic
 func AddPanic(names []string, index int) {

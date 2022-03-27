@@ -1,4 +1,4 @@
-package panic_recover
+package go/exercises/concept/panic-recover
 
 import (
 	"testing"
