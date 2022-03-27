@@ -42,5 +42,5 @@ func Total(in []Record, p DatePeriod) float64 {
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses records.
 func CategoryExpenses(in []Record, p DatePeriod, c string) (float64, error) {
-	panic("CategoryExpenses not implemented")
+	panic("Please implement the CategoryExpenses function.")
 }
