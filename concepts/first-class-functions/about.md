@@ -44,7 +44,7 @@ func dialog(name string, f greetingFunc) {
 }
 ```
 
-Another powerful tool that is available thanks to first-class functions support is anonymous functions. Anonymous functions are defined at treir point of use, without a name following the `func` keyword. Such functions have access to the variables of the enclosing function. For example:
+Another powerful tool that is available thanks to first-class functions support is anonymous functions. Anonymous functions are defined at their point of use, without a name following the `func` keyword. Such functions have access to the variables of the enclosing function. For example:
 ```go
 func fib() func() int {
 	var n1, n2 int
