@@ -30,7 +30,7 @@ func ByDatePeriod(p DatePeriod) func(Record) bool {
 // ByCategory returns predicate function. The predicate returns true when
 // Record.Category is equal to the provided category.
 func ByCategory(c string) func(Record) bool {
-	panic("ByCategory not implemented")
+	panic("Please implement the ByCategory function.")
 }
 
 // Total returns total amount of expenses in collection of records rr
