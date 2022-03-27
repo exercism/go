@@ -24,7 +24,7 @@ func Filter(in []Record, f func(Record) bool) (out []Record) {
 // ByDatePeriod returns predicate function. The predicate returns true when
 // Record.Date is within the date period.
 func ByDatePeriod(p DatePeriod) func(Record) bool {
-	panic("ByDatePeriod not implemented")
+	panic("Please implement the ByDatePeriod function.")
 }
 
 // ByCategory returns predicate function. The predicate returns true when
