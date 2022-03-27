@@ -1,4 +1,4 @@
-package panic_recover
+package go/exercises/concept/panic-recover
 
 // function for creating panic
 func CreatePanic(names []string, index int) string {
