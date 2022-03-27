@@ -40,4 +40,5 @@ func RecoverPanicTest(t *testing.T) {
 		})
 		val := CreatePanic(tt.name, len(tt.name))
 	}
+	fmt.Println(val)
 }
