@@ -36,7 +36,7 @@ func ByCategory(c string) func(Record) bool {
 // Total returns total amount of expenses in collection of records rr
 // within time period p.
 func Total(in []Record, p DatePeriod) float64 {
-	panic("Total not implemented")
+	panic("Please implement the Total function.")
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
