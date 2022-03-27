@@ -18,7 +18,7 @@ type DatePeriod struct {
 // Filter creates a new records collection by applying the predicate function to
 // records and keeping the records for which the function returns true.
 func Filter(in []Record, f func(Record) bool) (out []Record) {
-	panic("Filter not implemented")
+	panic("Please implement the Filter function.")
 }
 
 // ByDatePeriod returns predicate function. The predicate returns true when
