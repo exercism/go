@@ -15,6 +15,8 @@ The goal of this exercise is to teach the student about first class functions in
 
 ## Concepts
 
+- `first-class-functions`
+
 ## Prerequisites
 
 - `for-loops` are needed in the exercise
