@@ -1,6 +1,6 @@
 # Randomness Introduction
 
-Package [`math\rand`][mathrand] provides support for generating pseudo-random numbers.
+Package [math\rand][mathrand] provides support for generating pseudo-random numbers.
 
 Here is how to generate a random integer between `0` and `99`:
 
@@ -37,7 +37,9 @@ A simple approach is to use the "current time":
 rand.Seed(time.Now().UnixNano())
 ```
 
-Seeding must be done **before** your program calls any of the functions that generate random numbers.
+Setting the seed must be done **before** calling any of the functions that generate random numbers.
+We usually only need to set the seed once in our program.
+From one seed we can generate many random numbers.
 
 ### Warning
 

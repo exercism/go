@@ -14,11 +14,11 @@ This [article][yourbasic] shows how to generate integers in a certain range.
 
 ## 3. Generate wand energy.
 
-Function [`rand.Float64`][float64] returns a random `float64` number between 0.0 and 1.0.
+Function [rand.Float64][float64] returns a random `float64` number between 0.0 and 1.0.
 
 ## 4. Shuffle a slice.
 
-Create a slice with the eight animal strings, then call [`rand.Shuffle`][shuffle] to put it into a random order.
+Create a slice with the eight animal strings, then call [rand.Shuffle][shuffle] to put it into a random order.
 
 [gobyexample]: https://gobyexample.com/random-numbers
 [yourbasic]: https://yourbasic.org/golang/generate-number-random-range
