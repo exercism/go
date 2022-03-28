@@ -1,4 +1,4 @@
-# Randomness Introduction
+# Introduction
 
 Package [`math\rand`][mathrand] provides support for generating pseudo-random numbers.
 
