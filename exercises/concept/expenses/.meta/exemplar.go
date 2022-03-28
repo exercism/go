@@ -14,7 +14,8 @@ type Record struct {
 
 // Filter creates a new records collection by applying predicate function to
 // collection items and keeping the items when the function returns true.
-func Filter(in []Record, f func(Record) bool) (out []Record) {
+func Filter(in []Record, f func(Record) bool) []Record {
+	var out []Record
 	for _, r := range in {
 		if f(r) {
 			out = append(out, r)
