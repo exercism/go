@@ -39,7 +39,7 @@ func ByCategory(c string) func(Record) bool {
 	}
 }
 
-// DatePeriod represents the expenses period.
+// DatePeriod represents a period of time for expenses.
 type DatePeriod struct {
 	From time.Time
 	To   time.Time
