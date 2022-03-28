@@ -1,7 +1,7 @@
 {
   "blurb": "Reparent a graph on a selected node",
   "authors": [
-    "skeys"
+    "norvaer", "skeys"
   ],
   "contributors": [
     "alebaffa",
@@ -26,6 +26,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ], 
+    "editor": [
+      "cases_test.go"
     ]
   },
   "source": "Adaptation of exercise from 4clojure",
