@@ -78,10 +78,11 @@ Once we uncomment the first line in the `main()` function, the output varies bet
 708506 627509 363987
 ```
 
-### Caution
+~~~~exercism/caution
 
 The output produced by package `math/rand` might be easily predictable regardless of how it is seeded.
-For random numbers suitable for security-sensitive work, you should use the [`crypto/rand`][cryptorand] package.
+For random numbers suitable for security-sensitive work, you should use the [crypto/rand][cryptorand] package.
+~~~~
 
 ### Advanced
 
