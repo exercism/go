@@ -1,4 +1,4 @@
-# Randomness Introduction
+# Introduction
 
 Package [math\rand][mathrand] provides support for generating pseudo-random numbers.
 
@@ -41,6 +41,7 @@ Setting the seed must be done **before** calling any of the functions that gener
 We usually only need to set the seed once in our program.
 From one seed we can generate many random numbers.
 
-### Warning
+~~~~exercism/caution
 
 If you don't call `rand.Seed`, then the package will produce the same sequence of random numbers each time your program runs!
+~~~~

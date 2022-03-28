@@ -1,5 +1,5 @@
 {
-  "blurb": "math.rand can be used to generate pseudo-random integral or floating-point numbers.",
+  "blurb": "Generate pseudo-random integer and floating-point numbers.",
   "authors": ["norbs57"],
   "contributors": []
 }
