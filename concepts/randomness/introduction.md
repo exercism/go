@@ -39,6 +39,7 @@ rand.Seed(time.Now().UnixNano())
 
 Seeding must be done **before** your program calls any of the functions that generate random numbers.
 
-### Warning
+~~~~exercism/caution
 
 If you don't call `rand.Seed`, then the package will produce the same sequence of random numbers each time your program runs!
+~~~~
