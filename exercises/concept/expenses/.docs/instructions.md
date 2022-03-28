@@ -9,6 +9,7 @@ Bob needs to build two reports:
 In this exercise, you're going to build a program to help Bob.
 
 All functions receive expenses records and a date period:
+
 ```go
 // Expenses record.
 type Record struct {
@@ -25,6 +26,7 @@ type DatePeriod struct {
 ```
 
 The period includes both dates, i.e:
+
 ```go
 p := DarePeriod{From: "2000-10-01", To: "2000-10-31"}
 // p includes "2000-10-01"
