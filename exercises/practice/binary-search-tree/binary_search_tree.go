@@ -21,6 +21,6 @@ func (bst *BinarySearchTree) Insert(i int) {
 // The values are in increasing order starting with the lowest int value.
 // A BinarySearchTree that has the numbers [1,3,7,5] added will return the
 // []int [1,3,5,7].
-func (bst *BinarySearchTree) SortedData() (result []int) {
+func (bst *BinarySearchTree) SortedData() []int {
 	panic("Please implement the SortedData function")
 }

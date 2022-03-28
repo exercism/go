@@ -28,7 +28,8 @@ func (bst *BinarySearchTree) Insert(i int) {
 	}
 }
 
-func (bst *BinarySearchTree) SortedData() (result []int) {
+func (bst *BinarySearchTree) SortedData() []int {
+	var result []int
 	if bst.left != nil {
 		result = append(bst.left.SortedData(), result...)
 	}
