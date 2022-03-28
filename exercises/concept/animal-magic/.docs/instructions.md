@@ -5,7 +5,7 @@ It is time to code functions for rolling a die, generating random wand energy an
 
 ## 1. Seed the random number generator.
 
-Implement a `SeedWithTime` function that seeds `math.rand` with the current computer time.
+Implement a `SeedWithTime` function that seeds the `math.rand` package with the current computer time.
 
 ## 2. Roll a die.
 
