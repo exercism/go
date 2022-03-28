@@ -97,8 +97,13 @@ func TestExtractFancyNumber(t *testing.T) {
 			want:        0,
 		},
 		{
-			description: "Extract a different fancy number returns 0",
-			input:       differentFancyNumber{"two"},
+			description: "Extract a differentFancyNumber returns 0",
+			input:       differentFancyNumber{"4"},
+			want:        0,
+		},
+		{
+			description: "Extract an invalid fancy number returns 0",
+			input:       FancyNumber{"two"},
 			want:        0,
 		},
 	}

@@ -58,7 +58,7 @@ RCCC
 GGCC`, []string{"Alice", "Alice"}, false, nil}, // duplicate name
 	{11, `
 rc
-gg`, []string{"Alice"}, false, nil}, // invaid cup codes
+gg`, []string{"Alice"}, false, nil}, // invalid cup codes
 	{12, `
 RC
 GG`, []string{"Alice"}, true, []lookup{ // lookup invalid name

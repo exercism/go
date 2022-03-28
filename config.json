@@ -120,7 +120,7 @@
         "prerequisites": [
           "string-formatting",
           "numbers",
-          "multiple-return-values",
+          "functions",
           "booleans"
         ],
         "status": "beta"
@@ -225,7 +225,7 @@
         ],
         "prerequisites": [
           "string-formatting",
-          "multiple-return-values"
+          "functions"
         ],
         "status": "wip"
       },
@@ -249,7 +249,7 @@
         "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
         "concepts": [
           "slices",
-          "multiple-return-values"
+          "variadic-functions"
         ],
         "prerequisites": [
           "booleans",

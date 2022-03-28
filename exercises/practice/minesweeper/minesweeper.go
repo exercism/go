@@ -1,5 +1,6 @@
 package minesweeper
 
-func (b Board) Count() error {
-	panic("Please implement the Count function")
-}
+// Annotate returns an annotated board
+func Annotate(board []string) []string {
+	panic("Please implement the Annotate function")
+} 
