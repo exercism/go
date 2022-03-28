@@ -11,14 +11,14 @@ In this exercise, you're going to build a program to help Bob.
 All functions receive expenses records and a date period:
 
 ```go
-// Expenses record.
+// Record represents an expense record.
 type Record struct {
 	Date        time.Time
 	Amount      float64
 	Category    string
 }
 
-// Expenses period.
+// DatePeriod represents the expenses period.
 type DatePeriod struct {
 	From time.Time
 	To   time.Time

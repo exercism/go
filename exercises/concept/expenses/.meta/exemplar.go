@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// Record describes a record of expense event.
+// Record represents an expense record.
 type Record struct {
 	Date     time.Time
 	Amount   float64
@@ -39,7 +39,7 @@ func ByCategory(c string) func(Record) bool {
 	}
 }
 
-// DatePeriod describes time period.
+// DatePeriod represents the expenses period.
 type DatePeriod struct {
 	From time.Time
 	To   time.Time

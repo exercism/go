@@ -2,14 +2,14 @@ package expenses
 
 import "time"
 
-// Record describes a record of expense event.
+// Record represents an expense record.
 type Record struct {
 	Date     time.Time
 	Amount   float64
 	Category string
 }
 
-// DatePeriod describes date period.
+// DatePeriod represents the expenses period.
 type DatePeriod struct {
 	From time.Time
 	To   time.Time
