@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://pkg.go.dev/math/rand",
+    "description": "Go standard library: package math/rand"
+  },
+  {
+    "url": "https://gobyexample.com/random-numbers",
+    "description": "Go by Example: random numbers"
+  },
+  {
+    "url": "https://golang.org/ref/spec#IncDec_statements",
+    "description": "Yourbasic.org: generate random numbers"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Randomness",
+    "description": "Wikipedia: randomness"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Random_see",
+    "description": "Wikipedia: random seed"
+  }
+]
