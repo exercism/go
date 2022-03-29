@@ -1,7 +1,8 @@
 {
   "blurb": "Learn about first class functions",
   "authors": [
-    "antklim"
+    "antklim",
+    "andrerfcsantos"
   ],
   "files": {
     "solution": [

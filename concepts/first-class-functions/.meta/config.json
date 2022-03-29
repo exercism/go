@@ -1,4 +1,5 @@
 {
   "authors": ["antklim"],
+  "contributors": ["andrerfcsantos"],
   "blurb": "In Go a function can be assigned to variables, passed as an argument to other functions and returned by another functions."
 }
