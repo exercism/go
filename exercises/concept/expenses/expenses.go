@@ -1,18 +1,16 @@
 package expenses
 
-import "time"
-
 // Record represents an expense record.
 type Record struct {
-	Date     time.Time
+	Day      int
 	Amount   float64
 	Category string
 }
 
-// DatePeriod represents a period of time for expenses.
-type DatePeriod struct {
-	From time.Time
-	To   time.Time
+// DaysPeriod represents a period of days for expenses.
+type DaysPeriod struct {
+	From int
+	To   int
 }
 
 // Filter creates a new records collection by applying the predicate function to
@@ -21,10 +19,10 @@ func Filter(in []Record, f func(Record) bool) []Record {
 	panic("Please implement the Filter function.")
 }
 
-// ByDatePeriod returns predicate function. The predicate returns true when
-// Record.Date is within the date period.
-func ByDatePeriod(p DatePeriod) func(Record) bool {
-	panic("Please implement the ByDatePeriod function.")
+// ByDaysPeriod returns predicate function. The predicate returns true when
+// Record.Day is within the days period.
+func ByDaysPeriod(p DaysPeriod) func(Record) bool {
+	panic("Please implement the ByDaysPeriod function.")
 }
 
 // ByCategory returns predicate function. The predicate returns true when
@@ -33,14 +31,14 @@ func ByCategory(c string) func(Record) bool {
 	panic("Please implement the ByCategory function.")
 }
 
-// Total returns total amount of expenses in collection of records rr
-// within time period p.
-func Total(in []Record, p DatePeriod) float64 {
+// Total returns total amount of expenses in collection of records within
+// days period p.
+func Total(in []Record, p DaysPeriod) float64 {
 	panic("Please implement the Total function.")
 }
 
 // CategoryExpenses returns total amount of expenses in category c. It returns
 // error when a category is not present in expenses records.
-func CategoryExpenses(in []Record, p DatePeriod, c string) (float64, error) {
+func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error) {
 	panic("Please implement the CategoryExpenses function.")
 }

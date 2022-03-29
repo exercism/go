@@ -1,104 +1,101 @@
 package expenses
 
-import (
-	"testing"
-	"time"
-)
+import "testing"
 
 var testExpensesRecords = []Record{
 	{
-		Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+		Day:      1,
 		Amount:   5.15,
 		Category: "grocieries",
 	},
 	{
-		Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+		Day:      1,
 		Amount:   3.45,
 		Category: "grocieries",
 	},
 	{
-		Date:     time.Date(2021, time.December, 13, 0, 0, 0, 0, time.UTC),
+		Day:      13,
 		Amount:   55.67,
 		Category: "utility-bills",
 	},
 	{
-		Date:     time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+		Day:      15,
 		Amount:   11,
 		Category: "grocieries",
 	},
 	{
-		Date:     time.Date(2021, time.December, 18, 0, 0, 0, 0, time.UTC),
+		Day:      18,
 		Amount:   244.33,
 		Category: "utility-bills",
 	},
 	{
-		Date:     time.Date(2021, time.December, 20, 0, 0, 0, 0, time.UTC),
+		Day:      20,
 		Amount:   300,
 		Category: "university",
 	},
 	{
-		Date:     time.Date(2021, time.December, 23, 0, 0, 0, 0, time.UTC),
+		Day:      23,
 		Amount:   20.0,
 		Category: "grocieries",
 	},
 	{
-		Date:     time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
+		Day:      25,
 		Amount:   24.65,
 		Category: "grocieries",
 	},
 	{
-		Date:     time.Date(2021, time.December, 30, 0, 0, 0, 0, time.UTC),
+		Day:      30,
 		Amount:   1300,
 		Category: "rent",
 	},
 }
 
-func TestFilterByDate(t *testing.T) {
+func TestFilterByDaysPeriod(t *testing.T) {
 	testCases := []struct {
 		name     string
-		p        DatePeriod
+		p        DaysPeriod
 		expected []Record
 	}{
 		{
-			name: "returns expenses records from 1st to 15th of December",
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+			name: "returns expenses records from 1st to 15th day",
+			p: DaysPeriod{
+				From: 1,
+				To:   15,
 			},
 			expected: []Record{
 				{
-					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Day:      1,
 					Amount:   5.15,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Day:      1,
 					Amount:   3.45,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 13, 0, 0, 0, 0, time.UTC),
+					Day:      13,
 					Amount:   55.67,
 					Category: "utility-bills",
 				},
 				{
-					Date:     time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+					Day:      15,
 					Amount:   11,
 					Category: "grocieries",
 				},
 			},
 		},
 		{
-			name: "returns empty list for November",
-			p: DatePeriod{
-				From: time.Date(2021, time.November, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.November, 30, 0, 0, 0, 0, time.UTC),
+			name: "returns empty list when no expenses found in the days period",
+			p: DaysPeriod{
+				From: 40,
+				To:   50,
 			},
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			got := Filter(testExpensesRecords, ByDatePeriod(tC.p))
+			got := Filter(testExpensesRecords, ByDaysPeriod(tC.p))
 			if len(got) != len(tC.expected) {
 				t.Fatalf("Filter by period got %d records, want %d", len(got), len(tC.expected))
 			}
@@ -123,27 +120,27 @@ func TestFilterByCategory(t *testing.T) {
 			category: "grocieries",
 			expected: []Record{
 				{
-					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Day:      1,
 					Amount:   5.15,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
+					Day:      1,
 					Amount:   3.45,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+					Day:      15,
 					Amount:   11,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 23, 0, 0, 0, 0, time.UTC),
+					Day:      23,
 					Amount:   20.0,
 					Category: "grocieries",
 				},
 				{
-					Date:     time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
+					Day:      25,
 					Amount:   24.65,
 					Category: "grocieries",
 				},
@@ -173,30 +170,30 @@ func TestFilterByCategory(t *testing.T) {
 func TestTotal(t *testing.T) {
 	testCases := []struct {
 		name  string
-		p     DatePeriod
+		p     DaysPeriod
 		total float64
 	}{
 		{
-			name: "total expenses is 0 when no records found in the provided date period",
-			p: DatePeriod{
-				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
+			name: "total expenses is 0 when no records found in the provided days period",
+			p: DaysPeriod{
+				From: 40,
+				To:   50,
 			},
 			total: 0,
 		},
 		{
-			name: "total expenses for partial date period",
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 25, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 26, 0, 0, 0, 0, time.UTC),
+			name: "total expenses for days period from 25th to 26th day",
+			p: DaysPeriod{
+				From: 25,
+				To:   26,
 			},
 			total: 24.65,
 		},
 		{
-			name: "total expenses for the full date period",
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 31, 0, 0, 0, 0, time.UTC),
+			name: "total expenses for the full days period",
+			p: DaysPeriod{
+				From: 1,
+				To:   100,
 			},
 			total: 1964.25,
 		},
@@ -215,36 +212,36 @@ func TestCategoryExpenses(t *testing.T) {
 	testCases := []struct {
 		name     string
 		category string
-		p        DatePeriod
+		p        DaysPeriod
 		total    float64
 		err      string
 	}{
 		{
-			name:     "returns error when no records with category found in any date period",
+			name:     "returns error when no records with category found in any days period",
 			category: "food",
-			p: DatePeriod{
-				From: time.Date(2022, time.January, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2022, time.February, 1, 0, 0, 0, 0, time.UTC),
+			p: DaysPeriod{
+				From: 1,
+				To:   30,
 			},
 			total: 0,
 			err:   "unknown category food",
 		},
 		{
-			name:     "returns total category expenses in the provided date period",
+			name:     "returns total category expenses in the provided days period",
 			category: "grocieries",
-			p: DatePeriod{
-				From: time.Date(2021, time.December, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.December, 15, 0, 0, 0, 0, time.UTC),
+			p: DaysPeriod{
+				From: 1,
+				To:   15,
 			},
 			total: 19.6,
 			err:   "",
 		},
 		{
-			name:     "returns 0 when no category expenses found in the provided date period",
+			name:     "returns 0 when no category expenses found in the provided days period",
 			category: "grocieries",
-			p: DatePeriod{
-				From: time.Date(2021, time.November, 1, 0, 0, 0, 0, time.UTC),
-				To:   time.Date(2021, time.November, 30, 0, 0, 0, 0, time.UTC),
+			p: DaysPeriod{
+				From: 40,
+				To:   50,
 			},
 			total: 0,
 			err:   "",
