@@ -84,6 +84,7 @@ Once we uncomment the first line in the `main()` function, the output varies bet
 
 The output produced by package `math/rand` might be easily predictable regardless of how it is seeded.
 For random numbers suitable for security-sensitive work, you should use the [crypto/rand][cryptorand] package.
+~~~~
 
 [mathrand]: https://pkg.go.dev/math/rand
 [cryptorand]: https://pkg.go.dev/crypto/rand

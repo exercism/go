@@ -1,10 +1,12 @@
 # Introduction
 
-Package [math\rand][mathrand] provides support for generating pseudo-random numbers.
+Package `math\rand` provides support for generating pseudo-random numbers.
 
 Here is how to generate a random integer between `0` and `99`:
 
 ```go
+import "math/rand"
+
 n := rand.Intn(100) // n is a random int, 0 <= n < 100
 ```
 
