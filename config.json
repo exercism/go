@@ -401,6 +401,19 @@
           "type-definitions"
         ],
         "status": "wip"
+      },
+      {
+        "slug": "animal-magic",
+        "name": "Animal magic",
+        "uuid": "71a1be49-daf1-4043-af6e-33cd44481bb5", 
+        "concepts": [
+          "randomness"
+        ], 
+        "prerequisites": [
+          "arithmetic-operators", 
+          "slices"
+        ],  
+        "status": "beta"
       }
     ],
     "practice": [
@@ -2003,6 +2016,11 @@
       "name": "Range Iteration",
       "slug": "range-iteration",
       "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
+    },
+    {
+      "name": "Randomness",
+      "slug": "randomness",
+      "uuid": "5d354412-a87d-458b-af6c-fadfa58cfdc3"
     },
     {
       "name": "Runes",
