@@ -86,4 +86,4 @@ The output produced by package `math/rand` might be easily predictable regardles
 For random numbers suitable for security-sensitive work, you should use the crypto/rand package, see link below.
 ~~~~
 
-[mathrand]: https://pkg.go.dev/math/rand "Go standard library: package math/rand"
+[mathrand]: https://pkg.go.dev/math/rand
