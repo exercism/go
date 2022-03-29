@@ -1,6 +1,6 @@
 # About
 
-Package [math\rand][mathrand] provides support for generating pseudo-random numbers.
+Package [math/rand][mathrand] provides support for generating pseudo-random numbers.
 
 Here is how to generate a random integer between `0` and `99`:
 
@@ -83,7 +83,7 @@ Once we uncomment the first line in the `main()` function, the output varies bet
 ~~~~exercism/caution
 
 The output produced by package `math/rand` might be easily predictable regardless of how it is seeded.
-For random numbers suitable for security-sensitive work, you should use the [crypto/rand][cryptorand] package.
+For random numbers suitable for security-sensitive work, you should use the crypto/rand package, see link below.
+~~~~
 
-[mathrand]: https://pkg.go.dev/math/rand
-[cryptorand]: https://pkg.go.dev/crypto/rand
+[mathrand]: https://pkg.go.dev/math/rand "Go standard library: package math/rand"

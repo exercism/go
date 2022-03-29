@@ -8,7 +8,7 @@
     "description": "Go by Example: random numbers"
   },
   {
-    "url": "https://golang.org/ref/spec#IncDec_statements",
+    "url": "https://yourbasic.org/golang/generate-number-random-range",
     "description": "Yourbasic.org: generate random numbers"
   },
   {
@@ -16,7 +16,10 @@
     "description": "Wikipedia: randomness"
   },
   {
-    "url": "https://en.wikipedia.org/wiki/Random_see",
+    "url": "https://en.wikipedia.org/wiki/Random_seed",
     "description": "Wikipedia: random seed"
+  }, 
+  { "url":"https://pkg.go.dev/crypto/rand", 
+    "description": "Go standard library: package crypto/rand"
   }
 ]
