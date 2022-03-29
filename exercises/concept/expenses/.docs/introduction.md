@@ -70,4 +70,4 @@ for i := 0; i < N; i++ {
 }
 ```
 
-A call to fib initialises local variables n1, n2, and returns an anonymous function that, each time it is called, changes variables of the enclosing function. Nth call of the anonymous function returns the Nth number of the Fibonacci sequence starting from 0. It demonstrates that function values can have state. This feature is broadly used in JavaScript and is known as Immediately-Invoked Function Expression (IIFE).
+A call to `fib` initialises local variables n1, n2, and returns an anonymous function that, each time it is called, changes variables of the enclosing function. Nth call of the anonymous function returns the Nth number of the Fibonacci sequence starting from 0. It demonstrates that function values can have state. The anonymous inner function has access to the local variables of the enclosing function `fib`. Such implementation technique called [closure][closure]. The closure is a widely used general programming concept.
