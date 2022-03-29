@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-// This package uses property-based testing
-
 func TestSeedWithTime(t *testing.T) {
 	const tests = 100
 	var last int64
