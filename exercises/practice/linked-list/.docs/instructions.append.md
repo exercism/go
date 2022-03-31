@@ -24,3 +24,7 @@ Your `List` should have the following methods:
 * `PushFront(v interface{}) `: insert value at the front of the list.
 * `PopFront() (interface{}, error)`: remove value from the front of the list.
 * `Reverse()`: reverse the linked list.
+
+You should `import errors` into your solution.
+You should create a new `error` type named `ErrEmptyList` returned by the `PopBack()` and `PopFront()` methods described above.
+See `errors.New()` for details.

@@ -41,7 +41,7 @@ func TestPushPop(t *testing.T) {
 }
 
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
-func checkDoublyLinkedList(t *testing.T, ll *List, expected []interface{}) {
+func checkDoublyLinkedList(t *testing.T, ll *List, expected []any) {
 	// check that length and elements are correct (scan once from begin -> end)
 	elem, count, idx := ll.First(), 0, 0
 	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next(), count+1, idx+1 {
