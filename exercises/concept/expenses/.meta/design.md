@@ -2,12 +2,12 @@
 
 ## Goal
 
-The goal of this exercise is to teach the student about first class functions in Go.
+The goal of this exercise is to teach the student about first-class functions in Go.
 
 ## Learning objectives
 
-- How to define a higher order function
-- How to invoke a higher order function
+- How to define a higher-order function
+- How to invoke a higher-order function
 - How to pass a function as a parameter to a function
 - How to return a function
 

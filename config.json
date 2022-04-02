@@ -400,7 +400,7 @@
           "structs",
           "type-definitions"
         ],
-        "status": "wip"
+        "status": "beta"
       },
       {
         "slug": "animal-magic",

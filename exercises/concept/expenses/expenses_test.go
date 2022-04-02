@@ -167,7 +167,7 @@ func TestFilterByCategory(t *testing.T) {
 	}
 }
 
-func TestTotal(t *testing.T) {
+func TestTotalByPeriod(t *testing.T) {
 	testCases := []struct {
 		name  string
 		p     DaysPeriod
@@ -200,9 +200,9 @@ func TestTotal(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			got := Total(testExpensesRecords, tC.p)
+			got := TotalByPeriod(testExpensesRecords, tC.p)
 			if got != tC.total {
-				t.Errorf("Total(%v, %v) = %.2f, want %.2f", testExpensesRecords, tC.p, got, tC.total)
+				t.Errorf("TotalByPeriod(%v, %v) = %.2f, want %.2f", testExpensesRecords, tC.p, got, tC.total)
 			}
 		})
 	}
@@ -214,7 +214,7 @@ func TestCategoryExpenses(t *testing.T) {
 		category string
 		p        DaysPeriod
 		total    float64
-		err      string
+		wantErr  bool
 	}{
 		{
 			name:     "returns error when no records with category found in any days period",
@@ -223,8 +223,8 @@ func TestCategoryExpenses(t *testing.T) {
 				From: 1,
 				To:   30,
 			},
-			total: 0,
-			err:   "unknown category food",
+			total:   0,
+			wantErr: true,
 		},
 		{
 			name:     "returns total category expenses in the provided days period",
@@ -233,8 +233,8 @@ func TestCategoryExpenses(t *testing.T) {
 				From: 1,
 				To:   15,
 			},
-			total: 19.6,
-			err:   "",
+			total:   19.6,
+			wantErr: false,
 		},
 		{
 			name:     "returns 0 when no category expenses found in the provided days period",
@@ -243,26 +243,33 @@ func TestCategoryExpenses(t *testing.T) {
 				From: 40,
 				To:   50,
 			},
-			total: 0,
-			err:   "",
+			total:   0,
+			wantErr: false,
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
 			got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
-			if tC.err != "" && (err == nil || tC.err != err.Error()) {
-				t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want: %s",
-					testExpensesRecords, tC.category, tC.p, err, tC.err)
+			if tC.wantErr && err == nil {
+				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but want a non-nil error",
+					testExpensesRecords, tC.category, tC.p, got, err)
 			}
 
-			if tC.err == "" && err != nil {
-				t.Errorf("CategoryExpenses(%v, %s, %v) failed: %v, want %.2f, %s",
-					testExpensesRecords, tC.category, tC.p, err, tC.total, tC.err)
+			if !tC.wantErr && err != nil {
+				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but a non-nil error was not expected",
+					testExpensesRecords, tC.category, tC.p, got, err)
 			}
 
-			if tC.err == "" && err == nil && got != tC.total {
-				t.Errorf("CategoryExpenses(%v, %s, %v) = %.2f, want %.2f",
-					testExpensesRecords, tC.category, tC.p, got, tC.total)
+			if got != tC.total {
+				var errStr string
+
+				if tC.wantErr {
+					errStr = "unknown category"
+				} else {
+					errStr = "nil"
+				}
+				t.Fatalf("CategoryExpenses(%v, %s, %v) = %.2f,%v but want %.2f,%s",
+					testExpensesRecords, tC.category, tC.p, got, err, tC.total, errStr)
 			}
 		})
 	}
