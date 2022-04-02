@@ -388,6 +388,21 @@
         "status": "beta"
       },
       {
+        "slug": "expenses",
+        "name": "Expenses",
+        "uuid": "7221b17b-7880-4228-a07a-121e5857c953",
+        "concepts": [
+          "first-class-functions"
+        ],
+        "prerequisites": [
+          "for-loops",
+          "functions",
+          "structs",
+          "type-definitions"
+        ],
+        "status": "beta"
+      },
+      {
         "slug": "animal-magic",
         "name": "Animal Magic",
         "uuid": "71a1be49-daf1-4043-af6e-33cd44481bb5", 
@@ -1956,6 +1971,11 @@
       "name": "Functions",
       "slug": "functions",
       "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
+    },
+    {
+      "name": "First class functions",
+      "slug": "first-class-functions",
+      "uuid": "66968174-701b-484c-a84d-f919b4756022"
     },
     {
       "name": "Floating-point numbers",

@@ -1,0 +1,18 @@
+{
+  "blurb": "Learn about first-class functions by helping Bob manage expense records.",
+  "authors": [
+    "antklim",
+    "andrerfcsantos"
+  ],
+  "files": {
+    "solution": [
+      "expenses.go"
+    ],
+    "test": [
+      "expenses_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}
