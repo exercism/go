@@ -116,7 +116,7 @@ Filter(records, ByCategory("grocieries"))
 
 Bob also wants to know the total amount of the expenses in a period of time.
 
-Implement the `Total` function to return a sum of expenses in the days period
+Implement the `TotalByPeriod` function to return a sum of expenses in the days period
 
 ```go
 records := []Record{
@@ -128,10 +128,10 @@ records := []Record{
 p1 := DaysPeriod{From: 1, To: 30}
 p2 := DaysPeriod{From: 31, To: 60}
 
-Total(records, p1)
+TotalByPeriod(records, p1)
 // Output: 16
 
-Total(records, p2)
+TotalByPeriod(records, p2)
 // Output: 50
 ```
 
