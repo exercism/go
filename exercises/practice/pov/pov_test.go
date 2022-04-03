@@ -6,22 +6,60 @@ import (
 )
 
 func TestNewNotNil(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" not nil", func(t *testing.T) {
-			tree := mkTestTree(treeName)
-			if tree == nil {
-				t.Fatalf("tree should not be nil: %v", treeName)
+	tests := []struct {
+		name string
+		tree *Tree
+	}{
+		{
+			name: "singleton",
+			tree: New("x"),
+		},
+		{
+			name: "parent and one sibling",
+			tree: New("parent", New("x"), New("sibling")),
+		},
+		{
+			name: "parent and kids",
+			tree: New("parent", New("x", New("kid-0"), New("kid-1"))),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if tt.tree == nil {
+				t.Fatalf("tree should not be nil")
 			}
 		})
 	}
 }
 
 func TestValue(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" value", func(t *testing.T) {
-			tree := mkTestTree(treeName)
+	tests := []struct {
+		name     string
+		root     string
+		children []*Tree
+	}{
+		{
+			name:     "singleton",
+			root:     "x",
+			children: nil,
+		},
+		{
+			name:     "parent and one sibling",
+			root:     "parent",
+			children: []*Tree{New("x"), New("sibling")},
+		},
+		{
+			name:     "parent and kids",
+			root:     "parent",
+			children: []*Tree{New("x", New("kid-0"), New("kid-1"))},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tree := New(tt.root, tt.children...)
 			got := tree.Value()
-			want := testTrees[treeName].root
+			want := tt.root
 			if want != got {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -30,11 +68,33 @@ func TestValue(t *testing.T) {
 }
 
 func TestChildren(t *testing.T) {
-	for _, treeName := range newValueChildrenTestTrees {
-		t.Run(treeName+" Children", func(t *testing.T) {
-			tree := mkTestTree(treeName)
+	tests := []struct {
+		name     string
+		root     string
+		children []*Tree
+	}{
+		{
+			name:     "singleton",
+			root:     "x",
+			children: nil,
+		},
+		{
+			name:     "parent and one sibling",
+			root:     "parent",
+			children: []*Tree{New("x"), New("sibling")},
+		},
+		{
+			name:     "parent and kids",
+			root:     "parent",
+			children: []*Tree{New("x", New("kid-0"), New("kid-1"))},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tree := New(tt.root, tt.children...)
 			got := tree.Children()
-			want := testTrees[treeName].children
+			want := tt.children
 			if !treeSliceEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -43,11 +103,10 @@ func TestChildren(t *testing.T) {
 }
 
 func TestFromPov(t *testing.T) {
-	for _, tc := range fromPovTestCases {
-		t.Run(tc.description, func(t *testing.T) {
-			tree := mkTestTree(tc.treeName)
-			got := tree.FromPov(tc.from)
-			want := tc.expected
+	for _, tt := range fromPovTestCases {
+		t.Run(tt.description, func(t *testing.T) {
+			got := tt.tree.FromPov(tt.from)
+			want := tt.expected
 			if !treeEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -56,11 +115,10 @@ func TestFromPov(t *testing.T) {
 }
 
 func TestPathTo(t *testing.T) {
-	for _, tc := range pathToTestCases {
-		t.Run(tc.description, func(t *testing.T) {
-			tree := mkTestTree(tc.treeName)
-			got := tree.PathTo(tc.from, tc.to)
-			want := tc.expected
+	for _, tt := range pathToTestCases {
+		t.Run(tt.description, func(t *testing.T) {
+			got := tt.tree.PathTo(tt.from, tt.to)
+			want := tt.expected
 			if !stringSliceEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -77,7 +135,9 @@ func BenchmarkFromPov(b *testing.B) {
 	var result *Tree
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		tree := mkTestTree("complex tree with cousins")
+		tree := New("grandparent", New("parent",
+			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
+			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
 		from := "x"
 		result = tree.FromPov(from)
 	}
@@ -93,7 +153,9 @@ func BenchmarkPathTo(b *testing.B) {
 	var result []string
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		tree := mkTestTree("complex tree with cousins")
+		tree := New("grandparent", New("parent",
+			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
+			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
 		from := "x"
 		to := "cousin-1"
 		result = tree.PathTo(from, to)
