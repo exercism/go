@@ -6,12 +6,12 @@ var testExpensesRecords = []Record{
 	{
 		Day:      1,
 		Amount:   5.15,
-		Category: "grocieries",
+		Category: "groceries",
 	},
 	{
 		Day:      1,
 		Amount:   3.45,
-		Category: "grocieries",
+		Category: "groceries",
 	},
 	{
 		Day:      13,
@@ -21,7 +21,7 @@ var testExpensesRecords = []Record{
 	{
 		Day:      15,
 		Amount:   11,
-		Category: "grocieries",
+		Category: "groceries",
 	},
 	{
 		Day:      18,
@@ -36,12 +36,12 @@ var testExpensesRecords = []Record{
 	{
 		Day:      23,
 		Amount:   20.0,
-		Category: "grocieries",
+		Category: "groceries",
 	},
 	{
 		Day:      25,
 		Amount:   24.65,
-		Category: "grocieries",
+		Category: "groceries",
 	},
 	{
 		Day:      30,
@@ -66,12 +66,12 @@ func TestFilterByDaysPeriod(t *testing.T) {
 				{
 					Day:      1,
 					Amount:   5.15,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      1,
 					Amount:   3.45,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      13,
@@ -81,7 +81,7 @@ func TestFilterByDaysPeriod(t *testing.T) {
 				{
 					Day:      15,
 					Amount:   11,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 			},
 		},
@@ -116,33 +116,33 @@ func TestFilterByCategory(t *testing.T) {
 		expected []Record
 	}{
 		{
-			name:     "returns expenses in grocieries category",
-			category: "grocieries",
+			name:     "returns expenses in groceries category",
+			category: "groceries",
 			expected: []Record{
 				{
 					Day:      1,
 					Amount:   5.15,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      1,
 					Amount:   3.45,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      15,
 					Amount:   11,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      23,
 					Amount:   20.0,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 				{
 					Day:      25,
 					Amount:   24.65,
-					Category: "grocieries",
+					Category: "groceries",
 				},
 			},
 		},
@@ -228,7 +228,7 @@ func TestCategoryExpenses(t *testing.T) {
 		},
 		{
 			name:     "returns total category expenses in the provided days period",
-			category: "grocieries",
+			category: "groceries",
 			p: DaysPeriod{
 				From: 1,
 				To:   15,
@@ -238,7 +238,7 @@ func TestCategoryExpenses(t *testing.T) {
 		},
 		{
 			name:     "returns 0 when no category expenses found in the provided days period",
-			category: "grocieries",
+			category: "groceries",
 			p: DaysPeriod{
 				From: 40,
 				To:   50,

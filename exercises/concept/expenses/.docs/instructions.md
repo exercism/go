@@ -45,9 +45,9 @@ This filter function accepts a collection of records and a predicate function an
 
 ```go
 records := []Record{
-  {Day: 1, Amount: 15, Category: "grocieries"},
+  {Day: 1, Amount: 15, Category: "groceries"},
   {Day: 11, Amount: 300, Category: "utility-bills"},
-  {Day: 12, Amount: 28, Category: "grocieries"},
+  {Day: 12, Amount: 28, Category: "groceries"},
 }
 
 // Day1Records only returns true for records that are from day 1
@@ -58,7 +58,7 @@ func Day1Records(Record r) bool {
 Filter(records, Day1Records)
 // Output:
 // [
-//   {Day: 1, Amount: 15, Category: "grocieries"}
+//   {Day: 1, Amount: 15, Category: "groceries"}
 // ]
 ```
 
@@ -71,9 +71,9 @@ This function accepts a `DaysPeriod` and returns function that takes a record an
 
 ```go
 records := []Record{
-  {Day: 1, Amount: 15, Category: "grocieries"},
+  {Day: 1, Amount: 15, Category: "groceries"},
   {Day: 11, Amount: 300, Category: "utility-bills"},
-  {Day: 12, Amount: 28, Category: "grocieries"},
+  {Day: 12, Amount: 28, Category: "groceries"},
   {Day: 26, Amount: 300, Category: "university"},
   {Day: 28, Amount: 1300, Category: "rent"},
 }
@@ -83,9 +83,9 @@ period := DaysPeriod{From: 1, To: 15}
 Filter(records, ByDaysPeriod(period))
 // Output:
 // [
-//   {Day: 1, Amount: 15, Category: "grocieries"},
+//   {Day: 1, Amount: 15, Category: "groceries"},
 //   {Day: 11, Amount: 300, Category: "utility-bills"},
-//   {Day: 12, Amount: 28, Category: "grocieries"},
+//   {Day: 12, Amount: 28, Category: "groceries"},
 // ]
 ```
 
@@ -98,17 +98,17 @@ This function accepts a category and returns function that takes a record and te
 
 ```go
 records := []Record{
-  {Day: 1, Amount: 15, Category: "grocieries"},
+  {Day: 1, Amount: 15, Category: "groceries"},
   {Day: 11, Amount: 300, Category: "utility-bills"},
-  {Day: 12, Amount: 28, Category: "grocieries"},
+  {Day: 12, Amount: 28, Category: "groceries"},
   {Day: 28, Amount: 1300, Category: "rent"},
 }
 
-Filter(records, ByCategory("grocieries"))
+Filter(records, ByCategory("groceries"))
 // Output:
 // [
-//   {Day: 1, Amount: 15, Category: "grocieries"},
-//   {Day: 12, Amount: 28, Category: "grocieries"},
+//   {Day: 1, Amount: 15, Category: "groceries"},
+//   {Day: 12, Amount: 28, Category: "groceries"},
 // ]
 ```
 
@@ -121,7 +121,7 @@ Implement the `TotalByPeriod` function to return a sum of expenses in the days p
 ```go
 records := []Record{
   {Day: 15, Amount: 16, Category: "entertainment"},
-  {Day: 32, Amount: 20, Category: "grocieries"},
+  {Day: 32, Amount: 20, Category: "groceries"},
   {Day: 40, Amount: 30, Category: "entertainment"}
 }
 
@@ -148,9 +148,9 @@ p1 := DaysPeriod{From: 1, To: 30}
 p2 := DaysPeriod{From: 31, To: 60}
 
 records := []Record{
-  {Day: 1, Amount: 15, Category: "grocieries"},
+  {Day: 1, Amount: 15, Category: "groceries"},
   {Day: 11, Amount: 300, Category: "utility-bills"},
-  {Day: 12, Amount: 28, Category: "grocieries"},
+  {Day: 12, Amount: 28, Category: "groceries"},
   {Day: 26, Amount: 300, Category: "university"},
   {Day: 28, Amount: 1300, Category: "rent"},
 }
