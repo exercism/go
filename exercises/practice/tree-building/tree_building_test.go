@@ -3,7 +3,6 @@ package tree
 import (
 	"fmt"
 	"math/rand"
-	"reflect"
 	"testing"
 )
 
@@ -254,7 +253,7 @@ func TestMakeTreeSuccess(t *testing.T) {
 				t.Fatalf("Build for test case %q returned error %q. Error not expected.",
 					tt.name, err)
 			}
-			if !reflect.DeepEqual(actual, tt.expected) {
+			if !nodeEqual(actual, tt.expected) {
 				t.Fatalf("Build for test case %q returned %s but was expected to return %s.",
 					tt.name, actual, tt.expected)
 			}
@@ -348,4 +347,32 @@ func BenchmarkShallowTree(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Build(shallowRecords)
 	}
+}
+
+func nodeEqual(node1, node2 *Node) bool {
+	switch {
+	case node1 == nil && node2 == nil:
+		return true
+	case node1 == nil && node2 != nil:
+		return false
+	case node1 != nil && node2 == nil:
+		return false
+	default:
+		return node1.ID == node2.ID && nodeSliceEqual(node1.Children, node2.Children)
+	}
+}
+
+func nodeSliceEqual(nodes1, nodes2 []*Node) bool {
+	if len(nodes1) == 0 && len(nodes2) == 0 {
+		return true
+	}
+	if len(nodes1) != len(nodes2) {
+		return false
+	}
+	for i := range nodes1 {
+		if !nodeEqual(nodes1[i], nodes2[i]) {
+			return false
+		}
+	}
+	return true
 }
