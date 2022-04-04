@@ -5,7 +5,7 @@ func NeedsLicense(kind string) bool {
 	return kind == "car" || kind == "truck"
 }
 
-// ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in dictionary order.
+// ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
 func ChooseVehicle(option1, option2 string) string {
 	var choice string
 	if option1 < option2 {
