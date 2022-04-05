@@ -23,7 +23,7 @@ needLicense = NeedsLicense("bike")
 
 You evaluate your options of available vehicles.
 You manage to narrow it down to two options but you need help making the final decision.
-For that, implement the function `ChooseVehicle(option1, option2)` that takes two vehicles as arguments and returns a decision that includes the option that comes first in dictionary order.
+For that, implement the function `ChooseVehicle(option1, option2)` that takes two vehicles as arguments and returns a decision that includes the option that comes first in lexicographical order.
 
 ```go
 vehicle := ChooseVehicle("Wuling Hongguang", "Toyota Corolla")
