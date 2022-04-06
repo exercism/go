@@ -35,7 +35,7 @@ func espGreeting(name string) string {
 	return fmt.Sprintf("¡Hola %s, mucho gusto!", name)
 }
 
-greeting := engGreeting
+greeting := espGreeting
 dialog("Alice", greeting)
 // Output:
 // ¡Hola Alice, mucho gusto!
