@@ -6,7 +6,7 @@ In this exercise, you are going to build a program to help Bob manage and analyz
 
 Bob works with `Record`s and `DaysPeriod`s.
 
-A `Record` represents and expense record that contains the day in which the expense was made, the money spent, and the category of the expense.
+A `Record` represents an expense record that contains the day in which the expense was made, the money spent, and the category of the expense.
 
 ```go
 // Record represents an expense record.
