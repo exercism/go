@@ -95,6 +95,8 @@ s = re.FindString(" abc!")       // => "abc"
 s = re.FindString("123 456")     // => ""
 ```
 
+### `FindStringSubmatch` Examples
+
 Method `FindStringSubmatch` returns a slice of strings holding the text of the leftmost match of the regular expression and the matches, if any, of its subexpressions.
 This can be used to identify the strings matching capturing groups.
 A return value of `nil` indicates no match.
