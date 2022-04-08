@@ -76,7 +76,7 @@ Please see the [API documentation][package-regexp] for details of these and othe
  
 ### `MatchString` Examples 
 
-Method `MatchString` reports whether a strings contains any match of a regular expression.
+Method `MatchString` reports whether a string contains any match of a regular expression.
 
 ```go
 re = regexp.MustCompile(`[a-z]+\d*`)
