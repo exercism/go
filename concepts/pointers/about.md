@@ -72,8 +72,8 @@ The operation `*p` fetches the value stored at the memory address stored in `p`.
 We can also use the dereference operator to assign a new value to the memory address referenced by the pointer:
 
 ```go
-var a int
-a = 2   // declare int variable 'a' and assign it the value of 2
+var a int        // declare int variable 'a'
+a = 2            // assign 'a' the value of 2
 
 var pa *int
 pa = &a          // 'pa' now contains to the memory address of 'a'  
