@@ -25,9 +25,12 @@ because it means we don't need to escape backslashes:
 
 ## Compiling patterns - `RegExp` type
 
-The package defines a type `Regexp` for compiled regular expressions.
-Function `regexp.Compile` compiles a string into a regular expression.
-The function returns `nil` and an error if compilation failed:
+To use a regular expression, we first must compile the string pattern.
+Compilation here means taking the string pattern of the regular expression and converting it into an internal representation that is easier to work with.
+We only need to compile each pattern once, after that we can use the compiled version of the regular expression many times.
+The type `regexp.Regexp` represents a compiled regular expressions.
+We can compile a string pattern into a `regexp.Regexp` using the function  `regexp.Compile`.
+This function returns `nil` and an error if compilation failed:
 
 ```go
 re, err := regexp.Compile(`(a|b)+`)
