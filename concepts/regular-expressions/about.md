@@ -23,7 +23,7 @@ because it means we don't need to escape backslashes:
 `\\` // string with 2 backslashes
 ```
 
-## Type `RegExp`
+## Compiling patterns - `RegExp` type
 
 The package defines a type `Regexp` for compiled regular expressions.
 Function `regexp.Compile` compiles a string into a regular expression.
