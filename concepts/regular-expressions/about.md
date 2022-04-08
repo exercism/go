@@ -149,7 +149,6 @@ Package `regexp` implements [RE2 regular expressions][re2-syntax] (except for `\
 The syntax is largely compatible with PCRE ("Perl Compatible Regular Expression"), but there are some differences.
 Please see the "Caveat section" in [this article][reg-exp-wild] for details.
    
-[raw-string-literals]:https://yourbasic.org/golang/regexp-cheat-sheet/#raw-strings
 [package-regexp]:https://pkg.go.dev/regexp
 [regexp-syntax]:https://pkg.go.dev/regexp/syntax
 [re2-syntax]: https://golang.org/s/re2syntax
