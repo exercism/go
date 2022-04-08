@@ -1,3 +1,3 @@
-module parsing_log_files
+module parsinglogfiles
 
 go 1.16

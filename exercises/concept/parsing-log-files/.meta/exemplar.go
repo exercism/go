@@ -1,4 +1,4 @@
-package parsing_log_files
+package parsinglogfiles
 
 import (
 	"regexp"

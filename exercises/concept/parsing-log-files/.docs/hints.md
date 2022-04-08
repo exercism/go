@@ -16,7 +16,7 @@
 ## 3. Count the number of lines containing `password` in quoted text
  
 - You can make expression matching case sensitive by prefixing the regular expression with `(?i)`.
-This will set the `i` flag, see for example [yourbasic.org][yourbasic-i-flag].
+This will set the `i` flag.  See [this tutorial][yourbasic-i-flag].
 
 ## 4. Remove artifacts from log
 

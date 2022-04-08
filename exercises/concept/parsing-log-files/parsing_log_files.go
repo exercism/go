@@ -1,21 +1,21 @@
-package parsing_log_files
+package parsinglogfiles
 
 func IsValidLine(text string) bool {
-	panic("IsValidLine not implemented")
+	panic("Please implement the IsValidLine function")
 }
 
 func SplitLogLine(text string) []string {
-	panic("SplitLogLine not implemented")
+	panic("Please implement the SplitLogLine function")
 }
 
 func CountQuotedPasswords(lines []string) int {
-	panic("CountQuotedPasswords not implemented")
+	panic("Please implement the CountQuotedPasswords function")
 }
 
 func RemoveEndOfLineText(text string) string {
-	panic("RemoveEndOfLineText not implemented")
+	panic("Please implement the RemoveEndOfLineText function")
 }
 
 func TagWithUserName(lines []string) []string {
-	panic("TagWithUserName not implemented")
+	panic("Please implement the TagWithUserName function")
 }

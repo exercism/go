@@ -6,11 +6,24 @@ Package [regexp][package-regexp] offers support for regular expressions in Go.
 
 The [syntax][regexp-syntax] of the regular expressions accepted is the same general syntax used by Perl, Python, and other languages. 
 
-All characters are UTF-8-encoded code points. 
-Following `utf8.DecodeRune`, each byte of an invalid UTF-8 sequence is treated as if it encoded `utf8.RuneError (U+FFFD)`.
+Both the search patterns and the input texts are interpreted as UTF-8.  
 
-It is convenient to write regular expressions as [raw string literals][raw-string-literals] enclosed by backticks.
-This avoids having to quote the backslashes.
+When using backticks ``(`)`` to make strings, backslashes `(\)`  don't have any special
+meaning, and don't mark the beginning of special characters like tabs `\t` or
+newlines `\`n:
+
+```go
+"\t\n" // regular string literal with 2 characters: a tab and a newline
+`\t\n`// raw string literal with 4 characters: two backslashes, a 't', and an 'n'
+```
+
+Because of this, using backticks is desirable to make regular expressions,
+because it means we don't need to escape backslashes:
+
+```go
+"\\" // string with a single backslash
+`\\` // string with 2 backslashes
+```
 
 ## Type `RegExp`
 
@@ -25,9 +38,18 @@ re, err = regexp.Compile(`a|b)+`)
 fmt.Println(re, err) // => <nil> error parsing regexp: unexpected ): `a|b)+`
 ```
 
-Function `MustCompile` is like `Compile` but panics if the expression cannot be parsed.
-It simplifies safe initialization of global variables holding compiled regular expressions.
-  
+Function `MustCompile` is a convenient alternative to `Compile`: 
+
+```go 
+re = regexp.MustCompile(`[a-z]+\d*`)
+```
+
+Using this function, there is no need to handle an error. 
+
+~~~~exercism/caution
+ `MustCompile` should only be used when we know for sure the pattern does compile, as otherwise the program will panic.
+ ~~~~
+   
 There are 16 methods of `Regexp` that match a regular expression and identify the matched text.
 Their names are matched by this regular expression:
 
