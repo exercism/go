@@ -8,6 +8,7 @@
 ## 1. Identify garbled log lines
 
 - Function [regexp.MatchString][fun-match-string] or method [MatchString][method-match-string] could be useful here.
+- In a regular expression, the character `^` matches the beginning of a line/string.
 
 ## 2. Split the log line
 
