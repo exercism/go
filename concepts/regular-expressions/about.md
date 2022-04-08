@@ -8,9 +8,7 @@ The [syntax][regexp-syntax] of the regular expressions accepted is the same gene
 
 Both the search patterns and the input texts are interpreted as UTF-8.  
 
-When using backticks ``(`)`` to make strings, backslashes `(\)`  don't have any special
-meaning, and don't mark the beginning of special characters like tabs `\t` or
-newlines `\`n:
+When using backticks (\`) to make strings, backslashes (`\`)  don't have any special meaning and don't mark the beginning of special characters like tabs `\t` or newlines `\n`:
 
 ```go
 "\t\n" // regular string literal with 2 characters: a tab and a newline
