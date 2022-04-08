@@ -98,6 +98,6 @@ for i := 0; i < N; i++ {
 }
 ```
 
-A call to `fib` initializes the variables `n1` and `n2` and returns an anonymous function that, in turn, changes the values of these variables each time the function is called. Nth calls of the anonymous function return the Nth number of the Fibonacci sequence starting from 0. The anonymous inner function has access to the local variables (`n1` and `n2`) of the enclosing function `fib`. This is a great way to have function values keep state between calls. We say that the anonymous function is a closure of the variables `n1` and `n2`. [Closures][closure] are widely used in programming and you might see other languages supporting them.
+A call to `fib` declares the variables `n1` and `n2` and returns an anonymous function that, in turn, changes the values of these variables each time the function is called. Nth calls of the anonymous function return the Nth number of the Fibonacci sequence starting from 0. The anonymous inner function has access to the local variables (`n1` and `n2`) of the enclosing function `fib`. This is a great way to have function values keep state between calls. We say that the anonymous function is a closure of the variables `n1` and `n2`. [Closures][closure] are widely used in programming and you might see other languages supporting them.
 
 [closure]: https://en.wikipedia.org/wiki/Closure_(computer_programming)
