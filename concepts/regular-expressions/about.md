@@ -47,7 +47,9 @@ Using this function, there is no need to handle an error.
 ~~~~exercism/caution
  `MustCompile` should only be used when we know for sure the pattern does compile, as otherwise the program will panic.
  ~~~~
-   
+ 
+ ## Regular expression methods
+ 
 There are 16 methods of `Regexp` that match a regular expression and identify the matched text.
 Their names are matched by this regular expression:
 
