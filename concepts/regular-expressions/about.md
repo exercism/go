@@ -109,6 +109,8 @@ sl = re.FindStringSubmatch(" abc!")       // => []string{"abc",""}
 sl = re.FindStringSubmatch("123 456")     // => <nil>
 ```
 
+### `ReplaceAllString` Examples
+
 Method `re.ReplaceAllString(src,repl)` returns a copy of `src`, replacing matches of the regular expression `re` with the replacement string `repl`.
 
 ```go
