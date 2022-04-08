@@ -71,7 +71,7 @@ All-in-all, the `regexp` package defines more than 40 functions and methods.
 We will demonstrate the use of a few methods below.
 Please see the [API documentation][package-regexp] for details of these and other functions.
  
-## Examples 
+### `MatchString` Examples 
 
 Method `MatchString` reports whether a strings contains any match of a regular expression.
 
