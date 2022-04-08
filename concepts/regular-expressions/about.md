@@ -82,7 +82,9 @@ b = re.MatchString("12abc34(ef)") // => true
 b = re.MatchString(" abc!")       // => true
 b = re.MatchString("123 456")     // => false    
 ```
- 
+
+### `FindString` Examples 
+
 Method `FindString` returns a string holding the text of the leftmost match of the regular expression.
 
 ```go
