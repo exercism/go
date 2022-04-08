@@ -120,7 +120,9 @@ s = re.ReplaceAllString("12abc34(ef)", "X") // => "12X(X)"
 s = re.ReplaceAllString(" abc!", "X")       // => " X!"
 s = re.ReplaceAllString("123 456", "X")     // => "123 456"
 ```
-  
+ 
+ ### `Split` Examples
+ 
 Method `re.Split(s,n)` slices a text `s` into substrings separated by the expression and returns a slice of the substrings between those expression matches.
 The count `n` determines the maximal number of substrings to return.
 If `n<0`, the method returns all substrings.
