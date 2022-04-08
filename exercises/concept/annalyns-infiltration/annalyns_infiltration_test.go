@@ -153,7 +153,7 @@ func TestCanFreePrisoner(t *testing.T) {
 			archerIsAwake:   false,
 			prisonerIsAwake: false,
 			dogIsPresent:    true,
-			expected:        true,
+			expected:        false,
 		},
 		{
 			desc:            "Knight and archer are sleeping. Prisoner is awake. Dog is not present.",
@@ -217,7 +217,7 @@ func TestCanFreePrisoner(t *testing.T) {
 			archerIsAwake:   false,
 			prisonerIsAwake: false,
 			dogIsPresent:    true,
-			expected:        true,
+			expected:        false,
 		},
 		{
 			desc:            "Knight is awake. Archer is sleeping. Prisoner is awake. Dog is not present",
