@@ -12,7 +12,7 @@ Go supports many standard arithmetic operators:
 | `/`      | `13 / 3 == 4`  |
 | `%`      | `13 % 3 == 1`  |
 
-For integer division, the remainder is dropped (eg. `5 / 2 == 2`).
+For integer division, the remainder is dropped (e.g. `5 / 2 == 2`).
 
 ## Arithmetic operations on different types
 
