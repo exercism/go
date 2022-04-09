@@ -23,5 +23,5 @@
 
 ## 5. Implement `DescribeAnything` which uses them all
 
-- either use type assertions (eg. `i.(someType)`) or a type switch (`switch v := i.(type)`)
+- either use type assertions (e.g. `i.(someType)`) or a type switch (`switch v := i.(type)`)
 - remember to convert `int` to a `float64`

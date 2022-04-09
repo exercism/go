@@ -39,7 +39,7 @@ It should accept 5 parameters.
 The exact result format can be seen in the example below.
 
 The robot provides the table number in a 3 digits format.
-If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (eg. 3 becomes 003).
+If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (e.g. 3 becomes 003).
 The robot also mentions the distance of the table.
 Fortunately only with a precision that's limited to 1 digit.
 
