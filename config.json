@@ -414,6 +414,20 @@
           "slices"
         ],  
         "status": "beta"
+      },
+      {
+        "slug": "parsing-log-files",
+        "name": "Parsing Log Files",
+        "uuid": "cb5de717-6c7c-4bf7-85ac-e5658bd84bf5", 
+        "concepts": [
+          "regular-expressions"
+        ], 
+        "prerequisites": [
+          "runes",
+          "methods",
+          "slices"
+        ],  
+        "status": "beta"
       }
     ],
     "practice": [
@@ -2021,6 +2035,11 @@
       "name": "Randomness",
       "slug": "randomness",
       "uuid": "5d354412-a87d-458b-af6c-fadfa58cfdc3"
+    },
+    {
+      "name": "Regular Expressions",
+      "slug": "regular-expressions",
+      "uuid": "fa43f573-0dcb-47cf-a006-8d464112f7db"
     },
     {
       "name": "Runes",

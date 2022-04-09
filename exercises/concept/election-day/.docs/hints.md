@@ -4,7 +4,7 @@
 
 - `*T` can be used to declared variables that are pointers to some type `T`, e.g `var i *int` declares a variable `i` that is a pointer to an `int`
 - You can get a pointer for a variable (its memory address) by using the `&` operator, e.g `mypointer := &anIntVariable`.
-- You can get the value stored in a pointer by using the `*` operator on a pointer, eg. `var i int = *aPointerToInt`. This is called dereferencing the pointer.
+- You can get the value stored in a pointer by using the `*` operator on a pointer, e.g. `var i int = *aPointerToInt`. This is called dereferencing the pointer.
 - You check if a pointer is not `nil` before dereferencing it. Attempting to dereference a `nil` pointer will give you a runtime error.
 - If you are unsure how pointers work, try reading [Tour of Go: Pointers][go-tour-pointers] or [Go by Example: Pointers][go-by-example-pointers]
 
