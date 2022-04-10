@@ -11,7 +11,7 @@ firstName := "Jane"
 Strings can be concatenated via the `+` operator:
 
 ```go
-fullName := "Jane" + " " + "Austen" // Output: "Jane Austen"
+fullName := "Jane" + " " + "Austen" // fullName = "Jane Austen"
 ```
 
 Some special characters need to be escaped with a leading backslash, such as "/n" for new lines in strings.
