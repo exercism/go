@@ -25,7 +25,7 @@ fmt.Println(s.Greetings())
 // Output: Welcome Bronson !
 ```
 
-There is two types of receivers, value receivers and pointer receivers.
+There are two types of receivers, value receivers, and pointer receivers.
 
 Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
