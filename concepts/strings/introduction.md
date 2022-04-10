@@ -17,7 +17,9 @@ fullName := "Jane" + " " + "Austen" // fullName = "Jane Austen"
 Some special characters need to be escaped with a leading backslash, such as "/n" for new lines in strings.
 ```go
 Dialogue := "How is the weather today?\nIt's sunny"  
-// Output: "How is the weather today?
+
+
+// Dialogue = "How is the weather today?
 // It's sunny"  
 ```
 
@@ -27,14 +29,14 @@ The `strings` package contains many useful functions to work on strings, such as
 ```go
 import "strings"
 
-strings.ToLower("MaKEmeLoweRCase") // Output: "makemelowercase"
+fmt.Println(strings.ToLower("MaKEmeLoweRCase")) // Output: "makemelowercase"
 
-strings.ToUpper("MaKemeUpPercaSe") // Output: "MAKEMEUPPERCASE"
+fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
 
-strings.Repeat("Go", 3) // Output: "GoGoGo" 
+fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
 
-strings.ReplaceAll("your cat is playing with your pillow", "your", "my") // Output: "my cat is playing with my pillow
+fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
 
-strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n") // Output: "Hello, Gophers"
+fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
 
 ```
