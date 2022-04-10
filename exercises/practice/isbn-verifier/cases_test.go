@@ -25,5 +25,7 @@ var testCases = []struct {
 	{"", false, "empty isbn"},
 	{"134456729", false, "input is 9 characters"},
 	{"3132P34035", false, "invalid characters are not ignored"},
+	{"4-598-21507-A", false, "invalid characters at the end are not ignored"},
+	{"356243403A", false, "invalid characters at the end without separating dashes are not ignored"},
 	{"98245726788", false, "input is too long but contains a valid isbn"},
 }
