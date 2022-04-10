@@ -574,7 +574,7 @@
         "uuid": "d0a2afab-e30d-4617-b646-413a44ecf2ed",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 3,
+        "difficulty": 4,
         "topics": [
           "records",
           "refactoring",
