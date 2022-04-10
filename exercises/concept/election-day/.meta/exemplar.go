@@ -3,7 +3,7 @@ package electionday
 import "fmt"
 
 // NewVoteCounter returns a new vote counter with
-// a given number of inital votes.
+// a given number of initial votes.
 func NewVoteCounter(initialVotes int) *int {
 	return &initialVotes
 }
