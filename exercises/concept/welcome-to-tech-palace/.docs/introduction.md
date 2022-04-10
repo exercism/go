@@ -14,7 +14,7 @@ Strings can be concatenated via the `+` operator:
 fullName := "Jane" + " " + "Austen" // fullName = "Jane Austen"
 ```
 
-Some special characters need to be escaped with a leading backslash, such as "/n" for new lines in strings.
+Some special characters need to be escaped with a leading backslash, such as `\b` for Backspace and `/n` for new lines in strings.
 ```go
 Dialogue := "How is the weather today?\nIt's sunny"  
 
