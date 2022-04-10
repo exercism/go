@@ -29,14 +29,19 @@ The `strings` package contains many useful functions to work on strings, such as
 ```go
 import "strings"
 
+// Returns all the received character(s) to their lower case by (strings.ToLower(s string)
 fmt.Println(strings.ToLower("MaKEmeLoweRCase")) // Output: "makemelowercase"
 
+// Returns all the received character(s) to their upper case by (strings.ToUpper(s string))
 fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
 
+// Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
 fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
 
+// Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
 fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
 
+// Returns a slice of the string s, with all leading and trailing white space removed by (strings.TrimSpace(s string))
 fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
 
 ```
