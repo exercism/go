@@ -17,7 +17,9 @@ fullName := "Jane" + " " + "Austen" // fullName = "Jane Austen"
 Some special characters need to be escaped with a leading backslash, such as "/n" for new lines in strings.
 ```go
 Dialogue := "How is the weather today?\nIt's sunny"  
-// Output: "How is the weather today?
+
+
+// Dialogue = "How is the weather today?
 // It's sunny"  
 ```
 
@@ -27,14 +29,19 @@ The `strings` package contains many useful functions to work on strings, such as
 ```go
 import "strings"
 
-strings.ToLower("MaKEmeLoweRCase") // Output: "makemelowercase"
+// Returns all the received character(s) to their lower case by (strings.ToLower(s string)
+fmt.Println(strings.ToLower("MaKEmeLoweRCase")) // Output: "makemelowercase"
 
-strings.ToUpper("MaKemeUpPercaSe") // Output: "MAKEMEUPPERCASE"
+// Returns all the received character(s) to their upper case by (strings.ToUpper(s string))
+fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
 
-strings.Repeat("Go", 3) // Output: "GoGoGo" 
+// Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
+fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
 
-strings.ReplaceAll("your cat is playing with your pillow", "your", "my") // Output: "my cat is playing with my pillow
+// Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
+fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
 
-strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n") // Output: "Hello, Gophers"
+// Returns a slice of the string s, with all leading and trailing white space removed by (strings.TrimSpace(s string))
+fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
 
 ```
