@@ -94,7 +94,7 @@ Filter(records, ByDaysPeriod(period))
 Other than filtering records by a period of time, Bob also needs to filter records by its category.
 
 Implement the `ByCategory` function that will help Bob create such filters.
-This function accepts a category and returns function that takes a record and tells whether the category of this record is the same as the category given as argument.
+This function accepts a category and returns a function that takes a record and tells whether the category of this record is the same as the category given as the argument.
 
 ```go
 records := []Record{
