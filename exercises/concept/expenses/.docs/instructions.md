@@ -18,7 +18,7 @@ type Record struct {
 ```
 
 A `DaysPeriod` represents a range of days and includes all days from the day `From` up to the day `To`.
-Both ends are included in the range
+Both ends are included in the range.
 
 ```go
 // DaysPeriod represents a period of days.
@@ -94,7 +94,7 @@ Filter(records, ByDaysPeriod(period))
 Other than filtering records by a period of time, Bob also needs to filter records by its category.
 
 Implement the `ByCategory` function that will help Bob create such filters.
-This function accepts a category and returns function that takes a record and tells whether the record is in the period of time specified by the category given as argument.
+This function accepts a category and returns a function that takes a record and tells whether the category of this record is the same as the category given as the argument.
 
 ```go
 records := []Record{
@@ -116,7 +116,7 @@ Filter(records, ByCategory("groceries"))
 
 Bob also wants to know the total amount of the expenses in a period of time.
 
-Implement the `TotalByPeriod` function to return a sum of expenses in the days period
+Implement the `TotalByPeriod` function to return a sum of expenses in the days period.
 
 ```go
 records := []Record{
