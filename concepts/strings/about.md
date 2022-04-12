@@ -23,7 +23,7 @@ import "strings"
 fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
 // Output: "makemelowercase"
 
-// Returns all the received character(s) to their upper case by (strings.ToUpper(s string))
+// strings.ToUpper(s string) returns the string given as argument with all its characters uppercased
 fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
 
 // Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
