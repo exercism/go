@@ -19,7 +19,7 @@ The `strings` package contains many useful functions to work on strings, such as
 ```go
 import "strings"
 
-// Returns all the received character(s) to their lower case by (strings.ToLower(s string)
+// strings.ToLower returns the string given as argument with all its characters lowercased
 fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
 // Output: "makemelowercase"
 
