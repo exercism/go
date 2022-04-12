@@ -8,7 +8,6 @@ A string literal is defined between double quotes:
 ```go
 const name = "Jane"
 ```
-<br />
 Strings can be concatenated via the `+` operator:
 
 ```go
