@@ -57,10 +57,10 @@ Some special characters need to be escaped with a leading backslash;
 fmt.Println("Joe\nWilliam\nJack\nAverell") 
 
 // Output:
-//Joe
-//William
-//Jack
-//Averell
+// Joe
+// William
+// Jack
+// Averell
 ```
 
 Raw string literals use backticks (\`) as their delimiter instead of double quotes and are interpreted literally, meaning that there is no need to escape characters or newlines.
