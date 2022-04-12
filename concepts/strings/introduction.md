@@ -18,9 +18,7 @@ Some special characters need to be escaped with a leading backslash, such as `\t
 
 ```go
 Dialogue := "How is the weather today?\nIt's sunny"  
-
-
-// Dialogue = "How is the weather today?
+// "How is the weather today?
 // It's sunny"  
 ```
 
