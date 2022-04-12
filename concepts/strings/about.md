@@ -14,7 +14,6 @@ Strings can be concatenated via the `+` operator:
 
 fullName := "Jane" + " " + "Austen" // "Jane Austen"
 ```
-<br />
 The `strings` package contains many useful functions to work on strings, such as Repeat, ToUpper, ToLower, ReplaceAll, TrimSpace and many more. For getting more information about strings functions check out [strings page](https://pkg.go.dev/strings).
 
 ```go
