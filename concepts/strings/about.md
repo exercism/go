@@ -36,7 +36,6 @@ fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "
 fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
 
 ```
-<br />
 
 Some special characters need to be escaped with a leading backslash;
 
