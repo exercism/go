@@ -20,7 +20,8 @@ The `strings` package contains many useful functions to work on strings, such as
 import "strings"
 
 // Returns all the received character(s) to their lower case by (strings.ToLower(s string)
-fmt.Println(strings.ToLower("MaKEmeLoweRCase")) // Output: "makemelowercase"
+fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
+// Output: "makemelowercase"
 
 // Returns all the received character(s) to their upper case by (strings.ToUpper(s string))
 fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
