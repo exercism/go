@@ -28,7 +28,8 @@ fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
 // Output: "MAKEMEUPPERCASE"
 
 // strings.Repeat returns a string with a substring given as argument repeated many times
-fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
+fmt.Println(strings.Repeat("Go", 3))
+// Output: "GoGoGo" 
 
 // Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
 fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
