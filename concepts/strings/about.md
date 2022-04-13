@@ -31,7 +31,7 @@ fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
 fmt.Println(strings.Repeat("Go", 3))
 // Output: "GoGoGo" 
 
-// Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
+// strings.ReplaceAll returns a copy of a string with all non-overlapping instances of a substring replaced by another substring
 fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my"))
 // Output: "my cat is playing with my pillow"
 
