@@ -33,7 +33,8 @@ fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo"
 fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
 
 // Returns a slice of the string s, with all leading and trailing white space removed by (strings.TrimSpace(s string))
-fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
+fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n"))
+// Output: "Hello, Gophers"
 
 ```
 
