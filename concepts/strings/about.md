@@ -66,13 +66,31 @@ fmt.Println("Joe\nWilliam\nJack\nAverell")
 // Averell
 ```
 
-Raw string literals use backticks (\`) as their delimiter instead of double quotes and are interpreted literally, meaning that there is no need to escape characters or newlines.
+## Raw string literals
+
+Raw string literals use backticks (\`) as their delimiter instead of double quotes and all characters in it are interpreted literally, meaning that there is no need to escape characters or newlines.
 
 ```go
 const daltons = `Joe
 William
 Jack
 Averell`
+```
+
+```go
+`abc`
+// same as "abc"
+
+"\"" // regular string literal with 1 character: a double quote
+// same as `"` a raw string literal with 1 character: a double quote
+
+`\n
+` // raw string literal with 3 character: a backslashes, an 'n', and a newline
+// same as "\\n\n"  a regular string literal with 3 characters: a backslashes, an 'n', and a newline
+
+"\t\n" // regular string literal with 2 characters: a tab and a newline
+`\t\n`// raw string literal with 4 characters: two backslashes, a 't', and an 'n'
+
 ```
 
 
