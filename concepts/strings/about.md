@@ -24,7 +24,8 @@ fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
 // Output: "makemelowercase"
 
 // strings.ToUpper(s string) returns the string given as argument with all its characters uppercased
-fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
+fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
+// Output: "MAKEMEUPPERCASE"
 
 // Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
 fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
