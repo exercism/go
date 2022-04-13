@@ -27,7 +27,7 @@ fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
 fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
 // Output: "MAKEMEUPPERCASE"
 
-// Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
+// strings.Repeat returns a string with a substring given as argument repeated many times
 fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
 
 // Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
