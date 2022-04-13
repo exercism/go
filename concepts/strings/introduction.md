@@ -2,16 +2,17 @@
 
 A `string` in Go is an immutable sequence of bytes, which don't necessarily have to represent characters.
 
-A `string` literal is a sequence of bytes enclosed in double quotes:
+A string literal is defined between double quotes:
+
 
 ```go
-firstName := "Jane"
+const name = "Jane"
 ```
-
 Strings can be concatenated via the `+` operator:
 
 ```go
-fullName := "Jane" + " " + "Austen" // fullName = "Jane Austen"
+
+fullName := "Jane" + " " + "Austen" // "Jane Austen"
 ```
 
 Some special characters need to be escaped with a leading backslash, such as `\t` for a tab and `\n` for a new line in strings.
@@ -22,25 +23,29 @@ Dialogue := "How is the weather today?\nIt's sunny"
 // It's sunny"  
 ```
 
-
-The `strings` package contains many useful functions to work on strings, such as Repeat, ToUpper, ToLower, ReplaceAll, TrimSpace and many more. For getting more information about strings functions check out [strings page](https://pkg.go.dev/strings).
+The `strings` package contains many useful functions to work on strings, such as `Repeat`, `ToUpper`, `ToLower`, `ReplaceAll`, `TrimSpace`, and many more. For getting more information about strings functions check out the [strings package documentation](https://pkg.go.dev/strings).
 
 ```go
 import "strings"
 
-// Returns all the received character(s) to their lower case by (strings.ToLower(s string)
-fmt.Println(strings.ToLower("MaKEmeLoweRCase")) // Output: "makemelowercase"
+// strings.ToLower returns the string given as argument with all its characters lowercased
+fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
+// Output: "makemelowercase"
 
-// Returns all the received character(s) to their upper case by (strings.ToUpper(s string))
-fmt.Println(strings.ToUpper("MaKemeUpPercaSe")) // Output: "MAKEMEUPPERCASE"
+// strings.ToUpper(s string) returns the string given as argument with all its characters uppercased
+fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
+// Output: "MAKEMEUPPERCASE"
 
-// Returns a new string consisting of count copies of the string s by (strings.Repeat(s string, n int))
-fmt.Println(strings.Repeat("Go", 3)) // Output: "GoGoGo" 
+// strings.Repeat returns a string with a substring given as argument repeated many times
+fmt.Println(strings.Repeat("Go", 3))
+// Output: "GoGoGo" 
 
-// Returns a copy of the string s with all non-overlapping instances of old replaced by new by (strings.ReplaceAll(s, old, new string))
-fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my")) // Output: "my cat is playing with my pillow
+// strings.ReplaceAll returns a copy of a string with all non-overlapping instances of a substring replaced by another substring
+fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my"))
+// Output: "my cat is playing with my pillow"
 
-// Returns a slice of the string s, with all leading and trailing white space removed by (strings.TrimSpace(s string))
-fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n")) // Output: "Hello, Gophers"
+// strings.TrimSpace removes all leading and trailing whitespace from a string
+fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n"))
+// Output: "Hello, Gophers"
 
 ```
