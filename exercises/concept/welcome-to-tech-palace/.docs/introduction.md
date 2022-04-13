@@ -5,7 +5,7 @@ A `string` in Go is an immutable sequence of bytes, which don't necessarily have
 A `string` literal is a sequence of bytes enclosed in double quotes:
 
 ```go
-firstName := "Jane"
+const name = "Jane"
 ```
 
 Strings can be concatenated via the `+` operator:
