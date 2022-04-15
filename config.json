@@ -398,35 +398,36 @@
           "for-loops",
           "functions",
           "structs",
-          "type-definitions"
+          "type-definitions",
+          "errors"
         ],
         "status": "beta"
       },
       {
         "slug": "animal-magic",
         "name": "Animal Magic",
-        "uuid": "71a1be49-daf1-4043-af6e-33cd44481bb5", 
+        "uuid": "71a1be49-daf1-4043-af6e-33cd44481bb5",
         "concepts": [
           "randomness"
-        ], 
+        ],
         "prerequisites": [
-          "arithmetic-operators", 
+          "arithmetic-operators",
           "slices"
-        ],  
+        ],
         "status": "beta"
       },
       {
         "slug": "parsing-log-files",
         "name": "Parsing Log Files",
-        "uuid": "cb5de717-6c7c-4bf7-85ac-e5658bd84bf5", 
+        "uuid": "cb5de717-6c7c-4bf7-85ac-e5658bd84bf5",
         "concepts": [
           "regular-expressions"
-        ], 
+        ],
         "prerequisites": [
           "runes",
           "methods",
           "slices"
-        ],  
+        ],
         "status": "beta"
       }
     ],
