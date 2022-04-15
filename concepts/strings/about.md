@@ -8,40 +8,32 @@ A string literal is defined between double quotes:
 ```go
 const name = "Jane"
 ```
+
 Strings can be concatenated via the `+` operator:
 
 ```go
 
-fullName := "Jane" + " " + "Austen" // "Jane Austen"
+fullName := "Jane" + " " + "Austen"
+// "Jane Austen"
 ```
-The `strings` package contains many useful functions to work on strings, such as `Repeat`, `ToUpper`, `ToLower`, `ReplaceAll`, `TrimSpace`, and many more. For getting more information about strings functions check out the [strings package documentation](https://pkg.go.dev/strings).
+
+The `strings` package contains many useful functions to work on strings.
+For more information about string functions, check out the [strings package documentation](https://pkg.go.dev/strings).
+Here are some examples:
 
 ```go
 import "strings"
 
 // strings.ToLower returns the string given as argument with all its characters lowercased
-fmt.Println(strings.ToLower("MaKEmeLoweRCase"))
-// Output: "makemelowercase"
-
-// strings.ToUpper(s string) returns the string given as argument with all its characters uppercased
-fmt.Println(strings.ToUpper("MaKemeUpPercaSe"))
-// Output: "MAKEMEUPPERCASE"
+strings.ToLower("MaKEmeLoweRCase")
+// "makemelowercase"
 
 // strings.Repeat returns a string with a substring given as argument repeated many times
-fmt.Println(strings.Repeat("Go", 3))
-// Output: "GoGoGo" 
-
-// strings.ReplaceAll returns a copy of a string with all non-overlapping instances of a substring replaced by another substring
-fmt.Println(strings.ReplaceAll("your cat is playing with your pillow", "your", "my"))
-// Output: "my cat is playing with my pillow"
-
-// strings.TrimSpace removes all leading and trailing whitespace from a string
-fmt.Println(strings.TrimSpace(" \t\n Hello, Gophers \n\t\r\n"))
-// Output: "Hello, Gophers"
-
+strings.Repeat("Go", 3)
+// "GoGoGo" 
 ```
 
-Some special characters need to be escaped with a leading backslash;
+Some special characters need to be escaped with a leading backslash:
 
 | Value | Description          |
 | ----- | -------------------- |
@@ -70,12 +62,18 @@ fmt.Println("Joe\nWilliam\nJack\nAverell")
 
 Raw string literals use backticks (\`) as their delimiter instead of double quotes and all characters in it are interpreted literally, meaning that there is no need to escape characters or newlines.
 
+This is an example of a multiline string:
+
 ```go
 const daltons = `Joe
 William
 Jack
 Averell`
 ```
+
+This string has multiple lines. More specifically, it has 3 `\n`. However, because we are a raw string literal, we don't need to put the `\n` explicitly in the string. The newlines will be interpreted literally.
+
+Here are some other examples comparing raw string literals with regular string literals:
 
 ```go
 `abc`
@@ -85,12 +83,11 @@ Averell`
 // same as `"` a raw string literal with 1 character: a double quote
 
 `\n
-` // raw string literal with 3 character: a backslashes, an 'n', and a newline
-// same as "\\n\n"  a regular string literal with 3 characters: a backslashes, an 'n', and a newline
+` // raw string literal with 3 character: a backslash, an 'n', and a newline
+// same as "\\n\n"  a regular string literal with 3 characters: a backslash, an 'n', and a newline
 
 "\t\n" // regular string literal with 2 characters: a tab and a newline
 `\t\n`// raw string literal with 4 characters: two backslashes, a 't', and an 'n'
-
 ```
 
 
