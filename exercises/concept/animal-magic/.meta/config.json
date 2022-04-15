@@ -6,5 +6,6 @@
     "solution": ["animal_magic.go"],
     "test": ["animal_magic_test.go"],
     "exemplar": [".meta/exemplar.go"]
-  }
+  },
+  "icon": "roll-the-die"
 }
