@@ -31,8 +31,8 @@ rate := CalculateWorkingCarsPerMinute(1105, 90)
 
 ## 3. Calculate the cost of production 
 
-Each car normally costs $10,000 to produce individually, regardless of whether it is successful or not.
-But with a bit of planning, 10 cars can be produced together for $95,000.
+Each car normally costs \$10,000 to produce individually, regardless of whether it is successful or not.
+But with a bit of planning, 10 cars can be produced together for \$95,000.
 
 For example, 37 cars can be produced in the following way:
 37 = 3 x groups of ten + 7 individual cars
