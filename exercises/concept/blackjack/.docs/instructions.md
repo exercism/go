@@ -4,15 +4,15 @@ In this exercise we will simulate the first turn of a [Blackjack](https://en.wik
 
 You will receive two cards and will be able to see the face up card of the dealer. All cards are represented using a string such as "ace", "king", "three", "two", etc. The values of each card are:
 
-| card  | value | card  | value |
-| :---: | :---: | :---: | :---: |
-|  ace  |  11   | eight |   8   |
-|  two  |   2   | nine  |   9   |
-| three |   3   |  ten  |  10   |
-| four  |   4   | jack  |  10   |
-| five  |   5   | queen |  10   |
-|  six  |   6   | king  |  10   |
-| seven |   7   | other |   0   |
+| card  | value | card    | value |
+| :---: | :---: | :-----: | :---: |
+|  ace  |  11   | eight   |   8   |
+|  two  |   2   | nine    |   9   |
+| three |   3   |  ten    |  10   |
+| four  |   4   | jack    |  10   |
+| five  |   5   | queen   |  10   |
+|  six  |   6   | king    |  10   |
+| seven |   7   | *other* |   0   |
 
 **Note**: Commonly, aces can take the value of 1 or 11 but for simplicity we will assume that they can only take the value of 11.
 
