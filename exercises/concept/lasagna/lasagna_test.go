@@ -31,7 +31,7 @@ func TestRemainingOvenTime(t *testing.T) {
 			name:     "Remaining minutes in oven",
 			layers:   0,
 			time:     15,
-			expected: 15,
+			expected: 25,
 		},
 	}
 	for _, tt := range tests {
