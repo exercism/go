@@ -52,7 +52,7 @@ func TestPreparationTime(t *testing.T) {
 			expected: 2,
 		},
 		{
-			name:     "Preparation time in minutes for multiple layer",
+			name:     "Preparation time in minutes for multiple layers",
 			layers:   4,
 			time:     0,
 			expected: 8,
@@ -77,7 +77,7 @@ func TestElapsedTime(t *testing.T) {
 			expected: 32,
 		},
 		{
-			name:     "Total time in minutes for multiple layer",
+			name:     "Total time in minutes for multiple layers",
 			layers:   4,
 			time:     8,
 			expected: 16,
