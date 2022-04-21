@@ -36,8 +36,8 @@ func TestRemainingOvenTime(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := RemainingOvenTime(25); got != tt.time {
-				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.expected, got, tt.expected)
+			if got := RemainingOvenTime(tt.time); got != tt.expected {
+				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.time, got, tt.expected)
 			}
 		})
 	}
