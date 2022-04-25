@@ -43,34 +43,6 @@ For instance, in the example below, `"Hello"` and `"Katrina"` are the arguments 
 PrintGreetingName("Hello", "Katrina")
 ```
 
-## Pass by Value & Pass by Pointer
-
-It is also important to clarify the concept of passing by value as well as passing by pointer (sometimes referred to as _by reference_).
-In the example below, `name`, the `string` parameter to the function `PrintHelloName`, is passed into the function by value.
-This means that Go essentially makes a copy of the original value so that only this copy is accessed or modified by our function.
-
-```go
-import "fmt"
-
-func PrintHelloName(name string) {
-  fmt.Println("Hello " + name)
-}
-```
-
-Strictly speaking, all arguments are passed by value in Go, i.e. a copy is made of the value or data provided to the function.
-But if you don't want to make a copy of the data that you choose to pass to a function and
-want to actually access and change the data in the function,
-then you should use pointers as arguments, a.k.a. pass by reference.
-
-In Go, not only can we pass primitive values into a function, but we can also pass a `pointer` of these values
-(a reference to the data) to the function.
-This means that the function receives only a copy to the pointer instead of the underlying data that this pointer refers to.
-Note that we say _a copy to the pointer_ since everything is passed by value to functions in Go,
-but a pointer copy, in contrast to a value copy, gives us an "address" that points to the data we want to access and modify.
-
-If the concept of `pointer` is confusing, no worries.
-We have more details below as well as a dedicated section to help you understand pointers.
-
 ## Return Values
 
 The function arguments are followed by zero or more return values which must also be explicitly typed.
@@ -134,10 +106,14 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 }
 ```
 
-## Pointers
+## Pass by Value vs. Pass by Reference
 
-Functions in Go pass their arguments by value.
-This means that the arguments are copied and any changes to the arguments passed to the function will stay inside the function.
+It is also important to clarify the concept of passing by value and passing by reference.
+
+First, let's clarify passing by value.
+In the example below, when we pass the variable `val` to the function `MultiplyByTwo`, we passed a copy of `val`.
+Because of this, `newVal` has the updated value `4` but the original variable `val` is still `2`.
+Behind the scene, Go essentially makes a copy of the original value so that only this copy, a.k.a. `v`, is modified by the function.
 
 ```go
 val := 2
@@ -145,18 +121,30 @@ func MultiplyByTwo(v int) int {
     v = v * 2
     return v
 }
-newval := MultiplyByTwo(val)
+newVal := MultiplyByTwo(val)
 // newval is 4, val is still 2 because only a copy of its value was passed into the function
 ```
 
-To modify the underlying data passed via an argument, we must pass pointer arguments into the function.
+Strictly speaking, all arguments are passed by value in Go, i.e. a copy is made of the value or data provided to the function.
+But if you don't want to make a copy of the data that is passed to a function and want to change the data in the function,
+then you should use `pointers` as arguments, a.k.a. pass by reference.
+
+## Pointers
+
+We use a `pointer` to achieve passing by reference.
+By passing `pointer` arguments into a function,
+we could modify the underlying data passed into the function instead of only operating on a copy of the data.
+
 For now, it is sufficient to know that pointer types can be recognized by the `*` in front of the type in the function signature.
 
 ```go
 func HandlePointers(x, y *int) {
-    // Some logic to handle integer pointers x and y
+    // Some logic to handle integer values referenced by pointers x and y
 }
 ```
+
+If the concept of `pointer` is confusing, no worries.
+We have a dedicated section later in the syllabus to help you master pointers.
 
 ## Exceptions
 
