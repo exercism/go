@@ -32,11 +32,12 @@ func PrintGreetingName(greeting, name string) {
 }
 ```
 
+In the example above both `greeting` and `name` are parameters of type `string`.
 When we pass primitive types such as `string` as arguments into a function, 
 we essentially make a copy of the original value or underlying data so that only this copy is accessed or modified by our function.
 
 In Go, not only can we pass primitive values into a function, but we can also pass a `pointer`, as in a reference to some data, to the function.
-This means that the function receives only a copy to the pointer instead of the underlying data taht this pointer refers to.
+This means that the function receives only a copy to the pointer instead of the underlying data that this pointer refers to.
 
 If the concept of `pointer` is confusing, no worries.
 We have more details below as well as a dedicated section to help you understand pointers.
@@ -94,7 +95,8 @@ aplusb, atimesb := SumAndMultiply(a, b)
 
 Let's quickly cover two terms that are often confused together: `parameters` and `arguments`. 
 Function parameters are the names defined in the function's signature, such as `greeting` and `name` in the function `PrintGreetingName` above.
-Function arguments are the real values passed to the function when we invoke the function, i.e. `"Hello"` and `"Katrina"`.
+Function arguments are the concrete values passed to the function parameters when we invoke the function.
+For instance, in the example below, `"Hello"` and `"Katrina"` are the arguments passed to the `greeting` and `name` parameters:
 
 ```go
 PrintGreetingName("Hello", "Katrina")
@@ -132,22 +134,17 @@ newval := MultiplyByTwo(val)
 
 To modify the underlying data passed via an argument, we must pass pointer arguments into the function.
 For now, it is sufficient to know that pointer types can be recognized by the `*` in front of the type in the function signature.
-And we can use the `&` syntax to generate a pointer.
 
 ```go
 func HandlePointers(x, y *int) {
     // Some logic to handle integer pointers x and y
 }
-
-a, b := 100, 200
-// Use `&` to turn a and b into pointer types
-HandlePointers(&a, &b)
 ```
 
 ## Exceptions
 
 Note that `slices` and `maps` are exceptions to the above-mentioned rule. 
-When we pass a `slice` or a `map` as arguments into a function, they are treated as pointer types even though there is no explicit * in the type.
+When we pass a `slice` or a `map` as arguments into a function, they are treated as pointer types even though there is no explicit `*` in the type.
 This means that if we pass a slice or map into a function and modify its underlying data,
 the changes will be reflected on the original slice or map.
 
