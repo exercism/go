@@ -1,6 +1,7 @@
 package linkedlist
 
 // Define List and Node types here.
+// Note: The tests expect Node type to include an exported field with name Value to pass.
 
 func NewList(args ...interface{}) *List {
 	panic("Please implement the NewList function")

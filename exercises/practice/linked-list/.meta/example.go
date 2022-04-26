@@ -6,17 +6,17 @@ import (
 
 // Node is a node in a linked list.
 type Node struct {
-	Val  interface{}
-	next *Node
-	prev *Node
+	Value interface{}
+	next  *Node
+	prev  *Node
 }
 
 // NewNode constructs a new Node with the given value & no next/prev links.
 func NewNode(v interface{}) *Node {
 	return &Node{
-		Val:  v,
-		next: nil,
-		prev: nil,
+		Value: v,
+		next:  nil,
+		prev:  nil,
 	}
 }
 
@@ -156,13 +156,13 @@ func (ll *List) PopFront() (interface{}, error) {
 	case ll.head == nil && ll.tail == nil: // empty list
 		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
-		v := ll.head.Val
+		v := ll.head.Value
 		ll.head = nil
 		ll.tail = nil
 
 		return v, nil
 	case ll.head != nil && ll.tail != nil && ll.head.next != nil: // >1 element
-		v := ll.head.Val
+		v := ll.head.Value
 		ll.head.next.prev = nil
 		ll.head = ll.head.next
 
@@ -178,13 +178,13 @@ func (ll *List) PopBack() (interface{}, error) {
 	case ll.head == nil && ll.tail == nil: // empty list
 		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.tail.prev == nil: // 1 element
-		v := ll.tail.Val
+		v := ll.tail.Value
 		ll.head = nil
 		ll.tail = nil
 
 		return v, nil
 	case ll.head != nil && ll.tail != nil && ll.tail.prev != nil: // >1 element
-		v := ll.tail.Val
+		v := ll.tail.Value
 		ll.tail.prev.next = nil
 		ll.tail = ll.tail.prev
 
