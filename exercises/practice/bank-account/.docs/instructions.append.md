@@ -14,6 +14,14 @@ For example: multiple goroutines may be depositing and withdrawing money
 simultaneously, two withdrawals occurring concurrently should not be able
 to bring the balance into the negative.
 
+To test that your code handles concurrency properly and does not introduce
+data races, run tests with `-race` flag on.
+
+```bash
+$ cd exercism/project/directory/go/bank-account
+$ go test -race
+```
+
 If you are new to concurrent operations in Go it will be worth looking
 at the sync package, specifically Mutexes:
 
