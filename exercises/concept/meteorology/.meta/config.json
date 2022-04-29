@@ -1,0 +1,18 @@
+{
+  "blurb": "Learn how to work with interface Stringer",
+  "authors": [
+    "norbs57"
+  ],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "meteorology.go"
+    ],
+    "test": [
+      "meteorology_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}
