@@ -14,7 +14,7 @@ For example: multiple goroutines may be depositing and withdrawing money
 simultaneously, two withdrawals occurring concurrently should not be able
 to bring the balance into the negative.
 
-To test that your code handles concurrency properly and does not introduce
+When working locally, you can test that your code handles concurrency properly and does not introduce
 data races, run tests with `-race` flag on.
 
 ```bash
