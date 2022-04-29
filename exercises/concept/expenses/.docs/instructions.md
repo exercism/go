@@ -56,7 +56,7 @@ func Day1Records(Record r) bool {
 }
 
 Filter(records, Day1Records)
-// Output:
+// =>
 // [
 //   {Day: 1, Amount: 15, Category: "groceries"}
 // ]
@@ -81,7 +81,7 @@ records := []Record{
 period := DaysPeriod{From: 1, To: 15}
 
 Filter(records, ByDaysPeriod(period))
-// Output:
+// =>
 // [
 //   {Day: 1, Amount: 15, Category: "groceries"},
 //   {Day: 11, Amount: 300, Category: "utility-bills"},
@@ -105,7 +105,7 @@ records := []Record{
 }
 
 Filter(records, ByCategory("groceries"))
-// Output:
+// =>
 // [
 //   {Day: 1, Amount: 15, Category: "groceries"},
 //   {Day: 12, Amount: 28, Category: "groceries"},
@@ -129,10 +129,10 @@ p1 := DaysPeriod{From: 1, To: 30}
 p2 := DaysPeriod{From: 31, To: 60}
 
 TotalByPeriod(records, p1)
-// Output: 16
+// => 16
 
 TotalByPeriod(records, p2)
-// Output: 50
+// => 50
 ```
 
 ## 5. Calculate the total expenses for records of a category in a period
@@ -156,11 +156,11 @@ records := []Record{
 }
 
 CategoryExpenses(records, p1, "entertainment")
-// Output: 0, error(unknown category entertainment)
+// => 0, error(unknown category entertainment)
 
 CategoryExpenses(records, p1, "rent")
-// Output: 1300, nil
+// => 1300, nil
 
 CategoryExpenses(records, p2, "rent")
-// Output: 0, nil
+// => 0, nil
 ```
