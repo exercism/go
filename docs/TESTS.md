@@ -9,7 +9,7 @@ $ go test
 
 # Tests with Data Race Detector
 
-In addition to running `go test`, some exercises should be run with a flag for [data race detector](https://go.dev/doc/articles/race_detector) so as to check that your solution does not introduce data race bugs. You will find a reminder to run tests with the data race detector flag `-race` in the relevant exercises. Run `go test -race` to check for data race.
+In addition to running `go test`, some exercises should be run with a flag for [data race detector](https://go.dev/doc/articles/race_detector) to check that your solution does not introduce data race bugs. You will find a reminder to run tests with the data race detector flag `-race` in the relevant exercises. Run `go test -race` to check for data race. For example:
 
 ```bash
 $ cd exercism/project/directory/go/bank-account
