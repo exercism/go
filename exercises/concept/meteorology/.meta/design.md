@@ -11,7 +11,7 @@ The student should learn about the following topics and then practice them in th
 
 - present the `fmt.Stringer` interface
 - implement a struct that satisfies the `fmt.Stringer`
-- the use of a type that satisfies `fmt.Stringer` with `fmt.Sprintf` and other methods of `fmt`
+- use a type that satisfies `fmt.Stringer` with `fmt.Sprintf` and other methods of `fmt`
 
 ## Concepts
 
