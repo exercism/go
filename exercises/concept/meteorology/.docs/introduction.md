@@ -18,7 +18,7 @@ Assume we are working on an application that deals with geographical distances m
 We have defined types `DistanceUnit` and `Distance` as follows: 
  
 ```go 
-type DistanceUnit string
+type DistanceUnit int
 
 const (
 	Kilometer    DistanceUnit = 0
