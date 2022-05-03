@@ -50,4 +50,4 @@ cost = CalculateCost(21)
 // Output: 200000
 ```
 
-**Note:** the return value should be an `uint`.
+**Note:** the return value should be an `int`.
