@@ -3,6 +3,7 @@ package tree
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 	"testing"
 )
 
@@ -362,6 +363,12 @@ func nodeEqual(node1, node2 *Node) bool {
 	}
 }
 
+func SortNodesByID(nodes []*Node) {
+	sort.Slice(nodes, func(i, j int) bool {
+		return nodes[i].ID < nodes[j].ID
+	})
+}
+
 func nodeSliceEqual(nodes1, nodes2 []*Node) bool {
 	if len(nodes1) == 0 && len(nodes2) == 0 {
 		return true
@@ -369,6 +376,10 @@ func nodeSliceEqual(nodes1, nodes2 []*Node) bool {
 	if len(nodes1) != len(nodes2) {
 		return false
 	}
+
+	SortNodesByID(nodes1)
+	SortNodesByID(nodes2)
+
 	for i := range nodes1 {
 		if !nodeEqual(nodes1[i], nodes2[i]) {
 			return false
