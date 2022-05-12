@@ -37,7 +37,7 @@ func espGreeting(name string) string {
 
 greeting := espGreeting
 dialog("Alice", greeting)
-// Output:
+// =>
 // ¡Hola Alice, mucho gusto!
 // I'm a dialog bot.
 ```
