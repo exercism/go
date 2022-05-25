@@ -8,7 +8,7 @@ Since goblins are not as smart as you are, they forgot what the package should d
 
 ## 2. Document the CurrentCondition and CurrentLocation variables
 
-The president of Goblinocus is a bit paranoid and fears uncommented variables are used for destroying their country! Please clarify the usage of the package variables `CurrentCondition` and `CurrentLocation` and put the president's mind at ease. This should tell any user of the package what information the variables store, and what they can do with it.
+The president of Goblinocus is a bit paranoid and fears uncommented variables are used to destroy their country! Please clarify the usage of the package variables `CurrentCondition` and `CurrentLocation` and put the president's mind at ease. This should tell any user of the package what information the variables store, and what they can do with it.
 
 ## 3. Document the Forecast() function
 
