@@ -39,7 +39,7 @@ for sum < 1000 {
 	sum += sum
 }
 fmt.Println(sum)
-// Output: 1024
+// => 1024
 ```
 
 By omitting the init and post component in a for loop like shown above, you create a while loop in Go.
@@ -57,7 +57,7 @@ for n := 0; n <= 5; n++ {
   }
   fmt.Println(n)
 }
-// Output:
+// =>
 // 0
 // 1
 // 2
@@ -72,7 +72,7 @@ for n := 0; n <= 5; n++ {
   }
   fmt.Println(n)
 }
-// Output:
+// =>
 // 1
 // 3
 // 5

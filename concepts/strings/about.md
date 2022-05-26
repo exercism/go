@@ -51,7 +51,7 @@ Some special characters need to be escaped with a leading backslash:
 ```go
 fmt.Println("Joe\nWilliam\nJack\nAverell") 
 
-// Output:
+// =>
 // Joe
 // William
 // Jack

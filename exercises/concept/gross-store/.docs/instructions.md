@@ -23,7 +23,7 @@ In order to use the measurement, you need to store the measurement in your progr
 ```go
 units := Units()
 fmt.Println(units)
-// Output: map[...] with entries like ("dozen": 12)
+// => map[...] with entries like ("dozen": 12)
 ```
 
 ## 2. Create a new customer bill
@@ -33,7 +33,7 @@ You need to implement a function that create a new (empty) bill for the customer
 ```go
 bill := NewBill()
 fmt.Println(bill)
-// Output: map[]
+// => map[]
 ```
 
 ## 3. Add an item to the customer bill
@@ -49,7 +49,7 @@ bill := NewBill()
 units := Units()
 ok := AddItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
-// Output: true (since dozen is a valid unit)
+// => true (since dozen is a valid unit)
 ```
 
 > Note that the returned value is type `bool`.
@@ -69,7 +69,7 @@ bill := NewBill()
 units := Units()
 ok := RemoveItem(bill, units, "carrot", "dozen")
 fmt.Println(ok)
-// Output: false (because there are no carrots in the bill)
+// => false (because there are no carrots in the bill)
 ```
 
 > Note that the returned value is type `bool`.
@@ -85,9 +85,9 @@ To implement this, you'll need to:
 bill := map[string]int{"carrot": 12, "grapes": 3}
 qty, ok := GetItem(bill, "carrot")
 fmt.Println(qty)
-// Output: 12
+// => 12
 fmt.Println(ok)
-// Output: true
+// => true
 ```
 
 > Note that the returned value are types `int` and `bool`.

@@ -14,7 +14,7 @@ Implement the function `WelcomeMessage` that accepts the name of the customer as
 
 ```go
 WelcomeMessage("Judy")
-// Output: Welcome to the Tech Palace, JUDY
+// => Welcome to the Tech Palace, JUDY
 ```
 
 ## 2. Add a fancy border
@@ -27,7 +27,7 @@ It should return a `string` that consists of 3 lines, a line with the desired nu
 
 ```go
 AddBorder("Welcome!", 10)
-// Output:
+// =>
 // **********
 // Welcome!
 // **********
@@ -52,5 +52,5 @@ message := `
 `
 
 CleanUpMessage(message)
-// Output: BUY NOW, SAVE 10%
+// => BUY NOW, SAVE 10%
 ```

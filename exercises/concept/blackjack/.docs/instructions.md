@@ -38,7 +38,7 @@ Implement a function to calculate the numerical value of a card:
 ```go
 value := ParseCard("ace")
 fmt.Println(value)
-// Output: 11
+// => 11
 ```
 
 ## 2. Implement the decision logic for the first turn.

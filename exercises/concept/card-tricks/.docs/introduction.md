@@ -84,17 +84,17 @@ func find(num int, nums ...int) {
 
 func main() {
     find(89, 90, 91, 95)
-    // Output:
+    // =>
     // type of nums is []int
     // 89 not found in  [90 91 95]
 
     find(45, 56, 67, 45, 90, 109)
-    // Output:
+    // =>
     // type of nums is []int
     // 45 found at index 2 in [56 67 45 90 109]
 
     find(87)
-    // Output:
+    // =>
     // type of nums is []int
     // 87 not found in  []
 }

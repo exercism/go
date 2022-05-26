@@ -20,7 +20,7 @@ func (p Person) Greetings() string {
 
 p := Person{Name: "Bronson"}
 fmt.Println(p.Greetings())
-// Output: Welcome Bronson !
+// => Welcome Bronson !
 ```
 
 Notice the way we called the method `Greetings()` on the `Person` instance `p`.
@@ -66,9 +66,9 @@ func (r *rect) squareIt() {
 
 r := rect{width: 10, height: 20}
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 20
+// => Width: 10, Height: 20
 
 r.squareIt()
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 10
+// => Width: 10, Height: 10
 ```

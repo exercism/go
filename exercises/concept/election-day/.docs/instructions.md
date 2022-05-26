@@ -37,11 +37,11 @@ var voteCounter *int
 voteCounter = &votes
 
 VoteCount(voteCounter)
-// Output: 3
+// => 3
 
 var nilVoteCounter *int
 VoteCount(nilVoteCounter)
-// Output: 0
+// => 0
 ```
 
 ## 3. Increment the votes of a counter
@@ -108,7 +108,7 @@ result = &ElectionResult{
 }
 
 DisplayResult(result)
-// Output: John (32)
+// => John (32)
 ```
 
 ## 6. Vote recounting
@@ -126,5 +126,5 @@ var finalResults = map[string]int{
 DecrementVotesOfCandidate(finalResults, "Mary")
 
 finalResults["Mary"]
-// Output: 9
+// => 9
 ```

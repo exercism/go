@@ -57,17 +57,17 @@ func find(num int, nums ...int) {
 
 func main() {
     find(89, 90, 91, 95)
-    // Output:
+    // =>
     // type of nums is []int
     // 89 not found in  [90 91 95]
 
     find(45, 56, 67, 45, 90, 109)
-    // Output:
+    // =>
     // type of nums is []int
     // 45 found at index 2 in [56 67 45 90 109]
 
     find(87)
-    // Output:
+    // =>
     // type of nums is []int
     // 87 not found in  []
 }
@@ -85,7 +85,7 @@ The step described above where a slice is created will simply be omitted in this
 ```go
 list := []int{1,2,3}
 find(1, list...) // "find" defined as shown above
-// Output:
+// =>
 // type of nums is []int
 // 1 found at index 0 in [1 2 3]
 ```

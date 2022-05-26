@@ -28,7 +28,7 @@ To read or modify instance fields, use the `.` notation:
 // Update the age
 person.age = 23
 fmt.Printf("name: %s age: %d\n", person.name, person.age)
-// Output: name: John age: 23
+// => name: John age: 23
 ```
 
 Fields that don't have an initial value assigned, will have their zero value. For example:
@@ -36,7 +36,7 @@ Fields that don't have an initial value assigned, will have their zero value. Fo
 ```go
 person:= Person{}
 fmt.Printf("name: %s age: %d\n", person.name, person.age)
-// Output: name: age: 0
+// => name: age: 0
 ```
 
 You can create an instance of a `struct` without using the field names, as long as you define the fields _in order_:
@@ -63,8 +63,8 @@ person := Person{
     20,
 }
 // The compiler will fail with a similar error:
-// Output: cannot use 20 (type untyped int) as type string in field value
-// Output: too few values in Person{...}
+// => cannot use 20 (type untyped int) as type string in field value
+// => too few values in Person{...}
 ```
 
 Field names in structs follow the Go convention - fields whose name starts with a lower case letter are only visible to code in the same package, whereas those whose name starts with an upper case letter are visible in other packages.

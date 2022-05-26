@@ -78,7 +78,7 @@ import "reflect"
 
 equal := reflect.DeepEqual(map[string]int{}, map[string]int{})
 fmt.Println(equal)
-// Output: true
+// => true
 ```
 
 _But wait, if map isn't a comparable why are we able to compare them with `nil`? Well, the spec has made an exception for this, see the [comparable spec][gospec-comparable]_

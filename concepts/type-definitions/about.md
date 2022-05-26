@@ -26,7 +26,7 @@ func SayHello(n Name) {
 }
 n := Name("Fred")
 SayHello(n)
-// Output: Hello Fred
+// => Hello Fred
 ```
 
 You can also define non-struct types composed of arrays and maps.
@@ -40,7 +40,7 @@ func SayHello(n Names) {
 }
 n := Names([]string{"Fred", "Bill"})
 SayHello(n)
-// Output:
+// =>
 // Hello Fred
 // Hello Bill
 ```

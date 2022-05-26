@@ -25,7 +25,7 @@ Define the `CanFastAttack()` function that takes a boolean value that indicates 
 ```go
 var knightIsAwake = true
 fmt.Println(CanFastAttack(knightIsAwake))
-// Output: false
+// => false
 ```
 
 ## 2. Check if the group can be spied upon
@@ -37,7 +37,7 @@ var knightIsAwake = false
 var archerIsAwake = true
 var prisonerIsAwake = false
 fmt.Println(CanSpy(knightIsAwake, archerIsAwake, prisonerIsAwake))
-// Output: true
+// => true
 ```
 
 ## 3. Check if the prisoner can be signaled
@@ -48,7 +48,7 @@ Define the `CanSignalPrisoner()` function that takes two boolean values, indicat
 var archerIsAwake = false
 var prisonerIsAwake = true
 fmt.Println(CanSignalPrisoner(archerIsAwake, prisonerIsAwake))
-// Output: true
+// => true
 ```
 
 ## 4. Check if the prisoner can be freed
@@ -61,5 +61,5 @@ var archerIsAwake = true
 var prisonerIsAwake = false
 var petDogIsPresent = false
 fmt.Println(CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent))
-// Output: false
+// => false
 ```

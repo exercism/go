@@ -13,10 +13,10 @@ Implement the `NeedsLicense(kind)` function that takes the kind of vehicle and r
 
 ```go
 needLicense := NeedsLicense("car")
-// Output: true
+// => true
 
 needLicense = NeedsLicense("bike")
-// Output: false
+// => false
 ```
 
 ## 2. Choose between two potential vehicles to buy
@@ -27,10 +27,10 @@ For that, implement the function `ChooseVehicle(option1, option2)` that takes tw
 
 ```go
 vehicle := ChooseVehicle("Wuling Hongguang", "Toyota Corolla")
-// Output: "Toyota Corolla is clearly the better choice."
+// => "Toyota Corolla is clearly the better choice."
 
 ChooseVehicle("Volkswagen Beetle", "Volkswagen Golf")
-// Output: "Volkswagen Beetle is clearly the better choice."
+// => "Volkswagen Beetle is clearly the better choice."
 ```
 
 ## 3. Calculate an estimation for the price of a used vehicle
@@ -46,13 +46,13 @@ It takes the original price and the age of the vehicle as arguments and returns 
 
 ```go
 CalculateResellPrice(1000, 1)
-// Output: 800
+// => 800
 
 CalculateResellPrice(1000, 5)
-// Output: 700
+// => 700
 
 CalculateResellPrice(1000, 15)
-// Output: 500
+// => 500
 ```
 
 **Note** the return value is a `float64`.

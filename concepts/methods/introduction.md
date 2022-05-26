@@ -22,7 +22,7 @@ func (p Person) Greetings() string {
 
 s := Person{Name: "Bronson"}
 fmt.Println(s.Greetings())
-// Output: Welcome Bronson !
+// => Welcome Bronson !
 ```
 
 There are two types of receivers, value receivers, and pointer receivers.
@@ -43,10 +43,10 @@ func (r *rect) squareIt() {
 
 r := rect{width: 10, height: 20}
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 20
+// => Width: 10, Height: 20
 
 r.squareIt()
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 10
+// => Width: 10, Height: 10
 
 ```

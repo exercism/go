@@ -39,7 +39,7 @@ batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 fmt.Println(car.DisplayDistance())
-// Output: "Driven 0 meters"
+// => "Driven 0 meters"
 ```
 
 ## 3. Display the battery percentage
@@ -52,7 +52,7 @@ batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 fmt.Println(car.DisplayBattery())
-// Output: "Battery at 100%"
+// => "Battery at 100%"
 ```
 
 ## 4. Check if a remote control car can finish a race
@@ -67,5 +67,5 @@ car := NewCar(speed, batteryDrain)
 trackDistance := 100
 
 car.CanFinish(trackDistance)
-// Output: true
+// => true
 ```

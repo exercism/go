@@ -29,5 +29,5 @@ To read or modify instance fields, use the `.` notation:
 // Update the age
 person.age = 23
 fmt.Printf("name: %s age: %d\n", person.name, person.age)
-// Output: name: John age: 23
+// => name: John age: 23
 ```

@@ -13,7 +13,7 @@ Implement a function that takes in the number of cars produced per hour and the 
 
 ```go
 rate := CalculateWorkingCarsPerHour(1547, 90)
-// Output: 1392.3
+// => 1392.3
 ```
 
 **Note:** the return value should be a `float64`.
@@ -24,7 +24,7 @@ Implement a function that takes in the number of cars produced per hour and the 
 
 ```go
 rate := CalculateWorkingCarsPerMinute(1105, 90)
-// Output: 16
+// => 16
 ```
 
 **Note:** the return value should be an `int`.
@@ -44,10 +44,10 @@ Implement the function `CalculateCost` that calculates the cost of producing a n
 
 ```go
 cost := CalculateCost(37)
-// Output: 355000
+// => 355000
 
 cost = CalculateCost(21)
-// Output: 200000
+// => 200000
 ```
 
 **Note:** the return value should be an `uint`.

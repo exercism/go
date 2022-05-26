@@ -64,7 +64,7 @@ func main() {
 }
 ```
 
-Every time this program runs, it will produce the same output:
+Every time this program runs, it will produce the same =>
 
 ```text
 498081 727887 131847

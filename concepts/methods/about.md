@@ -21,7 +21,7 @@ func (p Person) Greetings() string {
 
 s := Person{Name: "Bronson"}
 fmt.Println(s.Greetings())
-// Output: Welcome Bronson !
+// => Welcome Bronson !
 
 ```
 
@@ -43,11 +43,11 @@ func (r *rect) squareIt() {
 
 r := rect{width: 10, height: 20}
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 20
+// => Width: 10, Height: 20
 
 r.squareIt()
 fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
-// Output: Width: 10, Height: 10
+// => Width: 10, Height: 10
 ```
 
 You can find several examples [here][pointers_receivers]. Also checkout this short tutorial about [methods][methods_tutorial].
