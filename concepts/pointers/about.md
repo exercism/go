@@ -130,7 +130,7 @@ fmt.Println(p.Name) // Output: "Peter"
 
 ## Slices and maps are already pointers
 
-Slices and maps are special types because they already have pointers in their implementation. This means that more often that not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
+Slices and maps are special types because they already have pointers in their implementation. This means that more often than not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
 
 
 ```go
