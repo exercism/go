@@ -24,20 +24,7 @@ The student should learn about the following topics and then practice them in th
 - `interfaces`
 - `methods`
 - `structs` 
-
-These prerequisites should be listed in the `config.json` entry for the exercise.
-The prerequisites above are a baseline of the prerequisites that might be needed for the exercise.
-When implementing the exercise, feel free to add more prerequisites if the exercise needs them.
-
-## Story
-
-Try to think of a story for the exercise that ties all the tasks together.
-The story doesn't need to be highly complex.
-Even a small story goes a long way to improve the enjoyment of the exercise.
-
 ## Resources
-
-Some links that might be helpful as a starting point and/or for the links section of the concept:
 
 - Tour of Go: [Stringers][tour-of-go-stringers]
 
