@@ -10,7 +10,7 @@ type Stringer interface {
 }
 ```
  
-The [fmt][fmt-package] package (and many others) will look for this interface to print values.
+Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type. The [fmt][fmt-package] package (and many others) will look for this method to print values.
 
 ## Example: Distances
 
@@ -37,19 +37,20 @@ Hence `fmt` functions will print `Distance` values using Go's "default format":
 
 ```go 
 var distances = []Distance{
-	{790.7, Kilometer},
-	{415.2, Mile},
-	{10_500, NauticalMile},
+	{number: 790.7, unit: Kilometer},
+	{number: 415.2, unit: Mile},
+	{number: 10_500, unit: NauticalMile},
 } 
 fmt.Println(distances)
-\\ => [{790.7 0} {415.2 1} {10500 2}]
+// Output: [{790.7 0} {415.2 1} {10500 2}]
 ```
 
 In order to make the output more informative, we implement interface `Stringer` by adding a `String` method to each type:
 
 ```go
 func (sc DistanceUnit) String() string {
-	return [...]string{"km", "mi", "nmi"}[sc]
+	units := []string{"km", "mi", "nmi"}
+	return units[sc]
 }
 
 func (d Distance) String() string {
@@ -61,7 +62,7 @@ func (d Distance) String() string {
 
 ```go
 fmt.Println(distances)
-\\ => [790.7 km 415.2 mi 10500 nmi]
+// Output: [790.7 km 415.2 mi 10500 nmi]
 ```
 
 [stringer-interface]: https://pkg.go.dev/fmt#Stringer

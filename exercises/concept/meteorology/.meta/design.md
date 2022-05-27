@@ -2,7 +2,7 @@
 
 ## Goal
 
-The goal here is to create a new concept exercise that teaches about structs that implement the `fmt.Stringer` interface.
+The goal here is to create a new concept exercise that teaches about types that implement the `fmt.Stringer` interface.
 That includes writing a concept and creating a new exercise.
 
 ## Learning objectives
@@ -40,6 +40,5 @@ Even a small story goes a long way to improve the enjoyment of the exercise.
 Some links that might be helpful as a starting point and/or for the links section of the concept:
 
 - Tour of Go: [Stringers][tour-of-go-stringers]
-
 
 [tour-of-go-stringers]: https://go.dev/tour/methods/17
