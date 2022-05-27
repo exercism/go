@@ -36,7 +36,7 @@ fodder, err := DivideFood(twentyFodderWithErrScaleMalfunction, 10)
 
 ## 2. Return an error for negative fodder
 
-If the scale is broken and returning negative amounts of fodder, return an error saying "negative fodder":
+If the scale is broken and returning negative amounts of fodder, return an error saying "negative fodder" only if `FodderAmount` returned `ErrScaleMalfunction` or nil :
 
 ```go
 // negativeFiveFodder says there are -5.0 fodder
