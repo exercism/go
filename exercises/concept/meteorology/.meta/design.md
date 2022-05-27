@@ -24,11 +24,6 @@ The student should learn about the following topics and then practice them in th
 - `interfaces`
 - `methods`
 - `structs` 
-
-These prerequisites should be listed in the `config.json` entry for the exercise.
-The prerequisites above are a baseline of the prerequisites that might be needed for the exercise.
-When implementing the exercise, feel free to add more prerequisites if the exercise needs them.
-
 ## Story
 
 Try to think of a story for the exercise that ties all the tasks together.
