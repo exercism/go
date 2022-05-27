@@ -1,43 +1,44 @@
 package prime
 
 // Source: exercism/problem-specifications
-// Commit: 4a3ba76 nth-prime: Apply new "input" policy
-// Problem Specifications Version: 2.1.0
+// Commit: 42dd0ce Remove version (#1678)
+
+import "errors"
 
 var tests = []struct {
 	description string
 	n           int
 	p           int
-	ok          bool
+	err         error
 }{
 	{
 		"first prime",
 		1,
 		2,
-		true,
+		nil,
 	},
 	{
 		"second prime",
 		2,
 		3,
-		true,
+		nil,
 	},
 	{
 		"sixth prime",
 		6,
 		13,
-		true,
+		nil,
 	},
 	{
 		"big prime",
 		10001,
 		104743,
-		true,
+		nil,
 	},
 	{
 		"there is no zeroth prime",
 		0,
 		0,
-		false,
+		errors.New("Input must be greater than 1"),
 	},
 }
