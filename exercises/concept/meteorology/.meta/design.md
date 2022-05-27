@@ -26,8 +26,6 @@ The student should learn about the following topics and then practice them in th
 - `structs` 
 ## Resources
 
-Some links that might be helpful as a starting point and/or for the links section of the concept:
-
 - Tour of Go: [Stringers][tour-of-go-stringers]
 
 
