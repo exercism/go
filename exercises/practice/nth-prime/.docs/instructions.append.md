@@ -1,0 +1,1 @@
+For inputs lesser than `1`, your function needs to return an error with the message: `Input must be greater than 1` and 0 as the answer. In case the input is acceptable, return `nil` and the actual prime number.
