@@ -39,6 +39,6 @@ var tests = []struct {
 		"there is no zeroth prime",
 		0,
 		0,
-		errors.New("Input must be greater than 1"),
+		errors.New("input must be greater than 1"),
 	},
 }
