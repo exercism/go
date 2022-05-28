@@ -9,9 +9,6 @@ func TestNth(t *testing.T) {
 			if test.err == nil {
 				t.Fatalf("FAIL %s\nNth(%d) returned error.  Expecting no error.", test.description, test.n)
 			}
-			if err.Error() != test.err.Error() {
-				t.Fatalf("FAIL %s\nNth(%d) returned error message: '%s'\nExpeting error message: '%s'", test.description, test.n, err.Error(), test.err.Error())
-			}
 		case test.err != nil:
 			t.Fatalf("FAIL %s\nNth(%d) = %d, err = %t.  Expecting error.", test.description, test.n, p, err)
 		case p != test.p:
