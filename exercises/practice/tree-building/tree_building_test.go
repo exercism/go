@@ -170,6 +170,12 @@ var failureTestCases = []struct {
 	input []Record
 }{
 	{
+		name: "one root node and has parent",
+		input: []Record{
+			{ID: 0, Parent: 1},
+		},
+	},
+	{
 		name: "root node has parent",
 		input: []Record{
 			{ID: 0, Parent: 1},
