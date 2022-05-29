@@ -4,13 +4,13 @@ import "testing"
 
 func TestNth(t *testing.T) {
 	for _, test := range tests {
-		switch p, ok := Nth(test.n); {
-		case !ok:
-			if test.ok {
-				t.Fatalf("FAIL %s\nNth(%d) returned !ok.  Expecting ok.", test.description, test.n)
+		switch p, err := Nth(test.n); {
+		case err != nil:
+			if test.err == nil {
+				t.Fatalf("FAIL %s\nNth(%d) returned error.  Expecting no error.", test.description, test.n)
 			}
-		case !test.ok:
-			t.Fatalf("FAIL %s\nNth(%d) = %d, ok = %t.  Expecting !ok.", test.description, test.n, p, ok)
+		case test.err != nil:
+			t.Fatalf("FAIL %s\nNth(%d) = %d, err = %t.  Expecting error.", test.description, test.n, p, err)
 		case p != test.p:
 			t.Fatalf("FAIL %s\nNth(%d) = %d, want %d.", test.description, test.n, p, test.p)
 		}

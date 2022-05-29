@@ -57,21 +57,23 @@ var tmpl = `package prime
 
 {{.Header}}
 
+import "errors"
+
 var tests = []struct {
 	description string
 	n   int
 	p   int
-	ok  bool
+	err  error
 }{
 {{range .J.Cases}}{
 	"{{.Description}}",
 	{{.Input.Number}},
 {{- if .HasPrimeAnswer}}
 	{{.PrimeAnswer}},
-	true,
+	nil,
 {{- else}}
 	0,
-	false,
+	errors.New("Input must be greater than 1"),
 {{- end}}
 },
 {{end}}}
