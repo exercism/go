@@ -12,7 +12,7 @@ const (
 )
 
 func (unit TemperatureUnit) String() string {
-	return [...]string{"C", "F"}[unit]
+	return [...]string{"°C", "°F"}[unit]
 }
 
 type Temperature struct {
@@ -21,7 +21,7 @@ type Temperature struct {
 }
 
 func (t Temperature) String() string {
-	return fmt.Sprintf("%d °%v", t.degree, t.unit)
+	return fmt.Sprintf("%d %v", t.degree, t.unit)
 }
 
 type SpeedUnit int
@@ -44,15 +44,15 @@ func (sp Speed) String() string {
 	return fmt.Sprintf("%d %v", sp.magnitude, sp.unit)
 }
 
-type MetData struct {
-	location  string
-	temp      Temperature
-	windDir   string
-	windSpeed Speed
-	humidity  int
+type MeteorologyData struct {
+	location      string
+	temperature   Temperature
+	windDirection string
+	windSpeed     Speed
+	humidity      int
 }
 
-func (m MetData) String() string {
+func (m MeteorologyData) String() string {
 	return fmt.Sprintf("%v: %v, Wind %v at %v, %v%% Humidity",
-		m.location, m.temp, m.windDir, m.windSpeed, m.humidity)
+		m.location, m.temperature, m.windDirection, m.windSpeed, m.humidity)
 }

@@ -23,7 +23,8 @@ The student should learn about the following topics and then practice them in th
 - `string-formatting`
 - `interfaces`
 - `methods`
-- `structs` 
+- `structs`
+
 ## Resources
 
 - Tour of Go: [Stringers][tour-of-go-stringers]

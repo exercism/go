@@ -11,20 +11,20 @@ func TestTemperatureUnitString(t *testing.T) {
 		want string
 	}{
 		{
-			name: "Celsius",
+			name: "Celsius unit",
 			unit: Celsius,
-			want: "C",
+			want: "°C",
 		},
 		{
-			name: "Fahrenheit",
+			name: "Fahrenheit unit",
 			unit: Fahrenheit,
-			want: "F",
+			want: "°F",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.unit.String(); got != tt.want {
-				t.Errorf("Prints %v, want %v", got, tt.want)
+				t.Errorf("unit.String()=%q, want %q", got, tt.want)
 			}
 		})
 	}
@@ -55,7 +55,7 @@ func TestTemperatureString(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.temp.String(); got != tt.want {
-				t.Errorf("Prints %v, want %v", got, tt.want)
+				t.Errorf("temp.String()=%q, want %q", got, tt.want)
 			}
 		})
 	}
@@ -81,7 +81,7 @@ func TestSpeedUnitString(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.unit.String(); got != tt.want {
-				t.Errorf("Prints %v, want %v", got, tt.want)
+				t.Errorf("unit.String()=%q, want %q", got, tt.want)
 			}
 		})
 	}
@@ -112,38 +112,38 @@ func TestSpeedString(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.speed.String(); got != tt.want {
-				t.Errorf("Prints %v, want %v", got, tt.want)
+				t.Errorf("speed.String()=%q, want %q", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestMetDataString(t *testing.T) {
+func TestMeteorologyDataString(t *testing.T) {
 	tests := []struct {
-		name    string
-		metData MetData
-		want    string
+		name            string
+		meteorologyData MeteorologyData
+		want            string
 	}{
 		{
-			name:    "Athens",
-			metData: MetData{"Athens", Temperature{21, Celsius}, "N", Speed{16, KmPerHour}, 63},
-			want:    "Athens: 21 °C, Wind N at 16 km/h, 63% Humidity",
+			name:            "Athens",
+			meteorologyData: MeteorologyData{"Athens", Temperature{21, Celsius}, "N", Speed{16, KmPerHour}, 63},
+			want:            "Athens: 21 °C, Wind N at 16 km/h, 63% Humidity",
 		},
 		{
-			name:    "Delhi",
-			metData: MetData{"Delhi", Temperature{33, Celsius}, "W", Speed{2, MilesPerHour}, 23},
-			want:    "Delhi: 33 °C, Wind W at 2 mph, 23% Humidity",
+			name:            "Delhi",
+			meteorologyData: MeteorologyData{"Delhi", Temperature{33, Celsius}, "W", Speed{2, MilesPerHour}, 23},
+			want:            "Delhi: 33 °C, Wind W at 2 mph, 23% Humidity",
 		},
 		{
-			name:    "San Francisco",
-			metData: MetData{"San Francisco", Temperature{57, Fahrenheit}, "NW", Speed{19, MilesPerHour}, 60},
-			want:    "San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity",
+			name:            "San Francisco",
+			meteorologyData: MeteorologyData{"San Francisco", Temperature{57, Fahrenheit}, "NW", Speed{19, MilesPerHour}, 60},
+			want:            "San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.metData.String(); got != tt.want {
-				t.Errorf("Prints %v, want %v", got, tt.want)
+			if got := tt.meteorologyData.String(); got != tt.want {
+				t.Errorf("meteorologyData.String()=%q, want %q", got, tt.want)
 			}
 		})
 	}

@@ -1,9 +1,11 @@
 {
-  "blurb": "Learn how to work with interface Stringer",
+  "blurb": "Format metereological data of custom types into strings.",
   "authors": [
     "norbs57"
   ],
-  "contributors": [],
+  "contributors": [
+    "andrerfcsantos"
+  ],
   "files": {
     "solution": [
       "meteorology.go"

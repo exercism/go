@@ -10,7 +10,7 @@ type Stringer interface {
 }
 ```
  
-Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type. The [fmt][fmt-package] package (and many others) will look for this method to print values.
+Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type. The [fmt][fmt-package] package (and many others) will look for this method to format and print values.
 
 ## Example: Distances
 
@@ -23,7 +23,6 @@ type DistanceUnit int
 const (
 	Kilometer    DistanceUnit = 0
 	Mile         DistanceUnit = 1
-	NauticalMile DistanceUnit = 2
 )
  
 type Distance struct {
@@ -32,37 +31,53 @@ type Distance struct {
 } 
 ```
 
+In the example above, `Kilometer` and `Mile` ane constants of type `DistanceUnit`.
+
 These types do not implement interface `Stringer` as they lack the `String` method.
 Hence `fmt` functions will print `Distance` values using Go's "default format":
 
-```go 
-var distances = []Distance{
-	{number: 790.7, unit: Kilometer},
-	{number: 415.2, unit: Mile},
-	{number: 10_500, unit: NauticalMile},
-} 
-fmt.Println(distances)
-// Output: [{790.7 0} {415.2 1} {10500 2}]
+```go
+mileUnit := Mile
+fmt.Sprint(mileUnit)
+// => 1
+// The result is '1' because that is the underlying value of the 'Mile' contant (see contant declarations above) 
+
+dist := Distance{number: 790.7, unit: Kilometer}
+fmt.Sprint(dist)
+// => {790.7 0}
+// not a very useful output!
 ```
 
-In order to make the output more informative, we implement interface `Stringer` by adding a `String` method to each type:
+In order to make the output more informative, we implement interface `Stringer` for `DistanceUnit` and `Distance` types by adding a `String` method to each type:
 
 ```go
 func (sc DistanceUnit) String() string {
-	units := []string{"km", "mi", "nmi"}
+	units := []string{"km", "mi"}
 	return units[sc]
 }
 
 func (d Distance) String() string {
 	return fmt.Sprintf("%v %v", d.number, d.unit)
-} 
+}
 ```
  
 `fmt` package functions will call these methods when formatting `Distance` values:
 
 ```go
-fmt.Println(distances)
-// Output: [790.7 km 415.2 mi 10500 nmi]
+kmUnit := Kilometer
+kmUnit.String()
+// => km
+
+mileUnit := Mile
+mileUnit.String()
+// => mi
+
+dist := Distance{
+	number: 790.7,
+	unit: Kilometer,
+}
+dist.String()
+// => 790.7 km
 ```
 
 [stringer-interface]: https://pkg.go.dev/fmt#Stringer
