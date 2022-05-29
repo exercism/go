@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://pkg.go.dev/fmt",
+    "description": "Go standard library: package fmt"
+  },
+  {
+    "url": "https://pkg.go.dev/fmt#Stringer",
+    "description": "Go standard library: interface Stringer"
+  },
+  {
+    "url": "https://go.dev/tour/methods/17",
+    "description": "A Tour of Go: Stringers"
+  }
+]

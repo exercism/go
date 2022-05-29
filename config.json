@@ -429,6 +429,22 @@
           "slices"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "meteorology",
+        "name": "Meteorology",
+        "uuid": "09fc7443-f5a2-4b19-8331-f3d5df3e5165",
+        "concepts": [
+          "stringers"
+        ],
+        "prerequisites": [
+          "strings",
+          "string-formatting",
+          "interfaces",
+          "methods",
+          "structs"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
@@ -2066,6 +2082,11 @@
       "name": "Strings Package",
       "slug": "strings-package",
       "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c"
+    },
+    {
+      "name": "Stringers",
+      "slug": "stringers",
+      "uuid": "288c0d5b-173a-4446-b9a6-05f91fddd63e"
     },
     {
       "name": "Structs",

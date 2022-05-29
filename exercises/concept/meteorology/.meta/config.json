@@ -1,0 +1,20 @@
+{
+  "blurb": "Format metereological data of custom types into strings.",
+  "authors": [
+    "norbs57"
+  ],
+  "contributors": [
+    "andrerfcsantos"
+  ],
+  "files": {
+    "solution": [
+      "meteorology.go"
+    ],
+    "test": [
+      "meteorology_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  }
+}
