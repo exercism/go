@@ -14,4 +14,4 @@ than pointers. Note also how most time.Time methods have value receivers
 rather than pointer receivers.
 
 For some useful guidelines on when to use a value receiver or a pointer
-receiver see: [https://github.com/golang/go/wiki/CodeReviewComments#receiver-type](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type)
+receiver see [Go Wiki: Receiver Type](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type)
