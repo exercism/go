@@ -108,8 +108,8 @@ func (ll *List) Reverse() {
 	ll.head, ll.tail = ll.tail, ll.head
 }
 
-// PushFront pushes a new value before Head.
-func (ll *List) PushFront(v interface{}) {
+// Unshift pushes a new value before Head.
+func (ll *List) Unshift(v interface{}) {
 	n := NewNode(v)
 
 	switch {
@@ -126,8 +126,8 @@ func (ll *List) PushFront(v interface{}) {
 	}
 }
 
-// PushBack pushes a new value after Tail.
-func (ll *List) PushBack(v interface{}) {
+// Push pushes a new value after Tail.
+func (ll *List) Push(v interface{}) {
 	n := NewNode(v)
 
 	switch {
@@ -148,8 +148,8 @@ var (
 	ErrEmptyList = errors.New("list is empty")
 )
 
-// PopFront posp the element at Head. It returns error if the linked list is empty.
-func (ll *List) PopFront() (interface{}, error) {
+// Shift posp the element at Head. It returns error if the linked list is empty.
+func (ll *List) Shift() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
@@ -170,8 +170,8 @@ func (ll *List) PopFront() (interface{}, error) {
 	}
 }
 
-// PopBack pops the element at Tail. It returns error if the linked list is empty.
-func (ll *List) PopBack() (interface{}, error) {
+// Pop pops the element at Tail. It returns error if the linked list is empty.
+func (ll *List) Pop() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")
