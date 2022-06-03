@@ -28,7 +28,7 @@ func (l *List) Shift() (interface{}, error) {
 }
 
 func (l *List) Pop() (interface{}, error) {
-	panic("Please implement the PopBack function")
+	panic("Please implement the Pop function")
 }
 
 func (l *List) Reverse() {
