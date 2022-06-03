@@ -23,8 +23,8 @@ func (l *List) Push(v interface{}) {
 	panic("Please implement the Push function")
 }
 
-func (l *List) Unshift() (interface{}, error) {
-	panic("Please implement the PopFront function")
+func (l *List) Shift() (interface{}, error) {
+	panic("Please implement the Shift function")
 }
 
 func (l *List) Pop() (interface{}, error) {
