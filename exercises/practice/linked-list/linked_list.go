@@ -20,7 +20,7 @@ func (l *List) Unshift(v interface{}) {
 }
 
 func (l *List) Push(v interface{}) {
-	panic("Please implement the PushBack function")
+	panic("Please implement the Push function")
 }
 
 func (l *List) Unshift() (interface{}, error) {
