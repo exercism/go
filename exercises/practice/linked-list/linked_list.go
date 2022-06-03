@@ -16,7 +16,7 @@ func (n *Node) Prev() *Node {
 }
 
 func (l *List) Unshift(v interface{}) {
-	panic("Please implement the PushFront function")
+	panic("Please implement the Unshift function")
 }
 
 func (l *List) Push(v interface{}) {
