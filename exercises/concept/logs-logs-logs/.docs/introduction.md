@@ -38,7 +38,7 @@ Since `rune` is just an alias for `int32`, printing a rune's type will yield `in
 ```go
 myRune := '¿'
 fmt.Printf("myRune type: %T\n", myRune)
-// Output: myRune type: int32
+// => myRune type: int32
 ```
 
 Similarly, printing a rune's value will yield its integer (decimal) value:
@@ -46,7 +46,7 @@ Similarly, printing a rune's value will yield its integer (decimal) value:
 ```go
 myRune := '¿'
 fmt.Printf("myRune value: %v\n", myRune)
-// Output: myRune value: 191
+// => myRune value: 191
 ```
 
 To print the Unicode character represented by the rune, use the `%c` formatting verb:
@@ -54,7 +54,7 @@ To print the Unicode character represented by the rune, use the `%c` formatting 
 ```go
 myRune := '¿'
 fmt.Printf("myRune Unicode character: %c\n", myRune)
-// Output: myRune Unicode character: ¿
+// => myRune Unicode character: ¿
 ```
 
 To print the Unicode code point represented by the rune, use the `%U` formatting verb:
@@ -62,7 +62,7 @@ To print the Unicode code point represented by the rune, use the `%U` formatting
 ```go
 myRune := '¿'
 fmt.Printf("myRune Unicode code point: %U\n", myRune)
-// Output: myRune Unicode code point: U+00BF
+// => myRune Unicode code point: U+00BF
 ```
 
 ## Runes and Strings
@@ -76,7 +76,7 @@ myString := "❗hello"
 for index, char := range myString {
   fmt.Printf("Index: %d\tCharacter: %c\t\tCode Point: %U\n", index, char, char)
 }
-// Output:
+// =>
 // Index: 0	Character: ❗		Code Point: U+2757
 // Index: 3	Character: h		Code Point: U+0068
 // Index: 4	Character: e		Code Point: U+0065
@@ -95,5 +95,5 @@ stringLength := len(myString)
 numberOfRunes := utf8.RuneCountInString(myString)
 
 fmt.Printf("myString - Length: %d - Runes: %d\n", stringLength, numberOfRunes)
-// Output: myString - Length: 8 - Runes: 6
+// => myString - Length: 8 - Runes: 6
 ```
