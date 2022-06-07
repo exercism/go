@@ -31,7 +31,7 @@ type Distance struct {
 } 
 ```
 
-In the example above, `Kilometer` and `Mile` ane constants of type `DistanceUnit`.
+In the example above, `Kilometer` and `Mile` are constants of type `DistanceUnit`.
 
 These types do not implement interface `Stringer` as they lack the `String` method.
 Hence `fmt` functions will print `Distance` values using Go's "default format":
