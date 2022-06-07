@@ -14,28 +14,22 @@ type Shape struct{
 ```
 
 Once you have defined the `struct`, you need to create a new instance defining the fields using their field name
-in any order. To initialize instances of structs Go offers two ways:
+in any order:
 
 ```go
-s1 := Shape{
+s := Shape{
     name: "Square",
     size: 25,
 }
-
-s2 := new(Shape)
-fmt.Printf("name: %s size: %d\n", s2.name, s2.size)
-// Output: name:  size: 0
 ```
-
-As shown in this example `func new(Type)` can be used to create an newly created zero value of the given type.
 
 To read or modify instance fields, use the `.` notation:
 
 ```go
 // Update the name and the size
-s2.name = "Circle"
-s2.size = 35
-fmt.Printf("name: %s size: %d\n", s2.name, s2.size)
+s.name = "Circle"
+s.size = 35
+fmt.Printf("name: %s size: %d\n", s.name, s.size)
 // Output: name: Circle size: 35
 ```
 
@@ -56,10 +50,7 @@ Using a constructor can have the following advantages:
 * handling of default-values
 
 Another advantage will be shown with an example. When importing the `package shapes` containing the
-struct `Shape` the unexported fields `name` and `size` cannot be accessed. Using a constructor the initial value
-can be set:
+struct `Shape` the unexported fields `name` and `size` cannot be accessed. Using a constructor the initial value can nevertheless be set:
 ```go
 rect := shapes.NewShape("Rectangle")
 ```
-
-
