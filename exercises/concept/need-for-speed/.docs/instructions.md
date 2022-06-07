@@ -26,7 +26,7 @@ and the battery drain percentage as its two parameters (both of type `int`) and 
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
-// Output: Car{speed: 5, batteryDrain: 2, battery:100, distance: 0}
+// => Car{speed: 5, batteryDrain: 2, battery:100, distance: 0}
 ```
 
 ## 2. Creating a race track
@@ -37,7 +37,7 @@ Allow creating a race track by defining a function `NewTrack` that takes the tra
 ```go
 distance := 800
 track := NewTrack(distance)
-// Output: Track{distance: 800}
+// => Track{distance: 800}
 ```
 
 ## 3. Drive the car
@@ -49,7 +49,7 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car = Drive(car)
-// Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// => Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
 ## 4. Check if a remote controlled car can finish a race
@@ -67,5 +67,5 @@ distance := 100
 track := NewTrack(distance)
 
 CanFinish(car, track)
-// Output: true
+// => true
 ```
