@@ -24,7 +24,7 @@ s1 := Shape{
 
 s2 := new(Shape)
 fmt.Printf("name: %s size: %d\n", s2.name, s2.size)
-// => name:  size: 0
+// Output: name:  size: 0
 ```
 
 As shown in this example `func new(Type)` can be used to create an newly created zero value of the given type.
@@ -36,7 +36,7 @@ To read or modify instance fields, use the `.` notation:
 s2.name = "Circle"
 s2.size = 35
 fmt.Printf("name: %s size: %d\n", s2.name, s2.size)
-// => name: Circle size: 35
+// Output: name: Circle size: 35
 ```
 
 Sometimes it can be nice to have a _constructor_, which is a function to create an instance of a struct.
