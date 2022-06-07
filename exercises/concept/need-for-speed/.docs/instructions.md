@@ -36,7 +36,7 @@ Allow creating a race track by defining a function `NewTrack` that takes the tra
 
 ```go
 distance := 800
-raceTrack := NewTrack(distance)
+track := NewTrack(distance)
 // Output: Track{distance: 800}
 ```
 
@@ -64,8 +64,8 @@ batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 distance := 100
-raceTrack := NewTrack(distance)
+track := NewTrack(distance)
 
-CanFinish(car, raceTrack)
+CanFinish(car, track)
 // Output: true
 ```
