@@ -30,7 +30,7 @@
 ## 5. Implement the `Stringer` interface for type `MeteorologyData`
 
  - The `Speed` contains a `Temperature` and a `Speed` fields, among other fields. You can use [fmt.Sprintf][sprintf] to help you format this string
- - The `String` method should return the meteorology data in the following format: `"<location>: <temperature>, Wind <wind_speed> at <wind_direction>, <humidity>% Humidity"`
+ - The `String` method should return the meteorology data in the following format: `"<location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity"`
  - Since the `Temperature` and `Speed` types already implement the `Stringer` interface (from task 2 and 4), the functions of the `fmt` package like [fmt.Sprintf][sprintf] will know how to format it when you use the `%v` or `%s` [formatting verbs][fmt]
 
 
