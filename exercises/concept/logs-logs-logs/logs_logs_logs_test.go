@@ -31,9 +31,19 @@ func TestApplication(t *testing.T) {
 			want: "default",
 		},
 		{
-			name: "multiple characters recommendation",
+			name: "multiple characters recommendation(1/3)",
 			log:  "❗ recommended search product 🔍",
 			want: "recommendation",
+		},
+		{
+			name: "multiple characters recommendation(2/3)",
+			log:  "🔍 search recommended product ❗",
+			want: "search",
+		},
+		{
+			name: "multiple characters recommendation(3/3)",
+			log:  "☀ weather is sunny ❗",
+			want: "weather",
 		},
 	}
 
