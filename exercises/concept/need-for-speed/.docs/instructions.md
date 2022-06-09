@@ -56,8 +56,7 @@ car = Drive(car)
 
 To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`.
 
-Assume that you start the engine of the car for the race but take into account that the car might have some mileage already (`distance >= 0`) and its battery might not necessarily be fully charged (`battery <= 100`):
-
+Assume that you are currently at the starting line of the race and start the engine of the car for the race. Take into account that the car's battery might not necessarily be fully charged when starting the race:
 ```go
 speed := 5
 batteryDrain := 2
