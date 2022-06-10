@@ -4,6 +4,10 @@
     "description": "Go by Example: Time"
   },
   {
+    "url": "https://gobyexample.com/time-formatting-parsing",
+    "description": "Go by Example: Time Formatting / Parsing"
+  },
+  {
     "url": "https://www.pauladamsmith.com/blog/2011/05/go_time.html",
     "description": "Blog Post: Parsing and formating dates/time in Go"
   },
