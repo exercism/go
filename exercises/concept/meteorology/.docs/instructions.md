@@ -68,7 +68,7 @@ fmt.Sprint(mphUnit)
 kmhUnit := KmPerHour
 kmhUnit.String()
 // => km/h
-fmt.Sprint(mphUnit)
+fmt.Sprint(kmhUnit)
 // => km/h
 ```
 
