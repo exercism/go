@@ -51,6 +51,8 @@ comment:
         - '*'
         - '**/*'
       body: |
+        - ✍️ If your PR fully fixes an issue, please include the text `Fixes #issue_no` in any line of the PR description. This will make the issue be automatically be closed when the PR is merged. If your PR is related to an existing issue but does not fix it completely, please link the issue anywhere in the description of the PR with `#issue_no`. You can read more about this in [Github: Linking a pull request to an issue using a keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
+
         - ✍️ If your PR is not related to an existing issue (and is not self-explaining like a typo fix), please make sure the description explains why the change you made is necessary.
 
         - 🔤 If your PR fixes an easy to identify typo, if would be great if you could check for that typo in the whole repo. For example, if you found `Unicdoe`, use "replace all" in your editor (or command line magic) to fix it consistently.
