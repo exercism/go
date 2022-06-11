@@ -27,7 +27,7 @@ car.Drive()
 // car is now Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
-Note: If as a result of execution `car.Drive()` car's battery is below 0, you can't drive the car anymore.
+Note: You should not try to drive the car if doing so will cause the car's battery to be below 0.
 
 ## 2. Display the distance driven
 
