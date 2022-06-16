@@ -196,7 +196,7 @@ are useful if they let the solver try a change and see a performance effect.
 Some problems that are implemented in multiple tracks use the same inputs and
 outputs to define the test suites. Where the [problem-specifications](https://github.com/exercism/problem-specifications)
 repository contains a _canonical-data.json_ file with these inputs and outputs,
-we can   the test cases programmatically.
+we can generate the test cases programmatically.
 
 See the _gen.go_ file in the `leap` exercise for an example of how this
 can be done.
