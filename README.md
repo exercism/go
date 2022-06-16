@@ -249,8 +249,7 @@ comment = "excluded because we don't want to add error handling to the exercise"
 ```
 
 To regenerate the test cases, navigate into the **go** directory and perform the following steps:
-1. Update the `tests.toml` by using [configlet](https://github.com/exercism/configlet) and the command `configlet sync --tests --update -e <exercise>`. For example for the exercise `leap` use the command `configlet sync --tests --update -e leap`.
-After including/excluding/skipping all cases you should see something like: `The <exercise> exercise has up-to-date tests!`. For further instructions check out [configlet](https://github.com/exercism/configlet#tests)
+1. Update the `tests.toml` by using [configlet](https://github.com/exercism/configlet) and the command `configlet sync --tests --update -e <exercise>`. For example for the exercise `leap` use the command `configlet sync --tests --update -e leap`. After including/excluding/skipping all cases you should see something like: `The <exercise> exercise has up-to-date tests!`. For further instructions check out [configlet](https://github.com/exercism/configlet#tests)
 2. Run the test case generator by using `GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go`. You should see that the
 `<exercise>/cases_test.go` file has changed. Commit the changes.
 
