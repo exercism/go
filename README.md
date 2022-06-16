@@ -196,7 +196,7 @@ are useful if they let the solver try a change and see a performance effect.
 Some problems that are implemented in multiple tracks use the same inputs and
 outputs to define the test suites. Where the [problem-specifications](https://github.com/exercism/problem-specifications)
 repository contains a _canonical-data.json_ file with these inputs and outputs,
-we can generate the test cases programmatically.
+we can   the test cases programmatically.
 
 See the _gen.go_ file in the `leap` exercise for an example of how this
 can be done.
@@ -221,9 +221,38 @@ $ tree -L 1 .
 └── go
 ```
 
-To regenerate the test cases, navigate into the **go** directory and run
-`GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go`. You should see that the
-`<exercise>/cases_test.go` file has changed. Commit the change.
+To keep track of which tests are implemented by the exercise the file `.meta/tests.toml` is used by [configlet](https://github.com/exercism/configlet).
+
+A `tests.toml` file has this format:
+```
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[1e22cceb-c5e4-4562-9afe-aef07ad1eaf4]
+description = "basic"
+
+[79ae3889-a5c0-4b01-baf0-232d31180c08]
+description = "lowercase words"
+
+[ec7000a7-3931-4a17-890e-33ca2073a548]
+description = "invalid input"
+include = false
+comment = "excluded because we don't want to add error handling to the exercise"
+```
+
+To regenerate the test cases, navigate into the **go** directory and perform the following steps:
+1. Update the `tests.toml` by using [configlet](https://github.com/exercism/configlet) and the command `configlet sync --tests --update -e <exercise>`. For example for the exercise `leap` use the command `configlet sync --tests --update -e leap`.
+After including/excluding/skipping all cases you should see something like: `The <exercise> exercise has up-to-date tests!`. For further instructions check out [configlet](https://github.com/exercism/configlet#tests)
+2. Run the test case generator by using `GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go`. You should see that the
+`<exercise>/cases_test.go` file has changed. Commit the changes.
 
 ## Managing the Go version
 
