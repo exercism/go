@@ -29,14 +29,6 @@ type js struct {
 	} `json:"cases"`
 }
 
-/*
-type testCases struct {
-	description string
-	input       string
-	expected    []string
-}
-*/
-
 // template applied to above data structure generates the Go test cases
 var tmpl = `package diamond
 
