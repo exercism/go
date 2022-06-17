@@ -218,3 +218,15 @@ func TestCharOutOfRangeShouldGiveError(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestDiamond(t *testing.T) {
+	for _, testCase := range testCases {
+		got, _ := Gen([]byte(testCase.input)[0])
+
+		if got != strings.Join(testCase.expected, "\n") {
+			t.Fatalf("Gen(%s): %s\n\t Expected: %s\n\t Got: %s", testCase.input, testCase.description, strings.Join(testCase.expected, "\n"), got)
+		} else {
+			t.Logf("PASS: Gen(%s)", testCase.input)
+		}
+	}
+}
