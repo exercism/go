@@ -1,6 +1,7 @@
 package diamond
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -221,12 +222,13 @@ func TestCharOutOfRangeShouldGiveError(t *testing.T) {
 
 func TestDiamond(t *testing.T) {
 	for _, testCase := range testCases {
-		got, _ := Gen([]byte(testCase.input)[0])
+		t.Run(testCase.description, func(t *testing.T) {
+			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
+			got, _ := Gen([]byte(testCase.input)[0])
 
-		if got != strings.Join(testCase.expected, "\n") {
-			t.Fatalf("Gen(%s): %s\n\t Expected: %s\n\t Got: %s", testCase.input, testCase.description, strings.Join(testCase.expected, "\n"), got)
-		} else {
-			t.Logf("PASS: Gen(%s)", testCase.input)
-		}
+			if got != expected {
+				t.Fatalf("Gen(%q): %q\n\t Expected: %q\n\t Got: %q", testCase.input, testCase.description, expected, got)
+			}
+		})
 	}
 }
