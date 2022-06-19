@@ -224,7 +224,7 @@ $ tree -L 1 .
 To keep track of which tests are implemented by the exercise the file `.meta/tests.toml` is used by [configlet](https://github.com/exercism/configlet).
 
 To synchronize the exercise with [problem-specifications](https://github.com/exercism/problem-specifications) and to regenerate the tests, navigate into the **go** directory and perform the following steps:
-1. Synchronize your exercise with `[exercism/problem-specifications](https://github.com/exercism/problem-specifications)` using [configlet](https://github.com/exercism/configlet)
+1. Synchronize your exercise with [`exercism/problem-specifications`](https://github.com/exercism/problem-specifications) using [configlet](https://github.com/exercism/configlet)
 ```console
 $ configlet sync --update -e <exercise>
 ```
