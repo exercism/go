@@ -224,7 +224,7 @@ func TestDiamond(t *testing.T) {
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
 			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
-			got, _ := Gen([]byte(testCase.input)[0])
+			got, err := Gen(testCase.input[0])
 
 			if got != expected {
 				t.Fatalf("Gen(%q): %q\n\t Expected: %q\n\t Got: %q", testCase.input, testCase.description, expected, got)
