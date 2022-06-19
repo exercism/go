@@ -191,12 +191,16 @@ these though. Usually they will just bench the combined time to run over all
 the test data rather than attempt precise timings on single function calls. They
 are useful if they let the solver try a change and see a performance effect.
 
-## Generating test cases
+## Synchronizing exercises with problem specifications
 
 Some problems that are implemented in multiple tracks use the same inputs and
-outputs to define the test suites and also have the instructions in common. Where the [problem-specifications](https://github.com/exercism/problem-specifications)
+outputs to define the test suites.
+Where the [problem-specifications](https://github.com/exercism/problem-specifications)
 repository contains a _canonical-data.json_ file with these inputs and outputs,
-we can generate the test cases programmatically. 
+we can generate the test cases programmatically.
+The problem-specifications repo also defines the instructions for the exercises, which are also shared across tracks and must also be synchronized.
+
+### Test structure
 
 See the _gen.go_ file in the `leap` exercise for an example of how this
 can be done.
@@ -221,14 +225,20 @@ $ tree -L 1 .
 └── go
 ```
 
+### Synchronizing tests and instructions
+
 To keep track of which tests are implemented by the exercise the file `.meta/tests.toml` is used by [configlet](https://github.com/exercism/configlet).
 
 To synchronize the exercise with [problem-specifications](https://github.com/exercism/problem-specifications) and to regenerate the tests, navigate into the **go** directory and perform the following steps:
+
 1. Synchronize your exercise with [`exercism/problem-specifications`](https://github.com/exercism/problem-specifications) using [configlet](https://github.com/exercism/configlet):
+
 ```console
 $ configlet sync --update -e <exercise>
 ```
+
 `configlet` synchronizes the following parts, if an updated is needed:
+
 * docs: `.docs/instructions.md`, `.docs/introduction.md`
 * metadata: `.meta/config.json`
 * tests: `.meta/tests.toml`
@@ -237,6 +247,7 @@ $ configlet sync --update -e <exercise>
 For further instructions check out [configlet](https://github.com/exercism/configlet#configlet-sync).
 
 2. Run the test case generator to update `<exercise>/cases_test.go`:
+
 ```console
 $ GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go
 ```
