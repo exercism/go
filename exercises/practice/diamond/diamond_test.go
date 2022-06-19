@@ -39,6 +39,22 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 	}
 }
 
+func TestDiamond(t *testing.T) {
+	for _, testCase := range testCases {
+		t.Run(testCase.description, func(t *testing.T) {
+			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
+			got, err := Gen(testCase.input[0])
+
+			if err != testCase.expectedError {
+				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
+			}
+			if got != expected {
+				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
+			}
+		})
+	}
+}
+
 func TestFirstRowContainsOneA(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		return len(rows) > 0 && strings.Count(rows[0], "A") == 1
@@ -217,21 +233,5 @@ func TestCharOutOfRangeShouldGiveError(t *testing.T) {
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
-	}
-}
-
-func TestDiamond(t *testing.T) {
-	for _, testCase := range testCases {
-		t.Run(testCase.description, func(t *testing.T) {
-			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
-			got, err := Gen(testCase.input[0])
-
-			if err != testCase.expectedError {
-				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
-			}
-			if got != expected {
-				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
-			}
-		})
 	}
 }
