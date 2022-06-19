@@ -232,7 +232,7 @@ $ configlet sync --update -e <exercise>
 * docs: `.docs/instructions.md`, `.docs/introduction.md`
 * metadata: `.meta/config.json`
 * tests: `.meta/tests.toml`
-* filepaths: `config.json`
+* filepaths: `./meta/config.json`
 
 For further instructions check out [configlet](https://github.com/exercism/configlet#configlet-sync).
 
