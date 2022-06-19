@@ -226,11 +226,11 @@ func TestDiamond(t *testing.T) {
 			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
 			got, err := Gen(testCase.input[0])
 
+			if err != testCase.expectedError {
+				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
+			}
 			if got != expected {
-				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)",
-					testCase.input,
-					expected, len(expected),
-					got, len(got))
+				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
 			}
 		})
 	}

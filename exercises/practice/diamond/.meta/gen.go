@@ -38,10 +38,12 @@ var testCases = []struct {
 	description string
 	input       string
 	expected    []string
+	expectedError error
 }{
 {{range .J.Cases}}{
 		description: {{printf "%q"   .Description}},
 	input: {{printf "%q"   .Input.Letter}},
+	expectedError: nil,
 	expected: []string { {{range $line := .Expected}}{{printf "\n%q," $line}}{{end}}
 },
 },

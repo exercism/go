@@ -4,20 +4,23 @@ package diamond
 // Commit: d137db1 Format using prettier (#1917)
 
 var testCases = []struct {
-	description string
-	input       string
-	expected    []string
+	description   string
+	input         string
+	expected      []string
+	expectedError error
 }{
 	{
-		description: "Degenerate case with a single 'A' row",
-		input:       "A",
+		description:   "Degenerate case with a single 'A' row",
+		input:         "A",
+		expectedError: nil,
 		expected: []string{
 			"A",
 		},
 	},
 	{
-		description: "Degenerate case with no row containing 3 distinct groups of spaces",
-		input:       "B",
+		description:   "Degenerate case with no row containing 3 distinct groups of spaces",
+		input:         "B",
+		expectedError: nil,
 		expected: []string{
 			" A ",
 			"B B",
@@ -25,8 +28,9 @@ var testCases = []struct {
 		},
 	},
 	{
-		description: "Smallest non-degenerate case with odd diamond side length",
-		input:       "C",
+		description:   "Smallest non-degenerate case with odd diamond side length",
+		input:         "C",
+		expectedError: nil,
 		expected: []string{
 			"  A  ",
 			" B B ",
@@ -36,8 +40,9 @@ var testCases = []struct {
 		},
 	},
 	{
-		description: "Smallest non-degenerate case with even diamond side length",
-		input:       "D",
+		description:   "Smallest non-degenerate case with even diamond side length",
+		input:         "D",
+		expectedError: nil,
 		expected: []string{
 			"   A   ",
 			"  B B  ",
@@ -49,8 +54,9 @@ var testCases = []struct {
 		},
 	},
 	{
-		description: "Largest possible diamond",
-		input:       "Z",
+		description:   "Largest possible diamond",
+		input:         "Z",
+		expectedError: nil,
 		expected: []string{
 			"                         A                         ",
 			"                        B B                        ",
