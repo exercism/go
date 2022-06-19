@@ -1,12 +1,23 @@
 # Instructions append
 
-## Implementation Notes
+### 1. Open an account
 
-If Open is given a negative initial deposit, it must return nil.
-Deposit must handle a negative amount as a withdrawal. Withdrawals must
-not succeed if they result in a negative balance.
-If any Account method is called on an closed account, it must not modify
-the account and must return ok = false.
+An account should have some non negative balance on opening. In case of the negative balance, `nil` is returned.
+
+### 2. Close an account
+
+An account can be closed. Closed account has balance = 0. But on closing, an actual balance should be returned - `(balance,true)`. Other close requests should finish returning `(0,false)`.
+
+### 3. Get account balance 
+
+Account balance is accessible. If an account is closed, `(0,false)` is returned, otherwise - `(balance,true)`
+
+### 4. Deposit/withdraw an account
+
+Deposit/withdraw operations are supported. They are handled by a single function and the exact operation depends on an amonth value provided - it is withdraw if the value is negative, deposit otherwise.
+In case withdraw is requested but not enough money present, the request canceled, returning `false` with a balance keeping the same. Otherwise - the balance is changed according to the requested amount value. 
+
+## Implementation Notes
 
 The tests will execute some operations concurrently. You should strive
 to ensure that operations on the Account leave it in a consistent state.
