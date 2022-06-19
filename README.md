@@ -233,6 +233,7 @@ $ configlet sync --update -e <exercise>
 * metadata: `.meta/config.json`
 * tests: `.meta/tests.toml`
 * filepaths: `config.json`
+
 For further instructions check out [configlet](https://github.com/exercism/configlet#configlet-sync)
 2. Run the test case generator by using `GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go` which should update `<exercise>/cases_test.go`.
 
