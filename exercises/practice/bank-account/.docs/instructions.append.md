@@ -2,7 +2,7 @@
 
 ### 1. Open an account
 
-An account should have some non negative balance on opening. In case of the negative balance, `nil` is returned.
+An account can be opened. On opening, its initial balance should not be negative. In case of the negative balance, `nil` is returned.
 
 ### 2. Close an account
 
