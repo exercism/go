@@ -109,7 +109,7 @@ Let's briefly describe each file:
 - **.meta/description.md** - Use to generate a [track specific description](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md) of the exercise in the exercise's README.
 
 - **.meta/gen.go** - Generates `cases_test.go` when present.
-  See also [generating test cases](#synchronizing-exercises-with-problem-specifications).
+  See also [synchronizing exercises with problem specifications](#synchronizing-exercises-with-problem-specifications).
 
 - **.meta/hints.md** - Use to add track specific information in addition to the generic exercise's problem-specification description in the README.
 
