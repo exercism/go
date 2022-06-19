@@ -28,10 +28,10 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 			separator = strings.SplitAfter
 		}
 		rows := separator(d, "\n")
-		if len(rows) < 1 {
+		if len(rows) < 2 {
 			return false
 		}
-		return requirement(byte(char), rows)
+		return requirement(byte(char), rows[:len(rows)-1])
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
@@ -103,7 +103,7 @@ func TestDiamondIsHorizontallySymmetric(t *testing.T) {
 func TestDiamondIsVerticallySymmetric(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		for i, j := 0, len(rows)-1; i < j; i, j = i+1, j-1 {
-			if strings.TrimSpace(rows[i]) != strings.TrimSpace(rows[j]) {
+			if rows[i] != rows[j] {
 				return false
 			}
 		}
