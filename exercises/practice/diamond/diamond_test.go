@@ -227,7 +227,10 @@ func TestDiamond(t *testing.T) {
 			got, err := Gen(testCase.input[0])
 
 			if got != expected {
-				t.Fatalf("Gen(%q): %q\n\t Expected: %q\n\t Got: %q", testCase.input, testCase.description, expected, got)
+				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)",
+					testCase.input,
+					expected, len(expected),
+					got, len(got))
 			}
 		})
 	}
