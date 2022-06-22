@@ -67,5 +67,5 @@ car := NewCar(speed, batteryDrain)
 trackDistance := 100
 
 car.CanFinish(trackDistance)
-// Output: true
+// => true
 ```
