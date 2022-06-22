@@ -4,7 +4,7 @@
 
 An account can be opened. On opening, its initial balance should not be negative. If a negative balance is given to the `Open` function, `nil` must be returned, otherwise the newly created account must be returned.
 
-### 2. Close an account
+## Closing an account
 
 An account can be closed. When closing an account, the `Close` method must return the balance the account has and a boolean `true` indicating the account was closed successfully. Closing an account does not succeed if the account is already closed. When an account is closed, its balance must be set to `0`.
 
