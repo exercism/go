@@ -1,21 +1,21 @@
 # Instructions append
 
-### 1. Open an account
+## Opening an account
 
-An account can be opened. On opening, its initial balance should not be negative. In case of the negative balance, `nil` is returned.
+An account can be opened. On opening, its initial balance should not be negative. If a negative balance is given to the `Open` function, `nil` must be returned, otherwise the newly created account must be returned.
 
 ### 2. Close an account
 
-An account can be closed. Closed account has balance = 0. But on closing, an actual balance should be returned - `(balance,true)`. Other close requests should finish returning `(0,false)`.
+An account can be closed. When closing an account, the `Close` method must return the balance the account has and a boolean `true` indicating the account was closed successfully. Closing an account does not succeed if the account is already closed. When an account is closed, its balance must be set to `0`.
 
-### 3. Get account balance 
+## Getting the account balance 
 
-Account balance is accessible. If an account is closed, `(0,false)` is returned, otherwise - `(balance,true)`
+The `Balance` method allows a user to check the current balance of an account. It must return the balance of the account and a boolean indicating if the operation succeeded. Checking the balance only doesn't succeed if the account is closed.
 
-### 4. Deposit/withdraw an account
+## Deposits / Withrawals
 
-Deposit/withdraw operations are supported. They are handled by a single function and the exact operation depends on an amonth value provided - it is withdraw if the value is negative, deposit otherwise.
-In case withdraw is requested but not enough money present, the request canceled, returning `false` with a balance keeping the same. Otherwise - the balance is changed according to the requested amount value. 
+Deposits and withdrawals are both handled by the `Deposit` method. If the argument given to the method it's a positive amount, then that amount of money must be deposited in the account. If the amount given is negative, that amount of money must be withdrawn from the account.
+The return value of `Deposit` indicates if the operation succeeded. A deposit always succeeds, however a withdrawal might fail if there is not enough money in the account.
 
 ## Implementation Notes
 
