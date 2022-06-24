@@ -4,7 +4,9 @@
     "tehsphinx"
   ],
   "contributors": [
-    "oanaOM"
+    "oanaOM",
+    "eklatzer",
+    "andrerfcsantos"
   ],
   "forked_from": [
     "csharp/need-for-speed"

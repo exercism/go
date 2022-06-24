@@ -12,8 +12,8 @@ However, changing the speed of the assembly line also changes the number of cars
 Implement a function that takes in the number of cars produced per hour and the success rate and calculates the number of successful cars made per hour. The success rate is given as a percentage, from `0` to `100`:
 
 ```go
-rate := CalculateWorkingCarsPerHour(1547, 90)
-// Output: 1392.3
+CalculateWorkingCarsPerHour(1547, 90)
+// => 1392.3
 ```
 
 **Note:** the return value should be a `float64`.
@@ -23,8 +23,8 @@ rate := CalculateWorkingCarsPerHour(1547, 90)
 Implement a function that takes in the number of cars produced per hour and the success rate and calculates how many cars are successfully produced each minute:
 
 ```go
-rate := CalculateWorkingCarsPerMinute(1105, 90)
-// Output: 16
+CalculateWorkingCarsPerMinute(1105, 90)
+// => 16
 ```
 
 **Note:** the return value should be an `int`.
@@ -43,11 +43,11 @@ So the cost for 37 cars is:
 Implement the function `CalculateCost` that calculates the cost of producing a number of cars, regardless of whether they are successful:
 
 ```go
-cost := CalculateCost(37)
-// Output: 355000
+CalculateCost(37)
+// => 355000
 
-cost = CalculateCost(21)
-// Output: 200000
+CalculateCost(21)
+// => 200000
 ```
 
 **Note:** the return value should be an `uint`.

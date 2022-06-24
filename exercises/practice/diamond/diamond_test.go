@@ -1,6 +1,7 @@
 package diamond
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -35,6 +36,22 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
+	}
+}
+
+func TestDiamond(t *testing.T) {
+	for _, testCase := range testCases {
+		t.Run(testCase.description, func(t *testing.T) {
+			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
+			got, err := Gen(testCase.input[0])
+
+			if err != testCase.expectedError {
+				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
+			}
+			if got != expected {
+				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
+			}
+		})
 	}
 }
 
