@@ -3,6 +3,7 @@ HTTP or Hypertext Transfer Protocol is an application layer[^1] protocol. When y
 In this concept we will learn how to code HTTP clients and servers using http/net package.
 
 ## Client
+A client can be defined by using `http.Client` structure.
 There are three main methods that you can use in http/net package to act as an HTTP client:
 
 ### Get method:
@@ -78,3 +79,70 @@ func client(url string) {
 Here we send a `"Hello, World!"` message, as type `"text/plain"` to a url given as input to `client` function. 
 
 ## Server
+A client can be defined by using `http.Server` structure. There are five important fields in this structure:
+1. `Addr string`: The TCP address that the server will listen on,
+2. `Handler Handler`: the server’s multiplexer,
+3. `IdleTimeout time.Duration`: This is the maximum amount of time that a connection will be kept open before a new request from the client arrives.
+4. `ReadHeaderTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request headers.
+5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request. The core components used to create HTTP servers using `net/http` package are handlers.
+
+### Handlers:
+```go
+type Handler interface {
+	ServeHTTP(ResponseWriter, *Request)
+}
+```
+Handlers are responsible for satisfying the client's requests by performing various tasks. Each object that implements the `http.Handler` interface, is capable of responding to client requests. Handler functions receive an `http.Request` which contains information regarding the client’s request, and an `http.ResponseWriter` that allows the handler to write the appropriate response in accordance with the request. `http.ResponseWriter` interface contains a `Header` field (!!! I need to complete this !!!), a `Write([]byte) (int, error)` method that writes the response to the client, and a `WriteHeader(statusCode int)`  that writes the appropriate status code to the client.
+> Tip: If you wish to send and status code besides `http.StatusOk` you need to use `WriteHeader` before `Write`, since `Write` assumes `http.StatusOk` if no status is set before invoking it.
+> Example:
+```go
+func(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Not Found!"))
+	w.WriteHeader(http.StatusNotFound)
+}
+// The result of running this function is a response with status code 200 Ok!
+----------
+func(w http.ResponseWriter, r *http.Request){
+	w.WriteHeader(http.StatusNotFound)
+	w.Write([]byte("Not Found!"))
+}
+// The result of running this function is a response with status code 404 NotFound!
+```
+
+### Multiplexer:
+`http.ServeMux` is responsible for routing each request to the right handler by matching the pattern in the request with the *longest* pattern specified for it. `http.NewServeMux() *ServeMux` is used to create a new multiplexer. It uses handlers to route each request to the proper handler. As an example:
+```go
+func multiplexer() *ServeMux{
+	serveMux := http.NewServeMux()
+	serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Hello World!"))
+	})
+	return serveMux
+}
+```
+
+> Absolute paths vs subtrees:
+> Paths that end without a `/` are called absolute paths (e.g. `"root/image"`). If an absolute path is used in the request, the multiplexer will try to find the “exact” match for that path. On the contrary, paths that end with `/` are called subtrees (e.g. `“root/image/“`) and the multiplexer will try to find the best match for these paths. Beware that the multiplexer will convert an absolute path to a subtree if it does not find a corresponding handler.
+
+> Draining the request body before closing it:
+> Unlike the client that drains the body before closing it, in the server you need to manually drain the request body. A good way to do so is writing a middleware that closes the request after the server job is done: // put reference to Network Programming in Go
+```go
+func drainAndClose(next *ServeMux) http.Handler {
+	return http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			next.ServeHTTP(w, r)
+			_, _ = io.Copy(ioutil.Discard, r.Body)
+			_ = r.Body.Close()
+		},
+	)
+}
+
+func multiplexer() http.Handler{
+	serveMux := http.NewServeMux()
+	serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Hello World!"))
+	})
+	mux := drainAndClose(serveMux)
+	return serveMux
+}
+```
