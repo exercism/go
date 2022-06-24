@@ -17,7 +17,7 @@ The [`strings` package](https://pkg.go.dev/strings) contains many useful functio
 ```go
 import "strings"
 
-strings.ToLower("Gopher")    // Output: "gopher"
-strings.Index("Apple", "le") // Output: 3
-strings.Count("test", "t")   // Output: 2
+strings.ToLower("Gopher")    // => "gopher"
+strings.Index("Apple", "le") // => 3
+strings.Count("test", "t")   // => 2
 ```
