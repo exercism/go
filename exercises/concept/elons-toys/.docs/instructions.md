@@ -27,7 +27,7 @@ car.Drive()
 // car is now Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
-Note: If a car's battery is below its battery drain percentage, you can't drive the car anymore.
+Note: You should not try to drive the car if doing so will cause the car's battery to be below 0.
 
 ## 2. Display the distance driven
 
@@ -67,5 +67,5 @@ car := NewCar(speed, batteryDrain)
 trackDistance := 100
 
 car.CanFinish(trackDistance)
-// Output: true
+// => true
 ```

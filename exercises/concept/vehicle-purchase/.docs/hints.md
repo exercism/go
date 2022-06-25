@@ -8,7 +8,7 @@
 
 ## 2. Choose between two potential vehicles to buy
 
-- Use a [comparison operator][comparison-operators] to determine which option comes first in dictionary order.
+- Use a [comparison operator][comparison-operators] to determine which option comes first in lexicographical order.
 - Then set the value of a helper variable depending of the outcome of that comparison with the help of an an [if-else statement][if-statement].
 - Finally construct the recommendation sentence. For that you can use the `+` operator to concatenate the two strings.
 

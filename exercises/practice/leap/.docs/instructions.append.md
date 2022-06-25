@@ -13,4 +13,4 @@ file. The Go specific transformation of that data lives in the `cases_test.go` f
 
 [problem-specifications-leap]: https://github.com/exercism/problem-specifications/tree/master/exercises/leap
 [problem-specifications-leap-json]: https://github.com/exercism/problem-specifications/blob/master/exercises/leap/canonical-data.json
-[local-leap-gen]: https://github.com/exercism/go/blob/master/exercises/leap/.meta/gen.go
+[local-leap-gen]: https://github.com/exercism/go/blob/main/exercises/practice/leap/.meta/gen.go

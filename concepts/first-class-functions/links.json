@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://go.dev/ref/spec#Function_types",
+    "description": "Go Language Spec: Function types"
+  },
+  {
+    "url": "https://go.dev/tour/moretypes/24",
+    "description": "Tour of Go: Function values"
+  },
+  {
+    "url": "https://golangbot.com/first-class-functions/",
+    "description": "Golang tutorial: First Class Functions"
+  }
+]

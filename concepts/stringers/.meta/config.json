@@ -1,0 +1,9 @@
+{
+  "blurb": "Stringer is an interface for defining the string format of values.",
+  "authors": [
+    "norbs57"
+  ],
+  "contributors": [
+    "andrerfcsantos"
+  ]
+}

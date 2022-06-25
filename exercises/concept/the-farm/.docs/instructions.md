@@ -25,7 +25,7 @@ fodder, err := DivideFood(twentyFodderNoError, 10)
 ```
 
 If `ErrScaleMalfunction` is returned by `FodderAmount` and the fodder amount is positive, double the fodder amount returned by `FodderAmount` before dividing it equally between the cows.
-For any other error besides ErrScaleMalfunction, return 0 and the error.
+For any other error besides `ErrScaleMalfunction`, return 0 and the error.
 
 ```go
 // twentyFodderWithErrScaleMalfunction says there are 20.0 fodder and a ErrScaleMalfunction
@@ -36,7 +36,7 @@ fodder, err := DivideFood(twentyFodderWithErrScaleMalfunction, 10)
 
 ## 2. Return an error for negative fodder
 
-If the scale is broken and returning negative amounts of fodder, return an error saying "negative fodder":
+If the scale is broken and returning negative amounts of fodder, return an error saying "negative fodder" only if `FodderAmount` returned `ErrScaleMalfunction` or nil :
 
 ```go
 // negativeFiveFodder says there are -5.0 fodder

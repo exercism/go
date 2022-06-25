@@ -72,8 +72,8 @@ The operation `*p` fetches the value stored at the memory address stored in `p`.
 We can also use the dereference operator to assign a new value to the memory address referenced by the pointer:
 
 ```go
-var a int
-a = 2   // declare int variable 'a' and assign it the value of 2
+var a int        // declare int variable 'a'
+a = 2            // assign 'a' the value of 2
 
 var pa *int
 pa = &a          // 'pa' now contains to the memory address of 'a'  
@@ -130,7 +130,7 @@ fmt.Println(p.Name) // Output: "Peter"
 
 ## Slices and maps are already pointers
 
-Slices and maps are special types because they already have pointers in their implementation. This means that more often that not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
+Slices and maps are special types because they already have pointers in their implementation. This means that more often than not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
 
 
 ```go

@@ -37,8 +37,8 @@ func main() {
     const m = map[int]int{2: 8}
     const s = []string{"exercism", "v3"}
 }
-// Output: const initializer map[int]int literal is not a constant
-// Output: const initializer []string literal is not a constant
+// => const initializer map[int]int literal is not a constant
+// => const initializer []string literal is not a constant
 ```
 
 For a fuller explanation please see the resources [here][const2], [here][const3], and [here][const4].

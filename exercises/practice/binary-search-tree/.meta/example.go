@@ -1,53 +1,49 @@
 package binarysearchtree
 
-type SearchTreeData struct {
-	left  *SearchTreeData
+import "fmt"
+
+type BinarySearchTree struct {
+	left  *BinarySearchTree
 	data  int
-	right *SearchTreeData
+	right *BinarySearchTree
 }
 
-func NewBst(i int) SearchTreeData {
-	return SearchTreeData{data: 4}
+func NewBst(i int) *BinarySearchTree {
+	return &BinarySearchTree{data: i}
 }
 
-func (std *SearchTreeData) Insert(i int) {
-	if i <= std.data {
-		if std.left != nil {
-			std.left.Insert(i)
+func (bst *BinarySearchTree) Insert(i int) {
+	if i <= bst.data {
+		if bst.left != nil {
+			bst.left.Insert(i)
 		} else {
-			std.left = &SearchTreeData{data: i}
+			bst.left = &BinarySearchTree{data: i}
 		}
 	} else {
-		if std.right != nil {
-			std.right.Insert(i)
+		if bst.right != nil {
+			bst.right.Insert(i)
 		} else {
-			std.right = &SearchTreeData{data: i}
+			bst.right = &BinarySearchTree{data: i}
 		}
 	}
 }
 
-type stringCallback func(int) string
-
-func (std *SearchTreeData) MapString(f stringCallback) (result []string) {
-	if std.left != nil {
-		result = append(std.left.MapString(f), result...)
+func (bst *BinarySearchTree) SortedData() []int {
+	var result []int
+	if bst.left != nil {
+		result = append(bst.left.SortedData(), result...)
 	}
-	result = append(result, []string{f(std.data)}...)
-	if std.right != nil {
-		result = append(result, std.right.MapString(f)...)
+	result = append(result, bst.data)
+	if bst.right != nil {
+		result = append(result, bst.right.SortedData()...)
 	}
 	return result
 }
 
-type intCallback func(int) int
-
-func (std *SearchTreeData) MapInt(f intCallback) (result []int) {
-	if std.left != nil {
-		result = append(std.left.MapInt(f), result...)
+// useful for debugging
+func (bst *BinarySearchTree) String() string {
+	if bst == nil {
+		return "nil"
 	}
-	result = append(result, []int{f(std.data)}...)
-	if std.right != nil {
-		result = append(result, std.right.MapInt(f)...)
-	}
-	return result
+	return fmt.Sprintf("(%d %v %v)", bst.data, bst.left, bst.right)
 }

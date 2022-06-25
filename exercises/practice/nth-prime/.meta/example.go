@@ -1,35 +1,24 @@
 package prime
 
-func Nth(n int) (p int, ok bool) {
-	switch {
-	case n < 1:
-		return 0, false
-	case n == 1:
-		return 2, true
+import "errors"
+
+var primes []int = []int{2}
+
+func Nth(n int) (int, error) {
+	if n <= 0 {
+		return 0, errors.New("input must be greater than 1")
 	}
-	n--
-	p = 3
-	inc := 1
-	sqr := 1
-	sqrt := 1
-	for {
-		for f := 3; ; f += 2 {
-			if f > sqrt {
-				n--
-				if n == 0 {
-					return p, true
-				}
-				break
-			}
-			if p%f == 0 {
-				break
-			}
-		}
-		p += 2
-		if p > sqr {
-			inc += 2
-			sqr += inc
-			sqrt++
+	for i := 3; len(primes) < n; i++ {
+		isPrime(i)
+	}
+	return primes[n-1], nil
+}
+
+func isPrime(n int) {
+	for _, v := range primes {
+		if n%v == 0 {
+			return
 		}
 	}
+	primes = append(primes, n)
 }

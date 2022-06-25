@@ -1,8 +1,7 @@
 package yacht
 
 // Source: exercism/problem-specifications
-// Commit: 69f0783 yacht: Add "No pairs but not a big straight" test case (#1508)
-// Problem Specifications Version: 1.2.0
+// Commit: 4758bf7 yacht: add test to ensure fives are handled (#1993)
 
 var testCases = []struct {
 	description string
@@ -63,6 +62,12 @@ var testCases = []struct {
 		dice:        []int{3, 3, 3, 3, 3},
 		category:    "fives",
 		expected:    0,
+	},
+	{
+		description: "Fives",
+		dice:        []int{1, 5, 3, 5, 3},
+		category:    "fives",
+		expected:    10,
 	},
 	{
 		description: "Sixes",

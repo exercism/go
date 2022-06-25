@@ -6,17 +6,17 @@ import (
 
 // Node is a node in a linked list.
 type Node struct {
-	Val  interface{}
-	next *Node
-	prev *Node
+	Value interface{}
+	next  *Node
+	prev  *Node
 }
 
 // NewNode constructs a new Node with the given value & no next/prev links.
 func NewNode(v interface{}) *Node {
 	return &Node{
-		Val:  v,
-		next: nil,
-		prev: nil,
+		Value: v,
+		next:  nil,
+		prev:  nil,
 	}
 }
 
@@ -108,8 +108,8 @@ func (ll *List) Reverse() {
 	ll.head, ll.tail = ll.tail, ll.head
 }
 
-// PushFront pushes a new value before Head.
-func (ll *List) PushFront(v interface{}) {
+// Unshift pushes a new value before Head.
+func (ll *List) Unshift(v interface{}) {
 	n := NewNode(v)
 
 	switch {
@@ -126,8 +126,8 @@ func (ll *List) PushFront(v interface{}) {
 	}
 }
 
-// PushBack pushes a new value after Tail.
-func (ll *List) PushBack(v interface{}) {
+// Push pushes a new value after Tail.
+func (ll *List) Push(v interface{}) {
 	n := NewNode(v)
 
 	switch {
@@ -148,21 +148,21 @@ var (
 	ErrEmptyList = errors.New("list is empty")
 )
 
-// PopFront posp the element at Head. It returns error if the linked list is empty.
-func (ll *List) PopFront() (interface{}, error) {
+// Shift posp the element at Head. It returns error if the linked list is empty.
+func (ll *List) Shift() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
 		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
-		v := ll.head.Val
+		v := ll.head.Value
 		ll.head = nil
 		ll.tail = nil
 
 		return v, nil
 	case ll.head != nil && ll.tail != nil && ll.head.next != nil: // >1 element
-		v := ll.head.Val
+		v := ll.head.Value
 		ll.head.next.prev = nil
 		ll.head = ll.head.next
 
@@ -170,21 +170,21 @@ func (ll *List) PopFront() (interface{}, error) {
 	}
 }
 
-// PopBack pops the element at Tail. It returns error if the linked list is empty.
-func (ll *List) PopBack() (interface{}, error) {
+// Pop pops the element at Tail. It returns error if the linked list is empty.
+func (ll *List) Pop() (interface{}, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
 		return nil, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.tail.prev == nil: // 1 element
-		v := ll.tail.Val
+		v := ll.tail.Value
 		ll.head = nil
 		ll.tail = nil
 
 		return v, nil
 	case ll.head != nil && ll.tail != nil && ll.tail.prev != nil: // >1 element
-		v := ll.tail.Val
+		v := ll.tail.Value
 		ll.tail.prev.next = nil
 		ll.tail = ll.tail.prev
 

@@ -26,7 +26,7 @@ and the battery drain percentage as its two parameters (both of type `int`) and 
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
-// Output: Car{speed: 5, batteryDrain: 2, battery:100, distance: 0}
+// => Car{speed: 5, batteryDrain: 2, battery:100, distance: 0}
 ```
 
 ## 2. Creating a race track
@@ -36,8 +36,8 @@ Allow creating a race track by defining a function `NewTrack` that takes the tra
 
 ```go
 distance := 800
-raceTrack := NewTrack(distance)
-// Output: Track{distance: 800}
+track := NewTrack(distance)
+// => Track{distance: 800}
 ```
 
 ## 3. Drive the car
@@ -49,21 +49,22 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car = Drive(car)
-// Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// => Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
 ## 4. Check if a remote controlled car can finish a race
 
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`. Assume the car is just starting the race:
+To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`.
 
+Assume that you are currently at the starting line of the race and start the engine of the car for the race. Take into account that the car's battery might not necessarily be fully charged when starting the race:
 ```go
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
 distance := 100
-raceTrack := NewTrack(distance)
+track := NewTrack(distance)
 
-CanFinish(car, raceTrack)
-// Output: true
+CanFinish(car, track)
+// => true
 ```

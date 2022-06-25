@@ -1,8 +1,13 @@
 package cards
 
-// GetItem retrieves an item from a slice at given position. The second return value indicates whether
-// the given index exists in the slice or not.
-func GetItem(slice []int, index int) (int, bool) {
+// FavoriteCards returns a slice with the cards 2, 6 and 9 in that order.
+func FavoriteCards() []int {
+	panic("Please implement the FavoriteCards function")
+}
+
+// GetItem retrieves an item from a slice at given position.
+// If the index is out of range, we want it to return -1.
+func GetItem(slice []int, index int) int {
 	panic("Please implement the GetItem function")
 }
 
@@ -12,9 +17,9 @@ func SetItem(slice []int, index, value int) []int {
 	panic("Please implement the SetItem function")
 }
 
-// PrefilledSlice creates a slice of given length and prefills it with the given value.
-func PrefilledSlice(value, length int) []int {
-	panic("Please implement the PrefilledSlice function")
+// PrependItems adds an arbitrary number of values at the front of a slice.
+func PrependItems(slice []int, value ...int) []int {
+	panic("Please implement the PrependItems function")
 }
 
 // RemoveItem removes an item from a slice by modifying the existing slice.

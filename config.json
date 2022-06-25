@@ -120,7 +120,7 @@
         "prerequisites": [
           "string-formatting",
           "numbers",
-          "multiple-return-values",
+          "functions",
           "booleans"
         ],
         "status": "beta"
@@ -225,7 +225,7 @@
         ],
         "prerequisites": [
           "string-formatting",
-          "multiple-return-values"
+          "functions"
         ],
         "status": "wip"
       },
@@ -249,7 +249,7 @@
         "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
         "concepts": [
           "slices",
-          "multiple-return-values"
+          "variadic-functions"
         ],
         "prerequisites": [
           "booleans",
@@ -384,6 +384,65 @@
           "conditionals-if",
           "packages",
           "for-loops"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "expenses",
+        "name": "Expenses",
+        "uuid": "7221b17b-7880-4228-a07a-121e5857c953",
+        "concepts": [
+          "first-class-functions"
+        ],
+        "prerequisites": [
+          "for-loops",
+          "functions",
+          "structs",
+          "type-definitions",
+          "errors"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "animal-magic",
+        "name": "Animal Magic",
+        "uuid": "71a1be49-daf1-4043-af6e-33cd44481bb5",
+        "concepts": [
+          "randomness"
+        ],
+        "prerequisites": [
+          "arithmetic-operators",
+          "slices"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "parsing-log-files",
+        "name": "Parsing Log Files",
+        "uuid": "cb5de717-6c7c-4bf7-85ac-e5658bd84bf5",
+        "concepts": [
+          "regular-expressions"
+        ],
+        "prerequisites": [
+          "runes",
+          "methods",
+          "slices"
+        ],
+        "status": "beta"
+      },
+      {
+        "slug": "meteorology",
+        "name": "Meteorology",
+        "uuid": "09fc7443-f5a2-4b19-8331-f3d5df3e5165",
+        "concepts": [
+          "stringers"
+        ],
+        "prerequisites": [
+          "strings",
+          "string-formatting",
+          "interfaces",
+          "methods",
+          "structs"
         ],
         "status": "beta"
       }
@@ -532,7 +591,7 @@
         "uuid": "d0a2afab-e30d-4617-b646-413a44ecf2ed",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 3,
+        "difficulty": 4,
         "topics": [
           "records",
           "refactoring",
@@ -1945,6 +2004,11 @@
       "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
     },
     {
+      "name": "First class functions",
+      "slug": "first-class-functions",
+      "uuid": "66968174-701b-484c-a84d-f919b4756022"
+    },
+    {
       "name": "Floating-point numbers",
       "slug": "floating-point-numbers",
       "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7"
@@ -1985,6 +2049,16 @@
       "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
     },
     {
+      "name": "Randomness",
+      "slug": "randomness",
+      "uuid": "5d354412-a87d-458b-af6c-fadfa58cfdc3"
+    },
+    {
+      "name": "Regular Expressions",
+      "slug": "regular-expressions",
+      "uuid": "fa43f573-0dcb-47cf-a006-8d464112f7db"
+    },
+    {
       "name": "Runes",
       "slug": "runes",
       "uuid": "6b221481-bbb3-4ccf-8be1-a5e0a20bbd01"
@@ -2008,6 +2082,11 @@
       "name": "Strings Package",
       "slug": "strings-package",
       "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c"
+    },
+    {
+      "name": "Stringers",
+      "slug": "stringers",
+      "uuid": "288c0d5b-173a-4446-b9a6-05f91fddd63e"
     },
     {
       "name": "Structs",

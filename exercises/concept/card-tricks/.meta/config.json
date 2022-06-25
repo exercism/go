@@ -3,6 +3,9 @@
   "authors": [
     "tehsphinx"
   ],
+  "contributors": [
+    "norbs57"
+  ],
   "files": {
     "solution": [
       "card_tricks.go"

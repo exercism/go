@@ -1,6 +1,7 @@
 package linkedlist
 
 // Define List and Node types here.
+// Note: The tests expect Node type to include an exported field with name Value to pass.
 
 func NewList(args ...interface{}) *List {
 	panic("Please implement the NewList function")
@@ -14,20 +15,20 @@ func (n *Node) Prev() *Node {
 	panic("Please implement the Prev function")
 }
 
-func (l *List) PushFront(v interface{}) {
-	panic("Please implement the PushFront function")
+func (l *List) Unshift(v interface{}) {
+	panic("Please implement the Unshift function")
 }
 
-func (l *List) PushBack(v interface{}) {
-	panic("Please implement the PushBack function")
+func (l *List) Push(v interface{}) {
+	panic("Please implement the Push function")
 }
 
-func (l *List) PopFront() (interface{}, error) {
-	panic("Please implement the PopFront function")
+func (l *List) Shift() (interface{}, error) {
+	panic("Please implement the Shift function")
 }
 
-func (l *List) PopBack() (interface{}, error) {
-	panic("Please implement the PopBack function")
+func (l *List) Pop() (interface{}, error) {
+	panic("Please implement the Pop function")
 }
 
 func (l *List) Reverse() {

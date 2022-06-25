@@ -1,8 +1,17 @@
 package cards
 
 import (
+	"reflect"
 	"testing"
 )
+
+func TestFavoriteCards(t *testing.T) {
+	got := FavoriteCards()
+	want := []int{2, 6, 9}
+	if !slicesEqual(got, want) {
+		t.Errorf("NewCards() got = %v, want %v", got, want)
+	}
+}
 
 func TestGetItem(t *testing.T) {
 	type args struct {
@@ -10,10 +19,9 @@ func TestGetItem(t *testing.T) {
 		index int
 	}
 	tests := []struct {
-		name   string
-		args   args
-		want   int
-		wantOk bool
+		name string
+		args args
+		want int
 	}{
 		{
 			name: "Retrieve item from slice by index",
@@ -21,8 +29,7 @@ func TestGetItem(t *testing.T) {
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
 				index: 4,
 			},
-			want:   8,
-			wantOk: true,
+			want: 8,
 		},
 		{
 			name: "Get first item from slice",
@@ -30,8 +37,7 @@ func TestGetItem(t *testing.T) {
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
 				index: 0,
 			},
-			want:   5,
-			wantOk: true,
+			want: 5,
 		},
 		{
 			name: "Get last item from slice",
@@ -39,8 +45,7 @@ func TestGetItem(t *testing.T) {
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
 				index: 7,
 			},
-			want:   9,
-			wantOk: true,
+			want: 9,
 		},
 		{
 			name: "Index out of bounds",
@@ -48,8 +53,7 @@ func TestGetItem(t *testing.T) {
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
 				index: 8,
 			},
-			want:   0,
-			wantOk: false,
+			want: -1,
 		},
 		{
 			name: "Negative index",
@@ -57,18 +61,14 @@ func TestGetItem(t *testing.T) {
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
 				index: -1,
 			},
-			want:   0,
-			wantOk: false,
+			want: -1,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, gotOk := GetItem(tt.args.slice, tt.args.index)
+			got := GetItem(tt.args.slice, tt.args.index)
 			if got != tt.want {
 				t.Errorf("GetItem(slice:%v, index:%v) got = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
-			}
-			if gotOk != tt.wantOk {
-				t.Errorf("GetItem(slice:%v, index:%v) gotOk = %v, want %v", tt.args.slice, tt.args.index, gotOk, tt.wantOk)
 			}
 		})
 	}
@@ -133,18 +133,28 @@ func TestSetItem(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SetItem(tt.args.slice, tt.args.index, tt.args.value); !slicesEqual(got, tt.want) {
+			got := SetItem(tt.args.slice, tt.args.index, tt.args.value)
+			if !slicesEqual(got, tt.want) {
 				t.Errorf("SetItem(slice:%v, index:%v, value:%v) = %v, want %v",
 					tt.args.slice, tt.args.index, tt.args.value, got, tt.want)
+			}
+			if len(tt.args.slice) == len(got) {
+				for i := range got {
+					got[i] = -1
+				}
+				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.args.slice).Pointer() {
+					t.Errorf("SetItem(slice:%v, index:%v) does not return the modified input slice)", tt.args.slice,
+						tt.args.value)
+				}
 			}
 		})
 	}
 }
 
-func TestPrefilledSlice(t *testing.T) {
+func TestPrependItems(t *testing.T) {
 	type args struct {
-		value  int
-		length int
+		slice []int
+		value []int
 	}
 	tests := []struct {
 		name string
@@ -152,42 +162,52 @@ func TestPrefilledSlice(t *testing.T) {
 		want []int
 	}{
 		{
-			name: "Create a prefilled slice with value 3",
+			name: "Prepend one item",
 			args: args{
-				value:  3,
-				length: 7,
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{1},
 			},
-			want: []int{3, 3, 3, 3, 3, 3, 3},
+			want: []int{1, 5, 2, 10, 6, 8, 7, 0, 9},
 		},
 		{
-			name: "Create a prefilled slice with value 10",
+			name: "Prepend two items",
 			args: args{
-				value:  10,
-				length: 2,
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{0, 6},
 			},
-			want: []int{10, 10},
+			want: []int{0, 6, 5, 2, 10, 6, 8, 7, 0, 9},
 		},
 		{
-			name: "Length zero",
+			name: "prepend nil",
 			args: args{
-				value:  3,
-				length: 0,
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: nil,
 			},
-			want: []int{},
+			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
 		},
 		{
-			name: "Negative length",
+			name: "prepend zero items",
 			args: args{
-				value:  3,
-				length: -3,
+				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
+				value: []int{},
 			},
-			want: []int{},
+			want: []int{5, 2, 10, 6, 8, 7, 0, 9},
+		},
+		{
+			name: "Prepend slice to itself",
+			args: args{
+				slice: []int{5, 2, 10, 6},
+				value: []int{5, 2, 10, 6},
+			},
+			want: []int{5, 2, 10, 6, 5, 2, 10, 6},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := PrefilledSlice(tt.args.value, tt.args.length); !slicesEqual(got, tt.want) {
-				t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want %v", tt.args.value, tt.args.length, got, tt.want)
+			got := PrependItems(tt.args.slice, tt.args.value...)
+			if !slicesEqual(got, tt.want) {
+				t.Errorf("PrependItems(slice:%v, value:%v) = %v, want %v",
+					tt.args.slice, tt.args.value, got, tt.want)
 			}
 		})
 	}

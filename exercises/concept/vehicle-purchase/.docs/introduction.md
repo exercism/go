@@ -23,8 +23,8 @@ a > 5  // false
 ```
 
 The comparison operators above can also be used to compare strings.
-In that case a dictionary (lexicographical) order is applied.
-You can find a list of the exact order of all the characters [here][utf-16-list].
+In that case a lexicographical (dictionary) order is applied.
+For example:
 
 ```Go
 	"apple" < "banana"  // true
@@ -75,6 +75,5 @@ if v := 2 * num; v > 10 {
 // Output: 14
 ```
 
-> Note: any variables created in the initialization statement go out of scope after the end of the if statement.
+> Note: any variables created in the initialization statement go out of scope after the end of the if statement. 
 
-[utf-16-list]: https://www.fileformat.info/info/charset/UTF-16/list.htm

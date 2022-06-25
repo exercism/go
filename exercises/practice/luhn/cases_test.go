@@ -1,8 +1,7 @@
 package luhn
 
 // Source: exercism/problem-specifications
-// Commit: f375a46 luhn: Update non-ASCII test case
-// Problem Specifications Version: 1.6.1
+// Commit: fc7ad52 luhn: test-case covering the usage of %5==0 (#2056)
 
 var testCases = []struct {
 	description string
@@ -42,6 +41,16 @@ var testCases = []struct {
 	{
 		"invalid credit card",
 		"8273 1232 7352 0569",
+		false,
+	},
+	{
+		"invalid long number with an even remainder",
+		"1 2345 6789 1234 5678 9012",
+		false,
+	},
+	{
+		"invalid long number with a remainder divisible by 5",
+		"1 2345 6789 1234 5678 9013",
 		false,
 	},
 	{
@@ -85,7 +94,12 @@ var testCases = []struct {
 		true,
 	},
 	{
-		"valid number with an odd number of digits and non-zero first digit",
+		"very long input is valid",
+		"9999999999 9999999999 9999999999 9999999999",
+		true,
+	},
+	{
+		"valid luhn with an odd number of digits and non zero first digit",
 		"109",
 		true,
 	},
@@ -97,6 +111,11 @@ var testCases = []struct {
 	{
 		"using ascii value for doubled non-digit isn't allowed",
 		":9",
+		false,
+	},
+	{
+		"non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed",
+		"59%59",
 		false,
 	},
 }

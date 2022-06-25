@@ -66,10 +66,10 @@ var pushPopTestCases = []struct {
 		name: "PushFront only",
 		in:   []interface{}{},
 		actions: []checkedAction{
-			pushFront(4),
-			pushFront(3),
-			pushFront(2),
-			pushFront(1),
+			unshift(4),
+			unshift(3),
+			unshift(2),
+			unshift(1),
 		},
 		expected: []interface{}{1, 2, 3, 4},
 	},
@@ -77,10 +77,10 @@ var pushPopTestCases = []struct {
 		name: "PushBack only",
 		in:   []interface{}{},
 		actions: []checkedAction{
-			pushBack(1),
-			pushBack(2),
-			pushBack(3),
-			pushBack(4),
+			push(1),
+			push(2),
+			push(3),
+			push(4),
 		},
 		expected: []interface{}{1, 2, 3, 4},
 	},
@@ -88,8 +88,8 @@ var pushPopTestCases = []struct {
 		name: "PopFront only, pop some elements",
 		in:   []interface{}{1, 2, 3, 4},
 		actions: []checkedAction{
-			popFront(1, nil),
-			popFront(2, nil),
+			shift(1, nil),
+			shift(2, nil),
 		},
 		expected: []interface{}{3, 4},
 	},
@@ -97,11 +97,10 @@ var pushPopTestCases = []struct {
 		name: "PopFront only, pop till empty",
 		in:   []interface{}{1, 2, 3, 4},
 		actions: []checkedAction{
-			popFront(1, nil),
-			popFront(2, nil),
-			popFront(3, nil),
-			popFront(4, nil),
-			popFront(nil, ErrEmptyList),
+			shift(1, nil),
+			shift(2, nil),
+			shift(3, nil),
+			shift(4, nil),
 		},
 		expected: []interface{}{},
 	},
@@ -109,8 +108,8 @@ var pushPopTestCases = []struct {
 		name: "PopBack only, pop some elements",
 		in:   []interface{}{1, 2, 3, 4},
 		actions: []checkedAction{
-			popBack(4, nil),
-			popBack(3, nil),
+			pop(4, nil),
+			pop(3, nil),
 		},
 		expected: []interface{}{1, 2},
 	},
@@ -118,11 +117,10 @@ var pushPopTestCases = []struct {
 		name: "PopBack only, pop till empty",
 		in:   []interface{}{1, 2, 3, 4},
 		actions: []checkedAction{
-			popBack(4, nil),
-			popBack(3, nil),
-			popBack(2, nil),
-			popBack(1, nil),
-			popBack(nil, ErrEmptyList),
+			pop(4, nil),
+			pop(3, nil),
+			pop(2, nil),
+			pop(1, nil),
 		},
 		expected: []interface{}{},
 	},
@@ -130,18 +128,16 @@ var pushPopTestCases = []struct {
 		name: "mixed actions",
 		in:   []interface{}{2, 3},
 		actions: []checkedAction{
-			pushFront(1),
-			pushBack(4),
-			popFront(1, nil),
-			popFront(2, nil),
-			popBack(4, nil),
-			popBack(3, nil),
-			popBack(nil, ErrEmptyList),
-			popFront(nil, ErrEmptyList),
-			pushFront(8),
-			pushBack(7),
-			pushFront(9),
-			pushBack(6),
+			unshift(1),
+			push(4),
+			shift(1, nil),
+			shift(2, nil),
+			pop(4, nil),
+			pop(3, nil),
+			unshift(8),
+			push(7),
+			unshift(9),
+			push(6),
 		},
 		expected: []interface{}{9, 8, 7, 6},
 	},
@@ -150,21 +146,21 @@ var pushPopTestCases = []struct {
 // checkedAction calls a function of the linked list and (possibly) checks the result
 type checkedAction func(*testing.T, *List)
 
-func pushFront(arg interface{}) checkedAction {
+func unshift(arg interface{}) checkedAction {
 	return func(t *testing.T, ll *List) {
-		ll.PushFront(arg)
+		ll.Unshift(arg)
 	}
 }
 
-func pushBack(arg interface{}) checkedAction {
+func push(arg interface{}) checkedAction {
 	return func(t *testing.T, ll *List) {
-		ll.PushBack(arg)
+		ll.Push(arg)
 	}
 }
 
-func popFront(expected interface{}, expectedErr error) checkedAction {
+func shift(expected interface{}, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *List) {
-		v, err := ll.PopFront()
+		v, err := ll.Shift()
 		if err != expectedErr {
 			t.Errorf("PopFront() returned wrong, expected no error, got= %v", err)
 		}
@@ -175,9 +171,9 @@ func popFront(expected interface{}, expectedErr error) checkedAction {
 	}
 }
 
-func popBack(expected interface{}, expectedErr error) checkedAction {
+func pop(expected interface{}, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *List) {
-		v, err := ll.PopBack()
+		v, err := ll.Pop()
 		if err != expectedErr {
 			t.Errorf("PopBack() returned wrong, expected no error, got= %v", err)
 		}
