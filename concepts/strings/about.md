@@ -4,7 +4,6 @@ A `string` in Go is an immutable sequence of bytes, which don't necessarily have
 
 A string literal is defined between double quotes:
 
-
 ```go
 const name = "Jane"
 ```
@@ -12,9 +11,17 @@ const name = "Jane"
 Strings can be concatenated via the `+` operator:
 
 ```go
+"Jane" + " " + "Austen"
+// => "Jane Austen"
+```
 
-fullName := "Jane" + " " + "Austen"
-// "Jane Austen"
+Some special characters need to be escaped with a leading backslash, such as `\t` for a tab and `\n` for a new line in strings.
+
+```go
+"How is the weather today?\nIt's sunny"  
+// =>
+// How is the weather today?
+// It's sunny
 ```
 
 The `strings` package contains many useful functions to work on strings.
@@ -26,14 +33,17 @@ import "strings"
 
 // strings.ToLower returns the string given as argument with all its characters lowercased
 strings.ToLower("MaKEmeLoweRCase")
-// "makemelowercase"
+// => "makemelowercase"
 
 // strings.Repeat returns a string with a substring given as argument repeated many times
 strings.Repeat("Go", 3)
-// "GoGoGo" 
+// => "GoGoGo"
 ```
 
-Some special characters need to be escaped with a leading backslash:
+## Special characters
+
+As mentioned previously, some special characters need to be escaped with a leading backslash.
+Below is a more detailed list of what those special characters are:
 
 | Value | Description          |
 | ----- | -------------------- |
