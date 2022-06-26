@@ -8,7 +8,7 @@ An account can be opened. On opening, its initial balance should not be negative
 
 An account can be closed. When closing an account, the `Close` method must return the balance the account has and a boolean `true` indicating the account was closed successfully. Closing an account does not succeed if the account is already closed. When an account is closed, its balance must be set to `0`.
 
-## Getting the account balance 
+## Getting the account balance
 
 The `Balance` method allows a user to check the current balance of an account. It must return the balance of the account and a boolean indicating if the operation succeeded. Checking the balance only doesn't succeed if the account is closed.
 
@@ -36,6 +36,6 @@ $ go test -race
 If you are new to concurrent operations in Go it will be worth looking
 at the sync package, specifically Mutexes:
 
-https://golang.org/pkg/sync/
-https://tour.golang.org/concurrency/9
-https://gobyexample.com/mutexes
+- [Official documentation for package sync](https://golang.org/pkg/sync/)
+- [Tour Of Go: sync.Mutex](https://tour.golang.org/concurrency/9)
+- [Go By Example: sync.Mutex](https://gobyexample.com/mutexes)
