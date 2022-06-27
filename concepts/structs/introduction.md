@@ -110,7 +110,7 @@ To dive deeper into this type, you can check these resources: [Go by Example: St
 Another way of creating a new instance of a struct is by using the `new` built-in: 
 
 ```go
-s := new(Shape) // s will b of type *Shape (pointer to shape)
+s := new(Shape) // s will be of type *Shape (pointer to shape)
 fmt.Printf("name: %s size: %d\n", s.name, s.size)
 // Output: name:  size: 0
 ```
