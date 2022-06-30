@@ -127,10 +127,9 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	// read tests.toml file to find which test cases should be excluded
 	tomlFile := filepath.Join(dirExercise, ".meta", "tests.toml")
 	log.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
-	excludedTests, err := getExcludedTests(tomlFile)
+	excludedTests, err := getExcludedTestCases(tomlFile)
 	if err != nil {
-		log.Println("[LOCAL] unable to read tests.toml file : ", err)
-		return err
+		return fmt.Errorf("[LOCAL] unable to read tests.toml file : %v", err)
 	}
 
 	// remove the excluded test cases from the source json
@@ -262,10 +261,4 @@ func getRemoteCommit(exercise string) (string, error) {
 	// Use only 1st line of the commit message
 	lines := strings.SplitN(c[0].Commit.Message, "\n", 2)
 	return fmt.Sprintf("%s %s", c[0].Sha[0:7], lines[0]), nil
-}
-
-func getExcludedTests(tomlFilePath string) (map[string]bool, error) {
-	// TODO: read the tests.toml file and populate excludeList with uuids of cases which should not be included in the generated tests
-	excludeList := map[string]bool{}
-	return excludeList, nil
 }
