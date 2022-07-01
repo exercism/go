@@ -136,16 +136,11 @@ func TestGarden(t *testing.T) {
 func TestNamesNotModified(t *testing.T) {
 	cp := append([]string{}, test6names...)
 	_, err := NewGarden(test6.diagram, cp)
-	if err != nil {
-		t.Skip("TestNamesNotModified requires valid garden")
+	if err != nil || sort.StringsAreSorted(cp) {
+		t.Fatalf("error in test setup: TestNamesNotModified requires valid garden and unsorted children")
 	}
 	if !reflect.DeepEqual(cp, test6names) {
-		t.Fatalf("NewGarden modified children argment.  " +
-			"Arguments should not be modified.")
-	}
-	sort.Strings(cp)
-	if reflect.DeepEqual(cp, test6names) {
-		t.Skip("TestNamesNotModified requires names out of order")
+		t.Fatalf("NewGarden modified children argment. Arguments should not be modified.")
 	}
 }
 
