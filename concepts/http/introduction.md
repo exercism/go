@@ -92,7 +92,7 @@ A client can be defined by using `http.Server` structure. There are five importa
 4. `ReadHeaderTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request headers.
 5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request. The core components used to create HTTP servers using `net/http` package are handlers.
 
-~~~~exercism/advanced
+~~~~exercism/note
 As stated in [the server.go definition][server.go] regarding how new incoming http connections are handled:
 "Serve accepts incoming HTTP connections on the listener l, creating a new service goroutine for each. The service goroutines read requests and then call handler to reply to them.". Therefore each connection has its own goroutine which enables go to handle client requests concurrently. Albeit, this leads to better performance especially for handling a large set of clients, you must be aware of shared access to a resource and use mutexes or channels to handle it.
 ~~~~
