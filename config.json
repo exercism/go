@@ -445,6 +445,22 @@
           "structs"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "panic-recover",
+        "name": "Panic Recover",
+        "uuid": "6ba52450-3d39-4a61-bb80-2aca4081ed88",
+        "prerequisites": [
+          "strings",
+          "functions",
+          "Slices"
+        ],
+        "concepts": [
+          "Panic",
+          "Recover",
+          "Handling of Panic"
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
@@ -1949,19 +1965,6 @@
           "pattern_matching",
           "strings"
         ]
-      },
-      {
-        "slug": "panic-recover",
-        "name": "Panic Recover",
-        "uuid": "6ba52450-3d39-4a61-bb80-2aca4081ed88",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 3,
-        "topics": [
-          "Panic",
-          "Recover",
-          "Handling of Panics"
-        ] 
       }
     ]
   },
