@@ -85,6 +85,20 @@ func outputSource(status, fileName string, src []byte) error {
 	return nil
 }
 
+type TestData struct {
+	Exercise string     `json:"exercise"`
+	Comments []string   `json:"comments"`
+	Cases    []TestCase `json:"cases"`
+}
+
+type TestCase struct {
+	UUID        string      `json:"uuid"`
+	Description string      `json:"description"`
+	Property    string      `json:"property"`
+	Input       interface{} `json:"input"`
+	Expected    interface{} `json:"expected"`
+}
+
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, j interface{}, t *template.Template) error {
 	if dirMetadata == "" {
@@ -123,6 +137,27 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 			return err
 		}
 	}
+
+	var test = &TestData{}
+
+	err = json.Unmarshal(jSrc, test)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	var cases = map[string][]TestCase{}
+
+	for _, testCase := range test.Cases {
+		cases[testCase.Property] = append(cases[testCase.Property], testCase)
+	}
+
+	marshal, err := json.Marshal(cases["score"])
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	log.Println(marshal)
+
+	os.Exit(1)
 
 	// unmarshal the json source to a Go structure
 	if err = json.Unmarshal(jSrc, j); err != nil {
