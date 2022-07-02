@@ -153,13 +153,12 @@ RVGCCGCV`
 	g1, err1 := NewGarden(diagram, []string{"Alice", "Bob", "Charlie", "Dan"})
 	g2, err2 := NewGarden(diagram, []string{"Bob", "Charlie", "Dan", "Erin"})
 	if err1 != nil || err2 != nil {
-		t.Skip("Two garden test needs valid gardens")
+		t.Fatalf("error in test setup: Two garden test needs valid gardens")
 	}
 	tf := func(g *Garden, n int, child string, expPlants []string) {
 		switch plants, ok := g.Plants(child); {
 		case !ok:
-			t.Skipf("Garden %d lookup %s returned ok = false, want true.",
-				n, child)
+			t.Fatalf("error in test setup: Garden %d lookup %s returned ok = false, want true. Check if the child exists in the garden", n, child)
 		case !reflect.DeepEqual(plants, expPlants):
 			t.Fatalf("Garden %d lookup %s = %q, want %q.",
 				n, child, plants, expPlants)
@@ -188,7 +187,7 @@ func BenchmarkGarden_Plants(b *testing.B) {
 	}
 	g, err := NewGarden(test5.diagram, test5.children)
 	if err != nil {
-		b.Skip("BenchmarkGarden_Plants requires valid garden")
+		b.Fatalf("error in benchmark setup: BenchmarkGarden_Plants requires valid garden")
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
