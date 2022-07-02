@@ -456,9 +456,9 @@
           "Slices"
         ],
         "concepts": [
-          "Panic",
-          "Recover",
-          "Handling of Panic"
+          "panic",
+          "recover",
+          "handling-of-Panic"
         ],
         "status": "wip"
       }
