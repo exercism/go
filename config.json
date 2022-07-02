@@ -458,7 +458,7 @@
         "concepts": [
           "panic",
           "recover",
-          "handling-of-Panic"
+          "handling-of-panic"
         ],
         "status": "wip"
       }
