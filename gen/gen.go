@@ -135,7 +135,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	// remove the excluded test cases from the source json
 	filteredJSrc, err := filterTestsJson(jSrc, excludedTests)
 	if err != nil {
-		return fmt.Errorf("Unable to filter tests cases : %v", err)
+		return fmt.Errorf("unable to filter tests cases : %v", err)
 	}
 
 	// unmarshal the json source to a Go structure

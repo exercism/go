@@ -2,8 +2,8 @@ package gen
 
 import "encoding/json"
 
-func filterTestsJson(jsrc []byte, excludeList map[string]bool) ([]byte, error) {
-	var s map[string](*json.RawMessage)
+func filterTestsJson(jsrc []byte, excludeList map[string]struct{}) ([]byte, error) {
+	var s map[string](json.RawMessage)
 	var filteredData []byte
 	err := json.Unmarshal(jsrc, &s)
 	if err != nil {
@@ -23,10 +23,8 @@ func filterTestsJson(jsrc []byte, excludeList map[string]bool) ([]byte, error) {
 	}
 
 	// typecast it as json.RawMessage to match types
-	x := json.RawMessage(filteredCasesJson)
+	s["cases"] = json.RawMessage(filteredCasesJson)
 
-	// add filtered cases back into top level json
-	s["cases"] = &x
 	resp, err := json.Marshal(s)
 	if err != nil {
 		return filteredData, err
@@ -34,12 +32,12 @@ func filterTestsJson(jsrc []byte, excludeList map[string]bool) ([]byte, error) {
 	return resp, nil
 }
 
-func recursiveFilterCases(cases *json.RawMessage, excludeList map[string]bool) ([]map[string](*json.RawMessage), error) {
-	var js []map[string](*json.RawMessage)
-	var validCases []map[string](*json.RawMessage)
+func recursiveFilterCases(cases json.RawMessage, excludeList map[string]struct{}) ([]map[string](json.RawMessage), error) {
+	var js []map[string](json.RawMessage)
+	var validCases []map[string](json.RawMessage)
 
 	// 'cases' is always an array, where every item is either a single test or an object containing nested cases
-	err := json.Unmarshal(*cases, &js)
+	err := json.Unmarshal(cases, &js)
 	if err != nil {
 		return validCases, err
 	}
@@ -64,8 +62,7 @@ func recursiveFilterCases(cases *json.RawMessage, excludeList map[string]bool) (
 			}
 
 			// typecast it as json.RawMessage to match types
-			filteredCasesJsonRaw := json.RawMessage(filteredCasesJson)
-			j["cases"] = &filteredCasesJsonRaw
+			j["cases"] = json.RawMessage(filteredCasesJson)
 			validCases = append(validCases, j)
 			continue
 		}
@@ -73,7 +70,7 @@ func recursiveFilterCases(cases *json.RawMessage, excludeList map[string]bool) (
 		// If uuid key is present, this item is a single test case.
 		// So we check if this uuid is present in the exclude list.
 		// If it is not present, we add it to the list of valid cases.
-		err := json.Unmarshal(*uuid, &uuidStr)
+		err := json.Unmarshal(uuid, &uuidStr)
 		if err != nil {
 			return validCases, err
 		}
