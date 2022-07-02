@@ -1,17 +1,7 @@
-package go/exercises/concept/panic-recover
+package panicrecover
 
-// function for creating panic
-func CreatePanic(names []string, index int) string {
-	val := names[index]
-	return val
-}
-
-// Add condition to panic
-func AddPanic(names []string, index int) {
-}
-
-// Resolve error causing panic
-func ResoveError() {
+// Function to Add Panic Condition
+func AddPanic() {
 }
 
 // Recover from panic

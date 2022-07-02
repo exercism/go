@@ -1,44 +1,38 @@
-package go/exercises/concept/panic-recover
+package panicrecover
 
 import (
+	"runtime/debug"
 	"testing"
 )
 
-func AddPanicTest(t *testing.T) {
+type PanicTestFunc func()
 
-	tests := []struct {
-		name []string
-	}{
-		{
-			name: []string{"firstName", "secondName", "thirdName"},
-		},
-	}
+func TestAddPanic(t *testing.T) {
 
-	for index, tt := range tests {
-		t.Run(tt.name[index], func(*testing.T) {
-			defer func() {
-				if err := recover(); err != "Index Out Of Bounds" {
-					t.Errorf("Panic Recovered, Error: %s", err)
-				}
-			}()
-			AddPanic(tt.name, len(tt.name))
-		})
-	}
+	t.Run("AddPanicTest", func(t *testing.T) {
+		result, msg, _ := didPanic(AddPanic)
+		if result != true {
+			t.Errorf(msg.(string))
+		}
+	})
 }
 
-func RecoverPanicTest(t *testing.T) {
-	tests := []struct {
-		name []string
-	}{
-		{
-			name: []string{"firstName", "secondName", "thirdName"},
-		},
-	}
-	for _, tt := range tests {
-		t.Run("Recover", func(*testing.T) {
-			RecoverPanic()
-		})
-		val := CreatePanic(tt.name, len(tt.name))
-	}
-	fmt.Println(val)
+func TestRecoverPanic(t *testing.T) {
+}
+
+func didPanic(f PanicTestFunc) (didPanic bool, message interface{}, stack string) {
+	didPanic = true
+
+	defer func() {
+		message = recover()
+		if didPanic {
+			stack = string(debug.Stack())
+		}
+	}()
+
+	// call the target function
+	f()
+	didPanic = false
+
+	return
 }

@@ -1,3 +1,3 @@
-module go/exercises/concept/panic-recover
+module panicrecover 
 
 go 1.16
