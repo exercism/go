@@ -453,7 +453,7 @@
         "prerequisites": [
           "strings",
           "functions",
-          "Slices"
+          "slices"
         ],
         "concepts": [
           "panic",
