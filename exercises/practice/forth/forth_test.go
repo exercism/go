@@ -6,23 +6,20 @@ import (
 )
 
 func TestForth(t *testing.T) {
-	for _, tg := range testGroups {
-		for _, tc := range tg.tests {
-			if v, err := Forth(tc.input); err == nil {
-				var _ error = err
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			v, err := Forth(tc.input)
+			if err == nil {
+				var _ = err
 				if tc.expected == nil {
-					t.Fatalf("FAIL: %s | %s\n\tForth(%#v) expected an error, got %v",
-						tg.group, tc.description, tc.input, v)
+					t.Fatalf("Forth(%#v) expected an error, got %v", tc.input, v)
 				} else if !reflect.DeepEqual(v, tc.expected) {
-					t.Fatalf("FAIL: %s | %s\n\tForth(%#v) expected %v, got %v",
-						tg.group, tc.description, tc.input, tc.expected, v)
+					t.Fatalf("Forth(%#v) expected %v, got %v", tc.input, tc.expected, v)
 				}
 			} else if tc.expected != nil {
-				t.Fatalf("FAIL: %s | %s\n\tForth(%#v) expected %v, got an error: %q",
-					tg.group, tc.description, tc.input, tc.expected, err)
+				t.Fatalf("Forth(%#v) expected %v, got an error: %q", tc.input, tc.expected, err)
 			}
-			t.Logf("PASS: %s | %s", tg.group, tc.description)
-		}
+		})
 	}
 }
 
@@ -31,10 +28,8 @@ func BenchmarkForth(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, tg := range testGroups {
-			for _, tc := range tg.tests {
-				Forth(tc.input)
-			}
+		for _, tc := range testCases {
+			Forth(tc.input)
 		}
 	}
 }
