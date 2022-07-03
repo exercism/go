@@ -1,35 +1,28 @@
 package gen
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 func filterTestsJson(jsrc []byte, excludeList map[string]struct{}) ([]byte, error) {
-	var s map[string](json.RawMessage)
-	var filteredData []byte
-	err := json.Unmarshal(jsrc, &s)
-	if err != nil {
-		return filteredData, err
-	}
+	// put the json object in an array to match the recursive structure
+	jsrcArr := make([]byte, 1, len(jsrc)+2)
+	jsrcArr[0] = '['
+	jsrcArr = append(jsrcArr, jsrc...)
+	jsrcArr = append(jsrcArr, ']')
 
 	// recursively remove excluded cases from json source, starting from top level
-	filteredCases, err := recursiveFilterCases(s["cases"], excludeList)
+	filteredCases, err := recursiveFilterCases(json.RawMessage(jsrcArr), excludeList)
 	if err != nil {
-		return filteredData, err
+		return nil, err
 	}
 
-	// convert filteredCases map to json string
-	filteredCasesJson, err := json.Marshal(filteredCases)
+	// remove the json object back out of the array
+	filteredData, err := json.MarshalIndent(filteredCases[0], "", "\t")
 	if err != nil {
-		return filteredData, err
+		return nil, err
 	}
-
-	// typecast it as json.RawMessage to match types
-	s["cases"] = json.RawMessage(filteredCasesJson)
-
-	resp, err := json.Marshal(s)
-	if err != nil {
-		return filteredData, err
-	}
-	return resp, nil
+	return filteredData, nil
 }
 
 func recursiveFilterCases(cases json.RawMessage, excludeList map[string]struct{}) ([]map[string](json.RawMessage), error) {
