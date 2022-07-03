@@ -148,7 +148,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	}
 
 	for property, testCases := range cases {
-		log.Println(property)
 		cache, ok := tests[property]
 		if !ok {
 			return fmt.Errorf("failed to get cache for tests with property %s", property)
@@ -157,7 +156,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		if err != nil {
 			return fmt.Errorf("failed to marshal test-cases with property %s", property)
 		}
-		log.Println(string(marshal))
 		err = json.Unmarshal(marshal, cache)
 		if err != nil {
 			return err
