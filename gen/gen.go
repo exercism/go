@@ -167,9 +167,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 
 		cache, ok := tests[property]
 		if !ok {
-			err = fmt.Errorf("[ERROR] failed to get struct for tests with property %s", property)
-			log.Println(err.Error())
-			return err
+			return fmt.Errorf("[ERROR] failed to get struct for tests with property %s", property)
 		}
 		err = json.Unmarshal(marshal, cache)
 		if err != nil {
