@@ -51,8 +51,8 @@ const (
 // Header tells how the test data was generated, for display in the header of
 // cases_test.go
 type Header struct {
-	Origin  string
-	Commit  string
+	Origin string
+	Commit string
 }
 
 func (h Header) String() string {
@@ -134,27 +134,42 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	var test = &TestData{}
-
-	err = json.Unmarshal(jSrc, test)
+	// read tests.toml file to find which test cases should be excluded
+	tomlFile := filepath.Join(dirExercise, ".meta", "tests.toml")
+	log.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
+	excludedTests, err := getExcludedTestCases(tomlFile)
 	if err != nil {
-		log.Fatal(err.Error())
+		return fmt.Errorf("[LOCAL] unable to read tests.toml file : %v", err)
 	}
 
-	var cases = map[string][]TestCase{}
+	log.Println("Collecting and filtering all test cases from the fetched test data")
 
-	for _, testCase := range test.Cases {
-		cases[testCase.Property] = append(cases[testCase.Property], testCase)
+	allTestCases, err := getAllTestCasesFiltered(jSrc, excludedTests)
+	if err != nil {
+		return fmt.Errorf("failed to get all test-cases (%v)", err)
 	}
 
-	for property, testCases := range cases {
-		cache, ok := tests[property]
-		if !ok {
-			return fmt.Errorf("failed to get cache for tests with property %s", property)
-		}
+	var casesPerProperty = map[string][]TestCase{}
+
+	for _, testCase := range *allTestCases {
+		casesPerProperty[testCase.Property] = append(casesPerProperty[testCase.Property], testCase)
+	}
+
+	log.Println("parsing all testcases")
+
+	for property, testCases := range casesPerProperty {
+		log.Printf(" > parsing %s\n", property)
 		marshal, err := json.Marshal(testCases)
 		if err != nil {
-			return fmt.Errorf("failed to marshal test-cases with property %s", property)
+			log.Printf("[ERROR] failed to marshal test-cases with property %s\n", property)
+			return err
+		}
+
+		cache, ok := tests[property]
+		if !ok {
+			err = fmt.Errorf("[ERROR] failed to get struct for tests with property %s", property)
+			log.Println(err.Error())
+			return err
 		}
 		err = json.Unmarshal(marshal, cache)
 		if err != nil {
@@ -171,8 +186,8 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		Header
 		J map[string]interface{}
 	}{Header{
-		Origin:  jOrigin,
-		Commit:  jCommit,
+		Origin: jOrigin,
+		Commit: jCommit,
 	}, tests}
 
 	casesFileName := filepath.Join(dirExercise, "cases_test.go")
