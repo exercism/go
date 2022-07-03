@@ -100,7 +100,7 @@ type TestCase struct {
 }
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
-func Gen(exercise string, j interface{}, t *template.Template) error {
+func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
 	if dirMetadata == "" {
 		return errors.New("unable to determine current path")
 	}
@@ -151,13 +151,24 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		cases[testCase.Property] = append(cases[testCase.Property], testCase)
 	}
 
-	marshal, err := json.Marshal(cases["score"])
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-	log.Println(marshal)
 
-	os.Exit(1)
+
+	for property, testCases := range cases {
+		log.Println(property)
+		cache, ok := tests[property]
+		if !ok {
+			return fmt.Errorf("failed to get cache for tests with property %s", property)
+		}
+		marshal, err := json.Marshal(testCases)
+		if err != nil {
+			return fmt.Errorf("failed to marshal test-cases with property %s", property)
+		}
+		log.Println(string(marshal))
+		err = json.Unmarshal(marshal, cache)
+		if err != nil {
+			return err
+		}
+	}
 
 	// unmarshal the json source to a Go structure
 	if err = json.Unmarshal(jSrc, j); err != nil {
@@ -176,19 +187,19 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		return fmt.Errorf(`didn't contain version: %v`, err)
 	}
 
-	if err := classifyByProperty(j); err != nil {
+	if err := classifyByProperty(J); err != nil {
 		return fmt.Errorf("couldn't auto-classify based on property: %v", err)
 	}
 
 	// package up a little meta data
 	d := struct {
 		Header
-		J interface{}
+		J map[string]interface{}
 	}{Header{
 		Origin:  jOrigin,
 		Commit:  jCommit,
 		Version: commonMetadata.Version,
-	}, j}
+	}, tests}
 
 	casesFileName := filepath.Join(dirExercise, "cases_test.go")
 

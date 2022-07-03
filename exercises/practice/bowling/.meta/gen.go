@@ -1,10 +1,9 @@
 package main
 
 import (
+	"exercism-go/gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,70 +11,36 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
+	var j = map[string]interface{}{
+		"roll":  &TestRoll{},
+		"score": &TestScore{},
+	}
 	if err := gen.Gen("bowling", &j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// template applied to above data structure generates the Go test cases
-
-type OneCase struct {
-	Description string
-	Property    string
+type TestScore []struct {
+	UUID        string `json:"uuid"`
+	Description string `json:"description"`
+	Property    string `json:"property"`
 	Input       struct {
-		PreviousRolls []int
-		Roll          int
-	}
-	Expected interface{}
+		Previousrolls []int `json:"previousRolls"`
+	} `json:"input"`
+	Expected int `json:"expected"`
 }
 
-// ScoreTest and RollTest help determine which type of test case
-// to generate in the template.
-func (c OneCase) ScoreTest() bool { return c.Property == "score" }
-func (c OneCase) RollTest() bool  { return c.Property == "roll" }
-
-func (c OneCase) Valid() bool {
-	valid, _, _ := determineExpected(c.Expected)
-	return valid
-}
-
-func (c OneCase) Score() int {
-	_, score, _ := determineExpected(c.Expected)
-	return score
-}
-
-func (c OneCase) ExplainText() string {
-	_, _, explainText := determineExpected(c.Expected)
-	return explainText
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case is valid(bool), has a score field, and/or has an expected error,
-// returning valid, score, and error explanation text.
-func determineExpected(expected interface{}) (bool, int, string) {
-	score, ok := expected.(float64)
-	if ok {
-		return ok, int(score), ""
-	}
-	m, ok := expected.(map[string]interface{})
-	if !ok {
-		return false, 0, ""
-	}
-	iError, ok := m["error"].(interface{})
-	if !ok {
-		return false, 0, ""
-	}
-	explainText, ok := iError.(string)
-	return false, 0, explainText
+type TestRoll []struct {
+	UUID        string `json:"uuid"`
+	Description string `json:"description"`
+	Property    string `json:"property"`
+	Input       struct {
+		Previousrolls []interface{} `json:"previousRolls"`
+		Roll          int           `json:"roll"`
+	} `json:"input"`
+	Expected struct {
+		Error string `json:"error"`
+	} `json:"expected"`
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
