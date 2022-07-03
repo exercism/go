@@ -175,10 +175,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	/*	if err := classifyByProperty(J); err != nil {
-		return fmt.Errorf("couldn't auto-classify based on property: %v", err)
-	}*/
-
 	// package up a little meta data
 	d := struct {
 		Header
