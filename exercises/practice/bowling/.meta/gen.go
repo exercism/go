@@ -1,7 +1,7 @@
 package main
 
 import (
-	"exercism-go/gen"
+	"../../../../gen"
 	"log"
 	"text/template"
 )
@@ -15,7 +15,7 @@ func main() {
 		"roll":  &TestRoll{},
 		"score": &TestScore{},
 	}
-	if err := gen.Gen("bowling", &j, t); err != nil {
+	if err := gen.Gen("bowling", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -27,7 +27,7 @@ type TestScore []struct {
 	Input       struct {
 		Previousrolls []int `json:"previousRolls"`
 	} `json:"input"`
-	Expected int `json:"expected"`
+	Expected interface{} `json:"expected"`
 }
 
 type TestRoll []struct {
@@ -35,12 +35,10 @@ type TestRoll []struct {
 	Description string `json:"description"`
 	Property    string `json:"property"`
 	Input       struct {
-		Previousrolls []interface{} `json:"previousRolls"`
-		Roll          int           `json:"roll"`
+		Previousrolls []int `json:"previousRolls"`
+		Roll          int   `json:"roll"`
 	} `json:"input"`
-	Expected struct {
-		Error string `json:"error"`
-	} `json:"expected"`
+	Expected interface{} `json:"expected"`
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.

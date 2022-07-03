@@ -53,16 +53,12 @@ const (
 type Header struct {
 	Origin  string
 	Commit  string
-	Version string
 }
 
 func (h Header) String() string {
 	s := fmt.Sprintf("// Source: %s\n", h.Origin)
 	if h.Commit != "" {
 		s += fmt.Sprintf("// Commit: %s\n", h.Commit)
-	}
-	if h.Version != "" {
-		s += fmt.Sprintf("// Problem Specifications Version: %s\n", h.Version)
 	}
 	return s
 }
@@ -151,8 +147,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		cases[testCase.Property] = append(cases[testCase.Property], testCase)
 	}
 
-
-
 	for property, testCases := range cases {
 		log.Println(property)
 		cache, ok := tests[property]
@@ -170,26 +164,9 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	// unmarshal the json source to a Go structure
-	if err = json.Unmarshal(jSrc, j); err != nil {
-		// This error message is usually enough if the problem is a wrong
-		// data structure defined here. Sadly it doesn't locate the error well
-		// in the case of invalid JSON.  Use a real validator tool if you can't
-		// spot the problem right away.
-		return fmt.Errorf(`unexpected data structure: %v`, err)
-	}
-
-	// These fields are guaranteed to be in every problem
-	var commonMetadata struct {
-		Version string
-	}
-	if err := json.Unmarshal(jSrc, &commonMetadata); err != nil {
-		return fmt.Errorf(`didn't contain version: %v`, err)
-	}
-
-	if err := classifyByProperty(J); err != nil {
+	/*	if err := classifyByProperty(J); err != nil {
 		return fmt.Errorf("couldn't auto-classify based on property: %v", err)
-	}
+	}*/
 
 	// package up a little meta data
 	d := struct {
@@ -198,7 +175,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	}{Header{
 		Origin:  jOrigin,
 		Commit:  jCommit,
-		Version: commonMetadata.Version,
 	}, tests}
 
 	casesFileName := filepath.Join(dirExercise, "cases_test.go")
