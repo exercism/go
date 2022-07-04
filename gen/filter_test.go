@@ -169,7 +169,7 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 			expectedOutput: nil,
 		},
 	}
-	
+
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			output, err := getAllTestCasesFiltered(tc.inputJson, tc.excludeList)

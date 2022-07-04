@@ -35,7 +35,7 @@ var dirMetadata string
 // the exercise directory. Falls back to the present working directory.
 var dirExercise string
 
-// genClient creates an http client with a 10 second timeout so we don't get
+// genClient creates a http client with a timeout of 10 seconds in order not to get
 // stuck waiting for a response.
 var genClient = &http.Client{Timeout: 10 * time.Second}
 
@@ -55,6 +55,7 @@ type Header struct {
 	Commit string
 }
 
+//String generates the header for cases_test.go
 func (h Header) String() string {
 	s := fmt.Sprintf("// Source: %s\n", h.Origin)
 	if h.Commit != "" {
