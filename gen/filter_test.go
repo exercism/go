@@ -1,11 +1,7 @@
 package gen
 
-//TODO: fix tests
-/*
-
 import (
-	"bytes"
-	"strings"
+	"reflect"
 	"testing"
 )
 
@@ -19,16 +15,18 @@ var (
 	],
 	"cases": [
 		{
-		"description": "test case 1",
-		"expected": "abcde",
-		"input": {
-			"some": "inp"
-		},
-		"uuid": "alskjdb-f781-4c52-b73b-d4b867f41540"
+			"description": "test case 1",
+			"expected": "abcde",
+			"property" : "test",
+			"input": {
+				"some": "inp"
+			},
+			"uuid": "alskjdb-f781-4c52-b73b-d4b867f41540"
 		},
 		{
 		"description": "test case 2",
 		"expected": "rvedv",
+		"property" : "test2",
 		"input": {
 			"some": "ukbt"
 		},
@@ -103,106 +101,75 @@ var (
 `
 
 	excludeList = map[string]struct{}{
-		"8snv0f-f781-4c52-b73b-8e76427defd0":  struct{}{},
-		"klnhng-f781-4c52-b73b-8e76427defd0":  struct{}{},
-		"98axn89-29f9-46f2-8c95-6c5b7a595aee": struct{}{},
+		"8snv0f-f781-4c52-b73b-8e76427defd0":  {}, //test case 2
+		"klnhng-f781-4c52-b73b-8e76427defd0":  {}, //test case 3
+		"98axn89-29f9-46f2-8c95-6c5b7a595aee": {}, //Test case 6
 	}
-
-	expectedJson = `
-{
-	"cases": [
-		{
-			"description": "test case 1",
-			"expected": "abcde",
-			"input": {
-				"some": "inp"
-			},
-			"uuid": "alskjdb-f781-4c52-b73b-d4b867f41540"
-		},
-		{
-			"cases": [
-				{
-					"description": "test case 4",
-					"expected": [
-						64
-					],
-					"input": {
-						"integers": [
-							64
-						]
-					},
-					"property": "some property",
-					"uuid": "dsvhsd-a151-4604-a10e-d4b867f41540"
-				}
-			]
-		},
-		{
-			"cases": [
-				{
-					"cases": [
-						{
-							"description": "test case 5",
-							"expected": false,
-							"input": {
-								"bools": [
-									true,
-									false
-								]
-							},
-							"property": "some other property",
-							"uuid": "dvthrd4-4514-4915-bac0-f7f585e0e59a"
-						}
-					],
-					"description": "nested cases"
-				}
-			],
-			"description": "some nested cases"
-		}
-	],
-	"comments": [
-		"comment 123",
-		"comment 456"
-	],
-	"exercise": "some-exercise-name"
-}
-`
 )
 
-func TestFilterTestsJson(t *testing.T) {
-	tests := []struct {
+func TestGetAllTestCasesFiltered(t *testing.T) {
+	testCases := []struct {
 		description    string
 		inputJson      []byte
 		excludeList    map[string]struct{}
-		expectedOutput []byte
-		wantErr        bool
+		expectedOutput []TestCase
 	}{
 		{
-			description:    "Filter valid json successfully",
-			inputJson:      []byte(validInputJson),
-			excludeList:    excludeList,
-			expectedOutput: []byte(strings.TrimSpace(expectedJson)),
+			description: "Filter valid json successfully",
+			inputJson:   []byte(validInputJson),
+			excludeList: excludeList,
+			expectedOutput: []TestCase{
+				{
+					UUID:        "alskjdb-f781-4c52-b73b-d4b867f41540",
+					Description: "test case 1",
+					Property:    "test",
+					Input: map[string]interface{}{
+						"some": "inp",
+					},
+					Expected: "abcde",
+				},
+				{
+					UUID:        "dsvhsd-a151-4604-a10e-d4b867f41540",
+					Description: "test case 4",
+					Property:    "some property",
+					Input: map[string]interface{}{
+						"integers": []interface{}{64.0},
+					},
+					Expected: []interface{}{64.0},
+				}, {
+					UUID:        "dvthrd4-4514-4915-bac0-f7f585e0e59a",
+					Description: "test case 5",
+					Property:    "some other property",
+					Input: map[string]interface{}{
+						"bools": []interface{}{true, false},
+					},
+					Expected: false,
+				},
+			},
 		},
 		{
-			description: "Filtering invalid json should fail",
-			inputJson:   []byte("{\"asd"),
-			excludeList: excludeList,
-			wantErr:     true,
+			description:    "Filtering invalid json should fail",
+			inputJson:      []byte("{\"asd"),
+			excludeList:    excludeList,
+			expectedOutput: nil,
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.description, func(t *testing.T) {
-			output, err := filterTestsJson(test.inputJson, test.excludeList)
-			if test.wantErr && err == nil {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			output, err := getAllTestCasesFiltered(tc.inputJson, tc.excludeList)
+			if tc.expectedOutput == nil && err == nil {
 				t.Errorf("expected error but got none")
 			}
-			if !test.wantErr && err != nil {
-				t.Errorf("unexpected error %v", err)
-			}
-			if !bytes.Equal(test.expectedOutput, output) {
-				t.Fatalf("wrong output. expected: %s, got %s", test.expectedOutput, output)
+
+			if tc.expectedOutput != nil {
+				if err != nil {
+					t.Errorf("unexpected error %v", err)
+				}
+				if output == nil || !reflect.DeepEqual(tc.expectedOutput, *output) {
+					t.Errorf("wrong output. expected: %v, got %v", tc.expectedOutput, output)
+				}
 			}
 		})
 	}
 }
-*/
