@@ -142,7 +142,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return fmt.Errorf("[LOCAL] unable to read tests.toml file : %v", err)
 	}
 
-	log.Println("Collecting and filtering all test cases from the fetched test data")
+	log.Println("collecting and filtering all test cases from the fetched test data")
 
 	allTestCases, err := getAllTestCasesFiltered(jSrc, excludedTests)
 	if err != nil {

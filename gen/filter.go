@@ -8,15 +8,11 @@ import (
 func getAllTestCasesFiltered(jsrc []byte, excludedTests map[string]struct{}) (*[]TestCase, error) {
 	var result = &[]TestCase{}
 
-	var s map[string]json.RawMessage
-
-	err := json.Unmarshal(jsrc, &s)
-	if err != nil {
-		return nil, err
-	}
+	// put the json object in an array to match the recursive structure
+	jsrc = append([]byte{'['}, append(jsrc, ']')...)
 
 	// recursively get all test cases except the excluded ones
-	err = recursiveFilterCases(s["cases"], result, excludedTests)
+	err := recursiveFilterCases(jsrc, result, excludedTests)
 	if err != nil {
 		return nil, err
 	}
