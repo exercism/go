@@ -30,9 +30,9 @@ for k, v := range hash {
   fmt.Println(k, v)
 }
 // outputs, for example:
+// 9 10
 // 99 20
 // 999 30
-// 9 10
 ```
 
 ## Iteration omitting key or value
