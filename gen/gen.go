@@ -124,8 +124,22 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 		}
 	}
 
+	// read tests.toml file to find which test cases should be excluded
+	tomlFile := filepath.Join(dirExercise, ".meta", "tests.toml")
+	log.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
+	excludedTests, err := getExcludedTestCases(tomlFile)
+	if err != nil {
+		return fmt.Errorf("[LOCAL] unable to read tests.toml file : %v", err)
+	}
+
+	// remove the excluded test cases from the source json
+	filteredJSrc, err := filterTestsJson(jSrc, excludedTests)
+	if err != nil {
+		return fmt.Errorf("unable to filter tests cases : %v", err)
+	}
+
 	// unmarshal the json source to a Go structure
-	if err = json.Unmarshal(jSrc, j); err != nil {
+	if err = json.Unmarshal(filteredJSrc, j); err != nil {
 		// This error message is usually enough if the problem is a wrong
 		// data structure defined here. Sadly it doesn't locate the error well
 		// in the case of invalid JSON.  Use a real validator tool if you can't
@@ -137,7 +151,7 @@ func Gen(exercise string, j interface{}, t *template.Template) error {
 	var commonMetadata struct {
 		Version string
 	}
-	if err := json.Unmarshal(jSrc, &commonMetadata); err != nil {
+	if err := json.Unmarshal(filteredJSrc, &commonMetadata); err != nil {
 		return fmt.Errorf(`didn't contain version: %v`, err)
 	}
 
