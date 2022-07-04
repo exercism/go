@@ -70,7 +70,7 @@ func TestCountInFile(t *testing.T) {
 		{6, 2},
 		{7, 0},
 		{8, 3},
-		//cases not between 1 and 8, inclusive
+		// cases not between 1 and 8, inclusive
 		{100, 0},
 		{0, 0},
 		{-1, 0},
