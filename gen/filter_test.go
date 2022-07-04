@@ -153,8 +153,23 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 			excludeList:    excludeList,
 			expectedOutput: nil,
 		},
+		{
+			description:    "invalid uuid (bool instead of string)",
+			inputJson:      []byte("{\"cases\":[{\"uuid\":false}]}"),
+			expectedOutput: nil,
+		},
+		{
+			description:    "invalid description (number instead of string)",
+			inputJson:      []byte("{\"cases\":[{\"uuid\":\"dvthrd4-4514-4915-bac0-f7f585e0e59a\", \"description\":510}]}"),
+			expectedOutput: nil,
+		},
+		{
+			description:    "invalid uuid in subcase",
+			inputJson:      []byte("{\"cases\":[{\"cases\":{\"uuid\":false}}]}"),
+			expectedOutput: nil,
+		},
 	}
-
+	
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			output, err := getAllTestCasesFiltered(tc.inputJson, tc.excludeList)
