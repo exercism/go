@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	validInputJson = `
+	validInputJSON = `
 {
 	"exercise": "some-exercise-name",
 	"comments": [
@@ -110,15 +110,15 @@ var (
 func TestGetAllTestCasesFiltered(t *testing.T) {
 	testCases := []struct {
 		description    string
-		inputJson      []byte
+		inputJSON      []byte
 		excludeList    map[string]struct{}
-		expectedOutput []TestCase
+		expectedOutput []testCase
 	}{
 		{
 			description: "Filter valid json successfully",
-			inputJson:   []byte(validInputJson),
+			inputJSON:   []byte(validInputJSON),
 			excludeList: excludeList,
-			expectedOutput: []TestCase{
+			expectedOutput: []testCase{
 				{
 					UUID:        "alskjdb-f781-4c52-b73b-d4b867f41540",
 					Description: "test case 1",
@@ -149,30 +149,30 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 		},
 		{
 			description:    "Filtering invalid json should fail",
-			inputJson:      []byte("{\"asd"),
+			inputJSON:      []byte("{\"asd"),
 			excludeList:    excludeList,
 			expectedOutput: nil,
 		},
 		{
 			description:    "invalid uuid (bool instead of string)",
-			inputJson:      []byte("{\"cases\":[{\"uuid\":false}]}"),
+			inputJSON:      []byte("{\"cases\":[{\"uuid\":false}]}"),
 			expectedOutput: nil,
 		},
 		{
 			description:    "invalid description (number instead of string)",
-			inputJson:      []byte("{\"cases\":[{\"uuid\":\"dvthrd4-4514-4915-bac0-f7f585e0e59a\", \"description\":510}]}"),
+			inputJSON:      []byte("{\"cases\":[{\"uuid\":\"dvthrd4-4514-4915-bac0-f7f585e0e59a\", \"description\":510}]}"),
 			expectedOutput: nil,
 		},
 		{
 			description:    "invalid uuid in subcase",
-			inputJson:      []byte("{\"cases\":[{\"cases\":{\"uuid\":false}}]}"),
+			inputJSON:      []byte("{\"cases\":[{\"cases\":{\"uuid\":false}}]}"),
 			expectedOutput: nil,
 		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			output, err := getAllTestCasesFiltered(tc.inputJson, tc.excludeList)
+			output, err := getAllTestCasesFiltered(tc.inputJSON, tc.excludeList)
 			if tc.expectedOutput == nil && err == nil {
 				t.Errorf("expected error but got none")
 			}

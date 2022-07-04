@@ -2,11 +2,18 @@ package gen
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
 )
 
+//getExcludedTestCases reads the file at tomlFilePath and manually parses the toml
+// as no third party libraries are currently available (https://github.com/exercism/go/issues/2055).
 func getExcludedTestCases(tomlFilePath string) (map[string]struct{}, error) {
+	if _, err := os.Stat(tomlFilePath); err != nil {
+		return nil, fmt.Errorf("tests.toml can't be found (%q)", err)
+	}
+
 	file, err := os.Open(tomlFilePath)
 	if err != nil {
 		return nil, err

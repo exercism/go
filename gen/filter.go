@@ -5,21 +5,22 @@ import (
 	"fmt"
 )
 
-func getAllTestCasesFiltered(jsrc []byte, excludedTests map[string]struct{}) (*[]TestCase, error) {
-	var result = &[]TestCase{}
+//getAllTestCasesFiltered recursively searches all tests cases except the ones excluded by excludedTests.
+func getAllTestCasesFiltered(jSrc []byte, excludedTests map[string]struct{}) (*[]testCase, error) {
+	var result = &[]testCase{}
 
 	// put the json object in an array to match the recursive structure
-	jsrc = append([]byte{'['}, append(jsrc, ']')...)
+	jSrc = append([]byte{'['}, append(jSrc, ']')...)
 
 	// recursively get all test cases except the excluded ones
-	err := recursiveFilterCases(jsrc, result, excludedTests)
+	err := recursiveFilterCases(jSrc, result, excludedTests)
 	if err != nil {
 		return nil, err
 	}
 	return result, nil
 }
 
-func recursiveFilterCases(cases json.RawMessage, result *[]TestCase, excludedTests map[string]struct{}) error {
+func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTests map[string]struct{}) error {
 	var js []map[string]json.RawMessage
 
 	// 'cases' is always an array, where every item is either a single test or an object containing nested cases
@@ -45,13 +46,13 @@ func recursiveFilterCases(cases json.RawMessage, result *[]TestCase, excludedTes
 				continue
 			}
 
-			testCase, err := json.Marshal(j)
+			jTestCase, err := json.Marshal(j)
 			if err != nil {
 				return err
 			}
 
-			var tc = TestCase{}
-			err = json.Unmarshal(testCase, &tc)
+			var tc = testCase{}
+			err = json.Unmarshal(jTestCase, &tc)
 			if err != nil {
 				return err
 			}

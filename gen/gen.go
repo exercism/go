@@ -3,22 +3,26 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"go/format"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"text/template"
 	"time"
 )
 
-// dirMetadata is the location of the problem-specifications repository on the filesystem.
+const (
+	// canonicalDataURL is the URL for the raw canonical-data.json data and requires the exercise name.
+	canonicalDataURL = "https://raw.githubusercontent.com/exercism/problem-specifications/master/exercises/%s/canonical-data.json"
+	// commitsURL is the GitHub api endpoint for the commit history of canonical-data.json and requires the exercise name.
+	commitsURL    = "https://api.github.com/repos/exercism/problem-specifications/commits?path=exercises/%s/canonical-data.json"
+	defaultOrigin = "exercism/problem-specifications"
+)
+
+// problemSpecificationsDir is the location of the problem-specifications repository on the filesystem.
 // We're making the assumption that the problem-specifications repository has been cloned to
 // the same parent directory as the Exercism Go track repository.
 // E.g.
@@ -28,67 +32,28 @@ import (
 //     ├── problem-specifications
 //     └── go
 //
-var dirMetadata string
+var problemSpecificationsDir string
 
-// dirExercise is the location that the test cases should be generated to.
+// exerciseDir is the location of the exercise and also the cases_test.go
 // This assumes that the generator script lives in the .meta directory within
 // the exercise directory. Falls back to the present working directory.
-var dirExercise string
+var exerciseDir string
 
-// genClient creates a http client with a timeout of 10 seconds in order not to get
-// stuck waiting for a response.
-var genClient = &http.Client{Timeout: 10 * time.Second}
+// httpClient creates a http client with a timeout of 10 seconds in order not to get stuck waiting for a response.
+var httpClient = &http.Client{Timeout: 10 * time.Second}
 
-const (
-	// canonicalDataURL is the URL for the raw canonical-data.json data,
-	// requires exercise name.
-	canonicalDataURL = "https://raw.githubusercontent.com/exercism/problem-specifications/master/exercises/%s/canonical-data.json"
-	// commitsURL is the GitHub api endpoint for the canonical-data.json
-	// file commit history, requires exercise name.
-	commitsURL = "https://api.github.com/repos/exercism/problem-specifications/commits?path=exercises/%s/canonical-data.json"
-)
-
-// Header tells how the test data was generated, for display in the header of
-// cases_test.go
+// Header tells how the test data was generated, for display in the header of cases_test.go
 type Header struct {
-	Origin string
 	Commit string
+	Origin string
 }
 
 //String generates the header for cases_test.go
 func (h Header) String() string {
-	s := fmt.Sprintf("// Source: %s\n", h.Origin)
-	if h.Commit != "" {
-		s += fmt.Sprintf("// Commit: %s\n", h.Commit)
-	}
-	return s
+	return fmt.Sprintf("// Source: %s\n// Commit: %s", h.Origin, h.Commit)
 }
 
-func init() {
-	if _, path, _, ok := runtime.Caller(0); ok {
-		dirMetadata = filepath.Join(path, "..", "..", "..", "problem-specifications")
-	}
-}
-
-// outputSource puts the src text into given fileName
-// and outputs a log message with given [status].
-func outputSource(status, fileName string, src []byte) error {
-	ioerr := ioutil.WriteFile(fileName, src, 0666)
-	if ioerr != nil {
-		log.Printf("[FAILED] %s\n", ioerr)
-		return ioerr
-	}
-	log.Printf("[%s] output: %s\n", status, fileName)
-	return nil
-}
-
-type TestData struct {
-	Exercise string     `json:"exercise"`
-	Comments []string   `json:"comments"`
-	Cases    []TestCase `json:"cases"`
-}
-
-type TestCase struct {
+type testCase struct {
 	UUID        string      `json:"uuid"`
 	Description string      `json:"description"`
 	Property    string      `json:"property"`
@@ -98,9 +63,6 @@ type TestCase struct {
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
-	if dirMetadata == "" {
-		return errors.New("unable to determine current path")
-	}
 	// Determine the exercise directory.
 	// Use runtime.Caller to determine path location of the generator main package.
 	// Call frames: 0 is this frame, Gen().
@@ -109,61 +71,71 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	//                                  |
 	//                                  V
 	if _, path, _, ok := runtime.Caller(1); ok {
-		// Construct a path 2 directories higher than the path for .meta/gen.go
-		// and it should be exercise directory.
-		dirExercise = filepath.Join(path, "..", "..")
+		// Construct a path 2 directories higher than the path for .meta/gen.go (should be exercise directory).
+		exerciseDir = filepath.Join(path, "..", "..")
+	} else {
+		return fmt.Errorf("unable to determine directory of exercise %s", exercise)
 	}
-	if dirExercise == "" {
-		dirExercise = "."
+
+	if exerciseDir == "" {
+		exerciseDir = "."
 	}
+
+	problemSpecificationsDir = filepath.Join(exerciseDir, "..", "..", "..", "..", "problem-specifications")
+
 	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
-	// try to find and read the local json source file
-	log.Printf("[LOCAL] fetching %s test data\n", exercise)
-	jPath, jOrigin, jCommit := getLocal(jFile)
-	jFilePath := filepath.Join(jPath, jFile)
-	if jPath != "" {
-		log.Printf("[LOCAL] source: %s\n", jFilePath)
+	log.Printf("[LOCAL] fetching %s test data from canonical-data.json\n", exercise)
+
+	var header Header
+	jTestData, err := getLocalTestData(jFile)
+	if err == nil {
+		header, err = getLatestLocalCommitMessage(jFile)
 	}
-	jSrc, err := ioutil.ReadFile(jFilePath)
+
 	if err != nil {
 		// fetch json data remotely if there's no local file
-		log.Println("[LOCAL] No test data found")
+		log.Printf("[LOCAL] No test data found (%q)\n", err)
 		log.Printf("[REMOTE] fetching %s test data\n", exercise)
-		jSrc, jOrigin, jCommit, err = getRemote(exercise)
+		jTestData, err = getRemoteTestData(exercise)
+		if err != nil {
+			return err
+		}
+		header, err = getRemoteCommit(exercise)
 		if err != nil {
 			return err
 		}
 	}
 
+	if !isJSON(jTestData) {
+		return fmt.Errorf("[ERROR] canonical-data.json seems not to be valid json")
+	}
+
 	// read tests.toml file to find which test cases should be excluded
-	tomlFile := filepath.Join(dirExercise, ".meta", "tests.toml")
+	tomlFile := filepath.Join(exerciseDir, ".meta", "tests.toml")
 	log.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
 	excludedTests, err := getExcludedTestCases(tomlFile)
 	if err != nil {
-		return fmt.Errorf("[LOCAL] unable to read tests.toml file : %v", err)
+		return fmt.Errorf("[LOCAL] unable to read tests.toml file (%v)", err)
 	}
 
 	log.Println("collecting and filtering all test cases from the fetched test data")
 
-	allTestCases, err := getAllTestCasesFiltered(jSrc, excludedTests)
+	allTestCases, err := getAllTestCasesFiltered(jTestData, excludedTests)
 	if err != nil {
-		return fmt.Errorf("failed to get all test-cases (%v)", err)
+		return fmt.Errorf("failed to get filtered test-cases (%v)", err)
 	}
 
-	var casesPerProperty = map[string][]TestCase{}
+	var casesPerProperty = map[string][]testCase{}
 
 	for _, testCase := range *allTestCases {
 		casesPerProperty[testCase.Property] = append(casesPerProperty[testCase.Property], testCase)
 	}
 
-	log.Println("parsing all testcases")
-
 	for property, testCases := range casesPerProperty {
-		log.Printf(" > parsing %s\n", property)
+		log.Printf(" > parsing cases for property %s\n", property)
 		marshal, err := json.Marshal(testCases)
 		if err != nil {
-			log.Printf("[ERROR] failed to marshal test-cases with property %s\n", property)
-			return err
+			return fmt.Errorf("[ERROR] failed to marshal test cases with property %s\n%q", property, err)
 		}
 
 		cache, ok := tests[property]
@@ -180,101 +152,41 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	d := struct {
 		Header
 		J map[string]interface{}
-	}{Header{
-		Origin: jOrigin,
-		Commit: jCommit,
-	}, tests}
+	}{Header: header, J: tests}
 
-	casesFileName := filepath.Join(dirExercise, "cases_test.go")
+	casesFile := filepath.Join(exerciseDir, "cases_test.go")
 
 	// render the Go test cases
-	var b bytes.Buffer
-	if err := t.Execute(&b, &d); err != nil {
-		log.Print("[ERROR] template.Execute failed. The template has a semantic error.")
-		return err
+	var out bytes.Buffer
+	if err := t.Execute(&out, &d); err != nil {
+		return fmt.Errorf("[ERROR] template.Execute failed. The template has a semantic error 	%q", err)
 	}
-	// clean it up
-	srcBuf := b.Bytes()
-	src, err := format.Source(srcBuf)
+
+	formattedOut, err := format.Source(out.Bytes())
 	if err != nil {
-		log.Print("[ERROR] format.Source failed. The generated source has a syntax error.")
-		b.Reset()
-		_, _ = b.Write(srcBuf)
-		_, _ = b.Write([]byte(
-			"// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
-		src = b.Bytes()
+		log.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
+		out.Reset()
+		_, _ = out.Write(out.Bytes())
+		_, _ = out.Write([]byte("// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFileName, src)
+		_ = outputSource("ERROR", casesFile, out.Bytes())
 		return err
 	}
 	// write output file for the Go test cases.
-	return outputSource("SUCCESS", casesFileName, src)
+	return outputSource("SUCCESS", casesFile, formattedOut)
 }
 
-func getLocal(jFile string) (jPath, jOrigin, jCommit string) {
-	// Ideally draw from a .json which is pulled from the official problem-specifications
-	// repository.  For development however, accept a file in current directory
-	// if there is no .json in source control.  Also allow an override in any
-	// case by environment variable.
-	const localFile = "local file"
-	if jPath := os.Getenv("EXTEST"); jPath > "" {
-		return jPath, localFile, "" // override
-	}
-	c := exec.Command("git", "log", "-1", "--oneline", jFile)
-	c.Dir = dirMetadata
-	origin, err := c.Output()
-	if err != nil {
-		return "", localFile, "" // no source control
-	}
-	if _, err = os.Stat(filepath.Join(c.Dir, jFile)); err != nil {
-		return "", localFile, "" // not in source control
-	}
-	// good.  return source control dir and commit.
-	return c.Dir, "exercism/problem-specifications", string(bytes.TrimSpace(origin))
+func isJSON(b []byte) bool {
+	var js json.RawMessage
+	return json.Unmarshal(b, &js) == nil
 }
 
-func getRemote(exercise string) (body []byte, jOrigin, jCommit string, err error) {
-	url := fmt.Sprintf(canonicalDataURL, exercise)
-	resp, err := genClient.Get(url)
+// outputSource writes the src text to the given fileName and outputs a log message with given [status].
+func outputSource(status, fileName string, src []byte) error {
+	err := os.WriteFile(fileName, src, 0666)
 	if err != nil {
-		return []byte{}, "", "", err
+		return fmt.Errorf("[FAILED] %q\n", err)
 	}
-	if resp.StatusCode != http.StatusOK {
-		return []byte{}, "", "", fmt.Errorf("error fetching remote data: %s", resp.Status)
-	}
-	defer resp.Body.Close()
-	body, err = ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return []byte{}, "", "", err
-	}
-	c, err := getRemoteCommit(exercise)
-	if err != nil {
-		// we always expect to have the commit in the cases_test.go
-		// file, so return the error if we can't fetch it
-		return []byte{}, "", "", err
-	}
-	log.Printf("[REMOTE] source: %s\n", url)
-	return body, "exercism/problem-specifications", c, nil
-}
-
-func getRemoteCommit(exercise string) (string, error) {
-	type Commits struct {
-		Sha    string
-		Commit struct {
-			Message string
-		}
-	}
-	resp, err := genClient.Get(fmt.Sprintf(commitsURL, exercise))
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	var c []Commits
-	err = json.NewDecoder(resp.Body).Decode(&c)
-	if err != nil {
-		return "", err
-	}
-	// Use only 1st line of the commit message
-	lines := strings.SplitN(c[0].Commit.Message, "\n", 2)
-	return fmt.Sprintf("%s %s", c[0].Sha[0:7], lines[0]), nil
+	log.Printf("[%s] output: %s\n", status, fileName)
+	return nil
 }
