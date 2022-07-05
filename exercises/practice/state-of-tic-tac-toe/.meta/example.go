@@ -21,7 +21,8 @@ func StateOfTicTacToe(board []string) (string, error) {
 		return "", errors.New("Wrong turn order: X went twice")
 	}
 
-	allCombos := append(rows, cols...)
+	allCombos := rows
+	allCombos = append(allCombos, cols...)
 	allCombos = append(allCombos, diags...)
 
 	for _, row := range allCombos {
