@@ -23,7 +23,7 @@ func TestCaesarPrepped(t *testing.T) {
 	c := NewCaesar()
 	for _, test := range caesarPrepped {
 		if enc := c.Encode(test.pt); enc != test.ct {
-			t.Fatalf("Caesar Encode(%q) = %q, want %q.", test.pt, enc, test.ct)
+			t.Errorf("Caesar Encode(%q) = %q, want %q.", test.pt, enc, test.ct)
 		}
 	}
 }
@@ -55,11 +55,11 @@ func TestCaesar(t *testing.T) {
 func testCipher(name string, c Cipher, tests []cipherTest, t *testing.T) {
 	for _, test := range tests {
 		if enc := c.Encode(test.source); enc != test.cipher {
-			t.Fatalf("%s Encode(%q) = %q, want %q.",
-				name, test.plain, enc, test.cipher)
+			t.Errorf("%s Encode(%q) = %q, want %q.",
+				name, test.source, enc, test.cipher)
 		}
 		if dec := c.Decode(test.cipher); dec != test.plain {
-			t.Fatalf("%s Decode(%q) = %q, want %q.",
+			t.Errorf("%s Decode(%q) = %q, want %q.",
 				name, test.cipher, dec, test.plain)
 		}
 	}
