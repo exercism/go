@@ -5,15 +5,15 @@ import (
 	"strings"
 )
 
-type state string
+type State string
 
 const (
-	state_win     state = "win"
-	state_ongoing state = "ongoing"
-	state_draw    state = "draw"
+	Win     State = "win"
+	Ongoing State = "ongoing"
+	Draw    State = "draw"
 )
 
-func StateOfTicTacToe(board []string) (state, error) {
+func StateOfTicTacToe(board []string) (State, error) {
 	var xWin int
 	var oWin int
 
@@ -49,14 +49,14 @@ func StateOfTicTacToe(board []string) (state, error) {
 	}
 
 	if xWin > 0 || oWin > 0 {
-		return state_win, nil
+		return Win, nil
 	}
 
 	if xCount+oCount < 9 {
-		return state_ongoing, nil
+		return Ongoing, nil
 	}
 
-	return state_draw, nil
+	return Draw, nil
 
 }
 

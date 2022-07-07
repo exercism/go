@@ -43,11 +43,11 @@ func (o oneCase) Result() string {
 	var res string
 	switch s {
 	case "win":
-		res = "state_win"
+		res = "Win"
 	case "ongoing":
-		res = "state_ongoing"
+		res = "Ongoing"
 	case "draw":
-		res = "state_draw"
+		res = "Draw"
 	}
 	return res
 }
@@ -68,7 +68,7 @@ var tmpl = `package stateoftictactoe
 var testCases = []struct{
 	description string
 	board []string
-	expected state
+	expected State
 	wantErr bool
 } {
 {{range .J.Cases}} {{range .Cases}} {

@@ -8,19 +8,15 @@ func TestStateOfTicTacToe(t *testing.T) {
 	for _, c := range testCases {
 		t.Run(c.description, func(t *testing.T) {
 			result, err := StateOfTicTacToe(c.board)
-			if c.wantErr {
-				if err == nil {
-					t.Fatalf(`
-					Board: %#v
-					Expected error but got nil`, c.board)
-				}
-				return
-			}
-			if c.expected != result {
-				t.Fatalf(`
-					Board: %#v
-					Expected: %#v
-					Got: %#v`, c.board, c.expected, result)
+			switch {
+			case c.wantErr && err == nil:
+				t.Fatalf("\n Board: %#v \n Expected error but got nil", c.board)
+
+			case !c.wantErr && err != nil:
+				t.Fatalf("\n Board: %#v \n Expected no errors but got error: %v", c.board, err)
+
+			case c.expected != result:
+				t.Fatalf("\n Board: %#v \n Expected: %#v \n Got: %#v", c.board, c.expected, result)
 			}
 		})
 	}
