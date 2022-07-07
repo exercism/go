@@ -5,7 +5,15 @@ import (
 	"strings"
 )
 
-func StateOfTicTacToe(board []string) (string, error) {
+type state string
+
+const (
+	state_win     state = "win"
+	state_ongoing state = "ongoing"
+	state_draw    state = "draw"
+)
+
+func StateOfTicTacToe(board []string) (state, error) {
 	var xWin int
 	var oWin int
 
@@ -15,10 +23,10 @@ func StateOfTicTacToe(board []string) (string, error) {
 	xCount := count("X", rows)
 	oCount := count("O", rows)
 	if oCount > xCount {
-		return "", errors.New("Wrong turn order: O started")
+		return "", errors.New("wrong turn order: O started")
 	}
 	if xCount > oCount+1 {
-		return "", errors.New("Wrong turn order: X went twice")
+		return "", errors.New("wrong turn order: X went twice")
 	}
 
 	allCombos := rows
@@ -28,27 +36,27 @@ func StateOfTicTacToe(board []string) (string, error) {
 	for _, row := range allCombos {
 		if row == "XXX" {
 			if xWin > 1 || oWin > 0 {
-				return "", errors.New("Impossible board: game should have ended after the game was won")
+				return "", errors.New("impossible board: game should have ended after the game was won")
 			}
 			xWin += 1
 		}
 		if row == "OOO" {
 			if xWin > 0 || oWin > 0 {
-				return "", errors.New("Impossible board: game should have ended after the game was won")
+				return "", errors.New("impossible board: game should have ended after the game was won")
 			}
 			oWin = 1
 		}
 	}
 
 	if xWin > 0 || oWin > 0 {
-		return "win", nil
+		return state_win, nil
 	}
 
 	if xCount+oCount < 9 {
-		return "ongoing", nil
+		return state_ongoing, nil
 	}
 
-	return "draw", nil
+	return state_draw, nil
 
 }
 

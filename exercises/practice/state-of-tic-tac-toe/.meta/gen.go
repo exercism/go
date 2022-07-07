@@ -38,17 +38,26 @@ type oneCase struct {
 func (o oneCase) Result() string {
 	s, ok := o.Expected.(string)
 	if !ok {
-		return ""
+		return "\"\""
 	}
-	return s
+	var res string
+	switch s {
+	case "win":
+		res = "state_win"
+	case "ongoing":
+		res = "state_ongoing"
+	case "draw":
+		res = "state_draw"
+	}
+	return res
 }
 
 func (o oneCase) Err() string {
-	m, ok := o.Expected.(map[string]interface{})
+	_, ok := o.Expected.(map[string]interface{})
 	if !ok {
-		return ""
+		return "false"
 	}
-	return m["error"].(string)
+	return "true"
 }
 
 // template applied to above data structure generates the Go test cases
@@ -59,14 +68,14 @@ var tmpl = `package stateoftictactoe
 var testCases = []struct{
 	description string
 	board []string
-	expected string
-	expectedErr string
+	expected state
+	wantErr bool
 } {
 {{range .J.Cases}} {{range .Cases}} {
 	description: {{printf "%q" .Description}},
 	board: {{printf "%#v" .Input.Board }},
-	expected: {{printf "%q" .Result }},
-	expectedErr:  {{printf "%q" .Err }},
+	expected: {{ .Result }},
+	wantErr:  {{ .Err }},
 },
 {{end}}{{end}}
 }
