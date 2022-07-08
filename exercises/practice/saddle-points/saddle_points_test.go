@@ -6,7 +6,11 @@
 
 package matrix
 
-import "testing"
+import (
+	"strconv"
+	"strings"
+	"testing"
+)
 
 var tests = []struct {
 	m  string
@@ -31,6 +35,35 @@ func TestSaddle(t *testing.T) {
 			t.Fatalf("%v.Saddle() = %v, want %v", m, sp, test.sp)
 		}
 	}
+}
+
+func TestSaddle2(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			var in = join(tc.input)
+			t.Log(tc.input)
+			t.Log(in)
+			m, err := New(in)
+			if err != nil {
+				t.Fatalf("TestSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
+			}
+			if got := m.Saddle(); !eq(got, tc.expectedOutput) {
+				t.Fatalf("%v.Saddle() = %v, want %v", m, got, tc.expectedOutput)
+			}
+		})
+	}
+}
+
+func join(in [][]int) string {
+	var parts []string
+	for _, numbersPerLine := range in {
+		var lineParts []string
+		for _, number := range numbersPerLine {
+			lineParts = append(lineParts, strconv.Itoa(number))
+		}
+		parts = append(parts, strings.Join(lineParts, " "))
+	}
+	return strings.Join(parts, "\n")
 }
 
 func eq(got, exp []Pair) bool {
