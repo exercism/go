@@ -5,29 +5,6 @@ import (
 	"testing"
 )
 
-// type for testing cipher encoding alone, without requiring any text prep.
-type prepped struct {
-	pt string // prepped text == decoded plain text
-	ct string // cipher text
-}
-
-// +3? -3?  Positions vary.  Your code just has to pass the tests.
-var caesarPrepped = []prepped{
-	{"iamapandabear", "ldpdsdqgdehdu"},
-	{"programmingisawesome", "surjudpplqjlvdzhvrph"},
-	{"todayisholiday", "wrgdblvkrolgdb"},
-	{"venividivici", "yhqlylglylfl"},
-}
-
-func TestCaesarPrepped(t *testing.T) {
-	c := NewCaesar()
-	for _, test := range caesarPrepped {
-		if enc := c.Encode(test.pt); enc != test.ct {
-			t.Errorf("Caesar Encode(%q) = %q, want %q.", test.pt, enc, test.ct)
-		}
-	}
-}
-
 // type for testing implementations of the Cipher interface
 type cipherTest struct {
 	source string // source text, any UTF-8
@@ -35,33 +12,45 @@ type cipherTest struct {
 	plain  string // decoded plain text, result of Decode(ct)
 }
 
+var caesarPrepped = []cipherTest{
+	{"iamapandabear", "ldpdsdqgdehdu", "iamapandabear"},
+	{"programmingisawesome", "surjudpplqjlvdzhvrph", "programmingisawesome"},
+	{"todayisholiday", "wrgdblvkrolgdb", "todayisholiday"},
+	{"venividivici", "yhqlylglylfl", "venividivici"},
+}
+
 var caesarTests = []cipherTest{
 	{"Go, go, gophers", "jrjrjrskhuv", "gogogophers"},
 	{"I am a panda bear.", "ldpdsdqgdehdu", "iamapandabear"},
 	{"Programming is AWESOME!", "surjudpplqjlvdzhvrph", "programmingisawesome"},
 	{"today is holiday", "wrgdblvkrolgdb", "todayisholiday"},
-	{"Twas the night before Christmas",
-		"wzdvwkhqljkwehiruhfkulvwpdv",
-		"twasthenightbeforechristmas"},
-	{"venividivici", "yhqlylglylfl", "venividivici"},
+	{"Twas the night before Christmas", "wzdvwkhqljkwehiruhfkulvwpdv", "twasthenightbeforechristmas"},
 	{" -- @#!", "", ""},
 	{"", "", ""},
 }
 
 func TestCaesar(t *testing.T) {
-	testCipher("Caesar", NewCaesar(), caesarTests, t)
+	c := NewCaesar()
+	t.Run("no extra symbols", func(t *testing.T) {
+		testCipher(c, caesarPrepped, t)
+	})
+	t.Run("with extra symbols", func(t *testing.T) {
+		testCipher(c, caesarTests, t)
+	})
 }
 
-func testCipher(name string, c Cipher, tests []cipherTest, t *testing.T) {
+func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 	for _, test := range tests {
-		if enc := c.Encode(test.source); enc != test.cipher {
-			t.Errorf("%s Encode(%q) = %q, want %q.",
-				name, test.source, enc, test.cipher)
-		}
-		if dec := c.Decode(test.cipher); dec != test.plain {
-			t.Errorf("%s Decode(%q) = %q, want %q.",
-				name, test.cipher, dec, test.plain)
-		}
+		t.Run(fmt.Sprintf("Encode(%s)", test.source), func(tt *testing.T) {
+			if enc := c.Encode(test.source); enc != test.cipher {
+				tt.Fatalf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
+			}
+		})
+		t.Run(fmt.Sprintf("Decode(%s)", test.cipher), func(tt *testing.T) {
+			if dec := c.Decode(test.cipher); dec != test.plain {
+				tt.Fatalf("Decode(%s): got %q, want %q.", test.cipher, dec, test.plain)
+			}
+		})
 	}
 }
 
@@ -80,24 +69,29 @@ var NSATests = []cipherTest{
 
 func TestShift(t *testing.T) {
 	// test shift(3) against Caesar cases.
-	c := NewShift(3)
-	if c == nil {
-		t.Fatal("NewShift(3) returned nil, want non-nil Cipher")
-	}
-	testCipher("Shift(3)", c, caesarTests, t)
+	t.Run(fmt.Sprintf("key=%d", 3), func(t *testing.T) {
+		c := NewShift(3)
+		if c == nil {
+			t.Fatal("NewShift(3): got nil, want non-nil Cipher")
+		}
+		testCipher(c, caesarTests, t)
+	})
 
 	// NSA and WP say Caesar uses shift of -3
-	c = NewShift(-3)
-	if c == nil {
-		t.Fatal("NewShift(-3) returned nil, want non-nil Cipher")
-	}
-	testCipher("Shift(-3)", c, NSATests, t)
+	t.Run(fmt.Sprintf("key=%d", -3), func(t *testing.T) {
+		c := NewShift(-3)
+		if c == nil {
+			t.Fatal("NewShift(-3): got nil, want non-nil Cipher")
+		}
+		testCipher(c, NSATests, t)
+	})
 
-	// invalid shifts
+}
+
+func TestWrongShiftKey(t *testing.T) {
 	for _, s := range []int{-27, -26, 0, 26, 27} {
 		if NewShift(s) != nil {
-			t.Fatalf("NewShift(%d) returned non-nil, "+
-				"Want nil return for invalid argument.", s)
+			t.Errorf("NewShift(%d): got non-nil, want nil", s)
 		}
 	}
 }
@@ -124,19 +118,21 @@ var vtests = []struct {
 
 func TestVigenere(t *testing.T) {
 	for _, test := range vtests {
-		v := NewVigenere(test.key)
-		if v == nil {
-			t.Fatalf("NewVigenere(%q) returned nil, want non-nil Cipher",
-				test.key)
-		}
-		testCipher(fmt.Sprintf("Vigenere(%q)", test.key), v, test.tests, t)
+		t.Run(fmt.Sprintf("key=%s", test.key), func(t *testing.T) {
+			v := NewVigenere(test.key)
+			if v == nil {
+				t.Fatalf("NewVigenere(%q): got nil, want non-nil Cipher",
+					test.key)
+			}
+			testCipher(v, test.tests, t)
+		})
 	}
+}
 
-	// invalid keys
+func TestVigenereWrongKey(t *testing.T) {
 	for _, k := range []string{"", "a", "aa", "no way", "CAT", "3", "and,"} {
 		if NewVigenere(k) != nil {
-			t.Fatalf("NewVigenere(%q) returned non-nil, "+
-				"Want nil return for invalid argument.", k)
+			t.Errorf("NewVigenere(%q): got non-nil, want nil", k)
 		}
 	}
 }
