@@ -77,6 +77,16 @@ s := Shape{
 // Output: too few values in Shape{...}
 ```
 
+To create an instance of a `struct` and get a pointer to it use a struct literal:
+
+```go
+s := &Shape {
+    name: "Square",
+    size: 25,
+}
+// s type is *Shape
+```
+
 ## "New" functions
 
 Sometimes it can be nice to have functions that help us create struct instances.
