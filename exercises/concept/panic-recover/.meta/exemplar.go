@@ -1,13 +1,23 @@
 package panicrecover
 
-// Function to Add Panic Condition
-func AddPanic() {
-	array := make([]int, 3)
-	array[1] = 2
-	array[2] = 4
-	array[3] = 6
+// Add condition to panic
+func AddPanic(name []string, index int) string {
+	defer RecoverPanic()
+	val := name[index]
+	return val
 }
 
-// Recover from panic
-func RecoverPanic() {
+func RecoverPanic() (message interface{}) {
+	message = recover()
+	if message != nil {
+		return message
+	}
+	return
+}
+
+// Resolve error causing panic
+func ResolveError(names []string, index int) string {
+	len := len(names)
+	val := names[len-1]
+	return val
 }
