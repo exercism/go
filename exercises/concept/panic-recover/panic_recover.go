@@ -17,7 +17,7 @@ func RecoverPanic() (msg interface{}) {
 
 // Resolve error causing panic. Return the last element of the names slice without causing panic
 func ResolveError(names []string, index int) string {
-	len := len(names)
-	val := names[len-1]
+	lengthOfNames := len(names)
+	val := names[lengthOfNames-1]
 	return val
 }
