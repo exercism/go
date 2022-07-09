@@ -154,7 +154,7 @@ func TestRows(t *testing.T) {
 		}
 		m, err := New(test.in)
 		if err != nil {
-			t.Skip("Need working New for TestRows")
+			t.Fatalf("error in test setup: TestRows needs working New and valid matrix")
 		}
 		r := m.Rows()
 		if len(r) == 0 && len(test.rows) == 0 {
@@ -181,7 +181,7 @@ func TestCols(t *testing.T) {
 		}
 		m, err := New(test.in)
 		if err != nil {
-			t.Skip("Need working New for TestCols")
+			t.Fatalf("error in test setup: TestCols needs working New and valid matrix")
 		}
 		c := m.Cols()
 		if len(c) == 0 && len(test.cols) == 0 {
@@ -205,15 +205,15 @@ func TestSet(t *testing.T) {
 	s := "1 2 3\n4 5 6\n7 8 9"
 	m, err := New(s)
 	if err != nil {
-		t.Skip("Need working New for TestSet")
+		t.Fatalf("error in test setup: TestSet needs working New and valid matrix")
 	}
 	xr := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
 	if !reflect.DeepEqual(m.Rows(), xr) {
-		t.Skip("Need working Rows for TestSet")
+		t.Fatalf("error in test setup: TestSet needs working Rows")
 	}
 	xc := [][]int{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}
 	if !reflect.DeepEqual(m.Cols(), xc) {
-		t.Skip("Need working Cols for TestSet")
+		t.Fatalf("error in test setup: TestSet needs working Cols and valid matrix")
 	}
 	// test each corner, each side, and an interior element
 	for r := 0; r < 3; r++ {

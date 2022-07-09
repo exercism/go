@@ -1949,6 +1949,14 @@
           "pattern_matching",
           "strings"
         ]
+      },
+      {
+        "slug": "state-of-tic-tac-toe",
+        "name": "State of Tic Tac Toe",
+        "uuid": "ab6050ba-b40c-46bb-938f-7baef097b52d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       }
     ]
   },
