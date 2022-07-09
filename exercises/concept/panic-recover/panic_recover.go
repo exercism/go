@@ -2,23 +2,15 @@ package panicrecover
 
 // Add condition to panic
 func AddPanic(name []string, index int) string {
-	defer RecoverPanic()
-	val := name[index]
-	return val
+	panic("Implement AddPanic() method")
 }
 
 func RecoverPanic() (msg interface{}) {
-	msg = recover()
-	if msg != nil {
-		return msg
-	}
-	return
+	panic("Implement RecoverPanic() method")
 }
 
 // Resolve error causing panic.
 // Return the last element of the names slice without causing panic
 func ResolveError(names []string, index int) string {
-	lengthOfNames := len(names)
-	val := names[lengthOfNames-1]
-	return val
+	panic("Implement ResolveError() Method")
 }
