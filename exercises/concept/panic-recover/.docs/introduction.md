@@ -9,7 +9,32 @@ The process continues up the stack until all functions in the current goroutine 
 at which point the program crashes. Panics can be initiated by invoking panic directly. 
 They can also be caused by runtime errors, such as out-of-bounds array accesses.
 
+```
+func f() {
+    testList := make([]string, 2)
+    fmt.Println(testList[3])
+}
+```
+
+Above function will Panic because we are accessing an element that is out of bounds.
+
 ### Recover
 
 Recover is a built-in function that regains control of a panicking goroutine. 
 Recover is only useful inside deferred functions. During normal execution, a call to recover will return nil and have no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
+
+
+```
+func f() {
+    testList := make([]string, 2)
+    fmt.Println(testList[3])
+}
+
+func Rec(){
+    if rec := Recover(); rec != nil {
+        fmt.Println("Recovered in Rec()")
+    }
+}
+```
+
+Here in the above `Rec()` function we are recoving the the panic created in `f()` function.

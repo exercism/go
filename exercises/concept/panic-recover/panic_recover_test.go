@@ -24,12 +24,6 @@ func TestAddPanic(t *testing.T) {
 
 func TestRecoverPanic(t *testing.T) {
 
-	// t.Run("Test1", func(t *testing.T) {
-	// 	didFuncPanic, _, _ := didPanic(AddPanic, t)
-	// 	if didFuncPanic == true {
-	// 		t.Errorf("Expected: RecoverPanic() method should have recovered panic created by AddPanic() method. Result: Panic Not Recovered")
-	// 	}
-	// })
 	tests := []struct {
 		testName string
 		name     []string
@@ -51,9 +45,6 @@ func TestRecoverPanic(t *testing.T) {
 			val := AddPanic(tt.name, tt.index)
 			typeOfValue := reflect.TypeOf(val)
 			fmt.Println(typeOfValue)
-			// if  {
-			// 	t.Errorf("Expected: RecoverPanic() method should have recovered panic created by AddPanic() method. Result: Panic Not Recovered")
-			// }
 		})
 	}
 }
