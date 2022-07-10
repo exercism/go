@@ -1,16 +1,16 @@
 package panicrecover
 
 // Add condition to panic
-func AddPanic(name []string, index int) string {
+func AccessNames(name []string, index int) string {
 	defer RecoverPanic()
 	val := name[index]
 	return val
 }
 
-func RecoverPanic() (message interface{}) {
-	message = recover()
-	if message != nil {
-		return message
+func RecoverPanic() (errorMessage interface{}) {
+	errorMessage = recover()
+	if errorMessage != nil {
+		return errorMessage
 	}
 	return
 }

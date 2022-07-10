@@ -9,20 +9,17 @@ import (
 
 type PanicTestFunc func([]string, int) string
 
-func TestAddPanic(t *testing.T) {
+func TestRecoverPanic(t *testing.T) {
 
 	t.Run("AddPanicTest", func(t *testing.T) {
-		didFuncPanic, panicError, _ := didPanic(AddPanic, t)
-		if didFuncPanic == false {
+		didFuncPanic, _, _ := didPanic(AccessNamesPanic, t)
+		if didFuncPanic == true {
 			t.Errorf("Expected: AddPanic method should Panic, Result: AddPanic method did not Panic")
-		}
-		if panicError.(error).Error() != "runtime error: index out of range [4] with length 3" {
-			t.Errorf("Panic error does not match to the expected one")
 		}
 	})
 }
 
-func TestRecoverPanic(t *testing.T) {
+func TestRecoverPanicWithError(t *testing.T) {
 
 	tests := []struct {
 		testName string
@@ -42,7 +39,7 @@ func TestRecoverPanic(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.testName, func(t *testing.T) {
-			val := AddPanic(tt.name, tt.index)
+			val := AccessNamesPanic(tt.name, tt.index)
 			typeOfValue := reflect.TypeOf(val)
 			fmt.Println(typeOfValue)
 		})

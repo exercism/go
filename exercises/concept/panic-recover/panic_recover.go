@@ -1,7 +1,7 @@
 package panicrecover
 
 // Add condition to panic
-func AddPanic(name []string, index int) string {
+func AccessNamesPanic(name []string, index int) string {
 	panic("Implement AddPanic() method")
 }
 
