@@ -107,7 +107,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	if !isJSON(jTestData) {
+	if json.Valid(jTestData){
 		return fmt.Errorf("[ERROR] canonical-data.json seems not to be valid json")
 	}
 
@@ -174,11 +174,6 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	}
 	// write output file for the Go test cases.
 	return outputSource("SUCCESS", casesFile, formattedOut)
-}
-
-func isJSON(b []byte) bool {
-	var js json.RawMessage
-	return json.Unmarshal(b, &js) == nil
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
