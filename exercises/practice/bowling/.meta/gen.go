@@ -72,11 +72,11 @@ var scoreTestCases = []struct {
 	explainText    string   // when .valid == false, error explanation text
 }{ {{range .J.score}}
 {
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.PreviousRolls}},
-	{{printf "%v"  .Valid}},
-	{{printf "%d"  .Score}},
-	{{printf "%q"  .ExplainText}},
+	description: {{printf "%q"  .Description}},
+	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+	valid: {{printf "%v"  .Valid}},
+	score: {{printf "%d"  .Score}},
+	explainText: {{printf "%q"  .ExplainText}},
 },{{end}}
 }
 
@@ -89,11 +89,11 @@ var rollTestCases = []struct {
 	explainText    string   // when .valid == false, error explanation text
 }{ {{range .J.roll}}
 {
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.PreviousRolls}},
-	{{printf "%v"  .Valid}},
-	{{printf "%d"  .Input.Roll}},
-	{{printf "%q"  .ExplainText}},
+	description: {{printf "%q"  .Description}},
+	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+	valid: {{printf "%v"  .Valid}},
+	roll: {{printf "%d"  .Input.Roll}},
+	explainText: {{printf "%q"  .ExplainText}},
 },{{end}}
 }
 `

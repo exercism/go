@@ -44,11 +44,11 @@ var testCases = []struct {
 }{
 	{{range .J.saddlePoints}}
 		{
-			{{printf "%q"  .Description}},
-			[][]int{
+			description: {{printf "%q"  .Description}},
+			input: [][]int{
 				{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
 			},
-			[]Pair{
+			expectedOutput: []Pair{
 				{{range .Expected}}{
 						{{printf "%d" .Row}},
 						{{printf "%d" .Column}},

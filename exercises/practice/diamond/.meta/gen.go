@@ -40,10 +40,10 @@ var testCases = []struct {
 	expectedError error
 }{
 {{range .J.rows}}{
-	{{printf "%q"   .Description}},
-	{{printf "%q"   .Input.Letter}},
-	{{printf "%#v" .Expected}},
-	nil,
+	description: {{printf "%q"   .Description}},
+	input: {{printf "%q"   .Input.Letter}},
+	expected: {{printf "%#v" .Expected}},
+	expectedError: nil,
 },
 {{end}}
 }`

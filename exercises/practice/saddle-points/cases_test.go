@@ -10,11 +10,11 @@ var testCases = []struct {
 }{
 
 	{
-		"Can identify single saddle point",
-		[][]int{
+		description: "Can identify single saddle point",
+		input: [][]int{
 			{9, 8, 7}, {5, 3, 2}, {6, 6, 7},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				2,
 				1,
@@ -23,27 +23,27 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify that empty matrix has no saddle points",
-		[][]int{
+		description: "Can identify that empty matrix has no saddle points",
+		input: [][]int{
 			{},
 		},
-		[]Pair{},
+		expectedOutput: []Pair{},
 	},
 
 	{
-		"Can identify lack of saddle points when there are none",
-		[][]int{
+		description: "Can identify lack of saddle points when there are none",
+		input: [][]int{
 			{1, 2, 3}, {3, 1, 2}, {2, 3, 1},
 		},
-		[]Pair{},
+		expectedOutput: []Pair{},
 	},
 
 	{
-		"Can identify multiple saddle points in a column",
-		[][]int{
+		description: "Can identify multiple saddle points in a column",
+		input: [][]int{
 			{4, 5, 4}, {3, 5, 5}, {1, 5, 4},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				1,
 				2,
@@ -60,11 +60,11 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify multiple saddle points in a row",
-		[][]int{
+		description: "Can identify multiple saddle points in a row",
+		input: [][]int{
 			{6, 7, 8}, {5, 5, 5}, {7, 5, 6},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				2,
 				1,
@@ -81,11 +81,11 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify saddle point in bottom right corner",
-		[][]int{
+		description: "Can identify saddle point in bottom right corner",
+		input: [][]int{
 			{8, 7, 9}, {6, 7, 6}, {3, 2, 5},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				3,
 				3,
@@ -94,11 +94,11 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify saddle points in a non square matrix",
-		[][]int{
+		description: "Can identify saddle points in a non square matrix",
+		input: [][]int{
 			{3, 1, 3}, {3, 2, 4},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				1,
 				3,
@@ -111,11 +111,11 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify that saddle points in a single column matrix are those with the minimum value",
-		[][]int{
+		description: "Can identify that saddle points in a single column matrix are those with the minimum value",
+		input: [][]int{
 			{2}, {1}, {4}, {1},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				2,
 				1,
@@ -128,11 +128,11 @@ var testCases = []struct {
 	},
 
 	{
-		"Can identify that saddle points in a single row matrix are those with the maximum value",
-		[][]int{
+		description: "Can identify that saddle points in a single row matrix are those with the maximum value",
+		input: [][]int{
 			{2, 5, 3, 5},
 		},
-		[]Pair{
+		expectedOutput: []Pair{
 			{
 				1,
 				2,

@@ -74,10 +74,10 @@ var testCases = []struct {
 	explainText    string   // error explanation text
 }{ {{range .J.evaluate}}
 {
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.Instructions}},
-	{{printf "%#v" .ExpectedNumbers}},
-	{{printf "%q"  .ExplainText}},
+	description: {{printf "%q"  .Description}},
+	input: {{printf "%#v" .Input.Instructions}},
+	expected: {{printf "%#v" .ExpectedNumbers}},
+	explainText: {{printf "%q"  .ExplainText}},
 },{{end}}
 }
 `
