@@ -1,10 +1,10 @@
-package weatherforecast_test
+package weatherforecast
 
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
-	"strings"
 	"testing"
 	"time"
 )
@@ -15,29 +15,26 @@ func TestForecastServer(t *testing.T) {
 	testCases := []struct {
 		method   string
 		path     string
-		body     string
 		response string
 		code     int
 	}{
-		{http.MethodGet, fmt.Sprintf("%s/", addr), "", "Please use '/city' to ask for weather status.", http.StatusBadRequest},
-		{http.MethodGet, fmt.Sprintf("%s/City", addr), "", "Please use '/city' to ask for weather status.", http.StatusBadRequest},
-		{http.MethodGet, fmt.Sprintf("%s/city", addr), "", "Golinocus will have a nice sunny day tomorrow!", http.StatusOK},
-		{http.MethodPost, fmt.Sprintf("%s/city", addr), "Logob", "Logob", http.StatusOK},
-		{http.MethodPost, fmt.Sprintf("%s/city", addr), "Logog", "city name incorrect.", http.StatusBadRequest},
-		{http.MethodPut, fmt.Sprintf("%s/city", addr), "logob", "", http.StatusMethodNotAllowed},
+		{http.MethodGet, fmt.Sprintf("http://%s/", addr), "Please use '/city' to ask for weather status.", http.StatusBadRequest},
+		{http.MethodGet, fmt.Sprintf("http://%s/City", addr), "Please use '/city' to ask for weather status.", http.StatusBadRequest},
+		{http.MethodGet, fmt.Sprintf("http://%s/city", addr), "Goblinocus will have a nice sunny day tomorrow!", http.StatusOK},
+		{http.MethodPut, fmt.Sprintf("http://%s/city", addr), "", http.StatusMethodNotAllowed},
 	}
+	srv := ForecastServer(addr, 5*time.Second)
+	go func() {
+		err := srv.ListenAndServe()
+		if err != http.ErrServerClosed {
+			log.Fatal(err)
+		}
+	}()
 	for i, c := range testCases {
-		srv := ForecastServer(addr, 5*time.Second)
-		go func() {
-			err := srv.ListenAndServe()
-			if err != http.ErrServerClosed {
-				t.Fatal(err)
-			}
-		}()
 		client := http.Client{}
-		req, err := http.NewRequest(c.method, c.path, strings.NewReader(c.body))
+		req, err := http.NewRequest(c.method, c.path, nil)
 		if err != nil {
-			t.Fatalf("could not create request. error: %s", err)
+			t.Fatalf("could not make the request. error: %s", err)
 		}
 		resp, err := client.Do(req)
 		if err != nil {
@@ -46,7 +43,6 @@ func TestForecastServer(t *testing.T) {
 		if c.code != resp.StatusCode {
 			t.Fatalf("expected response code %d, received %d. test case number: %d", c.code, resp.StatusCode, i+1)
 		}
-
 		b, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			t.Fatal(err)
@@ -55,6 +51,6 @@ func TestForecastServer(t *testing.T) {
 		if string(b) != c.response {
 			t.Fatalf("expected response: %s, received %s. test case number: %d", c.response, string(b), i+1)
 		}
-		srv.Close()
 	}
+	srv.Close()
 }

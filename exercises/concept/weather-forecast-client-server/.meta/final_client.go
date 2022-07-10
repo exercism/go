@@ -1,16 +1,18 @@
-package serverAns
+package weatherforecast
 
 import (
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strings"
 )
 
-func ForecastClient(city, serverAddr, method string) (string, error) {
+func ForecastClient(serverAddr, method string) (string, error) {
 	client := &http.Client{}
-	req, _ := http.NewRequest(method, serverAddr, strings.NewReader(city))
+	req, err := http.NewRequest(method, serverAddr, nil)
+	if err != nil {
+		return "", err
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		return "", err

@@ -1,8 +1,7 @@
-package serverAns
+package weatherforecast
 
 import (
 	"io"
-	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -20,18 +19,7 @@ func multiplexer() http.Handler {
 	})
 	serveMux.HandleFunc("/city", func(writer http.ResponseWriter, request *http.Request) {
 		if request.Method == http.MethodGet {
-			writer.Write([]byte("Golinocus will have a nice sunny day tomorrow!"))
-		} else if request.Method == http.MethodPost {
-			b, e := ioutil.ReadAll(request.Body)
-			if e != nil {
-				panic(e)
-			}
-			if cityAvailable(string(b)) {
-				writer.Write([]byte(Forecast(string(b))))
-			} else {
-				writer.WriteHeader(http.StatusBadRequest)
-				writer.Write([]byte("city name incorrect."))
-			}
+			writer.Write([]byte("Goblinocus will have a nice sunny day tomorrow!"))
 		} else {
 			writer.WriteHeader(http.StatusMethodNotAllowed)
 		}
@@ -46,14 +34,4 @@ func drainAndClose(next http.Handler) http.Handler {
 		_, _ = io.Copy(io.Discard, request.Body)
 		_ = request.Body.Close()
 	})
-}
-
-func cityAvailable(city string) bool {
-	cityList := Cities()
-	for _, c := range cityList {
-		if c == city {
-			return true
-		}
-	}
-	return false
 }
