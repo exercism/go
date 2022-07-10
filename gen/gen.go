@@ -166,9 +166,8 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	formattedOut, err := format.Source(out.Bytes())
 	if err != nil {
 		log.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
-		out.Reset()
+		_, _ = out.Write([]byte("\n// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
 		_, _ = out.Write(out.Bytes())
-		_, _ = out.Write([]byte("// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
 		_ = outputSource("ERROR", casesFile, out.Bytes())
 		return err
