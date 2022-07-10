@@ -1,7 +1,7 @@
 package panicrecover
 
 // Add condition to panic
-func AccessNames(name []string, index int) string {
+func AccessNamesPanic(name []string, index int) string {
 	defer RecoverPanic()
 	val := name[index]
 	return val
