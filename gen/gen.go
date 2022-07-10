@@ -18,7 +18,7 @@ const (
 	// canonicalDataURL is the URL for the raw canonical-data.json data and requires the exercise name.
 	canonicalDataURL = "https://raw.githubusercontent.com/exercism/problem-specifications/master/exercises/%s/canonical-data.json"
 	// commitsURL is the GitHub api endpoint for the commit history of canonical-data.json and requires the exercise name.
-	commitsURL    = "https://api.github.com/repos/exercism/problem-specifications/commits?path=exercises/%s/canonical-data.json"
+	commitsURL = "https://api.github.com/repos/exercism/problem-specifications/commits?path=exercises/%s/canonical-data.json"
 	// defaultOrigin is the origin used in the header of cases_test.go
 	defaultOrigin = "exercism/problem-specifications"
 )

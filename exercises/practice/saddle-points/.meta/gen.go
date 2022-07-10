@@ -45,7 +45,9 @@ var testCases = []struct {
 	{{range .J.saddlePoints}}
 		{
 			{{printf "%q"  .Description}},
-			{{printf "%#v" .Input.Matrix}},
+			[][]int{
+				{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
+			},
 			[]Pair{
 				{{range .Expected}}{
 						{{printf "%d" .Row}},
