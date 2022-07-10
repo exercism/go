@@ -18,6 +18,20 @@ func f() {
 
 Above function will Panic because we are accessing an element that is out of bounds.
 
+### Defer
+
+Your program may have resources that it must clean up properly, even while a panic is being processed by the runtime. Go allows you to defer the execution of a function call until its calling function has completed execution. Deferred functions run even in the presence of a panic, and are used as a safety mechanism to guard against the chaotic nature of panics. Functions are deferred by calling them as usual, then prefixing the entire statement with the defer keyword, as in below example. Run this example to see how a message can be printed even though a panic was produced:
+
+```
+func main() {
+	defer func() {
+		fmt.Println("hello from the deferred function!")
+	}()
+
+	panic("oh no!")
+}
+```
+
 ### Recover
 
 Recover is a built-in function that regains control of a panicking goroutine. 
