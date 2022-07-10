@@ -42,7 +42,10 @@ var testCases = []struct {
 {{range .J.rows}}{
 	description: {{printf "%q"   .Description}},
 	input: {{printf "%q"   .Input.Letter}},
-	expected: {{printf "%#v" .Expected}},
+	expected: []string{
+		{{range .Expected}} "{{printf "%v" .}}", 
+		{{end}}
+	},
 	expectedError: nil,
 },
 {{end}}
