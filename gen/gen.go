@@ -58,6 +58,7 @@ type testCase struct {
 	UUID        string      `json:"uuid"`
 	Description string      `json:"description"`
 	Property    string      `json:"property"`
+	Scenario    string      `json:"scenario"`
 	Input       interface{} `json:"input"`
 	Expected    interface{} `json:"expected"`
 }
@@ -107,7 +108,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	if json.Valid(jTestData){
+	if !json.Valid(jTestData) {
 		return fmt.Errorf("[ERROR] canonical-data.json seems not to be valid json")
 	}
 
