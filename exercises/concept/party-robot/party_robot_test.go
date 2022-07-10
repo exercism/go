@@ -127,7 +127,6 @@ want:
 					t.Errorf("Check your space characters - got: %d, want: %d", gotSpaces, wantSpaces)
 				}
 
-
 			}
 		})
 	}
