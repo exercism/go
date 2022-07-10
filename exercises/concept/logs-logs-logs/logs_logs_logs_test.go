@@ -134,7 +134,7 @@ func TestWithinLimit(t *testing.T) {
 			want:  true,
 		},
 		{
-			name:  "exact limit",
+			name:  "over limit",
 			log:   "exercism🔍",
 			limit: 8,
 			want:  false,
