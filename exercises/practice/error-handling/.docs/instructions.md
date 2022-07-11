@@ -23,7 +23,7 @@ be in the same package as [common.go](./common.go) and
 [error_handling_test.go](./error_handling_test.go): "erratum". This will make
 those types available for use in your solution.
 
-There will be a few places in your Use function where errors may occur:
+There will be a few places in your `Use` function where errors may occur:
 
 - Invoking the `ResourceOpener` function passed into Use as the first parameter,
   it may fail with an error of type TransientError, if so keep trying to open
