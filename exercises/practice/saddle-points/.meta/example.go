@@ -81,7 +81,7 @@ func (m *Matrix) Saddle() (p []Pair) {
 		for _, c := range maxs(row) {
 			for _, rmin := range colMin[c] {
 				if rmin == r {
-					p = append(p, Pair{r, c})
+					p = append(p, Pair{r + 1, c + 1})
 					break
 				}
 			}
