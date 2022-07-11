@@ -30,7 +30,7 @@ There will be a few places in your `Use` function where errors may occur:
   the resource. If it is some other sort of error, return it from your `Use`
   function.
 
-- Calling the `Frob` function on the Resource returned from the `ResourceOpener`
+- Calling the `Frob` function on the `Resource` returned from the `ResourceOpener`
   function, it may **panic** with a `FrobError` (or another type of error). If it
   is indeed a `FrobError` you will have to call the Resource's `Defrob` function
   _using the panic `FrobError`'s `.defrobTag` variable as input to the `Defrob`
