@@ -26,7 +26,7 @@ those types available for use in your solution.
 There will be a few places in your `Use` function where errors may occur:
 
 - Invoking the `ResourceOpener` function passed into Use as the first parameter,
-  it may fail with an error of type TransientError, if so keep trying to open
+  it may fail with an error of type `TransientError`, if so keep trying to open
   the resource. If it is some other sort of error, return it from your `Use`
   function.
 
