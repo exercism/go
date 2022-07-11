@@ -38,6 +38,11 @@ func TestIsValidLine(t *testing.T) {
 			text:        "text",
 			expected:    false,
 		},
+		{
+			description: "Empty line",
+			text:        "",
+			expected:    false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
