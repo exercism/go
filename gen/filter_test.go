@@ -101,9 +101,9 @@ var (
 `
 
 	excludeList = map[string]struct{}{
-		"8snv0f-f781-4c52-b73b-8e76427defd0":  {}, //test case 2
-		"klnhng-f781-4c52-b73b-8e76427defd0":  {}, //test case 3
-		"98axn89-29f9-46f2-8c95-6c5b7a595aee": {}, //Test case 6
+		"8snv0f-f781-4c52-b73b-8e76427defd0":  {}, // test case 2
+		"klnhng-f781-4c52-b73b-8e76427defd0":  {}, // test case 3
+		"98axn89-29f9-46f2-8c95-6c5b7a595aee": {}, // test case 6
 	}
 )
 
