@@ -4,14 +4,25 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"testing"
 	"time"
 )
 
-const addr = "127.0.0.1:9898"
+var port = 9898
+var addr = "127.0.0.1:" + fmt.Sprintf("%d", port)
 
 func TestForecastServer(t *testing.T) {
+	for {
+		l, err := net.Listen("tcp", addr)
+		if err == nil {
+			_ = l.Close()
+			break
+		}
+		port -= 1
+		addr = "127.0.0.1:" + fmt.Sprintf("%d", port)
+	}
 	testCases := []struct {
 		method   string
 		path     string
