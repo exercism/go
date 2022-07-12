@@ -139,11 +139,13 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 			return fmt.Errorf("[ERROR] failed to marshal test cases with property %s: %w", property, err)
 		}
 
-		cache, ok := tests[property]
+		// valueForProperty is an instance of the struct (defined in gen.go) for the current property
+		// and is used to unmarshal the test cases
+		valueForProperty, ok := tests[property]
 		if !ok {
 			return fmt.Errorf("[ERROR] failed to get struct for tests with property %s", property)
 		}
-		err = json.Unmarshal(marshal, cache)
+		err = json.Unmarshal(marshal, valueForProperty)
 		if err != nil {
 			return err
 		}
