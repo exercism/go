@@ -1,60 +1,25 @@
-# http/net package
+# HTTP
 
-HTTP or Hypertext Transfer Protocol is an application layer protocol. When you write a URL address in format of `https://website-address`, your browser is acting as a client and uses Hypertext Transfer Protocol to ask a server for resources and uses those resources to view the webpage.
-In this concept we will learn how to code HTTP clients and servers using http/net package.
+HTTP or Hypertext Transfer Protocol is an application layer protocol. When you write a URL address in format of `http://website-address`, your browser is acting as a client and uses Hypertext Transfer Protocol to ask a server for resources and uses those resources to view the webpage.
+In this concept we will learn how to code HTTP servers and respond to client requests using go `net/http` package.
 
-## Client
+## Server
 
-A client can be defined by using `http.Client` structure.
-There are three main methods that you can use in http/net package to act as an HTTP client:
-
-### Get method
-
-`func (c *Client) Get(url string) (resp *Response, err error)`
-This method lets you send GET requests to a URL and receive the response or any error that might occur. Consider the example below:
+A server can be defined by using `http.Server` structure. Consider the example below:
 
 ```go
 package main
 
 import (
-	"fmt"
-	"io"
-	"log"
-	"net/http"
+    "net/http"
 )
 
-func main() {
-	client := &http.Client{}
-	resp, err := client.Get("https://www.google.com/") // Sending a GET request to google
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close() // Always close the reponse body
-
-	body, err := io.ReadAll(resp.Body) // Reading the response HTTP body
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(string(body)) // Printing out the response body
+func main(){
+    // code ...
+    server := http.Server{Addr: "127.0.0.1:9898"}
+    // code ...
 }
 ```
-
-Here we connect to Google main webpage and display the response body.
-
-~~~~exercism/caution
-Tip: You should always close the response body. Since Go uses HTTP/1.1, it keeps a connection to the server open in case you might reuse it. Therefore using `defer resp.Body.Close()` you can make sure the response body will be closed after your function exits.  
-~~~~
-
-## Server
-
-A client can be defined by using `http.Server` structure. There are five important fields in this structure:
-
-1. `Addr string`: The TCP address that the server will listen on,
-2. `Handler Handler`: the server’s multiplexer,
-3. `IdleTimeout time.Duration`: This is the maximum amount of time that a connection will be kept open before a new request from the client arrives.
-4. `ReadHeaderTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request headers.
-5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request. The core components used to create HTTP servers using `net/http` package are handlers.
 
 ~~~~exercism/note
 As stated in [the server.go definition][server.go] regarding how new incoming http connections are handled:
@@ -65,7 +30,7 @@ As stated in [the server.go definition][server.go] regarding how new incoming ht
 
 ```go
 type Handler interface {
-	ServeHTTP(ResponseWriter, *Request)
+ ServeHTTP(ResponseWriter, *Request)
 }
 ```
 
@@ -76,14 +41,14 @@ If you wish to send and status code besides `http.StatusOk` you need to use `Wri
 Example:  
 ```go
 func(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Not Found!"))
-	w.WriteHeader(http.StatusNotFound)
+ w.Write([]byte("Not Found!"))
+ w.WriteHeader(http.StatusNotFound)
 }
 // The result of running this function is a response with status code 200 Ok!
 ----------
 func(w http.ResponseWriter, r *http.Request){
-	w.WriteHeader(http.StatusNotFound)
-	w.Write([]byte("Not Found!"))
+ w.WriteHeader(http.StatusNotFound)
+ w.Write([]byte("Not Found!"))
 }
 // The result of running this function is a response with status code 404 NotFound!
 ```
@@ -94,11 +59,11 @@ func(w http.ResponseWriter, r *http.Request){
 `http.ServeMux` is responsible for routing each request to the right handler by matching the pattern in the request with the **longest** pattern specified for it. `http.NewServeMux() *ServeMux` is used to create a new multiplexer. It uses handlers to route each request to the proper handler. As an example:
 ```go
 func multiplexer() *ServeMux{
-	serveMux := http.NewServeMux()
-	serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Hello World!"))
-	})
-	return serveMux
+ serveMux := http.NewServeMux()
+ serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+ w.Write([]byte("Hello World!"))
+ })
+ return serveMux
 }
 ```
 
@@ -112,22 +77,22 @@ Unlike the client that drains the body before closing it, in the server you need
 
 ```go
 func drainAndClose(next *http.ServeMux) http.Handler {
-	return http.HandlerFunc(
-		func(w http.ResponseWriter, r *http.Request) {
-			next.ServeHTTP(w, r)
-			_, _ = io.Copy(ioutil.Discard, r.Body)
-			_ = r.Body.Close()
-		},
-	)
+ return http.HandlerFunc(
+  func(w http.ResponseWriter, r *http.Request) {
+   next.ServeHTTP(w, r)
+   _, _ = io.Copy(ioutil.Discard, r.Body)
+   _ = r.Body.Close()
+  },
+ )
 }
 
 func multiplexer() http.Handler{
-	serveMux := http.NewServeMux()
-	serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Hello World!"))
-	})
-	mux := drainAndClose(serveMux)
-	return mux
+ serveMux := http.NewServeMux()
+ serveMux := http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+ w.Write([]byte("Hello World!"))
+ })
+ mux := drainAndClose(serveMux)
+ return mux
 }
 ```
 
