@@ -103,7 +103,11 @@ fmt.Sprint(windSpeedYesterday)
 Meteorological data specifies location, temperature, wind direction, wind speed
 and humidity. It should be formatted as in the example below:
 
-For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it. This method should return the meteorology data in the following format: `"<location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity"`:
+For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it. This method should return the meteorology data in the following format:
+
+```
+<location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity
+```
 
 ```go 
 sfData := MeteorologyData{
