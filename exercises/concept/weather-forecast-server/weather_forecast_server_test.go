@@ -23,13 +23,14 @@ func TestForecastServer(t *testing.T) {
 		{http.MethodGet, fmt.Sprintf("http://%s/city", addr), "Goblinocus will have a nice sunny day tomorrow!", http.StatusOK},
 		{http.MethodPut, fmt.Sprintf("http://%s/city", addr), "", http.StatusMethodNotAllowed},
 	}
-	srv := ForecastServer(addr, 5*time.Second)
+	srv := ForecastServer(addr, 30*time.Second)
 	go func() {
 		err := srv.ListenAndServe()
 		if err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
 	}()
+	time.Sleep(3 * time.Second)
 	for i, c := range testCases {
 		client := http.Client{}
 		req, err := http.NewRequest(c.method, c.path, http.NoBody)
