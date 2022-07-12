@@ -10,7 +10,6 @@ func TestForth(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			v, err := Forth(tc.input)
 			if err == nil {
-				var _ = err
 				if tc.expected == nil {
 					t.Fatalf("Forth(%#v) expected an error, got %v", tc.input, v)
 				} else if !reflect.DeepEqual(v, tc.expected) {
