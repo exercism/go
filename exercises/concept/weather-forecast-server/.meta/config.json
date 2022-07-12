@@ -1,0 +1,20 @@
+{
+    "authors":[
+        "MikaeelMF",
+        "junedev",
+        "andrerfcsantos"
+    ],
+    "files":{
+        "solution": [
+            "weather_forecast_server.go"
+        ],
+        "test":[
+            "weather_forecast_server_test.go"
+        ],
+        "exemplar": [
+            ".meta/exemplar.go"
+        ]
+    },
+    "blurb":"Learn how to write a basic http server",
+    "icon":"weather-forecast"
+}
