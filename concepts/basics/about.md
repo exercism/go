@@ -69,12 +69,12 @@ Single line comments are preceded by `//` and multiline comments are inserted be
 ```go
 package greeting
 
-// Hello is a public function
+// Hello is a public function.
 func Hello (name string) string {
     return hi(name)
 }
 
-// hi is a private function
+// hi is a private function.
 func hi (name string) string {
     return "hi " + name
 }
