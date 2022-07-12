@@ -31,11 +31,13 @@ This is analogous to how other programming languages like Java that use access m
 
 ```go
 package greeting
-// Hello is a public function (callable from other packages)
+
+// Hello is a public function (callable from other packages).
 func Hello(name string) string {
     return "Hello " + name
 }
-// hello is a private function (not callable from other packages)
+
+// hello is a private function (not callable from other packages).
 func hello(name string) string {
     return "Hello " + name
 }
