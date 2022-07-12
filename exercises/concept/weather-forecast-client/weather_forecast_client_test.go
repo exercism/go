@@ -57,7 +57,7 @@ func tmultiplexer() http.Handler {
 	})
 	serveMux.HandleFunc("/city", func(writer http.ResponseWriter, request *http.Request) {
 		if request.Method == http.MethodGet {
-			writer.Write([]byte("Golinocus will have a nice sunny day tomorrow!"))
+			writer.Write([]byte("Goblinocus will have a nice sunny day tomorrow!"))
 		} else {
 			writer.WriteHeader(http.StatusMethodNotAllowed)
 		}
