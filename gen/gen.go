@@ -48,7 +48,7 @@ type Header struct {
 	Origin string
 }
 
-//String generates the header for cases_test.go
+// String generates the header for cases_test.go file.
 func (h Header) String() string {
 	return fmt.Sprintf("// Source: %s\n// Commit: %s", h.Origin, h.Commit)
 }
