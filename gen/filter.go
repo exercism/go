@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// getAllTestCasesFiltered recursively searches all tests cases except the ones excluded by excludedTests.
+// getAllTestCasesFiltered recursively collects all test cases in a flattened list except the ones excluded by excludedTests.
 func getAllTestCasesFiltered(jSrc []byte, excludedTests map[string]struct{}) (*[]testCase, error) {
 	var result = &[]testCase{}
 
