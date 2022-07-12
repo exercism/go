@@ -3,13 +3,13 @@ package weatherforecastclient
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
 func ForecastClient(serverAddr, method string) (string, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest(method, serverAddr, nil)
+	req, err := http.NewRequest(method, serverAddr, http.NoBody)
 	if err != nil {
 		return "", err
 	}
@@ -21,7 +21,7 @@ func ForecastClient(serverAddr, method string) (string, error) {
 	if resp.StatusCode != http.StatusOK {
 		return "", errors.New(fmt.Sprint(resp.StatusCode))
 	}
-	b, err := ioutil.ReadAll(resp.Body)
+	b, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}

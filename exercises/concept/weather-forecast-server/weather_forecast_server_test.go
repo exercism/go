@@ -2,7 +2,7 @@ package weatherforecastserver
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"testing"
@@ -32,7 +32,7 @@ func TestForecastServer(t *testing.T) {
 	}()
 	for i, c := range testCases {
 		client := http.Client{}
-		req, err := http.NewRequest(c.method, c.path, nil)
+		req, err := http.NewRequest(c.method, c.path, http.NoBody)
 		if err != nil {
 			t.Fatalf("could not make the request. error: %s", err)
 		}
@@ -43,7 +43,7 @@ func TestForecastServer(t *testing.T) {
 		if c.code != resp.StatusCode {
 			t.Fatalf("expected response code %d, received %d. test case number: %d", c.code, resp.StatusCode, i+1)
 		}
-		b, err := ioutil.ReadAll(resp.Body)
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
 			t.Fatal(err)
 		}
