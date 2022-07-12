@@ -15,7 +15,7 @@ func getAllTestCasesFiltered(jSrc []byte, excludedTests map[string]struct{}) (*[
 	// recursively get all test cases except the excluded ones
 	err := recursiveFilterCases(jSrc, result, excludedTests)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to get/filter all test cases: %w", err)
 	}
 	return result, nil
 }
@@ -38,7 +38,7 @@ func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTes
 
 			err := json.Unmarshal(uuid, &uuidStr)
 			if err != nil {
-				return fmt.Errorf("failed to unmarshal uuid (%v) (%v)", uuid, err)
+				return fmt.Errorf("failed to unmarshal uuid %v: %w", uuid, err)
 			}
 
 			//ignore test-cases with include=false in tests.toml

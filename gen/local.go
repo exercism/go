@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -13,10 +12,10 @@ import (
 func getLocalTestData(jFile string) ([]byte, error) {
 	jFilePath := filepath.Join(problemSpecificationsDir, jFile)
 	if _, err := os.Stat(jFilePath); err != nil {
-		return nil, fmt.Errorf("canonical-data.json can't be found (%q)", err)
+		return nil, fmt.Errorf("canonical-data.json can't be found: %w", err)
 	}
 
-	log.Printf("[LOCAL] source: %s\n", jFilePath)
+	fmt.Printf("[LOCAL] source: %s\n", jFilePath)
 
 	jTestData, err := ioutil.ReadFile(jFilePath)
 	if err != nil {
@@ -31,7 +30,7 @@ func getLatestLocalCommitMessage(jFile string) (Header, error) {
 
 	msg, err := c.Output()
 	if err != nil {
-		return Header{}, fmt.Errorf("failed to determine latest commit message of %s", jFile)
+		return Header{}, fmt.Errorf("failed to determine latest commit message of %s: %w", jFile, err)
 	}
 	return Header{Commit: string(bytes.TrimSpace(msg)), Origin: defaultOrigin}, nil
 }

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"go/format"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -86,7 +85,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	problemSpecificationsDir = filepath.Join(exerciseDir, "..", "..", "..", "..", "problem-specifications")
 
 	jFile := filepath.Join("exercises", exercise, "canonical-data.json")
-	log.Printf("[LOCAL] fetching %s test data from canonical-data.json\n", exercise)
+	fmt.Printf("[LOCAL] fetching %s test data from canonical-data.json\n", exercise)
 
 	var header Header
 	jTestData, err := getLocalTestData(jFile)
@@ -96,8 +95,8 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 
 	if err != nil {
 		// fetch json data remotely if there's no local file
-		log.Printf("[LOCAL] No test data found (%q)\n", err)
-		log.Printf("[REMOTE] fetching %s test data\n", exercise)
+		fmt.Printf("[LOCAL] No test data found: %v\n", err)
+		fmt.Printf("[REMOTE] fetching %s test data\n", exercise)
 		jTestData, err = getRemoteTestData(exercise)
 		if err != nil {
 			return err
@@ -114,17 +113,17 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 
 	// read tests.toml file to find which test cases should be excluded
 	tomlFile := filepath.Join(exerciseDir, ".meta", "tests.toml")
-	log.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
+	fmt.Printf("[LOCAL] reading tests.toml file from exercise directory %s\n", tomlFile)
 	excludedTests, err := getExcludedTestCases(tomlFile)
 	if err != nil {
 		return fmt.Errorf("[LOCAL] unable to read tests.toml file (%v)", err)
 	}
 
-	log.Println("collecting and filtering all test cases from the fetched test data")
+	fmt.Println("collecting and filtering all test cases from the fetched test data")
 
 	allTestCases, err := getAllTestCasesFiltered(jTestData, excludedTests)
 	if err != nil {
-		return fmt.Errorf("failed to get filtered test-cases (%v)", err)
+		return fmt.Errorf("failed to get filtered test-cases: %w", err)
 	}
 
 	var casesPerProperty = map[string][]testCase{}
@@ -134,10 +133,10 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	}
 
 	for property, testCases := range casesPerProperty {
-		log.Printf(" > parsing cases for property %s\n", property)
+		fmt.Printf(" > parsing cases for property %s\n", property)
 		marshal, err := json.Marshal(testCases)
 		if err != nil {
-			return fmt.Errorf("[ERROR] failed to marshal test cases with property %s\n%q", property, err)
+			return fmt.Errorf("[ERROR] failed to marshal test cases with property %s: %w", property, err)
 		}
 
 		cache, ok := tests[property]
@@ -161,12 +160,12 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	// render the Go test cases
 	var out bytes.Buffer
 	if err := t.Execute(&out, &d); err != nil {
-		return fmt.Errorf("[ERROR] template.Execute failed. The template has a semantic error 	%q", err)
+		return fmt.Errorf("[ERROR] template.Execute failed. The template has a semantic error: %w", err)
 	}
 
 	formattedOut, err := format.Source(out.Bytes())
 	if err != nil {
-		log.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
+		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
 		_, _ = out.Write([]byte("\n// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
 		_, _ = out.Write(out.Bytes())
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
@@ -183,6 +182,6 @@ func outputSource(status, fileName string, src []byte) error {
 	if err != nil {
 		return fmt.Errorf("[FAILED] %q\n", err)
 	}
-	log.Printf("[%s] output: %s\n", status, fileName)
+	fmt.Printf("[%s] output: %s\n", status, fileName)
 	return nil
 }

@@ -16,7 +16,7 @@ func getExcludedTestCases(tomlFilePath string) (map[string]struct{}, error) {
 
 	file, err := os.Open(tomlFilePath)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to open %s: %w", tomlFilePath, err)
 	}
 	defer file.Close()
 

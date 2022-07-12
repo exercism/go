@@ -5,17 +5,16 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 )
 
 func getRemoteTestData(exercise string) ([]byte, error) {
 	url := fmt.Sprintf(canonicalDataURL, exercise)
-	log.Printf("[REMOTE] source: %s\n", url)
+	fmt.Printf("[REMOTE] source: %s\n", url)
 	resp, err := httpClient.Get(url)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to fetch remote test data: %w", err)
 	}
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error fetching remote data: (status-code: %s)", resp.Status)
@@ -42,11 +41,11 @@ func (c Commit) Summary() string {
 
 func getRemoteCommit(exercise string) (Header, error) {
 	url := fmt.Sprintf(commitsURL, exercise)
-	log.Printf("[REMOTE] fetching latest commit (source: %s)\n", url)
+	fmt.Printf("[REMOTE] fetching latest commit (source: %s)\n", url)
 
 	resp, err := httpClient.Get(url)
 	if err != nil {
-		return Header{}, err
+		return Header{}, fmt.Errorf("failed to fetch latest commit: %w", err)
 	}
 	defer resp.Body.Close()
 	var c []Commit
