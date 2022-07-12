@@ -20,9 +20,7 @@ func main() {
 }
 
 type Case struct {
-	UUID        string `json:"uuid"`
 	Description string `json:"description"`
-	Property    string `json:"property"`
 	Input       struct {
 		Matrix [][]int `json:"matrix"`
 	} `json:"input"`

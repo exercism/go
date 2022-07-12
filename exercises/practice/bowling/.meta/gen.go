@@ -22,9 +22,7 @@ func main() {
 }
 
 type Case struct {
-	UUID        string `json:"uuid"`
 	Description string `json:"description"`
-	Property    string `json:"property"`
 	Input       struct {
 		PreviousRolls []int `json:"previousRolls"`
 		Roll          int   `json:"roll"`

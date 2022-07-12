@@ -22,9 +22,7 @@ func main() {
 }
 
 type testCase struct {
-	UUID        string `json:"uuid"`
 	Description string `json:"description"`
-	Property    string `json:"property"`
 	Input       struct {
 		Instructions []string `json:"instructions"`
 	} `json:"input"`
