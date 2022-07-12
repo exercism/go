@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-func ForecastServer(addr string, idle time.Duration) http.Server {
-	serv := http.Server{Addr: addr, Handler: multiplexer(), IdleTimeout: idle}
+func ForecastServer(addr string, idle time.Duration) *http.Server {
+	serv := &http.Server{Addr: addr, Handler: multiplexer(), IdleTimeout: idle}
 	return serv
 }
 

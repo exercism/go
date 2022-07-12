@@ -44,8 +44,8 @@ func TestForecastClient(t *testing.T) {
 	srv.Close()
 }
 
-func tForecastServer(addr string, idle time.Duration) http.Server {
-	serv := http.Server{Addr: addr, Handler: tmultiplexer(), IdleTimeout: idle}
+func tForecastServer(addr string, idle time.Duration) *http.Server {
+	serv := &http.Server{Addr: addr, Handler: tmultiplexer(), IdleTimeout: idle}
 	return serv
 }
 

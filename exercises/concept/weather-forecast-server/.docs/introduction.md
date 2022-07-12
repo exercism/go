@@ -16,7 +16,7 @@ import (
 
 func main(){
     // code ...
-    server := http.Server{Addr: "127.0.0.1:9898"}
+    server := &http.Server{Addr: "127.0.0.1:9898"}
     // code ...
 }
 ```
