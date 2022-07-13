@@ -121,7 +121,7 @@ func TestDiamondIsHorizontallySymmetric(t *testing.T) {
 func TestDiamondIsVerticallySymmetric(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		for i, j := 0, len(rows)-1; i < j; i, j = i+1, j-1 {
-			//strings.TrimSuffix to ignore new lines
+			// strings.TrimSuffix to ignore new lines
 			if strings.TrimSuffix(rows[i], "\n") != strings.TrimSuffix(rows[j], "\n") {
 				return false
 			}
