@@ -225,6 +225,68 @@ $ tree -L 1 .
 └── go
 ```
 
+#### Adding a new exercise generator
+
+An exercise generator is used to generator the `cases_test.go` based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
+To add a new exercise generator to an exercise the following steps are needed:
+1. Create the file `gen.go` in the directory `.meta` of the exercise
+2. Add the following template to `gen.go`:
+```go
+package main
+
+import (
+    "log"
+    "text/template"
+  
+    "../../../../gen"
+)
+
+func main() {
+	t, err := template.New("").Parse(tmpl)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var j = map[string]interface{}{
+              "property_1":  &[]Property1Case{},
+              "property_2":  &[]Property2Case{},
+	}
+	if err := gen.Gen("<exercise-name>", j, t); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+3. Insert the name of the exercise to the call of `gen.Gen`
+4. Add all values for the field `property` in `canonical-data.json` to the map `j`. `canonical-data.json` can be found at [problem-specifications/exercises/<exercise-name>](https://github.com/exercism/problem-specifications)
+5. Create the needed structs for storing the test cases from `canonical-data.json` (you can for example use [JSON-to-Go](https://mholt.github.io/json-to-go/) to convert the JSON to a struct)
+
+**NOTE:** In some cases the type for `input`/`expected` are not the same for all test cases for one property. Therefore, an `interface{}` has to be used and then the `interface{}` has to be handled in the exercise generator (mostly when a value and an error are provided for the same key in `canonical-data.json`). Examples can be found in the exercises `forth` or `bowling`.
+6. Use the created structs in the map `j`
+7. Add the variable `tmpl` to `gen.go`. It stores the template for the file `cases_test.go`.
+
+Example:
+```
+var tmpl = `package <package of exercise>
+
+{{.Header}}
+
+var testCases = []struct {
+	description    string
+	input          int
+	expected       int       
+}{ {{range .J.<property>}}
+{
+	description: {{printf "%q"  .Description}},
+	input: {{printf "%d"  .Score}},
+	expected: {{printf "%d"  .Score}},
+},{{end}}
+}
+`
+```
+8. Synchronize the test case using the exercise generator (as described in [Synchronizing tests and instructions](#synchronizing-exercises-with-problem-specifications))
+9. Check the validity of `cases_test.go`
+10. Use the generated test cases in `exercise_test.go`
+11. Check if `.meta/example.go` passes all tests
+
 ### Synchronizing tests and instructions
 
 To keep track of which tests are implemented by the exercise the file `.meta/tests.toml` is used by [configlet](https://github.com/exercism/configlet).
