@@ -29,10 +29,8 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 			separator = strings.SplitAfter
 		}
 		rows := separator(d, "\n")
-		if len(rows) < 2 {
-			return false
-		}
-		return requirement(byte(char), rows[:len(rows)-1])
+
+		return requirement(byte(char), rows)
 	}
 	if err := quick.Check(assertion, config); err != nil {
 		t.Error(err)
@@ -42,13 +40,16 @@ func checkCorrect(requirement func(byte, []string) bool, keepSeparator bool, t *
 func TestDiamond(t *testing.T) {
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			expected := fmt.Sprintf("%s\n", strings.Join(testCase.expected, "\n"))
+			expected := strings.Join(testCase.expected, "\n")
 			got, err := Gen(testCase.input[0])
 
 			if err != testCase.expectedError {
 				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
 			}
 			if got != expected {
+				if got == fmt.Sprintf("%s\n", expected) {
+					t.Fatalf("Gen(%q): no \\n expected after last line", testCase.input)
+				}
 				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
 			}
 		})
@@ -120,7 +121,8 @@ func TestDiamondIsHorizontallySymmetric(t *testing.T) {
 func TestDiamondIsVerticallySymmetric(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		for i, j := 0, len(rows)-1; i < j; i, j = i+1, j-1 {
-			if rows[i] != rows[j] {
+			//strings.TrimSuffix to ignore new lines
+			if strings.TrimSuffix(rows[i], "\n") != strings.TrimSuffix(rows[j], "\n") {
 				return false
 			}
 		}
