@@ -105,6 +105,16 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "unknown key with value that is not empty",
+			resident: &Resident{
+				Name: "Rob Pike",
+				Address: map[string]string{
+					"unknown key": "with value",
+				},
+			},
+			want: false,
+		},
 	}
 
 	for _, test := range tests {
