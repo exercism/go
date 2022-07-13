@@ -1,8 +1,7 @@
 package acronym
 
 // Source: exercism/problem-specifications
-// Commit: cacf1f1 Acronym: add underscore test case (#1436)
-// Problem Specifications Version: 1.7.0
+// Commit: 5fc501b Remove unneeded nesting (#1798)
 
 type acronymTest struct {
 	input    string
