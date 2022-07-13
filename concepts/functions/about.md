@@ -49,7 +49,7 @@ The function parameters are followed by zero or more return values which must al
 Single return values are left bare, multiple return values are wrapped in parenthesis.
 Values are returned to the calling code from functions using the [`return` keyword][return].
 There can be multiple `return` statements in a function.
-The execution of the function ends as soon as it hits one of those `return`s.
+The execution of the function ends as soon as it hits one of those `return` statements.
 If multiple values are to be returned from a function, they are comma separated.
 More information about idiomatic use of [multiple return values][concept-multiple-return-values] can be found in the linked concept.
 
