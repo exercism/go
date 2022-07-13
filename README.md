@@ -260,8 +260,9 @@ func main() {
 5. Create the needed structs for storing the test cases from `canonical-data.json` (you can for example use [JSON-to-Go](https://mholt.github.io/json-to-go/) to convert the JSON to a struct)
 
 **NOTE:** In some cases the type for `input`/`expected` are not the same for all test cases for one property. Therefore, an `interface{}` has to be used and then the `interface{}` has to be handled in the exercise generator (mostly when a value and an error are provided for the same key in `canonical-data.json`). Examples can be found in the exercises `forth` or `bowling`.
-6. Use the created structs in the map `j`
-7. Add the variable `tmpl` to `gen.go`. It stores the template for the file `cases_test.go`.
+
+7. Use the created structs in the map `j`
+8. Add the variable `tmpl` to `gen.go`. It stores the template for the file `cases_test.go`.
 
 Example:
 ```
