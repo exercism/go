@@ -1,8 +1,7 @@
 package allyourbase
 
 // Source: exercism/problem-specifications
-// Commit: c21ffd7 all-your-base: improve "input base is one" test
-// Problem Specifications Version: 2.3.0
+// Commit: d137db1 Format using prettier (#1917)
 
 var testCases = []struct {
 	description string

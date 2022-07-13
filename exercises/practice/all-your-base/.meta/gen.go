@@ -12,32 +12,25 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("all-your-base", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"rebase": &[]testCase{},
+	}
+	if err := gen.Gen("all-your-base", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
 		InputBase  int   `json:"inputBase"`
 		Digits     []int `json:"digits"`
 		OutputBase int   `json:"outputBase"`
-	}
-	Expected interface{}
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func (o oneCase) Result() []int {
+func (o testCase) Result() []int {
 	s, ok := o.Expected.([]interface{})
 	if !ok {
 		return nil
@@ -50,7 +43,7 @@ func (o oneCase) Result() []int {
 	return res
 }
 
-func (o oneCase) Err() string {
+func (o testCase) Err() string {
 	m, ok := o.Expected.(map[string]interface{})
 	if !ok {
 		return ""
@@ -70,7 +63,7 @@ var testCases = []struct {
 	outputBase	int
 	expected    []int
 	err         string
-}{ {{range .J.Cases}}
+}{ {{range .J.rebase}}
 {
 	description:	{{printf "%q"  .Description}},
 	inputBase:		{{printf "%d"  .Input.InputBase}},
