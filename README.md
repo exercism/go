@@ -225,7 +225,7 @@ $ tree -L 1 .
 └── go
 ```
 
-#### Adding a new exercise generator
+#### Adding a test generator to an exercise
 
 An exercise generator is used to generator the `cases_test.go` based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
 To add a new exercise generator to an exercise the following steps are needed:
