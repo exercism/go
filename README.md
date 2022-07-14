@@ -285,7 +285,7 @@ var testCases = []struct {
 ```
 8. Synchronize the test case using the exercise generator (as described in [Synchronizing tests and instructions](#synchronizing-tests-and-instructions))
 9. Check the validity of `cases_test.go`
-10. Use the generated test cases in `exercise_test.go`
+10. Use the generated test cases in the `<exercise>_test.go` file
 11. Check if `.meta/example.go` passes all tests
 
 ### Synchronizing tests and instructions
