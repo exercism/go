@@ -265,7 +265,7 @@ func main() {
 8. Add the variable `tmpl` to `gen.go`. It stores the template for the file `cases_test.go`.
 
 Example:
-```
+```go
 var tmpl = `package <package of exercise>
 
 {{.Header}}
