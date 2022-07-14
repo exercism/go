@@ -259,7 +259,7 @@ func main() {
 4. Add all values for the field `property` in `canonical-data.json` to the map `j`. `canonical-data.json` can be found at [problem-specifications/exercises/\<exercise-name\>](https://github.com/exercism/problem-specifications)
 5. Create the needed structs for storing the test cases from `canonical-data.json` (you can for example use [JSON-to-Go](https://mholt.github.io/json-to-go/) to convert the JSON to a struct)
 
-**NOTE:** In some cases the type for `input`/`expected` are not the same for all test cases for one property. Therefore, an `interface{}` has to be used and then the `interface{}` has to be handled in the exercise generator (mostly when a value and an error are provided for the same key in `canonical-data.json`). Examples can be found in the exercises `forth` or `bowling`.
+**NOTE:** In some cases, the struct of the data in the `input`/`expected` fields is not the same for all test cases of one property. In those situations, an `interface{}` has to be used to represent the values for these fields.  These `interface{}` values then need to be handled by the test generator. A common way to handle these cases is to create methods on the test case structs that perform type assertions on the `interface{}` values and return something more meaningful. These methods can then be referenced/called in the `tmpl` template variable. Examples of this can be found in the exercises [forth](https://github.com/exercism/go/blob/main/exercises/practice/forth/.meta/gen.go) or [bowling](https://github.com/exercism/go/blob/main/exercises/practice/bowling/.meta/gen.go).
 
 7. Use the created structs in the map `j`
 8. Add the variable `tmpl` to `gen.go`. It stores the template for the file `cases_test.go`.
