@@ -227,7 +227,7 @@ $ tree -L 1 .
 
 #### Adding a test generator to an exercise
 
-An exercise generator is used to generator the `cases_test.go` based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
+For some exercises, a test generator is used to generate the `cases_test.go` file with the test cases based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
 To add a new exercise generator to an exercise the following steps are needed:
 1. Create the file `gen.go` in the directory `.meta` of the exercise
 2. Add the following template to `gen.go`:
