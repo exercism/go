@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://go.dev/tour/concurrency/2",
+    "description": "Tour of Go: Channels"
+  },
+  {
+    "url": "https://go.dev/tour/concurrency/3",
+    "description": "Tour of Go: Buffered Channels"
+  },
+  {
+    "url": "https://go.dev/tour/concurrency/4",
+    "description": "Tour of Go: Range and Close"
+  },
+  {
+    "url": "https://go.dev/tour/concurrency/5",
+    "description": "Tour of Go: Select"
+  },
+  {
+    "url": "https://gobyexample.com/channels",
+    "description": "Go by Example: Channels"
+  }
+]

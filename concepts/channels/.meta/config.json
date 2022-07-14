@@ -1,0 +1,5 @@
+{
+  "blurb": "Channels are the pipes that connect concurrent goroutines.",
+  "authors": ["RezaSi"],
+  "contributors": []
+}

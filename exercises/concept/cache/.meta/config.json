@@ -1,0 +1,16 @@
+{
+  "blurb": "Learn about Go channels with handle cache layers",
+  "authors": ["RezaSi"],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "cache.go"
+    ],
+    "test": [
+      "cache_test.go"
+    ],
+    "exemplar": [
+      ".meta/example.go"
+    ]
+  }
+}

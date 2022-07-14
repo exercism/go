@@ -445,6 +445,20 @@
           "structs"
         ],
         "status": "beta"
+      },
+      {
+        "slug": "cache",
+        "name": "Cache",
+        "uuid": "0af3bc2d-8c0c-43d2-ba5f-c971e5d70bb5",
+        "concepts": [
+          "channels"
+        ],
+        "prerequisites": [
+            "functions",
+            "for-loops",
+            "range-iteration"
+        ],
+        "status": "beta"
       }
     ],
     "practice": [
@@ -2150,6 +2164,11 @@
       "name": "Variadic Functions",
       "slug": "variadic-functions",
       "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
+    },
+    {
+        "name": "Channels",
+        "slug": "channels",
+        "uuid": "7ec81c14-3eb6-4ebc-bf74-1a339b4b5851"
     }
   ],
   "key_features": [
