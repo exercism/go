@@ -7,27 +7,20 @@ import (
 
 func TestChange(t *testing.T) {
 	for _, tc := range testCases {
-		actual, err := Change(tc.coins, tc.target)
-		if tc.valid {
-			if err != nil {
-				t.Fatalf("%s : Change(%v, %d): expected %v, got error %s",
-					tc.description, tc.coins, tc.target, tc.expectedChange, err.Error())
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := Change(tc.coins, tc.target)
+			if tc.valid {
+				if err != nil {
+					t.Errorf("Change(%v, %d): expected %v, got error %v", tc.coins, tc.target, tc.expectedChange, err)
+				} else if !reflect.DeepEqual(actual, tc.expectedChange) {
+					t.Fatalf("Change(%v, %d): expected %#v, actual %#v", tc.coins, tc.target, tc.expectedChange, actual)
+				}
 			} else {
-				if !reflect.DeepEqual(actual, tc.expectedChange) {
-					t.Fatalf("%s : Change(%v, %d): expected %#v, actual %#v",
-						tc.description, tc.coins, tc.target, tc.expectedChange, actual)
-				} else {
-					t.Logf("PASS: %s", tc.description)
+				if err == nil {
+					t.Fatalf("Change(%v, %d): expected error, got %v", tc.coins, tc.target, actual)
 				}
 			}
-		} else {
-			if err == nil {
-				t.Fatalf("%s : Change(%v, %d): expected error, got %v",
-					tc.description, tc.coins, tc.target, actual)
-			} else {
-				t.Logf("PASS: %s", tc.description)
-			}
-		}
+		})
 	}
 }
 
