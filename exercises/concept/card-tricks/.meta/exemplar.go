@@ -6,7 +6,7 @@ func FavoriteCards() []int {
 }
 
 // GetItem retrieves an item from a slice at given position.
-// If the index is out of a range we want it to return -1
+// If the index is out of a range we want it to return -1.
 func GetItem(slice []int, index int) int {
 	if len(slice) <= index || index < 0 {
 		return -1
