@@ -16,18 +16,15 @@ const (
 
 func TestAddGigasecond(t *testing.T) {
 	for _, tc := range addCases {
-		in := parse(tc.in, t)
-		want := parse(tc.want, t)
-		got := AddGigasecond(in)
-		if !got.Equal(want) {
-			t.Fatalf(`FAIL: %s
-AddGigasecond(%s)
-   = %s
-want %s`, tc.description, in, got, want)
-		}
-		t.Log("PASS:", tc.description)
+		t.Run(tc.description, func(*testing.T) {
+			in := parse(tc.in, t)
+			want := parse(tc.want, t)
+			got := AddGigasecond(in)
+			if !got.Equal(want) {
+				t.Errorf("AddGigasecond(%v) = %v, want: %v", in, got, want)
+			}
+		})
 	}
-	t.Log("Tested", len(addCases), "cases.")
 }
 
 func parse(s string, t *testing.T) time.Time {
@@ -44,8 +41,7 @@ func parse(s string, t *testing.T) time.Time {
 			t.Fatal(err)
 		} else {
 			t.Log(err)
-			t.Skip("(This is not your fault, and is unexpected.  " +
-				"Please file an issue at https://github.com/exercism/go.)")
+			t.Skip("(This is not your fault, and is unexpected.  " + "Please file an issue at https://github.com/exercism/go.)")
 		}
 	}
 	return tt
