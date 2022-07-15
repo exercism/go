@@ -40,7 +40,7 @@ var testCases = []struct {
 }{
 	{{range .J.canChain}}{
 			description: {{printf "%q" .Description}},
-			{{range .Comments}}//{{.}}
+			{{range .Comments}}// {{.}}
 			{{end}}dominoes: []Domino{ {{range .Input.Dominoes}}{ {{range .}} {{printf "%v" .}}, {{end}}}, {{end}} },
 			valid: {{printf "%v" .Expected}},
 		},
