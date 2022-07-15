@@ -56,6 +56,7 @@ func (h Header) String() string {
 type testCase struct {
 	UUID        string      `json:"uuid"`
 	Description string      `json:"description"`
+	Comments    []string 	`json:"comments"`
 	Property    string      `json:"property"`
 	Scenario    string      `json:"scenario"`
 	Input       interface{} `json:"input"`
