@@ -56,6 +56,7 @@ func (h Header) String() string {
 type testCase struct {
 	UUID        string      `json:"uuid"`
 	Description string      `json:"description"`
+	Comments    []string    `json:"comments"`
 	Property    string      `json:"property"`
 	Scenario    string      `json:"scenario"`
 	Input       interface{} `json:"input"`
@@ -151,11 +152,18 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
+	var testData = testCase{}
+	err = json.Unmarshal(jTestData, &testData)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal root test data: %v", err)
+	}
+
 	// package up a little meta data
 	d := struct {
 		Header
-		J map[string]interface{}
-	}{Header: header, J: tests}
+		Comments []string
+		J        map[string]interface{}
+	}{Header: header, Comments: testData.Comments, J: tests}
 
 	casesFile := filepath.Join(exerciseDir, "cases_test.go")
 
