@@ -32,7 +32,7 @@ func parse(s string, t *testing.T) time.Time {
 		tt, err = time.Parse(fmtD, s) // also allow just date
 	}
 	if err != nil {
-		t.Fatalf("error in test setup: TestAddGigasecond requires datetime in one of the following formats: \nformat 1:%q\nformat 2:%q\ngot: %q", fmtD, fmtDT, s)
+		t.Fatalf("error in test setup: TestAddGigasecond requires datetime in one of the following formats: \nformat 1:%q\nformat 2:%q\ngot:%q", fmtD, fmtDT, s)
 	}
 	return tt
 }
