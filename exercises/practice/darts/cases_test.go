@@ -1,8 +1,7 @@
 package darts
 
 // Source: exercism/problem-specifications
-// Commit: 212baa3 [Darts] Slim down generated method names (#1530)
-// Problem Specifications Version: 2.2.0
+// Commit: 7a8722a Reorder keys (#1960)
 
 var testCases = []struct {
 	description string
