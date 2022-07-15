@@ -1,8 +1,7 @@
 package grep
 
 // Source: exercism/problem-specifications
-// Commit: 4f2efaa grep: add test cases for conflicting flags (#1356)
-// Problem Specifications Version: 1.2.0
+// Commit: b820099 Allow prettier to format more files (#1966)
 
 var fileContentData = []string{
 	"                                                     ",
@@ -50,7 +49,6 @@ var testCases = []struct {
 	files       []string
 	expected    []string
 }{
-
 	{
 		description: "One file, one match, no flags",
 		pattern:     "Agamemnon",
@@ -149,7 +147,6 @@ var testCases = []struct {
 		files:       []string{"iliad.txt"},
 		expected:    []string{"Achilles sing, O Goddess! Peleus' son;", "His wrath pernicious, who ten thousand woes", "Caused to Achaia's host, sent many a soul", "And Heroes gave (so stood the will of Jove)", "To dogs and to all ravening fowls a prey,", "When fierce dispute had separated once", "The noble Chief Achilles from the son", "Of Atreus, Agamemnon, King of men."},
 	},
-
 	{
 		description: "Multiple files, one match, no flags",
 		pattern:     "Agamemnon",
