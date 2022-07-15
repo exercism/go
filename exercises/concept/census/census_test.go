@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-// TestNewResident tests the NewResident function.
 func TestNewResident(t *testing.T) {
 	tests := []struct {
 		name     string
