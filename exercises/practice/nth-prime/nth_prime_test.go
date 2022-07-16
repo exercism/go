@@ -6,13 +6,14 @@ func TestNth(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.description, func(t *testing.T) {
 			actual, err := Nth(tc.input)
-			if tc.err != "" {
+			switch {
+			case tc.err != "":
 				if err == nil {
 					t.Fatalf("Nth(%d) expected error: %q, got: %d", tc.input, tc.err, actual)
 				}
-			} else if err != nil {
+			case err != nil:
 				t.Fatalf("Nth(%d) returned error: %v, want: %d", tc.input, err, tc.expected)
-			} else if actual != tc.expected {
+			case actual != tc.expected:
 				t.Fatalf("Nth(%d) = %d, want: %d", tc.input, actual, tc.expected)
 			}
 		})
