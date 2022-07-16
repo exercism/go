@@ -88,12 +88,6 @@ var testCases = []struct {
 		expected:    []string{},
 	},
 	{
-		description: "words are not anagrams of themselves (case-insensitive)",
-		subject:     "BANANA",
-		candidates:  []string{"BANANA", "Banana", "banana"},
-		expected:    []string{},
-	},
-	{
 		description: "words are not anagrams of themselves",
 		subject:     "BANANA",
 		candidates:  []string{"BANANA"},
@@ -110,12 +104,6 @@ var testCases = []struct {
 		subject:     "BANANA",
 		candidates:  []string{"banana"},
 		expected:    []string{},
-	},
-	{
-		description: "words other than themselves can be anagrams",
-		subject:     "LISTEN",
-		candidates:  []string{"Listen", "Silent", "LISTEN"},
-		expected:    []string{"Silent"},
 	},
 	{
 		description: "words other than themselves can be anagrams",
