@@ -1,54 +1,338 @@
 package allergies
 
 // Source: exercism/problem-specifications
-// Commit: 17a2ab2 added allergies test case (#1275)
-// Problem Specifications Version: 1.2.0
+// Commit: 988be7b allergies: format (#1978)
 
 // allergicTo
-type allergicResult struct {
-	substance string
-	result    bool
+type allergicToInput struct {
+	allergen string
+	score    uint
 }
 
 var allergicToTests = []struct {
 	description string
-	score       uint
-	expected    []allergicResult
+	input       allergicToInput
+	expected    bool
 }{
 	{
-		description: "no allergies means not allergic",
-		score:       0,
-		expected: []allergicResult{
-			{"peanuts", false},
-			{"cats", false},
-			{"strawberries", false},
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "eggs",
+			score:    0,
 		},
+		expected: false,
 	},
 	{
-		description: "is allergic to eggs",
-		score:       1,
-		expected: []allergicResult{
-			{"eggs", true},
+		description: "allergic only to eggs",
+		input: allergicToInput{
+			allergen: "eggs",
+			score:    1,
 		},
+		expected: true,
 	},
 	{
-		description: "allergic to eggs in addition to other stuff",
-		score:       5,
-		expected: []allergicResult{
-			{"eggs", true},
-			{"shellfish", true},
-			{"strawberries", false},
+		description: "allergic to eggs and something else",
+		input: allergicToInput{
+			allergen: "eggs",
+			score:    3,
 		},
+		expected: true,
 	},
 	{
-		description: "allergic to strawberries but not peanuts",
-		score:       9,
-		expected: []allergicResult{
-			{"eggs", true},
-			{"peanuts", false},
-			{"shellfish", false},
-			{"strawberries", true},
+		description: "allergic to something, but not eggs",
+		input: allergicToInput{
+			allergen: "eggs",
+			score:    2,
 		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "eggs",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "peanuts",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to peanuts",
+		input: allergicToInput{
+			allergen: "peanuts",
+			score:    2,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to peanuts and something else",
+		input: allergicToInput{
+			allergen: "peanuts",
+			score:    7,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not peanuts",
+		input: allergicToInput{
+			allergen: "peanuts",
+			score:    5,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "peanuts",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "shellfish",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to shellfish",
+		input: allergicToInput{
+			allergen: "shellfish",
+			score:    4,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to shellfish and something else",
+		input: allergicToInput{
+			allergen: "shellfish",
+			score:    14,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not shellfish",
+		input: allergicToInput{
+			allergen: "shellfish",
+			score:    10,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "shellfish",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "strawberries",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to strawberries",
+		input: allergicToInput{
+			allergen: "strawberries",
+			score:    8,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to strawberries and something else",
+		input: allergicToInput{
+			allergen: "strawberries",
+			score:    28,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not strawberries",
+		input: allergicToInput{
+			allergen: "strawberries",
+			score:    20,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "strawberries",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "tomatoes",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to tomatoes",
+		input: allergicToInput{
+			allergen: "tomatoes",
+			score:    16,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to tomatoes and something else",
+		input: allergicToInput{
+			allergen: "tomatoes",
+			score:    56,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not tomatoes",
+		input: allergicToInput{
+			allergen: "tomatoes",
+			score:    40,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "tomatoes",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "chocolate",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to chocolate",
+		input: allergicToInput{
+			allergen: "chocolate",
+			score:    32,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to chocolate and something else",
+		input: allergicToInput{
+			allergen: "chocolate",
+			score:    112,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not chocolate",
+		input: allergicToInput{
+			allergen: "chocolate",
+			score:    80,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "chocolate",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "pollen",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to pollen",
+		input: allergicToInput{
+			allergen: "pollen",
+			score:    64,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to pollen and something else",
+		input: allergicToInput{
+			allergen: "pollen",
+			score:    224,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not pollen",
+		input: allergicToInput{
+			allergen: "pollen",
+			score:    160,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "pollen",
+			score:    255,
+		},
+		expected: true,
+	},
+	{
+		description: "not allergic to anything",
+		input: allergicToInput{
+			allergen: "cats",
+			score:    0,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic only to cats",
+		input: allergicToInput{
+			allergen: "cats",
+			score:    128,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to cats and something else",
+		input: allergicToInput{
+			allergen: "cats",
+			score:    192,
+		},
+		expected: true,
+	},
+	{
+		description: "allergic to something, but not cats",
+		input: allergicToInput{
+			allergen: "cats",
+			score:    64,
+		},
+		expected: false,
+	},
+	{
+		description: "allergic to everything",
+		input: allergicToInput{
+			allergen: "cats",
+			score:    255,
+		},
+		expected: true,
 	},
 }
 
@@ -58,13 +342,54 @@ var listTests = []struct {
 	score       uint
 	expected    []string
 }{
-	{"no allergies at all", 0, []string{}},
-	{"allergic to just eggs", 1, []string{"eggs"}},
-	{"allergic to just peanuts", 2, []string{"peanuts"}},
-	{"allergic to just strawberries", 8, []string{"strawberries"}},
-	{"allergic to eggs and peanuts", 3, []string{"eggs", "peanuts"}},
-	{"allergic to more than eggs but not peanuts", 5, []string{"eggs", "shellfish"}},
-	{"allergic to lots of stuff", 248, []string{"strawberries", "tomatoes", "chocolate", "pollen", "cats"}},
-	{"allergic to everything", 255, []string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}},
-	{"ignore non allergen score parts", 509, []string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"}},
+	{
+		description: "no allergies",
+		score:       0,
+		expected:    []string{},
+	},
+	{
+		description: "just eggs",
+		score:       1,
+		expected:    []string{"eggs"},
+	},
+	{
+		description: "just peanuts",
+		score:       2,
+		expected:    []string{"peanuts"},
+	},
+	{
+		description: "just strawberries",
+		score:       8,
+		expected:    []string{"strawberries"},
+	},
+	{
+		description: "eggs and peanuts",
+		score:       3,
+		expected:    []string{"eggs", "peanuts"},
+	},
+	{
+		description: "more than eggs but not peanuts",
+		score:       5,
+		expected:    []string{"eggs", "shellfish"},
+	},
+	{
+		description: "lots of stuff",
+		score:       248,
+		expected:    []string{"strawberries", "tomatoes", "chocolate", "pollen", "cats"},
+	},
+	{
+		description: "everything",
+		score:       255,
+		expected:    []string{"eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"},
+	},
+	{
+		description: "no allergen score parts",
+		score:       509,
+		expected:    []string{"eggs", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats"},
+	},
+	{
+		description: "no allergen score parts without highest valid score",
+		score:       257,
+		expected:    []string{"eggs"},
+	},
 }
