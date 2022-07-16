@@ -16,7 +16,7 @@ func TestClassifiesCorrectly(t *testing.T) {
 			actual, err := Classify(tc.input)
 			switch {
 			case !tc.ok:
-				//expect error
+				// expect error
 				if err == nil {
 					t.Fatalf("Classify(%d) expected error, got: %q", tc.input, actual)
 				}
