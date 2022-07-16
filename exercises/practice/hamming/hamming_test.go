@@ -6,14 +6,15 @@ func TestHamming(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			got, err := Distance(tc.s1, tc.s2)
-			if tc.expectError {
+			switch {
+			case tc.expectError:
 				if err == nil {
-					t.Errorf("Distance(%q, %q) expected error, got: %d", tc.s1, tc.s2, got)
+					t.Fatalf("Distance(%q, %q) expected error, got: %d", tc.s1, tc.s2, got)
 				}
-			} else if err != nil {
-				t.Errorf("Distance(%q, %q) returned unexpected error: %v", tc.s1, tc.s2, err)
-			} else if got != tc.want{
-				t.Errorf("Distance(%q, %q) = %d, want %d", tc.s1, tc.s2, got, tc.want)
+			case err != nil:
+				t.Fatalf("Distance(%q, %q) returned error: %v, want: %d", tc.s1, tc.s2, err, tc.want)
+			case got != tc.want:
+				t.Fatalf("Distance(%q, %q) = %d, want %d", tc.s1, tc.s2, got, tc.want)
 			}
 		})
 	}
