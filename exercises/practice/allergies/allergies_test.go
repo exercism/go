@@ -9,9 +9,7 @@ func TestAllergies(t *testing.T) {
 	for _, test := range listTests {
 		t.Run(test.description, func(t *testing.T) {
 			if actual := Allergies(test.score); !sameSliceElements(actual, test.expected) {
-				t.Fatalf("FAIL: Allergies(%d): expected %#v, actual %#v", test.score, test.expected, actual)
-			} else {
-				t.Logf("PASS: Allergic to %#v", test.expected)
+				t.Fatalf("Allergies(%d) = %#v, want: %#v", test.score, actual, test.expected)
 			}
 		})
 	}
@@ -22,7 +20,6 @@ func BenchmarkAllergies(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-
 		for _, test := range allergicToTests {
 			Allergies(test.input.score)
 		}
@@ -34,9 +31,7 @@ func TestAllergicTo(t *testing.T) {
 		t.Run(test.description, func(t *testing.T) {
 			actual := AllergicTo(test.input.score, test.input.allergen)
 			if actual != test.expected {
-				t.Fatalf("FAIL: AllergicTo(%d, %s): expected %t, actual %t", test.input.score, test.input.allergen, test.expected, actual)
-			} else {
-				t.Logf("PASS: AllergicTo(%d, %s) %t", test.input.score, test.input.allergen, actual)
+				t.Fatalf("AllergicTo(%d, %q) = %t, want: %t", test.input.score, test.input.allergen, actual, test.expected)
 			}
 		})
 	}
