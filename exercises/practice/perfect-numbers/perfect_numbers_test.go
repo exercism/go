@@ -2,9 +2,6 @@ package perfect
 
 import "testing"
 
-// expect ErrOnlyPositive to be of type error (else an error at compile time occurs)
-var _ error = ErrOnlyPositive
-
 func TestZeroGivesPositiveRequiredError(t *testing.T) {
 	t.Run("GivesPositiveRequiredError", func(t *testing.T) {
 		if _, err := Classify(0); err != ErrOnlyPositive {
