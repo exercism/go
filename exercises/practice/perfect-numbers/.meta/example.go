@@ -13,7 +13,7 @@ const (
 )
 
 // ErrOnlyPositive is returned if a negative number is provided.
-var	ErrOnlyPositive = errors.New("positive number is required")
+var ErrOnlyPositive = errors.New("positive number is required")
 
 // Classify finds the category of given natural number
 func Classify(n int64) (Classification, error) {
