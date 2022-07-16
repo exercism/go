@@ -34,12 +34,14 @@ var tmpl = `package acronym
 {{.Header}}
 
 type acronymTest struct {
-	input    string
-	expected string
+	description string
+	input       string
+	expected    string
 }
 
-var stringTestCases = []acronymTest {
+var testCases = []acronymTest {
 {{range .J.abbreviate}}{
+	description: {{printf "%q" .Description }},
 	input: {{printf "%q" .Input.Phrase }},
 	expected: {{printf "%q" .Expected }},
 },
