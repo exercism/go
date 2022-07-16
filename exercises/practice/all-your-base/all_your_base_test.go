@@ -6,22 +6,18 @@ import (
 )
 
 func TestConvertToBase(t *testing.T) {
-	for _, c := range testCases {
-		output, err := ConvertToBase(c.inputBase, c.inputDigits, c.outputBase)
-		if c.err != "" {
-			if err == nil || c.err != err.Error() {
-				t.Fatalf(`FAIL: %s
-	Expected error: %s
-	Got: %v`, c.description, c.err, err)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := ConvertToBase(tc.inputBase, tc.inputDigits, tc.outputBase)
+			if tc.expectedError != "" {
+				if err == nil {
+					t.Errorf("ConvertToBase(%d, %#v, %d) expected error: %q", tc.inputBase, tc.inputDigits, tc.outputBase, tc.expectedError)
+				} else if tc.expectedError != err.Error() {
+					t.Errorf("ConvertToBase(%d, %#v, %d)\nexpected error: %q\ngot: %q", tc.inputBase, tc.inputDigits, tc.outputBase, tc.expectedError, err.Error())
+				}
+			} else if !reflect.DeepEqual(tc.expected, actual) {
+				t.Errorf("ConvertToBase(%d, %#v, %d) = %#v, want:%#v", tc.inputBase, tc.inputDigits, tc.outputBase, actual, tc.expected)
 			}
-		} else if !reflect.DeepEqual(c.expected, output) {
-			t.Fatalf(`FAIL: %s
-    Input base: %d
-    Input digits: %#v
-    Output base: %d
-    Expected output digits: %#v
-    Got: %#v`, c.description, c.inputBase, c.inputDigits, c.outputBase, c.expected, output)
-		}
-		t.Logf("PASS: %s", c.description)
+		})
 	}
 }
