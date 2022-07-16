@@ -17,6 +17,12 @@ var testCases = []struct {
 	},
 	{
 		description: "detects two anagrams",
+		subject:     "master",
+		candidates:  []string{"stream", "pigeon", "maters"},
+		expected:    []string{"stream", "maters"},
+	},
+	{
+		description: "detects two anagrams",
 		subject:     "solemn",
 		candidates:  []string{"lemons", "cherry", "melons"},
 		expected:    []string{"lemons", "melons"},
@@ -104,6 +110,12 @@ var testCases = []struct {
 		subject:     "BANANA",
 		candidates:  []string{"banana"},
 		expected:    []string{},
+	},
+	{
+		description: "words other than themselves can be anagrams",
+		subject:     "LISTEN",
+		candidates:  []string{"Listen", "Silent", "LISTEN"},
+		expected:    []string{"Silent"},
 	},
 	{
 		description: "words other than themselves can be anagrams",

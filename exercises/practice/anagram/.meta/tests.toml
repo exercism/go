@@ -14,7 +14,6 @@ description = "no matches"
 
 [b3cca662-f50a-489e-ae10-ab8290a09bdc]
 description = "detects two anagrams"
-include = false
 
 [03eb9bbe-8906-4ea0-84fa-ffe711b52c8b]
 description = "detects two anagrams"
@@ -67,7 +66,6 @@ reimplements = "85757361-4535-45fd-ac0e-3810d40debc1"
 
 [a0705568-628c-4b55-9798-82e4acde51ca]
 description = "words other than themselves can be anagrams"
-include = false
 
 [33d3f67e-fbb9-49d3-a90e-0beb00861da7]
 description = "words other than themselves can be anagrams"
