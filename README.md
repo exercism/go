@@ -225,6 +225,68 @@ $ tree -L 1 .
 └── go
 ```
 
+#### Adding a test generator to an exercise
+
+For some exercises, a test generator is used to generate the `cases_test.go` file with the test cases based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
+To add a new exercise generator to an exercise the following steps are needed:
+1. Create the file `gen.go` in the directory `.meta` of the exercise
+2. Add the following template to `gen.go`:
+```go
+package main
+
+import (
+    "log"
+    "text/template"
+  
+    "../../../../gen"
+)
+
+func main() {
+	t, err := template.New("").Parse(tmpl)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var j = map[string]interface{}{
+              "property_1":  &[]Property1Case{},
+              "property_2":  &[]Property2Case{},
+	}
+	if err := gen.Gen("<exercise-name>", j, t); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+3. Insert the name of the exercise to the call of `gen.Gen`
+4. Add all values for the field `property` in `canonical-data.json` to the map `j`. `canonical-data.json` can be found at [problem-specifications/exercises/\<exercise-name\>](https://github.com/exercism/problem-specifications)
+5. Create the needed structs for storing the test cases from `canonical-data.json` (you can for example use [JSON-to-Go](https://mholt.github.io/json-to-go/) to convert the JSON to a struct)
+
+**NOTE:** In some cases, the struct of the data in the `input`/`expected` fields is not the same for all test cases of one property. In those situations, an `interface{}` has to be used to represent the values for these fields.  These `interface{}` values then need to be handled by the test generator. A common way to handle these cases is to create methods on the test case structs that perform type assertions on the `interface{}` values and return something more meaningful. These methods can then be referenced/called in the `tmpl` template variable. Examples of this can be found in the exercises [forth](https://github.com/exercism/go/blob/main/exercises/practice/forth/.meta/gen.go) or [bowling](https://github.com/exercism/go/blob/main/exercises/practice/bowling/.meta/gen.go).
+
+6. Add the variable `tmpl` to `gen.go`. This template will be used to create the `cases_test.go` file.
+
+Example:
+```go
+var tmpl = `package <package of exercise>
+
+{{.Header}}
+
+var testCases = []struct {
+	description    string
+	input          int
+	expected       int       
+}{ {{range .J.<property>}}
+{
+	description: {{printf "%q"  .Description}},
+	input: {{printf "%d"  .Score}},
+	expected: {{printf "%d"  .Score}},
+},{{end}}
+}
+`
+```
+7. Synchronize the test case using the exercise generator (as described in [Synchronizing tests and instructions](#synchronizing-tests-and-instructions))
+8. Check the validity of `cases_test.go`
+9. Use the generated test cases in the `<exercise>_test.go` file
+10. Check if `.meta/example.go` passes all tests
+
 ### Synchronizing tests and instructions
 
 To keep track of which tests are implemented by the exercise the file `.meta/tests.toml` is used by [configlet](https://github.com/exercism/configlet).
