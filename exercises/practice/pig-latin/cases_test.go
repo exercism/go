@@ -1,8 +1,7 @@
 package piglatin
 
 // Source: exercism/problem-specifications
-// Commit: d77de78 pig-latin: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 42dd0ce Remove version (#1678)
 
 var testCases = []struct {
 	description string

@@ -12,33 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("pig-latin", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"translate" : &[]testCase{},
+	}
+	if err := gen.Gen("pig-latin", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneLevel
-}
-
-// Test levels
-type oneLevel struct {
-	Description string
-	Cases       []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Phrase string
-	}
-	Expected string
+		Phrase string `json:"phrase"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -50,11 +37,11 @@ var testCases = []struct {
 	description	string
 	input		    string
 	expected	  string
-}{ {{range .J.Cases}} {{range .Cases}}
+}{ {{range .J.translate}}
 {
 	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%#v"  .Input.Phrase}},
-	expected:	{{printf "%#v"  .Expected}},
-},{{end}}{{end}}
+	input:			{{printf "%q"  .Input.Phrase}},
+	expected:		{{printf "%q"  .Expected}},
+},{{end}}
 }
 `
