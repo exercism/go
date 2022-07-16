@@ -57,12 +57,12 @@ var tmpl = `package allyourbase
 {{.Header}}
 
 var testCases = []struct {
-	description	string
-	inputBase	int
-	inputDigits	[]int
-	outputBase	int
-	expected    []int
-	err         string
+	description   string
+	inputBase     int
+	inputDigits   []int
+	outputBase    int
+	expected      []int
+	expectedError string
 }{ {{range .J.rebase}}
 {
 	description:	{{printf "%q"  .Description}},
@@ -70,7 +70,7 @@ var testCases = []struct {
 	inputDigits:		{{printf "%#v"  .Input.Digits}},
 	outputBase:	{{printf "%d"  .Input.OutputBase}},
 	expected:	{{printf "%#v"  .Result}},
-	err:	{{printf "%q"  .Err}},
+	expectedError:	{{printf "%q"  .Err}},
 },{{end}}
 }
 `
