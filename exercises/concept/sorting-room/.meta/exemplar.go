@@ -19,7 +19,7 @@ func DescribeNumberBox(nb NumberBox) string {
 	return fmt.Sprintf("This is a box containing the number %.1f", float64(nb.Number()))
 }
 
-// FancyNumber holds an integer as a string
+// FancyNumber holds an integer as a string.
 type FancyNumber struct {
 	n string
 }
