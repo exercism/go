@@ -5,12 +5,13 @@ import (
 )
 
 func TestBracket(t *testing.T) {
-	for _, tt := range testCases {
-		actual := Bracket(tt.input)
-		if actual != tt.expected {
-			t.Fatalf("Bracket(%q) was expected to return %v but returned %v.",
-				tt.input, tt.expected, actual)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Bracket(tc.input)
+			if actual != tc.expected {
+				t.Fatalf("Bracket(%q) = %t, want: %t", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
