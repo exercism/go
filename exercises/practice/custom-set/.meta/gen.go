@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"log"
 	"strconv"
 	"text/template"
@@ -10,193 +9,233 @@ import (
 )
 
 func main() {
-	t := template.New("").Funcs(template.FuncMap{
-		"str":   str,
-		"strs":  strSlice,
-		"istrs": istrSlice,
-		"dict":  dict,
-	})
-	t, err := t.Parse(tmpl)
+	t, err := template.New("").Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("custom-set", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"empty":        &[]testCase{},
+		"contains":     &[]testCase{},
+		"subset":       &[]testCase{},
+		"disjoint":     &[]testCase{},
+		"equal":        &[]testCase{},
+		"add":          &[]testCase{},
+		"intersection": &[]testCase{},
+		"difference":   &[]testCase{},
+		"union":        &[]testCase{},
+	}
+	if err := gen.Gen("custom-set", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
+
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Set     []int `json:"set"`     // "empty"/"contains"/"add" cases
+		Set1    []int `json:"set1"`    // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
+		Set2    []int `json:"set2"`    // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
+		Element int   `json:"element"` // "contains"/"add" cases
+	}
+	Expected interface{} `json:"expected"` // bool or []int
+}
+
+// There's some extra complexity because canonical-data.json uses integers, but we are using strings.
+// It just seemed like strings would make a better and more practical example.
 
 // str converts an integer 1..26 to a letter 'a'..'z'.
 func str(n int) string {
 	if n >= 1 && n <= 26 {
-		return string('a' - 1 + n)
+		return string(rune(n) + 'a' - 1)
 	}
 	return strconv.Itoa(n)
 }
 
-// strSlice converts a slice of int to a slice of string.
-func strSlice(ns []int) []string {
-	s := make([]string, len(ns))
-	for i, n := range ns {
-		s[i] = str(n)
+// getStringSet converts a slice of integers to a slice of strings (integers are converted to characters using str)
+func getStringSet(in []int) []string {
+	var out = make([]string, 0)
+	for _, v := range in {
+		out = append(out, str(v))
 	}
-	return s
+	return out
 }
 
-// istrSlice converts a slice of interface{} values whose
-// underlying members should be float64(JSON decoded integers)
-// to a slice of string.
-func istrSlice(ns []interface{}) []string {
-	s := make([]string, len(ns))
-	for i, n := range ns {
-		if fn, ok := n.(float64); ok {
-			s[i] = str(int(fn))
-		}
+func (t testCase) GetExpectedBool() bool {
+	b, ok := t.Expected.(bool)
+	if !ok {
+		log.Fatal("[ERROR] expected value for `expected` to be of type bool")
 	}
-	return s
+	return b
 }
 
-// dict sets up and returns a map for pairs of items given;
-// it is used in order to pass multiple parameters in a template call.
-func dict(values ...interface{}) (map[string]interface{}, error) {
-	if len(values)%2 != 0 {
-		return nil, errors.New("invalid dict call: odd number of values given")
+func (t testCase) GetExpectedList() []string {
+	v, ok := t.Expected.([]interface{})
+	if !ok {
+		log.Fatal("[ERROR] invalid type for field `expected`")
 	}
-	valueMap := make(map[string]interface{}, len(values)/2)
-	for i := 0; i < len(values); i += 2 {
-		key, ok := values[i].(string)
+	var numbers []int
+	for _, v2 := range v {
+		number, ok := v2.(float64)
 		if !ok {
-			return nil, errors.New("Expected string for dict key")
+			log.Fatal("[ERROR] invalid type for field `expected`")
 		}
-		valueMap[key] = values[i+1]
+		numbers = append(numbers, int(number))
 	}
-	return valueMap, nil
+	return getStringSet(numbers)
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Groups TestGroups `json:"Cases"`
+func (t testCase) GetSet() []string {
+	return getStringSet(t.Input.Set)
 }
 
-type TestGroups []struct {
-	Description string
-	Cases       []OneCase
+func (t testCase) GetSet1() []string {
+	return getStringSet(t.Input.Set1)
 }
 
-type OneCase struct {
-	Description string
-	Property    string
-	Input       struct {
-		Set     []int // "empty"/"contains"/"add" cases
-		Set1    []int // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
-		Set2    []int // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
-		Element int   // "contains"/"add" cases
-	}
-	Expected interface{} // bool or []int
+func (t testCase) GetSet2() []string {
+	return getStringSet(t.Input.Set2)
 }
 
-func (c OneCase) PropertyMatch(property string) bool { return c.Property == property }
-
-// GroupComment looks in each of the test case groups to find the
-// group for which every test case has the .Property matching given property;
-// it returns the .Description field for the matching property group,
-// or a 'Note: ...' if no test group consistently matches given property.
-func (groups TestGroups) GroupComment(property string) string {
-	for _, group := range groups {
-		propertyGroupMatch := true
-		for _, testcase := range group.Cases {
-			if !testcase.PropertyMatch(property) {
-				propertyGroupMatch = false
-				break
-			}
-		}
-		if propertyGroupMatch {
-			return group.Description
-		}
-	}
-	return "Note: Apparent inconsistent use of \"property\": \"" + property + "\" within test case group!"
+func (t testCase) GetElement() string {
+	return str(t.Input.Element)
 }
 
-// template applied to above data structure generates the Go test cases
-//
-// There's some extra complexity because json test cases use ints but it's
-// all converted to strings here.  It just seemed like strings would make
-// a better and more practical example.
-var tmpl = `
-{{/* nested templates for repeated stuff */}}
-
-{{define "unaryBool"}}{{$property := .PropertyType}}{{with .Groups}}
-// {{ .GroupComment $property}}
-var {{$property}}Cases = []unaryBoolCase{ {{range .}} {{range .Cases}}
-{{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Input.Set | printf "%#v"}},
-	{{.Expected}},
-},
-{{- end}}{{end}}{{end}}
-}
-{{end}}{{end}}
-
-{{define "eleBool"}}{{$property := .PropertyType}}{{with .Groups}}
-// {{ .GroupComment $property}}
-var {{$property}}Cases = []eleBoolCase{ {{range .}} {{range .Cases}}
-{{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Input.Set | printf "%#v"}},
-	{{str .Input.Element | printf "%q"}},
-	{{.Expected}},
-},
-{{- end}}{{end}}{{end}}
-}
-{{end}}{{end}}
-
-{{define "eleOp"}}{{$property := .PropertyType}}{{with .Groups}}
-// {{ .GroupComment $property}}
-var {{$property}}Cases = []eleOpCase{ {{range .}} {{range .Cases}}
-{{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Input.Set | printf "%#v"}},
-	{{str .Input.Element | printf "%q"}},
-	{{istrs .Expected | printf "%#v"}},
-},
-{{- end}}{{end}}{{end}}
-}
-{{end}}{{end}}
-
-{{define "binaryBool"}}{{$property := .PropertyType}}{{with .Groups}}
-// {{ .GroupComment $property}}
-var {{$property}}Cases = []binBoolCase{ {{range .}} {{range .Cases}}
-{{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Input.Set1 | printf "%#v"}},
-	{{strs .Input.Set2 | printf "%#v"}},
-	{{.Expected}},
-},
-{{- end}}{{end}}{{end}}
-}
-{{end}}{{end}}
-
-{{define "binaryOp"}}{{$property := .PropertyType}}{{with .Groups}}
-// {{ .GroupComment $property}}
-var {{$property}}Cases = []binOpCase{ {{range .}} {{range .Cases}}
-{{if .PropertyMatch $property}} { // {{.Description}}
-	{{strs .Input.Set1 | printf "%#v"}},
-	{{strs .Input.Set2 | printf "%#v"}},
-	{{istrs .Expected | printf "%#v"}},
-},
-{{- end}}{{end}}{{end}}
-}
-{{end}}{{end}}
-
-{{/* begin template body */}}
-package stringset
+var tmpl = `package stringset
 
 {{.Header}}
 
-{{/* These template calls utilize a dict helper function in order to pass multiple parameters. */}}
-{{template "unaryBool"  dict "PropertyType" "empty"        "Groups" .J.Groups}}
-{{template "eleBool"    dict "PropertyType" "contains"     "Groups" .J.Groups}}
-{{template "binaryBool" dict "PropertyType" "subset"       "Groups" .J.Groups}}
-{{template "binaryBool" dict "PropertyType" "disjoint"     "Groups" .J.Groups}}
-{{template "binaryBool" dict "PropertyType" "equal"        "Groups" .J.Groups}}
-{{template "eleOp"      dict "PropertyType" "add"          "Groups" .J.Groups}}
-{{template "binaryOp"   dict "PropertyType" "intersection" "Groups" .J.Groups}}
-{{template "binaryOp"   dict "PropertyType" "difference"   "Groups" .J.Groups}}
-{{template "binaryOp"   dict "PropertyType" "union"        "Groups" .J.Groups}}
+type (
+	// unary function, bool result (IsEmpty)
+	unaryBoolCase struct {
+		description string
+		set         []string
+		want    	bool
+	}
+	// set-element function, bool result (Has)
+	eleBoolCase struct {
+		description string
+		set         []string
+		element         string
+		want        bool
+	}
+	// binary function, bool result (Subset, Disjoint, Equal)
+	binBoolCase struct {
+		description string
+		set1        []string
+		set2        []string
+		want        bool
+	}
+	// set-element operator (Add)
+	eleOpCase struct {
+		description string
+		set         []string
+		element         string
+		want        []string
+	}
+	// set-set operator (Intersection, Difference, Union)
+	binOpCase struct {
+		description string
+		set1        []string
+		set2        []string
+		want        []string
+	}
+)
+
+// Returns true if the set contains no elements
+var emptyCases = []unaryBoolCase{
+	{{range .J.empty}} {
+		description: 	{{printf "%q" .Description}},
+		set:  		 	{{printf "%#v" .GetSet}},
+		want: 			{{printf "%v"  .GetExpectedBool}},
+	},
+	{{end}}
+}
+
+// Sets can report if they contain an element
+var containsCases = []eleBoolCase{
+	{{range .J.contains}} {
+		description: 	{{printf "%q"  .Description}},
+		set:  		 	{{printf "%#v" .GetSet}},
+		element:        {{printf "%q"  .GetElement}},
+		want: 			{{printf "%v"  .GetExpectedBool}},
+	},
+	{{end}}
+}
+
+// A set is a subset if all of its elements are contained in the other set
+var subsetCases = []binBoolCase{
+	{{range .J.subset}} {
+		description: 	{{printf "%q"   .Description}},
+		set1:  		 	{{printf "%#v"  .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%v"   .GetExpectedBool}},
+	},
+	{{end}}
+}
+
+// Sets are disjoint if they share no elements
+var disjointCases = []binBoolCase{
+	{{range .J.disjoint}} {
+		description: 	{{printf "%q"   .Description}},
+		set1:  		 	{{printf "%#v"  .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%v"   .GetExpectedBool}},
+	},
+	{{end}}
+}
+
+// Sets with the same elements are equal
+var equalCases = []binBoolCase{
+	{{range .J.equal}} {
+		description: 	{{printf "%q"   .Description}},
+		set1:  		 	{{printf "%#v"  .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%v"   .GetExpectedBool}},
+	},
+	{{end}}
+}
+
+// Unique elements can be added to a set
+var addCases = []eleOpCase{
+	{{range .J.add}} {
+		description: 	{{printf "%q"  .Description}},
+		set:  		 	{{printf "%#v" .GetSet}},
+		element:        {{printf "%q"  .GetElement}},
+		want: 			{{printf "%#v"  .GetExpectedList}},
+	},
+{{end}}
+}
+
+// Intersection returns a set of all shared elements
+var intersectionCases = []binOpCase{
+	{{range .J.intersection}} {
+		description: 	{{printf "%q"  .Description}},
+		set1:  		 	{{printf "%#v" .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%#v"  .GetExpectedList}},
+	},
+	{{end}}
+}
+
+// Difference (or Complement) of a set is a set of all elements that are only in the first set
+var differenceCases = []binOpCase{
+	{{range .J.difference}} {
+		description: 	{{printf "%q"  .Description}},
+		set1:  		 	{{printf "%#v" .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%#v"  .GetExpectedList}},
+	},
+	{{end}}
+}
+
+// Union returns a set of all elements in either set
+var unionCases = []binOpCase{
+	{{range .J.union}} {
+		description: 	{{printf "%q"  .Description}},
+		set1:  		 	{{printf "%#v" .GetSet1}},
+		set2:        	{{printf "%#v"  .GetSet2}},
+		want: 			{{printf "%#v"  .GetExpectedList}},
+	},
+	{{end}}
+}
 `
