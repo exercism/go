@@ -10,13 +10,10 @@ func TestHamming(t *testing.T) {
 				if err == nil {
 					t.Errorf("Distance(%q, %q) expected error, got: %d", tc.s1, tc.s2, got)
 				}
-			} else {
-				if err != nil {
-					t.Errorf("Distance(%q, %q) returned unexpected error: %v", tc.s1, tc.s2, err)
-				}
-				if got != tc.want {
-					t.Errorf("Distance(%q, %q) = %d, want %d", tc.s1, tc.s2, got, tc.want)
-				}
+			} else if err != nil {
+				t.Errorf("Distance(%q, %q) returned unexpected error: %v", tc.s1, tc.s2, err)
+			} else if got != tc.want{
+				t.Errorf("Distance(%q, %q) = %d, want %d", tc.s1, tc.s2, got, tc.want)
 			}
 		})
 	}
