@@ -8,103 +8,84 @@ import (
 )
 
 func TestCreateClock(t *testing.T) {
-	for _, n := range timeTests {
-		if got := New(n.h, n.m); got.String() != n.want {
-			t.Fatalf("New(%d, %d) = %q, want %q", n.h, n.m, got, n.want)
-		}
+	for _, tc := range timeTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := New(tc.h, tc.m); tc.expected != actual.String() {
+				t.Errorf("New(%d, %d) = %q, want %q", tc.h, tc.m, actual, tc.expected)
+			}
+		})
 	}
-	t.Log(len(timeTests), "test cases")
 }
 
 func TestAddMinutes(t *testing.T) {
-	for _, a := range addTests {
-		if got := New(a.h, a.m).Add(a.a); got.String() != a.want {
-			t.Fatalf("New(%d, %d).Add(%d) = %q, want %q",
-				a.h, a.m, a.a, got, a.want)
-		}
+	for _, tc := range addTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := New(tc.h, tc.m).Add(tc.addedValue); tc.expected != actual.String() {
+				t.Errorf("New(%d, %d).Add(%d) = %q, want %q", tc.h, tc.m, tc.addedValue, actual, tc.expected)
+			}
+		})
 	}
-	t.Log(len(addTests), "test cases")
 }
 
 func TestSubtractMinutes(t *testing.T) {
-	for _, a := range subtractTests {
-		if got := New(a.h, a.m).Subtract(a.a); got.String() != a.want {
-			t.Fatalf("New(%d, %d).Subtract(%d) = %q, want %q",
-				a.h, a.m, a.a, got, a.want)
-		}
+	for _, tc := range subtractTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := New(tc.h, tc.m).Subtract(tc.subtractedValue); tc.expected != actual.String() {
+				t.Errorf("New(%d, %d).Subtract(%d) = %q, want %q", tc.h, tc.m, tc.subtractedValue, actual, tc.expected)
+			}
+		})
 	}
-	t.Log(len(subtractTests), "test cases")
 }
 
 func TestAddMinutesStringless(t *testing.T) {
-	for _, a := range addTests {
-		var wantHour, wantMin int
-		split := strings.SplitN(a.want, ":", 2)
-		if len(split) > 0 {
-			wantHour, _ = strconv.Atoi(split[0])
-		}
-		if len(split) > 1 {
-			wantMin, _ = strconv.Atoi(split[1])
-		}
-		want := New(wantHour, wantMin)
-		if got := New(a.h, a.m).Add(a.a); !reflect.DeepEqual(got, want) {
-			t.Fatalf("New(%d, %d).Add(%d) = %v, want %v",
-				a.h, a.m, a.a, got, want)
-		}
+	for _, tc := range addTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			split := strings.SplitN(tc.expected, ":", 2)
+			if len(split) != 2 {
+				t.Fatalf("error in test setup: expected time in format hh:mm, got: %s", tc.expected)
+			}
+			wantHour, _ := strconv.Atoi(split[0])
+			wantMin, _ := strconv.Atoi(split[1])
+
+			expected := New(wantHour, wantMin)
+			if actual := New(tc.h, tc.m).Add(tc.addedValue); !reflect.DeepEqual(actual, expected) {
+				t.Errorf("New(%d, %d).Add(%d) = %v, want %v", tc.h, tc.m, tc.addedValue, actual, expected)
+			}
+		})
 	}
-	t.Log(len(addTests), "test cases")
 }
 
 func TestSubtractMinutesStringless(t *testing.T) {
-	for _, a := range subtractTests {
-		var wantHour, wantMin int
-		split := strings.SplitN(a.want, ":", 2)
-		if len(split) > 0 {
-			wantHour, _ = strconv.Atoi(split[0])
-		}
-		if len(split) > 1 {
-			wantMin, _ = strconv.Atoi(split[1])
-		}
-		want := New(wantHour, wantMin)
-		if got := New(a.h, a.m).Subtract(a.a); !reflect.DeepEqual(got, want) {
-			t.Fatalf("New(%d, %d).Subtract(%d) = %v, want %v",
-				a.h, a.m, a.a, got, want)
-		}
+	for _, tc := range subtractTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			split := strings.SplitN(tc.expected, ":", 2)
+			if len(split) != 2 {
+				t.Fatalf("error in test setup: expected time in format hh:mm, got: %s", tc.expected)
+			}
+			wantHour, _ := strconv.Atoi(split[0])
+			wantMin, _ := strconv.Atoi(split[1])
+
+			expected := New(wantHour, wantMin)
+			if actual := New(tc.h, tc.m).Subtract(tc.subtractedValue); !reflect.DeepEqual(actual, expected) {
+				t.Errorf("New(%d, %d).Subtract(%d) = %v, want %v", tc.h, tc.m, tc.subtractedValue, actual, expected)
+			}
+		})
 	}
-	t.Log(len(subtractTests), "test cases")
 }
 
 func TestCompareClocks(t *testing.T) {
-	for _, e := range eqTests {
-		clock1 := New(e.c1.h, e.c1.m)
-		clock2 := New(e.c2.h, e.c2.m)
-		got := clock1 == clock2
-		if got != e.want {
-			t.Log("Clock1:", clock1)
-			t.Log("Clock2:", clock2)
-			t.Logf("Clock1 == Clock2 is %t, want %t", got, e.want)
-			if reflect.DeepEqual(clock1, clock2) {
-				t.Log("(Hint: see comments in clock_test.go.)")
+	for _, tc := range equalTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			clock1 := New(tc.c1.h, tc.c1.m)
+			clock2 := New(tc.c2.h, tc.c2.m)
+			actual := clock1 == clock2
+			if actual != tc.expected {
+				t.Errorf("Clock1 == Clock2 is %t, want %t\nClock1: %q\nClock2: %q", actual, tc.expected, clock1, clock2)
+				if reflect.DeepEqual(clock1, clock2) {
+					t.Log("(Hint: see comments in clock_test.go.)")
+				}
 			}
-			t.FailNow()
-		}
-	}
-	t.Log(len(eqTests), "test cases")
-}
-
-func TestAddAndCompare(t *testing.T) {
-	clock1 := New(15, 45).Add(16)
-	clock2 := New(16, 1)
-	if !reflect.DeepEqual(clock1, clock2) {
-		t.Errorf("clock.New(15,45).Add(16) differs from clock.New(16,1)")
-	}
-}
-
-func TestSubtractAndCompare(t *testing.T) {
-	clock1 := New(16, 1).Subtract(16)
-	clock2 := New(15, 45)
-	if !reflect.DeepEqual(clock1, clock2) {
-		t.Errorf("clock.New(16,1).Subtract(16) differs from clock.New(15,45)")
+		})
 	}
 }
 
@@ -115,8 +96,8 @@ func BenchmarkAddMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for _, a := range addTests {
-			c.Add(a.a)
+		for _, a := range addTestCases {
+			c.Add(a.addedValue)
 		}
 	}
 }
@@ -128,8 +109,8 @@ func BenchmarkSubtractMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for _, a := range subtractTests {
-			c.Subtract(a.a)
+		for _, a := range subtractTestCases {
+			c.Subtract(a.subtractedValue)
 		}
 	}
 }
@@ -139,7 +120,7 @@ func BenchmarkCreateClocks(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, n := range timeTests {
+		for _, n := range timeTestCases {
 			New(n.h, n.m)
 		}
 	}
