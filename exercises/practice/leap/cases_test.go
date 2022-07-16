@@ -1,18 +1,56 @@
 package leap
 
 // Source: exercism/problem-specifications
-// Commit: 18875ec Leap: Improve the specification so that code generation is more readable - … (#1468)
-// Problem Specifications Version: 1.5.1
+// Commit: a2c75d2 leap: fix typo (#1726)
 
 var testCases = []struct {
+	description string
 	year        int
 	expected    bool
-	description string
 }{
-	{2015, false, "year not divisible by 4 in common year"},
-	{1970, false, "year divisible by 2, not divisible by 4 in common year"},
-	{1996, true, "year divisible by 4, not divisible by 100 in leap year"},
-	{2100, false, "year divisible by 100, not divisible by 400 in common year"},
-	{2000, true, "year divisible by 400 in leap year"},
-	{1800, false, "year divisible by 200, not divisible by 400 in common year"},
+	{
+		description: "year not divisible by 4 in common year",
+		year:        2015,
+		expected:    false,
+	},
+	{
+		description: "year divisible by 2, not divisible by 4 in common year",
+		year:        1970,
+		expected:    false,
+	},
+	{
+		description: "year divisible by 4, not divisible by 100 in leap year",
+		year:        1996,
+		expected:    true,
+	},
+	{
+		description: "year divisible by 4 and 5 is still a leap year",
+		year:        1960,
+		expected:    true,
+	},
+	{
+		description: "year divisible by 100, not divisible by 400 in common year",
+		year:        2100,
+		expected:    false,
+	},
+	{
+		description: "year divisible by 100 but not by 3 is still not a leap year",
+		year:        1900,
+		expected:    false,
+	},
+	{
+		description: "year divisible by 400 is leap year",
+		year:        2000,
+		expected:    true,
+	},
+	{
+		description: "year divisible by 400 but not by 125 is still a leap year",
+		year:        2400,
+		expected:    true,
+	},
+	{
+		description: "year divisible by 200, not divisible by 400 in common year",
+		year:        1800,
+		expected:    false,
+	},
 }

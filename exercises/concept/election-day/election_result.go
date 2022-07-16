@@ -1,9 +1,9 @@
 package electionday
 
-// ElectionResult represents an election result
+// ElectionResult represents an election result.
 type ElectionResult struct {
-	// Name of the candidate
+	// Name is the name of the candidate.
 	Name string
-	// Number of votes the candidate had
+	// Number is the total number of votes the candidate had.
 	Votes int
 }

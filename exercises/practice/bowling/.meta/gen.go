@@ -12,70 +12,50 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("bowling", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"roll":  &[]Case{},
+		"score": &[]Case{},
+	}
+	if err := gen.Gen("bowling", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// template applied to above data structure generates the Go test cases
-
-type OneCase struct {
-	Description string
-	Property    string
+type Case struct {
+	Description string `json:"description"`
 	Input       struct {
-		PreviousRolls []int
-		Roll          int
-	}
-	Expected interface{}
+		PreviousRolls []int `json:"previousRolls"`
+		Roll          int   `json:"roll"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-// ScoreTest and RollTest help determine which type of test case
-// to generate in the template.
-func (c OneCase) ScoreTest() bool { return c.Property == "score" }
-func (c OneCase) RollTest() bool  { return c.Property == "roll" }
-
-func (c OneCase) Valid() bool {
-	valid, _, _ := determineExpected(c.Expected)
-	return valid
-}
-
-func (c OneCase) Score() int {
-	_, score, _ := determineExpected(c.Expected)
-	return score
-}
-
-func (c OneCase) ExplainText() string {
-	_, _, explainText := determineExpected(c.Expected)
-	return explainText
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case is valid(bool), has a score field, and/or has an expected error,
-// returning valid, score, and error explanation text.
-func determineExpected(expected interface{}) (bool, int, string) {
-	score, ok := expected.(float64)
-	if ok {
-		return ok, int(score), ""
-	}
-	m, ok := expected.(map[string]interface{})
+func (t Case) Score() int {
+	score, ok := t.Expected.(float64)
 	if !ok {
-		return false, 0, ""
+		return 0
 	}
-	iError, ok := m["error"].(interface{})
-	if !ok {
-		return false, 0, ""
+	return int(score)
+}
+
+func (t Case) Valid() bool {
+	_, ok := t.Expected.(float64)
+	return ok
+}
+
+func (t Case) ExplainText() string {
+	if !t.Valid() {
+		m, ok := t.Expected.(map[string]interface{})
+		if !ok {
+			return ""
+		}
+		b, ok := m["error"].(string)
+		if !ok {
+			return ""
+		}
+		return b
 	}
-	explainText, ok := iError.(string)
-	return false, 0, explainText
+	return ""
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
@@ -89,15 +69,16 @@ var scoreTestCases = []struct {
 	valid          bool     // true => no error, false => error expected
 	score          int	// when .valid == true, the expected score value
 	explainText    string   // when .valid == false, error explanation text
-}{ {{range .J.Cases}}
-{{if .ScoreTest}}{
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.PreviousRolls}},
-	{{printf "%v"  .Valid}},
-	{{printf "%d"  .Score}},
-	{{printf "%q"  .ExplainText}},
-},{{- end}}{{end}}
+}{ {{range .J.score}}
+{
+	description: {{printf "%q"  .Description}},
+	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+	valid: {{printf "%v"  .Valid}},
+	score: {{printf "%d"  .Score}},
+	explainText: {{printf "%q"  .ExplainText}},
+},{{end}}
 }
+
 
 var rollTestCases = []struct {
 	description    string
@@ -105,13 +86,13 @@ var rollTestCases = []struct {
 	valid          bool     // true => no error, false => error expected
 	roll           int	// pin count for the test roll
 	explainText    string   // when .valid == false, error explanation text
-}{ {{range .J.Cases}}
-{{if .RollTest}}{
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.PreviousRolls}},
-	{{printf "%v"  .Valid}},
-	{{printf "%d"  .Input.Roll}},
-	{{printf "%q"  .ExplainText}},
-},{{- end}}{{end}}
+}{ {{range .J.roll}}
+{
+	description: {{printf "%q"  .Description}},
+	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+	valid: {{printf "%v"  .Valid}},
+	roll: {{printf "%d"  .Input.Roll}},
+	explainText: {{printf "%q"  .ExplainText}},
+},{{end}}
 }
 `

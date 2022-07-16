@@ -6,23 +6,20 @@ import (
 
 func TestCollatzConjecture(t *testing.T) {
 	for _, testCase := range testCases {
-		steps, err := CollatzConjecture(testCase.input)
-		if testCase.expectError {
-			if err == nil {
-				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) expected an error, got %v",
-					testCase.description, testCase.input, steps)
+		t.Run(testCase.description, func(t *testing.T) {
+			actual, err := CollatzConjecture(testCase.input)
+			if testCase.expectError {
+				if err == nil {
+					t.Errorf("CollatzConjecture(%v) expected an error, got %v", testCase.input, actual)
+				}
+			} else {
+				if err != nil {
+					t.Errorf("CollatzConjecture(%v) returns unexpected error %v", testCase.input, err)
+				} else if actual != testCase.expected {
+					t.Errorf("CollatzConjecture(%v) expected %v, got %v", testCase.input, testCase.expected, actual)
+				}
 			}
-		} else {
-			if err != nil {
-				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) returns unexpected error %s",
-					testCase.description, testCase.input, err.Error())
-			}
-			if steps != testCase.expected {
-				t.Fatalf("FAIL: %s\n\tCollatzConjecture(%v) expected %v, got %v",
-					testCase.description, testCase.input, testCase.expected, steps)
-			}
-		}
-		t.Logf("PASS: %s", testCase.description)
+		})
 	}
 }
 

@@ -121,6 +121,24 @@ func TestWithinLimit(t *testing.T) {
 			limit: 8,
 			want:  false,
 		},
+		{
+			name:  "exact limit",
+			log:   "exercism🔍",
+			limit: 9,
+			want:  true,
+		},
+		{
+			name:  "under limit",
+			log:   "exercism🔍",
+			limit: 10,
+			want:  true,
+		},
+		{
+			name:  "over limit",
+			log:   "exercism🔍",
+			limit: 8,
+			want:  false,
+		},
 	}
 
 	for _, tt := range tests {

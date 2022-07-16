@@ -1,6 +1,6 @@
 package lasagna
 
-// PreparationTim estimates the preparation time based on the number of layers and an average time per layer and returns it..
+// PreparationTim estimates the preparation time based on the number of layers and an average time per layer and returns it.
 func PreparationTime(layers []string, avgPrepTime int) int {
 	if avgPrepTime == 0 {
 		avgPrepTime = 2

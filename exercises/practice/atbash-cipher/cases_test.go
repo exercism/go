@@ -1,61 +1,44 @@
 package atbash
 
 // Source: exercism/problem-specifications
-// Commit: dda678b atbash-cipher: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: d137db1 Format using prettier (#1917)
 
-type atbashTest struct {
-	s        string
-	expected string
-}
-
-var tests = []atbashTest{
+var testCases = []struct {
+	description string
+	phrase      string
+	expected    string
+}{
 	{
-		s:        "yes",
-		expected: "bvh",
-	},
-	{
-		s:        "no",
-		expected: "ml",
-	},
-	{
-		s:        "OMG",
-		expected: "lnt",
-	},
-	{
-		s:        "O M G",
-		expected: "lnt",
-	},
-	{
-		s:        "mindblowingly",
-		expected: "nrmwy oldrm tob",
-	},
-	{
-		s:        "Testing,1 2 3, testing.",
-		expected: "gvhgr mt123 gvhgr mt",
-	},
-	{
-		s:        "Truth is fiction.",
-		expected: "gifgs rhurx grlm",
-	},
-	{
-		s:        "The quick brown fox jumps over the lazy dog.",
-		expected: "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
-	},
-	{
-		s:        "exercism",
-		expected: "vcvix rhn",
-	},
-	{
-		s:        "anobstacleisoftenasteppingstone",
-		expected: "zmlyh gzxov rhlug vmzhg vkkrm thglm v",
-	},
-	{
-		s:        "testing123testing",
-		expected: "gvhgr mt123 gvhgr mt",
-	},
-	{
-		s:        "thequickbrownfoxjumpsoverthelazydog",
-		expected: "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+		description: "encode yes",
+		phrase:      "yes",
+		expected:    "bvh",
+	}, {
+		description: "encode no",
+		phrase:      "no",
+		expected:    "ml",
+	}, {
+		description: "encode OMG",
+		phrase:      "OMG",
+		expected:    "lnt",
+	}, {
+		description: "encode spaces",
+		phrase:      "O M G",
+		expected:    "lnt",
+	}, {
+		description: "encode mindblowingly",
+		phrase:      "mindblowingly",
+		expected:    "nrmwy oldrm tob",
+	}, {
+		description: "encode numbers",
+		phrase:      "Testing,1 2 3, testing.",
+		expected:    "gvhgr mt123 gvhgr mt",
+	}, {
+		description: "encode deep thought",
+		phrase:      "Truth is fiction.",
+		expected:    "gifgs rhurx grlm",
+	}, {
+		description: "encode all the letters",
+		phrase:      "The quick brown fox jumps over the lazy dog.",
+		expected:    "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
 	},
 }

@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("bob", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"response" : &[]testCase{},
+	}
+	if err := gen.Gen("bob", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			HeyBob string
-		}
-		Expected string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		HeyBob string `json:"heyBob"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,10 +38,10 @@ var testCases = []struct {
 	input       string
 	expected    string
 }{
-{{range .J.Cases}}{
-	{{printf "%q" .Description}},
-	{{printf "%q" .Input.HeyBob}},
-	{{printf "%q" .Expected}},
+{{range .J.response}}{
+	description: {{printf "%q" .Description}},
+	input: {{printf "%q" .Input.HeyBob}},
+	expected: {{printf "%q" .Expected}},
 },
 {{end}}}
 `

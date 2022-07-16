@@ -16,18 +16,16 @@ func prepare(lines []string) []string {
 }
 
 func TestResultOf(t *testing.T) {
-	for _, tt := range testCases {
-		actual, err := ResultOf(prepare(tt.board))
-		// We don't expect errors for any of the test cases
-		if err != nil {
-			var _ error = err
-			t.Fatalf("ResultOf for board %q returned error %q.  Error not expected.",
-				tt.description, err)
-		}
-		if actual != tt.expected {
-			t.Fatalf("ResultOf for board %q was expected to return %q but returned %q.",
-				tt.description, tt.expected, actual)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := ResultOf(prepare(tc.board))
+			// We don't expect errors for any of the test cases
+			if err != nil {
+				t.Errorf("ResultOf() returned error %v\nboard: \n%s\nwant: %q", err, strings.Join(tc.board, "\n"), tc.expected)
+			} else if actual != tc.expected {
+				t.Errorf("ResultOf() returned wrong result \nboard: \n%s\ngot: %q\nwant: %q", strings.Join(tc.board, "\n"), actual, tc.expected)
+			}
+		})
 	}
 }
 

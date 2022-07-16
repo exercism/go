@@ -1,6 +1,7 @@
 package partyrobot
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -100,7 +101,32 @@ func TestAssignTable(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
 			if got := AssignTable(tt.name, tt.tableNumber, tt.seatmate, tt.direction, tt.distance); got != tt.want {
-				t.Errorf("AssignTable(%s,%d,%s,%s,%f)\ngot:\n%s\nwant:\n%s", tt.name, tt.tableNumber, tt.seatmate, tt.direction, tt.distance, got, tt.want)
+				t.Errorf(`AssignTable(%s,%d,%s,%s,%f)
+got:
+%q
+want:
+%q`,
+					tt.name, tt.tableNumber, tt.seatmate, tt.direction, tt.distance, got, tt.want)
+
+				wantLen := len(tt.want)
+				gotLen := len(got)
+				wantNewlines := strings.Count(tt.want, "\n")
+				gotNewlines := strings.Count(got, "\n")
+				wantSpaces := strings.Count(tt.want, " ")
+				gotSpaces := strings.Count(got, " ")
+
+				if wantLen != gotLen {
+					t.Errorf("String lengths do not match - got: %d, want: %d", gotLen, wantLen)
+				}
+
+				if wantNewlines != gotNewlines {
+					t.Errorf("Check your newline characters - got: %d, want: %d", gotNewlines, wantNewlines)
+				}
+
+				if wantSpaces != gotSpaces {
+					t.Errorf("Check your space characters - got: %d, want: %d", gotSpaces, wantSpaces)
+				}
+
 			}
 		})
 	}

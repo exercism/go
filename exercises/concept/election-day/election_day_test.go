@@ -60,6 +60,8 @@ func TestVoteCount(t *testing.T) {
 
 func TestIncrementVoteCount(t *testing.T) {
 	twoVotes := 2
+	fiveVotes := 5
+	noVotes := 0
 
 	tests := []struct {
 		name      string
@@ -68,10 +70,22 @@ func TestIncrementVoteCount(t *testing.T) {
 		expected  int
 	}{
 		{
+			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 0 and increment of 1",
+			counter:   &noVotes,
+			increment: 1,
+			expected:  1,
+		},
+		{
 			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 2 and increment of 2",
 			counter:   &twoVotes,
 			increment: 2,
 			expected:  4,
+		},
+		{
+			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 5 and increment of 7",
+			counter:   &fiveVotes,
+			increment: 7,
+			expected:  12,
 		},
 	}
 

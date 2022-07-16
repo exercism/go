@@ -33,6 +33,16 @@ func TestIsValidLine(t *testing.T) {
 			text:        "[BOB] Any old text",
 			expected:    false,
 		},
+		{
+			description: "Line with less characters than 5",
+			text:        "text",
+			expected:    false,
+		},
+		{
+			description: "Empty line",
+			text:        "",
+			expected:    false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {

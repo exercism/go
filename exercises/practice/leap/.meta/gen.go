@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("leap", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"leapYear": &[]testCase{},
+	}
+	if err := gen.Gen("leap", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Year int
-		}
-		Expected bool
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Year int `json:"year"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -35,10 +34,15 @@ var tmpl = `package leap
 {{.Header}}
 
 var testCases = []struct {
+	description string
 	year        int
 	expected    bool
-	description string
 }{
-{{range .J.Cases}}{ {{.Input.Year}}, {{.Expected}}, {{printf "%q" .Description}}},
-{{end}}}
+{{range .J.leapYear}}{
+		description: {{printf "%q" .Description}},
+		year:        {{printf "%d" .Input.Year}},
+		expected:    {{printf "%t" .Expected}},
+	},
+{{end}}
+}
 `
