@@ -1,8 +1,7 @@
 package flatten
 
 // Source: exercism/problem-specifications
-// Commit: 0290376 flatten-array: Apply new "input" policy
-// Problem Specifications Version: 1.2.0
+// Commit: 4b137d6 `flatten-array` Add additional test cases (#1953)
 
 var testCases = []struct {
 	description string
@@ -10,9 +9,19 @@ var testCases = []struct {
 	expected    []interface{}
 }{
 	{
+		description: "empty",
+		input:       []interface{}{},
+		expected:    []interface{}{},
+	},
+	{
 		description: "no nesting",
 		input:       []interface{}{0, 1, 2},
 		expected:    []interface{}{0, 1, 2},
+	},
+	{
+		description: "flattens a nested array",
+		input:       []interface{}{[]interface{}{[]interface{}{}}},
+		expected:    []interface{}{},
 	},
 	{
 		description: "flattens array with just integers present",
@@ -28,6 +37,21 @@ var testCases = []struct {
 		description: "6 level nesting",
 		input:       []interface{}{1, []interface{}{2, []interface{}{[]interface{}{3}}, []interface{}{4, []interface{}{[]interface{}{5}}}, 6, 7}, 8},
 		expected:    []interface{}{1, 2, 3, 4, 5, 6, 7, 8},
+	},
+	{
+		description: "null values are omitted from the final result",
+		input:       []interface{}{1, 2, interface{}(nil)},
+		expected:    []interface{}{1, 2},
+	},
+	{
+		description: "consecutive null values at the front of the list are omitted from the final result",
+		input:       []interface{}{interface{}(nil), interface{}(nil), 3},
+		expected:    []interface{}{3},
+	},
+	{
+		description: "consecutive null values in the middle of the list are omitted from the final result",
+		input:       []interface{}{1, interface{}(nil), interface{}(nil), 4},
+		expected:    []interface{}{1, 4},
 	},
 	{
 		description: "6 level nest list with null values",
