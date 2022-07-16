@@ -15,11 +15,9 @@ func TestLargestSeriesProduct(t *testing.T) {
 				if actual != tc.expected {
 					t.Fatalf("LargestSeriesProduct(%q, %d) = %d, want: %d", tc.digits, tc.span, actual, tc.expected)
 				}
-			} else {
-				// expect error
-				if err == nil {
-					t.Fatalf("LargestSeriesProduct(%q, %d) = %d, want error: %q", tc.digits, tc.span, actual, tc.error)
-				}
+			} else if err == nil {
+				// expect error but got nil
+				t.Fatalf("LargestSeriesProduct(%q, %d) = %d, want error: %q", tc.digits, tc.span, actual, tc.error)
 			}
 		})
 	}
