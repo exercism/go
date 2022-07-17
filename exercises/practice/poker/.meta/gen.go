@@ -16,21 +16,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("poker", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"bestHands": &[]testCase{},
+	}
+	if err := gen.Gen("poker", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Hands []string
-		}
-		Expected []string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Hands []string `json:"hands"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
 var suitCharToSymbol = map[byte]string{'C': "♧", 'D': "♢", 'H': "♡", 'S': "♤"}
@@ -60,19 +59,17 @@ var tmpl = `package poker
 
 {{.Header}}
 
-type validTestCase struct {
-	name  string
-	hands []string
-	best  []string
+type testCase struct {
+	description string
+	hands    []string
+	expected []string
 }
 
-var validTestCases = []validTestCase {
-{{range .J.Cases}}{
-	name:  "{{.Description}}",
-	hands: []string{
-		{{range pokerHands .Input.Hands}} {{printf "%q" .}},
-{{end}} },
-	best:  {{pokerHands .Expected | printf "%#v"}},
+var validTestCases = []testCase {
+{{range .J.bestHands}}{
+	description:  	{{printf "%q"  .Description }},
+	hands: 			{{pokerHands .Input.Hands | printf "%#v"}},
+	expected:  		{{pokerHands .Expected | printf "%#v"}},
 },
 {{end}}}
 `
