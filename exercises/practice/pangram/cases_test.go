@@ -1,8 +1,7 @@
 package pangram
 
 // Source: exercism/problem-specifications
-// Commit: 2c020bc Fix typo
-// Problem Specifications Version: 1.4.1
+// Commit: fc50648 Pangram: check case insensitive behavior (#1660)
 
 var testCases = []struct {
 	description string
@@ -10,37 +9,37 @@ var testCases = []struct {
 	expected    bool
 }{
 	{
-		description: "sentence empty",
+		description: "empty sentence",
 		input:       "",
 		expected:    false,
 	},
 	{
-		description: "recognizes a perfect lower case pangram",
+		description: "perfect lower case",
 		input:       "abcdefghijklmnopqrstuvwxyz",
 		expected:    true,
 	},
 	{
-		description: "pangram with only lower case",
+		description: "only lower case",
 		input:       "the quick brown fox jumps over the lazy dog",
 		expected:    true,
 	},
 	{
-		description: "missing character 'x'",
+		description: "missing the letter 'x'",
 		input:       "a quick movement of the enemy will jeopardize five gunboats",
 		expected:    false,
 	},
 	{
-		description: "another missing character, e.g. 'h'",
+		description: "missing the letter 'h'",
 		input:       "five boxing wizards jump quickly at it",
 		expected:    false,
 	},
 	{
-		description: "pangram with underscores",
+		description: "with underscores",
 		input:       "the_quick_brown_fox_jumps_over_the_lazy_dog",
 		expected:    true,
 	},
 	{
-		description: "pangram with numbers",
+		description: "with numbers",
 		input:       "the 1 quick brown fox jumps over the 2 lazy dogs",
 		expected:    true,
 	},
@@ -50,13 +49,13 @@ var testCases = []struct {
 		expected:    false,
 	},
 	{
-		description: "pangram with mixed case and punctuation",
+		description: "mixed case and punctuation",
 		input:       "\"Five quacking Zephyrs jolt my wax bed.\"",
 		expected:    true,
 	},
 	{
-		description: "upper and lower case versions of the same character should not be counted separately",
-		input:       "the quick brown fox jumps over with lazy FX",
+		description: "a-m and A-M are 26 different characters but not a pangram",
+		input:       "abcdefghijklm ABCDEFGHIJKLM",
 		expected:    false,
 	},
 }

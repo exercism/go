@@ -1,48 +1,71 @@
 package prime
 
 // Source: exercism/problem-specifications
-// Commit: d928874 prime-factors: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: d137db1 Format using prettier (#1917)
 
-var tests = []struct {
+var testCases = []struct {
 	description string
 	input       int64
 	expected    []int64
 }{
-
 	{
-		"no factors",
-		1,
-		[]int64{},
+		description: "no factors",
+		input:       1,
+		expected:    []int64{},
 	},
 	{
-		"prime number",
-		2,
-		[]int64{2},
+		description: "prime number",
+		input:       2,
+		expected:    []int64{2},
 	},
 	{
-		"square of a prime",
-		9,
-		[]int64{3, 3},
+		description: "another prime number",
+		input:       3,
+		expected:    []int64{3},
 	},
 	{
-		"cube of a prime",
-		8,
-		[]int64{2, 2, 2},
+		description: "square of a prime",
+		input:       9,
+		expected:    []int64{3, 3},
 	},
 	{
-		"product of primes and non-primes",
-		12,
-		[]int64{2, 2, 3},
+		description: "product of first prime",
+		input:       4,
+		expected:    []int64{2, 2},
 	},
 	{
-		"product of primes",
-		901255,
-		[]int64{5, 17, 23, 461},
+		description: "cube of a prime",
+		input:       8,
+		expected:    []int64{2, 2, 2},
 	},
 	{
-		"factors include a large prime",
-		93819012551,
-		[]int64{11, 9539, 894119},
+		description: "product of second prime",
+		input:       27,
+		expected:    []int64{3, 3, 3},
+	},
+	{
+		description: "product of third prime",
+		input:       625,
+		expected:    []int64{5, 5, 5, 5},
+	},
+	{
+		description: "product of first and second prime",
+		input:       6,
+		expected:    []int64{2, 3},
+	},
+	{
+		description: "product of primes and non-primes",
+		input:       12,
+		expected:    []int64{2, 2, 3},
+	},
+	{
+		description: "product of primes",
+		input:       901255,
+		expected:    []int64{5, 17, 23, 461},
+	},
+	{
+		description: "factors include a large prime",
+		input:       93819012551,
+		expected:    []int64{11, 9539, 894119},
 	},
 }

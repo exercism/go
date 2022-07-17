@@ -1,98 +1,108 @@
 package brackets
 
 // Source: exercism/problem-specifications
-// Commit: 51418ec bracket-push: rename to matching-brackets (#1501)
-// Problem Specifications Version: 2.0.0
+// Commit: 9fa4e2d Add testcases to matching-brackets (#1657)
 
 type bracketTest struct {
-	input    string
-	expected bool
+	description string
+	input       string
+	expected    bool
 }
 
 var testCases = []bracketTest{
 	{
-		// paired square brackets
-		"[]",
-		true,
+		description: "paired square brackets",
+		input:       "[]",
+		expected:    true,
 	},
 	{
-		// empty string
-		"",
-		true,
+		description: "empty string",
+		input:       "",
+		expected:    true,
 	},
 	{
-		// unpaired brackets
-		"[[",
-		false,
+		description: "unpaired brackets",
+		input:       "[[",
+		expected:    false,
 	},
 	{
-		// wrong ordered brackets
-		"}{",
-		false,
+		description: "wrong ordered brackets",
+		input:       "}{",
+		expected:    false,
 	},
 	{
-		// wrong closing bracket
-		"{]",
-		false,
+		description: "wrong closing bracket",
+		input:       "{]",
+		expected:    false,
 	},
 	{
-		// paired with whitespace
-		"{ }",
-		true,
+		description: "paired with whitespace",
+		input:       "{ }",
+		expected:    true,
 	},
 	{
-		// partially paired brackets
-		"{[])",
-		false,
+		description: "partially paired brackets",
+		input:       "{[])",
+		expected:    false,
 	},
 	{
-		// simple nested brackets
-		"{[]}",
-		true,
+		description: "simple nested brackets",
+		input:       "{[]}",
+		expected:    true,
 	},
 	{
-		// several paired brackets
-		"{}[]",
-		true,
+		description: "several paired brackets",
+		input:       "{}[]",
+		expected:    true,
 	},
 	{
-		// paired and nested brackets
-		"([{}({}[])])",
-		true,
+		description: "paired and nested brackets",
+		input:       "([{}({}[])])",
+		expected:    true,
 	},
 	{
-		// unopened closing brackets
-		"{[)][]}",
-		false,
+		description: "unopened closing brackets",
+		input:       "{[)][]}",
+		expected:    false,
 	},
 	{
-		// unpaired and nested brackets
-		"([{])",
-		false,
+		description: "unpaired and nested brackets",
+		input:       "([{])",
+		expected:    false,
 	},
 	{
-		// paired and wrong nested brackets
-		"[({]})",
-		false,
+		description: "paired and wrong nested brackets",
+		input:       "[({]})",
+		expected:    false,
 	},
 	{
-		// paired and incomplete brackets
-		"{}[",
-		false,
+		description: "paired and incomplete brackets",
+		input:       "{}[",
+		expected:    false,
 	},
 	{
-		// too many closing brackets
-		"[]]",
-		false,
+		description: "too many closing brackets",
+		input:       "[]]",
+		expected:    false,
 	},
 	{
-		// math expression
-		"(((185 + 223.85) * 15) - 543)/2",
-		true,
+		description: "early unexpected brackets",
+		input:       ")()",
+		expected:    false,
 	},
 	{
-		// complex latex expression
-		"\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{x} &... x^2 \\end{array}\\right)",
-		true,
+		description: "early mismatched brackets",
+		input:       "{)()",
+		expected:    false,
+	},
+	{
+		description: "math expression",
+		input:       "(((185 + 223.85) * 15) - 543)/2",
+		expected:    true,
+	},
+	{
+		description: "complex latex expression",
+		input:       "\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{x} &... x^2 \\end{array}\\right)",
+		expected:    true,
 	},
 }

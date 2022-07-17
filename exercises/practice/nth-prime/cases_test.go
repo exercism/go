@@ -3,42 +3,40 @@ package prime
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-import "errors"
-
 var tests = []struct {
 	description string
-	n           int
-	p           int
-	err         error
+	input       int
+	expected    int
+	err         string
 }{
 	{
-		"first prime",
-		1,
-		2,
-		nil,
+		description: "first prime",
+		input:       1,
+		expected:    2,
+		err:         "",
 	},
 	{
-		"second prime",
-		2,
-		3,
-		nil,
+		description: "second prime",
+		input:       2,
+		expected:    3,
+		err:         "",
 	},
 	{
-		"sixth prime",
-		6,
-		13,
-		nil,
+		description: "sixth prime",
+		input:       6,
+		expected:    13,
+		err:         "",
 	},
 	{
-		"big prime",
-		10001,
-		104743,
-		nil,
+		description: "big prime",
+		input:       10001,
+		expected:    104743,
+		err:         "",
 	},
 	{
-		"there is no zeroth prime",
-		0,
-		0,
-		errors.New("input must be greater than 1"),
+		description: "there is no zeroth prime",
+		input:       0,
+		expected:    0,
+		err:         "there is no zeroth prime",
 	},
 }
