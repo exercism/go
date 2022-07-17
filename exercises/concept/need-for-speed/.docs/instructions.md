@@ -42,7 +42,8 @@ track := NewTrack(distance)
 
 ## 3. Drive the car
 
-Implement the `Drive` function that updates the number of meters driven based on the car's speed, and reduces the battery according to the battery drainage:
+Implement the `Drive` function that updates the number of meters driven based on the car's speed, and reduces the battery according to the battery drainage.
+If there is not enough battery to drive one more time the car will not move:
 
 ```go
 speed := 5
