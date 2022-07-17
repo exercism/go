@@ -1,8 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"errors"
+	"fmt"
 	"log"
 	"text/template"
 
@@ -10,105 +9,80 @@ import (
 )
 
 func main() {
-	t := template.New("").Funcs(template.FuncMap{
-		"areacode":  areacode,
-		"expectErr": expectErr,
-		"formatted": formatted,
-	})
-	t, err := t.Parse(tmpl)
+	t, err := template.New("").Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("phone-number", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"clean": &[]testCase{},
+	}
+	if err := gen.Gen("phone-number", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func expectErr(expected ExpectedType) bool {
-	return len(expected.Error) > 0
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Phrase string `json:"phrase"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func areacode(expected ExpectedType) string {
-	if expectErr(expected) {
+func (t testCase) ExpectError() bool {
+	v, ok := t.Expected.(map[string]interface{})
+	if ok {
+		_, gotError := v["error"]
+		return gotError
+	}
+	return false
+}
+
+func (t testCase) ExpectedNumber() string {
+	v, ok := t.Expected.(string)
+	if ok {
+		return v
+	}
+	return ""
+}
+
+func (t testCase) AreaCode() string {
+	if expectedNumber := t.ExpectedNumber(); expectedNumber != "" {
+		return expectedNumber[:3]
+	}
+	return ""
+}
+
+func (t testCase) Formatted() string {
+	expectedNumber := t.ExpectedNumber()
+	if expectedNumber == "" {
 		return ""
 	}
-	return expected.Value[0:3]
+	return fmt.Sprintf("(%s) %s-%s", t.AreaCode(), expectedNumber[3:6], expectedNumber[6:10])
 }
 
-func formatted(expected ExpectedType) string {
-	if expectErr(expected) {
-		return ""
-	}
-	return "(" + areacode(expected) + ") " + expected.Value[3:6] + "-" + expected.Value[6:10]
-}
-
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []struct {
-			Description string
-			Input       struct {
-				Phrase string
-			}
-			Expected ExpectedType
-		}
-	}
-}
-
-type ExpectedType struct {
-	Value string
-	Error string
-}
-
-// UnmarshalJSON for custom type (allow for having multiple types in the same JSON field)
-func (ex *ExpectedType) UnmarshalJSON(b []byte) error {
-	switch b[0] {
-	case '"': // a plain string
-		var s string
-		if err := json.Unmarshal(b, &s); err != nil {
-			return err
-		}
-		ex.Value = s
-		ex.Error = ""
-		return nil
-	case '{': // a map
-		var s map[string]string
-		if err := json.Unmarshal(b, &s); err != nil {
-			return err
-		}
-		ex.Error = s["error"]
-		ex.Value = ""
-		return nil
-	}
-	return errors.New("Expected type not recognized")
-}
-
-// template applied to above data structure generates the Go test cases
 var tmpl = `package phonenumber
 
 {{.Header}}
 
-{{range .J.Cases}}// {{.Description}}
-var numberTests = []struct {
-	description 		string
-	input       		string
-	expectErr   		bool
-	errorDescription	string
-	number      		string
-	areaCode    		string
-	formatted   		string
-}{
-	{{range .Cases}}{
-		description: {{printf "%q" .Description}},
-		input: {{printf "%q" .Input.Phrase}},
-		{{if expectErr .Expected}} expectErr: {{expectErr .Expected | printf "%v" }},
-		errorDescription: {{printf "%q" .Expected.Error}},
-		{{else}} number: {{printf "%q" .Expected.Value}},
-		areaCode: {{areacode .Expected | printf "%q" }},
-		formatted: {{formatted .Expected | printf "%q" }},{{- end}}
+type testCase struct {
+	description       string
+	input             string
+	expectErr         bool
+	expectedNumber    string
+	expectedAreaCode  string
+	expectedFormatted string
+}
+
+var testCases = []testCase{
+{{range .J.clean}}{
+		description:      {{printf "%q"  .Description}},
+		input:            {{printf "%q"  .Input.Phrase}},
+		expectErr:        {{printf "%t"  .ExpectError}},
+		expectedNumber:   {{printf "%q"  .ExpectedNumber}},
+		expectedAreaCode:         {{printf "%q"  .AreaCode}},
+		expectedFormatted:        {{printf "%q"  .Formatted}},
 },
-{{end}}{{end}}
+{{end}}
 }
 `
