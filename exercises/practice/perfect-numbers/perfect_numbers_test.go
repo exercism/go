@@ -2,29 +2,30 @@ package perfect
 
 import "testing"
 
-var _ error = ErrOnlyPositive
-
-func TestGivesPositiveRequiredError(t *testing.T) {
-	if _, err := Classify(0); err != ErrOnlyPositive {
-		t.Fatalf("FAIL GivesPositiveRequiredError Expected error %q but got %q", ErrOnlyPositive, err)
-	}
-	t.Logf("PASS GivesPositiveRequiredError")
+func TestZeroGivesPositiveRequiredError(t *testing.T) {
+	t.Run("GivesPositiveRequiredError", func(t *testing.T) {
+		if _, err := Classify(0); err != ErrOnlyPositive {
+			t.Fatalf("Classify(0) expected error %q, got: %q", ErrOnlyPositive, err)
+		}
+	})
 }
 
 func TestClassifiesCorrectly(t *testing.T) {
-	for _, c := range classificationTestCases {
-		cat, err := Classify(c.input)
-		switch {
-		case err != nil:
-			if c.ok {
-				t.Fatalf("FAIL %s\nClassify(%d)\nExpected no error but got error %q", c.description, c.input, err)
+	for _, tc := range classificationTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := Classify(tc.input)
+			switch {
+			case !tc.ok:
+				// expect error
+				if err == nil {
+					t.Fatalf("Classify(%d) expected error, got: %q", tc.input, actual)
+				}
+			case err != nil:
+				t.Fatalf("Classify(%d) returned error: %q, want: %q", tc.input, err, tc.expected)
+			case actual != tc.expected:
+				t.Fatalf("Classify(%d) = %q, want: %q", tc.input, actual, tc.expected)
 			}
-		case !c.ok:
-			t.Fatalf("FAIL %s\nClassify(%d)\nExpected error but got %q", c.description, c.input, cat)
-		case cat != c.expected:
-			t.Fatalf("FAIL %s\nClassify(%d)\nExpected %q, got %q", c.description, c.input, c.expected, cat)
-		}
-		t.Logf("PASS %s", c.description)
+		})
 	}
 }
 
