@@ -233,6 +233,12 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 			targetBalance: 12345.6789,
 			want:          85,
 		},
+		{
+			name:          "Years before balance already reached target balance",
+			balance:       2345.67,
+			targetBalance: 2345.0,
+			want:          0,
+		},
 	}
 
 	for _, tt := range tests {
