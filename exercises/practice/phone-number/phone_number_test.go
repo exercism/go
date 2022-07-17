@@ -5,7 +5,7 @@ import (
 )
 
 func TestNumber(t *testing.T) {
-	runTests(Number, "Number", func(tc testCase) string { return tc.expectedNumber }, t)
+	runTests("Number", Number, func(tc testCase) string { return tc.expectedNumber }, t)
 }
 
 func BenchmarkNumber(b *testing.B) {
@@ -20,7 +20,7 @@ func BenchmarkNumber(b *testing.B) {
 }
 
 func TestAreaCode(t *testing.T) {
-	runTests(AreaCode, "AreaCode", func(tc testCase) string { return tc.expectedAreaCode }, t)
+	runTests("AreaCode", AreaCode, func(tc testCase) string { return tc.expectedAreaCode }, t)
 }
 
 func BenchmarkAreaCode(b *testing.B) {
@@ -35,7 +35,7 @@ func BenchmarkAreaCode(b *testing.B) {
 }
 
 func TestFormat(t *testing.T) {
-	runTests(Format, "Format", func(tc testCase) string { return tc.expectedFormatted }, t)
+	runTests("Format", Format, func(tc testCase) string { return tc.expectedFormatted }, t)
 }
 
 func BenchmarkFormat(b *testing.B) {
@@ -49,7 +49,12 @@ func BenchmarkFormat(b *testing.B) {
 	}
 }
 
-func runTests(f func(s string) (string, error), funcName string, getExpected func(tc testCase) string, t *testing.T) {
+func runTests(
+	funcName string,
+	f func(s string) (string, error),
+	getExpected func(tc testCase) string,
+	t *testing.T,
+) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			actual, actualErr := f(tc.input)
