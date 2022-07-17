@@ -1,16 +1,16 @@
 package armstrong
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestArmstrong(t *testing.T) {
 	for _, tc := range testCases {
-		if actual := IsNumber(tc.input); actual != tc.expected {
-			t.Fatalf("FAIL: %s\nExpected: %v\nActual: %v", tc.description, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		t.Run(tc.description, func(*testing.T) {
+			if actual := IsNumber(tc.input); actual != tc.expected {
+				t.Fatalf("IsNumber(%d) = %t, want: %t", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -19,10 +19,8 @@ func BenchmarkIsNumber(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for _, tc := range testCases {
-		b.Run(fmt.Sprintf("%d", tc.input), func(b *testing.B) {
-			for i := 0; i < b.N; i++ {
-				IsNumber(tc.input)
-			}
-		})
+		for i := 0; i < b.N; i++ {
+			IsNumber(tc.input)
+		}
 	}
 }

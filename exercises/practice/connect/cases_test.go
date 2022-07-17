@@ -1,8 +1,7 @@
 package connect
 
 // Source: exercism/problem-specifications
-// Commit: a02d64d connect: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 42dd0ce Remove version (#1678)
 
 var testCases = []struct {
 	description string
@@ -16,19 +15,22 @@ var testCases = []struct {
 			" . . . . .",
 			"  . . . . .",
 			"   . . . . .",
-			"    . . . . ."},
+			"    . . . . .",
+		},
 		expected: "",
 	},
 	{
 		description: "X can win on a 1x1 board",
 		board: []string{
-			"X"},
+			"X",
+		},
 		expected: "X",
 	},
 	{
 		description: "O can win on a 1x1 board",
 		board: []string{
-			"O"},
+			"O",
+		},
 		expected: "O",
 	},
 	{
@@ -37,7 +39,8 @@ var testCases = []struct {
 			"O O O X",
 			" X . . X",
 			"  X . . X",
-			"   X O O O"},
+			"   X O O O",
+		},
 		expected: "",
 	},
 	{
@@ -47,7 +50,8 @@ var testCases = []struct {
 			" O X X X",
 			"  O X O .",
 			"   . O X .",
-			"    X X O O"},
+			"    X X O O",
+		},
 		expected: "",
 	},
 	{
@@ -57,7 +61,8 @@ var testCases = []struct {
 			" . X O .",
 			"  O . X O",
 			"   . O . X",
-			"    . . O ."},
+			"    . . O .",
+		},
 		expected: "",
 	},
 	{
@@ -67,7 +72,8 @@ var testCases = []struct {
 			" O X X X",
 			"  O X O .",
 			"   X X O X",
-			"    . O X ."},
+			"    . O X .",
+		},
 		expected: "X",
 	},
 	{
@@ -77,7 +83,8 @@ var testCases = []struct {
 			" O X X X",
 			"  O O O .",
 			"   X X O X",
-			"    . O X ."},
+			"    . O X .",
+		},
 		expected: "O",
 	},
 	{
@@ -87,7 +94,8 @@ var testCases = []struct {
 			" X . X . X",
 			"  . X . X .",
 			"   . X X . .",
-			"    O O O O O"},
+			"    O O O O O",
+		},
 		expected: "X",
 	},
 	{
@@ -101,7 +109,8 @@ var testCases = []struct {
 			"     O X O O O X O X O",
 			"      O X X X X X O X O",
 			"       O O O O O O O X O",
-			"        X X X X X X X X O"},
+			"        X X X X X X X X O",
+		},
 		expected: "X",
 	},
 }

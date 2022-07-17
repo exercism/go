@@ -7,10 +7,11 @@ import (
 
 func TestFlatten(t *testing.T) {
 	for _, tc := range testCases {
-		if actual := Flatten(tc.input); !reflect.DeepEqual(actual, tc.expected) {
-			t.Fatalf("FAIL: %s\nExpected: %v\nActual: %v", tc.description, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Flatten(tc.input); !reflect.DeepEqual(actual, tc.expected) {
+				t.Errorf("Flatten(%v) = %v, want: %v", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 

@@ -267,6 +267,22 @@ func TestCanFreePrisoner(t *testing.T) {
 			dogIsPresent:    true,
 			expected:        false,
 		},
+		{
+			desc:            "Knight and archer are awake. Prisoner is sleeping. Dog is not present",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "Everyone is sleeping. Dog is not present",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			dogIsPresent:    false,
+			expected:        false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {

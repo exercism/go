@@ -28,18 +28,24 @@ description = "encode all the letters"
 
 [bb50e087-7fdf-48e7-9223-284fe7e69851]
 description = "decode exercism"
+include = false
 
 [ac021097-cd5d-4717-8907-b0814b9e292c]
 description = "decode a sentence"
+include = false
 
 [18729de3-de74-49b8-b68c-025eaf77f851]
 description = "decode numbers"
+include = false
 
 [0f30325f-f53b-415d-ad3e-a7a4f63de034]
 description = "decode all the letters"
+include = false
 
 [39640287-30c6-4c8c-9bac-9d613d1a5674]
 description = "decode with too many spaces"
+include = false
 
 [b34edf13-34c0-49b5-aa21-0768928000d5]
 description = "decode with no spaces"
+include = false

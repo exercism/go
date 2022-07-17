@@ -12,25 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("acronym", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"abbreviate": &[]testCase{},
+	}
+	if err := gen.Gen("acronym", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []struct {
-			Description string
-			Property    string
-			Input       struct {
-				Phrase string
-			}
-			Expected string
-		}
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Phrase string `json:"phrase"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,15 +34,17 @@ var tmpl = `package acronym
 {{.Header}}
 
 type acronymTest struct {
-	input    string
-	expected string
+	description string
+	input       string
+	expected    string
 }
 
-var stringTestCases = []acronymTest {
-{{range .J.Cases}} {{range .Cases}}{
+var testCases = []acronymTest {
+{{range .J.abbreviate}}{
+	description: {{printf "%q" .Description }},
 	input: {{printf "%q" .Input.Phrase }},
 	expected: {{printf "%q" .Expected }},
 },
-{{end}}{{end}}
+{{end}}
 }
 `

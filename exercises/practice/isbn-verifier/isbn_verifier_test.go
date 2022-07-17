@@ -5,12 +5,11 @@ import (
 )
 
 func TestIsValidISBN(t *testing.T) {
-	for _, test := range testCases {
-		t.Run(test.description, func(t *testing.T) {
-			observed := IsValidISBN(test.isbn)
-			if observed != test.expected {
-				t.Errorf("IsValidISBN(%q)\nExpected: %t, Actual: %t",
-					test.isbn, test.expected, observed)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := IsValidISBN(tc.isbn)
+			if actual != tc.expected {
+				t.Errorf("IsValidISBN(%q)=%t, want: %t", tc.isbn, actual, tc.expected)
 			}
 		})
 	}

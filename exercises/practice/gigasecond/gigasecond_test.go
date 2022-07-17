@@ -3,7 +3,6 @@ package gigasecond
 // Write a function AddGigasecond that works with time.Time.
 
 import (
-	"os"
 	"testing"
 	"time"
 )
@@ -16,18 +15,15 @@ const (
 
 func TestAddGigasecond(t *testing.T) {
 	for _, tc := range addCases {
-		in := parse(tc.in, t)
-		want := parse(tc.want, t)
-		got := AddGigasecond(in)
-		if !got.Equal(want) {
-			t.Fatalf(`FAIL: %s
-AddGigasecond(%s)
-   = %s
-want %s`, tc.description, in, got, want)
-		}
-		t.Log("PASS:", tc.description)
+		t.Run(tc.description, func(*testing.T) {
+			in := parse(tc.in, t)
+			want := parse(tc.want, t)
+			got := AddGigasecond(in)
+			if !got.Equal(want) {
+				t.Errorf("AddGigasecond(%v) = %v, want: %v", in, got, want)
+			}
+		})
 	}
-	t.Log("Tested", len(addCases), "cases.")
 }
 
 func parse(s string, t *testing.T) time.Time {
@@ -36,17 +32,7 @@ func parse(s string, t *testing.T) time.Time {
 		tt, err = time.Parse(fmtD, s) // also allow just date
 	}
 	if err != nil {
-		// can't run tests if input won't parse.  if this seems to be a
-		// development or ci environment, raise an error.  if this condition
-		// makes it to the solver though, ask for a bug report.
-		_, statErr := os.Stat("example_gen.go")
-		if statErr == nil || os.Getenv("TRAVIS_GO_VERSION") > "" {
-			t.Fatal(err)
-		} else {
-			t.Log(err)
-			t.Skip("(This is not your fault, and is unexpected.  " +
-				"Please file an issue at https://github.com/exercism/go.)")
-		}
+		t.Fatalf("error in test setup: TestAddGigasecond requires datetime in one of the following formats: \nformat 1:%q\nformat 2:%q\ngot:%q", fmtD, fmtDT, s)
 	}
 	return tt
 }

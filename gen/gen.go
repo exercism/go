@@ -173,17 +173,17 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return fmt.Errorf("[ERROR] template.Execute failed. The template has a semantic error: %w", err)
 	}
 
-	formattedOut, err := format.Source(out.Bytes())
+	casesFileContent := out.Bytes()
+	formattedFileContent, err := format.Source(casesFileContent)
 	if err != nil {
 		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
-		_, _ = out.Write([]byte("\n// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
-		_, _ = out.Write(out.Bytes())
+		debugFileContent := append(casesFileContent, []byte("// !NOTE: Error during source formatting: Line:Column "+fmt.Sprint(err)+"\n")...)
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFile, out.Bytes())
+		_ = outputSource("ERROR", casesFile, debugFileContent)
 		return err
 	}
 	// write output file for the Go test cases.
-	return outputSource("SUCCESS", casesFile, formattedOut)
+	return outputSource("SUCCESS", casesFile, formattedFileContent)
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].

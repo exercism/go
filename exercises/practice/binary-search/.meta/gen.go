@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"text/template"
 
@@ -13,51 +12,46 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("binary-search", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"find": &[]testCase{},
+	}
+	if err := gen.Gen("binary-search", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Uuid        string `json:"uuid"`
+	Description string `json:"description"`
+	Property    string `json:"property"`
 	Input       struct {
-		Array []int
-		Value int
+		Array []int `json:"array"`
+		Value int   `json:"value"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
+}
+
+func (t testCase) Value() int {
+	val, ok := t.Expected.(float64)
+	if ok {
+		return int(val)
 	}
-	Expected ExpectedType
+	return -1
 }
 
-type ExpectedType struct {
-	ValueInt    int
-	ValueString string
-}
-
-func (e *ExpectedType) UnmarshalJSON(b []byte) error {
-	if b[0] != '{' {
-		var i int
-		if err := json.Unmarshal(b, &i); err != nil {
-			return err
+func (t testCase) Error() string {
+	if _, ok := t.Expected.(float64); !ok {
+		m, ok := t.Expected.(map[string]interface{})
+		if !ok {
+			return ""
 		}
-		e.ValueInt = i
-		return nil
+		b, ok := m["error"].(string)
+		if !ok {
+			return ""
+		}
+		return b
 	}
-	var s map[string]string
-	if err := json.Unmarshal(b, &s); err != nil {
-		return err
-	}
-	e.ValueInt = -1
-	e.ValueString = s["error"]
-	return nil
+	return ""
 }
 
 // Template to generate test cases.
@@ -66,18 +60,18 @@ var tmpl = `package binarysearch
 {{.Header}}
 
 var testCases =	[]struct {
-	description	string
-	slice		[]int
-	key			int
-	x			int
-	err			string
-}{ {{range .J.Cases}}
+	description string
+	inputList   []int
+	inputKey    int
+	expectedKey int
+	err         string
+}{ {{range .J.find}}
 {
-	description:	{{printf "%q"  .Description}},
-	slice:		{{printf "%#v" .Input.Array}},
-	key:			{{printf "%d"  .Input.Value}},
-	x:			{{printf "%d"  .Expected.ValueInt}},
-	err:			{{printf "%q"  .Expected.ValueString}},
+	description:	    {{printf "%q"  .Description}},
+	inputList:		    {{printf "%#v" .Input.Array}},
+	inputKey:			{{printf "%d"  .Input.Value}},
+	expectedKey:	    {{printf "%d"  .Value}},
+	err:			    {{printf "%q"  .Error}},
 },{{end}}
 }
 `

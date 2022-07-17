@@ -19,20 +19,20 @@ func Filter(in []Record, predicate func(Record) bool) []Record {
 }
 
 // ByDaysPeriod returns predicate function that returns true when
-// the day of the record is inside the period of day and false otherwise
+// the day of the record is inside the period of day and false otherwise.
 func ByDaysPeriod(p DaysPeriod) func(Record) bool {
 	panic("Please implement the ByDaysPeriod function")
 }
 
 // ByCategory returns predicate function that returns true when
 // the category of the record is the same as the provided category
-// and false otherwise
+// and false otherwise.
 func ByCategory(c string) func(Record) bool {
 	panic("Please implement the ByCategory function")
 }
 
 // TotalByPeriod returns total amount of expenses for records
-// inside the period p
+// inside the period p.
 func TotalByPeriod(in []Record, p DaysPeriod) float64 {
 	panic("Please implement the TotalByPeriod function")
 }

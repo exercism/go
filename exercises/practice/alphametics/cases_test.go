@@ -1,10 +1,8 @@
 package alphametics
 
 // Source: exercism/problem-specifications
-// Commit: 361cf3c alphametics: v1.3.0 Add test for two digits carry (#1344)
-// Problem Specifications Version: 1.3.0
+// Commit: d137db1 Format using prettier (#1917)
 
-// Solve the alphametics puzzle
 var testCases = []struct {
 	description   string
 	input         string
