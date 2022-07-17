@@ -2,7 +2,11 @@ package railfence
 
 import "testing"
 
-func testCases(op func(string, int) string, name string, cases []testCase, t *testing.T) {
+func testCases(
+	name string,
+	op func(string, int) string,
+	cases []testCase, t *testing.T,
+) {
 	for _, tc := range cases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := op(tc.message, tc.rails); actual != tc.expected {
@@ -23,8 +27,8 @@ func runBenchmark(op func(string, int) string, cases []testCase, b *testing.B) {
 	}
 }
 
-func TestEncode(t *testing.T) { testCases(Encode, "Encode", encodeTests, t) }
-func TestDecode(t *testing.T) { testCases(Decode, "Decode", decodeTests, t) }
+func TestEncode(t *testing.T) { testCases("Encode", Encode, encodeTests, t) }
+func TestDecode(t *testing.T) { testCases("Decode", Decode, decodeTests, t) }
 
 func BenchmarkEncode(b *testing.B) { runBenchmark(Encode, encodeTests, b) }
 func BenchmarkDecode(b *testing.B) { runBenchmark(Decode, decodeTests, b) }
