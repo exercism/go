@@ -1,24 +1,68 @@
 package scrabble
 
 // Source: exercism/problem-specifications
-// Commit: 0d882ed scrabble-score: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 42dd0ce Remove version (#1678)
 
 type scrabbleTest struct {
-	input    string
-	expected int
+	description string
+	input       string
+	expected    int
 }
 
 var scrabbleScoreTests = []scrabbleTest{
-	{"a", 1},                           // lowercase letter
-	{"A", 1},                           // uppercase letter
-	{"f", 4},                           // valuable letter
-	{"at", 2},                          // short word
-	{"zoo", 12},                        // short, valuable word
-	{"street", 6},                      // medium word
-	{"quirky", 22},                     // medium, valuable word
-	{"OxyphenButazone", 41},            // long, mixed-case word
-	{"pinata", 8},                      // english-like word
-	{"", 0},                            // empty input
-	{"abcdefghijklmnopqrstuvwxyz", 87}, // entire alphabet available
+	{
+		description: "lowercase letter",
+		input:       "a",
+		expected:    1,
+	},
+	{
+		description: "uppercase letter",
+		input:       "A",
+		expected:    1,
+	},
+	{
+		description: "valuable letter",
+		input:       "f",
+		expected:    4,
+	},
+	{
+		description: "short word",
+		input:       "at",
+		expected:    2,
+	},
+	{
+		description: "short, valuable word",
+		input:       "zoo",
+		expected:    12,
+	},
+	{
+		description: "medium word",
+		input:       "street",
+		expected:    6,
+	},
+	{
+		description: "medium, valuable word",
+		input:       "quirky",
+		expected:    22,
+	},
+	{
+		description: "long, mixed-case word",
+		input:       "OxyphenButazone",
+		expected:    41,
+	},
+	{
+		description: "english-like word",
+		input:       "pinata",
+		expected:    8,
+	},
+	{
+		description: "empty input",
+		input:       "",
+		expected:    0,
+	},
+	{
+		description: "entire alphabet available",
+		input:       "abcdefghijklmnopqrstuvwxyz",
+		expected:    87,
+	},
 }
