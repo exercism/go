@@ -9,7 +9,7 @@ func TestScore(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Score(tc.dice, tc.category)
 			if tc.expected != actual {
-				t.Fatalf("Score(%#v,%q) = %d, want:%d",tc.dice, tc.category, actual, tc.expected)
+				t.Fatalf("Score(%#v,%q) = %d, want:%d", tc.dice, tc.category, actual, tc.expected)
 			}
 		})
 	}
