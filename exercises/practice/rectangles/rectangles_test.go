@@ -6,10 +6,11 @@ import (
 
 func TestRectangles(t *testing.T) {
 	for _, tc := range testCases {
-		if actual := Count(tc.input); actual != tc.expected {
-			t.Fatalf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Count(tc.input); actual != tc.expected {
+				t.Fatalf("Count(%#v) = %d, want: %d", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
