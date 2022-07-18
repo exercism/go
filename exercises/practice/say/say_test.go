@@ -6,18 +6,19 @@ import (
 
 func TestSay(t *testing.T) {
 	for _, tc := range testCases {
-		actual, ok := Say(tc.input)
-		switch {
-		case tc.expectError:
-			if ok {
-				t.Fatalf("FAIL: %s\nExpected error but received: %v", tc.description, actual)
+		t.Run(tc.description, func(t *testing.T) {
+			actual, ok := Say(tc.input)
+			switch {
+			case tc.expectError:
+				if ok {
+					t.Fatalf("Say(%d) expected error, got: %q", tc.input, actual)
+				}
+			case !ok:
+				t.Fatalf("Say(%d) got ok:%t, want: %q", tc.input, ok, tc.expected)
+			case actual != tc.expected:
+				t.Fatalf("Say(%d) = %q, want: %q", tc.input, actual, tc.expected)
 			}
-		case !ok:
-			t.Fatalf("FAIL: %s\nDid not expect an error", tc.description)
-		case actual != tc.expected:
-			t.Fatalf("FAIL: %s\nExpected: %v\nActual: %v", tc.description, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		})
 	}
 }
 
