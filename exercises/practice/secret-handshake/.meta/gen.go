@@ -12,25 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("secret-handshake", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"commands" : &[]testCase{},
+	}
+	if err := gen.Gen("secret-handshake", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []struct {
-			Description string
-			Property    string
-			Input       struct {
-				Number uint
-			}
-			Expected []string
-		}
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,13 +34,17 @@ var tmpl = `package secret
 {{.Header}}
 
 type secretHandshakeTest struct {
-	code uint
-	h []string
+	description string
+	input       uint
+	expected    []string
 }
 
 var tests = []secretHandshakeTest {
-{{range .J.Cases}} {{range .Cases}}{ {{ .Input.Number }}, {{printf "%#v" .Expected }},
+{{range .J.commands}}{ 
+	description: 	{{printf "%q" .Description }},
+	input: 			{{printf "%d" .Input.Number }}, 
+	expected: 		{{printf "%#v" .Expected }},
 },
-{{end}}{{end}}
+{{end}}
 }
 `
