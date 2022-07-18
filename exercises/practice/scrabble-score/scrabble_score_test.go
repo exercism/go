@@ -3,10 +3,12 @@ package scrabble
 import "testing"
 
 func TestScore(t *testing.T) {
-	for _, test := range scrabbleScoreTests {
-		if actual := Score(test.input); actual != test.expected {
-			t.Errorf("Score(%q) expected %d, Actual %d", test.input, test.expected, actual)
-		}
+	for _, tc := range scrabbleScoreTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Score(tc.input); actual != tc.expected {
+				t.Errorf("Score(%q) = %d, want:%d", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
