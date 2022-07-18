@@ -74,6 +74,15 @@ func TestHasRequiredInfo(t *testing.T) {
 			want: false,
 		},
 		{
+			name: "nil map as address",
+			resident: &Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: nil,
+			},
+			want: false,
+		},
+		{
 			name: "empty map as address",
 			resident: &Resident{
 				Name:    "Rob Pike",
