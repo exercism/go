@@ -23,10 +23,6 @@ func (r *Resident) HasRequiredInfo() bool {
 		return false
 	}
 
-	if _, ok := r.Address["street"]; !ok {
-		return false
-	}
-
 	if r.Address["street"] == "" {
 		return false
 	}
