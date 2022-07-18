@@ -1,42 +1,87 @@
 package encode
 
 // Source: exercism/problem-specifications
-// Commit: 1b7900e run-length-encoding: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: a757698 run-length-encoding: 'lower case' -> 'lowercase' (#1708)
 
-// run-length encode a string
-var encodeTests = []struct {
+type testCase struct {
+	description string
 	input       string
 	expected    string
-	description string
-}{
-	{"", "", "empty string"},
-	{"XYZ", "XYZ", "single characters only are encoded without count"},
-	{"AABBBCCCC", "2A3B4C", "string with no single characters"},
-	{"WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB", "12WB12W3B24WB", "single characters mixed with repeated characters"},
-	{"  hsqq qww  ", "2 hs2q q2w2 ", "multiple whitespace mixed in string"},
-	{"aabbbcccc", "2a3b4c", "lowercase characters"},
+}
+
+// run-length encode a string
+var encodeTests = []testCase{
+	{
+		description: "empty string",
+		input:       "",
+		expected:    "",
+	},
+	{
+		description: "single characters only are encoded without count",
+		input:       "XYZ",
+		expected:    "XYZ",
+	},
+	{
+		description: "string with no single characters",
+		input:       "AABBBCCCC",
+		expected:    "2A3B4C",
+	},
+	{
+		description: "single characters mixed with repeated characters",
+		input:       "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB",
+		expected:    "12WB12W3B24WB",
+	},
+	{
+		description: "multiple whitespace mixed in string",
+		input:       "  hsqq qww  ",
+		expected:    "2 hs2q q2w2 ",
+	},
+	{
+		description: "lowercase characters",
+		input:       "aabbbcccc",
+		expected:    "2a3b4c",
+	},
 }
 
 // run-length decode a string
-var decodeTests = []struct {
-	input       string
-	expected    string
-	description string
-}{
-	{"", "", "empty string"},
-	{"XYZ", "XYZ", "single characters only"},
-	{"2A3B4C", "AABBBCCCC", "string with no single characters"},
-	{"12WB12W3B24WB", "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB", "single characters with repeated characters"},
-	{"2 hs2q q2w2 ", "  hsqq qww  ", "multiple whitespace mixed in string"},
-	{"2a3b4c", "aabbbcccc", "lower case string"},
+var decodeTests = []testCase{
+	{
+		description: "empty string",
+		input:       "",
+		expected:    "",
+	},
+	{
+		description: "single characters only",
+		input:       "XYZ",
+		expected:    "XYZ",
+	},
+	{
+		description: "string with no single characters",
+		input:       "2A3B4C",
+		expected:    "AABBBCCCC",
+	},
+	{
+		description: "single characters with repeated characters",
+		input:       "12WB12W3B24WB",
+		expected:    "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB",
+	},
+	{
+		description: "multiple whitespace mixed in string",
+		input:       "2 hs2q q2w2 ",
+		expected:    "  hsqq qww  ",
+	},
+	{
+		description: "lowercase string",
+		input:       "2a3b4c",
+		expected:    "aabbbcccc",
+	},
 }
 
 // encode and then decode
-var encodeDecodeTests = []struct {
-	input       string
-	expected    string
-	description string
-}{
-	{"zzz ZZ  zZ", "zzz ZZ  zZ", "encode followed by decode gives original string"},
+var encodeDecodeTests = []testCase{
+	{
+		description: "encode followed by decode gives original string",
+		input:       "zzz ZZ  zZ",
+		expected:    "zzz ZZ  zZ",
+	},
 }
