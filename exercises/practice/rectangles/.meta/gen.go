@@ -40,7 +40,10 @@ var testCases = []struct {
 }{
 {{range .J.rectangles}}{
 	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%#v"  .Input.Strings}},
+	input:			[]string{
+		{{range .Input.Strings}}{{ printf "%q" .}},
+		{{end}}
+	},
 	expected:		{{printf "%d"  .Expected}},
 },
 {{end}}
