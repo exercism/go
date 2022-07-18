@@ -5,14 +5,13 @@ import (
 )
 
 func TestScore(t *testing.T) {
-	for _, testCase := range testCases {
-		score := Score(testCase.dice, testCase.category)
-		if testCase.expected != score {
-			t.Fatalf("FAIL: %s\nScore %v as %s. expected %d, got %d",
-				testCase.description, testCase.dice, testCase.category,
-				testCase.expected, score)
-		}
-		t.Logf("PASS: %s", testCase.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Score(tc.dice, tc.category)
+			if tc.expected != actual {
+				t.Fatalf("Score(%#v,%q) = %d, want:%d", tc.dice, tc.category, actual, tc.expected)
+			}
+		})
 	}
 }
 
