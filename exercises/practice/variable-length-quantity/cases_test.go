@@ -1,161 +1,156 @@
 package variablelengthquantity
 
 // Source: exercism/problem-specifications
-// Commit: 191f8086 variable-length-quantity: add mention of 'error' to comment
-// Problem Specifications Version: 1.2.0
+// Commit: d137db1 Format using prettier (#1917)
 
-// Encode a series of integers, producing a series of bytes.
 var encodeTestCases = []struct {
 	description string
 	input       []uint32
-	output      []byte
+	expected    []byte
 }{
 	{
-		"zero",
-		[]uint32{0x0},
-		[]byte{0x0},
+		description: "zero",
+		input:       []uint32{0x0},
+		expected:    []byte{0x0},
 	},
 	{
-		"arbitrary single byte",
-		[]uint32{0x40},
-		[]byte{0x40},
+		description: "arbitrary single byte",
+		input:       []uint32{0x40},
+		expected:    []byte{0x40},
 	},
 	{
-		"largest single byte",
-		[]uint32{0x7f},
-		[]byte{0x7f},
+		description: "largest single byte",
+		input:       []uint32{0x7f},
+		expected:    []byte{0x7f},
 	},
 	{
-		"smallest double byte",
-		[]uint32{0x80},
-		[]byte{0x81, 0x0},
+		description: "smallest double byte",
+		input:       []uint32{0x80},
+		expected:    []byte{0x81, 0x0},
 	},
 	{
-		"arbitrary double byte",
-		[]uint32{0x2000},
-		[]byte{0xc0, 0x0},
+		description: "arbitrary double byte",
+		input:       []uint32{0x2000},
+		expected:    []byte{0xc0, 0x0},
 	},
 	{
-		"largest double byte",
-		[]uint32{0x3fff},
-		[]byte{0xff, 0x7f},
+		description: "largest double byte",
+		input:       []uint32{0x3fff},
+		expected:    []byte{0xff, 0x7f},
 	},
 	{
-		"smallest triple byte",
-		[]uint32{0x4000},
-		[]byte{0x81, 0x80, 0x0},
+		description: "smallest triple byte",
+		input:       []uint32{0x4000},
+		expected:    []byte{0x81, 0x80, 0x0},
 	},
 	{
-		"arbitrary triple byte",
-		[]uint32{0x100000},
-		[]byte{0xc0, 0x80, 0x0},
+		description: "arbitrary triple byte",
+		input:       []uint32{0x100000},
+		expected:    []byte{0xc0, 0x80, 0x0},
 	},
 	{
-		"largest triple byte",
-		[]uint32{0x1fffff},
-		[]byte{0xff, 0xff, 0x7f},
+		description: "largest triple byte",
+		input:       []uint32{0x1fffff},
+		expected:    []byte{0xff, 0xff, 0x7f},
 	},
 	{
-		"smallest quadruple byte",
-		[]uint32{0x200000},
-		[]byte{0x81, 0x80, 0x80, 0x0},
+		description: "smallest quadruple byte",
+		input:       []uint32{0x200000},
+		expected:    []byte{0x81, 0x80, 0x80, 0x0},
 	},
 	{
-		"arbitrary quadruple byte",
-		[]uint32{0x8000000},
-		[]byte{0xc0, 0x80, 0x80, 0x0},
+		description: "arbitrary quadruple byte",
+		input:       []uint32{0x8000000},
+		expected:    []byte{0xc0, 0x80, 0x80, 0x0},
 	},
 	{
-		"largest quadruple byte",
-		[]uint32{0xfffffff},
-		[]byte{0xff, 0xff, 0xff, 0x7f},
+		description: "largest quadruple byte",
+		input:       []uint32{0xfffffff},
+		expected:    []byte{0xff, 0xff, 0xff, 0x7f},
 	},
 	{
-		"smallest quintuple byte",
-		[]uint32{0x10000000},
-		[]byte{0x81, 0x80, 0x80, 0x80, 0x0},
+		description: "smallest quintuple byte",
+		input:       []uint32{0x10000000},
+		expected:    []byte{0x81, 0x80, 0x80, 0x80, 0x0},
 	},
 	{
-		"arbitrary quintuple byte",
-		[]uint32{0xff000000},
-		[]byte{0x8f, 0xf8, 0x80, 0x80, 0x0},
+		description: "arbitrary quintuple byte",
+		input:       []uint32{0xff000000},
+		expected:    []byte{0x8f, 0xf8, 0x80, 0x80, 0x0},
 	},
 	{
-		"maximum 32-bit integer input",
-		[]uint32{0xffffffff},
-		[]byte{0x8f, 0xff, 0xff, 0xff, 0x7f},
+		description: "maximum 32-bit integer input",
+		input:       []uint32{0xffffffff},
+		expected:    []byte{0x8f, 0xff, 0xff, 0xff, 0x7f},
 	},
 	{
-		"two single-byte values",
-		[]uint32{0x40, 0x7f},
-		[]byte{0x40, 0x7f},
+		description: "two single-byte values",
+		input:       []uint32{0x40, 0x7f},
+		expected:    []byte{0x40, 0x7f},
 	},
 	{
-		"two multi-byte values",
-		[]uint32{0x4000, 0x123456},
-		[]byte{0x81, 0x80, 0x0, 0xc8, 0xe8, 0x56},
+		description: "two multi-byte values",
+		input:       []uint32{0x4000, 0x123456},
+		expected:    []byte{0x81, 0x80, 0x0, 0xc8, 0xe8, 0x56},
 	},
 	{
-		"many multi-byte values",
-		[]uint32{0x2000, 0x123456, 0xfffffff, 0x0, 0x3fff, 0x4000},
-		[]byte{0xc0, 0x0, 0xc8, 0xe8, 0x56, 0xff, 0xff, 0xff, 0x7f, 0x0, 0xff, 0x7f, 0x81, 0x80, 0x0},
+		description: "many multi-byte values",
+		input:       []uint32{0x2000, 0x123456, 0xfffffff, 0x0, 0x3fff, 0x4000},
+		expected:    []byte{0xc0, 0x0, 0xc8, 0xe8, 0x56, 0xff, 0xff, 0xff, 0x7f, 0x0, 0xff, 0x7f, 0x81, 0x80, 0x0},
 	},
 }
 
-// Decode a series of bytes, producing a series of integers.
 var decodeTestCases = []struct {
 	description   string
 	input         []byte
-	output        []uint32 // nil slice indicates error expected.
+	expected      []uint32
 	errorExpected bool
-}{
-
+}{{
+	description:   "one byte",
+	input:         []byte{0x7f},
+	expected:      []uint32{0x7f},
+	errorExpected: false,
+},
 	{
-		"one byte",
-		[]byte{0x7f},
-		[]uint32{0x7f},
-		false,
+		description:   "two bytes",
+		input:         []byte{0xc0, 0x0},
+		expected:      []uint32{0x2000},
+		errorExpected: false,
 	},
 	{
-		"two bytes",
-		[]byte{0xc0, 0x0},
-		[]uint32{0x2000},
-		false,
+		description:   "three bytes",
+		input:         []byte{0xff, 0xff, 0x7f},
+		expected:      []uint32{0x1fffff},
+		errorExpected: false,
 	},
 	{
-		"three bytes",
-		[]byte{0xff, 0xff, 0x7f},
-		[]uint32{0x1fffff},
-		false,
+		description:   "four bytes",
+		input:         []byte{0x81, 0x80, 0x80, 0x0},
+		expected:      []uint32{0x200000},
+		errorExpected: false,
 	},
 	{
-		"four bytes",
-		[]byte{0x81, 0x80, 0x80, 0x0},
-		[]uint32{0x200000},
-		false,
+		description:   "maximum 32-bit integer",
+		input:         []byte{0x8f, 0xff, 0xff, 0xff, 0x7f},
+		expected:      []uint32{0xffffffff},
+		errorExpected: false,
 	},
 	{
-		"maximum 32-bit integer",
-		[]byte{0x8f, 0xff, 0xff, 0xff, 0x7f},
-		[]uint32{0xffffffff},
-		false,
+		description:   "incomplete sequence causes error",
+		input:         []byte{0xff},
+		expected:      []uint32(nil),
+		errorExpected: true,
 	},
 	{
-		"incomplete sequence causes error",
-		[]byte{0xff},
-		[]uint32{},
-		true,
+		description:   "incomplete sequence causes error, even if value is zero",
+		input:         []byte{0x80},
+		expected:      []uint32(nil),
+		errorExpected: true,
 	},
 	{
-		"incomplete sequence causes error, even if value is zero",
-		[]byte{0x80},
-		[]uint32{},
-		true,
-	},
-	{
-		"multiple values",
-		[]byte{0xc0, 0x0, 0xc8, 0xe8, 0x56, 0xff, 0xff, 0xff, 0x7f, 0x0, 0xff, 0x7f, 0x81, 0x80, 0x0},
-		[]uint32{0x2000, 0x123456, 0xfffffff, 0x0, 0x3fff, 0x4000},
-		false,
+		description:   "multiple values",
+		input:         []byte{0xc0, 0x0, 0xc8, 0xe8, 0x56, 0xff, 0xff, 0xff, 0x7f, 0x0, 0xff, 0x7f, 0x81, 0x80, 0x0},
+		expected:      []uint32{0x2000, 0x123456, 0xfffffff, 0x0, 0x3fff, 0x4000},
+		errorExpected: false,
 	},
 }

@@ -6,12 +6,13 @@ import (
 )
 
 func TestScale(t *testing.T) {
-	for _, test := range scaleTestCases {
-		actual := Scale(test.tonic, test.interval)
-		if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", test.expected) {
-			t.Fatalf("FAIL: %s - Scale(%q, %q)\nExpected: %q\nActual: %q", test.description, test.tonic, test.interval, test.expected, actual)
-		}
-		t.Logf("PASS: %s", test.description)
+	for _, tc := range scaleTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Scale(tc.tonic, tc.interval)
+			if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", tc.expected) {
+				t.Fatalf("Scale(%q, %q)\n got:%#v\nwant:%#v", tc.tonic, tc.interval, actual, tc.expected)
+			}
+		})
 	}
 }
 

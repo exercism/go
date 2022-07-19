@@ -3,12 +3,12 @@ package strand
 import "testing"
 
 func TestRNATranscription(t *testing.T) {
-	for _, test := range rnaTests {
-		if actual := ToRNA(test.input); actual != test.expected {
-			t.Fatalf("FAIL: %s - ToRNA(%q): %q, expected %q",
-				test.description, test.input, actual, test.expected)
-		}
-		t.Logf("PASS: %s", test.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := ToRNA(tc.input); actual != tc.expected {
+				t.Fatalf("ToRNA(%q) = %q, want: %q", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -17,8 +17,8 @@ func BenchmarkRNATranscription(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range rnaTests {
-			ToRNA(test.input)
+		for _, tc := range testCases {
+			ToRNA(tc.input)
 		}
 	}
 }

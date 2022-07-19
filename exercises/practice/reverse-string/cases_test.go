@@ -1,8 +1,7 @@
 package reverse
 
 // Source: exercism/problem-specifications
-// Commit: 6c95c2e reverse-string: Add a test with an even-sized word (#1519)
-// Problem Specifications Version: 1.2.0
+// Commit: b820099 Allow prettier to format more files (#1966)
 
 type reverseTestCase struct {
 	description string

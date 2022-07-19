@@ -1,5 +1,5 @@
 {
-  "blurb": "Score a single throw of dice in the game Yacht",
+  "blurb": "Score a single throw of dice in the game Yacht.",
   "authors": [
     "zeimusu"
   ],
@@ -10,7 +10,8 @@
     "ferhatelmas",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [

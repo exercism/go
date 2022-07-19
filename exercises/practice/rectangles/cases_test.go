@@ -1,8 +1,7 @@
 package rectangles
 
 // Source: exercism/problem-specifications
-// Commit: 61bccfa rectangles: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 55b098b rectangles: Add test for missing sides (#2050)
 
 var testCases = []struct {
 	description string
@@ -130,5 +129,18 @@ var testCases = []struct {
 			"          +-+",
 		},
 		expected: 60,
+	},
+	{
+		description: "rectangles must have four sides",
+		input: []string{
+			"+-+ +-+",
+			"| | | |",
+			"+-+-+-+",
+			"  | |  ",
+			"+-+-+-+",
+			"| | | |",
+			"+-+ +-+",
+		},
+		expected: 5,
 	},
 }

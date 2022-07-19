@@ -1,8 +1,7 @@
 package sublist
 
 // Source: exercism/problem-specifications
-// Commit: 1854cd4 sublist: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 5bf8c7d sublist test: substring does not make a sublist (#1866)
 
 var testCases = []struct {
 	description string
@@ -101,6 +100,12 @@ var testCases = []struct {
 		expected:    "unequal",
 	},
 	{
+		description: "first list missing additional digits from second list",
+		listOne:     []int{1, 2},
+		listTwo:     []int{1, 22},
+		expected:    "unequal",
+	},
+	{
 		description: "order matters to a list",
 		listOne:     []int{1, 2, 3},
 		listTwo:     []int{3, 2, 1},
@@ -110,12 +115,6 @@ var testCases = []struct {
 		description: "same digits but different numbers",
 		listOne:     []int{1, 0, 1},
 		listTwo:     []int{10, 1},
-		expected:    "unequal",
-	},
-	{
-		description: "unfinished sequence",
-		listOne:     []int{1, 2, 5},
-		listTwo:     []int{0, 3, 1, 2},
 		expected:    "unequal",
 	},
 }

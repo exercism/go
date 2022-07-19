@@ -52,17 +52,14 @@ func isSeparator(r rune) bool {
 	return unicode.IsSpace(r)
 }
 
-var chromaticScale = []string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A",
-	"A#", "B"}
-var flatChromaticScale = []string{"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab",
-	"A", "Bb", "B"}
-var flatKeys = []string{"F", "Bb", "Eb", "Ab", "Db", "Gb", "d", "g", "c", "f", "bb",
-	"eb"}
+var chromaticScale = []string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}
+var flatChromaticScale = []string{"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"}
+var flatKeys = []string{"F", "Bb", "Eb", "Ab", "Db", "Gb", "d", "g", "c", "f", "bb", "eb"}
 
 // Scale returns a type of scale based on the inputs
 func Scale(tonic, interval string) []string {
 	if interval == "" {
-		interval = strings.Repeat("m", 12)
+		interval = strings.Repeat("m", 11)
 	}
 	ft := formatTonic(tonic)
 	scale := chromaticScale
@@ -75,7 +72,7 @@ func Scale(tonic, interval string) []string {
 
 func printScale(tonic, interval string, start int, arr []string) []string {
 	res := []string{tonic}
-	for _, e := range interval[:len(interval)-1] {
+	for _, e := range interval {
 		switch e {
 		case 'm':
 			start++

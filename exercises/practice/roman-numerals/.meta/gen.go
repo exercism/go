@@ -12,20 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("roman-numerals", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"roman": &[]testCase{},
+	}
+	if err := gen.Gen("roman-numerals", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Input struct {
-			Number int
-		}
-		Expected string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -34,12 +34,17 @@ var tmpl = `package romannumerals
 {{.Header}}
 
 type romanNumeralTest struct {
-	arabic   int
-	roman    string
-	hasError bool
+	description string
+	input       int
+	expected    string
 }
 
-var romanNumeralTests = []romanNumeralTest {
-{{range .J.Cases}}{ {{.Input.Number}}, "{{.Expected}}", false},
-{{end}}}
+var validRomanNumeralTests = []romanNumeralTest{
+	{{range .J.roman}}{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%d" .Input.Number}},
+		expected:    {{printf "%q" .Expected}},
+	},
+	{{end}}
+}
 `
