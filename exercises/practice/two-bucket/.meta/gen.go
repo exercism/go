@@ -61,8 +61,8 @@ var testCases = []bucketTestCase {
 		goal:           {{ printf "%d" .Input.Goal}},
 		startBucket:   	{{ printf "%q" .Input.StartBucket}},
 		goalBucket:    	{{ printf "%q" .Expected.GoalBucket}},
-		moves:        	{{ printf "%q" .Expected.Moves}},
-		otherBucket:   	{{ printf "%q" .Expected.OtherBucket}},
+		moves:        	{{ printf "%d" .Expected.Moves}},
+		otherBucket:   	{{ printf "%d" .Expected.OtherBucket}},
 		expectedError: 	{{ printf "%q" .Expected.Error}},
 },
 {{end}}}
