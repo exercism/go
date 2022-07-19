@@ -3,18 +3,20 @@ package wordy
 import "testing"
 
 func TestAnswer(t *testing.T) {
-	for _, test := range tests {
-		switch answer, ok := Answer(test.question); {
-		case !ok:
-			if test.ok {
-				t.Fatalf("FAIL: %s\nAnswer(%q)\nreturned ok = false, expecting true.", test.description, test.question)
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, ok := Answer(tc.question)
+			switch {
+			case tc.expectError:
+				if ok {
+					t.Fatalf("Answer(%q) expected error, got: %d", tc.question, actual)
+				}
+			case !ok:
+				t.Fatalf("Answer(%q) returned ok=%t, want: %d", tc.question, ok, tc.expected)
+			case actual != tc.expected:
+				t.Fatalf("Answer(%q) = %d, want: %d", tc.question, actual, tc.expected)
 			}
-		case !test.ok:
-			t.Errorf("FAIL: %s\nAnswer(%q)\nreturned %d, %t, expecting ok = false.", test.description, test.question, answer, ok)
-		case answer != test.answer:
-			t.Errorf("FAIL: %s\nAnswer(%q)\nreturned %d, expected %d.", test.description, test.question, answer, test.answer)
-		}
-		t.Logf("PASS: %s", test.description)
+		})
 	}
 }
 
