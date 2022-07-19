@@ -36,9 +36,8 @@ for k, v := range hash {
 ```
 
 ~~~~exercism/note
-It may seem the above output is incorrect, as one would expect the last statement to be the first. 
-The Go lang specification says that in a map, the iteration order is not guaranteed, which means the output is technically correct.
-To read more visit - https://go.dev/ref/spec#RangeClause
+It may seem the above output is incorrect, as one would expect the first key/value pair on the declaration of the map `9 10` to be the first one printed and not the last.
+However, maps are unordered by nature - there isn't a first or last key/value pair. Because of that, when iterating over the entries of a map, the order by which entries will be visited will be random and not follow any specific pattern. This means the above output is possible but might differ from what you get if you try to run this yourself. To learn more about this see [Go Language Spec: range clause](https://go.dev/ref/spec#RangeClause).
 ~~~~
 
 ## Iteration omitting key or value
