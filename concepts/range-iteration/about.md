@@ -30,10 +30,16 @@ for k, v := range hash {
   fmt.Println(k, v)
 }
 // outputs, for example:
-// 9 10
 // 99 20
 // 999 30
+// 9 10
 ```
+
+~~~~exercism/note
+It may seem the above output is incorrect, as one would expect the last statement to be the first. 
+The Go lang specification says that in a map, the iteration order is not guaranteed, which means the output is technically correct.
+To read more visit - https://go.dev/ref/spec#RangeClause
+~~~~
 
 ## Iteration omitting key or value
 
