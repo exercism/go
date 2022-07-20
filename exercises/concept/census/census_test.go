@@ -228,6 +228,20 @@ func TestCount(t *testing.T) {
 					Age:     0,
 					Address: map[string]string{},
 				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"street": "Main St.",
+					},
+				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"city": "London",
+					},
+				},
 			},
 			want: 1,
 		},
