@@ -13,27 +13,30 @@ const (
 // Render translates markdown to HTML
 func Render(markdown string) string {
 	var itemList []string
-	var html string
+	var html = strings.Builder{}
 	for _, line := range strings.Split(markdown, "\n") {
 		if line[0] == listItemMarker {
 			itemList = append(itemList, fmt.Sprintf("<li>%s</li>", renderHTML(line[2:])))
 			continue
 		} else if len(itemList) != 0 {
-			html += printList(&itemList)
+			html.WriteString(fmt.Sprintf("<ul>%s</ul>", strings.Join(itemList, "")))
+			itemList = []string{}
 		}
 		if line[0] == headingMarker {
 			headerWeight := getHeadingWeight(line)
 			if headerWeight != -1 {
-				html += fmt.Sprintf("<h%d>%s</h%d>", headerWeight, line[headerWeight+1:], headerWeight)
+				html.WriteString(fmt.Sprintf("<h%d>%s</h%d>", headerWeight, line[headerWeight+1:], headerWeight))
 			} else {
-				html += fmt.Sprintf("<p>%s</p>", line)
+				html.WriteString(fmt.Sprintf("<p>%s</p>", line))
 			}
 			continue
 		}
-		html += "<p>" + renderHTML(line) + "</p>"
+		html.WriteString(fmt.Sprintf("<p>%s</p>", renderHTML(line)))
 	}
-	html += printList(&itemList)
-	return html
+	if len(itemList) != 0 {
+		html.WriteString(fmt.Sprintf("<ul>%s</ul>", strings.Join(itemList, "")))
+	}
+	return html.String()
 }
 
 func getHeadingWeight(line string) int {
@@ -58,16 +61,4 @@ func renderHTML(markdownLine string) string {
 		htmlLine = strings.Replace(htmlLine, "_", "</em>", 1)
 	}
 	return htmlLine
-}
-
-func printList(itemList *[]string) string {
-	// empty list after return
-	defer func() {
-		*itemList = []string{}
-	}()
-	if len(*itemList) != 0 {
-		return fmt.Sprintf("<ul>%s</ul>", strings.Join(*itemList, ""))
-	}
-	// reset list
-	return ""
 }
