@@ -28,11 +28,6 @@ func Render(markdown string) string {
 			} else {
 				html += fmt.Sprintf("<p>%s</p>", line)
 			}
-			if headerWeight <= 6 {
-
-			} else {
-
-			}
 			continue
 		}
 		html += "<p>" + renderHTML(line) + "</p>"
