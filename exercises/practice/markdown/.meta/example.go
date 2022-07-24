@@ -1,70 +1,78 @@
 package markdown
 
 import (
-	"bytes"
 	"fmt"
-	"regexp"
+	"strings"
 )
 
-type charType int
-
-// used to keep track of which tag to close
 const (
-	none charType = iota
-	hash
-	star
+	headingMarker  = '#'
+	listItemMarker = '*'
 )
 
 // Render translates markdown to HTML
-func Render(markdown string) (html string) {
-	// first the easy one, via regexp substitution
-	reStrong := regexp.MustCompile("(__)(.*)(__)")
-	s := reStrong.ReplaceAll([]byte(markdown), []byte("<strong>$2</strong>"))
-	reEm := regexp.MustCompile("(_)(.*)(_)")
-	s = reEm.ReplaceAll(s, []byte("<em>$2</em>"))
-	// now manage <li> and <hN>
-	var output bytes.Buffer
-	starcount := 0
-	hcount := 0
-	needtoClose := none
-	for i := 0; i < len(s); i++ {
-		switch s[i] {
-		case '#':
-			for s[i] == '#' {
-				hcount++
-				i++
+func Render(markdown string) string {
+	var itemList []string
+	var html string
+	for _, line := range strings.Split(markdown, "\n") {
+		if line[0] == listItemMarker {
+			itemList = append(itemList, fmt.Sprintf("<li>%s</li>", renderHTML(line[2:])))
+			continue
+		} else if len(itemList) != 0 {
+			html += printList(&itemList)
+		}
+		if line[0] == headingMarker {
+			headerWeight := getHeadingWeight(line)
+			if headerWeight != -1 {
+				html += fmt.Sprintf("<h%d>%s</h%d>", headerWeight, line[headerWeight+1:], headerWeight)
+			} else {
+				html += fmt.Sprintf("<p>%s</p>", line)
 			}
-			output.WriteString(fmt.Sprintf("<h%d>", hcount))
-			needtoClose = hash
-		case '*':
-			if starcount == 0 {
-				output.WriteString("<ul>")
-			}
-			i++
-			starcount++
-			output.WriteString("<li>")
-			needtoClose = star
-		case '\n':
-			if needtoClose == hash {
-				output.WriteString(fmt.Sprintf("</h%d>", hcount))
-			}
-			if needtoClose == star {
-				output.WriteString("</li>")
-			}
+			if headerWeight <= 6 {
 
-		default:
-			output.WriteByte(s[i])
+			} else {
 
+			}
+			continue
+		}
+		html += "<p>" + renderHTML(line) + "</p>"
+	}
+	html += printList(&itemList)
+	return html
+}
+
+func getHeadingWeight(line string) int {
+	for i := 0; i <= 6; i++ {
+		if line[i] != headingMarker {
+			return i
 		}
 	}
-	if starcount > 0 || hcount > 0 {
-		if needtoClose == hash {
-			output.WriteString(fmt.Sprintf("</h%d>", hcount))
-		}
-		if needtoClose == star {
-			output.WriteString("</li></ul>")
-		}
-		return output.String()
+	return -1
+}
+
+func renderHTML(markdownLine string) string {
+	htmlLine := markdownLine
+	// Convert all __ pairs into <strong>...</strong>
+	for strings.Contains(htmlLine, "__") {
+		htmlLine = strings.Replace(htmlLine, "__", "<strong>", 1)
+		htmlLine = strings.Replace(htmlLine, "__", "</strong>", 1)
 	}
-	return fmt.Sprintf("<p>%s</p>", string(s))
+	// Convert all _ pairs into <em>...</em>
+	for strings.Contains(htmlLine, "_") {
+		htmlLine = strings.Replace(htmlLine, "_", "<em>", 1)
+		htmlLine = strings.Replace(htmlLine, "_", "</em>", 1)
+	}
+	return htmlLine
+}
+
+func printList(itemList *[]string) string {
+	// empty list after return
+	defer func() {
+		*itemList = []string{}
+	}()
+	if len(*itemList) != 0 {
+		return fmt.Sprintf("<ul>%s</ul>", strings.Join(*itemList, ""))
+	}
+	// reset list
+	return ""
 }
