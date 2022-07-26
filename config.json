@@ -725,7 +725,7 @@
         "uuid": "b6d05e8f-542b-4789-9cbc-7ba132a5f03d",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 4,
+        "difficulty": 3,
         "topics": [
           "arrays",
           "loops",
