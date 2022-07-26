@@ -47,26 +47,23 @@ var verseTestCases = []struct {
 }
 
 func TestBottlesVerse(t *testing.T) {
-	for _, tt := range verseTestCases {
-		actualVerse, err := Verse(tt.verse)
-		if tt.expectErr {
-			// check if err is of error type
-			var _ error = err
+	for _, tc := range verseTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actualVerse, err := Verse(tc.verse)
+			if tc.expectErr {
+				if err == nil {
+					t.Fatalf("Verse(%d) expected an error, but error is nil", tc.verse)
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("Verse(%d) returned error: %v, want:%q", tc.verse, err, tc.expectedVerse)
+				}
 
-			// if we expect an error and there isn't one
-			if err == nil {
-				t.Errorf("Verse(%d): expected an error, but error is nil", tt.verse)
+				if actualVerse != tc.expectedVerse {
+					t.Fatalf("Verse(%d)\n got:%q\nwant:%q", tc.verse, actualVerse, tc.expectedVerse)
+				}
 			}
-		} else {
-			if actualVerse != tt.expectedVerse {
-				t.Fatalf("Verse(%d):\nexpected\n%s\nactual\n%s", tt.verse, tt.expectedVerse, actualVerse)
-			}
-
-			// if we don't expect an error and there is one
-			if err != nil {
-				t.Errorf("Verse(%d): expected no error, but error is: %s", tt.verse, err)
-			}
-		}
+		})
 	}
 }
 
@@ -85,27 +82,22 @@ var versesTestCases = []struct {
 }
 
 func TestSeveralVerses(t *testing.T) {
-
-	for _, tt := range versesTestCases {
-		actualVerse, err := Verses(tt.upperBound, tt.lowerBound)
-		if tt.expectErr {
-			// check if err is of error type
-			var _ error = err
-
-			// if we expect an error and there isn't one
-			if err == nil {
-				t.Errorf("Verses(%d, %d): expected an error, but error is nil", tt.upperBound, tt.lowerBound)
+	for _, tc := range versesTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actualVerse, err := Verses(tc.upperBound, tc.lowerBound)
+			if tc.expectErr {
+				if err == nil {
+					t.Fatalf("Verses(%d,%d) expected an error, but error is nil", tc.upperBound, tc.lowerBound)
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("Verses(%d,%d) returned error: %v, want:%q", tc.upperBound, tc.lowerBound, err, tc.expectedVerse)
+				}
+				if actualVerse != tc.expectedVerse {
+					t.Fatalf("Verse(%d,%d)\n got:%q\nwant:%q", tc.upperBound, tc.lowerBound, actualVerse, tc.expectedVerse)
+				}
 			}
-		} else {
-			if actualVerse != tt.expectedVerse {
-				t.Fatalf("Verses(%d, %d):\nexpected\n%s\nactual\n%s", tt.upperBound, tt.lowerBound, tt.expectedVerse, actualVerse)
-			}
-
-			// if we don't expect an error and there is one
-			if err != nil {
-				t.Errorf("Verses(%d, %d): expected no error, but error is: %s", tt.upperBound, tt.lowerBound, err)
-			}
-		}
+		})
 	}
 }
 
@@ -124,25 +116,21 @@ func BenchmarkSeveralVerses(b *testing.B) {
 
 func TestEntireSong(t *testing.T) {
 	expected, err := Verses(99, 0)
-	var _ error = err
 	if err != nil {
 		t.Fatalf("unexpected error calling Verses(99,0)")
 	}
 	actual := Song()
 
 	if expected != actual {
-		msg := `
+		t.Fatalf(`
 		  Did not sing the whole song correctly.
 
 			Expected:
-
 			%v
 
 			Actual:
-
 			%v
-		`
-		t.Fatalf(msg, expected, actual)
+		`, expected, actual)
 	}
 }
 
