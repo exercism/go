@@ -17,12 +17,14 @@ $configlet_path info > /dev/null
 
 failed_generators=""
 
+github_token=$1
+
 echo "[INFO] updating exercises"
 for generator in ./exercises/practice/*/.meta/gen.go; do
   exercise=$(echo "${generator}" | cut -d/ -f4)
   echo "[INFO] updating ${exercise}"
   $configlet_path sync --offline --update -e "${exercise}"
-  if ! GO111MODULE=off go run "${generator}" > /dev/null; then
+  if ! GO111MODULE=off go run "${generator}" -github_token="${github_token}" > /dev/null; then
           echo "[ERROR] failed to run generator for ${exercise}"
           failed_generators="${exercise} ${failed_generators}"
   fi
@@ -35,6 +37,7 @@ then
       do
           echo "* ${generator}"
       done
+      echo "[NOTE] if error 'json: cannot unmarshal object into Go value of type []gen.Commit' occurs, try to provide Github access token by using '$0 <token>'"
       exit 1
 fi
 
