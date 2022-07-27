@@ -39,11 +39,18 @@ func (c Commit) Summary() string {
 	return fmt.Sprintf("%s %s", c.Sha[0:7], lines[0])
 }
 
-func getRemoteCommit(exercise string) (Header, error) {
+func getRemoteCommit(exercise, token string) (Header, error) {
 	url := fmt.Sprintf(commitsURL, exercise)
 	fmt.Printf("[REMOTE] fetching latest commit (source: %s)\n", url)
 
-	resp, err := httpClient.Get(url)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return Header{}, err
+	}
+	if token != "" {
+		req.Header.Set("Authorization", fmt.Sprintf("token %s", token))
+	}
+	resp, err := httpClient.Do(req)
 	if err != nil {
 		return Header{}, fmt.Errorf("failed to fetch latest commit: %w", err)
 	}

@@ -3,6 +3,7 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"go/format"
 	"net/http"
@@ -39,8 +40,8 @@ var problemSpecificationsDir string
 // the exercise directory. Falls back to the present working directory.
 var exerciseDir string
 
-// httpClient creates a http client with a timeout of 10 seconds in order not to get stuck waiting for a response.
-var httpClient = &http.Client{Timeout: 10 * time.Second}
+// httpClient creates a http client with a timeout of 20 seconds in order not to get stuck waiting for a response.
+var httpClient = &http.Client{Timeout: 20 * time.Second}
 
 // Header tells how the test data was generated, for display in the header of cases_test.go
 type Header struct {
@@ -65,6 +66,9 @@ type testCase struct {
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
+	var githubToken = ""
+	flag.StringVar(&githubToken, "github_token", "", "Token used in Authorization header for Github")
+	flag.Parse()
 	// Determine the exercise directory.
 	// Use runtime.Caller to determine path location of the generator main package.
 	// Call frames: 0 is this frame, Gen().
@@ -102,7 +106,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		if err != nil {
 			return err
 		}
-		header, err = getRemoteCommit(exercise)
+		header, err = getRemoteCommit(exercise, githubToken)
 		if err != nil {
 			return err
 		}
