@@ -1,15 +1,41 @@
 #!/bin/sh
 
-for dir in exercises/*/; do
-  file="$dir/.meta/gen.go"
-  if [ -f $file ]; then
-    cd "$dir/.meta"
-    echo "Generating $(basename $dir)"
-    if ! go run gen.go; then
-      echo "[FAIL]: Generator $(basename $dir) gives error"
-      exit $?
-    fi
-    cd -
+echo "[INFO] searching for configlet"
+
+if [ -x configlet ]; then
+  configlet_path=configlet # configlet globally installed
+elif [ -x ./bin/configlet ]; then
+  configlet_path=./bin/configlet # configlet in ./bin
+else
+  echo "[ERROR] configlet is needed to be installed globally or in ./bin/configlet to sync exercises before running generators (install script: ./bin/fetch-configlet)"
+  exit 1
+fi
+
+echo "[INFO] updating cached 'problem-specifications' data..."
+# run info command to update cached 'problem-specifications' data
+$configlet_path info > /dev/null
+
+failed_generators=""
+
+echo "[INFO] updating exercises"
+for generator in ./exercises/practice/*/.meta/gen.go; do
+  exercise=$(echo "${generator}" | cut -d/ -f4)
+  echo "[INFO] updating ${exercise}"
+  $configlet_path sync --offline --update -e "${exercise}"
+  if ! GO111MODULE=off go run "${generator}" > /dev/null; then
+          echo "[ERROR] failed to run generator for ${exercise}"
+          failed_generators="${exercise} ${failed_generators}"
   fi
 done
-echo "[SUCCESS]: All generators are run"
+
+if [ -n "${failed_generators}" ]
+then
+      echo "[ERROR] generator(s) failed, please manually re-run by using 'GO111MODULE=off go run <path to gen.go>':"
+      for generator in ${failed_generators}
+      do
+          echo "* ${generator}"
+      done
+      exit 1
+fi
+
+echo "[SUCCESS]: all generators finished successful"
