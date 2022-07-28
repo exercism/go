@@ -27,12 +27,13 @@ func Render(markdown string) string {
 				pos++
 				char = markdown[pos]
 			}
-			if header == 7 {
+			switch {
+			case header == 7:
 				html += fmt.Sprintf("<p>%s ", strings.Repeat("#", header))
-			} else if he {
+			case he:
 				html += "# "
 				header--
-			} else {
+			default:
 				html += fmt.Sprintf("<h%d>", header)
 			}
 			pos++
@@ -44,7 +45,7 @@ func Render(markdown string) string {
 				html += "<ul>"
 			}
 			list++
-			if listOpened == false {
+			if !listOpened {
 				html += "<li>"
 				listOpened = true
 			} else {
@@ -54,7 +55,7 @@ func Render(markdown string) string {
 			continue
 		}
 		if char == '\n' {
-			if listOpened == true && strings.LastIndex(markdown, "\n") == pos && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*")  {
+			if listOpened && strings.LastIndex(markdown, "\n") == pos && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*") {
 				html += "</li></ul><p>"
 				listOpened = false
 				list = 0
@@ -76,9 +77,10 @@ func Render(markdown string) string {
 			break
 		}
 	}
-	if header == 7 {
-		return html + fmt.Sprint("</p>")
-	} else if header > 0 {
+	switch {
+	case header == 7:
+		return html + "</p>"
+	case header > 0:
 		return html + fmt.Sprintf("</h%d>", header)
 	}
 	if list > 0 {
