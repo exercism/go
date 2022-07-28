@@ -1,64 +1,92 @@
 package markdown
 
+// implementation to refactor
+
 import (
 	"fmt"
 	"strings"
 )
 
-const (
-	headingMarker  = '#'
-	listItemMarker = '*'
-)
-
 // Render translates markdown to HTML
 func Render(markdown string) string {
-	var itemList []string
-	var html = strings.Builder{}
-	for _, line := range strings.Split(markdown, "\n") {
-		if line[0] == listItemMarker {
-			itemList = append(itemList, fmt.Sprintf("<li>%s</li>", renderHTML(line[2:])))
-			continue
-		} else if len(itemList) != 0 {
-			html.WriteString(fmt.Sprintf("<ul>%s</ul>", strings.Join(itemList, "")))
-			itemList = []string{}
-		}
-		if line[0] == headingMarker {
-			headerWeight := getHeadingWeight(line)
-			if headerWeight != -1 {
-				html.WriteString(fmt.Sprintf("<h%d>%s</h%d>", headerWeight, line[headerWeight+1:], headerWeight))
-			} else {
-				html.WriteString(fmt.Sprintf("<p>%s</p>", line))
+	header := 0
+	markdown = strings.Replace(markdown, "__", "<strong>", 1)
+	markdown = strings.Replace(markdown, "__", "</strong>", 1)
+	markdown = strings.Replace(markdown, "_", "<em>", 1)
+	markdown = strings.Replace(markdown, "_", "</em>", 1)
+	pos := 0
+	list := 0
+	listOpened := false
+	html := ""
+	he := false
+	for {
+		char := markdown[pos]
+		if char == '#' {
+			for char == '#' {
+				header++
+				pos++
+				char = markdown[pos]
 			}
+			if header == 7 {
+				html += fmt.Sprintf("<p>%s ", strings.Repeat("#", header))
+			} else if he {
+				html += "# "
+				header--
+			} else {
+				html += fmt.Sprintf("<h%d>", header)
+			}
+			pos++
 			continue
 		}
-		html.WriteString(fmt.Sprintf("<p>%s</p>", renderHTML(line)))
-	}
-	if len(itemList) != 0 {
-		html.WriteString(fmt.Sprintf("<ul>%s</ul>", strings.Join(itemList, "")))
-	}
-	return html.String()
-}
-
-func getHeadingWeight(line string) int {
-	for i := 0; i <= 6; i++ {
-		if line[i] != headingMarker {
-			return i
+		he = true
+		if char == '*' && header == 0 && strings.Contains(markdown, "\n") {
+			if list == 0 {
+				html += "<ul>"
+			}
+			list++
+			if listOpened == false {
+				html += "<li>"
+				listOpened = true
+			} else {
+				html += string(char) + " "
+			}
+			pos += 2
+			continue
+		}
+		if char == '\n' {
+			if listOpened == true && strings.LastIndex(markdown, "\n") == pos && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*")  {
+				html += "</li></ul><p>"
+				listOpened = false
+				list = 0
+			}
+			if list > 0 && listOpened {
+				html += "</li>"
+				listOpened = false
+			}
+			if header > 0 {
+				html += fmt.Sprintf("</h%d>", header)
+				header = 0
+			}
+			pos++
+			continue
+		}
+		html += string(char)
+		pos++
+		if pos >= len(markdown) {
+			break
 		}
 	}
-	return -1
-}
+	if header == 7 {
+		return html + fmt.Sprint("</p>")
+	} else if header > 0 {
+		return html + fmt.Sprintf("</h%d>", header)
+	}
+	if list > 0 {
+		return html + "</li></ul>"
+	}
+	if strings.Contains(html, "<p>") {
+		return html + "</p>"
+	}
+	return "<p>" + html + "</p>"
 
-func renderHTML(markdownLine string) string {
-	htmlLine := markdownLine
-	// Convert all __ pairs into <strong>...</strong>
-	for strings.Contains(htmlLine, "__") {
-		htmlLine = strings.Replace(htmlLine, "__", "<strong>", 1)
-		htmlLine = strings.Replace(htmlLine, "__", "</strong>", 1)
-	}
-	// Convert all _ pairs into <em>...</em>
-	for strings.Contains(htmlLine, "_") {
-		htmlLine = strings.Replace(htmlLine, "_", "<em>", 1)
-		htmlLine = strings.Replace(htmlLine, "_", "</em>", 1)
-	}
-	return htmlLine
 }
