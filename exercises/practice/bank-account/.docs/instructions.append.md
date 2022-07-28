@@ -16,8 +16,8 @@ The `Balance` method allows a user to check the current balance of an account. I
 
 ### Deposits / Withrawals
 
-Deposits and withdrawals are both handled by the `Deposit` method. If the argument given to the method it's a positive amount, then that amount of money must be deposited in the account. If the amount given is negative, that amount of money must be withdrawn from the account.
-The return value of `Deposit` indicates if the operation succeeded. A deposit always succeeds, however a withdrawal might fail if there is not enough money in the account.
+Deposits and withdrawals are both handled by the `Deposit` method. If the argument given to the method is a positive amount, then that amount of money must be deposited in the account. If the amount given is negative, that amount of money must be withdrawn from the account. If the account is closed, its balance must not be modified.
+`Deposit` returns the new balance of the account and a boolean that indicates if the operation succeeded. `Deposit` must fail if the account is closed or if there is not enough money to withdraw from the account.
 
 ## Testing
 
