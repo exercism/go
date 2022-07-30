@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strings"
 	"text/template"
 
 	"../../../../gen"
@@ -12,52 +13,33 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("state-of-tic-tac-toe", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"gamestate": &[]testCase{},
+	}
+	if err := gen.Gen("state-of-tic-tac-toe", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []oneCase
-	}
-}
-
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Board []string
-	}
-	Expected interface{}
+		Board []string `json:"board"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func (o oneCase) Result() string {
+func (o testCase) ExpectedResult() string {
 	s, ok := o.Expected.(string)
 	if !ok {
 		return "\"\""
 	}
-	var res string
-	switch s {
-	case "win":
-		res = "Win"
-	case "ongoing":
-		res = "Ongoing"
-	case "draw":
-		res = "Draw"
-	}
-	return res
+	return strings.Title(s)
 }
 
-func (o oneCase) Err() string {
+func (o testCase) ExpectError() bool {
 	_, ok := o.Expected.(map[string]interface{})
-	if !ok {
-		return "false"
-	}
-	return "true"
+	return ok
 }
 
 // template applied to above data structure generates the Go test cases
@@ -71,12 +53,12 @@ var testCases = []struct{
 	expected State
 	wantErr bool
 } {
-{{range .J.Cases}} {{range .Cases}} {
-	description: {{printf "%q" .Description}},
-	board: {{printf "%#v" .Input.Board }},
-	expected: {{ .Result }},
-	wantErr:  {{ .Err }},
+{{range .J.gamestate}} {
+	description: 	{{printf "%q" 	.Description}},
+	board: 			{{printf "%#v" 	.Input.Board }},
+	expected: 		{{printf "%s" 	.ExpectedResult }},
+	wantErr:  		{{printf "%t" 	.ExpectError }},
 },
-{{end}}{{end}}
+{{end}}
 }
 `
