@@ -49,7 +49,7 @@ var testCases = []struct {
 	description	  string
 	input		  string
 	expected	  string
-}{ {{range .J.Cases}} 
+}{ {{range .J.Cases}}
 {
 	description:	{{printf "%q"  .Description}},
 	input:		{{printf "%#v"  .Input.Markdown}},
