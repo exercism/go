@@ -5,5 +5,5 @@ func EncodeVarint(input []uint32) []byte {
 }
 
 func DecodeVarint(input []byte) ([]uint32, error) {
-	panic("Please implement the EncodeVarint function")
+	panic("Please implement the DecodeVarint function")
 }
