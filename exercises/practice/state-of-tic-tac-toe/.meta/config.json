@@ -1,5 +1,8 @@
 {
   "authors": ["AbhilashJN"],
+  "contributors": [
+    "eklatzer"
+  ],
   "files": {
     "solution": [
       "state_of_tic_tac_toe.go"

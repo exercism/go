@@ -18,7 +18,7 @@ func SetItem(slice []int, index, value int) []int {
 }
 
 // PrependItems adds an arbitrary number of values at the front of a slice.
-func PrependItems(slice []int, value ...int) []int {
+func PrependItems(slice []int, values ...int) []int {
 	panic("Please implement the PrependItems function")
 }
 

@@ -12,27 +12,24 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("scale-generator", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"chromatic" : &[]testCase{},
+		"interval" : &[]testCase{},
+	}
+	if err := gen.Gen("scale-generator", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Comments    []string
-		Description string
-		Cases       []struct {
-			Description string
-			Property    string
-			Input       struct {
-				Tonic     string
-				Intervals string
-			}
-			Expected []string
-		}
-	}
+type testCase struct {
+	Uuid        string `json:"uuid"`
+	Description string `json:"description"`
+	Property    string `json:"property"`
+	Input       struct {
+		Tonic     string `json:"tonic"`
+		Intervals string `json:"intervals"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -48,12 +45,19 @@ type scaleTest struct {
 }
 
 var scaleTestCases = []scaleTest {
-{{range .J.Cases}} {{range .Cases}}{
+{{range .J.chromatic}}{
 	description: {{printf "%q" .Description }},
 	tonic: {{printf "%q" .Input.Tonic }},
 	interval: {{printf "%q" .Input.Intervals }},
 	expected: {{printf "%#v" .Expected }},
 },
-{{end}}{{end}}
+{{end}}
+{{range .J.interval}}{
+	description: {{printf "%q" .Description }},
+	tonic: {{printf "%q" .Input.Tonic }},
+	interval: {{printf "%q" .Input.Intervals }},
+	expected: {{printf "%#v" .Expected }},
+},
+{{end}}
 }
 `

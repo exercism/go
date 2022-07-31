@@ -1,30 +1,41 @@
 package strand
 
 // Source: exercism/problem-specifications
-// Commit: 294c831 rna-transcription: add test for empty sequence (#1266)
-// Problem Specifications Version: 1.3.0
+// Commit: 42dd0ce Remove version (#1678)
 
-var rnaTests = []struct {
+var testCases = []struct {
 	description string
 	input       string
 	expected    string
 }{
-	{"Empty RNA sequence",
-		"", "",
+	{
+		description: "Empty RNA sequence",
+		input:       "",
+		expected:    "",
 	},
-	{"RNA complement of cytosine is guanine",
-		"C", "G",
+	{
+		description: "RNA complement of cytosine is guanine",
+		input:       "C",
+		expected:    "G",
 	},
-	{"RNA complement of guanine is cytosine",
-		"G", "C",
+	{
+		description: "RNA complement of guanine is cytosine",
+		input:       "G",
+		expected:    "C",
 	},
-	{"RNA complement of thymine is adenine",
-		"T", "A",
+	{
+		description: "RNA complement of thymine is adenine",
+		input:       "T",
+		expected:    "A",
 	},
-	{"RNA complement of adenine is uracil",
-		"A", "U",
+	{
+		description: "RNA complement of adenine is uracil",
+		input:       "A",
+		expected:    "U",
 	},
-	{"RNA complement",
-		"ACGTGGTCTTAA", "UGCACCAGAAUU",
+	{
+		description: "RNA complement",
+		input:       "ACGTGGTCTTAA",
+		expected:    "UGCACCAGAAUU",
 	},
 }

@@ -7,7 +7,7 @@ import (
 // CollatzConjecture is an example implementation of the collatz conjecture exercise.
 func CollatzConjecture(n int) (int, error) {
 	if n <= 0 {
-		return -1, errors.New("Only positive numbers are allowed")
+		return -1, errors.New("only positive integers are allowed")
 	}
 
 	steps := 0

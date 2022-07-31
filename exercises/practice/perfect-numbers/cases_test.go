@@ -1,8 +1,7 @@
 package perfect
 
 // Source: exercism/problem-specifications
-// Commit: d7c0227 perfect-numbers: Apply new "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: d137db1 Format using prettier (#1917)
 
 var classificationTestCases = []struct {
 	description string
@@ -77,12 +76,12 @@ var classificationTestCases = []struct {
 		expected:    ClassificationDeficient,
 	},
 	{
-		description: "Zero is rejected (not a natural number)",
+		description: "Zero is rejected (as it is not a positive integer)",
 		input:       0,
 		ok:          false,
 	},
 	{
-		description: "Negative integer is rejected (not a natural number)",
+		description: "Negative integer is rejected (as it is not a positive integer)",
 		input:       -1,
 		ok:          false,
 	},

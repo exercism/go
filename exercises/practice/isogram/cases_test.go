@@ -1,8 +1,7 @@
 package isogram
 
 // Source: exercism/problem-specifications
-// Commit: 74869e8 isogram: Add test case for dupe after non-letter (fixes #1390)
-// Problem Specifications Version: 1.7.0
+// Commit: d137db1 Format using prettier (#1917)
 
 var testCases = []struct {
 	description string
@@ -72,6 +71,11 @@ var testCases = []struct {
 	{
 		description: "same first and last characters",
 		input:       "angola",
+		expected:    false,
+	},
+	{
+		description: "word with duplicated character and with two hyphens",
+		input:       "up-to-date",
 		expected:    false,
 	},
 }

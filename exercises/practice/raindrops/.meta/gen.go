@@ -12,20 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("raindrops", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"convert": &[]testCase{},
+	}
+	if err := gen.Gen("raindrops", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Input struct {
-			Number int
-		}
-		Expected string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -33,10 +33,16 @@ var tmpl = `package raindrops
 
 {{.Header}}
 
-var tests = []struct {
-	input    int
-	expected string
+var testCases = []struct {
+	description string
+	input       int
+	expected    string
 }{
-{{range .J.Cases}}{ {{.Input.Number}}, "{{.Expected}}"},
-{{end}}}
+{{range .J.convert}}{ 
+	description: 	{{printf "%q" .Description}},
+	input: 			{{printf "%d" .Input.Number}},
+	expected: 		{{printf "%q" .Expected}},
+},
+{{end}}
+}
 `

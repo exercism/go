@@ -30,7 +30,7 @@ func NewTrack(distance int) Track {
 	}
 }
 
-// Drive drives the car one time. If there is not enough battry to drive on more time,
+// Drive drives the car one time. If there is not enough battery to drive one more time,
 // the car will not move.
 func Drive(car Car) Car {
 	if car.battery < car.batteryDrain {

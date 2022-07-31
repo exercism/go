@@ -21,6 +21,7 @@ been an issue in the cipher's time.
 Ciphertext is written out in groups of fixed length, the traditional group size
 being 5 letters, leaving numbers unchanged, and punctuation is excluded.
 This is to make it harder to guess things based on word boundaries.
+All text will be encoded as lowercase letters.
 
 ## Examples
 

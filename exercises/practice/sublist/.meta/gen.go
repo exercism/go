@@ -4,7 +4,6 @@ import (
 	"log"
 	"text/template"
 
-	sublist ".."
 	"../../../../gen"
 )
 
@@ -13,31 +12,23 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("sublist", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"sublist": &[]testCase{},
+	}
+	if err := gen.Gen("sublist", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
 		ListOne []int `json:"listOne"`
 		ListTwo []int `json:"listTwo"`
-	}
-	Expected sublist.Relation
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
-// Template to generate test cases.
 var tmpl = `package sublist
 
 {{.Header}}
@@ -47,12 +38,12 @@ var testCases = []struct {
 	listOne		[]int
 	listTwo		[]int
 	expected	Relation
-}{ {{range .J.Cases}}
+}{ {{range .J.sublist}}
 {
-	description:	{{printf "%q"  .Description}},
+	description:	{{printf "%q"   .Description}},
 	listOne:		{{printf "%#v"  .Input.ListOne}},
 	listTwo:		{{printf "%#v"  .Input.ListTwo}},
-	expected:	{{printf "%#v"  .Expected}},
+	expected:		{{printf "%#v"  .Expected}},
 },{{end}}
 }
 `

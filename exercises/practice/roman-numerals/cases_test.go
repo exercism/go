@@ -1,33 +1,133 @@
 package romannumerals
 
 // Source: exercism/problem-specifications
-// Commit: 3c78ac4 Add test case for input value 49 to test double-normalization
-// Problem Specifications Version: 1.2.0
+// Commit: b820099 Allow prettier to format more files (#1966)
 
 type romanNumeralTest struct {
-	arabic   int
-	roman    string
-	hasError bool
+	description string
+	input       int
+	expected    string
 }
 
-var romanNumeralTests = []romanNumeralTest{
-	{1, "I", false},
-	{2, "II", false},
-	{3, "III", false},
-	{4, "IV", false},
-	{5, "V", false},
-	{6, "VI", false},
-	{9, "IX", false},
-	{27, "XXVII", false},
-	{48, "XLVIII", false},
-	{49, "XLIX", false},
-	{59, "LIX", false},
-	{93, "XCIII", false},
-	{141, "CXLI", false},
-	{163, "CLXIII", false},
-	{402, "CDII", false},
-	{575, "DLXXV", false},
-	{911, "CMXI", false},
-	{1024, "MXXIV", false},
-	{3000, "MMM", false},
+var validRomanNumeralTests = []romanNumeralTest{
+	{
+		description: "1 is I",
+		input:       1,
+		expected:    "I",
+	},
+	{
+		description: "2 is II",
+		input:       2,
+		expected:    "II",
+	},
+	{
+		description: "3 is III",
+		input:       3,
+		expected:    "III",
+	},
+	{
+		description: "4 is IV",
+		input:       4,
+		expected:    "IV",
+	},
+	{
+		description: "5 is V",
+		input:       5,
+		expected:    "V",
+	},
+	{
+		description: "6 is VI",
+		input:       6,
+		expected:    "VI",
+	},
+	{
+		description: "9 is IX",
+		input:       9,
+		expected:    "IX",
+	},
+	{
+		description: "27 is XXVII",
+		input:       27,
+		expected:    "XXVII",
+	},
+	{
+		description: "48 is XLVIII",
+		input:       48,
+		expected:    "XLVIII",
+	},
+	{
+		description: "49 is XLIX",
+		input:       49,
+		expected:    "XLIX",
+	},
+	{
+		description: "59 is LIX",
+		input:       59,
+		expected:    "LIX",
+	},
+	{
+		description: "93 is XCIII",
+		input:       93,
+		expected:    "XCIII",
+	},
+	{
+		description: "141 is CXLI",
+		input:       141,
+		expected:    "CXLI",
+	},
+	{
+		description: "163 is CLXIII",
+		input:       163,
+		expected:    "CLXIII",
+	},
+	{
+		description: "402 is CDII",
+		input:       402,
+		expected:    "CDII",
+	},
+	{
+		description: "575 is DLXXV",
+		input:       575,
+		expected:    "DLXXV",
+	},
+	{
+		description: "911 is CMXI",
+		input:       911,
+		expected:    "CMXI",
+	},
+	{
+		description: "1024 is MXXIV",
+		input:       1024,
+		expected:    "MXXIV",
+	},
+	{
+		description: "3000 is MMM",
+		input:       3000,
+		expected:    "MMM",
+	},
+	{
+		description: "16 is XVI",
+		input:       16,
+		expected:    "XVI",
+	},
+	{
+		description: "66 is LXVI",
+		input:       66,
+		expected:    "LXVI",
+	},
+	{
+		description: "166 is CLXVI",
+		input:       166,
+		expected:    "CLXVI",
+	},
+	{
+		description: "666 is DCLXVI",
+		input:       666,
+		expected:    "DCLXVI",
+	},
+	{
+		description: "1666 is MDCLXVI",
+		input:       1666,
+		expected:    "MDCLXVI",
+	},
 }

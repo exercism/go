@@ -10,7 +10,7 @@ If a car's battery is below its battery drain percentage, you can't drive the ca
 
 Each race track has its own distance. Cars are tested by checking if they can finish the track without running out of battery.
 
-## 1. Creating a remote controlled car
+## 1. Create a remote controlled car
 
 Define a `Car` struct with the following `int` type fields:
 
@@ -29,7 +29,7 @@ car := NewCar(speed, batteryDrain)
 // => Car{speed: 5, batteryDrain: 2, battery:100, distance: 0}
 ```
 
-## 2. Creating a race track
+## 2. Create a race track
 
 Define another struct type called `Track` with the field `distance` of type integer.
 Allow creating a race track by defining a function `NewTrack` that takes the track's distance in meters as its sole parameter (which is of type `int`):
@@ -42,7 +42,8 @@ track := NewTrack(distance)
 
 ## 3. Drive the car
 
-Implement the `Drive` function that updates the number of meters driven based on the car's speed, and reduces the battery according to the battery drainage:
+Implement the `Drive` function that updates the number of meters driven based on the car's speed, and reduces the battery according to the battery drainage.
+If there is not enough battery to drive one more time the car will not move:
 
 ```go
 speed := 5

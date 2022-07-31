@@ -3,6 +3,7 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"go/format"
 	"net/http"
@@ -39,8 +40,8 @@ var problemSpecificationsDir string
 // the exercise directory. Falls back to the present working directory.
 var exerciseDir string
 
-// httpClient creates a http client with a timeout of 10 seconds in order not to get stuck waiting for a response.
-var httpClient = &http.Client{Timeout: 10 * time.Second}
+// httpClient creates a http client with a timeout of 20 seconds in order not to get stuck waiting for a response.
+var httpClient = &http.Client{Timeout: 20 * time.Second}
 
 // Header tells how the test data was generated, for display in the header of cases_test.go
 type Header struct {
@@ -56,6 +57,7 @@ func (h Header) String() string {
 type testCase struct {
 	UUID        string      `json:"uuid"`
 	Description string      `json:"description"`
+	Comments    []string    `json:"comments"`
 	Property    string      `json:"property"`
 	Scenario    string      `json:"scenario"`
 	Input       interface{} `json:"input"`
@@ -64,6 +66,9 @@ type testCase struct {
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
+	var githubToken = ""
+	flag.StringVar(&githubToken, "github_token", "", "Token used in Authorization header for Github")
+	flag.Parse()
 	// Determine the exercise directory.
 	// Use runtime.Caller to determine path location of the generator main package.
 	// Call frames: 0 is this frame, Gen().
@@ -101,7 +106,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		if err != nil {
 			return err
 		}
-		header, err = getRemoteCommit(exercise)
+		header, err = getRemoteCommit(exercise, githubToken)
 		if err != nil {
 			return err
 		}
@@ -151,11 +156,18 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
+	var testData = testCase{}
+	err = json.Unmarshal(jTestData, &testData)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal root test data: %v", err)
+	}
+
 	// package up a little meta data
 	d := struct {
 		Header
-		J map[string]interface{}
-	}{Header: header, J: tests}
+		Comments []string
+		J        map[string]interface{}
+	}{Header: header, Comments: testData.Comments, J: tests}
 
 	casesFile := filepath.Join(exerciseDir, "cases_test.go")
 
@@ -165,17 +177,17 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return fmt.Errorf("[ERROR] template.Execute failed. The template has a semantic error: %w", err)
 	}
 
-	formattedOut, err := format.Source(out.Bytes())
+	casesFileContent := out.Bytes()
+	formattedFileContent, err := format.Source(casesFileContent)
 	if err != nil {
 		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
-		_, _ = out.Write([]byte("\n// !NOTE: Error during source formatting: Line:Column " + fmt.Sprint(err) + "\n"))
-		_, _ = out.Write(out.Bytes())
+		debugFileContent := append(casesFileContent, []byte("// !NOTE: Error during source formatting: Line:Column "+fmt.Sprint(err)+"\n")...)
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFile, out.Bytes())
+		_ = outputSource("ERROR", casesFile, debugFileContent)
 		return err
 	}
 	// write output file for the Go test cases.
-	return outputSource("SUCCESS", casesFile, formattedOut)
+	return outputSource("SUCCESS", casesFile, formattedFileContent)
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].

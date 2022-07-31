@@ -30,7 +30,7 @@ var periods = map[Planet]float64{
 func Age(seconds float64, planet Planet) float64 {
 	period, ok := periods[planet]
 	if !ok {
-		period = 1
+		return -1
 	}
 	return float64(int64(seconds/period+0.5)) / 100
 }

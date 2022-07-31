@@ -6,12 +6,12 @@ import (
 
 func TestCost(t *testing.T) {
 	for _, testCase := range testCases {
-		cost := Cost(testCase.basket)
-		if testCase.expected != cost {
-			t.Fatalf("FAIL: %s\n\tCost(%v) expected %v, got %v",
-				testCase.description, testCase.basket, testCase.expected, cost)
-		}
-		t.Logf("PASS: %s", testCase.description)
+		t.Run(testCase.description, func(t *testing.T) {
+			actual := Cost(testCase.basket)
+			if testCase.expected != actual {
+				t.Errorf("Cost(%v) expected %d, got %d", testCase.basket, testCase.expected, actual)
+			}
+		})
 	}
 }
 

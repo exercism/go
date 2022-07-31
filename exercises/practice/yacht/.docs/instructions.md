@@ -1,7 +1,5 @@
 # Instructions
 
-# Score a single throw of dice in *Yacht*
-
 The dice game [Yacht](https://en.wikipedia.org/wiki/Yacht_(dice_game)) is from
 the same family as Poker Dice, Generala and particularly Yahtzee, of which it
 is a precursor. In the game, five dice are rolled and the result can be entered

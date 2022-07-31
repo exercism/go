@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
-	"strings"
 	"text/template"
 
 	"../../../../gen"
@@ -14,88 +12,53 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("grains", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"square": &[]testCase{},
+		"total":  &[]testCase{}, // expected value for Total() not used from `canonical-data.json`
+	}
+	if err := gen.Gen("grains", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Groups []testGroup `json:"Cases"`
-}
-
-type testGroup struct {
-	Description string
-	Cases       []json.RawMessage `property:"RAW"`
-	SquareCases []squareCase      `property:"square"`
-	// Note: canonical-data.json has a element of "cases"
-	// which includes a test for property 'total', but it is ignored here,
-	// since "expected" is a single known value.
-}
-
-type squareCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Square int
+		Square int `json:"square"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
+}
+
+func (t testCase) ExpectedValue() uint64 {
+	v, ok := t.Expected.(float64)
+	if !ok {
+		return 0
 	}
-	Expected interface{}
+	return uint64(v)
 }
 
-func (c squareCase) HasAnswer() bool {
-	hasAnswer, _ := determineExpected(c.Expected)
-	return hasAnswer
-}
-
-func (c squareCase) Answer() uint64 {
-	_, answer := determineExpected(c.Expected)
-	return answer
-}
-
-func (c squareCase) EditedDescription() string {
-	// Go doesn't raise exceptions, so replace the wording in .Description.
-	return strings.Replace(c.Description, "raises an exception", "returns an error", 1)
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case has an answer or expects an error.
-// The return values are true and answer or false and zero.
-func determineExpected(expected interface{}) (bool, uint64) {
-	ans, ok := expected.(float64)
-	if ok {
-		if ans == float64(-1) {
-			return false, 0
-		}
-		return true, uint64(ans)
-	}
-	return false, 0
+func (t testCase) ExpectError() bool {
+	_, ok := t.Expected.(float64)
+	return !ok
 }
 
 var tmpl = `package grains
 
 {{.Header}}
 
-{{range .J.Groups}}
-	{{- if .SquareCases }}
-		// {{ .Description }}
-		var squareTests = []struct {
-			description string
-			input int
-			expectedVal uint64
-			expectError bool
-		}{
-			{{- range .SquareCases}}
-			{
-				description: "{{.EditedDescription}}",
-				input: {{.Input.Square}},
-				{{- if .HasAnswer}}
-					expectedVal: {{.Answer}},
-				{{- else}}
-					expectError: true,
-				{{- end}}
-			},
-			{{- end }}
-		}
-	{{- end }}
-{{end}}
+// returns the number of grains on the square
+var squareTests = []struct {
+	description string
+	input       int
+	expectedVal uint64
+	expectError bool
+}{
+	{{range .J.square}}{
+			description: {{printf "%q" .Description}},
+			input:       {{printf "%d" .Input.Square}},
+			expectedVal: {{printf "%d" .ExpectedValue}},
+			expectError: {{printf "%t" .ExpectError}},
+		},
+	{{end}}
+}
 `

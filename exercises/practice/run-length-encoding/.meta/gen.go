@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"text/template"
 
@@ -13,84 +12,61 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("run-length-encoding", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"encode":      &[]testCase{},
+		"decode":      &[]testCase{},
+		"consistency": &[]testCase{},
+	}
+	if err := gen.Gen("run-length-encoding", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to umarshal into
-type js struct {
-	Groups []testGroup `json:"Cases"`
-}
-
-type testGroup struct {
-	Description string
-	Cases       []json.RawMessage `property:"RAW"`
-	EncodeCases []struct {
-		Description string
-		Input       struct {
-			String string
-		}
-		Expected string
-	} `property:"encode"`
-	DecodeCases []struct {
-		Description string
-		Input       struct {
-			String string
-		}
-		Expected string
-	} `property:"decode"`
-	EncodeDecodeCases []struct {
-		Description string
-		Input       struct {
-			String string
-		}
-		Expected string
-	} `property:"consistency"`
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		String string `json:"string"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 var tmpl = `package encode
 
 {{.Header}}
 
-{{range .J.Groups}}
-	// {{ .Description }}
+type testCase struct {
+	description string
+	input       string
+	expected    string
+}
 
-	{{- if .EncodeCases }}
-		var encodeTests = []struct {
-			input string
-			expected string
-			description string
-		}{
-			{{- range .EncodeCases }}
-				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
-			{{- end }}
-		}
-	{{- end }}
+// run-length encode a string
+var encodeTests = []testCase{
+	{{range .J.encode}}{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%q" .Input.String}},
+		expected:    {{printf "%q" .Expected}},
+	},
+	{{end}}
+}
 
-	{{- if .DecodeCases }}
-		var decodeTests = []struct {
-			input string
-			expected string
-			description string
-		}{
-			{{- range .DecodeCases }}
-				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
-			{{- end }}
-		}
-	{{- end }}
+// run-length decode a string
+var decodeTests = []testCase{
+	{{range .J.decode}}{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%q" .Input.String}},
+		expected:    {{printf "%q" .Expected}},
+	},
+	{{end}}
+}
 
-	{{- if .EncodeDecodeCases }}
-		var encodeDecodeTests = []struct {
-			input string
-			expected string
-			description string
-		}{
-			{{- range .EncodeDecodeCases }}
-				{ {{.Input.String | printf "%q"}}, {{.Expected | printf "%q"}}, {{.Description | printf "%q"}} },
-			{{- end }}
-		}
-	{{- end }}
-{{end}}
+// encode and then decode
+var encodeDecodeTests = []testCase{
+	{{range .J.consistency}}{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%q" .Input.String}},
+		expected:    {{printf "%q" .Expected}},
+	},
+	{{end}}
+}
 `

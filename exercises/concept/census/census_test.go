@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-// TestNewResident tests the NewResident function.
 func TestNewResident(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -71,6 +70,15 @@ func TestHasRequiredInfo(t *testing.T) {
 				Address: map[string]string{
 					"street": "Main St.",
 				},
+			},
+			want: false,
+		},
+		{
+			name: "nil map as address",
+			resident: &Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: nil,
 			},
 			want: false,
 		},
@@ -219,6 +227,20 @@ func TestCount(t *testing.T) {
 					Name:    "",
 					Age:     0,
 					Address: map[string]string{},
+				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"street": "Main St.",
+					},
+				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"city": "London",
+					},
 				},
 			},
 			want: 1,

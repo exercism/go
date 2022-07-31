@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("rna-transcription", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"toRna": &[]testCase{},
+	}
+	if err := gen.Gen("rna-transcription", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Dna string
-		}
-		Expected string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		DNA string `json:"dna"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // Template applied to above data structure generates the Go test cases.
@@ -34,13 +33,15 @@ var tmpl = `package strand
 
 {{.Header}}
 
-var rnaTests = []struct {
+var testCases = []struct {
 	description string
 	input       string
 	expected    string
 }{
-{{range .J.Cases}}{ "{{.Description}}",
-	"{{.Input.Dna}}", "{{.Expected}}",
+{{range .J.toRna}}{ 
+	description: 	{{printf "%q" .Description}},
+	input: 		 	{{printf "%q" .Input.DNA}},
+	expected: 		{{printf "%q" .Expected}},
 },
 {{end}}}
 `
