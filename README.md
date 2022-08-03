@@ -325,7 +325,7 @@ You should see that some/all of the above files have changed. Commit the changes
 $ ./bin/run-generators <Github Access Token>
 ```
 
-*NOTE*: If the error `json: cannot unmarshal object into Go value of type []gen.Commit` occurs when running the generator try providing a Github access token with the flag `-github_token="<Token>"`.
+*NOTE*: If the error `json: cannot unmarshal object into Go value of type []gen.Commit` occurs when running the generator try providing a Github access token.
 The token does not need any specific scopes as it is only used to fetch infos about commits (higher rate limit with token).
 
 ## Managing the Go version
