@@ -316,7 +316,8 @@ $ GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
 Try providing a Github access token with the flag `-github_token="<Token>"`.
-The token does not need any specific scopes as it is only used to fetch infos about commits and the rate limit is higher due to the token.
+Using the token will result in a higher rate limit.
+The token does not need any specific scopes as it is only used to fetch infos about commits.
 
 You should see that some/all of the above files have changed. Commit the changes.
 
