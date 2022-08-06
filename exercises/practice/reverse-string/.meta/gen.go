@@ -13,7 +13,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j = map[string]interface{}{
-		"reverse" : &[]testCase{},
+		"reverse": &[]testCase{},
 	}
 	if err := gen.Gen("reverse-string", j, t); err != nil {
 		log.Fatal(err)
