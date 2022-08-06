@@ -159,7 +159,7 @@ If the additional test cases share the same inputs and outputs as the generated 
 ```go
 append(testCases, additionalTestCases...)
 ```
-An example of using additional test cases can be found in the exercise `two-bucket`.
+An example of using additional test cases can be found in the exercise [two-bucket](exercises/practice/two-bucket/two_bucket_test.go).
 
 Identifiers within the test function appear in actual-expected order as described
 at [Useful Test Failures](https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures).
