@@ -3,32 +3,18 @@ package romannumerals
 import "testing"
 
 func TestRomanNumerals(t *testing.T) {
-	for _, tc := range validRomanNumeralTests {
+	for _, tc := range append(validRomanNumeralTests, invalidRomanNumeralTests...) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual, err := ToRomanNumeral(tc.input)
-			if err != nil {
-				// expect no error for all valid tests cases (canonical-data.json contains only valid cases)
+			switch {
+			case tc.expectError:
+				if err == nil {
+					t.Fatalf("ToRomanNumeral(%d) expected error, got: %s", tc.input, actual)
+				}
+			case err != nil:
 				t.Fatalf("ToRomanNumeral(%d) returned error: %v, want: %q", tc.input, err, tc.expected)
-			}
-			if actual != tc.expected {
+			case actual != tc.expected:
 				t.Fatalf("ToRomanNumeral(%d) = %q, want: %q", tc.input, actual, tc.expected)
-			}
-		})
-
-	}
-}
-
-func TestRomanNumeralsInvalid(t *testing.T) {
-	invalidRomanNumeralTests := []romanNumeralTest{
-		{description: "0 is out of range", input: 0},
-		{description: "-1 is out of range", input: -1},
-		{description: "3001 is out of range", input: 3001},
-	}
-	for _, tc := range invalidRomanNumeralTests {
-		t.Run(tc.description, func(t *testing.T) {
-			actual, err := ToRomanNumeral(tc.input)
-			if err == nil {
-				t.Fatalf("ToRomanNumeral(%d) expected error, got: %q", tc.input, actual)
 			}
 		})
 	}
@@ -43,4 +29,22 @@ func BenchmarkRomanNumerals(b *testing.B) {
 			ToRomanNumeral(tc.input)
 		}
 	}
+}
+
+var invalidRomanNumeralTests = []romanNumeralTest{
+	{
+		description: "0 is out of range",
+		input:       0,
+		expectError: true,
+	},
+	{
+		description: "-1 is out of range",
+		input:       -1,
+		expectError: true,
+	},
+	{
+		description: "3001 is out of range",
+		input:       3001,
+		expectError: true,
+	},
 }
