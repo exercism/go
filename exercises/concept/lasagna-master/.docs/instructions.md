@@ -49,7 +49,7 @@ Now you want to add that secret ingredient to your recipe as well.
 Write a function `AddSecretIngredient` that accepts two slices of ingredients of type `[]string` as parameters.
 The first parameter is the list your friend sent you, the second is the ingredient list of your own recipe.
 The last element in your ingredient list is always `"?"`. The function should replace it with the last item from your friends list.
-**Note:** `AddSecretIngredient` does not return anything - you should modify the list of your ingredients directly. The list with your friend's ingredients should **not** be modified. Also, since `slice` is passed into a function as pointers, changes to the two `[]string` arguments passed into `AddSecretIngredient` will be modified directly.
+**Note:** `AddSecretIngredient` does not return anything - you should modify the list of your ingredients directly. The list with your friend's ingredients should **not** be modified. 
 
 ```go
 friendsList := []string{"noodles", "sauce", "mozzarella", "kampot pepper"}
