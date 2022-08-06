@@ -3,42 +3,42 @@
 As a chess enthusiast, you would like to write your own version of the game. Yes, there may be plenty of implementations of chess available online already, but yours will be unique!
 
 Each square of the chessboard is identified by a letter-number pair:
- - The vertical columns of squares, called files, are numbered 1 through 8.
- - The horizontal rows of squares, called ranks, are labelled A through H.
+ - The vertical columns of squares, called ranks, are numbered 1 through 8.
+ - The horizontal rows of squares, called files, are labelled A through H.
 
 ```
-  1 2 3 4 5 6 7 8
-A # _ # _ _ _ _ # A
-B _ _ _ _ # _ _ _ B
-C _ _ # _ _ _ _ _ C
-D _ _ _ _ _ _ _ _ D
-E _ _ _ _ _ # _ # E
-F _ _ _ _ _ _ _ _ F
-G _ _ _ # _ _ _ _ G
-H # # # # # # _ # H
-  1 2 3 4 5 6 7 8
+   A B C D E F G H
+ 8 # _ _ _ # _ _ # 8
+ 7 _ _ _ _ _ _ _ _ 7
+ 6 _ _ _ _ # _ _ # 6
+ 5 _ # _ _ _ _ _ # 5
+ 4 _ _ _ _ _ _ # # 4
+ 3 # _ # _ _ _ _ # 3
+ 2 _ _ _ _ _ _ _ # 2
+ 1 # _ _ _ _ _ _ # 1
+   A B C D E F G H
 ```
 
-## 1. Given a Chessboard and a Rank, count how many squares are occupied
+## 1. Given a Chessboard and a File, count how many squares are occupied
 
-Implement the `CountInRank(board Chessboard, rank string) int` function.
+Implement the `CountInFile(board Chessboard, file string) int` function.
 It should count the total number of occupied squares by ranging over a map. Return an integer.
-Return a count of zero (`0`) if the given rank cannot be found in the map.
+Return a count of zero (`0`) if the given file cannot be found in the map.
 
 ```go
-CountInRank(board, "A")
-// => 6
+CountInFile(board, "A")
+// => 3
 ```
 
-## 2. Given a Chessboard and a File, count how many squares are occupied
+## 2. Given a Chessboard and a Rank, count how many squares are occupied
 
-Implement the `CountInFile(board Chessboard, file int) int` function.
-It should count the total number of occupied squares by ranging over the given file. Return an integer.
-Return a count of zero (`0`) if the given file is not a valid one (not between `1` and `8`, inclusive).
+Implement the `CountInRank(board Chessboard, rank int) int` function.
+It should count the total number of occupied squares by ranging over the given rank. Return an integer.
+Return a count of zero (`0`) if the given rank is not a valid one (not between `1` and `8`, inclusive).
 
 ```go
-CountInFile(board, 2)
-// => 5
+CountInRank(board, 2)
+// => 1
 ```
 
 ## 3. Count how many squares are present in the given chessboard
