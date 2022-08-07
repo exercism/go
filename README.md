@@ -318,7 +318,7 @@ $ GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go
 ```
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
-Try providing a Github access token with the flag `-github_token="<Token>"`.
+Try providing a GitHub access token with the flag `-github_token="<Token>"`.
 Using the token will result in a higher rate limit.
 The token does not need any specific scopes as it is only used to fetch infos about commits.
 
@@ -327,17 +327,17 @@ You should see that some/all of the above files have changed. Commit the changes
 ### Synchronizing all exercises with generators
 
 ```console
-$ ./bin/run-generators <Github Access Token>
+$ ./bin/run-generators <GitHub Access Token>
 ```
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
-Try providing a Github access token with the flag `-github_token="<Token>"`.
+Try providing a GitHub access token with the flag `-github_token="<Token>"`.
 Using the token will result in a higher rate limit.
 The token does not need any specific scopes as it is only used to fetch infos about commits.
 
 ## Managing the Go version
 
-For an easy managment of the Go version in the `go.mod` file in all exercises, we can use `gomod-sync`.
+For an easy management of the Go version in the `go.mod` file in all exercises, we can use `gomod-sync`.
 This is a tool made in Go that can be seen in the `gomod-sync/` folder.
 
 To update all go.mod files according to the config file (`gomod-sync/config.json`) run:
