@@ -331,7 +331,7 @@ $ ./bin/run-generators <GitHub Access Token>
 ```
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
-Try providing a GitHub access token with the flag `-github_token="<Token>"`.
+Try providing a GitHub access as the first argument of the script.
 Using the token will result in a higher rate limit.
 The token does not need any specific scopes as it is only used to fetch infos about commits.
 
