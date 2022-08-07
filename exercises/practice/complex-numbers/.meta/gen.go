@@ -289,7 +289,10 @@ var conjugateTestCases = []struct {
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
-		want:    {{printf "%f"  	.GetExpected.A}},
+		want:    complex{
+			a: {{printf "%f"  	.GetExpected.A}},
+			b: {{printf "%f"  	.GetExpected.B}},
+		},
 	},
 	{{end}}
 }
