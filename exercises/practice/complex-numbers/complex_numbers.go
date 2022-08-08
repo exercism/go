@@ -1,6 +1,7 @@
 package complex
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -10,6 +11,15 @@ import (
 type Number struct {
 	a float64
 	b float64
+}
+
+func (n Number) Format() string {
+	sign := "+"
+	unpreciseB := float64(int(n.b*10000)) / 10000
+	if unpreciseB < 0 {
+		sign = "-"
+	}
+	return fmt.Sprintf("%.3f %s %.3f * i", n.a, sign, math.Abs(unpreciseB))
 }
 
 func (n Number) Real() float64 {
@@ -37,7 +47,7 @@ func (n1 Number) Subtract(n2 Number) Number {
 func (n1 Number) Multiply(n2 Number) Number {
 	return Number{
 		a: n1.a*n2.a - n1.b*n2.b,
-		b: n1.a*n2.b - n1.b*n2.a,
+		b: n1.a*n2.b + n1.b*n2.a,
 	}
 }
 
@@ -57,10 +67,12 @@ func (n1 Number) Divide(n2 Number) Number {
 }
 
 func (n Number) Conjugate() Number {
-	return Number{
+	var z = Number{
 		a: n.a,
 		b: -n.b,
 	}
+	fmt.Println(fmt.Sprintf("%v", z))
+	return z
 }
 
 func (n Number) Abs() float64 {
