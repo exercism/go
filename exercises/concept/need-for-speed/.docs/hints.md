@@ -23,6 +23,7 @@
 
 - Assume the car is just starting the race
 - You need to calculate the maximum distance a car can drive with the current level of battery
+- The distance is a product of the car's speed and its *drain rate*. The *drain rate* is calculated by `battery / batteryDrain`.
 - Knowing the maximum distance the car can drive, compare it with the distance of the race track
 
 [struct]: https://tour.golang.org/moretypes/2
