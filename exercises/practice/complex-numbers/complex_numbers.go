@@ -71,7 +71,6 @@ func (n Number) Conjugate() Number {
 		a: n.a,
 		b: -n.b,
 	}
-	fmt.Println(fmt.Sprintf("%v", z))
 	return z
 }
 

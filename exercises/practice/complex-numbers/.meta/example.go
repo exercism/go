@@ -5,9 +5,6 @@ import (
 	"math"
 )
 
-// TODO: adjust stub
-
-// Define the Number type here.
 type Number struct {
 	a float64
 	b float64
@@ -71,7 +68,6 @@ func (n Number) Conjugate() Number {
 		a: n.a,
 		b: -n.b,
 	}
-	fmt.Println(fmt.Sprintf("%v", z))
 	return z
 }
 
