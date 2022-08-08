@@ -1,90 +1,47 @@
 package complex
 
-import (
-	"fmt"
-	"math"
-)
-
-// TODO: adjust stub
-
 // Define the Number type here.
-type Number struct {
-	a float64
-	b float64
-}
 
 func (n Number) Format() string {
-	sign := "+"
-	unpreciseB := float64(int(n.b*10000)) / 10000
-	if unpreciseB < 0 {
-		sign = "-"
-	}
-	return fmt.Sprintf("%.3f %s %.3f * i", n.a, sign, math.Abs(unpreciseB))
+	panic("Please implement the Format function")
 }
 
 func (n Number) Real() float64 {
-	return n.a
+	panic("Please implement the Real function")
 }
 
 func (n Number) Imaginary() float64 {
-	return n.b
+	panic("Please implement the Imaginary function")
 }
 
 func (n1 Number) Add(n2 Number) Number {
-	return Number{
-		a: n1.a + n2.a,
-		b: n1.b + n2.b,
-	}
+	panic("Please implement the Add function")
 }
 
 func (n1 Number) Subtract(n2 Number) Number {
-	return Number{
-		a: n1.a - n2.a,
-		b: n1.b - n2.b,
-	}
+	panic("Please implement the Subtract function")
 }
 
 func (n1 Number) Multiply(n2 Number) Number {
-	return Number{
-		a: n1.a*n2.a - n1.b*n2.b,
-		b: n1.a*n2.b + n1.b*n2.a,
-	}
+	panic("Please implement the Multiply function")
 }
 
 func (n Number) Times(factor float64) Number {
-	return Number{
-		a: n.a * factor,
-		b: n.b * factor,
-	}
+	panic("Please implement the Times function")
 }
 
 func (n1 Number) Divide(n2 Number) Number {
-	divisor := (square(n2.a) + square(n2.b))
-	return Number{
-		a: (n1.a*n2.a + n1.b*n2.b) / divisor,
-		b: (n1.b*n2.a - n1.a*n2.b) / divisor,
-	}
+	panic("Please implement the Divide function")
 }
 
 func (n Number) Conjugate() Number {
-	var z = Number{
-		a: n.a,
-		b: -n.b,
-	}
-	return z
+	panic("Please implement the Conjugate function")
 }
 
 func (n Number) Abs() float64 {
-	return math.Sqrt((square(n.a) + square(n.b)))
+	panic("Please implement the Abs function")
 }
 
 func (n Number) Exp() Number {
-	return Number{
-		a: math.Cos(n.b) * math.Exp(n.a),
-		b: math.Sin(n.b) * math.Exp(n.a),
-	}
-}
-
-func square(number float64) float64 {
-	return number * number
+	panic("Please implement the Exp function")
 }
