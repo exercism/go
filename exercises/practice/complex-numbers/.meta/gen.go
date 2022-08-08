@@ -132,19 +132,19 @@ var tmpl = `package complex
 
 {{.Header}}
 
-type complex struct {
+type complexNumber struct {
 	a float64
 	b float64
 }
 
 var realTestCases = []struct {
 	description string
-	in          complex
+	in          complexNumber
 	want    float64
 }{
 	{{range .J.real}}{
 		description: {{printf "%q"  	.Description}},
-	    in: complex{
+	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
@@ -155,12 +155,12 @@ var realTestCases = []struct {
 
 var imaginaryTestCases = []struct {
 	description string
-	in          complex
+	in          complexNumber
 	want    float64
 }{
 	{{range .J.imaginary}}{
 		description: {{printf "%q"  	.Description}},
-	    in: complex{
+	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
@@ -171,21 +171,21 @@ var imaginaryTestCases = []struct {
 
 var addTestCases = []struct {
 	description string
-	n1          complex
-	n2          complex
-	want    complex
+	n1          complexNumber
+	n2          complexNumber
+	want    complexNumber
 }{
 	{{range .J.add}}{
 		description: {{printf "%q"  	.Description}},
-	    n1: complex{
+	    n1: complexNumber{
 			a: {{printf "%f"  	.GetZ1.A}},
 			b: {{printf "%f"  	.GetZ1.B}},
 		},
-		n2: complex{
+		n2: complexNumber{
 			a: {{printf "%f"  	.GetZ2.A}},
 			b: {{printf "%f"  	.GetZ2.B}},
 		},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
@@ -195,21 +195,21 @@ var addTestCases = []struct {
 
 var subtractTestCases = []struct {
 	description string
-	n1          complex
-	n2          complex
-	want    complex
+	n1          complexNumber
+	n2          complexNumber
+	want    complexNumber
 }{
 	{{range .J.sub}}{
 		description: {{printf "%q"  	.Description}},
-	    n1: complex{
+	    n1: complexNumber{
 			a: {{printf "%f"  	.GetZ1.A}},
 			b: {{printf "%f"  	.GetZ1.B}},
 		},
-		n2: complex{
+		n2: complexNumber{
 			a: {{printf "%f"  	.GetZ2.A}},
 			b: {{printf "%f"  	.GetZ2.B}},
 		},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
@@ -219,21 +219,21 @@ var subtractTestCases = []struct {
 
 var divideTestCases = []struct {
 	description string
-	n1          complex
-	n2          complex
-	want    complex
+	n1          complexNumber
+	n2          complexNumber
+	want    complexNumber
 }{
 	{{range .J.div}}{
 		description: {{printf "%q"  	.Description}},
-	    n1: complex{
+	    n1: complexNumber{
 			a: {{printf "%f"  	.GetZ1.A}},
 			b: {{printf "%f"  	.GetZ1.B}},
 		},
-		n2: complex{
+		n2: complexNumber{
 			a: {{printf "%f"  	.GetZ2.A}},
 			b: {{printf "%f"  	.GetZ2.B}},
 		},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
@@ -243,20 +243,20 @@ var divideTestCases = []struct {
 
 var multiplyTestCases = []struct {
 	description string
-	n1          complex
-	n2          *complex // if n2 is nil it is a multiplication with the factor
+	n1          complexNumber
+	n2          *complexNumber // if n2 is nil it is a multiplication with the factor
 	factor 		float64
-	want    	complex
+	want    	complexNumber
 }{
 	{{range .J.mul}}{
 		description: {{printf "%q"  	.Description}},
 		{{- if .IsSimpleFactor }}
-			n1: complex{
+			n1: complexNumber{
 				a: {{printf "%f"  	.GetNeededZ.A}},
 				b: {{printf "%f"  	.GetNeededZ.B}},
 			},
 		{{else}}
-			n1: complex{
+			n1: complexNumber{
 				a: {{printf "%f"  	.GetZ1.A}},
 				b: {{printf "%f"  	.GetZ1.B}},
 			},
@@ -264,13 +264,13 @@ var multiplyTestCases = []struct {
 		{{- if .IsSimpleFactor }}
 			n2: nil,
 		{{else}}
-			n2: &complex{
+			n2: &complexNumber{
 				a: {{printf "%f"  	.GetZ2.A}},
 				b: {{printf "%f"  	.GetZ2.B}},
 			},
 		{{- end}}
 		factor: {{printf "%f"  	.GetFactor}},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
@@ -280,16 +280,16 @@ var multiplyTestCases = []struct {
 
 var conjugateTestCases = []struct {
 	description string
-	in          complex
-	want    	complex
+	in          complexNumber
+	want    	complexNumber
 }{
 	{{range .J.conjugate}}{
 		description: {{printf "%q"  	.Description}},
-	    in: complex{
+	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
@@ -299,12 +299,12 @@ var conjugateTestCases = []struct {
 
 var absTestCases = []struct {
 	description string
-	in          complex
+	in          complexNumber
 	want    float64
 }{
 	{{range .J.abs}}{
 		description: {{printf "%q"  	.Description}},
-	    in: complex{
+	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
@@ -315,16 +315,16 @@ var absTestCases = []struct {
 
 var expTestCases = []struct {
 	description string
-	in          complex
-	want    complex
+	in          complexNumber
+	want    complexNumber
 }{
 	{{range .J.exp}}{
 		description: {{printf "%q"  	.Description}},
-	    in: complex{
+	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
 		},
-		want:    complex{
+		want:    complexNumber{
 			a: {{printf "%f"  	.GetExpected.A}},
 			b: {{printf "%f"  	.GetExpected.B}},
 		},
