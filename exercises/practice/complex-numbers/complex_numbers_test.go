@@ -107,33 +107,33 @@ func TestNumber_Abs(t *testing.T) {
 func TestNumber_String(t *testing.T) {
 	tests := []struct {
 		description string
-		input       complex
+		input       complexNumber
 		want        string
 	}{
 		{
 			description: "real number",
-			input: complex{
+			input: complexNumber{
 				a: 17.75,
 			},
 			want: "17.750 + 0.000 * i",
 		},
 		{
 			description: "complex number",
-			input: complex{
+			input: complexNumber{
 				b: 170.7547,
 			},
 			want: "0.000 + 170.755 * i",
 		},
 		{
 			description: "negative complex number",
-			input: complex{
+			input: complexNumber{
 				b: -170.7547,
 			},
 			want: "0.000 - 170.755 * i",
 		},
 		{
 			description: "negative real, positive complex",
-			input: complex{
+			input: complexNumber{
 				a: -15.75,
 				b: 0.37,
 			},
@@ -141,7 +141,7 @@ func TestNumber_String(t *testing.T) {
 		},
 		{
 			description: "positive real, negative complex",
-			input: complex{
+			input: complexNumber{
 				a: 7,
 				b: -4.75,
 			},
@@ -149,7 +149,7 @@ func TestNumber_String(t *testing.T) {
 		},
 		{
 			description: "zero",
-			input: complex{
+			input: complexNumber{
 				a: 0,
 				b: 0,
 			},
@@ -157,7 +157,7 @@ func TestNumber_String(t *testing.T) {
 		},
 		{
 			description: "negative zero",
-			input: complex{
+			input: complexNumber{
 				a: -1 * 0,
 				b: -1 * 0,
 			},
