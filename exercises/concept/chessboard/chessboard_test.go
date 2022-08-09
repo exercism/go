@@ -6,30 +6,31 @@ import (
 
 // newChessboard return a *Chessboard for tests
 //
-//   1 2 3 4 5 6 7 8
-// A # _ # _ _ _ _ # A
-// B _ _ _ _ # _ _ _ B
-// C _ _ # _ _ _ _ _ C
-// D _ _ _ _ _ _ _ _ D
-// E _ _ _ _ _ # _ # E
-// F _ _ _ _ _ _ _ _ F
-// G _ _ _ # _ _ _ _ G
-// H # # # # # # _ # H
-//   1 2 3 4 5 6 7 8
+//   A B C D E F G H
+// 8 # _ _ _ # _ _ # 8
+// 7 _ _ _ _ _ _ _ _ 7
+// 6 _ _ _ _ # _ _ # 6
+// 5 _ # _ _ _ _ _ # 5
+// 4 _ _ _ _ _ _ # # 4
+// 3 # _ # _ _ _ _ # 3
+// 2 _ _ _ _ _ _ _ # 2
+// 1 # _ _ _ _ _ _ # 1
+//   A B C D E F G H
+
 func newChessboard() Chessboard {
 	return Chessboard{
-		"A": Rank{true, false, true, false, false, false, false, true},
-		"B": Rank{false, false, false, false, true, false, false, false},
-		"C": Rank{false, false, true, false, false, false, false, false},
-		"D": Rank{false, false, false, false, false, false, false, false},
-		"E": Rank{false, false, false, false, false, true, false, true},
-		"F": Rank{false, false, false, false, false, false, false, false},
-		"G": Rank{false, false, false, true, false, false, false, false},
-		"H": Rank{true, true, true, true, true, true, false, true},
+		"A": File{true, false, true, false, false, false, false, true},
+		"B": File{false, false, false, false, true, false, false, false},
+		"C": File{false, false, true, false, false, false, false, false},
+		"D": File{false, false, false, false, false, false, false, false},
+		"E": File{false, false, false, false, false, true, false, true},
+		"F": File{false, false, false, false, false, false, false, false},
+		"G": File{false, false, false, true, false, false, false, false},
+		"H": File{true, true, true, true, true, true, false, true},
 	}
 }
 
-func TestCountInRank(t *testing.T) {
+func TestCountInFile(t *testing.T) {
 	cb := newChessboard()
 	for _, test := range []struct {
 		in  string
@@ -45,9 +46,9 @@ func TestCountInRank(t *testing.T) {
 		{"H", 7},
 		{"Z", 0},
 	} {
-		if out := CountInRank(cb, test.in); out != test.out {
+		if out := CountInFile(cb, test.in); out != test.out {
 			t.Errorf(
-				"CountInRank(chessboard, '%v') returned %v while %v was expected\n",
+				"CountInFile(chessboard, '%v') returned %v while %v was expected\n",
 				test.in,
 				out,
 				test.out,
@@ -56,7 +57,7 @@ func TestCountInRank(t *testing.T) {
 	}
 }
 
-func TestCountInFile(t *testing.T) {
+func TestCountInRank(t *testing.T) {
 	cb := newChessboard()
 	for _, test := range []struct {
 		in  int
@@ -76,9 +77,9 @@ func TestCountInFile(t *testing.T) {
 		{-1, 0},
 		{-100, 0},
 	} {
-		if out := CountInFile(cb, test.in); out != test.out {
+		if out := CountInRank(cb, test.in); out != test.out {
 			t.Errorf(
-				"CountInFile(chessboard, %v) returned %v while %v was expected\n",
+				"CountInRank(chessboard, %v) returned %v while %v was expected\n",
 				test.in,
 				out,
 				test.out,
