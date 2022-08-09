@@ -1,22 +1,12 @@
 package complex
 
 import (
-	"fmt"
 	"math"
 )
 
 type Number struct {
 	a float64
 	b float64
-}
-
-func (n Number) Format() string {
-	sign := "+"
-	unpreciseB := float64(int(n.b*10000)) / 10000
-	if unpreciseB < 0 {
-		sign = "-"
-	}
-	return fmt.Sprintf("%.3f %s %.3f * i", n.a, sign, math.Abs(unpreciseB))
 }
 
 func (n Number) Real() float64 {
