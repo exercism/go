@@ -43,10 +43,13 @@ func TestRollADie(t *testing.T) {
 }
 
 func TestWandEnergy(t *testing.T) {
-	const tests = 100
+	const tests = 200
+	const bucketSize float64 = 0.6
 	var got float64
 	foundDifferent := false
 	var last float64
+	numBuckets := int(12.0 / bucketSize)
+	buckets := make([]int, numBuckets)
 	for i := 0; i < tests; i++ {
 		got = GenerateWandEnergy()
 		if got < 0.0 || got >= 12.0 {
@@ -55,10 +58,21 @@ func TestWandEnergy(t *testing.T) {
 		if i > 0 && got != last {
 			foundDifferent = true
 		}
+		buckets[int(got/bucketSize)]++
 		last = got
 	}
 	if !foundDifferent {
 		t.Errorf("GenerateWandEnergy() always generates the same number: %f", got)
+	}
+
+	var emptyBuckets int
+	for _, v := range buckets {
+		if v == 0 {
+			emptyBuckets++
+		}
+	}
+	if emptyBuckets > 1 {
+		t.Errorf("GenerateWandEnergy() results are not uniformly distributed. %d of %d buckets are empty.", emptyBuckets, numBuckets)
 	}
 }
 
