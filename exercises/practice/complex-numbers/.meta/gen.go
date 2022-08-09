@@ -96,7 +96,7 @@ func getComplex(in interface{}) complex {
 	}
 	s, ok := in.([]interface{})
 	if !ok {
-		panic(fmt.Sprintf("unknown value for field z1: %v", in))
+		panic(fmt.Sprintf("unknown value for field: %v", in))
 	}
 	var result []float64
 	for _, element := range s {
