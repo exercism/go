@@ -12,6 +12,10 @@ linters:
     - govet
     - staticcheck
 linters-settings:
+  staticcheck:
+    checks:
+      - all
+      - '-SA1019' # disable the rule SA1019
   gocritic:
     disabled-checks:
       - yodaStyleExpr
