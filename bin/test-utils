@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+export GO111MODULE=auto
+
+bin/golangci-lint -v run ./gen/... ./gomod-sync/... && go test -cpu 2 ./gen/... ./gomod-sync/...
