@@ -58,7 +58,7 @@ EOD
 
       generator="${dir}/.meta/gen.go"
       if [ -f "${generator}" ]; then
-          mkdir -p "${tmp}/gen/${stub}" && cp "${generator}" "${tmp}/gen/${stub}/gen.go"
+         # mkdir -p "${tmp}/gen/${stub}" && cp "${generator}" "${tmp}/gen/${stub}/gen.go"
       fi
 
       original_module=`head -n1 $tmpstub/go.mod | awk '{ print $2 }'`
