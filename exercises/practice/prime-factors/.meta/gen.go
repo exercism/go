@@ -13,7 +13,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j = map[string]interface{}{
-		"factors" : &[]testCase{},
+		"factors": &[]testCase{},
 	}
 	if err := gen.Gen("prime-factors", j, t); err != nil {
 		log.Fatal(err)

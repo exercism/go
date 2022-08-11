@@ -37,7 +37,8 @@ func (c testCase) ErrorExpected() bool {
 func (c testCase) SortedMapString() string {
 	strs := make([]string, 0, len(c.Expected))
 	for s, v := range c.Expected {
-		strs = append(strs, `"`+s+`": `+string(v+'0'))
+		b := rune(v + '0')
+		strs = append(strs, `"`+s+`": `+string(b))
 	}
 	sort.Strings(strs)
 	return strings.Join(strs, ",")

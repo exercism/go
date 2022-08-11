@@ -13,7 +13,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j = map[string]interface{}{
-		"isIsogram" : &[]testCase{},
+		"isIsogram": &[]testCase{},
 	}
 	if err := gen.Gen("isogram", j, t); err != nil {
 		log.Fatal(err)
@@ -21,13 +21,12 @@ func main() {
 }
 
 type testCase struct {
-	Description string   `json:"description"`
+	Description string `json:"description"`
 	Input       struct {
 		Phrase string `json:"phrase"`
 	} `json:"input"`
 	Expected bool `json:"expected"`
 }
-
 
 var tmpl = `package isogram
 

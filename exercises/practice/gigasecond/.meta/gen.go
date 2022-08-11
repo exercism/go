@@ -13,7 +13,7 @@ func main() {
 		log.Fatal(err)
 	}
 	var j = map[string]interface{}{
-		"add" : &[]testCase{},
+		"add": &[]testCase{},
 	}
 	if err := gen.Gen("gigasecond", j, t); err != nil {
 		log.Fatal(err)
