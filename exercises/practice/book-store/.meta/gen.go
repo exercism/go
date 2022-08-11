@@ -21,7 +21,7 @@ func main() {
 }
 
 type testCase struct {
-	Description string   `json:"description"`
+	Description string `json:"description"`
 	Input       struct {
 		Basket []int `json:"basket"`
 	} `json:"input"`

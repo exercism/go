@@ -13,8 +13,8 @@ func main() {
 		log.Fatal(err)
 	}
 	var j = map[string]interface{}{
-		"chromatic" : &[]testCase{},
-		"interval" : &[]testCase{},
+		"chromatic": &[]testCase{},
+		"interval":  &[]testCase{},
 	}
 	if err := gen.Gen("scale-generator", j, t); err != nil {
 		log.Fatal(err)
