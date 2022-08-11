@@ -25,7 +25,7 @@ var checkCmd = &cobra.Command{
 		}
 
 		type faultyFile struct {
-			gomod.Info
+			Info            gomod.Info
 			ExpectedVersion string
 		}
 
@@ -43,7 +43,7 @@ var checkCmd = &cobra.Command{
 		if len(faultyFiles) > 0 {
 			fmt.Println(aurora.Red(fmt.Sprintf("The following %d go.mod file(s) do not have the correct version set:", len(faultyFiles))))
 			for _, faultyFile := range faultyFiles {
-				fmt.Println(aurora.Red(fmt.Sprintf("\t%v has version %s, but %s expected", faultyFile.Path, faultyFile.GoVersion, faultyFile.ExpectedVersion)))
+				fmt.Println(aurora.Red(fmt.Sprintf("\t%v has version %s, but %s expected", faultyFile.Info.Path, faultyFile.Info.GoVersion, faultyFile.ExpectedVersion)))
 			}
 			return fmt.Errorf("%d go.mod file(s) are not in the target version", len(faultyFiles))
 		}

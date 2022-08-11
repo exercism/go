@@ -1,10 +1,4 @@
 #!/bin/bash
 
-
-export GO111MODULE=auto
-
-for generator in ./exercises/practice/*/.meta/gen.go; do
-    bin/golangci-lint run "${generator}"
-done
-
-bin/golangci-lint run ./gen/... ./gomod-sync/... && go test -cpu 2 ./gen/... ./gomod-sync/...
+export GO111MODULE=off
+bin/golangci-lint run ./gen/...
