@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export GO111MODULE=off
-bin/golangci-lint run ./gen/...
+export GO111MODULE=auto
+bin/golangci-lint run ./gen/... && go test -cpu 2 ./gen/...
