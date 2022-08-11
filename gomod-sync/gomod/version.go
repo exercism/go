@@ -33,7 +33,7 @@ func GoVersion(gomodFilePath string) (string, error) {
 }
 
 // Update updates a go.mod file at the given path to the given Go version.
-func Update(path string, version string) error {
+func Update(path, version string) error {
 	// Read the file
 	rawContent, err := os.ReadFile(path)
 	if err != nil {

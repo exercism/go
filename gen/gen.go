@@ -28,11 +28,10 @@ const (
 // the same parent directory as the Exercism Go track repository.
 // E.g.
 //
-//     $ tree -L 1 .
-//     .
-//     ├── problem-specifications
-//     └── go
-//
+//	$ tree -L 1 .
+//	.
+//	├── problem-specifications
+//	└── go
 var problemSpecificationsDir string
 
 // exerciseDir is the location of the exercise and also the cases_test.go file.
@@ -181,9 +180,8 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	formattedFileContent, err := format.Source(casesFileContent)
 	if err != nil {
 		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
-		debugFileContent := append(casesFileContent, []byte("// !NOTE: Error during source formatting: Line:Column "+fmt.Sprint(err)+"\n")...)
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFile, debugFileContent)
+		_ = outputSource("ERROR", casesFile, append(casesFileContent, []byte(fmt.Sprintf("// !NOTE: Error during source formatting: Line:Column %v\n", err))...))
 		return err
 	}
 	// write output file for the Go test cases.
@@ -192,9 +190,9 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
 func outputSource(status, fileName string, src []byte) error {
-	err := os.WriteFile(fileName, src, 0666)
+	err := os.WriteFile(fileName, src, 0o666)
 	if err != nil {
-		return fmt.Errorf("[FAILED] %q\n", err)
+		return fmt.Errorf("[FAILED] %v\n", err)
 	}
 	fmt.Printf("[%s] output: %s\n", status, fileName)
 	return nil
