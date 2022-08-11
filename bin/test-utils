@@ -3,4 +3,8 @@
 
 export GO111MODULE=auto
 
-bin/golangci-lint -v run ./gen/... ./gomod-sync/... && go test -cpu 2 ./gen/... ./gomod-sync/...
+for generator in ./exercises/practice/*/.meta/gen.go; do
+    bin/golangci-lint "${generator}"
+done
+
+bin/golangci-lint run ./gen/... ./gomod-sync/... && go test -cpu 2 ./gen/... ./gomod-sync/...
