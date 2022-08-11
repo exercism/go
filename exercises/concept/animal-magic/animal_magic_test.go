@@ -62,17 +62,19 @@ func TestWandEnergy(t *testing.T) {
 		last = got
 	}
 	if !foundDifferent {
-		t.Errorf("GenerateWandEnergy() always generates the same number: %f", got)
+		t.Fatalf("GenerateWandEnergy() always generates the same number: %f", got)
 	}
 
-	var emptyBuckets int
-	for _, v := range buckets {
+	var low, high float64
+	for i, v := range buckets {
 		if v == 0 {
-			emptyBuckets++
+			low = float64(i) * bucketSize
+			high = float64(i+1) * bucketSize
+			break
 		}
 	}
-	if emptyBuckets > 1 {
-		t.Errorf("GenerateWandEnergy() results are not uniformly distributed. %d of %d buckets are empty.", emptyBuckets, numBuckets)
+	if high != 0.0 {
+		t.Errorf("GenerateWandEnergy() results are not uniformly distributed. %f to %f should contain values.", low, high)
 	}
 }
 
