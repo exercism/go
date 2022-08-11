@@ -53,6 +53,12 @@ EOD
       echo "copy exemplar $exemplar to $tmpstub"
       cp $exemplar "${tmpstub}/${stub}.go"
       echo "copy module $mod to $tmpstub"
+
+      generator="${dir}/.meta/gen.go"
+      if [ -f "${generator}" ]; then
+          echo "copy gen.go to $tmpstub"
+          cp "${generator}" "${tmpstub}"
+      fi
       cp $mod $tmpstub
       echo "put everything in the same module"
       original_module=`head -n1 $tmpstub/go.mod | awk '{ print $2 }'`
