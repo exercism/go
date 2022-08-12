@@ -1,6 +1,7 @@
 package chessboard
 
 import (
+	"strconv"
 	"testing"
 )
 
@@ -32,74 +33,70 @@ func newChessboard() Chessboard {
 
 func TestCountInFile(t *testing.T) {
 	cb := newChessboard()
-	for _, test := range []struct {
-		in  string
-		out int
+	testCases := []struct {
+		in       string
+		expected int
 	}{
-		{"A", 3},
-		{"B", 1},
-		{"C", 1},
-		{"D", 0},
-		{"E", 2},
-		{"F", 0},
-		{"G", 1},
-		{"H", 7},
-		{"Z", 0},
-	} {
-		if out := CountInFile(cb, test.in); out != test.out {
-			t.Errorf(
-				"CountInFile(chessboard, '%v') returned %v while %v was expected\n",
-				test.in,
-				out,
-				test.out,
-			)
-		}
+		{in: "A", expected: 3},
+		{in: "B", expected: 1},
+		{in: "C", expected: 1},
+		{in: "D", expected: 0},
+		{in: "E", expected: 2},
+		{in: "F", expected: 0},
+		{in: "G", expected: 1},
+		{in: "H", expected: 7},
+		{in: "Z", expected: 0},
+	}
+	for _, test := range testCases {
+		t.Run(test.in, func(t *testing.T) {
+			if got := CountInFile(cb, test.in); got != test.expected {
+				t.Errorf("CountInFile(chessboard, %q) = %d, want: %d", test.in, got, test.expected)
+			}
+		})
 	}
 }
 
 func TestCountInRank(t *testing.T) {
 	cb := newChessboard()
-	for _, test := range []struct {
-		in  int
-		out int
+	testCases := []struct {
+		in       int
+		expected int
 	}{
-		{1, 2},
-		{2, 1},
-		{3, 3},
-		{4, 2},
-		{5, 2},
-		{6, 2},
-		{7, 0},
-		{8, 3},
+		{in: 1, expected: 2},
+		{in: 2, expected: 1},
+		{in: 3, expected: 3},
+		{in: 4, expected: 2},
+		{in: 5, expected: 2},
+		{in: 6, expected: 2},
+		{in: 7, expected: 0},
+		{in: 8, expected: 3},
 		// cases not between 1 and 8, inclusive
-		{100, 0},
-		{0, 0},
-		{-1, 0},
-		{-100, 0},
-	} {
-		if out := CountInRank(cb, test.in); out != test.out {
-			t.Errorf(
-				"CountInRank(chessboard, %v) returned %v while %v was expected\n",
-				test.in,
-				out,
-				test.out,
-			)
-		}
+		{in: 100, expected: 0},
+		{in: 0, expected: 0},
+		{in: -1, expected: 0},
+		{in: -100, expected: 0},
+	}
+	for _, test := range testCases {
+		t.Run(strconv.Itoa(test.in), func(t *testing.T) {
+			if got := CountInRank(cb, test.in); got != test.expected {
+				t.Errorf("CountInRank(chessboard, %d) = %d, want: %d", test.in, got, test.expected)
+			}
+		})
 	}
 }
 
 func TestCountAll(t *testing.T) {
 	cb := newChessboard()
-	wanted := 64
-	if out := CountAll(cb); out != wanted {
-		t.Errorf("CountAll(chessboard) returned %v while %v was expected", out, wanted)
+	expected := 64
+	if got := CountAll(cb); got != expected {
+		t.Errorf("CountAll(chessboard) = %d, want: %d", got, expected)
 	}
 }
 
 func TestCountOccupied(t *testing.T) {
 	cb := newChessboard()
-	wanted := 15
-	if out := CountOccupied(cb); out != wanted {
-		t.Errorf("CountOccupied(chessboard) returned %v while %v was expected", out, wanted)
+	expected := 15
+	if got := CountOccupied(cb); got != expected {
+		t.Errorf("CountOccupied(chessboard) = %d, want: %d", got, expected)
 	}
 }
