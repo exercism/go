@@ -92,6 +92,7 @@ trap cleanup EXIT INT TERM
 # module-aware mode only in places where a go.mod is present.
 export GO111MODULE=auto
 
+echo "running linter and tests for exercises and exercise generators"
 # Run lint which is configured by .golangci.yml at the root of the repo
 # and if it's successful, run tests
 bin/golangci-lint run ./$tmp/... && go test -cpu 2 ./$tmp/...
@@ -104,10 +105,14 @@ if [ $exitcode -ne 0 ]
     exit $exitcode
 fi
 
+echo "SUCCESS"
+
 paths_to_lint="gomod-sync gen"
 for path in $paths_to_lint; do
   cd "$root"
   cd "$path"
+
+  echo "running linters and tests for $path"
   $root/bin/golangci-lint run && go test -cpu 2
 
   exitcode=$?
@@ -116,4 +121,5 @@ for path in $paths_to_lint; do
       echo "LINTER/TESTS FAILED for $path"
       exit $exitcode
   fi
+  echo "SUCCESS"
 done
