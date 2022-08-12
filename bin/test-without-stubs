@@ -112,13 +112,13 @@ for path in $paths_to_lint; do
   cd "$root"
   cd "$path"
 
-  echo "running linters and tests for $path"
-  $root/bin/golangci-lint run && go test -cpu 2
+  echo "running linters and tests for $path/..."
+  $root/bin/golangci-lint run ./... && go test -cpu 2 ./...
 
   exitcode=$?
   if [ $exitcode -ne 0 ]
     then 
-      echo "LINTER/TESTS FAILED for $path"
+      echo "LINTER/TESTS FAILED for $path/..."
       exit $exitcode
   fi
   echo "SUCCESS"
