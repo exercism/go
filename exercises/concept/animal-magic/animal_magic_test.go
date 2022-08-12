@@ -74,7 +74,7 @@ func TestWandEnergy(t *testing.T) {
 		}
 	}
 	if high != 0.0 {
-		t.Errorf("GenerateWandEnergy() results are not uniformly distributed. %f to %f should contain values.", low, high)
+		t.Errorf("GenerateWandEnergy() results are not uniformly distributed. %.2f to %.2f should contain values.", low, high)
 	}
 }
 
