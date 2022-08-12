@@ -18,7 +18,8 @@
 
 root=$(pwd)
 tmp=tmp/lint
-mkdir -p $tmp
+rm -rf "$tmp"
+mkdir -p "$tmp"
 
 for parentdir in concept practice; do
   for dir in exercises/$parentdir/*/; do
@@ -82,7 +83,7 @@ cleanup () {
   rm -rf $tmp
 }
 
-#trap cleanup EXIT INT TERM
+trap cleanup EXIT INT TERM
 
 # Since Go 1.16 all go commands run in module-aware mode,
 # which would require a go.mod file to be present at the root
