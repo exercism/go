@@ -28,11 +28,10 @@ const (
 // the same parent directory as the Exercism Go track repository.
 // E.g.
 //
-//     $ tree -L 1 .
-//     .
-//     ├── problem-specifications
-//     └── go
-//
+//	$ tree -L 1 .
+//	.
+//	├── problem-specifications
+//	└── go
 var problemSpecificationsDir string
 
 // exerciseDir is the location of the exercise and also the cases_test.go file.
@@ -51,7 +50,11 @@ type Header struct {
 
 // String generates the header for cases_test.go file.
 func (h Header) String() string {
-	return fmt.Sprintf("// Source: %s\n// Commit: %s", h.Origin, h.Commit)
+	return fmt.Sprintf(`// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+	// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+	// Source: %s
+	// Commit: %s
+	`, h.Origin, h.Commit)
 }
 
 type testCase struct {
