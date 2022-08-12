@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 )
@@ -20,7 +20,7 @@ func getRemoteTestData(exercise string) ([]byte, error) {
 		return nil, fmt.Errorf("error fetching remote data: (status-code: %s)", resp.Status)
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func getRemoteCommit(exercise, token string) (Header, error) {
 	url := fmt.Sprintf(commitsURL, exercise)
 	fmt.Printf("[REMOTE] fetching latest commit (source: %s)\n", url)
 
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, http.NoBody)
 	if err != nil {
 		return Header{}, err
 	}

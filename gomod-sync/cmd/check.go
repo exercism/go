@@ -3,9 +3,10 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/exercism/go/gomod-sync/gomod"
-	"github.com/logrusorgru/aurora/v3"
+	aurora "github.com/logrusorgru/aurora/v3"
 	"github.com/spf13/cobra"
+
+	"github.com/exercism/go/gomod-sync/gomod"
 )
 
 func init() {
