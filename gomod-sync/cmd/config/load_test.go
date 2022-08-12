@@ -64,7 +64,7 @@ func TestLoad(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
-			config, err := config.Load(test.Path)
+			cfg, err := config.Load(test.Path)
 
 			if test.ExpectError && err == nil {
 				t.Fatalf("expected error, but got none")
@@ -74,8 +74,8 @@ func TestLoad(t *testing.T) {
 				t.Fatalf("didn't expect error, but got %v", err)
 			}
 
-			if !configEqual(config, test.Expected) {
-				t.Fatalf("expected config %+v, but got %+v", test.Expected, config)
+			if !configEqual(cfg, test.Expected) {
+				t.Fatalf("expected config %+v, but got %+v", test.Expected, cfg)
 			}
 		})
 	}
