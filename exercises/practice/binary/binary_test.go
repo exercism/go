@@ -14,42 +14,51 @@ import (
 // The test cases can only check that you return *some* error,
 // but it's still good practice to return useful errors.
 
-var testCases = []struct {
+type testCase struct {
 	binary   string
 	expected int
-	ok       bool
-}{
-	{"1", 1, true},
-	{"10", 2, true},
-	{"11", 3, true},
-	{"100", 4, true},
-	{"1001", 9, true},
-	{"11010", 26, true},
-	{"10001101000", 1128, true},
-	{"0", 0, true},
-	{"foo101", 0, false},
-	{"101bar", 0, false},
-	{"101baz010", 0, false},
-	{"22", 0, false},
+}
+
+var validTestCases = []testCase{
+	{binary: "1", expected: 1},
+	{binary: "10", expected: 2},
+	{binary: "11", expected: 3},
+	{binary: "100", expected: 4},
+	{binary: "1001", expected: 9},
+	{binary: "11010", expected: 26},
+	{binary: "10001101000", expected: 1128},
+	{binary: "0", expected: 0},
 }
 
 func TestParseBinary(t *testing.T) {
-	for _, tt := range testCases {
-		actual, err := ParseBinary(tt.binary)
-		if tt.ok {
+	for _, tt := range validTestCases {
+		t.Run(tt.binary, func(t *testing.T) {
+			actual, err := ParseBinary(tt.binary)
 			if err != nil {
-				var _ error = err
-				t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
-					tt.binary, err)
+				t.Fatalf("ParseBinary(%q) returned error: %v, want: %d", tt.binary, err, tt.expected)
 			}
 			if actual != tt.expected {
-				t.Fatalf("ParseBinary(%v): actual %d, expected %v",
-					tt.binary, actual, tt.expected)
+				t.Fatalf("ParseBinary(%q) = %d, want: %d", tt.binary, actual, tt.expected)
 			}
-		} else if err == nil {
-			t.Fatalf("ParseBinary(%v) returned %d and no error.  Expected an error.",
-				tt.binary, actual)
-		}
+		})
+	}
+}
+
+var invalidTestCases = []testCase{
+	{binary: "foo101", expected: 0},
+	{binary: "101bar", expected: 0},
+	{binary: "101baz010", expected: 0},
+	{binary: "22", expected: 0},
+}
+
+func TestParseBinaryInvalid(t *testing.T) {
+	for _, tt := range invalidTestCases {
+		t.Run(tt.binary, func(t *testing.T) {
+			actual, err := ParseBinary(tt.binary)
+			if err == nil {
+				t.Fatalf("ParseBinary(%q) expected error, got: %d", tt.binary, actual)
+			}
+		})
 	}
 }
 
@@ -59,7 +68,7 @@ func BenchmarkBinary(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, tt := range testCases {
+		for _, tt := range validTestCases {
 			ParseBinary(tt.binary)
 		}
 	}
