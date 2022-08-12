@@ -60,7 +60,7 @@ Step 3 has three major changes:
 *  A log channel allows robots and the room to log messages.
 *  The room allows multiple robots to exist and operate concurrently.
 
-For the final position report sent from StartRobot3, you can return the same slice
+For the final position report sent from Room3, you can return the same slice
 received from the robots channel, just with updated positions and directions.
 
 Messages must be sent on the log channel for
