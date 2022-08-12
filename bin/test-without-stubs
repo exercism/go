@@ -105,7 +105,7 @@ if [ $exitcode -ne 0 ]
 fi
 
 paths_to_lint="gomod-sync gen"
-for $path in $paths_to_lint; do
+for path in $paths_to_lint; do
   cd "$root"
   cd "$path"
   bin/golangci-lint run && go test -cpu 2
