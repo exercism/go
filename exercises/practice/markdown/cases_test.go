@@ -1,7 +1,7 @@
 package markdown
 
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: b820099 Allow prettier to format more files (#1966)
 

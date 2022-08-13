@@ -1,7 +1,7 @@
 package binarysearch
 
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 

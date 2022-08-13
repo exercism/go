@@ -1,7 +1,7 @@
 package luhn
 
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: fc7ad52 luhn: test-case covering the usage of %5==0 (#2056)
 

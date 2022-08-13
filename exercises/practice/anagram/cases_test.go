@@ -1,7 +1,7 @@
 package anagram
 
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: 6373ab6 anagram: reimplement cases where `candidates` isn't a set (#1943)
 

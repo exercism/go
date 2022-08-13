@@ -1,7 +1,7 @@
 package scale
 
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: 2e820e1 Auto-format portions of some JSON files (#1967)
 
