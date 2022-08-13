@@ -17,7 +17,7 @@ func TestSeedWithTime(t *testing.T) {
 			return
 		}
 		last = got
-		time.Sleep(time.Duration(rand.Intn(10)) * time.Microsecond)
+		time.Sleep((time.Duration(rand.Intn(10)) + 10) * time.Microsecond)
 	}
 	t.Errorf("SeedWithTime always sets the same seed")
 }
