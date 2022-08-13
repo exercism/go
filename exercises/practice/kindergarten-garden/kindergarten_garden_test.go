@@ -3,6 +3,7 @@ package kindergarten
 import (
 	"reflect"
 	"sort"
+	"strconv"
 	"testing"
 )
 
@@ -13,120 +14,149 @@ type lookup struct {
 }
 
 type gardenTest struct {
-	number   int
-	diagram  string
-	children []string
-	ok       bool
-	lookups  []lookup
+	number    int
+	diagram   string
+	children  []string
+	errorHint string
+	lookups   []lookup
 }
 
 var tests = []gardenTest{
-	{1, `
-RC
-GG`, []string{"Alice"}, true, []lookup{
-		{"Alice", []string{"radishes", "clover", "grass", "grass"}, true},
-	}},
-	{2, `
-VC
-RC`, []string{"Alice"}, true, []lookup{
-		{"Alice", []string{"violets", "clover", "radishes", "clover"}, true},
-	}},
-	{3, `
-VVCG
-VVRC`, []string{"Alice", "Bob"}, true, []lookup{
-		{"Bob", []string{"clover", "grass", "radishes", "clover"}, true},
-	}},
-	{4, `
-VVCCGG
-VVCCGG`, []string{"Alice", "Bob", "Charlie"}, true, []lookup{
-		{"Bob", []string{"clover", "clover", "clover", "clover"}, true},
-		{"Charlie", []string{"grass", "grass", "grass", "grass"}, true},
-	}},
+	{
+		number:    1,
+		diagram:   "\nRC\nGG",
+		children:  []string{"Alice"},
+		errorHint: "",
+		lookups:   []lookup{{"Alice", []string{"radishes", "clover", "grass", "grass"}, true}},
+	},
+	{
+		number:    2,
+		diagram:   "\nVC\nRC",
+		children:  []string{"Alice"},
+		errorHint: "",
+		lookups:   []lookup{{"Alice", []string{"violets", "clover", "radishes", "clover"}, true}},
+	},
+	{
+		number:    3,
+		diagram:   "\nVVCG\nVVRC",
+		children:  []string{"Alice", "Bob"},
+		errorHint: "",
+		lookups:   []lookup{{"Bob", []string{"clover", "grass", "radishes", "clover"}, true}},
+	},
+	{
+		number:    4,
+		diagram:   "\nVVCCGG\nVVCCGG",
+		children:  []string{"Alice", "Bob", "Charlie"},
+		errorHint: "",
+		lookups:   []lookup{{"Bob", []string{"clover", "clover", "clover", "clover"}, true}, {"Charlie", []string{"grass", "grass", "grass", "grass"}, true}},
+	},
 	test5, // full garden test
 	test6, // out of order names test
+	{
+		number:    7,
+		diagram:   "\nRC\nGG",
+		children:  []string{"Alice"},
+		errorHint: "",
+		lookups:   []lookup{{"Bob", []string{"radishes", "clover", "grass", "grass"}, false}}, // lookup invalid name
+	},
 
 	// failure tests
-	{7, "RC\nGG", []string{"Alice"}, false, nil}, // wrong diagram format
-	{8, `
-RCCC
-GG`, []string{""}, false, nil}, // mismatched rows
-	{9, `
-RCC
-GGC`, []string{"Alice"}, false, nil}, // odd number of cups
-	{10, `
-RCCC
-GGCC`, []string{"Alice", "Alice"}, false, nil}, // duplicate name
-	{11, `
-rc
-gg`, []string{"Alice"}, false, nil}, // invalid cup codes
-	{12, `
-RC
-GG`, []string{"Alice"}, true, []lookup{ // lookup invalid name
-		{"Bob", []string{"radishes", "clover", "grass", "grass"}, false},
-	}},
+	{
+		number:    8,
+		diagram:   "RC\nGG",
+		children:  []string{"Alice"},
+		errorHint: "wrong diagram format",
+		lookups:   nil,
+	},
+	{
+		number:    9,
+		diagram:   "\nRCCC\nGG",
+		children:  []string{""},
+		errorHint: "mismatched rows",
+		lookups:   nil,
+	},
+	{
+		number:    10,
+		diagram:   "\nRCC\nGGC",
+		children:  []string{"Alice"},
+		errorHint: "odd number of cups",
+		lookups:   nil,
+	},
+	{
+		number:    11,
+		diagram:   "\nRCCC\nGGCC",
+		children:  []string{"Alice", "Alice"},
+		errorHint: "duplicate name",
+		lookups:   nil,
+	},
+	{
+		number:    12,
+		diagram:   "\nrc\ngg",
+		children:  []string{"Alice"},
+		errorHint: "invalid cup codes",
+		lookups:   nil,
+	},
 }
 
 // full garden test
-var test5 = gardenTest{5, `
-VRCGVVRVCGGCCGVRGCVCGCGV
-VRCCCGCRRGVCGCRVVCVGCGCV`, []string{
-	"Alice", "Bob", "Charlie", "David", "Eve", "Fred",
-	"Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"}, true, []lookup{
-	{"Alice", []string{"violets", "radishes", "violets", "radishes"}, true},
-	{"Bob", []string{"clover", "grass", "clover", "clover"}, true},
-	{"Charlie", []string{"violets", "violets", "clover", "grass"}, true},
-	{"David", []string{"radishes", "violets", "clover", "radishes"}, true},
-	{"Eve", []string{"clover", "grass", "radishes", "grass"}, true},
-	{"Fred", []string{"grass", "clover", "violets", "clover"}, true},
-	{"Ginny", []string{"clover", "grass", "grass", "clover"}, true},
-	{"Harriet", []string{"violets", "radishes", "radishes", "violets"}, true},
-	{"Ileana", []string{"grass", "clover", "violets", "clover"}, true},
-	{"Joseph", []string{"violets", "clover", "violets", "grass"}, true},
-	{"Kincaid", []string{"grass", "clover", "clover", "grass"}, true},
-	{"Larry", []string{"grass", "violets", "clover", "violets"}, true},
-}}
+var test5 = gardenTest{
+	number:    5,
+	diagram:   "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
+	children:  []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
+	errorHint: "",
+	lookups: []lookup{
+		{"Alice", []string{"violets", "radishes", "violets", "radishes"}, true},
+		{"Bob", []string{"clover", "grass", "clover", "clover"}, true},
+		{"Charlie", []string{"violets", "violets", "clover", "grass"}, true},
+		{"David", []string{"radishes", "violets", "clover", "radishes"}, true},
+		{"Eve", []string{"clover", "grass", "radishes", "grass"}, true},
+		{"Fred", []string{"grass", "clover", "violets", "clover"}, true},
+		{"Ginny", []string{"clover", "grass", "grass", "clover"}, true},
+		{"Harriet", []string{"violets", "radishes", "radishes", "violets"}, true},
+		{"Ileana", []string{"grass", "clover", "violets", "clover"}, true},
+		{"Joseph", []string{"violets", "clover", "violets", "grass"}, true},
+		{"Kincaid", []string{"grass", "clover", "clover", "grass"}, true},
+		{"Larry", []string{"grass", "violets", "clover", "violets"}, true},
+	}}
 
 // out of order names test
 var (
 	test6names = []string{"Samantha", "Patricia", "Xander", "Roger"}
-	test6      = gardenTest{6, `
-VCRRGVRG
-RVGCCGCV`, append([]string{}, test6names...), true, []lookup{
-		{"Patricia", []string{"violets", "clover", "radishes", "violets"}, true},
-		{"Roger", []string{"radishes", "radishes", "grass", "clover"}, true},
-		{"Samantha", []string{"grass", "violets", "clover", "grass"}, true},
-		{"Xander", []string{"radishes", "grass", "clover", "violets"}, true},
-	}}
+	test6      = gardenTest{
+		number:    6,
+		diagram:   "\nVCRRGVRG\nRVGCCGCV",
+		children:  test6names,
+		errorHint: "",
+		lookups: []lookup{
+			{"Patricia", []string{"violets", "clover", "radishes", "violets"}, true},
+			{"Roger", []string{"radishes", "radishes", "grass", "clover"}, true},
+			{"Samantha", []string{"grass", "violets", "clover", "grass"}, true},
+			{"Xander", []string{"radishes", "grass", "clover", "violets"}, true},
+		},
+	}
 )
 
 func TestGarden(t *testing.T) {
 	for _, test := range tests {
-		g, err := NewGarden(test.diagram, test.children)
-		if test.ok {
-			if err != nil {
-				t.Fatalf("NewGarden test %d returned error %q.  Error not expected.",
-					test.number, err)
+		t.Run(strconv.Itoa(test.number), func(t *testing.T) {
+			actual, err := NewGarden(test.diagram, test.children)
+			switch {
+			case test.errorHint != "":
+				if err == nil {
+					t.Fatalf("Testcase %d for NewGarden expected error but got nil\nhint:%s", test.number, test.errorHint)
+				}
+			case err != nil:
+				t.Fatalf("Testcase %d for NewGarden returned unexpected error: %v ", test.number, err)
 			}
-
 			for _, l := range test.lookups {
-				switch plants, ok := g.Plants(l.child); {
+				switch plants, ok := actual.Plants(l.child); {
 				case ok != l.ok:
-					t.Fatalf("Garden %d lookup %s returned ok = %t, want %t.",
-						test.number, l.child, ok, l.ok)
+					t.Fatalf("Testcase %d lookup %s returned ok = %t, want %t", test.number, l.child, ok, l.ok)
 				case ok && !reflect.DeepEqual(plants, l.plants):
-					t.Fatalf("Garden %d lookup %s = %q, want %q.",
-						test.number, l.child, plants, l.plants)
+					t.Fatalf("Testcase %d lookup %s = %q, want: %q", test.number, l.child, plants, l.plants)
 				}
 			}
-		} else { // negative tests; expecting error
-			// check err is of error type
-			var _ error = err
-
-			// we expect error
-			if err == nil {
-				t.Fatalf("NewGarden test %d. Expected error but got nil.", test.number)
-			}
-		}
+		})
 	}
 }
 
