@@ -147,3 +147,23 @@ func TestSong(t *testing.T) {
 	}
 	t.Fatalf("Song() line %d =\n%q\n want \n%q", i+1, g, w)
 }
+
+func BenchmarkVerse(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for v := 0; v < len(expectedVerses); v++ {
+			Verse(v + 1)
+		}
+	}
+}
+
+func BenchmarkSong(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		Song()
+	}
+}
