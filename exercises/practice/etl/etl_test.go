@@ -2,27 +2,28 @@ package etl
 
 import "testing"
 
-type given map[int][]string
-type expectation map[string]int
-
 var transformTests = []struct {
-	input  given
-	output expectation
+	description string
+	input       map[int][]string
+	expect      map[string]int
 }{
 	{
-		given{1: {"A"}},
-		expectation{"a": 1},
+		description: "single letter for one score",
+		input:       map[int][]string{1: {"A"}},
+		expect:      map[string]int{"a": 1},
 	},
 	{
-		given{1: {"A", "E", "I", "O", "U"}},
-		expectation{"a": 1, "e": 1, "i": 1, "o": 1, "u": 1},
+		description: "multiple letters for one score",
+		input:       map[int][]string{1: {"A", "E", "I", "O", "U"}},
+		expect:      map[string]int{"a": 1, "e": 1, "i": 1, "o": 1, "u": 1},
 	},
 	{
-		given{
+		description: "multiple letters for multiple scores",
+		input: map[int][]string{
 			1: {"A", "E"},
 			2: {"D", "G"},
 		},
-		expectation{
+		expect: map[string]int{
 			"a": 1,
 			"e": 1,
 			"d": 2,
@@ -30,7 +31,8 @@ var transformTests = []struct {
 		},
 	},
 	{
-		given{
+		description: "all letters",
+		input: map[int][]string{
 			1:  {"A", "E", "I", "O", "U", "L", "N", "R", "S", "T"},
 			2:  {"D", "G"},
 			3:  {"B", "C", "M", "P"},
@@ -39,7 +41,7 @@ var transformTests = []struct {
 			8:  {"J", "X"},
 			10: {"Q", "Z"},
 		},
-		expectation{
+		expect: map[string]int{
 			"a": 1, "e": 1, "i": 1, "o": 1, "u": 1, "l": 1, "n": 1, "r": 1, "s": 1, "t": 1,
 			"d": 2, "g": 2,
 			"b": 3, "c": 3, "m": 3, "p": 3,
@@ -69,10 +71,11 @@ func equal(actual, expectation map[string]int) bool {
 
 func TestTransform(t *testing.T) {
 	for _, tt := range transformTests {
-		actual := Transform(map[int][]string(tt.input))
-		if !equal(actual, tt.output) {
-			t.Fatalf("Transform(%v). Expected [%v], Actual [%v]", tt.input, tt.output, actual)
-		}
+		t.Run(tt.description, func(t *testing.T) {
+			if actual := Transform(tt.input); !equal(actual, tt.expect) {
+				t.Fatalf("Transform(%v)\n got:%v\nwant:%v", tt.input, actual, tt.expect)
+			}
+		})
 	}
 }
 
@@ -83,7 +86,7 @@ func BenchmarkTransform(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 
 		for _, tt := range transformTests {
-			Transform(map[int][]string(tt.input))
+			Transform(tt.input)
 		}
 
 	}
