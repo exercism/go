@@ -51,7 +51,7 @@ type Header struct {
 // String generates the header for cases_test.go file.
 func (h Header) String() string {
 	return fmt.Sprintf(`// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-	// See https://github.com/exercism/go#synchronizing-tests-and-instructions.
+	// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 	// Source: %s
 	// Commit: %s
 	`, h.Origin, h.Commit)
