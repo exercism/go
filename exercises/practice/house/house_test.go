@@ -11,6 +11,7 @@
 package house
 
 import (
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -112,9 +113,11 @@ that lay in the house that Jack built.`
 
 func TestVerse(t *testing.T) {
 	for v := 0; v < len(expectedVerses); v++ {
-		if ret := Verse(v + 1); ret != expectedVerses[v] {
-			t.Fatalf("Verse(%d) =\n%q\n  want:\n%q", v+1, ret, expectedVerses[v])
-		}
+		t.Run(strconv.Itoa(v+1), func(t *testing.T) {
+			if got := Verse(v + 1); got != expectedVerses[v] {
+				t.Fatalf("Verse(%d)\ngot:\n%q\nwant:\n%q", v+1, got, expectedVerses[v])
+			}
+		})
 	}
 }
 
