@@ -56,7 +56,7 @@ var tests = []gardenTest{
 		diagram:     "\nRC\nGG",
 		children:    []string{"Alice"},
 		expectError: false,
-		lookups:     []lookup{{"Bob", []string{"radishes", "clover", "grass", "grass"}, false}}, // lookup invalid name
+		lookups:     []lookup{{"Bob", []string{"radishes", "clover", "grass", "grass"}, false}},
 	},
 	// failure tests
 	{
