@@ -139,7 +139,7 @@ func TestGarden(t *testing.T) {
 			switch {
 			case test.expectError:
 				if err == nil {
-					t.Fatalf("NewGarden expected error but got nil\nhint:%s", test.expectError)
+					t.Fatal("NewGarden expected error but got nil")
 				}
 			case err != nil:
 				t.Fatalf("NewGarden returned unexpected error: %v ", err)
