@@ -3,94 +3,94 @@ package cryptosquare
 import "testing"
 
 var tests = []struct {
-	pt string // plain text
-	ct string // cipher text
+	input    string // plain text
+	expected string // cipher text
 }{
 	{
-		"s#$%^&plunk",
-		"su pn lk",
+		input:    "s#$%^&plunk",
+		expected: "su pn lk",
 	},
 	{
-		"1, 2, 3 GO!",
-		"1g 2o 3 ",
+		input:    "1, 2, 3 GO!",
+		expected: "1g 2o 3 ",
 	},
 	{
-		"1234",
-		"13 24",
+		input:    "1234",
+		expected: "13 24",
 	},
 	{
-		"123456789",
-		"147 258 369",
+		input:    "123456789",
+		expected: "147 258 369",
 	},
 	{
-		"123456789abc",
-		"159 26a 37b 48c",
+		input:    "123456789abc",
+		expected: "159 26a 37b 48c",
 	},
 	{
-		"Never vex thine heart with idle woes",
-		"neewl exhie vtetw ehaho ririe vntds",
+		input:    "Never vex thine heart with idle woes",
+		expected: "neewl exhie vtetw ehaho ririe vntds",
 	},
 	{
-		"ZOMG! ZOMBIES!!!",
-		"zzi ooe mms gb ",
+		input:    "ZOMG! ZOMBIES!!!",
+		expected: "zzi ooe mms gb ",
 	},
 	{
-		"Time is an illusion. Lunchtime doubly so.",
-		"tasney inicds miohoo elntu  illib  suuml ",
+		input:    "Time is an illusion. Lunchtime doubly so.",
+		expected: "tasney inicds miohoo elntu  illib  suuml ",
 	},
 	{
-		"We all know interspecies romance is weird.",
-		"wneiaw eorene awssci liprer lneoid ktcms ",
+		input:    "We all know interspecies romance is weird.",
+		expected: "wneiaw eorene awssci liprer lneoid ktcms ",
 	},
 	{
-		"Madness, and then illumination.",
-		"msemo aanin dnin  ndla  etlt  shui ",
+		input:    "Madness, and then illumination.",
+		expected: "msemo aanin dnin  ndla  etlt  shui ",
 	},
 	{
-		"Vampires are people too!",
-		"vrel aepe mset paoo irpo",
+		input:    "Vampires are people too!",
+		expected: "vrel aepe mset paoo irpo",
 	},
 	{
-		"",
-		"",
+		input:    "",
+		expected: "",
 	},
 	{
-		"1",
-		"1",
+		input:    "1",
+		expected: "1",
 	},
 	{
-		"12",
-		"1 2",
+		input:    "12",
+		expected: "1 2",
 	},
 	{
-		"12 3",
-		"13 2 ",
+		input:    "12 3",
+		expected: "13 2 ",
 	},
 	{
-		"12345678",
-		"147 258 36 ",
+		input:    "12345678",
+		expected: "147 258 36 ",
 	},
 	{
-		"123456789a",
-		"159 26a 37  48 ",
+		input:    "123456789a",
+		expected: "159 26a 37  48 ",
 	},
 	{
-		"If man was meant to stay on the ground god would have given us roots",
-		"imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau ",
+		input:    "If man was meant to stay on the ground god would have given us roots",
+		expected: "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau ",
 	},
 	{
-		"Have a nice day. Feed the dog & chill out!",
-		"hifei acedl veeol eddgo aatcu nyhht",
+		input:    "Have a nice day. Feed the dog & chill out!",
+		expected: "hifei acedl veeol eddgo aatcu nyhht",
 	},
 }
 
 func TestEncode(t *testing.T) {
 	for _, test := range tests {
-		if ct := Encode(test.pt); ct != test.ct {
-			t.Fatalf(`Encode(%q):
-got  %q
-want %q`, test.pt, ct, test.ct)
-		}
+		t.Run(test.input, func(t *testing.T) {
+			if got := Encode(test.input); got != test.expected {
+				t.Fatalf("Encode(%q):\n got:%q\nwant:%q", test.input, got, test.expected)
+			}
+		})
 	}
 }
 
@@ -100,7 +100,7 @@ func BenchmarkEncode(b *testing.B) {
 	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range tests {
-			Encode(test.pt)
+			Encode(test.input)
 		}
 	}
 }
