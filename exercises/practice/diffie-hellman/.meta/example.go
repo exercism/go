@@ -1,3 +1,4 @@
+ //nolint:gosec // math.rand is more appropriate than crypto.rand
 package diffiehellman
 
 import (
