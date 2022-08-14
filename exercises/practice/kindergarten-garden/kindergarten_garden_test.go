@@ -100,7 +100,7 @@ var test5 = gardenTest{
 	description: "full garden",
 	diagram:     "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
 	children:    []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
-	expectError: true,
+	expectError: false,
 	lookups: []lookup{
 		{"Alice", []string{"violets", "radishes", "violets", "radishes"}, true},
 		{"Bob", []string{"clover", "grass", "clover", "clover"}, true},
