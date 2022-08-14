@@ -2,8 +2,8 @@ package bowling
 
 import "testing"
 
-const previousRollErrorMessage = `FAIL: %s
-	Unexpected error occurred: %q
+const previousRollErrorMessage = `
+	Unexpected error occurred: %v
 	while applying the previous rolls for the
 	test case: %v
 	The error was returned from Roll(%d) for previousRolls[%d].`
@@ -17,50 +17,43 @@ func applyPreviousRolls(g *Game, rolls []int) (index, pins int, err error) {
 	return 0, 0, nil
 }
 
-func TestScore(t *testing.T) {
-	for _, tc := range scoreTestCases {
-		g := NewGame()
-		index, pins, err := applyPreviousRolls(g, tc.previousRolls)
-		if err != nil {
-			t.Fatalf(previousRollErrorMessage,
-				tc.description, err, tc.previousRolls, pins, index)
-		}
-		score, err := g.Score()
-		if tc.valid {
-			var _ error = err
+func TestRoll(t *testing.T) {
+	for _, tc := range rollTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			g := NewGame()
+			index, pins, err := applyPreviousRolls(g, tc.previousRolls)
 			if err != nil {
-				t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected %d, got error %s",
-					tc.description, tc.previousRolls, tc.score, err)
-			} else if score != tc.score {
-				t.Fatalf("%s : Score() after Previous Rolls: %#v expected %d, got %d",
-					tc.description, tc.previousRolls, tc.score, score)
+				t.Fatalf(previousRollErrorMessage, err, tc.previousRolls, pins, index)
 			}
-		} else if err == nil {
-			t.Fatalf("FAIL: %s : Score() after Previous Rolls: %#v expected an error, got score %d\n\tExplanation: %s",
-				tc.description, tc.previousRolls, score, tc.explainText)
-		}
-		t.Logf("PASS: %s", tc.description)
+			err = g.Roll(tc.roll)
+			if tc.valid && err != nil {
+				t.Fatalf("Roll(%d) after Previous Rolls: %#v returned unexpected error: %v", tc.roll, tc.previousRolls, err)
+			} else if !tc.valid && err == nil {
+				t.Fatalf("Roll(%d) after Previous Rolls: %#v expected an error, got nil\n\tExplanation: %s", tc.roll, tc.previousRolls, tc.explainText)
+			}
+		})
 	}
 }
 
-func TestRoll(t *testing.T) {
-	for _, tc := range rollTestCases {
-		g := NewGame()
-		index, pins, err := applyPreviousRolls(g, tc.previousRolls)
-		if err != nil {
-			t.Fatalf(previousRollErrorMessage,
-				tc.description, err, tc.previousRolls, pins, index)
-		}
-		err = g.Roll(tc.roll)
-		if tc.valid && err != nil {
-			var _ error = err
-			t.Fatalf("FAIL: %s : Roll(%d) after Previous Rolls: %#v got unexpected error \"%s\".",
-				tc.description, tc.roll, tc.previousRolls, err)
-
-		} else if !tc.valid && err == nil {
-			t.Fatalf("FAIL: %s : Roll(%d) after Previous Rolls: %#v expected an error.\n\tExplanation: %s",
-				tc.description, tc.roll, tc.previousRolls, tc.explainText)
-		}
-		t.Logf("PASS: %s", tc.description)
+func TestScore(t *testing.T) {
+	for _, tc := range scoreTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			g := NewGame()
+			index, pins, err := applyPreviousRolls(g, tc.previousRolls)
+			if err != nil {
+				t.Fatalf(previousRollErrorMessage, err, tc.previousRolls, pins, index)
+			}
+			score, err := g.Score()
+			switch {
+			case !tc.valid:
+				if err == nil {
+					t.Fatalf("Score() after Previous Rolls: %#v expected an error, got score %d\n\tExplanation: %s", tc.previousRolls, score, tc.explainText)
+				}
+			case err != nil:
+				t.Fatalf("Score() after Previous Rolls: %#v returned error: %v, want: %d", tc.previousRolls, err, tc.score)
+			case score != tc.score:
+				t.Fatalf("Score() after Previous Rolls: %#v = %d, want: %d", tc.previousRolls, score, tc.score)
+			}
+		})
 	}
 }
