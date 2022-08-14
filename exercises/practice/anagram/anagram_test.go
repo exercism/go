@@ -6,6 +6,18 @@ import (
 	"testing"
 )
 
+func init() {
+	var nonAsciiTestCases = []AnagramTest{
+		{
+			description: "detects non-ascii anagrams",
+			subject:     "你好，世界",
+			candidates:  []string{"世界，你好", "hello, 世界", "世界, 你好"},
+			expected:    []string{"世界，你好"},
+		},
+	}
+	testCases = append(testCases, nonAsciiTestCases...)
+}
+
 func equal(a, b []string) bool {
 	if len(b) != len(a) {
 		return false
