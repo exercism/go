@@ -3,7 +3,6 @@ package kindergarten
 import (
 	"reflect"
 	"sort"
-	"strconv"
 	"testing"
 )
 
@@ -14,96 +13,94 @@ type lookup struct {
 }
 
 type gardenTest struct {
-	number    int
-	diagram   string
-	children  []string
-	errorHint string
-	lookups   []lookup
+	description string
+	diagram     string
+	children    []string
+	expectError bool
+	lookups     []lookup
 }
 
 var tests = []gardenTest{
 	{
-		number:    1,
-		diagram:   "\nRC\nGG",
-		children:  []string{"Alice"},
-		errorHint: "",
-		lookups:   []lookup{{"Alice", []string{"radishes", "clover", "grass", "grass"}, true}},
+		description: "garden with single student",
+		diagram:     "\nRC\nGG",
+		children:    []string{"Alice"},
+		expectError: false,
+		lookups:     []lookup{{"Alice", []string{"radishes", "clover", "grass", "grass"}, true}},
 	},
 	{
-		number:    2,
-		diagram:   "\nVC\nRC",
-		children:  []string{"Alice"},
-		errorHint: "",
-		lookups:   []lookup{{"Alice", []string{"violets", "clover", "radishes", "clover"}, true}},
+		description: "different garden with single student",
+		diagram:     "\nVC\nRC",
+		children:    []string{"Alice"},
+		expectError: false,
+		lookups:     []lookup{{"Alice", []string{"violets", "clover", "radishes", "clover"}, true}},
 	},
 	{
-		number:    3,
-		diagram:   "\nVVCG\nVVRC",
-		children:  []string{"Alice", "Bob"},
-		errorHint: "",
-		lookups:   []lookup{{"Bob", []string{"clover", "grass", "radishes", "clover"}, true}},
+		description: "garden with two students",
+		diagram:     "\nVVCG\nVVRC",
+		children:    []string{"Alice", "Bob"},
+		expectError: false,
+		lookups:     []lookup{{"Bob", []string{"clover", "grass", "radishes", "clover"}, true}},
 	},
 	{
-		number:    4,
-		diagram:   "\nVVCCGG\nVVCCGG",
-		children:  []string{"Alice", "Bob", "Charlie"},
-		errorHint: "",
-		lookups:   []lookup{{"Bob", []string{"clover", "clover", "clover", "clover"}, true}, {"Charlie", []string{"grass", "grass", "grass", "grass"}, true}},
+		description: "garden with three students",
+		diagram:     "\nVVCCGG\nVVCCGG",
+		children:    []string{"Alice", "Bob", "Charlie"},
+		expectError: false,
+		lookups:     []lookup{{"Bob", []string{"clover", "clover", "clover", "clover"}, true}, {"Charlie", []string{"grass", "grass", "grass", "grass"}, true}},
 	},
-	test5, // full garden test
-	test6, // out of order names test
+	test5,
+	test6,
 	{
-		number:    7,
-		diagram:   "\nRC\nGG",
-		children:  []string{"Alice"},
-		errorHint: "",
-		lookups:   []lookup{{"Bob", []string{"radishes", "clover", "grass", "grass"}, false}}, // lookup invalid name
+		description: "lookup invalid name",
+		diagram:     "\nRC\nGG",
+		children:    []string{"Alice"},
+		expectError: false,
+		lookups:     []lookup{{"Bob", []string{"radishes", "clover", "grass", "grass"}, false}}, // lookup invalid name
 	},
-
 	// failure tests
 	{
-		number:    8,
-		diagram:   "RC\nGG",
-		children:  []string{"Alice"},
-		errorHint: "wrong diagram format",
-		lookups:   nil,
+		description: "wrong diagram format",
+		diagram:     "RC\nGG",
+		children:    []string{"Alice"},
+		expectError: true,
+		lookups:     nil,
 	},
 	{
-		number:    9,
-		diagram:   "\nRCCC\nGG",
-		children:  []string{""},
-		errorHint: "mismatched rows",
-		lookups:   nil,
+		description: "mismatched rows",
+		diagram:     "\nRCCC\nGG",
+		children:    []string{""},
+		expectError: true,
+		lookups:     nil,
 	},
 	{
-		number:    10,
-		diagram:   "\nRCC\nGGC",
-		children:  []string{"Alice"},
-		errorHint: "odd number of cups",
-		lookups:   nil,
+		description: "odd number of cups",
+		diagram:     "\nRCC\nGGC",
+		children:    []string{"Alice"},
+		expectError: true,
+		lookups:     nil,
 	},
 	{
-		number:    11,
-		diagram:   "\nRCCC\nGGCC",
-		children:  []string{"Alice", "Alice"},
-		errorHint: "duplicate name",
-		lookups:   nil,
+		description: "duplicate name",
+		diagram:     "\nRCCC\nGGCC",
+		children:    []string{"Alice", "Alice"},
+		expectError: true,
+		lookups:     nil,
 	},
 	{
-		number:    12,
-		diagram:   "\nrc\ngg",
-		children:  []string{"Alice"},
-		errorHint: "invalid cup codes",
-		lookups:   nil,
+		description: "invalid cup codes",
+		diagram:     "\nrc\ngg",
+		children:    []string{"Alice"},
+		expectError: true,
+		lookups:     nil,
 	},
 }
 
-// full garden test
 var test5 = gardenTest{
-	number:    5,
-	diagram:   "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-	children:  []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
-	errorHint: "",
+	description: "full garden",
+	diagram:     "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
+	children:    []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
+	expectError: true,
 	lookups: []lookup{
 		{"Alice", []string{"violets", "radishes", "violets", "radishes"}, true},
 		{"Bob", []string{"clover", "grass", "clover", "clover"}, true},
@@ -119,14 +116,13 @@ var test5 = gardenTest{
 		{"Larry", []string{"grass", "violets", "clover", "violets"}, true},
 	}}
 
-// out of order names test
 var (
 	test6names = []string{"Samantha", "Patricia", "Xander", "Roger"}
 	test6      = gardenTest{
-		number:    6,
-		diagram:   "\nVCRRGVRG\nRVGCCGCV",
-		children:  test6names,
-		errorHint: "",
+		description: "names out of order",
+		diagram:     "\nVCRRGVRG\nRVGCCGCV",
+		children:    test6names,
+		expectError: false,
 		lookups: []lookup{
 			{"Patricia", []string{"violets", "clover", "radishes", "violets"}, true},
 			{"Roger", []string{"radishes", "radishes", "grass", "clover"}, true},
@@ -138,22 +134,22 @@ var (
 
 func TestGarden(t *testing.T) {
 	for _, test := range tests {
-		t.Run(strconv.Itoa(test.number), func(t *testing.T) {
+		t.Run(test.description, func(t *testing.T) {
 			actual, err := NewGarden(test.diagram, test.children)
 			switch {
-			case test.errorHint != "":
+			case test.expectError:
 				if err == nil {
-					t.Fatalf("Testcase %d for NewGarden expected error but got nil\nhint:%s", test.number, test.errorHint)
+					t.Fatalf("NewGarden expected error but got nil\nhint:%s", test.expectError)
 				}
 			case err != nil:
-				t.Fatalf("Testcase %d for NewGarden returned unexpected error: %v ", test.number, err)
+				t.Fatalf("NewGarden returned unexpected error: %v ", err)
 			}
 			for _, l := range test.lookups {
 				switch plants, ok := actual.Plants(l.child); {
 				case ok != l.ok:
-					t.Fatalf("Testcase %d lookup %s returned ok = %t, want %t", test.number, l.child, ok, l.ok)
+					t.Fatalf("Lookup %s returned ok = %t, want %t", l.child, ok, l.ok)
 				case ok && !reflect.DeepEqual(plants, l.plants):
-					t.Fatalf("Testcase %d lookup %s = %q, want: %q", test.number, l.child, plants, l.plants)
+					t.Fatalf("Lookup %s = %q, want: %q", l.child, plants, l.plants)
 				}
 			}
 		})
