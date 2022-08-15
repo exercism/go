@@ -1,7 +1,7 @@
 package chessboard
 
 import (
-	"strconv"
+	"fmt"
 	"testing"
 )
 
@@ -48,7 +48,7 @@ func TestCountInFile(t *testing.T) {
 		{in: "Z", expected: 0},
 	}
 	for _, test := range testCases {
-		t.Run(test.in, func(t *testing.T) {
+		t.Run(fmt.Sprintf("Count of occupied squares in file %s", test.in), func(t *testing.T) {
 			if got := CountInFile(cb, test.in); got != test.expected {
 				t.Errorf("CountInFile(chessboard, %q) = %d, want: %d", test.in, got, test.expected)
 			}
@@ -77,7 +77,7 @@ func TestCountInRank(t *testing.T) {
 		{in: -100, expected: 0},
 	}
 	for _, test := range testCases {
-		t.Run(strconv.Itoa(test.in), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Count of occupied squares in rank %d", test.in), func(t *testing.T) {
 			if got := CountInRank(cb, test.in); got != test.expected {
 				t.Errorf("CountInRank(chessboard, %d) = %d, want: %d", test.in, got, test.expected)
 			}
