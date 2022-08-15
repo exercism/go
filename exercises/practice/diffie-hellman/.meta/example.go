@@ -1,4 +1,4 @@
- //nolint:gosec // math.rand is more appropriate than crypto.rand
+//nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
 package diffiehellman
 
 import (
