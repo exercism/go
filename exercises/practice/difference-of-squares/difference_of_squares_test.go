@@ -1,7 +1,7 @@
 package diffsquares
 
 import (
-	"strconv"
+	"fmt"
 	"testing"
 )
 
@@ -13,7 +13,7 @@ var tests = []struct{ input, squareOfSum, sumOfSquares int }{
 
 func TestSquareOfSum(t *testing.T) {
 	for _, test := range tests {
-		t.Run(strconv.Itoa(test.input), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Square of sum from 1 to %d", test.input), func(t *testing.T) {
 			if got := SquareOfSum(test.input); got != test.squareOfSum {
 				t.Fatalf("SquareOfSum(%d) = %d, want: %d", test.input, got, test.squareOfSum)
 			}
@@ -23,7 +23,7 @@ func TestSquareOfSum(t *testing.T) {
 
 func TestSumOfSquares(t *testing.T) {
 	for _, test := range tests {
-		t.Run(strconv.Itoa(test.input), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Sum of squares from 1 to %d", test.input), func(t *testing.T) {
 			if got := SumOfSquares(test.input); got != test.sumOfSquares {
 				t.Fatalf("SumOfSquares(%d) = %d, want: %d", test.input, got, test.sumOfSquares)
 			}
@@ -33,7 +33,7 @@ func TestSumOfSquares(t *testing.T) {
 
 func TestDifference(t *testing.T) {
 	for _, test := range tests {
-		t.Run(strconv.Itoa(test.input), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Difference of SquareOfSum and SumOfSquares of value %d", test.input), func(t *testing.T) {
 			want := test.squareOfSum - test.sumOfSquares
 			if got := Difference(test.input); got != want {
 				t.Fatalf("Difference(%d) = %d, want: %d", test.input, got, want)
