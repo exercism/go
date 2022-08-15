@@ -1,4 +1,3 @@
- //nolint:gosec // Randomness is part of an exercise where math.rand is more appropriate than crypto.rand
 package diffiehellman
 
 import (
