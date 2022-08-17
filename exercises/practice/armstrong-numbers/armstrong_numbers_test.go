@@ -6,7 +6,7 @@ import (
 
 func TestArmstrong(t *testing.T) {
 	for _, tc := range testCases {
-		t.Run(tc.description, func(*testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			if actual := IsNumber(tc.input); actual != tc.expected {
 				t.Fatalf("IsNumber(%d) = %t, want: %t", tc.input, actual, tc.expected)
 			}
