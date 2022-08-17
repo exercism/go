@@ -15,12 +15,12 @@ const (
 
 func TestAddGigasecond(t *testing.T) {
 	for _, tc := range addCases {
-		t.Run(tc.description, func(*testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			in := parse(tc.in, t)
 			want := parse(tc.want, t)
 			got := AddGigasecond(in)
 			if !got.Equal(want) {
-				t.Errorf("AddGigasecond(%v) = %v, want: %v", in, got, want)
+				t.Fatalf("AddGigasecond(%v) = %v, want: %v", in, got, want)
 			}
 		})
 	}
