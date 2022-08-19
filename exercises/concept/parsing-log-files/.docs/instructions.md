@@ -22,11 +22,11 @@ To be considered valid a line should begin with one of the following strings:
 Implement the `IsValidLine` function to return `false` if a string is not valid otherwise `true`.
 
 ```go 
-IsValidLine("[ERR] A good error here");
+IsValidLine("[ERR] A good error here")
 // => true
-IsValidLine("Any old [ERR] text");
+IsValidLine("Any old [ERR] text")
 // => false
-IsValidLine("[BOB] Any old text");
+IsValidLine("[BOB] Any old text")
 // => false
 ```
 
