@@ -5,86 +5,133 @@ import (
 	"testing"
 )
 
-var tests = []struct {
-	in  string
-	out []string
+var testCases = []struct {
+	description string
+	in          string
+	out         []string
 }{
-	{`
+	{
+		description: "single digit - 0",
+		in: `
  _ 
 | |
 |_|
-   `, []string{"0"}},
-	{`
+   `,
+		out: []string{"0"}},
+	{
+		description: "single digit - 1",
+		in: `
    
   |
   |
-   `, []string{"1"}},
-	{`
+   `,
+		out: []string{"1"}},
+	{
+		description: "single digit - 2",
+		in: `
  _ 
  _|
 |_ 
-   `, []string{"2"}},
-	{`
+   `,
+		out: []string{"2"}},
+	{
+		description: "single digit - 3",
+		in: `
  _ 
  _|
  _|
-   `, []string{"3"}},
-	{`
+   `,
+		out: []string{"3"}},
+	{
+		description: "single digit - 4",
+		in: `
    
 |_|
   |
-   `, []string{"4"}},
-	{`
+   `,
+		out: []string{"4"}},
+	{
+		description: "single digit - 5",
+		in: `
  _ 
 |_ 
  _|
-   `, []string{"5"}},
-	{`
+   `,
+		out: []string{"5"}},
+	{
+		description: "single digit - 6",
+		in: `
  _ 
 |_ 
 |_|
-   `, []string{"6"}},
-	{`
+   `,
+		out: []string{"6"}},
+	{
+		description: "single digit - 7",
+		in: `
  _ 
   |
   |
-   `, []string{"7"}},
-	{`
+   `,
+		out: []string{"7"}},
+	{
+		description: "single digit - 8",
+		in: `
  _ 
 |_|
 |_|
-   `, []string{"8"}},
-	{`
+   `,
+		out: []string{"8"}},
+	{
+		description: "single digit - 9",
+		in: `
  _ 
 |_|
  _|
-   `, []string{"9"}},
-	{`
+   `,
+		out: []string{"9"}},
+	{
+		description: "multiple digits - 10",
+		in: `
     _ 
   || |
   ||_|
-      `, []string{"10"}},
-	{`
+      `,
+		out: []string{"10"}},
+	{
+		description: "multiple digits - 11",
+		in: `
    
 | |
 | |
-   `, []string{"?"}},
-	{`
+   `,
+		out: []string{"?"}},
+	{
+		description: "multiple digits - 110101100",
+		in: `
        _     _        _  _ 
   |  || |  || |  |  || || |
   |  ||_|  ||_|  |  ||_||_|
-                           `, []string{"110101100"}},
-	{`
+                           `,
+		out: []string{"110101100"}},
+	{
+		description: "multiple digits - 11?10?1?0",
+		in: `
        _     _           _ 
   |  || |  || |     || || |
   |  | _|  ||_|  |  ||_||_|
-                           `, []string{"11?10?1?0"}},
-	{`
+                           `,
+		out: []string{"11?10?1?0"}},
+	{
+		in: `
     _  _     _  _  _  _  _  _ 
   | _| _||_||_ |_   ||_||_|| |
   ||_  _|  | _||_|  ||_| _||_|
-                              `, []string{"1234567890"}},
-	{`
+                              `,
+		out: []string{"1234567890"}},
+	{
+		description: "multiple numbers with multiple digits - 123 456 789",
+		in: `
     _  _ 
   | _| _|
   ||_  _|
@@ -96,15 +143,18 @@ var tests = []struct {
  _  _  _ 
   ||_||_|
   ||_| _|
-         `, []string{"123", "456", "789"}},
+         `,
+		out: []string{"123", "456", "789"}},
 }
 
 var _ = recognizeDigit // step 1.
 
 func TestRecognize(t *testing.T) {
-	for _, test := range tests {
-		if res := Recognize(test.in); !reflect.DeepEqual(res, test.out) {
-			t.Fatalf("Recognize(`%s`) = %q, want %q.", test.in, res, test.out)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if got := Recognize(tc.in); !reflect.DeepEqual(got, tc.out) {
+				t.Fatalf("Recognize(%q) = %q, want: %q", tc.in, got, tc.out)
+			}
+		})
 	}
 }
