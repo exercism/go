@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Go ubuntu-latest 1.18.x
+    name: Go 1.18.x ubuntu-latest/amd64
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
