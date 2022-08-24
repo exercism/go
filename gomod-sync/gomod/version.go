@@ -45,7 +45,7 @@ func Update(path, version string) error {
 	content = versionRegex.ReplaceAllString(content, "${1}go "+version+"${3}")
 
 	// Write the file
-	err = os.WriteFile(path, []byte(content), 0o644) //nolint:gosec,G306
+	err = os.WriteFile(path, []byte(content), 0o644) //nolint:gosec // 644 are the default permissions for a new file on *nix systems
 	if err != nil {
 		return fmt.Errorf("error writing %q: %w", path, err)
 	}
