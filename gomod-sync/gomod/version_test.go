@@ -80,7 +80,7 @@ go 1.18
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
 			filePath := filepath.Join(temporaryDir, "go.mod")
-			err := os.WriteFile(filePath, []byte(test.Original), 0o644)
+			err := os.WriteFile(filePath, []byte(test.Original), 0o644) //nolint:gosec,G306
 			if err != nil {
 				t.Fatalf("could not create temporary go.mod file for test: %s", err.Error())
 			}
