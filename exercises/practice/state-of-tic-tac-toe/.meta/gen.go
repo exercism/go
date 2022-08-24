@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"gamestate": &[]testCase{},
 	}
 	if err := gen.Gen("state-of-tic-tac-toe", j, t); err != nil {

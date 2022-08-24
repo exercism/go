@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"response": &[]testCase{},
 	}
 	if err := gen.Gen("bob", j, t); err != nil {

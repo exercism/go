@@ -15,7 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"nucleotideCounts": &[]testCase{},
 	}
 	if err := gen.Gen("nucleotide-count", j, t); err != nil {

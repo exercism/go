@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"findFewestCoins": &[]testCase{},
 	}
 	if err := gen.Gen("change", j, t); err != nil {
@@ -34,7 +34,7 @@ func (t testCase) ExpectedValues() []int {
 	if !ok {
 		return nil
 	}
-	var intValues = make([]int, 0)
+	intValues := make([]int, 0)
 	for _, v := range values {
 		i, ok := v.(float64)
 		if !ok {
