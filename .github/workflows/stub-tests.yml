@@ -27,4 +27,4 @@ jobs:
         env:
           GOARCH: amd64
         run: |
-          ./bin/test-stubs-fail test-stubs
+          ./bin/test-without-stubs test-stubs
