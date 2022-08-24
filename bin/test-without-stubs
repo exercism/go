@@ -61,7 +61,7 @@ EOD
       echo "copy module $mod to $tmpstub"
       cp $mod $tmpstub
 
-      generator="${dir}/.meta/gen.go"
+      generator="${dir}.meta/gen.go"
       if [ -f "${generator}" ]; then
         echo "copy generator ${generator}"
         mkdir -p "${tmp}/gen/${stub}" && cp "${generator}" "${tmp}/gen/${stub}/gen.go"
@@ -103,18 +103,16 @@ if [ "$mode" = "$TEST_STUBS_MODE" ];then
     # ignore exercises that have a stub that passes the tests
       # deep_thought: no tests
       # ledger, markdown: refactoring exercise
+      
     if [[ "$exercise" == *"deep_thought"* || "$exercise" == *"ledger"*  || "$exercise" == *"markdown"* ]];
     then
         echo "ignoring $exercise (no tests or refactoring exercise)"
         continue;
     fi
     echo "testing $exercise"
-    go test "$exercise" > /dev/null 2>&1
-    exitcode=$?
-    if [ $exitcode -eq 0 ]
-    then 
-      echo "stub at $exercise passed the tests, even thought expect stub to fail"
-      exit $exitcode
+    if go test -v "$exercise" | grep -q 'PASS'; then
+      echo "[ERROR] stub at $exercise passed the tests, even thought expect stub to fail"
+      exit 1
     fi
   done
   echo "SUCESS"
