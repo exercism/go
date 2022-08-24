@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Go ${{ matrix.go-version }} - ${{ matrix.os }}/${{ matrix.test-arch }} - ${{ github.event_name }}
+    name: Go ${{ matrix.go-version }} - ${{ matrix.os }}/${{ matrix.test-arch }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
