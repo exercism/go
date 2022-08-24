@@ -16,152 +16,149 @@ func TestErrorsNotNil(t *testing.T) {
 type codonCase struct {
 	input         string
 	expected      string
-	errorExpected error
+	expectedError error
 }
 
 var codonTestCases = []codonCase{
 	{
-		"AUG",
-		"Methionine",
-		nil,
+		input:         "AUG",
+		expected:      "Methionine",
+		expectedError: nil,
 	},
 	{
-		"UUU",
-		"Phenylalanine",
-		nil,
+		input:         "UUU",
+		expected:      "Phenylalanine",
+		expectedError: nil,
 	},
 	{
-		"UUC",
-		"Phenylalanine",
-		nil,
+		input:         "UUC",
+		expected:      "Phenylalanine",
+		expectedError: nil,
 	},
 	{
-		"UUA",
-		"Leucine",
-		nil,
+		input:         "UUA",
+		expected:      "Leucine",
+		expectedError: nil,
 	},
 	{
-		"UUG",
-		"Leucine",
-		nil,
+		input:         "UUG",
+		expected:      "Leucine",
+		expectedError: nil,
 	},
 	{
-		"UCG",
-		"Serine",
-		nil,
+		input:         "UCG",
+		expected:      "Serine",
+		expectedError: nil,
 	},
 	{
-		"UAU",
-		"Tyrosine",
-		nil,
+		input:         "UAU",
+		expected:      "Tyrosine",
+		expectedError: nil,
 	},
 	{
-		"UAC",
-		"Tyrosine",
-		nil,
+		input:         "UAC",
+		expected:      "Tyrosine",
+		expectedError: nil,
 	},
 	{
-		"UGU",
-		"Cysteine",
-		nil,
+		input:         "UGU",
+		expected:      "Cysteine",
+		expectedError: nil,
 	},
 	{
-		"UGG",
-		"Tryptophan",
-		nil,
+		input:         "UGG",
+		expected:      "Tryptophan",
+		expectedError: nil,
 	},
 	{
-		"UAA",
-		"",
-		ErrStop,
+		input:         "UAA",
+		expected:      "",
+		expectedError: ErrStop,
 	},
 	{
-		"UAG",
-		"",
-		ErrStop,
+		input:         "UAG",
+		expected:      "",
+		expectedError: ErrStop,
 	},
 	{
-		"UGA",
-		"",
-		ErrStop,
+		input:         "UGA",
+		expected:      "",
+		expectedError: ErrStop,
 	},
 	{
-		"ABC",
-		"",
-		ErrInvalidBase,
+		input:         "ABC",
+		expected:      "",
+		expectedError: ErrInvalidBase,
 	},
 }
 
 func TestCodon(t *testing.T) {
-	for _, test := range codonTestCases {
-		actual, err := FromCodon(test.input)
-		if test.errorExpected != nil {
-			if test.errorExpected != err {
-				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
+	for _, tc := range codonTestCases {
+		t.Run(tc.input, func(t *testing.T) {
+			got, err := FromCodon(tc.input)
+			switch {
+			case tc.expectedError != nil:
+				if err == nil {
+					t.Fatalf("FromCodon(%q) expected error: %v, got nil", tc.input, tc.expectedError)
+				}
+			case err != nil:
+				t.Fatalf("FromCodon(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
+			case got != tc.expected:
+				t.Fatalf("FromCodon(%q) = %q,want: %q", tc.input, got, tc.expected)
 			}
-		} else if err != nil {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
-		}
-		if actual != test.expected {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
-				test.input, test.expected, actual)
-		}
-		t.Logf("PASS: Protein translation test: %s", test.input)
+		})
 	}
 }
 
 type rnaCase struct {
 	input         string
 	expected      []string
-	errorExpected error
+	expectedError error
 }
 
-var proteinTestCases = []rnaCase{
+var rnaTestCases = []rnaCase{
 	{
-		"AUGUUUUCUUAAAUG",
-		[]string{"Methionine", "Phenylalanine", "Serine"},
-		nil,
+		input:         "AUGUUUUCUUAAAUG",
+		expected:      []string{"Methionine", "Phenylalanine", "Serine"},
+		expectedError: nil,
 	},
 	{
-		"AUGUUUUGG",
-		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
-		nil,
+		input:         "AUGUUUUGG",
+		expected:      []string{"Methionine", "Phenylalanine", "Tryptophan"},
+		expectedError: nil,
 	},
 	{
-		"AUGUUUUAA",
-		[]string{"Methionine", "Phenylalanine"},
-		nil,
+		input:         "AUGUUUUAA",
+		expected:      []string{"Methionine", "Phenylalanine"},
+		expectedError: nil,
 	},
 	{
-		"UGGUGUUAUUAAUGGUUU",
-		[]string{"Tryptophan", "Cysteine", "Tyrosine"},
-		nil,
+		input:         "UGGUGUUAUUAAUGGUUU",
+		expected:      []string{"Tryptophan", "Cysteine", "Tyrosine"},
+		expectedError: nil,
 	},
 	{
-		"UGGAGAAUUAAUGGUUU",
-		nil,
-		ErrInvalidBase,
+		input:         "UGGAGAAUUAAUGGUUU",
+		expected:      nil,
+		expectedError: ErrInvalidBase,
 	},
 }
 
 func TestProtein(t *testing.T) {
-	for _, test := range proteinTestCases {
-		actual, err := FromRNA(test.input)
-		if test.errorExpected != nil {
-			if test.errorExpected != err {
-				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
-					test.input, test.errorExpected, err)
+	for _, tc := range rnaTestCases {
+		t.Run(tc.input, func(t *testing.T) {
+			got, err := FromRNA(tc.input)
+			switch {
+			case tc.expectedError != nil:
+				if err == nil {
+					t.Fatalf("FromRNA(%q) expected error: %v, got nil", tc.input, tc.expectedError)
+				}
+			case err != nil:
+				t.Fatalf("FromRNA(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
+			case !slicesEqual(got, tc.expected):
+				t.Fatalf("FromRNA(%q)\n got: %v\nwant: %v", tc.input, got, tc.expected)
 			}
-		} else if err != nil {
-			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
-				test.input, test.expected, err)
-		}
-		if !slicesEqual(actual, test.expected) {
-			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
-		}
-		t.Logf("PASS: RNA translation test: %s", test.input)
+		})
 	}
 }
 
@@ -198,7 +195,7 @@ func BenchmarkProtein(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
-	for _, test := range proteinTestCases {
+	for _, test := range rnaTestCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)
 		}
