@@ -21,6 +21,9 @@ tmp=tmp/lint
 rm -rf "$tmp"
 mkdir -p "$tmp"
 
+mode="${1:-default}"
+TEST_STUBS_MODE="test-stubs"
+
 for parentdir in concept practice; do
   for dir in exercises/$parentdir/*/; do
     stub=$(echo $(basename $dir) | tr - _)
@@ -51,8 +54,10 @@ EOD
       mkdir -p $tmpstub
       echo "copy base files and tests to $tmpstub"
       cp $dir/*.go $tmpstub
-      echo "copy exemplar $exemplar to $tmpstub"
-      cp $exemplar "${tmpstub}/${stub}.go"
+      if [ "$mode" != "$TEST_STUBS_MODE" ];then
+        echo "copy exemplar $exemplar to $tmpstub"
+        cp $exemplar "${tmpstub}/${stub}.go"
+      fi
       echo "copy module $mod to $tmpstub"
       cp $mod $tmpstub
 
@@ -83,7 +88,7 @@ cleanup () {
   rm -rf $tmp
 }
 
-trap cleanup EXIT INT TERM
+#trap cleanup EXIT INT TERM
 
 # Since Go 1.16 all go commands run in module-aware mode,
 # which would require a go.mod file to be present at the root
@@ -91,6 +96,30 @@ trap cleanup EXIT INT TERM
 # Setting GO111MODULE to 'auto' makes the go commands run in
 # module-aware mode only in places where a go.mod is present.
 export GO111MODULE=auto
+
+if [ "$mode" = "$TEST_STUBS_MODE" ];then
+  echo "running tests with stubs and expecting tests to fail"
+  for exercise in ./$tmp/concept/* ./$tmp/practice/*; do
+    # ignore exercises that have a stub that passes the tests
+      # deep_thought: no tests
+      # ledger, markdown: refactoring exercise
+    if [[ "$exercise" == *"deep_thought"* || "$exercise" == *"ledger"*  || "$exercise" == *"markdown"* ]];
+    then
+        echo "ignoring $exercise (no tests or refactoring exercise)"
+        continue;
+    fi
+    echo "testing $exercise"
+    go test "$exercise" > /dev/null 2>&1
+    exitcode=$?
+    if [ $exitcode -eq 0 ]
+    then 
+      echo "stub at $exercise passed the tests, even thought expect stub to fail"
+      exit $exitcode
+    fi
+  done
+  echo "SUCESS"
+  exit 0
+fi
 
 echo "running linter and tests for exercises and exercise generators"
 # Run lint which is configured by .golangci.yml at the root of the repo
