@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Go ubuntu-latest 1.18.x - Stub tests
+    name: Go ubuntu-latest 1.18.x
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
