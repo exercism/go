@@ -4,7 +4,9 @@
     "brugnara",
     "tehsphinx"
   ],
-  "contributors": [],
+  "contributors": [
+    "eklatzer"
+  ],
   "forked_from": [
     "elixir/chessboard"
   ],
