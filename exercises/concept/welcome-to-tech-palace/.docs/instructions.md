@@ -27,7 +27,11 @@ It should return a `string` that consists of 3 lines, a line with the desired nu
 
 ```go
 AddBorder("Welcome!", 10)
-// =>
+```
+
+Should return the following:
+
+```go
 // **********
 // Welcome!
 // **********

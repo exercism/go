@@ -11,6 +11,7 @@
 package house
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -112,9 +113,11 @@ that lay in the house that Jack built.`
 
 func TestVerse(t *testing.T) {
 	for v := 0; v < len(expectedVerses); v++ {
-		if ret := Verse(v + 1); ret != expectedVerses[v] {
-			t.Fatalf("Verse(%d) =\n%q\n  want:\n%q", v+1, ret, expectedVerses[v])
-		}
+		t.Run(fmt.Sprintf("verse %d", v+1), func(t *testing.T) {
+			if got := Verse(v + 1); got != expectedVerses[v] {
+				t.Fatalf("Verse(%d)\ngot:\n%q\nwant:\n%q", v+1, got, expectedVerses[v])
+			}
+		})
 	}
 }
 
@@ -143,4 +146,24 @@ func TestSong(t *testing.T) {
 		}
 	}
 	t.Fatalf("Song() line %d =\n%q\n want \n%q", i+1, g, w)
+}
+
+func BenchmarkVerse(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for v := 0; v < len(expectedVerses); v++ {
+			Verse(v + 1)
+		}
+	}
+}
+
+func BenchmarkSong(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		Song()
+	}
 }

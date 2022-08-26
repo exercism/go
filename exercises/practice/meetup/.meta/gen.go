@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"strings"
 	"text/template"
+	"time"
 
 	"../../../../gen"
 )
@@ -15,32 +15,32 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("meetup", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"meetup": &[]testCase{},
+	}
+	if err := gen.Gen("meetup", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []OneCase
-}
-
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Year      int
-		Month     int
-		Week      string
-		Dayofweek string
-	}
-	DateString string `json:"expected"`
+		Year      int    `json:"year"`
+		Month     int    `json:"month"`
+		Week      string `json:"week"`
+		DayOfWeek string `json:"dayofweek"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
-func (c OneCase) ExpectedDay() int {
-	var y, m, d int
-	fmt.Sscanf(c.DateString, "%4d-%2d-%2d", &y, &m, &d)
-	return d
+func (c testCase) ExpectedDay() int {
+	dateformat := "2006-01-02"
+	parse, err := time.Parse(dateformat, c.Expected)
+	if err != nil {
+		log.Fatalf("[ERROR]: expected `expected` to be date of format %q, got: %q", dateformat, c.Expected)
+	}
+	return parse.Day()
 }
 
 // template applied to above data structure generates the Go test cases
@@ -51,12 +51,21 @@ var tmpl = `package meetup
 import "time"
 
 var testCases = []struct {
-	year    int
-	month   time.Month
-	week    WeekSchedule
-	weekday time.Weekday
-	expDay  int
+	description string
+	year        int
+	month       time.Month
+	week        WeekSchedule
+	weekday     time.Weekday
+	expectedDay int
 }{
-{{range .J.Cases}}{ {{.Input.Year}}, {{.Input.Month}}, {{week .Input.Week}}, time.{{.Input.Dayofweek}}, {{.ExpectedDay}}}, // {{.Description}}
-{{end}}}
+{{range .J.meetup}}{
+		description: 	{{printf "%q" .Description}},
+		year:        	{{printf "%d" .Input.Year}},
+		month:       	{{printf "%d" .Input.Month}},
+		week:        	{{week .Input.Week}},
+		weekday:     	time.{{.Input.DayOfWeek}},
+		expectedDay:    {{printf "%d" .ExpectedDay}},
+	},
+{{end}}
+}
 `

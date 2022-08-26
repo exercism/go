@@ -5,15 +5,15 @@
 - An [integer value][integers] can be defined as one or more consecutive digits.
 - A [map value][maps] stores key-value data
 
-## 1. Given a Chessboard and a Rank, count how many squares are occupied
+## 1. Given a Chessboard and a File, count how many squares are occupied
 
 - You can iterate a [map][maps]
 - Check if the value is true. If it is increment. This is to count pieces.
 - You have to [explicitly return an integer][return] from a function.
 
-## 2. Given a Chessboard and a File, count how many squares are occupied
+## 2. Given a Chessboard and a Rank, count how many squares are occupied
 
-- You'll first need to check the file is within range.
+- You'll first need to check the rank is within range.
 - Loop over the chessboard.
 - Add one if the square is occupied.
 
@@ -24,7 +24,7 @@
 
 ## 4. Count how many squares are occupied in the given chessboard
 
-- Get the CountInRank for all ranks in the chessboard.
+- Get the CountInFile for all files in the chessboard.
 
 [functions]: https://golang.org/ref/spec#Function_declarations
 [return]: https://golang.org/ref/spec#Return_statements

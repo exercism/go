@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var ref = []string{``,
+var text = []string{``,
 
 	`I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.`,
@@ -86,21 +86,23 @@ func diff(got, want string) string {
 
 func TestVerse(t *testing.T) {
 	for v := 1; v <= 8; v++ {
-		if ret := Verse(v); ret != ref[v] {
-			t.Fatalf("Verse(%d) =\n%s\n  want:\n%s\n%s", v, ret, ref[v], diff(ret, ref[v]))
-		}
+		t.Run(fmt.Sprintf("verse %d", v), func(t *testing.T) {
+			if got := Verse(v); got != text[v] {
+				t.Fatalf("Verse(%d)\ngot:%s\nwant:%s\nhelp: %s", v, got, text[v], diff(got, text[v]))
+			}
+		})
 	}
 }
 
 func TestVerses(t *testing.T) {
-	if ret, want := Verses(1, 3), strings.Join(ref[1:4], "\n\n"); ret != want {
-		t.Fatalf("Verses(1, 3) =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
+	if got, want := Verses(1, 3), strings.Join(text[1:4], "\n\n"); got != want {
+		t.Fatalf("Verses(1, 3) =\n%s\n  want:\n%s\n%s", got, want, diff(got, want))
 	}
 }
 
 func TestSong(t *testing.T) {
-	if ret, want := Song(), strings.Join(ref[1:], "\n\n"); ret != want {
-		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", ret, want, diff(ret, want))
+	if got, want := Song(), strings.Join(text[1:], "\n\n"); got != want {
+		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", got, want, diff(got, want))
 	}
 }
 

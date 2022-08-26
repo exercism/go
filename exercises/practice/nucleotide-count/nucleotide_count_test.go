@@ -7,21 +7,19 @@ import (
 
 func TestCounts(t *testing.T) {
 	for _, tc := range testCases {
-		dna := DNA(tc.strand)
-		s, err := dna.Counts()
-		switch {
-		case tc.errorExpected:
-			if err == nil {
-				t.Fatalf("FAIL: %s\nCounts(%q)\nExpected error\nActual: %#v",
-					tc.description, tc.strand, s)
+		t.Run(tc.description, func(t *testing.T) {
+			dna := DNA(tc.strand)
+			actual, err := dna.Counts()
+			switch {
+			case tc.errorExpected:
+				if err == nil {
+					t.Fatalf("DNA.Counts(%q) expected error, got: %#v", tc.strand, actual)
+				}
+			case err != nil:
+				t.Fatalf("DNA.Counts(%q) returned error: %v, want: %#v", tc.strand, err, tc.expected)
+			case !reflect.DeepEqual(actual, tc.expected):
+				t.Fatalf("DNA.Counts(%q)\n got:%#v\nwant: %#v", tc.strand, actual, tc.expected)
 			}
-		case err != nil:
-			t.Fatalf("FAIL: %s\nCounts(%q)\nExpected: %#v\nGot error: %q",
-				tc.description, tc.strand, tc.expected, err)
-		case !reflect.DeepEqual(s, tc.expected):
-			t.Fatalf("FAIL: %s\nCounts(%q)\nExpected: %#v\nActual: %#v",
-				tc.description, tc.strand, tc.expected, s)
-		}
-		t.Logf("PASS: %s", tc.description)
+		})
 	}
 }

@@ -12,44 +12,37 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("wordy", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"answer": &[]testCase{},
+	}
+	if err := gen.Gen("wordy", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Question string
-	}
-	Expected interface{}
+		Question string `json:"question"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []OneCase
-}
-
-func (c OneCase) Valid() bool {
-	valid, _ := determineExpected(c.Expected)
-	return valid
-}
-
-func (c OneCase) Answer() int {
-	_, answer := determineExpected(c.Expected)
-	return answer
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case is valid(bool) and has an answer or expects an error.
-// returning valid and answer.
-func determineExpected(expected interface{}) (bool, int) {
-	ans, ok := expected.(float64)
+func (t testCase) ExpectError() bool {
+	v, ok := t.Expected.(map[string]interface{})
 	if ok {
-		return ok, int(ans)
+		_, ok := v["error"].(string)
+		return ok
 	}
-	return false, 0
+	return false
+}
+
+func (t testCase) ExpectedValue() int {
+	v, ok := t.Expected.(float64)
+	if ok {
+		return int(v)
+	}
+	return 0
 }
 
 // template applied to above data structure generates the Go test cases
@@ -59,20 +52,17 @@ var tmpl = `package wordy
 
 type wordyTest struct {
 	description string
-	question   string
-	ok bool
-	answer    int
+	question    string
+	expectError bool
+	expected    int
 }
 
 var tests = []wordyTest {
-{{range .J.Cases}}{
-	"{{.Description}}",
-	"{{.Input.Question}}",
-{{if .Valid}} true,
-	{{.Answer}},
-{{- else}} false,
-	0,
-{{- end}}
+{{range .J.answer}}{
+	description: {{printf "%q"  .Description}},
+	question: {{printf "%q" .Input.Question}},
+	expectError: {{printf "%t" .ExpectError }},
+	expected: {{printf "%d"  .ExpectedValue}},
 },
 {{end}}}
 `

@@ -1,5 +1,7 @@
 package diamond
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
@@ -10,27 +12,26 @@ var testCases = []struct {
 	expectedError error
 }{
 	{
-		description:   "Degenerate case with a single 'A' row",
-		input:         "A",
-		expectedError: nil,
+		description: "Degenerate case with a single 'A' row",
+		input:       "A",
 		expected: []string{
 			"A",
 		},
+		expectedError: nil,
 	},
 	{
-		description:   "Degenerate case with no row containing 3 distinct groups of spaces",
-		input:         "B",
-		expectedError: nil,
+		description: "Degenerate case with no row containing 3 distinct groups of spaces",
+		input:       "B",
 		expected: []string{
 			" A ",
 			"B B",
 			" A ",
 		},
+		expectedError: nil,
 	},
 	{
-		description:   "Smallest non-degenerate case with odd diamond side length",
-		input:         "C",
-		expectedError: nil,
+		description: "Smallest non-degenerate case with odd diamond side length",
+		input:       "C",
 		expected: []string{
 			"  A  ",
 			" B B ",
@@ -38,11 +39,11 @@ var testCases = []struct {
 			" B B ",
 			"  A  ",
 		},
+		expectedError: nil,
 	},
 	{
-		description:   "Smallest non-degenerate case with even diamond side length",
-		input:         "D",
-		expectedError: nil,
+		description: "Smallest non-degenerate case with even diamond side length",
+		input:       "D",
 		expected: []string{
 			"   A   ",
 			"  B B  ",
@@ -52,11 +53,11 @@ var testCases = []struct {
 			"  B B  ",
 			"   A   ",
 		},
+		expectedError: nil,
 	},
 	{
-		description:   "Largest possible diamond",
-		input:         "Z",
-		expectedError: nil,
+		description: "Largest possible diamond",
+		input:       "Z",
 		expected: []string{
 			"                         A                         ",
 			"                        B B                        ",
@@ -110,5 +111,6 @@ var testCases = []struct {
 			"                        B B                        ",
 			"                         A                         ",
 		},
+		expectedError: nil,
 	},
 }

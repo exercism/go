@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"text/template"
 
@@ -13,33 +12,22 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("rail-fence-cipher", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"encode": &[]testCase{},
+		"decode": &[]testCase{},
+	}
+	if err := gen.Gen("rail-fence-cipher", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Groups []testGroup `json:"cases"`
-}
-
-type testGroup struct {
-	Description string
-	Cases       []json.RawMessage `property:"RAW"`
-	EncodeCases []oneCase         `property:"encode"`
-	DecodeCases []oneCase         `property:"decode"`
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Message string `json:"msg"`
-		Rails   int
-	}
-	Expected string
+		Msg   string `json:"msg"`
+		Rails int    `json:"rails"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -54,31 +42,23 @@ type testCase struct {
 	expected    string
 }
 
-{{range .J.Groups}}
-	// {{ .Description }}
-	{{- if .EncodeCases }}
-		var encodeTests = []testCase{
-			{{- range .EncodeCases }}
-
-				{ {{.Description | printf "%q"}},
-				{{.Input.Message | printf "%q"}},
-				{{.Input.Rails}},
-				{{.Expected | printf "%q"}}},
-			{{- end }}
-		}
-	{{- end }}
-
-	{{- if .DecodeCases }}
-		var decodeTests = []testCase{
-			{{- range .DecodeCases }}
-
-				{ {{.Description | printf "%q"}},
-				{{.Input.Message | printf "%q"}},
-				{{.Input.Rails}},
-				{{.Expected | printf "%q"}}},
-			{{- end }}
-		}
-	{{- end }}
-
+var encodeTests = []testCase{
+{{range .J.encode}}{
+		description: {{printf "%q" .Description}},
+		message:     {{printf "%q" .Input.Msg}},
+		rails:       {{printf "%d" .Input.Rails}},
+		expected:    {{printf "%q" .Expected}},
+	},
 {{end}}
+}
+
+var decodeTests = []testCase{
+{{range .J.decode}}{
+		description: {{printf "%q" .Description}},
+		message:     {{printf "%q" .Input.Msg}},
+		rails:       {{printf "%d" .Input.Rails}},
+		expected:    {{printf "%q" .Expected}},
+	},
+{{end}}
+}
 `

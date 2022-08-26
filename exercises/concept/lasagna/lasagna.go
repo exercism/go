@@ -12,7 +12,7 @@ func PreparationTime(numberOfLayers int) int {
 	panic("PreparationTime not implemented")
 }
 
-// ElapsedTime calculates the total time needed to create and bake a lasagna.
+// ElapsedTime calculates the time elapsed cooking the lasagna. This time includes the preparation time and the time the lasagna is baking in the oven.
 func ElapsedTime(numberOfLayers, actualMinutesInOven int) int {
 	panic("ElapsedTime not implemented")
 }

@@ -94,6 +94,21 @@ func TestDrive(t *testing.T) {
 			},
 		},
 		{
+			name: "Drive the car with exactly enough battery.",
+			car: Car{
+				speed:        18,
+				batteryDrain: 10,
+				battery:      10,
+				distance:     0,
+			},
+			expected: Car{
+				speed:        18,
+				batteryDrain: 10,
+				battery:      0,
+				distance:     18,
+			},
+		},
+		{
 			name: "Drive when battery percentage is below battery drain",
 			car: Car{
 				speed:        5,

@@ -1,3 +1,3 @@
-module are
+module kindergarten
 
 go 1.16

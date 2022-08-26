@@ -12,44 +12,39 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("nth-prime", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"prime": &[]testCase{},
+	}
+	if err := gen.Gen("nth-prime", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Number int
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
+}
+
+func (t testCase) GetExpectedValue() int {
+	v, ok := t.Expected.(float64)
+	if !ok {
+		return 0
 	}
-	Expected interface{}
+	return int(v)
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []OneCase
-}
-
-func (c OneCase) HasPrimeAnswer() bool {
-	hasPrimeAnswer, _ := determineExpected(c.Expected)
-	return hasPrimeAnswer
-}
-
-func (c OneCase) PrimeAnswer() int {
-	_, answer := determineExpected(c.Expected)
-	return answer
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case has a Prime answer or expects an error,
-// returning true and the answer, or false and zero.
-func determineExpected(expected interface{}) (bool, int) {
-	value, ok := expected.(float64)
+func (t testCase) GetError() string {
+	v, ok := t.Expected.(map[string]interface{})
 	if ok {
-		return true, int(value)
+		e, ok := v["error"].(string)
+		if ok {
+			return e
+		}
 	}
-	return false, 0
+	return ""
 }
 
 // template applied to above data structure generates the Go test cases
@@ -57,24 +52,18 @@ var tmpl = `package prime
 
 {{.Header}}
 
-import "errors"
-
 var tests = []struct {
 	description string
-	n   int
-	p   int
-	err  error
+	input       int
+	expected    int
+	err         string
 }{
-{{range .J.Cases}}{
-	"{{.Description}}",
-	{{.Input.Number}},
-{{- if .HasPrimeAnswer}}
-	{{.PrimeAnswer}},
-	nil,
-{{- else}}
-	0,
-	errors.New("Input must be greater than 1"),
-{{- end}}
-},
-{{end}}}
+{{range .J.prime}}{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%d" .Input.Number}},
+		expected:    {{printf "%d" .GetExpectedValue}},
+		err:         {{printf "%q" .GetError}},
+	},
+{{end}}
+}
 `

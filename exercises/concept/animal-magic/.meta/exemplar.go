@@ -1,3 +1,4 @@
+//nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
 package chance
 
 import (
@@ -5,22 +6,22 @@ import (
 	"time"
 )
 
-// SeedWithTime seeds math/rand with the current computer time
+// SeedWithTime seeds math/rand with the current computer time.
 func SeedWithTime() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-// RollADie returns a random int between 1 and 20
+// RollADie returns a random int between 1 and 20.
 func RollADie() int {
 	return 1 + rand.Intn(20)
 }
 
-// GenerateWandEnergy returns a random float64 f with 0.0 <= f < 12.0
+// GenerateWandEnergy returns a random float64 f with 0.0 <= f < 12.0.
 func GenerateWandEnergy() float64 {
 	return 12.0 * rand.Float64()
 }
 
-// ShuffleAnimals returns a slice with eight animal strings in random order
+// ShuffleAnimals returns a slice with eight animal strings in random order.
 func ShuffleAnimals() []string {
 	result := []string{"ant", "beaver", "cat", "dog", "elephant", "fox", "giraffe", "hedgehog"}
 	rand.Shuffle(len(result), func(i, j int) {

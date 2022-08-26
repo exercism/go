@@ -1,5 +1,5 @@
 {
-  "blurb": "Implement an evaluator for a very simple subset of Forth",
+  "blurb": "Implement an evaluator for a very simple subset of Forth.",
   "authors": [
     "leenipper"
   ],
@@ -12,7 +12,8 @@
     "hilary",
     "ilmanzo",
     "robphoenix",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [

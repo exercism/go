@@ -1,111 +1,778 @@
 package meetup
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 56cdfa5 meetup: Update json for new input policy
-// Problem Specifications Version: 1.1.0
+// Commit: 37f7831 meetup: improve descriptions by saying why each case is tested (#1919)
 
 import "time"
 
 var testCases = []struct {
-	year    int
-	month   time.Month
-	week    WeekSchedule
-	weekday time.Weekday
-	expDay  int
+	description string
+	year        int
+	month       time.Month
+	week        WeekSchedule
+	weekday     time.Weekday
+	expectedDay int
 }{
-	{2013, 5, Teenth, time.Monday, 13},    // monteenth of May 2013
-	{2013, 8, Teenth, time.Monday, 19},    // monteenth of August 2013
-	{2013, 9, Teenth, time.Monday, 16},    // monteenth of September 2013
-	{2013, 3, Teenth, time.Tuesday, 19},   // tuesteenth of March 2013
-	{2013, 4, Teenth, time.Tuesday, 16},   // tuesteenth of April 2013
-	{2013, 8, Teenth, time.Tuesday, 13},   // tuesteenth of August 2013
-	{2013, 1, Teenth, time.Wednesday, 16}, // wednesteenth of January 2013
-	{2013, 2, Teenth, time.Wednesday, 13}, // wednesteenth of February 2013
-	{2013, 6, Teenth, time.Wednesday, 19}, // wednesteenth of June 2013
-	{2013, 5, Teenth, time.Thursday, 16},  // thursteenth of May 2013
-	{2013, 6, Teenth, time.Thursday, 13},  // thursteenth of June 2013
-	{2013, 9, Teenth, time.Thursday, 19},  // thursteenth of September 2013
-	{2013, 4, Teenth, time.Friday, 19},    // friteenth of April 2013
-	{2013, 8, Teenth, time.Friday, 16},    // friteenth of August 2013
-	{2013, 9, Teenth, time.Friday, 13},    // friteenth of September 2013
-	{2013, 2, Teenth, time.Saturday, 16},  // saturteenth of February 2013
-	{2013, 4, Teenth, time.Saturday, 13},  // saturteenth of April 2013
-	{2013, 10, Teenth, time.Saturday, 19}, // saturteenth of October 2013
-	{2013, 5, Teenth, time.Sunday, 19},    // sunteenth of May 2013
-	{2013, 6, Teenth, time.Sunday, 16},    // sunteenth of June 2013
-	{2013, 10, Teenth, time.Sunday, 13},   // sunteenth of October 2013
-	{2013, 3, First, time.Monday, 4},      // first Monday of March 2013
-	{2013, 4, First, time.Monday, 1},      // first Monday of April 2013
-	{2013, 5, First, time.Tuesday, 7},     // first Tuesday of May 2013
-	{2013, 6, First, time.Tuesday, 4},     // first Tuesday of June 2013
-	{2013, 7, First, time.Wednesday, 3},   // first Wednesday of July 2013
-	{2013, 8, First, time.Wednesday, 7},   // first Wednesday of August 2013
-	{2013, 9, First, time.Thursday, 5},    // first Thursday of September 2013
-	{2013, 10, First, time.Thursday, 3},   // first Thursday of October 2013
-	{2013, 11, First, time.Friday, 1},     // first Friday of November 2013
-	{2013, 12, First, time.Friday, 6},     // first Friday of December 2013
-	{2013, 1, First, time.Saturday, 5},    // first Saturday of January 2013
-	{2013, 2, First, time.Saturday, 2},    // first Saturday of February 2013
-	{2013, 3, First, time.Sunday, 3},      // first Sunday of March 2013
-	{2013, 4, First, time.Sunday, 7},      // first Sunday of April 2013
-	{2013, 3, Second, time.Monday, 11},    // second Monday of March 2013
-	{2013, 4, Second, time.Monday, 8},     // second Monday of April 2013
-	{2013, 5, Second, time.Tuesday, 14},   // second Tuesday of May 2013
-	{2013, 6, Second, time.Tuesday, 11},   // second Tuesday of June 2013
-	{2013, 7, Second, time.Wednesday, 10}, // second Wednesday of July 2013
-	{2013, 8, Second, time.Wednesday, 14}, // second Wednesday of August 2013
-	{2013, 9, Second, time.Thursday, 12},  // second Thursday of September 2013
-	{2013, 10, Second, time.Thursday, 10}, // second Thursday of October 2013
-	{2013, 11, Second, time.Friday, 8},    // second Friday of November 2013
-	{2013, 12, Second, time.Friday, 13},   // second Friday of December 2013
-	{2013, 1, Second, time.Saturday, 12},  // second Saturday of January 2013
-	{2013, 2, Second, time.Saturday, 9},   // second Saturday of February 2013
-	{2013, 3, Second, time.Sunday, 10},    // second Sunday of March 2013
-	{2013, 4, Second, time.Sunday, 14},    // second Sunday of April 2013
-	{2013, 3, Third, time.Monday, 18},     // third Monday of March 2013
-	{2013, 4, Third, time.Monday, 15},     // third Monday of April 2013
-	{2013, 5, Third, time.Tuesday, 21},    // third Tuesday of May 2013
-	{2013, 6, Third, time.Tuesday, 18},    // third Tuesday of June 2013
-	{2013, 7, Third, time.Wednesday, 17},  // third Wednesday of July 2013
-	{2013, 8, Third, time.Wednesday, 21},  // third Wednesday of August 2013
-	{2013, 9, Third, time.Thursday, 19},   // third Thursday of September 2013
-	{2013, 10, Third, time.Thursday, 17},  // third Thursday of October 2013
-	{2013, 11, Third, time.Friday, 15},    // third Friday of November 2013
-	{2013, 12, Third, time.Friday, 20},    // third Friday of December 2013
-	{2013, 1, Third, time.Saturday, 19},   // third Saturday of January 2013
-	{2013, 2, Third, time.Saturday, 16},   // third Saturday of February 2013
-	{2013, 3, Third, time.Sunday, 17},     // third Sunday of March 2013
-	{2013, 4, Third, time.Sunday, 21},     // third Sunday of April 2013
-	{2013, 3, Fourth, time.Monday, 25},    // fourth Monday of March 2013
-	{2013, 4, Fourth, time.Monday, 22},    // fourth Monday of April 2013
-	{2013, 5, Fourth, time.Tuesday, 28},   // fourth Tuesday of May 2013
-	{2013, 6, Fourth, time.Tuesday, 25},   // fourth Tuesday of June 2013
-	{2013, 7, Fourth, time.Wednesday, 24}, // fourth Wednesday of July 2013
-	{2013, 8, Fourth, time.Wednesday, 28}, // fourth Wednesday of August 2013
-	{2013, 9, Fourth, time.Thursday, 26},  // fourth Thursday of September 2013
-	{2013, 10, Fourth, time.Thursday, 24}, // fourth Thursday of October 2013
-	{2013, 11, Fourth, time.Friday, 22},   // fourth Friday of November 2013
-	{2013, 12, Fourth, time.Friday, 27},   // fourth Friday of December 2013
-	{2013, 1, Fourth, time.Saturday, 26},  // fourth Saturday of January 2013
-	{2013, 2, Fourth, time.Saturday, 23},  // fourth Saturday of February 2013
-	{2013, 3, Fourth, time.Sunday, 24},    // fourth Sunday of March 2013
-	{2013, 4, Fourth, time.Sunday, 28},    // fourth Sunday of April 2013
-	{2013, 3, Last, time.Monday, 25},      // last Monday of March 2013
-	{2013, 4, Last, time.Monday, 29},      // last Monday of April 2013
-	{2013, 5, Last, time.Tuesday, 28},     // last Tuesday of May 2013
-	{2013, 6, Last, time.Tuesday, 25},     // last Tuesday of June 2013
-	{2013, 7, Last, time.Wednesday, 31},   // last Wednesday of July 2013
-	{2013, 8, Last, time.Wednesday, 28},   // last Wednesday of August 2013
-	{2013, 9, Last, time.Thursday, 26},    // last Thursday of September 2013
-	{2013, 10, Last, time.Thursday, 31},   // last Thursday of October 2013
-	{2013, 11, Last, time.Friday, 29},     // last Friday of November 2013
-	{2013, 12, Last, time.Friday, 27},     // last Friday of December 2013
-	{2013, 1, Last, time.Saturday, 26},    // last Saturday of January 2013
-	{2013, 2, Last, time.Saturday, 23},    // last Saturday of February 2013
-	{2013, 3, Last, time.Sunday, 31},      // last Sunday of March 2013
-	{2013, 4, Last, time.Sunday, 28},      // last Sunday of April 2013
-	{2012, 2, Last, time.Wednesday, 29},   // last Wednesday of February 2012
-	{2014, 12, Last, time.Wednesday, 31},  // last Wednesday of December 2014
-	{2015, 2, Last, time.Sunday, 22},      // last Sunday of February 2015
-	{2012, 12, First, time.Friday, 7},     // first Friday of December 2012
+	{
+		description: "when teenth Monday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       5,
+		week:        Teenth,
+		weekday:     time.Monday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Monday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       8,
+		week:        Teenth,
+		weekday:     time.Monday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Monday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       9,
+		week:        Teenth,
+		weekday:     time.Monday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Tuesday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       3,
+		week:        Teenth,
+		weekday:     time.Tuesday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Tuesday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       4,
+		week:        Teenth,
+		weekday:     time.Tuesday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Tuesday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       8,
+		week:        Teenth,
+		weekday:     time.Tuesday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Wednesday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       1,
+		week:        Teenth,
+		weekday:     time.Wednesday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Wednesday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       2,
+		week:        Teenth,
+		weekday:     time.Wednesday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Wednesday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       6,
+		week:        Teenth,
+		weekday:     time.Wednesday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Thursday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       5,
+		week:        Teenth,
+		weekday:     time.Thursday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Thursday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       6,
+		week:        Teenth,
+		weekday:     time.Thursday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Thursday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       9,
+		week:        Teenth,
+		weekday:     time.Thursday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Friday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       4,
+		week:        Teenth,
+		weekday:     time.Friday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Friday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       8,
+		week:        Teenth,
+		weekday:     time.Friday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Friday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       9,
+		week:        Teenth,
+		weekday:     time.Friday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Saturday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       2,
+		week:        Teenth,
+		weekday:     time.Saturday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Saturday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       4,
+		week:        Teenth,
+		weekday:     time.Saturday,
+		expectedDay: 13,
+	},
+	{
+		description: "when teenth Saturday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       10,
+		week:        Teenth,
+		weekday:     time.Saturday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Sunday is the 19th, the last day of the teenth week",
+		year:        2013,
+		month:       5,
+		week:        Teenth,
+		weekday:     time.Sunday,
+		expectedDay: 19,
+	},
+	{
+		description: "when teenth Sunday is some day in the middle of the teenth week",
+		year:        2013,
+		month:       6,
+		week:        Teenth,
+		weekday:     time.Sunday,
+		expectedDay: 16,
+	},
+	{
+		description: "when teenth Sunday is the 13th, the first day of the teenth week",
+		year:        2013,
+		month:       10,
+		week:        Teenth,
+		weekday:     time.Sunday,
+		expectedDay: 13,
+	},
+	{
+		description: "when first Monday is some day in the middle of the first week",
+		year:        2013,
+		month:       3,
+		week:        First,
+		weekday:     time.Monday,
+		expectedDay: 4,
+	},
+	{
+		description: "when first Monday is the 1st, the first day of the first week",
+		year:        2013,
+		month:       4,
+		week:        First,
+		weekday:     time.Monday,
+		expectedDay: 1,
+	},
+	{
+		description: "when first Tuesday is the 7th, the last day of the first week",
+		year:        2013,
+		month:       5,
+		week:        First,
+		weekday:     time.Tuesday,
+		expectedDay: 7,
+	},
+	{
+		description: "when first Tuesday is some day in the middle of the first week",
+		year:        2013,
+		month:       6,
+		week:        First,
+		weekday:     time.Tuesday,
+		expectedDay: 4,
+	},
+	{
+		description: "when first Wednesday is some day in the middle of the first week",
+		year:        2013,
+		month:       7,
+		week:        First,
+		weekday:     time.Wednesday,
+		expectedDay: 3,
+	},
+	{
+		description: "when first Wednesday is the 7th, the last day of the first week",
+		year:        2013,
+		month:       8,
+		week:        First,
+		weekday:     time.Wednesday,
+		expectedDay: 7,
+	},
+	{
+		description: "when first Thursday is some day in the middle of the first week",
+		year:        2013,
+		month:       9,
+		week:        First,
+		weekday:     time.Thursday,
+		expectedDay: 5,
+	},
+	{
+		description: "when first Thursday is another day in the middle of the first week",
+		year:        2013,
+		month:       10,
+		week:        First,
+		weekday:     time.Thursday,
+		expectedDay: 3,
+	},
+	{
+		description: "when first Friday is the 1st, the first day of the first week",
+		year:        2013,
+		month:       11,
+		week:        First,
+		weekday:     time.Friday,
+		expectedDay: 1,
+	},
+	{
+		description: "when first Friday is some day in the middle of the first week",
+		year:        2013,
+		month:       12,
+		week:        First,
+		weekday:     time.Friday,
+		expectedDay: 6,
+	},
+	{
+		description: "when first Saturday is some day in the middle of the first week",
+		year:        2013,
+		month:       1,
+		week:        First,
+		weekday:     time.Saturday,
+		expectedDay: 5,
+	},
+	{
+		description: "when first Saturday is another day in the middle of the first week",
+		year:        2013,
+		month:       2,
+		week:        First,
+		weekday:     time.Saturday,
+		expectedDay: 2,
+	},
+	{
+		description: "when first Sunday is some day in the middle of the first week",
+		year:        2013,
+		month:       3,
+		week:        First,
+		weekday:     time.Sunday,
+		expectedDay: 3,
+	},
+	{
+		description: "when first Sunday is the 7th, the last day of the first week",
+		year:        2013,
+		month:       4,
+		week:        First,
+		weekday:     time.Sunday,
+		expectedDay: 7,
+	},
+	{
+		description: "when second Monday is some day in the middle of the second week",
+		year:        2013,
+		month:       3,
+		week:        Second,
+		weekday:     time.Monday,
+		expectedDay: 11,
+	},
+	{
+		description: "when second Monday is the 8th, the first day of the second week",
+		year:        2013,
+		month:       4,
+		week:        Second,
+		weekday:     time.Monday,
+		expectedDay: 8,
+	},
+	{
+		description: "when second Tuesday is the 14th, the last day of the second week",
+		year:        2013,
+		month:       5,
+		week:        Second,
+		weekday:     time.Tuesday,
+		expectedDay: 14,
+	},
+	{
+		description: "when second Tuesday is some day in the middle of the second week",
+		year:        2013,
+		month:       6,
+		week:        Second,
+		weekday:     time.Tuesday,
+		expectedDay: 11,
+	},
+	{
+		description: "when second Wednesday is some day in the middle of the second week",
+		year:        2013,
+		month:       7,
+		week:        Second,
+		weekday:     time.Wednesday,
+		expectedDay: 10,
+	},
+	{
+		description: "when second Wednesday is the 14th, the last day of the second week",
+		year:        2013,
+		month:       8,
+		week:        Second,
+		weekday:     time.Wednesday,
+		expectedDay: 14,
+	},
+	{
+		description: "when second Thursday is some day in the middle of the second week",
+		year:        2013,
+		month:       9,
+		week:        Second,
+		weekday:     time.Thursday,
+		expectedDay: 12,
+	},
+	{
+		description: "when second Thursday is another day in the middle of the second week",
+		year:        2013,
+		month:       10,
+		week:        Second,
+		weekday:     time.Thursday,
+		expectedDay: 10,
+	},
+	{
+		description: "when second Friday is the 8th, the first day of the second week",
+		year:        2013,
+		month:       11,
+		week:        Second,
+		weekday:     time.Friday,
+		expectedDay: 8,
+	},
+	{
+		description: "when second Friday is some day in the middle of the second week",
+		year:        2013,
+		month:       12,
+		week:        Second,
+		weekday:     time.Friday,
+		expectedDay: 13,
+	},
+	{
+		description: "when second Saturday is some day in the middle of the second week",
+		year:        2013,
+		month:       1,
+		week:        Second,
+		weekday:     time.Saturday,
+		expectedDay: 12,
+	},
+	{
+		description: "when second Saturday is another day in the middle of the second week",
+		year:        2013,
+		month:       2,
+		week:        Second,
+		weekday:     time.Saturday,
+		expectedDay: 9,
+	},
+	{
+		description: "when second Sunday is some day in the middle of the second week",
+		year:        2013,
+		month:       3,
+		week:        Second,
+		weekday:     time.Sunday,
+		expectedDay: 10,
+	},
+	{
+		description: "when second Sunday is the 14th, the last day of the second week",
+		year:        2013,
+		month:       4,
+		week:        Second,
+		weekday:     time.Sunday,
+		expectedDay: 14,
+	},
+	{
+		description: "when third Monday is some day in the middle of the third week",
+		year:        2013,
+		month:       3,
+		week:        Third,
+		weekday:     time.Monday,
+		expectedDay: 18,
+	},
+	{
+		description: "when third Monday is the 15th, the first day of the third week",
+		year:        2013,
+		month:       4,
+		week:        Third,
+		weekday:     time.Monday,
+		expectedDay: 15,
+	},
+	{
+		description: "when third Tuesday is the 21st, the last day of the third week",
+		year:        2013,
+		month:       5,
+		week:        Third,
+		weekday:     time.Tuesday,
+		expectedDay: 21,
+	},
+	{
+		description: "when third Tuesday is some day in the middle of the third week",
+		year:        2013,
+		month:       6,
+		week:        Third,
+		weekday:     time.Tuesday,
+		expectedDay: 18,
+	},
+	{
+		description: "when third Wednesday is some day in the middle of the third week",
+		year:        2013,
+		month:       7,
+		week:        Third,
+		weekday:     time.Wednesday,
+		expectedDay: 17,
+	},
+	{
+		description: "when third Wednesday is the 21st, the last day of the third week",
+		year:        2013,
+		month:       8,
+		week:        Third,
+		weekday:     time.Wednesday,
+		expectedDay: 21,
+	},
+	{
+		description: "when third Thursday is some day in the middle of the third week",
+		year:        2013,
+		month:       9,
+		week:        Third,
+		weekday:     time.Thursday,
+		expectedDay: 19,
+	},
+	{
+		description: "when third Thursday is another day in the middle of the third week",
+		year:        2013,
+		month:       10,
+		week:        Third,
+		weekday:     time.Thursday,
+		expectedDay: 17,
+	},
+	{
+		description: "when third Friday is the 15th, the first day of the third week",
+		year:        2013,
+		month:       11,
+		week:        Third,
+		weekday:     time.Friday,
+		expectedDay: 15,
+	},
+	{
+		description: "when third Friday is some day in the middle of the third week",
+		year:        2013,
+		month:       12,
+		week:        Third,
+		weekday:     time.Friday,
+		expectedDay: 20,
+	},
+	{
+		description: "when third Saturday is some day in the middle of the third week",
+		year:        2013,
+		month:       1,
+		week:        Third,
+		weekday:     time.Saturday,
+		expectedDay: 19,
+	},
+	{
+		description: "when third Saturday is another day in the middle of the third week",
+		year:        2013,
+		month:       2,
+		week:        Third,
+		weekday:     time.Saturday,
+		expectedDay: 16,
+	},
+	{
+		description: "when third Sunday is some day in the middle of the third week",
+		year:        2013,
+		month:       3,
+		week:        Third,
+		weekday:     time.Sunday,
+		expectedDay: 17,
+	},
+	{
+		description: "when third Sunday is the 21st, the last day of the third week",
+		year:        2013,
+		month:       4,
+		week:        Third,
+		weekday:     time.Sunday,
+		expectedDay: 21,
+	},
+	{
+		description: "when fourth Monday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       3,
+		week:        Fourth,
+		weekday:     time.Monday,
+		expectedDay: 25,
+	},
+	{
+		description: "when fourth Monday is the 22nd, the first day of the fourth week",
+		year:        2013,
+		month:       4,
+		week:        Fourth,
+		weekday:     time.Monday,
+		expectedDay: 22,
+	},
+	{
+		description: "when fourth Tuesday is the 28th, the last day of the fourth week",
+		year:        2013,
+		month:       5,
+		week:        Fourth,
+		weekday:     time.Tuesday,
+		expectedDay: 28,
+	},
+	{
+		description: "when fourth Tuesday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       6,
+		week:        Fourth,
+		weekday:     time.Tuesday,
+		expectedDay: 25,
+	},
+	{
+		description: "when fourth Wednesday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       7,
+		week:        Fourth,
+		weekday:     time.Wednesday,
+		expectedDay: 24,
+	},
+	{
+		description: "when fourth Wednesday is the 28th, the last day of the fourth week",
+		year:        2013,
+		month:       8,
+		week:        Fourth,
+		weekday:     time.Wednesday,
+		expectedDay: 28,
+	},
+	{
+		description: "when fourth Thursday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       9,
+		week:        Fourth,
+		weekday:     time.Thursday,
+		expectedDay: 26,
+	},
+	{
+		description: "when fourth Thursday is another day in the middle of the fourth week",
+		year:        2013,
+		month:       10,
+		week:        Fourth,
+		weekday:     time.Thursday,
+		expectedDay: 24,
+	},
+	{
+		description: "when fourth Friday is the 22nd, the first day of the fourth week",
+		year:        2013,
+		month:       11,
+		week:        Fourth,
+		weekday:     time.Friday,
+		expectedDay: 22,
+	},
+	{
+		description: "when fourth Friday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       12,
+		week:        Fourth,
+		weekday:     time.Friday,
+		expectedDay: 27,
+	},
+	{
+		description: "when fourth Saturday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       1,
+		week:        Fourth,
+		weekday:     time.Saturday,
+		expectedDay: 26,
+	},
+	{
+		description: "when fourth Saturday is another day in the middle of the fourth week",
+		year:        2013,
+		month:       2,
+		week:        Fourth,
+		weekday:     time.Saturday,
+		expectedDay: 23,
+	},
+	{
+		description: "when fourth Sunday is some day in the middle of the fourth week",
+		year:        2013,
+		month:       3,
+		week:        Fourth,
+		weekday:     time.Sunday,
+		expectedDay: 24,
+	},
+	{
+		description: "when fourth Sunday is the 28th, the last day of the fourth week",
+		year:        2013,
+		month:       4,
+		week:        Fourth,
+		weekday:     time.Sunday,
+		expectedDay: 28,
+	},
+	{
+		description: "last Monday in a month with four Mondays",
+		year:        2013,
+		month:       3,
+		week:        Last,
+		weekday:     time.Monday,
+		expectedDay: 25,
+	},
+	{
+		description: "last Monday in a month with five Mondays",
+		year:        2013,
+		month:       4,
+		week:        Last,
+		weekday:     time.Monday,
+		expectedDay: 29,
+	},
+	{
+		description: "last Tuesday in a month with four Tuesdays",
+		year:        2013,
+		month:       5,
+		week:        Last,
+		weekday:     time.Tuesday,
+		expectedDay: 28,
+	},
+	{
+		description: "last Tuesday in another month with four Tuesdays",
+		year:        2013,
+		month:       6,
+		week:        Last,
+		weekday:     time.Tuesday,
+		expectedDay: 25,
+	},
+	{
+		description: "last Wednesday in a month with five Wednesdays",
+		year:        2013,
+		month:       7,
+		week:        Last,
+		weekday:     time.Wednesday,
+		expectedDay: 31,
+	},
+	{
+		description: "last Wednesday in a month with four Wednesdays",
+		year:        2013,
+		month:       8,
+		week:        Last,
+		weekday:     time.Wednesday,
+		expectedDay: 28,
+	},
+	{
+		description: "last Thursday in a month with four Thursdays",
+		year:        2013,
+		month:       9,
+		week:        Last,
+		weekday:     time.Thursday,
+		expectedDay: 26,
+	},
+	{
+		description: "last Thursday in a month with five Thursdays",
+		year:        2013,
+		month:       10,
+		week:        Last,
+		weekday:     time.Thursday,
+		expectedDay: 31,
+	},
+	{
+		description: "last Friday in a month with five Fridays",
+		year:        2013,
+		month:       11,
+		week:        Last,
+		weekday:     time.Friday,
+		expectedDay: 29,
+	},
+	{
+		description: "last Friday in a month with four Fridays",
+		year:        2013,
+		month:       12,
+		week:        Last,
+		weekday:     time.Friday,
+		expectedDay: 27,
+	},
+	{
+		description: "last Saturday in a month with four Saturdays",
+		year:        2013,
+		month:       1,
+		week:        Last,
+		weekday:     time.Saturday,
+		expectedDay: 26,
+	},
+	{
+		description: "last Saturday in another month with four Saturdays",
+		year:        2013,
+		month:       2,
+		week:        Last,
+		weekday:     time.Saturday,
+		expectedDay: 23,
+	},
+	{
+		description: "last Sunday in a month with five Sundays",
+		year:        2013,
+		month:       3,
+		week:        Last,
+		weekday:     time.Sunday,
+		expectedDay: 31,
+	},
+	{
+		description: "last Sunday in a month with four Sundays",
+		year:        2013,
+		month:       4,
+		week:        Last,
+		weekday:     time.Sunday,
+		expectedDay: 28,
+	},
+	{
+		description: "when last Wednesday in February in a leap year is the 29th",
+		year:        2012,
+		month:       2,
+		week:        Last,
+		weekday:     time.Wednesday,
+		expectedDay: 29,
+	},
+	{
+		description: "last Wednesday in December that is also the last day of the year",
+		year:        2014,
+		month:       12,
+		week:        Last,
+		weekday:     time.Wednesday,
+		expectedDay: 31,
+	},
+	{
+		description: "when last Sunday in February in a non-leap year is not the 29th",
+		year:        2015,
+		month:       2,
+		week:        Last,
+		weekday:     time.Sunday,
+		expectedDay: 22,
+	},
+	{
+		description: "when first Friday is the 7th, the last day of the first week",
+		year:        2012,
+		month:       12,
+		week:        First,
+		weekday:     time.Friday,
+		expectedDay: 7,
+	},
 }

@@ -1,8 +1,9 @@
 package railfence
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 88db37b rail-fence-cipher: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: 42dd0ce Remove version (#1678)
 
 type testCase struct {
 	description string
@@ -11,40 +12,44 @@ type testCase struct {
 	expected    string
 }
 
-// encode
 var encodeTests = []testCase{
-
-	{"encode with two rails",
-		"XOXOXOXOXOXOXOXOXO",
-		2,
-		"XXXXXXXXXOOOOOOOOO"},
-
-	{"encode with three rails",
-		"WEAREDISCOVEREDFLEEATONCE",
-		3,
-		"WECRLTEERDSOEEFEAOCAIVDEN"},
-
-	{"encode with ending in the middle",
-		"EXERCISES",
-		4,
-		"ESXIEECSR"},
+	{
+		description: "encode with two rails",
+		message:     "XOXOXOXOXOXOXOXOXO",
+		rails:       2,
+		expected:    "XXXXXXXXXOOOOOOOOO",
+	},
+	{
+		description: "encode with three rails",
+		message:     "WEAREDISCOVEREDFLEEATONCE",
+		rails:       3,
+		expected:    "WECRLTEERDSOEEFEAOCAIVDEN",
+	},
+	{
+		description: "encode with ending in the middle",
+		message:     "EXERCISES",
+		rails:       4,
+		expected:    "ESXIEECSR",
+	},
 }
 
-// decode
 var decodeTests = []testCase{
-
-	{"decode with three rails",
-		"TEITELHDVLSNHDTISEIIEA",
-		3,
-		"THEDEVILISINTHEDETAILS"},
-
-	{"decode with five rails",
-		"EIEXMSMESAORIWSCE",
-		5,
-		"EXERCISMISAWESOME"},
-
-	{"decode with six rails",
-		"133714114238148966225439541018335470986172518171757571896261",
-		6,
-		"112358132134558914423337761098715972584418167651094617711286"},
+	{
+		description: "decode with three rails",
+		message:     "TEITELHDVLSNHDTISEIIEA",
+		rails:       3,
+		expected:    "THEDEVILISINTHEDETAILS",
+	},
+	{
+		description: "decode with five rails",
+		message:     "EIEXMSMESAORIWSCE",
+		rails:       5,
+		expected:    "EXERCISMISAWESOME",
+	},
+	{
+		description: "decode with six rails",
+		message:     "133714114238148966225439541018335470986172518171757571896261",
+		rails:       6,
+		expected:    "112358132134558914423337761098715972584418167651094617711286",
+	},
 }

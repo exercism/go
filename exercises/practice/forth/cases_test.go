@@ -1,309 +1,302 @@
 package forth
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 75f4c0a Corrected minor typos in the error msg expectation (doesn't match other similar error patterns and so breaks auto generated tests)
-// Problem Specifications Version: 1.7.1
+// Commit: b230e1e forth: Add local-scope test
 
-type testGroup struct {
-	group string
-	tests []testCase
-}
-
-type testCase struct {
+var testCases = []struct {
 	description string
 	input       []string
-	expected    []int // nil slice indicates error expected.
-}
-
-var testGroups = []testGroup{
+	expected    []int  // nil slice indicates error expected.
+	explainText string // error explanation text
+}{
 	{
-		group: "parsing and numbers",
-		tests: []testCase{
-			{
-				"numbers just get pushed onto the stack",
-				[]string{"1 2 3 4 5"},
-				[]int{1, 2, 3, 4, 5},
-			},
-		},
+		description: "numbers just get pushed onto the stack",
+		input:       []string{"1 2 3 4 5"},
+		expected:    []int{1, 2, 3, 4, 5},
+		explainText: "",
 	},
 	{
-		group: "addition",
-		tests: []testCase{
-			{
-				"can add two numbers",
-				[]string{"1 2 +"},
-				[]int{3},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"+"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 +"},
-				[]int(nil),
-			},
-		},
+		description: "pushes negative numbers onto the stack",
+		input:       []string{"-1 -2 -3 -4 -5"},
+		expected:    []int{-1, -2, -3, -4, -5},
+		explainText: "",
 	},
 	{
-		group: "subtraction",
-		tests: []testCase{
-			{
-				"can subtract two numbers",
-				[]string{"3 4 -"},
-				[]int{-1},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"-"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 -"},
-				[]int(nil),
-			},
-		},
+		description: "can add two numbers",
+		input:       []string{"1 2 +"},
+		expected:    []int{3},
+		explainText: "",
 	},
 	{
-		group: "multiplication",
-		tests: []testCase{
-			{
-				"can multiply two numbers",
-				[]string{"2 4 *"},
-				[]int{8},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"*"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 *"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is nothing on the stack",
+		input:       []string{"+"},
+		expected:    []int(nil),
+		explainText: "empty stack",
 	},
 	{
-		group: "division",
-		tests: []testCase{
-			{
-				"can divide two numbers",
-				[]string{"12 3 /"},
-				[]int{4},
-			},
-			{
-				"performs integer division",
-				[]string{"8 3 /"},
-				[]int{2},
-			},
-			{
-				"errors if dividing by zero",
-				[]string{"4 0 /"},
-				[]int(nil),
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"/"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 /"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 +"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
 	},
 	{
-		group: "combined arithmetic",
-		tests: []testCase{
-			{
-				"addition and subtraction",
-				[]string{"1 2 + 4 -"},
-				[]int{-1},
-			},
-			{
-				"multiplication and division",
-				[]string{"2 4 * 3 /"},
-				[]int{2},
-			},
-		},
+		description: "can subtract two numbers",
+		input:       []string{"3 4 -"},
+		expected:    []int{-1},
+		explainText: "",
 	},
 	{
-		group: "dup",
-		tests: []testCase{
-			{
-				"copies a value on the stack",
-				[]string{"1 dup"},
-				[]int{1, 1},
-			},
-			{
-				"copies the top value on the stack",
-				[]string{"1 2 dup"},
-				[]int{1, 2, 2},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"dup"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is nothing on the stack",
+		input:       []string{"-"},
+		expected:    []int(nil),
+		explainText: "empty stack",
 	},
 	{
-		group: "drop",
-		tests: []testCase{
-			{
-				"removes the top value on the stack if it is the only one",
-				[]string{"1 drop"},
-				[]int{},
-			},
-			{
-				"removes the top value on the stack if it is not the only one",
-				[]string{"1 2 drop"},
-				[]int{1},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"drop"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 -"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
 	},
 	{
-		group: "swap",
-		tests: []testCase{
-			{
-				"swaps the top two values on the stack if they are the only ones",
-				[]string{"1 2 swap"},
-				[]int{2, 1},
-			},
-			{
-				"swaps the top two values on the stack if they are not the only ones",
-				[]string{"1 2 3 swap"},
-				[]int{1, 3, 2},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"swap"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 swap"},
-				[]int(nil),
-			},
-		},
+		description: "can multiply two numbers",
+		input:       []string{"2 4 *"},
+		expected:    []int{8},
+		explainText: "",
 	},
 	{
-		group: "over",
-		tests: []testCase{
-			{
-				"copies the second element if there are only two",
-				[]string{"1 2 over"},
-				[]int{1, 2, 1},
-			},
-			{
-				"copies the second element if there are more than two",
-				[]string{"1 2 3 over"},
-				[]int{1, 2, 3, 2},
-			},
-			{
-				"errors if there is nothing on the stack",
-				[]string{"over"},
-				[]int(nil),
-			},
-			{
-				"errors if there is only one value on the stack",
-				[]string{"1 over"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is nothing on the stack",
+		input:       []string{"*"},
+		expected:    []int(nil),
+		explainText: "empty stack",
 	},
 	{
-		group: "user-defined words",
-		tests: []testCase{
-			{
-				"can consist of built-in words",
-				[]string{": dup-twice dup dup ;", "1 dup-twice"},
-				[]int{1, 1, 1},
-			},
-			{
-				"execute in the right order",
-				[]string{": countup 1 2 3 ;", "countup"},
-				[]int{1, 2, 3},
-			},
-			{
-				"can override other user-defined words",
-				[]string{": foo dup ;", ": foo dup dup ;", "1 foo"},
-				[]int{1, 1, 1},
-			},
-			{
-				"can override built-in words",
-				[]string{": swap dup ;", "1 swap"},
-				[]int{1, 1},
-			},
-			{
-				"can override built-in operators",
-				[]string{": + * ;", "3 4 +"},
-				[]int{12},
-			},
-			{
-				"can use different words with the same name",
-				[]string{": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"},
-				[]int{5, 6},
-			},
-			{
-				"can define word that uses word with the same name",
-				[]string{": foo 10 ;", ": foo foo 1 + ;", "foo"},
-				[]int{11},
-			},
-			{
-				"cannot redefine numbers",
-				[]string{": 1 2 ;"},
-				[]int(nil),
-			},
-			{
-				"errors if executing a non-existent word",
-				[]string{"foo"},
-				[]int(nil),
-			},
-		},
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 *"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
 	},
 	{
-		group: "case-insensitivity",
-		tests: []testCase{
-			{
-				"DUP is case-insensitive",
-				[]string{"1 DUP Dup dup"},
-				[]int{1, 1, 1, 1},
-			},
-			{
-				"DROP is case-insensitive",
-				[]string{"1 2 3 4 DROP Drop drop"},
-				[]int{1},
-			},
-			{
-				"SWAP is case-insensitive",
-				[]string{"1 2 SWAP 3 Swap 4 swap"},
-				[]int{2, 3, 4, 1},
-			},
-			{
-				"OVER is case-insensitive",
-				[]string{"1 2 OVER Over over"},
-				[]int{1, 2, 1, 2, 1},
-			},
-			{
-				"user-defined words are case-insensitive",
-				[]string{": foo dup ;", "1 FOO Foo foo"},
-				[]int{1, 1, 1, 1},
-			},
-			{
-				"definitions are case-insensitive",
-				[]string{": SWAP DUP Dup dup ;", "1 swap"},
-				[]int{1, 1, 1, 1},
-			},
-		},
+		description: "can divide two numbers",
+		input:       []string{"12 3 /"},
+		expected:    []int{4},
+		explainText: "",
+	},
+	{
+		description: "performs integer division",
+		input:       []string{"8 3 /"},
+		expected:    []int{2},
+		explainText: "",
+	},
+	{
+		description: "errors if dividing by zero",
+		input:       []string{"4 0 /"},
+		expected:    []int(nil),
+		explainText: "divide by zero",
+	},
+	{
+		description: "errors if there is nothing on the stack",
+		input:       []string{"/"},
+		expected:    []int(nil),
+		explainText: "empty stack",
+	},
+	{
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 /"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
+	},
+	{
+		description: "addition and subtraction",
+		input:       []string{"1 2 + 4 -"},
+		expected:    []int{-1},
+		explainText: "",
+	},
+	{
+		description: "multiplication and division",
+		input:       []string{"2 4 * 3 /"},
+		expected:    []int{2},
+		explainText: "",
+	},
+	{
+		description: "copies a value on the stack",
+		input:       []string{"1 dup"},
+		expected:    []int{1, 1},
+		explainText: "",
+	},
+	{
+		description: "copies the top value on the stack",
+		input:       []string{"1 2 dup"},
+		expected:    []int{1, 2, 2},
+		explainText: "",
+	},
+	{
+		description: "errors if there is nothing on the stack",
+		input:       []string{"dup"},
+		expected:    []int(nil),
+		explainText: "empty stack",
+	},
+	{
+		description: "removes the top value on the stack if it is the only one",
+		input:       []string{"1 drop"},
+		expected:    []int{},
+		explainText: "",
+	},
+	{
+		description: "removes the top value on the stack if it is not the only one",
+		input:       []string{"1 2 drop"},
+		expected:    []int{1},
+		explainText: "",
+	},
+	{
+		description: "errors if there is nothing on the stack",
+		input:       []string{"drop"},
+		expected:    []int(nil),
+		explainText: "empty stack",
+	},
+	{
+		description: "swaps the top two values on the stack if they are the only ones",
+		input:       []string{"1 2 swap"},
+		expected:    []int{2, 1},
+		explainText: "",
+	},
+	{
+		description: "swaps the top two values on the stack if they are not the only ones",
+		input:       []string{"1 2 3 swap"},
+		expected:    []int{1, 3, 2},
+		explainText: "",
+	},
+	{
+		description: "errors if there is nothing on the stack",
+		input:       []string{"swap"},
+		expected:    []int(nil),
+		explainText: "empty stack",
+	},
+	{
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 swap"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
+	},
+	{
+		description: "copies the second element if there are only two",
+		input:       []string{"1 2 over"},
+		expected:    []int{1, 2, 1},
+		explainText: "",
+	},
+	{
+		description: "copies the second element if there are more than two",
+		input:       []string{"1 2 3 over"},
+		expected:    []int{1, 2, 3, 2},
+		explainText: "",
+	},
+	{
+		description: "errors if there is nothing on the stack",
+		input:       []string{"over"},
+		expected:    []int(nil),
+		explainText: "empty stack",
+	},
+	{
+		description: "errors if there is only one value on the stack",
+		input:       []string{"1 over"},
+		expected:    []int(nil),
+		explainText: "only one value on the stack",
+	},
+	{
+		description: "can consist of built-in words",
+		input:       []string{": dup-twice dup dup ;", "1 dup-twice"},
+		expected:    []int{1, 1, 1},
+		explainText: "",
+	},
+	{
+		description: "execute in the right order",
+		input:       []string{": countup 1 2 3 ;", "countup"},
+		expected:    []int{1, 2, 3},
+		explainText: "",
+	},
+	{
+		description: "can override other user-defined words",
+		input:       []string{": foo dup ;", ": foo dup dup ;", "1 foo"},
+		expected:    []int{1, 1, 1},
+		explainText: "",
+	},
+	{
+		description: "can override built-in words",
+		input:       []string{": swap dup ;", "1 swap"},
+		expected:    []int{1, 1},
+		explainText: "",
+	},
+	{
+		description: "can override built-in operators",
+		input:       []string{": + * ;", "3 4 +"},
+		expected:    []int{12},
+		explainText: "",
+	},
+	{
+		description: "can use different words with the same name",
+		input:       []string{": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"},
+		expected:    []int{5, 6},
+		explainText: "",
+	},
+	{
+		description: "can define word that uses word with the same name",
+		input:       []string{": foo 10 ;", ": foo foo 1 + ;", "foo"},
+		expected:    []int{11},
+		explainText: "",
+	},
+	{
+		description: "cannot redefine non-negative numbers",
+		input:       []string{": 1 2 ;"},
+		expected:    []int(nil),
+		explainText: "illegal operation",
+	},
+	{
+		description: "cannot redefine negative numbers",
+		input:       []string{": -1 2 ;"},
+		expected:    []int(nil),
+		explainText: "illegal operation",
+	},
+	{
+		description: "errors if executing a non-existent word",
+		input:       []string{"foo"},
+		expected:    []int(nil),
+		explainText: "undefined operation",
+	},
+	{
+		description: "DUP is case-insensitive",
+		input:       []string{"1 DUP Dup dup"},
+		expected:    []int{1, 1, 1, 1},
+		explainText: "",
+	},
+	{
+		description: "DROP is case-insensitive",
+		input:       []string{"1 2 3 4 DROP Drop drop"},
+		expected:    []int{1},
+		explainText: "",
+	},
+	{
+		description: "SWAP is case-insensitive",
+		input:       []string{"1 2 SWAP 3 Swap 4 swap"},
+		expected:    []int{2, 3, 4, 1},
+		explainText: "",
+	},
+	{
+		description: "OVER is case-insensitive",
+		input:       []string{"1 2 OVER Over over"},
+		expected:    []int{1, 2, 1, 2, 1},
+		explainText: "",
+	},
+	{
+		description: "user-defined words are case-insensitive",
+		input:       []string{": foo dup ;", "1 FOO Foo foo"},
+		expected:    []int{1, 1, 1, 1},
+		explainText: "",
+	},
+	{
+		description: "definitions are case-insensitive",
+		input:       []string{": SWAP DUP Dup dup ;", "1 swap"},
+		expected:    []int{1, 1, 1, 1},
+		explainText: "",
 	},
 }

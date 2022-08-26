@@ -1,5 +1,5 @@
 {
-  "blurb": "Calculate the number of steps to reach 1 using the Collatz conjecture",
+  "blurb": "Calculate the number of steps to reach 1 using the Collatz conjecture.",
   "authors": [
     "magic003"
   ],
@@ -9,7 +9,8 @@
     "ferhatelmas",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [

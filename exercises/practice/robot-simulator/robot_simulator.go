@@ -3,7 +3,6 @@ package robot
 // See defs.go for other definitions
 
 // Step 1
-// Define Dir type here.
 // Define N, E, S, W here.
 
 func Right() {

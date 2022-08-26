@@ -7,21 +7,19 @@ import (
 
 func TestSolve(t *testing.T) {
 	for _, tc := range testCases {
-		s, err := Solve(tc.input)
-		switch {
-		case tc.errorExpected:
-			if err == nil {
-				t.Fatalf("FAIL: %s\nSolve(%q)\nExpected error\nActual: %#v",
-					tc.description, tc.input, s)
+		t.Run(tc.description, func(t *testing.T) {
+			s, err := Solve(tc.input)
+			switch {
+			case tc.errorExpected:
+				if err == nil {
+					t.Fatalf("Solve(%q) expected error, got: %#v", tc.input, s)
+				}
+			case err != nil:
+				t.Fatalf("Solve(%q)\nexpected: %#v\ngot error: %q", tc.input, tc.expected, err)
+			case !reflect.DeepEqual(s, tc.expected):
+				t.Fatalf("Solve(%q)\ngot: %#v\nwant:%#v", tc.input, s, tc.expected)
 			}
-		case err != nil:
-			t.Fatalf("FAIL: %s\nSolve(%q)\nExpected: %#v\nGot error: %q",
-				tc.description, tc.input, tc.expected, err)
-		case !reflect.DeepEqual(s, tc.expected):
-			t.Fatalf("FAIL: %s\nSolve(%q)\nExpected: %#v\nActual: %#v",
-				tc.description, tc.input, tc.expected, s)
-		}
-		t.Logf("PASS: %s", tc.description)
+		})
 	}
 }
 

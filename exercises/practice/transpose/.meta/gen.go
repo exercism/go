@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("transpose", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"transpose": &[]testCase{},
+	}
+	if err := gen.Gen("transpose", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Lines []string
-		}
-		Expected []string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Lines []string `json:"lines"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,14 +38,10 @@ var testCases = []struct {
 	input       []string
 	expected    []string
 }{
-{{range .J.Cases}}{
-	{{printf "%q" .Description}},
-	[]string{
-{{range .Input.Lines}}  {{printf "%q" .}},
-{{end}}},
-	[]string{
-{{range .Expected}}  {{printf "%q" .}},
-{{end}}},
+{{range .J.transpose}}{
+	description: 	{{printf "%q" .Description}},
+	input:			{{printf "%#v" .Input.Lines}},
+	expected:		{{printf "%#v" .Expected}},
 },
 {{end}}}
 `

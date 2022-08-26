@@ -2,7 +2,6 @@ package ledger
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 )
 
@@ -249,28 +248,28 @@ var failureTestCases = []struct {
 }
 
 func TestFormatLedgerSuccess(t *testing.T) {
-	for _, tt := range successTestCases {
-		actual, err := FormatLedger(tt.currency, tt.locale, tt.entries)
-		// We don't expect errors for any of the test cases
-		if err != nil {
-			var _ error = err
-			t.Fatalf("FormatLedger for input named %q returned error %q. Error not expected.",
-				tt.name, err)
-		}
-		expected := tt.expected[1:] // Strip initial newline
-		if actual != expected {
-			t.Fatalf("FormatLedger for input named %q was expected to return...\n%s\n...but returned...\n%s",
-				tt.name, strings.ReplaceAll(expected, " ", "_"), strings.ReplaceAll(actual, " ", "_"))
-		}
+	for _, tc := range successTestCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual, err := FormatLedger(tc.currency, tc.locale, tc.entries)
+			if err != nil {
+				t.Fatalf("FormatLedger for input named %q returned unexpected error %v", tc.name, err)
+			}
+			expected := tc.expected[1:] // Strip initial newline
+			if actual != expected {
+				t.Fatalf("FormatLedger for input named %q failed\ngot:\n%s\nwant:\n%s", tc.name, actual, expected)
+			}
+		})
 	}
 }
 
 func TestFormatLedgerFailure(t *testing.T) {
 	for _, tt := range failureTestCases {
-		_, err := FormatLedger(tt.currency, tt.locale, tt.entries)
-		if err == nil {
-			t.Fatalf("FormatLedger for input %q should have failed but didn't.", tt.name)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := FormatLedger(tt.currency, tt.locale, tt.entries)
+			if err == nil {
+				t.Fatalf("FormatLedger for input %q expected error, got nil", tt.name)
+			}
+		})
 	}
 }
 

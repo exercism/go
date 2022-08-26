@@ -13,7 +13,9 @@ func WordCount(phrase string) Frequency {
 	freq := Frequency{}
 	for _, word := range strings.Fields(normalize(phrase)) {
 		word = strings.Trim(word, "'")
-		freq[word]++
+		if word != "" {
+			freq[word]++
+		}
 	}
 	return freq
 }

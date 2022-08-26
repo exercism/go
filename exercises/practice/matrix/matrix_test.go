@@ -5,199 +5,217 @@ import (
 	"testing"
 )
 
-var tests = []struct {
-	in   string
-	ok   bool
-	rows [][]int
-	cols [][]int
-}{
-	{"1 2\n10 20",
-		true,
-		[][]int{
+type testCase struct {
+	description string
+	in          string
+	ok          bool
+	rows        [][]int
+	cols        [][]int
+}
+
+var validTestCases = []testCase{
+	{
+		description: "2 rows, 2 columns",
+		in:          "1 2\n10 20",
+		ok:          true,
+		rows: [][]int{
 			{1, 2},
 			{10, 20},
 		},
-		[][]int{
+		cols: [][]int{
 			{1, 10},
 			{2, 20},
 		},
 	},
-	{"9 7\n8 6",
-		true,
-		[][]int{
+	{
+		description: "2 rows, 2 columns",
+		in:          "9 7\n8 6",
+		ok:          true,
+		rows: [][]int{
 			{9, 7},
 			{8, 6},
 		},
-		[][]int{
+		cols: [][]int{
 			{9, 8},
 			{7, 6},
 		},
 	},
-	{"9 8 7\n19 18 17",
-		true,
-		[][]int{
+	{
+		description: "2 rows, 3 columns",
+		in:          "9 8 7\n19 18 17",
+		ok:          true,
+		rows: [][]int{
 			{9, 8, 7},
 			{19, 18, 17},
 		},
-		[][]int{
+		cols: [][]int{
 			{9, 19},
 			{8, 18},
 			{7, 17},
 		},
 	},
-	{"1 4 9\n16 25 36",
-		true,
-		[][]int{
+	{
+		description: "2 rows, 3 columns",
+		in:          "1 4 9\n16 25 36",
+		ok:          true,
+		rows: [][]int{
 			{1, 4, 9},
 			{16, 25, 36},
 		},
-		[][]int{
+		cols: [][]int{
 			{1, 16},
 			{4, 25},
 			{9, 36},
 		},
 	},
-	{"1 2 3\n4 5 6\n7 8 9\n 8 7 6",
-		true,
-		[][]int{
+	{
+		description: "4 rows, 3 columns",
+		in:          "1 2 3\n4 5 6\n7 8 9\n 8 7 6",
+		ok:          true,
+		rows: [][]int{
 			{1, 2, 3},
 			{4, 5, 6},
 			{7, 8, 9},
 			{8, 7, 6},
 		},
-		[][]int{
+		cols: [][]int{
 			{1, 4, 7, 8},
 			{2, 5, 8, 7},
 			{3, 6, 9, 6},
 		},
 	},
-	{"89 1903 3\n18 3 1\n9 4 800",
-		true,
-		[][]int{
+	{
+		description: "3 rows, 3 columns",
+		in:          "89 1903 3\n18 3 1\n9 4 800",
+		ok:          true,
+		rows: [][]int{
 			{89, 1903, 3},
 			{18, 3, 1},
 			{9, 4, 800},
 		},
-		[][]int{
+		cols: [][]int{
 			{89, 18, 9},
 			{1903, 3, 4},
 			{3, 1, 800},
 		},
 	},
-	{"1 2 3", // valid, 1 row, 3 columns
-		true,
-		[][]int{
+	{
+		description: "1 row, 3 columns",
+		in:          "1 2 3",
+		ok:          true,
+		rows: [][]int{
 			{1, 2, 3},
 		},
-		[][]int{
+		cols: [][]int{
 			{1},
 			{2},
 			{3},
 		},
 	},
-	{"1\n2\n3", // valid, 3 rows, 1 column
-		true,
-		[][]int{
+	{
+		description: "3 rows, 1 column",
+		in:          "1\n2\n3",
+		ok:          true,
+		rows: [][]int{
 			{1},
 			{2},
 			{3},
 		},
-		[][]int{
+		cols: [][]int{
 			{1, 2, 3},
 		},
 	},
-	{"0", // valid, 1 row, 1 column
-		true,
-		[][]int{
+	{
+		description: "1 row, 1 column",
+		in:          "0",
+		ok:          true,
+		rows: [][]int{
 			{0},
 		},
-		[][]int{
+		cols: [][]int{
 			{0},
 		},
 	},
-	{"9223372036854775808", false, nil, nil}, // overflows int64
-	{"1 2\n10 20 30", false, nil, nil},       // uneven rows
-	{"\n3 4\n5 6", false, nil, nil},          // first row empty
-	{"1 2\n\n5 6", false, nil, nil},          // middle row empty
-	{"1 2\n3 4\n", false, nil, nil},          // last row empty
-	{"2.7", false, nil, nil},                 // non-int
-	{"cat", false, nil, nil},                 // non-numeric
 	// undefined
 	// {"\n\n", // valid?, 3 rows, 0 columns
 	// {"",     // valid?, 0 rows, 0 columns
 }
 
+var invalidTestCases = []testCase{
+	{description: "int64 overflow", in: "9223372036854775808", ok: false, rows: nil, cols: nil},
+	{description: "uneven rows", in: "1 2\n10 20 30", ok: false, rows: nil, cols: nil},
+	{description: "first row empty", in: "\n3 4\n5 6", ok: false, rows: nil, cols: nil},
+	{description: "middle row empty", in: "1 2\n\n5 6", ok: false, rows: nil, cols: nil},
+	{description: "last row empty", in: "1 2\n3 4\n", ok: false, rows: nil, cols: nil},
+	{description: "non integer", in: "2.7", ok: false, rows: nil, cols: nil},
+	{description: "non numeric", in: "cat", ok: false, rows: nil, cols: nil},
+}
+
 func TestNew(t *testing.T) {
-	for _, test := range tests {
-		m, err := New(test.in)
-		switch {
-		case err != nil:
-			var _ error = err
-			if test.ok {
-				t.Fatalf("New(%q) returned error %q.  Error not expected",
-					test.in, err)
+	for _, tc := range append(validTestCases, invalidTestCases...) {
+		t.Run(tc.description, func(t *testing.T) {
+			got, err := New(tc.in)
+			switch {
+			case !tc.ok:
+				if err == nil {
+					t.Fatalf("New(%q) expected error, got: %v", tc.in, got)
+				}
+			case err != nil:
+				t.Fatalf("New(%q) returned error %q.  Error not expected", tc.in, err)
+			case got == nil:
+				t.Fatalf("New(%q) = %v, want non-nil *Matrix", tc.in, got)
 			}
-		case !test.ok:
-			t.Fatalf("New(%q) = %v, %v.  Expected non-nil error.",
-				test.in, m, err)
-		case m == nil:
-			t.Fatalf("New(%q) = %v, want non-nil *Matrix",
-				test.in, m)
-		}
+		})
 	}
 }
 
 func TestRows(t *testing.T) {
-	for _, test := range tests {
-		if !test.ok {
-			continue
-		}
-		m, err := New(test.in)
-		if err != nil {
-			t.Fatalf("error in test setup: TestRows needs working New and valid matrix")
-		}
-		r := m.Rows()
-		if len(r) == 0 && len(test.rows) == 0 {
-			continue // agreement, and nothing more to test
-		}
-		if !reflect.DeepEqual(r, test.rows) {
-			t.Fatalf("New(%q).Rows() = %v (type %T), want %v (type %T)", test.in, r, r, test.rows, test.rows)
-		}
-		if len(r[0]) == 0 {
-			continue // not currently in test data, but anyway
-		}
-		r[0][0]++
-		if !reflect.DeepEqual(m.Rows(), test.rows) {
-			t.Fatalf("Matrix.Rows() returned slice based on Matrix " +
-				"representation.  Want independent copy of element data.")
-		}
+	for _, tc := range validTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			got, err := New(tc.in)
+			if err != nil {
+				t.Fatalf("error in test setup: TestRows needs working New and valid matrix")
+			}
+			rows := got.Rows()
+			if len(rows) == 0 && len(tc.rows) == 0 {
+				return // agreement, and nothing more to test
+			}
+			if !reflect.DeepEqual(rows, tc.rows) {
+				t.Fatalf("New(%q).Rows() = %v (type %T), want: %v (type %T)", tc.in, rows, rows, tc.rows, tc.rows)
+			}
+			if len(rows[0]) == 0 {
+				return // not currently in test data, but anyway
+			}
+			rows[0][0]++
+			if !reflect.DeepEqual(got.Rows(), tc.rows) {
+				t.Fatalf("Matrix.Rows() returned slice based on Matrix representation. Want independent copy of element data.")
+			}
+		})
 	}
 }
 
 func TestCols(t *testing.T) {
-	for _, test := range tests {
-		if !test.ok {
-			continue
-		}
-		m, err := New(test.in)
-		if err != nil {
-			t.Fatalf("error in test setup: TestCols needs working New and valid matrix")
-		}
-		c := m.Cols()
-		if len(c) == 0 && len(test.cols) == 0 {
-			continue // agreement, and nothing more to test
-		}
-		if !reflect.DeepEqual(c, test.cols) {
-			t.Fatalf("New(%q).Cols() = %v (type %T), want %v (type %T)", test.in, c, c, test.cols, test.cols)
-		}
-		if len(c[0]) == 0 {
-			continue // not currently in test data, but anyway
-		}
-		c[0][0]++
-		if !reflect.DeepEqual(m.Cols(), test.cols) {
-			t.Fatalf("Matrix.Cols() returned slice based on Matrix " +
-				"representation.  Want independent copy of element data.")
-		}
+	for _, tc := range validTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			m, err := New(tc.in)
+			if err != nil {
+				t.Fatalf("error in test setup: TestCols needs working New and valid matrix")
+			}
+			cols := m.Cols()
+			if len(cols) == 0 && len(tc.cols) == 0 {
+				return // agreement, and nothing more to test
+			}
+			if !reflect.DeepEqual(cols, tc.cols) {
+				t.Fatalf("New(%q).Cols() = %v (type %T), want: %v (type %T)", tc.in, cols, cols, tc.cols, tc.cols)
+			}
+			if len(cols[0]) == 0 {
+				return // not currently in test data, but anyway
+			}
+			cols[0][0]++
+			if !reflect.DeepEqual(m.Cols(), tc.cols) {
+				t.Fatalf("Matrix.Cols() returned slice based on Matrix representation. Want independent copy of element data.")
+			}
+		})
 	}
 }
 

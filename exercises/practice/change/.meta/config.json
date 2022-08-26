@@ -1,5 +1,5 @@
 {
-  "blurb": "Correctly determine change to be given using the least number of coins",
+  "blurb": "Correctly determine change to be given using the least number of coins.",
   "authors": [
     "leenipper"
   ],
@@ -13,7 +13,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "strangeman"
+    "strangeman",
+    "eklatzer"
   ],
   "files": {
     "solution": [

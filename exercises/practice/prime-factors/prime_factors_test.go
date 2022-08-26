@@ -6,16 +6,15 @@ import (
 )
 
 func TestPrimeFactors(t *testing.T) {
-	for _, test := range tests {
-		actual := Factors(test.input)
-		sort.Slice(actual, ascending(actual))
-		sort.Slice(test.expected, ascending(test.expected))
-		if !slicesEqual(actual, test.expected) {
-			t.Fatalf("FAIL %s\nFactors(%d) = %#v;\nexpected %#v",
-				test.description, test.input,
-				actual, test.expected)
-		}
-		t.Logf("PASS %s", test.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Factors(tc.input)
+			sort.Slice(actual, ascending(actual))
+			sort.Slice(tc.expected, ascending(tc.expected))
+			if !slicesEqual(actual, tc.expected) {
+				t.Fatalf("Factors(%d)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -24,7 +23,7 @@ func BenchmarkPrimeFactors(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range tests {
+		for _, test := range testCases {
 			Factors(test.input)
 		}
 	}
@@ -33,10 +32,6 @@ func BenchmarkPrimeFactors(b *testing.B) {
 func slicesEqual(a, b []int64) bool {
 	if len(a) != len(b) {
 		return false
-	}
-
-	if len(a) == 0 {
-		return true
 	}
 
 	for i := 0; i < len(a); i++ {

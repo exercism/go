@@ -24,7 +24,7 @@ func gen(char byte) string {
 	for i := currentIndex - 1; i > -1; i-- {
 		output = append(output, getLine(currentIndex, i))
 	}
-	return strings.Join(output, "\n") + "\n"
+	return strings.Join(output, "\n")
 }
 
 func getLine(currentStart, current int) string {

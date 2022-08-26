@@ -1,5 +1,5 @@
 {
-  "blurb": "Refactor a Markdown parser",
+  "blurb": "Refactor a Markdown parser.",
   "authors": [
     "ilmanzo"
   ],
@@ -9,7 +9,9 @@
     "ferhatelmas",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer",
+    "jasstkn"
   ],
   "files": {
     "solution": [

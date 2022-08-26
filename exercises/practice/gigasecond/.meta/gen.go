@@ -12,24 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("gigasecond", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"add" : &[]testCase{},
+	}
+	if err := gen.Gen("gigasecond", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []struct {
-			Description string
-			Input       struct {
-				Birthdate string
-			}
-			Expected string
-		}
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Moment string `json:"moment"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -37,17 +33,16 @@ var tmpl = `package gigasecond
 
 {{.Header}}
 
-{{range .J.Cases}}// {{.Description}}
 var addCases = []struct {
 	description string
 	in   string
 	want string
 }{
-{{range .Cases}}{
-	{{printf "%q" .Description}},
-	{{printf "%q" .Input.Birthdate}},
-	{{printf "%q" .Expected}},
+{{range .J.add}}{
+	description: {{printf "%q" .Description}},
+	in: {{printf "%q" .Input.Moment}},
+	want: {{printf "%q" .Expected}},
 },
-{{end}}{{end}}
+{{end}}
 }
 `

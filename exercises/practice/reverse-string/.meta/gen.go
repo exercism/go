@@ -12,27 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("reverse-string", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"reverse" : &[]testCase{},
+	}
+	if err := gen.Gen("reverse-string", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Value string
-	}
-	Expected string
+		Value string `json:"value"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -46,11 +39,11 @@ type reverseTestCase struct {
 	expected	string
 }
 
-var testCases = []reverseTestCase{ {{range .J.Cases}}
+var testCases = []reverseTestCase{ {{range .J.reverse}}
 {
 	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%q"  .Input.Value}},
-	expected:	{{printf "%q"  .Expected}},
+	input:			{{printf "%q"  .Input.Value}},
+	expected:		{{printf "%q"  .Expected}},
 },{{end}}
 }
 `

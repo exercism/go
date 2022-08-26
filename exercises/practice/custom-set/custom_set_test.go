@@ -1,3 +1,4 @@
+//nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
 package stringset
 
 import (
@@ -39,77 +40,45 @@ func TestNewFromSlice(t *testing.T) {
 	want1 := `{"a", "b"}`
 	want2 := `{"b", "a"}`
 	if got != want1 && got != want2 { // order undefined
-		t.Fatalf(`NewFromSlice([]string{"a", "b"}) = %s, want %s or (%s).`,
-			got, want1, want2)
+		t.Fatalf(`NewFromSlice([]string{"a", "b"}) = %s, want %s or (%s).`, got, want1, want2)
 	}
 }
 
-// Trusting NewFromSlice now, remaining tests are table driven, taking data
-// from cases_test.go and building sets with NewFromSlice.
-
-// test case types used in cases_test.go
-
-type (
-	// unary function, bool result (IsEmpty)
-	unaryBoolCase struct {
-		set  []string
-		want bool
-	}
-	// set-element function, bool result (Has)
-	eleBoolCase struct {
-		set  []string
-		ele  string
-		want bool
-	}
-	// binary function, bool result (Subset, Disjoint, Equal)
-	binBoolCase struct {
-		set1 []string
-		set2 []string
-		want bool
-	}
-	// set-element operator (Add)
-	eleOpCase struct {
-		set  []string
-		ele  string
-		want []string
-	}
-	// set-set operator (Intersection, Difference, Union)
-	binOpCase struct {
-		set1 []string
-		set2 []string
-		want []string
-	}
-)
-
 func TestIsEmpty(t *testing.T) {
 	for _, tc := range emptyCases {
-		s := NewFromSlice(tc.set)
-		got := s.IsEmpty()
-		if got != tc.want {
-			t.Fatalf("%v IsEmpty = %t, want %t", s, got, tc.want)
-		}
+		t.Run(tc.description, func(t *testing.T) {
+			s := NewFromSlice(tc.set)
+			got := s.IsEmpty()
+			if got != tc.want {
+				t.Errorf("%v IsEmpty = %t, want %t", s, got, tc.want)
+			}
+		})
 	}
 }
 
 func TestHas(t *testing.T) {
 	for _, tc := range containsCases {
-		s := NewFromSlice(tc.set)
-		got := s.Has(tc.ele)
-		if got != tc.want {
-			t.Fatalf("%v Has %q = %t, want %t", s, tc.ele, got, tc.want)
-		}
+		t.Run(tc.description, func(t *testing.T) {
+			s := NewFromSlice(tc.set)
+			got := s.Has(tc.element)
+			if got != tc.want {
+				t.Fatalf("%v Has %q = %t, want %t", s, tc.element, got, tc.want)
+			}
+		})
 	}
 }
 
 // helper for testing Subset, Disjoint, Equal
 func testBinBool(name string, f func(Set, Set) bool, cases []binBoolCase, t *testing.T) {
 	for _, tc := range cases {
-		s1 := NewFromSlice(tc.set1)
-		s2 := NewFromSlice(tc.set2)
-		got := f(s1, s2)
-		if got != tc.want {
-			t.Fatalf("%s(%v, %v) = %t, want %t", name, s1, s2, got, tc.want)
-		}
+		t.Run(tc.description, func(t *testing.T) {
+			s1 := NewFromSlice(tc.set1)
+			s2 := NewFromSlice(tc.set2)
+			got := f(s1, s2)
+			if got != tc.want {
+				t.Errorf("%s(%v, %v) = %t, want %t", name, s1, s2, got, tc.want)
+			}
+		})
 	}
 }
 
@@ -127,25 +96,29 @@ func TestEqual(t *testing.T) {
 
 func TestAdd(t *testing.T) {
 	for _, tc := range addCases {
-		s := NewFromSlice(tc.set)
-		s.Add(tc.ele)
-		want := NewFromSlice(tc.want)
-		if !Equal(s, want) {
-			t.Fatalf("%v Add %q = %v, want %v", NewFromSlice(tc.set), tc.ele, s, want)
-		}
+		t.Run(tc.description, func(t *testing.T) {
+			s := NewFromSlice(tc.set)
+			s.Add(tc.element)
+			want := NewFromSlice(tc.want)
+			if !Equal(s, want) {
+				t.Fatalf("%v Add %q = %v, want %v", NewFromSlice(tc.set), tc.element, s, want)
+			}
+		})
 	}
 }
 
 // helper for testing Intersection, Difference, Union
 func testBinOp(name string, f func(Set, Set) Set, cases []binOpCase, t *testing.T) {
 	for _, tc := range cases {
-		s1 := NewFromSlice(tc.set1)
-		s2 := NewFromSlice(tc.set2)
-		want := NewFromSlice(tc.want)
-		got := f(s1, s2)
-		if !Equal(got, want) {
-			t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
-		}
+		t.Run(tc.description, func(t *testing.T) {
+			s1 := NewFromSlice(tc.set1)
+			s2 := NewFromSlice(tc.set2)
+			want := NewFromSlice(tc.want)
+			got := f(s1, s2)
+			if !Equal(got, want) {
+				t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
+			}
+		})
 	}
 }
 

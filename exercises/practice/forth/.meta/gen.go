@@ -12,54 +12,52 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("forth", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"evaluate": &[]testCase{},
+		//TODO: add test with property `evaluateBoth` to forth_test.go and generate cases in cases_test.go
+	}
+	if err := gen.Gen("forth", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Groups []Group `json:"cases"`
-}
-
-// A group of test cases.
-type Group struct {
-	Name  string `json:"description"`
-	Cases []OneCase
-}
-
-// One test case.
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Instructions []string
-	}
-	Expected interface{}
+		Instructions []string `json:"instructions"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-// IntSlice converts an .Expected interface{} object
-// to either nil when an error is indicated by a map[string]interface{} in the JSON,
-// or a slice of integers.
-func (c OneCase) IntSlice() (list []int) {
-	_, ok := c.Expected.(map[string]interface{})
-	if ok {
-		return nil
-	}
-	ilist, ok := c.Expected.([]interface{})
+func (t testCase) ExpectedNumbers() []int {
+	numbers, ok := t.Expected.([]interface{})
 	if !ok {
 		return nil
 	}
-	list = make([]int, 0)
-	for _, iv := range ilist {
-		// The literals from the JSON are unmarshalled to float64 values,
-		// which are converted to int for the template output.
-		v, isFloat64 := iv.(float64)
-		if isFloat64 {
-			list = append(list, int(v))
+	var result = make([]int, 0)
+	for _, number := range numbers {
+		x, ok := number.(float64)
+		if !ok {
+			return nil
 		}
+		result = append(result, int(x))
 	}
-	return list
+	return result
+}
+
+func (t testCase) ExplainText() string {
+	if t.ExpectedNumbers() != nil {
+		return ""
+	}
+	m, ok := t.Expected.(map[string]interface{})
+	if !ok {
+		return ""
+	}
+	errText, ok := m["error"].(string)
+	if !ok {
+		return ""
+	}
+	return errText
 }
 
 // template applied to above data structure generates the Go test cases
@@ -67,29 +65,17 @@ var tmpl = `package forth
 
 {{.Header}}
 
-type testGroup struct {
-	group	string
-	tests	[]testCase
-}
-
-type testCase struct {
-	description	string
-	input		[]string
-	expected	[]int // nil slice indicates error expected.
-}
-
-var testGroups = []testGroup{
-{{range .J.Groups}}{
-group: {{printf "%q"  .Name}},
-tests: []testCase{
-{{range .Cases}}{
-{{printf "%q"  .Description}},
-{{printf "%#v" .Input.Instructions}},
-{{printf "%#v" .IntSlice}},
-},
-{{end}}
-},
-},
-{{end}}
+var testCases = []struct {
+	description    string
+	input   	   []string
+	expected 	   []int // nil slice indicates error expected.
+	explainText    string   // error explanation text
+}{ {{range .J.evaluate}}
+{
+	description: {{printf "%q"  .Description}},
+	input: {{printf "%#v" .Input.Instructions}},
+	expected: {{printf "%#v" .ExpectedNumbers}},
+	explainText: {{printf "%q"  .ExplainText}},
+},{{end}}
 }
 `

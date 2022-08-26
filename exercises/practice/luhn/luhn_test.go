@@ -3,10 +3,12 @@ package luhn
 import "testing"
 
 func TestValid(t *testing.T) {
-	for _, test := range testCases {
-		if ok := Valid(test.input); ok != test.ok {
-			t.Fatalf("Valid(%s): %s\n\t Expected: %t\n\t Got: %t", test.input, test.description, test.ok, ok)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Valid(tc.input); actual != tc.expected {
+				t.Fatalf("Valid(%q) = %t, want: %t", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -15,6 +17,8 @@ func BenchmarkValid(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		Valid("2323 2005 7766 3554")
+		for _, tc := range testCases {
+			Valid(tc.input)
+		}
 	}
 }

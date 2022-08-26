@@ -1,6 +1,13 @@
-# This is an auto-generated file. Regular comments will be removed when this
-# file is regenerated. Regenerating will not touch any manually added keys,
-# so comments can be added in a "comment" key.
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
 
 [17146bd5-2e80-4557-ab4c-05632b6b0d01]
 description = "Only a single book"
@@ -33,16 +40,25 @@ description = "Two groups of four is cheaper than groups of five and three"
 description = "Group of four plus group of two is cheaper than two groups of three"
 
 [68ea9b78-10ad-420e-a766-836a501d3633]
-description = "Two each of first 4 books and 1 copy each of rest"
+description = "Two each of first four books and one copy each of rest"
 
 [c0a779d5-a40c-47ae-9828-a340e936b866]
 description = "Two copies of each book"
 
 [18fd86fe-08f1-4b68-969b-392b8af20513]
-description = "Three copies of first book and 2 each of remaining"
+description = "Three copies of first book and two each of remaining"
 
 [0b19a24d-e4cf-4ec8-9db2-8899a41af0da]
-description = "Three each of first 2 books and 2 each of remaining books"
+description = "Three each of first two books and two each of remaining books"
 
 [bb376344-4fb2-49ab-ab85-e38d8354a58d]
 description = "Four groups of four are cheaper than two groups each of five and three"
+
+[5260ddde-2703-4915-b45a-e54dbbac4303]
+description = "Check that groups of four are created properly even when there are more groups of three than groups of five"
+
+[b0478278-c551-4747-b0fc-7e0be3158b1f]
+description = "One group of one and four is cheaper than one group of two and three"
+
+[cf868453-6484-4ae1-9dfc-f8ee85bbde01]
+description = "One group of one and two plus three groups of four is cheaper than one group of each size"

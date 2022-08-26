@@ -63,7 +63,7 @@ comment:
         - '**/*'
       body: |
         ### Dear Reviewer/Maintainer
-        - 📏 Make sure you set the appropriate **`x:size` label** for the PR. (This also works after merging, in case you forgot about it.)
+        - 📏 Make sure you set the appropriate **`x:rep` label** for the PR. (This also works after merging, in case you forgot about it.)
 
         - 🔍 **Don't be too nit-picky.** If the PR is a clear improvement compared to the status quo, it should be approved as clear signal this is good to be merged even if the minor comments you might have are not addressed by the contributor. Further improvement ideas can be captured in issues (if important enough) and implemented via additional PRs.
 

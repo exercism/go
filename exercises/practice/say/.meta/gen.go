@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"text/template"
 
@@ -13,43 +12,37 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("say", &j, t); err != nil {
+	var j = map[string]interface{}{
+		"say": &[]testCase{},
+	}
+	if err := gen.Gen("say", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// Test cases
-type OneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Number int64
-	}
-	Expected interface{}
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func (c OneCase) ErrorExpected() bool {
-	switch value := c.Expected.(type) {
-	case float64: // you'd think int but no, JSON uses float for numbers
-		if value == -1 || value > 999999999999 {
-			return true
-		}
-	case string:
-		return false
-	case map[string]interface{}:
-		return true
+func (t testCase) ExpectedValue() string {
+	v, ok := t.Expected.(string)
+	if ok {
+		return v
 	}
+	return ""
+}
 
-	panic(fmt.Sprintf("Unexpected error value: %T => %v", c.Expected, c.Expected))
+func (t testCase) ExpectError() bool {
+	v, ok := t.Expected.(map[string]interface{})
+	if ok {
+		_, ok := v["error"]
+		return ok
+	}
+	return false
 }
 
 // Template to generate test cases.
@@ -62,13 +55,12 @@ var testCases = []struct {
 	input		int64
 	expected	string
 	expectError	bool
-}{ {{range .J.Cases}}
+}{ {{range .J.say}}
 {
 	description:	{{printf "%q"  .Description}},
 	input:		{{printf "%v"  .Input.Number}},
-	{{if .ErrorExpected}}expectError:	true,
-	{{else}}expected:	{{printf "%q"  .Expected}},
-	{{- end}}
+	expected: 	{{printf "%q"  .ExpectedValue}},
+	expectError: {{printf "%t"  .ExpectError}},
 },{{end}}
 }
 `
