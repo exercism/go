@@ -87,5 +87,4 @@ func BenchmarkRotationalCipher(b *testing.B) {
 			RotationalCipher(testCase.inputPlain, testCase.inputShiftKey)
 		}
 	}
-
 }
