@@ -6,19 +6,16 @@ package series
 import "testing"
 
 func TestFirst(t *testing.T) {
-	for _, test := range allTests {
-		switch res, ok := First(test.n, test.s); {
+	for _, tc := range testCases {
+		switch got, ok := First(tc.digits, tc.input); {
 		case !ok:
-			if len(test.out) > 0 {
-				t.Fatalf("First(%d, %q) returned !ok, want ok.",
-					test.n, test.s)
+			if len(tc.expected) > 0 {
+				t.Fatalf("First(%d, %q) returned ok=false, want ok=true", tc.digits, tc.input)
 			}
-		case len(test.out) == 0:
-			t.Fatalf("First(%d, %q) = %q, %t.  Expected ok == false",
-				test.n, test.s, res, ok)
-		case res != test.out[0]:
-			t.Fatalf("First(%d, %q) = %q.  Want %q.",
-				test.n, test.s, res, test.out[0])
+		case len(tc.expected) == 0:
+			t.Fatalf("First(%d, %q) = %q, %v | expected ok=false", tc.digits, tc.input, got, ok)
+		case got != tc.expected[0]:
+			t.Fatalf("First(%d, %q) = %q, want: %q", tc.digits, tc.input, got, tc.expected[0])
 		}
 	}
 }
