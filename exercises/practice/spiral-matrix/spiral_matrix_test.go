@@ -52,13 +52,13 @@ var testCases = []struct {
 }
 
 func TestSpiralMatrix(t *testing.T) {
-	for _, testCase := range testCases {
-		matrix := SpiralMatrix(testCase.input)
-		if !reflect.DeepEqual(matrix, testCase.expected) {
-			t.Fatalf("FAIL: %s\n\tSpiralMatrix(%v)\nexpected: %v\ngot     : %v",
-				testCase.description, testCase.input, testCase.expected, matrix)
-		}
-		t.Logf("PASS: %s", testCase.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			got := SpiralMatrix(tc.input)
+			if !reflect.DeepEqual(got, tc.expected) {
+				t.Fatalf("SpiralMatrix(%d)\n got: %v\nwant: %v", tc.input, got, tc.expected)
+			}
+		})
 	}
 }
 
