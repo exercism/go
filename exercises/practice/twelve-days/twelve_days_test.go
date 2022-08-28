@@ -48,7 +48,6 @@ func diff(got, want string) string {
 			return "no differences found"
 		}
 	}
-
 }
 
 func TestVerse(t *testing.T) {
