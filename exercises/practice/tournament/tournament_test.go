@@ -2,7 +2,7 @@ package tournament
 
 import (
 	"bytes"
-	"io"
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -11,8 +11,6 @@ import (
 //
 // Note that unlike other tracks the Go version of the tally function
 // should not ignore errors. It's not idiomatic Go to ignore errors.
-
-var _ func(io.Reader, io.Writer) error = Tally
 
 // These test what testers call the happy path, where there's no error.
 var happyTestCases = []struct {
@@ -106,32 +104,33 @@ var errorTestCases = []string{
 }
 
 func TestTallyHappy(t *testing.T) {
-	for _, tt := range happyTestCases {
-		reader := strings.NewReader(tt.input)
-		var buffer bytes.Buffer
-		err := Tally(reader, &buffer)
-		actual := buffer.String()
-		// We don't expect errors for any of the test cases
-		if err != nil {
-			t.Fatalf("Tally for input named %q returned error %q. Error not expected.",
-				tt.description, err)
-		}
-		if actual != tt.expected {
-			t.Fatalf("Tally for input named %q was expected to return...\n%s\n...but returned...\n%s",
-				tt.description, tt.expected, actual)
-		}
+	for _, tc := range happyTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			reader := strings.NewReader(tc.input)
+			var buffer bytes.Buffer
+			err := Tally(reader, &buffer)
+			// We don't expect errors for any of the test cases
+			if err != nil {
+				t.Fatalf("Tally for input named %q returned unexpected error %v", tc.description, err)
+			}
+			got := buffer.String()
+			if got != tc.expected {
+				t.Fatalf("Tally for input named %q returned unexpected value\n got: %s\nwant: %s", tc.description, got, tc.expected)
+			}
+		})
 	}
 }
 
 func TestTallyError(t *testing.T) {
-	for _, s := range errorTestCases {
-		reader := strings.NewReader(s)
-		var buffer bytes.Buffer
-		err := Tally(reader, &buffer)
-		if err == nil {
-			t.Fatalf("Tally for input %q should have failed but didn't.", s)
-		}
-		var _ error = err
+	for i, errorInput := range errorTestCases {
+		t.Run(fmt.Sprintf("Error Input %d", i), func(t *testing.T) {
+			reader := strings.NewReader(errorInput)
+			var buffer bytes.Buffer
+			err := Tally(reader, &buffer)
+			if err == nil {
+				t.Fatalf("Tally for input %q expected error", errorInput)
+			}
+		})
 	}
 }
 
