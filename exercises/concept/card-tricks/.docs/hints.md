@@ -11,7 +11,7 @@ a := []int{1, 3}
 b := []int{4, 2, 6}
 c := append(a, b...)
 fmt.Println(c)
-// Output: [1 3 4 2 6]
+// => [1 3 4 2 6]
 ```
 
 ## 1. Create a slice with certain cards

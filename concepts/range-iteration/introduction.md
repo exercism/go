@@ -15,7 +15,7 @@ xi := []int{10, 20, 30}
 for i, x := range xi {
   fmt.Println(i, x)
 }
-// outputs:
+// =>
 // 0, 10
 // 1, 20
 // 2, 30
@@ -64,7 +64,7 @@ xi := []int{10, 20, 30}
 for _, x := range xi {
   fmt.Println(x)
 }
-// outputs:
+// =>
 // 10
 // 20
 // 30
@@ -80,7 +80,7 @@ xi := []int{10, 20, 30}
 for i := range xi {
   fmt.Println(i)
 }
-// outputs:
+// =>
 // 0
 // 1
 // 2

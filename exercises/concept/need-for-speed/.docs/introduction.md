@@ -37,7 +37,7 @@ To read or modify instance fields, use the `.` notation:
 s.name = "Circle"
 s.size = 35
 fmt.Printf("name: %s size: %d\n", s.name, s.size)
-// Output: name: Circle size: 35
+// => name: Circle size: 35
 ```
 
 Fields that don't have an initial value assigned, will have their zero value. For example:
@@ -45,7 +45,7 @@ Fields that don't have an initial value assigned, will have their zero value. Fo
 ```go
 s := Shape{name: "Circle"}
 fmt.Printf("name: %s size: %d\n", s.name, s.size)
-// Output: name: Circle size: 0
+// => name: Circle size: 0
 ```
 
 You can create an instance of a `struct` without using the field names, as long as you define the fields _in order_:
@@ -73,8 +73,8 @@ s := Shape{
 }
 // Since the second field of the struct is now a string and not an int,
 // the compiler will throw an error when compiling the program:
-// Output: cannot use 20 (type untyped int) as type string in field value
-// Output: too few values in Shape{...}
+// => cannot use 20 (type untyped int) as type string in field value
+// => too few values in Shape{...}
 ```
 
 ## "New" functions

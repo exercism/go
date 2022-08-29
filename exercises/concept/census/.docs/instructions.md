@@ -56,12 +56,12 @@ address := map[string]string{"street": "Main St."}
 resident := NewResident(name, age, address)
 
 fmt.Println(resident)
-// Output: &{Matthew Sanabria 29 map[street:Main St.]}
+// => &{Matthew Sanabria 29 map[street:Main St.]}
 
 resident.Delete()
 
 fmt.Println(resident)
-// Output: &{ 0 map[]}
+// => &{ 0 map[]}
 ```
 
 ## 4. Count the residents

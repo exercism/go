@@ -29,13 +29,13 @@ The `var` keyword can be used to construct any type to its zero value:
 ```go
 var myBool bool
 fmt.Printf("Zero value boolean: %#v", myBool)
-// Output: Zero value boolean: false
+// => Zero value boolean: false
 ```
 
 ```go
 var mySlice []int
 fmt.Printf("Zero value slice: %#v", mySlice)
-// Output: Zero value slice: []int(nil)
+// => Zero value slice: []int(nil)
 ```
 
 When constructing the zero value for a struct type, all of the struct's fields will be set to their zero value:
@@ -48,7 +48,7 @@ type Person struct {
 
 var myPerson Person
 fmt.Printf("Zero value Person: %#v", myPerson)
-// Output: Zero value Person: main.Person{Name:"", Age:0}
+// => Zero value Person: main.Person{Name:"", Age:0}
 ```
 
 ## Comparing with Nil

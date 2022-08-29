@@ -61,7 +61,7 @@ Below is a more detailed list of what those special characters are:
 ```go
 fmt.Println("Joe\nWilliam\nJack\nAverell") 
 
-// Output:
+// =>
 // Joe
 // William
 // Jack

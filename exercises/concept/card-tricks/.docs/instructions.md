@@ -12,7 +12,7 @@ Write a function `FavoriteCards` that returns a slice with those cards in that o
 ```go
 cards := FavoriteCards()
 fmt.Println(cards)
-// Output: [2 6 9]
+// => [2 6 9]
 ```
 
 ## 2. Retrieve a card from a stack
@@ -45,7 +45,7 @@ index := 2
 newCard := 6
 cards := SetItem([]int{1, 2, 4, 1}, index, newCard)
 fmt.Println(cards)
-// Output: [1 2 6 1]
+// => [1 2 6 1]
 ```
 
 If the index is out of bounds (ie. if it is negative or after the end of the stack), we want to append the new card to the end of the stack:
@@ -55,7 +55,7 @@ index := -1
 newCard := 6
 cards := SetItem([]int{1, 2, 4, 1}, index, newCard)
 fmt.Println(cards)
-// Output: [1 2 4 1 6]
+// => [1 2 4 1 6]
 ```
 
 ## 4. Add cards to the top of the stack
@@ -66,7 +66,7 @@ Add the card(s) specified in the `value` parameter at the top of the stack.
 slice := []int{3, 2, 6, 4, 8}
 cards := PrependItems(slice, 5, 1)
 fmt.Println(cards)
-// Output: [5 1 3 2 6 4 8]
+// => [5 1 3 2 6 4 8]
 ```
 
 If no argument is given for the `value` parameter, then the result equals the original slice.
@@ -75,7 +75,7 @@ If no argument is given for the `value` parameter, then the result equals the or
 slice := []int{3, 2, 6, 4, 8}
 cards := PrependItems(slice)
 fmt.Println(cards)
-// Output: [3 2 6 4 8]
+// => [3 2 6 4 8]
 ```
 
 ## 5. Remove a card from the stack
@@ -86,7 +86,7 @@ Note that this may modify the input slice which is ok.
 ```go
 cards := RemoveItem([]int{3, 2, 6, 4, 8}, 2)
 fmt.Println(cards)
-// Output: [3 2 4 8]
+// => [3 2 4 8]
 ```
 
 If the index is out of bounds (ie. if it is negative or after the end of the stack), we want to leave the stack unchanged:
@@ -94,5 +94,5 @@ If the index is out of bounds (ie. if it is negative or after the end of the sta
 ```go
 cards := RemoveItem([]int{3, 2, 6, 4, 8}, 11)
 fmt.Println(cards)
-// Output: [3 2 6 4 8]
+// => [3 2 6 4 8]
 ```

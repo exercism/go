@@ -20,7 +20,7 @@ Jen wants numbers to return strings like `"This is the number 2.0"` (including o
 
 ```go
 fmt.Println(DescribeNumber(-12.345))
-// Output: This is the number -12.3
+// => This is the number -12.3
 ```
 
 ## 2. Describe a number box
@@ -29,7 +29,7 @@ Jen wants number boxes to return strings like `"This is a box containing the num
 
 ```go
 fmt.Println(DescribeNumberBox(numberBoxContaining{12}))
-// Output: This is a box containing the number 12.0
+// => This is a box containing the number 12.0
 ```
 
 ## 3. Implement a method extracting the number from a fancy number box
@@ -40,9 +40,9 @@ Any other type of `FancyNumberBox` should return 0.
 
 ```go
 fmt.Println(ExtractFancyNumber(FancyNumber{"10"}))
-// Output: 10
+// => 10
 fmt.Println(ExtractFancyNumber(AnotherFancyNumber{"4"}))
-// Output: 0
+// => 0
 ```
 
 ## 4. Describe a fancy number box
@@ -52,9 +52,9 @@ Any other type of `FancyNumberBox` should say `"This is a fancy box containing t
 
 ```go
 fmt.Println(DescribeFancyNumberBox(FancyNumber{"10"}))
-// Output: This is a fancy box containing the number 10.0
+// => This is a fancy box containing the number 10.0
 fmt.Println(DescribeFancyNumberBox(AnotherFancyNumber{"4"}))
-// Output: This is a fancy box containing the number 0.0
+// => This is a fancy box containing the number 0.0
 ```
 
 NOTE: we should use the `ExtractFancyNumber` function!
@@ -72,7 +72,7 @@ More specifically:
 
 ```go
 fmt.Println(DescribeAnything(numberBoxContaining{12.345}))
-// Output: This is a box containing the number 12.3
+// => This is a box containing the number 12.3
 fmt.Println(DescribeAnything("some string"))
-// Output: Return to sender
+// => Return to sender
 ```

@@ -79,7 +79,7 @@ var pa *int
 pa = &a          // 'pa' now contains to the memory address of 'a'  
 *pa = *pa + 2    // increment by 2 the value at memory address 'pa'
 
-fmt.Println(a)   // Output: 4
+fmt.Println(a)   // => 4
                  // 'a' will have the new value that was changed via the pointer!
 ```
 
@@ -123,7 +123,7 @@ When we have a pointer to a struct, we don't need to dereference the pointer bef
 var p *Person
 p = &Person{Name: "Peter", Age: 22}
 
-fmt.Println(p.Name) // Output: "Peter" 
+fmt.Println(p.Name) // => "Peter" 
                     // Go automatically dereferences 'p' to allow
                     // access to the 'Name' field
 ```
@@ -147,7 +147,7 @@ ages := map[string]int{
 }
 incrementPeterAge(ages)
 fmt.Println(ages)
-// Output: map[Peter:22]
+// => map[Peter:22]
 // The changes the function 'incrementPeterAge' made to the map are visible after the function ends!
 ```
 

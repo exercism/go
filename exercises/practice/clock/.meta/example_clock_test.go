@@ -7,7 +7,7 @@ func ExampleClock_new() {
 	clock1 := New(10, 30)
 	fmt.Println(clock1.String())
 
-	// Output: 10:30
+	// => 10:30
 }
 
 func ExampleClock_Add() {
@@ -18,7 +18,7 @@ func ExampleClock_Add() {
 	clock = clock.Add(30)
 	fmt.Println(clock.String())
 
-	// Output: 11:00
+	// => 11:00
 }
 
 func ExampleClock_Subtract() {
@@ -29,7 +29,7 @@ func ExampleClock_Subtract() {
 	clock = clock.Subtract(90)
 	fmt.Println(clock.String())
 
-	// Output: 09:00
+	// => 09:00
 }
 
 func ExampleClock_compare() {
@@ -48,7 +48,7 @@ func ExampleClock_compare() {
 	// are the clocks equal now?
 	fmt.Println(clock2 == clock1)
 
-	// Output:
+	// =>
 	// true
 	// false
 }
