@@ -132,4 +132,19 @@ var validRomanNumeralTests = []romanNumeralTest{
 		input:       1666,
 		expected:    "MDCLXVI",
 	},
+	{
+		description: "3000 is MMM",
+		input:       3000,
+		expected:    "MMM",
+	},
+	{
+		description: "3001 is MMMI",
+		input:       3001,
+		expected:    "MMMI",
+	},
+	{
+		description: "3999 is MMMCMXCIX",
+		input:       3999,
+		expected:    "MMMCMXCIX",
+	},
 }
