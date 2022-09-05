@@ -34,14 +34,14 @@ var tmpl = `package anagram
 
 {{.Header}}
 
-type AnagramTest struct {
+type anagramTest struct {
 	description string
 	subject     string
 	candidates  []string
 	expected    []string
 }
 
-var testCases = []AnagramTest{ 
+var testCases = []anagramTest{ 
 	{{range .J.findAnagrams}}{
 		description: {{printf "%q"   .Description}},
 		subject: {{printf "%q"       .Input.Subject}},
