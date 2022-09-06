@@ -26,7 +26,6 @@ The method on the struct can be called by:
 ```go
 p := Person{Name: "Bronson"}
 fmt.Println(p.Greetings())
-
 // Output: Welcome Bronson !
 ```
 
