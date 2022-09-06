@@ -10,9 +10,7 @@ func (receiver type) MethodName(parameters) (returnTypes) {
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-package main
-
-import "fmt"
+package elon
 
 type Person struct {
 	Name string
@@ -21,11 +19,13 @@ type Person struct {
 func (p Person) Greetings() string {
 	return fmt.Sprintf("Welcome %s !", p.Name)
 }
+```
 
-func main() {
-	p := Person{Name: "Bronson"}
-	fmt.Println(p.Greetings())
-}
+The method on the struct can be called by:
+
+```go
+p := Person{Name: "Bronson"}
+fmt.Println(p.Greetings())
 
 // Output: Welcome Bronson !
 ```
