@@ -14,7 +14,7 @@ func (wf testWeightFodder) FodderAmount() (float64, error) {
 	return wf.fodder, wf.err
 }
 
-var NonScaleError       = errors.New("non-scale error")
+var NonScaleError = errors.New("non-scale error")
 
 func TestDivideFood(t *testing.T) {
 	tests := []struct {
