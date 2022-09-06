@@ -14,192 +14,142 @@ func (wf testWeightFodder) FodderAmount() (float64, error) {
 	return wf.fodder, wf.err
 }
 
+var NonScaleError       = errors.New("non-scale error")
+
 func TestDivideFood(t *testing.T) {
-	nonScaleError := errors.New("non-scale error")
 	tests := []struct {
 		description             string
-		weightFodder            WeightFodder
-		weightFodderDescription string
+		fodderAmount            WeightFodder
 		cows                    int
-		wantAmount              float64
-		wantErr                 error
+		wantFodderAmount        float64
+		wantFodderErr           error
 	}{
 		{
-			description:             "100 fodder for 10 cows",
-			weightFodder:            testWeightFodder{fodder: 100, err: nil},
-			weightFodderDescription: "100 fodder, no error",
+			description:             "100 fodder for 10 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 100, err: nil},
 			cows:                    10,
-			wantAmount:              10,
-			wantErr:                 nil,
+			wantFodderAmount:        10,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "10 fodder for 10 cows",
-			weightFodder:            testWeightFodder{fodder: 10, err: nil},
-			weightFodderDescription: "10 fodder, no error",
+			description:             "10 fodder for 10 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 10, err: nil},
 			cows:                    10,
-			wantAmount:              1,
-			wantErr:                 nil,
+			wantFodderAmount:        1,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "10.5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{fodder: 10.5, err: nil},
-			weightFodderDescription: "10.5 fodder, no error",
+			description:             "10.5 fodder for 2 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 10.5, err: nil},
 			cows:                    2,
-			wantAmount:              5.25,
-			wantErr:                 nil,
+			wantFodderAmount:        5.25,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "5 fodder for 2 cows",
-			weightFodder:            testWeightFodder{fodder: 5, err: nil},
-			weightFodderDescription: "5 fodder, no error",
+			description:             "5 fodder for 2 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 5, err: nil},
 			cows:                    2,
-			wantAmount:              2.5,
-			wantErr:                 nil,
+			wantFodderAmount:        2.5,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "0 fodder for 2 cows",
-			weightFodder:            testWeightFodder{fodder: 0, err: nil},
-			weightFodderDescription: "0 fodder, no error",
+			description:             "0 fodder for 2 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 0, err: nil},
 			cows:                    2,
-			wantAmount:              0,
-			wantErr:                 nil,
+			wantFodderAmount:        0,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "Generic error from the scale is returned",
-			weightFodder:            testWeightFodder{fodder: 10, err: nonScaleError},
-			weightFodderDescription: "10 fodder, generic error",
+			description:             "10 fodder for 2 cows with generic error",
+			fodderAmount:            testWeightFodder{fodder: 10, err: NonScaleError},
 			cows:                    2,
-			wantAmount:              0,
-			wantErr:                 nonScaleError,
+			wantFodderAmount:        0,
+			wantFodderErr:           NonScaleError,
 		},
 		{
-			description:             "Negative fodder with generic error from the scale is returned",
-			weightFodder:            testWeightFodder{fodder: -10, err: nonScaleError},
-			weightFodderDescription: "-10 fodder, generic error",
+			description:             "Negative fodder for 2 cows with generic error",
+			fodderAmount:            testWeightFodder{fodder: -10, err: NonScaleError},
 			cows:                    2,
-			wantAmount:              0,
-			wantErr:                 nonScaleError,
+			wantFodderAmount:        0,
+			wantFodderErr:           NonScaleError,
 		},
 		{
-			description:             "Scale returns 10 with ErrScaleMalfunction for 2 cows",
-			weightFodder:            testWeightFodder{fodder: 10, err: ErrScaleMalfunction},
-			weightFodderDescription: "10 fodder, ErrScaleMalfunction",
+			description:             "10 fodder for 2 cows with malfunction error",
+			fodderAmount:            testWeightFodder{fodder: 10, err: ErrScaleMalfunction},
 			cows:                    2,
-			wantAmount:              10,
-			wantErr:                 nil,
+			wantFodderAmount:        10,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "Scale returns 1 with ErrScaleMalfunction for 10 cows",
-			weightFodder:            testWeightFodder{fodder: 5, err: ErrScaleMalfunction},
-			weightFodderDescription: "5 fodder, ErrScaleMalfunction",
+			description:             "5 fodder for 10 cows with malfunction error",
+			fodderAmount:            testWeightFodder{fodder: 5, err: ErrScaleMalfunction},
 			cows:                    10,
-			wantAmount:              1,
-			wantErr:                 nil,
+			wantFodderAmount:        1,
+			wantFodderErr:           nil,
 		},
 		{
-			description:             "Negative fodder",
-			weightFodder:            testWeightFodder{fodder: -1, err: nil},
-			weightFodderDescription: "-1 fodder, no error",
+			description:             "Negative fodder for 2 cows with no error",
+			fodderAmount:            testWeightFodder{fodder: -1, err: nil},
 			cows:                    2,
-			wantAmount:              0,
-			wantErr:                 errors.New("negative fodder"),
+			wantFodderAmount:        0,
+			wantFodderErr:           errors.New("negative fodder"),
 		},
 		{
-			description:             "Negative fodder with ScaleError",
-			weightFodder:            testWeightFodder{fodder: -1, err: ErrScaleMalfunction},
-			weightFodderDescription: "-1 fodder, ScaleError",
+			description:             "Negative fodder for 2 cows with malfunction error",
+			fodderAmount:            testWeightFodder{fodder: -1, err: ErrScaleMalfunction},
 			cows:                    2,
-			wantAmount:              0,
-			wantErr:                 errors.New("negative fodder"),
+			wantFodderAmount:        0,
+			wantFodderErr:           errors.New("negative fodder"),
 		},
 		{
-			description:             "Zero cows",
-			weightFodder:            testWeightFodder{fodder: 100, err: nil},
-			weightFodderDescription: "100 fodder, no error",
+			description:             "100 fodder for zero cows with no error",
+			fodderAmount:            testWeightFodder{fodder: 100, err: nil},
 			cows:                    0,
-			wantAmount:              0,
-			wantErr:                 errors.New("division by zero"),
+			wantFodderAmount:        0,
+			wantFodderErr:           errors.New("division by zero"),
 		},
 	}
+
 	for _, test := range tests {
-		t.Run(test.description, func(t *testing.T) {
-			gotAmount, gotErr := DivideFood(test.weightFodder, test.cows)
-			switch {
-			case gotAmount != test.wantAmount:
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got (%v, %v) wanted (%v, %v)",
-					test.weightFodderDescription,
-					test.cows,
-					gotAmount,
-					gotErr,
-					test.wantAmount,
-					test.wantErr,
-				)
-			case gotErr != nil && test.wantErr == nil:
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got an unexpected error (%v)",
-					test.weightFodderDescription,
-					test.cows,
-					gotErr,
-				)
-			case gotErr == nil && test.wantErr != nil:
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got no error, but wanted an error (%v)",
-					test.weightFodderDescription,
-					test.cows,
-					test.wantErr,
-				)
-			case !(gotErr == test.wantErr || gotErr.Error() == test.wantErr.Error()):
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
-					test.weightFodderDescription,
-					test.cows,
-					gotErr,
-					test.wantErr,
-				)
-			}
-		})
+		t.Logf("Testing condition %s", test.description)
+
+		gotFodderAmount, gotErr := DivideFood(test.fodderAmount, test.cows)
+
+		if gotFodderAmount != test.wantFodderAmount && gotErr != test.wantFodderErr {
+			t.Errorf("Wrong food division ... \ngot %v and %v, \nwant %v and %v",
+					gotFodderAmount, gotErr, test.wantFodderAmount, test.wantFodderErr)
+		}
 	}
 }
+
 
 func TestDivideFoodSillyNephewError(t *testing.T) {
 	tests := []struct {
 		description string
 		cows        int
-		wantErrMsg  string
+		wantErrMsg  error
 	}{
 		{
-			description: "Negative ten cows",
+			description: "negative ten cows",
 			cows:        -10,
-			wantErrMsg:  "silly nephew, there cannot be -10 cows",
+			wantErrMsg:  errors.New("silly nephew, there cannot be -10 cows"),
 		},
 		{
-			description: "Negative seven cows",
+			description: "negative seven cows",
 			cows:        -7,
-			wantErrMsg:  "silly nephew, there cannot be -7 cows",
+			wantErrMsg:  errors.New("silly nephew, there cannot be -7 cows"),
 		},
 	}
+
 	for _, test := range tests {
-		t.Run(test.description, func(t *testing.T) {
-			weightFodder := testWeightFodder{fodder: 100, err: nil}
-			gotAmount, gotErr := DivideFood(weightFodder, test.cows)
-			if gotAmount != 0 {
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got amount %v, but wanted amount 0",
-					"100 fodder, no error",
-					test.cows,
-					gotAmount,
-				)
-			}
-			if gotErr.Error() != test.wantErrMsg {
-				t.Errorf(
-					"DivideFood(weightFodder(%v), %v) got error msg %q, but wanted error msg %q",
-					"100 fodder, no error",
-					test.cows,
-					gotErr.Error(),
-					test.wantErrMsg,
-				)
-			}
-		})
+		t.Logf("Testing for %s", test.description)
+
+		fodderWeight := testWeightFodder{fodder: 100, err: nil}
+		gotFodderAmount, gotErrMsg := DivideFood(fodderWeight, test.cows)
+
+		if gotFodderAmount != 0 && gotErrMsg != test.wantErrMsg {
+			t.Errorf("Nepher error ... \ngot %v and %v, \nwant 0 and %v",
+					gotFodderAmount, gotErrMsg, test.wantErrMsg)
+		}
 	}
 }
