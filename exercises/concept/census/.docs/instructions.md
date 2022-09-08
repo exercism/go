@@ -6,7 +6,7 @@ The program must be able to create a new resident in the system when given a res
 
 ## 1. Create a new resident
 
-When a census worker collects a resident's information, they need to register that resident by entering their name, age, and address into the system.
+When a census worker collects a resident's information, they need to register that resident by entering their name, age, and address into the system. Age is an optional field.
 
 Implement the function `NewResident` that accepts three arguments:
 
@@ -29,7 +29,7 @@ NewResident(name, age, address)
 
 Residents may be reluctant to provide personal data to census workers. In those cases it's necessary to determine if the resident provided the required information to be counted in the census.
 
-In order to be counted, a resident must provide a non-zero value for their name and an address that contains a non-zero value for the `street` key. All other information, such as the resident's age, is optional. Implement the `HasRequiredInfo` method that returns a boolean indicating if the resident has provided the required information.
+In order to be counted, a resident must provide a non-zero value for their name and an address containing a non-zero value for the `street` key. Implement the `HasRequiredInfo` method that returns a boolean indicating if the resident has provided the required information.
 
 ```go
 name := "Matthew Sanabria"
