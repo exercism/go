@@ -20,7 +20,7 @@ into stone tablets).
  7  => VII
 ```
 
-The maximum number supported by this this notation is 3,999.
+The maximum number supported by this notation is 3,999.
 (The Romans themselves didn't tend to go any higher)
 
 Wikipedia says: Modern Roman numerals ... are written by expressing each
