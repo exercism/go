@@ -40,7 +40,7 @@ Hence `fmt` functions will print `Distance` values using Go's "default format":
 mileUnit := Mile
 fmt.Sprint(mileUnit)
 // => 1
-// The result is '1' because that is the underlying value of the 'Mile' contant (see contant declarations above) 
+// The result is '1' because that is the underlying value of the 'Mile' constant (see constant declarations above) 
 
 dist := Distance{number: 790.7, unit: Kilometer}
 fmt.Sprint(dist)

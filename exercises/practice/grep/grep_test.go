@@ -64,6 +64,12 @@ func TestSearch(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Search(tc.pattern, tc.flags, tc.files)
+
+			// We do not care whether the result is nil or an empty slice.
+			if len(tc.expected) == 0 && len(actual) == 0 {
+				return
+			}
+
 			if !reflect.DeepEqual(actual, tc.expected) {
 				t.Errorf("Search(%q,%v,%v)\ngot: %v\nwant: %v", tc.pattern, tc.flags, tc.files, actual, tc.expected)
 			}
