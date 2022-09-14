@@ -11,14 +11,13 @@ import (
 func TestSeedWithTime(t *testing.T) {
 	const tests = 100
 	var last int64
+	SeedWithTime()
 	for i := 0; i < tests; i++ {
-		SeedWithTime()
 		got := rand.Int63()
 		if i > 0 && got != last {
 			return
 		}
 		last = got
-		time.Sleep((time.Duration(rand.Intn(10))) * time.Millisecond)
 	}
 	t.Errorf("SeedWithTime always sets the same seed")
 }
