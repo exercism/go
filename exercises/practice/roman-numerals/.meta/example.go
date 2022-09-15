@@ -13,7 +13,7 @@ type arabicToRoman struct {
 func ToRomanNumeral(input int) (string, error) {
 	buffer := bytes.NewBufferString("")
 
-	if input <= 0 || input >= 3001 {
+	if input <= 0 || input >= 4000 {
 		return "", fmt.Errorf("the number %d is undefined in the roman numeral system", input)
 	}
 
