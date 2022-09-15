@@ -8,7 +8,14 @@ import (
 func TestFlatten(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Flatten(tc.input); !reflect.DeepEqual(actual, tc.expected) {
+			actual := Flatten(tc.input)
+
+			// We do not care whether the result is nil or an empty slice.
+			if len(tc.expected) == 0 && len(actual) == 0 {
+				return
+			}
+
+			if !reflect.DeepEqual(actual, tc.expected) {
 				t.Errorf("Flatten(%v) = %v, want: %v", tc.input, actual, tc.expected)
 			}
 		})
