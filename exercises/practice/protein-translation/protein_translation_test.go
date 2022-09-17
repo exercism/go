@@ -98,8 +98,8 @@ func TestCodon(t *testing.T) {
 			got, err := FromCodon(tc.input)
 			switch {
 			case tc.expectedError != nil:
-				if err == nil {
-					t.Fatalf("FromCodon(%q) expected error: %v, got nil", tc.input, tc.expectedError)
+				if err != tc.expectedError {
+					t.Fatalf("FromCodon(%q) expected error: %v, got: %v", tc.input, tc.expectedError, err)
 				}
 			case err != nil:
 				t.Fatalf("FromCodon(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
@@ -150,8 +150,8 @@ func TestProtein(t *testing.T) {
 			got, err := FromRNA(tc.input)
 			switch {
 			case tc.expectedError != nil:
-				if err == nil {
-					t.Fatalf("FromRNA(%q) expected error: %v, got nil", tc.input, tc.expectedError)
+				if err != tc.expectedError {
+					t.Fatalf("FromRNA(%q) expected error: %v, got: %v", tc.input, tc.expectedError, err)
 				}
 			case err != nil:
 				t.Fatalf("FromRNA(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
