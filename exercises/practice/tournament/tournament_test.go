@@ -115,7 +115,7 @@ func TestTallyHappy(t *testing.T) {
 			}
 			got := buffer.String()
 			if got != tc.expected {
-				t.Fatalf("Tally for input named %q returned unexpected value\n got: %s\nwant: %s", tc.description, got, tc.expected)
+				t.Fatalf("Tally for input named %q returned unexpected value\ngot: %s\nwant: %s", tc.description, got, tc.expected)
 			}
 		})
 	}
@@ -128,7 +128,7 @@ func TestTallyError(t *testing.T) {
 			var buffer bytes.Buffer
 			err := Tally(reader, &buffer)
 			if err == nil {
-				t.Fatalf("Tally for input %q expected error", errorInput)
+				t.Fatalf("Tally for input %q expected error, got nil", errorInput)
 			}
 		})
 	}
