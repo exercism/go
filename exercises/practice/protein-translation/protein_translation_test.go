@@ -104,7 +104,7 @@ func TestCodon(t *testing.T) {
 			case err != nil:
 				t.Fatalf("FromCodon(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
 			case got != tc.expected:
-				t.Fatalf("FromCodon(%q) = %q,want: %q", tc.input, got, tc.expected)
+				t.Fatalf("FromCodon(%q) = %q, want: %q", tc.input, got, tc.expected)
 			}
 		})
 	}
