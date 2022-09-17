@@ -6,14 +6,13 @@ import (
 	"testing"
 )
 
-func equal(a, b []string) bool {
-	if len(b) != len(a) {
-		return false
-	}
-
-	sort.Strings(a)
-	sort.Strings(b)
-	return fmt.Sprintf("%v", a) == fmt.Sprintf("%v", b)
+var nonAsciiTestCases = []anagramTest{
+	{
+		description: "detects non-ascii anagrams",
+		subject:     "你好，世界",
+		candidates:  []string{"世界，你好", "hello, 世界", "世界, 你好"},
+		expected:    []string{"世界，你好"},
+	},
 }
 
 func TestDetectAnagrams(t *testing.T) {
@@ -28,6 +27,16 @@ func TestDetectAnagrams(t *testing.T) {
 	}
 }
 
+func equal(a, b []string) bool {
+	if len(b) != len(a) {
+		return false
+	}
+
+	sort.Strings(a)
+	sort.Strings(b)
+	return fmt.Sprintf("%v", a) == fmt.Sprintf("%v", b)
+}
+
 func BenchmarkDetectAnagrams(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
@@ -38,13 +47,4 @@ func BenchmarkDetectAnagrams(b *testing.B) {
 			Detect(tt.subject, tt.candidates)
 		}
 	}
-}
-
-var nonAsciiTestCases = []anagramTest{
-	{
-		description: "detects non-ascii anagrams",
-		subject:     "你好，世界",
-		candidates:  []string{"世界，你好", "hello, 世界", "世界, 你好"},
-		expected:    []string{"世界，你好"},
-	},
 }
