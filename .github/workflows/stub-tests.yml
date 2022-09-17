@@ -18,17 +18,17 @@ jobs:
         go-version: [1.18.x]
         os: [ubuntu-latest, windows-latest, macOS-latest]
         test-arch: [amd64]
-        race: ['-race']
+        race: ["-race"]
 
         include:
           - go-version: 1.18.x
-            test-arch: '386'
+            test-arch: "386"
             os: ubuntu-latest
-            race: ''
+            race: ""
           - go-version: 1.18.x
-            test-arch: '386'
+            test-arch: "386"
             os: windows-latest
-            race: ''
+            race: ""
 
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
@@ -42,4 +42,4 @@ jobs:
         env:
           GOARCH: ${{ matrix.test-arch }}
         run: |
-          ./bin/test-without-stubs test-stubs
+          ./bin/run-tests test-stubs
