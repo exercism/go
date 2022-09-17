@@ -29,7 +29,7 @@ var validTestCases = []testCase{
 
 func TestCanQueenAttackValid(t *testing.T) {
 	for _, tc := range validTestCases {
-		t.Run(fmt.Sprintf("%s_%s_%s", tc.description, tc.pos1, tc.pos2), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%s white_queen: %s black_queen: %s", tc.description, tc.pos1, tc.pos2), func(t *testing.T) {
 			got, err := CanQueenAttack(tc.pos1, tc.pos2)
 			if err != nil {
 				t.Fatalf("CanQueenAttack(%q, %q) returned unexpected error %v", tc.pos1, tc.pos2, err)
@@ -52,7 +52,7 @@ var invalidTestCases = []testCase{
 
 func TestCanQueenAttackInvalid(t *testing.T) {
 	for _, tc := range invalidTestCases {
-		t.Run(fmt.Sprintf("%s_%s_%s", tc.description, tc.pos1, tc.pos2), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%s white_queen: %s black_queen: %s", tc.description, tc.pos1, tc.pos2), func(t *testing.T) {
 			got, err := CanQueenAttack(tc.pos1, tc.pos2)
 			if err == nil {
 				t.Fatalf("CanQueenAttack(%q, %q) expected error, got %v", tc.pos1, tc.pos2, got)
