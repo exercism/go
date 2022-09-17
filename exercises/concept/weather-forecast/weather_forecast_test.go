@@ -112,7 +112,7 @@ func testComment(entityKind, entityName, comment, wantedPrefix string) (ok bool,
 	lowerEntity := strings.ToLower(entityKind)
 
 	// Check if comment has wanted prefix
-	if !strings.HasPrefix(comment, wantedPrefix) {
+	if !strings.HasPrefix(trimmedComment, wantedPrefix) {
 		errorString := fmt.Sprintf("%s comment for %s '%s' should start with '// %s ...': got '// %s'",
 			entityKind, lowerEntity, entityName, wantedPrefix, trimmedComment)
 		return false, errorString
