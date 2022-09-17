@@ -42,12 +42,12 @@ func TestCanQueenAttackValid(t *testing.T) {
 }
 
 var invalidTestCases = []testCase{
-	{description: "same square", pos1: "b4", pos2: "b4", expected: false},
-	{description: "position off board", pos1: "a8", pos2: "b9", expected: false},
-	{description: "position off board", pos1: "a0", pos2: "b1", expected: false},
-	{description: "position off board", pos1: "g3", pos2: "i5", expected: false},
-	{description: "invalid position", pos1: "here", pos2: "there", expected: false},
-	{description: "empty position", pos1: "", pos2: "", expected: false},
+	{description: "same square", pos1: "b4", pos2: "b4"},
+	{description: "position off board", pos1: "a8", pos2: "b9"},
+	{description: "position off board", pos1: "a0", pos2: "b1"},
+	{description: "position off board", pos1: "g3", pos2: "i5"},
+	{description: "invalid position", pos1: "here", pos2: "there"},
+	{description: "empty position", pos1: "", pos2: ""},
 }
 
 func TestCanQueenAttackInvalid(t *testing.T) {
