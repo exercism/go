@@ -99,12 +99,11 @@ var tests = []struct {
          `, []string{"123", "456", "789"}},
 }
 
-var _ = recognizeDigit // step 1.
-
 func TestRecognize(t *testing.T) {
 	for _, test := range tests {
-		if res := Recognize(test.in); !reflect.DeepEqual(res, test.out) {
-			t.Fatalf("Recognize(`%s`) = %q, want %q.", test.in, res, test.out)
-		}
+	    t.Run(test.description, func(t *testing.T) {
+	        res := Recognize(test.in)
+	        assert.DeepEqual(t, res, test.out)
+        }
 	}
 }
