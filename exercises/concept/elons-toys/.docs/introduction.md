@@ -10,7 +10,7 @@ func (receiver type) MethodName(parameters) (returnTypes) {
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-package elon
+package person 
 
 type Person struct {
 	Name string
@@ -21,7 +21,7 @@ func (p Person) Greetings() string {
 }
 ```
 
-The method on the struct can be called by:
+The method on the struct can be called via dot notation.
 
 ```go
 p := Person{Name: "Bronson"}
