@@ -25,9 +25,9 @@ var testCases = []testCase{
 	{description: "no sides equal (6, 4, 5) | 2c=a+b", expected: Sca, a: 6, b: 4, c: 5},
 	{description: "all sides zero", expected: NaT, a: 0, b: 0, c: 0},
 	{description: "negative length", expected: NaT, a: 3, b: 4, c: -5},
-	{description: "not a triangle", expected: NaT, a: 1, b: 1, c: 3},
-	{description: "not a triangle", expected: NaT, a: 2, b: 5, c: 2},
-	{description: "not a triangle", expected: NaT, a: 7, b: 3, c: 2},
+	{description: "not a triangle (1, 1, 3)", expected: NaT, a: 1, b: 1, c: 3},
+	{description: "not a triangle (2, 5, 2)", expected: NaT, a: 2, b: 5, c: 2},
+	{description: "not a triangle (7, 3, 2)", expected: NaT, a: 7, b: 3, c: 2},
 }
 
 // Test that the kinds are not equal to each other.
