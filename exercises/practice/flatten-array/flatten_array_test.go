@@ -8,15 +8,15 @@ import (
 func TestFlatten(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			actual := Flatten(tc.input)
+			if actual := Flatten(tc.input); !reflect.DeepEqual(actual, tc.expected) {
 
-			// We do not care whether the result is nil or an empty slice.
-			if len(tc.expected) == 0 && len(actual) == 0 {
-				return
-			}
+				// Clarify failures where an empty slice is expected, but a nil slice is given.
+				if actual == nil && tc.expected != nil && len(tc.expected) == 0 {
+					t.Errorf("Flatten(%v) = %v (nil slice), want: %v (empty slice)", tc.input, actual, tc.expected)
+					return
+				}
 
-			if !reflect.DeepEqual(actual, tc.expected) {
-				t.Errorf("Flatten(%v) = %v, want: %v", tc.input, actual, tc.expected)
+				t.Errorf("Flatten(%v) = %v, want: %v", tc.input, &actual, tc.expected)
 			}
 		})
 	}
