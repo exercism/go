@@ -1,3 +1,4 @@
+//go:build slice
 // +build slice
 
 package stringset
