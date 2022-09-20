@@ -110,10 +110,10 @@ if [ "$mode" = "$TEST_STUBS_MODE" ];then
         continue;
     fi
     echo "testing $exercise"
-    result=$(go test -v "$exercise")
-    echo "$result"
+    result=$(go test -v "$exercise" 2>&1)
     if echo "$result" | grep -q 'PASS'; then
       echo "[ERROR] stub at $exercise passed the tests, even thought expect stub to fail"
+      echo "$result"
       exit 1
     fi
   done
