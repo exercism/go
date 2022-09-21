@@ -41,7 +41,7 @@ func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTes
 				return fmt.Errorf("failed to unmarshal uuid %v: %w", uuid, err)
 			}
 
-			//ignore test-cases with include=false in tests.toml
+			// ignore test-cases with include=false in tests.toml
 			if _, isExcluded := excludedTests[uuidStr]; isExcluded {
 				continue
 			}

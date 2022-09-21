@@ -12,9 +12,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"evaluate": &[]testCase{},
-		//TODO: add test with property `evaluateBoth` to forth_test.go and generate cases in cases_test.go
+		// TODO: add test with property `evaluateBoth` to forth_test.go and generate cases in cases_test.go
 	}
 	if err := gen.Gen("forth", j, t); err != nil {
 		log.Fatal(err)
@@ -34,7 +34,7 @@ func (t testCase) ExpectedNumbers() []int {
 	if !ok {
 		return nil
 	}
-	var result = make([]int, 0)
+	result := make([]int, 0)
 	for _, number := range numbers {
 		x, ok := number.(float64)
 		if !ok {

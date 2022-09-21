@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"prime": &[]testCase{},
 	}
 	if err := gen.Gen("nth-prime", j, t); err != nil {
