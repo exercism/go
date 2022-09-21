@@ -63,6 +63,7 @@ EOD
 
       generator="${dir}.meta/gen.go"
       if [ -f "${generator}" ]; then
+        # copying generator to be automatically linted when the exercise is linted
         echo "copy generator ${generator}"
         mkdir -p "${tmp}/gen/${stub}" && cp "${generator}" "${tmp}/gen/${stub}/gen.go"
       fi
