@@ -7,95 +7,131 @@ import (
 	"testing"
 )
 
-var testData = []struct {
+type testCase struct {
+	description string
 	// input to Products(): range limits for factors of the palindrome
 	fmin, fmax int
 	// output from Products():
 	pmin, pmax Product // min and max palandromic products
 	errPrefix  string  // start of text if there is an error, "" otherwise
-}{
-	{1, 9,
-		Product{}, // zero value means don't bother to test it
-		Product{9, [][2]int{{1, 9}, {3, 3}}},
-		""},
-	{10, 99,
-		Product{121, [][2]int{{11, 11}}},
-		Product{9009, [][2]int{{91, 99}}},
-		""},
-	{100, 999,
-		Product{10201, [][2]int{{101, 101}}},
-		Product{906609, [][2]int{{913, 993}}},
-		""},
-	{4, 10, Product{}, Product{}, "no palindromes"},
-	{10, 4, Product{}, Product{}, "fmin > fmax"},
+}
+
+var testCases = []testCase{
+	{
+		description: "valid limits 1-9",
+		fmin:        1,
+		fmax:        9,
+		pmin:        Product{}, // zero value means don't bother to test it
+		pmax:        Product{9, [][2]int{{1, 9}, {3, 3}}},
+		errPrefix:   "",
+	},
+	{
+		description: "valid limits 10-99",
+		fmin:        10,
+		fmax:        99,
+		pmin:        Product{121, [][2]int{{11, 11}}},
+		pmax:        Product{9009, [][2]int{{91, 99}}},
+		errPrefix:   "",
+	},
+	{
+		description: "valid limits 100-999",
+		fmin:        100,
+		fmax:        999,
+		pmin:        Product{10201, [][2]int{{101, 101}}},
+		pmax:        Product{906609, [][2]int{{913, 993}}},
+		errPrefix:   "",
+	},
+	{
+		description: "no palindromes",
+		fmin:        4,
+		fmax:        10,
+		pmin:        Product{},
+		pmax:        Product{},
+		errPrefix:   "no palindromes",
+	},
+	{
+		description: "fmin > fmax",
+		fmin:        10,
+		fmax:        4,
+		pmin:        Product{},
+		pmax:        Product{},
+		errPrefix:   "fmin > fmax",
+	},
 }
 
 // Bonus curiosities. Can a negative number be a palindrome? Most say no.
 /*
-var bonusData = []struct {
-	fmin, fmax int
-	pmin, pmax Product
-	errPrefix  string
-}{
+var bonusData = []testCase{
 	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
-
 	// Here you can test that you can reach the limit of the largest palindrome made of two 2-digit numbers.
-	// {-99, -10, Product{}, Product{}, "Negative limits"},
-
+	//{
+	//	description: "bonus test 1: error for negative limits",
+	//	fmin:        -99,
+	//	fmax:        -10,
+	//	pmin:        Product{},
+	//	pmax:        Product{},
+	//	errPrefix:   "Negative limits",
+	//},
 	// You can still get non-negative products from negative factors.
-	{-99, -10,
-		Product{121, [][2]int{{-11, -11}}},
-		Product{9009, [][2]int{{-99, -91}}},
-		""},
-
+	{
+		description: "bonus test 1: no error for negative limits",
+		fmin:        -99,
+		fmax:        -10,
+		pmin:        Product{121, [][2]int{{-11, -11}}},
+		pmax:        Product{9009, [][2]int{{-99, -91}}},
+		errPrefix:   "",
+	},
 	// The following two test cases have the same input, but different expectations. Uncomment just one or the other.
-
 	//In case you reverse the *digits* you could have the following cases:
 	//- the zero has to be considered
-	//{-2, 2,
-	//	Product{0, [][2]int{{-2, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 2}}},
-	//	Product{4, [][2]int{{-2, -2}, {2, 2}}},
-	//	""},
-
+	//{
+	//	description: "bonus test 2",
+	//	fmin:        -2,
+	//	fmax:        2,
+	//	pmin:        Product{0, [][2]int{{-2, 0}, {-1, 0}, {0, 0}, {0, 1}, {0, 2}}},
+	//	pmax:        Product{4, [][2]int{{-2, -2}, {2, 2}}},
+	//	errPrefix:   "",
+	//},
 	// - you can keep the minus sign in place
-	{-2, 2,
-		Product{-4, [][2]int{{-2, 2}}},
-		Product{4, [][2]int{{-2, -2}, {2, 2}}},
-		""},
+	{
+		description: "bonus test 2",
+		fmin:        -2,
+		fmax:        2,
+		pmin:        Product{-4, [][2]int{{-2, 2}}},
+		pmax:        Product{4, [][2]int{{-2, -2}, {2, 2}}},
+		errPrefix:   "",
+	},
 }
 */
 
 func TestPalindromeProducts(t *testing.T) {
 	// Uncomment the following line and the bonusData var above to add the bonus test to the default tests
 	// testData = append(testData, bonusData...)
-	for _, test := range testData {
-		// common preamble for test failures
-		ret := fmt.Sprintf("Products(%d, %d) returned",
-			test.fmin, test.fmax)
-		// test
-		pmin, pmax, err := Products(test.fmin, test.fmax)
-		// we check if err is of error type
-		var _ error = err
-		switch {
-		case err == nil:
-			if test.errPrefix > "" {
-				t.Fatalf(ret+" err = nil, want %q", test.errPrefix+"...")
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			pmin, pmax, err := Products(tc.fmin, tc.fmax)
+
+			switch {
+			case tc.errPrefix != "":
+				if err == nil {
+					t.Fatalf("Products(%d, %d) expected error %q, got nil", tc.fmin, tc.fmax, fmt.Sprintf("%s...", tc.errPrefix))
+				}
+				if !strings.HasPrefix(err.Error(), tc.errPrefix) {
+					t.Fatalf("Products(%d, %d) expected error with prefix %q, got: %q", tc.fmin, tc.fmax, tc.errPrefix, err.Error())
+				}
+			case err != nil:
+				t.Fatalf("Products(%d, %d) returned unexpected error: %v", tc.fmin, tc.fmax, err)
 			}
-		case test.errPrefix == "":
-			t.Fatalf(ret+" err = %q, want nil", err)
-		case !strings.HasPrefix(err.Error(), test.errPrefix):
-			t.Fatalf(ret+" err = %q, want %q", err, test.errPrefix+"...")
-		default:
-			continue // correct error, no further tests for this test case
-		}
-		matchProd := func(ww string, rp, wp Product) {
-			if len(wp.Factorizations) > 0 && // option to skip test
-				!reflect.DeepEqual(rp, wp) {
-				t.Fatal(ret, ww, "=", rp, "want", wp)
+
+			matchProd := func(field string, have, want Product) {
+				if len(want.Factorizations) > 0 && // option to skip test
+					!reflect.DeepEqual(have, want) {
+					t.Fatalf("Products(%d, %d) [%s] = %v, want: %v", tc.fmin, tc.fmax, field, have, want)
+				}
 			}
-		}
-		matchProd("pmin", pmin, test.pmin)
-		matchProd("pmax", pmax, test.pmax)
+			matchProd("pmin", pmin, tc.pmin)
+			matchProd("pmax", pmax, tc.pmax)
+		})
 	}
 }
 
@@ -104,7 +140,7 @@ func BenchmarkPalindromeProducts(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range testData {
+		for _, test := range testCases {
 			Products(test.fmin, test.fmax)
 		}
 	}
