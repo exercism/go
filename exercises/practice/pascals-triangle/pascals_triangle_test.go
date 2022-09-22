@@ -33,14 +33,27 @@ var testSize = len(triangleTestCases)
 
 func TestTriangle(t *testing.T) {
 	for n := 1; n <= testSize; n++ {
-		res := Triangle(n)
-		want := triangleTestCases[:n]
-		if !reflect.DeepEqual(res, want) {
-			t.Fatalf("Triangle(%d) = %s,\nwant:%s\n",
-				n, format(res), format(want))
+		t.Run(fmt.Sprintf("Triangle until row %d", n), func(t *testing.T) {
+			got := Triangle(n)
+			want := triangleTestCases[:n]
+			if !reflect.DeepEqual(got, want) {
+				help := getHelp(got, want)
+				t.Fatalf("Triangle(%d)\nhelp: %s\ncomplete got:%s\ncomplete want:%s\n", n, help, format(got), format(want))
+			}
+		})
+	}
+}
+
+func getHelp(got, want [][]int) string {
+	if len(got) != len(want) {
+		return fmt.Sprintf("expected %d rows, got: %d", len(want), len(got))
+	}
+	for i, gotLine := range got {
+		if !reflect.DeepEqual(gotLine, want[i]) {
+			return fmt.Sprintf("first difference in row with index: %d\n got: %v\nwant: %v", i, gotLine, want[i])
 		}
 	}
-	t.Log(format(Triangle(testSize)))
+	return ""
 }
 
 func format(t [][]int) (s string) {
