@@ -41,7 +41,7 @@ func TestNumber_Add(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Add(n2); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Add%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Add%+v\n got: %+v\nwant: %+v", tt.n1, tt.n2, got, tt.want)
 			}
 		})
 	}
@@ -53,7 +53,7 @@ func TestNumber_Subtract(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Subtract(n2); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Subtract%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Subtract%+v\n got: %+v\nwant: %+v", tt.n1, tt.n2, got, tt.want)
 			}
 		})
 	}
@@ -68,7 +68,7 @@ func TestNumber_Multiply(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Multiply(n2); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Multiply%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Multiply%+v\n got: %+v\nwant: %+v", tt.n1, tt.n2, got, tt.want)
 			}
 		})
 	}
@@ -82,7 +82,7 @@ func TestNumber_Times(t *testing.T) {
 			}
 			n := Number{tt.n1.a, tt.n1.b}
 			if got := n.Times(tt.factor); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Times(%v)\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.factor, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Times(%v)\n got: %+v\nwant: %+v", tt.n1, tt.factor, got, tt.want)
 			}
 		})
 	}
@@ -94,7 +94,7 @@ func TestNumber_Divide(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Divide(n2); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Divide%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Divide%+v\n got: %+v\nwant: %+v", tt.n1, tt.n2, got, tt.want)
 			}
 		})
 	}
@@ -116,19 +116,18 @@ func TestNumber_Conjugate(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Conjugate(); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Conjugate()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Conjugate()\n got: %+v\nwant: %+v", tt.in, got, tt.want)
 			}
 		})
 	}
 }
 
 func TestNumber_Exp(t *testing.T) {
-	const precision = 0.000001
 	for _, tt := range expTestCases {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Exp(); !floatingPointEquals(got.Real(), tt.want.a) || !floatingPointEquals(got.Imaginary(), tt.want.b) {
-				t.Errorf("Number%+v.Exp()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Exp()\n got: %+v\nwant: %+v", tt.in, got, tt.want)
 			}
 		})
 	}
