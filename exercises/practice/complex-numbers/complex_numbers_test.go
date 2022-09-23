@@ -10,7 +10,7 @@ func TestNumber_Real(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Real(); got != tt.want {
-				t.Errorf("Number({%v, %v}).Real() = %v, want %v", tt.in.a, tt.in.b, got, tt.want)
+				t.Errorf("Number%+v.Real() = %v, want %v", tt.in, got, tt.want)
 			}
 		})
 	}
@@ -21,7 +21,7 @@ func TestNumber_Imaginary(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Imaginary(); got != tt.want {
-				t.Errorf("Number({%v, %v}).Imaginary() = %v, want %v", tt.in.a, tt.in.b, got, tt.want)
+				t.Errorf("Number%+v.Imaginary() = %v, want %v", tt.in, got, tt.want)
 			}
 		})
 	}
@@ -33,7 +33,7 @@ func TestNumber_Add(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Add(n2); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number({%v, %v}).Add({%v, %v})\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1.a, tt.n1.b, tt.n2.a, tt.n2.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Add%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -45,7 +45,7 @@ func TestNumber_Subtract(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Subtract(n2); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number{%v, %v}.Subtract({%v, %v})\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1.a, tt.n1.b, tt.n2.a, tt.n2.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Subtract%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -60,7 +60,7 @@ func TestNumber_Multiply(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Multiply(n2); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number({%v, %v}).Multiply({%v, %v})\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1.a, tt.n1.b, tt.n2.a, tt.n2.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Multiply%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -74,7 +74,7 @@ func TestNumber_Times(t *testing.T) {
 			}
 			n := Number{tt.n1.a, tt.n1.b}
 			if got := n.Times(tt.factor); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number({%v, %v}).Times(%v)\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1.a, tt.n1.b, tt.factor, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Times(%v)\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.factor, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -86,7 +86,7 @@ func TestNumber_Divide(t *testing.T) {
 			n1 := Number{tt.n1.a, tt.n1.b}
 			n2 := Number{tt.n2.a, tt.n2.b}
 			if got := n1.Divide(n2); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number({%v, %v}).Divide({%v, %v})\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1.a, tt.n1.b, tt.n2.a, tt.n2.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Divide%+v\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.n1, tt.n2, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -97,7 +97,7 @@ func TestNumber_Abs(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Abs(); got != tt.want {
-				t.Errorf("Number.Abs({%v, %v}) = %v, want %v", tt.in.a, tt.in.b, got, tt.want)
+				t.Errorf("Number.Abs%+v = %v, want %v", tt.in, got, tt.want)
 			}
 		})
 	}
@@ -108,7 +108,7 @@ func TestNumber_Conjugate(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Conjugate(); got.Real() != tt.want.a || got.Imaginary() != tt.want.b {
-				t.Errorf("Number({%v, %v}).Conjugate()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in.a, tt.in.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Conjugate()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
@@ -120,7 +120,7 @@ func TestNumber_Exp(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			n := Number{tt.in.a, tt.in.b}
 			if got := n.Exp(); math.Abs(got.Real()-tt.want.a) > precision || math.Abs(got.Imaginary()-tt.want.b) > precision {
-				t.Errorf("Number({%v, %v}).Exp()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in.a, tt.in.b, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
+				t.Errorf("Number%+v.Exp()\n got: a=%v, b=%v\nwant: a=%v, b=%v", tt.in, got.Real(), got.Imaginary(), tt.want.a, tt.want.b)
 			}
 		})
 	}
