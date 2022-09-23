@@ -42,24 +42,24 @@ type Case struct {
 	Expected interface{} `json:"expected"`
 }
 
-type complex struct {
+type complexNumber struct {
 	A float64
 	B float64
 }
 
-func (c Case) GetZ() complex {
+func (c Case) GetZ() complexNumber {
 	return getComplex(c.Input.Z)
 }
 
-func (c Case) GetZ1() complex {
+func (c Case) GetZ1() complexNumber {
 	return getComplex(c.Input.Z1)
 }
 
-func (c Case) GetZ2() complex {
+func (c Case) GetZ2() complexNumber {
 	return getComplex(c.Input.Z2)
 }
 
-func (c Case) GetNeededZ() complex {
+func (c Case) GetNeededZ() complexNumber {
 	_, ok := c.Input.Z1.(float64)
 	if ok {
 		return c.GetZ2()
@@ -81,18 +81,18 @@ func (c Case) GetFactor() float64 {
 	if ok {
 		return v
 	}
-	v, ok = c.Input.Z2.(float64)
+	v, _ = c.Input.Z2.(float64)
 	return v
 }
 
-func (c Case) GetExpected() complex {
+func (c Case) GetExpected() complexNumber {
 	return getComplex(c.Expected)
 }
 
-func getComplex(in interface{}) complex {
+func getComplex(in interface{}) complexNumber {
 	v, ok := in.(float64)
 	if ok {
-		return complex{A: v}
+		return complexNumber{A: v}
 	}
 	s, ok := in.([]interface{})
 	if !ok {
@@ -113,7 +113,7 @@ func getComplex(in interface{}) complex {
 			panic("uknown type")
 		}
 	}
-	return complex{
+	return complexNumber{
 		A: result[0],
 		B: result[1],
 	}
