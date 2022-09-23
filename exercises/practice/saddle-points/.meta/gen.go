@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"saddlePoints": &[]Case{},
 	}
 	if err := gen.Gen("saddle-points", j, t); err != nil {

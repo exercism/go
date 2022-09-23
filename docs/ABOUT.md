@@ -8,4 +8,4 @@ It's written using a C-style syntax, has statically typed variables, manages mem
 Go is noted for the [concurrent programming features](https://golang.org/doc/effective_go.html#concurrency) built into the language core, the networking packages in the standard library ([such as a web server](https://pkg.go.dev/net/http)), fast compilation and execution speed.
 Its simple, minimalistic and consistent language design make for a delightful experience, while the abundant and thoughtful tooling addresses traditional problems such as [consistent formatting](https://pkg.go.dev/cmd/gofmt) and [documentation](https://pkg.go.dev/golang.org/x/tools/cmd/godoc).
 
-The home page for Go is [golang.org](https://golang.org/), and there is an excellent interactive tutorial at [tour.golang.org](https://tour.golang.org/).
+The home page for Go is [go.dev](https://go.dev/), and there is an excellent interactive tutorial at [tour.go.dev](https://tour.go.dev/).

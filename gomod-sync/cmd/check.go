@@ -3,9 +3,10 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/exercism/go/gomod-sync/gomod"
-	"github.com/logrusorgru/aurora/v3"
+	aurora "github.com/logrusorgru/aurora/v3"
 	"github.com/spf13/cobra"
+
+	"github.com/exercism/go/gomod-sync/gomod"
 )
 
 func init() {
@@ -24,7 +25,7 @@ var checkCmd = &cobra.Command{
 		}
 
 		type faultyFile struct {
-			gomod.Info
+			Info            gomod.Info
 			ExpectedVersion string
 		}
 
@@ -42,7 +43,7 @@ var checkCmd = &cobra.Command{
 		if len(faultyFiles) > 0 {
 			fmt.Println(aurora.Red(fmt.Sprintf("The following %d go.mod file(s) do not have the correct version set:", len(faultyFiles))))
 			for _, file := range faultyFiles {
-				fmt.Println(aurora.Red(fmt.Sprintf("\t%v has version %s, but %s expected", file.Path, file.GoVersion, file.ExpectedVersion)))
+				fmt.Println(aurora.Red(fmt.Sprintf("\t%v has version %s, but %s expected", file.Info.Path, file.Info.GoVersion, file.ExpectedVersion)))
 			}
 			return fmt.Errorf("%d go.mod file(s) are not in the target version", len(faultyFiles))
 		}

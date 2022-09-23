@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"solve": &[]testCase{},
 	}
 	if err := gen.Gen("alphametics", j, t); err != nil {
@@ -37,7 +37,7 @@ func (c testCase) ErrorExpected() bool {
 func (c testCase) SortedMapString() string {
 	strs := make([]string, 0, len(c.Expected))
 	for s, v := range c.Expected {
-		strs = append(strs, `"`+s+`": `+string(v+'0'))
+		strs = append(strs, `"`+s+`": `+string(rune(v+'0')))
 	}
 	sort.Strings(strs)
 	return strings.Join(strs, ",")

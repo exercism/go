@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"findAnagrams": &[]testCase{},
 	}
 	if err := gen.Gen("anagram", j, t); err != nil {
@@ -34,17 +34,20 @@ var tmpl = `package anagram
 
 {{.Header}}
 
-var testCases = []struct {
+type anagramTest struct {
 	description string
 	subject     string
 	candidates  []string
 	expected    []string
-}{ {{range .J.findAnagrams}}
-{
-	description: {{printf "%q"   .Description}},
-	subject: {{printf "%q"       .Input.Subject}},
-	candidates: {{printf "%#v"   .Input.Candidates}},
-	expected: {{printf "%#v"     .Expected}},
-	},{{end}}
+}
+
+var testCases = []anagramTest{ 
+	{{range .J.findAnagrams}}{
+		description: {{printf "%q"   .Description}},
+		subject: {{printf "%q"       .Input.Subject}},
+		candidates: {{printf "%#v"   .Input.Candidates}},
+		expected: {{printf "%#v"     .Expected}},
+	},
+	{{end}}
 }
 `

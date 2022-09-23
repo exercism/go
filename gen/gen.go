@@ -184,9 +184,9 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	formattedFileContent, err := format.Source(casesFileContent)
 	if err != nil {
 		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
-		debugFileContent := append(casesFileContent, []byte("// !NOTE: Error during source formatting: Line:Column "+fmt.Sprint(err)+"\n")...)
+		casesFileContent = append(casesFileContent, []byte(fmt.Sprintf("// !NOTE: Error during source formatting: Line:Column %v\n", err))...)
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFile, debugFileContent)
+		_ = outputSource("ERROR", casesFile, casesFileContent)
 		return err
 	}
 	// write output file for the Go test cases.
@@ -195,7 +195,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
 func outputSource(status, fileName string, src []byte) error {
-	err := os.WriteFile(fileName, src, 0666)
+	err := os.WriteFile(fileName, src, 0o644) //nolint:gosec // 644 are the default permissions for a new file on *nix systems
 	if err != nil {
 		return fmt.Errorf("[FAILED] %q\n", err)
 	}

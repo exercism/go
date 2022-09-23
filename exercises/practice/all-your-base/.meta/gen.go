@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"rebase": &[]testCase{},
 	}
 	if err := gen.Gen("all-your-base", j, t); err != nil {

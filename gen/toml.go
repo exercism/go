@@ -28,7 +28,7 @@ func getExcludedTestCases(tomlFilePath string) (map[string]struct{}, error) {
 		line := scanner.Text()
 		line = strings.TrimSpace(line)
 		switch {
-		case len(line) == 0, strings.HasPrefix(line, "#"):
+		case line == "" || strings.HasPrefix(line, "#"):
 			continue
 		case strings.HasPrefix(line, "["):
 			currentCaseUUID = strings.Trim(line, "[]")
