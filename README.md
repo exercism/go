@@ -22,7 +22,7 @@ You will need a github account and you will need to fork exercism/go to your acc
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
 Clone your fork with the command: `git clone https://github.com/<you>/go`.
 Test your clone by cding to the go directory and typing `bin/fetch-golangci-lint` and then
-`bin/test-without-stubs`. You should see tests pass for all exercises.
+`bin/run-tests`. You should see tests pass for all exercises.
 
 Note that unlike most other Go code, it is not necessary to clone this to your GOPATH.
 This is because this repo only imports from the standard library and isn't expected to be imported by other packages.
