@@ -21,23 +21,38 @@ withData[1] = 5
 x := withData[1] // x is now 5
 ```
 
-You can create a new slice from an existing slice by getting a range of elements, once again using square-bracket notation, but specifying both a starting (inclusive) and ending (exclusive) index.
+You can create a new slice from an existing slice by getting a range of elements.
+Once again using square-bracket notation, but specifying both a starting (inclusive) and ending (exclusive) index.
 If you don't specify a starting index, it defaults to 0.
 If you don't specify an ending index, it defaults to the length of the slice.
 
 ```go
-newSlice := withData[2:4] // newSlice == []int{2,3}
-newSlice := withData[:2]  // newSlice == []int{0,1}
-newSlice := withData[2:]  // newSlice == []int{2,3,4,5}
-newSlice := withData[:]   // newSlice == []int{0,1,2,3,4,5}
+newSlice := withData[2:4]
+// => []int{2,3}
+newSlice := withData[:2] 
+// => []int{0,1}
+newSlice := withData[2:]
+// => []int{2,3,4,5}
+newSlice := withData[:]
+// => []int{0,1,2,3,4,5}
 ```
 
-You can merge two or more slices with the `append` function. For this, you need to pass next slices as argument of variadic function.
+You can add elements to a slice using the `append` function.
+Below we append `4` and `2` to the `a` slice.
 
 ```go
-withData := []int{0,1,2,3,4,5}
+a := []int{1, 3}
+a = append(a, 4, 2) 
+// => []int{1,3,4,2}
+```
+
+`append` always returns a new slice, and when we just want to append elements to an existing slice, its common to reassign it back to the slice variable we pass as the first argument, like we did above.
+
+`append` can also be used to merge two slices:
+
+```go
 nextSlice := []int{100,101,102}
-append(withData, nextSlice...)
+newSlice  := append(withData, nextSlice...)
 // => []int{0,1,2,3,4,5,100,101,102}}
 ```
 
@@ -48,9 +63,9 @@ Failing to do so will crash the entire application.
 
 ## Empty slices
 
-`Nil`-slices are the default empty slice. They have no drawbacks towards a slice with no values in them.
+`nil`-slices are the default empty slice. They have no drawbacks towards a slice with no values in them.
 The `len` function works on `nil`-slices, items can be added without initializing it, and so on.
-If creating a new slice prefer `var s []int` (nil-slice) over `s := []int{}` (empty slice).
+If creating a new slice prefer `var s []int` (`nil`-slice) over `s := []int{}` (empty, non-`nil` slice).
 
 ## Performance
 
