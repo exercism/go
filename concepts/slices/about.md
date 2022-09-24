@@ -33,9 +33,12 @@ newSlice := withData[:]   // newSlice == []int{0,1,2,3,4,5}
 ```
 
 You can merge two or more slices with the `append` function. For this, you need to pass next slices as argument of variadic function.
+
 ```go
-nextSlice := [int]{100,101,102}
-newSlice  := append(withData, nextSlice...) // newSlice == []int{0,1,2,3,4,5,100,101,102}}
+withData := []int{0,1,2,3,4,5}
+nextSlice := []int{100,101,102}
+append(withData, nextSlice...)
+// => []int{0,1,2,3,4,5,100,101,102}}
 ```
 
 ## Indexes in slices
