@@ -2,7 +2,7 @@
 // If it seems helpful, copy your code from the matrix exercise
 // to this directory so you have access to it.  You can leave it as matrix.go
 // and start a new file saddle_points.go with additional code that completes
-// this exercise.  Submit only saddle_points.go for this exercise.
+// this exercise.
 
 package matrix
 
