@@ -13,12 +13,6 @@ var nonAsciiTestCases = []anagramTest{
 		candidates:  []string{"ΒΓΑ", "ΒΓΔ", "γβα"},
 		expected:    []string{"ΒΓΑ", "γβα"},
 	},
-	{
-		description: "eliminates misleading unicode anagrams",
-		subject:     "ΑΒΓ",
-		candidates:  []string{"ABΓ"},
-		expected:    []string{},
-	},
 }
 
 func TestDetectAnagrams(t *testing.T) {
