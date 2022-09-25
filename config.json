@@ -1957,6 +1957,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5
+      },
+      {
+        "slug": "complex-numbers",
+        "name": "Complex Numbers",
+        "uuid": "aa7bf7d0-d308-4e6b-9ea3-06dd6fb863b6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       }
     ]
   },
