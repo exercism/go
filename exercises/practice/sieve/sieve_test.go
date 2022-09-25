@@ -10,7 +10,7 @@ func TestSieve(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Sieve(tc.limit)
 			// use len() to allow either nil or empty list, because they are not equal by DeepEqual
-			if len(actual) == 0 || len(tc.expected) == 0 {
+			if len(actual) == 0 && len(tc.expected) == 0 {
 				return
 			}
 			if !reflect.DeepEqual(actual, tc.expected) {
