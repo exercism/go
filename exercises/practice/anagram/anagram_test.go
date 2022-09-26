@@ -8,10 +8,10 @@ import (
 
 var nonAsciiTestCases = []anagramTest{
 	{
-		description: "detects non-ascii anagrams",
-		subject:     "你好，世界",
-		candidates:  []string{"世界，你好", "hello, 世界", "世界, 你好"},
-		expected:    []string{"世界，你好"},
+		description: "detects unicode anagrams",
+		subject:     "ΑΒΓ",
+		candidates:  []string{"ΒΓΑ", "ΒΓΔ", "γβα"},
+		expected:    []string{"ΒΓΑ", "γβα"},
 	},
 }
 
