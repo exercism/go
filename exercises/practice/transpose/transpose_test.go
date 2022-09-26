@@ -9,7 +9,7 @@ func TestTranspose(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Transpose(tc.input)
-			if len(actual) == 0 || len(tc.expected) == 0 {
+			if len(actual) == 0 && len(tc.expected) == 0 {
 				return
 			}
 			if !reflect.DeepEqual(actual, tc.expected) {
