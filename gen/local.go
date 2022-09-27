@@ -3,7 +3,6 @@ package gen
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -17,7 +16,7 @@ func getLocalTestData(jFile string) ([]byte, error) {
 
 	fmt.Printf("[LOCAL] source: %s\n", jFilePath)
 
-	jTestData, err := ioutil.ReadFile(jFilePath)
+	jTestData, err := os.ReadFile(jFilePath)
 	if err != nil {
 		return nil, err
 	}

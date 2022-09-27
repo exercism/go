@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"classify": &[]testCase{},
 	}
 	if err := gen.Gen("perfect-numbers", j, t); err != nil {

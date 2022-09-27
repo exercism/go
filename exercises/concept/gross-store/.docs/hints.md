@@ -11,7 +11,7 @@
 
 ## 2. Create a new bill
 
-- To create a new bill, you all you need to do is reinitialize the customer, see [go blog about map][goblog-map]
+- To create a new bill, all you need to do is reinitialize the customer, see [go blog about map][goblog-map]
 
 ## 3. Add item to the customer bill
 

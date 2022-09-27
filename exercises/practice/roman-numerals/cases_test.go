@@ -3,7 +3,7 @@ package romannumerals
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: b820099 Allow prettier to format more files (#1966)
+// Commit: 044e6a1 Roman Numerals max out at 3999 (#2094 #2475)
 
 type romanNumeralTest struct {
 	description string
@@ -131,5 +131,15 @@ var validRomanNumeralTests = []romanNumeralTest{
 		description: "1666 is MDCLXVI",
 		input:       1666,
 		expected:    "MDCLXVI",
+	},
+	{
+		description: "3001 is MMMI",
+		input:       3001,
+		expected:    "MMMI",
+	},
+	{
+		description: "3999 is MMMCMXCIX",
+		input:       3999,
+		expected:    "MMMCMXCIX",
 	},
 }

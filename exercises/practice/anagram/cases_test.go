@@ -5,12 +5,14 @@ package anagram
 // Source: exercism/problem-specifications
 // Commit: 6373ab6 anagram: reimplement cases where `candidates` isn't a set (#1943)
 
-var testCases = []struct {
+type anagramTest struct {
 	description string
 	subject     string
 	candidates  []string
 	expected    []string
-}{
+}
+
+var testCases = []anagramTest{
 	{
 		description: "no matches",
 		subject:     "diaper",

@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"empty":        &[]testCase{},
 		"contains":     &[]testCase{},
 		"subset":       &[]testCase{},
@@ -53,7 +53,7 @@ func str(n int) string {
 
 // getStringSet converts a slice of integers to a slice of strings (integers are converted to characters using str)
 func getStringSet(in []int) []string {
-	var out = make([]string, 0)
+	out := make([]string, 0)
 	for _, v := range in {
 		out = append(out, str(v))
 	}

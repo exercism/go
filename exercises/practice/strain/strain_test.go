@@ -10,79 +10,101 @@ func gt10(x int) bool { return x > 10 }
 func odd(x int) bool  { return x&1 == 1 }
 func even(x int) bool { return x&1 == 0 }
 
-var keepTests = []struct {
-	pred func(int) bool
-	list Ints
-	want Ints
-}{
-	{lt10,
-		nil,
-		nil},
-	{lt10,
-		Ints{1, 2, 3},
-		Ints{1, 2, 3}},
-	{odd,
-		Ints{1, 2, 3},
-		Ints{1, 3}},
-	{even,
-		Ints{1, 2, 3, 4, 5},
-		Ints{2, 4}},
+type testCase struct {
+	description string
+	filterFunc  func(int) bool
+	list        Ints
+	expected    Ints
 }
 
-var discardTests = []struct {
-	pred func(int) bool
-	list Ints
-	want Ints
-}{
-	{lt10,
-		nil,
-		nil},
-	{gt10,
-		Ints{1, 2, 3},
-		Ints{1, 2, 3}},
-	{odd,
-		Ints{1, 2, 3},
-		Ints{2}},
-	{even,
-		Ints{1, 2, 3, 4, 5},
-		Ints{1, 3, 5}},
+var keepTests = []testCase{
+	{
+		description: "keep lower than 10 without inputs",
+		filterFunc:  lt10,
+		list:        nil,
+		expected:    nil,
+	},
+	{
+		description: "keep lower than 10 with all 3 inputs kept",
+		filterFunc:  lt10,
+		list:        Ints{1, 2, 3},
+		expected:    Ints{1, 2, 3},
+	},
+	{
+		description: "keep odd with 2 odd an 1 even input",
+		filterFunc:  odd,
+		list:        Ints{1, 2, 3},
+		expected:    Ints{1, 3},
+	},
+	{
+		description: "keep even with 2 even and 3 odd inputs",
+		filterFunc:  even,
+		list:        Ints{1, 2, 3, 4, 5},
+		expected:    Ints{2, 4},
+	},
+}
+
+var discardTests = []testCase{
+	{
+		description: "discard lower than 10 without inputs",
+		filterFunc:  lt10,
+		list:        nil,
+		expected:    nil},
+	{
+		description: "discard greater than 10 without discarded inputs",
+		filterFunc:  gt10,
+		list:        Ints{1, 2, 3},
+		expected:    Ints{1, 2, 3},
+	},
+	{
+		description: "discard odd with 2 odd and 1 even input",
+		filterFunc:  odd,
+		list:        Ints{1, 2, 3},
+		expected:    Ints{2},
+	},
+	{
+		description: "discard even with 2 odd and 3 even inputs",
+		filterFunc:  even,
+		list:        Ints{1, 2, 3, 4, 5},
+		expected:    Ints{1, 3, 5},
+	},
 }
 
 func TestKeepInts(t *testing.T) {
-	for _, test := range keepTests {
-		// setup here copies test.list, preserving the nil value if it is nil
-		// and making a fresh copy of the underlying array otherwise.
-		cp := test.list
-		if cp != nil {
-			cp = append(Ints{}, cp...)
-		}
-		switch res := cp.Keep(test.pred); {
-		case !reflect.DeepEqual(cp, test.list):
-			t.Fatalf("%#v.Keep() should not modify its receiver.  "+
-				"Found %#v, receiver should stay %#v",
-				test.list, cp, test.list)
-		case !reflect.DeepEqual(res, test.want):
-			t.Fatalf("%#v.Keep()\ngot: %#v\nwant: %#v",
-				test.list, res, test.want)
-		}
+	for _, tc := range keepTests {
+		t.Run(tc.description, func(t *testing.T) {
+			// setup here copies test.list, preserving the nil value if it is nil
+			// and making a fresh copy of the underlying array otherwise.
+			cp := tc.list
+			if cp != nil {
+				cp = append(Ints{}, cp...)
+			}
+			got := cp.Keep(tc.filterFunc)
+			switch {
+			case !reflect.DeepEqual(cp, tc.list):
+				t.Fatalf("%#v.Keep() should not modify its receiver. %#v should stay %#v", tc.list, cp, tc.list)
+			case !reflect.DeepEqual(got, tc.expected):
+				t.Fatalf("%#v.Keep()\n got: %#v\nwant: %#v", tc.list, got, tc.expected)
+			}
+		})
 	}
 }
 
 func TestDiscardInts(t *testing.T) {
-	for _, test := range discardTests {
-		cp := test.list
-		if cp != nil {
-			cp = append(Ints{}, cp...) // dup underlying array
-		}
-		switch res := cp.Discard(test.pred); {
-		case !reflect.DeepEqual(cp, test.list):
-			t.Fatalf("%#v.Discard() should not modify its receiver.  "+
-				"Found %#v, receiver should stay %#v",
-				test.list, cp, test.list)
-		case !reflect.DeepEqual(res, test.want):
-			t.Fatalf("%#v.Discard()\ngot: %#v\nwant: %#v",
-				test.list, res, test.want)
-		}
+	for _, tc := range discardTests {
+		t.Run(tc.description, func(t *testing.T) {
+			cp := tc.list
+			if cp != nil {
+				cp = append(Ints{}, cp...) // dup underlying array
+			}
+			got := cp.Discard(tc.filterFunc)
+			switch {
+			case !reflect.DeepEqual(cp, tc.list):
+				t.Fatalf("%#v.Discard() should not modify its receiver. %#v should stay %#v", tc.list, cp, tc.list)
+			case !reflect.DeepEqual(got, tc.expected):
+				t.Fatalf("%#v.Discard()\n got: %#v\nwant: %#v", tc.list, got, tc.expected)
+			}
+		})
 	}
 }
 
@@ -92,13 +114,12 @@ func TestKeepStrings(t *testing.T) {
 	want := Strings{"zebra", "zombies", "zealot"}
 
 	cp := append(Strings{}, list...) // make copy, as with TestInts
-	switch res := cp.Keep(zword); {
+	got := cp.Keep(zword)
+	switch {
 	case !reflect.DeepEqual(cp, list):
-		t.Fatalf("%#v.Keep() should not modify its receiver.  "+
-			"Found %#v, receiver should stay %#v",
-			list, cp, list)
-	case !reflect.DeepEqual(res, want):
-		t.Fatalf("%#v.Keep()\ngot: %#v\nwant: %#v", list, res, want)
+		t.Fatalf("%#v.Keep() should not modify its receiver. %#v should stay %#v", list, cp, list)
+	case !reflect.DeepEqual(got, want):
+		t.Fatalf("%#v.Keep()\n got: %#v\nwant: %#v", list, got, want)
 	}
 }
 
@@ -127,13 +148,12 @@ func TestKeepLists(t *testing.T) {
 		{1, 2, 5},
 	}
 	cp := append(Lists{}, list...)
-	switch res := cp.Keep(has5); {
+	got := cp.Keep(has5)
+	switch {
 	case !reflect.DeepEqual(cp, list):
-		t.Fatalf("%#v.Keep() should not modify its receiver.  "+
-			"Found %#v, receiver should stay %#v",
-			list, cp, list)
-	case !reflect.DeepEqual(res, want):
-		t.Fatalf("%#v.Keep()\ngot: %#v\nwant: %#v", list, res, want)
+		t.Fatalf("%#v.Keep() should not modify its receiver. %#v should stay %#v", list, cp, list)
+	case !reflect.DeepEqual(got, want):
+		t.Fatalf("%#v.Keep()\n got: %#v\nwant: %#v", list, got, want)
 	}
 }
 
@@ -143,7 +163,7 @@ func BenchmarkKeepInts(b *testing.B) {
 	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range keepTests {
-			test.list.Keep(test.pred)
+			test.list.Keep(test.filterFunc)
 		}
 	}
 }
@@ -154,7 +174,7 @@ func BenchmarkDiscardInts(b *testing.B) {
 	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range discardTests {
-			test.list.Discard(test.pred)
+			test.list.Discard(test.filterFunc)
 		}
 	}
 }

@@ -33,7 +33,7 @@ func GoVersion(gomodFilePath string) (string, error) {
 }
 
 // Update updates a go.mod file at the given path to the given Go version.
-func Update(path string, version string) error {
+func Update(path, version string) error {
 	// Read the file
 	rawContent, err := os.ReadFile(path)
 	if err != nil {
@@ -45,7 +45,7 @@ func Update(path string, version string) error {
 	content = versionRegex.ReplaceAllString(content, "${1}go "+version+"${3}")
 
 	// Write the file
-	err = os.WriteFile(path, []byte(content), 0o644)
+	err = os.WriteFile(path, []byte(content), 0o644) //nolint:gosec // 644 are the default permissions for a new file on *nix systems
 	if err != nil {
 		return fmt.Errorf("error writing %q: %w", path, err)
 	}

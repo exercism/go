@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"find": &[]testCase{},
 	}
 	if err := gen.Gen("binary-search", j, t); err != nil {

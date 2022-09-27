@@ -12,8 +12,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
-		"commands" : &[]testCase{},
+	j := map[string]interface{}{
+		"commands": &[]testCase{},
 	}
 	if err := gen.Gen("secret-handshake", j, t); err != nil {
 		log.Fatal(err)

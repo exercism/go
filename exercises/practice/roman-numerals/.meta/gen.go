@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"roman": &[]testCase{},
 	}
 	if err := gen.Gen("roman-numerals", j, t); err != nil {
