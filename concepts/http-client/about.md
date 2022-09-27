@@ -1,12 +1,12 @@
-# HTTP
+# Go net/http package client
 
-HTTP or Hypertext Transfer Protocol is an application layer protocol. When you write a URL address in format of `http://website-address`, your browser is acting as a client and uses Hypertext Transfer Protocol to ask a server for resources and uses those resources to view the webpage.
+[HTTP (Hypertext Transfer Protocol)](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) is a protocol that allows devices to send and receive data using a client-server model.
 In this concept we will learn how to code HTTP clients and send requests to http servers using go `net/http` package.
 
-## Client
+## Setting up an HTTP client
 
 A client can be defined by using `http.Client` structure.
-There are three main methods that you can use in http/net package to act as an HTTP client:
+There are three main methods that you can use in http/net package to use as an HTTP client:
 
 ### Get method
 
@@ -41,7 +41,7 @@ func main() {
 Here we connect to Google main webpage and display the response body.
 
 ~~~~exercism/caution
-Tip: You should always close the response body. Since Go uses HTTP/1.1, it keeps a connection to the server open in case you might reuse it. Therefore using `defer resp.Body.Close()` you can make sure the response body will be closed after your function exits.  
+Since Go uses HTTP/1.1, it keeps each connection to the server open in case you might reuse it. Go won't try to figure out if you are done with the connection and as a result, if you do not close the connection after you are done with it, it leads to memory leaks. Therefore it is extremely important to use `defer resp.Body.Close()` so you make sure the response body will be closed after your function exits. 
 ~~~~
 
 ### Head method
