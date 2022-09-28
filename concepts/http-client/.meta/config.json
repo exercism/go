@@ -1,7 +1,8 @@
 {
     "blurb": "net/http package provides tools to write HTTP clients in Go.",
     "authors":[
-        "MikaeelMF"
+        "MikaeelMF",
+        "junedev"
     ],
     "contributers": []
 }
