@@ -1,6 +1,6 @@
-# HTTP
+# Go net/http package server
 
-HTTP or Hypertext Transfer Protocol is an application layer protocol. When you write a URL address in format of `http://website-address`, your browser is acting as a client and uses Hypertext Transfer Protocol to ask a server for resources and uses those resources to view the webpage.
+[HTTP (Hypertext Transfer Protocol)](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) is a protocol that allows devices to send and receive data using a client-server model.
 In this concept we will learn how to code HTTP servers and respond to client requests using go `net/http` package.
 
 ## Server
@@ -11,28 +11,36 @@ A server can be defined by using `http.Server` structure. There are five importa
 2. `Handler Handler`: the server’s multiplexer,
 3. `IdleTimeout time.Duration`: This is the maximum amount of time that a connection will be kept open before a new request from the client arrives.
 4. `ReadHeaderTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request headers.
-5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request. The core components used to create HTTP servers using `net/http` package are handlers. Consider the example below:
+5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request.
+~~~~exercism/note
+If you include no timeout for your server, then faulty clients can keep using resources and eventually bring your server to a halt.
+~~~~
+
+
+The core components used to create HTTP servers using `net/http` package are handlers. Consider the example below:
 
 ```go
-package main
-
-import (
-    "net/http"
-)
-
 func main(){
     // code ...
-    server := http.Server{Addr: "127.0.0.1:9898"}
+    server := http.Server{
+        Addr: "127.0.0.1:9898",
+        Handler: myHandler,
+        IdleTimeout: 30 * time.Second,
+        ReadHeaderTimeout: 10 * time.Second,
+        ReadTimeout: 20 * time.Second,
+        }
+    server.ListenAndServe() // Starting the server
     // code ...
 }
 ```
 
 ~~~~exercism/note
-As stated in [the server.go definition][server.go] regarding how new incoming http connections are handled:
-"Serve accepts incoming HTTP connections on the listener l, creating a new service goroutine for each. The service goroutines read requests and then call handler to reply to them.". Therefore each connection has its own goroutine which enables go to handle client requests concurrently. Albeit, this leads to better performance especially for handling a large set of clients, you must be aware of shared access to a resource and use mutexes or channels to handle it.
+As stated in [the server.go definition][server.go] regarding how new incoming http connections are handled: "Serve accepts incoming HTTP connections on the listener l, creating a new service goroutine for each. The service goroutines read requests and then call handler to reply to them.". Therefore each connection has its own goroutine which enables go to handle client requests concurrently. Albeit, this leads to better performance especially for handling a large set of clients, you must be aware of shared access to a resource and use mutexes or channels to handle it.
 ~~~~
 
 ### Handlers
+
+Handlers are responsible for satisfying the client's requests by performing various tasks. Each object that implements the `http.Handler` interface, is capable of responding to client requests.
 
 ```go
 type Handler interface {
@@ -40,7 +48,7 @@ type Handler interface {
 }
 ```
 
-Handlers are responsible for satisfying the client's requests by performing various tasks. Each object that implements the `http.Handler` interface, is capable of responding to client requests. Handler functions receive an `http.Request` which contains information regarding the client’s request, and an `http.ResponseWriter` that allows the handler to write the appropriate response in accordance with the request. `http.ResponseWriter` interface contains a `Header` field (!!! I need to complete this !!!), a `Write([]byte) (int, error)` method that writes the response to the client, and a `WriteHeader(statusCode int)`  that writes the appropriate status code to the client.
+Handler functions receive an `http.Request` which contains information regarding the client’s request, and an `http.ResponseWriter` that allows the handler to write the appropriate response in accordance with the request. `http.ResponseWriter` interface contains a `Header` field, a `Write([]byte) (int, error)` method that writes the response to the client, and a `WriteHeader(statusCode int)` that writes the appropriate status code to the client.
 
 ~~~~exercism/caution
 If you wish to send and status code besides `http.StatusOk` you need to use `WriteHeader` before `Write`, since `Write` assumes `http.StatusOk` if no status is set before invoking it.  
@@ -62,7 +70,7 @@ func(w http.ResponseWriter, r *http.Request){
 
 ### Multiplexer
 
-`http.ServeMux` is responsible for routing each request to the right handler by matching the pattern in the request with the **longest** pattern specified for it. `http.NewServeMux() *ServeMux` is used to create a new multiplexer. It uses handlers to route each request to the proper handler. As an example:
+`http.ServeMux` is responsible for routing each request to the right handler by matching the pattern in the URL of the request with the **longest** pattern specified for it. `http.NewServeMux() *ServeMux` is used to create a new multiplexer. As an example:
 ```go
 func multiplexer() *ServeMux{
  serveMux := http.NewServeMux()
@@ -72,6 +80,7 @@ func multiplexer() *ServeMux{
  return serveMux
 }
 ```
+Note that multiplexers satisfy handler's interface, therefore to use one, we can initialize a server by assigning a multiplexer as its handler.
 
 #### Absolute paths vs subtrees
 
