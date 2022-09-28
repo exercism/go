@@ -466,7 +466,9 @@
           "http-client"
         ],
         "prerequisites":[
-          "http-server"
+          "http-server",
+          "structs",
+          "interfaces"
         ]
       }
     ],
@@ -2183,12 +2185,12 @@
       "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
     },
     {
-      "name": "net/http Client",
+      "name": "HTTP Client",
       "slug": "http-client",
       "uuid": "632bc9fe-055e-472e-b47d-fcd682cb45ad"
     },
     {
-      "name": "net/http Server",
+      "name": "HTTP Server",
       "slug": "http-server",
       "uuid": "d9a30fd8-775a-4b02-9258-b2492020a30c"
     }
