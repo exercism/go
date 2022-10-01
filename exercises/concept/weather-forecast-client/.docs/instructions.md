@@ -1,6 +1,6 @@
 # HTTP client
 
-After you have successfully created an HTTP server to respond to client requests, you now need to develop an HTTP client that can take a request and return the  server's respond.
+After you have successfully created an HTTP server to respond to client requests, you now need to develop an HTTP client that can send a request and return the server's respond.
 
 ## Client
 
