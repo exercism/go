@@ -47,7 +47,7 @@ func TestKindsNotEqual(t *testing.T) {
 		for j := i + 1; j < len(kindsAndNames); j++ {
 			pair2 := kindsAndNames[j]
 			if pair1.kind == pair2.kind {
-				t.Fatalf("%s should not be equal to %s", pair1.kind, pair2.name)
+				t.Fatalf("the value of %s should not be equal to the value of %s", pair1.name, pair2.name)
 			}
 		}
 	}
