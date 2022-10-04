@@ -3,7 +3,7 @@ package say
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: aad92b5 say: Add more tests (#2087)
 
 var testCases = []struct {
 	description string
@@ -42,6 +42,18 @@ var testCases = []struct {
 		expectError: false,
 	},
 	{
+		description: "thirty",
+		input:       30,
+		expected:    "thirty",
+		expectError: false,
+	},
+	{
+		description: "ninety-nine",
+		input:       99,
+		expected:    "ninety-nine",
+		expectError: false,
+	},
+	{
 		description: "one hundred",
 		input:       100,
 		expected:    "one hundred",
@@ -51,6 +63,18 @@ var testCases = []struct {
 		description: "one hundred twenty-three",
 		input:       123,
 		expected:    "one hundred twenty-three",
+		expectError: false,
+	},
+	{
+		description: "two hundred",
+		input:       200,
+		expected:    "two hundred",
+		expectError: false,
+	},
+	{
+		description: "nine hundred ninety-nine",
+		input:       999,
+		expected:    "nine hundred ninety-nine",
 		expectError: false,
 	},
 	{
