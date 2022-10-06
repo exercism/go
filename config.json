@@ -1477,7 +1477,8 @@
           "loops",
           "strings",
           "text_formatting"
-        ]
+        ],
+        "status": "deprecated"
       },
       {
         "slug": "food-chain",
