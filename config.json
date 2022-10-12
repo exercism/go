@@ -524,7 +524,7 @@
       },
       {
         "slug": "difference-of-squares",
-        "name": "Difference Of Squares",
+        "name": "Difference of Squares",
         "uuid": "19628c8a-a89f-457e-9526-3d400024a927",
         "practices": [],
         "prerequisites": [],
@@ -747,7 +747,7 @@
       },
       {
         "slug": "rna-transcription",
-        "name": "Rna Transcription",
+        "name": "RNA Transcription",
         "uuid": "9bef2163-2a24-4d50-9610-e3cac2e7772a",
         "practices": [],
         "prerequisites": [],
@@ -796,7 +796,7 @@
       },
       {
         "slug": "etl",
-        "name": "Etl",
+        "name": "ETL",
         "uuid": "73da448c-33b7-4565-ab48-1de5020d65ab",
         "practices": [],
         "prerequisites": [],
@@ -872,7 +872,7 @@
       },
       {
         "slug": "run-length-encoding",
-        "name": "Run Length Encoding",
+        "name": "Run-Length Encoding",
         "uuid": "a361d183-d920-42b4-8f75-50d40982b785",
         "practices": [],
         "prerequisites": [],
@@ -885,7 +885,7 @@
       },
       {
         "slug": "isbn-verifier",
-        "name": "Isbn Verifier",
+        "name": "ISBN Verifier",
         "uuid": "3530f2f0-ee5f-46a3-a8ee-e9927a637253",
         "practices": [],
         "prerequisites": [],
@@ -935,7 +935,7 @@
       },
       {
         "slug": "sum-of-multiples",
-        "name": "Sum Of Multiples",
+        "name": "Sum of Multiples",
         "uuid": "f0c25fde-960e-4161-a642-4414925b4d0a",
         "practices": [],
         "prerequisites": [],
@@ -1004,7 +1004,7 @@
       },
       {
         "slug": "diffie-hellman",
-        "name": "Diffie Hellman",
+        "name": "Diffie-Hellman",
         "uuid": "f3058f8b-7e0e-4adb-9add-1df23607d4ed",
         "practices": [],
         "prerequisites": [],
@@ -1281,7 +1281,7 @@
       },
       {
         "slug": "pov",
-        "name": "Pov",
+        "name": "POV",
         "uuid": "cdbadf95-66ff-455f-bea3-eff5024afcb7",
         "practices": [],
         "prerequisites": [],
@@ -1382,7 +1382,7 @@
       },
       {
         "slug": "pascals-triangle",
-        "name": "Pascals Triangle",
+        "name": "Pascal's Triangle",
         "uuid": "92e2a192-5ee9-422a-8699-c231a7136b10",
         "practices": [],
         "prerequisites": [],
@@ -1456,7 +1456,7 @@
       },
       {
         "slug": "ocr-numbers",
-        "name": "Ocr Numbers",
+        "name": "OCR Numbers",
         "uuid": "13e58d89-4dbb-4384-9268-2f8083588d7a",
         "practices": [],
         "prerequisites": [],
@@ -1747,7 +1747,7 @@
       },
       {
         "slug": "paasio",
-        "name": "Paasio",
+        "name": "PaaS I/O",
         "uuid": "5dbec590-7a50-4398-987b-7252734216a2",
         "practices": [],
         "prerequisites": [],
@@ -1952,7 +1952,7 @@
       },
       {
         "slug": "state-of-tic-tac-toe",
-        "name": "State of Tic Tac Toe",
+        "name": "State of Tic-Tac-Toe",
         "uuid": "ab6050ba-b40c-46bb-938f-7baef097b52d",
         "practices": [],
         "prerequisites": [],
