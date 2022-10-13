@@ -98,7 +98,7 @@ fmt.Sprint(windSpeedYesterday)
 // Output: 22 mph
 ```
 
-## 5. Implement the `Stringer` interface for type `MetData`
+## 5. Implement the `Stringer` interface for type `MeteorologyData`
 
 Meteorological data specifies location, temperature, wind direction, wind speed
 and humidity. It should be formatted as in the example below:
