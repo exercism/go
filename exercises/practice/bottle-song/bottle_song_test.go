@@ -2,7 +2,6 @@ package bottlesong
 
 import (
 	"fmt"
-	"sort"
 	"testing"
 )
 
@@ -22,7 +21,9 @@ func equal(a, b []string) bool {
 		return false
 	}
 
-	sort.Strings(a)
-	sort.Strings(b)
+	if len(a) == 0 && len(b) == 0 {
+		return true
+	}
+
 	return fmt.Sprintf("%v", a) == fmt.Sprintf("%v", b)
 }
