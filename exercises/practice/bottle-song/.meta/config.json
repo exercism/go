@@ -1,5 +1,5 @@
 {
-  "authors": [],
+  "authors": ["PakkuDon"],
   "files": {
     "solution": [
       "bottle_song.go"
