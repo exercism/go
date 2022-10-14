@@ -48,10 +48,14 @@ func verse(n int) []string {
 		}
 	default:
 		return []string{
-			fmt.Sprintf("%s green bottles hanging on the wall,", strings.Title(numberToWord[n])),
-			fmt.Sprintf("%s green bottles hanging on the wall,", strings.Title(numberToWord[n])),
+			fmt.Sprintf("%s green bottles hanging on the wall,", toTitleCase(numberToWord[n])),
+			fmt.Sprintf("%s green bottles hanging on the wall,", toTitleCase(numberToWord[n])),
 			"And if one green bottle should accidentally fall,",
 			fmt.Sprintf("There'll be %s green bottles hanging on the wall.", numberToWord[n-1]),
 		}
 	}
+}
+
+func toTitleCase(s string) string {
+	return strings.ToUpper(s[0:1]) + strings.ToLower(s[1:])
 }
