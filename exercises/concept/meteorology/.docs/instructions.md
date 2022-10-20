@@ -11,8 +11,7 @@ After some discussion, the team have agreed that the unit of temperature will be
 
 Make the `TemperatureUnit` type implement the `Stringer` interface by adding a `String` method to it. This method must return the string `"°C"` if the temperature unit is Celsius or `"°F"` if the temperature unit is Fahrenheit.
 
-```go 
-temperatureUnit := Celsius
+```go
 celsiusUnit := Celsius
 fahrenheitUnit := Fahrenheit
 
