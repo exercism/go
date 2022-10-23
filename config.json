@@ -1973,7 +1973,12 @@
         "uuid": "e6e1e960-1dcf-44cd-99e1-c26063965d13",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 5
+        "topics": [
+          "loops",
+          "strings",
+          "text_formatting"
+        ],
+        "difficulty": 3
       }
     ]
   },
