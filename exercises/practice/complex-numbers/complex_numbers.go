@@ -1,4 +1,4 @@
-package complex
+package complexnumbers
 
 // Define the Number type here.
 
