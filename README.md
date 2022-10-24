@@ -2,9 +2,10 @@
 
 [![Configlet Status](https://github.com/exercism/go/workflows/Configlet%20CI/badge.svg)](https://github.com/exercism/go/actions?query=workflow%3A%22Configlet+CI%22)
 [![Exercise Test Status](https://github.com/exercism/go/workflows/Exercise%20tests/badge.svg)](https://github.com/exercism/go/actions?query=workflow%3A%22Exercise+tests%22)
-[![Gitter chat](https://badges.gitter.im/exercism/go.svg)](https://gitter.im/exercism/go)
 
-Exercism exercises in Go
+Exercism exercises in Go.
+
+-  [Exercism Forum: Go](https://forum.exercism.org/c/programming/go/19)
 
 ## Issues
 
