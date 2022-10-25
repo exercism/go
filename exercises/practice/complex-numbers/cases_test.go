@@ -1,4 +1,4 @@
-package complex
+package complexnumbers
 
 // Source: exercism/problem-specifications
 // Commit: 24a7bfa Add exponential resulting in a number with real and imaginary part (#2052)
