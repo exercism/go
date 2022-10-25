@@ -9,11 +9,11 @@ If you are new to Go errors or panics we recommend reading
 [the documentation on these topics](https://blog.golang.org/defer-panic-and-recover)
 first for context.
 
-In this exercise you will be required to define a function `Use(o ResourceOpener, input string) error` that opens a resource, calls `Frob(input)` on
+In this exercise you will be required to define a function `Use(opener ResourceOpener, input string) error` that opens a resource, calls `Frob(input)` on
 the result resource and then closes that resource (in all cases). Your function
 should properly handle errors and panics.
 
-`ResourceOpener o` will be a function you may invoke directly `o()` in an
+`ResourceOpener opener` will be a function you may invoke directly `opener()` in an
 attempt to "open" the resource. It returns a `Resource` and error value in the
 [idiomatic Go fashion](https://blog.golang.org/error-handling-and-go):
 
