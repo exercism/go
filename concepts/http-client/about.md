@@ -90,3 +90,12 @@ func client(url string) {
 ```
 
 Here we send a `"Hello, World!"` message, as type `"text/plain"` to a url given as input to `client` function.
+
+### Setting Timeout for Client
+
+`Client` type in Go has a variable called `Timeout`. This variable is responsible for closing the connection if the client's connection time, redirect, and response body read takes more time that the designated value. The default value for `Timeout` is zero, which means no timeout. This might cause unwanted behavior and a malicious server or unintended bug, can cause your program to halt. Therefore you should set a value for this variable every time that you create a new client to prevent this from happening. Here is a how you can do it while creating a client:
+```go
+func NewClient() *http.Client{
+    return &http.Client{Timeout: 5 * time.second}
+}
+```
