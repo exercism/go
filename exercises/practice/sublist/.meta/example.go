@@ -2,17 +2,6 @@ package sublist
 
 import "reflect"
 
-// Relation is the comparison between lists
-type Relation string
-
-// Possible relations
-const (
-	RelationEqual     Relation = "equal"
-	RelationSublist   Relation = "sublist"
-	RelationSuperlist Relation = "superlist"
-	RelationUnequal   Relation = "unequal"
-)
-
 // Sublist checks difference of two lists and
 // returns equal, sublist, superlist or unequal according
 // to their relation to each other.
