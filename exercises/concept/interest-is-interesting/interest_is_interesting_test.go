@@ -239,6 +239,18 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 			targetBalance: 2345.0,
 			want:          0,
 		},
+		{
+			name:          "Balance is exactly same as target",
+			balance:       2345.0,
+			targetBalance: 2345.0,
+			want:          0,
+		},
+		{
+			name:          "Result balance would be exactly same as target",
+			balance:       1000.0,
+			targetBalance: 1032.682765146664,
+			want:          2,
+		},
 	}
 
 	for _, tt := range tests {
