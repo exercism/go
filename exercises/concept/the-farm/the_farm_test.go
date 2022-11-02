@@ -203,3 +203,37 @@ func TestDivideFoodSillyNephewError(t *testing.T) {
 		})
 	}
 }
+
+func TestDivideFoodNegativeFodderErrorPrecedence(t *testing.T) {
+	tests := []struct {
+		description             string
+		weightFodder            WeightFodder
+		weightFodderDescription string
+		cows                    int
+		wantAmount              float64
+		wantErr                 error
+	}{
+		{
+			description:             "Negative fodder and negative cows",
+			cows:                    -5,
+			wantAmount:              0,
+			wantErr:                 errors.New("negative fodder"),
+			weightFodder:            testWeightFodder{fodder: -1, err: nil},
+			weightFodderDescription: "-1 fodder, no error",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.description, func(t *testing.T) {
+			_, gotErr := DivideFood(test.weightFodder, test.cows)
+			if !(gotErr == test.wantErr || gotErr.Error() == test.wantErr.Error()) {
+				t.Errorf(
+					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
+					test.weightFodderDescription,
+					test.cows,
+					gotErr,
+					test.wantErr,
+				)
+			}
+		})
+	}
+}
