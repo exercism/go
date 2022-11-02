@@ -225,12 +225,10 @@ func TestDivideFoodNegativeFodderErrorPrecedence(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.description, func(t *testing.T) {
 			_, gotErr := DivideFood(test.weightFodder, test.cows)
-			switch {
-			case !(gotErr == test.wantErr || gotErr.Error() == test.wantErr.Error()):
+			if !(gotErr == test.wantErr || gotErr.Error() == test.wantErr.Error()) {
 				t.Errorf(
 					"DivideFood(weightFodder(%v), %v) got error (%v), but wanted error (%v)",
 					test.weightFodderDescription,
-
 					test.cows,
 					gotErr,
 					test.wantErr,
@@ -239,4 +237,3 @@ func TestDivideFoodNegativeFodderErrorPrecedence(t *testing.T) {
 		})
 	}
 }
-
