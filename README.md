@@ -46,7 +46,7 @@ Let's walk through an example, non-existent, exercise, which we'll call
 
 ### Exercise configuration
 
-An exercise is [configured](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
+An exercise is [configured](https://exercism.org/docs/building/tracks/config-json)
 via an entry in the exercises array in [config.json file](/config.json). If `fizzbuzz` is an optional
 exercise, it would have an entry below the core exercises that might look like:
 
@@ -61,7 +61,7 @@ exercise, it would have an entry below the core exercises that might look like:
 }
 ```
 
-See [Exercise Configuration](https://github.com/exercism/docs/blob/master/language-tracks/configuration/exercises.md)
+See [Exercism Docs: config.json](https://exercism.org/docs/building/tracks/config-json)
 for more info.
 
 ### Exercise files: Overview
