@@ -1,7 +1,24 @@
 # HTTP client
 
-After you have successfully created an HTTP server to respond to client requests, you now need to develop an HTTP client that can send a request and return the server's respond.
+Now that you have successfully created a weather server for the president, they need an HTTP client to be able to make queries and get responses. They have given you the following list of tasks to fulfill for your weather client:
 
-## Client
+## 1. Create a WeatherClient type
 
-The client is responsible to connect to the server via `ForecastClient` function, ask for the forecast, and return the result with any possible error that have occured.
+First, you need to create a Client type that must have three fields:
+
+- A `*http.Client` to hold the main http client
+- A `string` to hold the main server's base URL
+- A `time.Duration` to hold the timeout value for the client
+
+## 2. Create a function named NewWeatherClient
+
+Now you must define a function that gets all the required arguments and returns a new WeatherClient with the designated parameters.
+
+## 3. Create a method named todayWeatherQuery
+
+`todayWeatherQuery` gets a city name as its argument and returns the result. You must send a `GET` request and attach the name of the city to the main URL for making the query using the template below:
+`"baseUrl/?city={cityName}"`
+
+## 4. Create a method named futureWeatherQuery
+
+`futureWeatherQuery` gets a city name and an integer as its argument and returns the result for the city's weather in the future. You must send a `POST` request, send the integer to get the weather for n-th day in the future, and use the URL rule above.
