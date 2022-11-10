@@ -1,26 +1,19 @@
 # Go net/http package client
 
 [HTTP (Hypertext Transfer Protocol)](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) is a protocol that allows devices to send and receive data using a client-server model.
-In this concept we will learn how to code HTTP clients and send requests to http servers using go `net/http` package. To be precise, we will learn about:
-1. Defining a new http client,
-2. Using `Get` method to send GET requests,
-3. Using `Head` method to send HEAD requests,
-4. Using `Post` method to send POST requests,
-5. Using `Do` method to send different types of requests using the same logic,
-6. Using `Timeout` variables to timeout a stalling request and why it is important to do so,
-7. Defining `CheckRedirect` function to set our custom redirection policy and why it is important to do so.
+In this concept we will learn how to code HTTP clients and send requests to http servers using go `net/http` package.
 
 ## Setting up an HTTP client
 
 A client can be defined by using `http.Client` structure:
+
 ```go
 func NewClient() {
     client := &http.Client{}
 }
 ```
-There are a few methods that helps one to send requests to a server for a Go client:
 
-### Get method
+### Sending a GET request
 
 `func (c *Client) Get(url string) (resp *Response, err error)`
 This method lets you send GET requests to a URL and receive the response or any error that might occur. Consider the example below:
@@ -47,7 +40,7 @@ Here we connect to Google main webpage and display the response body.
 Since Go uses HTTP/1.1, it keeps each connection to the server open in case you might reuse it. Go won't try to figure out if you are done with the connection and as a result, if you do not close the connection after you are done with it, it leads to memory leaks. Therefore it is extremely important to use `defer resp.Body.Close()` so you make sure the response body will be closed after your function exits. 
 ~~~~
 
-### Head method
+### Sending a HEAD request
 
 `func (c *Client) Head(url string) (resp *Response, err error)`
 This method lets you send HEAD requests to a URL and receive the response or any error that might occur. The result of this method is similar to Get, but the response body is empty.
@@ -56,7 +49,7 @@ This method lets you send HEAD requests to a URL and receive the response or any
 You still need to close the response body even if you are sending a HEAD request.  
 ~~~~
 
-### Post method
+### Sending a POST request
 
 `func (c *Client) Post(url, contentType string, body io.Reader) (resp *Response, err error)`
 This method lets you send a POST request to a URL and ask the server to accept the data you send in `body` with `contentType` type. Consider the example below:
@@ -82,13 +75,14 @@ func client(url string) {
 	}
 }
 ```
+
 Here we send a `"Hello, World!"` message, as type `"text/plain"` to a url given as input to `client` function.
 
 ### Do method
 
 `func (c *Client) Do(req *Request) (*Response, error)`
-To avoid possible problems that might occur for using different methods for different requests and to follow a DRY approach, Go has a single method that can be used instead of all the methods mentioned above.
-This method takes an `*http.Request` and sends a request to the server according to the variables set in the request. Consider the example below as a substitue for above examples:
+Using `Do` method, you can send `GET`, `POST`, and `HEAD` requests. This method takes an `*http.Request` and sends a request to the server according to the variables set in the request. Consider the example below as a substitue for above examples:
+
 ```go
 func client(url, method string) {
 	client := &http.Client{}
@@ -118,6 +112,7 @@ func client(url, method string) {
 
 `Timeout time.Duration`
 `Client` type in Go has a variable called `Timeout`. This variable is responsible for closing the connection if the client's connection time, redirect, and response body read takes more time that the designated value. The default value for `Timeout` is zero, which means no timeout. This might cause unwanted behavior and a malicious server or unintended bug, can cause your program to halt. Therefore you should set a value for this variable every time that you create a new client to prevent this from happening. Here is a how you can do it while creating a client:
+
 ```go
 func NewClient() *http.Client{
     return &http.Client{Timeout: 5 * time.second}
@@ -128,10 +123,13 @@ func NewClient() *http.Client{
 
 `CheckRedirect func(req *Request, via []*Request) error`
 Out of the box, Go's http.client automatically follows redirects sent from a server (Up to 10 redirections). Although redirections can have their own benefits (e.g. in address aliasing, or permannatly moving to new domains), it may be a result of man-in-the-middle or similar attacks. Therefore it is important to know how you can set the desired policy for your Go client. The redirection policy is set by a function called `CheckRedirect` and you can define it while creating a new `http.Client`. The `req` is the next request, and the `via` are all requests sent up to this point. Three possible scenarios can happen while using this funciton:
+
 1. The function returns no error: The client will follow the redirection and creates the request `req`,
 2. The function returns `ErrUseLastResponse`: The client rertuns the most recent response with `nil` as its error value,
 3. The function returns an error besides `ErrUseLastResponse`: The client returns the previous response and the thrown error as its error value.
+
 Here is an example to create a client that rejects all redirections:
+
 ```go
 func NewClient() *http.Client{
     return &http.Client{CheckRedirect: func(req *Request, via []*Request) error {
