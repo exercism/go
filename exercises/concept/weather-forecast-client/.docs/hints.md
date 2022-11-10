@@ -15,3 +15,7 @@ You can use both `GET` method and `Do` method for this section.
 ## 4. Create a method named FodayWeatherQuery
 
 You can use both `POST` method and `Do` method for this section. Beware that you must encode the integer to get the right answer.
+
+## 5. Create a method named WeatherReader
+
+You must check if the previous result have had any errors.

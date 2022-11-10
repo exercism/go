@@ -16,9 +16,13 @@ Now you must define a function that gets all the required arguments and returns 
 
 ## 3. Create a method named TodayWeatherQuery
 
-`todayWeatherQuery` gets a city name as its argument and returns the result. You must send a `GET` request and attach the name of the city to the main URL for making the query using the template below:
+`todayWeatherQuery` gets a city name as its argument and returns the response. You must send a `GET` request and attach the name of the city to the main URL for making the query using the template below:
 `"baseUrl/?city={cityName}"`
 
 ## 4. Create a method named FutureWeatherQuery
 
-`futureWeatherQuery` gets a city name and an integer as its argument and returns the result for the city's weather in the future. You must send a `POST` request, send the integer to get the weather for n-th day in the future, and use the URL rule above.
+`futureWeatherQuery` gets a city name and an integer as its arguments and returns the response for the city's weather in the future. You must send a `POST` request, send the integer to get the weather for n-th day in the future, and use the URL rule above.
+
+## 5. Create a method named WeatherReader
+
+`WeatherReader` gets an *http.Response and an error as its arguments and returns the result as a string and any possible error encountered.

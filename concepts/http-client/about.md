@@ -32,7 +32,7 @@ func client(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer resp.Body.Close()            // Always close the reponse body
+	defer resp.Body.Close()            // Always close the reponse body after checking for any errors
 	body, err := io.ReadAll(resp.Body) // Reading the response HTTP body
 	if err != nil {
 		log.Fatal(err)
@@ -76,10 +76,10 @@ func client(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusAccepted { // Checking whether the server accepted the request
 		log.Fatalf("Server did not accept the request. Status code: %d", resp.StatusCode)
 	}
-	_ = resp.Body.Close()
 }
 ```
 Here we send a `"Hello, World!"` message, as type `"text/plain"` to a url given as input to `client` function.
@@ -103,14 +103,14 @@ func client(url, method string) {
 
 	// Sending the request using client.Do
 	resp, err := client.Do(req)
-
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer resp.Body.Close()
+
 	if resp.StatusCode != http.StatusAccepted { // Checking whether the server accepted the request
 		log.Fatalf("Server did not accept the request. Status code: %d", resp.StatusCode)
 	}
-	_ = resp.Body.Close()
 }
 ```
 
