@@ -16,7 +16,7 @@ type Person struct {
 }
 
 func (p Person) Greetings() string {
-	return fmt.Sprintf("Welcome %s !", p.Name)
+	return fmt.Sprintf("Welcome %s!", p.Name)
 }
 
 s := Person{Name: "Bronson"}
