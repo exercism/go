@@ -1,45 +1,72 @@
 package weatherforecastclient
 
 import (
-	"errors"
+	"bytes"
+	"encoding/gob"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"time"
 )
 
-type Client struct {
+type WeatherClient struct {
 	httpClient *http.Client
-	serverAddr string
+	baseURL    string
+	timeout    time.Duration
 }
 
-func NewForecastClient(serverAddr string) (*Client, error) {
-	return &Client{httpClient: &http.Client{Timeout: 5 * time.Second}, serverAddr: serverAddr}, nil
-}
-
-// SELF:Check what is the standard way to structure the Get and Post different functions
-func (c *Client) Query(city, method string, data ...string) (string, error) {
-	if method == http.MethodGet {
-		req, err := http.NewRequest(method, fmt.Sprintf("%s/weather?city=%s", c.serverAddr, city), http.NoBody)
-		if err != nil {
-			return "", err
-		}
-		resp, err := c.httpClient.Do(req)
-		if err != nil {
-			return "", err
-		}
-		defer resp.Body.Close()
-		if resp.StatusCode != http.StatusOK {
-			return "", errors.New(fmt.Sprint(resp.StatusCode))
-		}
-		b, err := io.ReadAll(resp.Body)
-		if err != nil {
-			return "", err
-		}
-		return string(b), nil
-	} else if method == http.MethodPost {
-		// SELF: complete this section
+func NewWeatherClient(URL string, timeout time.Duration) *WeatherClient {
+	client := &http.Client{
+		Timeout: timeout,
 	}
-	// SELF: find a better way to raise this error
-	return "", errors.New(fmt.Sprint(http.StatusMethodNotAllowed))
+	return &WeatherClient{
+		httpClient: client,
+		baseURL:    URL,
+		timeout:    timeout,
+	}
+}
+
+func (wc *WeatherClient) TodayWeatherClient(city string) (*http.Response, error) {
+	queryURL := fmt.Sprintf("%s/?city=%s", wc.baseURL, city)
+	req, err := http.NewRequest(http.MethodGet, queryURL, http.NoBody)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := wc.httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (wc *WeatherClient) FutureWeatherQuery(city string, futureDate int) (*http.Response, error) {
+	queryURL := fmt.Sprintf("%s/?city=%s", wc.baseURL, city)
+	var buff bytes.Buffer
+	enc := gob.NewEncoder(&buff)
+	err := enc.Encode(futureDate)
+	if err != nil {
+		log.Fatal(err)
+	}
+	req, err := http.NewRequest(http.MethodPost, queryURL, &buff)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := wc.httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (wc *WeatherClient) WeatherReader(resp *http.Response, err error) (string, error) {
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+	return string(body), err
 }

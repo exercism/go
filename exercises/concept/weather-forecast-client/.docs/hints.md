@@ -1,5 +1,21 @@
 # Hints
 
-## 1. Defining an HTTP client
+## 1. Create a WeatherClient type
 
-In go, an HTTP client can be defined using `&http.Client{}`.
+Your `WeatherClient` must have all the required fields.
+
+## 2. Create a function named NewWeatherClient
+
+You must assign the correct input to the fields in your `WeatherClient` type. Also beware that you must return by reference. Also you must set the timeout variable for the client that you are creating.
+
+## 3. Create a method named TodayWeatherQuery
+
+You can use both `GET` method and `Do` method for this section.
+
+## 4. Create a method named FodayWeatherQuery
+
+You can use both `POST` method and `Do` method for this section. Beware that you must encode the integer to get the right answer.
+
+## 5. Create a method named WeatherReader
+
+You must check if the previous result have had any errors.
