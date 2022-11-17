@@ -46,7 +46,7 @@ Let's walk through an example, non-existent, exercise, which we'll call
 
 ### Exercise configuration
 
-An exercise is [configured](https://exercism.org/docs/building/tracks/config-json)
+An exercise is configured
 via an entry in the exercises array in [config.json file](/config.json). If `fizzbuzz` is an optional
 exercise, it would have an entry below the core exercises that might look like:
 
