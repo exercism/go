@@ -88,7 +88,7 @@ func TestAddItem(t *testing.T) {
 
 				itemQty, ok := bill[item.name]
 				if ok != tt.expected {
-					t.Errorf("Could not find item %s in customer bill", item.name)
+					t.Errorf("Item %s should not be found in bill, found %s = %d", item.name, item.name, itemQty)
 				}
 
 				if itemQty != item.qty {
