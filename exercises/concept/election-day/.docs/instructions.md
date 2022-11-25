@@ -95,7 +95,7 @@ type ElectionResult struct {
 
 It's time to announce the new president to the school!
 The president will be announced in the little digital message boards that the school has.
-The message should show the name of the new president and the votes it had, in the following format: `<candidate_name> (<votes>)`. This is an example of such message: `"Peter (51)"`.
+The message should show the name of the new president and the votes they had, in the following format: `<candidate_name> (<votes>)`. This is an example of such message: `"Peter (51)"`.
 
 Create a function `DisplayResult` that will receive an `*ElectionResult` as an argument and will return a string with the message to display.
 
