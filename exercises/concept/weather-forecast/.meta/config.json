@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about comments by helping a weather station manage their weather forecasting program.",
   "authors": [
     "nikimanoledaki",
     "micuffaro"
@@ -14,5 +13,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about comments by helping a weather station manage their weather forecasting program."
 }

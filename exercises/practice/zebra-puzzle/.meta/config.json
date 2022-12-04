@@ -1,5 +1,4 @@
 {
-  "blurb": "Solve the zebra puzzle.",
   "authors": [
     "leenipper"
   ],
@@ -20,6 +19,7 @@
       ".meta/example.go"
     ]
   },
+  "blurb": "Solve the zebra puzzle.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Zebra_Puzzle"
 }

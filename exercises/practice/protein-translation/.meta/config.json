@@ -1,5 +1,4 @@
 {
-  "blurb": "Translate RNA sequences into proteins.",
   "authors": [
     "Akasurde"
   ],
@@ -27,5 +26,6 @@
       ".meta/example.go"
     ]
   },
+  "blurb": "Translate RNA sequences into proteins.",
   "source": "Tyler Long"
 }

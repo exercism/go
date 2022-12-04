@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about the strings package by parsing logs.",
   "authors": [
     "sudomateo",
     "tehsphinx"
@@ -14,5 +13,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about the strings package by parsing logs."
 }

@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about slices by doing card tricks.",
   "authors": [
     "tehsphinx"
   ],
@@ -16,5 +15,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about slices by doing card tricks."
 }

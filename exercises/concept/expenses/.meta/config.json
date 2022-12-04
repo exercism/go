@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about first-class functions by helping Bob manage expense records.",
   "authors": [
     "antklim",
     "andrerfcsantos"
@@ -14,5 +13,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about first-class functions by helping Bob manage expense records."
 }

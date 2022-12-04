@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a year, report if it is a leap year.",
   "authors": [
     "kytrinyx"
   ],
@@ -36,6 +35,7 @@
       "cases_test.go"
     ]
   },
+  "blurb": "Given a year, report if it is a leap year.",
   "source": "JavaRanch Cattle Drive, exercise 3",
   "source_url": "http://www.javaranch.com/leap.jsp"
 }

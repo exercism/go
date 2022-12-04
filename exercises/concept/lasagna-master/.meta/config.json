@@ -1,11 +1,23 @@
 {
-  "blurb": "Dive deeper into Go functions while preparing to cook the perfect lasagna.",
-  "authors": ["bobtfish"],
-  "contributors": ["sougat818"],
+  "authors": [
+    "bobtfish"
+  ],
+  "contributors": [
+    "sougat818"
+  ],
   "files": {
-    "solution": ["lasagna_master.go"],
-    "test": ["lasagna_master_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "lasagna_master.go"
+    ],
+    "test": [
+      "lasagna_master_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   },
-  "forked_from": ["javascript/lasagna-master"]
+  "forked_from": [
+    "javascript/lasagna-master"
+  ],
+  "blurb": "Dive deeper into Go functions while preparing to cook the perfect lasagna."
 }

@@ -1,5 +1,4 @@
 {
-  "blurb": "Write a function to determine if a list is a sublist of another list.",
   "authors": [
     "ferhatelmas"
   ],
@@ -26,5 +25,6 @@
       "cases_test.go",
       "relations.go"
     ]
-  }
+  },
+  "blurb": "Write a function to determine if a list is a sublist of another list."
 }

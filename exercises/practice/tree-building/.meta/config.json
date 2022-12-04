@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement a tree building algorithm.",
   "authors": [
     "pminten"
   ],
@@ -33,5 +32,6 @@
     "example": [
       ".meta/example.go"
     ]
-  }
+  },
+  "blurb": "Implement a tree building algorithm."
 }

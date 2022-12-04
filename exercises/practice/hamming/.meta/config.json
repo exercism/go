@@ -1,5 +1,4 @@
 {
-  "blurb": "Calculate the Hamming difference between two DNA strands.",
   "authors": [
     "levicook"
   ],
@@ -38,6 +37,7 @@
       "cases_test.go"
     ]
   },
+  "blurb": "Calculate the Hamming difference between two DNA strands.",
   "source": "The Calculating Point Mutations problem at Rosalind",
   "source_url": "http://rosalind.info/problems/hamm/"
 }

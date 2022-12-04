@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about strings and the strings package by generating text for a store's new display.",
   "authors": [
     "erikschierboom",
     "junedev"
@@ -17,5 +16,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about strings and the strings package by generating text for a store's new display."
 }

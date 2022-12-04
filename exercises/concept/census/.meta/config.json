@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about zero values.",
   "authors": [
     "jamessouth",
     "sudomateo"
@@ -18,5 +17,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about zero values."
 }

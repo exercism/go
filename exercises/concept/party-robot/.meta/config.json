@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about strings by programming a party robot.",
   "authors": [
     "tehsphinx"
   ],
@@ -17,5 +16,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about strings by programming a party robot."
 }

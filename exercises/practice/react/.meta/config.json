@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement a basic reactive system.",
   "authors": [
     "pminten"
   ],
@@ -30,5 +29,6 @@
     "editor": [
       "interfaces.go"
     ]
-  }
+  },
+  "blurb": "Implement a basic reactive system."
 }
