@@ -1,5 +1,4 @@
 {
-  "blurb": "Pick the best hand(s) from a list of poker hands.",
   "authors": [
     "pminten"
   ],
@@ -34,6 +33,7 @@
       "cases_test.go"
     ]
   },
+  "blurb": "Pick the best hand(s) from a list of poker hands.",
   "source": "Inspired by the training course from Udacity.",
   "source_url": "https://www.udacity.com/course/viewer#!/c-cs212/"
 }

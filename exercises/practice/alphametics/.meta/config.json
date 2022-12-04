@@ -1,5 +1,4 @@
 {
-  "blurb": "Write a function to solve alphametics puzzles.",
   "authors": [
     "leenipper"
   ],
@@ -24,5 +23,6 @@
     "editor": [
       "cases_test.go"
     ]
-  }
+  },
+  "blurb": "Write a function to solve alphametics puzzles."
 }

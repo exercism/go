@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory.",
   "authors": [
     "DavyJ0nes",
     "kahgoh"
@@ -18,5 +17,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about numbers and type conversion by analyzing an assembly line in a car factory."
 }

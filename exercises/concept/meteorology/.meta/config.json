@@ -1,5 +1,4 @@
 {
-  "blurb": "Format metereological data of custom types into strings.",
   "authors": [
     "norbs57"
   ],
@@ -17,5 +16,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Format metereological data of custom types into strings."
 }

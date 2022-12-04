@@ -1,5 +1,4 @@
 {
-  "blurb": "Detect palindrome products in a given range.",
   "authors": [
     "soniakeys"
   ],
@@ -28,6 +27,7 @@
       ".meta/example.go"
     ]
   },
+  "blurb": "Detect palindrome products in a given range.",
   "source": "Problem 4 at Project Euler",
   "source_url": "http://projecteuler.net/problem=4"
 }

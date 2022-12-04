@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement various kinds of error handling and resource management",
   "authors": [
     "pminten"
   ],
@@ -32,5 +31,6 @@
     "editor": [
       "common.go"
     ]
-  }
+  },
+  "blurb": "Implement various kinds of error handling and resource management"
 }
