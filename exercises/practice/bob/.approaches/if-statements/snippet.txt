@@ -1,0 +1,7 @@
+if shout {
+    if question {
+        return "Calm down, I know what I'm doing!"
+    } else {
+        return "Whoa, chill out!"
+    }
+}
