@@ -2,7 +2,8 @@
 
 A [`Time`][time] in Go is a type describing a moment in time. The date and time information can be accessed, compared, and manipulated through its methods, but there are also some functions called on the `time` package itself. The current date and time can be retrieved through the [`time.Now`][now] function.
 
-The [`time.Parse`][parse] function parses strings into `Time` types using the particular format string `Mon Jan 2 15:04:05 -0700 MST 2006`.
+The [`time.Parse`][parse] function parses strings into values of type `Time`. Go has a special way of how you define the layout you expect for the parsing. You need to write an example of the layout using the values from this special timestamp:
+`Mon Jan 2 15:04:05 -0700 MST 2006`.
 
 For example:
 ```go
@@ -18,7 +19,7 @@ func parseTime() time.Time {
 // => 1995-09-22 13:00:00 +0000 UTC
 ```
 
-The [`Time.Format()`][format] method returns a string representation of time as the layout defined in the argument.
+The [`Time.Format()`][format] method returns a string representation of time. Just as with the `Parse` function, the target layout is again defined via an example that uses the values from the special timestamp.
 
 For Example:
 ```go
