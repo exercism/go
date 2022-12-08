@@ -68,12 +68,12 @@ func Square(num int) (uint64, error) {
 		return 0, errors.New("square number must be 1 through 64")
 	}
 
-	return uint64(1) << (num - 1), nil
+	return 1 << (num - 1), nil
 }
 
 // Total return the sum of the squares from 1 to 64, which is the number of squares on a chess board.
 func Total() uint64 {
-	return uint64(1<<64 - 1)
+	return 1<<64 - 1
 }
 ```
 
