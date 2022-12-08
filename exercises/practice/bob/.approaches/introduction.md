@@ -17,7 +17,7 @@ Regardless of the approach used, some things you could look out for include
   Combine the two determinations instead of copying them.
   Not duplicating the code will keep the code [DRY][dry].
 
-- Perhaps consider making `IsQuestion` and `IsShout` values set once instead of functions that are possibly called twice.
+- Perhaps consider using `IsQuestion` and `IsShout` to set values once instead of being functions that are possibly called twice.
 
 - If an `if` statement can return, then an `else if` or `else` is not needed.
   Execution will either return or will continue to the next statement anyway.
@@ -62,9 +62,8 @@ func Hey(remark string) string {
 	if shout {
 		if question {
 			return "Calm down, I know what I'm doing!"
-		} else {
-			return "Whoa, chill out!"
 		}
+		return "Whoa, chill out!"
 	}
 	if question {
 		return "Sure."
@@ -176,7 +175,7 @@ For more information, check the [Answer array approach][approach-answer-array].
 
 ## Which approach to use?
 
-Since the approaches are similar in performance, which to use is pretty much a matter of personal preference.
+Since each approach sometimes gave results slower than the other approaches when benchmarking, which to use could be a matter of stylistic choice. 
 
 - To compare the performance of the approaches, check out the [Performance article][article-performance].
 
