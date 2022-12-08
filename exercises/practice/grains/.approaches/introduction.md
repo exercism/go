@@ -30,7 +30,7 @@ package grains
 
 import (
 	"errors"
-  "math"
+	"math"
 	"math/big"
 )
 
@@ -60,7 +60,6 @@ package grains
 
 import (
 	"errors"
-	// "math/big"
 )
 
 // Square returns the number of grains on the square for the number passed in.
