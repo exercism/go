@@ -21,7 +21,7 @@ You can see that the exponent, or power, that `2` is raised by is always one les
 | 3      | 2     | 2 to the power of 2 = 4 |
 | 4      | 3     | 2 to the power of 4 = 8 |
 
-You can use the [`big`][big] package to support numbers above [`math.MaxUint64`][maxuint64].
+You can use the [`big`][big] package and its [Int][bigint] type to support numbers above [`math.MaxUint64`][maxuint64].
 
 ## Approach: `math.Pow` and Exponentiation
 
@@ -84,6 +84,7 @@ For more information, check the [Bit-shifting approach][approach-bit-shifting].
 [math-pow]: https://pkg.go.dev/math#Pow
 [big-exponentiation]: https://pkg.go.dev/math/big#Int.Exp
 [big]: https://pkg.go.dev/math/big
+[bigint]: https://pkg.go.dev/math/big#Int
 [maxuint64]: https://www.includehelp.com/golang/math-maxuint64-constant-with-examples.aspx
 [approach-math-pow-big-exponentiation]: https://exercism.org/tracks/go/exercises/grains/approaches/math-pow-big-exponentiation
 [approach-bit-shifting]: https://exercism.org/tracks/go/exercises/grains/approaches/bit-shifting
