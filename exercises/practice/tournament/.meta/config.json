@@ -1,5 +1,4 @@
 {
-  "blurb": "Tally the results of a small football competition.",
   "authors": [
     "pminten"
   ],
@@ -29,5 +28,6 @@
     "example": [
       ".meta/example.go"
     ]
-  }
+  },
+  "blurb": "Tally the results of a small football competition."
 }

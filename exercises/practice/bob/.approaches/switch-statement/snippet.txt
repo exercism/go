@@ -1,0 +1,8 @@
+switch true {
+case question && shout:
+    return "Calm down, I know what I'm doing!"
+case shout:
+    return "Whoa, chill out!"
+case question:
+    return "Sure."
+default:

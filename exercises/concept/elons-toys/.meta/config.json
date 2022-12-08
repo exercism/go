@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about methods by playing with Elon's toys",
   "authors": [
     "tehsphinx"
   ],
@@ -7,21 +6,22 @@
     "oanaOM",
     "mcastorina"
   ],
-  "forked_from": [
-    "csharp/elons-toys"
-  ],
   "files": {
     "solution": [
       "elons_toys.go"
-    ],
-    "editor": [
-      "car.go"
     ],
     "test": [
       "elons_toys_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "editor": [
+      "car.go"
     ]
-  }
+  },
+  "forked_from": [
+    "csharp/elons-toys"
+  ],
+  "blurb": "Learn about methods by playing with Elon's toys"
 }

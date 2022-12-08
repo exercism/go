@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement an evaluator for a very simple subset of Forth.",
   "authors": [
     "leenipper"
   ],
@@ -28,5 +27,6 @@
     "editor": [
       "cases_test.go"
     ]
-  }
+  },
+  "blurb": "Implement an evaluator for a very simple subset of Forth."
 }

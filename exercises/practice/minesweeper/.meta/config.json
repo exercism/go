@@ -1,6 +1,7 @@
 {
-  "blurb": "Add the numbers to a minesweeper board",
-  "authors": ["norbs57"],
+  "authors": [
+    "norbs57"
+  ],
   "contributors": [
     "alebaffa",
     "bitfield",
@@ -24,6 +25,7 @@
     ],
     "example": [
       ".meta/example.go"
-    ] 
-  }
+    ]
+  },
+  "blurb": "Add the numbers to a minesweeper board"
 }

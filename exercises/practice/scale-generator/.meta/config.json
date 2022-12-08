@@ -1,5 +1,4 @@
 {
-  "blurb": "Generate musical scales, given a starting note and a set of intervals.",
   "authors": [
     "sunilgopinath"
   ],
@@ -25,5 +24,6 @@
     "editor": [
       "cases_test.go"
     ]
-  }
+  },
+  "blurb": "Generate musical scales, given a starting note and a set of intervals."
 }

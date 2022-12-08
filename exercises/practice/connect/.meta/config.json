@@ -1,5 +1,4 @@
 {
-  "blurb": "Compute the result for a game of Hex / Polygon.",
   "authors": [
     "pminten"
   ],
@@ -32,5 +31,6 @@
     "editor": [
       "cases_test.go"
     ]
-  }
+  },
+  "blurb": "Compute the result for a game of Hex / Polygon."
 }

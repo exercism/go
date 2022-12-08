@@ -1,5 +1,4 @@
 {
-  "blurb": "Manage robot factory settings.",
   "authors": [
     "soniakeys"
   ],
@@ -30,5 +29,6 @@
       ".meta/example.go"
     ]
   },
+  "blurb": "Manage robot factory settings.",
   "source": "A debugging session with Paul Blackwell at gSchool."
 }

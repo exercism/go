@@ -1,0 +1,7 @@
+func Hey(remark string) string {
+    remark = strings.TrimSpace(remark)
+    if isEmpty(remark) {
+        return "Fine. Be that way!"
+    }
+    return answers[isQuestion(remark)+isShout(remark)]
+}

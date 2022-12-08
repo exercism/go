@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about constants by managing a savings account.",
   "authors": [
     "jamessouth"
   ],
@@ -13,5 +12,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about constants by managing a savings account."
 }

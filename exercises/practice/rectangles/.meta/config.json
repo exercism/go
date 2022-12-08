@@ -1,5 +1,4 @@
 {
-  "blurb": "Count the rectangles in an ASCII diagram.",
   "authors": [
     "ferhatelmas"
   ],
@@ -25,5 +24,6 @@
     "editor": [
       "cases_test.go"
     ]
-  }
+  },
+  "blurb": "Count the rectangles in an ASCII diagram."
 }

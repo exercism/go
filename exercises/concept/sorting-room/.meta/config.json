@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about type casting and type assertions in the sorting room.",
   "authors": [
     "jmrunkle"
   ],
@@ -16,5 +15,6 @@
     "exemplar": [
       ".meta/exemplar.go"
     ]
-  }
+  },
+  "blurb": "Learn about type casting and type assertions in the sorting room."
 }

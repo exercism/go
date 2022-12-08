@@ -1,11 +1,18 @@
 {
-  "blurb": "Learn how to work with pseudo-random numbers",
-  "authors": ["norbs57"],
-  "contributors": [],
+  "authors": [
+    "norbs57"
+  ],
   "files": {
-    "solution": ["animal_magic.go"],
-    "test": ["animal_magic_test.go"],
-    "exemplar": [".meta/exemplar.go"]
+    "solution": [
+      "animal_magic.go"
+    ],
+    "test": [
+      "animal_magic_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
   },
-  "icon": "roll-the-die"
+  "icon": "roll-the-die",
+  "blurb": "Learn how to work with pseudo-random numbers"
 }

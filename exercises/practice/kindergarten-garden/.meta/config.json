@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a diagram, determine which plants each child in the kindergarten class is responsible for.",
   "authors": [
     "soniakeys"
   ],
@@ -29,6 +28,7 @@
       ".meta/example.go"
     ]
   },
+  "blurb": "Given a diagram, determine which plants each child in the kindergarten class is responsible for.",
   "source": "Random musings during airplane trip.",
   "source_url": "http://jumpstartlab.com"
 }
