@@ -18,6 +18,8 @@ and will return `false`.
 since the next operator is a [logical OR][logical-or] (`||`).
 - If the year _is_ evenly divisible by `100`, then the expression is `false`, and the returned value from the chain will be if the year is evenly divisible by `400`.
 
+This approach exhausts after a maximum of three checks.
+
 | year | year % 4 == 0 | year % 100 != 0 | year % 400 == 0 | is leap year |
 | ---- | ------------- | --------------- | --------------- | ------------ |
 | 2020 |          true |            true |   not evaluated |         true |
