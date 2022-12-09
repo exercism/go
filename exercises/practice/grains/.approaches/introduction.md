@@ -1,8 +1,8 @@
 # Introduction
 
 There are various idiomatic approaches to solve Grains.
-You can use [math.Pow][math-pow] to calculate the number on grains on a square, and
-[big exponentiation][big-exponentiation] to calculate the total.
+You can use [`math.Pow()`][math-pow] to calculate the number on grains on a square, and
+[`big` exponentiation][big-exponentiation] to calculate the total.
 Or you can use bit-shifting.
 
 ## General guidance
@@ -23,7 +23,7 @@ You can see that the exponent, or power, that `2` is raised by is always one les
 
 You can use the [`big`][big] package and its [Int][bigint] type to support numbers above [`math.MaxUint64`][maxuint64].
 
-## Approach: `math.Pow` and Exponentiation
+## Approach: `math.Pow()` and `big` Exponentiation
 
 ```go
 package grains
@@ -50,7 +50,7 @@ func Total() uint64 {
 }
 ```
 
-For more information, check the [`math.Pow` and big exponentiation approach][approach-math-pow-big-exponentiation].
+For more information, check the [`math.Pow()` and `big` exponentiation approach][approach-math-pow-big-exponentiation].
 
 ## Approach: Bit-shifting
 
@@ -81,6 +81,10 @@ For more information, check the [Bit-shifting approach][approach-bit-shifting].
 
 ## Which approach to use?
 
+The bit shifting approach is much faster than using `math.Pow()` and `big` exponentiation.
+
+To compare the performance of the approaches, check out the [Performance article][article-performance].
+
 [math-pow]: https://pkg.go.dev/math#Pow
 [big-exponentiation]: https://pkg.go.dev/math/big#Int.Exp
 [big]: https://pkg.go.dev/math/big
@@ -88,3 +92,4 @@ For more information, check the [Bit-shifting approach][approach-bit-shifting].
 [maxuint64]: https://www.includehelp.com/golang/math-maxuint64-constant-with-examples.aspx
 [approach-math-pow-big-exponentiation]: https://exercism.org/tracks/go/exercises/grains/approaches/math-pow-big-exponentiation
 [approach-bit-shifting]: https://exercism.org/tracks/go/exercises/grains/approaches/bit-shifting
+[article-performance]: https://exercism.org/tracks/go/exercises/grains/articles/performance
