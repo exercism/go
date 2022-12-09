@@ -45,11 +45,11 @@ For more information, check the [maximum of two checks approach][approach-max-tw
 
 Besides the aforementioned, idiomatic approaches, you could also approach the exercise as follows:
 
-### time.Add() approach:
+### `time.Add()` approach:
 
 Add a day to February 28th for the year and see if the new day is the 29th. For more information, see the [`time.Add()` approach][approach-time-add].
 
-### time.YearDay() approach:
+### `time.YearDay()` approach:
 
 See if the `YearDay()` for December 31 is 366. For more information, see the [`time.YearDay()` approach][approach-time-yearday].
 
