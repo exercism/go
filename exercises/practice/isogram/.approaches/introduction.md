@@ -80,10 +80,10 @@ package isogram
 
 // IsIsogram accepts a phrase and returns if it is an isogram.
 func IsIsogram(phrase string) bool {
-	the_end := len(phrase)
+	theEnd := len(phrase)
 	var letterFlags uint32 = 0
 
-	for i := 0; i < the_end; i++ {
+	for i := 0; i < theEnd; i++ {
 		letter := phrase[i]
 		// if a - z
 		if letter > 96 && letter < 123 {
