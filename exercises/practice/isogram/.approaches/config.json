@@ -14,7 +14,7 @@
       "uuid": "ab0f2099-771d-4861-b9cc-3815ce7e8b16",
       "slug": "strings-count",
       "title": "strings.Count",
-      "blurb": "Use strings.count to calculate used letters.",
+      "blurb": "Use strings.count() to calculate used letters.",
       "authors": ["bobahop"]
     },
     {
