@@ -3,6 +3,6 @@ for _, chr := range phrase {
 			continue
 		}
 		ltr := unicode.ToLower(chr)
-		_, exists := lookup[ltr]
-		if exists {
+		if _, exists := lookup[ltr]; exists {
 			return false
+		}
