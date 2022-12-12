@@ -1,0 +1,8 @@
+phrase = strings.ToLower(phrase)
+	for _, chr := range phrase {
+		if !unicode.IsLetter(chr) {
+			continue
+		}
+		if strings.Count(phrase, string(chr)) > 1 {
+			return false
+		}
