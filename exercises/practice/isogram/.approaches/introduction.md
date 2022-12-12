@@ -31,8 +31,7 @@ func IsIsogram(phrase string) bool {
 			continue
 		}
 		ltr := unicode.ToLower(chr)
-		_, exists := lookup[ltr]
-		if exists {
+		if _, exists := lookup[ltr]; exists {
 			return false
 		}
 		lookup[ltr] = blank{}
