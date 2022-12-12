@@ -2,7 +2,7 @@
 
 There are various idiomatic ways to solve Isogram.
 You can use a [`map`][map] to keep track of used letters.
-You can use the [`strings`][strings] function [`count`][strings-count] to calculate used letters.
+You can use the [`strings`][strings] function [`Count()`][strings-count] to calculate used letters.
 Or you could use a bit field to keep track of used letters.
 
 ## General guidance
@@ -43,7 +43,7 @@ func IsIsogram(phrase string) bool {
 
 For more information, check the [`map` approach][approach-map].
 
-## Approach: `strings.count()`
+## Approach: `strings.Count()`
 
 ```go
 // Package isogram is a small library for analyzing if a phrase is an isogram.
@@ -69,7 +69,7 @@ func IsIsogram(phrase string) bool {
 }
 ```
 
-For more information, check the [`strings.count()` approach][approach-strings.count].
+For more information, check the [`strings.Count()` approach][approach-strings-count].
 
 ## Approach: Bit field
 
@@ -109,7 +109,7 @@ For more information, check the [Bit field approach][approach-bitfield].
 ## Which approach to use?
 
 The fastest is the `Bit field` approach, but it depends on all of the letters being [ASCII][ascii].
-The fastest approach that supports Unicode is the `strings.Count` approach.
+The fastest approach that supports Unicode is the `strings.Count()` approach.
 
 To compare performance of the approaches, check the [Performance article][article-performance].
 
