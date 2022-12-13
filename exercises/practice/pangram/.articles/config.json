@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "1b6499d8-c14c-441e-9572-c9bf5e5a42b9",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to determining a pangram.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
