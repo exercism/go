@@ -40,4 +40,3 @@ The fastest is the `Bit feld` approach.
 [approach-strings-containsrune]: https://exercism.org/tracks/go/exercises/pangram/approaches/strings-containsrune
 [approach-bitfield]: https://exercism.org/tracks/go/exercises/pangram/approaches/bitfield
 [benchmark]: https://www.mikenewswanger.com/posts/2018/benchmarking-in-go/
-[ascii]: https://www.asciitable.com/
