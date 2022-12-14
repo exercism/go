@@ -48,7 +48,7 @@ func Valid(num string) bool {
 }
 ```
 
-For more information, check the [scrub and validate first appproach][approach-scrub-and-validate-first].
+For more information, check the [scrub and validate first approach][approach-scrub-and-validate-first].
 
 ## Approach: Validate as you go
 
