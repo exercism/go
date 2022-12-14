@@ -56,7 +56,7 @@ Iterating backward is a way to keep us from having to reverse the input string.
 In the loop, the character is converted to an `int` after subtracting its [ASCII][ascii] value by the ASCII value of `'0'`,
 for example `'3'` - `'0'` = `3`.
 
-The `pos` variable is then checked to see if it is evenly divisble by `0`.
+The `pos` variable is then checked to see if the position is evenly divisible by `0`.
 If so, it adds the digit value to the total.
 
 If not, it adds double the digit value to the total if the digit value is less than `5`.
