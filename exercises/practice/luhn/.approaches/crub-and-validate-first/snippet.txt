@@ -1,0 +1,8 @@
+func Valid(num string) bool {
+	num = strings.ReplaceAll(num, " ", "")
+	if _, err := strconv.Atoi(num); err != nil {
+		return false
+	}
+	idx := len(num) - 1
+	total := 0
+	pos := 0
