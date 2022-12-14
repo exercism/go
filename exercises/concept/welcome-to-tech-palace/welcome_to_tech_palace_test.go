@@ -28,6 +28,11 @@ func TestWelcomeMessage(t *testing.T) {
 			customer: "MJ",
 			want:     "Welcome to the Tech Palace, MJ",
 		},
+		{
+			name:     "Welcome message for customer with full name",
+			customer: "John Snow",
+			want:     "Welcome to the Tech Palace, John Snow",
+		},
 	}
 
 	for _, tt := range tests {
