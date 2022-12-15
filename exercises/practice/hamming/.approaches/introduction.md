@@ -28,7 +28,7 @@ func Distance(strand1, strand2 string) (distance int, e error) {
 			distance++
 		}
 	}
-	return distance, nil
+	return distance, e
 }
 ```
 
