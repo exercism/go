@@ -66,6 +66,7 @@ We could use both lowercase and uppercase letters in the `switch`, but that's a 
 Another consideration is that if the score of a letter were ever to change,
 if we look up both lowercase and uppercase letters then we would have to change the score in two places.
 It's preferable to have only one place to change something if something gets modified.
+Some people may find uppercased letters to be more readable in this context, and they may take the slight performance hit to use those instead.
 
 The letter is used as the value to look up the score in the `switch` statement,
 which is added to the output variable.
