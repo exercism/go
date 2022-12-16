@@ -32,7 +32,20 @@ func Score(word string) (score int) {
 }
 ```
 
-In letter.go
+The `Score()` function is defined with a [named return value][named-return-value] which is initialized with its [zero value][zero-value].
+
+The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
+The runes are from [`range`][range] on a string, the strings from [`Split()`][split], and the bytes from indexing into the string.
+Another way to iterate runes is to convert the string to a rune [`slice`][slice] and `range` on it.
+The difference between ranging on a rune slice vs ranging on a string is that the index returned from a string is the position of the next rune in bytes,
+not which rune it is.
+For example, if the first unicode character is two bytes, then the second unicode character index will be 2 when ranging on a string and 1 when ranging on a rune slice.
+As of the time of this writing we are only iterating ASCII characters, so we don't care about the index, and ranging on the input string is fine.
+
+For this exercise we are not concerned with validating the letter and handling an error for an illegal character.
+The `unicode.ToLower()` function is used to ensure the letter is lowercase, and the letter is used in a [`switch`][switch] statement.
+Lowercase letters are used instead of uppercase because most of the input will be lowercase.
+It makes a slight performance difference, because of how [`unicode.ToLower()`][tolower] is implemented, as seen in the letter.go file:
 
 ```go
 // ToLower maps the rune to lower case.
@@ -46,3 +59,25 @@ func ToLower(r rune) rune {
 	return To(LowerCase, r)
 }
 ```
+
+We see that when the rune is an [ASCII][ascii] character it is only lowercased if it is not already lowercase.
+So, when most of the input is already lowercase, we can save a bit of time by only looking up the lowercase letters.
+We could use both lowercase and uppercase letters in the `switch`, but that's a lot of typing!
+Another consideration is that if the score of a letter were ever to change,
+if we look up both lowercase and uppercase letters then we would have to change the score in two places.
+It's preferable to have only one place to change something if something gets modified.
+
+The letter is used as the value to look up the score in the `switch` statement,
+which is added to the output variable.
+
+When the iteration is finished, the output variable of the totaled score is returned from the function.
+
+[tolower]: https://pkg.go.dev/unicode#ToLower
+[rune]: https://pkg.go.dev/builtin#rune
+[ascii]: https://www.asciitable.com/
+[named-return-value]: https://yourbasic.org/golang/named-return-values-parameters/
+[zero-value]: https://yourbasic.org/golang/default-zero-value/
+[range]: https://gobyexample.com/range
+[split]: https://pkg.go.dev/strings#Split
+[slice]: https://gobyexample.com/slices
+[switch]: https://go.dev/tour/flowcontrol/9
