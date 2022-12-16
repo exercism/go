@@ -1,0 +1,77 @@
+# `map`
+
+```go
+// Package scrabble scores a scrabble word.
+package scrabble
+
+import "unicode"
+
+var lookup = map[rune]int{
+	'a': 1, 'e': 1, 'i': 1, 'o': 1, 'u': 1, 'l': 1, 'n': 1, 'r': 1, 's': 1, 't': 1,
+	'd': 2, 'g': 2,
+	'b': 3, 'c': 3, 'm': 3, 'p': 3,
+	'f': 4, 'h': 4, 'v': 4, 'w': 4, 'y': 4,
+	'k': 5,
+	'j': 8, 'x': 8,
+	'q': 10, 'z': 10,
+}
+
+// Score takes a word and returns its scrabble score.
+func Score(word string) (score int) {
+	for _, ltr := range word {
+		score += lookup[unicode.ToLower(ltr)]
+	}
+	return score
+}
+```
+
+This approach starts be defining a [`map`][map] that relates each letter to its score.
+Note that the `map` is defined outside of the `Score()` function, so that it is no recreated on each call to the function.
+Lowercase letters are used instead of uppercase because most of the input will be lowercase.
+It makes a slight performance difference, because of how [`unicode.ToLower()`][tolower] is implemented, as seen in the letter.go file:
+
+```go
+// ToLower maps the rune to lower case.
+func ToLower(r rune) rune {
+	if r <= MaxASCII {
+		if 'A' <= r && r <= 'Z' {
+			r += 'a' - 'A'
+		}
+		return r
+	}
+	return To(LowerCase, r)
+}
+```
+
+We see that when the rune is an [ASCII][ascii] character it is only lowercased if it is not already lowercase.
+So, when most of the input is already lowercase, we can save a bit of time by only looking up the lowercase letters.
+We could use both lowercase and uppercase letters in the `map`, but that's a lot of typing!
+Another consideration is that if the score of a letter were ever to change,
+if we look up both lowercase and uppercase letters we would have to change the score in two places.
+It's preferable to have only one place to change something if something gets modified.
+
+The `Score()` function is defined with a [named return value][named-return-value] which is initialized with its [zero value][zero-value].
+
+The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
+The runes are from [`range`][range] on a string, the strings from [`Split()`][split], and the bytes from indexing into the string.
+Another way to iterate runes is to convert the string to a rune [`slice`][slice] and `range` on it.
+The difference between ranging on a rune slice vs ranging on a string is that the index returned from a string is the position of the next rune in bytes,
+not which rune it is.
+For example, if the first unicode character is two bytes, then the second unicode character index will be 2 when ranging on a string and 1 when ranging on a rune slice.
+As of the time of this writing we are only iterating ASCII characters, so we don't care about the index, and ranging on the input string is fine.
+
+For this exercise we are not concerned with validating the letter and handling an error for an illegal character.
+The `unicode.ToLower()` function is used to ensure the letter is lowercase, and the letter is used as the key to look up the score,
+which is added to the output variable.
+
+When the iteration is finished, the output variable of the totaled score is returned from the function.
+
+[map]: https://gobyexample.com/maps
+[tolower]: https://pkg.go.dev/unicode#ToLower
+[rune]: https://pkg.go.dev/builtin#rune
+[ascii]: https://www.asciitable.com/
+[named-return-value]: https://yourbasic.org/golang/named-return-values-parameters/
+[zero-value]: https://yourbasic.org/golang/default-zero-value/
+[range]: https://gobyexample.com/range
+[split]: https://pkg.go.dev/strings#Split
+[slice]: https://gobyexample.com/slices
