@@ -47,7 +47,7 @@ We see that when the rune is an [ASCII][ascii] character it is only lowercased i
 So, when most of the input is already lowercase, we can save a bit of time by only looking up the lowercase letters.
 We could use both lowercase and uppercase letters in the `map`, but that's a lot of typing!
 Another consideration is that if the score of a letter were ever to change,
-if we look up both lowercase and uppercase letters we would have to change the score in two places.
+if we look up both lowercase and uppercase letters then we would have to change the score in two places.
 It's preferable to have only one place to change something if something gets modified.
 
 The `Score()` function is defined with a [named return value][named-return-value] which is initialized with its [zero value][zero-value].
