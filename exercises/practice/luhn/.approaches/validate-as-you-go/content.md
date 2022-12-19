@@ -5,10 +5,9 @@
 package luhn
 
 func Valid(num string) bool {
-	idx := len(num) - 1
 	total := 0
 	pos := 0
-	for i := idx; i > -1; i-- {
+	for i := len(num) - 1; i > -1; i-- {
 		char := num[i]
 		if char == ' ' {
 			continue
@@ -75,6 +74,96 @@ The `pos` variable is incremented to keep track of the position, and the loop ei
 
 After the loop exits, the functon returns if the position is greater than `1` and the total is evenly divisible by `10`.
 
+# Optimization
+
+There is an interesting optimzation for the validate as you go approach that can cut the time by more than half.
+It requires two modifications to be made in tandem.
+Either one by itself does not reduce the time so dramatically.
+It was benchmarked on version `1.19.4 windows/amd`.
+
+The whole modified code is here
+
+```go
+// Package luhn is a small library for returning if a phrase is valid according to the Luhn algorithm.
+package luhn
+
+func Valid(num string) bool {
+    var total, pos int
+        for i := len(num) - 1; i > -1; i-- {
+            char := num[i]
+            if char == ' ' {
+                continue
+            }
+            if char < 48 || char > 57 {
+                return false
+            }
+            digit := int(char - 48)
+            total += digit + pos%2*(digit+digit/5)
+            pos++
+        }
+        return pos > 1 && total%10 == 0
+}
+```
+
+The first modification is simple and changes 
+
+```go
+total := 0
+pos := 0
+```
+
+for 
+
+```
+var total, pos int
+```
+
+which defines the same variables with their defaulrt [zero values][zero-values].
+
+The other change is more of a mathematical way to avoid the conditional logic for adding the value.
+The `if` statement and entire `switch` statement can be replaced with 
+
+```go
+total += digit + pos%2*(digit+digit/5)
+```
+
+The first mathematical choice is that when the position number is even,
+the number multiplies its "doubled" value by `0`, so evenly-positioned numbers only add themselves.
+An oddly-positioned number will multiply its "doubled" value by `1`.
+
+The second mathemtical choice is that, instead of possibly subtracting "down" by 9, the expression always adds "up".
+For higher numbers that would have been subtracted by `9`, the result is the number desired plus `10`.
+Since the total value is checked by seeing if it is evenly divisible by `10`,
+the extra `10` in the higher-number calculations is effectively factored out.
+
+To understand how this works, you can see in the following table for `digit + (digit + digit/5)`
+
+| Value   | Desired Value | Actual Value | How                            |
+| ------- | ------------- | ------------ | -----------------------------  |
+|       1 |             1 |            2 |  1 + (1 + 1/5(0)) = 2)  |
+|       2 |             2 |            4 |  2 + (2 + 2/5(0)) = 4)  |
+|       3 |             3 |            6 |  3 + (3 + 3/5(0)) = 6)  |
+|       4 |             4 |            8 |  4 + (4 + 4/5(0)) = 4)  |
+|       5 |             1 |           11 |  5 + (5 + 5/5(1)) = 11) |
+|       6 |             6 |           13 |  6 + (6 + 6/5(1)) = 13) |
+|       7 |             5 |           15 |  7 + (7 + 7/5(1)) = 15) |
+|       8 |             8 |           17 |  8 + (8 + 8/5(1)) = 17) |
+|       9 |             9 |           19 |  9 + (9 + 9/5(1)) = 19) |
+
+
+The benchmarks were as follows:
+
+```
+unoptimizied
+BenchmarkValid-12    	 4685019	       251.5 ns/op	       0 B/op	       0 allocs/op
+
+optimized
+BenchmarkValid-12    	10885153	       106.8 ns/op	       0 B/op	       0 allocs/op
+```
+
+The optimized solution is much faster, but it is not as clear as to how it is conforming to the Luhn algorithm,
+unless one readily understands the math.
+
 [strings]: https://pkg.go.dev/strings
 [replaceall]: https://pkg.go.dev/strings#ReplaceAll
 [strconv]: https://pkg.go.dev/strconv
@@ -84,3 +173,4 @@ After the loop exits, the functon returns if the position is greater than `1` an
 [slice]: https://gobyexample.com/slices
 [continue]: https://www.tutorialspoint.com/go/go_continue_statement.htm
 [ascii]: https://www.asciitable.com/
+[zero-values]: https://yourbasic.org/golang/default-zero-value/
