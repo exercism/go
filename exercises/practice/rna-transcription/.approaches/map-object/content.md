@@ -51,7 +51,6 @@ After the iteration of the input `string` finishes, the function returns the byt
 [map]: https://gobyexample.com/maps
 [rune]: https://golangdocs.com/rune-in-golang
 [byte]: https://zetcode.com/golang/byte/
-[slice]: https://go.dev/blog/slices-intro
 [make]: https://go.dev/tour/moretypes/13
 [len]: https://pkg.go.dev/builtin#len
 [bytes-runes]: https://go.dev/blog/strings
