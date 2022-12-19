@@ -14,10 +14,9 @@ func Valid(num string) bool {
 	if _, err := strconv.Atoi(num); err != nil {
 		return false
 	}
-	idx := len(num) - 1
 	total := 0
 	pos := 0
-	for i := idx; i > -1; i-- {
+	for i := len(num) - 1; i > -1; i-- {
 		digit := int(num[i] - '0')
 		if pos%2 == 0 {
 			total += digit
