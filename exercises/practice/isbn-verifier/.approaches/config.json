@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "11316a53-4ed2-43d7-b19f-7bf73292b2a0",
+      "slug": "iterate-bytes",
+      "title": "Iterate bytes",
+      "blurb": "Iterate characters as bytes.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "92e597e1-119a-408b-a30b-3502b3cd7c69",
+      "slug": "iterate-runes",
+      "title": "Iterate runes",
+      "blurb": "Iterate characters as runes.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
