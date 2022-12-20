@@ -66,5 +66,5 @@ For more information, check the [Performance article][article-performance].
 [approach-boolean-chain]: https://exercism.org/tracks/go/exercises/leap/approaches/boolean-chain
 [approach-max-two-checks]: https://exercism.org/tracks/go/exercises/leap/approaches/max-two-checks
 [approach-time-add]: https://exercism.org/tracks/go/exercises/leap/approaches/time-addition
-[approach-time-yearday]: https://exercism.org/tracks/csharp/exercises/leap/approaches/time-yearday
+[approach-time-yearday]: https://exercism.org/tracks/go/exercises/leap/approaches/time-yearday
 [article-performance]: https://exercism.org/tracks/go/exercises/leap/articles/performance
