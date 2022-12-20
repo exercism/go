@@ -7,7 +7,7 @@ Or a `switch` statement can be used to translate the letters.
 
 ## General guidance
 
-The key to solving RNA Transcription is TODO
+The key to solving RNA Transcription is to match the RNA value to the DNA value.
 
 ## Approach: `strings.Map()` function
 
@@ -36,7 +36,6 @@ func ToRNA(dna string) string {
 ```
 
 For more information, check the [`strings.Map()` approach][approach-strings-map].
-
 
 ## Approach: `map` object
 
