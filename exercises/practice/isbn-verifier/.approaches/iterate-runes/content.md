@@ -61,9 +61,9 @@ and the position is decremented.
 
 If neither of those two conditions apply, then, if the character is not a dash,
 it is an illegal character and the function immediately returns `false`.
-If the character is a dash, then the loop continues without decrementing the position.
+If the character is a dash, then the iterating continues without decrementing the position.
 
-After the loop finishes, the function returns whether the position is at the expected value of `0`,
+After the iterating finishes, the function returns whether the position is at the expected value of `0`,
 and if the sum is evenly divisible by 11.
 
 [runes]: https://golangdocs.com/rune-in-golang
