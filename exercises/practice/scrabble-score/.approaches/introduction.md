@@ -1,6 +1,6 @@
 # Introduction
 
-There are various idiomatic approaches to solve Bob.
+There are various idiomatic approaches to solve Scrabble Score.
 One approach can use a [`map`][map] to look up the scores.
 Or a [switch][switch] can be used to look up the scores.
 
