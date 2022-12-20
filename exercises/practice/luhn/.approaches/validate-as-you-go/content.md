@@ -76,7 +76,7 @@ After the loop exits, the functon returns if the position is greater than `1` an
 
 # Optimization
 
-There is an interesting optimzation for the validate as you go approach that can cut the time by more than half.
+There is an interesting optimization for the "lidate as you go" approach that can cut the time by more than half.
 It requires two modifications to be made in tandem.
 Either one by itself does not reduce the time so dramatically.
 It was benchmarked on version `1.19.4 windows/amd`.
@@ -118,7 +118,7 @@ for
 var total, pos int
 ```
 
-which defines the same variables with their defaulrt [zero values][zero-values].
+which defines the same variables with their default [zero values][zero-values].
 
 The other change is more of a mathematical way to avoid the conditional logic for adding the value.
 The `if` statement and entire `switch` statement can be replaced with 
@@ -131,8 +131,8 @@ The first mathematical choice is that when the position number is even,
 the number multiplies its "doubled" value by `0`, so evenly-positioned numbers only add themselves.
 An oddly-positioned number will multiply its "doubled" value by `1`.
 
-The second mathemtical choice is that, instead of possibly subtracting "down" by 9, the expression always adds "up".
-For higher numbers that would have been subtracted by `9`, the result is the number desired plus `10`.
+The second mathematical choice is that, instead of possibly subtracting "down" by 9, the doubling expression always adds "up".
+For higher numbers which would have been subtracted by `9`, the result is the number desired plus `10`.
 Since the total value is checked by seeing if it is evenly divisible by `10`,
 the extra `10` in the higher-number calculations is effectively factored out.
 
@@ -147,15 +147,15 @@ To understand how this works, you can see in the following table for `digit + (d
 |       5 |             1 |           11 |  5 + (5 + 5/5(1)) = 11) |
 |       6 |             3 |           13 |  6 + (6 + 6/5(1)) = 13) |
 |       7 |             5 |           15 |  7 + (7 + 7/5(1)) = 15) |
-|       8 |             8 |           17 |  8 + (8 + 8/5(1)) = 17) |
+|       8 |             7 |           17 |  8 + (8 + 8/5(1)) = 17) |
 |       9 |             9 |           19 |  9 + (9 + 9/5(1)) = 19) |
 
 
 The benchmarks were as follows:
 
 ```
-unoptimizied
-BenchmarkValid-12    	 4685019	       251.5 ns/op	       0 B/op	       0 allocs/op
+unoptimized
+BenchmarkValid-12    	 4668248	       248.4 ns/op	       0 B/op	       0 allocs/op
 
 optimized
 BenchmarkValid-12    	10885153	       106.8 ns/op	       0 B/op	       0 allocs/op
