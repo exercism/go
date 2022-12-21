@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "b384c217-7447-467b-a93d-60d1b48cac5f",
+      "slug": "switch-statement",
+      "title": "Switch statement",
+      "blurb": "Use a switch statement to look up the DNA.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "17e7c65a-af75-4fd4-86fe-413bbb8ebf84",
+      "slug": "if-with-ok",
+      "title": "If with ok",
+      "blurb": "Use if with ok to look up the DNA.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
