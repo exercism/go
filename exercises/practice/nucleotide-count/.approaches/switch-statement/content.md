@@ -14,12 +14,7 @@ type DNA string
 
 // Counts generates a histogram of valid nucleotides for the given DNA strand.
 func (dna DNA) Counts() (Histogram, error) {
-	results := Histogram{
-		'A': 0,
-		'C': 0,
-		'G': 0,
-		'T': 0,
-	}
+	results := Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0}
 	for _, nuc := range dna {
 		switch nuc {
 		case 'A', 'C', 'G', 'T':
