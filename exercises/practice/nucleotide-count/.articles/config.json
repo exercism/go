@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "5640fa40-6c9c-45e2-bf3e-8e73d2a83bb8",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach for Nucleotide Count.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
