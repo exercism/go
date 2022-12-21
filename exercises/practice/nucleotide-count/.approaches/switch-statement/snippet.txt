@@ -1,0 +1,8 @@
+for _, nuc := range dna {
+		switch nuc {
+		case 'A', 'C', 'G', 'T':
+			results[nuc]++
+		default:
+			return nil, fmt.Errorf("invalid nucleotide '%c'", nuc)
+		}
+}
