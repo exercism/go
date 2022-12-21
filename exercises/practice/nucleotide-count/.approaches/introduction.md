@@ -24,7 +24,6 @@ type DNA string
 
 // Counts generates a histogram of valid nucleotides for the given DNA strand.
 func (dna DNA) Counts() (Histogram, error) {
-	//var h Histogram
 	results := Histogram{
 		'A': 0,
 		'C': 0,
