@@ -8,7 +8,7 @@ You can use [generics][generics], which were introduced in version 1.18.
 The key to solving Strain is to handle the different types that are used for slicing.
 Using generics can simplify the amount of code needed, thus keeping the code [DRY][dry].
 
-## Approach: generics
+## Approach: Using generics
 
 ```go
 // Package strain is a small library for modifying slices of different types.
@@ -62,7 +62,7 @@ func (l Lists) Keep(filter func([]int) bool) Lists {
 }
 ```
 
-For more information, check the [generics approach][approach-using-generics].
+For more information, check the [using generics approach][approach-using-generics].
 
 [generics]: https://go.dev/blog/intro-generics
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
