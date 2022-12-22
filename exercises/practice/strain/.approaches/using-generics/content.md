@@ -1,4 +1,4 @@
-# Generics
+# Using generics
 
 ```go
 // Package strain is a small library for modifying slices of different types.
