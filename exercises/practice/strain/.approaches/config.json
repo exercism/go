@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "9642077f-c65d-407a-b9f7-272eaca64a1c",
+      "slug": "using-generics",
+      "title": "Using generics",
+      "blurb": "Use generics to slice different types.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
