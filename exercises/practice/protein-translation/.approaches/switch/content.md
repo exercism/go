@@ -70,7 +70,7 @@ First, a couple of errors are defined.
 Next, an empty `string` slice is defined.
 
 The `FromCodon()` function is defined with [named return values][named-return-values] which are initialized with their [zero values][zero-values].
-If the look-up of the codon is matched by any switch case except for the codons for "STOP", then the protein is set.
+If the look-up of the codon is matched by any switch case except the codons for "STOP", then the protein is set.
 If the codon look-up is "STOP", then the the error is set for a stopped codon.
 If the look-up of the codon is not matched by any switch case, then the error is set for an invalid codon.
 The function then returns whatever the values are for the protein and the error.
