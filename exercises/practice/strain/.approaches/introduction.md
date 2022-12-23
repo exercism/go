@@ -5,7 +5,7 @@ You can use [generics][generics], which were introduced in version 1.18.
 
 ```exercism/note
 As of this writing, the Go version defined in the `go.mod` file is `1.16`.
-To use generics, the `go.mod` file needs to be updated to version `1.18`.
+To use generics, the `go.mod` file needs to be updated to version `1.18` or higher.
 ```
 
 ## General guidance
