@@ -52,6 +52,11 @@ func (l Lists) Keep(filter func([]int) bool) Lists {
 }
 ```
 
+```exercism/note
+As of this writing, the Go version defined in the `go.mod` file is `1.16`.
+To use generics, the `go.mod` file needs to be updated to version `1.18` or higher.
+```
+
 This approach starts be defining some [types][types] that will be used in the package.
 It then defines an [interface type][interface-type] which will be used to constain which types are to be used for the [generics][generics]:
 
