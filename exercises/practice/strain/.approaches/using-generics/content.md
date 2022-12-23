@@ -70,10 +70,10 @@ The arguments to the function are a slice of the generic type `T`, and a functio
 If you haven't passed a function as a parameter before, a short explanation can be found [here](https://golangbyexample.com/func-as-func-argument-go/).
 ```
 
-The function is defined to return a slice of type `T`.
+The `KeepSlice()` function is defined to return a slice of type `T`.
 
 If the input is `nil` it is simply returned.
-Otherwise we make an output slice of the same type as `T`, give it a length of `0`, but give it a capacity that is the length of the input slice.
+Otherwise an output slice is made of the same type as `T`, given a length of `0`, and given a capacity that is the length of the input slice.
 
 ```exercism/note
 Since the returned slice can be no bigger than the input slice,
@@ -88,10 +88,10 @@ For more information on the length and capacity of slices, see [here](https://go
 Each element is passed to the input `filter` function.
 If the function returns `true`, the the element is appended to the output slice.
 After the iteration of all the input elements is finished, the output slice is returned from the function.
-So, the The `KeepSlice()` function is intended to keep the elements for which the `filter` function returns `true`.
+So, the `KeepSlice()` function is intended to _keep_ the elements for which the `filter` function returns `true`.
 
 The `DiscardSlice()` function is defined with the same signature (i.e. the same generic type parameter, arguments and return type)
-as `KeepSlice()`, but it is intended to leave out the elements for which the `filter` function returns `true`.
+as `KeepSlice()`, but it is intended to _leave out_ the elements for which the `filter` function returns `true`.
 The `KeepSlice()` function can be re-used for this by logically negating the `filter` function passed in to `DiscardSlice()`.
 This is done by wrapping it in another function created in `DiscardSlice()` like so
 
@@ -105,9 +105,32 @@ logically negated by the [logical NOT operator][not-operator] (`!`).
 So, if the `filter` function returns `true` for `DiscardSlice()` to leave out the element,
 the anonymous function will return `false` when passed in to the `KeepSlice()` function, so the element will not be kept in by `KeepSlice()`.
 `KeepSlice()` can be called by `DiscardSlice()`, since not keeping an element in with `KeepSlice()` is the same as leaving it out in `DiscardSlice()`.
-`DiscardSlice()` passes the input slice and the anonymous function to `KeepSlice()` and returns the result, which is as expected.
+`DiscardSlice()` passes the input slice and the anonymous function to `KeepSlice()` and returns the expected result.
 
+The rest of the functions will re-use either `KeepSlice()` or `DiscardSlice()`.
 
+For example, this method
+
+```go
+// Keep filters in elements of an int slice.
+func (i Ints) Keep(filter func(int) bool) Ints {
+	return KeepSlice(i, filter)
+}
+```
+
+takes a [receiver argument][method] of `Ints` named `i`.
+It also takes a regular argument of a `filter` function which takes an `int` argument and returns a boolean value.
+The `Keep()` function is defined to return type `Ints`, which in turn is defined as an `int` slice.
+The `Keep()` function passes its arguments to `KeepSlice()` and returns the expected result from `KeepSlice()`.
+
+The `Discard()` method for `Ints` is the same as the `Keep()` method, except it calls `DiscardSlice()` to do the work.
+
+The `Keep()` method for `Strings` also uses `KeepSlice()`.
+That's the benefit of generics: both `Ints` and `Strings` can use the same function for the same behavior.
+
+Finally, the `Keep()` method for `Lists` _also_ uses `KeepSlice()`.
+Being able to use the same function for multiple types, instead of having to write a separate function for each type,
+saves a lot of work!
 
 [types]: https://go.dev/ref/spec#Types
 [interface-type]: https://go.dev/ref/spec#Interface_types
@@ -115,3 +138,4 @@ the anonymous function will return `false` when passed in to the `KeepSlice()` f
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 [range]: https://go.dev/tour/moretypes/16
 [not-operator]: https://www.tutorialkart.com/golang-tutorial/golang-not/
+[method]: https://go.dev/tour/methods/1
