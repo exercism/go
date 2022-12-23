@@ -88,9 +88,30 @@ For more information on the length and capacity of slices, see [here](https://go
 Each element is passed to the input `filter` function.
 If the function returns `true`, the the element is appended to the output slice.
 After the iteration of all the input elements is finished, the output slice is returned from the function.
+So, the The `KeepSlice()` function is intended to keep the elements for which the `filter` function returns `true`.
+
+The `DiscardSlice()` function is defined with the same signature (i.e. the same generic type parameter, arguments and return type)
+as `KeepSlice()`, but it is intended to leave out the elements for which the `filter` function returns `true`.
+The `KeepSlice()` function can be re-used for this by logically negating the `filter` function passed in to `DiscardSlice()`.
+This is done by wrapping it in another function created in `DiscardSlice()` like so
+
+```go
+func(val T) bool { return !filter(val) }
+```
+
+This defines an anonymous function which takes an argument of the same type as the `filter` function and also returns a boolean value.
+Inside the function, it passes the argument to the `filter` function and returns the result of the `filter` function
+logically negated by the [logical NOT operator][not-operator] (`!`).
+So, if the `filter` function returns `true` for `DiscardSlice()` to leave out the element,
+the anonymous function will return `false` when passed in to the `KeepSlice()` function, so the element will not be kept in by `KeepSlice()`.
+`KeepSlice()` can be called by `DiscardSlice()`, since not keeping an element in with `KeepSlice()` is the same as leaving it out in `DiscardSlice()`.
+`DiscardSlice()` passes the input slice and the anonymous function to `KeepSlice()` and returns the result, which is as expected.
+
+
 
 [types]: https://go.dev/ref/spec#Types
 [interface-type]: https://go.dev/ref/spec#Interface_types
 [generics]: https://go.dev/blog/intro-generics
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 [range]: https://go.dev/tour/moretypes/16
+[not-operator]: https://www.tutorialkart.com/golang-tutorial/golang-not/
