@@ -13,6 +13,7 @@ At the time of writing only four rules need to be handled, but if they have simi
 ## Approach: map lookups
 
 ```go
+// Package piglatin is a small library for translating a sentence into Pig Latin.
 package piglatin
 
 import (
@@ -23,6 +24,7 @@ var vowels = map[byte]bool{'a': true, 'e': true, 'i': true, 'o': true, 'u': true
 var specials = map[string]bool{"xr": true, "yt": true}
 var vowels_y = map[byte]bool{'a': true, 'e': true, 'i': true, 'o': true, 'u': true, 'y': true}
 
+// Sentence translates a sentence into Pig Latin.
 func Sentence(phrase string) string {
 
 	piggyfied := strings.Builder{}
@@ -57,6 +59,7 @@ For more information, check the [map lookups approach][approach-map-lookups].
 ## Approach: map lookups with generics
 
 ```go
+// Package piglatin is a small library for translating a sentence into Pig Latin.
 package piglatin
 
 import (
@@ -70,15 +73,16 @@ var vowels = map[byte]void{'a': blank, 'e': blank, 'i': blank, 'o': blank, 'u': 
 var specials = map[string]void{"xr": blank, "yt": blank}
 var vowels_y = map[byte]void{'a': blank, 'e': blank, 'i': blank, 'o': blank, 'u': blank, 'y': blank}
 
-type Container interface {
+type container interface {
 	byte | string
 }
 
-func contains[T Container](values map[T]void, value T) bool {
+func contains[T container](values map[T]void, value T) bool {
 	_, ok := values[value]
 	return ok
 }
 
+// Sentence translates a sentence into Pig Latin.
 func Sentence(phrase string) string {
 
 	piggyfied := strings.Builder{}
