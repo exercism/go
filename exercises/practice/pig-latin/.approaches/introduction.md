@@ -75,10 +75,8 @@ type Container interface {
 }
 
 func contains[T Container](values map[T]void, value T) bool {
-	if _, ok := values[value]; ok {
-		return true
-	}
-	return false
+	_, ok := values[value]
+	return ok
 }
 
 func Sentence(phrase string) string {
