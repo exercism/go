@@ -110,6 +110,11 @@ func Sentence(phrase string) string {
 }
 ```
 
+```exercism/note
+As of this writing, the Go version defined in the `go.mod` file is `1.16`.
+To use generics, the `go.mod` file needs to be updated to version `1.18` or higher.
+```
+
 For more information, check the [map lookups with generics approach][approach-map-lookups-with-generics].
 
 ## Which approach to use?
