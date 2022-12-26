@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "a3581d3f-297d-4e4a-8efc-c2c3fb4f1cf5",
+      "slug": "map-lookups",
+      "title": "Map lookups",
+      "blurb": "Use map lookups for parsing.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
