@@ -40,7 +40,7 @@ Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer 
 More info on reading benchmarks can be found [here][benchmark].
 
 The fastest benchmarks were from map lookups with generics, but not consistently so.
-Benchmarks runs for each approach varied by as much as 100 nanoseconds or so, but the fastest benchmarks from several runs were for map lookups with generics.
+Benchmarks runs for each approach varied by as much as 100 nanoseconds to 200 nanoseconds or so, but the fastest benchmarks from several runs were for map lookups with generics.
 
 [approaches]: https://exercism.org/tracks/go/exercises/pig-latin/approaches
 [approach-map-lookups]: https://exercism.org/tracks/go/exercises/pig-latin/approaches/map-lookups
