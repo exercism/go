@@ -61,7 +61,7 @@ func (clock Clock) Subtract(minutes int) Clock {
 
 // String returns the Clock formatted into hours:minutes, e.g. 01:02.
 func (clock Clock) String() string {
-	return fmt.Sprintf("%02d:%02d", clock/60, clock%60)
+	return fmt.Sprintf("%02d:%02d", clock/hourMinutes, clock%hourMinutes)
 }
 ```
 
@@ -101,11 +101,6 @@ func New(hour, minutes int) Clock {
 	return normalize(hour*hourMinutes + minutes)
 }
 
-// String returns the Clock formatted into hours:minutes, e.g. 01:02.
-func (c *Clock) String() string {
-	return fmt.Sprintf("%02d:%02d", c.minutes/60, c.minutes%60)
-}
-
 // Subtract returns a Clock that represents the Clock plus minutes.
 func (c Clock) Add(minutes int) Clock {
 	return normalize(c.minutes + minutes)
@@ -114,6 +109,11 @@ func (c Clock) Add(minutes int) Clock {
 // Add returns a Clock that represents the Clock minus minutes.
 func (c Clock) Subtract(minutes int) Clock {
 	return normalize(c.minutes - minutes)
+}
+
+// String returns the Clock formatted into hours:minutes, e.g. 01:02.
+func (c *Clock) String() string {
+	return fmt.Sprintf("%02d:%02d", c.minutes/hourMinutes, c.minutes%hourMinutes)
 }
 ```
 
