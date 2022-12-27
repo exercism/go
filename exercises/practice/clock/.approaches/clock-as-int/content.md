@@ -60,6 +60,16 @@ There are other ways to handle rollover, such as the following expression:
 
 Since `normalize()` returns a `Clock`, it can be used by the `New` function as well as the `Add` and `Subtract` [methods][methods].
 
+```exercism/note
+Note that, in the `Add` and `Subtract`methods, the received `Clock` argument must be converted to an `int` to be
+added to or subtracted by the `int` minutes, even though the underlying type of `Clock` is an `int`.
+This can be helpful if two `int` values are two different types, such as a meter and a foot.
+The compiler will not allow adding a meter type to a foot type,
+even if both are an `int`, unless one of them is converted to the other.
+For an example of why this is important, see an article on how a $125 million spacecraft crashed because of a 
+[mix-up between English and metric units of measure](https://www.simscale.com/blog/nasa-mars-climate-orbiter-metric/).
+```
+
 The `String()` function uses [`fmt.Sprintf()`][sprintf] to format the hour and minutes with leading zeros.
 If the amount of minutes is `69`, then the hour is `69` divided by `60` (1),
 and the minutes is the remainder of `69` divided by `60` (9), so the string for `69` minutes would be `01:09`.
