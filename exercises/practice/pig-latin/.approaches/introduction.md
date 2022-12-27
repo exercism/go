@@ -123,7 +123,7 @@ For more information, check the [map lookups with generics approach][approach-ma
 
 The map lookups approach has less boilerplate, so it may be considered more readable.
 The fastest benchmarks were from map lookups with generics, but not consistently so.
-Benchmarks runs for each approach varied by as much as 100 nanoseconds or so, but the fastest benchmarks from several runs were for map lookups with generics.
+Benchmarks runs for each approach varied by as much as 100 nanoseconds to 200 nanoseconds or so, but the fastest benchmarks from several runs were for map lookups with generics.
 To compare performance of the approaches, check the [Performance article][article-performance].
 
 [regular-expressions]: https://gobyexample.com/regular-expressions
