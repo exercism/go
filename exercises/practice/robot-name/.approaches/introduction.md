@@ -55,14 +55,14 @@ func generateRobotNames() []string {
 
 // Name returns the existing name or returns a newly assigned name.
 func (r *Robot) Name() (string, error) {
-	if idx >= maxRobotNames {
-		return "", fmt.Errorf("uniqueness exhausted")
-	}
-
 	if r.name != "" {
 		return r.name, nil
 	}
 
+	if idx >= maxRobotNames {
+		return "", fmt.Errorf("uniqueness exhausted")
+	}
+	
 	r.name = namePool[idx]
 	idx++
 
