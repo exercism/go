@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "4984e274-a7fa-40de-beb6-6e4c0103ae15",
+      "slug": "shuffle",
+      "title": "Shuffle",
+      "blurb": "Generate in sequence and then shuffle.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
