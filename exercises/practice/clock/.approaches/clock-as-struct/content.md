@@ -32,12 +32,12 @@ func New(hour, minutes int) Clock {
 	return normalize(hour*hourMinutes + minutes)
 }
 
-// Subtract returns a Clock that represents the Clock plus minutes.
+// Add returns a Clock that represents the Clock plus minutes.
 func (c Clock) Add(minutes int) Clock {
 	return normalize(c.minutes + minutes)
 }
 
-// Add returns a Clock that represents the Clock minus minutes.
+// Subtract returns a Clock that represents the Clock minus minutes.
 func (c Clock) Subtract(minutes int) Clock {
 	return normalize(c.minutes - minutes)
 }
