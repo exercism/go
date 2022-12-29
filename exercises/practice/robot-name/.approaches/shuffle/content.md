@@ -60,6 +60,7 @@ func (r *Robot) Name() (string, error) {
 func (r *Robot) Reset() {
 	r.name = ""
 }
+
 ```
 
 The approach imports some packages that will be needed for randomization and formatting the name.
