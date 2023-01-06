@@ -62,6 +62,8 @@ For more information, check the [Bit field approach][approach-bitfield].
 The bit field approach benchmarked the fastest.
 To compare performance of the approaches, check the [Performance article][article-performance].
 
+The `strings.ContainsRune()` runes approach is much more readable so if the code is not extremely performance critical, then opting for a readable, easy-to-change solution is recommended.
+
 [approach-strings-containsrune]: https://exercism.org/tracks/go/exercises/pangram/approaches/strings-containsrune
 [approach-bitfield]: https://exercism.org/tracks/go/exercises/pangram/approaches/bitfield
 [article-performance]: https://exercism.org/tracks/go/exercises/pangram/articles/performance
