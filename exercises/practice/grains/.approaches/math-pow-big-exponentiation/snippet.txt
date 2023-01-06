@@ -1,0 +1,7 @@
+func Square(num int) (uint64, error) {
+	if num < 1 || num > 64 {
+		return 0, errors.New("square number must be 1 through 64")
+	}
+
+	return uint64(math.Pow(2, float64(num-1))), nil
+}
