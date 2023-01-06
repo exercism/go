@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "03f25b6b-2147-4550-a444-8f6d9fb2a1da",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to calculating Grains.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
