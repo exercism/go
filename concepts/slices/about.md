@@ -53,7 +53,7 @@ a = append(a, 4, 2)
 ```go
 nextSlice := []int{100,101,102}
 newSlice  := append(withData, nextSlice...)
-// => []int{0,1,2,3,4,5,100,101,102}}
+// => []int{0,1,2,3,4,5,100,101,102}
 ```
 
 ## Indexes in slices
