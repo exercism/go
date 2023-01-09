@@ -59,7 +59,6 @@ func FromCodon(codon string) (protein string, err error) {
 // FromRNA maps RNA codons to their matching proteins and returns either the list of proteins
 // or returns an error for an invalid codon.
 func FromRNA(rna string) (proteins []string, err error) {
-
 	for i := 0; i < len(rna); i += codonLength {
 		protein, err := FromCodon(rna[i : i+codonLength])
 		if err == ErrStop {
