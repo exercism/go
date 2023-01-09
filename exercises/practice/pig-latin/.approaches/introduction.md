@@ -26,7 +26,6 @@ var vowels_y = map[byte]bool{'a': true, 'e': true, 'i': true, 'o': true, 'u': tr
 
 // Sentence translates a sentence into Pig Latin.
 func Sentence(phrase string) string {
-
 	piggyfied := strings.Builder{}
 
 	for _, word := range strings.Split(phrase, " ") {
@@ -84,7 +83,6 @@ func contains[T container](values map[T]void, value T) bool {
 
 // Sentence translates a sentence into Pig Latin.
 func Sentence(phrase string) string {
-
 	piggyfied := strings.Builder{}
 
 	for _, word := range strings.Split(phrase, " ") {
