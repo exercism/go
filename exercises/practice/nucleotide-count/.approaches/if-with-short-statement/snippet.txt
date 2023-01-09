@@ -1,0 +1,8 @@
+results := Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0}
+for _, nuc := range dna {
+  if _, ok := results[nuc]; ok {
+    results[nuc]++
+  } else {
+    return nil, fmt.Errorf("invalid nucleotide '%c'", nuc)
+  }
+}
