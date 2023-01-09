@@ -19,16 +19,15 @@ import "errors"
 
 // Distance accepts two strands and returns their hamming distance.
 func Distance(strand1, strand2 string) (distance int, e error) {
-
 	if len(strand1) != len(strand2) {
-		return distance, errors.New("strands must be of equal length")
+		return 0, errors.New("strands must be of equal length")
 	}
 	for i := 0; i < len(strand1); i++ {
 		if strand1[i] != strand2[i] {
 			distance++
 		}
 	}
-	return distance, e
+	return distance, nil
 }
 ```
 
@@ -48,7 +47,7 @@ import (
 // Distance accepts two strands and returns their hamming distance.
 func Distance(strand1 string, strand2 string) (distance int, e error) {
 	if utf8.RuneCountInString(strand1) != utf8.RuneCountInString(strand2) {
-		return distance, errors.New("strands must be of equal length")
+		return 0, errors.New("strands must be of equal length")
 	}
 
 	strand1Runes := []rune(strand1)
@@ -58,7 +57,7 @@ func Distance(strand1 string, strand2 string) (distance int, e error) {
 			distance++
 		}
 	}
-	return distance, e
+	return distance, nil
 }
 ```
 
