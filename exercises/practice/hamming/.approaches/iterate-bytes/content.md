@@ -25,7 +25,7 @@ The `Distance()` function is defined with [named return values][named-return-val
 
 The [`len()`][len] function is used to compare the lengths of the strands in bytes.
 Since at the time of writing all of the characters are [ASCII][ascii], getting the length of bytes is the same as getting the number of characters.
-If the strands are not the same length, then `distance` is returned (with its initial value of `0`) along with the new error.
+If the strands are not the same length, then `0` is returned along with the new error.
 
 The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
 The runes are from [`range`][range] on a string, the strings from [`Split()`][split], and the bytes from indexing into the string.
