@@ -13,7 +13,6 @@ func getDigit(chr byte) (digit int, ok bool) {
 
 // IsValidISBN calculates the validity of the input as an ISBN.
 func IsValidISBN(input string) bool {
-
 	length := len(input)
 	pos := 10
 	sum := 0
