@@ -8,7 +8,6 @@ import "strings"
 
 // Score takes a word and returns its scrabble score.
 func Score(word string) (score int) {
-
 	for _, letter := range strings.Split(strings.ToLower(word), "") {
 
 		switch letter {
