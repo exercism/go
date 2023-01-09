@@ -1,0 +1,8 @@
+for i := 'A'; i <= 'Z'; i++ {
+  for j := 'A'; j <= 'Z'; j++ {
+    for k := 0; k < 1000; k++ {
+      names[pos] = fmt.Sprintf("%s%s%03d", string(i), string(j), k)
+      pos++
+// closing braces snipped
+rand.Seed(time.Now().UnixNano())
+rand.Shuffle(len(names), func(i, j int) { names[i], names[j] = names[j], names[i] })
