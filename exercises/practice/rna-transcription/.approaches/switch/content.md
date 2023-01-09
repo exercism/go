@@ -5,7 +5,6 @@
 package strand
 
 func nucComp(nuc byte) byte {
-
 	switch nuc {
 	case 'G':
 		return 'C'
