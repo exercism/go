@@ -35,7 +35,7 @@ then the `RuneCountInString()` function would be needed to give the accurate num
 The [`len()`][len] function used on a string would give the number of [bytes][bytes],
 which would be inaccurate for returning the number of characters for multi-byte characters.
 
-If the strands don't have the same number of runes, then `distance` is returned (with its initial value of `0`) along with the new error.
+If the strands don't have the same number of runes, then `0` is returned along with the new error.
 
 The two strands are used to create rune slices.
 
@@ -50,7 +50,7 @@ then the second unicode character index will be 2 when ranging on a string and 1
 The runes of the first strand are iterated.
 The rune in each iteration is compared with the rune at the same index in the other strand.
 If the runes are different at the same index for each strand, then the distance is incremented.
-After the loop is finished, `distance` is returned along with `e` (with its initial value of `nil`).
+After the loop is finished, `distance` is returned along with a `nil` error.
 
 [named-return-values]: https://yourbasic.org/golang/named-return-values-parameters/
 [zero-values]: https://yourbasic.org/golang/default-zero-value/
