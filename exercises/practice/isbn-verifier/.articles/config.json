@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "80e6b454-9ec3-489b-90a8-10f300ee19b9",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to solving ISBN Verifier.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
