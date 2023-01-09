@@ -69,7 +69,6 @@ For more information, check the [`map` object approach][approach-map-object].
 package strand
 
 func nucComp(nuc byte) byte {
-
 	switch nuc {
 	case 'G':
 		return 'C'
