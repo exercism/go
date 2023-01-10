@@ -1,7 +1,7 @@
 # Instructions
 
 A friend of yours has an old wholesale store called **Gross Store**.
-The name comes from the quantity of the item that the store sell: it's all in [gross unit][gross-unit].
+The name comes from the quantity of the item that the store sells: it's all in [gross unit][gross-unit].
 Your friend asked you to implement a point of sale (POS) system for his store.
 **First, you want to build a prototype for it.**
 **In your prototype, your system will only record the quantity.**
@@ -28,7 +28,7 @@ fmt.Println(units)
 
 ## 2. Create a new customer bill
 
-You need to implement a function that create a new (empty) bill for the customer.
+You need to implement a function that creates a new (empty) bill for the customer.
 
 ```go
 bill := NewBill()
@@ -41,7 +41,7 @@ fmt.Println(bill)
 To implement this, you'll need to:
 
 - Return `false` if the given `unit` is not in the `units` map.
-- Otherwise add the item to the customer `bill`, indexed by the item name, then return `true`.
+- Otherwise, add the item to the customer `bill`, indexed by the item name, then return `true`.
 - If the item is already present in the bill, increase its quantity by the amount that belongs to the provided `unit`.
 
 ```go
@@ -60,8 +60,8 @@ To implement this, you'll need to:
 
 - Return `false` if the given item is **not** in the bill
 - Return `false` if the given `unit` is not in the `units` map.
-- Return `false` if the new quantity would be less than 0.
-- If the new quantity is 0, completely remove the item from the `bill` then return `true`.
+- Return `false` if the new quantity is less than 0.
+- If the new quantity is 0, completely remove the item from the `bill` and return `true`.
 - Otherwise, reduce the quantity of the item and return `true`.
 
 ```go
