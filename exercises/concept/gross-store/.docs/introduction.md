@@ -37,7 +37,7 @@ Here are some operations that you can do with a map
   delete(foo, "bar")
 ```
 
-If you try to retrieve the value for a key which does not exist in the map, it will return the zero value of the value type.
+If you try to retrieve the value for a key that does not exist in the map, it will return the zero value of the value type.
 This can confuse you, especially if the default value of your `ElementType` (for example, 0 for an int), is a valid value.
 To check whether a key exists in your map, you can use
 
