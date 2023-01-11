@@ -12,10 +12,10 @@ A server can be defined by using `http.Server` structure. There are five importa
 3. `IdleTimeout time.Duration`: This is the maximum amount of time that a connection will be kept open before a new request from the client arrives.
 4. `ReadHeaderTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request headers.
 5. `ReadTimeout time.Duration`: This is the maximum amount of time that the server bears to read the request.
+
 ~~~~exercism/note
 If you include no timeout for your server, then faulty clients can keep using resources and eventually bring your server to a halt.
 ~~~~
-
 
 The core components used to create HTTP servers using `net/http` package are handlers. Consider the example below:
 
@@ -71,6 +71,7 @@ func(w http.ResponseWriter, r *http.Request){
 ### Multiplexer
 
 `http.ServeMux` is responsible for routing each request to the right handler by matching the pattern in the URL of the request with the **longest** pattern specified for it. `http.NewServeMux() *ServeMux` is used to create a new multiplexer. As an example:
+
 ```go
 func multiplexer() *ServeMux{
  serveMux := http.NewServeMux()
@@ -80,6 +81,7 @@ func multiplexer() *ServeMux{
  return serveMux
 }
 ```
+
 Note that multiplexers satisfy handler's interface, therefore to use one, we can initialize a server by assigning a multiplexer as its handler.
 
 #### Absolute paths vs subtrees

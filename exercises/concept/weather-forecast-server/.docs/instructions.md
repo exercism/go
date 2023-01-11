@@ -4,7 +4,9 @@ Goblinocus president was happy with your previous work and now he demands your r
 
 ## Server
 
-ForecastServer must return a server that can appropriately handle clients' requests. You need to have a multiplexer that routes each request to its appropriate handler:
+NewWeatherServer must return a server that can appropriately handle clients' requests. You need to have a multiplexer that routes each request to its appropriate handler. There are two types of requests that clients are allowed to make:
 
-1. if address ends with `“/city”`, it will send the request to a handler that sends back the forecast of the requested weather. Your handler must support only `http.Get` method. For any other method respond with MethodNotAllowed status code.
-2. For any other path, you need to use a handler to send back a BadRequest status code.
+1. A GET request that asks for a city's weather for today. The URL must be in form of `"baseUrl/?city={cityName}"`. If the URL form is different, the request must be rejected (with `http.StatusBadRequest`). If the request is accepted, you must extract the city name from the queried URL and respond with "`{cityName} will have a nice weather today!`",
+2. A POST request that asks for a city's weather in the future. The URL must be in form of `"baseUrl/?city={cityName}"`. If the URL form is different or the requested date is not positive, the request must be rejected (with `http.StatusBadRequest`). If the request is accepted, you must extract the city name from the queried URL, and the future date from the sent request body, and respond with "`{cityName} will have a nice weather in {futureDate} days!`".
+
+Be wary, your clients might be faulty and take a lot of time to send a request, therefore implement measures to close a connection if it is unused for more than 5 seconds.
