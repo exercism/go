@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "f498ca96-7d55-477b-9892-a92125c51564",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to translating DNA to RNA.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
