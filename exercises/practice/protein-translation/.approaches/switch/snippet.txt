@@ -1,0 +1,8 @@
+func FromCodon(codon string) (protein string, err error) {
+	switch codon {
+	case "AUG":
+		protein = "Methionine"
+	case "UUU", "UUC":
+		protein = "Phenylalanine"
+	case "UUA", "UUG":
+		protein = "Leucine"
