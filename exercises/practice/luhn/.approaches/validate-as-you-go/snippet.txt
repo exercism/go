@@ -1,0 +1,8 @@
+func Valid(num string) bool {
+	total := 0
+	pos := 0
+	for i := len(num) - 1; i > -1; i-- {
+		char := num[i]
+		if char == ' ' {
+			continue
+		}
