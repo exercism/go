@@ -1,54 +1,105 @@
-# About Interfaces
+# About
 
-An **interface type** is effectively a set of method signatures.
-Any type that defines those methods "implements" the interface implicitly.
-There is no `implements` keyword in Go.
-Here is what an interface definition might look like:
+## Interface as a set of methods
+
+In its simplest form, an **interface type** is a set of method signatures.
+Here is an example for an interface defition that includes two methods `Add` and `Value`:
 
 ```go
-type InterfaceName interface {
-    MethodOne() MethodOneReturnType
-    MethodTwo(paramOne ParamOneType, paramTwo ParamTwoType) MethodTwoReturnType 
-    ...
+type Counter interface {
+    Add(increment int)
+    Value() int
 }
 ```
 
-Since interfaces are implemented implicitly, a type can easily implement multiple different interfaces.
+The parameter names like `increment` can be ommited from the interface defition but they often increase readability.
+
+Interface names in Go do not contain the word `Interface` or `I`.
+Instead they often end with `er`, e.g. `Reader`, `Stringer`.
+
+## Implemeting an interface
+
+Any type that defines the methods in the interface automatically implicitly "implements" the interface.
+There is no `implements` keyword in Go.
+
+The following type implements the `Counter` interface we saw above.
+
+```go
+type Stats struct {
+    value int
+    // ...
+}
+
+func (s Stats) Add(v int) {
+    s.value += v
+}
+
+func (s Stats) Value() int {
+    return s.value
+}
+
+func (s Stats) SomeOtherMethod() {
+    // The type can have additional methods not mentioned in the interface.
+}
+```
+
+For implementing the interface, it does not matter whether the method has a value or poiter receiver.
+(Revisit the [methods concepts][concept-methods] if you are unsure about those.)
+
+`Stats` can now be used in all the places that expect the `Counter` interface.
+
+```go
+func SetUpAnalytics(couter Counter) {
+    // ...
+}
+
+stats := Stats{}
+SetUpAnalytics(stats)
+// works because Stats implements Counter
+```
+
 If all function parameters and return values needed to use concrete (ie. non-interface) types, that would strongly limit their re-usability.
 By using interface types for the parameters, only the behavior that is needed for the function to do its job is defined.
 Now the function can be used with parameters of different concrete types, as long as those concrete types implement the interface.
 The same logic applies when using interface types as return values.
 
-## The `error` interface
+Because interfaces are implemented implicitly, a type can easily implement multiple interfaces.
+It only needs to have all the necessary methods defined.
 
-For example, here is the built-in `error` interface:
+## Combining interfaces
+
+Interface defintions can include other interfaces.
+Here is an example from the standard library.
 
 ```go
-type error interface {
-    Error() string
+type ReadCloser interface {
+	Reader
+	Closer
+}
+
+// Based on these interfaces:
+
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+
+type Closer interface {
+	Close() error
 }
 ```
 
-This means that any type which implements an `Error()` method which returns a `string` implements the `error` interface.
-For example:
+Instead of the repeating the method signatures for `Read` and `Close` to define `ReadCloser`, the interface defintion makes us of the existing definitions for `Reader` and `Closer`.
 
-```go
-type MyCustomError struct {}
+## Empty interface
 
-func (MyCustomError mce) Error() string {
-    return "yikes!"
-}
-```
+There is one very special interface type in Go, the **empty interface** type that contains zero methods.
+The empty interface is written like this: `interface{}`.
+In Go 1.18 or higher, `any` can be used as well. It was defined as an alias.
 
-This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
-
-## The empty interface
-
-There is one very special interface type in Go: the **empty interface** type that contains zero methods.
-The empty interface type is written like this: `interface{}`.
-Since it has no methods, every type implements the empty interface type.
+Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.
 In that case, the function parameter uses the empty interface type.
+
 For example:
 
 ```go
@@ -62,3 +113,5 @@ func AnythingGoes(i interface{}) string {
     return "something else"
 }
 ```
+
+[concept-methods]: /tracks/go/concepts/methods
