@@ -7,17 +7,15 @@ This document provides an overview of the main topics that contributors and main
 - Improve existing concept exercises
 - Create additional concept exercises (see syllabus overview below)
 - Define the `prerequisites` and `practices` lists for all practice exercises (see [Issue 1396](https://github.com/exercism/go/issues/1396))
-- Update to the latest Go version ([Issue 1881](https://github.com/exercism/go/issues/1881))
 - Fix the remaining [test runner](https://github.com/exercism/go-test-runner/) bugs
-- Implement a `golint` replacement in the [analyzer](https://github.com/exercism/go-analyzer/) ([Issue 16](https://github.com/exercism/go-analyzer/issues/16)) and fix other bugs
-- Add analyzer comments for all existing concept exercises
-- Add more mentor notes for practice exercises
-- Improve/update/proof-read various documentation (contributing guidelines, docs, exercises/shared, reference folder)
+- Fix and reactivate the [analyzer](https://github.com/exercism/go-analyzer/) (e.g. see [Issue 16](https://github.com/exercism/go-analyzer/issues/16)) and fix other bugs
+- Finish a good, stable version of the [representer](https://github.com/exercism/go-representer/) and take it live
+- Improve/add approaches to exercises
 - Sync tests with [problem specs](https://github.com/exercism/problem-specifications)
 
 ## Syllabus Overview
 
-### Concept that exists or an issue has been created
+### Concept that exists
 
 - `basics`
 - `strings` and `strings-package`
@@ -46,14 +44,17 @@ This document provides an overview of the main topics that contributors and main
 - `string-formatting`
 - `packages` (import/export)
 - `time`
+- `variadic-functions` (introduces `...`)
+- `randomness`
+- `regular-expressions`
+- `stringers`
+
+### Potential Future Concepts
+
 - `time-duration`
 - `integer-types`
 - `panic-recover`
 - `error-wrapping` (errors.Is, errors.As)
-- `variadic-functions` (introduces `...`)
-
-### Potential Future Concepts
-
 - `bytes`
 - `bitwise-operators`
 - `goroutines`
@@ -63,9 +64,6 @@ This document provides an overview of the main topics that contributors and main
 - `closures`/`anonymous-functions`/`higher-order-functions`
 - `JSON`
 - `defer`
-- `randomness`
-- `regular-expressions`
-- `stringers`
 - `Buffer`, `io.Reader`/`io.Writer`
 - `typed-parameters` (generics)
 - `context`

@@ -5,19 +5,17 @@
 
 Exercism exercises in Go.
 
--  [Exercism Forum: Go](https://forum.exercism.org/c/programming/go/19)
+## Issues/Feedback
 
-## Issues
+⚠️ Please be aware that this repository currently does not accept community contributions. This [blog post](https://exercism.org/blog/freeing-our-maintainers) explains the details.
 
-We welcome issues filed at https://github.com/exercism/go/issues for problems of any size.
-Feel free to report typographical errors or poor wording.
-We are most interested in improving the quality of the test suites.
-You can greatly help us improve the quality of the exercises by filing reports of invalid solutions that pass tests or of valid solutions that fail tests.
+If you have any feedback or experience problems, you can bring them up in the [Go section of the Exercism forum](https://forum.exercism.org/c/programming/go/19).
+
 
 ## Development setup
 
-Beyond filing issues, if you would like to contribute directly to the Go code in the Exercism Go track, you should follow some standard Go development practices.
-You should have a [recent version of Go](http://golang.org/doc/install) installed, ideally either the current release, the previous release, or tip.
+If you work on this repository, you should follow some standard Go development practices.
+You should have a [recent version of Go](http://golang.org/doc/install) installed, ideally either the current release or previous release.
 
 You will need a github account and you will need to fork exercism/go to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
