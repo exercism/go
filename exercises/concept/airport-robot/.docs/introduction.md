@@ -46,7 +46,9 @@ func (s Stats) SomeOtherMethod() {
 For implementing the interface, it does not matter whether the method has a value or poiter receiver.
 (Revisit the [methods concepts][concept-methods] if you are unsure about those.)
 
-`Stats` can now be used in all the places that expect the `Counter` interface.
+> A value of interface type can hold any value that implements those methods. [^1]
+
+That means `Stats` can now be used in all the places that expect the `Counter` interface.
 
 ```go
 func SetUpAnalytics(couter Counter) {
