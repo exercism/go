@@ -220,14 +220,9 @@
         "slug": "deep-thought",
         "name": "Deep Thought",
         "uuid": "097176e2-5024-44e7-ab86-9bc0ec245347",
-        "concepts": [
-          "errors"
-        ],
-        "prerequisites": [
-          "string-formatting",
-          "functions"
-        ],
-        "status": "wip"
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
       },
       {
         "slug": "bird-watcher",
