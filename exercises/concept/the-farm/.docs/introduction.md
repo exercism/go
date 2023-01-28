@@ -1,21 +1,7 @@
 # Introduction
 
-## Interfaces
-
-An **interface type** is effectively a set of method signatures.
-Any type that defines those methods "implements" the interface implicitly.
-There is no `implements` keyword in Go.
-Here is what an interface definition might look like:
-
-```go
-type InterfaceName interface {
-    MethodOne() MethodOneReturnType
-    MethodTwo(paramOne ParamOneType, paramTwo ParamTwoType) MethodTwoReturnType
-    ...
-}
-```
-
-For example, here is the built-in `error` interface:
+Error handling is **not** done via exceptions in Go.
+Instead, errors are normal _values_ of types that implement the built-in `error` interface.
 
 ```go
 type error interface {
@@ -23,21 +9,10 @@ type error interface {
 }
 ```
 
-This means that any type which implements an `Error()` method which returns a `string` implements the `error` interface.
+This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
 This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
 
-There is one very special interface type in Go: the **empty interface** type that contains zero methods.
-The empty interface type is written like this: `interface{}`.
-Since it has no methods, every type implements the empty interface type.
-This is helpful for defining a function that can generically accept any value.
-In that case, the function parameter uses the empty interface type.
-
-## Errors
-
-Error handling is **not** done via exceptions in Go.
-Instead, errors are normal values of the interface type `error`.
-
-### Creating and Returning Errors
+## Creating and Returning Errors
 
 You do not have to always implement the error interface yourself.
 To create a simple error, you can use the `errors.New()` function that is part of the standard library package `errors`.
@@ -76,7 +51,7 @@ func Foo() (int, error) {
 }
 ```
 
-### Custom Error Types
+## Custom Error Types
 
 If you want your error to include more information than just the error message string, you can create a custom error type.
 As mentioned before, everything that implements the `error` interface (i.e. has an `Error() string` method) can serve as an error in Go.
@@ -105,7 +80,7 @@ func someFunction() error {
 }
 ```
 
-### Checking for Errors
+## Checking for Errors
 
 Errors can be checked against `nil`.
 It is recommended to return early in case of an error to avoid nesting the "happy path" of your code.
@@ -117,6 +92,7 @@ func myFunc() error {
 		// handle the error
 		return err // or e.g. log it and continue
 	}
+
 	// do something with file
 }
 ```
@@ -136,4 +112,4 @@ if err == ErrResourceNotFound {
 How to check for errors of a specific custom error type will be covered in later concepts.
 
 [stackoverflow-errors]: https://stackoverflow.com/a/50333850
-[line-of-sight]: https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88
+

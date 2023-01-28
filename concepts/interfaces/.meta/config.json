@@ -1,5 +1,5 @@
 {
-  "blurb": "Interfaces define method sets that are implemented implicitly.",
-  "authors": ["jmrunkle"],
-  "contributors": ["junedev"]
+  "blurb": "Interfaces define method sets and are implemented implicitily by all types that have those methods.",
+  "authors": ["jmrunkle", "junedev"],
+  "contributors": []
 }

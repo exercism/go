@@ -74,5 +74,4 @@ Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.
 In that case, the function parameter uses the empty interface type.
 
-[^1]: https://go.dev/tour/methods/9
 [concept-methods]: /tracks/go/concepts/methods
