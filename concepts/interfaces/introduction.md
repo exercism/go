@@ -17,7 +17,7 @@ The parameter names like `increment` can be ommited from the interface defition 
 Interface names in Go do not contain the word `Interface` or `I`.
 Instead they often end with `er`, e.g. `Reader`, `Stringer`.
 
-## Implemeting an interface
+## Implementing an interface
 
 Any type that defines the methods in the interface automatically implicitly "implements" the interface.
 There is no `implements` keyword in Go.
@@ -43,7 +43,7 @@ func (s Stats) SomeOtherMethod() {
 }
 ```
 
-For implementing the interface, it does not matter whether the method has a value or poiter receiver.
+For implementing the interface, it does not matter whether the method has a value or pointer receiver.
 (Revisit the [methods concepts][concept-methods] if you are unsure about those.)
 
 > A value of interface type can hold any value that implements those methods. [^1]
