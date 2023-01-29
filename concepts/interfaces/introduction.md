@@ -3,7 +3,7 @@
 ## Interface as a set of methods
 
 In its simplest form, an **interface type** is a set of method signatures.
-Here is an example for an interface defition that includes two methods `Add` and `Value`:
+Here is an example for an interface definition that includes two methods `Add` and `Value`:
 
 ```go
 type Counter interface {
@@ -12,7 +12,7 @@ type Counter interface {
 }
 ```
 
-The parameter names like `increment` can be ommited from the interface defition but they often increase readability.
+The parameter names like `increment` can be omitted from the interface definition but they often increase readability.
 
 Interface names in Go do not contain the word `Interface` or `I`.
 Instead they often end with `er`, e.g. `Reader`, `Stringer`.
@@ -51,7 +51,7 @@ For implementing the interface, it does not matter whether the method has a valu
 That means `Stats` can now be used in all the places that expect the `Counter` interface.
 
 ```go
-func SetUpAnalytics(couter Counter) {
+func SetUpAnalytics(counter Counter) {
     // ...
 }
 
