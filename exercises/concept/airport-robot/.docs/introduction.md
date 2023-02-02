@@ -43,7 +43,7 @@ func (s Stats) SomeOtherMethod() {
 }
 ```
 
-For implementing the interface, it does not matter whether the method has a value or poiter receiver.
+For implementing the interface, it does not matter whether the method has a value or pointer receiver.
 (Revisit the [methods concepts][concept-methods] if you are unsure about those.)
 
 > A value of interface type can hold any value that implements those methods. [^1]
