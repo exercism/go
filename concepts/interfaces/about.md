@@ -116,4 +116,6 @@ func AnythingGoes(i interface{}) string {
 }
 ```
 
+[^1]: https://go.dev/tour/methods/9
+
 [concept-methods]: /tracks/go/concepts/methods
