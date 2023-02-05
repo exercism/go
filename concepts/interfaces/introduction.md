@@ -3,7 +3,7 @@
 ## Interface as a set of methods
 
 In its simplest form, an **interface type** is a set of method signatures.
-Here is an example for an interface definition that includes two methods `Add` and `Value`:
+Here is an example of an interface definition that includes two methods `Add` and `Value`:
 
 ```go
 type Counter interface {
@@ -19,7 +19,7 @@ Instead they often end with `er`, e.g. `Reader`, `Stringer`.
 
 ## Implementing an interface
 
-Any type that defines the methods in the interface automatically implicitly "implements" the interface.
+Any type that defines the methods of the interface automatically implicitly "implements" the interface.
 There is no `implements` keyword in Go.
 
 The following type implements the `Counter` interface we saw above.
