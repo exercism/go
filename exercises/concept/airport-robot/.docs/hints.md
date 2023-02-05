@@ -26,4 +26,4 @@
 [interfaces-tour-of-go]: https://go.dev/tour/methods/9
 [concept-functions]: /tracks/go/concepts/functions
 [concept-structs]: /tracks/go/concepts/structs
-[concept-methods]: /tracks/go/concepts/structs
+[concept-methods]: /tracks/go/concepts/methods

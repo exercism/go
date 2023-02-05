@@ -4,6 +4,10 @@
     "description": "A Tour of Go: Interfaces"
   },
   {
+    "url": "https://golangbot.com/interfaces-part-1",
+    "description": "Golangbot: A Practical Guide to Interfaces"
+  },
+  {
     "url": "https://gobyexample.com/interfaces",
     "description": "Go by Example: Interfaces"
   },
