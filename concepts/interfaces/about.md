@@ -3,7 +3,7 @@
 ## Interface as a set of methods
 
 In its simplest form, an **interface type** is a set of method signatures.
-Here is an example for an interface defition that includes two methods `Add` and `Value`:
+Here is an example of an interface definition that includes two methods `Add` and `Value`:
 
 ```go
 type Counter interface {
@@ -12,14 +12,14 @@ type Counter interface {
 }
 ```
 
-The parameter names like `increment` can be ommited from the interface defition but they often increase readability.
+The parameter names like `increment` can be omitted from the interface definition but they often increase readability.
 
 Interface names in Go do not contain the word `Interface` or `I`.
 Instead they often end with `er`, e.g. `Reader`, `Stringer`.
 
-## Implemeting an interface
+## Implementing an interface
 
-Any type that defines the methods in the interface automatically implicitly "implements" the interface.
+Any type that defines the methods of the interface automatically implicitly "implements" the interface.
 There is no `implements` keyword in Go.
 
 The following type implements the `Counter` interface we saw above.
@@ -43,7 +43,7 @@ func (s Stats) SomeOtherMethod() {
 }
 ```
 
-For implementing the interface, it does not matter whether the method has a value or poiter receiver.
+For implementing the interface, it does not matter whether the method has a value or pointer receiver.
 (Revisit the [methods concepts][concept-methods] if you are unsure about those.)
 
 > A value of interface type can hold any value that implements those methods. [^1]
@@ -51,7 +51,7 @@ For implementing the interface, it does not matter whether the method has a valu
 That means `Stats` can now be used in all the places that expect the `Counter` interface.
 
 ```go
-func SetUpAnalytics(couter Counter) {
+func SetUpAnalytics(counter Counter) {
     // ...
 }
 
@@ -70,7 +70,7 @@ It only needs to have all the necessary methods defined.
 
 ## Combining interfaces
 
-Interface defintions can include other interfaces.
+Interface definitions can include other interfaces.
 Here is an example from the standard library.
 
 ```go
@@ -90,7 +90,7 @@ type Closer interface {
 }
 ```
 
-Instead of the repeating the method signatures for `Read` and `Close` to define `ReadCloser`, the interface defintion makes us of the existing definitions for `Reader` and `Closer`.
+Instead of the repeating the method signatures for `Read` and `Close` to define `ReadCloser`, the interface definition makes us of the existing definitions for `Reader` and `Closer`.
 
 ## Empty interface
 
