@@ -14,5 +14,6 @@
       ".meta/exemplar.go"
     ]
   },
-  "blurb": "Learn about defining and implementing interfaces by programming a airport service robot."
+  "icon": "squeaky-clean",
+  "blurb": "Learn about defining and implementing interfaces by programming an airport service robot."
 }
