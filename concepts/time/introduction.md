@@ -53,7 +53,7 @@ For a custom layout use combination of these options. In Go predefined date and 
 | AM/PM Mark | PM |
 | Day of Year | 002 ; __2 |
 
-The `time.Time` type has various methods for accessing a particular time. e.g. Hour : [`Time.Hour()`][hour] , Month : [`Time.Month()`][month]. More on how this work can be found in [ official documentation][time].
+The `time.Time` type has various methods for accessing a particular time. e.g. Hour : [`Time.Hour()`][hour] , Month : [`Time.Month()`][month]. More on how this works can be found in [ official documentation][time].
 
 The [`time`][time] includes another type, [`Duration`][duration], representing elapsed time, plus support for locations/time zones, timers, and other related functionality that will be covered in another concept.
 
