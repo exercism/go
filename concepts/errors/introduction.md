@@ -9,7 +9,7 @@ type error interface {
 }
 ```
 
-This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
+This means that any type which implements one simple method `Error()` that returns a `string` implements the `error` interface.
 This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
 
 ## Creating and Returning Errors
