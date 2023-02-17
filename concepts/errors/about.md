@@ -3,6 +3,15 @@
 Error handling is **not** done via exceptions in Go.
 Instead, errors are normal values of the interface type `error`.
 
+```go
+type error interface {
+    Error() string
+}
+```
+
+This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
+This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
+
 ## Creating and Returning Errors
 
 You do not have to always implement the error interface yourself.
@@ -14,27 +23,39 @@ You should use error variables instead of directly writing `errors.New` in cases
 import "errors"
 
 var ErrSomethingWrong = errors.New("something went wrong")
-ErrSomethingWrong.Error() // returns "something went wrong"
+ErrSomethingWrong.Error()
+// => "something went wrong"
 ```
 
 An error is by convention the last value returned in a function with multiple return values.
-If the function returns an error, it should always return the zero value for other returned values:
+If the function returns an error, it is good practice to return the zero value for all other return parameters:
 
 ```go
 import "errors"
 
 // Do this:
 func GoodFoo() (int, error) {
-  return 0, errors.New("Error")
+  return 0, errors.New("something went wrong")
 }
 
 // Not this:
 func BadFoo() (int, error) {
-  return 10, errors.New("Error")
+  return 10, errors.New("something went wrong")
 }
 ```
 
-Return `nil` for the error when there are no errors:
+~~~~exercism/caution
+You should not assume that all functions return zero values if an error is present.
+It is best practice to assume that it is not safe to use any of the other return values if an error is returned.
+
+As an example, imagine a function was trying to read from a file and returns a half-filled byte slice and an error.
+If you would re-use that returned byte slice in your code, assuming it is always empty because there was error, you can run into subtle bugs.
+
+The only exceptions are cases where the function documentation clearly states that other returns values are meaningful in case of an error.
+Look at the [documentation for `Write` on a buffer][buffer-write] for an example.
+~~~~
+
+Return `nil` as the error value to indicate that there was no error, i.e. the function did its job successfully:
 
 ```go
 func Foo() (int, error) {
@@ -100,6 +121,34 @@ if err == ErrResourceNotFound {
 
 How to check for errors of a specific custom error type will be covered in later concepts.
 
+
+## Wrapping an Error
+
+By default, an error in Go does not contain a stack trace.
+In many cases, you can picture an error in Go more like a glorified string.
+If the same error (same message string) can happen in different places in your application and you log it further up in your function chain, it can be really hard to figure out what went wrong just from the log entry.
+
+To make it easier to understand the context in which an error happened, you can wrap it.
+In its simplest form, this can be achieved by using `fmt.Errorf` with the `%w` formatting verb to add some more text to the error.
+
+```go
+func UserByID(id int) error {
+  err := db.User(id)
+  if err != nil {
+    return fmt.Errorf("retrieving user from database: %w", err)
+  }
+  // ...
+}
+
+// Let's assume db.User returns errors.New("entry not found").
+err := UserByID()
+err.Error()
+// => "retrieving user from database: entry not found"
+```
+
+
+
+
 ## Best Practice: Return Early
 
 It is best practice to return early when an error is encountered.
@@ -135,29 +184,7 @@ func myFunc() error {
 }
 ```
 
-## Scope of Errors
-
-In Go, it is also a best practice to avoid declaring variables in a scope if these are not required later.
-
-For the sake of this example, we want to check for errors only:
-
-```go
-_, err := os.Getwd()
-if err != nil {
-  return nil, err
-}
-// at this point, err is still visible.
-```
-
-So this is the preferred way to consume this error:
-
-```go
-if _, err := os.Getwd(); err != nil {
-  return
-}
-// err is now out of this scope.
-```
-
 [stackoverflow-errors]: https://stackoverflow.com/a/50333850
 [line-of-sight]: https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88
+[buffer-write]: https://pkg.go.dev/bytes#Buffer.Write
 

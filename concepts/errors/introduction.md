@@ -5,11 +5,11 @@ Instead, errors are normal _values_ of types that implement the built-in `error`
 
 ```go
 type error interface {
-    Error() string
+  Error() string
 }
 ```
 
-This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
+This means that any type which implements one simple method `Error()` that returns a `string` implements the `error` interface.
 This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
 
 ## Creating and Returning Errors
@@ -23,25 +23,24 @@ You should use error variables instead of directly writing `errors.New` in cases
 import "errors"
 
 var ErrSomethingWrong = errors.New("something went wrong")
-ErrSomethingWrong.Error() // returns "something went wrong"
+ErrSomethingWrong.Error()
+// => "something went wrong"
 ```
 
 An error is by convention the last value returned in a function with multiple return values.
-If the function returns an error, it should always return the zero value for other returned values:
+If the function returns an error, it is good practice to return the zero value for all other return parameters:
 
 ```go
-import "errors"
-
-// Do this:
-func GoodFoo() (int, error) {
-  return 0, errors.New("Error")
-}
-
-// Not this:
-func BadFoo() (int, error) {
-  return 10, errors.New("Error")
+func Foo() (int, error) {
+  return 0, errors.New("something went wrong")
 }
 ```
+
+~~~~exercism/caution
+You should not assume that all functions return zero values if an error is present.
+It is best practice to assume that it is not safe to use any of the other return values if an error is returned.
+The only exceptions are cases where the function documentation clearly states that other returns values are meaningful in case of an error.
+~~~~
 
 Return `nil` for the error when there are no errors:
 
