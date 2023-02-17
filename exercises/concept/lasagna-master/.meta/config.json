@@ -21,6 +21,6 @@
   ],
   "blurb": "Dive deeper into Go functions while preparing to cook the perfect lasagna.",
   "custom": {
-    "taskIdsEnabled": true
+    "taskIdsEnabled": false
   }
 }
