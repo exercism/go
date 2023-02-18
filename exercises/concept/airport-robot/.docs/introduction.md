@@ -15,7 +15,7 @@ type Counter interface {
 The parameter names like `increment` can be omitted from the interface definition but they often increase readability.
 
 Interface names in Go do not contain the word `Interface` or `I`.
-Instead they often end with `er`, e.g. `Reader`, `Stringer`.
+Instead, they often end with `er`, e.g. `Reader`, `Stringer`.
 
 ## Implementing an interface
 
@@ -59,7 +59,6 @@ stats := Stats{}
 SetUpAnalytics(stats)
 // works because Stats implements Counter
 ```
-
 
 Because interfaces are implemented implicitly, a type can easily implement multiple interfaces.
 It only needs to have all the necessary methods defined.

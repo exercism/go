@@ -15,7 +15,7 @@ type Counter interface {
 The parameter names like `increment` can be omitted from the interface definition but they often increase readability.
 
 Interface names in Go do not contain the word `Interface` or `I`.
-Instead they often end with `er`, e.g. `Reader`, `Stringer`.
+Instead, they often end with `er`, e.g. `Reader`, `Stringer`.
 
 ## Implementing an interface
 
@@ -90,7 +90,7 @@ type Closer interface {
 }
 ```
 
-Instead of the repeating the method signatures for `Read` and `Close` to define `ReadCloser`, the interface definition makes us of the existing definitions for `Reader` and `Closer`.
+Instead of repeating the method signatures for `Read` and `Close`, to define `ReadCloser`, the interface definition makes use of the existing definitions for `Reader` and `Closer`.
 
 ## Empty interface
 
@@ -116,6 +116,7 @@ func AnythingGoes(i interface{}) string {
 }
 ```
 
-[^1]: https://go.dev/tour/methods/9
+[^1]: [Tour of Go: Interfaces][tour-of-go-interfaces]
 
 [concept-methods]: /tracks/go/concepts/methods
+[tour-of-go-interfaces]: https://go.dev/tour/methods/9
