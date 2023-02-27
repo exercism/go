@@ -1,7 +1,16 @@
 # Introduction
 
 Error handling is **not** done via exceptions in Go.
-Instead, errors are normal _values_ of the interface type `error`.
+Instead, errors are normal _values_ of types that implement the built-in `error` interface.
+
+```go
+type error interface {
+    Error() string
+}
+```
+
+This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
+This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
 
 ## Creating and Returning Errors
 

@@ -1,0 +1,6 @@
+func Score(word string) score int {
+	for _, ltr := range word {
+		score += lookup[unicode.ToLower(ltr)]
+	}
+	return score
+}

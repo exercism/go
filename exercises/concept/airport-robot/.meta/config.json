@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "junedev"
+  ],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "airport_robot.go"
+    ],
+    "test": [
+      "airport_robot_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
+  "icon": "squeaky-clean",
+  "blurb": "Learn about defining and implementing interfaces by programming an airport service robot."
+}

@@ -1,0 +1,7 @@
+func ToRNA(dna string) string {
+	return strings.Map(func(r rune) rune {
+		switch r {
+		case 'G':
+			return 'C'
+		case 'C':
+			return 'G'

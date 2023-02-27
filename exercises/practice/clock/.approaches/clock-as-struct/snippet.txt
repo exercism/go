@@ -1,0 +1,8 @@
+func normalize(minutes int) Clock {
+	if minutes < 0 {
+		return Clock{dayMinutes + (minutes % dayMinutes)}
+	} else if minutes >= dayMinutes {
+		return Clock{minutes % dayMinutes}
+	}
+	return Clock{minutes}
+}

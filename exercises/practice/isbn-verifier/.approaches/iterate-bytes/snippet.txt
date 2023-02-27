@@ -1,0 +1,8 @@
+for i := 0; i < length; i++ {
+		chr := input[i]
+		if digit, ok := getDigit(chr); ok {
+			sum += (digit * pos)
+			pos--
+		} else if pos == 1 && chr == 'X' {
+			sum += 10
+			pos--

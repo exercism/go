@@ -1,0 +1,8 @@
+if contains(vowels, word[0]) || contains(specials, word[:2]) {
+  piggyfied.WriteString(word + "ay")
+	continue
+}
+for pos := 1; pos < len(word); pos++ {
+  letter := word[pos]
+  if contains(vowels_y, letter) {
+    if letter == 'u' && word[pos-1] == 'q' {

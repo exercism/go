@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "f39f680a-71c0-4a3d-b568-9d49d7564d73",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to solving Pig Latin.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

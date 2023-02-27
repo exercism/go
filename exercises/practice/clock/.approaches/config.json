@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "15d6d0d1-1eb4-4d38-8789-ac6b0e889abb",
+      "slug": "clock-as-int",
+      "title": "Clock as int",
+      "blurb": "Use the int type for Clock.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "80a32ed8-efd6-475c-9d05-cf0600c9e2f9",
+      "slug": "clock-as-struct",
+      "title": "Clock as struct",
+      "blurb": "Use the struct type for Clock.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

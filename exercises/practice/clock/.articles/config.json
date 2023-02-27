@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "f69f7d90-2ec6-435b-b324-6f8bca9499c6",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to solving Clock.",
+      "authors": ["bobahop"]
+    }
+  ]
+}
