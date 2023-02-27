@@ -33,6 +33,26 @@ func TestColors(t *testing.T) {
 	}
 }
 
+// colorCodeBench is intended to be used in BenchmarkColorCode to avoid compiler optimizations.
+var colorCodeBench int
+
+func BenchmarkColorCode(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tc := range colorCodeTestCases {
+			colorCodeBench = ColorCode(tc.input)
+		}
+	}
+}
+
+// colorsBench is intended to be used in BenchmarkColors to avoid compiler optimizations.
+var colorsBench []string
+
+func BenchmarkColors(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		colorsBench = Colors()
+	}
+}
+
 func makeMap(s []string) map[string]bool {
 	m := make(map[string]bool)
 	for _, v := range s {
