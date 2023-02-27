@@ -1,6 +1,6 @@
 for number := 2; number <= limit; number++ {
 		if !composite[number] {
-			primes[prime_index] = number
+			primes[primeIndex] = number
 			prime_index++
 			for idx := number + number; idx <= limit; idx += number {
 				composite[idx] = true
