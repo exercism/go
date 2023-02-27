@@ -13,8 +13,6 @@ Something to consider is to keep the number of allocations at a minimum to get t
 // Package sieve is a small library for finding prime numbers
 package sieve
 
-// BenchmarkSieve-12    	  332006	      3609 ns/op	    5264 B/op	       9 allocs/op
-
 // Sieve calculates and returns prime numbers up to the limit
 func Sieve(limit int) []int {
 	composite := make([]bool, limit+1)
