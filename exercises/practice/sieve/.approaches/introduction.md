@@ -17,18 +17,18 @@ package sieve
 func Sieve(limit int) []int {
 	composite := make([]bool, limit+1)
 	primes := make([]int, limit/2)
-	prime_index := 0
+	primeIndex := 0
 
 	for number := 2; number <= limit; number++ {
 		if !composite[number] {
-			primes[prime_index] = number
-			prime_index++
+			primes[primeIndex] = number
+			primeIndex++
 			for idx := number + number; idx <= limit; idx += number {
 				composite[idx] = true
 			}
 		}
 	}
-	return primes[:prime_index]
+	return primes[:primeIndex]
 }
 ```
 
