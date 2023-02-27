@@ -1989,6 +1989,16 @@
           "text_formatting"
         ],
         "difficulty": 3
+      },
+      {
+        "slug": "resistor-color",
+        "name": "Resistor Color",
+        "uuid": "55e1ab2e-b4ec-43ae-8f95-3f14c8dc6ce9",
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+        ],
+        "difficulty": 2
       }
     ]
   },
