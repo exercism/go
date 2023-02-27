@@ -1,0 +1,8 @@
+for number := 2; number <= limit; number++ {
+		if !composite[number] {
+			primes[primeIndex] = number
+			primeIndex++
+			for idx := number + number; idx <= limit; idx += number {
+				composite[idx] = true
+			}
+		}
