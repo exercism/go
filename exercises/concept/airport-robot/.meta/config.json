@@ -2,7 +2,6 @@
   "authors": [
     "junedev"
   ],
-  "contributors": [],
   "files": {
     "solution": [
       "airport_robot.go"
