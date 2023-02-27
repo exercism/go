@@ -35,7 +35,7 @@ Since values less than `2` are not prime, the iteration of the outer [for loop][
 If the number being iterated is not a composite number, then the element in the slice of primes at the prime index is set to that number, and the
 prime index is incremented.
 
-Since any number evenly divisible by that prime is not prime, the next `for` loop iterates from the prime plus itself, setting each of those
+Since any number evenly divisible by that prime is not prime, the inner `for` loop iterates from the prime plus itself, setting each of those
 numbers to `true` for being a composite number.
 
 After the outer loop is done, a slice of the primes slice up to but not including the prime index is returned.
