@@ -57,7 +57,7 @@ for ; action != end; action += actionIncr {
 Normal iteration will start at index `0`.
 Reverse iteration will start at index `3`.
 
-Normal iteration will terminate when the index equals `3`.
+Normal iteration will terminate when the index equals `4`.
 Reverse iteration will terminate when the index equals `-1`.
 
 Normal iteration will increase the index by `1` for each iteration.
