@@ -558,6 +558,25 @@
         ]
       },
       {
+        "slug": "resistor-color",
+        "name": "Resistor Color",
+        "uuid": "55e1ab2e-b4ec-43ae-8f95-3f14c8dc6ce9",
+        "practices": [],
+        "prerequisites": [],
+        "topics": [
+        ],
+        "difficulty": 2
+      },
+      {
+        "slug": "resistor-color-duo",
+        "name": "Resistor Color Duo",
+        "uuid": "5ad1122f-9e7f-44e7-8fa1-3b93a22d1bde",
+        "practices": [],
+        "prerequisites": [],
+        "topics": [],
+        "difficulty": 3
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "b4f6b08b-a132-447b-b447-66bf37ab20c6",
@@ -1989,16 +2008,6 @@
           "text_formatting"
         ],
         "difficulty": 3
-      },
-      {
-        "slug": "resistor-color",
-        "name": "Resistor Color",
-        "uuid": "55e1ab2e-b4ec-43ae-8f95-3f14c8dc6ce9",
-        "practices": [],
-        "prerequisites": [],
-        "topics": [
-        ],
-        "difficulty": 2
       }
     ]
   },
