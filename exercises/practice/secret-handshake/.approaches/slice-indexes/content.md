@@ -81,7 +81,7 @@ using the [append][append] function.
 If the number being iterated is `1`, then `1` is shifted left `1` time, and the number passed in is ANDed with `00010`.
 If the number passed in is `3`, which is `00011` in binary, then it is ANDed with `00010`.
 `00011` ANDed with `00010` is not equal to `0`, so the signal at the index of the slice of signals is added to the output slice.
-The index used is the number being iterated, which is `1`, so the element at index `1` ("double blink`) would be added to the output slice.
+The index used is the number being iterated, which is `1`, so the element at index `1` (`"double blink"`) would be added to the output slice.
 
 If the number passed in ANDed with the number being iterated is equal to `0`, then the signal in the slice for that index is not added to the output slice.
 
