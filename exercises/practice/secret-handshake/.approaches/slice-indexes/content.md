@@ -27,7 +27,7 @@ func Handshake(code uint) []string {
 ```
 
 This approach starts by defining a [slice][slice] of the signals in their normal order.
-A [const] is defined to represent the signal for reversing the order of the other signals.
+A [const][const] is defined to represent the signal for reversing the order of the other signals.
 It is given a meaningful name so that `16` won't be used as a [magic number][magic-number].
 
 Some variables are defined with values for iterating the slice of signals in their normal order.
