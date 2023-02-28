@@ -40,15 +40,16 @@ func Label(colors []string) string {
 	label := strconv.Itoa(value)
 
 	var unit string
-	if len(label) < 4 {
+	switch {
+	case len(label) < 4:
 		unit = "ohms"
-	} else if len(label) < 7 {
+	case len(label) < 7:
 		label = strconv.Itoa(value / 1000)
 		unit = "kiloohms"
-	} else if len(label) <= 8 {
+	case len(label) <= 8:
 		label = strconv.Itoa(value / 1000_000)
 		unit = "megaohms"
-	} else if len(label) >= 9 {
+	case len(label) >= 9:
 		label = strconv.Itoa(value / 1000_000_000)
 		unit = "gigaohms"
 	}
