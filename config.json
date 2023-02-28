@@ -577,6 +577,15 @@
         "difficulty": 3
       },
       {
+        "slug": "resistor-color-trio",
+        "name": "Resistor Color Trio",
+        "uuid": "b10b1604-bd88-4f4a-bf84-c0508df34f1a",
+        "practices": [],
+        "prerequisites": [],
+        "topics": [],
+        "difficulty": 4
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "b4f6b08b-a132-447b-b447-66bf37ab20c6",
