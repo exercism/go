@@ -7,7 +7,7 @@ A general approach is to keep track of the size as nodes are pushed and popped.
 
 A consideration is not to implement with a slice or some other existing container.
 
-## Approach: Keep track of size
+## Approach: Keep track of the size
 
 ```go
 package linkedlist
