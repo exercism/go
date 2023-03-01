@@ -71,6 +71,6 @@ func (l *List) Reverse() *List {
 }
 ```
 
-For more information, check the [keep track of size appproach][approach-keep-track-of-size].
+For more information, check the [keep track of size approach][approach-keep-track-of-size].
 
 [approach-keep-track-of-size]: https://exercism.org/tracks/go/exercises/simple-linked-list/approaches/keep-track-of-size
