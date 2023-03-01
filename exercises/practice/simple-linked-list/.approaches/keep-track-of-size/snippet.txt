@@ -1,0 +1,8 @@
+if l.size < 1 {
+  return 0, errors.New("no elements")
+}
+deadHead := l.head
+l.head = deadHead.next
+deadHead.next = nil
+l.size--
+return deadHead.data, nil
