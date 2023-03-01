@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "andrerfcsantos"
+  ],
   "files": {
     "solution": [
       "resistor_color_trio.go"
