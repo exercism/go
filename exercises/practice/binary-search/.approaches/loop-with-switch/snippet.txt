@@ -1,0 +1,8 @@
+switch {
+case list[mid] == key:
+  return mid
+case key < list[mid]:
+  right = mid
+default:
+  left = mid + 1
+}
