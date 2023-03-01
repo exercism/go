@@ -9,7 +9,7 @@ A general approach is to loop and use a switch to iterate toward a solution.
 // Package binarysearch is a small library for finding an element in an ordered sequence
 package binarysearch
 
-// SearchInts finds an element in an ordered sequence
+// SearchInts searches for an element in an ordered sequence and returns its index or -1 if not found
 func SearchInts(list []int, key int) int {
 	for left, right := 0, len(list); left != right; {
 		mid := (left + right) / 2
