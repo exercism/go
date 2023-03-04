@@ -28,6 +28,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base."

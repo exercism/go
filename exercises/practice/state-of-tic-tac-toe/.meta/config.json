@@ -14,6 +14,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Determine the game state of a match of Tic Tac Toe.",

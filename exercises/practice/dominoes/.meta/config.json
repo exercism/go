@@ -25,6 +25,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Make a chain of dominoes."

@@ -30,6 +30,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Compute the result for a game of Hex / Polygon."

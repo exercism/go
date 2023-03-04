@@ -12,8 +12,11 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor" : [
+    "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Convert color codes, as used on resistors, to a numeric value.",

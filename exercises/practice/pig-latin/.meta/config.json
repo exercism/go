@@ -27,6 +27,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Implement a program that translates from English to Pig Latin.",

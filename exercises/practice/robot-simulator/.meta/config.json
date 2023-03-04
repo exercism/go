@@ -28,6 +28,9 @@
     ],
     "editor": [
       "defs.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Write a robot simulator.",

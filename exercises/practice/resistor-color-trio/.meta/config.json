@@ -14,6 +14,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Convert color codes, as used on resistors, to a human-readable label.",

@@ -35,6 +35,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Calculate the Hamming difference between two DNA strands.",
