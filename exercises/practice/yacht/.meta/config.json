@@ -24,6 +24,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Score a single throw of dice in the game Yacht.",

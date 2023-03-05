@@ -30,6 +30,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Given a DNA strand, return its RNA Complement Transcription.",

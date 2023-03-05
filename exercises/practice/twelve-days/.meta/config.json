@@ -27,6 +27,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Output the lyrics to 'The Twelve Days of Christmas'",

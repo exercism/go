@@ -28,6 +28,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Count the frequency of letters in texts using parallel computation."

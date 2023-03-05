@@ -32,6 +32,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Given a word, compute the Scrabble score for that word.",

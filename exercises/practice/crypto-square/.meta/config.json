@@ -25,6 +25,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Implement the classic method for composing secret messages called a square code.",
