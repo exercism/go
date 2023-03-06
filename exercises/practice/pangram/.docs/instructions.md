@@ -1,9 +1,8 @@
 # Instructions
 
-Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan gramma,
-"every letter") is a sentence using every letter of the alphabet at least once.
-The best known English pangram is:
-> The quick brown fox jumps over the lazy dog.
+Your task is to figure out if a sentence is a pangram.
 
-The alphabet used consists of letters `a` to `z`, inclusive, and is case
-insensitive.
+A pangram is a sentence using every letter of the alphabet at least once.
+It is case insensitive, so it doesn't matter if a letter is lower-case (e.g. `k`) or upper-case (e.g. `K`).
+
+For this exercise we only use the basic letters used in the English alphabet: `a` to `z`.
