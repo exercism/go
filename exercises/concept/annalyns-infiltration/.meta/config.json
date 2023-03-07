@@ -19,5 +19,8 @@
   "forked_from": [
     "csharp/annalyns-infiltration"
   ],
-  "blurb": "Learn about booleans by helping Annalyn free her best friend."
+  "blurb": "Learn about booleans by helping Annalyn free her best friend.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }
