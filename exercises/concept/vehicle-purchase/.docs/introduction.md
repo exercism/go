@@ -23,7 +23,7 @@ a > 5  // false
 ```
 
 The comparison operators above can also be used to compare strings.
-In that case a lexicographical (dictionary) order is applied.
+In that case, a lexicographical (dictionary) method of arranging words alphabetically is applied.
 For example:
 
 ```Go
