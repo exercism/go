@@ -38,17 +38,14 @@ func DoSomething() (SomeStruct, int, error) {
 ```
 
 ~~~~exercism/caution
-You should never assume that all functions return zero values for other return values if an error is present.
-It is best practice to assume that it is not safe to use any of the other return values if an error is returned.
+You should not assume that all functions return zero values for other return values if an error is present.
+It is best practice to assume that it is not safe to use any of the other return values if an error occurred.
 The only exceptions are cases where the documentation clearly states that other returns values are meaningful in case of an error.
 ~~~~
 
-Make sure the error message you provide is as specific as possible as errors do not include any stack traces by default.
-You only have the message to go by to pinpoint the problem.
-By convention, the error message should start with a lowercase letter and not end with a period.
-
-If you want to use such an error in multiple places (or you want to make the error available to the consumer of your package), you should declare a variable for the error instead of using `errors.New` in-line.
-By convention, the name of the variable should start with `Err` or `err` (depending on whether it is exported or not). These error variables are often called _sentinel errors_.
+If you want to use such a simple error in multiple places, you should declare a variable for the error instead of using `errors.New` in-line.
+By convention, the name of the variable should start with `Err` or `err` (depending on whether it is exported or not).
+These error variables are often called _sentinel errors_.
 
 ```go
 import "errors"
@@ -61,7 +58,7 @@ func DoSomething() error {
 }
 ```
 
-Return `nil` for the error when there are no errors during the function execution:
+Return `nil` for the error to signal that there were no errors during the function execution:
 
 ```go
 func Foo() (int, error) {
@@ -69,7 +66,7 @@ func Foo() (int, error) {
 }
 ```
 
-## Checking for errors
+## Error checking
 
 If you call a function that returns an error, it is common to store the error value in a variable called `err`.
 Before you use the actual result of the function, you need to check that there was no error.
@@ -94,9 +91,7 @@ It is good practice to either return or log the error, never both.
 
 Since most functions in Go include an error as one of the return values, you will see/use the `if err != nil` pattern all over the place in Go code.
 
-How to distinguish between different errors/ error types will be covered later in the syllabus.
-
-## Custom Error Types
+## Custom error types
 
 If you want your error to include more information than just the error message string, you can create a custom error type.
 As mentioned before, everything that implements the `error` interface (i.e. has an `Error() string` method) can serve as an error in Go.
@@ -113,7 +108,7 @@ type MyCustomError struct {
 }
 
 func (e *MyCustomError) Error() string {
-  return fmt.Sprintf("%s, Details: %s", e.message, e.details)
+  return fmt.Sprintf("%s, details: %s", e.message, e.details)
 }
 
 func someFunction() error {
@@ -126,4 +121,3 @@ func someFunction() error {
 ```
 
 [stackoverflow-errors]: https://stackoverflow.com/a/50333850
-
