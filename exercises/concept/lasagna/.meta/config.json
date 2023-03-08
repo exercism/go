@@ -24,5 +24,8 @@
   "forked_from": [
     "csharp/lucians-luscious-lasagna"
   ],
-  "blurb": "Learn about packages, functions, and variables by helping Gopher cook lasagna."
+  "blurb": "Learn about packages, functions, and variables by helping Gopher cook lasagna.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }
