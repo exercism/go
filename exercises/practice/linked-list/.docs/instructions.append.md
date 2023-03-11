@@ -20,7 +20,7 @@ Your `List` should have the following methods:
 * `First() *Node`: returns a pointer to the first node (head).
 * `Last() *Node`: returns a pointer to the last node (tail).
 * `Push(v interface{})`: insert value at the back of the list.
-* `Pop() (interface{}, error)`: remove value from the back of the list.
+* `Pop() (interface{}, error)`: remove value from the back of the list. function returns an error "list is empty" if Pop called on empty list.
 * `Unshift(v interface{}) `: insert value at the front of the list.
-* `Shift() (interface{}, error)`: remove value from the front of the list.
+* `Shift() (interface{}, error)`: remove value from the front of the list. function returns an error "list is empty" if Shift called on empty list.
 * `Reverse()`: reverse the linked list.
