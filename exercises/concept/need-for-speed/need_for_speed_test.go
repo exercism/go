@@ -253,6 +253,19 @@ func TestCanFinish(t *testing.T) {
 			},
 			expected: false,
 		},
+		{
+			name: "Implementation should take into account rounding errors from using integer division",
+			car: Car{
+				speed:        3,
+				batteryDrain: 5,
+				battery:      51,
+				distance:     0,
+			},
+			track: Track{
+				distance: 31,
+			},
+			expected: false,
+		},
 	}
 
 	for _, tt := range tests {
