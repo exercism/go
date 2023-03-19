@@ -55,26 +55,26 @@ type List struct {
 }
 
 // NewList constructs a doubly linked list from a sequence of integers.
-func NewList(vs ...interface{}) *List {
+func NewList(elements ...interface{}) *List {
 	ll := &List{
 		head: nil,
 		tail: nil,
 	}
 
-	if len(vs) < 1 {
+	if len(elements) < 1 {
 		return ll
 	}
 
-	ll.head = NewNode(vs[0])
+	ll.head = NewNode(elements[0])
 	ll.tail = ll.head
 
-	if len(vs) == 1 {
+	if len(elements) == 1 {
 		return ll
 	}
 
 	cur := ll.head
-	for i := 1; i < len(vs); i++ {
-		cur.next = NewNode(vs[i])
+	for i := 1; i < len(elements); i++ {
+		cur.next = NewNode(elements[i])
 		cur.next.prev = cur
 		cur = cur.next
 	}
@@ -144,9 +144,7 @@ func (ll *List) Push(v interface{}) {
 	}
 }
 
-var (
-	ErrEmptyList = errors.New("list is empty")
-)
+var ErrEmptyList = errors.New("list is empty")
 
 // Shift posp the element at Head. It returns error if the linked list is empty.
 func (ll *List) Shift() (interface{}, error) {

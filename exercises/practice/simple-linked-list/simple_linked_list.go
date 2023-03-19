@@ -2,7 +2,7 @@ package linkedlist
 
 // Define the List and Element types here.
 
-func New([]int) *List {
+func New(elements []int) *List {
 	panic("Please implement the New function")
 }
 
