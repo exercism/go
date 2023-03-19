@@ -141,6 +141,6 @@ For more information, check the [`map` approach][approach-map].
 Both approaches are about the same performance, so which to use could be a matter of preferred style.
 To compare performance of the approaches, check the [Performance article][article-performance].
 
-[approach-switch-statement]: https://exercism.org/tracks/go/exercises/protein-translation/approaches/switch-statement
+[approach-switch-statement]: https://exercism.org/tracks/go/exercises/protein-translation/approaches/switch
 [approach-map]: https://exercism.org/tracks/go/exercises/protein-translation/approaches/map
 [article-performance]: https://exercism.org/tracks/go/exercises/protein-translation/articles/performance
