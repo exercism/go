@@ -12,7 +12,11 @@
     "description": "Go tools: godoc"
   },
   {
-    "url": "https://github.com/golang/lint",
-    "description": "Go tools: golint"
+    "url": "https://pkg.go.dev/cmd/vet",
+    "description": "Go tools: go vet"
+  }
+  {
+    "url": "https://staticcheck.io/",
+    "description": "Go tools: Staticcheck"
   }
 ]
