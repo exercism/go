@@ -105,6 +105,12 @@ var subsetCases = []binBoolCase{
 		want:        true,
 	},
 	{
+		description: "unsorted set is a subset of larger set with same elements",
+		set1:        []string{"b", "a"},
+		set2:        []string{"a", "b", "c"},
+		want:        true,
+	},
+	{
 		description: "set is a subset of larger set with same elements",
 		set1:        []string{"a", "b", "c"},
 		set2:        []string{"d", "a", "b", "c"},
