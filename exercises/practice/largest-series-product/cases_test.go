@@ -83,20 +83,6 @@ var testCases = []struct {
 		error:       "span must be smaller than string length",
 	},
 	{
-		description: "reports 1 for empty string and empty product (0 span)",
-		digits:      "",
-		span:        0,
-		expected:    1,
-		error:       "",
-	},
-	{
-		description: "reports 1 for nonempty string and empty product (0 span)",
-		digits:      "123",
-		span:        0,
-		expected:    1,
-		error:       "",
-	},
-	{
 		description: "rejects empty string and nonzero span",
 		digits:      "",
 		span:        1,
