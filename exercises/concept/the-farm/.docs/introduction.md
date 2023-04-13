@@ -1,49 +1,64 @@
 # Introduction
 
+## The error interface
+
 Error handling is **not** done via exceptions in Go.
 Instead, errors are normal _values_ of types that implement the built-in `error` interface.
+The `error` interface is very minimal.
+It contains only one method `Error()` that returns the error message as a string.
 
 ```go
 type error interface {
-    Error() string
+  Error() string
 }
 ```
 
-This means that any type which implements an one simple method `Error()` that returns a `string` implements the `error` interface.
-This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
+Every time you define a function in which an error could happen during the execution that needs to reach the caller, you need to include `error` as one of the return types.
+If the function has multiple return values, by convention `error` is always the last one.
 
-## Creating and Returning Errors
+```go
+func DoSomething() (int, error) {
+  // ...
+}
+```
+
+## Creating and returning a simple error
 
 You do not have to always implement the error interface yourself.
 To create a simple error, you can use the `errors.New()` function that is part of the standard library package `errors`.
-These error variables are also called _sentinel errors_ and by convention their names should start with `Err` or `err` (depending on whether they are exported or not).
-You should use error variables instead of directly writing `errors.New` in cases where you use an error multiple times or where you want the consumer of your package to be able to check for the specific error.
+The only thing you need to pass in is the error message as a string.
+
+If the function returns an error, it is good practice to return the zero value for all other return parameters:
+
+```go
+func DoSomething() (SomeStruct, int, error) {
+  // ...
+  return SomeStruct{}, 0, errors.New("failed to calculate result")
+}
+```
+
+~~~~exercism/caution
+You should not assume that all functions return zero values for other return values if an error is present.
+It is best practice to assume that it is not safe to use any of the other return values if an error occurred.
+The only exceptions are cases where the documentation clearly states that other returns values are meaningful in case of an error.
+~~~~
+
+If you want to use such a simple error in multiple places, you should declare a variable for the error instead of using `errors.New` in-line.
+By convention, the name of the variable should start with `Err` or `err` (depending on whether it is exported or not).
+These error variables are often called _sentinel errors_.
 
 ```go
 import "errors"
 
-var ErrSomethingWrong = errors.New("something went wrong")
-ErrSomethingWrong.Error() // returns "something went wrong"
-```
+var ErrNotFound = errors.New("resource was not found")
 
-An error is by convention the last value returned in a function with multiple return values.
-If the function returns an error, it should always return the zero value for other returned values:
-
-```go
-import "errors"
-
-// Do this:
-func GoodFoo() (int, error) {
-  return 0, errors.New("Error")
-}
-
-// Not this:
-func BadFoo() (int, error) {
-  return 10, errors.New("Error")
+func DoSomething() error {
+  // ...
+  return ErrNotFound
 }
 ```
 
-Return `nil` for the error when there are no errors:
+Return `nil` for the error to signal that there were no errors during the function execution:
 
 ```go
 func Foo() (int, error) {
@@ -51,7 +66,32 @@ func Foo() (int, error) {
 }
 ```
 
-## Custom Error Types
+## Error checking
+
+If you call a function that returns an error, it is common to store the error value in a variable called `err`.
+Before you use the actual result of the function, you need to check that there was no error.
+
+To avoid nesting the "happy path" of your code, error cases should be handled first.
+We can use `==` and `!=` to compare the error against `nil` and we know there was an error when `err` is not `nil`.
+
+```go
+func processUserFile() error {
+	file, err := os.Open("./users.csv")
+	if err != nil {
+		return err
+	}
+
+	// do something with file
+}
+```
+
+Most of the time, the error will be returned up the function stack as shown in the example above.
+Another way of handling the error could be to log it and continue with some other operation.
+It is good practice to either return or log the error, never both.
+
+Since most functions in Go include an error as one of the return values, you will see/use the `if err != nil` pattern all over the place in Go code.
+
+## Custom error types
 
 If you want your error to include more information than just the error message string, you can create a custom error type.
 As mentioned before, everything that implements the `error` interface (i.e. has an `Error() string` method) can serve as an error in Go.
@@ -68,7 +108,7 @@ type MyCustomError struct {
 }
 
 func (e *MyCustomError) Error() string {
-  return fmt.Sprintf("%s, Details: %s", e.message, e.details)
+  return fmt.Sprintf("%s, details: %s", e.message, e.details)
 }
 
 func someFunction() error {
@@ -80,36 +120,4 @@ func someFunction() error {
 }
 ```
 
-## Checking for Errors
-
-Errors can be checked against `nil`.
-It is recommended to return early in case of an error to avoid nesting the "happy path" of your code.
-
-```go
-func myFunc() error {
-	file, err := os.Open("./users.csv")
-	if err != nil {
-		// handle the error
-		return err // or e.g. log it and continue
-	}
-
-	// do something with file
-}
-```
-
-Since most functions in Go include an error as one of the return values, you will see/use this `if err != nil` pattern all over the place in Go code.
-
-You can compare error variables with the equality operator `==`:
-
-```go
-var ErrResourceNotFound = errors.New("resource not found")
-// ...
-if err == ErrResourceNotFound {
-  // do something about the resource-not-found error
-}
-```
-
-How to check for errors of a specific custom error type will be covered in later concepts.
-
 [stackoverflow-errors]: https://stackoverflow.com/a/50333850
-
