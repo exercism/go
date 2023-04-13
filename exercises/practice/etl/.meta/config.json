@@ -29,6 +29,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "We are going to do the `Transform` step of an Extract-Transform-Load.",

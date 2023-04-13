@@ -18,6 +18,9 @@
     ],
     "editor": [
       "car.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "forked_from": [

@@ -49,7 +49,8 @@ func TestAddMinutesStringless(t *testing.T) {
 
 			expected := New(wantHour, wantMin)
 			if actual := New(tc.h, tc.m).Add(tc.addedValue); !reflect.DeepEqual(actual, expected) {
-				t.Errorf("New(%d, %d).Add(%d) = %v, want %v", tc.h, tc.m, tc.addedValue, actual, expected)
+				t.Errorf("New(%d, %d).Add(%d)\n\t Got: %q (%#v)\n\tWant: %q (%#v)",
+					tc.h, tc.m, tc.addedValue, actual, actual, expected, expected)
 			}
 		})
 	}
@@ -67,7 +68,8 @@ func TestSubtractMinutesStringless(t *testing.T) {
 
 			expected := New(wantHour, wantMin)
 			if actual := New(tc.h, tc.m).Subtract(tc.subtractedValue); !reflect.DeepEqual(actual, expected) {
-				t.Errorf("New(%d, %d).Subtract(%d) = %v, want %v", tc.h, tc.m, tc.subtractedValue, actual, expected)
+				t.Errorf("New(%d, %d).Subtract(%d)\n\t Got: %q (%#v)\n\tWant: %q (%#v)",
+					tc.h, tc.m, tc.subtractedValue, actual, actual, expected, expected)
 			}
 		})
 	}
@@ -80,7 +82,8 @@ func TestCompareClocks(t *testing.T) {
 			clock2 := New(tc.c2.h, tc.c2.m)
 			actual := clock1 == clock2
 			if actual != tc.expected {
-				t.Errorf("Clock1 == Clock2 is %t, want %t\nClock1: %q\nClock2: %q", actual, tc.expected, clock1, clock2)
+				t.Errorf("Clock1 == Clock2 is %t, want %t\n\tClock1: %q (%#v)\n\tClock2: %q (%#v)",
+					actual, tc.expected, clock1, clock1, clock2, clock2)
 				if reflect.DeepEqual(clock1, clock2) {
 					t.Log("(Hint: see comments in clock_test.go.)")
 				}

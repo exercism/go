@@ -18,6 +18,9 @@
     ],
     "editor": [
       "types.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Learn about errors and interfaces while feeding cows on the farm."

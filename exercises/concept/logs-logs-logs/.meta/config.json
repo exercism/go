@@ -12,6 +12,9 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Learn about the strings package by parsing logs."

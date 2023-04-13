@@ -21,6 +21,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Write a simple linked list implementation that uses Elements and a List",

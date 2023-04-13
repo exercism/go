@@ -24,6 +24,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",

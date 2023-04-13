@@ -32,6 +32,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Implement variable length quantity encoding and decoding.",

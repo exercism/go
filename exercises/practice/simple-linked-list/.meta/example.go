@@ -12,9 +12,9 @@ type List struct {
 	size int
 }
 
-func New(array []int) *List {
+func New(elements []int) *List {
 	var res List
-	for _, elem := range array {
+	for _, elem := range elements {
 		res.Push(elem)
 	}
 	return &res

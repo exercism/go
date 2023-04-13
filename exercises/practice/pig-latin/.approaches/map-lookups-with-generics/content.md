@@ -53,11 +53,6 @@ func Sentence(phrase string) string {
 }
 ```
 
-```exercism/note
-As of this writing, the Go version defined in the `go.mod` file is `1.16`.
-To use generics, the `go.mod` file needs to be updated to version `1.18` or higher.
-```
-
 The approach imports the `strings` package so it can use [`strings.Builder`][builder] as an efficient way to build the output string.
 
 This approach starts be defining a void [type][type] that will be used in the package.
@@ -73,12 +68,12 @@ More info on implementing a set in Go can be found [here](https://yourbasic.org/
 
 An [interface type][interface-type] is then defined which will be used to constain which types are to be used for the [generics][generics]:
 
->Generics are a way of writing code that is independent of the specific types being used. Functions and types may now be written to use any of a set of types.
+> Generics are a way of writing code that is independent of the specific types being used. Functions and types may now be written to use any of a set of types.
 
 Since there can not be multiple [`if` with short statements][if-with-short-statement] on the same line,
 the `contains()` function is defined which takes a generic type parameter of `[T container]`.
 `T` is the name of the parameter.
-The name does not have to be `T`, but it is a common convention in Go (and  other languages) to start with `T`,
+The name does not have to be `T`, but it is a common convention in Go (and other languages) to start with `T`,
 and if a second name is needed, to use `U`, and so on.
 The type of `T` is constrained to be one of the types defined in the `container` interface.
 The arguments to the function are a map of the generic type `T` with void values, and a value of type `T`.

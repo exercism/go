@@ -17,6 +17,9 @@ needLicense := NeedsLicense("car")
 
 needLicense = NeedsLicense("bike")
 // => false
+
+needLicense = NeedsLicense("truck")
+// => true
 ```
 
 ## 2. Choose between two potential vehicles to buy

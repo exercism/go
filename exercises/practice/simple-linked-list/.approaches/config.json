@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "ba6d7fa1-d891-4bb8-89b4-80a31b0b0fc5",
+      "slug": "keep-track-of-size",
+      "title": "Keep track of the size",
+      "blurb": "Keep track of the size as you go.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

@@ -14,6 +14,9 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Learn about maps by selling items by the dozen at the Gross Store."
