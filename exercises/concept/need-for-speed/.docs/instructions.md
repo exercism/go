@@ -4,7 +4,7 @@ In this exercise you'll be organizing races between various types of remote cont
 Each car has its own speed and battery drain characteristics.
 
 Cars start with full (100%) batteries. Each time you drive the car using the remote control,
-it covers the car's speed in meters and decreases the remaining battery percentage by its battery drain.
+it covers the car's speed in meters per timestep and decreases the remaining battery percentage by its battery drain.
 
 If a car's battery is below its battery drain percentage, you can't drive the car anymore.
 
@@ -19,7 +19,7 @@ Define a `Car` struct with the following `int` type fields:
 - speed
 - distance
 
-Allow creating a remote controlled car by defining a function `NewCar` that takes the speed of the car in meters,
+Allow creating a remote controlled car by defining a function `NewCar` that takes the speed of the car in meters per time step,
 and the battery drain percentage as its two parameters (both of type `int`) and returns a `Car` instance:
 
 ```go
