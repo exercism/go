@@ -35,8 +35,25 @@ bill := NewBill()
 fmt.Println(bill)
 // Output: map[]
 ```
+## 3. Return the quantity of a specific item that is in the customer bill
 
-## 3. Add an item to the customer bill
+To implement this, you'll need to:
+
+- Return `0` and `false` if the `item` is not in the bill.
+- Otherwise, return the quantity of the item in the `bill` and `true`.
+
+```go
+bill := map[string]int{"carrot": 12, "grapes": 3}
+qty, ok := GetItem(bill, "carrot")
+fmt.Println(qty)
+// Output: 12
+fmt.Println(ok)
+// Output: true
+```
+
+> Note that the returned value are types `int` and `bool`.
+
+## 4. Add an item to the customer bill
 
 To implement this, you'll need to:
 
@@ -54,7 +71,7 @@ fmt.Println(ok)
 
 > Note that the returned value is type `bool`.
 
-## 4. Remove an item from the customer bill
+## 5. Remove an item from the customer bill
 
 To implement this, you'll need to:
 
@@ -74,22 +91,5 @@ fmt.Println(ok)
 
 > Note that the returned value is type `bool`.
 
-## 5. Return the quantity of a specific item that is in the customer bill
-
-To implement this, you'll need to:
-
-- Return `0` and `false` if the `item` is not in the bill.
-- Otherwise, return the quantity of the item in the `bill` and `true`.
-
-```go
-bill := map[string]int{"carrot": 12, "grapes": 3}
-qty, ok := GetItem(bill, "carrot")
-fmt.Println(qty)
-// Output: 12
-fmt.Println(ok)
-// Output: true
-```
-
-> Note that the returned value are types `int` and `bool`.
 
 [gross-unit]: https://en.wikipedia.org/wiki/Gross_(unit)
