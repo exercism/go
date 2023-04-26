@@ -7,6 +7,8 @@ elections are run to elect a new president.
 In this year's election, it was decided that a new digital system to
 count the votes was needed. The school needs your help building this new system.
 
+**NOTE:** The struct `ElectionResult` is already provided in a second file `election_result.go`, shown as a tab in the web editor
+
 ## 1. Create a vote counter
 
 One of the first things that the new voting system needs is a vote counter.
