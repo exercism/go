@@ -1,5 +1,4 @@
 package cards
-
 // FavoriteCards returns a slice with the cards 2, 6 and 9 in that order.
 func FavoriteCards() []int {
 	cards := []int{2, 6, 9}
@@ -32,16 +31,19 @@ func SetItem(slice []int, index, value int) []int {
 // PrependItems adds an arbitrary number of values at the front of a slice.
 func PrependItems(slice []int, values ...int) []int {
 
-	slice = append(slice, values...)
+	newSlice := append(values, slice...)
 
-	return slice
+	return newSlice
 }
 
 // RemoveItem removes an item from a slice by modifying the existing slice.
 func RemoveItem(slice []int, index int) []int {
 
-	if index < len(slice) || index >= 0 {
-		slice = RemoveItem(slice, index)
+	if index >= len(slice) || index < 0 {
+		return slice
+	} else {
+		slice = append(slice[:index], slice[index+1:]...)
 	}
 	return slice
 }
+
