@@ -50,7 +50,7 @@ a = append(a, 4, 2)
 
 `append` always returns a new slice, and when we just want to append elements to an existing slice, it's common to reassign it back to the slice variable we pass as the first argument as we did above.
 
-`append` can also be used to merge two slices:
+`append` can also be used to merge two slices. Add an ellipsis `...` to the second slice to expand it for `append`:
 
 ```go
 nextSlice := []int{100,101,102}
