@@ -1,6 +1,6 @@
 # Instructions
 
-In this exercise, you're going to implement a program that determines the state of a [tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game.
+In this exercise, you're going to implement a program that determines the state of a [tic-tac-toe][] game.
 (_You may also know the game as "noughts and crosses" or "Xs and Os"._)
 
 The games is played on a 3×3 grid.
@@ -97,3 +97,5 @@ ___|___|___
    |   |
    |   |
 ```
+
+[tic-tac-toe]: https://en.wikipedia.org/wiki/Tic-tac-toe
