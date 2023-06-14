@@ -3,7 +3,8 @@
 The  clock package offers a straightforward implementation of a 24-hour clock in Go. It includes a Clock struct that represents the current time, along with various functions for manipulating and displaying the time. 
  
 ## Implementation Notes 
-To ensure that two clocks representing the same time are equal to each other, the values of your Clock type must work with the  ==  operator. If your New  function returns a pointer instead of a value, your clocks will likely not work with  == . While it's not mandatory to use the time.Time type in the standard library as a basis for your Clock type, it could be useful to examine how constructors like Date and Now return values instead of pointers. Additionally, note that most time.Time methods use value receivers rather than pointer receivers. 
+To ensure that two clocks representing the same time are equal to each other, the values of your Clock type must work with the  ==  operator. If your New  function returns a pointer instead of a value, your clocks will likely not work with  == . 
+While it's not mandatory to use the time. Time type in the standard library as a basis for your Clock type, it could be useful to examine how constructors like Date and Now return values instead of pointers. Additionally, note that most time.Time methods use value receivers rather than pointer receivers. 
  
 ## Functions 
 ### New(hour, minute int) Clock 
