@@ -24,5 +24,8 @@
   "forked_from": [
     "csharp/need-for-speed"
   ],
-  "blurb": "Learn about structs by racing remote controlled cars."
+  "blurb": "Learn about structs by racing remote controlled cars.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

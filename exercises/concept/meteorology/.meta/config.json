@@ -20,5 +20,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Format metereological data of custom types into strings."
+  "blurb": "Format metereological data of custom types into strings.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

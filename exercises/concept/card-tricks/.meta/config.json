@@ -19,5 +19,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about slices by doing card tricks."
+  "blurb": "Learn about slices by doing card tricks.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

@@ -21,6 +21,6 @@
   },
   "blurb": "Learn about pointers by creating a simple voting system.",
   "custom": {
-    "taskIdsEnabled": false
+    "taskIdsEnabled": true
   }
 }

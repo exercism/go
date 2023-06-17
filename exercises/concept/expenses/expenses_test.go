@@ -50,6 +50,7 @@ var testExpensesRecords = []Record{
 	},
 }
 
+// testRunnerTaskID=2
 func TestFilterByDaysPeriod(t *testing.T) {
 	testCases := []struct {
 		name     string
@@ -109,6 +110,7 @@ func TestFilterByDaysPeriod(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=3
 func TestFilterByCategory(t *testing.T) {
 	testCases := []struct {
 		name     string
@@ -167,6 +169,7 @@ func TestFilterByCategory(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=4
 func TestTotalByPeriod(t *testing.T) {
 	testCases := []struct {
 		name  string
@@ -208,6 +211,7 @@ func TestTotalByPeriod(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=5
 func TestCategoryExpenses(t *testing.T) {
 	testCases := []struct {
 		name     string

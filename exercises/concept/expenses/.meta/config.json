@@ -17,5 +17,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about first-class functions by helping Bob manage expense records."
+  "blurb": "Learn about first-class functions by helping Bob manage expense records.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

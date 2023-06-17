@@ -23,5 +23,8 @@
   "forked_from": [
     "elixir/chessboard"
   ],
-  "blurb": "Learn about iterating ranges by generating a chessboard."
+  "blurb": "Learn about iterating ranges by generating a chessboard.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

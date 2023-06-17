@@ -22,5 +22,8 @@
   "forked_from": [
     "javascript/bird-watcher"
   ],
-  "blurb": "Count the birds in your garden with for loops."
+  "blurb": "Count the birds in your garden with for loops.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

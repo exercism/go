@@ -17,5 +17,8 @@
     ]
   },
   "icon": "roll-the-die",
-  "blurb": "Learn how to work with pseudo-random numbers"
+  "blurb": "Learn how to work with pseudo-random numbers",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

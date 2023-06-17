@@ -26,5 +26,8 @@
   "forked_from": [
     "csharp/elons-toys"
   ],
-  "blurb": "Learn about methods by playing with Elon's toys"
+  "blurb": "Learn about methods by playing with Elon's toys",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

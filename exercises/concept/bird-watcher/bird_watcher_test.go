@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// testRunnerTaskID=1
 func TestTotalBirdCount(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -36,6 +37,7 @@ func TestTotalBirdCount(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=2
 func TestBirdsInWeek(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -71,6 +73,7 @@ func TestBirdsInWeek(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=3
 func TestFixBirdCount(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -108,6 +111,7 @@ func TestFixBirdCount(t *testing.T) {
 
 }
 
+// testRunnerTaskID=3
 func TestFixBirdCountDoesNotCreateNewSlice(t *testing.T) {
 	counts := []int{4, 0, 6, 1, 1, 4, 2, 0, 4, 4, 4, 0}
 	got := FixBirdCountLog(counts)
