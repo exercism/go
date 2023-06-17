@@ -17,5 +17,8 @@
     ]
   },
   "icon": "squeaky-clean",
-  "blurb": "Learn about defining and implementing interfaces by programming an airport service robot."
+  "blurb": "Learn about defining and implementing interfaces by programming an airport service robot.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

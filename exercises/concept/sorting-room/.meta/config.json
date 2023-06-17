@@ -19,5 +19,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about type casting and type assertions in the sorting room."
+  "blurb": "Learn about type casting and type assertions in the sorting room.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

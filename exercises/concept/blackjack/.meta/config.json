@@ -21,5 +21,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about conditionals by playing Blackjack."
+  "blurb": "Learn about conditionals by playing Blackjack.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

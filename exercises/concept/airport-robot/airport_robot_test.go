@@ -2,6 +2,7 @@ package airportrobot
 
 import "testing"
 
+// testRunnerTaskID=2
 func TestSayHello_Italien(t *testing.T) {
 	tests := []struct {
 		testName string
@@ -29,6 +30,7 @@ func TestSayHello_Italien(t *testing.T) {
 	}
 }
 
+// testRunnerTaskID=3
 func TestSayHello_Portuguese(t *testing.T) {
 	tests := []struct {
 		testName string

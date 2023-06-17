@@ -19,5 +19,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about regular expressions by parsing logs."
+  "blurb": "Learn about regular expressions by parsing logs.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

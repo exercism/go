@@ -21,5 +21,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about zero values."
+  "blurb": "Learn about zero values.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

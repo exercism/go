@@ -19,5 +19,8 @@
   "forked_from": [
     "csharp/booking-up-for-beauty"
   ],
-  "blurb": "Learn about time by handling appointments in a beauty salon."
+  "blurb": "Learn about time by handling appointments in a beauty salon.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

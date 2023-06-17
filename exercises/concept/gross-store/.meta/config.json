@@ -19,5 +19,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about maps by selling items by the dozen at the Gross Store."
+  "blurb": "Learn about maps by selling items by the dozen at the Gross Store.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

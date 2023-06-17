@@ -17,5 +17,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about comments by helping a weather station manage their weather forecasting program."
+  "blurb": "Learn about comments by helping a weather station manage their weather forecasting program.",
+  "custom": {
+    "taskIdsEnabled": false
+  }
 }

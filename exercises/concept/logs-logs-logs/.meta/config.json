@@ -17,5 +17,8 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about the strings package by parsing logs."
+  "blurb": "Learn about the strings package by parsing logs.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }
