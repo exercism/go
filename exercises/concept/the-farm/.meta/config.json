@@ -1,11 +1,10 @@
 {
   "authors": [
     "brugnara",
-    "jmrunkle"
-  ],
-  "contributors": [
+    "jmrunkle",
     "junedev"
   ],
+  "contributors": [],
   "files": {
     "solution": [
       "the_farm.go"
@@ -23,5 +22,5 @@
       "go.mod"
     ]
   },
-  "blurb": "Learn about errors and interfaces while feeding cows on the farm."
+  "blurb": "Learn about error handling in Go while feeding cows on the farm."
 }
