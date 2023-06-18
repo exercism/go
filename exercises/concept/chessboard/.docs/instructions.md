@@ -19,7 +19,20 @@ Each square of the chessboard is identified by a letter-number pair:
    A B C D E F G H
 ```
 
-## 1. Given a Chessboard and a File, count how many squares are occupied
+## 1. Declare Chessboard and File types
+
+To implement your chessboard game you will need to define two non-struct types, one to represent the Chessboard and one to represent a File.
+
+A Chessboard is a map of Files with string keys, in other words, the Chessboard contains keys from "A" to "H", each mapping to a File.
+
+A File is a slice of boolean values. Every true boolean value represents an occupied square.
+Example Files:
+```
+// This File has 3 occupied squares
+[true, false, true, false, false, false, false, true]
+```
+
+## 2. Given a Chessboard and a File, count how many squares are occupied
 
 Implement the `CountInFile(board Chessboard, file string) int` function.
 It should count the total number of occupied squares by ranging over a map. Return an integer.
@@ -30,7 +43,7 @@ CountInFile(board, "A")
 // => 3
 ```
 
-## 2. Given a Chessboard and a Rank, count how many squares are occupied
+## 3. Given a Chessboard and a Rank, count how many squares are occupied
 
 Implement the `CountInRank(board Chessboard, rank int) int` function.
 It should count the total number of occupied squares by ranging over the given rank. Return an integer.
@@ -41,7 +54,7 @@ CountInRank(board, 2)
 // => 1
 ```
 
-## 3. Count how many squares are present in the given chessboard
+## 4. Count how many squares are present in the given chessboard
 
 Implement the `CountAll(board Chessboard) int` function.
 It should count how many squares are present in the chessboard and returns
@@ -53,7 +66,7 @@ CountAll(board)
 // => 64
 ```
 
-## 4. Count how many squares are occupied in the given chessboard
+## 5. Count how many squares are occupied in the given chessboard
 
 Implement the `CountOccupied(board Chessboard) int` function.
 It should count how many squares are occupied in the chessboard.
