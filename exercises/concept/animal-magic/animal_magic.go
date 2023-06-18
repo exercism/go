@@ -1,10 +1,5 @@
 package chance
 
-// SeedWithTime seeds math/rand with the current computer time.
-func SeedWithTime() {
-	panic("Please implement the SeedWithTime function")
-}
-
 // RollADie returns a random int d with 1 <= d <= 20.
 func RollADie() int {
 	panic("Please implement the RollADie function")
