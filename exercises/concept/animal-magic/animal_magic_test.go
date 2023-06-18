@@ -2,10 +2,8 @@
 package chance
 
 import (
-	"math/rand"
 	"sort"
 	"testing"
-	"time"
 )
 
 func TestRollADie(t *testing.T) {
