@@ -2,6 +2,9 @@
   "authors": [
     "norbs57"
   ],
+  "contributors": [
+    "junedev"
+  ],
   "files": {
     "solution": [
       "animal_magic.go"

@@ -8,21 +8,6 @@ import (
 	"time"
 )
 
-func TestSeedWithTime(t *testing.T) {
-	const tests = 100
-	var last int64
-	for i := 0; i < tests; i++ {
-		SeedWithTime()
-		got := rand.Int63()
-		if i > 0 && got != last {
-			return
-		}
-		last = got
-		time.Sleep((time.Duration(rand.Intn(10) + 1)) * time.Millisecond)
-	}
-	t.Errorf("SeedWithTime always sets the same seed")
-}
-
 func TestRollADie(t *testing.T) {
 	const tests = 100
 	var got int
