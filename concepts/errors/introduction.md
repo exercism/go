@@ -26,7 +26,7 @@ func DoSomething() (int, error) {
 
 You do not have to always implement the error interface yourself.
 To create a simple error, you can use the `errors.New()` function that is part of the standard library package `errors`.
-The only thing you need to pass in is the error message as a string.
+The only thing you need to pass in is the error message as a string, and `errors.New()` will take care of creating a value that contains your message and implements the `error` interface.
 
 If the function returns an error, it is good practice to return the zero value for all other return parameters:
 
