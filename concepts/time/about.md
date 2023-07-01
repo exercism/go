@@ -5,6 +5,18 @@ A [`Time`][time] in Go is a type describing a moment in time. The date and time 
 The [`time.Parse`][parse] function parses strings into values of type `Time`. Go has a special way of how you define the layout you expect for the parsing. You need to write an example of the layout using the values from this special timestamp:
 `Mon Jan 2 15:04:05 -0700 MST 2006`.
 
+This timestamp is a simple increasing sequence: 01 02 03 04 05 (PM) 06 07:
+
+| Value | Meaning                  |
+| ----- | ------------------------ |
+| 01    | `Jan` is 1 month         |
+| 02    | Day                      |
+| 03    | Hours in 12-hour system  |
+| 04    | Minutes                  |
+| 05    | Seconds                  |
+| 06    | Year                     |
+| 07    | `MST` meand `UTC+7`      |
+
 For example:
 
 ```go
