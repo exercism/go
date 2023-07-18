@@ -16,7 +16,7 @@
     "highlightjs_language": "golang"
   },
   "test_runner": {
-    "average_run_time": 3.0
+    "average_run_time": 3
   },
   "files": {
     "solution": [
