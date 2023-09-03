@@ -710,7 +710,7 @@
         "uuid": "7fbb0d9d-71d1-4654-8ca0-bb07ddbe6cb5",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 2,
+        "difficulty": 4,
         "topics": [
           "arrays",
           "filtering",
