@@ -86,7 +86,7 @@ The election result struct is already created for you and it's defined as:
 type ElectionResult struct {
     // Name of the candidate
     Name    string
-    // Number of votes the candidate had
+    // Votes of votes the candidate had
     Votes   int
 }
 ```
