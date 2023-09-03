@@ -38,6 +38,18 @@ func TestUnits(t *testing.T) {
 	}
 
 }
+
+func TestNewBill(t *testing.T) {
+	// Success, zero out the  bill
+	t.Run("Should reset customerbill", func(t *testing.T) {
+		bill := NewBill()
+
+		if len(bill) != 0 {
+			t.Error("Customer bill must be empty")
+		}
+	})
+}
+
 func TestAddItem(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -177,17 +189,6 @@ func TestRemoveItem(t *testing.T) {
 			}
 		})
 	}
-}
-
-func TestNewBill(t *testing.T) {
-	// Success, zero out the  bill
-	t.Run("Should reset customerbill", func(t *testing.T) {
-		bill := NewBill()
-
-		if len(bill) != 0 {
-			t.Error("Customer bill must be empty")
-		}
-	})
 }
 
 func TestGetItem(t *testing.T) {
