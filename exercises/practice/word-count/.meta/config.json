@@ -32,6 +32,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",

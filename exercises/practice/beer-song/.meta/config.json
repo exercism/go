@@ -32,6 +32,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "source": "Learn to Program by Chris Pine",

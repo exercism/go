@@ -24,6 +24,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Translate RNA sequences into proteins.",

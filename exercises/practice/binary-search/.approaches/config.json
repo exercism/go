@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "c2f21e5f-da35-488c-8b73-62b936bc2216",
+      "slug": "loop-with-switch",
+      "title": "Loop with switch",
+      "blurb": "Loop and use switch to return the answer.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

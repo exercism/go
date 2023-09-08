@@ -3,13 +3,7 @@ package chance
 
 import (
 	"math/rand"
-	"time"
 )
-
-// SeedWithTime seeds math/rand with the current computer time.
-func SeedWithTime() {
-	rand.Seed(time.Now().UnixNano())
-}
 
 // RollADie returns a random int between 1 and 20.
 func RollADie() int {

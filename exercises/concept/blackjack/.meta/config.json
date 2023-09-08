@@ -16,7 +16,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
-  "blurb": "Learn about conditionals by playing Blackjack."
+  "blurb": "Learn about conditionals by playing Blackjack.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

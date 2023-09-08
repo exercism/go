@@ -16,7 +16,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
-  "blurb": "Learn about zero values."
+  "blurb": "Learn about zero values.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

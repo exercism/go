@@ -1,5 +1,4 @@
 //go:build step3 || (!step1 && !step2)
-// +build step3 !step1,!step2
 
 package robot
 

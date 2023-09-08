@@ -1,43 +1,25 @@
 package strain
 
-type Ints []int
+func Keep[T any](list []T, fn func(T) bool) []T {
+	result := []T{}
 
-func (s Ints) Keep(f func(int) bool) (r Ints) {
-	for _, e := range s {
-		if f(e) {
-			r = append(r, e)
+	for _, entry := range list {
+		if fn(entry) {
+			result = append(result, entry)
 		}
 	}
-	return
+
+	return result
 }
 
-func (s Ints) Discard(f func(int) bool) (r Ints) {
-	for _, e := range s {
-		if !f(e) {
-			r = append(r, e)
+func Discard[T any](list []T, fn func(T) bool) []T {
+	result := []T{}
+
+	for _, entry := range list {
+		if !fn(entry) {
+			result = append(result, entry)
 		}
 	}
-	return
-}
 
-type Strings []string
-
-func (s Strings) Keep(f func(string) bool) (r Strings) {
-	for _, e := range s {
-		if f(e) {
-			r = append(r, e)
-		}
-	}
-	return
-}
-
-type Lists [][]int
-
-func (s Lists) Keep(f func([]int) bool) (r Lists) {
-	for _, e := range s {
-		if f(e) {
-			r = append(r, e)
-		}
-	}
-	return
+	return result
 }

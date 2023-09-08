@@ -7,12 +7,12 @@ type FreqMap map[rune]int
 
 // Frequency counts the frequency of each rune in a given text and returns this
 // data as a FreqMap.
-func Frequency(s string) FreqMap {
-	m := FreqMap{}
-	for _, r := range s {
-		m[r]++
+func Frequency(text string) FreqMap {
+	frequencies := FreqMap{}
+	for _, r := range text {
+		frequencies[r]++
 	}
-	return m
+	return frequencies
 }
 
 // ConcurrentFrequency is a (not necessarily ideal) example of how to call Frequency() concurrently.

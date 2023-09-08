@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "59d34e3b-b310-4686-bf79-53d3eae1cdf3",
+      "slug": "slice-indexes",
+      "title": "Slice indexes",
+      "blurb": "Use slice indexes to compare bitwise values.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

@@ -24,9 +24,12 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",
   "source": "British nursery rhyme",
-  "source_url": "http://en.wikipedia.org/wiki/This_Is_The_House_That_Jack_Built"
+  "source_url": "https://en.wikipedia.org/wiki/This_Is_The_House_That_Jack_Built"
 }

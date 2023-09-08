@@ -21,7 +21,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
-  "blurb": "Implement basic list operations"
+  "blurb": "Implement basic list operations."
 }

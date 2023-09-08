@@ -14,6 +14,9 @@
     ],
     "editor": [
       "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "blurb": "Convert a resistor band's color to its numeric representation.",

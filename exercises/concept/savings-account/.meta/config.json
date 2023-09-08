@@ -11,7 +11,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
-  "blurb": "Learn about constants by managing a savings account."
+  "blurb": "Learn about constants by managing a savings account.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
 }

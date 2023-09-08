@@ -49,7 +49,7 @@ type circle struct {
 	radius int
 }
 func (c circle) area() float64 {
-	return 2*c.radius*math.Pi
+	return math.Pow(float64(c.radius), 2) * math.Pi
 }
 ```
 

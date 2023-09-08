@@ -2,40 +2,33 @@
 
 ## Learning objectives
 
-- Know how to create an error variable
-- Know how to create a custom error type
-- Know how to return an error
-- Know how to check for errors
-- Learn about the "return early" best practice
+- Understand what an error is in Go and that error handling is not done via exceptions
+- Know how and where to return an error from a function and how to signal "no error" and what to set for other return values
+- Using `errors.New` to create a simple error
+- Checking for errors and returning early
+- Creating a custom error type
 
 ## Out of Scope
 
-The following topics will be introduced later and should therefore not be part of this concept exercise.
+This exercise is deliberately kept simple (many aspects left for later exercises) to make sure students properly digest what errors are and the basic mechanics of how to work with them. This is very different in Go compared to many other languages so it is important is sticks. The exercise still has enough content to unlock 
 
-- `error-wrapping` (`errors.Is`, `errors.As`)
-- `type-assertions`
+The following topics will be introduced later and should therefore not be part of this concept exercise:
+
+- checking for specific errors or error types
+- error wrapping (`fmt.Errorf("...%w")`, `errors.Is` vs. `==`, `errors.As` vs. type assertion)
 
 ## Concepts
 
 The Concepts this exercise unlocks are:
 
-- `interfaces`
 - `errors`
 
 ## Prerequisites
 
+- `interfaces` to understand the error interface
 - `conditionals-if` for the error checking
 - `functions` for learning about multiple return values
 - `structs` to be able to create a custom error type
 - `methods` to understand interfaces
 - `string-formatting` to implement the `Error() string` method
 - `packages` to understand how to import `errors`
-
-## Analyzer
-
-This exercise could benefit from the following rules in the [analyzer][analyzer].
-
-- Check that the student actually implemented a custom error type `SillyNephewError`
-- Check that the `Error() string` method has a pointer receiver
-
-[analyzer]: https://github.com/exercism/go-analyzer
