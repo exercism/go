@@ -1,4 +1,4 @@
-func KeepSlice[T Slicer](input []T, filter func(T) bool) []T {
+func Keep[T Slicer](input []T, filter func(T) bool) []T {
 	if input == nil {
 		return input
 	}
