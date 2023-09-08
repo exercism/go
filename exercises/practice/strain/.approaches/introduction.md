@@ -38,9 +38,8 @@ func Keep[T Slicer](input []T, filter func(T) bool) []T {
 
 // Discard filters out elements of a slice.
 func Discard[T Slicer](input []T, filter func(T) bool) []T {
-	return KeepSlice(input, func(val T) bool { return !filter(val) })
+	return Keep(input, func(val T) bool { return !filter(val) })
 }
-
 ```
 
 For more information, check the [using generics approach][approach-using-generics].
