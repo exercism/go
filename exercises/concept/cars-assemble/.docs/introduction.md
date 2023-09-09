@@ -26,7 +26,7 @@ Go supports many standard arithmetic operators:
 | `+`      | `4 + 6 == 10`  |
 | `-`      | `15 - 10 == 5` |
 | `*`      | `2 * 3 == 6`   |
-| `/`      | `13 / 3 == 4`  |
+| `/`      | `12 / 3 == 4`  |
 | `%`      | `13 % 3 == 1`  |
 
 For integer division, the remainder is dropped (e.g. `5 / 2 == 2`).
