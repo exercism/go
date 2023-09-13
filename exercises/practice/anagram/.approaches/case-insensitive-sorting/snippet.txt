@@ -1,0 +1,11 @@
+// isAnagram determines whether a and b are anagrams of each other.
+func isAnagram(a, b string) bool {
+	return a != b && sortString(a) == sortString(b)
+}
+
+// sortString sorts a string lexicographically in non-decreasing order.
+func sortString(s string) string {
+	chars := strings.Split(s, "")
+	sort.Strings(chars)
+	return strings.Join(chars, "")
+}
