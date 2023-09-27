@@ -46,23 +46,23 @@ and if a second name is needed, to use `U`, and so on.
 The type `T` is constrained to be one of the types defined in the `Slicer` interface.
 The arguments to the function are a slice of the generic type `T`, and a function which takes a value of type `T` and returns a boolean value.
 
-```exercism/note
+~~~~exercism/note
 If you haven't passed a function as a parameter before, a short explanation can be found [here](https://golangbyexample.com/func-as-func-argument-go/).
-```
+~~~~
 
 The `Keep()` function is defined to return a slice of type `T`.
 
 If the input is `nil` it is simply returned.
 Otherwise an output slice is made of the same type as `T`, given a length of `0`, and given a capacity that is the length of the input slice.
 
-```exercism/note
+~~~~exercism/note
 Since the returned slice can be no bigger than the input slice,
 the output slice is given a capacity of the length of the input slice to prevent a lot of reallocating of the output slice.
 However, if the usual expected input was large and the usual expected output was small,
 then a lower capacity might be used to define the output slice to save allocating more memory than needed.
 Since this exercise uses a small length for the input slices, then it is okay to make the capacity of the output slice the same length.
 For more information on the length and capacity of slices, see [here](https://go.dev/blog/slices-intro).
-```
+~~~~
 
 [`range`][range] is used to iterate the elements of the input slice.
 Each element is passed to the input `filter` function.

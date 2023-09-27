@@ -70,13 +70,13 @@ If the error is `nil`, then the protein is appended to the output slice of prote
 
 When the loop successfully finishes, the function returns the slice of proteins and a `nil` error.
 
-```exercism/note
+~~~~exercism/note
 The `err` returned from the call to `FromCodon()` shadows the `err` named return value defined for `from RNA()`.
 If an `err` is returned for a `STOP` codon, it falls out of scope when breaking from the loop,
 and the `err` returned at the end of the function is the `err` named return value with the zero (`nil`) value.
 More info on shadowed variables can be found [here](https://yourbasic.org/golang/gotcha-shadowing-variables/).
 Because shadowing variables can be confusing, it may be preferred to use `return proteins, nil` for the final return statement.
-```
+~~~~
 
 The `FromCodon()` function is also defined with [named return values][named-return-values] which are initialized with their [zero values][zero-values].
 If the look-up of the codon results in an empty `string`, the error is set for an invalid codon.
