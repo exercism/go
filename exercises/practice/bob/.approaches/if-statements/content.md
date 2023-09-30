@@ -49,19 +49,19 @@ func Hey(remark string) string {
 
 In this approach you have a series of `if` statements using the private functions to evaluate the conditions.
 
-```exercism/note
+~~~~exercism/note
 A private (also called unexported) function is indicated by starting with a lowercase letter.
 More info on exported and unexported functions can be found [here](https://yourbasic.org/golang/public-private/).
-```
+~~~~
 
 
 As soon as the right condition is found, the correct response is returned.
 
-```exercism/note
+~~~~exercism/note
 Note that there are no `else if` or `else` statements.
 If an `if` statement can return, then an `else if` or `else` is not needed.
 Execution will either return or will continue to the next statement anyway.
-```
+~~~~
 
 In the `isShout()` function, the [`strings`][strings] function [`IndexFunc()`][indexfunc] is used to ensure there is at least one letter character in the input.
 If not, the function returns `false`, because if the input were only `"123"` it would equal itself uppercased, but without letters it would not be a shout.

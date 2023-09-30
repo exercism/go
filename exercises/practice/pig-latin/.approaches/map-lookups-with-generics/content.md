@@ -60,11 +60,11 @@ This approach starts be defining a void [type][type] that will be used in the pa
 Several [map][map]s for then defined for looking up vowels and special letter combinations.
 The maps have an empty struct as the type for their values.
 
-```exercism/note
+~~~~exercism/note
 By assigning values of an empty struct to the `map`, it essentially makes the keys what is known as a "set" in other languages.
 A set is a collection of unique values.
 More info on implementing a set in Go can be found [here](https://yourbasic.org/golang/implement-set/).
-```
+~~~~
 
 An [interface type][interface-type] is then defined which will be used to constain which types are to be used for the [generics][generics]:
 

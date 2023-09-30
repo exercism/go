@@ -40,11 +40,11 @@ This iterates over the runes of the input `string` and passes them as the key to
 For this exercise we are not concerned with validating the letter and handling an error for an illegal character.
 The `map` returns the matching RNA byte value for the DNA rune, which is placed at the same index in the byte slice.
 
-```exercism/caution
+~~~~exercism/caution
 This iterates over the runes of the input `string` and places them at the same index in the byte slice.
 That works in this case, because the input is all single-byte ASCII characters.
 But, if the input included any multi-byte Unicode characters, the indexes would not match.
-```
+~~~~
 
 After the iteration of the input `string` finishes, the function returns the byte slice converted to a `string`.
 
