@@ -3,6 +3,6 @@ case list[mid] == key:
   return mid
 case key < list[mid]:
   right = mid
-default:
+case key > list[mid]:
   left = mid + 1
 }
