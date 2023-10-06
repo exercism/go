@@ -30,11 +30,11 @@ func IsIsogram(phrase string) bool {
 This approach starts by defining the type `blank` as an empty struct.
 The lookup [`map`][map] is defined with a [`rune`][rune] as the key and `blank` (i.e. an empty struct) as the value.
 
-```exercism/note
+~~~~exercism/note
 By assigning values of an empty struct to the `map`, it essentially makes the keys what is known as a "set" in other languages.
 A set is a collection of unique values.
 More info on implementing a set in Go can be found [here](https://yourbasic.org/golang/implement-set/).
-```
+~~~~
 
 The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
 The runes are from [`range`][range] on a string, the strings from [`Split()`][split], and the bytes from indexing into the string.

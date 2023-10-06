@@ -81,9 +81,9 @@ find(5, 6, 7)
 find(5)
 ```
 
-```exercism/caution
+~~~~exercism/caution
 The variadic parameter must be the last parameter of the function.
-```
+~~~~
 
 The way variadic functions work is by converting the variable number of arguments to a slice of the type of the variadic parameter.
 

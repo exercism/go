@@ -21,7 +21,7 @@ find(5, 6, 7)
 find(5)
 ```
 
-````exercism/caution
+~~~~exercism/caution
 The variadic parameter must be the last parameter of the function.
 
 If you try to write code like this ...
@@ -35,7 +35,7 @@ func find(...a int, b int) {}
 Imagine the function above would work and we pass multiple arguments.
 Then all those arguments will get assigned to `a` and nothing would be assigned to `b`.
 Hence, variadic parameter must be provided at the end.
-````
+~~~~
 
 The way variadic functions work is by converting the variable number of arguments to a slice of the type of the variadic parameter.
 

@@ -51,10 +51,10 @@ In this approach you use a [`switch`][switch] statement to test if there is a qu
 The `switch`, with the help of some private functions to evaluate the conditions,
 returns the right response for a question, shout, shouted question, or for not being a shout or a question.
 
-```exercism/note
+~~~~exercism/note
 A private (also called unexported) function is indicated by starting with a lowercase letter.
 More info on exported and unexported functions can be found [here](https://yourbasic.org/golang/public-private/).
-```
+~~~~
 
 In the `isShout()` function, the [`strings`][strings] function [`IndexFunc()`][indexfunc] is used to ensure there is at least one letter character in the input.
 If not, the function returns `false`, because if the input were only `"123"` it would equal itself uppercased, but without letters it would not be a shout.
