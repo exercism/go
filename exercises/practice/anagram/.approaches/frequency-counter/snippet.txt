@@ -1,0 +1,8 @@
+func isAnagram(a, b string) bool {
+	for _, r := range b {
+		if _, ok := freqCounter[unicode.ToLower(r)]; !ok { return false }
+		freqCounter[unicode.ToLower(r)]--
+		if freqCounter[unicode.ToLower(r)] == 0 { delete(freqCounter, unicode.ToLower(r)) }
+	}
+	return len(freqCounter) == 0
+}

@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["sudomateo"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "13358d8a-2229-4d5e-a266-4cf64f241798",
+      "slug": "case-insensitive-sorting",
+      "title": "Case-insensitive Sorting",
+      "blurb": "Use case-insensitive sorting to compare the strings",
+      "authors": ["sudomateo"]
+    },
+    {
+      "uuid": "2d1a176c-2251-4565-8b9e-fde486a9e11c",
+      "slug": "frequency-counter",
+      "title": "Frequency Counter",
+      "blurb": "Use character counters to compare the strings",
+      "authors": ["sudomateo"]
+    }
+  ]
+}
