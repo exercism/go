@@ -28,7 +28,7 @@ fmt.Println(units)
 
 ## 2. Create a new customer bill
 
-You need to implement a function that create a new (empty) bill for the customer.
+You need to implement a function that creates a new (empty) bill for the customer.
 
 ```go
 bill := NewBill()
