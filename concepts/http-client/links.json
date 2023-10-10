@@ -1,0 +1,18 @@
+[
+    {
+        "url": "https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/",
+        "description": "Cloudflare: What is http?"
+    },
+    {
+        "url": "https://pkg.go.dev/net/http",
+        "description": "net/http package documentation"
+    },
+    {
+        "url": "https://nostarch.com/networkprogrammingwithgo",
+        "description": "Network Programming with Go by Adam Woodbeck"
+    },
+    {
+        "url": "https://www.digitalocean.com/community/tutorials/how-to-make-http-requests-in-go",
+        "description": "How To Make HTTP Requests in Go"
+    }
+]

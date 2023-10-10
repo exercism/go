@@ -455,6 +455,31 @@
           "structs"
         ],
         "status": "beta"
+      },
+      {
+        "slug":"weather-forecast-server",
+        "name":"Weather Forecast Server",
+        "uuid":"de69aae1-95b0-4ce2-870b-db63bb71c11a",
+        "concepts": [
+          "http-server"
+        ],
+        "prerequisites":[
+          "interfaces",
+          "structs"
+        ]
+      },
+      {
+        "slug":"weather-forecast-client",
+        "name":"Weather Forecast Client",
+        "uuid": "0f96ba0c-e262-4e2e-ad07-6819cfb79604",
+        "concepts":[
+          "http-client"
+        ],
+        "prerequisites":[
+          "http-server",
+          "structs",
+          "interfaces"
+        ]
       }
     ],
     "practice": [
@@ -2204,6 +2229,16 @@
       "name": "Variadic Functions",
       "slug": "variadic-functions",
       "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
+    },
+    {
+      "name": "HTTP Client",
+      "slug": "http-client",
+      "uuid": "632bc9fe-055e-472e-b47d-fcd682cb45ad"
+    },
+    {
+      "name": "HTTP Server",
+      "slug": "http-server",
+      "uuid": "d9a30fd8-775a-4b02-9258-b2492020a30c"
     }
   ],
   "key_features": [
