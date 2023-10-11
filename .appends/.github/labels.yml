@@ -78,3 +78,7 @@
 - name: "chore"
   description: "Some cleanup/house-keeping needs to be done here."
   color: "495747"
+
+- name: "hacktoberfest-accepted"
+  description: ""
+  color: "ffa500"
