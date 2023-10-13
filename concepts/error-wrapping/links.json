@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://go.dev/blog/go1.13-errors",
+    "description": "Go Blog: Working with Errors in Go 1.13"
+  },
+  {
+    "url": "https://www.digitalocean.com/community/tutorials/how-to-add-extra-information-to-errors-in-go",
+    "description": "Digital Ocean: How to Add Extra Information to Errors in Go"
+  }
+]

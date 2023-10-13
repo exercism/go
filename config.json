@@ -2204,6 +2204,11 @@
       "name": "Variadic Functions",
       "slug": "variadic-functions",
       "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
+    },
+    {
+      "name": "Error Wrapping",
+      "slug": "error-wrapping",
+      "uuid": "f22b0e85-4d86-4ecf-9415-ea27c93ebcd6"
     }
   ],
   "key_features": [
