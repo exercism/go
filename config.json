@@ -1265,7 +1265,8 @@
         "topics": [
           "pattern_matching",
           "strings"
-        ]
+        ],
+        "status": "deprecated"
       },
       {
         "slug": "resistor-color-trio",
