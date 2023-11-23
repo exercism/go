@@ -123,37 +123,37 @@ func TestCalculateResellPrice(t *testing.T) {
 		expected      float64
 	}{
 		{
-			name:          "price is reduced to 80%% for age below 3",
+			name:          "price is reduced to 80% for age below 3",
 			originalPrice: 40000,
 			age:           2,
 			expected:      32000,
 		},
 		{
-			name:          "price is reduced to 80%% for age below 3",
+			name:          "price is reduced to 80% for age below 3",
 			originalPrice: 40000,
 			age:           2.5,
 			expected:      32000,
 		},
 		{
-			name:          "price is reduced to 70%% for age 7",
+			name:          "price is reduced to 70% for age 7",
 			originalPrice: 40000,
 			age:           7,
 			expected:      28000,
 		},
 		{
-			name:          "price is reduced to 50%% for age 10",
+			name:          "price is reduced to 50% for age 10",
 			originalPrice: 25000,
 			age:           10,
 			expected:      12500,
 		},
 		{
-			name:          "price is reduced to 50%% for age 11",
+			name:          "price is reduced to 50% for age 11",
 			originalPrice: 50000,
 			age:           11,
 			expected:      25000,
 		},
 		{
-			name:          "float price is reduced to 70%% for age 8,",
+			name:          "float price is reduced to 70% for age 8,",
 			originalPrice: 39000.000001,
 			age:           8,
 			expected:      27300.0000007,
