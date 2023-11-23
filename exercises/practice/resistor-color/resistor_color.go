@@ -1,6 +1,6 @@
 package resistorcolor
 
-// Colors should return the list of all colors.
+// Colors returns the list of all colors.
 func Colors() []string {
 	panic("Please implement the Colors function")
 }
