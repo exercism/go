@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "junedev"
+  ],
+  "files": {
+    "solution": [
+      "let_me_in.go"
+    ],
+    "test": [
+      "let_me_in.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "icon": "developer-privileges",
+  "blurb": "Learn about adding context to errors and checking for certain errors/ error types by integrating a new  authorization system called LET-ME-IN.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
+}
