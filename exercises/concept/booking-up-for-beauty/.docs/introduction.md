@@ -32,8 +32,8 @@ import (
 
 func main() {
     t := time.Date(1995,time.September,22,13,0,0,0,time.UTC)
-    formatedTime := t.Format("Mon, 01/02/2006, 15:04") // string
-    fmt.Println(formatedTime)
+    formattedTimee := t.Format("Mon, 01/02/2006, 15:04") // string
+    fmt.Println(formattedTime)
 }
 
 // => Fri, 09/22/1995, 13:00
