@@ -5,7 +5,7 @@ There are many great free online resources to help you get started with Go inclu
 * [Effective Go](https://golang.org/doc/effective_go.html)
 
 ## Books
-* [Go Bootcamp](http://www.golangbootcamp.com/book/)
+* 
 
 ## Blogposts
 * [Resources for new Go programmers](http://dave.cheney.net/resources-for-new-go-programmers)
