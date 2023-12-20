@@ -7,6 +7,7 @@ import (
 )
 
 func TestRollADie(t *testing.T) {
+	missingRolls := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 	const tests = 100
 	var got int
 	foundDifferent := false
@@ -19,8 +20,19 @@ func TestRollADie(t *testing.T) {
 		if i > 0 && got != last {
 			foundDifferent = true
 		}
+
+		for i := 0; i < len(missingRolls); i++ {
+			if missingRolls[i] == got {
+				missingRolls = append(missingRolls[:i], missingRolls[i+1:]...)
+			}
+		}
 		last = got
 	}
+
+	if len(missingRolls) > 0 {
+		t.Errorf("RollADie() never rolled the numbers: %d", missingRolls)
+	}
+
 	if !foundDifferent {
 		t.Errorf("RollADie() always generates the same number: %d", got)
 	}
