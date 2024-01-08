@@ -36,7 +36,8 @@ fmt.Println(c)
 ## 5. Remove a card from the stack
 
 - Removing an item from a slice can be done by appending the part after `index` to the part before index.
-
+- Starting with Go 1.21 there is also [Delete](https://pkg.go.dev/slices#Delete) function in the slices package of the standard library.
+  
 [go-slices]: https://blog.golang.org/go-slices-usage-and-internals
 [make-builtin]: https://golang.org/pkg/builtin/#make
 [len-builtin]: https://golang.org/pkg/builtin/#len
