@@ -1,4 +1,4 @@
-package prime
+package prime_factors
 
 import (
 	"sort"
