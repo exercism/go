@@ -22,9 +22,10 @@
 ## 4. Check if a remote controlled car can finish a race
 
 - Assume the car is just starting the race
+- Assume that `battery` and `distance` values can be non default, for example if car has been driving before the track
 - You need to calculate the maximum distance a car can drive with the current level of battery
-- The number of times a car can be driven can be calculated by `battery / batteryDrain`.
-- The maximum distance the car can cover is the product of the car's speed and the number of times it can be driven.
+- The number of times a car can be driven can be calculated by `battery / batteryDrain`
+- The maximum distance the car can cover is the product of the car's speed and the number of times it can be driven
 - Knowing the maximum distance the car can drive, compare it with the distance of the race track
 
 [struct]: https://tour.golang.org/moretypes/2
