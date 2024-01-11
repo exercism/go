@@ -5,7 +5,7 @@
 // this exercise. If you do copy the matrix.go file, do not forget to submit both
 // saddle_points.go and matrix.go as part of your solution.
 
-package matrix
+package saddle_points
 
 import (
 	"strconv"
@@ -16,7 +16,7 @@ import (
 func TestSaddle(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			var in = generateString(tc.input)
+			in := generateString(tc.input)
 			m, err := New(in)
 			if err != nil {
 				t.Fatalf("TestSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
@@ -63,7 +63,7 @@ func BenchmarkSaddle(b *testing.B) {
 	ms := make([]*Matrix, len(testCases))
 	var err error
 	for i, tc := range testCases {
-		var in = generateString(tc.input)
+		in := generateString(tc.input)
 		if ms[i], err = New(in); err != nil {
 			b.Fatalf("BenchmarkSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
 		}
