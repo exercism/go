@@ -585,9 +585,13 @@
         "slug": "dnd-character",
         "name": "D&D Character",
         "uuid": "fb42541e-6334-495f-b63b-e3c3d4ac1ed6",
+        "topics": [
+          "structs",
+          "randomness"
+        ],
         "practices": [],
         "prerequisites": [],
-        "difficulty": 1
+        "difficulty": 2
       },
       {
         "slug": "hamming",
