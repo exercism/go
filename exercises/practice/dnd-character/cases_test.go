@@ -7,104 +7,136 @@ package dndcharacter
 
 var modifierTests = []struct {
 	description string
-	score       int
+	input       struct{ Score int }
 	expected    int
 }{
 
 	{
 		description: "ability modifier for score 3 is -4",
-		score:       3,
-		expected:    -4,
+		input: struct{ Score int }{
+			Score: 3,
+		},
+		expected: -4,
 	},
 
 	{
 		description: "ability modifier for score 4 is -3",
-		score:       4,
-		expected:    -3,
+		input: struct{ Score int }{
+			Score: 4,
+		},
+		expected: -3,
 	},
 
 	{
 		description: "ability modifier for score 5 is -3",
-		score:       5,
-		expected:    -3,
+		input: struct{ Score int }{
+			Score: 5,
+		},
+		expected: -3,
 	},
 
 	{
 		description: "ability modifier for score 6 is -2",
-		score:       6,
-		expected:    -2,
+		input: struct{ Score int }{
+			Score: 6,
+		},
+		expected: -2,
 	},
 
 	{
 		description: "ability modifier for score 7 is -2",
-		score:       7,
-		expected:    -2,
+		input: struct{ Score int }{
+			Score: 7,
+		},
+		expected: -2,
 	},
 
 	{
 		description: "ability modifier for score 8 is -1",
-		score:       8,
-		expected:    -1,
+		input: struct{ Score int }{
+			Score: 8,
+		},
+		expected: -1,
 	},
 
 	{
 		description: "ability modifier for score 9 is -1",
-		score:       9,
-		expected:    -1,
+		input: struct{ Score int }{
+			Score: 9,
+		},
+		expected: -1,
 	},
 
 	{
 		description: "ability modifier for score 10 is 0",
-		score:       10,
-		expected:    0,
+		input: struct{ Score int }{
+			Score: 10,
+		},
+		expected: 0,
 	},
 
 	{
 		description: "ability modifier for score 11 is 0",
-		score:       11,
-		expected:    0,
+		input: struct{ Score int }{
+			Score: 11,
+		},
+		expected: 0,
 	},
 
 	{
 		description: "ability modifier for score 12 is +1",
-		score:       12,
-		expected:    1,
+		input: struct{ Score int }{
+			Score: 12,
+		},
+		expected: 1,
 	},
 
 	{
 		description: "ability modifier for score 13 is +1",
-		score:       13,
-		expected:    1,
+		input: struct{ Score int }{
+			Score: 13,
+		},
+		expected: 1,
 	},
 
 	{
 		description: "ability modifier for score 14 is +2",
-		score:       14,
-		expected:    2,
+		input: struct{ Score int }{
+			Score: 14,
+		},
+		expected: 2,
 	},
 
 	{
 		description: "ability modifier for score 15 is +2",
-		score:       15,
-		expected:    2,
+		input: struct{ Score int }{
+			Score: 15,
+		},
+		expected: 2,
 	},
 
 	{
 		description: "ability modifier for score 16 is +3",
-		score:       16,
-		expected:    3,
+		input: struct{ Score int }{
+			Score: 16,
+		},
+		expected: 3,
 	},
 
 	{
 		description: "ability modifier for score 17 is +3",
-		score:       17,
-		expected:    3,
+		input: struct{ Score int }{
+			Score: 17,
+		},
+		expected: 3,
 	},
 
 	{
 		description: "ability modifier for score 18 is +4",
-		score:       18,
-		expected:    4,
+		input: struct{ Score int }{
+			Score: 18,
+		},
+		expected: 4,
 	},
 }
 

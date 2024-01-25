@@ -63,13 +63,15 @@ var tmpl = `package dndcharacter
 
 var modifierTests = []struct {
 	description    string
-	score          int 
+	input          struct { Score int } 
 	expected       int
 }{
 	{{range .J.modifier}} 
 		{
 			description: {{printf "%q"  .Description}},
-			score: {{printf "%d" .Input.Score}},
+			input: struct{ Score int }{ 
+				Score: {{printf "%d" .Input.Score}},
+			},
 			expected: {{printf "%d"  .Expected}},
 		},
 	{{end}}
