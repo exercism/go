@@ -1,8 +1,10 @@
 package dndcharacter
 
 import (
+	"crypto/rand"
+	"fmt"
 	"math"
-	"math/rand"
+	"math/big"
 	"slices"
 )
 
@@ -58,5 +60,11 @@ func CalculateAbilityScore(scores []int) int {
 }
 
 func RollDice() int {
-	return rand.Intn(6) + 1
+	randomNumber, err := rand.Int(rand.Reader, big.NewInt(6))
+	if err != nil {
+		fmt.Println("Error generating random code:", err)
+		return 0
+	}
+
+	return int(randomNumber.Int64()) + 1
 }
