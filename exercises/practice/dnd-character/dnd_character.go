@@ -1,6 +1,6 @@
 package dndcharacter
 
-type CharacterSheet struct {
+type Character struct {
 	Strength     int
 	Dexterity    int
 	Constitution int
@@ -20,9 +20,9 @@ func Ability() int {
 	panic("Please implement the 'Ability' function")
 }
 
-// Character should return a CharacterSheet with valid ability scores
-func Character() CharacterSheet {
-	panic("Please implement the 'Character' function")
+// GenerateCharacter should return a Character with valid ability scores
+func GenerateCharacter() Character {
+	panic("Please implement the 'GenerateCharacter' function")
 }
 
 // CalculateAbilityScore expects an array of 4 dice scores and returns the sum of the 3 highest numbers

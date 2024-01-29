@@ -24,9 +24,9 @@ func TestAbility(t *testing.T) {
 	}
 }
 
-func TestCharacter(t *testing.T) {
-	t.Run("should generate a character sheet with random ability scores", func(t *testing.T) {
-		character := Character()
+func TestGenerateCharacter(t *testing.T) {
+	t.Run("should generate a character with random ability scores", func(t *testing.T) {
+		character := GenerateCharacter()
 
 		assertAbilityScoreInRange(t, "Charisma", character.Charisma)
 		assertAbilityScoreInRange(t, "Strength", character.Strength)
@@ -49,7 +49,7 @@ func BenchmarkAbility(b *testing.B) {
 
 func BenchmarkCharacter(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Character()
+		GenerateCharacter()
 	}
 }
 

@@ -1,14 +1,12 @@
 package dndcharacter
 
 import (
-	"crypto/rand"
-	"fmt"
 	"math"
-	"math/big"
+	"math/rand"
 	"slices"
 )
 
-type CharacterSheet struct {
+type Character struct {
 	Strength     int
 	Dexterity    int
 	Constitution int
@@ -35,17 +33,20 @@ func Ability() int {
 	return CalculateAbilityScore(scores)
 }
 
-// Character should return a CharacterSheet with valid ability scores
-func Character() CharacterSheet {
-	return CharacterSheet{
+// GenerateCharacter should return a Character with valid ability scores
+func GenerateCharacter() Character {
+	character := Character{
 		Strength:     Ability(),
 		Dexterity:    Ability(),
 		Constitution: Ability(),
 		Intelligence: Ability(),
 		Wisdom:       Ability(),
 		Charisma:     Ability(),
-		Hitpoints:    10 + Modifier(Ability()),
 	}
+
+	character.Hitpoints = 10 + character.Constitution
+
+	return character
 }
 
 // CalculateAbilityScore expects an array of 4 dice scores and returns the sum of the 3 highest numbers
@@ -60,11 +61,5 @@ func CalculateAbilityScore(scores []int) int {
 }
 
 func RollDice() int {
-	randomNumber, err := rand.Int(rand.Reader, big.NewInt(6))
-	if err != nil {
-		fmt.Println("Error generating random code:", err)
-		return 0
-	}
-
-	return int(randomNumber.Int64()) + 1
+	return rand.Intn(6) + 1
 }
