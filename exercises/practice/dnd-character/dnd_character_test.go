@@ -15,11 +15,9 @@ func TestModifier(t *testing.T) {
 
 func TestAbility(t *testing.T) {
 	for i := 0; i < 10; i++ {
-		t.Run("", func(t *testing.T) {
+		t.Run("should generate ability score within accepted range", func(t *testing.T) {
 			got := Ability()
-			if !inAcceptedRange(got) {
-				t.Fatal("Ability score is not within accepted range (3-18)")
-			}
+			assertAbilityScoreInRange(t, "random", got)
 		})
 	}
 }
@@ -67,6 +65,6 @@ func assertAbilityScoreInRange(t testing.TB, ability string, score int) {
 	t.Helper()
 
 	if !inAcceptedRange(score) {
-		t.Fatalf("%s score is not withing accepted range. Got %d", ability, score)
+		t.Fatalf("%s score is not within accepted range. Got %d", ability, score)
 	}
 }
