@@ -73,7 +73,7 @@ For more information, check the [`if` with short statement approach][approach-if
 
 ## Which approach to use?
 
-The `if` with short statement approach benchmarked the fastest.
+The `switch` statement approach benchmarked the fastest.
 To compare performance of the approaches, check the [Performance article][article-performance].
 
 [approach-switch-statement]: https://exercism.org/tracks/go/exercises/nucleotide-count/approaches/switch-statement
