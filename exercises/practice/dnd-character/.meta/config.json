@@ -1,5 +1,6 @@
 {
   "authors": ["jesse-kroon"],
+  "contributors": ["andrerfcsantos"],
   "files": {
     "solution": [
       "dnd_character.go"
