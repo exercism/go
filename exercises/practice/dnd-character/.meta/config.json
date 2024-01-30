@@ -8,6 +8,9 @@
     "test": [
       "dnd_character_test.go"
     ],
+    "editor": [
+      "cases_test.go"
+    ],
     "example": [
       ".meta/example.go"
     ]
