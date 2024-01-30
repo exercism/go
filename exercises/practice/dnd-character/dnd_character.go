@@ -24,8 +24,3 @@ func Ability() int {
 func GenerateCharacter() Character {
 	panic("Please implement the 'GenerateCharacter' function")
 }
-
-// CalculateAbilityScore expects an array of 4 dice-roll scores and should return the sum of the 3 highest numbers
-func CalculateAbilityScore(scores []int) int {
-	panic("Please implement the 'CalculateAbilityScore' function")
-}

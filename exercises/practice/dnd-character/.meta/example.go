@@ -24,13 +24,15 @@ func Modifier(score int) int {
 // Ability uses randomness to generate the score for an ability
 func Ability() int {
 	var scores []int
+	var sum int
 
 	for i := 0; i < 4; i++ {
 		roll := RollDice()
+		sum += roll
 		scores = append(scores, roll)
 	}
 
-	return CalculateAbilityScore(scores)
+	return sum - slices.Min(scores)
 }
 
 // GenerateCharacter creates a new Character with random scores for abilities
@@ -47,17 +49,6 @@ func GenerateCharacter() Character {
 	character.Hitpoints = 10 + character.Constitution
 
 	return character
-}
-
-// CalculateAbilityScore expects an array of 4 dice scores and returns the sum of the 3 highest numbers
-func CalculateAbilityScore(scores []int) int {
-	var sum int
-
-	for _, score := range scores {
-		sum += score
-	}
-
-	return sum - slices.Min(scores)
 }
 
 func RollDice() int {
