@@ -12,15 +12,15 @@ type Character struct {
 
 // Modifier calculates the ability modifier for a given ability score
 func Modifier(score int) int {
-	panic("Please implement the 'Modifier' function")
+	panic("Please implement the Modifier() function")
 }
 
 // Ability uses randomness to generate the score for an ability
 func Ability() int {
-	panic("Please implement the 'Ability' function")
+	panic("Please implement the Ability() function")
 }
 
 // GenerateCharacter creates a new Character with random scores for abilities
 func GenerateCharacter() Character {
-	panic("Please implement the 'GenerateCharacter' function")
+	panic("Please implement the GenerateCharacter() function")
 }
