@@ -7,34 +7,39 @@ func TestModifier(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Modifier(tc.input.Score)
 			if actual != tc.expected {
-				t.Fatalf("Modifier(%#v) = %#v, want %#v", tc.input, actual, tc.expected)
+				t.Fatalf("Modifier(%d) = %d, want %d", tc.input, actual, tc.expected)
 			}
 		})
 	}
 }
 
 func TestAbility(t *testing.T) {
-	for i := 0; i < 10; i++ {
-		t.Run("should generate ability score within accepted range", func(t *testing.T) {
+	t.Run("should generate ability score within accepted range", func(t *testing.T) {
+		for i := 0; i < 100; i++ {
 			got := Ability()
-			assertAbilityScoreInRange(t, "random", got)
-		})
-	}
+			if !inAcceptedRange(got) {
+				t.Fatalf("Ability() returned a score for an ability outside the accepted range. Got %d, expected a value between 3 and 18 inclusive.", got)
+			}
+		}
+	})
 }
 
 func TestGenerateCharacter(t *testing.T) {
 	t.Run("should generate a character with random ability scores", func(t *testing.T) {
-		character := GenerateCharacter()
+		for i := 0; i < 100; i++ {
+			character := GenerateCharacter()
 
-		assertAbilityScoreInRange(t, "Charisma", character.Charisma)
-		assertAbilityScoreInRange(t, "Strength", character.Strength)
-		assertAbilityScoreInRange(t, "Dexterity", character.Dexterity)
-		assertAbilityScoreInRange(t, "Wisdom", character.Wisdom)
-		assertAbilityScoreInRange(t, "Intelligence", character.Intelligence)
-		assertAbilityScoreInRange(t, "Constitution", character.Constitution)
+			assertCharacterAbilityScoreInRange(t, "Charisma", character.Charisma)
+			assertCharacterAbilityScoreInRange(t, "Strength", character.Strength)
+			assertCharacterAbilityScoreInRange(t, "Dexterity", character.Dexterity)
+			assertCharacterAbilityScoreInRange(t, "Wisdom", character.Wisdom)
+			assertCharacterAbilityScoreInRange(t, "Intelligence", character.Intelligence)
+			assertCharacterAbilityScoreInRange(t, "Constitution", character.Constitution)
 
-		if character.Hitpoints < 10 {
-			t.Fatalf("Character's base hitpoints are incorrect. Got %d", character.Hitpoints)
+			expectedHitpoints := 10 + Modifier(character.Constitution)
+			if character.Hitpoints != expectedHitpoints {
+				t.Fatalf("Got %d hitpoints for a character with %d constitution, expected %d hitpoints", character.Hitpoints, character.Constitution, expectedHitpoints)
+			}
 		}
 	})
 }
@@ -61,10 +66,10 @@ func inAcceptedRange(score int) bool {
 	return score >= 3 && score <= 18
 }
 
-func assertAbilityScoreInRange(t testing.TB, ability string, score int) {
+func assertCharacterAbilityScoreInRange(t *testing.T, ability string, score int) {
 	t.Helper()
 
 	if !inAcceptedRange(score) {
-		t.Fatalf("%s score is not within accepted range. Got %d", ability, score)
+		t.Fatalf("GenerateCharacter() created a character with a %s score of %d, but the score for an ability is expected to be between 3 and 18 inclusive", ability, score)
 	}
 }
