@@ -46,7 +46,7 @@ func GenerateCharacter() Character {
 		Charisma:     Ability(),
 	}
 
-	character.Hitpoints = 10 + character.Constitution
+	character.Hitpoints = 10 + Modifier(character.Constitution)
 
 	return character
 }
