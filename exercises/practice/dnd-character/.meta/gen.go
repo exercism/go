@@ -22,10 +22,13 @@ func main() {
 	}
 }
 
-// The problem specifications expect properties "Ability" and "Character" to be present
-// but, we don't want to generate test cases for these as they don't have any input. To
-// circumvent the test generator failing on missing properties, we've introduced
-// the emptyTestCase struct.
+// Problem specifications have the 'ability' and 'character' properties,
+// and the test generator expects them to be present.
+// However, for these properties, generating test cases automatically
+// from the 'input' and the 'expected' objects is not trivial.
+// To satisfy the test generator, we create an emptyTestCase for these properties
+// and implement the tests manually.
+// In the future we might adapt the test generator to also cover this exercise.
 type emptyTestCase struct{}
 
 type modifierTestInput struct {
