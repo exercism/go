@@ -754,6 +754,18 @@
         ]
       },
       {
+        "slug": "dnd-character",
+        "name": "D&D Character",
+        "uuid": "fb42541e-6334-495f-b63b-e3c3d4ac1ed6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3,
+        "topics": [
+          "structs",
+          "randomness"
+        ]
+      },
+      {
         "slug": "etl",
         "name": "ETL",
         "uuid": "73da448c-33b7-4565-ab48-1de5020d65ab",
