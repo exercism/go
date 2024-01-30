@@ -16,12 +16,12 @@ type Character struct {
 	Hitpoints    int
 }
 
-// Modifier should calculate the correct modifier for a given score
+// Modifier calculates the ability modifier for a given ability score
 func Modifier(score int) int {
 	return int(math.Floor(float64(score-10) / 2.0))
 }
 
-// Ability should generate the score for a random ability
+// Ability uses randomness to generate the score for an ability
 func Ability() int {
 	var scores []int
 
@@ -33,7 +33,7 @@ func Ability() int {
 	return CalculateAbilityScore(scores)
 }
 
-// GenerateCharacter should return a Character with valid ability scores
+// GenerateCharacter creates a new Character with random scores for abilities
 func GenerateCharacter() Character {
 	character := Character{
 		Strength:     Ability(),

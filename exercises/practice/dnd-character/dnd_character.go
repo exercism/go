@@ -10,17 +10,17 @@ type Character struct {
 	Hitpoints    int
 }
 
-// Modifier should calculate the correct modifier for a given score
+// Modifier calculates the ability modifier for a given ability score
 func Modifier(score int) int {
 	panic("Please implement the 'Modifier' function")
 }
 
-// Ability should generate the score for a random ability
+// Ability uses randomness to generate the score for an ability
 func Ability() int {
 	panic("Please implement the 'Ability' function")
 }
 
-// GenerateCharacter should return a Character with valid ability scores
+// GenerateCharacter creates a new Character with random scores for abilities
 func GenerateCharacter() Character {
 	panic("Please implement the 'GenerateCharacter' function")
 }
