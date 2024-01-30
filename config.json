@@ -582,18 +582,6 @@
         ]
       },
       {
-        "slug": "dnd-character",
-        "name": "D&D Character",
-        "uuid": "fb42541e-6334-495f-b63b-e3c3d4ac1ed6",
-        "topics": [
-          "structs",
-          "randomness"
-        ],
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 2
-      },
-      {
         "slug": "hamming",
         "name": "Hamming",
         "uuid": "52582415-8f7f-4ac5-857f-5c160ec48134",
@@ -763,6 +751,18 @@
         "topics": [
           "conditionals",
           "math"
+        ]
+      },
+      {
+        "slug": "dnd-character",
+        "name": "D&D Character",
+        "uuid": "fb42541e-6334-495f-b63b-e3c3d4ac1ed6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3,
+        "topics": [
+          "structs",
+          "randomness"
         ]
       },
       {
