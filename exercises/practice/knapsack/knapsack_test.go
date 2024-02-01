@@ -8,7 +8,7 @@ func TestKnapsack(t *testing.T) {
 		expected := tc.expected
 
 		if actual != expected {
-			t.Fatalf("Knapsack(%#v) = %d, want %d", tc.input, actual, tc.expected)
+			t.Fatalf("Knapsack(%+v) = %d, want %d", tc.input, actual, tc.expected)
 		}
 	}
 }
