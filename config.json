@@ -1811,7 +1811,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5,
-        "topics": ["recursion"]
+        "topics": []
       },
       {
         "slug": "state-of-tic-tac-toe",
