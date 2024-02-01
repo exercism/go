@@ -5,21 +5,19 @@ package knapsack
 // Source: exercism/problem-specifications
 // Commit: 6c1d8e2 Knapsack: Fix empty list of items (#2350)
 
-type item struct {
-	Weight int
-	Value  int
-}
-
 type maximumValueCaseInput struct {
 	MaximumWeight int
 	Items         []item
 }
 
-var maximumValueTests = []struct {
+type maximumValueTest struct {
 	description string
 	input       maximumValueCaseInput
 	expected    int
-}{
+}
+
+var maximumValueTests = []maximumValueTest{
+
 	{
 		description: "no items",
 		input: maximumValueCaseInput{

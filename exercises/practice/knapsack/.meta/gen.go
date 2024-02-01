@@ -39,21 +39,19 @@ var tmpl = `package knapsack
 
 {{.Header}}
 
-type item struct {
-	Weight int
-	Value  int
-}
-
 type maximumValueCaseInput struct {
 	MaximumWeight int
 	Items         []item
 }
 
-var maximumValueTests = []struct {
+type maximumValueTest struct {
 	description string       
 	input       maximumValueCaseInput
 	expected    int
-}{ {{range .J.maximumValue}}
+}	
+
+var maximumValueTests = []maximumValueTest { 
+	{{range .J.maximumValue}}
 		{
 			description: {{printf "%q" .Description}},
 			input: maximumValueCaseInput {
