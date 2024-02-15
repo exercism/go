@@ -34,7 +34,7 @@ For integer division, the remainder is dropped (e.g. `5 / 2 == 2`).
 Go has shorthand assignment for the operators above (e.g. `a += 5` is short for `a = a + 5`).
 Go also supports the increment and decrement statements `++` and `--` (e.g. `a++`).
 
-## Converting between types 
+## Converting between types
 
 Converting between types is done via a function with the name of the type to convert to.
 For example:
@@ -45,6 +45,7 @@ f := float64(x) // f has type float64 (ie. 42.0)
 var y float64 = 11.9 // y has type float64
 i := int(y) // i has type int (ie. 11)
 ```
+
 ## Arithmetic operations on different types
 
 In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an error.

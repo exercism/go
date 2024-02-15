@@ -17,7 +17,7 @@
 - Knowing the production per hour of cars, you can get the production per minute by dividing the production per hour by 60 (the number of minutes in an hour).
 - Remember to cast the result to an `int`.
 
-## 3. Calculate the cost of production 
+## 3. Calculate the cost of production
 
 - Start by working out how many groups of 10 cars there are. You can do this by dividing the number of cars by 10.
 - Then work out how many cars are remaining (the [modulo operator][modulo operator] is useful for this).
