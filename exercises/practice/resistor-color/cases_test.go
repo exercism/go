@@ -13,7 +13,6 @@ type colorCodeTestCase struct {
 
 type colorsTestCase struct {
 	description string
-	input       string
 	expected    []string
 }
 
