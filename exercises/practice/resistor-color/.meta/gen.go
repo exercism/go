@@ -17,7 +17,6 @@ type colorCodePropertyCase struct {
 
 type colorsPropertyTestCase struct {
 	Description string `json:"description"`
-	Input       interface{}
 	Expected    []string `json:"expected"`
 }
 
@@ -48,7 +47,6 @@ type colorCodeTestCase struct {
 
 type colorsTestCase struct {
 	description	string
-	input		string
 	expected	[]string
 }
 
