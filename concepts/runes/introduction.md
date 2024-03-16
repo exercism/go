@@ -74,12 +74,13 @@ fmt.Printf("myRune Unicode code point: %U\n", myRune)
 ## Runes and Strings
 
 Strings in Go are encoded using UTF-8 which means they contain Unicode characters.
-Since the `rune` type represents a Unicode character, a string in Go is often referred to as a sequence of runes.
-However, runes are stored as 1, 2, 3, or 4 bytes depending on the character.
-Due to this, strings are really just a sequence of bytes.
-In Go, slices are used to represent sequences and these slices can be iterated over using `range`.
+Characters in strings are stored and encoded as 1, 2, 3, or 4 bytes depending on the Unicode character they represent.
+
+In Go, slices are used to represent sequences and these slices can be iterated over using range.
+When we iterate over a string, Go converts the string into a series of Runes, each of which is 4 bytes (remember, the rune type is an alias for an `int32`!)
 
 Even though a string is just a slice of bytes, the `range` keyword iterates over a string's runes, not its bytes.
+
 In this example, the `index` variable represents the starting index of the current rune's byte sequence and the `char` variable represents the current rune:
 
 ```go
