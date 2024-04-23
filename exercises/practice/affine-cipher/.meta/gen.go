@@ -44,13 +44,10 @@ func (t testCase) ExpectedString() string {
 func (t testCase) Error() bool {
 	m, ok := t.Expected.(map[string]interface{})
 	if !ok {
-		return false
+		return ok
 	}
 	_, ok = m["error"].(string)
-	if !ok {
-		return false
-	}
-	return true
+	return ok
 }
 
 // Template to generate encode and decode test cases.

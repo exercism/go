@@ -15,7 +15,7 @@ const (
 
 const _totalAlphabets = 26 // total number of letters in alphabet.
 
-// Encode encode the provided message with the provided keys, using affine-cipher.
+// Encode encodes the provided message with the provided keys, using affine-cipher.
 func Encode(text string, a, b int) (string, error) {
 	if gcd(a, _totalAlphabets) != 1 {
 		return "", errors.New("affinecipher.Encode: a and b must be co-prime")
