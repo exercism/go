@@ -1326,6 +1326,19 @@
         ]
       },
       {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "82fb24cc-ac33-4cce-a77a-b59ce3c77832",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4,
+        "topics": [
+          "bitwise_operations",
+          "integers",
+          "math"
+        ]
+      },
+      {
         "slug": "matrix",
         "name": "Matrix",
         "uuid": "62aa3d20-65d8-440f-9d08-48bbc823f4fe",
