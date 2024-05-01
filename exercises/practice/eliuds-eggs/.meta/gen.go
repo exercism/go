@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"go/gen" // "../../../../gen"
+	"../../../../gen"
 )
 
 func main() {
