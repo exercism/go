@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "KasimKaizer"
+  ],
   "files": {
     "solution": [
       "eliuds_eggs.go"
