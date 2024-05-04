@@ -60,7 +60,7 @@ Their names are matched by this regular expression:
 Find(All)?(String)?(Submatch)?(Index)?
 ```
 
-* If `All` is present, the routine matches successive non-overlapping matches of the entire expressions.
+* If `All` is present, the routine matches successive non-overlapping matches of the entire expression.
 * If `String` is present, the argument is a string; otherwise it is a slice of bytes; return values are adjusted as appropriate. 
 * If `Submatch` is present, the return value is a slice identifying the successive submatches of the expression.
 * If `Index` is present, matches and submatches are identified by byte index pairs within the input string.
