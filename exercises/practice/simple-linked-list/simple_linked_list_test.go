@@ -163,6 +163,16 @@ func TestReverseNonEmptyList(t *testing.T) {
 	}
 }
 
+func TestArrayListIdempotency(t *testing.T) {
+	expected := []int{1, 2, 3}
+	list := New(expected)
+	_ := list.Array()
+	actual := list.Array()
+	if !reflect.DeepEqual(actual, expected) {
+		t.Fatalf("Calling Array() changes list contents: %v, want %v", actual, expected)
+	}
+}
+
 func BenchmarkNewList(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
