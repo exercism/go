@@ -202,7 +202,7 @@ func TestScaleRecipe(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			inputList := make([]float64, len(tt.input))
 			copy(inputList, tt.input)
-			got := ScaleRecipe(inputList, tt.portions)
+			got := ScaleRecipe(inputList, float64(tt.portions))
 			if len(got) != len(tt.expected) {
 				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tt.portions, len(got), len(tt.expected))
 			}
