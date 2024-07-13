@@ -1,11 +1,12 @@
 package knapsack
 
-type item struct {
+type Item struct {
 	Weight, Value int
 }
 
-// Knapsack takes in a maximum carrying capacity and a collection of items, it should return the best possible value
-// of items while remaining within the carrying capacity
-func Knapsack(maximumWeight int, items []item) int {
+// Knapsack takes in a maximum carrying capacity and a collection of items
+// and returns the maximum value that can be carried by the knapsack
+// given that the knapsack can only carry a maximum weight given by maximumWeight
+func Knapsack(maximumWeight int, items []Item) int {
 	panic("Please implement the Knapsack() function")
 }

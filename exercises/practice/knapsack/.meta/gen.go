@@ -41,7 +41,7 @@ var tmpl = `package knapsack
 
 type maximumValueCaseInput struct {
 	MaximumWeight int
-	Items         []item
+	Items         []Item
 }
 
 type maximumValueTest struct {
@@ -56,7 +56,7 @@ var maximumValueTests = []maximumValueTest {
 			description: {{printf "%q" .Description}},
 			input: maximumValueCaseInput {
 				MaximumWeight: {{printf "%d" .Input.MaximumWeight}},
-				Items: []item {
+				Items: []Item {
 					{{range .Input.Items}}
 						{
 							Weight: {{printf "%d" .Weight}},

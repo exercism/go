@@ -7,7 +7,7 @@ package knapsack
 
 type maximumValueCaseInput struct {
 	MaximumWeight int
-	Items         []item
+	Items         []Item
 }
 
 type maximumValueTest struct {
@@ -22,7 +22,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "no items",
 		input: maximumValueCaseInput{
 			MaximumWeight: 100,
-			Items:         []item{},
+			Items:         []Item{},
 		},
 		expected: 0,
 	},
@@ -31,7 +31,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "one item, too heavy",
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 100,
@@ -46,7 +46,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "five items (cannot be greedy by weight)",
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 2,
@@ -81,7 +81,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "five items (cannot be greedy by value)",
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 2,
@@ -116,7 +116,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "example knapsack",
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 5,
@@ -146,7 +146,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "8 items",
 		input: maximumValueCaseInput{
 			MaximumWeight: 104,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 25,
@@ -196,7 +196,7 @@ var maximumValueTests = []maximumValueTest{
 		description: "15 items",
 		input: maximumValueCaseInput{
 			MaximumWeight: 750,
-			Items: []item{
+			Items: []Item{
 
 				{
 					Weight: 70,

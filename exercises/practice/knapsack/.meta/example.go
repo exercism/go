@@ -2,11 +2,11 @@ package knapsack
 
 import "math"
 
-type item struct {
+type Item struct {
 	Weight, Value int
 }
 
-func Knapsack(maximumWeight int, items []item) int {
+func Knapsack(maximumWeight int, items []Item) int {
 	amountOfItems := len(items)
 	knapsack := make([][]int, amountOfItems+1)
 
