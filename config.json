@@ -1813,6 +1813,18 @@
         "difficulty": 5
       },
       {
+        "slug": "knapsack",
+        "name": "Knapsack",
+        "uuid": "eae2fd23-c484-4dc6-b8fe-1fa055bab8ba",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6,
+        "topics": [
+          "algorithms",
+          "dynamic_programming"
+        ]
+      },
+      {
         "slug": "dominoes",
         "name": "Dominoes",
         "uuid": "2e5c9e76-decd-49db-be4b-353ebeb46b73",
