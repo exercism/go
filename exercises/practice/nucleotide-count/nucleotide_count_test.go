@@ -23,3 +23,12 @@ func TestCounts(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkCounts(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tc := range testCases {
+			dna := DNA(tc.strand)
+			dna.Counts()
+		}
+	}
+}
