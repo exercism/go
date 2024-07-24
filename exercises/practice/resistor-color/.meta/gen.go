@@ -16,7 +16,7 @@ type colorCodePropertyCase struct {
 }
 
 type colorsPropertyTestCase struct {
-	Description string `json:"description"`
+	Description string   `json:"description"`
 	Expected    []string `json:"expected"`
 }
 
