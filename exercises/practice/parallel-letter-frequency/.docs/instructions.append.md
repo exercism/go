@@ -30,7 +30,6 @@ you started. We recommend looking over these before starting this exercise:
 
 - [Concurrency in the Golang Book](https://www.golang-book.com/books/intro/10)
 - [A Tour of Go's concurrency section](https://tour.golang.org/concurrency/1)
-- [Golang Book: Concurrency](https://www.golang-book.com/books/intro/10)
 - [DigitalOcean Golang Tutorial: How To Run Multiple Functions Concurrently in Go](https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go)
 - [Synchronizing Go Routines with Channels and WaitGroups](https://dev.to/sophiedebenedetto/synchronizing-go-routines-with-channels-and-waitgroups-3ke2)
 - [Buffered Channels and Worker Pools](https://golangbot.com/buffered-channels-worker-pools/)

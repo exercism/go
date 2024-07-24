@@ -28,7 +28,7 @@ because it means we don't need to escape backslashes:
 To use a regular expression, we first must compile the string pattern.
 Compilation here means taking the string pattern of the regular expression and converting it into an internal representation that is easier to work with.
 We only need to compile each pattern once, after that we can use the compiled version of the regular expression many times.
-The type `regexp.Regexp` represents a compiled regular expressions.
+The type `regexp.Regexp` represents a compiled regular expression.
 We can compile a string pattern into a `regexp.Regexp` using the function  `regexp.Compile`.
 This function returns `nil` and an error if compilation failed:
 
@@ -60,7 +60,7 @@ Their names are matched by this regular expression:
 Find(All)?(String)?(Submatch)?(Index)?
 ```
 
-* If `All` is present, the routine matches successive non-overlapping matches of the entire expressions.
+* If `All` is present, the routine matches successive non-overlapping matches of the entire expression.
 * If `String` is present, the argument is a string; otherwise it is a slice of bytes; return values are adjusted as appropriate. 
 * If `Submatch` is present, the return value is a slice identifying the successive submatches of the expression.
 * If `Index` is present, matches and submatches are identified by byte index pairs within the input string.
