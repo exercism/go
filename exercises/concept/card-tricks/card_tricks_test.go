@@ -51,7 +51,7 @@ func TestGetItem(t *testing.T) {
 			name: "Index out of bounds",
 			args: args{
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				index: 8,
+				index: 9,
 			},
 			want: -1,
 		},
