@@ -159,8 +159,8 @@ CategoryExpenses(records, p1, "entertainment")
 // => 0, error(unknown category entertainment)
 
 CategoryExpenses(records, p1, "rent")
-// => 1300, nil
+// => 0, nil
 
 CategoryExpenses(records, p2, "rent")
-// => 0, nil
+// => 1300, nil
 ```
