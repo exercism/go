@@ -4,7 +4,7 @@ Package [regexp][package-regexp] offers support for regular expressions in Go.
 
 ## Syntax 
 
-The [syntax][regexp-syntax] of the regular expressions accepted is the same general syntax used by Perl, Python, and other languages. 
+The [syntax][regexp-syntax] of the regular expressions accepted is the same general syntax used by Perl, Python, and other languages.
 
 Both the search patterns and the input texts are interpreted as UTF-8.  
 
@@ -137,17 +137,18 @@ sl = re.Split("12abc34(ef)", 2) // => []string{"12","(ef)"}
 sl = re.Split(" abc!", -1)      // => []string{" ","!"}
 sl = re.Split("123 456", -1)    // => []string{"123 456"}
 ```
+## Flags
 
-## Performance
+Flags change the rules that regular expression's use to search for patterns. The main flags are i for case insensitivity, m for multiline matching, s for . to match \n, and U for ungreedy or lazy matching (x* and x*?, x+ and x+? have swapped meanings). In order to set a flag in go, we include the flag preceding the regular expression pattern in the format (?x) where x is the flag.
 
-The regexp implementation provided by this package is guaranteed to run in 
-[time linear in the size of the input][re2-performance].  
+## Flavor and Performance
+
+The specific flavor, or regular expression engine, of Go is google's RE2. This flavor is guaranteed to run in [time linear in the size of the input][re2-performance] and has a fixed recursive stack, but does not allow for back tracking operations (i.e. matching patterns backwards from right to left).  
 
 ## Caveat
  
 Package `regexp` implements [RE2 regular expressions][re2-syntax] (except for `\C`). 
-The syntax is largely compatible with PCRE ("Perl Compatible Regular Expression"), but there are some differences.
-Please see the "Caveat section" in [this article][reg-exp-wild] for details.
+The syntax is largely compatible with PCRE ("Perl Compatible Regular Expression"), but there are some differences and features that are not included in the RE2 library. For example, RE2 does not support lookahead assertions, lookbehind assertions, or backreferences. Additionally, RE2 is less efficient at parantheses capturing operations. Further and more specific syntactical differences can be found in the "Caveat section" in [this article][reg-exp-wild].
    
 [package-regexp]:https://pkg.go.dev/regexp
 [regexp-syntax]:https://pkg.go.dev/regexp/syntax
