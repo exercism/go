@@ -26,6 +26,12 @@ It should count the total number of occupied squares by ranging over a map. Retu
 Return a count of zero (`0`) if the given file cannot be found in the map.
 
 ```go
+// File represents a column on the chessboard with boolean values indicating whether a piece is present.
+type File []bool
+
+// Chessboard represents the entire board with a map of files, each identified by a string (like "A", "B", etc.).
+type Chessboard map[string]File
+
 CountInFile(board, "A")
 // => 3
 ```
