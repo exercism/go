@@ -36,7 +36,7 @@ BirdsInWeek(birdsPerDay, 2)
 
 You realized that all the time you were trying to keep track of the birds, there was one bird that was hiding in a far corner of the garden.
 
-You figured out that this bird always spent every second day in your garden.
+You figured out that this bird always spent every second day in your garden, starting with the first day.
 
 You do not know exactly where it was in between those days but definitely not in your garden.
 
