@@ -11,7 +11,7 @@ For the sake of this exercise you will only be dealing with:
   But this will depend on the systems architecture.
   Most modern computers are 64 bit, therefore `int` will be 64 bits in size (value rate of: -9223372036854775808 through 9223372036854775807).
 
-- `float64`: e.g. `0.0`, `3.14`. Contains the set of all 64-bit floating-point numbers.
+- `float64`: e.g. `0.0`, `3.14`. Contains a set of all 64-bit floating-point numbers.
 
 - `uint`: e.g. `0`, `255`. An unsigned integer that is the same size as `int` (value range of: 0 through 4294967295 for 32 bits and 0 through 18446744073709551615 for 64 bits)
 
