@@ -78,7 +78,7 @@ func searchFile(pattern, file string, options *options) (output []string) {
 	return output
 }
 
-// getOptions examines flags and nfiles, outputing options.
+// getOptions examines flags and nfiles, outputting options.
 func getOptions(flags []string, nfiles int) (opt *options) {
 	opt = &options{}
 	for _, option := range flags {

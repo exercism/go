@@ -13,7 +13,7 @@ Regardless of the approach used, some things you could look out for include
 
 - Use the [HasSuffix][hassuffix] `string` method instead of checking the last character by index for `?`.
 
-- Don't copy/paste the logic for determining a shout and for determing a question into determing a shouted question.
+- Don't copy/paste the logic for determining a shout and for determining a question into determining a shouted question.
   Combine the two determinations instead of copying them.
   Not duplicating the code will keep the code [DRY][dry].
 
@@ -175,7 +175,7 @@ For more information, check the [Answer array approach][approach-answer-array].
 
 ## Which approach to use?
 
-Since each approach sometimes gave results slower than the other approaches when benchmarking, which to use could be a matter of stylistic choice. 
+Since each approach sometimes gave results slower than the other approaches when benchmarking, which to use could be a matter of stylistic choice.
 
 - To compare the performance of the approaches, check out the [Performance article][article-performance].
 

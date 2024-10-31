@@ -110,7 +110,7 @@ func getComplex(in interface{}) complexNumber {
 			}
 			result = append(result, v)
 		default:
-			panic("uknown type")
+			panic("unknown type")
 		}
 	}
 	return complexNumber{

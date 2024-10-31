@@ -55,7 +55,7 @@ For more information, check the [`math.Pow()` and `big` exponentiation approach]
 ## Approach: Bit-shifting
 
 ```go
-// Package grains is a small library for determing the squares of a number.
+// Package grains is a small library for determining the squares of a number.
 package grains
 
 import (

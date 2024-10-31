@@ -1,7 +1,7 @@
 # Maximum of two checks
 
 ```go
-// Package leap is a small library for determing if the passed in year is a leap year.
+// Package leap is a small library for determining if the passed in year is a leap year.
 package leap
 
 // IsLeapYear returns if the passed in year is a leap year.
