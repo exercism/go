@@ -35,6 +35,22 @@
   "exercises": {
     "concept": [
       {
+        "name": "Sucurity Agent",
+        "slug": "security-agent",
+        "uuid": "61babb30-9d4c-4710-acac-93946715986c",
+        "concepts": [
+          "bitwise-operators"
+        ],
+        "prerequisites": [
+          "arithmetic-operators",
+          "basics",
+          "numbers",
+          "range-iteration",
+          "type-conversion"
+        ],
+        "status": "beta"
+      },
+      {
         "name": "Gopher's Gorgeous Lasagna",
         "slug": "lasagna",
         "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
@@ -2054,6 +2070,11 @@
       "name": "Basics",
       "slug": "basics",
       "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626"
+    },
+    {
+      "name": "Bitwise Operators",
+      "slug": "bitwise-operators",
+      "uuid": "6ae09ebc-9a9f-42f5-9f29-a5d1df7e28fc"
     },
     {
       "name": "Booleans",

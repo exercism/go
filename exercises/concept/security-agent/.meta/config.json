@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "leonideliseev"
+  ],
+  "files": {
+    "solution": [
+      "security_agent.go"
+    ],
+    "test": [
+      "security_agent_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
+  "blurb": "Learn bit operations as an information security agent"
+}

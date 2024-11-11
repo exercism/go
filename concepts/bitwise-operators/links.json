@@ -1,0 +1,26 @@
+[
+    {
+      "url": "https://en.wikipedia.org/wiki/Binary_number#Representation",
+      "description": "About bit representations of numbers"
+    },
+    {
+        "url": "https://en.wikipedia.org/wiki/Binary_number#Conversion_to_and_from_other_numeral_systems",
+        "description": "Base conversion between numbers"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Binary_number#Binary_arithmetic",
+      "description": "Binary arithmetic"
+    },
+    {
+        "url": "https://en.wikipedia.org/wiki/Mask_(computing)",
+        "description": "Using bitwise operators: bitmask"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Hash_function",
+      "description": "Using bitwise operators: hash function"
+    },
+    {
+        "url": "https://stackoverflow.com/questions/28432398/difference-between-some-operators-golang",
+        "description": "Additional usage examples"
+    }
+]
