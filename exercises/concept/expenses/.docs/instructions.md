@@ -40,7 +40,7 @@ p := DaysPeriod{From: 1, To: 31}
 Bob deals with a lot of records every day, but not all of them are interesting depending on the analysis Bob is making.
 Let's help Bob perform some basic filtering of records.
 
-Implement the generic `Filter` function to filter records according to a criteria given by a function.
+Implement the generic `Filter` function to filter records according to a criterion given by a function.
 This filter function accepts a collection of records and a predicate function and returns only the records in the collection that satisfy the predicate.
 
 ```go
