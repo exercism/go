@@ -18,8 +18,10 @@ func TestOvenTime(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := OvenTime; got != tt.expected {
-				t.Errorf("OvenTime(%d)  = %d; want %d", tt.expected, got, tt.expected)
+			// Fixed incorrect usage of OvenTime function in the test case
+
+			if got := OvenTime(); got != tt.expected {
+				t.Errorf("OvenTime() = %d; want %d", got, tt.expected)
 			}
 		})
 	}
