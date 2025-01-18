@@ -1,5 +1,4 @@
 {
-  "blurb": "Report network IO statistics",
   "authors": [
     "bmatsuo"
   ],
@@ -27,8 +26,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "interface.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Report network IO statistics.",
   "source": "Brian Matsuo",
   "source_url": "https://github.com/bmatsuo"
 }

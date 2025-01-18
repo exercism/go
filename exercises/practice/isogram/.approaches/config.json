@@ -1,0 +1,28 @@
+{
+  "introduction": {
+    "authors": ["bobahop"]
+  },
+  "approaches": [
+    {
+      "uuid": "a8236c7c-e773-4721-87d2-b4691cf618e4",
+      "slug": "map",
+      "title": "map",
+      "blurb": "Use a map to keep track of used letters.",
+      "authors": ["bobahop"]
+    },    
+    {
+      "uuid": "ab0f2099-771d-4861-b9cc-3815ce7e8b16",
+      "slug": "strings-count",
+      "title": "strings.Count()",
+      "blurb": "Use strings.Count() to calculate used letters.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "59418ec1-539b-41b3-bcc0-021410175084",
+      "slug": "bitfield",
+      "title": "Bit field",
+      "blurb": "Use a bit field to keep track of used letters.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

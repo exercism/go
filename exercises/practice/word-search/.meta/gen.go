@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,87 +12,66 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("word-search", &j, t); err != nil {
+	j := map[string]interface{}{
+		"search": &[]testCase{},
+	}
+	if err := gen.Gen("word-search", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// template applied to above data structure generates the Go test cases
-
-type Int int
-
-type Coordinates struct {
-	Column Int
-	Row    Int
-}
-type Position struct {
-	Start Coordinates
-	End   Coordinates
-}
-
-type OneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Grid             []string
-		WordsToSearchFor []string
-	}
-	Expected map[string]Position
+		Grid             []string `json:"grid"`
+		WordsToSearchFor []string `json:"wordsToSearchFor"`
+	} `json:"input"`
+	Expected map[string]entry `json:"expected"`
 }
 
-func (p Position) NullPosition() bool {
-	if p.Start.Column == 0 && p.Start.Row == 0 &&
-		p.End.Column == 0 && p.End.Row == 0 {
-		return true
-	}
-	return false
+type entry struct {
+	Start point
+	End   point
 }
 
-func (c OneCase) ErrorExpected() bool {
-	// When any of the word positions have an null position, expect an error.
+type point struct {
+	Column position
+	Row    position
+}
+
+type position int
+
+func (p position) Minus1() position {
+	return p - 1
+}
+
+func (c testCase) ErrorExpected() bool {
+	// When any of the word positions have a null position, expect an error.
 	for _, p := range c.Expected {
-		if p.NullPosition() {
+		if p.Start.Row == 0 && p.Start.Column == 0 && p.End.Row == 0 && p.End.Column == 0 {
 			return true
 		}
 	}
 	return false
 }
 
-func (v Int) Minus1() int {
-	return int(v) - 1
-}
-
-// Template to generate test cases
-
 var tmpl = `package wordsearch
 
 {{.Header}}
 
 var testCases = []struct {
-	description    string
-	puzzle  []string	// puzzle strings
-	words   []string        // words to search for
-	expected map[string][2][2]int // expected coordinates
+	description string
+	puzzle      []string
+	words       []string
 	expectError bool
-}{ {{range .J.Cases}}
+	expected    map[string][2][2]int
+}{ {{range .J.search}}
 {
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.Grid}},
-	{{printf "%#v"  .Input.WordsToSearchFor}},
-	{{if .ErrorExpected}} map[string][2][2]int{ },
-	true,
-	{{else}} map[string][2][2]int{ {{ range $key, $value := .Expected }} "{{ $key }}": { { {{ $value.Start.Column.Minus1 }}, {{ $value.Start.Row.Minus1 }}, }, { {{ $value.End.Column.Minus1 }}, {{ $value.End.Row.Minus1 }} } }, {{ end }} },
-	false,
-	{{- end}}
+	description: 	{{printf "%q"  .Description}},
+	puzzle: 		{{printf "%#v" .Input.Grid}},
+	words:			{{printf "%#v"  .Input.WordsToSearchFor}},
+	expectError: 	{{printf "%t"  .ErrorExpected}},
+	expected:		map[string][2][2]int{ {{ range $key, $value := .Expected }} "{{ $key }}": { { {{ $value.Start.Column.Minus1 }}, {{ $value.Start.Row.Minus1 }}, }, { {{ $value.End.Column.Minus1 }}, {{ $value.End.Row.Minus1 }} } }, {{ end }} },
 },{{end}}
 }
 `

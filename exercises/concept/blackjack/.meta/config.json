@@ -1,13 +1,12 @@
 {
-  "blurb": "Learn about conditionals by playing Blackjack.",
   "authors": [
     "andres-zartab"
   ],
   "contributors": [
     "tehsphinx",
-    "andrerfcsantos"
+    "andrerfcsantos",
+    "norbs57"
   ],
-  "forked_from": [],
   "files": {
     "solution": [
       "blackjack.go"
@@ -17,6 +16,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about conditionals by playing Blackjack.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

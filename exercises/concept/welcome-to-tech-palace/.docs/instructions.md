@@ -1,20 +1,20 @@
 # Instructions
 
 There is an appliance store called "Tech Palace" nearby.
-The owner of the store recently installed a big display to use for marketing messages and to show a special greetings when customers scan their loyalty cards at the entrance.
+The owner of the store recently installed a big display to use for marketing messages and to show a special greeting when customers scan their loyalty cards at the entrance.
 The display consists of lots of small LED lights and can show multiple lines of text.
 
 The store owner needs your help with the code that is used to generate the text for the new display.
 
 ## 1. Create the welcome message
 
-For most customers who scan their loyalty cards, the store owner wants to see `Welcome to the Tech Palace, ` following by the name of the customer in capital letters on the display.
+For most customers who scan their loyalty cards, the store owner wants to see `Welcome to the Tech Palace, ` followed by the name of the customer in capital letters on the display.
 
 Implement the function `WelcomeMessage` that accepts the name of the customer as a `string` argument and returns the desired message as a `string`.
 
 ```go
 WelcomeMessage("Judy")
-// Output: Welcome to the Tech Palace, JUDY
+// => Welcome to the Tech Palace, JUDY
 ```
 
 ## 2. Add a fancy border
@@ -27,10 +27,14 @@ It should return a `string` that consists of 3 lines, a line with the desired nu
 
 ```go
 AddBorder("Welcome!", 10)
-// Output:
-// **********
-// Welcome!
-// **********
+```
+
+Should return the following:
+
+```
+**********
+Welcome!
+**********
 ```
 
 ## 3. Clean up old marketing messages
@@ -52,5 +56,5 @@ message := `
 `
 
 CleanUpMessage(message)
-// Output: BUY NOW, SAVE 10%
+// => BUY NOW, SAVE 10%
 ```

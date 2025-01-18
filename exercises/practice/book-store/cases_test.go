@@ -1,8 +1,9 @@
 package bookstore
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 33c6b60 book-store: Add test case to thwart list-order greedy solutions (#1297)
-// Problem Specifications Version: 1.4.0
+// Commit: ece572c [book-store] Made test descriptions consistent (#2016)
 
 var testCases = []struct {
 	description string
@@ -60,7 +61,7 @@ var testCases = []struct {
 		expected:    4080,
 	},
 	{
-		description: "Two each of first 4 books and 1 copy each of rest",
+		description: "Two each of first four books and one copy each of rest",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5},
 		expected:    5560,
 	},
@@ -70,12 +71,12 @@ var testCases = []struct {
 		expected:    6000,
 	},
 	{
-		description: "Three copies of first book and 2 each of remaining",
+		description: "Three copies of first book and two each of remaining",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1},
 		expected:    6800,
 	},
 	{
-		description: "Three each of first 2 books and 2 each of remaining books",
+		description: "Three each of first two books and two each of remaining books",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 1, 2},
 		expected:    7520,
 	},
@@ -83,5 +84,20 @@ var testCases = []struct {
 		description: "Four groups of four are cheaper than two groups each of five and three",
 		basket:      []int{1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5},
 		expected:    10240,
+	},
+	{
+		description: "Check that groups of four are created properly even when there are more groups of three than groups of five",
+		basket:      []int{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5},
+		expected:    14560,
+	},
+	{
+		description: "One group of one and four is cheaper than one group of two and three",
+		basket:      []int{1, 1, 2, 3, 4},
+		expected:    3360,
+	},
+	{
+		description: "One group of one and two plus three groups of four is cheaper than one group of each size",
+		basket:      []int{1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5},
+		expected:    10000,
 	},
 }

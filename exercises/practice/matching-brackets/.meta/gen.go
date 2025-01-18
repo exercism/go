@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("matching-brackets", &j, t); err != nil {
+	j := map[string]interface{}{
+		"isPaired": &[]testCase{},
+	}
+	if err := gen.Gen("matching-brackets", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Value string
-		}
-		Expected bool
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Value string `json:"value"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -35,15 +34,16 @@ var tmpl = `package brackets
 {{.Header}}
 
 type bracketTest struct {
+	description string
 	input       string
 	expected    bool
 }
 
 var testCases = []bracketTest {
-{{range .J.Cases}}{
-	// {{.Description}}
-	{{printf "%q" .Input.Value}},
-	{{.Expected}},
+{{range .J.isPaired}}{
+	description:  	{{printf "%q" .Description}},
+	input: 			{{printf "%q" .Input.Value}},
+	expected: 		{{.Expected}},
 },
 {{end}}}
 `

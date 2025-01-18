@@ -1,16 +1,14 @@
 # Introduction
 
-In Go, you can iterate a `slice` using `for` but you could also use
-`range`. `Range` allows you to also iterate through a `map` or a
-`channel`. While iterating over a `channel` is out of the
-scope for this concept, you will find useful to iterate over a `map`.
+In Go, you can iterate over a `slice` using `for` and an index, or you can use `range`.
+`range` also allows you to iterate over a `map` or a `channel`.
+This concept will cover iterating over a `map` but iterating over a `channel` is out of the scope for this concept.
 
-Every iteration returns two values: the index/key and a copy of the element at
-that index/key.
+Every iteration returns two values: the index/key and a copy of the element at that index/key.
 
-## Iterate a slice
+## Iterate over a slice
 
-Easy as pie, loops a slice, ordered as expected.
+Easy as pie, loops over a slice, ordered as expected.
 
 ```go
 xi := []int{10, 20, 30}
@@ -23,25 +21,33 @@ for i, x := range xi {
 // 2, 30
 ```
 
-## Iterate a map
+## Iterate over a map
 
-Iterating a map raises a new problem. The order is now random.
+Iterating over a map raises a new problem. The order is now random.
 
 ```go
-hash := map[int]int{0: 10, 1: 20, 2: 30}
+hash := map[int]int{9: 10, 99: 20, 999: 30}
 for k, v := range hash {
   fmt.Println(k, v)
 }
 // outputs, for example:
-// 1 20
-// 2 30
-// 0 10
+// 99 20
+// 999 30
+// 9 10
 ```
+
+~~~~exercism/note
+It may seem the above output is incorrect, as one would expect the first key/value pair on the declaration of the map `9 10` to be the first one printed and not the last.
+However, maps are unordered by nature - there isn't a first or last key/value pair.
+Because of that, when iterating over the entries of a map, the order by which entries will be visited will be random and not follow any specific pattern.
+This means the above output is possible but might differ from what you get if you try to run this yourself.
+To learn more about this see [Go Language Spec: range clause](https://go.dev/ref/spec#RangeClause).
+~~~~
 
 ## Iteration omitting key or value
 
-In Go an unused variable will raise an error at build time, so if you only
-need to use the value, as per the first example:
+In Go an unused variable will raise an error at build time.
+Sometimes you only need the value, as per the first example:
 
 ```go
 xi := []int{10, 20, 30}
@@ -51,8 +57,7 @@ for i, x := range xi {
 // Go build failed: i declared but not used
 ```
 
-So, let's replace the `i` with `_` telling the compiler we don't use that
-value at all:
+You can replace the `i` with `_` which tells the compiler we don't use that value:
 
 ```go
 xi := []int{10, 20, 30}
@@ -65,7 +70,7 @@ for _, x := range xi {
 // 30
 ```
 
-Now, if you want to only print the index, you can replace the `x` with `_`,
+If you want to only print the index, you can replace the `x` with `_`,
 or simply omit the declaration:
 
 

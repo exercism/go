@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "da0b7fca-2422-453f-8e3a-48ac1bc23eae",
+      "slug": "slice-of-bools",
+      "title": "Slice of bools",
+      "blurb": "Use a slice of bools to keep track of composite numbers.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

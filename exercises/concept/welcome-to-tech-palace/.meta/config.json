@@ -1,10 +1,10 @@
 {
-  "blurb": "Learn about strings and the strings package by generating text for a store's new display.",
   "authors": [
     "erikschierboom",
     "junedev"
   ],
   "contributors": [
+    "kekimaker"
   ],
   "files": {
     "solution": [
@@ -15,6 +15,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about strings and the strings package by generating text for a store's new display.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

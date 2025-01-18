@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a word and a list of possible anagrams, select the correct sublist.",
   "authors": [
     "mikegehard"
   ],
@@ -20,7 +19,8 @@
     "sebito91",
     "strangeman",
     "tleen",
-    "tompao"
+    "tompao",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -31,8 +31,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Given a word and a list of possible anagrams, select the correct sublist.",
   "source": "Inspired by the Extreme Startup game",
   "source_url": "https://github.com/rchatley/extreme_startup"
 }

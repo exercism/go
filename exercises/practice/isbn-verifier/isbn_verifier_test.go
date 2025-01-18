@@ -5,14 +5,13 @@ import (
 )
 
 func TestIsValidISBN(t *testing.T) {
-	for _, test := range testCases {
-		observed := IsValidISBN(test.isbn)
-		if observed == test.expected {
-			t.Logf("PASS: %s", test.description)
-		} else {
-			t.Errorf("FAIL: %s\nIsValidISBN(%q)\nExpected: %t, Actual: %t",
-				test.description, test.isbn, test.expected, observed)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := IsValidISBN(tc.isbn)
+			if actual != tc.expected {
+				t.Errorf("IsValidISBN(%q)=%t, want: %t", tc.isbn, actual, tc.expected)
+			}
+		})
 	}
 }
 

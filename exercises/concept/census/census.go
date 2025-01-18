@@ -1,4 +1,4 @@
-// Packages census simulates a system used to collect census data.
+// Package census simulates a system used to collect census data.
 package census
 
 // Resident represents a resident in this city.

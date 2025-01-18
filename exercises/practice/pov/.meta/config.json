@@ -1,6 +1,6 @@
 {
-  "blurb": "Reparent a graph on a selected node",
   "authors": [
+    "norvaer",
     "skeys"
   ],
   "contributors": [
@@ -26,8 +26,12 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Reparent a graph on a selected node.",
   "source": "Adaptation of exercise from 4clojure",
   "source_url": "https://www.4clojure.com/"
 }

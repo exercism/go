@@ -1,18 +1,22 @@
 [
   {
     "url": "https://tour.golang.org/moretypes/2",
-    "description": "A Tour of Go"
-  },
-  {
-    "url": "https://go101.org/article/type-system-overview.html",
-    "description": "Go Type System Overview"
-  },
-  {
-    "url": "https://medium.com/rungo/structures-in-go-76377cc106a2",
-    "description": "Structures in Go"
+    "description": "A Tour of Go: Structs"
   },
   {
     "url": "https://gobyexample.com/structs",
     "description": "Go by Example: Structs"
+  },
+  {
+    "url": "https://golang.org/ref/spec#Struct_types",
+    "description": "Go Language Spec: Structs types"
+  },
+  {
+    "url": "https://go101.org/article/type-system-overview.html",
+    "description": "Go 101: Go Type System Overview"
+  },
+  {
+    "url": "https://yourbasic.org/golang/type-alias/",
+    "description": "Article: Type aliases vs type definitions"
   }
 ]

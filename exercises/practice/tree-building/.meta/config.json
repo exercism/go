@@ -1,5 +1,4 @@
 {
-  "blurb": "Refactor a tree building algorithm.",
   "authors": [
     "pminten"
   ],
@@ -32,6 +31,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Refactor a tree building algorithm."
 }

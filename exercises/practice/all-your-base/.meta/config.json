@@ -1,5 +1,4 @@
 {
-  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base.",
   "authors": [
     "erizocosmico"
   ],
@@ -14,7 +13,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -25,6 +25,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Convert a number, represented as a sequence of digits in one base, to any other base."
 }

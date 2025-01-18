@@ -8,20 +8,19 @@ import (
 )
 
 func TestMakeChain(t *testing.T) {
-	for _, test := range testCases {
-		c, ok := MakeChain(test.dominoes)
-		if ok != test.valid {
-			t.Fatalf("FAIL: %s\nMakeChain(%v)\nExpected 'ok' result: %t Actual 'ok': %t",
-				test.description, test.dominoes, test.valid, ok)
-		}
-		if ok {
-			// There can be a variety of "valid" chains. Verify the chain is valid.
-			if err := verifyChain(test.dominoes, c); err != nil {
-				t.Fatalf("FAIL: %s\nVerifying chain failed with error: %v\ninput: %v\nchain: %v",
-					test.description, err, test.dominoes, c)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			c, ok := MakeChain(tc.dominoes)
+			if ok != tc.valid {
+				t.Fatalf("MakeChain(%v)\nexpected 'ok' result: %t, actual 'ok': %t", tc.dominoes, tc.valid, ok)
 			}
-		}
-		t.Logf("PASS: %s", test.description)
+			if ok {
+				// There can be a variety of "valid" chains. Verify the chain is valid.
+				if err := verifyChain(tc.dominoes, c); err != nil {
+					t.Fatalf("MakeChain(%v)\nverifying chain failed with error: %v\nchain: %v", tc.dominoes, err, c)
+				}
+			}
+		})
 	}
 }
 

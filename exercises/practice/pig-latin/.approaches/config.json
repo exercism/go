@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "a3581d3f-297d-4e4a-8efc-c2c3fb4f1cf5",
+      "slug": "map-lookups",
+      "title": "Map lookups",
+      "blurb": "Use map lookups for parsing.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "cccd13f3-2562-4f35-9be2-abf32e02e4fc",
+      "slug": "map-lookups-with-generics",
+      "title": "Map lookups with generics",
+      "blurb": "Use map lookups with generics for parsing.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

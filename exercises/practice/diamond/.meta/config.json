@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a letter, print a diamond starting with 'A' with the supplied letter at the widest point.",
   "authors": [
     "ferhatelmas"
   ],
@@ -12,7 +11,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -23,8 +23,12 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Given a letter, print a diamond starting with 'A' with the supplied letter at the widest point.",
   "source": "Seb Rose",
-  "source_url": "http://claysnow.co.uk/recycling-tests-in-tdd/"
+  "source_url": "https://web.archive.org/web/20220807163751/http://claysnow.co.uk/recycling-tests-in-tdd/"
 }

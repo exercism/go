@@ -1,22 +1,3 @@
-// API:
-//
-// type Element struct {
-//  data int
-//  next *Element
-// }
-//
-// type List struct {
-//  head *Element
-//  size int
-// }
-//
-// func New([]int) *List
-// func (*List) Size() int
-// func (*List) Push(int)
-// func (*List) Pop() (int, error)
-// func (*List) Array() []int
-// func (*List) Reverse() *List
-
 package linkedlist
 
 import (
@@ -48,6 +29,30 @@ func TestNonEmptyListHasCorrectSize(t *testing.T) {
 	list := New([]int{1, 2, 3})
 	if size := list.Size(); size != 3 {
 		t.Fatalf("Size of list from [1, 2, 3]: %d, expected: %d", size, 3)
+	}
+}
+
+func TestListHasCorrectSizeAfterPop(t *testing.T) {
+	list := New([]int{1, 2, 3})
+
+	_, _ = list.Pop()
+	_, _ = list.Pop()
+	_, _ = list.Pop()
+
+	if size := list.Size(); size != 0 {
+		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got %d, expected: %d", size, 0)
+	}
+}
+
+func TestListHasCorrectSizeAfterPush(t *testing.T) {
+	list := New([]int{})
+
+	list.Push(1)
+	list.Push(2)
+	list.Push(3)
+
+	if size := list.Size(); size != 3 {
+		t.Fatalf("Size of list from [] after 3 calls to push(): got %d, expected: %d", size, 3)
 	}
 }
 

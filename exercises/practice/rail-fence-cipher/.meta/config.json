@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement encoding and decoding for the rail fence cipher.",
   "authors": [
     "ferhatelmas"
   ],
@@ -8,7 +7,8 @@
     "ekingery",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -19,8 +19,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Implement encoding and decoding for the rail fence cipher.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher"
 }

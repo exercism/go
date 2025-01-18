@@ -1,5 +1,4 @@
 {
-  "blurb": "Refactor a Markdown parser",
   "authors": [
     "ilmanzo"
   ],
@@ -9,7 +8,9 @@
     "ferhatelmas",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer",
+    "jasstkn"
   ],
   "files": {
     "solution": [
@@ -20,6 +21,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Refactor a Markdown parser."
 }

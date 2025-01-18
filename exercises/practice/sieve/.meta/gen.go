@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("sieve", &j, t); err != nil {
+	j := map[string]interface{}{
+		"primes": &[]testCase{},
+	}
+	if err := gen.Gen("sieve", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Limit int
-		}
-		Expected []int
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Limit int `json:"limit"`
+	} `json:"input"`
+	Expected []int `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -39,10 +38,10 @@ var testCases = []struct {
 	limit int
 	expected []int
 }{
-{{range .J.Cases}}{
-	"{{.Description}}",
-	{{.Input.Limit}},
-	{{printf "%#v" .Expected}},
+{{range .J.primes}}{
+	description: 	{{printf "%q"  .Description}},
+	limit: 			{{printf "%d"  .Input.Limit}},
+	expected: 		{{printf "%#v" .Expected}},
 },
 {{end}}}
 `

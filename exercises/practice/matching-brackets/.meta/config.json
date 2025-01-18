@@ -1,5 +1,4 @@
 {
-  "blurb": "Make sure the brackets and braces all match.",
   "authors": [
     "pminten"
   ],
@@ -18,7 +17,8 @@
     "rpottsoh",
     "sebito91",
     "strangeman",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -29,7 +29,14 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Make sure the brackets and braces all match.",
   "source": "Ginna Baker"
 }

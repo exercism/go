@@ -1,6 +1,10 @@
 [
   {
-    "url": "https://golang.org/ref/spec",
-    "description": "string concatenation"
+    "url": "https://gobyexample.com/string-formatting",
+    "description": "Go by Example: String formatting"
+  },
+  {
+    "url": "https://pkg.go.dev/fmt",
+    "description": "Go Packages: fmt package"
   }
 ]

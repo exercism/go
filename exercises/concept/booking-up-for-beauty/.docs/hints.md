@@ -7,6 +7,7 @@
 ## 1. Parse appointment date
 
 - There is a [method][time.parse] for parsing a `string` into a `Time`.
+- Additional information for formatting parts of a date can be found in the constants section of the [time package documentation][time-package-constants].
 
 ## 2. Check if an appointment has already passed
 
@@ -20,9 +21,9 @@
 
 - Convert the given string to a `Time` then format the answer string accordingly, using the appropriate [methods][time] to extract the needed constituents.
 
-## 5. Return the anniversary date
+## 5. Return the anniversary date of the salon's opening
 
-- Create a `Time` of the anniversary date.
+- Create a `Time` of the anniversary date of the salon's opening for the current year.
 
 [time]: https://golang.org/pkg/time/#pkg-index
 [time.parse]: https://golang.org/pkg/time/#Parse
@@ -30,3 +31,4 @@
 [after]: https://golang.org/pkg/time/#Time.After
 [now]: https://golang.org/pkg/time/#Now
 [hour]: https://golang.org/pkg/time/#Time.Hour
+[time-package-constants]: https://pkg.go.dev/time#pkg-constants

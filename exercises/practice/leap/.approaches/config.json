@@ -1,0 +1,36 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "8c232b33-03f2-48e1-bf8e-7fb75422c834",
+      "slug": "boolean-chain",
+      "title": "Boolean chain",
+      "blurb": "Use a chain of boolean expressions.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "d1ab6eeb-e394-456c-abfe-c2d5b1f1310a",
+      "slug": "max-two-checks",
+      "title": "Maximum two checks",
+      "blurb": "Use a maximum of two checks.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "fae9cf41-da27-4782-a4fb-308c093df307",
+      "slug": "time-addition",
+      "title": "time addition",
+      "blurb": "Use time addition.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "e9deaba2-1a3b-4634-a78f-3fb8a4a63ba4",
+      "slug": "time-yearday",
+      "title": "time.YearDay()",
+      "blurb": "Use time YearDay().",
+      "authors": ["bobahop"]
+    }
+  ]
+}

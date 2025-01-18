@@ -6,12 +6,12 @@ import (
 )
 
 func TestReverse(t *testing.T) {
-	for _, testCase := range append(testCases, multiByteCases...) {
-		if res := Reverse(testCase.input); res != testCase.expected {
-			t.Fatalf("FAIL: %s(%s)\nExpected: %q\nActual: %q",
-				testCase.description, testCase.input, testCase.expected, res)
-		}
-		t.Logf("PASS: %s", testCase.description)
+	for _, tc := range append(testCases, multiByteCases...) {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Reverse(tc.input); actual != tc.expected {
+				t.Fatalf("Reverse(%q) = %q, want: %q", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -29,8 +29,8 @@ func BenchmarkReverse(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range testCases {
-			Reverse(test.input)
+		for _, tc := range testCases {
+			Reverse(tc.input)
 		}
 	}
 }

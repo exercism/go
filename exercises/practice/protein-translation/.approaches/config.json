@@ -1,0 +1,22 @@
+{
+  "introduction": {
+    "authors": ["bobahop"],
+    "contributors": []
+  },
+  "approaches": [
+    {
+      "uuid": "3dde8f77-02e6-4ca2-899e-91aa2ace6bc9",
+      "slug": "map",
+      "title": "map",
+      "blurb": "Use a map to translate.",
+      "authors": ["bobahop"]
+    },
+    {
+      "uuid": "28180e03-27fa-46ed-9946-95fcd2d7b159",
+      "slug": "switch",
+      "title": "switch statement",
+      "blurb": "Use a switch to translate.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

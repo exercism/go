@@ -7,9 +7,25 @@ $ cd exercism/project/directory/go/leap
 $ go test
 ```
 
+# Tests with Data Race Detector
+
+In addition to running `go test`, some exercises should be run with a flag for [data race detector](https://go.dev/doc/articles/race_detector) to check that your solution does not introduce data race bugs. You will find a reminder to run tests with the data race detector flag `-race` in the relevant exercises. Run `go test -race` to check for data race. For example:
+
+```bash
+$ cd exercism/project/directory/go/bank-account
+$ go test -race
+```
+
 ## Running benchmarks
 
 Most exercises contain benchmarks, that you can use to determine how changes to your solution affect its performance. To run the benchmarks for an exercise use the command `go test -v --bench . --benchmem` inside the exercise directory.
+
+For example:
+```
+BenchmarkReverse-16       403594              2537 ns/op             176 B/op         34 allocs/op
+```
+means that the benchmark took 403594 iterations to be timed reliably. The average speed was 2537 ns per loop.
+34 memory allocations happened per operations with an average of 176 Bytes.
 
 ## Testable examples
 

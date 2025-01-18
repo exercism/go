@@ -60,6 +60,8 @@ func TestVoteCount(t *testing.T) {
 
 func TestIncrementVoteCount(t *testing.T) {
 	twoVotes := 2
+	fiveVotes := 5
+	noVotes := 0
 
 	tests := []struct {
 		name      string
@@ -68,10 +70,22 @@ func TestIncrementVoteCount(t *testing.T) {
 		expected  int
 	}{
 		{
+			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 0 and increment of 1",
+			counter:   &noVotes,
+			increment: 1,
+			expected:  1,
+		},
+		{
 			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 2 and increment of 2",
 			counter:   &twoVotes,
 			increment: 2,
 			expected:  4,
+		},
+		{
+			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 5 and increment of 7",
+			counter:   &fiveVotes,
+			increment: 7,
+			expected:  12,
 		},
 	}
 
@@ -129,7 +143,7 @@ func TestDisplayResult(t *testing.T) {
 		wanted string
 	}{
 		{
-			name: "Call to DisplayResult for Jonh with 5 votes",
+			name: "Call to DisplayResult for John with 5 votes",
 			result: &ElectionResult{
 				Name:  "John",
 				Votes: 5,
@@ -155,7 +169,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 		wanted    int
 	}{
 		{
-			name:      "Call to DecrementVotesOfCandidate for Jonh with 5 votes",
+			name:      "Call to DecrementVotesOfCandidate for John with 3 votes",
 			candidate: "John",
 			results: map[string]int{
 				"John": 3,
@@ -169,7 +183,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 			DecrementVotesOfCandidate(tt.results, tt.candidate)
 			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.wanted {
 				t.Errorf("DecrementVotesOfCandidate(%v) | wanted %d, got %d",
-					tt.results, votes, tt.wanted)
+					tt.results, tt.wanted, votes)
 			}
 		})
 	}

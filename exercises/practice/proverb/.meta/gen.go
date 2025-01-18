@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("proverb", &j, t); err != nil {
+	j := map[string]interface{}{
+		"recite": &[]testCase{},
+	}
+	if err := gen.Gen("proverb", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Strings []string
-		}
-		Expected []string
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Strings []string `json:"strings"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -40,11 +39,11 @@ type proverbTest struct {
 	expected []string
 }
 
-var stringTestCases = []proverbTest {
-{{range .J.Cases}} {
-	description: {{printf "%q" .Description }},
-	input: {{printf "%#v" .Input.Strings }},
-	expected: {{printf "%#v" .Expected }},
+var testCases = []proverbTest {
+{{range .J.recite}} {
+	description: 	{{printf "%q" .Description }},
+	input: 			{{printf "%#v" .Input.Strings }},
+	expected: 		{{printf "%#v" .Expected }},
 },
 {{end}}
 }

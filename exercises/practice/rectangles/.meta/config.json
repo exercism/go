@@ -1,5 +1,4 @@
 {
-  "blurb": "Count the rectangles in an ASCII diagram.",
   "authors": [
     "ferhatelmas"
   ],
@@ -9,7 +8,8 @@
     "hilary",
     "leenipper",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -20,6 +20,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Count the rectangles in an ASCII diagram."
 }

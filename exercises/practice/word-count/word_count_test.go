@@ -5,20 +5,14 @@ import (
 	"testing"
 )
 
-// wordcount API
-//
-// func WordCount(phrase string) Frequency  // Implement this function.
-// type Frequency map[string]int            // Using this return type.
-
 func TestWordCount(t *testing.T) {
-	for _, tt := range testCases {
-		expected := tt.output
-		actual := WordCount(tt.input)
-		if !reflect.DeepEqual(actual, expected) {
-			t.Fatalf("%s\n\tExpected: %v\n\tGot: %v", tt.description, expected, actual)
-		} else {
-			t.Logf("PASS: %s - WordCount(%s)", tt.description, tt.input)
-		}
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := WordCount(tc.input)
+			if !reflect.DeepEqual(actual, tc.expected) {
+				t.Fatalf("WordCount(%q)\n got:%v\nwant:%v", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 

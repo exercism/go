@@ -1,11 +1,10 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -13,59 +12,60 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("largest-series-product", &j, t); err != nil {
+	j := map[string]interface{}{
+		"largestProduct": &[]testCase{},
+	}
+	if err := gen.Gen("largest-series-product", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Digits string
-			Span   int
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Digits string `json:"digits"`
+		Span   int    `json:"span"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
+}
+
+func (t testCase) ExpectedValue() int {
+	v, ok := t.Expected.(float64)
+	if !ok {
+		return 0
+	}
+	return int(v)
+}
+
+func (t testCase) ExpectedError() string {
+	v, ok := t.Expected.(map[string]interface{})
+	if ok {
+		e, ok := v["error"].(string)
+		if ok {
+			return e
 		}
-		Expected ExpectedType
 	}
+	return ""
 }
 
-type ExpectedType struct {
-	ValueInt    int
-	ValueString string
-}
-
-func (e *ExpectedType) UnmarshalJSON(b []byte) error {
-	if b[0] != '{' {
-		var i int
-		if err := json.Unmarshal(b, &i); err != nil {
-			return err
-		}
-		e.ValueInt = i
-		return nil
-	}
-	var s map[string]string
-	if err := json.Unmarshal(b, &s); err != nil {
-		return err
-	}
-	e.ValueInt = -1
-	e.ValueString = s["error"]
-	return nil
-}
-
-// template applied to above data structure generates the Go test cases
 var tmpl = `package lsproduct
 
 {{.Header}}
 
-var tests =	[]struct {
-	digits	string
-	span		int
-	product	int64
-	ok		bool
-	error	string
+var testCases = []struct {
+	description string
+	digits      string
+	span        int
+	expected    int64
+	error       string
 }{
-{{range .J.Cases}}{ "{{.Input.Digits}}", {{.Input.Span}}, {{.Expected.ValueInt}}, {{ge .Expected.ValueInt 0}}, {{printf "%q" .Expected.ValueString}}},
-{{end}}}
+{{range .J.largestProduct}}{
+		description: {{printf "%q" .Description}},
+		digits:      {{printf "%q" .Input.Digits}},
+		span:        {{printf "%d" .Input.Span}},
+		expected:    {{printf "%d" .ExpectedValue}},
+		error:       {{printf "%q" .ExpectedError}},
+	},
+{{end}}
+}
 `

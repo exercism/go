@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,28 +12,28 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("two-bucket", &j, t); err != nil {
+	j := map[string]interface{}{
+		"measure": &[]testCase{},
+	}
+	if err := gen.Gen("two-bucket", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			BucketOne   int
-			BucketTwo   int
-			Goal        int
-			StartBucket string
-		}
-		Expected struct {
-			GoalBucket  string
-			Moves       int
-			OtherBucket int
-		}
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		BucketOne   int    `json:"bucketOne"`
+		BucketTwo   int    `json:"bucketTwo"`
+		Goal        int    `json:"goal"`
+		StartBucket string `json:"startBucket"`
+	} `json:"input"`
+	Expected struct {
+		Moves       int    `json:"moves"`
+		GoalBucket  string `json:"goalBucket"`
+		OtherBucket int    `json:"otherBucket"`
+		Error       string `json:"error"`
+	} `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -50,13 +50,20 @@ type bucketTestCase struct {
 	goalBucket	string
 	moves		int
 	otherBucket	int
-	errorExpected   bool // always false for generated test cases.
+	expectedError   string
 }
 
 var testCases = []bucketTestCase {
-{{range .J.Cases}}{
-	"{{.Description}}",
-	{{.Input.BucketOne}}, {{.Input.BucketTwo}}, {{.Input.Goal}}, "{{.Input.StartBucket}}", "{{.Expected.GoalBucket}}", {{.Expected.Moves}}, {{.Expected.OtherBucket}}, false,
+{{range .J.measure}}{
+		description:   	{{ printf "%q" .Description}},
+		bucketOne:     	{{ printf "%d" .Input.BucketOne}},
+		bucketTwo:      {{ printf "%d" .Input.BucketTwo}},
+		goal:           {{ printf "%d" .Input.Goal}},
+		startBucket:   	{{ printf "%q" .Input.StartBucket}},
+		goalBucket:    	{{ printf "%q" .Expected.GoalBucket}},
+		moves:        	{{ printf "%d" .Expected.Moves}},
+		otherBucket:   	{{ printf "%d" .Expected.OtherBucket}},
+		expectedError: 	{{ printf "%q" .Expected.Error}},
 },
 {{end}}}
 `

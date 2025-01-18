@@ -1,4 +1,4 @@
-// Packages census simulates a system used to collect census data.
+// Package census simulates a system used to collect census data.
 package census
 
 // Resident represents a resident in this city.
@@ -20,10 +20,6 @@ func NewResident(name string, age int, address map[string]string) *Resident {
 // HasRequiredInfo determines if a given resident has all of the required information.
 func (r *Resident) HasRequiredInfo() bool {
 	if r.Name == "" {
-		return false
-	}
-
-	if _, ok := r.Address["street"]; !ok {
 		return false
 	}
 

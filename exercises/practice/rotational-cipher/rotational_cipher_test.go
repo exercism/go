@@ -67,13 +67,13 @@ var testCases = []struct {
 }
 
 func TestRotationalCipher(t *testing.T) {
-	for _, testCase := range testCases {
-		cipher := RotationalCipher(testCase.inputPlain, testCase.inputShiftKey)
-		if cipher != testCase.expected {
-			t.Fatalf("FAIL: %s\n\tRotationalCipher(%s, %d)\nexpected: %s, \ngot:      %s",
-				testCase.description, testCase.inputPlain, testCase.inputShiftKey, testCase.expected, cipher)
-		}
-		t.Logf("PASS: %s", testCase.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			got := RotationalCipher(tc.inputPlain, tc.inputShiftKey)
+			if got != tc.expected {
+				t.Fatalf("RotationalCipher(%q, %d)\n got: %q\nwant: %q", tc.inputPlain, tc.inputShiftKey, got, tc.expected)
+			}
+		})
 	}
 }
 
@@ -81,6 +81,7 @@ func BenchmarkRotationalCipher(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
+
 	for i := 0; i < b.N; i++ {
 		for _, testCase := range testCases {
 			RotationalCipher(testCase.inputPlain, testCase.inputShiftKey)

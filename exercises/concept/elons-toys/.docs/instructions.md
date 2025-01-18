@@ -24,49 +24,48 @@ speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 car.Drive()
-// Output: Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
+// car is now Car{speed: 5, batteryDrain: 2, battery: 98, distance: 5}
 ```
 
-Note: If a car's battery is below its battery drain percentage, you can't drive the car anymore.
+Note: You should not try to drive the car if doing so will cause the car's battery to be below 0.
 
 ## 2. Display the distance driven
 
-Implement a `DisplayDistance` method on `Car` to return the distance as displayed on the LED display:
+Implement a `DisplayDistance` method on `Car` to return the distance as displayed on the LED display as a `string`:
 
 ```go
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
-car.DisplayDistance()
+fmt.Println(car.DisplayDistance())
 // Output: "Driven 0 meters"
 ```
 
 ## 3. Display the battery percentage
 
-Implement the `DisplayBattery` method on `Car` to return the distance as displayed on the LED display:
+Implement the `DisplayBattery` method on `Car` to return the battery percentage as displayed on the LED display as a `string`:
 
 ```go
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
-car.DisplayBattery()
+fmt.Println(car.DisplayBattery())
 // Output: "Battery at 100%"
 ```
 
 ## 4. Check if a remote control car can finish a race
 
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
+To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` method that takes a `trackDistance int` as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
 
 ```go
 speed := 5
 batteryDrain := 2
 car := NewCar(speed, batteryDrain)
 
-distance := 100
-raceTrack := NewTrack(distance)
+trackDistance := 100
 
-car.CanFinish(raceTrack)
-// Output: true
+car.CanFinish(trackDistance)
+// => true
 ```

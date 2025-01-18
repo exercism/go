@@ -1,8 +1,9 @@
 package proverb
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: e86e97a proverb: apply "input" policy
-// Problem Specifications Version: 1.1.0
+// Commit: d137db1 Format using prettier (#1917)
 
 type proverbTest struct {
 	description string
@@ -10,7 +11,7 @@ type proverbTest struct {
 	expected    []string
 }
 
-var stringTestCases = []proverbTest{
+var testCases = []proverbTest{
 	{
 		description: "zero pieces",
 		input:       []string{},

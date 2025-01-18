@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a string of digits, output all the contiguous substrings of length `n` in that string.",
   "authors": [
     "soniakeys"
   ],
@@ -14,7 +13,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -25,8 +25,12 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Given a string of digits, output all the contiguous substrings of length `n` in that string.",
   "source": "A subset of the Problem 8 at Project Euler",
-  "source_url": "http://projecteuler.net/problem=8"
+  "source_url": "https://projecteuler.net/problem=8"
 }

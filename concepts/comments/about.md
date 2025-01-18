@@ -35,7 +35,7 @@ package kelvin
 
 ## Function comments
 
-A function comment should be written directly before the function declaration. It should be a full sentence that starts with the function name. For example, an exported comment for the function `Test` should take the form `Test ...` and end with a period. It could also explain what arguments the function takes, what it does with them, and what its return values mean:
+A function comment should be written directly before the function declaration. It should be a full sentence that starts with the function name. For example, an exported comment for the function `Calculate` should take the form `Calculate  ...`. It should also explain what arguments the function takes, what it does with them, and what its return values mean, ending in a period):
 
 ```go
 // CelsiusFreezingTemp returns an integer value equal to the temperature at which water freezes in degrees Celsius.

@@ -1,5 +1,4 @@
 {
-  "blurb": "Write a robot simulator.",
   "authors": [],
   "contributors": [
     "alebaffa",
@@ -26,7 +25,14 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "defs.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Write a robot simulator.",
   "source": "Inspired by an interview question at a famous company."
 }

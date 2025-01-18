@@ -1,0 +1,14 @@
+[
+    {
+        "url": "https://tour.golang.org/flowcontrol/1",
+        "description": "Tour of Go: For"
+    },
+    {
+        "url": "https://gobyexample.com/for",
+        "description": "Go by Example: For"
+    },
+    {
+        "url": "https://yourbasic.org/golang/for-loop/",
+        "description": "Article: 5 basic for loop patterns"
+    }
+]

@@ -3,7 +3,7 @@
 A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
-func (receiver type) MethodName(parameters) (returnTypes){
+func (receiver type) MethodName(parameters) (returnTypes) {
 
 }
 ```
@@ -11,23 +11,26 @@ func (receiver type) MethodName(parameters) (returnTypes){
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
-type Person {
+type Person struct {
 	Name string
 }
 
 func (p Person) Greetings() string {
-	return fmt.Sprintf("Welcome %s !", p.Name)
+	return fmt.Sprintf("Welcome %s!", p.Name)
 }
 
 s := Person{Name: "Bronson"}
 fmt.Println(s.Greetings())
-// Output: Welcome Bronson !
+// Output: Welcome Bronson!
 
 ```
 
+There are two types of receivers, value receivers, and pointer receivers.
+
 Methods with a value receiver operate on a copy of the value passed to it, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
-You can declare methods with pointer receivers in order to modify the value to which the receiver points. Such modifications are visible to the caller or the method as well.
+You can declare methods with pointer receivers in order to modify the value to which the receiver points.
+Such modifications are visible to the caller of the method as well.
 
 ```go
 type rect struct {

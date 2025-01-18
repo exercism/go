@@ -5,17 +5,17 @@ operation to perform on each element of the collection, returns a new
 collection containing the result of applying that operation to each element of
 the input collection.
 
-Given the collection of numbers:
+Given the collection of strings:
 
-- 1, 2, 3, 4, 5
+- "cat", "Dog", "b4t", "gO"
 
 And the operation:
 
-- square a number (`x => x * x`)
+- upcase a string
 
-Your code should be able to produce the collection of squares:
+Your code should be able to produce the collection of strings:
 
-- 1, 4, 9, 16, 25
+- "CAT", "DOG", "B4T, "GO"
 
 Check out the test suite to see the expected function signature.
 

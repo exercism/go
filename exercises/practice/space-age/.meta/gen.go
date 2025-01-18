@@ -4,8 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	space ".."
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -13,28 +12,29 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("space-age", &j, t); err != nil {
+	j := map[string]interface{}{
+		"age": &[]testCase{},
+	}
+	if err := gen.Gen("space-age", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Planet  string  `json:"planet"`
+		Seconds float64 `json:"seconds"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
-	Input       struct {
-		Planet  space.Planet
-		Seconds float64
+func (t testCase) ExpectedValue() float64 {
+	v, ok := t.Expected.(float64)
+	if ok {
+		return v
 	}
-	Expected float64
+	return -1
 }
 
 // Template to generate test cases.
@@ -43,16 +43,16 @@ var tmpl = `package space
 {{.Header}}
 
 var testCases = []struct {
-	description	string
-	planet		Planet
-	seconds		float64
-	expected	float64
-}{ {{range .J.Cases}}
+	description		string
+	planet			Planet
+	seconds			float64
+	expected		float64
+}{ {{range .J.age}}
 {
-	description:	{{printf "%q"  .Description}},
-	planet:		{{printf "%#v"  .Input.Planet}},
-	seconds:		{{printf "%.0f"  .Input.Seconds}},
-	expected:	{{printf "%.2f"  .Expected}},
+	description:	{{printf "%q"    .Description}},
+	planet:			{{printf "%q"   .Input.Planet}},
+	seconds:		{{printf "%.1f"  .Input.Seconds}},
+	expected:		{{printf "%.2f"  .ExpectedValue}},
 },{{end}}
 }
 `

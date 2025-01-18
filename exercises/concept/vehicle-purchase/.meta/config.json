@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "kahgoh"
+  ],
+  "files": {
+    "solution": [
+      "vehicle_purchase.go"
+    ],
+    "test": [
+      "vehicle_purchase_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "forked_from": [
+    "javascript/vehicle-purchase"
+  ],
+  "blurb": "Learn about comparison and conditional-ifs while preparing for your next vehicle purchase",
+  "custom": {
+    "taskIdsEnabled": true
+  }
+}

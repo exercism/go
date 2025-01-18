@@ -1,102 +1,71 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
-	t := template.New("").Funcs(template.FuncMap{
-		"GroupComment": GroupComment,
-		"byteSlice":    byteSlice,
-	})
-	t, err := t.Parse(tmpl)
+	t, err := template.New("").Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("variable-length-quantity", &j, t); err != nil {
+	j := map[string]interface{}{
+		"encode": &[]testCase{},
+		"decode": &[]testCase{},
+	}
+	if err := gen.Gen("variable-length-quantity", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// byteSlice converts a slice of uint32 to a byte slice.
-func byteSlice(ns []uint32) []byte {
-	b := make([]byte, len(ns))
-	for i, n := range ns {
-		b[i] = byte(n)
-	}
-	return b
-}
-
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Groups []TestGroup `json:"Cases"`
-}
-
-type TestGroup struct {
-	Description string
-	Cases       []OneCase
-}
-
-type OneCase struct {
-	Description string
-	Property    string // "encode" or "decode"
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Integers []uint32 // supports both []byte and []uint32 in JSON.
-	}
-	Expected ExpectedType // can be {"error": "message"} or [x,y,z]
+		Integers []uint32 `json:"integers"` // supports both []byte and []uint32 in JSON
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-type ExpectedType struct {
-	ValueSlice     []uint32
-	ValueErrorFlag bool
-}
-
-func (e *ExpectedType) UnmarshalJSON(b []byte) error {
-	if b[0] == '[' {
-		var values []uint32
-		if err := json.Unmarshal(b, &values); err != nil {
-			return err
-		}
-		e.ValueSlice = values
-		e.ValueErrorFlag = false
-	} else {
-		var s map[string]string
-		if err := json.Unmarshal(b, &s); err != nil {
-			return err
-		}
-		e.ValueSlice = []uint32{}
-		e.ValueErrorFlag = true
-	}
-	return nil
-}
-
-// PropertyMatch returns true when given test case c has .Property field matching property;
-// this serves as a filter to put test cases with "like" property into the same group.
-func (c OneCase) PropertyMatch(property string) bool { return c.Property == property }
-
-// GroupComment looks in each of the test case groups to find the
-// group for which every test case has the .Property matching given property;
-// it returns the .Description field for the matching property group,
-// or a 'Note: ...' if no test group consistently matches given property.
-func GroupComment(groups []TestGroup, property string) string {
-	for _, group := range groups {
-		propertyGroupMatch := true
-		for _, testcase := range group.Cases {
-			if !testcase.PropertyMatch(property) {
-				propertyGroupMatch = false
-				break
+func (t testCase) ValueSliceByte() []byte {
+	v, ok := t.Expected.([]interface{})
+	var vals []byte
+	if ok {
+		for _, n := range v {
+			number, ok := n.(float64)
+			if !ok {
+				log.Fatal("[ERROR] expected values in array in `expected` to be a number")
 			}
-		}
-		if propertyGroupMatch {
-			return group.Description
+			vals = append(vals, byte(number))
 		}
 	}
-	return "Note: Apparent inconsistent use of \"property\": \"" + property + "\" within test case group!"
+	return vals
+}
+
+func (t testCase) ValueSliceUint32() []uint32 {
+	v, ok := t.Expected.([]interface{})
+	var vals []uint32
+	if ok {
+		for _, n := range v {
+			number, ok := n.(float64)
+			if !ok {
+				log.Fatal("[ERROR] expected values in array in `expected` to be a number")
+			}
+			vals = append(vals, uint32(number))
+		}
+	}
+	return vals
+}
+
+func (t testCase) ErrorExpected() bool {
+	v, ok := t.Expected.(map[string]interface{})
+	if ok {
+		_, ok := v["error"].(string)
+		return ok
+	}
+	return false
 }
 
 // template applied to above data structure generates the Go test cases
@@ -104,31 +73,30 @@ var tmpl = `package variablelengthquantity
 
 {{.Header}}
 
-// {{GroupComment .J.Groups "encode"}}
 var encodeTestCases = []struct {
 	description string
-	input	[]uint32
-	output	[]byte
-}{ {{range .J.Groups}} {{range .Cases}}
-	{{if .PropertyMatch "encode"}} {
-		{{printf "%q" .Description}},
-		{{printf "%#v" .Input.Integers }},
-		{{byteSlice .Expected.ValueSlice | printf "%#v" }},
-	},{{- end}}{{end}}{{end}}
+	input		[]uint32
+	expected	[]byte
+}{ 
+{{range .J.encode}}{
+		description: 	{{printf  "%q"  .Description    }},
+		input: 			{{printf  "%#v" .Input.Integers }},
+		expected: 		{{printf  "%#v" .ValueSliceByte }},
+	},
+{{end}}
 }
 
-// {{GroupComment .J.Groups "decode"}}
 var decodeTestCases = []struct {
-	description string
+	description     string
 	input			[]byte
-	output			[]uint32
+	expected		[]uint32
 	errorExpected	bool
-}{ {{range .J.Groups}} {{range .Cases}}
-	{{if .PropertyMatch "decode"}} {
-		{{printf "%q" .Description}},
-		{{byteSlice .Input.Integers | printf "%#v" }},
-		{{printf "%#v" .Expected.ValueSlice }},
-		{{printf "%#v" .Expected.ValueErrorFlag }},
-	},{{- end}}{{end}}{{end}}
+}{ {{range .J.decode}}{
+		description: 	{{printf "%q" 	.Description}},
+		input: 			[]byte{ {{range .Input.Integers}} {{printf "%#x" .}},{{end}}},
+		expected: 		{{printf "%#v" 	.ValueSliceUint32 }},
+		errorExpected: 	{{printf "%t" 	.ErrorExpected }},
+	},
+{{end}}
 }
 `

@@ -1,0 +1,27 @@
+{
+  "authors": [
+    "norbs57"
+  ],
+  "contributors": [
+    "junedev"
+  ],
+  "files": {
+    "solution": [
+      "animal_magic.go"
+    ],
+    "test": [
+      "animal_magic_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "icon": "roll-the-die",
+  "blurb": "Learn how to work with pseudo-random numbers",
+  "custom": {
+    "taskIdsEnabled": true
+  }
+}

@@ -1,14 +1,14 @@
 [
   {
     "url": "https://gobyexample.com/structs",
-    "description": "Go by example: Structs"
+    "description": "Go by Example: Structs"
   },
   {
     "url": "https://tour.golang.org/moretypes/2",
-    "description": "A Tour of Go"
+    "description": "A Tour of Go: Structs"
   },
   {
     "url": "https://medium.com/rungo/structures-in-go-76377cc106a2",
-    "description": "Structures in Go (structs)"
+    "description": "Article: Structures in Go (structs)"
   }
 ]

@@ -1,0 +1,8 @@
+func ToRNA(dna string) string {
+	length := len(dna)
+	var output = make([]byte, length)
+	for i := 0; i < length; i++ {
+		output[i] = (nucComp(dna[i]))
+	}
+	return string(output)
+}

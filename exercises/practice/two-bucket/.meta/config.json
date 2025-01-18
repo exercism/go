@@ -1,5 +1,4 @@
 {
-  "blurb": "Given two buckets of different size, demonstrate how to measure an exact number of liters.",
   "authors": [
     "leenipper"
   ],
@@ -9,7 +8,8 @@
     "ferhatelmas",
     "hilary",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -20,8 +20,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Given two buckets of different size, demonstrate how to measure an exact number of liters.",
   "source": "Water Pouring Problem",
-  "source_url": "http://demonstrations.wolfram.com/WaterPouringProblem/"
+  "source_url": "https://demonstrations.wolfram.com/WaterPouringProblem/"
 }

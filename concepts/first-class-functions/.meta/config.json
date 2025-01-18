@@ -1,0 +1,5 @@
+{
+  "authors": ["antklim"],
+  "contributors": ["andrerfcsantos"],
+  "blurb": "Functions in Go can be used as regular values of the language."
+}

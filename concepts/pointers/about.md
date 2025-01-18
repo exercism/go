@@ -27,7 +27,7 @@ Similarly, when we need to change the value in the piece of memory of `a`, we ca
 a = 3
 ```
 
-The piece of memory that is associated with `a` will now will now be storing the value `3`.
+The piece of memory that is associated with `a` will now be storing the value `3`.
 
 ## Pointers
 
@@ -37,7 +37,7 @@ While variables allow us to refer to values in memory, sometimes it's useful to 
 var p *int // 'p' contains the memory address of an integer
 ```
 
-Here we declaring a variable `p` of type "pointer to int" (`*int`). This means that `p` will hold the memory address of an integer. The zero value of pointers is `nil` because a `nil` pointer holds no memory address.
+Here we declare a variable `p` of type "pointer to int" (`*int`). This means that `p` will hold the memory address of an integer. The zero value of pointers is `nil` because a `nil` pointer holds no memory address.
 
 ### Getting a pointer to a variable
 
@@ -69,11 +69,11 @@ b = *p // b == 2
 
 The operation `*p` fetches the value stored at the memory address stored in `p`. This operation is often called "dereferencing".
 
-We can also use the derefering operator to assign a new value to the memory address referenced by the pointer:
+We can also use the dereference operator to assign a new value to the memory address referenced by the pointer:
 
 ```go
-var a int
-a = 2   // declare int variable 'a' and assign it the value of 2
+var a int        // declare int variable 'a'
+a = 2            // assign 'a' the value of 2
 
 var pa *int
 pa = &a          // 'pa' now contains to the memory address of 'a'  
@@ -130,11 +130,11 @@ fmt.Println(p.Name) // Output: "Peter"
 
 ## Slices and maps are already pointers
 
-Slices and maps are special types because they already have pointers in their implementation. This means that more often that not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
+Slices and maps are special types because they already have pointers in their implementation. This means that more often than not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
 
 
 ```go
-func incrementPeterAge(m map[string]int){
+func incrementPeterAge(m map[string]int) {
 	m["Peter"] += 1
 }
 ```
@@ -148,7 +148,7 @@ ages := map[string]int{
 incrementPeterAge(ages)
 fmt.Println(ages)
 // Output: map[Peter:22]
-// The changes the function 'addPeterAge' made to the map are visible after the function ends!
+// The changes the function 'incrementPeterAge' made to the map are visible after the function ends!
 ```
 
 The same applies when changing an existing item in a slice.

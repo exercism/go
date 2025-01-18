@@ -1,12 +1,10 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
-	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -14,109 +12,103 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("clock", &j, t); err != nil {
+	j := map[string]interface{}{
+		"create":   &[]defaultTestCase{},
+		"add":      &[]defaultTestCase{},
+		"subtract": &[]defaultTestCase{},
+		"equal":    &[]equalTestCase{},
+	}
+	if err := gen.Gen("clock", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to umarshal into
-type js struct {
-	Groups []testGroup `json:"Cases"`
+type defaultTestCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Hour   int `json:"hour"`
+		Minute int `json:"minute"`
+		Value  int `json:"value"`
+	} `json:"input"`
+	Expected string `json:"expected"`
 }
 
-type testGroup struct {
-	Description string
-	Cases       []json.RawMessage `property:"RAW"`
-	CreateCases []struct {
-		Description string
-		Input       struct {
-			Hour, Minute int
-		}
-		Expected string
-	} `property:"create"`
-	AddCases []struct {
-		Description string
-		Input       struct {
-			Hour, Minute, Value int
-		}
-		Expected string
-	} `property:"add"`
-	SubtractCases []struct {
-		Description string
-		Input       struct {
-			Hour, Minute, Value int
-		}
-		Expected string
-	} `property:"subtract"`
-	EqCases []struct {
-		Description string
-		Input       struct {
-			Clock1, Clock2 struct{ Hour, Minute int }
-		}
-		Expected bool
-	} `property:"equal"`
-}
-
-func (groups testGroup) GroupShortName() string {
-	return strings.ToLower(strings.Fields(groups.Description)[0])
+type equalTestCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Clock1 struct {
+			Hour   int `json:"hour"`
+			Minute int `json:"minute"`
+		} `json:"clock1"`
+		Clock2 struct {
+			Hour   int `json:"hour"`
+			Minute int `json:"minute"`
+		} `json:"clock2"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
 var tmpl = `package clock
 
 {{.Header}}
 
-{{range .J.Groups}}
-	// {{ .Description }}
-
-	{{- if .CreateCases }}
-		var timeTests = []struct {
-			h, m int
-			want string
-		}{
-			{{- range .CreateCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-			{{- end }}
-		}
-	{{- end }}
-
-	{{- if .AddCases }}
-		var {{ .GroupShortName }}Tests = []struct {
-			h, m, a int
-			want string
-		}{
-			{{- range .AddCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-			{{- end }}
-		}
-	{{- end }}
-
-	{{- if .SubtractCases }}
-		var {{ .GroupShortName }}Tests = []struct {
-			h, m, a int
-			want string
-		}{
-			{{- range .SubtractCases }}
-				{ {{.Input.Hour}}, {{.Input.Minute}}, {{.Input.Value}}, {{.Expected | printf "%#v"}}}, // {{.Description}}
-			{{- end }}
-		}
-	{{- end }}
-
-	{{- if .EqCases }}
-		type hm struct{ h, m int }
-		var eqTests = []struct {
-			c1, c2 hm
-			want   bool
-		}{
-			{{- range .EqCases }}
-				// {{.Description}}
-				{
-					hm{ {{.Input.Clock1.Hour}}, {{.Input.Clock1.Minute}}},
-					hm{ {{.Input.Clock2.Hour}}, {{.Input.Clock2.Minute}}},
-					{{.Expected}},
-				},
-			{{- end }}
-		}
-	{{- end }}
+var timeTestCases = []struct {
+	description string
+	h, m        int
+	expected    string
+}{
+{{range .J.create}}{
+			description: {{printf "%q"  .Description}},
+			h:           {{printf "%d"  .Input.Hour}},
+			m:           {{printf "%d"  .Input.Minute}},
+			expected:    {{printf "%q"  .Expected}},
+	},
 {{end}}
+}
+
+var addTestCases = []struct {
+	description      string
+	h, m, addedValue int
+	expected         string
+}{
+{{range .J.add}}{
+		description: {{printf "%q"  .Description}},
+		h:           {{printf "%d"  .Input.Hour}},
+		m:           {{printf "%d"  .Input.Minute}},
+		addedValue:  {{printf "%d"  .Input.Value}},
+		expected:    {{printf "%q"  .Expected}},
+	},
+{{end}}
+}
+
+var subtractTestCases = []struct {
+	description      		string
+	h, m, subtractedValue 	int
+	expected         		string
+}{
+{{range .J.subtract}}{
+		description: 		{{printf "%q"  .Description}},
+		h:           		{{printf "%d"  .Input.Hour}},
+		m:           		{{printf "%d"  .Input.Minute}},
+		subtractedValue:  	{{printf "%d"  .Input.Value}},
+		expected:    		{{printf "%q"  .Expected}},
+	},
+{{end}}
+}
+
+// Compare two clocks for equality
+type hm struct{ h, m int }
+
+var equalTestCases = []struct {
+	description string
+	c1, c2      hm
+	expected    bool
+}{ {{range .J.equal}}{
+		description: {{printf "%q"  .Description}},
+		c1:          hm{ {{printf "%d"  .Input.Clock1.Hour}} , {{printf "%d"  .Input.Clock1.Minute}} },
+		c2:          hm{ {{printf "%d"  .Input.Clock2.Hour}} , {{printf "%d"  .Input.Clock2.Minute}} },
+		expected:    {{printf "%v"  .Expected}},
+	},
+{{end}}
+}
 `

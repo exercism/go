@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,35 +12,36 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("isbn-verifier", &j, t); err != nil {
+	j := map[string]interface{}{
+		"isValid": &[]testCase{},
+	}
+	if err := gen.Gen("isbn-verifier", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		ISBN string
-	}
-	Expected bool
+		ISBN string `json:"isbn"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []OneCase
-}
-
-// template applied to above data structure generates the Go test cases
 var tmpl = `package isbn
 
 {{.Header}}
 
 var testCases = []struct {
-	isbn string
-	expected bool
 	description string
+	isbn        string
+	expected    bool
 }{
-{{range .J.Cases}}{ "{{.Input.ISBN}}", {{.Expected}}, "{{.Description}}"},
-{{end}}}
+{{range .J.isValid}}{
+			description: 	{{printf "%q"  .Description}},
+			isbn: 			{{printf "%q"  .Input.ISBN}},
+			expected:   	{{printf "%t"  .Expected}},
+	},
+{{end}}
+}
 `

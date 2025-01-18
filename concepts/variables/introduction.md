@@ -22,12 +22,12 @@ A function can have zero or more parameters. All parameters must be explicitly t
 ```go
 package greeting
 
-// Hello is a public function
+// Hello is a public function.
 func Hello(name string) string {
     return hello(name)
 }
 
-// hello is a private function
+// hello is a private function.
 func hello(name string) string {
     return "Hello " + name
 }

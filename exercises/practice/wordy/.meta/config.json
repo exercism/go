@@ -1,5 +1,4 @@
 {
-  "blurb": "Parse and evaluate simple math word problems returning the answer as an integer.",
   "authors": [
     "soniakeys"
   ],
@@ -15,7 +14,8 @@
     "leenipper",
     "petertseng",
     "robphoenix",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -26,8 +26,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Parse and evaluate simple math word problems returning the answer as an integer.",
   "source": "Inspired by one of the generated questions in the Extreme Startup game.",
   "source_url": "https://github.com/rchatley/extreme_startup"
 }

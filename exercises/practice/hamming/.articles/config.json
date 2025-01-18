@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "39d040a8-4b08-4135-9fcc-aa8bda94f9f5",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach to solving Hamming.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

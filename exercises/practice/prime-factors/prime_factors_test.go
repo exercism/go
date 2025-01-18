@@ -1,22 +1,20 @@
 package prime
 
 import (
-	"reflect"
-	"sort"
+	"slices"
 	"testing"
 )
 
 func TestPrimeFactors(t *testing.T) {
-	for _, test := range tests {
-		actual := Factors(test.input)
-		sort.Slice(actual, ascending(actual))
-		sort.Slice(test.expected, ascending(test.expected))
-		if !reflect.DeepEqual(actual, test.expected) {
-			t.Fatalf("FAIL %s\nFactors(%d) = %#v;\nexpected %#v",
-				test.description, test.input,
-				actual, test.expected)
-		}
-		t.Logf("PASS %s", test.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Factors(tc.input)
+			slices.Sort(actual)
+			slices.Sort(tc.expected)
+			if !slices.Equal(actual, tc.expected) {
+				t.Fatalf("Factors(%d)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 
@@ -25,14 +23,8 @@ func BenchmarkPrimeFactors(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range tests {
+		for _, test := range testCases {
 			Factors(test.input)
 		}
-	}
-}
-
-func ascending(list []int64) func(int, int) bool {
-	return func(i, j int) bool {
-		return list[i] < list[j]
 	}
 }

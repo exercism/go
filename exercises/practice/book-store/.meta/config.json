@@ -1,5 +1,4 @@
 {
-  "blurb": "To try and encourage more sales of different books from a popular 5 book series, a bookshop has decided to offer discounts of multiple-book purchases.",
   "authors": [
     "magic003"
   ],
@@ -10,7 +9,8 @@
     "hilary",
     "ilmanzo",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -21,8 +21,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "To try and encourage more sales of different books from a popular 5 book series, a bookshop has decided to offer discounts of multiple-book purchases.",
   "source": "Inspired by the harry potter kata from Cyber-Dojo.",
-  "source_url": "http://cyber-dojo.org"
+  "source_url": "https://cyber-dojo.org"
 }

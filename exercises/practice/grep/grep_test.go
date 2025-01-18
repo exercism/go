@@ -62,12 +62,18 @@ func TestSearch(t *testing.T) {
 	defer deleteFiles(files)
 
 	for _, tc := range testCases {
-		actual := Search(tc.pattern, tc.flags, tc.files)
-		if !reflect.DeepEqual(actual, tc.expected) {
-			t.Fatalf("FAIL: %s\nSearch for pattern %q\nexpected %v\nactual %v.",
-				tc.description, tc.pattern, tc.expected, actual)
-		}
-		t.Logf("PASS: %s", tc.description)
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Search(tc.pattern, tc.flags, tc.files)
+
+			// We do not care whether the result is nil or an empty slice.
+			if len(tc.expected) == 0 && len(actual) == 0 {
+				return
+			}
+
+			if !reflect.DeepEqual(actual, tc.expected) {
+				t.Errorf("Search(%q,%v,%v)\ngot: %v\nwant: %v", tc.pattern, tc.flags, tc.files, actual, tc.expected)
+			}
+		})
 	}
 }
 

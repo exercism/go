@@ -1,31 +1,78 @@
-# Introduction to Interfaces
+# Introduction
 
-An **interface type** is effectively a set of method signatures.
-Any type that defines those methods "implements" the interface implicitly.
+## Interface as a set of methods
+
+In its simplest form, an **interface type** is a set of method signatures.
+Here is an example of an interface definition that includes two methods `Add` and `Value`:
+
+```go
+type Counter interface {
+    Add(increment int)
+    Value() int
+}
+```
+
+The parameter names like `increment` can be omitted from the interface definition but they often increase readability.
+
+Interface names in Go do not contain the word `Interface` or `I`.
+Instead, they often end with `er`, e.g. `Reader`, `Stringer`.
+
+## Implementing an interface
+
+Any type that defines the methods of the interface automatically implicitly "implements" the interface.
 There is no `implements` keyword in Go.
-Here is what an interface definition might look like:
+
+The following type implements the `Counter` interface we saw above.
 
 ```go
-type InterfaceName interface {
-    MethodOne() MethodOneReturnType
-    MethodTwo(paramOne ParamOneType, paramTwo ParamTwoType) MethodTwoReturnType 
-    ...
+type Stats struct {
+    value int
+    // ...
+}
+
+func (s Stats) Add(v int) {
+    s.value += v
+}
+
+func (s Stats) Value() int {
+    return s.value
+}
+
+func (s Stats) SomeOtherMethod() {
+    // The type can have additional methods not mentioned in the interface.
 }
 ```
 
-For example, here is the built-in `error` interface:
+For implementing the interface, it does not matter whether the method has a value or pointer receiver.
+(Revisit the [methods concepts][concept-methods] if you are unsure about those.)
+
+> A value of interface type can hold any value that implements those methods. [^1]
+
+That means `Stats` can now be used in all the places that expect the `Counter` interface.
 
 ```go
-type error interface {
-    Error() string
+func SetUpAnalytics(counter Counter) {
+    // ...
 }
+
+stats := Stats{}
+SetUpAnalytics(stats)
+// works because Stats implements Counter
 ```
 
-This means that any type which implements an `Error()` method which returns a `string` implements the `error` interface.
-This allows a function with return type `error` to return values of different types as long as all of them satisfy the `error` interface.
+Because interfaces are implemented implicitly, a type can easily implement multiple interfaces.
+It only needs to have all the necessary methods defined.
 
-There is one very special interface type in Go: the **empty interface** type that contains zero methods.
-The empty interface type is written like this: `interface{}`.
-Since it has no methods, every type implements the empty interface type.
+## Empty interface
+
+There is one very special interface type in Go, the **empty interface** type that contains zero methods.
+The empty interface is written like this: `interface{}`.
+In Go 1.18 or higher, `any` can be used as well. It was defined as an alias.
+
+Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.
 In that case, the function parameter uses the empty interface type.
+
+[^1]: https://go.dev/tour/methods/9
+
+[concept-methods]: /tracks/go/concepts/methods

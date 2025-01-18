@@ -11,7 +11,7 @@ import (
 
 type Matrix [][]int
 
-func New(s string) (*Matrix, error) {
+func New(s string) (Matrix, error) {
 	var err error
 	lines := strings.Split(s, "\n")
 	m := make(Matrix, len(lines))
@@ -28,39 +28,37 @@ func New(s string) (*Matrix, error) {
 		}
 		m[i] = row
 	}
-	return &m, nil
+	return m, nil
 }
 
-func (m *Matrix) Set(row, col, val int) (ok bool) {
-	mm := *m
-	if row < 0 || row >= len(mm) || col < 0 {
+func (m Matrix) Set(row, col, val int) (ok bool) {
+	if row < 0 || row >= len(m) || col < 0 {
 		return false
 	}
-	if cols := len(mm[0]); col >= cols {
+	if cols := len(m[0]); col >= cols {
 		return false
 	}
-	mm[row][col] = val
+	m[row][col] = val
 	return true
 }
 
-func (m *Matrix) Rows() [][]int {
-	r := make([][]int, len(*m))
-	for i, mr := range *m {
+func (m Matrix) Rows() [][]int {
+	r := make([][]int, len(m))
+	for i, mr := range m {
 		r[i] = append([]int{}, mr...)
 	}
 	return r
 }
 
-func (m *Matrix) Cols() [][]int {
-	mm := *m
-	if len(mm) == 0 {
+func (m Matrix) Cols() [][]int {
+	if len(m) == 0 {
 		return nil
 	}
-	c := make([][]int, len(mm[0]))
+	c := make([][]int, len(m[0]))
 	for i := range c {
-		col := make([]int, len(mm))
+		col := make([]int, len(m))
 		for j := range col {
-			col[j] = mm[j][i]
+			col[j] = m[j][i]
 		}
 		c[i] = col
 	}

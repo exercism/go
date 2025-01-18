@@ -1,10 +1,10 @@
 {
-  "blurb": "TODO: add blurb for the-farm exercise",
   "authors": [
-    "brugnara"
+    "brugnara",
+    "jmrunkle",
+    "junedev"
   ],
   "contributors": [],
-  "forked_from": [],
   "files": {
     "solution": [
       "the_farm.go"
@@ -14,6 +14,16 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "editor": [
+      "types.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about error handling in Go while feeding cows on the farm.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

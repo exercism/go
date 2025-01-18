@@ -8,7 +8,9 @@
 
 ## 2. Fix corrupted logs
 
-- String concatenation can be used to build the modified log line character by character.
+- String concatenation can be used to build the modified log line rune by rune.
+- For that concatenation to work, each `rune` may have to be converted to string first.
+- You can convert a rune `r` to `string` with `string(r)`.
 
 ## 3. Determine if a log can be displayed
 

@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement various kinds of error handling and resource management",
   "authors": [
     "pminten"
   ],
@@ -28,6 +27,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "common.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Implement various kinds of error handling and resource management."
 }

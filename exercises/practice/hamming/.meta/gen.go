@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,37 +12,33 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("hamming", &j, t); err != nil {
+	j := map[string]interface{}{
+		"distance": &[]testCase{},
+	}
+	if err := gen.Gen("hamming", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []oneCase
-}
-
-type oneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Strand1 string
-		Strand2 string
-	}
-	Expected interface{}
+		Strand1 string `json:"strand1"`
+		Strand2 string `json:"strand2"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func (o oneCase) Want() int {
-	d, ok := o.Expected.(float64)
-	if ok {
-		return int(d)
+func (t testCase) ExpectedValue() int {
+	v, ok := t.Expected.(float64)
+	if !ok {
+		return 0
 	}
-	// A non-nil error value is expected, so the data value should be zero, idiomatically.
-	return 0
+	return int(v)
 }
 
-func (o oneCase) ExpectError() bool {
-	_, ok := o.Expected.(float64)
+func (t testCase) ExpectError() bool {
+	_, ok := t.Expected.(float64)
 	return !ok
 }
 
@@ -52,16 +48,19 @@ var tmpl = `package hamming
 {{.Header}}
 
 var testCases = []struct {
+	description string
 	s1          string
 	s2          string
 	want        int
 	expectError bool
 }{
-{{range .J.Cases}}{ // {{.Description}}
-	{{printf "%q" .Input.Strand1}},
-	{{printf "%q" .Input.Strand2}},
-	{{.Want}},
-	{{.ExpectError}},
-},
-{{end}}}
+	{{range .J.distance}}{
+			description: {{printf "%q"  .Description}},
+			s1:          {{printf "%q"  .Input.Strand1}},
+			s2:          {{printf "%q"  .Input.Strand2}},
+			want:        {{printf "%d"  .ExpectedValue}},
+			expectError: {{printf "%t"  .ExpectError}},
+		},
+	{{end}}
+}
 `

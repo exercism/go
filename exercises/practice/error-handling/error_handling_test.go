@@ -24,9 +24,9 @@ func (mr mockResource) Defrob(tag string) { mr.defrob(tag) }
 // Use should not return an error on the "happy" path.
 func TestNoErrors(t *testing.T) {
 	var frobInput string
-	var closeCalled bool
+	var closeCallsCount int
 	mr := mockResource{
-		close: func() error { closeCalled = true; return nil },
+		close: func() error { closeCallsCount++; return nil },
 		frob:  func(input string) { frobInput = input },
 	}
 	opener := func() (Resource, error) { return mr, nil }
@@ -37,8 +37,11 @@ func TestNoErrors(t *testing.T) {
 	if frobInput != hello {
 		t.Fatalf("Wrong string passed to Frob: got %v, expected %v", frobInput, hello)
 	}
-	if !closeCalled {
+	if closeCallsCount == 0 {
 		t.Fatalf("Close was not called")
+	}
+	if closeCallsCount != 1 {
+		t.Fatalf("Close was called more than once")
 	}
 }
 
@@ -89,13 +92,13 @@ func TestFailOpenOnNonTransient(t *testing.T) {
 // and return the error.
 func TestCallDefrobAndCloseOnFrobError(t *testing.T) {
 	tag := "moo"
-	var closeCalled bool
+	var closeCallsCount int
 	var defrobTag string
 	mr := mockResource{
-		close: func() error { closeCalled = true; return nil },
+		close: func() error { closeCallsCount++; return nil },
 		frob:  func(input string) { panic(FrobError{tag, errors.New("meh")}) },
 		defrob: func(tag string) {
-			if closeCalled {
+			if closeCallsCount != 0 {
 				t.Fatalf("Close was called before Defrob")
 			}
 			defrobTag = tag
@@ -112,18 +115,21 @@ func TestCallDefrobAndCloseOnFrobError(t *testing.T) {
 	if defrobTag != tag {
 		t.Fatalf("Wrong string passed to Defrob: got %v, expected %v", defrobTag, tag)
 	}
-	if !closeCalled {
+	if closeCallsCount == 0 {
 		t.Fatalf("Close was not called")
+	}
+	if closeCallsCount != 1 {
+		t.Fatalf("Close was called more than once")
 	}
 }
 
 // Use should call Close but not Defrob on non-FrobError panic from Frob
 // and return the error.
 func TestCallCloseOnNonFrobError(t *testing.T) {
-	var closeCalled bool
+	var closeCallsCount int
 	var defrobCalled bool
 	mr := mockResource{
-		close:  func() error { closeCalled = true; return nil },
+		close:  func() error { closeCallsCount++; return nil },
 		frob:   func(input string) { panic(errors.New("meh")) },
 		defrob: func(tag string) { defrobCalled = true },
 	}
@@ -138,7 +144,10 @@ func TestCallCloseOnNonFrobError(t *testing.T) {
 	if defrobCalled {
 		t.Fatalf("Defrob was called")
 	}
-	if !closeCalled {
+	if closeCallsCount == 0 {
 		t.Fatalf("Close was not called")
+	}
+	if closeCallsCount != 1 {
+		t.Fatalf("Close was called more than once")
 	}
 }

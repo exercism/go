@@ -1,45 +1,18 @@
 package elon
 
-// Car implements a remote controlled car.
-type Car struct {
-	speed        int
-	batteryDrain int
+// TODO: define the 'Drive()' method
 
-	battery  int
-	distance int
-}
+// TODO: define the 'DisplayDistance() string' method
 
-// Track implements a race track.
-type Track struct {
-	distance int
-}
+// TODO: define the 'DisplayBattery() string' method
 
-// CreateCar creates a new car with given specifications.
-func CreateCar(speed, batteryDrain int) *Car {
-	panic("Please implement CreateCar() method")
-}
+// TODO: define the 'CanFinish(trackDistance int) bool' method
 
-// CreateTrack creates a new track with given distance.
-func CreateTrack(distance int) Track {
-	panic("Please implement CreateTrack() method")
-}
-
-// Drive drives the car one time.
-func (car *Car) Drive() {
-	panic("Please implement Drive() method")
-}
-
-// CanFinish checks if a car is able to finish a certain track.
-func (car *Car) CanFinish(track Track) bool {
-	panic("Please implement CanFinish() method")
-}
-
-// DisplayDistance displays the distance the car is driven.
-func (car *Car) DisplayDistance() string {
-	panic("Please implement DisplayDistance() method")
-}
-
-// DisplayBattery displays the battery level.
-func (car *Car) DisplayBattery() string {
-	panic("Please implement DisplayBattery() method")
-}
+// Your first steps could be to read through the tasks, and create
+// these functions with their correct parameter lists and return types.
+// The function body only needs to contain `panic("")`.
+// 
+// This will make the tests compile, but they will fail.
+// You can then implement the function logic one by one and see
+// an increasing number of tests passing as you implement more 
+// functionality.

@@ -5,22 +5,7 @@ import (
 )
 
 func TestNumber(t *testing.T) {
-	for _, test := range numberTests {
-		actual, actualErr := Number(test.input)
-		if !test.expectErr {
-			if actualErr != nil {
-				// if we don't expect an error and there is one
-				var _ error = actualErr
-				t.Errorf("FAIL: %s\nNumber(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
-			}
-			if actual != test.number {
-				t.Errorf("FAIL: %s\nNumber(%q): expected [%s], actual: [%s]", test.description, test.input, test.number, actual)
-			}
-		} else if actualErr == nil {
-			// if we expect an error and there isn't one
-			t.Errorf("FAIL: %s\nNumber(%q): expected an error, but error is nil", test.description, test.input)
-		}
-	}
+	runTests("Number", Number, func(tc testCase) string { return tc.expectedNumber }, t)
 }
 
 func BenchmarkNumber(b *testing.B) {
@@ -28,29 +13,14 @@ func BenchmarkNumber(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range numberTests {
+		for _, test := range testCases {
 			Number(test.input)
 		}
 	}
 }
 
 func TestAreaCode(t *testing.T) {
-	for _, test := range numberTests {
-		actual, actualErr := AreaCode(test.input)
-		if !test.expectErr {
-			if actual != test.areaCode {
-				t.Errorf("FAIL: %s\nAreaCode(%q): expected [%s], actual: [%s]", test.description, test.input, test.areaCode, actual)
-			}
-			if actualErr != nil {
-				// if we don't expect an error and there is one
-				var _ error = actualErr
-				t.Errorf("FAIL: %s\nAreaCode(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
-			}
-		} else if actualErr == nil {
-			// if we expect an error and there isn't one
-			t.Errorf("FAIL: %s\nAreaCode(%q): expected an error, but error is nil", test.description, test.input)
-		}
-	}
+	runTests("AreaCode", AreaCode, func(tc testCase) string { return tc.expectedAreaCode }, t)
 }
 
 func BenchmarkAreaCode(b *testing.B) {
@@ -58,29 +28,14 @@ func BenchmarkAreaCode(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range numberTests {
+		for _, test := range testCases {
 			AreaCode(test.input)
 		}
 	}
 }
 
 func TestFormat(t *testing.T) {
-	for _, test := range numberTests {
-		actual, actualErr := Format(test.input)
-		if !test.expectErr {
-			if actualErr != nil {
-				// if we don't expect an error and there is one
-				var _ error = actualErr
-				t.Errorf("FAIL: %s\nFormat(%q): expected no error, but error is: %s", test.description, test.input, actualErr)
-			}
-			if actual != test.formatted {
-				t.Errorf("FAIL: %s\nFormat(%q): expected [%s], actual: [%s]", test.description, test.input, test.formatted, actual)
-			}
-		} else if actualErr == nil {
-			// if we expect an error and there isn't one
-			t.Errorf("FAIL: %s\nFormat(%q): expected an error, but error is nil", test.description, test.input)
-		}
-	}
+	runTests("Format", Format, func(tc testCase) string { return tc.expectedFormatted }, t)
 }
 
 func BenchmarkFormat(b *testing.B) {
@@ -88,8 +43,31 @@ func BenchmarkFormat(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		for _, test := range numberTests {
+		for _, test := range testCases {
 			Format(test.input)
 		}
+	}
+}
+
+func runTests(
+	funcName string,
+	f func(s string) (string, error),
+	getExpected func(tc testCase) string,
+	t *testing.T,
+) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, actualErr := f(tc.input)
+			switch {
+			case tc.expectErr:
+				if actualErr == nil {
+					t.Fatalf("%s(%q) expected error, got: %q", funcName, tc.input, actual)
+				}
+			case actualErr != nil:
+				t.Fatalf("%s(%q) returned error: %v, want: %q", funcName, tc.input, actualErr, getExpected(tc))
+			case actual != getExpected(tc):
+				t.Fatalf("%s(%q) = %q, want: %q", funcName, tc.input, actual, getExpected(tc))
+			}
+		})
 	}
 }

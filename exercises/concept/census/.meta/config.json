@@ -1,11 +1,11 @@
 {
-  "blurb": "Learn about zero values.",
   "authors": [
     "jamessouth",
     "sudomateo"
   ],
   "contributors": [
-    "tehsphinx"
+    "tehsphinx",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -16,6 +16,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about zero values.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

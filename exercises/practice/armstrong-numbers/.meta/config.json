@@ -1,5 +1,4 @@
 {
-  "blurb": "Determine if a number is an Armstrong number",
   "authors": [
     "ilmanzo"
   ],
@@ -12,7 +11,8 @@
     "hilary",
     "kytrinyx",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -23,8 +23,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Determine if a number is an Armstrong number.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Narcissistic_number"
 }

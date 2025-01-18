@@ -1,0 +1,7 @@
+func isAnagram(a, b string) bool { return a != b && sortString(a) == sortString(b) }
+
+func sortString(s string) string {
+	chars := strings.Split(s, "")
+	sort.Strings(chars)
+	return strings.Join(chars, "")
+}

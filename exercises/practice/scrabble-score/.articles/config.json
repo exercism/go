@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "f14e3344-2fb2-4aa9-b8f7-d46c87bc15cd",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach for Scrabble Score.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

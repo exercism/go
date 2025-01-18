@@ -1,62 +1,60 @@
 package pythagorean
 
-// Use this type definition,
-//
-//    type Triplet [3]int
-//
-// and implement two functions,
-//
-//    Range(min, max int) []Triplet
-//    Sum(p int) []Triplet
-//
-// Range returns a list of all Pythagorean triplets with sides in the
-// range min to max inclusive.
-//
-// Sum returns a list of all Pythagorean triplets where the sum a+b+c
-// (the perimeter) is equal to p.
-//
-// The three elements of each returned triplet must be in order,
-// t[0] <= t[1] <= t[2], and the list of triplets must be in lexicographic
-// order.
-
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
 
 var rangeTests = []struct {
 	min, max int
-	ts       []Triplet
+	expected []Triplet
 }{
-	{1, 10, []Triplet{{3, 4, 5}, {6, 8, 10}}},
-	{11, 20, []Triplet{{12, 16, 20}}},
+	{
+		min:      1,
+		max:      10,
+		expected: []Triplet{{3, 4, 5}, {6, 8, 10}},
+	},
+	{
+		min:      11,
+		max:      20,
+		expected: []Triplet{{12, 16, 20}},
+	},
 }
 
 func TestRange(t *testing.T) {
-	for _, test := range rangeTests {
-		ts := Range(test.min, test.max)
-		if !reflect.DeepEqual(ts, test.ts) {
-			t.Fatalf("Range(%d, %d) = %v, want %v",
-				test.min, test.max, ts, test.ts)
-		}
+	for _, tc := range rangeTests {
+		t.Run(fmt.Sprintf("Triplets in Range %d-%d", tc.min, tc.max), func(t *testing.T) {
+			got := Range(tc.min, tc.max)
+			if !reflect.DeepEqual(got, tc.expected) {
+				t.Fatalf("Range(%d, %d) = %v, want: %v", tc.min, tc.max, got, tc.expected)
+			}
+		})
 	}
 }
 
 var sumTests = []struct {
-	sum int
-	ts  []Triplet
+	sum      int
+	expected []Triplet
 }{
-	{180, []Triplet{{18, 80, 82}, {30, 72, 78}, {45, 60, 75}}},
-	{1000, []Triplet{{200, 375, 425}}},
+	{
+		sum:      180,
+		expected: []Triplet{{18, 80, 82}, {30, 72, 78}, {45, 60, 75}},
+	},
+	{
+		sum:      1000,
+		expected: []Triplet{{200, 375, 425}},
+	},
 }
 
 func TestSum(t *testing.T) {
-	for _, test := range sumTests {
-		ts := Sum(test.sum)
-		if !reflect.DeepEqual(ts, test.ts) {
-			t.Fatalf("Sum(%d) = %v, want %v",
-				test.sum, ts, test.ts)
-		}
+	for _, tc := range sumTests {
+		t.Run(fmt.Sprintf("Triplets with perimeter %d", tc.sum), func(t *testing.T) {
+			got := Sum(tc.sum)
+			if !reflect.DeepEqual(got, tc.expected) {
+				t.Fatalf("Sum(%d) = %v, want: %v", tc.sum, got, tc.expected)
+			}
+		})
 	}
 }
 

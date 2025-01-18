@@ -1,50 +1,56 @@
 package chessboard
 
-// Rank stores if a square is occupied by a piece
-type Rank []bool
+// File stores if a square is occupied by a piece.
+type File []bool
 
-// Chessboard contains eight Ranks, accessed with values from '0' to '7'
-type Chessboard map[int]Rank
+// Chessboard contains eight Files, accessed with keys from "A" to "H".
+type Chessboard map[string]File
 
-// CountInRank returns how many squares are occupied in the chessboard,
-// within the given rank
-func CountInRank(cb Chessboard, rank int) (ret int) {
-	for _, r := range cb[rank] {
+// CountInFile returns how many squares are occupied in the chessboard,
+// within the given file.
+func CountInFile(cb Chessboard, file string) int {
+	count := 0
+	for _, r := range cb[file] {
 		if r {
-			ret++
+			count++
 		}
 	}
-	return ret
+	return count
 }
 
 // CountInFile returns how many squares are occupied in the chessboard,
-// within the given file
-func CountInFile(cb Chessboard, file int) (ret int) {
-	if file < 1 || file > 8 {
-		return
+// within the given rank.
+func CountInRank(cb Chessboard, rank int) int {
+
+	if rank < 1 || rank > 8 {
+		return 0
 	}
+
+	count := 0
 	for _, f := range cb {
-		if f[file-1] {
-			ret++
+		if f[rank-1] {
+			count++
 		}
 	}
-	return ret
+	return count
 }
 
-// CountAll should count how many squares are present in the chessboard
-func CountAll(cb Chessboard) (ret int) {
+// CountAll should count how many squares are present in the chessboard.
+func CountAll(cb Chessboard) int {
+	count := 0
 	for _, rank := range cb {
 		for range rank {
-			ret++
+			count++
 		}
 	}
-	return ret
+	return count
 }
 
-// CountOccupied returns how many squares are occupied in the chessboard
-func CountOccupied(cb Chessboard) (ret int) {
-	for rank := range cb {
-		ret += CountInRank(cb, rank)
+// CountOccupied returns how many squares are occupied in the chessboard.
+func CountOccupied(cb Chessboard) int {
+	count := 0
+	for file := range cb {
+		count += CountInFile(cb, file)
 	}
-	return ret
+	return count
 }

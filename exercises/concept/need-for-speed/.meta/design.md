@@ -21,3 +21,8 @@
 
 - `numbers`
 - `conditionals-if`
+
+## Analyzer
+
+- A for-loop can be used in this exercise in the `CanFinish` function, however it might not have been taught yet
+- If a for-loop was used, it is encouraged to explore a different approach and might be suggested so by the analyzer

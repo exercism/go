@@ -1,7 +1,7 @@
 # Instructions
 
 A local school near you has a very active students' association.
-The student's association is managed by a president and once every 2 years,
+The students' association is managed by a president and once every 2 years,
 elections are run to elect a new president.
 
 In this year's election, it was decided that a new digital system to
@@ -12,7 +12,7 @@ count the votes was needed. The school needs your help building this new system.
 One of the first things that the new voting system needs is a vote counter.
 This counter is a way to keep track of the votes a particular candidate has.
 
-Create a function `NewVoteCounter` that accepts the number of initial votes for a candidate and returns a pointer refering to an `int`, initialized with the given number of intial votes.
+Create a function `NewVoteCounter` that accepts the number of initial votes for a candidate and returns a pointer referring to an `int`, initialized with the given number of initial votes.
 
 ```go
 var initialVotes int
@@ -30,15 +30,18 @@ You now have a way to create new counters! But now you realize the new system wi
 Create a function `VoteCount` that will take a counter (`*int`) as an argument and will return the number of votes in the counter. If the counter is `nil` you should assume the counter has no votes:
 
 ```go
-votes := 3
-voteCounter := &votes
+var votes int
+votes = 3
 
-VoteCount(&voteCounter)
-// Output: 3
+var voteCounter *int
+voteCounter = &votes
+
+VoteCount(voteCounter)
+// => 3
 
 var nilVoteCounter *int
 VoteCount(nilVoteCounter)
-// Output: 0
+// => 0
 ```
 
 ## 3. Increment the votes of a counter
@@ -55,19 +58,21 @@ var voteCounter *int
 voteCounter = &votes
 
 IncrementVoteCount(voteCounter, 2)
-*voteCounter == 5 // true
+
+votes == 5          // true
+*voteCounter == 5   // true
 ```
 
 ## 4. Create the election results
 
 With all the votes now counted, it's time to prepare the result announcement to the whole school.
-For this, you notice that having only counters for the votes is insuficient.
+For this, you notice that having only counters for the votes is insufficient.
 There needs to be a way to associate the number of votes with a particular candidate.
 
-Create a function `NewElectionResult` that receives the name of a candidate and their number of votes and 
+Create a function `NewElectionResult` that receives the name of a candidate and their number of votes and
 returns a new election result.
 
-```go 
+```go
 var result *ElectionResult
 result = NewElectionResult("Peter", 3)
 
@@ -81,7 +86,7 @@ The election result struct is already created for you and it's defined as:
 type ElectionResult struct {
     // Name of the candidate
     Name    string
-    // Number of votes the candidate had
+    // Votes of votes the candidate had
     Votes   int
 }
 ```
@@ -90,7 +95,7 @@ type ElectionResult struct {
 
 It's time to announce the new president to the school!
 The president will be announced in the little digital message boards that the school has.
-The message should show the name of the new president and the votes it had, in the following format: `<candidate_name> (<votes>)`. This is an example of such message: `"Peter (51)"`.
+The message should show the name of the new president and the votes they had, in the following format: `<candidate_name> (<votes>)`. This is an example of such message: `"Peter (51)"`.
 
 Create a function `DisplayResult` that will receive an `*ElectionResult` as an argument and will return a string with the message to display.
 
@@ -99,11 +104,11 @@ Create a function `DisplayResult` that will receive an `*ElectionResult` as an a
 var result *ElectionResult
 result = &ElectionResult{
     Name: "John",
-    Votes: 32
+    Votes: 32,
 }
 
 DisplayResult(result)
-// Output: John (32)
+// => John (32)
 ```
 
 ## 6. Vote recounting
@@ -121,5 +126,5 @@ var finalResults = map[string]int{
 DecrementVotesOfCandidate(finalResults, "Mary")
 
 finalResults["Mary"]
-// Output: 9
+// => 9
 ```

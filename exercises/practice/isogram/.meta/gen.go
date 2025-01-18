@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,33 +12,22 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("isogram", &j, t); err != nil {
+	j := map[string]interface{}{
+		"isIsogram": &[]testCase{},
+	}
+	if err := gen.Gen("isogram", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []struct {
-		Description string
-		Cases       []oneCase
-	}
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Phrase string
-	}
-	Expected bool
+		Phrase string `json:"phrase"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
-// Template to generate test cases.
 var tmpl = `package isogram
 
 {{.Header}}
@@ -47,11 +36,11 @@ var testCases = []struct {
 	description	string
 	input		string
 	expected	bool
-}{ {{range .J.Cases}} {{range .Cases}}
+}{ {{range .J.isIsogram}} 
 {
 	description:	{{printf "%q"  .Description}},
 	input:		{{printf "%q"  .Input.Phrase}},
 	expected:	{{printf "%t"  .Expected}},
-},{{end}}{{end}}
+},{{end}}
 }
 `

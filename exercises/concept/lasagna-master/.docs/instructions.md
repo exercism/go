@@ -11,10 +11,10 @@ For the next lasagna that you will prepare, you want to make sure you have enoug
 You already planned which layers your lasagna will have.
 Now you want to estimate how long the preparation will take based on that.
 
-Implement a function `PreparationTime` that accepts an array of layers as a `[]string` and the average preparation time per layer in minutes as an `int`.
+Implement a function `PreparationTime` that accepts a slice of layers as a `[]string` and the average preparation time per layer in minutes as an `int`.
 The function should return the estimate for the total preparation time based on the number of layers as an `int`.
 Go has no default values for functions.
-If the average preperation time is passed as `0` (the default initial value for an `int`), then the default value of `2` should be used.
+If the average preparation time is passed as `0` (the default initial value for an `int`), then the default value of `2` should be used.
 
 ```go
 layers := []string{"sauce", "noodles", "sauce", "meat", "mozzarella", "noodles"}
@@ -30,7 +30,7 @@ Besides reserving the time, you also want to make sure you have enough sauce and
 For each noodle layer in your lasagna, you will need 50 grams of noodles.
 For each sauce layer in your lasagna, you will need 0.2 liters of sauce.
 
-Define the function `Quantities` that takes an array of layers as parameter as a `[]string`.
+Define the function `Quantities` that takes a slice of layers as parameter as a `[]string`.
 The function will then determine the quantity of noodles and sauce needed to make your meal.
 The result should be returned as two values of `noodles` as an `int` and `sauce` as a `float64`.
 
@@ -46,17 +46,17 @@ It was amazing and had something special to it.
 The friend sent you the list of ingredients and told you the last item on the list is the "secret ingredient" that made the meal so special.
 Now you want to add that secret ingredient to your recipe as well.
 
-Write a function `AddSecretIngredient` that accepts two arrays of ingredients of type `[]string` as parameters.
-The first parameter is the list your friend sent you, the second is the ingredient list for your own recipe.
-The function should generate a new slice and add the last item from your friends list to the end of your list.
-Neither argument should not be modified.
+Write a function `AddSecretIngredient` that accepts two slices of ingredients of type `[]string` as parameters.
+The first parameter is the list your friend sent you, the second is the ingredient list of your own recipe.
+The last element in your ingredient list is always `"?"`. The function should replace it with the last item from your friends list.
+**Note:** `AddSecretIngredient` does not return anything - you should modify the list of your ingredients directly. The list with your friend's ingredients should **not** be modified. Also, since `slice` is passed into a function as pointers, changes to the two `[]string` arguments passed into `AddSecretIngredient` will be modified directly.
 
 ```go
 friendsList := []string{"noodles", "sauce", "mozzarella", "kampot pepper"}
-myList := []string{"noodles", "meat", "sauce", "mozzarella"}
+myList := []string{"noodles", "meat", "sauce", "mozzarella","?"}
 
 AddSecretIngredient(friendsList, myList)
-// => []string{"noodles", "meat", "sauce", "mozzarella", "kampot pepper"}
+// myList => []string{"noodles", "meat", "sauce", "mozzarella", "kampot pepper"}
 ```
 
 ## 4. Scale the recipe
@@ -71,7 +71,7 @@ Implement a function `ScaleRecipe` that takes two parameters.
 
 The function should return a slice of `float64` of the amounts needed for the desired number of portions.
 You want to keep the original recipe though.
-This means the `amounts` argument should not be modified in this function.
+This means the `quantities` argument should not be modified in this function.
 
 ```go
 quantities := []float64{ 1.2, 3.6, 10.5 }

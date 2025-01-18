@@ -1,10 +1,14 @@
 [
-    {
-      "url": "https://golang.org/doc/effective_go#multiple-returns",
-      "description": "Effective Go: Multiple Returns"
-    },
-    {
-      "url": "https://tour.golang.org/basics/6",
-      "description": "A Tour of Go: Multiple Results"
-    }
+  {
+    "url": "https://tour.golang.org/basics/6",
+    "description": "A Tour of Go: Multiple Results"
+  },
+  {
+    "url": "https://gobyexample.com/multiple-return-values",
+    "description": "Go By Example: Multiple Return Values"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go#multiple-returns",
+    "description": "Effective Go: Multiple Returns"
+  }
 ]

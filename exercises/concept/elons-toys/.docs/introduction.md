@@ -10,17 +10,23 @@ func (receiver type) MethodName(parameters) (returnTypes) {
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
+package person 
+
 type Person struct {
 	Name string
 }
 
 func (p Person) Greetings() string {
-	return fmt.Sprintf("Welcome %s !", s)
+	return fmt.Sprintf("Welcome %s!", p.Name)
 }
+```
 
+The method on the struct can be called via dot notation.
+
+```go
 p := Person{Name: "Bronson"}
 fmt.Println(p.Greetings())
-// Output: Welcome Bronson !
+// Output: Welcome Bronson!
 ```
 
 Notice the way we called the method `Greetings()` on the `Person` instance `p`.
@@ -33,7 +39,7 @@ Methods help to avoid naming conflicts - since a method is tied to a particular 
 import "math"
 
 type rect struct {
-	width, hight int
+	width, height int
 }
 func (r rect) area() int {
 	return r.width * r.height
@@ -43,11 +49,13 @@ type circle struct {
 	radius int
 }
 func (c circle) area() float64 {
-	return 2*c.radius*math.Pi
+	return math.Pow(float64(c.radius), 2) * math.Pi
 }
 ```
 
-All the methods we have seen so far have a value receiver which means they on a copy of the value passed to the method, meaning that any modification done to the receiver inside the method is not visible to the caller.
+There are two types of receivers, value receivers, and pointer receivers.
+
+All the methods we have seen so far have a value receiver which means they will receive a copy of the value passed to the method, meaning that any modification done to the receiver inside the method is not visible to the caller.
 
 You can declare methods with pointer receivers in order to modify the value to which the receiver points.
 This is done by prefixing the type name with a `*`.

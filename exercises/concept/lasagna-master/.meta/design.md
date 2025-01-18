@@ -5,7 +5,7 @@
 - How to define a function
 - How to invoke a function
 - How to pass parameters to a function
-- How to recieve returned values from a function
+- How to receive returned values from a function
 
 ## Out of Scope
 
@@ -28,11 +28,14 @@ The Concept this exercise unlocks is:
 
 ## Prerequisites
 
-- `strings` are needed in the exercise
-- `numbers` are needed in the exercise
-- `comparison` is needed in the exercise
-- `conditionals-if` is needed in the exercise
-- `slices` are needed in the exercise
+The following concepts are needed to solve the exercise:
+
+- `strings`
+- `numbers`
+- `comparison`
+- `conditionals-if`
+- `slices`
+- `for-loops`
 
 ## Notes
 

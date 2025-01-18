@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,22 +12,21 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("sum-of-multiples", &j, t); err != nil {
+	j := map[string]interface{}{
+		"sum": &[]testCase{},
+	}
+	if err := gen.Gen("sum-of-multiples", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Factors []int
-			Limit   int
-		}
-		Expected int
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Factors []int `json:"factors"`
+		Limit   int   `json:"limit"`
+	} `json:"input"`
+	Expected int `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -35,11 +34,18 @@ var tmpl = `package summultiples
 
 {{.Header}}
 
-var varTests = []struct {
+var testCases = []struct {
+	description string
 	divisors     []int
 	limit        int
-	sum          int
+	expected          int
 }{
-{{range .J.Cases}}{ {{.Input.Factors | printf "%#v"}}, {{.Input.Limit}}, {{.Expected}}}, // {{.Description}}
-{{end}}}
+{{range .J.sum}}{ 
+	description: 	{{printf "%q"  .Description}},
+	divisors: 		{{printf "%#v" .Input.Factors}}, 
+	limit: 			{{printf "%d"  .Input.Limit}}, 
+	expected: 		{{printf "%d"  .Expected}},
+},
+{{end}}
+}
 `

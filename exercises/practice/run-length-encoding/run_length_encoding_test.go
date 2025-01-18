@@ -3,29 +3,51 @@ package encode
 import "testing"
 
 func TestRunLengthEncode(t *testing.T) {
-	for _, test := range encodeTests {
-		if actual := RunLengthEncode(test.input); actual != test.expected {
-			t.Errorf("FAIL %s - RunLengthEncode(%s) = %q, expected %q.",
-				test.description, test.input, actual, test.expected)
-		}
-		t.Logf("PASS RunLengthEncode - %s", test.description)
+	for _, tc := range encodeTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := RunLengthEncode(tc.input); actual != tc.expected {
+				t.Errorf("RunLengthEncode(%q) = %q, want:%q", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 func TestRunLengthDecode(t *testing.T) {
-	for _, test := range decodeTests {
-		if actual := RunLengthDecode(test.input); actual != test.expected {
-			t.Errorf("FAIL %s - RunLengthDecode(%s) = %q, expected %q.",
-				test.description, test.input, actual, test.expected)
-		}
-		t.Logf("PASS RunLengthDecode - %s", test.description)
+	for _, tc := range decodeTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := RunLengthDecode(tc.input); actual != tc.expected {
+				t.Errorf("RunLengthDecode(%q) = %q, want:%q", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 func TestRunLengthEncodeDecode(t *testing.T) {
-	for _, test := range encodeDecodeTests {
-		if actual := RunLengthDecode(RunLengthEncode(test.input)); actual != test.expected {
-			t.Errorf("FAIL %s - RunLengthDecode(RunLengthEncode(%s)) = %q, expected %q.",
-				test.description, test.input, actual, test.expected)
+	for _, tc := range encodeDecodeTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := RunLengthDecode(RunLengthEncode(tc.input)); actual != tc.expected {
+				t.Errorf("RunLengthDecode(RunLengthEncode(%q)) = %q, want:%q", tc.input, actual, tc.expected)
+			}
+		})
+	}
+}
+
+func BenchmarkRunLengthEncode(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for _, test := range encodeTests {
+			RunLengthEncode(test.input)
 		}
-		t.Logf("PASS %s", test.description)
+	}
+}
+
+func BenchmarkRunLengthDecode(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for _, test := range decodeTests {
+			RunLengthDecode(test.input)
+		}
 	}
 }

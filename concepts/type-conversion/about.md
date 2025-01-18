@@ -22,7 +22,7 @@ The same applies to any custom types:
 ```go
 type Id int
 var number int = 121 // number has type int
-userId := Id(int) // userId now has type Id
+userId := Id(number) // userId now has type Id
 ```
 
 ## Converting between primitive types and strings
@@ -33,13 +33,13 @@ There is a `strconv` package for converting between primitive types (like `int`)
 import "strconv"
 
 var intString string = "42"
-var i int = strconv.Atoi(intString)
+var i, err = strconv.Atoi(intString)
 
 var number int = 12
 var s string = strconv.Itoa(number)
 ```
 
-WARNING: using the stardard casting method does not have this behavior.
+WARNING: using the standard casting method does not have this behavior.
 For example:
 
 ```go

@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a number, find the sum of all the multiples of particular numbers up to but not including that number.",
   "authors": [
     "soniakeys"
   ],
@@ -16,7 +15,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "tleen"
+    "tleen",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -27,8 +27,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Given a number, find the sum of all the multiples of particular numbers up to but not including that number.",
   "source": "A variation on Problem 1 at Project Euler",
-  "source_url": "http://projecteuler.net/problem=1"
+  "source_url": "https://projecteuler.net/problem=1"
 }

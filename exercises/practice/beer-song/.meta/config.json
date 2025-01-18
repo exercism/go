@@ -20,7 +20,8 @@
     "soniakeys",
     "strangeman",
     "tleen",
-    "zilkey"
+    "zilkey",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -31,6 +32,9 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
   "source": "Learn to Program by Chris Pine",

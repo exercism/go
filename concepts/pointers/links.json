@@ -1,10 +1,14 @@
 [
     {
         "url": "https://tour.golang.org/moretypes/1",
-        "description": "Tour of Go: Pointers"
+        "description": "A Tour of Go: Pointers"
     },
     {
         "url": "https://gobyexample.com/pointers",
         "description": "Go by Example: Pointers"
+    },
+    {
+        "url": "https://www.digitalocean.com/community/conceptual_articles/understanding-pointers-in-go",
+        "description": "Article: Understanding Pointers in Go"
     }
 ]

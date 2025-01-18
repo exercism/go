@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about strings by programming a party robot.",
   "authors": [
     "tehsphinx"
   ],
@@ -16,6 +15,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about strings by programming a party robot.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

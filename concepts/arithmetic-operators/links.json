@@ -5,10 +5,10 @@
     },
     {
       "url": "https://golang.org/ref/spec#Arithmetic_operators",
-      "description": "Spec: Arithmetic operators"
+      "description": "Go Language Spec: Arithmetic operators"
     },
     {
       "url": "https://golang.org/ref/spec#IncDec_statements",
-      "description": "Spec: IncDec statements"
+      "description": "Go Language Spec: IncDec statements"
     }
 ]

@@ -26,7 +26,7 @@ Strings in Go are made up of runes. Runes are Go's equivalent to the concept of 
 
 ### Returning Errors
 
-- When an error is encountered the convention is to return a zero value along with the corresponging error. In the opposite case a nil error should be returned along with the value that the function should return.
+- When an error is encountered the convention is to return a zero value along with the corresponding error. In the opposite case a nil error should be returned along with the value that the function should return.
 
 Note: An error should be the last returned parameter of any given function.
 

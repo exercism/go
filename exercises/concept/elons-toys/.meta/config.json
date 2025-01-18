@@ -1,13 +1,10 @@
 {
-  "blurb": "Learn about methods by playing with Elon's toys",
   "authors": [
     "tehsphinx"
   ],
   "contributors": [
-    "oanaOM"
-  ],
-  "forked_from": [
-    "csharp/elons-toys"
+    "oanaOM",
+    "mcastorina"
   ],
   "files": {
     "solution": [
@@ -18,6 +15,19 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "editor": [
+      "car.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "forked_from": [
+    "csharp/elons-toys"
+  ],
+  "blurb": "Learn about methods by playing with Elon's toys",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

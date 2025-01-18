@@ -1,7 +1,5 @@
 package triangle
 
-import "math"
-
 type Kind string
 
 const (
@@ -12,9 +10,6 @@ const (
 )
 
 func KindFromSides(a, b, c float64) Kind {
-	if math.IsNaN(a) || math.IsNaN(b) || math.IsNaN(c) {
-		return NaT
-	}
 	if a > b {
 		a, b = b, a
 	}
@@ -26,8 +21,6 @@ func KindFromSides(a, b, c float64) Kind {
 	}
 	// sides are now sorted
 	switch {
-	case math.IsInf(c, 1): // largest side is +Inf, guards against (3, +Inf, +Inf)
-		return NaT
 	case a <= 0:
 		return NaT
 	case a+b < c: // triangle inequality

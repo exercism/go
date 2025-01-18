@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "eklatzer"
+  ],
+  "files": {
+    "solution": [
+      "complex_numbers.go"
+    ],
+    "test": [
+      "complex_numbers_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "blurb": "Implement complex numbers.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Complex_number"
+}

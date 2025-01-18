@@ -12,7 +12,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 - read value
 - remove value
 - taking length
-- subslices
+- sub-slices
 - expanding slices (e.g. in `append(slice1, slice2...)`)
 
 ## Out of scope
@@ -23,10 +23,10 @@ The goal of this exercise is to teach the student the basics on how to work with
 ## Concepts
 
 - `slices`
+- `variadic-function`
 
 ## Prerequisites
-
-- `iteration`: fill a slice (Not yet available: `range iteration`)
+ 
 - `numbers`: integers (`int`) to represent cards
 - `conditionals-if`: mostly to check for existing indexes
 

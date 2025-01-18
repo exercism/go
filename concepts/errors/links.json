@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "url": "https://go.dev/blog/error-handling-and-go",
+    "description": "Go Blog: Error Handling and Go"
+  },
+  {
+    "url": "https://github.com/golang/go/wiki/Errors",
+    "description": "Go Wiki: Errors"
+  },
+  {
+    "url": "https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully",
+    "description": "Dave Cheney on error handling"
+  }
+]

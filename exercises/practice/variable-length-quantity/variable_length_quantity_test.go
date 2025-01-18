@@ -6,29 +6,30 @@ import (
 	"testing"
 )
 
-func TestDecodeVarint(t *testing.T) {
-	for i, tc := range decodeTestCases {
-		o, err := DecodeVarint(tc.input)
-		switch {
-		case err != nil:
-			var _ error = err // check if err is of error type
-			if !tc.errorExpected {
-				t.Fatalf("FAIL: case %d | %s\nexpected %#v got error: %q\n", i, tc.description, tc.output, err)
+func TestEncodeVarint(t *testing.T) {
+	for _, tc := range encodeTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := EncodeVarint(tc.input); !bytes.Equal(actual, tc.expected) {
+				t.Fatalf("EncodeVarint(%#v)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
 			}
-		case tc.errorExpected && err == nil:
-			t.Fatalf("FAIL: case %d | %s\nexpected error, got %#v\n", i, tc.description, err)
-		case !reflect.DeepEqual(o, tc.output):
-			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, o)
-		}
-		t.Logf("PASS: case %d | %s\n", i, tc.description)
+		})
 	}
 }
 
-func TestEncodeVarint(t *testing.T) {
-	for i, tc := range encodeTestCases {
-		if encoded := EncodeVarint(tc.input); !bytes.Equal(encoded, tc.output) {
-			t.Fatalf("FAIL: case %d | %s\nexpected\t%#v\ngot\t\t%#v\n", i, tc.description, tc.output, encoded)
-		}
-		t.Logf("PASS: case %d | %s\n", i, tc.description)
+func TestDecodeVarint(t *testing.T) {
+	for _, tc := range decodeTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := DecodeVarint(tc.input)
+			switch {
+			case tc.errorExpected:
+				if err == nil {
+					t.Fatalf("DecodeVarint(%#v) expected error, got: %#v", tc.input, actual)
+				}
+			case err != nil:
+				t.Fatalf("DecodeVarint(%#v) returned error: %v, want:%#v", tc.input, err, tc.expected)
+			case !reflect.DeepEqual(actual, tc.expected):
+				t.Fatalf("DecodeVarint(%#v) = %#v, want:%#v", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }

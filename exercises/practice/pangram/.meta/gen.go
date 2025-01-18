@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,29 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("pangram", &j, t); err != nil {
+	j := map[string]interface{}{
+		"isPangram": &[]testCase{},
+	}
+	if err := gen.Gen("pangram", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []struct {
-		Cases []oneCase
-	}
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Sentence string
-	}
-	Expected bool
+		Sentence string `json:"sentence"`
+	} `json:"input"`
+	Expected bool `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -46,11 +37,11 @@ var testCases = []struct {
 	description	string
 	input		string
 	expected	bool
-}{ {{range .J.Cases}}{{range .Cases}}
+}{ {{range .J.isPangram}}
 {
 	description:	{{printf "%q"  .Description}},
 	input:		{{printf "%q"  .Input.Sentence}},
 	expected:	{{printf "%t"  .Expected}},
-},{{end}}{{end}}
+},{{end}}
 }
 `

@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,21 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("scrabble-score", &j, t); err != nil {
+	j := map[string]interface{}{
+		"score": &[]testCase{},
+	}
+	if err := gen.Gen("scrabble-score", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Input       struct {
-			Word string
-		}
-		Expected int
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Word string `json:"word"`
+	} `json:"input"`
+	Expected int `json:"expected"`
 }
 
 // template applied to above data structure generates the Go test cases
@@ -35,11 +34,16 @@ var tmpl = `package scrabble
 {{.Header}}
 
 type scrabbleTest struct {
+	description string
 	input       string
 	expected    int
 }
 
 var scrabbleScoreTests = []scrabbleTest {
-{{range .J.Cases}}{ "{{.Input.Word}}", {{.Expected}}}, // {{.Description}}
+{{range .J.score}}{
+	description: 	{{printf "%q" .Description}},
+	input:  		{{printf "%q" .Input.Word}},
+	expected: 		{{printf "%d" .Expected}},
+},
 {{end}}}
 `

@@ -1,0 +1,8 @@
+protein = lookup[codon]
+if protein == "" {
+  err = ErrInvalidBase
+} else if protein == "STOP" {
+  protein = ""
+  err = ErrStop
+}
+return protein, err

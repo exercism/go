@@ -27,6 +27,13 @@
       "path": "docs/RESOURCES.md",
       "title": "Useful Go resources",
       "blurb": "A collection of useful resources to help you master Go"
+    },
+    {
+      "uuid": "5fe99fb7-b45b-472c-a275-d216f11406f2",
+      "slug": "roadmap",
+      "path": "docs/ROADMAP.md",
+      "title": "Roadmap & Concept List",
+      "blurb": "Priorities for future development of the Go track"
     }
   ]
 }

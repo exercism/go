@@ -31,13 +31,13 @@ func TestRemainingOvenTime(t *testing.T) {
 			name:     "Remaining minutes in oven",
 			layers:   0,
 			time:     15,
-			expected: 15,
+			expected: 25,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := RemainingOvenTime(25); got != tt.time {
-				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.expected, got, tt.expected)
+			if got := RemainingOvenTime(tt.time); got != tt.expected {
+				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.time, got, tt.expected)
 			}
 		})
 	}
@@ -52,7 +52,7 @@ func TestPreparationTime(t *testing.T) {
 			expected: 2,
 		},
 		{
-			name:     "Preparation time in minutes for multiple layer",
+			name:     "Preparation time in minutes for multiple layers",
 			layers:   4,
 			time:     0,
 			expected: 8,
@@ -77,7 +77,7 @@ func TestElapsedTime(t *testing.T) {
 			expected: 32,
 		},
 		{
-			name:     "Total time in minutes for multiple layer",
+			name:     "Total time in minutes for multiple layers",
 			layers:   4,
 			time:     8,
 			expected: 16,

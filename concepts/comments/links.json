@@ -1,20 +1,18 @@
 [
   {
-    "url": "https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol",
-    "description": "godoc"
+    "url": "https://golang.org/doc/effective_go#commentary",
+    "description": "Effective Go: Commentary"
   },
-  { "url": "https://pkg.go.dev/", "description": "go packages" },
   {
     "url": "https://dave.cheney.net/practical-go/presentations/qcon-china.html#_dont_comment_bad_code_rewrite_it",
-    "description": "less comments"
+    "description": "Blog Post: Don’t comment bad code, rewrite it"
   },
   {
-    "url": "https://www.ardanlabs.com/blog/2014/03/exportedunexported-identifiers-in-go.html",
-    "description": "exported identifiers"
+    "url": "https://pkg.go.dev/cmd/go#hdr-Show_documentation_for_package_or_symbol",
+    "description": "Go tools: godoc"
   },
-  { "url": "https://github.com/golang/lint", "description": "golint" },
   {
-    "url": "https://golang.org/doc/effective_go.html",
-    "description": "effective go"
+    "url": "https://github.com/golang/lint",
+    "description": "Go tools: golint"
   }
 ]

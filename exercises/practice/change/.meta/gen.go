@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,64 +12,41 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("change", &j, t); err != nil {
+	j := map[string]interface{}{
+		"findFewestCoins": &[]testCase{},
+	}
+	if err := gen.Gen("change", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// template applied to above data structure generates the Go test cases
-
-type OneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Coins  []int
-		Target int
-	}
-	Expected interface{}
+		Coins  []int `json:"coins"`
+		Target int   `json:"target"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
 }
 
-func (c OneCase) Valid() bool {
-	valid, _ := determineExpected(c.Expected)
-	return valid
-}
-
-func (c OneCase) IntSlice() []int {
-	_, list := determineExpected(c.Expected)
-	return list
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether an error is indicated by an int value (actually -1) in the JSON,
-// or whether .Expected is a slice of integer coins.
-func determineExpected(expected interface{}) (valid bool, list []int) {
-	_, ok := expected.(int)
-	if ok {
-		return false, nil
-	}
-	ilist, ok := expected.([]interface{})
+func (t testCase) ExpectedValues() []int {
+	values, ok := t.Expected.([]interface{})
 	if !ok {
-		return false, nil
+		return nil
 	}
-	list = make([]int, 0)
-	for _, iv := range ilist {
-		// The literals from the JSON are unmarshalled to float64 values,
-		// which are converted to int for the template output.
-		v, isFloat64 := iv.(float64)
-		if isFloat64 {
-			list = append(list, int(v))
+	intValues := make([]int, 0)
+	for _, v := range values {
+		i, ok := v.(float64)
+		if !ok {
+			return nil
 		}
+		intValues = append(intValues, int(i))
 	}
-	return true, list
+	return intValues
+}
+
+func (t testCase) Valid() bool {
+	return t.ExpectedValues() != nil
 }
 
 var tmpl = `package change
@@ -83,12 +60,12 @@ var testCases = []struct {
 	valid          bool     // true => no error, false => error expected
 	expectedChange []int    // when .valid == true, the expected change coins
 }{
-{{range .J.Cases}}{
-	{{printf "%q"  .Description}},
-	{{printf "%#v" .Input.Coins}},
-	{{printf "%d"  .Input.Target}},
-	{{printf "%v"  .Valid}},
-	{{printf "%#v" .IntSlice}},
+{{range .J.findFewestCoins}}{
+	description: 		{{printf "%q"  .Description}},
+	coins: 				{{printf "%#v" .Input.Coins}},
+	target: 			{{printf "%d"  .Input.Target}},
+	valid: 				{{printf "%v"  .Valid}},
+	expectedChange: 	{{printf "%#v" .ExpectedValues}},
 },
 {{end}}}
 `

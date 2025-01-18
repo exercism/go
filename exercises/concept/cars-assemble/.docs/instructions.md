@@ -1,50 +1,53 @@
 # Instructions
 
-In this exercise you'll be writing code to analyze the production of an
-assembly line in a car factory. The assembly line's speed can range from `0`
-(off) to `10` (maximum).
+In this exercise you'll be writing code to analyze the production in a car factory.
 
-At its default speed (`1`), `221` cars are produced each hour. In principle,
-the production increases linearly. So with the speed set to `4`, it should
-produce `4 * 221 = 884` cars per hour. However, higher speeds increase the
-likelihood that faulty cars are produced, which then have to be discarded. 
+## 1. Calculate the number of working cars produced per hour
 
-## 1. Calculate the success rate
+The cars are produced on an assembly line. 
+The assembly line has a certain speed, that can be changed. 
+The faster the assembly line speed is, the more cars are produced. 
+However, changing the speed of the assembly line also changes the number of cars that are produced successfully, that is cars without any errors in their production.
 
-Implement a function (`SuccessRate`) to calculate the ratio of an item being created without error for a given speed.
-The following table shows how speed influences the success rate:
-
-- `0`: 0% success rate.
-- `1` - `4`: 100% success rate.
-- `5` - `8`: 90% success rate.
-- `9` - `10`: 77% success rate.
+Implement a function that takes in the number of cars produced per hour and the success rate and calculates the number of successful cars made per hour. The success rate is given as a percentage, from `0` to `100`:
 
 ```go
-rate := SuccessRate(6)
-fmt.Println(rate)
-// Output: 0.9
+CalculateWorkingCarsPerHour(1547, 90)
+// => 1392.3
 ```
 
-## 2. Calculate the production rate per hour
+**Note:** the return value should be a `float64`.
 
-Implement a function to calculate the assembly line's production rate per hour.
+## 2. Calculate the number of working cars produced per minute
+
+Implement a function that takes in the number of cars produced per hour and the success rate and calculates how many cars are successfully produced each minute:
 
 ```go
-rate := CalculateProductionRatePerHour(7)
-fmt.Println(rate)
-// Output: 1392.3
+CalculateWorkingCarsPerMinute(1105, 90)
+// => 16
 ```
 
-> Note that the value returned is of type `float64`.
+**Note:** the return value should be an `int`.
 
-## 3. Calculate the number of working items produced per minute
+## 3. Calculate the cost of production 
 
-Implement a function to calculate how many cars are produced each minute:
+Each car normally costs $10,000 to produce individually, regardless of whether it is successful or not.
+But with a bit of planning, 10 cars can be produced together for $95,000.
+
+For example, 37 cars can be produced in the following way:
+37 = 3 x groups of ten + 7 individual cars
+
+So the cost for 37 cars is:
+3\*95,000+7\*10,000=355,000
+
+Implement the function `CalculateCost` that calculates the cost of producing a number of cars, regardless of whether they are successful:
 
 ```go
-rate := CalculateProductionRatePerMinute(5)
-fmt.Println(rate)
-// Output: 16
+CalculateCost(37)
+// => 355000
+
+CalculateCost(21)
+// => 200000
 ```
 
-> Note that the value returned is of type `int`.
+**Note:** the return value should be an `uint`.

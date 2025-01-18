@@ -1,0 +1,8 @@
+package leap
+
+import "time"
+
+// IsLeapYear returns if the passed in year is a leap year.
+func IsLeapYear(year int) bool {
+	return time.Date(year, time.February, 28, 0, 0, 0, 0, time.UTC).Add(time.Duration(time.Hour*24)).Day() == 29
+}

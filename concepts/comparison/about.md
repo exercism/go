@@ -24,7 +24,7 @@ a > 5  // false
 ## Equality operators
 
 The equality operators `==` and `!=` check whether a value is equal to another or not, respectively.
-We can use the equality operators on the majority of types in Go. Here are some common exmaples:
+We can use the equality operators on the majority of types in Go. Here are some common examples:
 
 ```go
 2 == 3 // false, integer comparison

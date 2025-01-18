@@ -8,23 +8,27 @@
     "description": "A Tour of Go"
   },
   {
-    "url": "https://golang.org/ref/spec#Function_declarations",
-    "description": "Function Declarations"
+    "url": "https://gobyexample.com/",
+    "description": "Go by Example"
   },
   {
-    "url": "https://golang.org/ref/spec#Calls",
-    "description": "Calls"
+    "url": "https://golang.org/doc/effective_go.html",
+    "description": "Effective Go"
   },
   {
-    "url": "https://golang.org/ref/spec#Return_statements",
-    "description": "Return Statements"
+    "url": "https://play.golang.org/",
+    "description": "Go Playground"
   },
   {
-    "url": "https://golang.org/ref/spec#Operators",
-    "description": "Operators"
+    "url": "https://pkg.go.dev/",
+    "description": "Go Packages"
   },
   {
-    "url": "https://golang.org/ref/spec#Integer_literals",
-    "description": "Integers"
+    "url": "https://github.com/avelino/awesome-go",
+    "description": "Awesome Go"
+  },
+  {
+    "url": "https://golang.org/ref/spec",
+    "description": "Go Language Specification"
   }
 ]

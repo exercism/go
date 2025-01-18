@@ -1,5 +1,4 @@
 {
-  "blurb": "Create a sentence of the form \"One for X, one for me.\"",
   "authors": [
     "kytrinyx"
   ],
@@ -12,7 +11,8 @@
     "R4wm",
     "robphoenix",
     "sebito91",
-    "ZapAnton"
+    "ZapAnton",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -23,7 +23,11 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Create a sentence of the form \"One for X, one for me.\".",
   "source_url": "https://github.com/exercism/problem-specifications/issues/757"
 }

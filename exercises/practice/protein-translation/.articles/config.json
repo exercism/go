@@ -1,0 +1,11 @@
+{
+  "articles": [
+    {
+      "uuid": "52d5b81c-09c2-49f1-a162-1f94eda387ef",
+      "slug": "performance",
+      "title": "Performance deep dive",
+      "blurb": "Deep dive to find out the most performant approach for Protein Translation.",
+      "authors": ["bobahop"]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about errors by finding the absolute answer to life, the universe, and everything.",
   "authors": [
     "micuffaro"
   ],
@@ -12,6 +11,10 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Learn about errors by finding the absolute answer to life, the universe, and everything."
 }

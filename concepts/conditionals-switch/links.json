@@ -1,11 +1,15 @@
 [
   {
     "url": "https://tour.golang.org/flowcontrol/9",
-    "description": "Tour of Go: Switch"
+    "description": "A Tour of Go: Switch"
   },
   {
     "url": "https://gobyexample.com/switch",
     "description": "Go by Example: Switch"
+  },
+  {
+    "url": "https://golang.org/doc/effective_go#switch",
+    "description": "Effective Go: Switch"
   },
   {
     "url": "https://golang.org/ref/spec#Switch_statements",

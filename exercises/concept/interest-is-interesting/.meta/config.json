@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "erikschierboom"
+  ],
+  "files": {
+    "solution": [
+      "interest_is_interesting.go"
+    ],
+    "test": [
+      "interest_is_interesting_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "forked_from": [
+    "csharp/interest-is-interesting"
+  ],
+  "blurb": "Learn about floating point numbers by adding interest to savings accounts.",
+  "custom": {
+    "taskIdsEnabled": true
+  }
+}

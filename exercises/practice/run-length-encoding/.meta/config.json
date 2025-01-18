@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement run-length encoding and decoding.",
   "authors": [
     "MatForsberg"
   ],
@@ -10,7 +9,8 @@
     "hilary",
     "ilmanzo",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -21,8 +21,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Implement run-length encoding and decoding.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Run-length_encoding"
 }

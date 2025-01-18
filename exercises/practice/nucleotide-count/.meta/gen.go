@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"sort"
-	"strconv"
 	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -15,49 +15,40 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("nucleotide-count", &j, t); err != nil {
+	j := map[string]interface{}{
+		"nucleotideCounts": &[]testCase{},
+	}
+	if err := gen.Gen("nucleotide-count", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	exercise string
-	version  string
-	Cases    []struct {
-		Description string
-		Cases       []OneCase
-	}
-}
-
-// OneCase represents each test case
-type OneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Strand string
-	}
-	Expected map[string]interface{}
+		Strand string `json:"strand"`
+	} `json:"input"`
+	Expected map[string]interface{} `json:"expected"`
 }
 
-// ErrorExpected returns true if an error should be raised
-func (c OneCase) ErrorExpected() bool {
-	_, exists := c.Expected["error"]
-	return exists
+func (t testCase) ErrorExpected() bool {
+	_, gotError := t.Expected["error"]
+	return gotError
 }
 
 // SortedMapString collects key:values for a map in sorted order
-func (c OneCase) SortedMapString() string {
-	strs := make([]string, 0, len(c.Expected))
-	for k, v := range c.Expected {
+func (t testCase) SortedMapString() string {
+	if t.ErrorExpected() {
+		return ""
+	}
+	strs := make([]string, 0, len(t.Expected))
+	for k, v := range t.Expected {
 		switch t := v.(type) {
 		case float64:
-			strs = append(strs, `'`+k+`': `+strconv.FormatFloat(t, 'f', -1, 64))
+			strs = append(strs, fmt.Sprintf("'%s':%d", k, int(t)))
 		default:
 			log.Fatalf("unexpected type %T for %v", t, v)
 		}
-
 	}
 	sort.Strings(strs)
 	return strings.Join(strs, ",")
@@ -68,20 +59,18 @@ var tmpl = `package dna
 
 {{.Header}}
 
-{{range .J.Cases}}// {{.Description}}
 var testCases = []struct {
 	description   string
 	strand        string
 	expected      Histogram
 	errorExpected bool
 }{
-{{range .Cases}}{
+{{range .J.nucleotideCounts}}{
 	description:	{{printf "%q"  .Description}},
-	strand:		{{printf "%#v"  .Input.Strand}},
-	{{if .ErrorExpected}}errorExpected:	true,
-	{{else}}expected:       Histogram{ {{.SortedMapString}} },
-	{{- end}}
+	strand:			{{printf "%#v"  .Input.Strand}},
+	errorExpected:	{{printf "%t"  .ErrorExpected}},
+	expected:       Histogram{ {{.SortedMapString}} },
 },
-{{end}}{{end}}
+{{end}}
 }
 `

@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "PakkuDon"
+  ],
+  "files": {
+    "solution": [
+      "bottle_song.go"
+    ],
+    "test": [
+      "bottle_song_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "blurb": "Produce the lyrics to the popular children's repetitive song: Ten Green Bottles.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Ten_Green_Bottles"
+}

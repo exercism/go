@@ -1,0 +1,7 @@
+for _, letter := range strings.Split(strings.ToLower(word), "") {
+
+  switch letter {
+  case "a", "e", "i", "o", "u", "l", "n", "r", "s", "t":
+    score += 1
+  case "d", "g":
+    score += 2

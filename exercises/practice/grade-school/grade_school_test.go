@@ -1,15 +1,4 @@
-// API:
-//
-// type Grade struct {
-// 	int, []string
-// }
-//
-// type School
-// func New() *School
-// func (s *School) Add(string, int)
-// func (s *School) Grade(int) []string
-// func (s *School) Enrollment() []Grade
-
+//nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
 package school
 
 import (

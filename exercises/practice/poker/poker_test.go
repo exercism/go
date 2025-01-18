@@ -5,74 +5,74 @@ import (
 	"testing"
 )
 
-// Define a function BestHand([]string) ([]string, error).
-
 var invalidTestCases = []struct {
-	name string
-	hand string
+	description string
+	hand        string
 }{
 	{
-		name: "1 is an invalid card rank",
-		hand: "1♢ 2♡ 3♡ 4♡ 5♡",
+		description: "1 is an invalid card rank",
+		hand:        "1♢ 2♡ 3♡ 4♡ 5♡",
 	},
 	{
-		name: "11 is an invalid card rank",
-		hand: "11♢ 2♡ 3♡ 4♡ 5♡",
+		description: "11 is an invalid card rank",
+		hand:        "11♢ 2♡ 3♡ 4♡ 5♡",
 	},
 	{
-		name: "too few cards",
-		hand: "2♡ 3♡ 4♡ 5♡",
+		description: "too few cards",
+		hand:        "2♡ 3♡ 4♡ 5♡",
 	},
 	{
-		name: "too many cards",
-		hand: "2♡ 3♡ 4♡ 5♡ 6♡ 7♡",
+		description: "too many cards",
+		hand:        "2♡ 3♡ 4♡ 5♡ 6♡ 7♡",
 	},
 	{
-		name: "lack of rank",
-		hand: "11♢ 2♡ ♡ 4♡ 5♡",
+		description: "lack of rank",
+		hand:        "11♢ 2♡ ♡ 4♡ 5♡",
 	},
 	{
-		name: "lack of suit",
-		hand: "2♡ 3♡ 4 5♡ 7♡",
+		description: "lack of suit",
+		hand:        "2♡ 3♡ 4 5♡ 7♡",
 	},
 	{
-		name: "H is an invalid suit",
-		hand: "2♡ 3♡ 4H 5♡ 7♡",
+		description: "H is an invalid suit",
+		hand:        "2♡ 3♡ 4H 5♡ 7♡",
 	},
 	{
-		name: "♥ is an invalid suit",
-		hand: "2♡ 3♡ 4♥ 5♡ 7♡",
+		description: "♥ is an invalid suit",
+		hand:        "2♡ 3♡ 4♥ 5♡ 7♡",
 	},
 	{
-		name: "lack of spacing",
-		hand: "2♡ 3♡ 5♡7♡ 8♡",
+		description: "lack of spacing",
+		hand:        "2♡ 3♡ 5♡7♡ 8♡",
 	},
 	{
-		name: "double suits after rank",
-		hand: "2♡ 3♡ 5♡♡ 8♡ 9♡",
+		description: "double suits after rank",
+		hand:        "2♡ 3♡ 5♡♡ 8♡ 9♡",
 	},
 }
 
 func TestBestHandValid(t *testing.T) {
-	for _, tt := range validTestCases {
-		actual, err := BestHand(tt.hands)
-		if err != nil {
-			var _ error = err
-			t.Fatalf("Got unexpected error in valid case %q: %v", tt.name, err)
-		}
-		if !reflect.DeepEqual(actual, tt.best) {
-			t.Fatalf("Mismatch in result of valid case %q: got %#v, want %#v",
-				tt.name, actual, tt.best)
-		}
+	for _, tc := range validTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := BestHand(tc.hands)
+			if err != nil {
+				t.Fatalf("BestHand(%v) returned error: %v, want: %v", tc.hands, err, tc.expected)
+			}
+			if !reflect.DeepEqual(actual, tc.expected) {
+				t.Fatalf("BestHand(%v) = %v, want: %v", tc.hands, actual, tc.expected)
+			}
+		})
 	}
 }
 
 func TestBestHandInvalid(t *testing.T) {
-	for _, tt := range invalidTestCases {
-		_, err := BestHand([]string{tt.hand})
-		if err == nil {
-			t.Fatalf("Did not get an error for invalid case %q", tt.name)
-		}
+	for _, tc := range invalidTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual, err := BestHand([]string{tc.hand})
+			if err == nil {
+				t.Fatalf("BestHand(%v) expected error, got: %v", []string{tc.hand}, actual)
+			}
+		})
 	}
 }
 

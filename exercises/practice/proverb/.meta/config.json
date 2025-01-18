@@ -1,5 +1,4 @@
 {
-  "blurb": "For want of a horseshoe nail, a kingdom was lost, or so the saying goes. Output the full text of this proverbial rhyme.",
   "authors": [
     "sunilgopinath"
   ],
@@ -8,7 +7,8 @@
     "ekingery",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -19,8 +19,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "For want of a horseshoe nail, a kingdom was lost, or so the saying goes. Output the full text of this proverbial rhyme.",
   "source": "Wikipedia",
-  "source_url": "http://en.wikipedia.org/wiki/For_Want_of_a_Nail"
+  "source_url": "https://en.wikipedia.org/wiki/For_Want_of_a_Nail"
 }

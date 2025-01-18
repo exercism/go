@@ -1,5 +1,4 @@
 {
-  "blurb": "Create a program to solve a word search puzzle.",
   "authors": [
     "pminten"
   ],
@@ -16,7 +15,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "soniakeys"
+    "soniakeys",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -27,6 +27,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Create a program to solve a word search puzzle."
 }

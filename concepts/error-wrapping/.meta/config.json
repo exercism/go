@@ -1,0 +1,5 @@
+{
+  "blurb": "Go allows to add context to errors and provides functions to check for or retrieve the original error later on. This is called error wrapping (and unwrapping).",
+  "authors": ["junedev"],
+  "contributors": []
+}

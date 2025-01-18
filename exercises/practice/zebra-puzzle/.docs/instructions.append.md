@@ -6,17 +6,6 @@ zebra-puzzle questions "Who drinks water?" and "Who owns the Zebra?".
 Each answer will be one of the resident's nationalities:
 Englishman, Spaniard, Ukrainian, Norwegian, or Japanese.
 
-For the SolvePuzzle function, use the following signature:
-
-```
-type Solution struct {
-	DrinksWater string
-	OwnsZebra string
-}
-
-func SolvePuzzle() Solution
-```
-
 Obviously, you could simply write a one-liner function
 if you peek at the test program to see the expected solution.
 But the goal is to develop an algorithm which uses

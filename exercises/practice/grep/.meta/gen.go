@@ -5,40 +5,34 @@ import (
 	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
-	t := template.New("").Funcs(template.FuncMap{
-		"fileContentData": FileContentData,
-	})
+	t := template.New("").Funcs(template.FuncMap{"fileContentData": FileContentData})
 	t, err := t.Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("grep", &j, t); err != nil {
+	j := map[string]interface{}{
+		"grep": &[]testCase{},
+	}
+	if err := gen.Gen("grep", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Comments []string
-	Cases    []struct {
-		Description string
-		Cases       []struct {
-			Description string
-			Input       struct {
-				Pattern string
-				Flags   []string
-				Files   []string
-			}
-			Expected []string
-		}
-	}
+type testCase struct {
+	Description string `json:"description"`
+	Input       struct {
+		Pattern string   `json:"pattern"`
+		Flags   []string `json:"flags"`
+		Files   []string `json:"files"`
+	} `json:"input"`
+	Expected []string `json:"expected"`
 }
 
+// FileContentData returns the lines containing the file contents.
 func FileContentData(comments []string) []string {
 	var start int
 	for i, c := range comments {
@@ -55,7 +49,7 @@ var tmpl = `package grep
 
 {{.Header}}
 
-var fileContentData = []string{ {{range $line := fileContentData .J.Comments}}{{printf "\n%q," $line}}{{end}}
+var fileContentData = []string{ {{range $line := fileContentData .Comments}}{{printf "\n%q," $line}}{{end}}
 }
 
 var testCases = []struct {
@@ -65,14 +59,13 @@ var testCases = []struct {
 	files       []string
 	expected    []string
 }{
-{{range .J.Cases}}
-	{{range .Cases}}{
+{{range .J.grep}}{
 		description: {{printf "%q" .Description}},
 		pattern: {{printf "%q" .Input.Pattern}},
 		flags: {{printf "%#v" .Input.Flags}},
 		files: {{printf "%#v" .Input.Files}},
 		expected: {{printf "%#v" .Expected}},
 },
-{{end}}{{end}}
+{{end}}
 }
 `

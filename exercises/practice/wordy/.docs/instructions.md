@@ -40,8 +40,7 @@ Now, perform the other three operations.
 
 Handle a set of operations, in sequence.
 
-Since these are verbal word problems, evaluate the expression from
-left-to-right, _ignoring the typical order of operations._
+Since these are verbal word problems, evaluate the expression from left-to-right, _ignoring the typical order of operations._
 
 > What is 5 plus 13 plus 6?
 
@@ -49,20 +48,12 @@ left-to-right, _ignoring the typical order of operations._
 
 > What is 3 plus 2 multiplied by 3?
 
-15  (i.e. not 9)
+15 (i.e. not 9)
 
 ## Iteration 4 — Errors
 
 The parser should reject:
 
-* Unsupported operations ("What is 52 cubed?")
-* Non-math questions ("Who is the President of the United States")
-* Word problems with invalid syntax ("What is 1 plus plus 2?")
-
-## Bonus — Exponentials
-
-If you'd like, handle exponentials.
-
-> What is 2 raised to the 5th power?
-
-32
+- Unsupported operations ("What is 52 cubed?")
+- Non-math questions ("Who is the President of the United States")
+- Word problems with invalid syntax ("What is 1 plus plus 2?")

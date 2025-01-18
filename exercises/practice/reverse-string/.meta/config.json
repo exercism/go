@@ -1,5 +1,4 @@
 {
-  "blurb": "Reverse a string",
   "authors": [
     "ferhatelmas"
   ],
@@ -11,7 +10,8 @@
     "ilmanzo",
     "leenipper",
     "sbromberger",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -22,8 +22,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Reverse a given string.",
   "source": "Introductory challenge to reverse an input string",
   "source_url": "https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb"
 }

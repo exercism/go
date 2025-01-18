@@ -38,6 +38,18 @@ func TestUnits(t *testing.T) {
 	}
 
 }
+
+func TestNewBill(t *testing.T) {
+	// Success, zero out the  bill
+	t.Run("Should reset customerbill", func(t *testing.T) {
+		bill := NewBill()
+
+		if len(bill) != 0 {
+			t.Error("Customer bill must be empty")
+		}
+	})
+}
+
 func TestAddItem(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -65,6 +77,16 @@ func TestAddItem(t *testing.T) {
 			},
 			true,
 		},
+		{
+			"check quantity of item added twice",
+			[]entry{
+				{"peas", "quarter_of_a_dozen", 3},
+				{"peas", "quarter_of_a_dozen", 6},
+				{"tomato", "half_of_a_dozen", 6},
+				{"tomato", "quarter_of_a_dozen", 9},
+			},
+			true,
+		},
 	}
 	units := Units()
 	for _, tt := range tests {
@@ -78,7 +100,7 @@ func TestAddItem(t *testing.T) {
 
 				itemQty, ok := bill[item.name]
 				if ok != tt.expected {
-					t.Errorf("Could not find item %s in customer bill", item.name)
+					t.Errorf("Unexpected item on bill: found %s with quantity %d", item.name, itemQty)
 				}
 
 				if itemQty != item.qty {
@@ -167,17 +189,6 @@ func TestRemoveItem(t *testing.T) {
 			}
 		})
 	}
-}
-
-func TestNewBill(t *testing.T) {
-	// Success, zero out the  bill
-	t.Run("Should reset customerbill", func(t *testing.T) {
-		bill := NewBill()
-
-		if len(bill) != 0 {
-			t.Error("Customer bill must be empty")
-		}
-	})
 }
 
 func TestGetItem(t *testing.T) {

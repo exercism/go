@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "url": "https://tour.golang.org/basics/15",
+        "description": "A Tour of Go: Constants"
+    },
+    {
+        "url": "https://gobyexample.com/constants",
+        "description": "Go by Example: Constants"
+    },
+    {
+        "url": "https://go.dev/blog/constants",
+        "description": "Go Dev Blog: Constants"
+    },
+    {
+        "url": "https://golang.org/ref/spec#Constants",
+        "description": "Go Language Spec: Constants"
+    }
+]

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -14,35 +14,30 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("alphametics", &j, t); err != nil {
+	j := map[string]interface{}{
+		"solve": &[]testCase{},
+	}
+	if err := gen.Gen("alphametics", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []struct {
-		Description string
-		Cases       []OneCase
-	}
-}
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Puzzle string
-	}
-	Expected map[string]int
+		Puzzle string `json:"puzzle"`
+	} `json:"input"`
+	Expected map[string]int `json:"expected"`
 }
 
-func (c OneCase) ErrorExpected() bool {
+func (c testCase) ErrorExpected() bool {
 	return len(c.Expected) == 0
 }
 
-func (c OneCase) SortedMapString() string {
+func (c testCase) SortedMapString() string {
 	strs := make([]string, 0, len(c.Expected))
 	for s, v := range c.Expected {
-		strs = append(strs, `"`+s+`": `+string(v+'0'))
+		strs = append(strs, `"`+s+`": `+string(rune(v+'0')))
 	}
 	sort.Strings(strs)
 	return strings.Join(strs, ",")
@@ -53,20 +48,19 @@ var tmpl = `package alphametics
 
 {{.Header}}
 
-{{range .J.Cases}}// {{.Description}}
 var testCases = []struct {
 	description   string
 	input         string
 	expected      map[string]int
 	errorExpected bool
 }{
-{{range .Cases}}{
+{{range .J.solve}}{
 	description:	{{printf "%q" .Description}},
 	input:		{{printf "%q" .Input.Puzzle}},
 	{{if .ErrorExpected}}errorExpected:	true,
 	{{else}}expected:	map[string]int{ {{.SortedMapString}} },
 	{{- end}}
 },
-{{end}}{{end}}
+{{end}}
 }
 `

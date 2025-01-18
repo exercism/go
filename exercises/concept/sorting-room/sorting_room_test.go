@@ -97,8 +97,13 @@ func TestExtractFancyNumber(t *testing.T) {
 			want:        0,
 		},
 		{
-			description: "Extract a different fancy number returns 0",
-			input:       differentFancyNumber{"two"},
+			description: "Extract a differentFancyNumber returns 0",
+			input:       differentFancyNumber{"4"},
+			want:        0,
+		},
+		{
+			description: "Extract an invalid fancy number returns 0",
+			input:       FancyNumber{"two"},
 			want:        0,
 		},
 	}
@@ -118,7 +123,7 @@ func TestDescribeFancyNumberBox(t *testing.T) {
 		want        string
 	}{
 		{
-			description: "Describe fancy number 11",
+			description: "Describe fancy number 12",
 			input:       FancyNumber{"12"},
 			want:        "This is a fancy box containing the number 12.0",
 		},
@@ -130,6 +135,11 @@ func TestDescribeFancyNumberBox(t *testing.T) {
 		{
 			description: "Describe a different fancy number",
 			input:       differentFancyNumber{"three"},
+			want:        "This is a fancy box containing the number 0.0",
+		},
+		{
+			description: "Describe a valid different fancy number",
+			input:       differentFancyNumber{"4"},
 			want:        "This is a fancy box containing the number 0.0",
 		},
 	}
@@ -152,6 +162,11 @@ func TestDescribeAnything(t *testing.T) {
 			description: "Describe 7.2",
 			input:       7.2,
 			want:        "This is the number 7.2",
+		},
+		{
+			description: "Describe 42",
+			input:       42,
+			want:        "This is the number 42.0",
 		},
 		{
 			description: "Describe NumberBox with 16",

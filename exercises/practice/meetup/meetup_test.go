@@ -2,18 +2,6 @@ package meetup
 
 import "testing"
 
-/* API
-package meetup
-type WeekSchedule
-WeekSchedule First
-WeekSchedule Second
-WeekSchedule Third
-WeekSchedule Fourth
-WeekSchedule Last
-WeekSchedule Teenth
-func Day(WeekSchedule, time.Weekday, time.Month, int) int
-*/
-
 var weekName = map[WeekSchedule]string{
 	First:  "first",
 	Second: "second",
@@ -24,11 +12,23 @@ var weekName = map[WeekSchedule]string{
 }
 
 func TestDay(t *testing.T) {
-	for _, test := range testCases {
-		res := Day(test.week, test.weekday, test.month, test.year)
-		if res != test.expDay {
-			t.Fatalf("For %s %s of %s 2013 got date of %d, want %d",
-				weekName[test.week], test.weekday, test.month, res, test.expDay)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			actual := Day(tc.week, tc.weekday, tc.month, tc.year)
+			if actual != tc.expectedDay {
+				t.Fatalf("Day(%q, %d, %d, %d) = %d, want: %d", weekName[tc.week], tc.weekday, tc.month, tc.year, actual, tc.expectedDay)
+			}
+		})
+	}
+}
+
+func BenchmarkDay(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for _, tc := range testCases {
+			Day(tc.week, tc.weekday, tc.month, tc.year)
 		}
 	}
 }

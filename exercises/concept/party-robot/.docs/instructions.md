@@ -12,7 +12,7 @@ Implement the `Welcome` function to return a welcome message using the given nam
 
 ```go
 Welcome("Christiane")
-// Output: Welcome to my party, Christiane!
+// => Welcome to my party, Christiane!
 ```
 
 ## 2. Welcome a new guest to the party whose birthday is today
@@ -22,19 +22,31 @@ Unfortunately the programmer is a bit of a show-off, so the robot has to demonst
 
 ```go
 HappyBirthday("Frank", 58)
-// Output: Happy birthday Frank! You are now 58 years old!
+// => Happy birthday Frank! You are now 58 years old!
 ```
 
 ## 3. Give directions
 
-Implement the `AssignTable` function to give directions. The robot provides the table number in hex (uppercase)
-due to a misalignment of its creator and the rest of the world. Fortunately the precision on the distance
-was limited to 1 digit.
+Implement the `AssignTable` function to give directions.
+It should accept 5 parameters.
+
+- The name of the new guest to greet (`string`)
+- The table number (`int`)
+- The name of the seatmate (`string`)
+- The direction where to find the table (`string`)
+- The distance to the table (`float64`)
+
+The exact result format can be seen in the example below.
+
+The robot provides the table number in a 3 digits format.
+If the number is less than 3 digits it gets extra leading zeroes to become 3 digits (e.g. 3 becomes 003).
+The robot also mentions the distance of the table.
+Fortunately only with a precision that's limited to 1 digit.
 
 ```go
 AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
-// Output:
+// =>
 // Welcome to my party, Christiane!
-// You have been assigned to table 1B. Your table is on the left, exactly 23.8 meters from here.
+// You have been assigned to table 027. Your table is on the left, exactly 23.8 meters from here.
 // You will be sitting next to Frank.
 ```

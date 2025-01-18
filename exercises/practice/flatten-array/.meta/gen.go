@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,27 +12,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("flatten-array", &j, t); err != nil {
+	j := map[string]interface{}{
+		"flatten": &[]testCase{},
+	}
+	if err := gen.Gen("flatten-array", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Array interface{}
-	}
-	Expected []interface{}
+		Array interface{} `json:"array"`
+	} `json:"input"`
+	Expected []interface{} `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -44,11 +37,11 @@ var testCases = []struct {
 	description	string
 	input		interface{}
 	expected	[]interface{}
-}{ {{range .J.Cases}}
+}{ {{range .J.flatten}}
 {
 	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%#v"  .Input.Array}},
-	expected:	{{printf "%#v"  .Expected}},
+	input:			{{printf "%#v"  .Input.Array}},
+	expected:		{{printf "%#v"  .Expected}},
 },{{end}}
 }
 `

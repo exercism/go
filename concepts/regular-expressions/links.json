@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://pkg.go.dev/regexp",
+    "description": "Go standard library: package regexp"
+  },
+  {
+    "url": "https://pkg.go.dev/regexp/syntax",
+    "description": "Go standard library: package regexp/syntax"
+  },
+  {
+    "url": "https://regex101.com/",
+    "description": "regex101.com: online regular expression tester"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Regular_expression",
+    "description": "Wikipedia: regular expressions"
+  },
+  {
+    "url": "https://gobyexample.com/regular-expressions",
+    "description": "Go by example: regular expressions"
+  }, 
+  { 
+    "url":"https://yourbasic.org/golang/regexp-cheat-sheet",
+    "description": "Youbasic.org: Regexp tutorial and cheat sheet"
+  }
+]

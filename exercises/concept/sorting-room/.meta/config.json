@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about type casting and type assertions in the sorting room.",
   "authors": [
     "jmrunkle"
   ],
@@ -15,6 +14,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about type casting and type assertions in the sorting room.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

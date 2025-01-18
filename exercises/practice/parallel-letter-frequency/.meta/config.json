@@ -1,5 +1,4 @@
 {
-  "blurb": "Count the frequency of letters in texts using parallel computation.",
   "authors": [
     "soniakeys"
   ],
@@ -17,7 +16,8 @@
     "rootulp",
     "roundand",
     "sebito91",
-    "tleen"
+    "tleen",
+    "kudligi"
   ],
   "files": {
     "solution": [
@@ -28,6 +28,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Count the frequency of letters in texts using parallel computation."
 }

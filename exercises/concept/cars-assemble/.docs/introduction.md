@@ -13,6 +13,10 @@ For the sake of this exercise you will only be dealing with:
 
 - `float64`: e.g. `0.0`, `3.14`. Contains the set of all 64-bit floating-point numbers.
 
+- `uint`: e.g. `0`, `255`. An unsigned integer that is the same size as `int` (value range of: 0 through 4294967295 for 32 bits and 0 through 18446744073709551615 for 64 bits)
+
+Numbers can be converted to other numeric types through Type Conversion.
+
 ## Arithmetic Operators
 
 Go supports many standard arithmetic operators:
@@ -25,12 +29,12 @@ Go supports many standard arithmetic operators:
 | `/`      | `13 / 3 == 4`  |
 | `%`      | `13 % 3 == 1`  |
 
-For integer division, the remainder is dropped (eg. `5 / 2 == 2`).
+For integer division, the remainder is dropped (e.g. `5 / 2 == 2`).
 
 Go has shorthand assignment for the operators above (e.g. `a += 5` is short for `a = a + 5`).
 Go also supports the increment and decrement statements `++` and `--` (e.g. `a++`).
 
-## Converting between int and float64
+## Converting between types 
 
 Converting between types is done via a function with the name of the type to convert to.
 For example:
@@ -41,34 +45,17 @@ f := float64(x) // f has type float64 (ie. 42.0)
 var y float64 = 11.9 // y has type float64
 i := int(y) // i has type int (ie. 11)
 ```
+## Arithmetic operations on different types
 
-## If Statements
-
-Conditionals in Go are similar to conditionals in other languages.
-The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`.
-Conditionals are often used as flow control mechanisms to check for various conditions.
-
-For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
+In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an error.
+For example:
 
 ```go
-var value string
+var x int = 42
 
-if value == "val" {
-    return "was val"
-}
-```
+// this line produces an error
+value := float32(2.0) * x // invalid operation: mismatched types float32 and int
 
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
-
-```go
-var number int
-result := "This number is "
-
-if number > 0 {
-    result += "positive"
-} else if number < 0 {
-    result += "negative"
-} else {
-    result += "zero"
-}
+// you must convert int type to float32 before performing arithmetic operation
+value := float32(2.0) * float32(x)
 ```

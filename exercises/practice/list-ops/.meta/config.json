@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement basic list operations",
   "authors": [
     "ljagged"
   ],
@@ -10,7 +9,8 @@
     "ferhatelmas",
     "hilary",
     "ivenk",
-    "leenipper"
+    "leenipper",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -21,6 +21,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Implement basic list operations."
 }

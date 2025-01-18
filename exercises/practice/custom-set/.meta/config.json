@@ -1,5 +1,4 @@
 {
-  "blurb": "Create a custom set type.",
   "authors": [],
   "contributors": [
     "alebaffa",
@@ -13,7 +12,8 @@
     "petertseng",
     "robphoenix",
     "sebito91",
-    "soniakeys"
+    "soniakeys",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -24,6 +24,13 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
-  }
+  },
+  "blurb": "Create a custom set type."
 }

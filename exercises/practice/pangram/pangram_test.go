@@ -5,11 +5,12 @@ import (
 )
 
 func TestPangram(t *testing.T) {
-	for _, test := range testCases {
-		if actual := IsPangram(test.input); actual != test.expected {
-			t.Fatalf("FAIL: %s\nInput %q expected [%t], actual [%t]", test.description, test.input, test.expected, actual)
-		}
-		t.Logf("PASS: %s", test.description)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := IsPangram(tc.input); actual != tc.expected {
+				t.Fatalf("IsPangram(%q) = %t, want: %t", tc.input, actual, tc.expected)
+			}
+		})
 	}
 }
 

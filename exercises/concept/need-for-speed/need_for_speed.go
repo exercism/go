@@ -9,12 +9,12 @@ func NewCar(speed, batteryDrain int) Car {
 
 // TODO: define the 'Track' type struct
 
-// NewTrack created a new track
+// NewTrack creates a new track
 func NewTrack(distance int) Track {
 	panic("Please implement the NewTrack function")
 }
 
-// Drive drives the car one time. If there is not enough battery to drive on more time,
+// Drive drives the car one time. If there is not enough battery to drive one more time,
 // the car will not move.
 func Drive(car Car) Car {
 	panic("Please implement the Drive function")

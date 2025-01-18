@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-// TestNewResident tests the NewResident function.
 func TestNewResident(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -34,7 +33,7 @@ func TestNewResident(t *testing.T) {
 			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
 
 			if !reflect.DeepEqual(resident, test.resident) {
-				t.Errorf("NewResident() = %v, want %v", resident, test.resident)
+				t.Errorf("NewResident() = %#v, want %#v", resident, test.resident)
 			}
 		})
 	}
@@ -64,15 +63,6 @@ func TestHasRequiredInfo(t *testing.T) {
 			want: true,
 		},
 		{
-			name: "missing street",
-			resident: &Resident{
-				Name:    "Rob Pike",
-				Age:     0,
-				Address: map[string]string{},
-			},
-			want: false,
-		},
-		{
 			name: "missing name",
 			resident: &Resident{
 				Name: "",
@@ -83,13 +73,63 @@ func TestHasRequiredInfo(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "nil map as address",
+			resident: &Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: nil,
+			},
+			want: false,
+		},
+		{
+			name: "empty map as address",
+			resident: &Resident{
+				Name:    "Rob Pike",
+				Age:     0,
+				Address: map[string]string{},
+			},
+			want: false,
+		},
+		{
+			name: "missing street",
+			resident: &Resident{
+				Name: "Hossein",
+				Age:  30,
+				Address: map[string]string{
+					"street": "",
+				},
+			},
+			want: false,
+		},
+		{
+			name: "age is optional",
+			resident: &Resident{
+				Name: "Rob Pike",
+				Age:  0,
+				Address: map[string]string{
+					"street": "Main St.",
+				},
+			},
+			want: true,
+		},
+		{
+			name: "unknown key with value that is not empty",
+			resident: &Resident{
+				Name: "Rob Pike",
+				Address: map[string]string{
+					"unknown key": "with value",
+				},
+			},
+			want: false,
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 
 			if got := test.resident.HasRequiredInfo(); got != test.want {
-				t.Errorf("resident.HasRequiredInfo() = %t, want %t", got, test.want)
+				t.Errorf("%#v.HasRequiredInfo() = %t, want %t", test.resident, got, test.want)
 			}
 		})
 	}
@@ -187,6 +227,20 @@ func TestCount(t *testing.T) {
 					Name:    "",
 					Age:     0,
 					Address: map[string]string{},
+				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"street": "Main St.",
+					},
+				},
+				{
+					Name: "",
+					Age:  0,
+					Address: map[string]string{
+						"city": "London",
+					},
 				},
 			},
 			want: 1,

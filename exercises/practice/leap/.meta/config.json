@@ -1,5 +1,4 @@
 {
-  "blurb": "Given a year, report if it is a leap year.",
   "authors": [
     "kytrinyx"
   ],
@@ -19,7 +18,8 @@
     "soniakeys",
     "tleen",
     "tompao",
-    "zabawaba99"
+    "zabawaba99",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -30,8 +30,15 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "cases_test.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
-  "source": "JavaRanch Cattle Drive, exercise 3",
-  "source_url": "http://www.javaranch.com/leap.jsp"
+  "blurb": "Determine whether a given year is a leap year.",
+  "source": "CodeRanch Cattle Drive, Assignment 3",
+  "source_url": "https://coderanch.com/t/718816/Leap"
 }

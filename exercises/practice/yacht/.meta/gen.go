@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,32 +12,23 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("yacht", &j, t); err != nil {
+	j := map[string]interface{}{
+		"score": &[]testCase{},
+	}
+	if err := gen.Gen("yacht", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Comments []string
-	Cases    []OneCase
-}
-
-// OneCase is a go structure for storing the json information
-// of a single test case
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Dice     []int
-		Category string
-	}
-	Expected int
+		Dice     []int  `json:"dice"`
+		Category string `json:"category"`
+	} `json:"input"`
+	Expected int `json:"expected"`
 }
 
-// Template to generate list of test cases.
 var tmpl = `package yacht
 
 {{.Header}}
@@ -47,12 +38,12 @@ var testCases = []struct {
 	dice           []int
 	category       string
 	expected          int 
-}{ {{range .J.Cases}}
+}{ {{range .J.score}}
 {
-	description: {{printf "%q"  .Description}},
-	dice: {{.Input.Dice | printf "%#v"}} ,
-	category: {{printf "%q" .Input.Category}},
-	expected: {{printf "%d" .Expected}},
+	description: 	{{printf "%q"  .Description}},
+	dice: 			{{printf "%#v" .Input.Dice }} ,
+	category: 		{{printf "%q" .Input.Category}},
+	expected: 		{{printf "%d" .Expected}},
 },{{end}}
 }
 `

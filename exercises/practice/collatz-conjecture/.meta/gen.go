@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,44 +12,33 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("collatz-conjecture", &j, t); err != nil {
+	j := map[string]interface{}{
+		"steps": &[]testCase{},
+	}
+	if err := gen.Gen("collatz-conjecture", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-type OneCase struct {
-	Description string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		Number int
+		Number int `json:"number"`
+	} `json:"input"`
+	Expected interface{} `json:"expected"`
+}
+
+func (t testCase) ExpectedValue() int {
+	val, ok := t.Expected.(float64)
+	if !ok {
+		return 0
 	}
-	Expected interface{}
+	return int(val)
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Cases []OneCase
-}
-
-func (c OneCase) Valid() bool {
-	valid, _ := determineExpected(c.Expected)
-	return valid
-}
-
-func (c OneCase) Answer() int {
-	_, answer := determineExpected(c.Expected)
-	return answer
-}
-
-// determineExpected examines an .Expected interface{} object and determines
-// whether a test case is valid(bool) and has an answer or expects an error.
-// returning valid and answer.
-func determineExpected(expected interface{}) (bool, int) {
-	ans, ok := expected.(float64)
-	if ok {
-		return ok, int(ans)
-	}
-	return false, 0
+func (t testCase) ExpectError() bool {
+	_, hasExpectedNumber := t.Expected.(float64)
+	return !hasExpectedNumber
 }
 
 // template applied to above data structure generates the Go test cases
@@ -63,12 +52,12 @@ var testCases = []struct {
 	expectError bool
 	expected    int
 }{
-{{range .J.Cases}}{
-	description:	"{{.Description}}",
-	input:		{{.Input.Number}},
-{{if .Valid}} expected:	{{.Answer}},
-{{- else}} expectError: true,
-{{- end}}
+{{range .J.steps}}{
+	description:	{{printf "%q"  .Description}},
+	input:			{{printf "%d"  .Input.Number}},
+	expectError: 	{{printf "%v"  .ExpectError}},
+	expected: 		{{printf "%d"  .ExpectedValue}},
 },
-{{end}}}
+{{end}}
+}
 `

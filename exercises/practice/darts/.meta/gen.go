@@ -4,7 +4,7 @@ import (
 	"log"
 	"text/template"
 
-	"../../../gen"
+	"../../../../gen"
 )
 
 func main() {
@@ -12,28 +12,21 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j js
-	if err := gen.Gen("darts", &j, t); err != nil {
+	j := map[string]interface{}{
+		"score": &[]testCase{},
+	}
+	if err := gen.Gen("darts", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-// The JSON structure we expect to be able to unmarshal into
-type js struct {
-	Exercise string
-	Version  string
-	Cases    []oneCase
-}
-
-// Test cases
-type oneCase struct {
-	Description string
-	Property    string
+type testCase struct {
+	Description string `json:"description"`
 	Input       struct {
-		X float64
-		Y float64
-	}
-	Expected int
+		X float64 `json:"x"`
+		Y float64 `json:"y"`
+	} `json:"input"`
+	Expected int `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -46,12 +39,12 @@ var testCases = []struct {
 	x		float64
 	y		float64
 	expected	int
-}{ {{range .J.Cases}}
+}{ {{range .J.score}}
 {
 	description:	{{printf "%q"  .Description}},
-	x:		{{printf "%.1f"  .Input.X}},
-	y:		{{printf "%.1f"  .Input.Y}},
-	expected:	{{printf "%d"  .Expected}},
+	x:				{{printf "%.1f"  .Input.X}},
+	y:				{{printf "%.1f"  .Input.Y}},
+	expected:		{{printf "%d"  .Expected}},
 },{{end}}
 }
 `

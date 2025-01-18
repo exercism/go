@@ -10,7 +10,7 @@ Create the `FixedInterestRate` untyped numeric constant to hold the value of 5% 
 
 ```go
 GetFixedInterestRate()
-// Output: 0.05
+// => 0.05
 ```
 
 ## 2. Represent the number of days in a year
@@ -19,7 +19,7 @@ Create the `DaysPerYear` constant with type `int` to hold the value 365, then im
 
 ```go
 GetDaysPerYear()
-// Output: 365
+// => 365
 ```
 
 ## 3. Represent the months of the year
@@ -28,7 +28,7 @@ In a block, use the Go enumerator to create twelve untyped numeric constants to 
 
 ```go
 GetMonth(Jan)
-// Output: 1
+// => 1
 ```
 
 ## 4. Represent an account number
@@ -37,5 +37,5 @@ Create the `AccountNo` untyped string constant to hold the value XF348IJ, then i
 
 ```go
 GetAccountNumber()
-// Output: "XF348IJ"
+// => "XF348IJ"
 ```

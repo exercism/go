@@ -1,64 +1,45 @@
 package minesweeper
 
-import (
-	"bytes"
-	"errors"
-)
-
-func (b Board) Count() error {
-	if len(b) < 2 {
-		return errors.New("need top and bottom border")
-	}
-	last := len(b) - 1
-	if len(b[last]) != len(b[0]) {
-		return errors.New("top and bottom border must be same size")
-	}
-	if err := border(b[0]); err != nil {
-		return err
-	}
-	if err := border(b[last]); err != nil {
-		return err
-	}
-	w := len(b[0])
-	lc := w - 1
-	for r := 1; r < last; r++ {
-		row := b[r]
-		if len(row) != w {
-			return errors.New("all rows must be same size")
-		}
-		if row[0] != '|' || row[lc] != '|' {
-			return errors.New("left and right borders must be '|'")
-		}
-		for c := 1; c < lc; c++ {
-			switch row[c] {
-			default:
-				return errors.New("only ' ' and '*' allowed")
-			case '*':
-			case ' ':
-				n := 0
-				for rm, rz := r-1, r+1; rm <= rz; rm++ {
-					rowm := b[rm]
-					for cm, cz := c-1, c+1; cm <= cz; cm++ {
-						if rowm[cm] == '*' {
-							n++
-						}
-					}
-				}
-				if n > 0 {
-					row[c] = '0' + byte(n)
-				}
+func Annotate(b []string) []string {
+	result := make([]string, len(b))
+	dirX := []int{}
+	dirY := []int{}
+	for i := -1; i <= 1; i++ {
+		for j := -1; j <= 1; j++ {
+			if i != 0 || j != 0 {
+				dirX = append(dirX, i)
+				dirY = append(dirY, j)
 			}
 		}
 	}
-	return nil
-}
-
-func border(b []byte) error {
-	switch {
-	case len(b) < 2 || b[0] != '+' || b[len(b)-1] != '+':
-		return errors.New("need '+' in corners")
-	case bytes.Count(b, []byte{'-'}) != len(b)-2:
-		return errors.New("top and bottom borders must be '-'")
+	inGrid := func(i, j int) bool {
+		return i >= 0 && j >= 0 && i < len(b) && j < len(b[0])
 	}
-	return nil
+	countForSquare := func(i, j int) int {
+		result := 0
+		for k := range dirX {
+			i1, j1 := i+dirX[k], j+dirY[k]
+			if inGrid(i1, j1) && b[i1][j1] == '*' {
+				result++
+			}
+		}
+		return result
+	}
+	for i, row := range b {
+		resultRow := make([]rune, len(b[i]))
+		for j, c := range row {
+			if row[j] == '*' {
+				resultRow[j] = c
+			} else {
+				count := countForSquare(i, j)
+				if count == 0 {
+					resultRow[j] = ' '
+				} else {
+					resultRow[j] = rune('0' + count)
+				}
+			}
+		}
+		result[i] = string(resultRow)
+	}
+	return result
 }

@@ -1,5 +1,4 @@
 {
-  "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
   "authors": [
     "magic003"
   ],
@@ -9,7 +8,8 @@
     "ferhatelmas",
     "hilary",
     "leenipper",
-    "sebito91"
+    "sebito91",
+    "eklatzer"
   ],
   "files": {
     "solution": [
@@ -20,8 +20,12 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
   },
+  "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Caesar_cipher"
 }

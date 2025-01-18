@@ -1,0 +1,8 @@
+func Keep[T Slicer](input []T, filter func(T) bool) []T {
+	if input == nil {
+		return input
+	}
+	output := make([]T, 0, len(input))
+	for _, value := range input {
+		if filter(value) {
+			output = append(output, value)

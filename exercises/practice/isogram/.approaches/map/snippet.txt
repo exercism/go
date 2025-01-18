@@ -1,0 +1,8 @@
+for _, chr := range phrase {
+		if !unicode.IsLetter(chr) {
+			continue
+		}
+		ltr := unicode.ToLower(chr)
+		if _, exists := lookup[ltr]; exists {
+			return false
+		}

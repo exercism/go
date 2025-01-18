@@ -1,43 +1,44 @@
 package prime
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 4a3ba76 nth-prime: Apply new "input" policy
-// Problem Specifications Version: 2.1.0
+// Commit: 42dd0ce Remove version (#1678)
 
 var tests = []struct {
 	description string
-	n           int
-	p           int
-	ok          bool
+	input       int
+	expected    int
+	err         string
 }{
 	{
-		"first prime",
-		1,
-		2,
-		true,
+		description: "first prime",
+		input:       1,
+		expected:    2,
+		err:         "",
 	},
 	{
-		"second prime",
-		2,
-		3,
-		true,
+		description: "second prime",
+		input:       2,
+		expected:    3,
+		err:         "",
 	},
 	{
-		"sixth prime",
-		6,
-		13,
-		true,
+		description: "sixth prime",
+		input:       6,
+		expected:    13,
+		err:         "",
 	},
 	{
-		"big prime",
-		10001,
-		104743,
-		true,
+		description: "big prime",
+		input:       10001,
+		expected:    104743,
+		err:         "",
 	},
 	{
-		"there is no zeroth prime",
-		0,
-		0,
-		false,
+		description: "there is no zeroth prime",
+		input:       0,
+		expected:    0,
+		err:         "there is no zeroth prime",
 	},
 }
