@@ -1,4 +1,4 @@
-package elon
+package jedlik
 
 import (
 	"testing"

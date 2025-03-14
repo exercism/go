@@ -1,4 +1,4 @@
-package elon
+package jedlik
 
 // Car implements a remote controlled car.
 type Car struct {
