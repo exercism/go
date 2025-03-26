@@ -8,10 +8,10 @@
   ],
   "files": {
     "solution": [
-      "elons_toys.go"
+      "jedliks_toys.go"
     ],
     "test": [
-      "elons_toys_test.go"
+      "jedliks_toys_test.go"
     ],
     "exemplar": [
       ".meta/exemplar.go"
@@ -24,7 +24,7 @@
     ]
   },
   "forked_from": [
-    "csharp/elons-toys"
+    "csharp/jedliks-toys"
   ],
   "blurb": "Learn about methods by playing with Elon's toys",
   "custom": {
