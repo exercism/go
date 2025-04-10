@@ -20,7 +20,6 @@ package robotname
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 // Robot is a struct with a string field.
@@ -48,7 +47,6 @@ func generateRobotNames() []string {
 		}
 	}
 
-	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(names), func(i, j int) { names[i], names[j] = names[j], names[i] })
 	return names
 }
