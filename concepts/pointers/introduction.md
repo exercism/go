@@ -76,7 +76,7 @@ var a int        // declare int variable 'a'
 a = 2            // assign 'a' the value of 2
 
 var pa *int
-pa = &a          // 'pa' now contains to the memory address of 'a'
+pa = &a          // 'pa' now contains the memory address of 'a'
 *pa = *pa + 2    // increment by 2 the value at memory address 'pa'
 
 fmt.Println(a)   // Output: 4
