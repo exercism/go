@@ -33,7 +33,7 @@ Implement the `Replace` function that takes a log line, a corrupted character, a
 log := "please replace '👎' with '👍'"
 
 Replace(log, '👎', '👍')
-// => please replace '👍' with '👍'"
+// => please replace '👎' with '👍'"
 ```
 
 ## 3. Determine if a log can be displayed
