@@ -7,6 +7,10 @@ import "testing"
 // In other words, define a function with the following signature:
 // HelloWorld() string
 
+func HelloWorld() {
+	return "Hello, World!"
+}
+
 func TestHelloWorld(t *testing.T) {
 	expected := "Hello, World!"
 	if observed := HelloWorld(); observed != expected {
