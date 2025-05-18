@@ -25,6 +25,6 @@ func BenchmarkNth(b *testing.B) {
 		b.Skip("skipping benchmark in short mode.")
 	}
 	for i := 0; i < b.N; i++ {
-		Nth(10001)
+		Nth(i%30000 + 1)
 	}
 }
