@@ -219,6 +219,7 @@ func TestCategoryExpenses(t *testing.T) {
 		p        DaysPeriod
 		total    float64
 		wantErr  bool
+		errMsg   string
 	}{
 		{
 			name:     "returns error when no records with category found in any days period",
@@ -229,6 +230,7 @@ func TestCategoryExpenses(t *testing.T) {
 			},
 			total:   0,
 			wantErr: true,
+			errMsg:  "unknown category food",
 		},
 		{
 			name:     "returns total category expenses in the provided days period",
@@ -239,6 +241,7 @@ func TestCategoryExpenses(t *testing.T) {
 			},
 			total:   19.6,
 			wantErr: false,
+			errMsg:  "",
 		},
 		{
 			name:     "returns 0 when no category expenses found in the provided days period",
@@ -249,14 +252,15 @@ func TestCategoryExpenses(t *testing.T) {
 			},
 			total:   0,
 			wantErr: false,
+			errMsg:  "",
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
 			got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
-			if tC.wantErr && err == nil {
-				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but want a non-nil error",
-					testExpensesRecords, tC.category, tC.p, got, err)
+			if tC.wantErr && (err == nil || err.Error() != tC.errMsg) {
+				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but want a non-nil error with %v",
+					testExpensesRecords, tC.category, tC.p, got, err, tC.errMsg)
 			}
 
 			if !tC.wantErr && err != nil {
