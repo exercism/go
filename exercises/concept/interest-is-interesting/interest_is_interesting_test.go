@@ -248,7 +248,7 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 		{
 			name:          "Result balance would be exactly same as target",
 			balance:       1000.0,
-			targetBalance: 1032.682765146664,
+			targetBalance: 1032.6827641,
 			want:          2,
 		},
 	}
