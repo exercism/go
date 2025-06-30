@@ -173,6 +173,22 @@ func TestAlternateReadAndOverwrite(t *testing.T) {
 	tb.readFail()
 }
 
+func TestOverwriteEmptyBuffer(t *testing.T) {
+	tb := nb(2, t)
+	tb.overwrite('1')
+	tb.read('1')
+	tb.overwrite('2')
+	tb.overwrite('3')
+	tb.read('2')
+	tb.read('3')
+	tb.overwrite('1')
+	tb.overwrite('2')
+	tb.overwrite('3')
+	tb.read('2')
+	tb.read('3')
+	tb.readFail()
+}
+
 func BenchmarkOverwrite(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
