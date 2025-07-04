@@ -1580,9 +1580,9 @@
         ]
       },
       {
-        "slug": "minesweeper",
-        "name": "Minesweeper",
-        "uuid": "3bf049f8-7283-4370-aa0c-e10e99d9ef80",
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "c1900113-f4b2-4a04-a40e-89036e8aba9c",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -1593,6 +1593,16 @@
           "matrices",
           "transforming"
         ]
+      },
+      {
+        "slug": "minesweeper",
+        "name": "Minesweeper",
+        "uuid": "3bf049f8-7283-4370-aa0c-e10e99d9ef80",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4,
+        "topics": [],
+        "status": "deprecated"
       },
       {
         "slug": "queen-attack",
