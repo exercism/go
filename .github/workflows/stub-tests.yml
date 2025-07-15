@@ -16,14 +16,14 @@ jobs:
       fail-fast: false
       matrix:
         go-version: [1.21.x]
-        os: [ubuntu-22.04, windows-2022, macOS-latest]
+        os: [ubuntu-24.04, windows-2022, macOS-latest]
         test-arch: [amd64]
         race: ["-race"]
 
         include:
           - go-version: 1.21.x
             test-arch: "386"
-            os: ubuntu-22.04
+            os: ubuntu-24.04
             race: ""
           - go-version: 1.21.x
             test-arch: "386"
