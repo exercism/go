@@ -1,3 +1,3 @@
 module sieve
 
-go 1.18
+go 1.23
