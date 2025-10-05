@@ -8,21 +8,21 @@ import (
 func Answer(q string) (a int, ok bool) {
 	w := strings.Fields(q)
 	if len(w) < 3 { // length check for first two words and last word
-		return
+		return a, ok
 	}
 	if w[0] != "What" || w[1] != "is" { // first two words required
-		return
+		return a, ok
 	}
 	w = w[2:]
 	last := len(w) - 1
 	wl := w[last]
 	if wl[len(wl)-1] != '?' { // trailing ? required
-		return
+		return a, ok
 	}
 	w[last] = wl[:len(wl)-1]
 	a, err := strconv.Atoi(w[0]) // first word after preamble must be a number
 	if err != nil {
-		return
+		return a, ok
 	}
 	for i := 1; i < len(w); i++ { // remainder of q must alternate between op, number
 		op := w[i]
@@ -30,16 +30,16 @@ func Answer(q string) (a int, ok bool) {
 		switch op {
 		case "multiplied", "divided":
 			if i == len(w) || w[i] != "by" { // length check, required word
-				return
+				return a, ok
 			}
 			i++ // consume
 		}
 		if i == len(w) { // length check for operand
-			return
+			return a, ok
 		}
 		x, err := strconv.Atoi(w[i]) // must be a number
 		if err != nil {
-			return
+			return a, ok
 		}
 		switch op { // apply operator
 		case "plus":
@@ -51,7 +51,7 @@ func Answer(q string) (a int, ok bool) {
 		case "divided":
 			a /= x
 		default: // valid operator not found
-			return
+			return a, ok
 		}
 	}
 	return a, true

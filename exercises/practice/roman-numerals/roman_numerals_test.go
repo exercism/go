@@ -14,7 +14,6 @@ func TestRomanNumerals(t *testing.T) {
 				t.Fatalf("ToRomanNumeral(%d) = %q, want: %q", tc.input, actual, tc.expected)
 			}
 		})
-
 	}
 }
 

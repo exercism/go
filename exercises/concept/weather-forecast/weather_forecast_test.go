@@ -56,8 +56,8 @@ func testPackageComment(t *testing.T, node *ast.File) {
 	if ok, errStr := testComment("Package", packageName, packageComment, want); !ok {
 		t.Error(errStr)
 	}
-
 }
+
 func testIdentifierComment(t *testing.T, node *ast.GenDecl) {
 	t.Helper()
 
@@ -88,7 +88,6 @@ func testBlockIdentifierComment(t *testing.T, node *ast.ValueSpec) {
 	if ok, errStr := testComment("Variable", identifierName, identifierComment, want); !ok {
 		t.Error(errStr)
 	}
-
 }
 
 func testFunctionComment(t *testing.T, node *ast.FuncDecl) {
@@ -107,7 +106,6 @@ func testFunctionComment(t *testing.T, node *ast.FuncDecl) {
 }
 
 func testComment(entityKind, entityName, comment, wantedPrefix string) (ok bool, errString string) {
-
 	trimmedComment := strings.TrimSpace(comment)
 	lowerEntity := strings.ToLower(entityKind)
 

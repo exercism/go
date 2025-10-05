@@ -11,6 +11,7 @@ func TestRunLengthEncode(t *testing.T) {
 		})
 	}
 }
+
 func TestRunLengthDecode(t *testing.T) {
 	for _, tc := range decodeTests {
 		t.Run(tc.description, func(t *testing.T) {
@@ -20,6 +21,7 @@ func TestRunLengthDecode(t *testing.T) {
 		})
 	}
 }
+
 func TestRunLengthEncodeDecode(t *testing.T) {
 	for _, tc := range encodeDecodeTests {
 		t.Run(tc.description, func(t *testing.T) {

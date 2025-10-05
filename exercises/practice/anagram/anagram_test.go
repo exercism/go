@@ -16,7 +16,7 @@ var nonAsciiTestCases = []anagramTest{
 }
 
 func TestDetectAnagrams(t *testing.T) {
-	var allCases = append(testCases, nonAsciiTestCases...)
+	allCases := append(testCases, nonAsciiTestCases...)
 	for _, tc := range allCases {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Detect(tc.subject, tc.candidates)
@@ -41,7 +41,7 @@ func BenchmarkDetectAnagrams(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
-	var allCases = append(testCases, nonAsciiTestCases...)
+	allCases := append(testCases, nonAsciiTestCases...)
 	for i := 0; i < b.N; i++ {
 		for _, tt := range allCases {
 			Detect(tt.subject, tt.candidates)

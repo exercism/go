@@ -17,7 +17,8 @@ var testCases = []struct {
 | |
 |_|
    `,
-		out: []string{"0"}},
+		out: []string{"0"},
+	},
 	{
 		description: "single digit - 1",
 		in: `
@@ -25,7 +26,8 @@ var testCases = []struct {
   |
   |
    `,
-		out: []string{"1"}},
+		out: []string{"1"},
+	},
 	{
 		description: "single digit - 2",
 		in: `
@@ -33,7 +35,8 @@ var testCases = []struct {
  _|
 |_ 
    `,
-		out: []string{"2"}},
+		out: []string{"2"},
+	},
 	{
 		description: "single digit - 3",
 		in: `
@@ -41,7 +44,8 @@ var testCases = []struct {
  _|
  _|
    `,
-		out: []string{"3"}},
+		out: []string{"3"},
+	},
 	{
 		description: "single digit - 4",
 		in: `
@@ -49,7 +53,8 @@ var testCases = []struct {
 |_|
   |
    `,
-		out: []string{"4"}},
+		out: []string{"4"},
+	},
 	{
 		description: "single digit - 5",
 		in: `
@@ -57,7 +62,8 @@ var testCases = []struct {
 |_ 
  _|
    `,
-		out: []string{"5"}},
+		out: []string{"5"},
+	},
 	{
 		description: "single digit - 6",
 		in: `
@@ -65,7 +71,8 @@ var testCases = []struct {
 |_ 
 |_|
    `,
-		out: []string{"6"}},
+		out: []string{"6"},
+	},
 	{
 		description: "single digit - 7",
 		in: `
@@ -73,7 +80,8 @@ var testCases = []struct {
   |
   |
    `,
-		out: []string{"7"}},
+		out: []string{"7"},
+	},
 	{
 		description: "single digit - 8",
 		in: `
@@ -81,7 +89,8 @@ var testCases = []struct {
 |_|
 |_|
    `,
-		out: []string{"8"}},
+		out: []string{"8"},
+	},
 	{
 		description: "single digit - 9",
 		in: `
@@ -89,7 +98,8 @@ var testCases = []struct {
 |_|
  _|
    `,
-		out: []string{"9"}},
+		out: []string{"9"},
+	},
 	{
 		description: "multiple digits - 10",
 		in: `
@@ -97,7 +107,8 @@ var testCases = []struct {
   || |
   ||_|
       `,
-		out: []string{"10"}},
+		out: []string{"10"},
+	},
 	{
 		description: "multiple digits - 11",
 		in: `
@@ -105,7 +116,8 @@ var testCases = []struct {
 | |
 | |
    `,
-		out: []string{"?"}},
+		out: []string{"?"},
+	},
 	{
 		description: "multiple digits - 110101100",
 		in: `
@@ -113,7 +125,8 @@ var testCases = []struct {
   |  || |  || |  |  || || |
   |  ||_|  ||_|  |  ||_||_|
                            `,
-		out: []string{"110101100"}},
+		out: []string{"110101100"},
+	},
 	{
 		description: "multiple digits - 11?10?1?0",
 		in: `
@@ -121,14 +134,16 @@ var testCases = []struct {
   |  || |  || |     || || |
   |  | _|  ||_|  |  ||_||_|
                            `,
-		out: []string{"11?10?1?0"}},
+		out: []string{"11?10?1?0"},
+	},
 	{
 		in: `
     _  _     _  _  _  _  _  _ 
   | _| _||_||_ |_   ||_||_|| |
   ||_  _|  | _||_|  ||_| _||_|
                               `,
-		out: []string{"1234567890"}},
+		out: []string{"1234567890"},
+	},
 	{
 		description: "multiple numbers with multiple digits - 123 456 789",
 		in: `
@@ -144,7 +159,8 @@ var testCases = []struct {
   ||_||_|
   ||_| _|
          `,
-		out: []string{"123", "456", "789"}},
+		out: []string{"123", "456", "789"},
+	},
 }
 
 var _ = recognizeDigit // step 1.

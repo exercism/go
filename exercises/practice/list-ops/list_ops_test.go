@@ -76,9 +76,7 @@ func TestFold(t *testing.T) {
 				t.Fatalf("%s() = %d, want: %d\ntestcase name: %s", tc.property, got, tc.want, tc.name)
 			}
 		})
-
 	}
-
 }
 
 var filterTestCases = []struct {

@@ -41,8 +41,8 @@ func TestRemainingOvenTime(t *testing.T) {
 			}
 		})
 	}
-
 }
+
 func TestPreparationTime(t *testing.T) {
 	tests := []lasagnaTests{
 		{
@@ -64,7 +64,6 @@ func TestPreparationTime(t *testing.T) {
 				t.Errorf("PreparationTime(%d) = %d; want %d", tt.layers, got, tt.expected)
 			}
 		})
-
 	}
 }
 
@@ -89,6 +88,5 @@ func TestElapsedTime(t *testing.T) {
 				t.Errorf("ElapsedTime(%d, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
 			}
 		})
-
 	}
 }

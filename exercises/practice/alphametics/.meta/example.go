@@ -154,7 +154,7 @@ func permutations(iterable []int, r int) (perms [][]int) {
 	perms = make([][]int, 0, nperm)
 
 	if r > n {
-		return
+		return perms
 	}
 
 	indices := make([]int, n)
@@ -204,9 +204,9 @@ func permutations(iterable []int, r int) (perms [][]int) {
 		}
 
 		if i < 0 {
-			return
+			return perms
 		}
 
 	}
-	return
+	return perms
 }

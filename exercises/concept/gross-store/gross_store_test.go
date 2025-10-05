@@ -36,7 +36,6 @@ func TestUnits(t *testing.T) {
 			t.Errorf(`Unit "%s" should have quantity %d, found %d`, tt.name, tt.qty, qty)
 		}
 	}
-
 }
 
 func TestNewBill(t *testing.T) {
@@ -124,13 +123,15 @@ func TestRemoveItem(t *testing.T) {
 		remove   []expectedItem
 		expected bool
 	}{
-		{"Item Not found in bill",
+		{
+			"Item Not found in bill",
 			[]expectedItem{
 				{"papaya", "gross", 0, false},
 			},
 			false,
 		},
-		{"Invalid measurement unit",
+		{
+			"Invalid measurement unit",
 			[]expectedItem{
 				{"peas", "pound", 3, true},
 				{"tomato", "kilogram", 6, true},
@@ -138,7 +139,8 @@ func TestRemoveItem(t *testing.T) {
 			},
 			false,
 		},
-		{"Resulted qty less than 0",
+		{
+			"Resulted qty less than 0",
 			[]expectedItem{
 				{"peas", "half_of_a_dozen", 3, true},
 				{"tomato", "dozen", 6, true},
@@ -148,7 +150,8 @@ func TestRemoveItem(t *testing.T) {
 			},
 			false,
 		},
-		{"Should delete the item if 0",
+		{
+			"Should delete the item if 0",
 			[]expectedItem{
 				{"peas", "quarter_of_a_dozen", 0, false},
 				{"tomato", "half_of_a_dozen", 0, false},
@@ -159,7 +162,8 @@ func TestRemoveItem(t *testing.T) {
 			},
 			true,
 		},
-		{"Should reduce the qty",
+		{
+			"Should reduce the qty",
 			[]expectedItem{
 				{"chili", "half_of_a_dozen", 6, true},
 				{"cucumber", "dozen", 108, true},

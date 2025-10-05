@@ -3,7 +3,6 @@ package darts
 import "math"
 
 func Score(x, y float64) int {
-
 	dart_location := math.Sqrt(x*x + y*y)
 
 	switch {

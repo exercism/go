@@ -7,7 +7,7 @@ import (
 
 // getAllTestCasesFiltered recursively collects all test cases in a flattened list except the ones excluded by excludedTests.
 func getAllTestCasesFiltered(jSrc []byte, excludedTests map[string]struct{}) (*[]testCase, error) {
-	var result = &[]testCase{}
+	result := &[]testCase{}
 
 	// put the json object in an array to match the recursive structure
 	jSrc = append([]byte{'['}, append(jSrc, ']')...)
@@ -51,7 +51,7 @@ func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTes
 				return err
 			}
 
-			var tc = testCase{}
+			tc := testCase{}
 			err = json.Unmarshal(jTestCase, &tc)
 			if err != nil {
 				return err

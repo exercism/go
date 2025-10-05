@@ -5,8 +5,10 @@ import (
 	"testing"
 )
 
-var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
-var seen = map[string]int{}
+var (
+	namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
+	seen    = map[string]int{}
+)
 
 func New() *Robot { return new(Robot) }
 

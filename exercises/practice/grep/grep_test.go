@@ -48,7 +48,7 @@ func createFiles(content []string) (filenames []string) {
 		f.Close()
 		filenames = append(filenames, filename)
 	}
-	return
+	return filenames
 }
 
 func deleteFiles(filenames []string) {

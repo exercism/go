@@ -89,5 +89,4 @@ func Render(markdown string) string {
 		return html + "</p>"
 	}
 	return "<p>" + html + "</p>"
-
 }

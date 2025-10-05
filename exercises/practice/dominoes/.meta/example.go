@@ -89,7 +89,7 @@ func dominoPermutations(iterable []Domino, r int) (perms [][]Domino) {
 	n := len(pool)
 
 	if r > n {
-		return
+		return perms
 	}
 
 	indices := make([]int, n)
@@ -139,9 +139,9 @@ func dominoPermutations(iterable []Domino, r int) (perms [][]Domino) {
 		}
 
 		if i < 0 {
-			return
+			return perms
 		}
 
 	}
-	return
+	return perms
 }

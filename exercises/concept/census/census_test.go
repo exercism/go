@@ -29,7 +29,6 @@ func TestNewResident(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-
 			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
 
 			if !reflect.DeepEqual(resident, test.resident) {
@@ -127,7 +126,6 @@ func TestHasRequiredInfo(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-
 			if got := test.resident.HasRequiredInfo(); got != test.want {
 				t.Errorf("%#v.HasRequiredInfo() = %t, want %t", test.resident, got, test.want)
 			}
@@ -171,7 +169,6 @@ func TestDelete(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-
 			test.resident.Delete()
 
 			if test.resident.Name != "" || test.resident.Age != 0 || test.resident.Address != nil {
@@ -249,7 +246,6 @@ func TestCount(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-
 			if got := Count(test.residents); got != test.want {
 				t.Errorf("Count() = %d, want %d", got, test.want)
 			}

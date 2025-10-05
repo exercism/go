@@ -14,7 +14,6 @@ var modifierTests = []struct {
 	input       modifierTestInput
 	expected    int
 }{
-
 	{
 		description: "ability modifier for score 3 is -4",
 		input: modifierTestInput{

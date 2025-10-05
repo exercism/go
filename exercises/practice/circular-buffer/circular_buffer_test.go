@@ -8,8 +8,10 @@ import (
 // Here is one way you can have a test case verify that the expected
 // interfaces are implemented.
 
-var _ io.ByteReader = new(Buffer)
-var _ io.ByteWriter = new(Buffer)
+var (
+	_ io.ByteReader = new(Buffer)
+	_ io.ByteWriter = new(Buffer)
+)
 
 // testBuffer and methods support the tests, providing log and fail messages.
 

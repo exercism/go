@@ -7,7 +7,7 @@ func order(n int) (result int) {
 		result++
 		n /= 10
 	}
-	return
+	return result
 }
 
 // IsNumber returns true for an armstrong number

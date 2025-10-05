@@ -15,14 +15,16 @@ var _ fmt.Stringer = Dir(1729)
 
 // additional definitions used in step 2
 
-type Command byte // valid values are 'R', 'L', 'A'
-type RU int
-type Pos struct{ Easting, Northing RU }
-type Rect struct{ Min, Max Pos }
-type Step2Robot struct {
-	Dir
-	Pos
-}
+type (
+	Command    byte // valid values are 'R', 'L', 'A'
+	RU         int
+	Pos        struct{ Easting, Northing RU }
+	Rect       struct{ Min, Max Pos }
+	Step2Robot struct {
+		Dir
+		Pos
+	}
+)
 
 // additional definition used in step 3
 

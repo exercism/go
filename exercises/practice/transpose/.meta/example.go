@@ -21,5 +21,5 @@ func maxLen(m []string) (length int) {
 			length = len(l)
 		}
 	}
-	return
+	return length
 }

@@ -46,5 +46,4 @@ func BenchmarkResultOf(b *testing.B) {
 
 		b.StopTimer()
 	}
-
 }

@@ -6,8 +6,10 @@ import (
 )
 
 // DNA is a list of nucleotides
-type DNA string
-type Histogram map[byte]int
+type (
+	DNA       string
+	Histogram map[byte]int
+)
 
 const validNucleotides = "ACGT"
 

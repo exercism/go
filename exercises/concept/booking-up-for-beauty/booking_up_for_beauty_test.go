@@ -75,6 +75,7 @@ func TestDescription(t *testing.T) {
 		})
 	}
 }
+
 func TestAnniversaryDate(t *testing.T) {
 	tests := map[string]struct {
 		in   string

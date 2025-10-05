@@ -14,7 +14,6 @@ var ErrInvalidBase = errors.New("invalid base")
 // IsStopCodon checks whether a codon is a stop codon.
 func IsStopCodon(c string) bool {
 	return c == "UAA" || c == "UAG" || c == "UGA"
-
 }
 
 // FromCodon returns the protein for the given codon.
@@ -26,33 +25,19 @@ func FromCodon(c string) (string, error) {
 	}
 
 	switch c {
-	case
-		"AUG":
+	case "AUG":
 		return "Methionine", nil
-	case
-		"UUU",
-		"UUC":
+	case "UUU", "UUC":
 		return "Phenylalanine", nil
-	case
-		"UUA",
-		"UUG":
+	case "UUA", "UUG":
 		return "Leucine", nil
-	case
-		"UCU",
-		"UCC",
-		"UCA",
-		"UCG":
+	case "UCU", "UCC", "UCA", "UCG":
 		return "Serine", nil
-	case
-		"UAU",
-		"UAC":
+	case "UAU", "UAC":
 		return "Tyrosine", nil
-	case
-		"UGU",
-		"UGC":
+	case "UGU", "UGC":
 		return "Cysteine", nil
-	case
-		"UGG":
+	case "UGG":
 		return "Tryptophan", nil
 	default:
 		return "", ErrInvalidBase

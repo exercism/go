@@ -21,5 +21,5 @@ func Handshake(code uint) (h []string) {
 			code <<= 1
 		}
 	}
-	return
+	return h
 }

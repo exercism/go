@@ -58,7 +58,6 @@ func TestPreparationTime(t *testing.T) {
 				t.Errorf("PreparationTime(%v, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
 			}
 		})
-
 	}
 }
 
@@ -91,7 +90,8 @@ func TestQuantities(t *testing.T) {
 				"béchamel",
 				"noodles",
 				"sauce",
-				"mozzarella"},
+				"mozzarella",
+			},
 			expNoodles: 150,
 			expSauce:   0.4,
 		},
@@ -102,7 +102,8 @@ func TestQuantities(t *testing.T) {
 				"meat",
 				"mozzarella",
 				"sauce",
-				"mozzarella"},
+				"mozzarella",
+			},
 			expNoodles: 0,
 			expSauce:   0.4,
 		},
@@ -113,7 +114,8 @@ func TestQuantities(t *testing.T) {
 				"meat",
 				"mozzarella",
 				"noodles",
-				"mozzarella"},
+				"mozzarella",
+			},
 			expNoodles: 100,
 			expSauce:   0.0,
 		},

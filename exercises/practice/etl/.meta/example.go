@@ -11,5 +11,5 @@ func Transform(in legacy) (out map[string]int) {
 			out[strings.ToLower(val)] = key
 		}
 	}
-	return
+	return out
 }

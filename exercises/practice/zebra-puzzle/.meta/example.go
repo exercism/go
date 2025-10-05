@@ -30,7 +30,6 @@ type Solution struct {
 // SolvePuzzle returns a solution answering the two questions for the zebra puzzle,
 // which are "Who drinks water?", and "Who owns the zebra?"
 func SolvePuzzle() (solution Solution) {
-
 	// 1. There are five houses.
 	const (
 		firstHouse = iota // name/identity of each house
@@ -123,10 +122,11 @@ func SolvePuzzle() (solution Solution) {
 
 						solution = Solution{
 							DrinksWater: h[iWater].resident,
-							OwnsZebra:   h[iZebra].resident}
+							OwnsZebra:   h[iZebra].resident,
+						}
 
 						if !showHouseFacts {
-							return
+							return solution
 						}
 						h[iRed].color = "red"
 						h[iGreen].color = "green"
@@ -148,7 +148,7 @@ func SolvePuzzle() (solution Solution) {
 						h[iChesterfields].smokeBrand = "Chesterfields"
 						h[iLuckyStrike].smokeBrand = "LuckyStrike"
 						h[iParliaments].smokeBrand = "Parliaments"
-						var houseNames = [5]string{"first", "second", "middle", "fourth", "fifth"}
+						houseNames := [5]string{"first", "second", "middle", "fourth", "fifth"}
 
 						for p := firstHouse; p <= fifthHouse; p++ {
 							var separator string
@@ -164,13 +164,13 @@ func SolvePuzzle() (solution Solution) {
 								h[p].smokeBrand+".")
 						}
 
-						return
+						return solution
 					}
 				}
 			}
 		}
 	}
-	return
+	return solution
 }
 
 const showHouseFacts = false // when true, print all house facts for fun.
@@ -198,7 +198,7 @@ func permutations(iterable []int, r int) (perms [][]int) {
 	n := len(pool)
 
 	if r > n {
-		return
+		return perms
 	}
 
 	indices := make([]int, n)
@@ -248,9 +248,9 @@ func permutations(iterable []int, r int) (perms [][]int) {
 		}
 
 		if i < 0 {
-			return
+			return perms
 		}
 
 	}
-	return
+	return perms
 }

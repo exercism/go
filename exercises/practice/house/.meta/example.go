@@ -21,7 +21,7 @@ func Verse(v int) (verse string) {
 	i := len(songLines) - v
 	verse += buildVerse(songLines[i:], "This is ")
 	verse += "the house that Jack built."
-	return
+	return verse
 }
 
 func buildVerse(songLines []string, cur string) string {
@@ -40,7 +40,7 @@ func Song() (song string) {
 			song += "\n\n"
 		}
 	}
-	return
+	return song
 }
 
 // Iterative Solution

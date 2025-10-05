@@ -13,7 +13,7 @@ const (
 // Render translates markdown to HTML
 func Render(markdown string) string {
 	var itemList []string
-	var html = strings.Builder{}
+	html := strings.Builder{}
 	for _, line := range strings.Split(markdown, "\n") {
 		if line[0] == listItemMarker {
 			itemList = append(itemList, fmt.Sprintf("<li>%s</li>", renderHTML(line[2:])))

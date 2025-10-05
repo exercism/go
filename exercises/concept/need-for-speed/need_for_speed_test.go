@@ -32,7 +32,6 @@ func TestNewCar(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 func TestNewTrack(t *testing.T) {

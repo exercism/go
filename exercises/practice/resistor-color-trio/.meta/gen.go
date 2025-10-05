@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 type labelPropertyCase struct {
@@ -19,7 +18,6 @@ type labelPropertyCase struct {
 }
 
 func (v labelPropertyCase) InputColorsString() string {
-
 	s := "[]string{"
 
 	for _, c := range v.Input.Colors {

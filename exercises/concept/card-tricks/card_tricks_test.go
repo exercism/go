@@ -293,7 +293,7 @@ func slicesEqual(a, b []int) bool {
 }
 
 func copySlice(s []int) []int {
-	var slice = make([]int, len(s))
+	slice := make([]int, len(s))
 	copy(slice, s)
 	return slice
 }
