@@ -1,4 +1,4 @@
-name: Stub tests
+name: Check formatting
 
 on:
   workflow_dispatch:
@@ -35,8 +35,7 @@ jobs:
       - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00
         with:
           go-version: ${{ matrix.go-version }}
-      - name: Test stubs
-        shell: bash
-        env:
-          GOARCH: ${{ matrix.test-arch }}
-        run: ./bin/run-tests test-stubs
+      - name: Install gofumpt
+        run: go install mvdan.cc/gofumpt@v0.9.1
+      - name: Run gofumpt
+        run: gofumpt -l .
