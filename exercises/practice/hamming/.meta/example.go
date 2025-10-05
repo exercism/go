@@ -11,5 +11,5 @@ func Distance(a, b string) (d int, err error) {
 			d++
 		}
 	}
-	return
+	return d, err
 }

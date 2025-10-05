@@ -107,12 +107,13 @@ var decodeTestCases = []struct {
 	input         []byte
 	expected      []uint32
 	errorExpected bool
-}{{
-	description:   "one byte",
-	input:         []byte{0x7f},
-	expected:      []uint32{0x7f},
-	errorExpected: false,
-},
+}{
+	{
+		description:   "one byte",
+		input:         []byte{0x7f},
+		expected:      []uint32{0x7f},
+		errorExpected: false,
+	},
 	{
 		description:   "two bytes",
 		input:         []byte{0xc0, 0x0},

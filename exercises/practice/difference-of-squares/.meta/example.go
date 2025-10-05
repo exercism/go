@@ -12,7 +12,7 @@ func SumOfSquares(n int) (s int) {
 	for i := 1; i <= n; i++ {
 		s += i * i
 	}
-	return
+	return s
 }
 
 func Difference(n int) int {

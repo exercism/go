@@ -1,13 +1,12 @@
 package main
 
 import (
+	"../../../../gen"
 	"fmt"
 	"log"
 	"sort"
 	"strings"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {

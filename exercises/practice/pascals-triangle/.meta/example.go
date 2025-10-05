@@ -2,7 +2,7 @@ package pascal
 
 func Triangle(n int) (t [][]int) {
 	if n < 1 {
-		return
+		return t
 	}
 	t = make([][]int, n)
 	r := []int{1}

@@ -17,7 +17,6 @@ type maximumValueTest struct {
 }
 
 var maximumValueTests = []maximumValueTest{
-
 	{
 		description: "no items",
 		input: maximumValueCaseInput{
@@ -32,7 +31,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
 			Items: []Item{
-
 				{
 					Weight: 100,
 					Value:  1,
@@ -47,7 +45,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
 			Items: []Item{
-
 				{
 					Weight: 2,
 					Value:  5,
@@ -82,7 +79,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
 			Items: []Item{
-
 				{
 					Weight: 2,
 					Value:  20,
@@ -117,7 +113,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 10,
 			Items: []Item{
-
 				{
 					Weight: 5,
 					Value:  10,
@@ -147,7 +142,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 104,
 			Items: []Item{
-
 				{
 					Weight: 25,
 					Value:  350,
@@ -197,7 +191,6 @@ var maximumValueTests = []maximumValueTest{
 		input: maximumValueCaseInput{
 			MaximumWeight: 750,
 			Items: []Item{
-
 				{
 					Weight: 70,
 					Value:  135,

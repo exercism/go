@@ -60,7 +60,7 @@ func format(t [][]int) (s string) {
 	for _, r := range t {
 		s = fmt.Sprintf("%s\n%v", s, r)
 	}
-	return
+	return s
 }
 
 // BenchmarkPascalsTriangleFixed will generate Pascals Triangles against the

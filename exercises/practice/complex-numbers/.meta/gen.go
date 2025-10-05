@@ -1,12 +1,11 @@
 package main
 
 import (
+	"../../../../gen"
 	"fmt"
 	"log"
 	"math"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -14,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"real":      &[]Case{},
 		"imaginary": &[]Case{},
 		"mul":       &[]Case{},

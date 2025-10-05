@@ -114,7 +114,6 @@ func TestFixBirdCount(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 // testRunnerTaskID=3

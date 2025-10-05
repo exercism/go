@@ -83,7 +83,7 @@ func getDistinctBooks(books []int) (distinct, remaining []int) {
 		}
 	}
 
-	return
+	return distinct, remaining
 }
 
 func groupCost(groupSize int) int {

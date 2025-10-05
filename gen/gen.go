@@ -69,7 +69,7 @@ type testCase struct {
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
-	var githubToken = ""
+	githubToken := ""
 	flag.StringVar(&githubToken, "github_token", "", "Token used in Authorization header for Github")
 	flag.Parse()
 	// Determine the exercise directory.
@@ -134,7 +134,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return fmt.Errorf("failed to get filtered test-cases: %w", err)
 	}
 
-	var casesPerProperty = map[string][]testCase{}
+	casesPerProperty := map[string][]testCase{}
 
 	for _, testCase := range *allTestCases {
 		casesPerProperty[testCase.Property] = append(casesPerProperty[testCase.Property], testCase)
@@ -159,7 +159,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	var testData = testCase{}
+	testData := testCase{}
 	err = json.Unmarshal(jTestData, &testData)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal root test data: %v", err)

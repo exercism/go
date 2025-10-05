@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 type item struct {
@@ -27,7 +26,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"maximumValue": &[]maximumValueCase{},
 	}
 	if err := gen.Gen("knapsack", j, t); err != nil {

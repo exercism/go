@@ -66,7 +66,7 @@ func BenchmarkCanQueenAttack(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
-	var allTestCases = append(validTestCases, invalidTestCases...)
+	allTestCases := append(validTestCases, invalidTestCases...)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, test := range allTestCases {

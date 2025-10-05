@@ -12,7 +12,6 @@ type valueTestCase struct {
 }
 
 var valueTestCases = []valueTestCase{
-
 	{
 		description: "Brown and black",
 		input:       []string{"brown", "black"},

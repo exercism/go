@@ -5,7 +5,7 @@ func All(n int, s string) (r []string) {
 		r = append(r, s[i:n])
 		n++
 	}
-	return
+	return r
 }
 
 func UnsafeFirst(n int, s string) string {

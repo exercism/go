@@ -57,7 +57,6 @@ func StateOfTicTacToe(board []string) (State, error) {
 	}
 
 	return Draw, nil
-
 }
 
 func getCols(board []string) []string {

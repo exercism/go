@@ -136,7 +136,8 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 						"integers": []interface{}{64.0},
 					},
 					Expected: []interface{}{64.0},
-				}, {
+				},
+				{
 					UUID:        "dvthrd4-4514-4915-bac0-f7f585e0e59a",
 					Description: "test case 5",
 					Property:    "some other property",

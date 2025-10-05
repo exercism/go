@@ -117,7 +117,8 @@ var test5 = gardenTest{
 		{child: "Joseph", plants: []string{"violets", "clover", "violets", "grass"}, ok: true},
 		{child: "Kincaid", plants: []string{"grass", "clover", "clover", "grass"}, ok: true},
 		{child: "Larry", plants: []string{"grass", "violets", "clover", "violets"}, ok: true},
-	}}
+	},
+}
 
 var (
 	test6names = []string{"Samantha", "Patricia", "Xander", "Roger"}

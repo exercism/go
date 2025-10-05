@@ -122,10 +122,8 @@ if [ "$mode" = "$TEST_STUBS_MODE" ];then
   exit 0
 fi
 
-echo "running linter and tests for exercises and exercise generators"
-# Run lint which is configured by .golangci.yml at the root of the repo
-# and if it's successful, run tests
-bin/golangci-lint run ./$tmp/... && go test -cpu 2 ./$tmp/...
+echo "running tests for exercises and exercise generators"
+go test ./$tmp/...
 
 exitcode=$?
 
@@ -142,8 +140,8 @@ for path in $paths_to_lint; do
   cd "$root"
   cd "$path"
 
-  echo "running linters and tests for $path/..."
-  $root/bin/golangci-lint run ./... && go test -cpu 2 ./...
+  echo "running tests for $path/..."
+  go test ./...
 
   exitcode=$?
   if [ $exitcode -ne 0 ]

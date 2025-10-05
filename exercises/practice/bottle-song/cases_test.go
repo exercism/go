@@ -15,7 +15,6 @@ var testCases = []struct {
 	input       bottleSongInput
 	expected    []string
 }{
-
 	{
 		description: "first generic verse",
 		input: bottleSongInput{

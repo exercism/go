@@ -8,7 +8,6 @@ import (
 )
 
 func IsValidISBN(isbn string) bool {
-
 	isbn = dropHyphen(isbn)
 
 	ary, err := strToSlice(isbn)
@@ -31,12 +30,11 @@ func dropHyphen(isbn string) string {
 }
 
 func strToSlice(isbn string) (result []int, err error) {
-
 	for pos, char := range isbn {
 		switch {
 		case unicode.IsLetter(char) && (char != 'X' || pos != 9):
 			err = errors.New("invalid character")
-			return
+			return result, err
 		case char == 'X':
 			result = append(result, 10)
 		default:
@@ -44,7 +42,7 @@ func strToSlice(isbn string) (result []int, err error) {
 			result = append(result, i)
 		}
 	}
-	return
+	return result, err
 }
 
 func calcCheckDigit(isbn []int) bool {

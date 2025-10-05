@@ -265,12 +265,13 @@ var equalTestCases = []struct {
 	description string
 	c1, c2      hm
 	expected    bool
-}{{
-	description: "clocks with same time",
-	c1:          hm{15, 37},
-	c2:          hm{15, 37},
-	expected:    true,
-},
+}{
+	{
+		description: "clocks with same time",
+		c1:          hm{15, 37},
+		c2:          hm{15, 37},
+		expected:    true,
+	},
 	{
 		description: "clocks a minute apart",
 		c1:          hm{15, 36},

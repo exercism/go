@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]interface{}{
 		"recite": &[]testCase{},
 	}
 	if err := gen.Gen("bottle-song", j, t); err != nil {

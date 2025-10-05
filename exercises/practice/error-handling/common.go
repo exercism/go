@@ -35,7 +35,6 @@ func (e FrobError) Error() string {
 
 // Resource defines an interface for a resource.
 type Resource interface {
-
 	// Resource is using composition to inherit the requirements of the io.Closer
 	// interface. What this means is that a Resource implementation will be
 	// expected to have a .Close() method too.

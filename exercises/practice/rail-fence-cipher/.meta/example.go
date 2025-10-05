@@ -11,7 +11,7 @@ type pair struct {
 
 func pattern(rails, size int) []pair {
 	var pairs []pair
-	var v, direction = 0, 1
+	v, direction := 0, 1
 	for i := 0; i < size; i++ {
 		pairs = append(pairs, pair{index: i, value: v})
 		v += direction

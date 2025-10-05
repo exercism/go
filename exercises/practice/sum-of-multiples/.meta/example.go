@@ -11,5 +11,5 @@ func SumMultiples(limit int, divisors ...int) (sum int) {
 			}
 		}
 	}
-	return
+	return sum
 }

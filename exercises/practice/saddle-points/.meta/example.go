@@ -87,7 +87,7 @@ func (m *Matrix) Saddle() (p []Pair) {
 			}
 		}
 	}
-	return
+	return p
 }
 
 // min returns indexes of s that are the minimum value

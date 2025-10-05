@@ -10,7 +10,6 @@ var testCases = []struct {
 	input          [][]int
 	expectedOutput []Pair
 }{
-
 	{
 		description: "Can identify single saddle point",
 		input: [][]int{
