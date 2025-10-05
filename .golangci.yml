@@ -1,33 +1,51 @@
-run:
-  timeout: 8m
+version: "2"
 linters:
-  disable-all: true
+  default: none
   enable:
     - goconst
     - gocritic
     - gocyclo
-    - goimports
-    - gofmt
     - gosec
-    - gosimple
     - govet
     - staticcheck
-linters-settings:
-  gocritic:
-    disabled-checks:
-      - yodaStyleExpr
-    enabled-tags:
-      - diagnostic
-      - style
-      - performance
-      - opinionated
-    settings:
-      hugeParam:
-        sizeThreshold: 384
-      rangeValCopy:
-        sizeThreshold: 384
-  gofmt:
-    simplify: true
-  gosec:
-    excludes:
-      - G404 # Insecure random number source (rand)
+  settings:
+    gocritic:
+      disabled-checks:
+        - yodaStyleExpr
+      enabled-tags:
+        - diagnostic
+        - style
+        - performance
+        - opinionated
+      settings:
+        hugeParam:
+          sizeThreshold: 384
+        rangeValCopy:
+          sizeThreshold: 384
+    gosec:
+      excludes:
+        - G404
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    gofmt:
+      simplify: true
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
