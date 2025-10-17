@@ -20,7 +20,7 @@ There is also support for shuffling a slice (or other data structures):
 
 ```go
 x := []string{"a", "b", "c", "d", "e"}
-// shuffling the slice put its elements into a random order
+// shuffling the slice puts its elements into a random order
 rand.Shuffle(len(x), func(i, j int) {
 	x[i], x[j] = x[j], x[i]
 })
