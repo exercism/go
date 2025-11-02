@@ -162,8 +162,6 @@ func TestNew(t *testing.T) {
 				}
 			case err != nil:
 				t.Fatalf("New(%q) returned error %q.  Error not expected", tc.in, err)
-			case got == nil:
-				t.Fatalf("New(%q) = %v, want non-nil *Matrix", tc.in, got)
 			}
 		})
 	}
@@ -282,7 +280,7 @@ func BenchmarkNew(b *testing.B) {
 			b.Fatalf("Failed to create the matrix: %v", err)
 		}
 	}
-	if matrix == nil {
+	if reflect.DeepEqual(matrix, Matrix{}) {
 		b.Fatalf("No matrix parsed")
 	}
 }
