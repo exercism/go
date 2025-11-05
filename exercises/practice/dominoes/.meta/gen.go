@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"canChain": &[]testCase{},
 	}
 	if err := gen.Gen("dominoes", j, t); err != nil {

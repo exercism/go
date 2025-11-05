@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"real":      &[]Case{},
 		"imaginary": &[]Case{},
 		"mul":       &[]Case{},
@@ -34,11 +34,11 @@ type Case struct {
 	Description string `json:"description"`
 	Property    string `json:"property"`
 	Input       struct {
-		Z  interface{} `json:"z"`
-		Z1 interface{} `json:"z1"`
-		Z2 interface{} `json:"z2"`
+		Z  any `json:"z"`
+		Z1 any `json:"z1"`
+		Z2 any `json:"z2"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 type complexNumber struct {
@@ -88,12 +88,12 @@ func (c Case) GetExpected() complexNumber {
 	return getComplex(c.Expected)
 }
 
-func getComplex(in interface{}) complexNumber {
+func getComplex(in any) complexNumber {
 	v, ok := in.(float64)
 	if ok {
 		return complexNumber{A: v}
 	}
-	s, ok := in.([]interface{})
+	s, ok := in.([]any)
 	if !ok {
 		panic(fmt.Sprintf("unknown value for field: %v", in))
 	}

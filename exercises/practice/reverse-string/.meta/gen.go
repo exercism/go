@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"reverse": &[]testCase{},
 	}
 	if err := gen.Gen("reverse-string", j, t); err != nil {

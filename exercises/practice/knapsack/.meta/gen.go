@@ -26,7 +26,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"maximumValue": &[]maximumValueCase{},
 	}
 	if err := gen.Gen("knapsack", j, t); err != nil {

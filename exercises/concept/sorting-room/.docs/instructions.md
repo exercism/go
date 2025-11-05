@@ -61,7 +61,7 @@ NOTE: we should use the `ExtractFancyNumber` function!
 
 ## 5. Implement `DescribeAnything` which uses them all
 
-This is the main function Jen needs which takes any input (the empty interface means any value at all: `interface{}`).
+This is the main function Jen needs which takes any input.
 `DescribeAnything` should delegate to the other functions based on the type of the value passed in.
 More specifically:
 

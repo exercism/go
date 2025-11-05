@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"age": &[]testCase{},
 	}
 	if err := gen.Gen("space-age", j, t); err != nil {
@@ -25,7 +25,7 @@ type testCase struct {
 		Planet  string  `json:"planet"`
 		Seconds float64 `json:"seconds"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() float64 {

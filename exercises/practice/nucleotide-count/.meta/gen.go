@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"nucleotideCounts": &[]testCase{},
 	}
 	if err := gen.Gen("nucleotide-count", j, t); err != nil {
@@ -27,7 +27,7 @@ type testCase struct {
 	Input       struct {
 		Strand string `json:"strand"`
 	} `json:"input"`
-	Expected map[string]interface{} `json:"expected"`
+	Expected map[string]any `json:"expected"`
 }
 
 func (t testCase) ErrorExpected() bool {

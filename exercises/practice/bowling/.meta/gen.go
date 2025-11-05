@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"roll":  &[]Case{},
 		"score": &[]Case{},
 	}
@@ -26,7 +26,7 @@ type Case struct {
 		PreviousRolls []int `json:"previousRolls"`
 		Roll          int   `json:"roll"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t Case) Score() int {
@@ -44,7 +44,7 @@ func (t Case) Valid() bool {
 
 func (t Case) ExplainText() string {
 	if !t.Valid() {
-		m, ok := t.Expected.(map[string]interface{})
+		m, ok := t.Expected.(map[string]any)
 		if !ok {
 			return ""
 		}

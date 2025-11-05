@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"roman": &[]testCase{},
 	}
 	if err := gen.Gen("roman-numerals", j, t); err != nil {

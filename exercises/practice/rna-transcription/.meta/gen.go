@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"toRna": &[]testCase{},
 	}
 	if err := gen.Gen("rna-transcription", j, t); err != nil {

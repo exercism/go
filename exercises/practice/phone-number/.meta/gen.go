@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"clean": &[]testCase{},
 	}
 	if err := gen.Gen("phone-number", j, t); err != nil {
@@ -25,11 +25,11 @@ type testCase struct {
 	Input       struct {
 		Phrase string `json:"phrase"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectError() bool {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		_, gotError := v["error"]
 		return gotError

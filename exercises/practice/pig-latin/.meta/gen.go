@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"translate": &[]testCase{},
 	}
 	if err := gen.Gen("pig-latin", j, t); err != nil {

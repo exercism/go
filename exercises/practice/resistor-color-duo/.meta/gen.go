@@ -30,7 +30,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"value": &[]valuePropertyCase{},
 	}
 	if err := gen.Gen("resistor-color-duo", j, t); err != nil {

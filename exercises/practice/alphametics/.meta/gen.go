@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"solve": &[]testCase{},
 	}
 	if err := gen.Gen("alphametics", j, t); err != nil {

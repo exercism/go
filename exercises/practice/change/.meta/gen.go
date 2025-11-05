@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"findFewestCoins": &[]testCase{},
 	}
 	if err := gen.Gen("change", j, t); err != nil {
@@ -25,11 +25,11 @@ type testCase struct {
 		Coins  []int `json:"coins"`
 		Target int   `json:"target"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValues() []int {
-	values, ok := t.Expected.([]interface{})
+	values, ok := t.Expected.([]any)
 	if !ok {
 		return nil
 	}

@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"isArmstrongNumber": &[]testCase{},
 	}
 	if err := gen.Gen("armstrong-numbers", j, t); err != nil {

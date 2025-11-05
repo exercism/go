@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"isValid": &[]testCase{},
 	}
 	if err := gen.Gen("isbn-verifier", j, t); err != nil {

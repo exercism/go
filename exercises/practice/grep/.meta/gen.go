@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"grep": &[]testCase{},
 	}
 	if err := gen.Gen("grep", j, t); err != nil {
