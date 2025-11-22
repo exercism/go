@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"rebase": &[]testCase{},
 	}
 	if err := gen.Gen("all-your-base", j, t); err != nil {
@@ -26,11 +26,11 @@ type testCase struct {
 		Digits     []int `json:"digits"`
 		OutputBase int   `json:"outputBase"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (o testCase) Result() []int {
-	s, ok := o.Expected.([]interface{})
+	s, ok := o.Expected.([]any)
 	if !ok {
 		return nil
 	}
@@ -43,7 +43,7 @@ func (o testCase) Result() []int {
 }
 
 func (o testCase) Err() string {
-	m, ok := o.Expected.(map[string]interface{})
+	m, ok := o.Expected.(map[string]any)
 	if !ok {
 		return ""
 	}

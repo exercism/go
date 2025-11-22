@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"search": &[]testCase{},
 	}
 	if err := gen.Gen("word-search", j, t); err != nil {

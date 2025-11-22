@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"largestProduct": &[]testCase{},
 	}
 	if err := gen.Gen("largest-series-product", j, t); err != nil {
@@ -25,7 +25,7 @@ type testCase struct {
 		Digits string `json:"digits"`
 		Span   int    `json:"span"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() int {
@@ -37,7 +37,7 @@ func (t testCase) ExpectedValue() int {
 }
 
 func (t testCase) ExpectedError() string {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		e, ok := v["error"].(string)
 		if ok {

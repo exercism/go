@@ -33,7 +33,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"label": &[]labelPropertyCase{},
 	}
 	if err := gen.Gen("resistor-color-trio", j, t); err != nil {

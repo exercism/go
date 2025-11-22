@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"empty":        &[]testCase{},
 		"contains":     &[]testCase{},
 		"subset":       &[]testCase{},
@@ -36,7 +36,7 @@ type testCase struct {
 		Set2    []int `json:"set2"`    // "subset"/"disjoint"/"equal"/"difference"/"intersection"/"union" cases
 		Element int   `json:"element"` // "contains"/"add" cases
 	}
-	Expected interface{} `json:"expected"` // bool or []int
+	Expected any `json:"expected"` // bool or []int
 }
 
 // There's some extra complexity because canonical-data.json uses integers, but we are using strings.
@@ -68,7 +68,7 @@ func (t testCase) GetExpectedBool() bool {
 }
 
 func (t testCase) GetExpectedList() []string {
-	v, ok := t.Expected.([]interface{})
+	v, ok := t.Expected.([]any)
 	if !ok {
 		log.Fatal("[ERROR] invalid type for field `expected`")
 	}

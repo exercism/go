@@ -33,7 +33,7 @@ A type assertion allows us to extract the interface value's underlying concrete 
 For example:
 
 ```go
-var input interface{} = 12
+var input any = 12
 number := input.(int)
 ```
 
@@ -57,7 +57,7 @@ It has the same syntax as a type assertion (`interfaceVariable.(concreteType)`),
 Here is an example:
 
 ```go
-var i interface{} = 12 // try: 12.3, true, int64(12), []int{}, map[string]int{}
+var i any = 12 // try: 12.3, true, int64(12), []int{}, map[string]int{}
 
 switch v := i.(type) {
 case int:

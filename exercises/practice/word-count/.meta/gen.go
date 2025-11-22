@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"countWords": &[]testCase{},
 	}
 	if err := gen.Gen("word-count", j, t); err != nil {

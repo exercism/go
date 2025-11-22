@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"classify": &[]testCase{},
 	}
 	if err := gen.Gen("perfect-numbers", j, t); err != nil {
@@ -24,7 +24,7 @@ type testCase struct {
 	Input       struct {
 		Number int `json:"number"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) Valid() bool {

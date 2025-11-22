@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"distance": &[]testCase{},
 	}
 	if err := gen.Gen("hamming", j, t); err != nil {
@@ -25,7 +25,7 @@ type testCase struct {
 		Strand1 string `json:"strand1"`
 		Strand2 string `json:"strand2"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() int {

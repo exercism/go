@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"abbreviate": &[]testCase{},
 	}
 	if err := gen.Gen("acronym", j, t); err != nil {

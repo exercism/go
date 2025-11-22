@@ -3,9 +3,9 @@ package flatten
 import "reflect"
 
 // Flatten recursively flattens slices and ignores nil values
-func Flatten(nested interface{}) []interface{} {
-	flattened := []interface{}{}
-	nestedSlice, ok := nested.([]interface{})
+func Flatten(nested any) []any {
+	flattened := []any{}
+	nestedSlice, ok := nested.([]any)
 	if !ok {
 		return flattened
 	}

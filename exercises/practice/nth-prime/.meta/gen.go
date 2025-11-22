@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"prime": &[]testCase{},
 	}
 	if err := gen.Gen("nth-prime", j, t); err != nil {
@@ -24,7 +24,7 @@ type testCase struct {
 	Input       struct {
 		Number int `json:"number"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) GetExpectedValue() int {
@@ -36,7 +36,7 @@ func (t testCase) GetExpectedValue() int {
 }
 
 func (t testCase) GetError() string {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		e, ok := v["error"].(string)
 		if ok {

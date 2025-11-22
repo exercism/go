@@ -67,7 +67,7 @@ It only needs to have all the necessary methods defined.
 
 There is one very special interface type in Go, the **empty interface** type that contains zero methods.
 The empty interface is written like this: `interface{}`.
-In Go 1.18 or higher, `any` can be used as well. It was defined as an alias.
+Since Go 1.18, `any` is an alias for `interface{}`, and is more commonly used.
 
 Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.

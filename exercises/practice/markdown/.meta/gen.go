@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"parse": &[]testCase{},
 	}
 	if err := gen.Gen("markdown", j, t); err != nil {

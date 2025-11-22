@@ -6,13 +6,13 @@ import (
 
 // Node is a node in a linked list.
 type Node struct {
-	Value interface{}
+	Value any
 	next  *Node
 	prev  *Node
 }
 
 // NewNode constructs a new Node with the given value & no next/prev links.
-func NewNode(v interface{}) *Node {
+func NewNode(v any) *Node {
 	return &Node{
 		Value: v,
 		next:  nil,
@@ -55,7 +55,7 @@ type List struct {
 }
 
 // NewList constructs a doubly linked list from a sequence of integers.
-func NewList(elements ...interface{}) *List {
+func NewList(elements ...any) *List {
 	ll := &List{
 		head: nil,
 		tail: nil,
@@ -109,7 +109,7 @@ func (ll *List) Reverse() {
 }
 
 // Unshift pushes a new value before Head.
-func (ll *List) Unshift(v interface{}) {
+func (ll *List) Unshift(v any) {
 	n := NewNode(v)
 
 	switch {
@@ -127,7 +127,7 @@ func (ll *List) Unshift(v interface{}) {
 }
 
 // Push pushes a new value after Tail.
-func (ll *List) Push(v interface{}) {
+func (ll *List) Push(v any) {
 	n := NewNode(v)
 
 	switch {
@@ -147,7 +147,7 @@ func (ll *List) Push(v interface{}) {
 var ErrEmptyList = errors.New("list is empty")
 
 // Shift posp the element at Head. It returns error if the linked list is empty.
-func (ll *List) Shift() (interface{}, error) {
+func (ll *List) Shift() (any, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
@@ -169,7 +169,7 @@ func (ll *List) Shift() (interface{}, error) {
 }
 
 // Pop pops the element at Tail. It returns error if the linked list is empty.
-func (ll *List) Pop() (interface{}, error) {
+func (ll *List) Pop() (any, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")

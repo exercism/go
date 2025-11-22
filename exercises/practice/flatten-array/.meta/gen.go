@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"flatten": &[]testCase{},
 	}
 	if err := gen.Gen("flatten-array", j, t); err != nil {
@@ -22,9 +22,9 @@ func main() {
 type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
-		Array interface{} `json:"array"`
+		Array any `json:"array"`
 	} `json:"input"`
-	Expected []interface{} `json:"expected"`
+	Expected []any `json:"expected"`
 }
 
 // Template to generate test cases.
@@ -34,8 +34,8 @@ var tmpl = `package flatten
 
 var testCases = []struct {
 	description	string
-	input		interface{}
-	expected	[]interface{}
+	input		any
+	expected	[]any
 }{ {{range .J.flatten}}
 {
 	description:	{{printf "%q"  .Description}},

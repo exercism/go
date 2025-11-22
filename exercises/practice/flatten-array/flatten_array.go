@@ -1,5 +1,5 @@
 package flatten
 
-func Flatten(nested interface{}) []interface{} {
+func Flatten(nested any) []any {
 	panic("Please implement the Flatten function")
 }

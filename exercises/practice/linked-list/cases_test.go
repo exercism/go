@@ -4,129 +4,129 @@ import "testing"
 
 var newListTestCases = []struct {
 	name     string
-	in       []interface{}
-	expected []interface{}
+	in       []any
+	expected []any
 }{
 	{
 		name:     "from 5 elements",
-		in:       []interface{}{1, 2, 3, 4, 5},
-		expected: []interface{}{1, 2, 3, 4, 5},
+		in:       []any{1, 2, 3, 4, 5},
+		expected: []any{1, 2, 3, 4, 5},
 	},
 	{
 		name:     "from 2 elements",
-		in:       []interface{}{1, 2},
-		expected: []interface{}{1, 2},
+		in:       []any{1, 2},
+		expected: []any{1, 2},
 	},
 	{
 		name:     "from no element",
-		in:       []interface{}{},
-		expected: []interface{}{},
+		in:       []any{},
+		expected: []any{},
 	},
 	{
 		name:     "from 1 element",
-		in:       []interface{}{999},
-		expected: []interface{}{999},
+		in:       []any{999},
+		expected: []any{999},
 	},
 }
 
 var reverseTestCases = []struct {
 	name     string
-	in       []interface{}
-	expected []interface{}
+	in       []any
+	expected []any
 }{
 	{
 		name:     "from 5 elements",
-		in:       []interface{}{1, 2, 3, 4, 5},
-		expected: []interface{}{5, 4, 3, 2, 1},
+		in:       []any{1, 2, 3, 4, 5},
+		expected: []any{5, 4, 3, 2, 1},
 	},
 	{
 		name:     "from 2 elements",
-		in:       []interface{}{1, 2},
-		expected: []interface{}{2, 1},
+		in:       []any{1, 2},
+		expected: []any{2, 1},
 	},
 	{
 		name:     "from no element",
-		in:       []interface{}{},
-		expected: []interface{}{},
+		in:       []any{},
+		expected: []any{},
 	},
 	{
 		name:     "from 1 element",
-		in:       []interface{}{999},
-		expected: []interface{}{999},
+		in:       []any{999},
+		expected: []any{999},
 	},
 }
 
 var pushPopTestCases = []struct {
 	name     string
-	in       []interface{}
+	in       []any
 	actions  []checkedAction
-	expected []interface{}
+	expected []any
 }{
 	{
 		name: "PushFront only",
-		in:   []interface{}{},
+		in:   []any{},
 		actions: []checkedAction{
 			unshift(4),
 			unshift(3),
 			unshift(2),
 			unshift(1),
 		},
-		expected: []interface{}{1, 2, 3, 4},
+		expected: []any{1, 2, 3, 4},
 	},
 	{
 		name: "PushBack only",
-		in:   []interface{}{},
+		in:   []any{},
 		actions: []checkedAction{
 			push(1),
 			push(2),
 			push(3),
 			push(4),
 		},
-		expected: []interface{}{1, 2, 3, 4},
+		expected: []any{1, 2, 3, 4},
 	},
 	{
 		name: "PopFront only, pop some elements",
-		in:   []interface{}{1, 2, 3, 4},
+		in:   []any{1, 2, 3, 4},
 		actions: []checkedAction{
 			shift(1, nil),
 			shift(2, nil),
 		},
-		expected: []interface{}{3, 4},
+		expected: []any{3, 4},
 	},
 	{
 		name: "PopFront only, pop till empty",
-		in:   []interface{}{1, 2, 3, 4},
+		in:   []any{1, 2, 3, 4},
 		actions: []checkedAction{
 			shift(1, nil),
 			shift(2, nil),
 			shift(3, nil),
 			shift(4, nil),
 		},
-		expected: []interface{}{},
+		expected: []any{},
 	},
 	{
 		name: "PopBack only, pop some elements",
-		in:   []interface{}{1, 2, 3, 4},
+		in:   []any{1, 2, 3, 4},
 		actions: []checkedAction{
 			pop(4, nil),
 			pop(3, nil),
 		},
-		expected: []interface{}{1, 2},
+		expected: []any{1, 2},
 	},
 	{
 		name: "PopBack only, pop till empty",
-		in:   []interface{}{1, 2, 3, 4},
+		in:   []any{1, 2, 3, 4},
 		actions: []checkedAction{
 			pop(4, nil),
 			pop(3, nil),
 			pop(2, nil),
 			pop(1, nil),
 		},
-		expected: []interface{}{},
+		expected: []any{},
 	},
 	{
 		name: "mixed actions",
-		in:   []interface{}{2, 3},
+		in:   []any{2, 3},
 		actions: []checkedAction{
 			unshift(1),
 			push(4),
@@ -139,26 +139,26 @@ var pushPopTestCases = []struct {
 			unshift(9),
 			push(6),
 		},
-		expected: []interface{}{9, 8, 7, 6},
+		expected: []any{9, 8, 7, 6},
 	},
 }
 
 // checkedAction calls a function of the linked list and (possibly) checks the result
 type checkedAction func(*testing.T, *List)
 
-func unshift(arg interface{}) checkedAction {
+func unshift(arg any) checkedAction {
 	return func(t *testing.T, ll *List) {
 		ll.Unshift(arg)
 	}
 }
 
-func push(arg interface{}) checkedAction {
+func push(arg any) checkedAction {
 	return func(t *testing.T, ll *List) {
 		ll.Push(arg)
 	}
 }
 
-func shift(expected interface{}, expectedErr error) checkedAction {
+func shift(expected any, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *List) {
 		v, err := ll.Shift()
 		if err != expectedErr {
@@ -171,7 +171,7 @@ func shift(expected interface{}, expectedErr error) checkedAction {
 	}
 }
 
-func pop(expected interface{}, expectedErr error) checkedAction {
+func pop(expected any, expectedErr error) checkedAction {
 	return func(t *testing.T, ll *List) {
 		v, err := ll.Pop()
 		if err != expectedErr {

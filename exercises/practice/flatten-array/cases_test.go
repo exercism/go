@@ -7,62 +7,62 @@ package flatten
 
 var testCases = []struct {
 	description string
-	input       interface{}
-	expected    []interface{}
+	input       any
+	expected    []any
 }{
 	{
 		description: "empty",
-		input:       []interface{}{},
-		expected:    []interface{}{},
+		input:       []any{},
+		expected:    []any{},
 	},
 	{
 		description: "no nesting",
-		input:       []interface{}{0, 1, 2},
-		expected:    []interface{}{0, 1, 2},
+		input:       []any{0, 1, 2},
+		expected:    []any{0, 1, 2},
 	},
 	{
 		description: "flattens a nested array",
-		input:       []interface{}{[]interface{}{[]interface{}{}}},
-		expected:    []interface{}{},
+		input:       []any{[]any{[]any{}}},
+		expected:    []any{},
 	},
 	{
 		description: "flattens array with just integers present",
-		input:       []interface{}{1, []interface{}{2, 3, 4, 5, 6, 7}, 8},
-		expected:    []interface{}{1, 2, 3, 4, 5, 6, 7, 8},
+		input:       []any{1, []any{2, 3, 4, 5, 6, 7}, 8},
+		expected:    []any{1, 2, 3, 4, 5, 6, 7, 8},
 	},
 	{
 		description: "5 level nesting",
-		input:       []interface{}{0, 2, []interface{}{[]interface{}{2, 3}, 8, 100, 4, []interface{}{[]interface{}{[]interface{}{50}}}}, -2},
-		expected:    []interface{}{0, 2, 2, 3, 8, 100, 4, 50, -2},
+		input:       []any{0, 2, []any{[]any{2, 3}, 8, 100, 4, []any{[]any{[]any{50}}}}, -2},
+		expected:    []any{0, 2, 2, 3, 8, 100, 4, 50, -2},
 	},
 	{
 		description: "6 level nesting",
-		input:       []interface{}{1, []interface{}{2, []interface{}{[]interface{}{3}}, []interface{}{4, []interface{}{[]interface{}{5}}}, 6, 7}, 8},
-		expected:    []interface{}{1, 2, 3, 4, 5, 6, 7, 8},
+		input:       []any{1, []any{2, []any{[]any{3}}, []any{4, []any{[]any{5}}}, 6, 7}, 8},
+		expected:    []any{1, 2, 3, 4, 5, 6, 7, 8},
 	},
 	{
 		description: "null values are omitted from the final result",
-		input:       []interface{}{1, 2, interface{}(nil)},
-		expected:    []interface{}{1, 2},
+		input:       []any{1, 2, any(nil)},
+		expected:    []any{1, 2},
 	},
 	{
 		description: "consecutive null values at the front of the list are omitted from the final result",
-		input:       []interface{}{interface{}(nil), interface{}(nil), 3},
-		expected:    []interface{}{3},
+		input:       []any{any(nil), any(nil), 3},
+		expected:    []any{3},
 	},
 	{
 		description: "consecutive null values in the middle of the list are omitted from the final result",
-		input:       []interface{}{1, interface{}(nil), interface{}(nil), 4},
-		expected:    []interface{}{1, 4},
+		input:       []any{1, any(nil), any(nil), 4},
+		expected:    []any{1, 4},
 	},
 	{
 		description: "6 level nest list with null values",
-		input:       []interface{}{0, 2, []interface{}{[]interface{}{2, 3}, 8, []interface{}{[]interface{}{100}}, interface{}(nil), []interface{}{[]interface{}{interface{}(nil)}}}, -2},
-		expected:    []interface{}{0, 2, 2, 3, 8, 100, -2},
+		input:       []any{0, 2, []any{[]any{2, 3}, 8, []any{[]any{100}}, any(nil), []any{[]any{any(nil)}}}, -2},
+		expected:    []any{0, 2, 2, 3, 8, 100, -2},
 	},
 	{
 		description: "all values in nested list are null",
-		input:       []interface{}{interface{}(nil), []interface{}{[]interface{}{[]interface{}{interface{}(nil)}}}, interface{}(nil), interface{}(nil), []interface{}{[]interface{}{interface{}(nil), interface{}(nil)}, interface{}(nil)}, interface{}(nil)},
-		expected:    []interface{}{},
+		input:       []any{any(nil), []any{[]any{[]any{any(nil)}}}, any(nil), any(nil), []any{[]any{any(nil), any(nil)}, any(nil)}, any(nil)},
+		expected:    []any{},
 	},
 }

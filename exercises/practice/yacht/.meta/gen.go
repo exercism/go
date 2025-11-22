@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"score": &[]testCase{},
 	}
 	if err := gen.Gen("yacht", j, t); err != nil {

@@ -155,7 +155,7 @@ func TestDescribeFancyNumberBox(t *testing.T) {
 func TestDescribeAnything(t *testing.T) {
 	tests := []struct {
 		description string
-		input       interface{}
+		input       any
 		want        string
 	}{
 		{

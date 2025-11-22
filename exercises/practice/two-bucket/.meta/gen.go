@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"measure": &[]testCase{},
 	}
 	if err := gen.Gen("two-bucket", j, t); err != nil {

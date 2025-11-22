@@ -15,7 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"meetup": &[]testCase{},
 	}
 	if err := gen.Gen("meetup", j, t); err != nil {
