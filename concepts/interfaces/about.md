@@ -30,7 +30,7 @@ type Stats struct {
     // ...
 }
 
-func (s Stats) Add(v int) {
+func (s *Stats) Add(v int) {
     s.value += v
 }
 
