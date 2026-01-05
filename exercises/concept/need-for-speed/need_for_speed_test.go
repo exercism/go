@@ -65,7 +65,7 @@ func TestNewTrack(t *testing.T) {
 			got := NewTrack(tt.track.distance)
 
 			if got != tt.expected {
-				t.Errorf("NewTrack(%+v) = %+v; expected %+v", tt.track.distance, tt.track, tt.expected)
+				t.Errorf("NewTrack(%+v) = %+v; expected %+v", tt.track.distance, got, tt.expected)
 			}
 		})
 	}
