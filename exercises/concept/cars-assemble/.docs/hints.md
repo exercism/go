@@ -25,4 +25,4 @@
 
 [basic types]: https://tour.golang.org/basics/11
 [type conversions]: https://tour.golang.org/basics/13
-[modulo operator]: https://golangbyexample.com/remainder-modulus-go-golang/
+[modulo operator]: https://golangbyexamples.com/remainder-modulus-go-golang/
