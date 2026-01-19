@@ -47,7 +47,7 @@ The type `T` is constrained to be one of the types defined in the `Slicer` inter
 The arguments to the function are a slice of the generic type `T`, and a function which takes a value of type `T` and returns a boolean value.
 
 ~~~~exercism/note
-If you haven't passed a function as a parameter before, a short explanation can be found [here](https://golangbyexample.com/func-as-func-argument-go/).
+If you haven't passed a function as a parameter before, a short explanation can be found [here](https://golangbyexamples.com/func-as-func-argument-go/).
 ~~~~
 
 The `Keep()` function is defined to return a slice of type `T`.

@@ -62,7 +62,7 @@ but are both much slower than the other approaches.
 
 For more information, check the [Performance article][article-performance].
 
-[modulus-operator]: https://golangbyexample.com/remainder-modulus-go-golang/
+[modulus-operator]: https://golangbyexamples.com/remainder-modulus-go-golang/
 [approach-boolean-chain]: https://exercism.org/tracks/go/exercises/leap/approaches/boolean-chain
 [approach-max-two-checks]: https://exercism.org/tracks/go/exercises/leap/approaches/max-two-checks
 [approach-time-add]: https://exercism.org/tracks/go/exercises/leap/approaches/time-addition
