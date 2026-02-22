@@ -73,7 +73,7 @@ func TestBirdsInWeek(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BirdsInWeek(tt.birdCounts, tt.week); got != tt.want {
-				t.Errorf("BirdsInWeek(%v) = %v; want %v", tt.birdCounts, got, tt.want)
+				t.Errorf("BirdsInWeek(%v, %v) = %v; want %v", tt.birdCounts, tt.week, got, tt.want)
 			}
 		})
 	}
