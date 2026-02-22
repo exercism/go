@@ -6,7 +6,7 @@ package chessboard
 
 // CountInFile returns how many squares are occupied in the chessboard,
 // within the given file.
-func CountInFile(cb Chessboard, file string) int {
+func CountInFile(cb Chessboard, fileName string) int {
 	panic("Please implement CountInFile()")
 }
 
