@@ -3,7 +3,7 @@ package bob
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 42dd0ce Remove version (#1678)
+// Commit: 8ee2035 Let multi line question example be one sentence (#2498)
 
 var testCases = []struct {
 	description string
@@ -111,11 +111,6 @@ var testCases = []struct {
 		expected:    "Fine. Be that way!",
 	},
 	{
-		description: "multiple line question",
-		input:       "\nDoes this cryogenic chamber make me look fat?\nNo.",
-		expected:    "Whatever.",
-	},
-	{
 		description: "starting with whitespace",
 		input:       "         hmmmmmmm...",
 		expected:    "Whatever.",
@@ -134,5 +129,10 @@ var testCases = []struct {
 		description: "non-question ending with whitespace",
 		input:       "This is a statement ending with whitespace      ",
 		expected:    "Whatever.",
+	},
+	{
+		description: "multiple line question",
+		input:       "\nDoes this cryogenic chamber make\n me look fat?",
+		expected:    "Sure.",
 	},
 }
