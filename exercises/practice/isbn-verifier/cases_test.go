@@ -3,7 +3,7 @@ package isbn
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: f830544 isbn-verifier - add test case (#1998)
+// Commit: 9d3c90b isbn-verifier: a check digit can only be one character (#2604)
 
 var testCases = []struct {
 	description string
@@ -43,6 +43,16 @@ var testCases = []struct {
 	{
 		description: "X is only valid as a check digit",
 		isbn:        "3-598-2X507-9",
+		expected:    false,
+	},
+	{
+		description: "only one check digit is allowed",
+		isbn:        "3-598-21508-96",
+		expected:    false,
+	},
+	{
+		description: "X is not substituted by the value 10",
+		isbn:        "3-598-2X507-5",
 		expected:    false,
 	},
 	{
