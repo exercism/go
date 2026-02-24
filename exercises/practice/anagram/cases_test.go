@@ -3,7 +3,7 @@ package anagram
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 6373ab6 anagram: reimplement cases where `candidates` isn't a set (#1943)
+// Commit: 524e2b3 anagram: Add unicode tests (#2366)
 
 type anagramTest struct {
 	description string
@@ -82,7 +82,7 @@ var testCases = []anagramTest{
 	{
 		description: "does not detect an anagram if the original word is repeated",
 		subject:     "go",
-		candidates:  []string{"go Go GO"},
+		candidates:  []string{"goGoGO"},
 		expected:    []string{},
 	},
 	{
@@ -114,5 +114,17 @@ var testCases = []anagramTest{
 		subject:     "LISTEN",
 		candidates:  []string{"LISTEN", "Silent"},
 		expected:    []string{"Silent"},
+	},
+	{
+		description: "handles case of greek letters",
+		subject:     "ΑΒΓ",
+		candidates:  []string{"ΒΓΑ", "ΒΓΔ", "γβα", "αβγ"},
+		expected:    []string{"ΒΓΑ", "γβα"},
+	},
+	{
+		description: "different characters may have the same bytes",
+		subject:     "a⬂",
+		candidates:  []string{"€a"},
+		expected:    []string{},
 	},
 }
