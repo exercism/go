@@ -3,7 +3,7 @@ package perfect
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: b638a1b Perfect Numbers: add perfect-square abundant test (196) (#2620)
 
 var classificationTestCases = []struct {
 	description string
@@ -44,6 +44,12 @@ var classificationTestCases = []struct {
 	{
 		description: "Large abundant number is classified correctly",
 		input:       33550335,
+		ok:          true,
+		expected:    ClassificationAbundant,
+	},
+	{
+		description: "Perfect square abundant number is classified correctly",
+		input:       196,
 		ok:          true,
 		expected:    ClassificationAbundant,
 	},
