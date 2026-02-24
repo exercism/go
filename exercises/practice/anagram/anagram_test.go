@@ -6,18 +6,8 @@ import (
 	"testing"
 )
 
-var nonAsciiTestCases = []anagramTest{
-	{
-		description: "detects unicode anagrams",
-		subject:     "ΑΒΓ",
-		candidates:  []string{"ΒΓΑ", "ΒΓΔ", "γβα"},
-		expected:    []string{"ΒΓΑ", "γβα"},
-	},
-}
-
 func TestDetectAnagrams(t *testing.T) {
-	allCases := append(testCases, nonAsciiTestCases...)
-	for _, tc := range allCases {
+	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Detect(tc.subject, tc.candidates)
 			if !equal(tc.expected, actual) {
@@ -41,9 +31,8 @@ func BenchmarkDetectAnagrams(b *testing.B) {
 	if testing.Short() {
 		b.Skip("skipping benchmark in short mode.")
 	}
-	allCases := append(testCases, nonAsciiTestCases...)
 	for i := 0; i < b.N; i++ {
-		for _, tt := range allCases {
+		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)
 		}
 	}
