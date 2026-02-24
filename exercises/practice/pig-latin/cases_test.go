@@ -3,7 +3,7 @@ package piglatin
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 42dd0ce Remove version (#1678)
+// Commit: d11557d New "qu" test for Pig Latin (#2507)
 
 var testCases = []struct {
 	description string
@@ -59,6 +59,11 @@ var testCases = []struct {
 		description: "word beginning with q without a following u",
 		input:       "qat",
 		expected:    "atqay",
+	},
+	{
+		description: "word beginning with consonant and vowel containing qu",
+		input:       "liquid",
+		expected:    "iquidlay",
 	},
 	{
 		description: "word beginning with ch",
