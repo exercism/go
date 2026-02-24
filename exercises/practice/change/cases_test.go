@@ -3,7 +3,7 @@ package change
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: 5e967e1 Add a test for which a greedy algorithm fails (#2385)
 
 var testCases = []struct {
 	description    string
@@ -67,6 +67,13 @@ var testCases = []struct {
 		target:         27,
 		valid:          true,
 		expectedChange: []int{4, 4, 4, 5, 5, 5},
+	},
+	{
+		description:    "a greedy approach is not optimal",
+		coins:          []int{1, 10, 11},
+		target:         20,
+		valid:          true,
+		expectedChange: []int{10, 10},
 	},
 	{
 		description:    "no coins make 0 change",
