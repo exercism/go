@@ -3,7 +3,7 @@ package forth
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: b230e1e forth: Add local-scope test
+// Commit: 4b91a92 Forth: additional tests for "combined arithmetic" category (#2477)
 
 var testCases = []struct {
 	description string
@@ -42,6 +42,12 @@ var testCases = []struct {
 		explainText: "only one value on the stack",
 	},
 	{
+		description: "more than two values on the stack",
+		input:       []string{"1 2 3 +"},
+		expected:    []int{1, 5},
+		explainText: "",
+	},
+	{
 		description: "can subtract two numbers",
 		input:       []string{"3 4 -"},
 		expected:    []int{-1},
@@ -60,6 +66,12 @@ var testCases = []struct {
 		explainText: "only one value on the stack",
 	},
 	{
+		description: "more than two values on the stack",
+		input:       []string{"1 12 3 -"},
+		expected:    []int{1, 9},
+		explainText: "",
+	},
+	{
 		description: "can multiply two numbers",
 		input:       []string{"2 4 *"},
 		expected:    []int{8},
@@ -76,6 +88,12 @@ var testCases = []struct {
 		input:       []string{"1 *"},
 		expected:    []int(nil),
 		explainText: "only one value on the stack",
+	},
+	{
+		description: "more than two values on the stack",
+		input:       []string{"1 2 3 *"},
+		expected:    []int{1, 6},
+		explainText: "",
 	},
 	{
 		description: "can divide two numbers",
@@ -108,6 +126,12 @@ var testCases = []struct {
 		explainText: "only one value on the stack",
 	},
 	{
+		description: "more than two values on the stack",
+		input:       []string{"1 12 3 /"},
+		expected:    []int{1, 4},
+		explainText: "",
+	},
+	{
 		description: "addition and subtraction",
 		input:       []string{"1 2 + 4 -"},
 		expected:    []int{-1},
@@ -117,6 +141,18 @@ var testCases = []struct {
 		description: "multiplication and division",
 		input:       []string{"2 4 * 3 /"},
 		expected:    []int{2},
+		explainText: "",
+	},
+	{
+		description: "multiplication and addition",
+		input:       []string{"1 3 4 * +"},
+		expected:    []int{13},
+		explainText: "",
+	},
+	{
+		description: "addition and multiplication",
+		input:       []string{"1 3 4 + *"},
+		expected:    []int{7},
 		explainText: "",
 	},
 	{
