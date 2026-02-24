@@ -3,7 +3,7 @@ package brackets
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 9fa4e2d Add testcases to matching-brackets (#1657)
+// Commit: b6bb0ff matching brackets: reimplements wrong nested bracket tests (#2071)
 
 type bracketTest struct {
 	description string
@@ -75,6 +75,11 @@ var testCases = []bracketTest{
 	{
 		description: "paired and wrong nested brackets",
 		input:       "[({]})",
+		expected:    false,
+	},
+	{
+		description: "paired and wrong nested brackets but innermost are correct",
+		input:       "[({}])",
 		expected:    false,
 	},
 	{
