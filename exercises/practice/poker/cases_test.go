@@ -3,7 +3,7 @@ package poker
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: ee65a27 Add new test cases for Poker (#2001)
+// Commit: ccb6fdf Poker: Make high card tests more robust (#2336)
 
 type testCase struct {
 	description string
@@ -33,6 +33,11 @@ var validTestCases = []testCase{
 		expected:    []string{"3♤ 5♡ 6♤ 8♢ 7♡"},
 	},
 	{
+		description: "winning high card hand also has the lowest card",
+		hands:       []string{"2♤ 5♡ 6♤ 8♢ 7♡", "3♤ 4♢ 6♢ 8♧ 7♤"},
+		expected:    []string{"2♤ 5♡ 6♤ 8♢ 7♡"},
+	},
+	{
 		description: "one pair beats high card",
 		hands:       []string{"4♤ 5♡ 6♧ 8♢ K♡", "2♤ 4♡ 6♤ 4♢ J♡"},
 		expected:    []string{"2♤ 4♡ 6♤ 4♢ J♡"},
@@ -41,6 +46,11 @@ var validTestCases = []testCase{
 		description: "highest pair wins",
 		hands:       []string{"4♤ 2♡ 6♤ 2♢ J♡", "2♤ 4♡ 6♧ 4♢ J♢"},
 		expected:    []string{"2♤ 4♡ 6♧ 4♢ J♢"},
+	},
+	{
+		description: "both hands have the same pair, high card wins",
+		hands:       []string{"4♡ 4♤ A♡ J♧ 3♢", "4♧ 4♢ A♤ 5♢ 6♧"},
+		expected:    []string{"4♡ 4♤ A♡ J♧ 3♢"},
 	},
 	{
 		description: "two pairs beats one pair",
@@ -84,7 +94,7 @@ var validTestCases = []testCase{
 	},
 	{
 		description: "with multiple decks, two players can have same three of a kind, ties go to highest remaining cards",
-		hands:       []string{"4♤ A♡ A♤ 7♧ A♢", "4♤ A♡ A♤ 8♧ A♢"},
+		hands:       []string{"5♤ A♡ A♤ 7♧ A♢", "4♤ A♡ A♤ 8♧ A♢"},
 		expected:    []string{"4♤ A♡ A♤ 8♧ A♢"},
 	},
 	{
@@ -103,6 +113,11 @@ var validTestCases = []testCase{
 		expected:    []string{"4♢ A♡ 3♤ 2♢ 5♧"},
 	},
 	{
+		description: "aces cannot be in the middle of a straight (Q K A 2 3)",
+		hands:       []string{"2♧ 3♢ 7♡ 5♡ 2♤", "Q♤ K♡ A♧ 2♢ 3♤"},
+		expected:    []string{"2♧ 3♢ 7♡ 5♡ 2♤"},
+	},
+	{
 		description: "both hands with a straight, tie goes to highest ranked card",
 		hands:       []string{"4♤ 6♧ 7♤ 8♢ 5♡", "5♤ 7♡ 8♤ 9♢ 6♡"},
 		expected:    []string{"5♤ 7♡ 8♤ 9♢ 6♡"},
@@ -119,8 +134,8 @@ var validTestCases = []testCase{
 	},
 	{
 		description: "both hands have a flush, tie goes to high card, down to the last one if necessary",
-		hands:       []string{"4♡ 7♡ 8♡ 9♡ 6♡", "2♤ 4♤ 5♤ 6♤ 7♤"},
-		expected:    []string{"4♡ 7♡ 8♡ 9♡ 6♡"},
+		hands:       []string{"2♡ 7♡ 8♡ 9♡ 6♡", "3♤ 5♤ 6♤ 7♤ 8♤"},
+		expected:    []string{"2♡ 7♡ 8♡ 9♡ 6♡"},
 	},
 	{
 		description: "full house beats a flush",
@@ -158,8 +173,28 @@ var validTestCases = []testCase{
 		expected:    []string{"7♤ 8♤ 9♤ 6♤ 10♤"},
 	},
 	{
-		description: "both hands have straight flush, tie goes to highest-ranked card",
+		description: "aces can end a straight flush (10 J Q K A)",
+		hands:       []string{"K♧ A♡ A♤ A♢ A♧", "10♧ J♧ Q♧ K♧ A♧"},
+		expected:    []string{"10♧ J♧ Q♧ K♧ A♧"},
+	},
+	{
+		description: "aces can start a straight flush (A 2 3 4 5)",
+		hands:       []string{"K♤ A♡ A♤ A♢ A♧", "4♡ A♡ 3♡ 2♡ 5♡"},
+		expected:    []string{"4♡ A♡ 3♡ 2♡ 5♡"},
+	},
+	{
+		description: "aces cannot be in the middle of a straight flush (Q K A 2 3)",
+		hands:       []string{"2♧ A♧ Q♧ 10♧ K♧", "Q♡ K♡ A♡ 2♡ 3♡"},
+		expected:    []string{"2♧ A♧ Q♧ 10♧ K♧"},
+	},
+	{
+		description: "both hands have a straight flush, tie goes to highest-ranked card",
 		hands:       []string{"4♡ 6♡ 7♡ 8♡ 5♡", "5♤ 7♤ 8♤ 9♤ 6♤"},
 		expected:    []string{"5♤ 7♤ 8♤ 9♤ 6♤"},
+	},
+	{
+		description: "even though an ace is usually high, a 5-high straight flush is the lowest-scoring straight flush",
+		hands:       []string{"2♡ 3♡ 4♡ 5♡ 6♡", "4♢ A♢ 3♢ 2♢ 5♢"},
+		expected:    []string{"2♡ 3♡ 4♡ 5♡ 6♡"},
 	},
 }
