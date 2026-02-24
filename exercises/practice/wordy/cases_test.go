@@ -3,7 +3,7 @@ package wordy
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: a5da711 Wordy: add "What is 0?", "What is -123?" and addition with 0. (#2573)
 
 type wordyTest struct {
 	description string
@@ -20,10 +20,34 @@ var tests = []wordyTest{
 		expected:    5,
 	},
 	{
+		description: "just a zero",
+		question:    "What is 0?",
+		expectError: false,
+		expected:    0,
+	},
+	{
+		description: "just a negative number",
+		question:    "What is -123?",
+		expectError: false,
+		expected:    -123,
+	},
+	{
 		description: "addition",
 		question:    "What is 1 plus 1?",
 		expectError: false,
 		expected:    2,
+	},
+	{
+		description: "addition with a left hand zero",
+		question:    "What is 0 plus 2?",
+		expectError: false,
+		expected:    2,
+	},
+	{
+		description: "addition with a right hand zero",
+		question:    "What is 3 plus 0?",
+		expectError: false,
+		expected:    3,
 	},
 	{
 		description: "more addition",
