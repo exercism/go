@@ -3,7 +3,7 @@ package stringset
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 42dd0ce Remove version (#1678)
+// Commit: 3d9837e custom-set: add test for removing duplicates (#2436)
 
 type (
 	// unary function, bool result (IsEmpty)
@@ -190,6 +190,12 @@ var equalCases = []binBoolCase{
 		set2:        []string{"a", "b", "c", "d"},
 		want:        false,
 	},
+	{
+		description: "set is equal to a set constructed from an array with duplicates",
+		set1:        []string{"a"},
+		set2:        []string{"a", "a"},
+		want:        true,
+	},
 }
 
 // Unique elements can be added to a set
@@ -273,6 +279,12 @@ var differenceCases = []binOpCase{
 		set1:        []string{"c", "b", "a"},
 		set2:        []string{"b", "d"},
 		want:        []string{"a", "c"},
+	},
+	{
+		description: "difference removes all duplicates in the first set",
+		set1:        []string{"a", "a"},
+		set2:        []string{"a"},
+		want:        []string{},
 	},
 }
 
