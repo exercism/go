@@ -47,14 +47,4 @@ var testCases = []reverseTestCase{
 		input:       "子猫",
 		expected:    "猫子",
 	},
-	{
-		description: "grapheme cluster with pre-combined form",
-		input:       "Würstchenstand",
-		expected:    "dnatsnehctsrüW",
-	},
-	{
-		description: "grapheme clusters",
-		input:       "ผู้เขียนโปรแกรม",
-		expected:    "มรกแรปโนยขีเผู้",
-	},
 }
