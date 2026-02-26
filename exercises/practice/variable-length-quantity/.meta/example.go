@@ -1,99 +1,54 @@
 package variablelengthquantity
 
-import "errors"
+import (
+	"errors"
+	"slices"
+)
 
-var ErrUnterminatedSequence = errors.New("unterminated sequence")
+const (
+	// 8th bit is used to indicate if there is more to this number.
+	moreBit byte = 1 << 7
+	// The lower 7 bits contain the numeric value.
+	byteMask byte = moreBit - 1
+)
 
-// encodeInt returns the varint encoding of x.
-func encodeInt(x uint32) []byte {
-	if x>>7 == 0 {
-		return []byte{
-			byte(x),
+// EncodeVarint encodes intergers into bytes.
+func EncodeVarint(input []uint32) []byte {
+	var out []byte
+	// Add one number at a time.
+	for _, number := range input {
+		var encoded []byte
+		// Add one byte for each set of lower 7 bits. Enable the more bit.
+		for i := number; i > 0; i >>= 7 {
+			encoded = append(encoded, moreBit | (byte(i) & byteMask))
 		}
-	}
-
-	if x>>14 == 0 {
-		return []byte{
-			byte(0x80 | x>>7),
-			byte(127 & x),
+		if number == 0 {
+			encoded = append(encoded, 0)
 		}
+		// The last byte should not have the more bit set.
+		encoded[0] &= byteMask
+		slices.Reverse(encoded)
+		out = append(out, encoded...)
 	}
-
-	if x>>21 == 0 {
-		return []byte{
-			byte(0x80 | x>>14),
-			byte(0x80 | x>>7),
-			byte(127 & x),
-		}
-	}
-
-	if x>>28 == 0 {
-		return []byte{
-			byte(0x80 | x>>21),
-			byte(0x80 | x>>14),
-			byte(0x80 | x>>6),
-			byte(127 & x),
-		}
-	}
-
-	return []byte{
-		byte(0x80 | x>>28),
-		byte(0x80 | x>>21),
-		byte(0x80 | x>>14),
-		byte(0x80 | x>>7),
-		byte(127 & x),
-	}
+	return out
 }
 
-// decodeInt reads a varint-encoded integer from the slice.
-// It returns the integer and the number of bytes consumed, or
-// zero if there is not enough.
-func decodeInt(buf []byte) (x uint32, n int, err error) {
-	if len(buf) < 1 {
-		return 0, 0, nil
+// DecodeVarint converts bytes to numbers.
+func DecodeVarint(input []byte) ([]uint32, error) {
+	var numbers []uint32
+	// The last byte must not set the more bit.
+	if input[len(input)-1] & moreBit != 0 {
+		return nil, errors.New("invalid input")
 	}
-
-	if buf[0] < 0x80 {
-		return uint32(buf[0]), 1, nil
-	}
-
-	var b byte
-	for n, b = range buf {
-		x <<= 7
-		x |= uint32(b) & 0x7f
-		if (b & 0x80) == 0 {
-			return x, n + 1, nil
+	var number uint32
+	for _, val := range input {
+		// Collect the bytes into one number.
+		number = (number << 7) | uint32(byteMask & val)
+		// When there is no more bytes, add the number to the return slice.
+		if (moreBit & val) == 0 {
+			numbers = append(numbers, number)
+			number = 0
 		}
 	}
-
-	return x, 0, ErrUnterminatedSequence
-}
-
-// EncodeVarint encodes a slice of uint32 into a var-int encoded bytes.
-func EncodeVarint(xa []uint32) []byte {
-	result := make([]byte, 0)
-	for _, x := range xa {
-		result = append(result, encodeInt(x)...)
-	}
-	return result
-}
-
-// DecodeVarint decodes a buffer of var-int encoded values into
-// a slice of uint32 values; an error is returned if buf doesn't
-// decode var-int successfully.
-func DecodeVarint(buf []byte) (ra []uint32, err error) {
-	if len(buf) == 0 {
-		return []uint32{0}, nil
-	}
-	usedBytes := 0
-	ra = make([]uint32, 0)
-	for usedBytes < len(buf) {
-		r, nUsed, err := decodeInt(buf[usedBytes:])
-		if err != nil {
-			return nil, err
-		}
-		ra = append(ra, r)
-		usedBytes += nUsed
-	}
-	return ra, nil
+	return numbers, nil
 }

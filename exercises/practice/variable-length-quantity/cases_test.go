@@ -3,7 +3,7 @@ package variablelengthquantity
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: 9f4f82c variable-length-quantity: add more test cases (#2576)
 
 var encodeTestCases = []struct {
 	description string
@@ -21,6 +21,11 @@ var encodeTestCases = []struct {
 		expected:    []byte{0x40},
 	},
 	{
+		description: "asymmetric single byte",
+		input:       []uint32{0x53},
+		expected:    []byte{0x53},
+	},
+	{
 		description: "largest single byte",
 		input:       []uint32{0x7f},
 		expected:    []byte{0x7f},
@@ -34,6 +39,11 @@ var encodeTestCases = []struct {
 		description: "arbitrary double byte",
 		input:       []uint32{0x2000},
 		expected:    []byte{0xc0, 0x0},
+	},
+	{
+		description: "asymmetric double byte",
+		input:       []uint32{0xad},
+		expected:    []byte{0x81, 0x2d},
 	},
 	{
 		description: "largest double byte",
@@ -51,6 +61,11 @@ var encodeTestCases = []struct {
 		expected:    []byte{0xc0, 0x80, 0x0},
 	},
 	{
+		description: "asymmetric triple byte",
+		input:       []uint32{0x1d59c},
+		expected:    []byte{0x87, 0xab, 0x1c},
+	},
+	{
 		description: "largest triple byte",
 		input:       []uint32{0x1fffff},
 		expected:    []byte{0xff, 0xff, 0x7f},
@@ -66,6 +81,11 @@ var encodeTestCases = []struct {
 		expected:    []byte{0xc0, 0x80, 0x80, 0x0},
 	},
 	{
+		description: "asymmetric quadruple byte",
+		input:       []uint32{0x357704},
+		expected:    []byte{0x81, 0xd5, 0xee, 0x4},
+	},
+	{
 		description: "largest quadruple byte",
 		input:       []uint32{0xfffffff},
 		expected:    []byte{0xff, 0xff, 0xff, 0x7f},
@@ -79,6 +99,11 @@ var encodeTestCases = []struct {
 		description: "arbitrary quintuple byte",
 		input:       []uint32{0xff000000},
 		expected:    []byte{0x8f, 0xf8, 0x80, 0x80, 0x0},
+	},
+	{
+		description: "asymmetric quintuple byte",
+		input:       []uint32{0x86656105},
+		expected:    []byte{0x88, 0xb3, 0x95, 0xc2, 0x5},
 	},
 	{
 		description: "maximum 32-bit integer input",
@@ -107,13 +132,12 @@ var decodeTestCases = []struct {
 	input         []byte
 	expected      []uint32
 	errorExpected bool
-}{
-	{
-		description:   "one byte",
-		input:         []byte{0x7f},
-		expected:      []uint32{0x7f},
-		errorExpected: false,
-	},
+}{{
+	description:   "one byte",
+	input:         []byte{0x7f},
+	expected:      []uint32{0x7f},
+	errorExpected: false,
+},
 	{
 		description:   "two bytes",
 		input:         []byte{0xc0, 0x0},
