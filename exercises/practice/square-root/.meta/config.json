@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "square_root.go"
+    ],
+    "test": [
+      "square_root_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Given a natural radicand, return its square root.",
+  "source": "wolf99",
+  "source_url": "https://github.com/exercism/problem-specifications/pull/1582"
+}
