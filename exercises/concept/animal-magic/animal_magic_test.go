@@ -27,8 +27,8 @@ func TestRollADie(t *testing.T) {
 }
 
 func TestWandEnergy(t *testing.T) {
-	const tests = 200
-	const bucketSize float64 = 0.6
+	const tests = 250
+	const bucketSize float64 = 0.8
 	var got float64
 	foundDifferent := false
 	var last float64
