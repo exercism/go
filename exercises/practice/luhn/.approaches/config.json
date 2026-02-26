@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,14 +10,18 @@
       "slug": "scrub-and-validate-first",
       "title": "scrub and validate first",
       "blurb": "Scrub out spaces and validate as an integer first.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "e1626aba-a949-466a-ab31-c07e87a23906",
       "slug": "validate-as-you-go",
       "title": "validate as you go",
       "blurb": "Ignore if a space and check if a digit for each character.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

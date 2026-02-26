@@ -35,8 +35,8 @@
   "exercises": {
     "concept": [
       {
-        "name": "Gopher's Gorgeous Lasagna",
         "slug": "lasagna",
+        "name": "Gopher's Gorgeous Lasagna",
         "uuid": "6396fe40-ff11-4ff5-b880-9681bce30a6e",
         "concepts": [
           "basics"
@@ -171,8 +171,8 @@
         "status": "beta"
       },
       {
-        "name": "Lasagna Master",
         "slug": "lasagna-master",
+        "name": "Lasagna Master",
         "uuid": "41167bbf-c2e6-4946-83d8-0ea108e5ce8d",
         "concepts": [
           "functions"
@@ -188,8 +188,8 @@
         "status": "beta"
       },
       {
-        "name": "Need For Speed",
         "slug": "need-for-speed",
+        "name": "Need For Speed",
         "uuid": "b165c8b4-429f-4e9f-b157-a636d22b217f",
         "concepts": [
           "structs"
@@ -201,8 +201,8 @@
         "status": "beta"
       },
       {
-        "name": "Elon's Toys",
         "slug": "jedliks-toys",
+        "name": "Elon's Toys",
         "uuid": "18fb2aa2-9748-481e-a321-6b6844c1deb6",
         "concepts": [
           "methods"
@@ -239,8 +239,8 @@
         "status": "beta"
       },
       {
-        "name": "Card Tricks",
         "slug": "card-tricks",
+        "name": "Card Tricks",
         "uuid": "154660c2-db8c-4ec1-91f2-6b1275eabbc0",
         "concepts": [
           "slices",
@@ -254,8 +254,8 @@
         "status": "beta"
       },
       {
-        "name": "Logs, Logs, Logs!",
         "slug": "logs-logs-logs",
+        "name": "Logs, Logs, Logs!",
         "uuid": "81230a7c-4e47-4a4d-a004-14eae32ec914",
         "concepts": [
           "runes"
@@ -270,8 +270,8 @@
         "status": "beta"
       },
       {
-        "name": "Sorting Room",
         "slug": "sorting-room",
+        "name": "Sorting Room",
         "uuid": "411f4f1e-7ee2-4f11-955d-8af86da69c2a",
         "concepts": [
           "type-assertion",
@@ -284,8 +284,8 @@
         "status": "beta"
       },
       {
-        "name": "Chessboard",
         "slug": "chessboard",
+        "name": "Chessboard",
         "uuid": "b5f1c789-adf6-487c-95b0-c6bce23d711b",
         "concepts": [
           "range-iteration",
@@ -301,8 +301,8 @@
         "status": "beta"
       },
       {
-        "name": "Airport Robot",
         "slug": "airport-robot",
+        "name": "Airport Robot",
         "uuid": "e8e4de51-3ad8-4474-9965-50689abe4045",
         "concepts": [
           "interfaces"
@@ -316,8 +316,8 @@
         "status": "beta"
       },
       {
-        "name": "The Farm",
         "slug": "the-farm",
+        "name": "The Farm",
         "uuid": "43e12a9e-ed8e-4552-a889-d86e284b21c0",
         "concepts": [
           "errors"
@@ -334,8 +334,8 @@
         "status": "beta"
       },
       {
-        "name": "Census",
         "slug": "census",
+        "name": "Census",
         "uuid": "fa4735f8-4d8a-4fb1-85ed-9cf03e9f7b7a",
         "concepts": [
           "zero-values"
@@ -354,8 +354,8 @@
         "status": "beta"
       },
       {
-        "name": "Welcome To Tech Palace!",
         "slug": "welcome-to-tech-palace",
+        "name": "Welcome To Tech Palace!",
         "uuid": "934af0f6-87b3-424b-a255-60a9002360d4",
         "concepts": [
           "strings",
@@ -367,8 +367,8 @@
         "status": "beta"
       },
       {
-        "name": "Election Day",
         "slug": "election-day",
+        "name": "Election Day",
         "uuid": "b9f43f40-2540-48be-b721-71117dee2250",
         "concepts": [
           "pointers"
@@ -465,10 +465,10 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
+        "status": "deprecated",
         "topics": [
           "lists"
-        ],
-        "status": "deprecated"
+        ]
       },
       {
         "slug": "binary",
@@ -477,7 +477,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "topics": null,
         "status": "deprecated"
       },
       {
@@ -501,7 +500,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "topics": null,
         "status": "deprecated"
       },
       {
@@ -533,7 +531,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "topics": null,
         "status": "deprecated"
       },
       {
@@ -543,7 +540,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "topics": null,
         "status": "deprecated"
       },
       {
@@ -566,7 +562,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "topics": null,
         "status": "deprecated"
       },
       {
@@ -688,7 +683,6 @@
         "uuid": "55e1ab2e-b4ec-43ae-8f95-3f14c8dc6ce9",
         "practices": [],
         "prerequisites": [],
-        "topics": [],
         "difficulty": 2
       },
       {
@@ -801,12 +795,12 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
+        "status": "deprecated",
         "topics": [
           "loops",
           "strings",
           "text_formatting"
-        ],
-        "status": "deprecated"
+        ]
       },
       {
         "slug": "bob",
@@ -826,12 +820,12 @@
         "uuid": "e6e1e960-1dcf-44cd-99e1-c26063965d13",
         "practices": [],
         "prerequisites": [],
+        "difficulty": 3,
         "topics": [
           "loops",
           "strings",
           "text_formatting"
-        ],
-        "difficulty": 3
+        ]
       },
       {
         "slug": "clock",
@@ -1005,7 +999,6 @@
         "uuid": "5ad1122f-9e7f-44e7-8fa1-3b93a22d1bde",
         "practices": [],
         "prerequisites": [],
-        "topics": [],
         "difficulty": 3
       },
       {
@@ -1433,7 +1426,6 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
-        "topics": [],
         "status": "deprecated"
       },
       {
@@ -1533,7 +1525,6 @@
         "uuid": "b10b1604-bd88-4f4a-bf84-c0508df34f1a",
         "practices": [],
         "prerequisites": [],
-        "topics": [],
         "difficulty": 4
       },
       {
@@ -1581,11 +1572,11 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
+        "status": "deprecated",
         "topics": [
           "pattern_matching",
           "strings"
-        ],
-        "status": "deprecated"
+        ]
       },
       {
         "slug": "secret-handshake",
@@ -2056,194 +2047,194 @@
   },
   "concepts": [
     {
-      "name": "Arithmetic Operators",
+      "uuid": "e01b00b9-5814-4784-a2f2-06182e8d9f7e",
       "slug": "arithmetic-operators",
-      "uuid": "e01b00b9-5814-4784-a2f2-06182e8d9f7e"
+      "name": "Arithmetic Operators"
     },
     {
-      "name": "Basics",
+      "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626",
       "slug": "basics",
-      "uuid": "5d2b4677-1850-4ee4-890d-dc55a1654626"
+      "name": "Basics"
     },
     {
-      "name": "Booleans",
+      "uuid": "e3942921-34ec-41eb-a999-a5d85a6623fd",
       "slug": "booleans",
-      "uuid": "e3942921-34ec-41eb-a999-a5d85a6623fd"
+      "name": "Booleans"
     },
     {
-      "name": "Comments",
+      "uuid": "9ee93eab-b413-442c-b7fb-76bf044eea2d",
       "slug": "comments",
-      "uuid": "9ee93eab-b413-442c-b7fb-76bf044eea2d"
+      "name": "Comments"
     },
     {
-      "name": "Conditionals If",
+      "uuid": "b3731323-f5bb-4b38-931c-2d734667bf8d",
       "slug": "conditionals-if",
-      "uuid": "b3731323-f5bb-4b38-931c-2d734667bf8d"
+      "name": "Conditionals If"
     },
     {
-      "name": "Conditionals Switch",
+      "uuid": "6a4103e0-e7a9-427e-b1bd-716870580c45",
       "slug": "conditionals-switch",
-      "uuid": "6a4103e0-e7a9-427e-b1bd-716870580c45"
+      "name": "Conditionals Switch"
     },
     {
-      "name": "Constants",
+      "uuid": "b56f68de-44ef-4bd4-8b14-2c50b2a366dd",
       "slug": "constants",
-      "uuid": "b56f68de-44ef-4bd4-8b14-2c50b2a366dd"
+      "name": "Constants"
     },
     {
-      "name": "Errors",
+      "uuid": "a960da78-c940-4725-8069-929f42564cdb",
       "slug": "errors",
-      "uuid": "a960da78-c940-4725-8069-929f42564cdb"
+      "name": "Errors"
     },
     {
-      "name": "Interfaces",
+      "uuid": "a492060c-11e7-448e-bdbd-6a907cec9493",
       "slug": "interfaces",
-      "uuid": "a492060c-11e7-448e-bdbd-6a907cec9493"
+      "name": "Interfaces"
     },
     {
-      "name": "Functions",
+      "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44",
       "slug": "functions",
-      "uuid": "e737f47b-5d1a-423a-8d6a-cd201a6e4e44"
+      "name": "Functions"
     },
     {
-      "name": "First class functions",
+      "uuid": "66968174-701b-484c-a84d-f919b4756022",
       "slug": "first-class-functions",
-      "uuid": "66968174-701b-484c-a84d-f919b4756022"
+      "name": "First class functions"
     },
     {
-      "name": "Floating-point numbers",
+      "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7",
       "slug": "floating-point-numbers",
-      "uuid": "542b0434-59fd-4976-9d5b-c3c5c07e78d7"
+      "name": "Floating-point numbers"
     },
     {
-      "name": "For Loops",
+      "uuid": "9cf34401-7993-4b09-8a5e-55347acda4ca",
       "slug": "for-loops",
-      "uuid": "9cf34401-7993-4b09-8a5e-55347acda4ca"
+      "name": "For Loops"
     },
     {
-      "name": "Maps",
+      "uuid": "625aa065-b006-4fc5-b276-28e048376b46",
       "slug": "maps",
-      "uuid": "625aa065-b006-4fc5-b276-28e048376b46"
+      "name": "Maps"
     },
     {
-      "name": "Methods",
+      "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254",
       "slug": "methods",
-      "uuid": "d25c6e6b-c6d4-40ce-80f9-cecbc5a72254"
+      "name": "Methods"
     },
     {
-      "name": "Multiple Return Values",
+      "uuid": "ba2c60fd-7dc5-4852-93d0-83cc25554163",
       "slug": "multiple-return-values",
-      "uuid": "ba2c60fd-7dc5-4852-93d0-83cc25554163"
+      "name": "Multiple Return Values"
     },
     {
-      "name": "Numbers",
+      "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029",
       "slug": "numbers",
-      "uuid": "82cff17e-88cd-4707-a6d7-b5143251f029"
+      "name": "Numbers"
     },
     {
-      "name": "Packages",
+      "uuid": "2062bff8-33ed-4081-8ad6-774b3410c450",
       "slug": "packages",
-      "uuid": "2062bff8-33ed-4081-8ad6-774b3410c450"
+      "name": "Packages"
     },
     {
-      "name": "Range Iteration",
+      "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d",
       "slug": "range-iteration",
-      "uuid": "8f644992-59ec-4fff-8b40-36b5ed61404d"
+      "name": "Range Iteration"
     },
     {
-      "name": "Randomness",
+      "uuid": "5d354412-a87d-458b-af6c-fadfa58cfdc3",
       "slug": "randomness",
-      "uuid": "5d354412-a87d-458b-af6c-fadfa58cfdc3"
+      "name": "Randomness"
     },
     {
-      "name": "Regular Expressions",
+      "uuid": "fa43f573-0dcb-47cf-a006-8d464112f7db",
       "slug": "regular-expressions",
-      "uuid": "fa43f573-0dcb-47cf-a006-8d464112f7db"
+      "name": "Regular Expressions"
     },
     {
-      "name": "Runes",
+      "uuid": "6b221481-bbb3-4ccf-8be1-a5e0a20bbd01",
       "slug": "runes",
-      "uuid": "6b221481-bbb3-4ccf-8be1-a5e0a20bbd01"
+      "name": "Runes"
     },
     {
-      "name": "Slices",
+      "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216",
       "slug": "slices",
-      "uuid": "23e1c40a-300c-4a44-bc32-f3440a057216"
+      "name": "Slices"
     },
     {
-      "name": "Strings",
+      "uuid": "43374ffa-090d-4295-802c-a3d9efc22c99",
       "slug": "strings",
-      "uuid": "43374ffa-090d-4295-802c-a3d9efc22c99"
+      "name": "Strings"
     },
     {
-      "name": "String Formatting",
+      "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7",
       "slug": "string-formatting",
-      "uuid": "eeae05c6-b751-44a2-b843-517ec7b83ef7"
+      "name": "String Formatting"
     },
     {
-      "name": "Strings Package",
+      "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c",
       "slug": "strings-package",
-      "uuid": "33708451-a03f-44ce-be05-eaacc1d5793c"
+      "name": "Strings Package"
     },
     {
-      "name": "Stringers",
+      "uuid": "288c0d5b-173a-4446-b9a6-05f91fddd63e",
       "slug": "stringers",
-      "uuid": "288c0d5b-173a-4446-b9a6-05f91fddd63e"
+      "name": "Stringers"
     },
     {
-      "name": "Structs",
+      "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd",
       "slug": "structs",
-      "uuid": "5bd431cf-c30d-4f5c-a16d-c62e51720fbd"
+      "name": "Structs"
     },
     {
-      "name": "Time",
+      "uuid": "4673000c-7822-4252-88c5-723f47d6ad06",
       "slug": "time",
-      "uuid": "4673000c-7822-4252-88c5-723f47d6ad06"
+      "name": "Time"
     },
     {
-      "name": "Type Assertion",
+      "uuid": "601911e6-ecb8-4e37-bc11-395aaa2be3ce",
       "slug": "type-assertion",
-      "uuid": "601911e6-ecb8-4e37-bc11-395aaa2be3ce"
+      "name": "Type Assertion"
     },
     {
-      "name": "Type Conversion",
+      "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594",
       "slug": "type-conversion",
-      "uuid": "4f3d535e-cec8-4303-ac5a-ed91a53bd594"
+      "name": "Type Conversion"
     },
     {
-      "name": "Type Definitions",
+      "uuid": "ef4bfcfb-fa81-4d80-be63-a50c47653490",
       "slug": "type-definitions",
-      "uuid": "ef4bfcfb-fa81-4d80-be63-a50c47653490"
+      "name": "Type Definitions"
     },
     {
-      "name": "Zero Values",
+      "uuid": "a50b4ed6-6198-4ab2-8075-3770900db4c9",
       "slug": "zero-values",
-      "uuid": "a50b4ed6-6198-4ab2-8075-3770900db4c9"
+      "name": "Zero Values"
     },
     {
-      "name": "Comparison",
+      "uuid": "f7abb288-9526-447d-9eb8-45d756f2ae9b",
       "slug": "comparison",
-      "uuid": "f7abb288-9526-447d-9eb8-45d756f2ae9b"
+      "name": "Comparison"
     },
     {
-      "name": "Pointers",
+      "uuid": "57477550-cecf-4334-903a-85a6c32d61d0",
       "slug": "pointers",
-      "uuid": "57477550-cecf-4334-903a-85a6c32d61d0"
+      "name": "Pointers"
     },
     {
-      "name": "Variables",
+      "uuid": "76e36f06-f809-4ce7-9ebd-4b1e010bc938",
       "slug": "variables",
-      "uuid": "76e36f06-f809-4ce7-9ebd-4b1e010bc938"
+      "name": "Variables"
     },
     {
-      "name": "Variadic Functions",
+      "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb",
       "slug": "variadic-functions",
-      "uuid": "7c9ad69f-b28a-4366-affc-870fc48e51eb"
+      "name": "Variadic Functions"
     },
     {
-      "name": "Error Wrapping",
+      "uuid": "f22b0e85-4d86-4ecf-9415-ea27c93ebcd6",
       "slug": "error-wrapping",
-      "uuid": "f22b0e85-4d86-4ecf-9415-ea27c93ebcd6"
+      "name": "Error Wrapping"
     }
   ],
   "key_features": [
@@ -2279,15 +2270,15 @@
     }
   ],
   "tags": [
-    "paradigm/procedural",
+    "execution_mode/compiled",
     "paradigm/imperative",
+    "paradigm/procedural",
+    "platform/linux",
+    "platform/mac",
+    "platform/windows",
+    "runtime/standalone_executable",
     "typing/static",
     "typing/strong",
-    "execution_mode/compiled",
-    "platform/windows",
-    "platform/mac",
-    "platform/linux",
-    "runtime/standalone_executable",
     "used_for/backends",
     "used_for/cross_platform_development",
     "used_for/web_development"

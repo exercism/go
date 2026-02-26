@@ -1,6 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"]
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -8,14 +10,18 @@
       "slug": "strings-containsrune",
       "title": "strings.ContainsRune()",
       "blurb": "Use strings.ContainsRune().",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "c03c508a-0b6a-4999-ab43-79966bae9c7b",
       "slug": "bitfield",
       "title": "Bit field",
       "blurb": "Use a bit field to keep track of used letters.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }
