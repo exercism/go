@@ -3,7 +3,7 @@ package reverse
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: b820099 Allow prettier to format more files (#1966)
+// Commit: 94cae6e reverse-string: Add unicode tests (#2367)
 
 type reverseTestCase struct {
 	description string
@@ -41,5 +41,10 @@ var testCases = []reverseTestCase{
 		description: "an even-sized word",
 		input:       "drawer",
 		expected:    "reward",
+	},
+	{
+		description: "wide characters",
+		input:       "子猫",
+		expected:    "猫子",
 	},
 }
