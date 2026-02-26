@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,14 +10,18 @@
       "slug": "switch-statement",
       "title": "Switch statement",
       "blurb": "Use a switch statement to look up the DNA.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "17e7c65a-af75-4fd4-86fe-413bbb8ebf84",
       "slug": "if-with-short-statement",
       "title": "If with short statement",
       "blurb": "Use if with a short statement to look up the DNA.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

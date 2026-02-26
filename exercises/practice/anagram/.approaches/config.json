@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["sudomateo"],
-    "contributors": []
+    "authors": [
+      "sudomateo"
+    ]
   },
   "approaches": [
     {
@@ -9,14 +10,18 @@
       "slug": "case-insensitive-sorting",
       "title": "Case-insensitive Sorting",
       "blurb": "Use case-insensitive sorting to compare the strings",
-      "authors": ["sudomateo"]
+      "authors": [
+        "sudomateo"
+      ]
     },
     {
       "uuid": "2d1a176c-2251-4565-8b9e-fde486a9e11c",
       "slug": "frequency-counter",
       "title": "Frequency Counter",
       "blurb": "Use character counters to compare the strings",
-      "authors": ["sudomateo"]
+      "authors": [
+        "sudomateo"
+      ]
     }
   ]
 }
