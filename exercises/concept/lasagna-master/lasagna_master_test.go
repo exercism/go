@@ -1,4 +1,4 @@
-package lasagna
+package lasagnamaster
 
 import (
 	"math"
