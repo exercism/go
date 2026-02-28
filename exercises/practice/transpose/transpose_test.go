@@ -34,9 +34,6 @@ func min(a, b int) int {
 }
 
 func BenchmarkTranspose(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range testCases {
 			Transpose(test.input)

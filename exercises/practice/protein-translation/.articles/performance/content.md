@@ -13,9 +13,6 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkProtein(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for _, test := range proteinTestCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)

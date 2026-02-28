@@ -33,9 +33,6 @@ func TestRunLengthEncodeDecode(t *testing.T) {
 }
 
 func BenchmarkRunLengthEncode(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range encodeTests {
 			RunLengthEncode(test.input)
@@ -44,9 +41,6 @@ func BenchmarkRunLengthEncode(b *testing.B) {
 }
 
 func BenchmarkRunLengthDecode(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range decodeTests {
 			RunLengthDecode(test.input)
