@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "swift_scheduling.go"
+    ],
+    "test": [
+      "swift_scheduling_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Convert delivery date descriptions to actual delivery dates.",
+  "source": "Erik Schierboom",
+  "source_url": "https://github.com/exercism/problem-specifications/pull/2536"
+}
