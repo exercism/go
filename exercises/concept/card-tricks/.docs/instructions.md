@@ -29,8 +29,8 @@ If the index is out of bounds (ie. if it is negative or after the end of the sta
 card := GetItem([]int{1, 2, 4, 1}, 10) // card == -1
 ```
 ~~~~exercism/note
-By convention in Go, an error is returned instead of returning an "out-of-band" value.
-Here the "out-of-band" value is `-1` when a positive integer is expected.
+By convention in Go, an error is returned instead of returning an "out-of-bounds" value.
+Here the "out-of-bounds" value is `-1` when a positive integer is expected.
 When returning an error, it's considered idiomatic to return the [`zero value`](https://www.geeksforgeeks.org/zero-value-in-golang/) with the error.
 Returning an error with the proper return value will be covered in a future exercise.
 ~~~~
