@@ -201,9 +201,6 @@ RVGCCGCV`
 }
 
 func BenchmarkNewGarden(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, test := range tests {
 			NewGarden(test.diagram, test.children)
@@ -212,9 +209,6 @@ func BenchmarkNewGarden(b *testing.B) {
 }
 
 func BenchmarkGarden_Plants(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	g, err := NewGarden(test5.diagram, test5.children)
 	if err != nil {
 		b.Fatalf("error in benchmark setup: BenchmarkGarden_Plants requires valid garden")

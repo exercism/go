@@ -14,9 +14,6 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkAddMinutes(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := New(12, 0)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -27,9 +24,6 @@ func BenchmarkAddMinutes(b *testing.B) {
 }
 
 func BenchmarkSubtractMinutes(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := New(12, 0)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -40,9 +34,6 @@ func BenchmarkSubtractMinutes(b *testing.B) {
 }
 
 func BenchmarkCreateClocks(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, n := range timeTests {
 			New(n.h, n.m)

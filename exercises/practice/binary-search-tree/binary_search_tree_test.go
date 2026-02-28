@@ -212,9 +212,6 @@ func TestSortedData(t *testing.T) {
 var benchmarkResult []int
 
 func BenchmarkSortedData(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	input := []int{2, 1, 3, 6, 7, 5, 2, 1, 3, 6, 7, 5}
 	tree := makeBst(input)
 	var result []int

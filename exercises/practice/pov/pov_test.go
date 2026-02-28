@@ -248,9 +248,6 @@ func TestPathTo(t *testing.T) {
 var benchmarkResultPov *Tree
 
 func BenchmarkFromPov(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result *Tree
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -266,9 +263,6 @@ func BenchmarkFromPov(b *testing.B) {
 var benchmarkResultPathTo []string
 
 func BenchmarkPathTo(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result []string
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {

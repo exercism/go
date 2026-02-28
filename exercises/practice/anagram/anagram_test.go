@@ -28,9 +28,6 @@ func equal(a, b []string) bool {
 }
 
 func BenchmarkDetectAnagrams(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)

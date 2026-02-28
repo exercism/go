@@ -57,9 +57,6 @@ exp:
 }
 
 func BenchmarkSaddle(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	ms := make([]*Matrix, len(testCases))
 	var err error
 	for i, tc := range testCases {

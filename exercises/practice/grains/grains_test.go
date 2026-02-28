@@ -31,10 +31,6 @@ func TestTotal(t *testing.T) {
 }
 
 func BenchmarkSquare(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-
 	for i := 0; i < b.N; i++ {
 		for _, test := range squareTests {
 			Square(test.input)
@@ -43,9 +39,6 @@ func BenchmarkSquare(b *testing.B) {
 }
 
 func BenchmarkTotal(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		Total()
 	}
