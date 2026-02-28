@@ -132,3 +132,97 @@ func TestNumber_Exp(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkNumber_Real(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range realTestCases {
+			Number{tt.in.a, tt.in.b}.Real()
+		}
+	}
+}
+
+func BenchmarkNumber_Imaginary(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range imaginaryTestCases {
+			Number{tt.in.a, tt.in.b}.Imaginary()
+		}
+	}
+}
+
+func BenchmarkNumber_Add(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range addTestCases {
+			n1 := Number{tt.n1.a, tt.n1.b}
+			n2 := Number{tt.n2.a, tt.n2.b}
+			n1.Add(n2)
+		}
+	}
+}
+
+func BenchmarkNumber_Subtract(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range subtractTestCases {
+			n1 := Number{tt.n1.a, tt.n1.b}
+			n2 := Number{tt.n2.a, tt.n2.b}
+			n1.Subtract(n2)
+		}
+	}
+}
+
+func BenchmarkNumber_Multiply(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range multiplyTestCases {
+			if tt.n2 == nil {
+				b.Skip("skipping tests with factor used withNumber.Times()")
+			}
+			n1 := Number{tt.n1.a, tt.n1.b}
+			n2 := Number{tt.n2.a, tt.n2.b}
+			n1.Multiply(n2)
+		}
+	}
+}
+
+func BenchmarkNumber_Times(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range multiplyTestCases {
+			if tt.n2 != nil {
+				b.Skip("skipping tests with complex multiplier used withNumber.Multiply()")
+			}
+			Number{tt.n1.a, tt.n1.b}.Times(tt.factor)
+		}
+	}
+}
+
+func BenchmarkNumber_Divide(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range divideTestCases {
+			n1 := Number{tt.n1.a, tt.n1.b}
+			n2 := Number{tt.n2.a, tt.n2.b}
+			n1.Divide(n2)
+		}
+	}
+}
+
+func BenchmarkNumber_Abs(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range absTestCases {
+			Number{tt.in.a, tt.in.b}.Abs()
+		}
+	}
+}
+
+func BenchmarkNumber_Conjugate(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range conjugateTestCases {
+			Number{tt.in.a, tt.in.b}.Conjugate()
+		}
+	}
+}
+
+func BenchmarkNumber_Exp(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, tt := range expTestCases {
+			Number{tt.in.a, tt.in.b}.Exp()
+		}
+	}
+}
