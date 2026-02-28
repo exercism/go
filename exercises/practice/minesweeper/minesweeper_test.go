@@ -185,9 +185,6 @@ func TestAnnotate(t *testing.T) {
 var benchmarkResult []string
 
 func BenchmarkAnnotate(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result []string
 	board := []string{
 		"1*22*1",

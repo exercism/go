@@ -19,9 +19,6 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 ```go
 // Benchmark 400 year interval to get fair weighting of different years.
 func Benchmark400(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		for y := 1600; y < 2000; y++ {
 			IsLeapYear(y)

@@ -164,18 +164,12 @@ func TestReverseNonEmptyList(t *testing.T) {
 }
 
 func BenchmarkNewList(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		_ = New(array1To10)
 	}
 }
 
 func BenchmarkListSize(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -184,9 +178,6 @@ func BenchmarkListSize(b *testing.B) {
 }
 
 func BenchmarkListPush(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
 		list := New([]int{})
@@ -198,9 +189,6 @@ func BenchmarkListPush(b *testing.B) {
 }
 
 func BenchmarkListPop(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
 		list := New([]int{})
@@ -215,9 +203,6 @@ func BenchmarkListPop(b *testing.B) {
 }
 
 func BenchmarkListToArray(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -226,9 +211,6 @@ func BenchmarkListToArray(b *testing.B) {
 }
 
 func BenchmarkListReverse(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
