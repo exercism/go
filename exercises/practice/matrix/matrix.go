@@ -1,4 +1,4 @@
-package matrix
+package saddlepoints
 
 // Define the Matrix type here.
 

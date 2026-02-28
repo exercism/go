@@ -47,9 +47,7 @@ func (t testCase) ExpectedError() string {
 	return ""
 }
 
-var tmpl = `package lsproduct
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

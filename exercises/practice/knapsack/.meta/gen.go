@@ -34,9 +34,7 @@ func main() {
 	}
 }
 
-var tmpl = `package knapsack
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type maximumValueCaseInput struct {
 	MaximumWeight int

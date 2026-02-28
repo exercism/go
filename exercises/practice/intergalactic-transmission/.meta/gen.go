@@ -61,9 +61,7 @@ func (t testCase) FormatExpectedError() string {
 	return ""
 }
 
-var tmpl = `package intergalactictransmission
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var transmitCases = []struct {
 	description string

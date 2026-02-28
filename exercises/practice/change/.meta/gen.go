@@ -48,9 +48,7 @@ func (t testCase) Valid() bool {
 	return t.ExpectedValues() != nil
 }
 
-var tmpl = `package change
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

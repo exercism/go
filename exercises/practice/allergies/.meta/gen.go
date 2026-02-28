@@ -37,9 +37,7 @@ type listCase struct {
 	Expected []string `json:"expected"`
 }
 
-var tmpl = `package allergies
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 // allergicTo
 type allergicToInput struct {

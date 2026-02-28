@@ -34,9 +34,7 @@ type testCase struct {
 }
 
 // Template to generate test cases.
-var tmpl = `package flatten
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string

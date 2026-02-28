@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"text/template"
 	"time"
 )
@@ -46,15 +47,23 @@ var httpClient = &http.Client{Timeout: 20 * time.Second}
 type Header struct {
 	Commit string
 	Origin string
+	Slug   string
 }
 
 // String generates the header for cases_test.go file.
 func (h Header) String() string {
-	return fmt.Sprintf(`// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-	// See https://github.com/exercism/go#synchronizing-tests-and-instructions
-	// Source: %s
-	// Commit: %s
-	`, h.Origin, h.Commit)
+	return fmt.Sprintf(
+		`package %s
+
+		// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+		// See https://github.com/exercism/go#synchronizing-tests-and-instructions
+		// Source: %s
+		// Commit: %s
+		`,
+		strings.ReplaceAll(h.Slug, "-", ""),
+		h.Origin,
+		h.Commit,
+	)
 }
 
 type testCase struct {
@@ -114,6 +123,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 			return err
 		}
 	}
+	header.Slug = exercise
 
 	if !json.Valid(jTestData) {
 		return fmt.Errorf("[ERROR] canonical-data.json seems not to be valid json")

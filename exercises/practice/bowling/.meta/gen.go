@@ -58,9 +58,7 @@ func (t Case) ExplainText() string {
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
-var tmpl = `package bowling
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var scoreTestCases = []struct {
 	description    string

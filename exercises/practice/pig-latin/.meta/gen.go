@@ -28,9 +28,7 @@ type testCase struct {
 }
 
 // Template to generate test cases.
-var tmpl = `package piglatin
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string

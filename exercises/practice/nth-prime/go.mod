@@ -1,3 +1,3 @@
-module prime
+module nthprime
 
 go 1.23

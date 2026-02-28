@@ -127,9 +127,7 @@ var stringToNumber = map[string]float64{
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
-var tmpl = `package complexnumbers
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type complexNumber struct {
 	a float64
@@ -330,5 +328,4 @@ var expTestCases = []struct {
 	},
 	{{end}}
 }
-
 `

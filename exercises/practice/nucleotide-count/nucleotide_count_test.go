@@ -1,4 +1,4 @@
-package dna
+package nucleotidecount
 
 import (
 	"reflect"

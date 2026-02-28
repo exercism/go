@@ -28,9 +28,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package proverb
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type proverbTest struct {
 	description string

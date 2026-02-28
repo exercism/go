@@ -1,4 +1,4 @@
-package flatten
+package flattenarray
 
 import (
 	"reflect"

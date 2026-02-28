@@ -47,9 +47,7 @@ type equalTestCase struct {
 	Expected bool `json:"expected"`
 }
 
-var tmpl = `package clock
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var timeTestCases = []struct {
 	description string

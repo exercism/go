@@ -27,9 +27,7 @@ type testCase struct {
 	Expected bool `json:"expected"`
 }
 
-var tmpl = `package isogram
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string

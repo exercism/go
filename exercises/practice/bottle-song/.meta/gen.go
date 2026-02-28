@@ -28,9 +28,7 @@ type testCase struct {
 	Expected []string `json:"expected"`
 }
 
-var tmpl = `package bottlesong
-
-{{.Header}}
+var tmpl = `{{.Header}}
 type bottleSongInput struct {
 	startBottles	int
 	takeDown		int

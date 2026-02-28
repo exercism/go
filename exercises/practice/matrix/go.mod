@@ -1,3 +1,3 @@
-module matrix
+module saddlepoints
 
 go 1.23

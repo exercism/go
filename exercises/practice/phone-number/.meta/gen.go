@@ -60,9 +60,7 @@ func (t testCase) Formatted() string {
 	return fmt.Sprintf("(%s) %s-%s", t.AreaCode(), expectedNumber[3:6], expectedNumber[6:10])
 }
 
-var tmpl = `package phonenumber
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type testCase struct {
 	description       string

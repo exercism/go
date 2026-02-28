@@ -1,4 +1,4 @@
-package strand
+package rnatranscription
 
 import "testing"
 
