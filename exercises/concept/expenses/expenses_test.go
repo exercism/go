@@ -221,7 +221,7 @@ func TestCategoryExpenses(t *testing.T) {
 		wantErr  bool
 	}{
 		{
-			name:     "returns error when no records with category found in any days period",
+			name:     "returns error when no records with category found",
 			category: "food",
 			p: DaysPeriod{
 				From: 1,
