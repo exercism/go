@@ -1761,6 +1761,14 @@
         ]
       },
       {
+        "slug": "prism",
+        "name": "Prism",
+        "uuid": "79ada509-576e-4c52-9b2f-99725f0c4932",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "rail-fence-cipher",
         "name": "Rail Fence Cipher",
         "uuid": "bafd87ad-1dc5-4bbe-b853-ed330c3f155a",

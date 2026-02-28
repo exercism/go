@@ -1,0 +1,52 @@
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[ec65d3b3-f7bf-4015-8156-0609c141c4c4]
+description = "zero prisms"
+
+[ec0ca17c-0c5f-44fb-89ba-b76395bdaf1c]
+description = "one prism one hit"
+
+[0db955f2-0a27-4c82-ba67-197bd6202069]
+description = "one prism zero hits"
+
+[8d92485b-ebc0-4ee9-9b88-cdddb16b52da]
+description = "going up zero hits"
+
+[78295b3c-7438-492d-8010-9c63f5c223d7]
+description = "going down zero hits"
+
+[acc723ea-597b-4a50-8d1b-b980fe867d4c]
+description = "going left zero hits"
+
+[3f19b9df-9eaa-4f18-a2db-76132f466d17]
+description = "negative angle"
+
+[96dacffb-d821-4cdf-aed8-f152ce063195]
+description = "large angle"
+
+[513a7caa-957f-4c5d-9820-076842de113c]
+description = "upward refraction two hits"
+
+[d452b7c7-9761-4ea9-81a9-2de1d73eb9ef]
+description = "downward refraction two hits"
+
+[be1a2167-bf4c-4834-acc9-e4d68e1a0203]
+description = "same prism twice"
+
+[df5a60dd-7c7d-4937-ac4f-c832dae79e2e]
+description = "simple path"
+
+[8d9a3cc8-e846-4a3b-a137-4bfc4aa70bd1]
+description = "multiple prisms floating point precision"
+
+[e077fc91-4e4a-46b3-a0f5-0ba00321da56]
+description = "complex path with multiple prisms floating point precision"
