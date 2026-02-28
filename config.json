@@ -1867,6 +1867,18 @@
         ]
       },
       {
+        "slug": "intergalactic-transmission",
+        "name": "Intergalactic Transmission",
+        "uuid": "70388d18-427b-4421-831c-b5bc987e7890",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6,
+        "topics": [
+          "bitwise_operations",
+          "arrays"
+        ]
+      },
+      {
         "slug": "knapsack",
         "name": "Knapsack",
         "uuid": "eae2fd23-c484-4dc6-b8fe-1fa055bab8ba",

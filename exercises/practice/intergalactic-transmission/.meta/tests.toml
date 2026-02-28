@@ -1,0 +1,88 @@
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[f99d4046-b429-4582-9324-f0bcac7ab51c]
+description = "calculate transmit sequences -> empty message"
+
+[ee27ea2d-8999-4f23-9275-8f6879545f86]
+description = "calculate transmit sequences -> 0x00 is transmitted as 0x0000"
+
+[97f27f98-8020-402d-be85-f21ba54a6df0]
+description = "calculate transmit sequences -> 0x02 is transmitted as 0x0300"
+
+[24712fb9-0336-4e2f-835e-d2350f29c420]
+description = "calculate transmit sequences -> 0x06 is transmitted as 0x0600"
+
+[7630b5a9-dba1-4178-b2a0-4a376f7414e0]
+description = "calculate transmit sequences -> 0x05 is transmitted as 0x0581"
+
+[ab4fe80b-ef8e-4a99-b4fb-001937af415d]
+description = "calculate transmit sequences -> 0x29 is transmitted as 0x2881"
+
+[4e200d84-593b-4449-b7c0-4de1b6a0955e]
+description = "calculate transmit sequences -> 0xc001c0de is transmitted as 0xc000711be1"
+
+[fbc537e9-6b21-4f4a-8c2b-9cf9b702a9b7]
+description = "calculate transmit sequences -> six byte message"
+
+[d5b75adf-b5fc-4f77-b4ab-77653e30f07c]
+description = "calculate transmit sequences -> seven byte message"
+
+[6d8b297b-da1d-435e-bcd7-55fbb1400e73]
+description = "calculate transmit sequences -> eight byte message"
+
+[54a0642a-d5aa-490c-be89-8e171a0cab6f]
+description = "calculate transmit sequences -> twenty byte message"
+
+[9a8084dd-3336-474c-90cb-8a852524604d]
+description = "decode received messages -> empty message"
+
+[879af739-0094-4736-9127-bd441b1ddbbf]
+description = "decode received messages -> zero message"
+
+[7a89eeef-96c5-4329-a246-ec181a8e959a]
+description = "decode received messages -> 0x0300 is decoded to 0x02"
+
+[3e515af7-8b62-417f-960c-3454bca7f806]
+description = "decode received messages -> 0x0581 is decoded to 0x05"
+
+[a1b4a3f7-9f05-4b7a-b86e-d7c6fc3f16a9]
+description = "decode received messages -> 0x2881 is decoded to 0x29"
+
+[2e99d617-4c91-4ad5-9217-e4b2447d6e4a]
+description = "decode received messages -> first byte has wrong parity"
+
+[507e212d-3dae-42e8-88b4-2223838ff8d2]
+description = "decode received messages -> second byte has wrong parity"
+
+[b985692e-6338-46c7-8cea-bc38996d4dfd]
+description = "decode received messages -> 0xcf4b00 is decoded to 0xce94"
+
+[7a1f4d48-696d-4679-917c-21b7da3ff3fd]
+description = "decode received messages -> 0xe2566500 is decoded to 0xe2ad90"
+
+[467549dc-a558-443b-80c5-ff3d4eb305d4]
+description = "decode received messages -> six byte message"
+
+[1f3be5fb-093a-4661-9951-c1c4781c71ea]
+description = "decode received messages -> seven byte message"
+
+[6065b8b3-9dcd-45c9-918c-b427cfdb28c1]
+description = "decode received messages -> last byte has wrong parity"
+
+[98af97b7-9cca-4c4c-9de3-f70e227a4cb1]
+description = "decode received messages -> eight byte message"
+
+[aa7d4785-2bb9-43a4-a38a-203325c464fb]
+description = "decode received messages -> twenty byte message"
+
+[4c86e034-b066-42ac-8497-48f9bc1723c1]
+description = "decode received messages -> wrong parity on 16th byte"
