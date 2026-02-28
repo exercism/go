@@ -60,9 +60,7 @@ func (t testCase) ExplainText() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package forth
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

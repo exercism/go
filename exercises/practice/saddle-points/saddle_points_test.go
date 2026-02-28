@@ -5,7 +5,7 @@
 // this exercise. If you do copy the matrix.go file, do not forget to submit both
 // saddle_points.go and matrix.go as part of your solution.
 
-package matrix
+package saddlepoints
 
 import (
 	"strconv"

@@ -28,9 +28,7 @@ type testCase struct {
 }
 
 // Template to generate test cases.
-var tmpl = `package reverse
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type reverseTestCase struct {
 	description	string

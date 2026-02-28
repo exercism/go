@@ -1,4 +1,4 @@
-package dna
+package nucleotidecount
 
 // Histogram is a mapping from nucleotide to its count in given DNA.
 // Choose a suitable data type.

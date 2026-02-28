@@ -1,4 +1,4 @@
-package encode
+package runlengthencoding
 
 func RunLengthEncode(input string) string {
 	panic("Please implement the RunLengthEncode function")

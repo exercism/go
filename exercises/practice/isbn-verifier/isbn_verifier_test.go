@@ -1,4 +1,4 @@
-package isbn
+package isbnverifier
 
 import (
 	"testing"

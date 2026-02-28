@@ -99,9 +99,7 @@ func (t testCase) GetElement() string {
 	return str(t.Input.Element)
 }
 
-var tmpl = `package stringset
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type (
 	// unary function, bool result (IsEmpty)

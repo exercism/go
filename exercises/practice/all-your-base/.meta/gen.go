@@ -51,9 +51,7 @@ func (o testCase) Err() string {
 }
 
 // Template to generate test cases.
-var tmpl = `package allyourbase
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description   string

@@ -1,4 +1,4 @@
-package lsproduct
+package largestseriesproduct
 
 import "testing"
 

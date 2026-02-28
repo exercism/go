@@ -40,10 +40,7 @@ type modifierTestCase struct {
 	Expected    int               `json:"expected"`
 }
 
-var tmpl = `
-package dndcharacter
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type modifierTestInput struct {
 	Score int

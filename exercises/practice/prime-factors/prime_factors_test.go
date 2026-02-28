@@ -1,4 +1,4 @@
-package prime
+package nthprime
 
 import (
 	"slices"

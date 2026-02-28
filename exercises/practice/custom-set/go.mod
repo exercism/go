@@ -1,3 +1,3 @@
-module stringset
+module customset
 
 go 1.23

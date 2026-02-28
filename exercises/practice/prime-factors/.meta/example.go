@@ -1,4 +1,4 @@
-package prime
+package nthprime
 
 func Factors(n int64) []int64 {
 	factors := []int64{}

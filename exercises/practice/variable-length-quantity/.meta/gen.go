@@ -68,9 +68,7 @@ func (t testCase) ErrorExpected() bool {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package variablelengthquantity
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var encodeTestCases = []struct {
 	description string

@@ -1,3 +1,3 @@
-module atbash
+module atbashcipher
 
 go 1.23

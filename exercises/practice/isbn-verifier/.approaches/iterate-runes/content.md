@@ -2,7 +2,7 @@
 
 ```go
 // Package isbn is a small library for validating input as an isbn.
-package isbn
+package isbnverifier
 
 func getDigit(chr rune) (digit int, ok bool) {
 	if chr < '0' || chr > '9' {
