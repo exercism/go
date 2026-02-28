@@ -1953,6 +1953,14 @@
         ]
       },
       {
+        "slug": "split-second-stopwatch",
+        "name": "Split-Second Stopwatch",
+        "uuid": "6148d815-fc92-496b-b9d1-ab028770fb20",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "two-bucket",
         "name": "Two Bucket",
         "uuid": "549bf4a0-b8eb-4f66-8990-7df6cdfaee0c",
