@@ -28,7 +28,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package prime
+var tmpl = `package primefactors
 
 {{.Header}}
 
