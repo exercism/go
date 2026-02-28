@@ -1282,6 +1282,15 @@
         ]
       },
       {
+         "slug": "affine-cipher",
+         "name": "Affine Cipher",
+         "uuid": "cf62a3c5-af1a-4d05-a004-11b35eb79442",
+         "practices": [],
+         "prerequisites": [],
+         "difficulty": 4,
+         "topics": ["algorithms", "cryptography", "strings"]
+      },
+      {
         "slug": "flatten-array",
         "name": "Flatten Array",
         "uuid": "40cc79a6-a6ea-45a0-944e-b4f3baabebc2",
