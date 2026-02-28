@@ -1,7 +1,7 @@
 //go:build !slice
 // +build !slice
 
-package stringset
+package customset
 
 import "fmt"
 

@@ -28,9 +28,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package gigasecond
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var addCases = []struct {
 	description string

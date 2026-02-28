@@ -54,9 +54,7 @@ func (t testCase) Error() string {
 }
 
 // Template to generate test cases.
-var tmpl = `package binarysearch
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases =	[]struct {
 	description string

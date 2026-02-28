@@ -1,4 +1,4 @@
-package armstrong
+package armstrongnumbers
 
 func IsNumber(n int) bool {
 	panic("Please implement the IsNumber function")

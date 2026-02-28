@@ -1,4 +1,4 @@
-package stringset
+package customset
 
 // Implement Set as a collection of unique string values.
 //

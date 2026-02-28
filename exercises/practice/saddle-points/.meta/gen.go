@@ -31,9 +31,7 @@ type Case struct {
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
-var tmpl = `package matrix
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

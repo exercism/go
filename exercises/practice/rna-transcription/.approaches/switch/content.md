@@ -2,7 +2,7 @@
 
 ```go
 // Package strand is a small library for returning the RNA complement of a DNA strand.
-package strand
+package rnatranscription
 
 func nucComp(nuc byte) byte {
 	switch nuc {

@@ -44,9 +44,7 @@ func FileContentData(comments []string) []string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package grep
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var fileContentData = []string{ {{range $line := fileContentData .Comments}}{{printf "\n%q," $line}}{{end}}
 }

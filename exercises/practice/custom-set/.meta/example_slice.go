@@ -1,7 +1,7 @@
 //go:build slice
 // +build slice
 
-package stringset
+package customset
 
 // Example based on slices rather than maps, to validate that such a solution
 // can pass the tests.

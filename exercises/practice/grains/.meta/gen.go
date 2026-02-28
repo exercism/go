@@ -41,9 +41,7 @@ func (t testCase) ExpectError() bool {
 	return !ok
 }
 
-var tmpl = `package grains
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 // returns the number of grains on the square
 var squareTests = []struct {

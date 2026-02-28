@@ -1,4 +1,4 @@
-package railfence
+package railfencecipher
 
 import "testing"
 

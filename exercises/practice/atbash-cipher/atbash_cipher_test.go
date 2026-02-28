@@ -1,4 +1,4 @@
-package atbash
+package atbashcipher
 
 import "testing"
 

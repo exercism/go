@@ -2,7 +2,7 @@
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import (
 	"fmt"

@@ -1,3 +1,3 @@
-module dna
+module nucleotidecount
 
 go 1.23

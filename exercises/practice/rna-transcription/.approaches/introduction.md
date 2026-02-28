@@ -13,7 +13,7 @@ The key to solving RNA Transcription is to match the RNA value to the DNA value.
 
 ```go
 // Package strand is a small library for returning the RNA complement of a DNA strand.
-package strand
+package rnatranscription
 
 import "strings"
 
@@ -41,7 +41,7 @@ For more information, check the [`strings.Map()` approach][approach-strings-map]
 
 ```go
 // Package strand is a small library for returning the RNA complement of a DNA strand.
-package strand
+package rnatranscription
 
 var translate = map[rune]byte{
 	'G': 'C',
@@ -66,7 +66,7 @@ For more information, check the [`map` object approach][approach-map-object].
 
 ```go
 // Package strand is a small library for returning the RNA complement of a DNA strand.
-package strand
+package rnatranscription
 
 func nucComp(nuc byte) byte {
 	switch nuc {

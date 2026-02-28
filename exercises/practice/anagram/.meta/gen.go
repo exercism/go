@@ -29,9 +29,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package anagram
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type anagramTest struct {
 	description string

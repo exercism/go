@@ -1,4 +1,4 @@
-package railfence
+package railfencecipher
 
 func Encode(message string, rails int) string {
 	panic("Please implement the Encode function")

@@ -45,9 +45,7 @@ func (t testCase) ExpectError() bool {
 }
 
 // Template to generate test cases.
-var tmpl = `package say
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string

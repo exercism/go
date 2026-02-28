@@ -1,3 +1,3 @@
-module isbn
+module isbnverifier
 
 go 1.23

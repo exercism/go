@@ -1,4 +1,4 @@
-package armstrong
+package armstrongnumbers
 
 import (
 	"testing"

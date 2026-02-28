@@ -42,9 +42,7 @@ func main() {
 }
 
 // Template to generate test cases.
-var tmpl = `package resistorcolortrio
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type labelTestCase struct {
 	description	string
