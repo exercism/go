@@ -1,4 +1,4 @@
-package transmission
+package intergalactictransmission
 
 import (
 	"errors"

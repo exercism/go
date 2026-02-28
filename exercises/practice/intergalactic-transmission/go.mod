@@ -1,3 +1,3 @@
-module transmission
+module intergalactictransmission
 
 go 1.23
