@@ -2018,6 +2018,14 @@
         ]
       },
       {
+        "slug": "swift-scheduling",
+        "name": "Swift Scheduling",
+        "uuid": "25b9a957-3c23-4727-8803-0ee35647964a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7
+      },
+      {
         "slug": "book-store",
         "name": "Book Store",
         "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097",
