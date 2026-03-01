@@ -16,9 +16,6 @@ func TestFindSequence(t *testing.T) {
 }
 
 func BenchmarkFindSequence(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for range b.N {
 		for _, tc := range testCases {
 			FindSequence(tc.start, tc.prisms)
