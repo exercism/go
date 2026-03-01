@@ -1,4 +1,4 @@
-package protein
+package proteintranslation
 
 import (
 	"testing"
@@ -110,42 +110,8 @@ func TestCodon(t *testing.T) {
 	}
 }
 
-type rnaCase struct {
-	input         string
-	expected      []string
-	expectedError error
-}
-
-var rnaTestCases = []rnaCase{
-	{
-		input:         "AUGUUUUCUUAAAUG",
-		expected:      []string{"Methionine", "Phenylalanine", "Serine"},
-		expectedError: nil,
-	},
-	{
-		input:         "AUGUUUUGG",
-		expected:      []string{"Methionine", "Phenylalanine", "Tryptophan"},
-		expectedError: nil,
-	},
-	{
-		input:         "AUGUUUUAA",
-		expected:      []string{"Methionine", "Phenylalanine"},
-		expectedError: nil,
-	},
-	{
-		input:         "UGGUGUUAUUAAUGGUUU",
-		expected:      []string{"Tryptophan", "Cysteine", "Tyrosine"},
-		expectedError: nil,
-	},
-	{
-		input:         "UGGAGAAUUAAUGGUUU",
-		expected:      nil,
-		expectedError: ErrInvalidBase,
-	},
-}
-
 func TestProtein(t *testing.T) {
-	for _, tc := range rnaTestCases {
+	for _, tc := range testCases {
 		t.Run(tc.input, func(t *testing.T) {
 			got, err := FromRNA(tc.input)
 			switch {
@@ -189,7 +155,7 @@ func BenchmarkCodon(b *testing.B) {
 }
 
 func BenchmarkProtein(b *testing.B) {
-	for _, test := range rnaTestCases {
+	for _, test := range testCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)
 		}
