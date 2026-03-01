@@ -1,7 +1,5 @@
 package prism
 
-import "math"
-
 type Position struct {
 	x     float64
 	y     float64
