@@ -3,7 +3,7 @@ package sublist
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 5bf8c7d sublist test: substring does not make a sublist (#1866)
+// Commit: 8b5bd7c Update canonical-data.json (#2527)
 
 var testCases = []struct {
 	description string

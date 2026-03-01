@@ -3,7 +3,7 @@ package grains
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: d137db1 Format using prettier (#1917)
+// Commit: af1c8d0 grains: don't say "raises an exception" (#2328)
 
 // returns the number of grains on the square
 var squareTests = []struct {
@@ -55,19 +55,19 @@ var squareTests = []struct {
 		expectError: false,
 	},
 	{
-		description: "square 0 raises an exception",
+		description: "square 0 is invalid",
 		input:       0,
 		expectedVal: 0,
 		expectError: true,
 	},
 	{
-		description: "negative square raises an exception",
+		description: "negative square is invalid",
 		input:       -1,
 		expectedVal: 0,
 		expectError: true,
 	},
 	{
-		description: "square greater than 64 raises an exception",
+		description: "square greater than 64 is invalid",
 		input:       65,
 		expectedVal: 0,
 		expectError: true,

@@ -49,13 +49,12 @@ type valueTestCase struct {
 	expected	int
 }
 
-var valueTestCases = []valueTestCase{
-	{{range .J.value}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%v" .InputColorsString}},
-	expected:		{{printf "%d"  .Expected}},
-},{{end}}
+var valueTestCases = []valueTestCase{ {{range .J.value}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{printf "%v" .InputColorsString}},
+		expected:		{{printf "%d"  .Expected}},
+	},{{end}}
 }
 
 

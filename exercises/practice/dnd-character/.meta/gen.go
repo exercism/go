@@ -53,15 +53,13 @@ var modifierTests = []struct {
 	description    string
 	input          modifierTestInput
 	expected       int
-}{
-	{{range .J.modifier}} 
-		{
-			description: {{printf "%q"  .Description}},
-			input: modifierTestInput { 
-				Score: {{printf "%d" .Input.Score}},
-			},
-			expected: {{printf "%d"  .Expected}},
+}{ {{range .J.modifier}}
+	{
+		description: {{printf "%q"  .Description}},
+		input: modifierTestInput {
+			Score: {{printf "%d" .Input.Score}},
 		},
-	{{end}}
+		expected: {{printf "%d"  .Expected}},
+	},{{end}}
 }
 `

@@ -49,21 +49,19 @@ type colorsTestCase struct {
 	expected	[]string
 }
 
-var colorCodeTestCases = []colorCodeTestCase{
-	{{range .J.colorCode}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%q"  .Input.Color}},
-	expected:		{{printf "%d"  .Expected}},
-},{{end}}
+var colorCodeTestCases = []colorCodeTestCase{ {{range .J.colorCode}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{printf "%q"  .Input.Color}},
+		expected:		{{printf "%d"  .Expected}},
+	},{{end}}
 }
 
-var colorsTestCases = []colorsTestCase{
-	{{range .J.colors}}
-{
-	description:	{{printf "%q"  .Description}},
-	expected:		{{printf "%#v" .Expected}},
-},{{end}}
+var colorsTestCases = []colorsTestCase{ {{range .J.colors}}
+	{
+		description:	{{printf "%q"  .Description}},
+		expected:		{{printf "%#v" .Expected}},
+	},{{end}}
 }
 
 

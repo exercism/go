@@ -61,7 +61,7 @@ func (t testCase) FormatExpectedError() string {
 	return ""
 }
 
-var tmpl = `package transmission
+var tmpl = `package intergalactictransmission
 
 {{.Header}}
 
@@ -69,13 +69,12 @@ var transmitCases = []struct {
 	description string
 	input       []byte
 	expected    []byte
-}{
-{{range .J.transmitSequence}}{
-	description: 	{{printf "%q" .Description}},
-	input: 			{{.FormatInput}},
-	expected: 	    {{.FormatExpectedValue}},
-},
-{{end}}
+}{ {{range .J.transmitSequence}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input: 			{{.FormatInput}},
+		expected: 	    {{.FormatExpectedValue}},
+	}, {{end}}
 }
 
 var decodeCases = []struct {
@@ -83,13 +82,12 @@ var decodeCases = []struct {
 	input       []byte
 	expectedValue []byte
 	expectedError string
-}{
-{{range .J.decodeMessage}}{
-	description: 	{{printf "%q" .Description}},
-	input: 			{{.FormatInput}},
-	expectedValue: 	{{.FormatExpectedValue}},
-	expectedError:  {{printf "%q" .FormatExpectedError}},
-},
-{{end}}
+}{ {{range .J.decodeMessage}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input: 			{{.FormatInput}},
+		expectedValue: 	{{.FormatExpectedValue}},
+		expectedError:  {{printf "%q" .FormatExpectedError}},
+	},{{end}}
 }
 `

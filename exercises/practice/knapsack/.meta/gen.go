@@ -49,23 +49,19 @@ type maximumValueTest struct {
 	expected    int
 }	
 
-var maximumValueTests = []maximumValueTest { 
-	{{range .J.maximumValue}}
-		{
-			description: {{printf "%q" .Description}},
-			input: maximumValueCaseInput {
-				MaximumWeight: {{printf "%d" .Input.MaximumWeight}},
-				Items: []Item {
-					{{range .Input.Items}}
-						{
-							Weight: {{printf "%d" .Weight}},
-							Value: {{printf "%d" .Value}},
-						},
-					{{end}}
-				},
+var maximumValueTests = []maximumValueTest { {{range .J.maximumValue}}
+	{
+		description: {{printf "%q" .Description}},
+		input: maximumValueCaseInput {
+			MaximumWeight: {{printf "%d" .Input.MaximumWeight}},
+			Items: []Item { {{range .Input.Items}}
+				{
+					Weight: {{printf "%d" .Weight}},
+					Value: {{printf "%d" .Value}},
+				},{{end}}
 			},
-			expected: {{printf "%d" .Expected}},
 		},
-	{{end}}
+		expected: {{printf "%d" .Expected}},
+	},{{end}}
 }
 `
