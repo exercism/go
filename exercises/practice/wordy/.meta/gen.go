@@ -45,9 +45,7 @@ func (t testCase) ExpectedValue() int {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package wordy
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type wordyTest struct {
 	description string

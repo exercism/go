@@ -49,9 +49,7 @@ func (t testCase) ExpectedClassification() string {
 }
 
 // Template to generate test cases.
-var tmpl = `package perfect
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var classificationTestCases = []struct {
 	description	string

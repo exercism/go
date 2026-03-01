@@ -2,7 +2,7 @@
 
 ```go
 // Package strand is a small library for returning the RNA complement of a DNA strand.
-package strand
+package rnatranscription
 
 var translate = map[rune]byte{
 	'G': 'C',

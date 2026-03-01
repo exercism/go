@@ -30,9 +30,7 @@ type testCase struct {
 }
 
 // Template to generate test cases.
-var tmpl = `package railfence
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type testCase struct {
 	description string

@@ -1,4 +1,4 @@
-package encode
+package runlengthencoding
 
 import (
 	"fmt"

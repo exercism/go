@@ -37,9 +37,7 @@ func (t testCase) ExpectedValue() float64 {
 }
 
 // Template to generate test cases.
-var tmpl = `package space
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description		string

@@ -43,9 +43,7 @@ func (c testCase) SortedMapString() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package alphametics
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description   string

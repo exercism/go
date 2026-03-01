@@ -12,7 +12,7 @@ The key to solving Nucleotide Count is to look up valid nucleotides and to error
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import "fmt"
 
@@ -43,7 +43,7 @@ For more information, check the [`switch` statement approach][approach-switch-st
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import (
 	"fmt"

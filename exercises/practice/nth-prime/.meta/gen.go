@@ -47,9 +47,7 @@ func (t testCase) GetError() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package nthprime
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var tests = []struct {
 	description string

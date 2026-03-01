@@ -42,9 +42,7 @@ func (t testCase) ExpectError() bool {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package hamming
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

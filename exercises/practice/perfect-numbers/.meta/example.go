@@ -1,4 +1,4 @@
-package perfect
+package perfectnumbers
 
 import "errors"
 

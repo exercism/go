@@ -1,5 +1,5 @@
 //nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
-package stringset
+package customset
 
 import (
 	"math/rand"

@@ -54,9 +54,7 @@ func (c testCase) ErrorExpected() bool {
 	return false
 }
 
-var tmpl = `package wordsearch
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

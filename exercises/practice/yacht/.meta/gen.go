@@ -28,9 +28,7 @@ type testCase struct {
 	Expected int `json:"expected"`
 }
 
-var tmpl = `package yacht
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

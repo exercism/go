@@ -32,9 +32,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package scale
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type scaleTest struct {
 	description string

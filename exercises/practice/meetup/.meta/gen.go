@@ -44,9 +44,7 @@ func (c testCase) ExpectedDay() int {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package meetup
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 import "time"
 

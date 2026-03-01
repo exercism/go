@@ -2,7 +2,7 @@
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import "fmt"
 
@@ -50,7 +50,7 @@ You can modify the code to look something like this
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import "fmt"
 
