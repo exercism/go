@@ -22,7 +22,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify that empty matrix has no saddle points",
 		input: [][]int{
@@ -30,7 +29,6 @@ var testCases = []struct {
 		},
 		expectedOutput: []Pair{},
 	},
-
 	{
 		description: "Can identify lack of saddle points when there are none",
 		input: [][]int{
@@ -38,7 +36,6 @@ var testCases = []struct {
 		},
 		expectedOutput: []Pair{},
 	},
-
 	{
 		description: "Can identify multiple saddle points in a column",
 		input: [][]int{
@@ -59,7 +56,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify multiple saddle points in a row",
 		input: [][]int{
@@ -80,7 +76,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify saddle point in bottom right corner",
 		input: [][]int{
@@ -93,7 +88,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify saddle points in a non square matrix",
 		input: [][]int{
@@ -110,7 +104,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify that saddle points in a single column matrix are those with the minimum value",
 		input: [][]int{
@@ -127,7 +120,6 @@ var testCases = []struct {
 			},
 		},
 	},
-
 	{
 		description: "Can identify that saddle points in a single row matrix are those with the maximum value",
 		input: [][]int{

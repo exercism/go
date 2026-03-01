@@ -2,12 +2,14 @@ package main
 
 import (
 	"../../../../gen"
+	"fmt"
 	"log"
+	"strings"
 	"text/template"
 )
 
 func main() {
-	t, err := template.New("").Parse(tmpl)
+	t, err := template.New("").Funcs(template.FuncMap{"fmtArray": FormatArray}).Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -17,6 +19,10 @@ func main() {
 	if err := gen.Gen("flatten-array", j, t); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func FormatArray(data []any) string {
+	return strings.ReplaceAll(fmt.Sprintf("%#v", data), "interface {}", "any")
 }
 
 type testCase struct {
@@ -37,10 +43,10 @@ var testCases = []struct {
 	input		any
 	expected	[]any
 }{ {{range .J.flatten}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%#v"  .Input.Array}},
-	expected:		{{printf "%#v"  .Expected}},
-},{{end}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{fmtArray .Input.Array}},
+		expected:		{{fmtArray .Expected}},
+	},{{end}}
 }
 `

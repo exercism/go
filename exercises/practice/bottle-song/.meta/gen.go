@@ -40,8 +40,7 @@ var testCases = []struct {
 	description    string
 	input          bottleSongInput
 	expected       []string       
-}{
-	{{range .J.recite}}
+}{ {{range .J.recite}}
 	{
 		description: {{printf "%q"  .Description}},
 		input: bottleSongInput{

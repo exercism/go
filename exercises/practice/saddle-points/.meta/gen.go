@@ -39,21 +39,19 @@ var testCases = []struct {
 	description    string
 	input          [][]int
 	expectedOutput []Pair
-}{
-	{{range .J.saddlePoints}}
-		{
-			description: {{printf "%q"  .Description}},
-			input: [][]int{
-				{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
-			},
-			expectedOutput: []Pair{
-				{{range .Expected}}{
-						{{printf "%d" .Row}},
-						{{printf "%d" .Column}},
-					},
-				{{end}}
-			},
+}{ {{range .J.saddlePoints}}
+	{
+		description: {{printf "%q"  .Description}},
+		input: [][]int{
+			{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
 		},
-	{{end}}
+		expectedOutput: []Pair{
+			{{range .Expected}}{
+					{{printf "%d" .Row}},
+					{{printf "%d" .Column}},
+				},
+			{{end}}
+		},
+	},{{end}}
 }
 `

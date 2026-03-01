@@ -3,7 +3,7 @@ package armstrong
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: c6884e5 armstrong-numbers: Add hyphens in descriptions (#1687)
+// Commit: 33667ce [armstrong-numbers] Two new test cases (#2080)
 
 var testCases = []struct {
 	description string

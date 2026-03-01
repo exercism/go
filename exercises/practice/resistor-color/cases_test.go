@@ -37,17 +37,6 @@ var colorCodeTestCases = []colorCodeTestCase{
 var colorsTestCases = []colorsTestCase{
 	{
 		description: "Colors",
-		expected: []string{
-			"black",
-			"brown",
-			"red",
-			"orange",
-			"yellow",
-			"green",
-			"blue",
-			"violet",
-			"grey",
-			"white",
-		},
+		expected:    []string{"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"},
 	},
 }
