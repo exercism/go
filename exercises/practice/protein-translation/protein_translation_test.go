@@ -181,9 +181,6 @@ func slicesEqual(a, b []string) bool {
 }
 
 func BenchmarkCodon(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for _, test := range codonTestCases {
 		for i := 0; i < b.N; i++ {
 			FromCodon(test.input)
@@ -192,9 +189,6 @@ func BenchmarkCodon(b *testing.B) {
 }
 
 func BenchmarkProtein(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for _, test := range rnaTestCases {
 		for i := 0; i < b.N; i++ {
 			FromRNA(test.input)

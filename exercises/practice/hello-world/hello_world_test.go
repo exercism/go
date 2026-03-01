@@ -31,9 +31,6 @@ func TestHelloWorld(t *testing.T) {
 // machines, with different specs, so the results from these benchmark tests may
 // vary.
 func BenchmarkHelloWorld(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for i := 0; i < b.N; i++ {
 		HelloWorld()
 	}

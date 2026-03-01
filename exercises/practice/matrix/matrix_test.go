@@ -269,9 +269,6 @@ func TestSet(t *testing.T) {
 }
 
 func BenchmarkNew(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var matrix Matrix
 	for i := 0; i < b.N; i++ {
 		var err error
@@ -286,9 +283,6 @@ func BenchmarkNew(b *testing.B) {
 }
 
 func BenchmarkRows(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	matrix, err := New("1 2 3\n4 5 6\n7 8 9\n 8 7 6")
 	if err != nil {
 		b.Fatalf("Failed to create the matrix: %v", err)
@@ -304,9 +298,6 @@ func BenchmarkRows(b *testing.B) {
 }
 
 func BenchmarkCols(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	matrix, err := New("1 2 3 10 11\n4 5 6 11 12\n7 8 9 12 13\n 8 7 6 13 14")
 	if err != nil {
 		b.Fatalf("Failed to create the matrix: %v", err)
