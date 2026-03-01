@@ -68,9 +68,7 @@ func Title(command string) string {
 	return fmt.Sprintf("%q", strings.ToUpper(command[0:1]) + command[1:])
 }
 
-var tmpl = `package splitsecondstopwatch
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type operation struct{
 	command string
