@@ -1,5 +1,5 @@
-// Package protein translates RNA sequences into proteins.
-package protein
+// Package proteintranslation translates RNA sequences into proteins.
+package proteintranslation
 
 import (
 	"errors"
