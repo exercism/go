@@ -28,9 +28,7 @@ type testCase struct {
 	Expected string `json:"expected"`
 }
 
-var tmpl = `package swiftscheduling
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string
