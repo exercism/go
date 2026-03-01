@@ -84,7 +84,7 @@ func TestTime(t *testing.T) {
 }
 
 func BenchmarkTime(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			st := StopwatchTest{}
 			for _, operation := range tc.commands {
