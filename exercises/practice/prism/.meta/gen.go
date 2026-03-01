@@ -43,9 +43,7 @@ type testCase struct {
 	} `json:"expected"`
 }
 
-var tmpl = `package prism
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string
