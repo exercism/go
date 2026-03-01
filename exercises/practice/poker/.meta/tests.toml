@@ -74,6 +74,9 @@ description = "aces can end a straight (10 J Q K A)"
 [76856b0d-35cd-49ce-a492-fe5db53abc02]
 description = "aces can start a straight (A 2 3 4 5)"
 
+[e214b7df-dcba-45d3-a2e5-342d8c46c286]
+description = "aces cannot be in the middle of a straight (Q K A 2 3)"
+
 [6980c612-bbff-4914-b17a-b044e4e69ea1]
 description = "both hands with a straight, tie goes to highest ranked card"
 
