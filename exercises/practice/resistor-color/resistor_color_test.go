@@ -20,14 +20,14 @@ func TestColors(t *testing.T) {
 			actual := Colors()
 
 			if len(actual) != len(tc.expected) {
-				t.Fatalf("Colors() = %+v, want %+v", actual, tc.expected)
+				t.Fatalf("Colors() = %q, want %q", actual, tc.expected)
 			}
 
 			expectedMap := makeMap(tc.expected)
 			actualMap := makeMap(actual)
 
 			if !mapsEqual(expectedMap, actualMap) {
-				t.Fatalf("Colors() = %+v, want %+v", actual, tc.expected)
+				t.Fatalf("Colors() = %q, want %q", actual, tc.expected)
 			}
 		})
 	}

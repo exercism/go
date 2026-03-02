@@ -71,7 +71,7 @@ func TestSearch(t *testing.T) {
 			}
 
 			if !reflect.DeepEqual(actual, tc.expected) {
-				t.Errorf("Search(%q, %v, %v)\ngot: %v\nwant: %v", tc.pattern, tc.flags, tc.files, actual, tc.expected)
+				t.Errorf("Search(%q, %q, %q)\ngot: %q\nwant: %q", tc.pattern, tc.flags, tc.files, actual, tc.expected)
 			}
 		})
 	}
