@@ -35,9 +35,9 @@ func TestNonEmptyListHasCorrectSize(t *testing.T) {
 func TestListHasCorrectSizeAfterPop(t *testing.T) {
 	list := New([]int{1, 2, 3})
 
-	_, _ = list.Pop()
-	_, _ = list.Pop()
-	_, _ = list.Pop()
+	list.Pop()
+	list.Pop()
+	list.Pop()
 
 	if size := list.Size(); size != 0 {
 		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got %d, expected: %d", size, 0)
@@ -165,7 +165,7 @@ func TestReverseNonEmptyList(t *testing.T) {
 
 func BenchmarkNewList(b *testing.B) {
 	for range b.N {
-		_ = New(array1To10)
+		New(array1To10)
 	}
 }
 
@@ -173,7 +173,7 @@ func BenchmarkListSize(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
 	for range b.N {
-		_ = list.Size()
+		list.Size()
 	}
 }
 
@@ -197,7 +197,7 @@ func BenchmarkListPop(b *testing.B) {
 		}
 		b.StartTimer()
 		for k := 0; k < 1000; k++ {
-			_, _ = list.Pop()
+			list.Pop()
 		}
 	}
 }
@@ -206,7 +206,7 @@ func BenchmarkListToArray(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
 	for range b.N {
-		_ = list.Array()
+		list.Array()
 	}
 }
 
@@ -214,6 +214,6 @@ func BenchmarkListReverse(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
 	for range b.N {
-		_ = list.Reverse()
+		list.Reverse()
 	}
 }
