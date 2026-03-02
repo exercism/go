@@ -1,4 +1,4 @@
-package space
+package spaceage
 
 type Planet string
 

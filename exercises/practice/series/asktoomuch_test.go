@@ -1,5 +1,4 @@
 //go:build asktoomuch
-// +build asktoomuch
 
 package series
 
