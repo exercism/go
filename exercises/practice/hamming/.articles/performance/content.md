@@ -17,7 +17,7 @@ func BenchmarkHamming(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCases {
 			// ignoring errors and results because we're just timing function execution
-			_, _ = Distance(tc.s1, tc.s2)
+			Distance(tc.s1, tc.s2)
 		}
 	}
 }
