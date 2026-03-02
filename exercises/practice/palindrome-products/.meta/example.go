@@ -1,4 +1,4 @@
-package palindrome
+package palindromeproducts
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ type Product struct {
 
 func Products(fmin, fmax int) (pmin, pmax Product, err error) {
 	if fmin > fmax {
-		err = fmt.Errorf("fmin > fmax: %d > %d", fmin, fmax)
+		err = fmt.Errorf("min must be <= max: %d > %d", fmin, fmax)
 		return pmin, pmax, err
 	}
 	for x := fmin; x <= fmax; x++ {
@@ -42,9 +42,6 @@ func Products(fmin, fmax int) (pmin, pmax Product, err error) {
 			compare(&pmin, p < pmin.Product)
 			compare(&pmax, p > pmax.Product)
 		}
-	}
-	if len(pmin.Factorizations) == 0 {
-		err = fmt.Errorf("no palindromes in range [%d, %d]", fmin, fmax)
 	}
 	return pmin, pmax, err
 }

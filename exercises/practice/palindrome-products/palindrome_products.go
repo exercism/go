@@ -1,4 +1,4 @@
-package palindrome
+package palindromeproducts
 
 // Define Product type here.
 
