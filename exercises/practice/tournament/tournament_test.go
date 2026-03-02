@@ -53,7 +53,7 @@ func RunOneTest(t *testing.T, tc TestCase) {
 		err := Tally(reader, &buffer)
 		// We don't expect errors for any of the test cases
 		if err != nil {
-			t.Fatalf("Tally for input named %q returned unexpected error %v", tc.description, err)
+			t.Fatalf("Tally for input named %q returned unexpected error %q", tc.description, err)
 		}
 		got := buffer.String()
 		expected := strings.TrimLeft(tc.expected, "\n")

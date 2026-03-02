@@ -17,7 +17,7 @@ func runTestCase(t *testing.T, tc bucketTestCase) {
 				t.Fatalf("Solve(%d,%d,%d,%q) expected error, got:%q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, g, m, other)
 			}
 		case err != nil:
-			t.Fatalf("Solve(%d,%d,%d,%q) returned error: %v, want:%q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, err, tc.goalBucket, tc.moves, tc.otherBucket)
+			t.Fatalf("Solve(%d,%d,%d,%q) returned error: %q, want:%q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, err, tc.goalBucket, tc.moves, tc.otherBucket)
 		case g != tc.goalBucket || m != tc.moves || other != tc.otherBucket:
 			t.Fatalf("Solve(%d,%d,%d,%q) = %q,%d,%d, want:%q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, g, m, other, tc.goalBucket, tc.moves, tc.otherBucket)
 		}

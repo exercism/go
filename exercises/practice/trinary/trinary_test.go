@@ -28,9 +28,9 @@ func TestParseTrinary(t *testing.T) {
 					test.arg, err)
 			}
 		case !test.ok:
-			t.Errorf("ParseTrinary(%q) = %d, %v, expected error", test.arg, res, err)
+			t.Errorf("ParseTrinary(%q) = (%d, %v), expected error", test.arg, res, err)
 		case res != test.want:
-			t.Errorf("ParseTrinary(%q) = %d, want %d", test.arg, res, test.want)
+			t.Errorf("ParseTrinary(%q) = (%d, %v), want %d", test.arg, res, err, test.want)
 		}
 	}
 }

@@ -7,7 +7,7 @@ func TestAtbash(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Atbash(tc.phrase)
 			if actual != tc.expected {
-				t.Errorf("Atbash('%s'): expected '%s', actual '%s'", tc.phrase, tc.expected, actual)
+				t.Errorf("Atbash(%q): expected %q, actual %q", tc.phrase, tc.expected, actual)
 			}
 		})
 	}

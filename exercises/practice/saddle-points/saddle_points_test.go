@@ -20,7 +20,7 @@ func TestSaddle(t *testing.T) {
 			in := generateString(tc.input)
 			m, err := New(in)
 			if err != nil {
-				t.Fatalf("TestSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
+				t.Fatalf("TestSaddle needs working New. New(%q) returned %q.  Error not expected.", in, err)
 			}
 			if got := m.Saddle(); !eq(got, tc.expectedOutput) {
 				t.Fatalf("%v.Saddle() = %v, want %v", m, got, tc.expectedOutput)
@@ -63,7 +63,7 @@ func BenchmarkSaddle(b *testing.B) {
 	for i, tc := range testCases {
 		in := generateString(tc.input)
 		if ms[i], err = New(in); err != nil {
-			b.Fatalf("BenchmarkSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
+			b.Fatalf("BenchmarkSaddle needs working New. New(%q) returned %q.  Error not expected.", in, err)
 		}
 	}
 	b.ResetTimer()

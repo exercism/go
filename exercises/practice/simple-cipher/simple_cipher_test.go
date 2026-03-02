@@ -41,14 +41,14 @@ func TestCaesar(t *testing.T) {
 
 func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 	for _, test := range tests {
-		t.Run(fmt.Sprintf("Encode(%s)", test.source), func(tt *testing.T) {
+		t.Run(fmt.Sprintf("Encode(%q)", test.source), func(tt *testing.T) {
 			if enc := c.Encode(test.source); enc != test.cipher {
-				tt.Fatalf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
+				tt.Fatalf("Encode(%q) = %q, want %q.", test.source, enc, test.cipher)
 			}
 		})
-		t.Run(fmt.Sprintf("Decode(%s)", test.cipher), func(tt *testing.T) {
+		t.Run(fmt.Sprintf("Decode(%q)", test.cipher), func(tt *testing.T) {
 			if dec := c.Decode(test.cipher); dec != test.plain {
-				tt.Fatalf("Decode(%s): got %q, want %q.", test.cipher, dec, test.plain)
+				tt.Fatalf("Decode(%q) = %q, want %q.", test.cipher, dec, test.plain)
 			}
 		})
 	}
