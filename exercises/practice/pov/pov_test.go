@@ -1,6 +1,7 @@
 package pov
 
 import (
+	"slices"
 	"sort"
 	"testing"
 )
@@ -238,7 +239,7 @@ func TestPathTo(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			got := tt.tree.PathTo(tt.from, tt.to)
 			want := tt.expected
-			if !stringSliceEqual(want, got) {
+			if !slices.Equal(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
 		})
@@ -306,21 +307,6 @@ func treeSliceEqual(trs1, trs2 []*Tree) bool {
 	sort.Slice(trs2, sortByValue(trs2))
 	for i := range trs1 {
 		if !treeEqual(trs1[i], trs2[i]) {
-			return false
-		}
-	}
-	return true
-}
-
-func stringSliceEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	if len(a) == 0 {
-		return true
-	}
-	for i := range len(a) {
-		if a[i] != b[i] {
 			return false
 		}
 	}

@@ -1,6 +1,9 @@
 package parsinglogfiles
 
-import "testing"
+import (
+	"slices"
+	"testing"
+)
 
 func TestIsValidLine(t *testing.T) {
 	tests := []struct {
@@ -91,7 +94,7 @@ func TestSplitLogLine(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			got := SplitLogLine(tt.text)
 			want := tt.expected
-			if !stringSliceEqual(want, got) {
+			if !slices.Equal(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
 		})
@@ -183,7 +186,7 @@ func TestTagWithUserName(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			got := TagWithUserName(tt.lines)
 			want := tt.expected
-			if !stringSliceEqual(want, got) {
+			if !slices.Equal(want, got) {
 				for i := range got {
 					if want[i] != got[i] {
 						t.Fatalf("expected: %v, got: %v", want[i], got[i])
@@ -193,19 +196,4 @@ func TestTagWithUserName(t *testing.T) {
 			}
 		})
 	}
-}
-
-func stringSliceEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	if len(a) == 0 {
-		return true
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }
