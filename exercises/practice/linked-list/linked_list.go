@@ -42,3 +42,13 @@ func (l *List) First() *Node {
 func (l *List) Last() *Node {
 	panic("Please implement the Last function")
 }
+
+func (l *List) Count() int {
+	panic("Please implement the Count function")
+}
+
+// Delete removes the first node in a list with a given value.
+// Returns true if a node was removed.
+func (ll *List) Delete(v any) bool {
+	panic("Please implement the Delete function")
+}
