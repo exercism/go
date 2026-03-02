@@ -113,7 +113,7 @@ func slicesEqual(a, b []int) bool {
 	if len(a) == 0 {
 		return true
 	}
-	for i := 0; i < len(a); i++ {
+	for i := range len(a) {
 		if a[i] != b[i] {
 			return false
 		}
@@ -216,7 +216,7 @@ func BenchmarkSortedData(b *testing.B) {
 	tree := makeBst(input)
 	var result []int
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		result = tree.SortedData()
 	}
 	benchmarkResult = result

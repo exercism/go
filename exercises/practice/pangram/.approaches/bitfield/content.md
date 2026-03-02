@@ -10,7 +10,7 @@ const alphamask int = 0b11111111111111111111111111
 func IsPangram(phrase string) bool {
 	phrasemask := 0
 	length := len(phrase)
-	for i := 0; i < length; i++ {
+	for i := range length {
 		letter := phrase[i]
 		if letter > 96 && letter < 123 {
 			phrasemask |= 1 << (letter - 97)

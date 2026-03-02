@@ -15,7 +15,7 @@ func TestModifier(t *testing.T) {
 
 func TestAbility(t *testing.T) {
 	t.Run("should generate ability score within accepted range", func(t *testing.T) {
-		for i := 0; i < 1000; i++ {
+		for range 1000 {
 			got := Ability()
 			if !inAcceptedRange(got) {
 				t.Fatalf("Ability() returned a score for an ability outside the accepted range. Got %d, expected a value between 3 and 18 inclusive.", got)
@@ -26,7 +26,7 @@ func TestAbility(t *testing.T) {
 
 func TestGenerateCharacter(t *testing.T) {
 	t.Run("should generate a character with random ability scores", func(t *testing.T) {
-		for i := 0; i < 1000; i++ {
+		for range 1000 {
 			character := GenerateCharacter()
 
 			assertCharacterAbilityScoreInRange(t, "Charisma", character.Charisma)
@@ -57,19 +57,19 @@ func assertCharacterAbilityScoreInRange(t *testing.T, ability string, score int)
 }
 
 func BenchmarkModifier(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for i := range b.N {
 		Modifier(i)
 	}
 }
 
 func BenchmarkAbility(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Ability()
 	}
 }
 
 func BenchmarkCharacter(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		GenerateCharacter()
 	}
 }

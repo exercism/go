@@ -40,7 +40,7 @@ func Render(markdown string) string {
 }
 
 func getHeadingWeight(line string) int {
-	for i := 0; i <= 6; i++ {
+	for i := range 6 + 1 {
 		if line[i] != headingMarker {
 			return i
 		}

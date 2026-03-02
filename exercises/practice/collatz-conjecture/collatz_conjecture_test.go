@@ -24,7 +24,7 @@ func TestCollatzConjecture(t *testing.T) {
 }
 
 func BenchmarkCollatzConjecture(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, testCase := range testCases {
 			CollatzConjecture(testCase.input)
 		}

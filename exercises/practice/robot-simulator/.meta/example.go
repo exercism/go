@@ -72,7 +72,7 @@ type Action3 struct {
 const beep = 7 // robots beep to communicate that they are done
 
 func StartRobot3(name, script string, act chan Action3, log chan string) {
-	for i := 0; i < len(script); i++ {
+	for i := range len(script) {
 		act <- Action3{name, script[i]}
 	}
 	act <- Action3{name, beep}

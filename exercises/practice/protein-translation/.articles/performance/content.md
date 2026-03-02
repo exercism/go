@@ -14,7 +14,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 ```go
 func BenchmarkProtein(b *testing.B) {
 	for _, test := range proteinTestCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			FromRNA(test.input)
 		}
 	}

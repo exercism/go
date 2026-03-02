@@ -93,7 +93,7 @@ func fib() func() int {
 }
 
 next := fib()
-for i := 0; i < N; i++ {
+for i := range N {
   fmt.Printf("F%d\t= %4d\n", i, next())
 }
 ```

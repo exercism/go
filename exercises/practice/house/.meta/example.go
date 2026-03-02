@@ -34,7 +34,7 @@ func buildVerse(songLines []string, cur string) string {
 }
 
 func Song() (song string) {
-	for i := 0; i <= len(songLines); i++ {
+	for i := range len(songLines) + 1 {
 		song += Verse(i + 1)
 		if i < len(songLines) {
 			song += "\n\n"
@@ -57,7 +57,7 @@ func Song() (song string) {
 // }
 //
 // func Song() (song string) {
-//     for i := 0; i <= len(songLines); i++ {
+//     for i := range len(songLines)+1 {
 //         song += Verse(i + 1)
 //         if i < len(songLines) {
 //             song += "\n\n"

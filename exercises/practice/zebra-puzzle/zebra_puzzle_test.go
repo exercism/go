@@ -12,7 +12,7 @@ func TestSolvePuzzle(t *testing.T) {
 }
 
 func BenchmarkScore(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SolvePuzzle()
 	}
 }

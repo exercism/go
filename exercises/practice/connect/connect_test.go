@@ -36,7 +36,7 @@ func BenchmarkResultOf(b *testing.B) {
 		board := prepare(tt.board)
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			ResultOf(board)
 		}
 

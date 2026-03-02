@@ -250,7 +250,7 @@ var benchmarkResultPov *Tree
 func BenchmarkFromPov(b *testing.B) {
 	var result *Tree
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
@@ -265,7 +265,7 @@ var benchmarkResultPathTo []string
 func BenchmarkPathTo(b *testing.B) {
 	var result []string
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
@@ -319,7 +319,7 @@ func stringSliceEqual(a, b []string) bool {
 	if len(a) == 0 {
 		return true
 	}
-	for i := 0; i < len(a); i++ {
+	for i := range len(a) {
 		if a[i] != b[i] {
 			return false
 		}

@@ -37,7 +37,7 @@ func TestColors(t *testing.T) {
 var colorCodeBench int
 
 func BenchmarkColorCode(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range colorCodeTestCases {
 			colorCodeBench = ColorCode(tc.input)
 		}
@@ -48,7 +48,7 @@ func BenchmarkColorCode(b *testing.B) {
 var colorsBench []string
 
 func BenchmarkColors(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		colorsBench = Colors()
 	}
 }

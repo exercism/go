@@ -68,7 +68,7 @@ func (list *List) Array() []int {
 
 func (list *List) Reverse() *List {
 	array, size := list.Array(), list.size
-	for i := 0; i < size/2; i++ {
+	for i := range size / 2 {
 		array[i], array[size-1-i] = array[size-1-i], array[i]
 	}
 	return New(array)

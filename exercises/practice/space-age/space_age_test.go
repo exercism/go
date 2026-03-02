@@ -18,7 +18,7 @@ func TestAge(t *testing.T) {
 }
 
 func BenchmarkAge(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Age(tc.seconds, tc.planet)
 		}

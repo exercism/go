@@ -149,7 +149,7 @@ func TestSong(t *testing.T) {
 }
 
 func BenchmarkVerse(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for v := 0; v < len(expectedVerses); v++ {
 			Verse(v + 1)
 		}
@@ -157,7 +157,7 @@ func BenchmarkVerse(b *testing.B) {
 }
 
 func BenchmarkSong(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Song()
 	}
 }

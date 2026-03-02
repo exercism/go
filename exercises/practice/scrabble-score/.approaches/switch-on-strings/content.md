@@ -50,7 +50,7 @@ It makes a slight performance difference, because of how [`strings.ToLower()`][t
 // ToLower returns s with all Unicode letters mapped to their lower case.
 func ToLower(s string) string {
 	isASCII, hasUpper := true, false
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		c := s[i]
 		if c >= utf8.RuneSelf {
 			isASCII = false
@@ -65,7 +65,7 @@ func ToLower(s string) string {
 		}
 		var b Builder
 		b.Grow(len(s))
-		for i := 0; i < len(s); i++ {
+		for i := range len(s) {
 			c := s[i]
 			if 'A' <= c && c <= 'Z' {
 				c += 'a' - 'A'

@@ -29,7 +29,7 @@ func IsValidISBN(input string) bool {
 	pos := 10
 	sum := 0
 
-	for i := 0; i < length; i++ {
+	for i := range length {
 		chr := input[i]
 		if digit, ok := getDigit(chr); ok {
 			sum += (digit * pos)

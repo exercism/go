@@ -15,7 +15,7 @@ func TestTranspose(t *testing.T) {
 			if !reflect.DeepEqual(actual, tc.expected) {
 				// let's make the error more specific and find the row it's on
 				min := min(len(tc.expected), len(actual))
-				for i := 0; i < min; i++ {
+				for i := range min {
 					if tc.expected[i] != actual[i] {
 						t.Fatalf("Transpose(%#v)\n got:%#v\nwant:%#v\n row:%d\n got:%q\nwant:%q", tc.input, actual, tc.expected, i, actual[i], tc.expected[i])
 					}
@@ -34,7 +34,7 @@ func min(a, b int) int {
 }
 
 func BenchmarkTranspose(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Transpose(test.input)
 		}

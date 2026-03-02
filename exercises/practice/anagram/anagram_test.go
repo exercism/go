@@ -28,7 +28,7 @@ func equal(a, b []string) bool {
 }
 
 func BenchmarkDetectAnagrams(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tt := range testCases {
 			Detect(tt.subject, tt.candidates)
 		}

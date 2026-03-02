@@ -24,7 +24,7 @@ func TestSolve(t *testing.T) {
 }
 
 func BenchmarkSolve(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Solve(tc.words, tc.puzzle)
 		}

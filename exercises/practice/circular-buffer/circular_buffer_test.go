@@ -178,7 +178,7 @@ func TestAlternateReadAndOverwrite(t *testing.T) {
 func BenchmarkOverwrite(b *testing.B) {
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		c.Overwrite(0)
 	}
 	b.SetBytes(int64(b.N))
@@ -187,7 +187,7 @@ func BenchmarkOverwrite(b *testing.B) {
 func BenchmarkWriteRead(b *testing.B) {
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		c.WriteByte(0)
 		c.ReadByte()
 	}

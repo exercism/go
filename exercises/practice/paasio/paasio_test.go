@@ -118,7 +118,7 @@ func testReadTotal(t *testing.T, rc ReadCounter) {
 	wg := new(sync.WaitGroup)
 	wg.Add(numGo)
 	start := make(chan struct{})
-	for i := 0; i < numGo; i++ {
+	for range numGo {
 		go func() {
 			<-start
 			rc.Read(p)
@@ -157,7 +157,7 @@ func testWriteTotal(t *testing.T, wt WriteCounter) {
 	wg := new(sync.WaitGroup)
 	wg.Add(numGo)
 	start := make(chan struct{})
-	for i := 0; i < numGo; i++ {
+	for range numGo {
 		go func() {
 			<-start
 			wt.Write(p)
@@ -204,7 +204,7 @@ func testReadCountConsistency(t *testing.T, rc ReadCounter) {
 	wg := new(sync.WaitGroup)
 	wg.Add(2 * numGo)
 	start := make(chan struct{})
-	for i := 0; i < numGo; i++ {
+	for range numGo {
 		go func() {
 			<-start
 			rc.Read(p)
@@ -242,7 +242,7 @@ func testWriteCountConsistency(t *testing.T, wc WriteCounter) {
 	wg := new(sync.WaitGroup)
 	wg.Add(2 * numGo)
 	start := make(chan struct{})
-	for i := 0; i < numGo; i++ {
+	for range numGo {
 		go func() {
 			<-start
 			wc.Write(p)

@@ -47,7 +47,7 @@ func verifyChain(input, chain []Domino) error {
 	}
 
 	// Check adjacent pairs.
-	for i := 0; i < len(chain)-1; i++ {
+	for i := range len(chain) - 1 {
 		if chain[i][1] != chain[i+1][0] {
 			return errChainIsNotLegalAdj
 		}
@@ -97,7 +97,7 @@ func sortDominoes(d []Domino) {
 }
 
 func BenchmarkMakeChain(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			MakeChain(test.dominoes)
 		}

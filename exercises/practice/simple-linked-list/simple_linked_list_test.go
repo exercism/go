@@ -164,7 +164,7 @@ func TestReverseNonEmptyList(t *testing.T) {
 }
 
 func BenchmarkNewList(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = New(array1To10)
 	}
 }
@@ -172,13 +172,13 @@ func BenchmarkNewList(b *testing.B) {
 func BenchmarkListSize(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = list.Size()
 	}
 }
 
 func BenchmarkListPush(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		b.StopTimer()
 		list := New([]int{})
 		b.StartTimer()
@@ -189,7 +189,7 @@ func BenchmarkListPush(b *testing.B) {
 }
 
 func BenchmarkListPop(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		b.StopTimer()
 		list := New([]int{})
 		for k := 0; k < 1000; k++ {
@@ -205,7 +205,7 @@ func BenchmarkListPop(b *testing.B) {
 func BenchmarkListToArray(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = list.Array()
 	}
 }
@@ -213,7 +213,7 @@ func BenchmarkListToArray(b *testing.B) {
 func BenchmarkListReverse(b *testing.B) {
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = list.Reverse()
 	}
 }

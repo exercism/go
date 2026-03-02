@@ -13,7 +13,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkPangram(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			IsPangram(test.input)
 		}

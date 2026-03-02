@@ -80,7 +80,7 @@ func TestTransform(t *testing.T) {
 }
 
 func BenchmarkTransform(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tt := range transformTests {
 			Transform(tt.input)
 		}

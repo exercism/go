@@ -25,7 +25,7 @@ func TestReverseOfReverse(t *testing.T) {
 }
 
 func BenchmarkReverse(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Reverse(tc.input)
 		}

@@ -74,7 +74,7 @@ func TestSong(t *testing.T) {
 }
 
 func BenchmarkVerse(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Verse(test.input)
 		}
@@ -82,7 +82,7 @@ func BenchmarkVerse(b *testing.B) {
 }
 
 func BenchmarkSong(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Song()
 	}
 }

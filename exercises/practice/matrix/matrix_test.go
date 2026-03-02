@@ -270,7 +270,7 @@ func TestSet(t *testing.T) {
 
 func BenchmarkNew(b *testing.B) {
 	var matrix Matrix
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		var err error
 		matrix, err = New("1 2 3 10 11\n4 5 6 11 12\n7 8 9 12 13\n 8 7 6 13 14")
 		if err != nil {
@@ -289,7 +289,7 @@ func BenchmarkRows(b *testing.B) {
 	}
 	b.ResetTimer()
 	var rows [][]int
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		rows = matrix.Rows()
 	}
 	if len(rows) != 4 {
@@ -304,7 +304,7 @@ func BenchmarkCols(b *testing.B) {
 	}
 	b.ResetTimer()
 	var cols [][]int
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		cols = matrix.Cols()
 	}
 	if len(cols) != 5 {

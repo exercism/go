@@ -38,7 +38,7 @@ func parse(s string, t *testing.T) time.Time {
 }
 
 func BenchmarkAddGigasecond(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		AddGigasecond(time.Time{})
 	}
 }

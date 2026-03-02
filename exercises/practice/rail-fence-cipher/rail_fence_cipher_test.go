@@ -17,7 +17,7 @@ func testCases(
 }
 
 func runBenchmark(op func(string, int) string, cases []testCase, b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range cases {
 			op(test.message, test.rails)
 		}

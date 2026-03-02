@@ -42,7 +42,7 @@ func organize(books []int) {
 	// e.g. 4*1, 3*2 -> 1,1,1,1,2,2,2
 	p := 0
 	for _, kv := range ss {
-		for i := 0; i < kv.Value; i++ {
+		for range kv.Value {
 			books[p] = kv.Key
 			p++
 		}

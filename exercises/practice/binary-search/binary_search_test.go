@@ -25,7 +25,7 @@ type query struct {
 
 func newQuery(n int) (query, error) {
 	q := query{slice: make([]int, n)}
-	for i := 0; i < n; i++ {
+	for i := range n {
 		q.slice[i] = i
 	}
 	q.x = rand.Intn(n)
@@ -41,7 +41,7 @@ func runBenchmark(n int, b *testing.B) {
 		b.Error(err)
 	}
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SearchInts(q.slice, q.x)
 	}
 }
