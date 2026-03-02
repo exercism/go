@@ -16,7 +16,7 @@ func TestAllergies(t *testing.T) {
 }
 
 func BenchmarkAllergies(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range allergicToTests {
 			Allergies(test.input.score)
 		}
@@ -35,7 +35,7 @@ func TestAllergicTo(t *testing.T) {
 }
 
 func BenchmarkAllergicTo(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range allergicToTests {
 			AllergicTo(test.input.score, test.input.allergen)
 		}

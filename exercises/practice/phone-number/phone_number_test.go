@@ -9,7 +9,7 @@ func TestNumber(t *testing.T) {
 }
 
 func BenchmarkNumber(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Number(test.input)
 		}
@@ -21,7 +21,7 @@ func TestAreaCode(t *testing.T) {
 }
 
 func BenchmarkAreaCode(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			AreaCode(test.input)
 		}
@@ -33,7 +33,7 @@ func TestFormat(t *testing.T) {
 }
 
 func BenchmarkFormat(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Format(test.input)
 		}

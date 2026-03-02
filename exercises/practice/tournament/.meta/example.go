@@ -68,7 +68,7 @@ func readInput(reader io.Reader) ([]inputEntry, error) {
 func tallyEntries(entries []inputEntry) map[string]teamResult {
 	results := make(map[string]teamResult)
 	for _, entry := range entries {
-		for i := 0; i < 2; i++ {
+		for i := range 2 {
 			team := entry.teams[i]
 			outcome := entry.outcomes[i]
 			result, present := results[team]

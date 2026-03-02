@@ -24,7 +24,7 @@ func contains(l1, l2 []int) bool {
 	} else if len(l2) > len(l1) {
 		return false
 	}
-	for i := 0; i <= len(l1)-len(l2); i++ {
+	for i := range len(l1) - len(l2) + 1 {
 		if l1[i] != l2[0] {
 			continue
 		}

@@ -16,7 +16,7 @@ func TestIsValidISBN(t *testing.T) {
 }
 
 func BenchmarkIsValidISBN(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, n := range testCases {
 			IsValidISBN(n.isbn)
 		}

@@ -9,7 +9,7 @@ type Impl3 struct {
 }
 
 func (c *Impl3) AddString(s string) {
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		char := rune(s[i])
 		c.lastChar = char
 		if char == '\n' {

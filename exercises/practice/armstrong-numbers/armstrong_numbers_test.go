@@ -16,7 +16,7 @@ func TestArmstrong(t *testing.T) {
 
 func BenchmarkIsNumber(b *testing.B) {
 	for _, tc := range testCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			IsNumber(tc.input)
 		}
 	}

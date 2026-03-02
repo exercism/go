@@ -95,7 +95,7 @@ func TestCompareClocks(t *testing.T) {
 func BenchmarkAddMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, a := range addTestCases {
 			c.Add(a.addedValue)
 		}
@@ -105,7 +105,7 @@ func BenchmarkAddMinutes(b *testing.B) {
 func BenchmarkSubtractMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, a := range subtractTestCases {
 			c.Subtract(a.subtractedValue)
 		}
@@ -113,7 +113,7 @@ func BenchmarkSubtractMinutes(b *testing.B) {
 }
 
 func BenchmarkCreateClocks(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, n := range timeTestCases {
 			New(n.h, n.m)
 		}

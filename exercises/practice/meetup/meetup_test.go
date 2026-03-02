@@ -23,7 +23,7 @@ func TestDay(t *testing.T) {
 }
 
 func BenchmarkDay(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Day(tc.week, tc.weekday, tc.month, tc.year)
 		}

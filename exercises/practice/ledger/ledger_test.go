@@ -295,7 +295,7 @@ func TestFormatLedgerNotChangeInput(t *testing.T) {
 }
 
 func BenchmarkFormatLedger(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tt := range successTestCases {
 			FormatLedger(tt.currency, tt.locale, tt.entries)
 		}

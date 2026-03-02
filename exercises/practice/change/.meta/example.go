@@ -146,7 +146,7 @@ coinLoop:
 // nCoins returns a list(slice) of length n of a specific coin value.
 func nCoins(n, coin int) []int {
 	coins := make([]int, n)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		coins[i] = coin
 	}
 	return coins

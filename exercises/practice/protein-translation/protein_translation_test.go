@@ -137,7 +137,7 @@ func slicesEqual(a, b []string) bool {
 		return true
 	}
 
-	for i := 0; i < len(a); i++ {
+	for i := range len(a) {
 		if a[i] != b[i] {
 			return false
 		}
@@ -148,7 +148,7 @@ func slicesEqual(a, b []string) bool {
 
 func BenchmarkCodon(b *testing.B) {
 	for _, test := range codonTestCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			FromCodon(test.input)
 		}
 	}
@@ -156,7 +156,7 @@ func BenchmarkCodon(b *testing.B) {
 
 func BenchmarkProtein(b *testing.B) {
 	for _, test := range testCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			FromRNA(test.input)
 		}
 	}

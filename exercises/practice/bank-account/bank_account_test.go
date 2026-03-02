@@ -184,7 +184,7 @@ func TestConcClose(t *testing.T) {
 		start.Add(1)
 		const closeAttempts = 10
 		res := make(chan string)
-		for i := 0; i < closeAttempts; i++ {
+		for range closeAttempts {
 			go func() { // on your mark,
 				start.Wait() // get set...
 				switch p, ok := a.Close(); {
@@ -207,7 +207,7 @@ func TestConcClose(t *testing.T) {
 		}
 		start.Done() // ...go
 		var closes, fails int
-		for i := 0; i < closeAttempts; i++ {
+		for range closeAttempts {
 			switch <-res {
 			case "close":
 				closes++
@@ -246,7 +246,7 @@ func TestConcDeposit(t *testing.T) {
 	var start, g sync.WaitGroup
 	start.Add(1)
 	g.Add(3 * c)
-	for i := 0; i < c; i++ {
+	for range c {
 		go func() { // deposit
 			start.Wait()
 			a.Deposit(amt) // ignore return values

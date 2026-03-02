@@ -21,7 +21,7 @@ func TestNth(t *testing.T) {
 }
 
 func BenchmarkNth(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Nth(10001)
 	}
 }

@@ -14,7 +14,7 @@ func TestKnapsack(t *testing.T) {
 }
 
 func BenchmarkKnapsack(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range maximumValueTests {
 			Knapsack(tc.input.MaximumWeight, tc.input.Items)
 		}

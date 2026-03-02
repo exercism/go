@@ -90,14 +90,14 @@ func TestCompute2Tree(t *testing.T) {
 	add := func(v1, v2 int) int { return v1 + v2 }
 
 	firstLevel := make([]ComputeCell, 2)
-	for i := 0; i < 2; i++ {
+	for i := range 2 {
 		firstLevel[i] = r.CreateCompute2(ins[i], ins[i+1], add)
 	}
 
 	output := r.CreateCompute2(firstLevel[0], firstLevel[1], add)
 	assertCellValue(t, output, 121, "output.Value() isn't properly computed based on initial input cell values")
 
-	for i := 0; i < 3; i++ {
+	for i := range 3 {
 		ins[i].SetValue(ins[i].Value() * 2)
 	}
 
@@ -188,14 +188,14 @@ func TestMultipleCallbackRemoval(t *testing.T) {
 
 	calls := make([]int, numCallbacks)
 	cancelers := make([]Canceler, numCallbacks)
-	for i := 0; i < numCallbacks; i++ {
+	for i := range numCallbacks {
 		// Rebind i, otherwise all callbacks will use i = numCallbacks
 		i := i
 		cancelers[i] = c.AddCallback(func(v int) { calls[i]++ })
 	}
 
 	inp.SetValue(2)
-	for i := 0; i < numCallbacks; i++ {
+	for i := range numCallbacks {
 		if calls[i] != 1 {
 			t.Fatalf("callback %d/%d should be called 1 time, was called %d times", i+1, numCallbacks, calls[i])
 		}
@@ -203,7 +203,7 @@ func TestMultipleCallbackRemoval(t *testing.T) {
 	}
 
 	inp.SetValue(3)
-	for i := 0; i < numCallbacks; i++ {
+	for i := range numCallbacks {
 		if calls[i] != 1 {
 			t.Fatalf("callback %d/%d was called after it was removed", i+1, numCallbacks)
 		}
@@ -217,7 +217,7 @@ func TestRemoveIdempotence(t *testing.T) {
 	timesCalled := 0
 	cb1 := output.AddCallback(func(int) {})
 	output.AddCallback(func(int) { timesCalled++ })
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		cb1.Cancel()
 	}
 	inp.SetValue(2)

@@ -80,7 +80,7 @@ func TestPrivateKey(t *testing.T) {
 	}
 	ms := map[string]bool{}
 	mb := map[string]bool{}
-	for i := 0; i < 100; i++ {
+	for range 100 {
 		ms[priv(smallTest.p).String()] = true
 		mb[priv(biggerTest.p).String()] = true
 	}
@@ -137,7 +137,7 @@ func TestNewPair(t *testing.T) {
 	}
 	a, A := NewPair(p, g)
 	test(a, A)
-	for i := 0; i < 20; i++ {
+	for range 20 {
 		b, B := NewPair(p, g)
 		test(b, B)
 		sa := SecretKey(a, B, p)
@@ -150,25 +150,25 @@ func TestNewPair(t *testing.T) {
 }
 
 func BenchmarkPrivateKey(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		PrivateKey(biggerTest.p)
 	}
 }
 
 func BenchmarkPublicKey(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		PublicKey(biggerTest.a, biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkNewPair(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		NewPair(biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkSecretKey(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SecretKey(biggerTest.a, biggerTest.B, biggerTest.p)
 	}
 }

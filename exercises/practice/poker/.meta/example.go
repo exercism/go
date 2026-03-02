@@ -74,7 +74,7 @@ func (hv handValue) Compare(other handValue) ordering {
 			// Shouldn't happen, number of discriminators for a kind is fixed
 			panic("Hands of same kind with different number of discriminators")
 		}
-		for i := 0; i < len(hv.discrs); i++ {
+		for i := range len(hv.discrs) {
 			if hv.discrs[i] != other.discrs[i] {
 				if hv.discrs[i] < other.discrs[i] {
 					return lessThan

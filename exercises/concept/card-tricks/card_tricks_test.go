@@ -283,7 +283,7 @@ func slicesEqual(a, b []int) bool {
 	}
 
 	size := len(a)
-	for i := 0; i < size; i++ {
+	for i := range size {
 		if a[i] != b[i] {
 			return false
 		}

@@ -36,7 +36,7 @@ func TestParseTrinary(t *testing.T) {
 }
 
 func BenchmarkParseTrinary(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range tests {
 			ParseTrinary(test.arg)
 		}

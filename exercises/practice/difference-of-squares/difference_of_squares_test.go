@@ -45,19 +45,19 @@ func TestDifference(t *testing.T) {
 // Benchmark functions on just a single number (100, from the original PE problem)
 // to avoid overhead of iterating over tests.
 func BenchmarkSquareOfSum(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SquareOfSum(100)
 	}
 }
 
 func BenchmarkSumOfSquares(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SumOfSquares(100)
 	}
 }
 
 func BenchmarkDifference(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Difference(100)
 	}
 }

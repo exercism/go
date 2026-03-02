@@ -24,7 +24,7 @@ func TestLargestSeriesProduct(t *testing.T) {
 }
 
 func BenchmarkLargestSeriesProduct(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			LargestSeriesProduct(test.digits, test.span)
 		}

@@ -18,7 +18,7 @@ func Gen(char byte) (string, error) {
 func gen(char byte) string {
 	var output []string
 	currentIndex := int(char - startIndex)
-	for i := 0; i <= currentIndex; i++ {
+	for i := range currentIndex + 1 {
 		output = append(output, getLine(currentIndex, i))
 	}
 	for i := currentIndex - 1; i > -1; i-- {

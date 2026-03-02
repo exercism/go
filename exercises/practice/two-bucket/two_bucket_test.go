@@ -25,7 +25,7 @@ func runTestCase(t *testing.T, tc bucketTestCase) {
 }
 
 func BenchmarkSolve(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range append(testCases, errorTestCases...) {
 			Solve(tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket)
 		}

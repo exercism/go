@@ -167,7 +167,7 @@ func TestDiamondHasItsShape(t *testing.T) {
 func TestTopHalfHasAscendingLetters(t *testing.T) {
 	requirement := func(char byte, rows []string) bool {
 		var start byte = 'A' - 1
-		for i := 0; i <= len(rows)/2; i++ {
+		for i := range len(rows)/2 + 1 {
 			s := strings.TrimLeft(rows[i], " ")
 			if s == "" || s[0] <= start {
 				return false

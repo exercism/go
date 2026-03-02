@@ -11,7 +11,7 @@ func TestRollADie(t *testing.T) {
 	var got int
 	foundDifferent := false
 	var last int
-	for i := 0; i < tests; i++ {
+	for i := range tests {
 		got = RollADie()
 		if got < 1 || got > 20 {
 			t.Fatalf("RollADie() out of range: %d", got)
@@ -34,7 +34,7 @@ func TestWandEnergy(t *testing.T) {
 	var last float64
 	numBuckets := int(12.0 / bucketSize)
 	buckets := make([]int, numBuckets)
-	for i := 0; i < tests; i++ {
+	for i := range tests {
 		got = GenerateWandEnergy()
 		if got < 0.0 || got >= 12.0 {
 			t.Fatalf("GenerateWandEnergy() out of range: %f", got)
@@ -68,7 +68,7 @@ func TestShuffleAnimals(t *testing.T) {
 	foundDifferent := false
 	var last []string
 	var got []string
-	for i := 0; i < tests; i++ {
+	for i := range tests {
 		got = ShuffleAnimals()
 		gotSorted := make([]string, len(got))
 		copy(gotSorted, got)
@@ -94,7 +94,7 @@ func slicesEqual(a, b []string) bool {
 		return true
 	}
 	size := len(a)
-	for i := 0; i < size; i++ {
+	for i := range size {
 		if a[i] != b[i] {
 			return false
 		}

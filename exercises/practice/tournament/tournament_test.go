@@ -86,7 +86,7 @@ func TestTallyError(t *testing.T) {
 }
 
 func BenchmarkTally(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tt := range testCases {
 			var buffer bytes.Buffer
 			Tally(strings.NewReader(tt.input), &buffer)

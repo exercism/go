@@ -53,7 +53,7 @@ func init() {
 	MaxNames = m
 
 	availableIDs = make([]int, MaxNames)
-	for i := 0; i < MaxNames; i++ {
+	for i := range MaxNames {
 		availableIDs[i] = i
 	}
 }

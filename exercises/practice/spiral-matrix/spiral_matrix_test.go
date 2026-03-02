@@ -63,7 +63,7 @@ func TestSpiralMatrix(t *testing.T) {
 }
 
 func BenchmarkSpiralMatrix(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, testCase := range testCases {
 			SpiralMatrix(testCase.input)
 		}

@@ -23,7 +23,7 @@ func nucComp(nuc byte) byte {
 func ToRNA(dna string) string {
 	length := len(dna)
 	var output = make([]byte, length)
-	for i := 0; i < length; i++ {
+	for i := range length {
 		output[i] = (nucComp(dna[i]))
 	}
 	return string(output)
