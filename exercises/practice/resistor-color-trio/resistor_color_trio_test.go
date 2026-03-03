@@ -8,7 +8,7 @@ func TestLabel(t *testing.T) {
 			actual := Label(tc.input)
 
 			if actual != tc.expected {
-				t.Fatalf("Label(%+q): expected %q, actual %q", tc.input, tc.expected, actual)
+				t.Fatalf("Label(%+q) = %q, want %q", tc.input, actual, tc.expected)
 			}
 		})
 	}

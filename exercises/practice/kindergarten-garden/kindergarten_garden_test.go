@@ -151,9 +151,9 @@ func TestGarden(t *testing.T) {
 			for _, l := range test.lookups {
 				switch plants, ok := actual.Plants(l.child); {
 				case ok != l.ok:
-					t.Fatalf("Lookup %s returned ok = %t, want %t", l.child, ok, l.ok)
+					t.Fatalf("Lookup %q returned ok = %t, want %t", l.child, ok, l.ok)
 				case ok && !reflect.DeepEqual(plants, l.plants):
-					t.Fatalf("Lookup %s = %q, want: %q", l.child, plants, l.plants)
+					t.Fatalf("Lookup %q = %q, want: %q", l.child, plants, l.plants)
 				}
 			}
 		})
@@ -188,9 +188,9 @@ RVGCCGCV`
 	tf := func(g *Garden, n int, child string, expPlants []string) {
 		switch plants, ok := g.Plants(child); {
 		case !ok:
-			t.Fatalf("error in test setup: Garden %d lookup %s returned ok = false, want true. Check if the child exists in the garden", n, child)
+			t.Fatalf("error in test setup: Garden %d lookup %q returned ok = false, want true. Check if the child exists in the garden", n, child)
 		case !reflect.DeepEqual(plants, expPlants):
-			t.Fatalf("Garden %d lookup %s = %q, want %q.",
+			t.Fatalf("Garden %d lookup %q = %q, want %q.",
 				n, child, plants, expPlants)
 		}
 	}

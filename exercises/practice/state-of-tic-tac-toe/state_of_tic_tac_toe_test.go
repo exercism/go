@@ -13,7 +13,7 @@ func TestStateOfTicTacToe(t *testing.T) {
 				t.Fatalf("\n Board: %#v \n Expected error but got nil", c.board)
 
 			case !c.wantErr && err != nil:
-				t.Fatalf("\n Board: %#v \n Expected no errors but got error: %v", c.board, err)
+				t.Fatalf("\n Board: %#v \n Expected no errors but got error: %q", c.board, err)
 
 			case c.expected != result:
 				t.Fatalf("\n Board: %#v \n Expected: %#v \n Got: %#v", c.board, c.expected, result)

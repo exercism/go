@@ -18,15 +18,15 @@ func (r *Robot) getName(t testing.TB, expectSeen bool) string {
 	t.Helper()
 	newName, err := r.Name()
 	if err != nil {
-		t.Fatalf("Name() returned unexpected error: %v", err)
+		t.Fatalf("Name() returned unexpected error: %q", err)
 	}
 	if len(newName) != 5 {
-		t.Fatalf("names should have 5 characters: name '%s' has %d character(s)", newName, len(newName))
+		t.Fatalf("names should have 5 characters: name %q has %d character(s)", newName, len(newName))
 	}
 
 	_, chk := seen[newName]
 	if !expectSeen && chk {
-		t.Fatalf("Name %s reissued after %d robots.", newName, len(seen))
+		t.Fatalf("Name %q reissued after %d robots.", newName, len(seen))
 	}
 	seen[newName] = 0
 	return newName
@@ -44,7 +44,7 @@ func TestNameSticks(t *testing.T) {
 	n1 := r.getName(t, false)
 	n2 := r.getName(t, true)
 	if n2 != n1 {
-		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
+		t.Errorf(`Robot name changed.  Now %q, was %q.`, n2, n1)
 	}
 }
 
@@ -52,7 +52,7 @@ func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
 	n1 := New().getName(t, false)
 	n2 := New().getName(t, false)
 	if n1 == n2 {
-		t.Errorf(`Robots with same name.  Two %s's.`, n1)
+		t.Errorf(`Robots with same name.  Two %q's.`, n1)
 	}
 }
 
@@ -61,7 +61,7 @@ func TestResetName(t *testing.T) {
 	n1 := r.getName(t, false)
 	r.Reset()
 	if r.getName(t, false) == n1 {
-		t.Errorf(`Robot name not cleared on reset.  Still %s.`, n1)
+		t.Errorf(`Robot name not cleared on reset.  Still %q.`, n1)
 	}
 }
 
