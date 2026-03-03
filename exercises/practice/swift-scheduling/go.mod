@@ -1,3 +1,3 @@
-module swiftschedulint
+module swiftscheduling
 
 go 1.23
