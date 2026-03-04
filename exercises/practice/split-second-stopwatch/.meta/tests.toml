@@ -1,0 +1,97 @@
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[ddb238ea-99d4-4eaa-a81d-3c917a525a23]
+description = "new stopwatch starts in ready state"
+
+[b19635d4-08ad-4ac3-b87f-aca10e844071]
+description = "new stopwatch's current lap has no elapsed time"
+
+[492eb532-268d-43ea-8a19-2a032067d335]
+description = "new stopwatch's total has no elapsed time"
+
+[8a892c1e-9ef7-4690-894e-e155a1fe4484]
+description = "new stopwatch does not have previous laps"
+
+[5b2705b6-a584-4042-ba3a-4ab8d0ab0281]
+description = "start from ready state changes state to running"
+
+[748235ce-1109-440b-9898-0a431ea179b6]
+description = "start does not change previous laps"
+
+[491487b1-593d-423e-a075-aa78d449ff1f]
+description = "start initiates time tracking for current lap"
+
+[a0a7ba2c-8db6-412c-b1b6-cb890e9b72ed]
+description = "start initiates time tracking for total"
+
+[7f558a17-ef6d-4a5b-803a-f313af7c41d3]
+description = "start cannot be called from running state"
+
+[32466eef-b2be-4d60-a927-e24fce52dab9]
+description = "stop from running state changes state to stopped"
+
+[621eac4c-8f43-4d99-919c-4cad776d93df]
+description = "stop pauses time tracking for current lap"
+
+[465bcc82-7643-41f2-97ff-5e817cef8db4]
+description = "stop pauses time tracking for total"
+
+[b1ba7454-d627-41ee-a078-891b2ed266fc]
+description = "stop cannot be called from ready state"
+
+[5c041078-0898-44dc-9d5b-8ebb5352626c]
+description = "stop cannot be called from stopped state"
+
+[3f32171d-8fbf-46b6-bc2b-0810e1ec53b7]
+description = "start from stopped state changes state to running"
+
+[626997cb-78d5-4fe8-b501-29fdef804799]
+description = "start from stopped state resumes time tracking for current lap"
+
+[58487c53-ab26-471c-a171-807ef6363319]
+description = "start from stopped state resumes time tracking for total"
+
+[091966e3-ed25-4397-908b-8bb0330118f8]
+description = "lap adds current lap to previous laps"
+
+[1aa4c5ee-a7d5-4d59-9679-419deef3c88f]
+description = "lap resets current lap and resumes time tracking"
+
+[4b46b92e-1b3f-46f6-97d2-0082caf56e80]
+description = "lap continues time tracking for total"
+
+[ea75d36e-63eb-4f34-97ce-8c70e620bdba]
+description = "lap cannot be called from ready state"
+
+[63731154-a23a-412d-a13f-c562f208eb1e]
+description = "lap cannot be called from stopped state"
+
+[e585ee15-3b3f-4785-976b-dd96e7cc978b]
+description = "stop does not change previous laps"
+
+[fc3645e2-86cf-4d11-97c6-489f031103f6]
+description = "reset from stopped state changes state to ready"
+
+[20fbfbf7-68ad-4310-975a-f5f132886c4e]
+description = "reset resets current lap"
+
+[00a8f7bb-dd5c-43e5-8705-3ef124007662]
+description = "reset clears previous laps"
+
+[76cea936-6214-4e95-b6d1-4d4edcf90499]
+description = "reset cannot be called from ready state"
+
+[ba4d8e69-f200-4721-b59e-90d8cf615153]
+description = "reset cannot be called from running state"
+
+[0b01751a-cb57-493f-bb86-409de6e84306]
+description = "supports very long laps"
