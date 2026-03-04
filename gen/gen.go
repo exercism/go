@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"../gomod-sync/cmd/config"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -60,7 +61,7 @@ func (h Header) String() string {
 		// Source: %s
 		// Commit: %s
 		`,
-		strings.ReplaceAll(h.Slug, "-", ""),
+		PackageName(h.Slug),
 		h.Origin,
 		h.Commit,
 	)
@@ -74,6 +75,11 @@ type testCase struct {
 	Scenario    string      `json:"scenario"`
 	Input       interface{} `json:"input"`
 	Expected    interface{} `json:"expected"`
+}
+
+// PackageName gives the Go package name from an exercise slug.
+func PackageName(exerciseSlug string) string {
+	return strings.ReplaceAll(exerciseSlug, "-", "")
 }
 
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
@@ -200,7 +206,17 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return err
 	}
 	// write output file for the Go test cases.
-	return outputSource("SUCCESS", casesFile, formattedFileContent)
+	if err := outputSource("SUCCESS", casesFile, formattedFileContent); err != nil {
+		return err
+	}
+	// write the go.mod file
+	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gomod-sync", "config.json")
+	version, err := config.Load(versionConfig)
+	if err != nil {
+		return err
+	}
+	goModFile := filepath.Join(exerciseDir, "go.mod")
+	return outputSource("SUCCESS", goModFile, []byte(fmt.Sprintf("module %s\n\ngo %s\n", PackageName(exercise), version.Default)))
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
