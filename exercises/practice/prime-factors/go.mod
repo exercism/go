@@ -1,3 +1,3 @@
-module nthprime
+module primefactors
 
 go 1.23

@@ -1,3 +1,3 @@
-module protein
+module proteintranslation
 
 go 1.23

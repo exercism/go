@@ -2,7 +2,7 @@
 
 ```go
 // Package scrabble uses switch to score a scrabble word.
-package scrabble
+package scrabblescore
 
 import "unicode"
 

@@ -12,7 +12,7 @@ The key to solving Protein Translation is to look up valid RNA and to error on i
 
 ```go
 // Package protein has functionality to translate RNA sequences into proteins.
-package protein
+package proteintranslation
 
 import (
 	"errors"
@@ -80,7 +80,7 @@ For more information, check the [`switch` statement approach][approach-switch-st
 
 ```go
 // Package protein has functionality to translate RNA sequences into proteins.
-package protein
+package proteintranslation
 
 import "errors"
 

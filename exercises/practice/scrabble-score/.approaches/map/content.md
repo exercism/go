@@ -2,7 +2,7 @@
 
 ```go
 // Package scrabble scores a scrabble word.
-package scrabble
+package scrabblescore
 
 import "unicode"
 

@@ -1,4 +1,4 @@
-package scrabble
+package scrabblescore
 
 import "testing"
 

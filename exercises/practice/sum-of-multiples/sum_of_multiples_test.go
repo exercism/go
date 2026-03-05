@@ -1,4 +1,4 @@
-package summultiples
+package sumofmultiples
 
 import "testing"
 

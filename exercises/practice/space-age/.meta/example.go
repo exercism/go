@@ -1,4 +1,4 @@
-package space
+package spaceage
 
 // Planet is the location where age will be calculated
 type Planet string

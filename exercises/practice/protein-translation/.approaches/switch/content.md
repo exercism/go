@@ -2,7 +2,7 @@
 
 ```go
 // Package protein has functionality to translate RNA sequences into proteins.
-package protein
+package proteintranslation
 
 import (
 	"errors"
