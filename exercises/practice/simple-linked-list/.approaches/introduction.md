@@ -10,7 +10,7 @@ A consideration is not to implement with a slice or some other existing containe
 ## Approach: Keep track of the size
 
 ```go
-package linkedlist
+package simplelinkedlist
 
 import "errors"
 

@@ -1,3 +1,3 @@
-module scrabble
+module scrabblescore
 
 go 1.23

@@ -1,4 +1,4 @@
-package secret
+package secrethandshake
 
 var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 
