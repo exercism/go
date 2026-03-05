@@ -189,3 +189,33 @@ func (ll *List) Pop() (any, error) {
 		return v, nil
 	}
 }
+
+// Count returns the number of nodes in the list.
+func (ll *List) Count() int {
+	var count int
+	for cur := ll.head; cur != nil; cur = cur.Next() {
+		count++
+	}
+	return count
+}
+
+// Delete removes the first node in a list with a given value.
+// Returns true if a node was removed.
+func (ll *List) Delete(v any) bool {
+	for cur := ll.head; cur != nil; cur = cur.Next() {
+		if cur.Value == v {
+			if cur.prev == nil {
+				ll.head = cur.next
+			} else {
+				cur.prev.next = cur.next
+			}
+			if cur.next == nil {
+				ll.tail = cur.prev
+			} else {
+				cur.next.prev = cur.prev
+			}
+			return true
+		}
+	}
+	return false
+}

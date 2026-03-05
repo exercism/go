@@ -1,185 +1,212 @@
+// This file contains tests from the shared problem specifications repo.
 package linkedlist
 
-import "testing"
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
+// Source: exercism/problem-specifications
+// Commit: 738e1e2 Rename canonical-schema to canonical-data.schema.json (#1908)
 
-var newListTestCases = []struct {
-	name     string
-	in       []any
-	expected []any
+type Operation struct {
+	operation string
+	value     int
+	expected  int
+}
+
+var testCases = []struct {
+	description string
+	operations  []Operation
 }{
 	{
-		name:     "from 5 elements",
-		in:       []any{1, 2, 3, 4, 5},
-		expected: []any{1, 2, 3, 4, 5},
-	},
-	{
-		name:     "from 2 elements",
-		in:       []any{1, 2},
-		expected: []any{1, 2},
-	},
-	{
-		name:     "from no element",
-		in:       []any{},
-		expected: []any{},
-	},
-	{
-		name:     "from 1 element",
-		in:       []any{999},
-		expected: []any{999},
-	},
-}
-
-var reverseTestCases = []struct {
-	name     string
-	in       []any
-	expected []any
-}{
-	{
-		name:     "from 5 elements",
-		in:       []any{1, 2, 3, 4, 5},
-		expected: []any{5, 4, 3, 2, 1},
-	},
-	{
-		name:     "from 2 elements",
-		in:       []any{1, 2},
-		expected: []any{2, 1},
-	},
-	{
-		name:     "from no element",
-		in:       []any{},
-		expected: []any{},
-	},
-	{
-		name:     "from 1 element",
-		in:       []any{999},
-		expected: []any{999},
-	},
-}
-
-var pushPopTestCases = []struct {
-	name     string
-	in       []any
-	actions  []checkedAction
-	expected []any
-}{
-	{
-		name: "PushFront only",
-		in:   []any{},
-		actions: []checkedAction{
-			unshift(4),
-			unshift(3),
-			unshift(2),
-			unshift(1),
+		description: "pop gets element from the list",
+		operations: []Operation{
+			{operation: "Push", value: 7},
+			{operation: "Pop", expected: 7},
 		},
-		expected: []any{1, 2, 3, 4},
 	},
 	{
-		name: "PushBack only",
-		in:   []any{},
-		actions: []checkedAction{
-			push(1),
-			push(2),
-			push(3),
-			push(4),
+		description: "push/pop respectively add/remove at the end of the list",
+		operations: []Operation{
+			{operation: "Push", value: 11},
+			{operation: "Push", value: 13},
+			{operation: "Pop", expected: 13},
+			{operation: "Pop", expected: 11},
 		},
-		expected: []any{1, 2, 3, 4},
 	},
 	{
-		name: "PopFront only, pop some elements",
-		in:   []any{1, 2, 3, 4},
-		actions: []checkedAction{
-			shift(1, nil),
-			shift(2, nil),
+		description: "shift gets an element from the list",
+		operations: []Operation{
+			{operation: "Push", value: 17},
+			{operation: "Shift", expected: 17},
 		},
-		expected: []any{3, 4},
 	},
 	{
-		name: "PopFront only, pop till empty",
-		in:   []any{1, 2, 3, 4},
-		actions: []checkedAction{
-			shift(1, nil),
-			shift(2, nil),
-			shift(3, nil),
-			shift(4, nil),
+		description: "shift gets first element from the list",
+		operations: []Operation{
+			{operation: "Push", value: 23},
+			{operation: "Push", value: 5},
+			{operation: "Shift", expected: 23},
+			{operation: "Shift", expected: 5},
 		},
-		expected: []any{},
 	},
 	{
-		name: "PopBack only, pop some elements",
-		in:   []any{1, 2, 3, 4},
-		actions: []checkedAction{
-			pop(4, nil),
-			pop(3, nil),
+		description: "unshift adds element at start of the list",
+		operations: []Operation{
+			{operation: "Unshift", value: 23},
+			{operation: "Unshift", value: 5},
+			{operation: "Shift", expected: 5},
+			{operation: "Shift", expected: 23},
 		},
-		expected: []any{1, 2},
 	},
 	{
-		name: "PopBack only, pop till empty",
-		in:   []any{1, 2, 3, 4},
-		actions: []checkedAction{
-			pop(4, nil),
-			pop(3, nil),
-			pop(2, nil),
-			pop(1, nil),
+		description: "pop, push, shift, and unshift can be used in any order",
+		operations: []Operation{
+			{operation: "Push", value: 1},
+			{operation: "Push", value: 2},
+			{operation: "Pop", expected: 2},
+			{operation: "Push", value: 3},
+			{operation: "Shift", expected: 1},
+			{operation: "Unshift", value: 4},
+			{operation: "Push", value: 5},
+			{operation: "Shift", expected: 4},
+			{operation: "Pop", expected: 5},
+			{operation: "Shift", expected: 3},
 		},
-		expected: []any{},
 	},
 	{
-		name: "mixed actions",
-		in:   []any{2, 3},
-		actions: []checkedAction{
-			unshift(1),
-			push(4),
-			shift(1, nil),
-			shift(2, nil),
-			pop(4, nil),
-			pop(3, nil),
-			unshift(8),
-			push(7),
-			unshift(9),
-			push(6),
+		description: "count an empty list",
+		operations: []Operation{
+			{operation: "Count", expected: 0},
 		},
-		expected: []any{9, 8, 7, 6},
 	},
-}
-
-// checkedAction calls a function of the linked list and (possibly) checks the result
-type checkedAction func(*testing.T, *List)
-
-func unshift(arg any) checkedAction {
-	return func(t *testing.T, ll *List) {
-		ll.Unshift(arg)
-	}
-}
-
-func push(arg any) checkedAction {
-	return func(t *testing.T, ll *List) {
-		ll.Push(arg)
-	}
-}
-
-func shift(expected any, expectedErr error) checkedAction {
-	return func(t *testing.T, ll *List) {
-		v, err := ll.Shift()
-		if err != expectedErr {
-			t.Errorf("PopFront() returned wrong, expected no error, got= %v", err)
-		}
-
-		if expectedErr == nil && v != expected {
-			t.Errorf("PopFront() returned wrong, expected= %v, got= %v", expected, v)
-		}
-	}
-}
-
-func pop(expected any, expectedErr error) checkedAction {
-	return func(t *testing.T, ll *List) {
-		v, err := ll.Pop()
-		if err != expectedErr {
-			t.Errorf("PopBack() returned wrong, expected no error, got= %v", err)
-		}
-
-		if expectedErr == nil && v != expected {
-			t.Errorf("PopBack() returned wrong, expected= %v, got= %v", expected, v)
-		}
-	}
+	{
+		description: "count a list with items",
+		operations: []Operation{
+			{operation: "Push", value: 37},
+			{operation: "Push", value: 1},
+			{operation: "Count", expected: 2},
+		},
+	},
+	{
+		description: "count is correct after mutation",
+		operations: []Operation{
+			{operation: "Push", value: 31},
+			{operation: "Count", expected: 1},
+			{operation: "Unshift", value: 43},
+			{operation: "Count", expected: 2},
+			{operation: "Shift", expected: 0},
+			{operation: "Count", expected: 1},
+			{operation: "Pop", expected: 0},
+			{operation: "Count", expected: 0},
+		},
+	},
+	{
+		description: "popping to empty doesn't break the list",
+		operations: []Operation{
+			{operation: "Push", value: 41},
+			{operation: "Push", value: 59},
+			{operation: "Pop", expected: 0},
+			{operation: "Pop", expected: 0},
+			{operation: "Push", value: 47},
+			{operation: "Count", expected: 1},
+			{operation: "Pop", expected: 47},
+		},
+	},
+	{
+		description: "shifting to empty doesn't break the list",
+		operations: []Operation{
+			{operation: "Push", value: 41},
+			{operation: "Push", value: 59},
+			{operation: "Shift", expected: 0},
+			{operation: "Shift", expected: 0},
+			{operation: "Push", value: 47},
+			{operation: "Count", expected: 1},
+			{operation: "Shift", expected: 47},
+		},
+	},
+	{
+		description: "deletes the only element",
+		operations: []Operation{
+			{operation: "Push", value: 61},
+			{operation: "Delete", value: 61},
+			{operation: "Count", expected: 0},
+		},
+	},
+	{
+		description: "deletes the element with the specified value from the list",
+		operations: []Operation{
+			{operation: "Push", value: 71},
+			{operation: "Push", value: 83},
+			{operation: "Push", value: 79},
+			{operation: "Delete", value: 83},
+			{operation: "Count", expected: 2},
+			{operation: "Pop", expected: 79},
+			{operation: "Shift", expected: 71},
+		},
+	},
+	{
+		description: "deletes the element with the specified value from the list, re-assigns tail",
+		operations: []Operation{
+			{operation: "Push", value: 71},
+			{operation: "Push", value: 83},
+			{operation: "Push", value: 79},
+			{operation: "Delete", value: 83},
+			{operation: "Count", expected: 2},
+			{operation: "Pop", expected: 79},
+			{operation: "Pop", expected: 71},
+		},
+	},
+	{
+		description: "deletes the element with the specified value from the list, re-assigns head",
+		operations: []Operation{
+			{operation: "Push", value: 71},
+			{operation: "Push", value: 83},
+			{operation: "Push", value: 79},
+			{operation: "Delete", value: 83},
+			{operation: "Count", expected: 2},
+			{operation: "Shift", expected: 71},
+			{operation: "Shift", expected: 79},
+		},
+	},
+	{
+		description: "deletes the first of two elements",
+		operations: []Operation{
+			{operation: "Push", value: 97},
+			{operation: "Push", value: 101},
+			{operation: "Delete", value: 97},
+			{operation: "Count", expected: 1},
+			{operation: "Pop", expected: 101},
+		},
+	},
+	{
+		description: "deletes the second of two elements",
+		operations: []Operation{
+			{operation: "Push", value: 97},
+			{operation: "Push", value: 101},
+			{operation: "Delete", value: 101},
+			{operation: "Count", expected: 1},
+			{operation: "Pop", expected: 97},
+		},
+	},
+	{
+		description: "delete does not modify the list if the element is not found",
+		operations: []Operation{
+			{operation: "Push", value: 89},
+			{operation: "Delete", value: 103},
+			{operation: "Count", expected: 1},
+		},
+	},
+	{
+		description: "deletes only the first occurrence",
+		operations: []Operation{
+			{operation: "Push", value: 73},
+			{operation: "Push", value: 9},
+			{operation: "Push", value: 9},
+			{operation: "Push", value: 107},
+			{operation: "Delete", value: 9},
+			{operation: "Count", expected: 3},
+			{operation: "Pop", expected: 107},
+			{operation: "Pop", expected: 9},
+			{operation: "Pop", expected: 73},
+		},
+	},
 }

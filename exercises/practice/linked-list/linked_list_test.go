@@ -3,9 +3,54 @@ package linkedlist
 import (
 	"bytes"
 	"fmt"
+	"slices"
+	"strings"
 	"testing"
 )
 
+func TestList(t *testing.T) {
+	hasInput := []string{"push", "unshift", "delete"}
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			list := NewList()
+			var calls []string
+			for _, op := range tc.operations {
+				if slices.Contains(hasInput, op.operation) {
+					calls = append(calls, fmt.Sprintf("%s(%v)", op.operation, op.value))
+				} else {
+					calls = append(calls, fmt.Sprintf("%s()", op.operation))
+				}
+
+				var got int
+				switch op.operation {
+				case "Push":
+					list.Push(op.value)
+				case "Unshift":
+					list.Unshift(op.value)
+				case "Delete":
+					list.Delete(op.value)
+				case "Pop":
+					raw, _ := list.Pop()
+					got = raw.(int)
+				case "Shift":
+					raw, _ := list.Shift()
+					got = raw.(int)
+				case "Count":
+					got = list.Count()
+				default:
+					panic(fmt.Sprintf("unknown operation %s", op.operation))
+				}
+
+				checkGot := op.expected != 0 || op.operation == "Count"
+				if checkGot && op.expected != got {
+					t.Fatalf("%s() = %d, want %d\nCalls: %s.", op.operation, got, op.expected, strings.Join(calls, "; "))
+					break
+				}
+			}
+		})
+	}
+}
 func TestNew(t *testing.T) {
 	for _, tc := range newListTestCases {
 		t.Run(tc.name, func(t *testing.T) {
