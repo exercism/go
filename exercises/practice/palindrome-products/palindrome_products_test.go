@@ -91,14 +91,28 @@ var bonusData = []testCase{
 	},
 }
 
+type CacheResult struct {min, max Product; err error}
+type CachedProducts map[[2]int]CacheResult
+
+// Return a cached result of Products.
+func (cp CachedProducts) Products(min, max int) (Product, Product, error) {
+	if _, ok := cp[[2]int{min, max}]; !ok {
+		pmin, pmax, err := Products(min, max)
+		cp[[2]int{min, max}] = CacheResult{pmin, pmax, err}
+	}
+	result := cp[[2]int{min, max}]
+	return result.min, result.max, result.err
+}
+
 
 func TestPalindromeProducts(t *testing.T) {
 	if RunBonusTests {
 		testCases = append(testCases, bonusData...)
 	}
+	cp := make(CachedProducts)
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			pmin, pmax, err := Products(tc.fmin, tc.fmax)
+			pmin, pmax, err := cp.Products(tc.fmin, tc.fmax)
 
 			if tc.errorMsg != "" {
 				if err == nil {
