@@ -1,3 +1,3 @@
-module palindrome
+module palindromeproducts
 
 go 1.23
