@@ -149,6 +149,29 @@ func TestNewPair(t *testing.T) {
 	}
 }
 
+// test can calculate public key when given a different private key.
+//
+// As this test is intended to test the immutability / purity
+// of the underlying structure, when implemented, it should first get a
+// public key from different values.
+func TestDifferentPrivateKey(t *testing.T) {
+	privateKeyOne := big.NewInt(6)
+	privateKeyTwo := big.NewInt(15)
+	p := big.NewInt(23)
+	var g int64 = 5
+	A := PublicKey(PrivateKey(privateKeyOne), p, g+2)
+	a := PrivateKey(privateKeyTwo)
+	A = PublicKey(a, p, g)
+
+	b, B := NewPair(p, g)
+	sa := SecretKey(a, B, p)
+	sb := SecretKey(b, A, p)
+	if sa.Cmp(sb) != 0 {
+		t.Fatalf("NewPair() produced non-working keys.")
+	}
+}
+
+
 func BenchmarkPrivateKey(b *testing.B) {
 	for range b.N {
 		PrivateKey(biggerTest.p)
