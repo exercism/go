@@ -1154,6 +1154,19 @@
         ]
       },
       {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "82fb24cc-ac33-4cce-a77a-b59ce3c77832",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3,
+        "topics": [
+          "bitwise_operations",
+          "integers",
+          "math"
+        ]
+      },
+      {
         "slug": "wordy",
         "name": "Wordy",
         "uuid": "1eb7d7b2-6367-4038-bb86-7dc6c682b6a3",
@@ -1323,19 +1336,6 @@
         "difficulty": 4,
         "topics": [
           "randomness"
-        ]
-      },
-      {
-        "slug": "eliuds-eggs",
-        "name": "Eliud's Eggs",
-        "uuid": "82fb24cc-ac33-4cce-a77a-b59ce3c77832",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 4,
-        "topics": [
-          "bitwise_operations",
-          "integers",
-          "math"
         ]
       },
       {
