@@ -86,7 +86,7 @@ func TestCleanupMessage(t *testing.T) {
 			want:       "DISCOUNT",
 		},
 		{
-			name:       "Cleanup message without leading whitespace",
+			name:       "Cleanup message with leading whitespace",
 			oldMessage: "*****\n SALE\n*****",
 			want:       "SALE",
 		},
