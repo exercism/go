@@ -1,5 +1,5 @@
 //nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
-package stringset
+package customset
 
 import (
 	"math/rand"
@@ -140,15 +140,12 @@ func BenchmarkNewFromSlice1e3(b *testing.B) { bench(1e3, b) }
 func BenchmarkNewFromSlice1e4(b *testing.B) { bench(1e4, b) }
 
 func bench(nAdd int, b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	s := make([]string, nAdd)
 	for i := range s {
 		s[i] = strconv.Itoa(rand.Intn(len(s)))
 	}
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		NewFromSlice(s)
 	}
 }

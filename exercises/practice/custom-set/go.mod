@@ -1,3 +1,3 @@
-module stringset
+module customset
 
-go 1.18
+go 1.23

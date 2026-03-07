@@ -3,7 +3,7 @@ package wordcount
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 5753fef Add reimplement of "with apostrophes" test (#1982)
+// Commit: ef25a61 Word count: test with quotations for word with apostrophe (#2042)
 
 var testCases = []struct {
 	description string
@@ -74,5 +74,10 @@ var testCases = []struct {
 		description: "alternating word separators not detected as a word",
 		input:       ",\n,one,\n ,two \n 'three'",
 		expected:    Frequency{"one": 1, "three": 1, "two": 1},
+	},
+	{
+		description: "quotation for word with apostrophe",
+		input:       "can, can't, 'can't'",
+		expected:    Frequency{"can": 1, "can't": 2},
 	},
 }

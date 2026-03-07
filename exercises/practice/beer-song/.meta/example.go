@@ -8,7 +8,7 @@ import (
 // Song returns the full lyrics for 99 bottles of beer
 func Song() (result string) {
 	result, _ = Verses(99, 0)
-	return
+	return result
 }
 
 // Verses returns an excerpt of the lyrics of 99 bottles of beer

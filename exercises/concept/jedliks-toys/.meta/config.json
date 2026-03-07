@@ -1,0 +1,33 @@
+{
+  "authors": [
+    "tehsphinx"
+  ],
+  "contributors": [
+    "oanaOM",
+    "mcastorina"
+  ],
+  "files": {
+    "solution": [
+      "jedliks_toys.go"
+    ],
+    "test": [
+      "jedliks_toys_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ],
+    "editor": [
+      "car.go"
+    ],
+    "invalidator": [
+      "go.mod"
+    ]
+  },
+  "forked_from": [
+    "csharp/jedliks-toys"
+  ],
+  "blurb": "Learn about methods by playing with Elon's toys",
+  "custom": {
+    "taskIdsEnabled": true
+  }
+}

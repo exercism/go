@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"steps": &[]testCase{},
 	}
 	if err := gen.Gen("collatz-conjecture", j, t); err != nil {
@@ -25,7 +24,7 @@ type testCase struct {
 	Input       struct {
 		Number int `json:"number"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() int {
@@ -42,9 +41,7 @@ func (t testCase) ExpectError() bool {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package collatzconjecture
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

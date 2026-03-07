@@ -26,7 +26,7 @@ func Ability() int {
 	var scores []int
 	var sum int
 
-	for i := 0; i < 4; i++ {
+	for range 4 {
 		roll := RollDice()
 		sum += roll
 		scores = append(scores, roll)

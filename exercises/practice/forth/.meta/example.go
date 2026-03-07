@@ -112,7 +112,8 @@ func parse(phrase string, userDefs map[string][]operatorTyp) (oplist []operatorT
 				return nil, err
 			}
 			oplist = append(oplist,
-				operatorTyp{id: opConst,
+				operatorTyp{
+					id: opConst,
 					fn: func(stack *[]int) error {
 						push(stack, x)
 						return nil
@@ -229,7 +230,9 @@ func swap(stack *[]int) error {
 	return nil
 }
 
-var errNotEnoughOperands = errors.New("not enough operands")
-var errDivideByZero = errors.New("attempt to divide by zero")
-var errEmptyUserDef = errors.New("empty user definition")
-var errInvalidUserDef = errors.New("invalid user def word")
+var (
+	errNotEnoughOperands = errors.New("not enough operands")
+	errDivideByZero      = errors.New("attempt to divide by zero")
+	errEmptyUserDef      = errors.New("empty user definition")
+	errInvalidUserDef    = errors.New("invalid user def word")
+)

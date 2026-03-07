@@ -27,6 +27,6 @@ This approach exhausts after a maximum of three checks.
 | 2000 |          true |           false |            true |         true |
 | 1900 |          true |           false |           false |        false |
 
-[modulus-operator]: https://golangbyexample.com/remainder-modulus-go-golang/
+[modulus-operator]: https://golangbyexamples.com/remainder-modulus-go-golang/
 [logical-and]: https://www.tutorialkart.com/golang-tutorial/golang-and/
 [logical-or]: https://www.tutorialkart.com/golang-tutorial/golang-or/

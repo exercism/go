@@ -1,0 +1,41 @@
+name: Check formatting
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Go ${{ matrix.go-version }} - ${{ matrix.os }}/${{ matrix.test-arch }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        go-version: [1.25.x]
+        os: [ubuntu-24.04, windows-2025, macOS-latest]
+        test-arch: [amd64]
+        race: ["-race"]
+
+        include:
+          - go-version: 1.25.x
+            test-arch: "386"
+            os: ubuntu-24.04
+            race: ""
+          - go-version: 1.25.x
+            test-arch: "386"
+            os: windows-2025
+            race: ""
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Install gofumpt
+        run: go install mvdan.cc/gofumpt@v0.9.1
+      - name: Run gofumpt
+        run: gofumpt -l .

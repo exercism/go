@@ -14,7 +14,6 @@ var modifierTests = []struct {
 	input       modifierTestInput
 	expected    int
 }{
-
 	{
 		description: "ability modifier for score 3 is -4",
 		input: modifierTestInput{
@@ -22,7 +21,6 @@ var modifierTests = []struct {
 		},
 		expected: -4,
 	},
-
 	{
 		description: "ability modifier for score 4 is -3",
 		input: modifierTestInput{
@@ -30,7 +28,6 @@ var modifierTests = []struct {
 		},
 		expected: -3,
 	},
-
 	{
 		description: "ability modifier for score 5 is -3",
 		input: modifierTestInput{
@@ -38,7 +35,6 @@ var modifierTests = []struct {
 		},
 		expected: -3,
 	},
-
 	{
 		description: "ability modifier for score 6 is -2",
 		input: modifierTestInput{
@@ -46,7 +42,6 @@ var modifierTests = []struct {
 		},
 		expected: -2,
 	},
-
 	{
 		description: "ability modifier for score 7 is -2",
 		input: modifierTestInput{
@@ -54,7 +49,6 @@ var modifierTests = []struct {
 		},
 		expected: -2,
 	},
-
 	{
 		description: "ability modifier for score 8 is -1",
 		input: modifierTestInput{
@@ -62,7 +56,6 @@ var modifierTests = []struct {
 		},
 		expected: -1,
 	},
-
 	{
 		description: "ability modifier for score 9 is -1",
 		input: modifierTestInput{
@@ -70,7 +63,6 @@ var modifierTests = []struct {
 		},
 		expected: -1,
 	},
-
 	{
 		description: "ability modifier for score 10 is 0",
 		input: modifierTestInput{
@@ -78,7 +70,6 @@ var modifierTests = []struct {
 		},
 		expected: 0,
 	},
-
 	{
 		description: "ability modifier for score 11 is 0",
 		input: modifierTestInput{
@@ -86,7 +77,6 @@ var modifierTests = []struct {
 		},
 		expected: 0,
 	},
-
 	{
 		description: "ability modifier for score 12 is +1",
 		input: modifierTestInput{
@@ -94,7 +84,6 @@ var modifierTests = []struct {
 		},
 		expected: 1,
 	},
-
 	{
 		description: "ability modifier for score 13 is +1",
 		input: modifierTestInput{
@@ -102,7 +91,6 @@ var modifierTests = []struct {
 		},
 		expected: 1,
 	},
-
 	{
 		description: "ability modifier for score 14 is +2",
 		input: modifierTestInput{
@@ -110,7 +98,6 @@ var modifierTests = []struct {
 		},
 		expected: 2,
 	},
-
 	{
 		description: "ability modifier for score 15 is +2",
 		input: modifierTestInput{
@@ -118,7 +105,6 @@ var modifierTests = []struct {
 		},
 		expected: 2,
 	},
-
 	{
 		description: "ability modifier for score 16 is +3",
 		input: modifierTestInput{
@@ -126,7 +112,6 @@ var modifierTests = []struct {
 		},
 		expected: 3,
 	},
-
 	{
 		description: "ability modifier for score 17 is +3",
 		input: modifierTestInput{
@@ -134,7 +119,6 @@ var modifierTests = []struct {
 		},
 		expected: 3,
 	},
-
 	{
 		description: "ability modifier for score 18 is +4",
 		input: modifierTestInput{

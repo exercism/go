@@ -1,3 +1,3 @@
-module reverse
+module reversestring
 
-go 1.18
+go 1.23

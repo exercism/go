@@ -9,7 +9,7 @@ func IsIsogram(phrase string) bool {
 	theEnd := len(phrase)
 	var letterFlags uint32 = 0
 
-	for i := 0; i < theEnd; i++ {
+	for i := range theEnd {
 		letter := phrase[i]
 		if letter > 96 && letter < 123 {
 			if (letterFlags & (1 << (letter - 'a'))) != 0 {

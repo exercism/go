@@ -75,9 +75,9 @@ func TestDescription(t *testing.T) {
 		})
 	}
 }
+
 func TestAnniversaryDate(t *testing.T) {
 	tests := map[string]struct {
-		in   string
 		want time.Time
 	}{
 		"AnniversaryDate 1": {want: time.Date(time.Now().Year(), time.September, 15, 0, 0, 0, 0, time.UTC)},
@@ -85,7 +85,7 @@ func TestAnniversaryDate(t *testing.T) {
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 			if got := AnniversaryDate(); !got.Equal(tc.want) {
-				t.Errorf("AnniversaryDate(%s) = '%v', want '%v'", tc.in, got, tc.want)
+				t.Errorf("AnniversaryDate() = '%v', want '%v'", got, tc.want)
 			}
 		})
 	}

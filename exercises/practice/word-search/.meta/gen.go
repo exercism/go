@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"search": &[]testCase{},
 	}
 	if err := gen.Gen("word-search", j, t); err != nil {
@@ -55,9 +54,7 @@ func (c testCase) ErrorExpected() bool {
 	return false
 }
 
-var tmpl = `package wordsearch
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

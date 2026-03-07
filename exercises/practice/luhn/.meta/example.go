@@ -3,7 +3,6 @@ package luhn
 import "strings"
 
 func Valid(id string) bool {
-
 	if len(strings.TrimSpace(id)) == 1 {
 		return false
 	}
@@ -34,5 +33,5 @@ func sum(d []int) (s int) {
 		}
 		s += x
 	}
-	return
+	return s
 }

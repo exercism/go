@@ -22,8 +22,8 @@ greeting = espGreeting
 fmt.Println(greeting("Alice")) 	// ¡Hola Alice, mucho gusto!
 ```
 
-Function values provide an opportunity to parametrize functions not only with data but with behavior too.
-In the following example, we are passing behaviour to the `dialog` function via the `greetingFunc` parameter:
+Function values provide an opportunity to parameterize functions not only with data but with behavior too.
+In the following example, we are passing behavior to the `dialog` function via the `greetingFunc` parameter:
 
 ```go
 func dialog(name string, greetingFunc func(string) string) {
@@ -93,7 +93,7 @@ func fib() func() int {
 }
 
 next := fib()
-for i := 0; i < N; i++ {
+for i := range N {
   fmt.Printf("F%d\t= %4d\n", i, next())
 }
 ```

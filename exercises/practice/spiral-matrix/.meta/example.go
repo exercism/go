@@ -77,7 +77,7 @@ func SpiralMatrix(size int) [][]int {
 	}
 	dir := right
 	count := size * size
-	for i := 0; i < count; i++ {
+	for i := range count {
 		matrix[co.x][co.y] = i + 1
 
 		maybeNext := dir.move(co)

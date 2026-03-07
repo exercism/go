@@ -1,4 +1,4 @@
-package atbash
+package atbashcipher
 
 import (
 	"regexp"
@@ -27,7 +27,7 @@ func convert(s string) string {
 	originalSlice := strings.Split(alphabet, "")
 	reversedSlice := strings.Split(key, "")
 	result := ""
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		char := inputSlice[i]
 		index := indexOf(originalSlice, char)
 		if index > -1 {

@@ -22,7 +22,7 @@ type FodderCalculator interface {
 }
 ```
 
-As you work on your code, you will improve the error handling to make it more robust and easier to debug later on when you use it in your daily farm live.
+As you work on your code, you will improve the error handling to make it more robust and easier to debug later on when you use it in your daily farm life.
 
 ## 1. Divide the food evenly
 

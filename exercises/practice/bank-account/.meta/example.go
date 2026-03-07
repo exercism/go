@@ -23,7 +23,7 @@ func (a *Account) Balance() (bal int64, ok bool) {
 	a.mu.RLock()
 	bal, ok = a.balance, a.open
 	a.mu.RUnlock()
-	return
+	return bal, ok
 }
 
 func (a *Account) Deposit(amt int64) (newBal int64, ok bool) {

@@ -3,7 +3,7 @@
 In this exercise, you're going to implement a program that determines the state of a [tic-tac-toe][] game.
 (_You may also know the game as "noughts and crosses" or "Xs and Os"._)
 
-The games is played on a 3×3 grid.
+The game is played on a 3×3 grid.
 Players take turns to place `X`s and `O`s on the grid.
 The game ends when one player has won by placing three of marks in a row, column, or along a diagonal of the grid, or when the entire grid is filled up.
 

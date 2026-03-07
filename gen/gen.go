@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"../gomod-sync/cmd/config"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -10,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"text/template"
 	"time"
 )
@@ -46,15 +48,23 @@ var httpClient = &http.Client{Timeout: 20 * time.Second}
 type Header struct {
 	Commit string
 	Origin string
+	Slug   string
 }
 
 // String generates the header for cases_test.go file.
 func (h Header) String() string {
-	return fmt.Sprintf(`// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
-	// See https://github.com/exercism/go#synchronizing-tests-and-instructions
-	// Source: %s
-	// Commit: %s
-	`, h.Origin, h.Commit)
+	return fmt.Sprintf(
+		`package %s
+
+		// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+		// See https://github.com/exercism/go#synchronizing-tests-and-instructions
+		// Source: %s
+		// Commit: %s
+		`,
+		PackageName(h.Slug),
+		h.Origin,
+		h.Commit,
+	)
 }
 
 type testCase struct {
@@ -67,9 +77,14 @@ type testCase struct {
 	Expected    interface{} `json:"expected"`
 }
 
+// PackageName gives the Go package name from an exercise slug.
+func PackageName(exerciseSlug string) string {
+	return strings.ReplaceAll(exerciseSlug, "-", "")
+}
+
 // Gen generates the exercise cases_test.go file from the relevant canonical-data.json
 func Gen(exercise string, tests map[string]interface{}, t *template.Template) error {
-	var githubToken = ""
+	githubToken := ""
 	flag.StringVar(&githubToken, "github_token", "", "Token used in Authorization header for Github")
 	flag.Parse()
 	// Determine the exercise directory.
@@ -114,6 +129,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 			return err
 		}
 	}
+	header.Slug = exercise
 
 	if !json.Valid(jTestData) {
 		return fmt.Errorf("[ERROR] canonical-data.json seems not to be valid json")
@@ -134,7 +150,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return fmt.Errorf("failed to get filtered test-cases: %w", err)
 	}
 
-	var casesPerProperty = map[string][]testCase{}
+	casesPerProperty := map[string][]testCase{}
 
 	for _, testCase := range *allTestCases {
 		casesPerProperty[testCase.Property] = append(casesPerProperty[testCase.Property], testCase)
@@ -159,7 +175,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		}
 	}
 
-	var testData = testCase{}
+	testData := testCase{}
 	err = json.Unmarshal(jTestData, &testData)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal root test data: %v", err)
@@ -186,11 +202,21 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		fmt.Print("[ERROR] failed to format the output with gofmt (the generated source has a syntax error)")
 		casesFileContent = append(casesFileContent, []byte(fmt.Sprintf("// !NOTE: Error during source formatting: Line:Column %v\n", err))...)
 		// Save the raw unformatted, error-containing source for purposes of debugging the generator.
-		_ = outputSource("ERROR", casesFile, casesFileContent)
+		outputSource("ERROR", casesFile, casesFileContent)
 		return err
 	}
 	// write output file for the Go test cases.
-	return outputSource("SUCCESS", casesFile, formattedFileContent)
+	if err := outputSource("SUCCESS", casesFile, formattedFileContent); err != nil {
+		return err
+	}
+	// write the go.mod file
+	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gomod-sync", "config.json")
+	version, err := config.Load(versionConfig)
+	if err != nil {
+		return err
+	}
+	goModFile := filepath.Join(exerciseDir, "go.mod")
+	return outputSource("SUCCESS", goModFile, []byte(fmt.Sprintf("module %s\n\ngo %s\n", PackageName(exercise), version.Default)))
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].

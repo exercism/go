@@ -8,7 +8,7 @@ func TestValue(t *testing.T) {
 			actual := Value(tc.input)
 
 			if actual != tc.expected {
-				t.Fatalf("Value(%+q): expected %d, actual %d", tc.input, tc.expected, actual)
+				t.Fatalf("Value(%+q) = %d, want %d", tc.input, actual, tc.expected)
 			}
 		})
 	}
@@ -18,7 +18,7 @@ func TestValue(t *testing.T) {
 var valueBench int
 
 func BenchmarkValue(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range valueTestCases {
 			valueBench = Value(tc.input)
 		}

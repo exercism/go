@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"findFewestCoins": &[]testCase{},
 	}
 	if err := gen.Gen("change", j, t); err != nil {
@@ -26,11 +25,11 @@ type testCase struct {
 		Coins  []int `json:"coins"`
 		Target int   `json:"target"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValues() []int {
-	values, ok := t.Expected.([]interface{})
+	values, ok := t.Expected.([]any)
 	if !ok {
 		return nil
 	}
@@ -49,9 +48,7 @@ func (t testCase) Valid() bool {
 	return t.ExpectedValues() != nil
 }
 
-var tmpl = `package change
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

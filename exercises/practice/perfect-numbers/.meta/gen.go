@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"classify": &[]testCase{},
 	}
 	if err := gen.Gen("perfect-numbers", j, t); err != nil {
@@ -25,7 +24,7 @@ type testCase struct {
 	Input       struct {
 		Number int `json:"number"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) Valid() bool {
@@ -50,9 +49,7 @@ func (t testCase) ExpectedClassification() string {
 }
 
 // Template to generate test cases.
-var tmpl = `package perfect
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var classificationTestCases = []struct {
 	description	string

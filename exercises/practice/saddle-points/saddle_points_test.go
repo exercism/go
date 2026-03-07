@@ -4,8 +4,9 @@
 // and start a new file saddle_points.go with additional code that completes
 // this exercise. If you do copy the matrix.go file, do not forget to submit both
 // saddle_points.go and matrix.go as part of your solution.
+// You will also need to update the package name.
 
-package matrix
+package saddlepoints
 
 import (
 	"strconv"
@@ -16,10 +17,10 @@ import (
 func TestSaddle(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			var in = generateString(tc.input)
+			in := generateString(tc.input)
 			m, err := New(in)
 			if err != nil {
-				t.Fatalf("TestSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
+				t.Fatalf("TestSaddle needs working New. New(%q) returned %q.  Error not expected.", in, err)
 			}
 			if got := m.Saddle(); !eq(got, tc.expectedOutput) {
 				t.Fatalf("%v.Saddle() = %v, want %v", m, got, tc.expectedOutput)
@@ -57,19 +58,16 @@ exp:
 }
 
 func BenchmarkSaddle(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	ms := make([]*Matrix, len(testCases))
 	var err error
 	for i, tc := range testCases {
-		var in = generateString(tc.input)
+		in := generateString(tc.input)
 		if ms[i], err = New(in); err != nil {
-			b.Fatalf("BenchmarkSaddle needs working New. New(%s) returned %q.  Error not expected.", in, err)
+			b.Fatalf("BenchmarkSaddle needs working New. New(%q) returned %q.  Error not expected.", in, err)
 		}
 	}
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, m := range ms {
 			m.Saddle()
 		}

@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"add": &[]testCase{},
 	}
 	if err := gen.Gen("gigasecond", j, t); err != nil {
@@ -29,9 +28,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package gigasecond
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var addCases = []struct {
 	description string

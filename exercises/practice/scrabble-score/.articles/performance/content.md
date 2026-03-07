@@ -15,10 +15,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkScore(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range scrabbleScoreTests {
 			Score(test.input)
 		}

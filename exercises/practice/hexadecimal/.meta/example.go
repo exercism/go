@@ -37,7 +37,7 @@ func ParseHex(s string) (n int64, err error) {
 		goto Error
 	}
 
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		d := s[i]
 		var v byte
 		switch {

@@ -8,13 +8,12 @@ func TestRomanNumerals(t *testing.T) {
 			actual, err := ToRomanNumeral(tc.input)
 			if err != nil {
 				// expect no error for all valid tests cases (canonical-data.json contains only valid cases)
-				t.Fatalf("ToRomanNumeral(%d) returned error: %v, want: %q", tc.input, err, tc.expected)
+				t.Fatalf("ToRomanNumeral(%d) returned error: %q, want: %q", tc.input, err, tc.expected)
 			}
 			if actual != tc.expected {
 				t.Fatalf("ToRomanNumeral(%d) = %q, want: %q", tc.input, actual, tc.expected)
 			}
 		})
-
 	}
 }
 
@@ -35,10 +34,7 @@ func TestRomanNumeralsInvalid(t *testing.T) {
 }
 
 func BenchmarkRomanNumerals(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range validRomanNumeralTests {
 			ToRomanNumeral(tc.input)
 		}

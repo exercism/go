@@ -14,5 +14,5 @@ func Sieve(limit int) (primes []int) {
 			primes = append(primes, i)
 		}
 	}
-	return
+	return primes
 }

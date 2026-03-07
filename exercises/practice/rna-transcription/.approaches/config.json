@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,21 +10,27 @@
       "slug": "map-function",
       "title": "Map function",
       "blurb": "Use strings.Map() to translate.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "4ab96b6c-1aa3-4a30-8ce3-d3b2ec632a9d",
       "slug": "map-object",
       "title": "map object",
       "blurb": "Use a map object to translate.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "448056aa-af73-40ba-934e-81f91f895b5d",
       "slug": "switch",
       "title": "switch statement",
       "blurb": "Use a switch to translate.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

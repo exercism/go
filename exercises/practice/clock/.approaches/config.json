@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,14 +10,18 @@
       "slug": "clock-as-int",
       "title": "Clock as int",
       "blurb": "Use the int type for Clock.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "80a32ed8-efd6-475c-9d05-cf0600c9e2f9",
       "slug": "clock-as-struct",
       "title": "Clock as struct",
       "blurb": "Use the struct type for Clock.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

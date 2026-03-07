@@ -1,4 +1,4 @@
-package lsproduct
+package largestseriesproduct
 
 import "testing"
 
@@ -24,10 +24,7 @@ func TestLargestSeriesProduct(t *testing.T) {
 }
 
 func BenchmarkLargestSeriesProduct(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			LargestSeriesProduct(test.digits, test.span)
 		}

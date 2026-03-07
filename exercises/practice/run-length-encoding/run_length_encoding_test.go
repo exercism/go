@@ -1,4 +1,4 @@
-package encode
+package runlengthencoding
 
 import "testing"
 
@@ -11,6 +11,7 @@ func TestRunLengthEncode(t *testing.T) {
 		})
 	}
 }
+
 func TestRunLengthDecode(t *testing.T) {
 	for _, tc := range decodeTests {
 		t.Run(tc.description, func(t *testing.T) {
@@ -20,6 +21,7 @@ func TestRunLengthDecode(t *testing.T) {
 		})
 	}
 }
+
 func TestRunLengthEncodeDecode(t *testing.T) {
 	for _, tc := range encodeDecodeTests {
 		t.Run(tc.description, func(t *testing.T) {
@@ -31,10 +33,7 @@ func TestRunLengthEncodeDecode(t *testing.T) {
 }
 
 func BenchmarkRunLengthEncode(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range encodeTests {
 			RunLengthEncode(test.input)
 		}
@@ -42,10 +41,7 @@ func BenchmarkRunLengthEncode(b *testing.B) {
 }
 
 func BenchmarkRunLengthDecode(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range decodeTests {
 			RunLengthDecode(test.input)
 		}

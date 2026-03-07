@@ -11,7 +11,6 @@ import (
 )
 
 func TestStep1(t *testing.T) {
-
 	want := func(x, y int, dir Dir) {
 		_, _, line, _ := runtime.Caller(1)
 		if Step1Robot.X != x || Step1Robot.Y != y {

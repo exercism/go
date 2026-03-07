@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"allergicTo": &[]allergicToCase{},
 		"list":       &[]listCase{},
 	}
@@ -38,9 +37,7 @@ type listCase struct {
 	Expected []string `json:"expected"`
 }
 
-var tmpl = `package allergies
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 // allergicTo
 type allergicToInput struct {

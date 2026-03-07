@@ -1,11 +1,10 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"strings"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -16,7 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"bestHands": &[]testCase{},
 	}
 	if err := gen.Gen("poker", j, t); err != nil {
@@ -55,9 +54,7 @@ func PokerHands(inputHands []string) []string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package poker
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type testCase struct {
 	description string

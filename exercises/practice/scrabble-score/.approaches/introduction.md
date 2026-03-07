@@ -12,7 +12,7 @@ It can be helpful to understand the difference between [strings of one letter an
 
 ```go
 // Package scrabble scores a scrabble word.
-package scrabble
+package scrabblescore
 
 import "unicode"
 
@@ -41,7 +41,7 @@ For more information, check the [`map` approach][approach-map].
 
 ```go
 // Package scrabble uses switch to score a scrabble word.
-package scrabble
+package scrabblescore
 
 import "unicode"
 

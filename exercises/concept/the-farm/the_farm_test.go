@@ -9,8 +9,10 @@ import (
 
 const precision = 1e-5
 
-var errDeterminingAmount = errors.New("amount could not be determined")
-var errDeterminingFactor = errors.New("factor could not be determined")
+var (
+	errDeterminingAmount = errors.New("amount could not be determined")
+	errDeterminingFactor = errors.New("factor could not be determined")
+)
 
 type testFodderCalculator struct {
 	amount    float64

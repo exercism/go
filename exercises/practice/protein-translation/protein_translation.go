@@ -1,4 +1,4 @@
-package protein
+package proteintranslation
 
 func FromRNA(rna string) ([]string, error) {
 	panic("Please implement the FromRNA function")

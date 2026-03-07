@@ -1,16 +1,24 @@
 package say
 
-var small = []string{"zero", "one", "two", "three", "four", "five", "six",
+var small = []string{
+	"zero", "one", "two", "three", "four", "five", "six",
 	"seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen",
-	"fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
-var tens = []string{"ones", "ten", "twenty", "thirty", "forty",
-	"fifty", "sixty", "seventy", "eighty", "ninety"}
-var scale = []string{"thousand", "million", "billion",
-	"trillion", "quadrillion", "quintillion"}
+	"fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+}
+
+var tens = []string{
+	"ones", "ten", "twenty", "thirty", "forty",
+	"fifty", "sixty", "seventy", "eighty", "ninety",
+}
+
+var scale = []string{
+	"thousand", "million", "billion",
+	"trillion", "quadrillion", "quintillion",
+}
 
 func Say(n int64) (value string, ok bool) {
 	if n < 0 || n > 999999999999 {
-		return
+		return value, ok
 	}
 	return say(n), true
 }

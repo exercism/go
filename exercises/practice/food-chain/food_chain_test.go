@@ -6,7 +6,8 @@ import (
 	"testing"
 )
 
-var text = []string{``,
+var text = []string{
+	``,
 
 	`I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.`,
@@ -107,10 +108,7 @@ func TestSong(t *testing.T) {
 }
 
 func BenchmarkSong(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Song()
 	}
 }

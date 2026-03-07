@@ -38,6 +38,6 @@ func DescribeFancyNumberBox(fnb FancyNumberBox) string {
 }
 
 // DescribeAnything should return a string describing whatever it contains.
-func DescribeAnything(i interface{}) string {
+func DescribeAnything(i any) string {
 	panic("Please implement DescribeAnything")
 }

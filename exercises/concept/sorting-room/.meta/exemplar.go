@@ -52,7 +52,7 @@ func DescribeFancyNumberBox(fnb FancyNumberBox) string {
 }
 
 // DescribeAnything should return a string describing whatever it contains.
-func DescribeAnything(i interface{}) string {
+func DescribeAnything(i any) string {
 	switch v := i.(type) {
 	case int:
 		return DescribeNumber(float64(v))

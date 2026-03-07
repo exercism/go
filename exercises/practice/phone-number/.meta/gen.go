@@ -1,11 +1,10 @@
 package main
 
 import (
+	"../../../../gen"
 	"fmt"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -13,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"clean": &[]testCase{},
 	}
 	if err := gen.Gen("phone-number", j, t); err != nil {
@@ -26,11 +25,11 @@ type testCase struct {
 	Input       struct {
 		Phrase string `json:"phrase"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectError() bool {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		_, gotError := v["error"]
 		return gotError
@@ -61,9 +60,7 @@ func (t testCase) Formatted() string {
 	return fmt.Sprintf("(%s) %s-%s", t.AreaCode(), expectedNumber[3:6], expectedNumber[6:10])
 }
 
-var tmpl = `package phonenumber
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type testCase struct {
 	description       string

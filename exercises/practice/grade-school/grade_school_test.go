@@ -119,9 +119,6 @@ const (
 )
 
 func BenchmarkAddStudents(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	const pool = 1e6 // pool of students
 	names := make([]string, pool)
 	levels := make([]int, pool)
@@ -131,7 +128,7 @@ func BenchmarkAddStudents(b *testing.B) {
 	}
 	p := 0
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		// bench combined time to create a school and add
 		// a number of students, drawn from a pool of students
 		s := New()
@@ -143,9 +140,6 @@ func BenchmarkAddStudents(b *testing.B) {
 }
 
 func BenchmarkEnrollment(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	const pool = 1000 // pool of schools
 	ss := make([]*School, pool)
 	for i := range ss {
@@ -159,7 +153,7 @@ func BenchmarkEnrollment(b *testing.B) {
 	}
 	p := 0
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		// bench time to get enrollment of a full school,
 		// averaged over a pool of schools.
 		ss[p].Enrollment()

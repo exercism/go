@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"find": &[]testCase{},
 	}
 	if err := gen.Gen("binary-search", j, t); err != nil {
@@ -28,7 +27,7 @@ type testCase struct {
 		Array []int `json:"array"`
 		Value int   `json:"value"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) Value() int {
@@ -41,7 +40,7 @@ func (t testCase) Value() int {
 
 func (t testCase) Error() string {
 	if _, ok := t.Expected.(float64); !ok {
-		m, ok := t.Expected.(map[string]interface{})
+		m, ok := t.Expected.(map[string]any)
 		if !ok {
 			return ""
 		}
@@ -55,9 +54,7 @@ func (t testCase) Error() string {
 }
 
 // Template to generate test cases.
-var tmpl = `package binarysearch
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases =	[]struct {
 	description string

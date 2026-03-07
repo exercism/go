@@ -3,7 +3,7 @@ package twobucket
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 4482b50 two-bucket: test inability to reach the goal (#1580)
+// Commit: 3698399 two-bucket: test buckets with a big difference in size (#2589)
 
 type bucketTestCase struct {
 	description   string
@@ -82,6 +82,28 @@ var testCases = []bucketTestCase{
 		goalBucket:    "two",
 		moves:         2,
 		otherBucket:   2,
+		expectedError: "",
+	},
+	{
+		description:   "Measure using bucket one much bigger than bucket two",
+		bucketOne:     5,
+		bucketTwo:     1,
+		goal:          2,
+		startBucket:   "one",
+		goalBucket:    "one",
+		moves:         6,
+		otherBucket:   1,
+		expectedError: "",
+	},
+	{
+		description:   "Measure using bucket one much smaller than bucket two",
+		bucketOne:     3,
+		bucketTwo:     15,
+		goal:          9,
+		startBucket:   "one",
+		goalBucket:    "two",
+		moves:         6,
+		otherBucket:   0,
 		expectedError: "",
 	},
 	{

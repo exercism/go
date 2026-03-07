@@ -3,7 +3,7 @@ package phonenumber
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 7a8722a Reorder keys (#1960)
+// Commit: f03d7ad phone-number: Use consistent error style for incorrect number of digits (#2104)
 
 type testCase struct {
 	description       string

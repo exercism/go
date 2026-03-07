@@ -1,3 +1,3 @@
-module dnd-character
+module dndcharacter
 
-go 1.18
+go 1.23

@@ -54,7 +54,7 @@ func (n1 Number) Divide(n2 Number) Number {
 }
 
 func (n Number) Conjugate() Number {
-	var z = Number{
+	z := Number{
 		a: n.a,
 		b: -n.b,
 	}

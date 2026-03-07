@@ -10,7 +10,7 @@ import "testing"
 func TestHelloWorld(t *testing.T) {
 	expected := "Hello, World!"
 	if observed := HelloWorld(); observed != expected {
-		t.Fatalf("HelloWorld() = %v, want %v", observed, expected)
+		t.Fatalf("HelloWorld() = %q, want %q", observed, expected)
 	}
 }
 
@@ -31,10 +31,7 @@ func TestHelloWorld(t *testing.T) {
 // machines, with different specs, so the results from these benchmark tests may
 // vary.
 func BenchmarkHelloWorld(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		HelloWorld()
 	}
 }

@@ -7,8 +7,10 @@ import (
 	"time"
 )
 
-var r = rand.New(rand.NewSource(time.Now().Unix()))
-var two = big.NewInt(2)
+var (
+	r   = rand.New(rand.NewSource(time.Now().Unix()))
+	two = big.NewInt(2)
+)
 
 func PrivateKey(p *big.Int) *big.Int {
 	private := new(big.Int).Sub(p, two)

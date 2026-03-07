@@ -36,7 +36,7 @@ var wording = map[int]string{
 }
 
 func Verse(i int) string {
-	var gifts = ""
+	gifts := ""
 	for from := i; from > 0; from-- {
 		switch {
 		case i != 1 && from == 1:
@@ -51,7 +51,7 @@ func Verse(i int) string {
 }
 
 func Song() string {
-	var song = make([]string, 12)
+	song := make([]string, 12)
 	for i := 1; i <= 12; i++ {
 		song[i-1] = Verse(i)
 	}

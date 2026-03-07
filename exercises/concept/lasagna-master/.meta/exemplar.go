@@ -1,4 +1,4 @@
-package lasagna
+package lasagnamaster
 
 // PreparationTim estimates the preparation time based on the number of layers and an average time per layer and returns it.
 func PreparationTime(layers []string, avgPrepTime int) int {
@@ -11,7 +11,7 @@ func PreparationTime(layers []string, avgPrepTime int) int {
 // Quantities calculates and returns how many noodles and much sauce are needed for the given layers.
 func Quantities(layers []string) (noodles int, sauce float64) {
 	numLayers := len(layers)
-	for i := 0; i < numLayers; i++ {
+	for i := range numLayers {
 		if layers[i] == "noodles" {
 			noodles += 50
 		}
@@ -20,7 +20,7 @@ func Quantities(layers []string) (noodles int, sauce float64) {
 			sauce += 0.2
 		}
 	}
-	return
+	return noodles, sauce
 }
 
 // AddSecretIngredient replaces the secret ingredient of your list with the last ingredient from your friend's list.
@@ -31,7 +31,7 @@ func AddSecretIngredient(friendsList, myList []string) {
 // ScaleRecipe makes a new slice of float64s from an input slice scaled by a number of portions.
 func ScaleRecipe(list []float64, portions int) []float64 {
 	output := make([]float64, len(list))
-	for i := 0; i < len(list); i++ {
+	for i := range len(list) {
 		output[i] = list[i] * float64(portions) / 2
 	}
 	return output

@@ -2,7 +2,7 @@
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import "fmt"
 
@@ -50,7 +50,7 @@ You can modify the code to look something like this
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
-package dna
+package nucleotidecount
 
 import "fmt"
 
@@ -71,7 +71,7 @@ const (
 func (dna DNA) Counts() (Histogram, error) {
 	results := Histogram{nucA: 0, nucC: 0, nucG: 0, nucT: 0}
 	length := len(dna)
-	for i := 0; i < length; i++ {
+	for i := range length {
 		nuc := dna[i]
 		switch nuc {
 		case nucA, nucC, nucG, nucT:

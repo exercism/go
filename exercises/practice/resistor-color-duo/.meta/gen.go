@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 type valuePropertyCase struct {
@@ -16,7 +15,6 @@ type valuePropertyCase struct {
 }
 
 func (v valuePropertyCase) InputColorsString() string {
-
 	s := "[]string{"
 
 	for _, c := range v.Input.Colors {
@@ -32,7 +30,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"value": &[]valuePropertyCase{},
 	}
 	if err := gen.Gen("resistor-color-duo", j, t); err != nil {
@@ -41,9 +39,7 @@ func main() {
 }
 
 // Template to generate test cases.
-var tmpl = `package resistorcolorduo
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type valueTestCase struct {
 	description	string
@@ -51,13 +47,12 @@ type valueTestCase struct {
 	expected	int
 }
 
-var valueTestCases = []valueTestCase{
-	{{range .J.value}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%v" .InputColorsString}},
-	expected:		{{printf "%d"  .Expected}},
-},{{end}}
+var valueTestCases = []valueTestCase{ {{range .J.value}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{printf "%v" .InputColorsString}},
+		expected:		{{printf "%d"  .Expected}},
+	},{{end}}
 }
 
 

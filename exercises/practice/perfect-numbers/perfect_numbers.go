@@ -1,4 +1,4 @@
-package perfect
+package perfectnumbers
 
 // Define the Classification type here.
 

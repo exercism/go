@@ -1,4 +1,4 @@
-package armstrong
+package armstrongnumbers
 
 import (
 	"testing"
@@ -15,11 +15,8 @@ func TestArmstrong(t *testing.T) {
 }
 
 func BenchmarkIsNumber(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for _, tc := range testCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			IsNumber(tc.input)
 		}
 	}

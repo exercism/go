@@ -1,4 +1,4 @@
-package linkedlist
+package simplelinkedlist
 
 import (
 	"reflect"
@@ -35,9 +35,9 @@ func TestNonEmptyListHasCorrectSize(t *testing.T) {
 func TestListHasCorrectSizeAfterPop(t *testing.T) {
 	list := New([]int{1, 2, 3})
 
-	_, _ = list.Pop()
-	_, _ = list.Pop()
-	_, _ = list.Pop()
+	list.Pop()
+	list.Pop()
+	list.Pop()
 
 	if size := list.Size(); size != 0 {
 		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got %d, expected: %d", size, 0)
@@ -164,30 +164,21 @@ func TestReverseNonEmptyList(t *testing.T) {
 }
 
 func BenchmarkNewList(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
-		_ = New(array1To10)
+	for range b.N {
+		New(array1To10)
 	}
 }
 
 func BenchmarkListSize(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		_ = list.Size()
+	for range b.N {
+		list.Size()
 	}
 }
 
 func BenchmarkListPush(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		b.StopTimer()
 		list := New([]int{})
 		b.StartTimer()
@@ -198,10 +189,7 @@ func BenchmarkListPush(b *testing.B) {
 }
 
 func BenchmarkListPop(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		b.StopTimer()
 		list := New([]int{})
 		for k := 0; k < 1000; k++ {
@@ -209,29 +197,23 @@ func BenchmarkListPop(b *testing.B) {
 		}
 		b.StartTimer()
 		for k := 0; k < 1000; k++ {
-			_, _ = list.Pop()
+			list.Pop()
 		}
 	}
 }
 
 func BenchmarkListToArray(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		_ = list.Array()
+	for range b.N {
+		list.Array()
 	}
 }
 
 func BenchmarkListReverse(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	list := New(array1To10)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		_ = list.Reverse()
+	for range b.N {
+		list.Reverse()
 	}
 }

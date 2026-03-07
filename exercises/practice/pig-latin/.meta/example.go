@@ -5,9 +5,11 @@ import (
 	"strings"
 )
 
-var vowel = regexp.MustCompile(`^([aeiou]|y[^aeiou]|xr)[a-z]*`)
-var cons = regexp.MustCompile(`^([^aeiou]?qu|[^aeiou]+)([a-z]*)`)
-var containsy = regexp.MustCompile(`^([^aeiou]+)y([a-z]*)`)
+var (
+	vowel     = regexp.MustCompile(`^([aeiou]|y[^aeiou]|xr)[a-z]*`)
+	cons      = regexp.MustCompile(`^([^aeiou]?qu|[^aeiou]+)([a-z]*)`)
+	containsy = regexp.MustCompile(`^([^aeiou]+)y([a-z]*)`)
+)
 
 // Sentence translates a whole sentence in piglatin
 func Sentence(s string) string {

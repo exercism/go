@@ -16,7 +16,7 @@ func Range(min, max int) (ts []Triplet) {
 			}
 		}
 	}
-	return
+	return ts
 }
 
 func Sum(sum int) (ts []Triplet) {
@@ -28,5 +28,5 @@ func Sum(sum int) (ts []Triplet) {
 			}
 		}
 	}
-	return
+	return ts
 }

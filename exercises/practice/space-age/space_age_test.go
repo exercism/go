@@ -1,4 +1,4 @@
-package space
+package spaceage
 
 import (
 	"math"
@@ -11,17 +11,14 @@ func TestAge(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Age(tc.seconds, tc.planet)
 			if math.Abs(actual-tc.expected) > precision {
-				t.Fatalf("Age(%f, %v) = %f, want: %f", tc.seconds, tc.planet, actual, tc.expected)
+				t.Fatalf("Age(%f, %q) = %f, want: %f", tc.seconds, tc.planet, actual, tc.expected)
 			}
 		})
 	}
 }
 
 func BenchmarkAge(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Age(tc.seconds, tc.planet)
 		}

@@ -14,7 +14,7 @@ Another important aspect is that the number of digit positions must be ten.
 
 ```go
 // Package isbn is a small library for validating input as an isbn.
-package isbn
+package isbnverifier
 
 func getDigit(chr byte) (digit int, ok bool) {
 	if chr < '0' || chr > '9' {
@@ -29,7 +29,7 @@ func IsValidISBN(input string) bool {
 	pos := 10
 	sum := 0
 
-	for i := 0; i < length; i++ {
+	for i := range length {
 		chr := input[i]
 		if digit, ok := getDigit(chr); ok {
 			sum += (digit * pos)
@@ -51,7 +51,7 @@ For more information, check the [iterate as bytes approach][approach-iterate-byt
 
 ```go
 // Package isbn is a small library for validating input as an isbn.
-package isbn
+package isbnverifier
 
 func getDigit(chr rune) (digit int, ok bool) {
 	if chr < '0' || chr > '9' {

@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"prime": &[]testCase{},
 	}
 	if err := gen.Gen("nth-prime", j, t); err != nil {
@@ -25,7 +24,7 @@ type testCase struct {
 	Input       struct {
 		Number int `json:"number"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) GetExpectedValue() int {
@@ -37,7 +36,7 @@ func (t testCase) GetExpectedValue() int {
 }
 
 func (t testCase) GetError() string {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		e, ok := v["error"].(string)
 		if ok {
@@ -48,9 +47,7 @@ func (t testCase) GetError() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package prime
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var tests = []struct {
 	description string

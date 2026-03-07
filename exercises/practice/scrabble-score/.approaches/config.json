@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,21 +10,27 @@
       "slug": "map",
       "title": "map",
       "blurb": "Use a map to look up the score.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "a27237e7-412a-4ea8-9dbd-8a77a2b1423b",
       "slug": "switch-on-runes",
       "title": "switch on runes",
       "blurb": "Use a switch on runes to to look up the score.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "ae5a29bb-8341-446b-9713-3e00a03845e7",
       "slug": "switch-on-strings",
       "title": "switch on strings",
       "blurb": "Use a switch on strings to to look up the score.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

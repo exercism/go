@@ -1,4 +1,4 @@
-package circular
+package circularbuffer
 
 // standard library container/ring package and "one slot open" technique
 // as described at WP.

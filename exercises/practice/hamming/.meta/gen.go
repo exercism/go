@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"distance": &[]testCase{},
 	}
 	if err := gen.Gen("hamming", j, t); err != nil {
@@ -26,7 +25,7 @@ type testCase struct {
 		Strand1 string `json:"strand1"`
 		Strand2 string `json:"strand2"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() int {
@@ -43,9 +42,7 @@ func (t testCase) ExpectError() bool {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package hamming
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description string

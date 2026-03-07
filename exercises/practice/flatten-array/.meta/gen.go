@@ -1,18 +1,19 @@
 package main
 
 import (
-	"log"
-	"text/template"
-
 	"../../../../gen"
+	"fmt"
+	"log"
+	"strings"
+	"text/template"
 )
 
 func main() {
-	t, err := template.New("").Parse(tmpl)
+	t, err := template.New("").Funcs(template.FuncMap{"fmtArray": FormatArray}).Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"flatten": &[]testCase{},
 	}
 	if err := gen.Gen("flatten-array", j, t); err != nil {
@@ -20,28 +21,30 @@ func main() {
 	}
 }
 
+func FormatArray(data []any) string {
+	return strings.ReplaceAll(fmt.Sprintf("%#v", data), "interface {}", "any")
+}
+
 type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
-		Array interface{} `json:"array"`
+		Array any `json:"array"`
 	} `json:"input"`
-	Expected []interface{} `json:"expected"`
+	Expected []any `json:"expected"`
 }
 
 // Template to generate test cases.
-var tmpl = `package flatten
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string
-	input		interface{}
-	expected	[]interface{}
+	input		any
+	expected	[]any
 }{ {{range .J.flatten}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%#v"  .Input.Array}},
-	expected:		{{printf "%#v"  .Expected}},
-},{{end}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{fmtArray .Input.Array}},
+		expected:		{{fmtArray .Expected}},
+	},{{end}}
 }
 `

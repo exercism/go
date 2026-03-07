@@ -48,7 +48,7 @@ func createFiles(content []string) (filenames []string) {
 		f.Close()
 		filenames = append(filenames, filename)
 	}
-	return
+	return filenames
 }
 
 func deleteFiles(filenames []string) {
@@ -71,21 +71,18 @@ func TestSearch(t *testing.T) {
 			}
 
 			if !reflect.DeepEqual(actual, tc.expected) {
-				t.Errorf("Search(%q,%v,%v)\ngot: %v\nwant: %v", tc.pattern, tc.flags, tc.files, actual, tc.expected)
+				t.Errorf("Search(%q, %q, %q)\ngot: %q\nwant: %q", tc.pattern, tc.flags, tc.files, actual, tc.expected)
 			}
 		})
 	}
 }
 
 func BenchmarkSearch(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	files := createFiles(fileContentData)
 	defer deleteFiles(files)
 
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Search(tc.pattern, tc.flags, tc.files)
 		}

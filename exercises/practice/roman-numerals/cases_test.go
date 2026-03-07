@@ -3,7 +3,7 @@ package romannumerals
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 044e6a1 Roman Numerals max out at 3999 (#2094 #2475)
+// Commit: 438990d roman-numerals: add test with longest output (#2414)
 
 type romanNumeralTest struct {
 	description string
@@ -48,6 +48,11 @@ var validRomanNumeralTests = []romanNumeralTest{
 		expected:    "IX",
 	},
 	{
+		description: "16 is XVI",
+		input:       16,
+		expected:    "XVI",
+	},
+	{
 		description: "27 is XXVII",
 		input:       27,
 		expected:    "XXVII",
@@ -68,6 +73,11 @@ var validRomanNumeralTests = []romanNumeralTest{
 		expected:    "LIX",
 	},
 	{
+		description: "66 is LXVI",
+		input:       66,
+		expected:    "LXVI",
+	},
+	{
 		description: "93 is XCIII",
 		input:       93,
 		expected:    "XCIII",
@@ -83,6 +93,11 @@ var validRomanNumeralTests = []romanNumeralTest{
 		expected:    "CLXIII",
 	},
 	{
+		description: "166 is CLXVI",
+		input:       166,
+		expected:    "CLXVI",
+	},
+	{
 		description: "402 is CDII",
 		input:       402,
 		expected:    "CDII",
@@ -91,6 +106,11 @@ var validRomanNumeralTests = []romanNumeralTest{
 		description: "575 is DLXXV",
 		input:       575,
 		expected:    "DLXXV",
+	},
+	{
+		description: "666 is DCLXVI",
+		input:       666,
+		expected:    "DCLXVI",
 	},
 	{
 		description: "911 is CMXI",
@@ -103,39 +123,24 @@ var validRomanNumeralTests = []romanNumeralTest{
 		expected:    "MXXIV",
 	},
 	{
-		description: "3000 is MMM",
-		input:       3000,
-		expected:    "MMM",
-	},
-	{
-		description: "16 is XVI",
-		input:       16,
-		expected:    "XVI",
-	},
-	{
-		description: "66 is LXVI",
-		input:       66,
-		expected:    "LXVI",
-	},
-	{
-		description: "166 is CLXVI",
-		input:       166,
-		expected:    "CLXVI",
-	},
-	{
-		description: "666 is DCLXVI",
-		input:       666,
-		expected:    "DCLXVI",
-	},
-	{
 		description: "1666 is MDCLXVI",
 		input:       1666,
 		expected:    "MDCLXVI",
 	},
 	{
+		description: "3000 is MMM",
+		input:       3000,
+		expected:    "MMM",
+	},
+	{
 		description: "3001 is MMMI",
 		input:       3001,
 		expected:    "MMMI",
+	},
+	{
+		description: "3888 is MMMDCCCLXXXVIII",
+		input:       3888,
+		expected:    "MMMDCCCLXXXVIII",
 	},
 	{
 		description: "3999 is MMMCMXCIX",

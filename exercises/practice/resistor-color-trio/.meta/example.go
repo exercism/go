@@ -24,7 +24,7 @@ func Exp(base, exp int) uint64 {
 	}
 
 	res := uint64(1)
-	for i := 0; i < exp; i++ {
+	for range exp {
 		res *= uint64(base)
 	}
 

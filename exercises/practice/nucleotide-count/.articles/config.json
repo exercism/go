@@ -5,7 +5,9 @@
       "slug": "performance",
       "title": "Performance deep dive",
       "blurb": "Deep dive to find out the most performant approach for Nucleotide Count.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

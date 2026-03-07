@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"isPaired": &[]testCase{},
 	}
 	if err := gen.Gen("matching-brackets", j, t); err != nil {
@@ -29,9 +28,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package brackets
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type bracketTest struct {
 	description string

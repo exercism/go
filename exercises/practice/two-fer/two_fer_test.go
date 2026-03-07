@@ -36,14 +36,9 @@ func TestShareWith(t *testing.T) {
 }
 
 func BenchmarkShareWith(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
-
+	for range b.N {
 		for _, test := range testCases {
 			ShareWith(test.input)
 		}
-
 	}
 }

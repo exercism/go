@@ -28,18 +28,15 @@ func TestParseTrinary(t *testing.T) {
 					test.arg, err)
 			}
 		case !test.ok:
-			t.Errorf("ParseTrinary(%q) = %d, %v, expected error", test.arg, res, err)
+			t.Errorf("ParseTrinary(%q) = (%d, %v), expected error", test.arg, res, err)
 		case res != test.want:
-			t.Errorf("ParseTrinary(%q) = %d, want %d", test.arg, res, test.want)
+			t.Errorf("ParseTrinary(%q) = (%d, %v), want %d", test.arg, res, err, test.want)
 		}
 	}
 }
 
 func BenchmarkParseTrinary(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range tests {
 			ParseTrinary(test.arg)
 		}

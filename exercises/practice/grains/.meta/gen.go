@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"square": &[]testCase{},
 		"total":  &[]testCase{}, // expected value for Total() not used from `canonical-data.json`
 	}
@@ -26,7 +25,7 @@ type testCase struct {
 	Input       struct {
 		Square int `json:"square"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedValue() uint64 {
@@ -42,9 +41,7 @@ func (t testCase) ExpectError() bool {
 	return !ok
 }
 
-var tmpl = `package grains
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 // returns the number of grains on the square
 var squareTests = []struct {

@@ -1,12 +1,11 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"sort"
 	"strings"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -14,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"solve": &[]testCase{},
 	}
 	if err := gen.Gen("alphametics", j, t); err != nil {
@@ -44,9 +43,7 @@ func (c testCase) SortedMapString() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package alphametics
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description   string

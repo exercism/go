@@ -105,13 +105,13 @@ func (b board) neighbors(c coord) []coord {
 func (b board) startCoords(cf colorFlags) []coord {
 	if cf.color == white {
 		coords := make([]coord, b.width)
-		for i := 0; i < b.width; i++ {
+		for i := range b.width {
 			coords[i] = coord{x: i}
 		}
 		return coords
 	}
 	coords := make([]coord, b.height)
-	for i := 0; i < b.height; i++ {
+	for i := range b.height {
 		coords[i] = coord{y: i}
 	}
 	return coords

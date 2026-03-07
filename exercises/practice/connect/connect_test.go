@@ -30,21 +30,16 @@ func TestResultOf(t *testing.T) {
 }
 
 func BenchmarkResultOf(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-
 	b.StopTimer()
 
 	for _, tt := range testCases {
 		board := prepare(tt.board)
 		b.StartTimer()
 
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			ResultOf(board)
 		}
 
 		b.StopTimer()
 	}
-
 }

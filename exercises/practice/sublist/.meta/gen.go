@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"sublist": &[]testCase{},
 	}
 	if err := gen.Gen("sublist", j, t); err != nil {
@@ -29,9 +28,7 @@ type testCase struct {
 	Expected string `json:"expected"`
 }
 
-var tmpl = `package sublist
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description	string

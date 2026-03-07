@@ -9,10 +9,7 @@ func TestNumber(t *testing.T) {
 }
 
 func BenchmarkNumber(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Number(test.input)
 		}
@@ -24,10 +21,7 @@ func TestAreaCode(t *testing.T) {
 }
 
 func BenchmarkAreaCode(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			AreaCode(test.input)
 		}
@@ -39,10 +33,7 @@ func TestFormat(t *testing.T) {
 }
 
 func BenchmarkFormat(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Format(test.input)
 		}

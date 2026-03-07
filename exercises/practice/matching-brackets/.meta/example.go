@@ -1,4 +1,4 @@
-package brackets
+package matchingbrackets
 
 type bracketKind int
 

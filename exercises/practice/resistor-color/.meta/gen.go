@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 type colorCodePropertyCase struct {
@@ -16,8 +15,7 @@ type colorCodePropertyCase struct {
 }
 
 type colorsPropertyTestCase struct {
-	Description string `json:"description"`
-	Input       interface{}
+	Description string   `json:"description"`
 	Expected    []string `json:"expected"`
 }
 
@@ -26,7 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"colorCode": &[]colorCodePropertyCase{},
 		"colors":    &[]colorsPropertyTestCase{},
 	}
@@ -36,9 +34,7 @@ func main() {
 }
 
 // Template to generate test cases.
-var tmpl = `package resistorcolor
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type colorCodeTestCase struct {
 	description	string
@@ -48,25 +44,22 @@ type colorCodeTestCase struct {
 
 type colorsTestCase struct {
 	description	string
-	input		string
 	expected	[]string
 }
 
-var colorCodeTestCases = []colorCodeTestCase{
-	{{range .J.colorCode}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%q"  .Input.Color}},
-	expected:		{{printf "%d"  .Expected}},
-},{{end}}
+var colorCodeTestCases = []colorCodeTestCase{ {{range .J.colorCode}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:			{{printf "%q"  .Input.Color}},
+		expected:		{{printf "%d"  .Expected}},
+	},{{end}}
 }
 
-var colorsTestCases = []colorsTestCase{
-	{{range .J.colors}}
-{
-	description:	{{printf "%q"  .Description}},
-	expected:		{{printf "%#v" .Expected}},
-},{{end}}
+var colorsTestCases = []colorsTestCase{ {{range .J.colors}}
+	{
+		description:	{{printf "%q"  .Description}},
+		expected:		{{printf "%#v" .Expected}},
+	},{{end}}
 }
 
 

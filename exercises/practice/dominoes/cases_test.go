@@ -3,7 +3,7 @@ package dominoes
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 42dd0ce Remove version (#1678)
+// Commit: b5bfcda Fix reference to Eulerian graph in comment (#2127)
 
 var testCases = []struct {
 	description string
@@ -42,7 +42,7 @@ var testCases = []struct {
 	},
 	{
 		description: "disconnected - simple",
-		// This meets the requirement of being possibly-Euclidean.
+		// This meets the requirement of being possibly-Eulerian.
 		// All vertices have even degree.
 		// Nevertheless, there is no chain here, as there's no way to get from 1 to 2.
 		// This test (and the two following) prevent solutions from using the even-degree test as the sole criterion,
@@ -79,5 +79,12 @@ var testCases = []struct {
 		description: "nine elements",
 		dominoes:    []Domino{{1, 2}, {5, 3}, {3, 1}, {1, 2}, {2, 4}, {1, 6}, {2, 3}, {3, 4}, {5, 6}},
 		valid:       true,
+	},
+	{
+		description: "separate three-domino loops",
+		// Some solutions only check if each stone has at least two other neighbors,
+		// but this test case should still fail due to the separate loops not being linked.
+		dominoes: []Domino{{1, 2}, {2, 3}, {3, 1}, {4, 5}, {5, 6}, {6, 4}},
+		valid:    false,
 	},
 }

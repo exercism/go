@@ -1,4 +1,4 @@
-package circular
+package circularbuffer
 
 import (
 	"io"
@@ -8,8 +8,10 @@ import (
 // Here is one way you can have a test case verify that the expected
 // interfaces are implemented.
 
-var _ io.ByteReader = new(Buffer)
-var _ io.ByteWriter = new(Buffer)
+var (
+	_ io.ByteReader = new(Buffer)
+	_ io.ByteWriter = new(Buffer)
+)
 
 // testBuffer and methods support the tests, providing log and fail messages.
 
@@ -174,24 +176,18 @@ func TestAlternateReadAndOverwrite(t *testing.T) {
 }
 
 func BenchmarkOverwrite(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		c.Overwrite(0)
 	}
 	b.SetBytes(int64(b.N))
 }
 
 func BenchmarkWriteRead(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		c.WriteByte(0)
 		c.ReadByte()
 	}

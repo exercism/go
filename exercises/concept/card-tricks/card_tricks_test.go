@@ -9,7 +9,7 @@ func TestFavoriteCards(t *testing.T) {
 	got := FavoriteCards()
 	want := []int{2, 6, 9}
 	if !slicesEqual(got, want) {
-		t.Errorf("NewCards() got = %v, want %v", got, want)
+		t.Errorf("FavoriteCards() got = %v, want %v", got, want)
 	}
 }
 
@@ -51,7 +51,7 @@ func TestGetItem(t *testing.T) {
 			name: "Index out of bounds",
 			args: args{
 				slice: []int{5, 2, 10, 6, 8, 7, 0, 9},
-				index: 8,
+				index: 9,
 			},
 			want: -1,
 		},
@@ -143,8 +143,8 @@ func TestSetItem(t *testing.T) {
 					got[i] = -1
 				}
 				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.args.slice).Pointer() {
-					t.Errorf("SetItem(slice:%v, index:%v) does not return the modified input slice)", tt.args.slice,
-						tt.args.value)
+					t.Errorf("SetItem(slice:%v, index:%v, value:%v) does not return the modified input slice)", tt.args.slice,
+						tt.args.index, tt.args.value)
 				}
 			}
 		})
@@ -283,7 +283,7 @@ func slicesEqual(a, b []int) bool {
 	}
 
 	size := len(a)
-	for i := 0; i < size; i++ {
+	for i := range size {
 		if a[i] != b[i] {
 			return false
 		}
@@ -293,7 +293,7 @@ func slicesEqual(a, b []int) bool {
 }
 
 func copySlice(s []int) []int {
-	var slice = make([]int, len(s))
+	slice := make([]int, len(s))
 	copy(slice, s)
 	return slice
 }

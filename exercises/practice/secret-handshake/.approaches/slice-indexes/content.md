@@ -2,7 +2,7 @@
 
 ```go
 // Package secret is a small library for interpreting signals for a secret greeting
-package secret
+package secrethandshake
 
 // Handshake interprets what sequence of signals are contained within the number passed in
 func Handshake(code uint) []string {

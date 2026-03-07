@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"evaluate": &[]testCase{},
 		// TODO: add test with property `evaluateBoth` to forth_test.go and generate cases in cases_test.go
 	}
@@ -26,11 +25,11 @@ type testCase struct {
 	Input       struct {
 		Instructions []string `json:"instructions"`
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ExpectedNumbers() []int {
-	numbers, ok := t.Expected.([]interface{})
+	numbers, ok := t.Expected.([]any)
 	if !ok {
 		return nil
 	}
@@ -49,7 +48,7 @@ func (t testCase) ExplainText() string {
 	if t.ExpectedNumbers() != nil {
 		return ""
 	}
-	m, ok := t.Expected.(map[string]interface{})
+	m, ok := t.Expected.(map[string]any)
 	if !ok {
 		return ""
 	}
@@ -61,9 +60,7 @@ func (t testCase) ExplainText() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package forth
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string

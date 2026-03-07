@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"encode": &[]testCase{},
 		"decode": &[]testCase{},
 	}
@@ -26,11 +25,11 @@ type testCase struct {
 	Input       struct {
 		Integers []uint32 `json:"integers"` // supports both []byte and []uint32 in JSON
 	} `json:"input"`
-	Expected interface{} `json:"expected"`
+	Expected any `json:"expected"`
 }
 
 func (t testCase) ValueSliceByte() []byte {
-	v, ok := t.Expected.([]interface{})
+	v, ok := t.Expected.([]any)
 	var vals []byte
 	if ok {
 		for _, n := range v {
@@ -45,7 +44,7 @@ func (t testCase) ValueSliceByte() []byte {
 }
 
 func (t testCase) ValueSliceUint32() []uint32 {
-	v, ok := t.Expected.([]interface{})
+	v, ok := t.Expected.([]any)
 	var vals []uint32
 	if ok {
 		for _, n := range v {
@@ -60,7 +59,7 @@ func (t testCase) ValueSliceUint32() []uint32 {
 }
 
 func (t testCase) ErrorExpected() bool {
-	v, ok := t.Expected.(map[string]interface{})
+	v, ok := t.Expected.(map[string]any)
 	if ok {
 		_, ok := v["error"].(string)
 		return ok
@@ -69,9 +68,7 @@ func (t testCase) ErrorExpected() bool {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package variablelengthquantity
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var encodeTestCases = []struct {
 	description string

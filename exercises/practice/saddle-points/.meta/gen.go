@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"saddlePoints": &[]Case{},
 	}
 	if err := gen.Gen("saddle-points", j, t); err != nil {
@@ -32,29 +31,25 @@ type Case struct {
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
-var tmpl = `package matrix
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description    string
 	input          [][]int
 	expectedOutput []Pair
-}{
-	{{range .J.saddlePoints}}
-		{
-			description: {{printf "%q"  .Description}},
-			input: [][]int{
-				{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
-			},
-			expectedOutput: []Pair{
-				{{range .Expected}}{
-						{{printf "%d" .Row}},
-						{{printf "%d" .Column}},
-					},
-				{{end}}
-			},
+}{ {{range .J.saddlePoints}}
+	{
+		description: {{printf "%q"  .Description}},
+		input: [][]int{
+			{{range .Input.Matrix}} { {{range .}} {{printf "%v" .}}, {{end}} }, {{end}}
 		},
-	{{end}}
+		expectedOutput: []Pair{
+			{{range .Expected}}{
+					{{printf "%d" .Row}},
+					{{printf "%d" .Column}},
+				},
+			{{end}}
+		},
+	},{{end}}
 }
 `

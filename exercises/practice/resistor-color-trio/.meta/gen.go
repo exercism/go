@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 type labelPropertyCase struct {
@@ -19,7 +18,6 @@ type labelPropertyCase struct {
 }
 
 func (v labelPropertyCase) InputColorsString() string {
-
 	s := "[]string{"
 
 	for _, c := range v.Input.Colors {
@@ -35,7 +33,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"label": &[]labelPropertyCase{},
 	}
 	if err := gen.Gen("resistor-color-trio", j, t); err != nil {
@@ -44,9 +42,7 @@ func main() {
 }
 
 // Template to generate test cases.
-var tmpl = `package resistorcolortrio
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type labelTestCase struct {
 	description	string

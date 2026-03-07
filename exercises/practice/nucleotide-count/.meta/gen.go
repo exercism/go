@@ -1,13 +1,12 @@
 package main
 
 import (
+	"../../../../gen"
 	"fmt"
 	"log"
 	"sort"
 	"strings"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -15,7 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"nucleotideCounts": &[]testCase{},
 	}
 	if err := gen.Gen("nucleotide-count", j, t); err != nil {
@@ -28,7 +27,7 @@ type testCase struct {
 	Input       struct {
 		Strand string `json:"strand"`
 	} `json:"input"`
-	Expected map[string]interface{} `json:"expected"`
+	Expected map[string]any `json:"expected"`
 }
 
 func (t testCase) ErrorExpected() bool {
@@ -55,9 +54,7 @@ func (t testCase) SortedMapString() string {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package dna
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var testCases = []struct {
 	description   string

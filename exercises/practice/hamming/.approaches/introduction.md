@@ -22,7 +22,7 @@ func Distance(strand1, strand2 string) (distance int, e error) {
 	if len(strand1) != len(strand2) {
 		return 0, errors.New("strands must be of equal length")
 	}
-	for i := 0; i < len(strand1); i++ {
+	for i := range len(strand1) {
 		if strand1[i] != strand2[i] {
 			distance++
 		}

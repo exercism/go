@@ -14,10 +14,7 @@ func TestHey(t *testing.T) {
 }
 
 func BenchmarkHey(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range testCases {
 			Hey(tc.input)
 		}

@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"measure": &[]testCase{},
 	}
 	if err := gen.Gen("two-bucket", j, t); err != nil {
@@ -37,9 +36,7 @@ type testCase struct {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package twobucket
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type bucketTestCase struct {
 	description     string

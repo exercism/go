@@ -1,3 +1,3 @@
-module complex
+module complexnumbers
 
-go 1.18
+go 1.23

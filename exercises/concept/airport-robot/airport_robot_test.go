@@ -3,7 +3,7 @@ package airportrobot
 import "testing"
 
 // testRunnerTaskID=2
-func TestSayHello_Italien(t *testing.T) {
+func TestSayHello_Italian(t *testing.T) {
 	tests := []struct {
 		testName string
 		name     string

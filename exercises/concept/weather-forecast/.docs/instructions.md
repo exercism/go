@@ -1,6 +1,6 @@
 # Instructions
 
-Goblinocus is a country that takes its weather forecast very seriously. Since you are a renowned responsible and proficient developer, they asked you to write a program that can forecast the current weather condition of various cities in Goblinocus. You were busy at the time and asked one of your friends to do the job instead. After a while, the president of Goblinocus contacted you and said they do not understand your friend's code. When you check the code, you discover that your friend did not act as a responsible programmer and there are no comments in the code. You feel obligated to clarify the program so goblins can understand them as well.
+Goblinocus is a country that takes its weather forecast very seriously. Since you are a renowned, responsible and proficient developer, they asked you to write a program that can forecast the current weather condition of various cities in Goblinocus. You were busy at the time and asked one of your friends to do the job instead. After a while, the president of Goblinocus contacted you and said they do not understand your friend's code. When you check the code, you discover that your friend did not act as a responsible programmer and there are no comments in the code. You feel obligated to clarify the program so goblins can understand them as well.
 
 ## 1. Document package weather
 

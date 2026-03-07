@@ -58,6 +58,12 @@ func TestBirdsInWeek(t *testing.T) {
 			want:       18,
 		},
 		{
+			name:       "calculates the number of birds for a week in the end of the log",
+			birdCounts: []int{4, 7, 3, 2, 1, 1, 2, 0, 2, 3, 2, 7, 1, 3, 0, 6, 5, 3, 7, 2, 3},
+			week:       3,
+			want:       26,
+		},
+		{
 			name:       "works when there is only one week",
 			birdCounts: []int{3, 0, 3, 3, 2, 1, 0},
 			week:       1,
@@ -67,7 +73,7 @@ func TestBirdsInWeek(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BirdsInWeek(tt.birdCounts, tt.week); got != tt.want {
-				t.Errorf("BirdsInWeek(%v) = %v; want %v", tt.birdCounts, got, tt.want)
+				t.Errorf("BirdsInWeek(%#v, %d) = %d; want %d", tt.birdCounts, tt.week, got, tt.want)
 			}
 		})
 	}
@@ -108,7 +114,6 @@ func TestFixBirdCount(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 // testRunnerTaskID=3

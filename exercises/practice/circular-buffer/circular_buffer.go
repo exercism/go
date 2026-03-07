@@ -1,4 +1,4 @@
-package circular
+package circularbuffer
 
 // Implement a circular buffer of bytes supporting both overflow-checked writes
 // and unconditional, possibly overwriting, writes.

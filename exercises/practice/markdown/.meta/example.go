@@ -13,7 +13,7 @@ const (
 // Render translates markdown to HTML
 func Render(markdown string) string {
 	var itemList []string
-	var html = strings.Builder{}
+	html := strings.Builder{}
 	for _, line := range strings.Split(markdown, "\n") {
 		if line[0] == listItemMarker {
 			itemList = append(itemList, fmt.Sprintf("<li>%s</li>", renderHTML(line[2:])))
@@ -40,7 +40,7 @@ func Render(markdown string) string {
 }
 
 func getHeadingWeight(line string) int {
-	for i := 0; i <= 6; i++ {
+	for i := range 6 + 1 {
 		if line[i] != headingMarker {
 			return i
 		}

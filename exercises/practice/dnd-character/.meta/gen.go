@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var j = map[string]interface{}{
+	j := map[string]any{
 		"modifier":  &[]modifierTestCase{},
 		"ability":   &[]emptyTestCase{},
 		"character": &[]emptyTestCase{},
@@ -41,10 +40,7 @@ type modifierTestCase struct {
 	Expected    int               `json:"expected"`
 }
 
-var tmpl = `
-package dndcharacter
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type modifierTestInput struct {
 	Score int
@@ -54,15 +50,13 @@ var modifierTests = []struct {
 	description    string
 	input          modifierTestInput
 	expected       int
-}{
-	{{range .J.modifier}} 
-		{
-			description: {{printf "%q"  .Description}},
-			input: modifierTestInput { 
-				Score: {{printf "%d" .Input.Score}},
-			},
-			expected: {{printf "%d"  .Expected}},
+}{ {{range .J.modifier}}
+	{
+		description: {{printf "%q"  .Description}},
+		input: modifierTestInput {
+			Score: {{printf "%d" .Input.Score}},
 		},
-	{{end}}
+		expected: {{printf "%d"  .Expected}},
+	},{{end}}
 }
 `

@@ -1,6 +1,7 @@
 package pov
 
 import (
+	"slices"
 	"sort"
 	"testing"
 )
@@ -238,7 +239,7 @@ func TestPathTo(t *testing.T) {
 		t.Run(tt.description, func(t *testing.T) {
 			got := tt.tree.PathTo(tt.from, tt.to)
 			want := tt.expected
-			if !stringSliceEqual(want, got) {
+			if !slices.Equal(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
 		})
@@ -248,12 +249,9 @@ func TestPathTo(t *testing.T) {
 var benchmarkResultPov *Tree
 
 func BenchmarkFromPov(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result *Tree
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
@@ -266,12 +264,9 @@ func BenchmarkFromPov(b *testing.B) {
 var benchmarkResultPathTo []string
 
 func BenchmarkPathTo(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result []string
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
@@ -312,21 +307,6 @@ func treeSliceEqual(trs1, trs2 []*Tree) bool {
 	sort.Slice(trs2, sortByValue(trs2))
 	for i := range trs1 {
 		if !treeEqual(trs1[i], trs2[i]) {
-			return false
-		}
-	}
-	return true
-}
-
-func stringSliceEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	if len(a) == 0 {
-		return true
-	}
-	for i := 0; i < len(a); i++ {
-		if a[i] != b[i] {
 			return false
 		}
 	}

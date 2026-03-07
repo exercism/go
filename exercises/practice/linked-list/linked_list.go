@@ -3,7 +3,7 @@ package linkedlist
 // Define List and Node types here.
 // Note: The tests expect Node type to include an exported field with name Value to pass.
 
-func NewList(elements ...interface{}) *List {
+func NewList(elements ...any) *List {
 	panic("Please implement the NewList function")
 }
 
@@ -15,19 +15,19 @@ func (n *Node) Prev() *Node {
 	panic("Please implement the Prev function")
 }
 
-func (l *List) Unshift(v interface{}) {
+func (l *List) Unshift(v any) {
 	panic("Please implement the Unshift function")
 }
 
-func (l *List) Push(v interface{}) {
+func (l *List) Push(v any) {
 	panic("Please implement the Push function")
 }
 
-func (l *List) Shift() (interface{}, error) {
+func (l *List) Shift() (any, error) {
 	panic("Please implement the Shift function")
 }
 
-func (l *List) Pop() (interface{}, error) {
+func (l *List) Pop() (any, error) {
 	panic("Please implement the Pop function")
 }
 
@@ -41,4 +41,14 @@ func (l *List) First() *Node {
 
 func (l *List) Last() *Node {
 	panic("Please implement the Last function")
+}
+
+func (l *List) Count() int {
+	panic("Please implement the Count function")
+}
+
+// Delete removes the first node in a list with a given value.
+// Returns true if a node was removed.
+func (ll *List) Delete(v any) bool {
+	panic("Please implement the Delete function")
 }

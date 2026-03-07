@@ -1,7 +1,8 @@
 {
   "introduction": {
-    "authors": ["bobahop"],
-    "contributors": []
+    "authors": [
+      "bobahop"
+    ]
   },
   "approaches": [
     {
@@ -9,21 +10,27 @@
       "slug": "if-statements",
       "title": "If statements",
       "blurb": "Use if statements to return the answer.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "26a0331f-a0f4-4520-b0b3-3541e46e75ab",
       "slug": "switch-statement",
       "title": "Switch statement",
       "blurb": "Use a switch statement to return the answer.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     },
     {
       "uuid": "e80d87ed-c400-4307-8ae7-4bc15a3e78d7",
       "slug": "answer-array",
       "title": "Answer array",
       "blurb": "Index into an array to return the answer.",
-      "authors": ["bobahop"]
+      "authors": [
+        "bobahop"
+      ]
     }
   ]
 }

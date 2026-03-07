@@ -46,8 +46,8 @@ const (
 func Solve(sizeBucketOne,
 	sizeBucketTwo,
 	goalAmount int,
-	startBucket string) (goalBucket string, numSteps, otherBucketLevel int, err error) {
-
+	startBucket string,
+) (goalBucket string, numSteps, otherBucketLevel int, err error) {
 	if err := validateParameters(sizeBucketOne, sizeBucketTwo, goalAmount, startBucket); err != nil {
 		return "", 0, 0, err
 	}

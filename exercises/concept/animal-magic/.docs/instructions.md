@@ -16,7 +16,7 @@ d := RollADie() // d will be assigned a random int, 1 <= d <= 20
 ## 2. Generate wand energy.
 
 Implement a `GenerateWandEnergy` function.
-The wand energy should be a random floating point number between 0.0 and 12.0.
+The wand energy should be a random floating point number equal or greater than 0.0 and less than 12.0.
 
 ```go
 f := GenerateWandEnergy()  // f will be assigned a random float64, 0.0 <= f < 12.0

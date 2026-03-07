@@ -177,19 +177,13 @@ func TestSequentialFrequency(t *testing.T) {
 }
 
 func BenchmarkSequentialFrequency(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Frequency(dostoevsky2 + dostoevsky1 + dostoevsky3 + dostoevsky4)
 	}
 }
 
 func BenchmarkConcurrentFrequency(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		ConcurrentFrequency([]string{dostoevsky2, dostoevsky1, dostoevsky3, dostoevsky4})
 	}
 }

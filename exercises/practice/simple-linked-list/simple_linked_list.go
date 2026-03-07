@@ -1,4 +1,4 @@
-package linkedlist
+package simplelinkedlist
 
 // Define the List and Element types here.
 

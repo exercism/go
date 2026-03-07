@@ -1,4 +1,4 @@
-package secret
+package secrethandshake
 
 var signals = []string{"wink", "double blink", "close your eyes", "jump"}
 
@@ -21,5 +21,5 @@ func Handshake(code uint) (h []string) {
 			code <<= 1
 		}
 	}
-	return
+	return h
 }

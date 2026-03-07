@@ -63,10 +63,7 @@ func TestSpiralMatrix(t *testing.T) {
 }
 
 func BenchmarkSpiralMatrix(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, testCase := range testCases {
 			SpiralMatrix(testCase.input)
 		}

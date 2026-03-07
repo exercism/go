@@ -8,7 +8,7 @@ func TestColorCode(t *testing.T) {
 			actual := ColorCode(tc.input)
 
 			if actual != tc.expected {
-				t.Fatalf("ColorCode(%q): expected %d, actual %d", tc.input, tc.expected, actual)
+				t.Fatalf("ColorCode(%q) = %d, want %d", tc.input, actual, tc.expected)
 			}
 		})
 	}
@@ -20,14 +20,14 @@ func TestColors(t *testing.T) {
 			actual := Colors()
 
 			if len(actual) != len(tc.expected) {
-				t.Fatalf("Colors(): expected %+v, actual %+v", tc.expected, actual)
+				t.Fatalf("Colors() = %q, want %q", actual, tc.expected)
 			}
 
 			expectedMap := makeMap(tc.expected)
 			actualMap := makeMap(actual)
 
 			if !mapsEqual(expectedMap, actualMap) {
-				t.Fatalf("Colors(): expected %+v, actual %+v", tc.expected, actual)
+				t.Fatalf("Colors() = %q, want %q", actual, tc.expected)
 			}
 		})
 	}
@@ -37,7 +37,7 @@ func TestColors(t *testing.T) {
 var colorCodeBench int
 
 func BenchmarkColorCode(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range colorCodeTestCases {
 			colorCodeBench = ColorCode(tc.input)
 		}
@@ -48,7 +48,7 @@ func BenchmarkColorCode(b *testing.B) {
 var colorsBench []string
 
 func BenchmarkColors(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		colorsBench = Colors()
 	}
 }

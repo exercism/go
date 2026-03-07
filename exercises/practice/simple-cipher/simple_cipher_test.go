@@ -41,14 +41,14 @@ func TestCaesar(t *testing.T) {
 
 func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 	for _, test := range tests {
-		t.Run(fmt.Sprintf("Encode(%s)", test.source), func(tt *testing.T) {
+		t.Run(fmt.Sprintf("Encode(%q)", test.source), func(tt *testing.T) {
 			if enc := c.Encode(test.source); enc != test.cipher {
-				tt.Fatalf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
+				tt.Fatalf("Encode(%q) = %q, want %q.", test.source, enc, test.cipher)
 			}
 		})
-		t.Run(fmt.Sprintf("Decode(%s)", test.cipher), func(tt *testing.T) {
+		t.Run(fmt.Sprintf("Decode(%q)", test.cipher), func(tt *testing.T) {
 			if dec := c.Decode(test.cipher); dec != test.plain {
-				tt.Fatalf("Decode(%s): got %q, want %q.", test.cipher, dec, test.plain)
+				tt.Fatalf("Decode(%q) = %q, want %q.", test.cipher, dec, test.plain)
 			}
 		})
 	}
@@ -56,15 +56,21 @@ func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 
 var NSATests = []cipherTest{
 	{"THE ENEMY IS NEAR", "qebbkbjvfpkbxo", "theenemyisnear"},
-	{"SPIES SEND SECRET MESSAGES",
+	{
+		"SPIES SEND SECRET MESSAGES",
 		"pmfbppbkapbzobqjbppxdbp",
-		"spiessendsecretmessages"},
-	{"THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
+		"spiessendsecretmessages",
+	},
+	{
+		"THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
 		"qeljxpgbccboplkabpfdkbaxprypqfqrqflkzfmebo",
-		"thomasjeffersondesignedasubstitutioncipher"},
-	{"the quick brown fox jumps over the lazy dog",
+		"thomasjeffersondesignedasubstitutioncipher",
+	},
+	{
+		"the quick brown fox jumps over the lazy dog",
 		"qebnrfzhyoltkclugrjmplsboqebixwvald",
-		"thequickbrownfoxjumpsoverthelazydog"},
+		"thequickbrownfoxjumpsoverthelazydog",
+	},
 }
 
 func TestShift(t *testing.T) {
@@ -85,7 +91,6 @@ func TestShift(t *testing.T) {
 		}
 		testCipher(c, NSATests, t)
 	})
-
 }
 
 func TestWrongShiftKey(t *testing.T) {
@@ -140,12 +145,9 @@ func TestVigenereWrongKey(t *testing.T) {
 // Benchmark combined time to run all tests.
 // Note other ciphers test different data; times cannot be compared.
 func BenchmarkEncodeCaesar(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := NewCaesar()
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range caesarTests {
 			c.Encode(test.source)
 		}
@@ -153,12 +155,9 @@ func BenchmarkEncodeCaesar(b *testing.B) {
 }
 
 func BenchmarkDecodeCaesar(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	c := NewCaesar()
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range caesarTests {
 			c.Decode(test.cipher)
 		}
@@ -166,10 +165,7 @@ func BenchmarkDecodeCaesar(b *testing.B) {
 }
 
 func BenchmarkNewShift(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for s := -27; s <= 27; s++ {
 			NewShift(s)
 		}
@@ -177,14 +173,11 @@ func BenchmarkNewShift(b *testing.B) {
 }
 
 func BenchmarkEncodeShift(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	s := NewShift(5)
 	all := caesarTests
 	all = append(all, NSATests...)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range all {
 			s.Encode(test.source)
 		}
@@ -192,14 +185,11 @@ func BenchmarkEncodeShift(b *testing.B) {
 }
 
 func BenchmarkDecodeShift(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	s := NewShift(5)
 	all := caesarTests
 	all = append(all, NSATests...)
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range all {
 			s.Decode(test.cipher)
 		}
@@ -207,10 +197,7 @@ func BenchmarkDecodeShift(b *testing.B) {
 }
 
 func BenchmarkNewVigenere(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range vtests {
 			NewVigenere(test.key)
 		}
@@ -218,9 +205,6 @@ func BenchmarkNewVigenere(b *testing.B) {
 }
 
 func BenchmarkEncVigenere(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	v := make([]Cipher, len(vtests))
 	for i, test := range vtests {
 		v[i] = NewVigenere(test.key)
@@ -240,9 +224,6 @@ func BenchmarkEncVigenere(b *testing.B) {
 }
 
 func BenchmarkDecVigenere(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	v := make([]Cipher, len(vtests))
 	for i, test := range vtests {
 		v[i] = NewVigenere(test.key)

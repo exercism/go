@@ -162,7 +162,7 @@ func slicesEqual(a, b []string) bool {
 	if len(a) == 0 {
 		return true
 	}
-	for i := 0; i < len(a); i++ {
+	for i := range len(a) {
 		if a[i] != b[i] {
 			return false
 		}
@@ -185,9 +185,6 @@ func TestAnnotate(t *testing.T) {
 var benchmarkResult []string
 
 func BenchmarkAnnotate(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	var result []string
 	board := []string{
 		"1*22*1",
@@ -198,7 +195,7 @@ func BenchmarkAnnotate(b *testing.B) {
 		"111111",
 	}
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		result = Annotate(board)
 	}
 	benchmarkResult = result

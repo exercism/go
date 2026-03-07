@@ -46,7 +46,7 @@ resident.HasRequiredInfo()
 
 Life moves fast and mistakes happen. A resident can move out of the city. A census worker can make mistakes when collecting data. In those cases, it's necessary to have the ability to delete a resident's data so they will not be counted.
 
-Implement the `Delete` method that sets all of the fields the resident to their zero value.
+Implement the `Delete` method that sets all of the fields of the resident to their zero value.
 
 ```go
 name := "Matthew Sanabria"

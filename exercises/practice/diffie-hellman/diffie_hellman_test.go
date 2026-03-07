@@ -80,7 +80,7 @@ func TestPrivateKey(t *testing.T) {
 	}
 	ms := map[string]bool{}
 	mb := map[string]bool{}
-	for i := 0; i < 100; i++ {
+	for range 100 {
 		ms[priv(smallTest.p).String()] = true
 		mb[priv(biggerTest.p).String()] = true
 	}
@@ -137,7 +137,7 @@ func TestNewPair(t *testing.T) {
 	}
 	a, A := NewPair(p, g)
 	test(a, A)
-	for i := 0; i < 20; i++ {
+	for range 20 {
 		b, B := NewPair(p, g)
 		test(b, B)
 		sa := SecretKey(a, B, p)
@@ -149,38 +149,49 @@ func TestNewPair(t *testing.T) {
 	}
 }
 
-func BenchmarkPrivateKey(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
+// test can calculate public key when given a different private key.
+//
+// As this test is intended to test the immutability / purity
+// of the underlying structure, when implemented, it should first get a
+// public key from different values.
+func TestDifferentPrivateKey(t *testing.T) {
+	privateKeyOne := big.NewInt(6)
+	privateKeyTwo := big.NewInt(15)
+	p := big.NewInt(23)
+	var g int64 = 5
+	A := PublicKey(PrivateKey(privateKeyOne), p, g+2)
+	a := PrivateKey(privateKeyTwo)
+	A = PublicKey(a, p, g)
+
+	b, B := NewPair(p, g)
+	sa := SecretKey(a, B, p)
+	sb := SecretKey(b, A, p)
+	if sa.Cmp(sb) != 0 {
+		t.Fatalf("NewPair() produced non-working keys.")
 	}
-	for i := 0; i < b.N; i++ {
+}
+
+
+func BenchmarkPrivateKey(b *testing.B) {
+	for range b.N {
 		PrivateKey(biggerTest.p)
 	}
 }
 
 func BenchmarkPublicKey(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		PublicKey(biggerTest.a, biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkNewPair(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		NewPair(biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkSecretKey(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		SecretKey(biggerTest.a, biggerTest.B, biggerTest.p)
 	}
 }

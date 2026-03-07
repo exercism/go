@@ -1,5 +1,4 @@
 //go:build bonus
-// +build bonus
 
 package twobucket
 

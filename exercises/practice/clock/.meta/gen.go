@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"create":   &[]defaultTestCase{},
 		"add":      &[]defaultTestCase{},
 		"subtract": &[]defaultTestCase{},
@@ -48,52 +47,47 @@ type equalTestCase struct {
 	Expected bool `json:"expected"`
 }
 
-var tmpl = `package clock
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 var timeTestCases = []struct {
 	description string
 	h, m        int
 	expected    string
-}{
-{{range .J.create}}{
-			description: {{printf "%q"  .Description}},
-			h:           {{printf "%d"  .Input.Hour}},
-			m:           {{printf "%d"  .Input.Minute}},
-			expected:    {{printf "%q"  .Expected}},
-	},
-{{end}}
+}{ {{range .J.create}}
+	{
+		description: {{printf "%q"  .Description}},
+		h:           {{printf "%d"  .Input.Hour}},
+		m:           {{printf "%d"  .Input.Minute}},
+		expected:    {{printf "%q"  .Expected}},
+	},{{end}}
 }
 
 var addTestCases = []struct {
 	description      string
 	h, m, addedValue int
 	expected         string
-}{
-{{range .J.add}}{
+}{ {{range .J.add}}
+	{
 		description: {{printf "%q"  .Description}},
 		h:           {{printf "%d"  .Input.Hour}},
 		m:           {{printf "%d"  .Input.Minute}},
 		addedValue:  {{printf "%d"  .Input.Value}},
 		expected:    {{printf "%q"  .Expected}},
-	},
-{{end}}
+	},{{end}}
 }
 
 var subtractTestCases = []struct {
 	description      		string
 	h, m, subtractedValue 	int
 	expected         		string
-}{
-{{range .J.subtract}}{
+}{ {{range .J.subtract}}
+	{
 		description: 		{{printf "%q"  .Description}},
 		h:           		{{printf "%d"  .Input.Hour}},
 		m:           		{{printf "%d"  .Input.Minute}},
 		subtractedValue:  	{{printf "%d"  .Input.Value}},
 		expected:    		{{printf "%q"  .Expected}},
-	},
-{{end}}
+	},{{end}}
 }
 
 // Compare two clocks for equality
@@ -103,12 +97,12 @@ var equalTestCases = []struct {
 	description string
 	c1, c2      hm
 	expected    bool
-}{ {{range .J.equal}}{
+}{ {{range .J.equal}}
+	{
 		description: {{printf "%q"  .Description}},
 		c1:          hm{ {{printf "%d"  .Input.Clock1.Hour}} , {{printf "%d"  .Input.Clock1.Minute}} },
 		c2:          hm{ {{printf "%d"  .Input.Clock2.Hour}} , {{printf "%d"  .Input.Clock2.Minute}} },
 		expected:    {{printf "%v"  .Expected}},
-	},
-{{end}}
+	},{{end}}
 }
 `

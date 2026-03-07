@@ -66,7 +66,7 @@ func TestSong(t *testing.T) {
 	for _, tc := range testCases {
 		verses = append(verses, tc.expected)
 	}
-	var expected = strings.Join(verses, "\n")
+	expected := strings.Join(verses, "\n")
 	actual := Song()
 	if expected != actual {
 		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", actual, expected, diff(actual, expected))
@@ -74,10 +74,7 @@ func TestSong(t *testing.T) {
 }
 
 func BenchmarkVerse(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			Verse(test.input)
 		}
@@ -85,10 +82,7 @@ func BenchmarkVerse(b *testing.B) {
 }
 
 func BenchmarkSong(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Song()
 	}
 }

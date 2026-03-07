@@ -1,13 +1,12 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"strings"
 	"text/template"
 	"time"
 	"unicode"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -16,7 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"meetup": &[]testCase{},
 	}
 	if err := gen.Gen("meetup", j, t); err != nil {
@@ -45,9 +44,7 @@ func (c testCase) ExpectedDay() int {
 }
 
 // template applied to above data structure generates the Go test cases
-var tmpl = `package meetup
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 import "time"
 

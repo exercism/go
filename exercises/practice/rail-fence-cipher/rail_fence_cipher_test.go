@@ -1,4 +1,4 @@
-package railfence
+package railfencecipher
 
 import "testing"
 
@@ -10,17 +10,14 @@ func testCases(
 	for _, tc := range cases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := op(tc.message, tc.rails); actual != tc.expected {
-				t.Fatalf("%s(%q,%d)\n got:%q\nwant:%q", name, tc.message, tc.rails, actual, tc.expected)
+				t.Fatalf("%s(%q, %d)\n got:%q\nwant:%q", name, tc.message, tc.rails, actual, tc.expected)
 			}
 		})
 	}
 }
 
 func runBenchmark(op func(string, int) string, cases []testCase, b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range cases {
 			op(test.message, test.rails)
 		}

@@ -39,15 +39,15 @@ func TestParseBinary(t *testing.T) {
 		if tt.ok {
 			if err != nil {
 				var _ error = err
-				t.Fatalf("ParseBinary(%v) returned error %q.  Error not expected.",
+				t.Fatalf("ParseBinary(%q) returned error %q.  Error not expected.",
 					tt.binary, err)
 			}
 			if actual != tt.expected {
-				t.Fatalf("ParseBinary(%v): actual %d, expected %v",
+				t.Fatalf("ParseBinary(%q): actual %d, expected %v",
 					tt.binary, actual, tt.expected)
 			}
 		} else if err == nil {
-			t.Fatalf("ParseBinary(%v) returned %d and no error.  Expected an error.",
+			t.Fatalf("ParseBinary(%q) returned %d and no error.  Expected an error.",
 				tt.binary, actual)
 		}
 	}
@@ -55,10 +55,7 @@ func TestParseBinary(t *testing.T) {
 
 // Benchmark combined time for all tests
 func BenchmarkBinary(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tt := range testCases {
 			ParseBinary(tt.binary)
 		}

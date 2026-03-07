@@ -8,7 +8,7 @@ func TestLabel(t *testing.T) {
 			actual := Label(tc.input)
 
 			if actual != tc.expected {
-				t.Fatalf("Label(%+q): expected %q, actual %q", tc.input, tc.expected, actual)
+				t.Fatalf("Label(%+q) = %q, want %q", tc.input, actual, tc.expected)
 			}
 		})
 	}
@@ -18,7 +18,7 @@ func TestLabel(t *testing.T) {
 var labelBench string
 
 func BenchmarkLabel(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, tc := range labelTestCases {
 			labelBench = Label(tc.input)
 		}

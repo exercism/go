@@ -4,6 +4,7 @@ package tree
 import (
 	"fmt"
 	"math/rand"
+	"slices"
 	"testing"
 )
 
@@ -305,10 +306,7 @@ func makeTwoTreeRecords() []Record {
 var twoTreeRecords = makeTwoTreeRecords()
 
 func BenchmarkTwoTree(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Build(twoTreeRecords)
 	}
 }
@@ -329,10 +327,7 @@ func makeTenTreeRecords() []Record {
 var tenTreeRecords = makeTenTreeRecords()
 
 func BenchmarkTenTree(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Build(tenTreeRecords)
 	}
 }
@@ -348,10 +343,7 @@ func makeShallowRecords() []Record {
 var shallowRecords = makeShallowRecords()
 
 func BenchmarkShallowTree(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		Build(shallowRecords)
 	}
 }
@@ -365,21 +357,6 @@ func nodeEqual(node1, node2 *Node) bool {
 	case node1 != nil && node2 == nil:
 		return false
 	default:
-		return node1.ID == node2.ID && nodeSliceEqual(node1.Children, node2.Children)
+		return node1.ID == node2.ID && slices.EqualFunc(node1.Children, node2.Children, nodeEqual)
 	}
-}
-
-func nodeSliceEqual(nodes1, nodes2 []*Node) bool {
-	if len(nodes1) == 0 && len(nodes2) == 0 {
-		return true
-	}
-	if len(nodes1) != len(nodes2) {
-		return false
-	}
-	for i := range nodes1 {
-		if !nodeEqual(nodes1[i], nodes2[i]) {
-			return false
-		}
-	}
-	return true
 }

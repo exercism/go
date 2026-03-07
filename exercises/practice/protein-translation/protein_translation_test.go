@@ -1,4 +1,4 @@
-package protein
+package proteintranslation
 
 import (
 	"testing"
@@ -99,10 +99,10 @@ func TestCodon(t *testing.T) {
 			switch {
 			case tc.expectedError != nil:
 				if err != tc.expectedError {
-					t.Fatalf("FromCodon(%q) expected error: %v, got: %v", tc.input, tc.expectedError, err)
+					t.Fatalf("FromCodon(%q) expected error: %q, got: %q", tc.input, tc.expectedError, err)
 				}
 			case err != nil:
-				t.Fatalf("FromCodon(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
+				t.Fatalf("FromCodon(%q) returned unexpected error: %q, want: %q", tc.input, err, tc.expected)
 			case got != tc.expected:
 				t.Fatalf("FromCodon(%q) = %q, want: %q", tc.input, got, tc.expected)
 			}
@@ -110,42 +110,8 @@ func TestCodon(t *testing.T) {
 	}
 }
 
-type rnaCase struct {
-	input         string
-	expected      []string
-	expectedError error
-}
-
-var rnaTestCases = []rnaCase{
-	{
-		input:         "AUGUUUUCUUAAAUG",
-		expected:      []string{"Methionine", "Phenylalanine", "Serine"},
-		expectedError: nil,
-	},
-	{
-		input:         "AUGUUUUGG",
-		expected:      []string{"Methionine", "Phenylalanine", "Tryptophan"},
-		expectedError: nil,
-	},
-	{
-		input:         "AUGUUUUAA",
-		expected:      []string{"Methionine", "Phenylalanine"},
-		expectedError: nil,
-	},
-	{
-		input:         "UGGUGUUAUUAAUGGUUU",
-		expected:      []string{"Tryptophan", "Cysteine", "Tyrosine"},
-		expectedError: nil,
-	},
-	{
-		input:         "UGGAGAAUUAAUGGUUU",
-		expected:      nil,
-		expectedError: ErrInvalidBase,
-	},
-}
-
 func TestProtein(t *testing.T) {
-	for _, tc := range rnaTestCases {
+	for _, tc := range testCases {
 		t.Run(tc.input, func(t *testing.T) {
 			got, err := FromRNA(tc.input)
 			switch {
@@ -171,7 +137,7 @@ func slicesEqual(a, b []string) bool {
 		return true
 	}
 
-	for i := 0; i < len(a); i++ {
+	for i := range len(a) {
 		if a[i] != b[i] {
 			return false
 		}
@@ -181,22 +147,16 @@ func slicesEqual(a, b []string) bool {
 }
 
 func BenchmarkCodon(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for _, test := range codonTestCases {
-		for i := 0; i < b.N; i++ {
+		for range b.N {
 			FromCodon(test.input)
 		}
 	}
 }
 
 func BenchmarkProtein(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for _, test := range rnaTestCases {
-		for i := 0; i < b.N; i++ {
+	for _, test := range testCases {
+		for range b.N {
 			FromRNA(test.input)
 		}
 	}

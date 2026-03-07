@@ -1,10 +1,9 @@
 package main
 
 import (
+	"../../../../gen"
 	"log"
 	"text/template"
-
-	"../../../../gen"
 )
 
 func main() {
@@ -12,7 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	j := map[string]interface{}{
+	j := map[string]any{
 		"encode":      &[]testCase{},
 		"decode":      &[]testCase{},
 		"consistency": &[]testCase{},
@@ -30,9 +29,7 @@ type testCase struct {
 	Expected string `json:"expected"`
 }
 
-var tmpl = `package encode
-
-{{.Header}}
+var tmpl = `{{.Header}}
 
 type testCase struct {
 	description string

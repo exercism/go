@@ -49,7 +49,7 @@ func TestParseHex(t *testing.T) {
 
 			if !strings.Contains(strings.ToLower(err.Error()), test.errCase) {
 				t.Errorf(
-					"ParseHex(%q) returned error %q. Expected error containing '%s'.",
+					"ParseHex(%q) returned error %q. Expected error containing %q.",
 					test.in, err, test.errCase)
 			}
 		} else {
@@ -86,10 +86,7 @@ func TestHandleErrors(t *testing.T) {
 }
 
 func BenchmarkParseHex(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		for _, test := range testCases {
 			ParseHex(test.in)
 		}

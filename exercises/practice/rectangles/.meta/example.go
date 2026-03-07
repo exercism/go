@@ -22,7 +22,7 @@ func checkVerticalSide(diagram []string, start, end, colIndex int) bool {
 
 // Count counts rectangles in given diagram as lines
 func Count(diagram []string) int {
-	var count, rows, cols = 0, len(diagram), 0
+	count, rows, cols := 0, len(diagram), 0
 	if rows > 0 {
 		cols = len(diagram[0])
 	}
