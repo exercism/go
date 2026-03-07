@@ -2,11 +2,11 @@
 
 Package [regexp][package-regexp] offers support for regular expressions in Go.
 
-## Syntax 
+## Syntax
 
-The [syntax][regexp-syntax] of the regular expressions accepted is the same general syntax used by Perl, Python, and other languages. 
+The [syntax][regexp-syntax] of the regular expressions accepted is the same general syntax used by Perl, Python, and other languages.
 
-Both the search patterns and the input texts are interpreted as UTF-8.  
+Both the search patterns and the input texts are interpreted as UTF-8.
 
 When using backticks (\`) to make strings, backslashes (`\`)  don't have any special meaning and don't mark the beginning of special characters like tabs `\t` or newlines `\n`:
 
@@ -39,20 +39,20 @@ re, err = regexp.Compile(`a|b)+`)
 fmt.Println(re, err) // => <nil> error parsing regexp: unexpected ): `a|b)+`
 ```
 
-Function `MustCompile` is a convenient alternative to `Compile`: 
+Function `MustCompile` is a convenient alternative to `Compile`:
 
-```go 
+```go
 re = regexp.MustCompile(`[a-z]+\d*`)
 ```
 
-Using this function, there is no need to handle an error. 
+Using this function, there is no need to handle an error.
 
 ~~~~exercism/caution
  `MustCompile` should only be used when we know for sure the pattern does compile, as otherwise the program will panic.
  ~~~~
- 
+
  ## Regular expression methods
- 
+
 There are 16 methods of `Regexp` that match a regular expression and identify the matched text.
 Their names are matched by this regular expression:
 
@@ -61,7 +61,7 @@ Find(All)?(String)?(Submatch)?(Index)?
 ```
 
 * If `All` is present, the method matches successive non-overlapping matches of the entire expression.
-* If `String` is present, the argument is a string; otherwise it is a slice of bytes; return values are adjusted as appropriate. 
+* If `String` is present, the argument is a string; otherwise it is a slice of bytes; return values are adjusted as appropriate.
 * If `Submatch` is present, the return value is a slice identifying the successive submatches of the expression.
 * If `Index` is present, matches and submatches are identified by byte index pairs within the input string.
 
@@ -73,8 +73,8 @@ There are also methods for:
 All-in-all, the `regexp` package defines more than 40 functions and methods.
 We will demonstrate the use of a few methods below.
 Please see the [API documentation][package-regexp] for details of these and other functions.
- 
-### `MatchString` Examples 
+
+### `MatchString` Examples
 
 Method `MatchString` reports whether a string contains any match of a regular expression.
 
@@ -83,10 +83,10 @@ re = regexp.MustCompile(`[a-z]+\d*`)
 b = re.MatchString("[a12]")       // => true
 b = re.MatchString("12abc34(ef)") // => true
 b = re.MatchString(" abc!")       // => true
-b = re.MatchString("123 456")     // => false    
+b = re.MatchString("123 456")     // => false
 ```
 
-### `FindString` Examples 
+### `FindString` Examples
 
 Method `FindString` returns a string holding the text of the leftmost match of the regular expression.
 
@@ -104,7 +104,7 @@ Method `FindStringSubmatch` returns a slice of strings holding the text of the l
 This can be used to identify the strings matching capturing groups.
 A return value of `nil` indicates no match.
 
-```go 
+```go
 re = regexp.MustCompile(`[a-z]+(\d*)`)
 sl = re.FindStringSubmatch("[a12]")       // => []string{"a12","12"}
 sl = re.FindStringSubmatch("12abc34(ef)") // => []string{"abc34","34"}
@@ -123,9 +123,9 @@ s = re.ReplaceAllString("12abc34(ef)", "X") // => "12X(X)"
 s = re.ReplaceAllString(" abc!", "X")       // => " X!"
 s = re.ReplaceAllString("123 456", "X")     // => "123 456"
 ```
- 
+
  ### `Split` Examples
- 
+
 Method `re.Split(s,n)` slices a text `s` into substrings separated by the expression and returns a slice of the substrings between those expression matches.
 The count `n` determines the maximal number of substrings to return.
 If `n<0`, the method returns all substrings.
@@ -137,6 +137,6 @@ sl = re.Split("12abc34(ef)", 2) // => []string{"12","(ef)"}
 sl = re.Split(" abc!", -1)      // => []string{" ","!"}
 sl = re.Split("123 456", -1)    // => []string{"123 456"}
 ```
-  
+
 [package-regexp]: https://pkg.go.dev/regexp
 [regexp-syntax]: https://pkg.go.dev/regexp/syntax
