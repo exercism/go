@@ -888,6 +888,14 @@
         ]
       },
       {
+        "slug": "high-scores",
+        "name": "High Scores",
+        "uuid": "19c9f4a4-a3e4-4647-8735-35de97dd3e7b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "isbn-verifier",
         "name": "ISBN Verifier",
         "uuid": "3530f2f0-ee5f-46a3-a8ee-e9927a637253",
