@@ -14,9 +14,6 @@ func TestEggCount(t *testing.T) {
 }
 
 func BenchmarkEggCount(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
 	for range b.N {
 		for _, tc := range testCases {
 			EggCount(tc.input)
