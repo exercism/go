@@ -111,7 +111,7 @@ func testComment(entityKind, entityName, comment, wantedPrefix string) (ok bool,
 
 	// Check if comment has wanted prefix
 	if !strings.HasPrefix(trimmedComment, wantedPrefix) {
-		errorString := fmt.Sprintf("%s comment for %s '%s' should start with '// %s ...': got '// %s'",
+		errorString := fmt.Sprintf("%s comment for %s %q should start with '// %s ...': got '// %s'",
 			entityKind, lowerEntity, entityName, wantedPrefix, trimmedComment)
 		return false, errorString
 	}
@@ -123,14 +123,14 @@ func testComment(entityKind, entityName, comment, wantedPrefix string) (ok bool,
 
 	if commentContent == "" {
 		lowerEntity := strings.ToLower(entityKind)
-		errorString := fmt.Sprintf("%s comment of '%s' should provide a description of the %s, e.g '// %s <%s_description>'",
+		errorString := fmt.Sprintf("%s comment of %q should provide a description of the %s, e.g '// %s <%s_description>'",
 			entityKind, entityName, lowerEntity, wantedPrefix, lowerEntity)
 		return false, errorString
 	}
 
 	// Check if comment ends in a period
 	if !strings.HasSuffix(trimmedComment, ".") {
-		return false, fmt.Sprintf("%s comment for %s '%s' should end with a period (.)",
+		return false, fmt.Sprintf("%s comment for %s %q should end with a period (.)",
 			entityKind, lowerEntity, entityName)
 	}
 

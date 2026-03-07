@@ -44,7 +44,7 @@ func (t testCase) SortedMapString() string {
 	for k, v := range t.Expected {
 		switch t := v.(type) {
 		case float64:
-			strs = append(strs, fmt.Sprintf("'%s':%d", k, int(t)))
+			strs = append(strs, fmt.Sprintf("%q:%d", k, int(t)))
 		default:
 			log.Fatalf("unexpected type %T for %v", t, v)
 		}
