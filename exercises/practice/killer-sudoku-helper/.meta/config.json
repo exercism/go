@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "killer_sudoku_helper.go"
+    ],
+    "test": [
+      "killer_sudoku_helper_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Write a tool that makes it easier to solve Killer Sudokus",
+  "source": "Created by Sascha Mann, Jeremy Walker, and BethanyG for the Julia track on Exercism.",
+  "source_url": "https://github.com/exercism/julia/pull/413"
+}
