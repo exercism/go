@@ -1175,6 +1175,14 @@
         ]
       },
       {
+        "slug": "baffling-birthdays",
+        "name": "Baffling Birthdays",
+        "uuid": "cd8cd8fa-cbfc-4aff-a0d2-5a1ce7352607",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "bank-account",
         "name": "Bank Account",
         "uuid": "7cb6c78e-44e9-499b-a745-3ecb73bea3ab",
