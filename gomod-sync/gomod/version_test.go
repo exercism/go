@@ -96,10 +96,9 @@ go 1.18
 			}
 
 			if string(data) != test.Modified {
-				t.Fatalf("expected go.mod file with the following contents:\n"+
-					"%s\n"+
-					"but got:\n"+
-					"%s", test.Modified, string(data))
+				t.Fatalf(
+					"expected go.mod file with the following contents:\n%s\nbut got:\n%s", test.Modified, string(data),
+				)
 			}
 
 			err = os.Remove(filePath)

@@ -28,12 +28,12 @@ func TestUnits(t *testing.T) {
 		qty, ok := units[tt.name]
 
 		if !ok {
-			t.Errorf(`Unit "%s" not found!`, tt.name)
+			t.Errorf("Unit %q not found!", tt.name)
 			continue
 		}
 
 		if qty != tt.qty {
-			t.Errorf(`Unit "%s" should have quantity %d, found %d`, tt.name, tt.qty, qty)
+			t.Errorf("Unit %q should have quantity %d, found %d", tt.name, tt.qty, qty)
 		}
 	}
 }
