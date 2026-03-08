@@ -1,0 +1,37 @@
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[8df3fa26-811a-4165-9286-ff9ac0850d19]
+description = "Empty tree"
+
+[f945ccfc-05e3-47d7-825b-0270559d43ad]
+description = "Tree with one item"
+
+[a0121d5f-37b0-48dd-9c64-cba4c4464135]
+description = "Tree with many items"
+
+[6074041f-4891-4d81-a128-401050c2a3b0]
+description = "Reject traversals of different length"
+
+[27916ce4-45f3-4d8b-8528-496fedc157ca]
+description = "Reject inconsistent traversals of same length"
+
+[d86a3d72-76a9-43b5-9d3a-e64cb1216035]
+description = "Reject traversals with repeated items"
+
+[af31ae02-7e5b-4452-a990-bccb3fca9148]
+description = "A degenerate binary tree"
+
+[ee54463d-a719-4aae-ade4-190d30ce7320]
+description = "Another degenerate binary tree"
+
+[87123c08-c155-4486-90a4-e2f75b0f3e8f]
+description = "Tree with many more items"

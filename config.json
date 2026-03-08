@@ -1981,6 +1981,14 @@
         ]
       },
       {
+        "slug": "satellite",
+        "name": "Satellite",
+        "uuid": "576e31d6-d337-408d-b703-44aebd983b0b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "split-second-stopwatch",
         "name": "Split-Second Stopwatch",
         "uuid": "6148d815-fc92-496b-b9d1-ab028770fb20",
