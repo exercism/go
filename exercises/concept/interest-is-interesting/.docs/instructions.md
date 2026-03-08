@@ -9,7 +9,7 @@ The interest rate your bank gives you depends on the amount of money in your acc
 - 1.621% for a balance greater than or equal to `1000` dollars, and less than `5000` dollars.
 - 2.475% for a balance greater than or equal to `5000` dollars.
 
-You have four tasks, each of which will deal your balance and its interest rate.
+You have four tasks, each of which will deal with your balance and its interest rate.
 
 ## 1. Calculate the interest rate
 
