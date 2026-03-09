@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "micro_blog.go"
+    ],
+    "test": [
+      "micro_blog_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Given an input string, truncate it to 5 characters."
+}
