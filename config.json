@@ -1552,6 +1552,14 @@
         ]
       },
       {
+        "slug": "rational-numbers",
+        "name": "Rational Numbers",
+        "uuid": "c129f1a1-851b-4261-8da3-44224cc5564d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "resistor-color-trio",
         "name": "Resistor Color Trio",
         "uuid": "b10b1604-bd88-4f4a-bf84-c0508df34f1a",
