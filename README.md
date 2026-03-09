@@ -190,6 +190,24 @@ There is no critical use for these though.
 Usually they will just bench the combined time to run over all the test data rather than attempt precise timings on single function calls.
 They are useful if they let the solver try a change and see a performance effect.
 
+### Examples
+
+Examples of function calls usually show the return value.
+We use the following style when doing so.
+
+```
+NeedsLicense("car")
+// => true
+```
+
+When printing output (STDOUT), we use the following style.
+
+```
+needLicense := NeedsLicense("car")
+fmt.Println(needLicense)
+// Output: true
+```
+
 ## Synchronizing exercises with problem specifications
 
 Some problems that are implemented in multiple tracks use the same inputs and outputs to define the test suites.
