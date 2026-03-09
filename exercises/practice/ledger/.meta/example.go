@@ -27,7 +27,7 @@ func FormatLedger(currency, locale string, entries []Entry) (string, error) {
 	copy(entriesCopy, entries)
 	sort.Sort(entrySlice(entriesCopy))
 	var buf bytes.Buffer
-	buf.WriteString(fmt.Sprintf("%-10s | %-25s | %s\n",
+	buf.WriteString(fmt.Sprintf("%-10s | %-25s | %-13s\n",
 		locInfo.translations["date"],
 		locInfo.translations["descr"],
 		locInfo.translations["change"]))
@@ -98,12 +98,11 @@ func dutchCurrencyFormat(symbol string, cents int, negative bool) string {
 	var buf bytes.Buffer
 	buf.WriteString(symbol)
 	buf.WriteRune(' ')
-	buf.WriteString(moneyToString(cents, ".", ","))
 	if negative {
 		buf.WriteRune('-')
-	} else {
-		buf.WriteRune(' ') // To keep alignment in report
 	}
+	buf.WriteString(moneyToString(cents, ".", ","))
+	buf.WriteRune(' ') // To keep alignment in report
 	return buf.String()
 }
 
