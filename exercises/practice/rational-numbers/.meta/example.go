@@ -25,7 +25,8 @@ type Rational struct {
 	numerator, denominator int
 }
 
-func Reduce(r Rational) Rational {
+// Reduce simplifies a Rational, eg changing Rational{4, 2} into Rational{2, 1}.
+func (r Rational) Reduce() Rational {
 	gcd := abs(gcd(r.numerator, r.denominator))
 	if r.denominator < 0 {
 		gcd *= -1
@@ -33,38 +34,40 @@ func Reduce(r Rational) Rational {
 	return Rational{r.numerator / gcd, r.denominator / gcd}
 }
 
-func Add(a, b Rational) Rational {
-	numerator := a.numerator*b.denominator + b.numerator*a.denominator
-	denominator := a.denominator * b.denominator
-	return Reduce(Rational{numerator, denominator})
+func (r Rational) Add(s Rational) Rational {
+	numerator := r.numerator*s.denominator + s.numerator*r.denominator
+	denominator := r.denominator * s.denominator
+	return Rational{numerator, denominator}.Reduce()
 }
 
-func Sub(a, b Rational) Rational {
-	numerator := a.numerator*b.denominator - b.numerator*a.denominator
-	denominator := a.denominator * b.denominator
-	return Reduce(Rational{numerator, denominator})
+func (r Rational) Sub(s Rational) Rational {
+	numerator := r.numerator*s.denominator - s.numerator*r.denominator
+	denominator := r.denominator * s.denominator
+	return Rational{numerator, denominator}.Reduce()
 }
 
-func Mul(a, b Rational) Rational {
-	return Reduce(Rational{a.numerator * b.numerator, a.denominator * b.denominator})
+func (r Rational) Mul(s Rational) Rational {
+	return Rational{r.numerator * s.numerator, r.denominator * s.denominator}.Reduce()
 }
 
-func Div(a, b Rational) Rational {
-	return Reduce(Rational{a.numerator * b.denominator, b.numerator * a.denominator})
+func (r Rational) Div(s Rational) Rational {
+	return Rational{r.numerator * s.denominator, s.numerator * r.denominator}.Reduce()
 }
 
-func Abs(r Rational) Rational {
-	return Reduce(Rational{abs(r.numerator), abs(r.denominator)})
+func (r Rational) Abs() Rational {
+	return Rational{abs(r.numerator), abs(r.denominator)}.Reduce()
 }
 
-func Exprational(base Rational, power int) Rational {
+// Compute r ^ power, a rational raised to an int exponent.
+func (r Rational) Exprational(power int) Rational {
 	if power >= 0 {
-		return Reduce(Rational{pow(base.numerator, power), pow(base.denominator, power)})
+		return Rational{pow(r.numerator, power), pow(r.denominator, power)}.Reduce()
 	}
 	power = -power
-	return Reduce(Rational{pow(base.denominator, power), pow(base.numerator, power)})
+	return Rational{pow(r.denominator, power), pow(r.numerator, power)}.Reduce()
 }
 
-func Expreal(base int, power Rational) float64 {
-	return math.Pow(math.Pow(float64(base), float64(power.numerator)), 1/float64(power.denominator))
+// Compute base ^ r, an int raised to a rational.
+func (r Rational) Expreal(base int) float64 {
+	return math.Pow(math.Pow(float64(base), float64(r.numerator)), 1/float64(r.denominator))
 }

@@ -5,7 +5,7 @@ import "testing"
 func TestReduce(t *testing.T) {
 	for _, tc := range testCasesReduce {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Reduce(tc.input); actual != tc.expected {
+			if actual := tc.input.Reduce(); actual != tc.expected {
 				t.Fatalf("Reduce(%#v) = %#v, want: %#v", tc.input, actual, tc.expected)
 			}
 		})
@@ -15,7 +15,7 @@ func TestReduce(t *testing.T) {
 func TestAdd(t *testing.T) {
 	for _, tc := range testCasesAdd {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Add(tc.input[0], tc.input[1]); actual != tc.expected {
+			if actual := tc.input[0].Add(tc.input[1]); actual != tc.expected {
 				t.Fatalf("Add(%#v, %#v) = %#v, want: %#v", tc.input[0], tc.input[1], actual, tc.expected)
 			}
 		})
@@ -25,7 +25,7 @@ func TestAdd(t *testing.T) {
 func TestSub(t *testing.T) {
 	for _, tc := range testCasesSub {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Sub(tc.input[0], tc.input[1]); actual != tc.expected {
+			if actual := tc.input[0].Sub(tc.input[1]); actual != tc.expected {
 				t.Fatalf("Sub(%#v, %#v) = %#v, want: %#v", tc.input[0], tc.input[1], actual, tc.expected)
 			}
 		})
@@ -35,7 +35,7 @@ func TestSub(t *testing.T) {
 func TestMul(t *testing.T) {
 	for _, tc := range testCasesMul {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Mul(tc.input[0], tc.input[1]); actual != tc.expected {
+			if actual := tc.input[0].Mul(tc.input[1]); actual != tc.expected {
 				t.Fatalf("Mul(%#v, %#v) = %#v, want: %#v", tc.input[0], tc.input[1], actual, tc.expected)
 			}
 		})
@@ -45,7 +45,7 @@ func TestMul(t *testing.T) {
 func TestDiv(t *testing.T) {
 	for _, tc := range testCasesDiv {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Div(tc.input[0], tc.input[1]); actual != tc.expected {
+			if actual := tc.input[0].Div(tc.input[1]); actual != tc.expected {
 				t.Fatalf("Div(%#v, %#v) = %#v, want: %#v", tc.input[0], tc.input[1], actual, tc.expected)
 			}
 		})
@@ -55,7 +55,7 @@ func TestDiv(t *testing.T) {
 func TestAbs(t *testing.T) {
 	for _, tc := range testCasesAbs {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Abs(tc.input); actual != tc.expected {
+			if actual := tc.input.Abs(); actual != tc.expected {
 				t.Fatalf("Abs(%#v) = %#v, want: %#v", tc.input, actual, tc.expected)
 			}
 		})
@@ -65,7 +65,7 @@ func TestAbs(t *testing.T) {
 func TestExprational(t *testing.T) {
 	for _, tc := range testCasesExprational {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := Exprational(tc.inputR, tc.inputInt); actual != tc.expected {
+			if actual := tc.inputR.Exprational(tc.inputInt); actual != tc.expected {
 				t.Fatalf("Exprational(%#v, %#v) = %#v, want: %#v", tc.inputR, tc.inputInt, actual, tc.expected)
 			}
 		})
@@ -75,7 +75,7 @@ func TestExprational(t *testing.T) {
 func TestExpreal(t *testing.T) {
 	for _, tc := range testCasesExpreal {
 		t.Run(tc.description, func(t *testing.T) {
-			actual := Expreal(tc.inputInt, tc.inputR)
+			actual := tc.inputR.Expreal(tc.inputInt)
 			diff := (actual - tc.expected)
 			if diff < 0 {
 				diff = -diff
@@ -90,7 +90,7 @@ func TestExpreal(t *testing.T) {
 func BenchmarkAbs(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesAbs {
-			Abs(tc.input)
+			tc.input.Abs()
 		}
 	}
 }
@@ -98,7 +98,7 @@ func BenchmarkAbs(b *testing.B) {
 func BenchmarkAdd(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesAdd {
-			Add(tc.input[0], tc.input[1])
+			tc.input[0].Add(tc.input[1])
 		}
 	}
 }
@@ -106,7 +106,7 @@ func BenchmarkAdd(b *testing.B) {
 func BenchmarkSub(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesSub {
-			Sub(tc.input[0], tc.input[1])
+			tc.input[0].Sub(tc.input[1])
 		}
 	}
 }
@@ -114,7 +114,7 @@ func BenchmarkSub(b *testing.B) {
 func BenchmarkMul(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesMul {
-			Mul(tc.input[0], tc.input[1])
+			tc.input[0].Mul(tc.input[1])
 		}
 	}
 }
@@ -122,7 +122,7 @@ func BenchmarkMul(b *testing.B) {
 func BenchmarkDiv(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesDiv {
-			Div(tc.input[0], tc.input[1])
+			tc.input[0].Div(tc.input[1])
 		}
 	}
 }
@@ -130,7 +130,7 @@ func BenchmarkDiv(b *testing.B) {
 func BenchmarkExprational(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesExprational {
-			Exprational(tc.inputR, tc.inputInt)
+			tc.inputR.Exprational(tc.inputInt)
 		}
 	}
 }
@@ -138,7 +138,7 @@ func BenchmarkExprational(b *testing.B) {
 func BenchmarkExpreal(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesExpreal {
-			Expreal(tc.inputInt, tc.inputR)
+			tc.inputR.Expreal(tc.inputInt)
 		}
 	}
 }
@@ -146,7 +146,7 @@ func BenchmarkExpreal(b *testing.B) {
 func BenchmarkReduce(b *testing.B) {
 	for range b.N {
 		for _, tc := range testCasesReduce {
-			Reduce(tc.input)
+			tc.input.Reduce()
 		}
 	}
 }
