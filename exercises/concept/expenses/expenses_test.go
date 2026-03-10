@@ -1,6 +1,9 @@
 package expenses
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 var testExpensesRecords = []Record{
 	{
@@ -255,25 +258,25 @@ func TestCategoryExpenses(t *testing.T) {
 		t.Run(tC.name, func(t *testing.T) {
 			got, err := CategoryExpenses(testExpensesRecords, tC.p, tC.category)
 			if tC.wantErr && err == nil {
-				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but want a non-nil error",
-					testExpensesRecords, tC.category, tC.p, got, err)
+				t.Fatalf("CategoryExpenses(%v, %v, %s)=%.2f,%v but want a non-nil error",
+					testExpensesRecords, tC.p, tC.category, got, err)
 			}
 
 			if !tC.wantErr && err != nil {
-				t.Fatalf("CategoryExpenses(%v, %s, %v)=%.2f,%v but a non-nil error was not expected",
-					testExpensesRecords, tC.category, tC.p, got, err)
+				t.Fatalf("CategoryExpenses(%v, %v, %s)=%.2f,%v but a non-nil error was not expected",
+					testExpensesRecords, tC.p, tC.category, got, err)
 			}
 
 			if got != tC.total {
 				var errStr string
 
 				if tC.wantErr {
-					errStr = "unknown category"
+					errStr = fmt.Sprintf("unknown category %s", tC.category)
 				} else {
 					errStr = "nil"
 				}
-				t.Fatalf("CategoryExpenses(%v, %s, %v) = %.2f,%v but want %.2f,%s",
-					testExpensesRecords, tC.category, tC.p, got, err, tC.total, errStr)
+				t.Fatalf("CategoryExpenses(%v, %v, %s) = %.2f,%v but want %.2f,%s",
+					testExpensesRecords, tC.p, tC.category, got, err, tC.total, errStr)
 			}
 		})
 	}
