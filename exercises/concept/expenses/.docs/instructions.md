@@ -1,6 +1,10 @@
 # Instructions
 
-Bob is a financial adviser and helps people to manage their expenses. Bob's clients send expenses records for him to analyze. Bob has records for the previous periods so he can see changes in spending. Bob does not like calendars and uses *Bob epoch* instead of dates. Bob epoch is the number of days elapsed since Bob's client started their activity.
+Bob is a financial adviser and helps people to manage their expenses.
+Bob's clients send expense records for him to analyze.
+Bob has records for the previous periods so he can see changes in spending.
+Bob does not like calendars and uses *Bob epoch* instead of dates.
+Bob epoch is the number of days elapsed since Bob's client started their activity.
 
 In this exercise, you are going to build a program to help Bob manage and analyze the expenses of his clients.
 
@@ -32,7 +36,7 @@ p := DaysPeriod{From: 1, To: 31}
 //  - days 1, 20, 16 and 31 are examples of days that are included
 //    in the range of time specified by p
 //  - days 50 and 40 are examples of days that are not included
-//    in the range of time specified by p  
+//    in the range of time specified by p
 ```
 
 ## 1. Implement a general records filter
@@ -137,10 +141,11 @@ TotalByPeriod(records, p2)
 
 ## 5. Calculate the total expenses for records of a category in a period
 
-For the most complex reports Bob makes to his clients, Bob needs to filter records by category and period of time at the same time. 
+For the most complex reports Bob makes to his clients, Bob needs to filter records by category and period of time at the same time.
 That means Bob wants to know the total expenses for records in a category in a given period of time.
 
-Implement the `CategoryExpenses` function that returns the total amount of expenses in a category in a given period of days. The function should also differentiate the case when the given category is not present in the expenses records and the case when there are no category's expenses in the provided period.
+Implement the `CategoryExpenses` function that returns the total amount of expenses in a category in a given period of days.
+The function should also differentiate the case when the given category is not present in the expense records and the case when there are no category's expenses in the provided period.
 When the category is not a category of any of the records (regardless of period of time) the function should return an error.
 
 ```go
