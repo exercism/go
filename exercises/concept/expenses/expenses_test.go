@@ -1,7 +1,6 @@
 package expenses
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -271,7 +270,7 @@ func TestCategoryExpenses(t *testing.T) {
 				var errStr string
 
 				if tC.wantErr {
-					errStr = fmt.Sprintf("unknown category %s", tC.category)
+					errStr = "unknown category " + tC.category
 				} else {
 					errStr = "nil"
 				}
