@@ -1,6 +1,10 @@
 # Instructions
 
-Bob is a financial adviser and helps people to manage their expenses. Bob's clients send expenses records for him to analyze. Bob has records for the previous periods so he can see changes in spending. Bob does not like calendars and uses *Bob epoch* instead of dates. Bob epoch is the number of days elapsed since Bob's client started their activity.
+Bob is a financial adviser and helps people to manage their expenses.  
+Bob's clients send expense records for him to analyze.  
+Bob has records for the previous periods so he can see changes in spending.  
+Bob does not like calendars and uses *Bob epoch* instead of dates.  
+Bob epoch is the number of days elapsed since Bob's client started their activity.
 
 In this exercise, you are going to build a program to help Bob manage and analyze the expenses of his clients.
 
@@ -17,7 +21,7 @@ type Record struct {
 }
 ```
 
-A `DaysPeriod` represents a range of days and includes all days from the day `From` up to the day `To`.
+A `DaysPeriod` represents a range of days and includes all days from the day `From` up to the day `To`.  
 Both ends are included in the range.
 
 ```go
@@ -32,15 +36,15 @@ p := DaysPeriod{From: 1, To: 31}
 //  - days 1, 20, 16 and 31 are examples of days that are included
 //    in the range of time specified by p
 //  - days 50 and 40 are examples of days that are not included
-//    in the range of time specified by p  
+//    in the range of time specified by p
 ```
 
 ## 1. Implement a general records filter
 
-Bob deals with a lot of records every day, but not all of them are interesting depending on the analysis Bob is making.
+Bob deals with a lot of records every day, but not all of them are interesting depending on the analysis Bob is making.  
 Let's help Bob perform some basic filtering of records.
 
-Implement the generic `Filter` function to filter records according to a criteria given by a function.
+Implement the generic `Filter` function to filter records according to a criteria given by a function.  
 This filter function accepts a collection of records and a predicate function and returns only the records in the collection that satisfy the predicate.
 
 ```go
@@ -66,7 +70,7 @@ Filter(records, Day1Records)
 
 Bob frequently needs to filter records that are in a given period of time.
 
-Implement the `ByDaysPeriod` function that will help Bob create such filters.
+Implement the `ByDaysPeriod` function that will help Bob create such filters.  
 This function accepts a `DaysPeriod` and returns function that takes a record and tells whether the record is in the period of time specified by the `DaysPeriod` given as argument.
 
 ```go
@@ -93,7 +97,7 @@ Filter(records, ByDaysPeriod(period))
 
 Other than filtering records by a period of time, Bob also needs to filter records by its category.
 
-Implement the `ByCategory` function that will help Bob create such filters.
+Implement the `ByCategory` function that will help Bob create such filters.  
 This function accepts a category and returns a function that takes a record and tells whether the category of this record is the same as the category given as the argument.
 
 ```go
@@ -137,10 +141,11 @@ TotalByPeriod(records, p2)
 
 ## 5. Calculate the total expenses for records of a category in a period
 
-For the most complex reports Bob makes to his clients, Bob needs to filter records by category and period of time at the same time. 
+For the most complex reports Bob makes to his clients, Bob needs to filter records by category and period of time at the same time.  
 That means Bob wants to know the total expenses for records in a category in a given period of time.
 
-Implement the `CategoryExpenses` function that returns the total amount of expenses in a category in a given period of days. The function should also differentiate the case when the given category is not present in the expenses records and the case when there are no category's expenses in the provided period.
+Implement the `CategoryExpenses` function that returns the total amount of expenses in a category in a given period of days.  
+The function should also differentiate the case when the given category is not present in the expense records and the case when there are no category's expenses in the provided period.  
 When the category is not a category of any of the records (regardless of period of time) the function should return an error.
 
 ```go
