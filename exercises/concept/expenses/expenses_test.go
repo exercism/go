@@ -1,8 +1,6 @@
 package expenses
 
-import (
-	"testing"
-)
+import "testing"
 
 var testExpensesRecords = []Record{
 	{
