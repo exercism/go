@@ -2,8 +2,8 @@
 
 In Go a return value can be named.
 
-A good name for a return value can help its user to understand. Without looking at the code the following
-function signature tells a lot more than `getPosition() (float64, float64, error)` would:
+A good name for a return value can help its user to understand.
+Without looking at the code the following function signature tells a lot more than `getPosition() (float64, float64, error)` would:
 
 ```go
 func getPosition() (lat, long float64, err error) {
@@ -13,7 +13,8 @@ func getPosition() (lat, long float64, err error) {
 
 The second effect of using names for return values is, that these variables are already declared in the function.
 
-With `named returns` also `naked returns` can be used. Although there are 3 return values, the `return` statement can stand alone:
+With `named returns` also `naked returns` can be used.
+Although there are 3 return values, the `return` statement can stand alone:
 
 ```go
 func getPosition() (lat, long float64, err error) {
@@ -24,5 +25,4 @@ func getPosition() (lat, long float64, err error) {
 }
 ```
 
-**Warning**: Because `naked returns` make functions harder to read (especially if they are longer than a few lines),
-they are considered bad practice by the Go community.
+**Warning**: Because `naked returns` make functions harder to read (especially if they are longer than a few lines), they are considered bad practice by the Go community.

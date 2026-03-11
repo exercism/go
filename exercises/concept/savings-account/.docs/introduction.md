@@ -6,13 +6,15 @@ In Go, a constant is a simple, unchanging value assigned to a name with the `con
 const myWebsite = "Exercism"
 ```
 
-Such constants are untyped, but they are given a default type based on their syntax when a type is required, such as when they are passed to a method. Typed constants can be created by explicitly adding a type:
+Such constants are untyped, but they are given a default type based on their syntax when a type is required, such as when they are passed to a method.
+Typed constants can be created by explicitly adding a type:
 
 ```go
 const myWebsite string = "Exercism"
 ```
 
-Go does not have enums like some other languages, but does have a predeclared identifier called `iota` for creating enumerated constants. Constants in a block are implicitly repeated:
+Go does not have enums like some other languages, but does have a predeclared identifier called `iota` for creating enumerated constants.
+Constants in a block are implicitly repeated:
 
 ```go
 const (

@@ -63,7 +63,8 @@ Failing to do so will crash the entire application.
 
 ## Empty slices
 
-`nil`-slices are the default empty slice. They have no drawbacks towards a slice with no values in them.
+`nil`-slices are the default empty slice.
+They have no drawbacks towards a slice with no values in them.
 The `len` function works on `nil`-slices, items can be added without initializing it, and so on.
 If creating a new slice prefer `var s []int` (`nil`-slice) over `s := []int{}` (empty, non-`nil` slice).
 

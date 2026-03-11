@@ -52,7 +52,8 @@ Make sure the error message you provide is as specific as possible as errors do 
 By convention, the error message should start with a lowercase letter and not end with a period.
 
 If you want to use such an error in multiple places (or you want to make the error available to the consumer of your package), you should declare a variable for the error instead of using `errors.New` in-line.
-By convention, the name of the variable should start with `Err` or `err` (depending on whether it is exported or not). These error variables are often called _sentinel errors_.
+By convention, the name of the variable should start with `Err` or `err` (depending on whether it is exported or not).
+These error variables are often called _sentinel errors_.
 
 ```go
 import "errors"

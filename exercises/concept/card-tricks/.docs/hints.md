@@ -2,7 +2,8 @@
 
 ## General
 
-- Slices in Go are zero-based. The first index in a slice is `0`.
+- Slices in Go are zero-based.
+  The first index in a slice is `0`.
 - The builtin [`append`][append-builtin] function is [`variadic`][variadic-gobyexample]
 - You can append the elements of one slice to another slice by using the three dots notation:
 
@@ -16,8 +17,7 @@ fmt.Println(c)
 
 ## 1. Create a slice with certain cards
 
-- To create a slice pre-filled with some data, use the slice literal notation:
-  `s := []T{x1, x2, ..., xn}`
+- To create a slice pre-filled with some data, use the slice literal notation: `s := []T{x1, x2, ..., xn}`.
 
 ## 2. Retrieve a card from a stack
 

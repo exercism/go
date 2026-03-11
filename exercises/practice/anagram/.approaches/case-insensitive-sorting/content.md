@@ -39,30 +39,23 @@ func sortString(s string) string {
 }
 ```
 
-This approach normalizes both strings to lowercase, sorts them, and compares the
-resulting sorted strings to determine if they are anagrams.
+This approach normalizes both strings to lowercase, sorts them, and compares the resulting sorted strings to determine if they are anagrams.
 
-The [`strings.ToLower` function][strings.ToLower] is used to convert the strings
-into their lowercase form. This normalizes the strings so that the solution is
-case-insensitive (e.g., `foo` and `OOF` normalize to `foo` and `oof`). At this
-point if the two strings normalize to the same string, they cannot be anagrams
-since a word cannot be an anagram of itself.
+The [`strings.ToLower` function][strings.ToLower] is used to convert the strings into their lowercase form.
+This normalizes the strings so that the solution is case-insensitive (e.g., `foo` and `OOF` normalize to `foo` and `oof`).
+At this point if the two strings normalize to the same string, they cannot be anagrams since a word cannot be an anagram of itself.
 
-The normalized strings are then sorted using the [`sort` package][sort]. It
-doesn't matter if the strings are sorted in non-decreasing or non-increasing
-order as long as both strings are sorted in the same way. Sorting the strings
-allows us to determine if the strings are anagrams (e.g., `foo` and `oof` sort
-to `foo` and `foo`). In Go, sorting operates on slices, not strings, so the
-string is first split into a slice using `strings.Split`, sorted using
-`sort.Strings`, and then joined back into a string using `strings.Join`.
+The normalized strings are then sorted using the [`sort` package][sort].
+It doesn't matter if the strings are sorted in non-decreasing or non-increasing order as long as both strings are sorted in the same way.
+Sorting the strings allows us to determine if the strings are anagrams (e.g., `foo` and `oof` sort to `foo` and `foo`).
+In Go, sorting operates on slices, not strings, so the string is first split into a slice using `strings.Split`, sorted using `sort.Strings`, and then joined back into a string using `strings.Join`.
 
-Now that the strings are normalized and sorted, they can be compared directly to
-determine if they are anagrams. If the strings are the same, they are anagrams.
+Now that the strings are normalized and sorted, they can be compared directly to determine if they are anagrams.
+If the strings are the same, they are anagrams.
 Otherwise, they are not anagrams.
 
-This approach separates the sorting and anagram checking logic into their own
-functions for readability. That way, the `Detect` function can focus on
-iterating over the candidates and building the resulting slice of anagrams.
+This approach separates the sorting and anagram checking logic into their own functions for readability.
+That way, the `Detect` function can focus on iterating over the candidates and building the resulting slice of anagrams.
 
 [strings.ToLower]: https://pkg.go.dev/strings#ToLower
 [sort]: https://pkg.go.dev/sort

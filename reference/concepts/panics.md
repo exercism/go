@@ -3,8 +3,9 @@
 [Panics](https://blog.golang.org/defer-panic-and-recover) can be caused by runtime errors like out-of-bounds array accesses or nil pointer dereferences.
 In this case they should be considered bugs and be fixed by the developer.
 
-Panics can also be invoked by the developer with the `panic` function. Since Go handles errors differently, `panic` should
-be used only in exceptional cases to crash the program. It should **not** be used to signal an error to the caller.
+Panics can also be invoked by the developer with the `panic` function.
+Since Go handles errors differently, `panic` should be used only in exceptional cases to crash the program.
+It should **not** be used to signal an error to the caller.
 One valid example is to crash a server _on startup_ if the database is not reachable.
 
 > Panic is a built-in function that stops the ordinary flow of control and begins _panicking_.

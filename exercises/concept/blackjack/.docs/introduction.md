@@ -1,6 +1,10 @@
 # Introduction
 
-Like other languages, Go also provides a `switch` statement. Switch statements are a shorter way to write long `if ... else if` statements. To make a switch, we start by using the keyword `switch` followed by a value or expression. We then declare each one of the conditions with the `case` keyword. We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
+Like other languages, Go also provides a `switch` statement.
+Switch statements are a shorter way to write long `if ... else if` statements.
+To make a switch, we start by using the keyword `switch` followed by a value or expression.
+We then declare each one of the conditions with the `case` keyword.
+We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
 
 ```go
 operatingSystem := "windows"

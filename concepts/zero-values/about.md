@@ -1,6 +1,7 @@
 # About
 
-Go does not have a concept of empty, null, or undefined for variable values. Variables declared without an explicit initial value default to the zero value for their respective type.
+Go does not have a concept of empty, null, or undefined for variable values.
+Variables declared without an explicit initial value default to the zero value for their respective type.
 
 The zero value for primitive types such as booleans, numeric types, and strings are `false`, `0`, and `""`, respectively.
 
@@ -20,7 +21,9 @@ The following table details the zero value for Go's types.
 | channel   | `nil`      |
 | map       | `nil`      |
 
-You may have noticed struct types are absent from the above table. That is because the zero value for a struct type depends on its fields. Structs are set to their zero value when all of its fields are set to their respective zero value.
+You may have noticed struct types are absent from the above table.
+That is because the zero value for a struct type depends on its fields.
+Structs are set to their zero value when all of its fields are set to their respective zero value.
 
 ## Zero Value Construction
 
@@ -53,7 +56,8 @@ fmt.Printf("Zero value Person: %#v", myPerson)
 
 ## Comparing with Nil
 
-If you try to compare a type whose zero value is not `nil` to `nil`, your code will not compile. You will see a compiler error because booleans, numeric types, and strings can never be `nil` in Go.
+If you try to compare a type whose zero value is not `nil` to `nil`, your code will not compile.
+You will see a compiler error because booleans, numeric types, and strings can never be `nil` in Go.
 
 ```go
 var myString string

@@ -90,7 +90,8 @@ find(1, list...) // "find" defined as shown above
 // 1 found at index 0 in [1 2 3]
 ```
 
-It is important to note that `...` is not an actual rest and spread operator in Go. For example, the following code does not compile.
+It is important to note that `...` is not an actual rest and spread operator in Go.
+For example, the following code does not compile.
 
 ```go
 func myFunc(a int, b int, c int) {

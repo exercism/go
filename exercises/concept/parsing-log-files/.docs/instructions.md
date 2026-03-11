@@ -73,7 +73,8 @@ Implement the `RemoveEndOfLineText` function to take a string and remove the end
 
 Lines not containing end-of-line text should be returned unmodified.
 
-Just remove the end of line string. Do not attempt to adjust the whitespaces.
+Just remove the end of line string.
+Do not attempt to adjust the whitespaces.
 
 ```go
 RemoveEndOfLineText("[INF] end-of-line23033 Network Failure end-of-line27")

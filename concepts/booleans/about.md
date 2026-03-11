@@ -10,7 +10,9 @@ true && false // => false
 !true // => false
 ```
 
-The three boolean operators each have a different [_operator precedence_][operators]. As a consequence, they are evaluated in this order: `!` first, `&&` second, and finally `||`. If you want to 'escape' these rules, you can enclose a boolean expression in parentheses (`()`), as the parentheses have an even higher operator precedence.
+The three boolean operators each have a different [_operator precedence_][operators].
+As a consequence, they are evaluated in this order: `!` first, `&&` second, and finally `||`.
+If you want to 'escape' these rules, you can enclose a boolean expression in parentheses (`()`), as the parentheses have an even higher operator precedence.
 
 ```go
 !true && false   // => false

@@ -47,7 +47,8 @@ Besides the aforementioned, idiomatic approaches, you could also approach the ex
 
 ### `time.Add()` approach:
 
-Add a day to February 28th for the year and see if the new day is the 29th. For more information, see the [`time.Add()` approach][approach-time-add].
+Add a day to February 28th for the year and see if the new day is the 29th.
+For more information, see the [`time.Add()` approach][approach-time-add].
 
 ### `time.YearDay()` approach:
 

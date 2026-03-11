@@ -10,12 +10,14 @@ The tool to format Go code is [gofmt](https://golang.org/cmd/gofmt/), pronounced
 
 > Gofmt's style is no one's favorite, yet gofmt is everyone's favorite. [Rob Pike (2015)](https://www.youtube.com/watch?v=PAAkCSZUG1c&t=8m43s)
 
-To clarify: there are no options on how Go code is being formatted. There is only one way: the `gofmt` way.
+To clarify: there are no options on how Go code is being formatted.
+There is only one way: the `gofmt` way.
 
 In hindsight this decision by the core team and the overwhelming adoption by the community has proven to have even more advantages than originally anticipated.
 Here are some of the advantages -- anticipated and otherwise:
 
-- All Go code looks and feels the same. Code written by others feels familiar and is easy to read.
+- All Go code looks and feels the same.
+  Code written by others feels familiar and is easy to read.
 - There are no discussions about how to format code. (Spaces vs Tabs, end-of-line braces vs newline braces, etc.)
 - Very easy to auto-generate code that looks just like human written code.
 

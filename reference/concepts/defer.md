@@ -6,7 +6,8 @@ This is a very simple, yet very powerful concept enabling clean code and prevent
 
 ## Without Defer
 
-In this example all data is being read from a file with a typical read loop. Then the file needs to be closed.
+In this example all data is being read from a file with a typical read loop.
+Then the file needs to be closed.
 In this case that means calling `f.Close` in 3 different places.
 
 ```go
@@ -44,15 +45,13 @@ func readFile(file string) ([]byte, error) {
 }
 ```
 
-If the function needs extending possibly with another case that returns early,
-the developer has to remember to call `f.Close` in that case as well or the file descriptor will not be closed.
+If the function needs extending possibly with another case that returns early, the developer has to remember to call `f.Close` in that case as well or the file descriptor will not be closed.
 This is a typical example where `defer` makes the code cleaner and easier to maintain, thereby preventing future bugs.
 
 ## Using Defer
 
-The defer statement is used right after the file was opened successfully. First the error needs to be checked in case
-`os.Open` failed and then `defer f.Close()` is used to make sure the file is closed when the function returns -
-no matter where it returns from that point on.
+The defer statement is used right after the file was opened successfully.
+First the error needs to be checked in case `os.Open` failed and then `defer f.Close()` is used to make sure the file is closed when the function returns - no matter where it returns from that point on.
 
 ```go
 func readFile(file string) ([]byte, error) {

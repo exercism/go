@@ -10,7 +10,8 @@
   Handle the error via an if-statement as it was explained in the introduction.
 - After that, call the `FatteningFactor` method and handle the error return value as before.
 - Now that you have the fodder amount and the factor, you can calculate the final result.
-  You need to divide the fodder by the number of cows (revisit [numbers] for hints on type conversion) and multiply with the factor. Check the introduction for what to return as the error value in case of success.
+  You need to divide the fodder by the number of cows (revisit [numbers] for hints on type conversion) and multiply with the factor.
+  Check the introduction for what to return as the error value in case of success.
 
 ## 2. Check the number of cows
 
@@ -23,7 +24,8 @@
 ## 3. Improve the error handling
 
 - Start by creating the `InvalidCowsError` [struct][concept-structs] with two unexported fields that hold the number of cows and the message.
-- Next, define the `Error` method on that struct (with a pointer receiver). Revisit the exercise introduction for help on how to do this.
+- Next, define the `Error` method on that struct (with a pointer receiver).
+  Revisit the exercise introduction for help on how to do this.
 - Now you can work on the `ValidateNumberOfCows` function.
   Depending on the number of cows ([if-statement][concept-conditionals]), it should create and return a new instance of the `InvalidCowsError` and set the correct message while doing so.
   If the number of cows was valid, `nil` should be returned.

@@ -1,19 +1,18 @@
 # Introduction
 
-There are several ways to solve Anagram. One approach is to convert both strings
-to lowercase, sort them, and compare them. Another approach is to build a
-frequency counter of the number of characters in each string and then ensure
-both frequency counters have the same keys and values.
+There are several ways to solve Anagram.
+One approach is to convert both strings to lowercase, sort them, and compare them.
+Another approach is to build a frequency counter of the number of characters in each string and then ensure both frequency counters have the same keys and values.
 
 ## General guidance
 
 Consider the following when choosing an approach.
 
 - Can you use additional memory?
-  - Yes. The frequency counter approach has a faster running time at the expense
-    of using additional memory.
-  - No. The case-insensitive sorting approach has a slower running time but it
-    uses no additional memory.
+  - Yes.
+    The frequency counter approach has a faster running time at the expense of using additional memory.
+  - No.
+    The case-insensitive sorting approach has a slower running time but it uses no additional memory.
 
 ## Approach: Case-insensitive Sorting
 
