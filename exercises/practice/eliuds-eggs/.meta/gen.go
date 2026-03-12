@@ -39,9 +39,8 @@ type testCase struct {
 var testCases = []testCase{
 {{range .J.eggCount}}{
 		description:         {{printf "%q" .Description}},
-		input:               {{printf "%d" .Input.Number}},
-		expected:            {{printf "%d" .Expected}},
-	},
-{{end}}
+		input:               {{.Input.Number}},
+		expected:            {{.Expected}},
+	},{{end}}
 }
 `
