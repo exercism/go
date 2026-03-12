@@ -47,10 +47,8 @@ CountInRank(board, 2)
 ## 3. Count how many squares are present in the given chessboard
 
 Implement the `CountAll(board Chessboard) int` function.
-It should count how many squares are present in the chessboard and returns
-an integer.
-Since you don't need to check the content of the squares,
-consider using range omitting both `index` and `value`.
+It should count how many squares are present in the chessboard and returns an integer.
+Since you don't need to check the content of the squares, consider using range omitting both `index` and `value`.
 
 ```go
 CountAll(board)

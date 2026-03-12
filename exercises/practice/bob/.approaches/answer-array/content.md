@@ -36,8 +36,7 @@ var answers = [...]string{"Whatever.", "Sure.", "Whoa, chill out!", "Calm down, 
 func Hey(remark string) string {
 	remark = strings.TrimSpace(remark)
 	if isEmpty(remark) {
-		return "Fine.
-Be that way!"
+		return "Fine. Be that way!"
 	}
 	return answers[isQuestion(remark)+isShout(remark)]
 }

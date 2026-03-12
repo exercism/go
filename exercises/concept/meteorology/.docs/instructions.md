@@ -107,8 +107,7 @@ fmt.Sprint(windSpeedYesterday)
 
 ## 5. Implement the `Stringer` interface for type `MeteorologyData`
 
-Meteorological data specifies location, temperature, wind direction, wind speed
-and humidity.
+Meteorological data specifies location, temperature, wind direction, wind speed and humidity.
 It should be formatted as in the example below:
 
 For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it.

@@ -33,7 +33,8 @@ The piece of memory that is associated with `a` will now be storing the value `3
 
 ## Pointers
 
-While variables allow us to refer to values in memory, sometimes it's useful to know the **memory address** to which the variable is pointing. **Pointers** hold the memory addresses of those values.
+While variables allow us to refer to values in memory, sometimes it's useful to know the **memory address** to which the variable is pointing.
+**Pointers** hold the memory addresses of those values.
 You declare a variable with a pointer type by prefixing the underlying type with an asterisk:
 
 ```go

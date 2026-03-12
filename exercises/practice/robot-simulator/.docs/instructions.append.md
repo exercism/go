@@ -14,13 +14,12 @@ go test -tags step1          # run just step 1 tests.
 go test -tags 'step1 step2'  # run step1 and step2 tests
 ```
 
-You are given the source file defs.go which defines a number of things
-the test program requires.
+You are given the source file defs.go which defines a number of things the test program requires.
 It is organized into three sections by step.
 
 ## Step 1
 
-To complete step 1 you will define Right, Left, Advance, N, S, E, W, and Dir.String.
+To complete step 1 you will define Right, Left, Advance, N, S, E, W, and Dir.
 Complete step 1 before moving on to step 2.
 
 ## Step 2
@@ -30,12 +29,12 @@ For example where in the source code is "the robot"?  Where is "the grid"?
 Where are the computations that turn robot actions into grid positions, in the robot, or in the grid?
 The physical world is different.
 
-Step 2 introduces a "room."
+Step 2 introduces a "room".
 It seems a small addition, but we'll make big changes to clarify the roles of "room", "robot", and "test program" and begin to clarify the physics of the simulation.
 You will define Room and Robot as functions which the test program "brings into existence" by launching them as goroutines.
 Information moves between test program, robot, and room over Go channels.
 
-Think of Room as a "physics engine," something that models and simulates a physical room with walls and a robot.
+Think of Room as a "physics engine", something that models and simulates a physical room with walls and a robot.
 It should somehow model the coordinate space of the room, the location of the robot and the walls, and ensure for example that the robot doesn't walk through walls.
 We want Robot to be an agent that performs actions, but we want Room to maintain a coherent truth.
 

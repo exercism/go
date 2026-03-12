@@ -28,8 +28,7 @@ func isEmpty(s string) bool {
 func Hey(remark string) string {
 	remark = strings.TrimSpace(remark)
 	if isEmpty(remark) {
-		return "Fine.
-Be that way!"
+		return "Fine. Be that way!"
 	}
 
 	question := isQuestion(remark)

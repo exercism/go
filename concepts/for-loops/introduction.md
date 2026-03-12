@@ -15,8 +15,8 @@ for init; condition; post {
 
 - The **init** component is some code that runs only once before the loop starts.
 - The **condition** component must be some expression that evaluates to a boolean and controls when the loop should stop.
-   The code inside the loop will run as long as this condition evaluates to true.
-   As soon as this expression evaluates to false, no more iterations of the loop will run.
+  The code inside the loop will run as long as this condition evaluates to true.
+  As soon as this expression evaluates to false, no more iterations of the loop will run.
 - The **post** component is some code that will run at the end of each iteration.
 
 **Note:** Unlike other languages, there are no parentheses `()` surrounding the three components of the header.
