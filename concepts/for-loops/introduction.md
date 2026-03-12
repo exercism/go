@@ -1,6 +1,5 @@
 # Introduction
 
-
 ## General syntax
 
 The for loop is one of the most commonly used statements to repeatedly execute some logic.

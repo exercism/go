@@ -100,6 +100,7 @@ NewShape("Triangle")
 ```
 
 Using `New` functions can have the following advantages:
+
 * validation of the given values
 * handling of default-values
 * since `New` functions are often declared in the same package of the structs they initialize, they can initialize even private fields of the struct
@@ -108,7 +109,7 @@ To dive deeper into this type, you can check these resources: [Go by Example: St
 
 ## `new` builtin
 
-Another way of creating a new instance of a struct is by using the `new` built-in: 
+Another way of creating a new instance of a struct is by using the `new` built-in:
 
 ```go
 s := new(Shape) // s will be of type *Shape (pointer to shape)

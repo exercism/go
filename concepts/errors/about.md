@@ -166,4 +166,3 @@ func someFunction() error {
 [stackoverflow-errors]: https://stackoverflow.com/a/50333850
 [line-of-sight]: https://medium.com/@matryer/line-of-sight-in-code-186dd7cdea88
 [buffer-write]: https://pkg.go.dev/bytes#Buffer.Write
-

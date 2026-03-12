@@ -43,7 +43,7 @@ func main() {
 // => const initializer []string literal is not a constant
 ```
 
-For a fuller explanation please see the resources [here][const2], [here][const3], and [here][const4].
+For a fuller explanation please see [Effective Go][const2], [The Go Blog][const3], and [YourBasic Go][const4].
 
 [const]: https://golang.org/ref/spec#Constants
 [const2]: https://golang.org/doc/effective_go.html#constants

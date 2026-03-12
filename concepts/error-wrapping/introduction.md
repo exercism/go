@@ -150,5 +150,3 @@ func (e *SpecialError) Unwrap() error {
 [concept-errors]: /tracks/go/concepts/errors
 [concept-pointers]: /tracks/go/concepts/pointers
 [google-go-styleguide]: https://google.github.io/styleguide/go/best-practices#adding-information-to-errors
-[release-notes]: https://tip.golang.org/doc/go1.20#errors
-[doc-join]: https://pkg.go.dev/errors#Join

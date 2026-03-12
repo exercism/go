@@ -84,6 +84,7 @@ for n := 0; n <= 5; n++ {
 // 3
 // 5
 ```
+
 ## Infinite for loop
 
 The condition part of the loop header is also optional.

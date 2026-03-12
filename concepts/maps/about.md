@@ -87,7 +87,7 @@ fmt.Println(equal)
 
 _But wait, if map isn't a comparable why are we able to compare them with `nil`? Well, the spec has made an exception for this, see the [comparable spec][gospec-comparable]_
 
-The last one, if you're trying to write to a `map` from multiple goroutines, that will trigger the race detector, [see this link][godoc-race-detector] and [here][goblog-race-detector].
+The last one, if you're trying to write to a `map` from multiple goroutines, that will trigger the race detector, see [Go Docs][godoc-race-detector] and [The Go Blog][goblog-race-detector].
 Alternatively, you can use `sync.Map` or `atomic` or `mutex` to work around this issue.
 
 [godoc-race-detector]: https://golang.org/doc/articles/race_detector.html
