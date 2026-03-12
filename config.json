@@ -1849,6 +1849,14 @@
         ]
       },
       {
+        "slug": "relative-distance",
+        "name": "Relative Distance",
+        "uuid": "cb04554a-7313-4e3a-8b26-c2a8ec7b9f32",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "state-of-tic-tac-toe",
         "name": "State of Tic-Tac-Toe",
         "uuid": "ab6050ba-b40c-46bb-938f-7baef097b52d",
