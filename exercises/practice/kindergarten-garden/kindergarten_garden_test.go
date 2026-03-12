@@ -1,4 +1,4 @@
-package kindergarten
+package kindergartengarden
 
 import (
 	"reflect"
@@ -6,42 +6,8 @@ import (
 	"testing"
 )
 
-type lookup struct {
-	child  string
-	plants []string
-	ok     bool
-}
-
-type gardenTest struct {
-	description string
-	diagram     string
-	children    []string
-	expectError bool
-	lookups     []lookup
-}
-
+// Tests in addition to the canonical cases in cases_test.go
 var tests = []gardenTest{
-	{
-		description: "garden with single student",
-		diagram:     "\nRC\nGG",
-		children:    []string{"Alice"},
-		expectError: false,
-		lookups:     []lookup{{child: "Alice", plants: []string{"radishes", "clover", "grass", "grass"}, ok: true}},
-	},
-	{
-		description: "different garden with single student",
-		diagram:     "\nVC\nRC",
-		children:    []string{"Alice"},
-		expectError: false,
-		lookups:     []lookup{{child: "Alice", plants: []string{"violets", "clover", "radishes", "clover"}, ok: true}},
-	},
-	{
-		description: "garden with two students",
-		diagram:     "\nVVCG\nVVRC",
-		children:    []string{"Alice", "Bob"},
-		expectError: false,
-		lookups:     []lookup{{child: "Bob", plants: []string{"clover", "grass", "radishes", "clover"}, ok: true}},
-	},
 	{
 		description: "garden with three students",
 		diagram:     "\nVVCCGG\nVVCCGG",
@@ -137,7 +103,7 @@ var (
 )
 
 func TestGarden(t *testing.T) {
-	for _, test := range tests {
+	for _, test := range append(testCases, tests...) {
 		t.Run(test.description, func(t *testing.T) {
 			actual, err := NewGarden(test.diagram, test.children)
 			switch {
