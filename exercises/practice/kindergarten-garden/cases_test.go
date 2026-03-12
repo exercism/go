@@ -88,7 +88,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Alice, first student's garden",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -101,7 +101,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Bob, second student's garden",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -114,7 +114,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Charlie",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -127,7 +127,7 @@ var testCases = []gardenTest{
 	{
 		description: "for David",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -140,7 +140,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Eve",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -153,7 +153,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Fred",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -166,7 +166,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Ginny",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -179,7 +179,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Harriet",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -192,7 +192,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Ileana",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -205,7 +205,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Joseph",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -218,7 +218,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Kincaid, second to last student's garden",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{
@@ -231,7 +231,7 @@ var testCases = []gardenTest{
 	{
 		description: "for Larry, last student's garden",
 		diagram:     "\n" + "VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-		children:    []string{},
+		children:    nil,
 		expectError: false,
 		lookups: []lookup{
 			{

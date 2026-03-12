@@ -10,5 +10,5 @@ VVCCGG
 VVCCGG`
 ```
 
-If the `children` argument is empty, use the list of children defined in the instructions above.
-If it is not empty, use the given value.
+If the `children` argument is `nil`, use the list of children defined in the instructions above.
+If it is not `nil`, use the given value.
