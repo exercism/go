@@ -29,8 +29,7 @@ type testCase struct {
 }
 
 // Template to generate various test cases.
-var tmpl = `package eliudseggs
-{{.Header}}
+var tmpl = `{{.Header}}
 type testCase struct {
 	description    string
 	input          int
