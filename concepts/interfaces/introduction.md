@@ -46,7 +46,7 @@ func (s Stats) SomeOtherMethod() {
 For implementing the interface, it does not matter whether the method has a value or pointer receiver.
 (Revisit the [methods concepts][concept-methods] if you are unsure about those.)
 
-> A value of interface type can hold any value that implements those methods. [^1]
+> A value of interface type can hold any value that implements those methods. ((Go Tour: Interfaces)[go-tour-interfaces])
 
 That means `Stats` can now be used in all the places that expect the `Counter` interface.
 
@@ -74,6 +74,5 @@ Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.
 In that case, the function parameter uses the empty interface type.
 
-[^1]: https://go.dev/tour/methods/9
-
+[go-tour-interfaces]: https://go.dev/tour/methods/9
 [concept-methods]: /tracks/go/concepts/methods

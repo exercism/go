@@ -71,9 +71,7 @@ for _, x := range xi {
 // 30
 ```
 
-If you want to only print the index, you can replace the `x` with `_`,
-or simply omit the declaration:
-
+If you want to only print the index, you can replace the `x` with `_`, or simply omit the declaration:
 
 ```go
 xi := []int{10, 20, 30}

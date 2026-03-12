@@ -102,5 +102,3 @@ Here are some other examples comparing raw string literals with regular string l
 "\t\n" // regular string literal with 2 characters: a tab and a newline
 `\t\n`// raw string literal with 4 characters: two backslashes, a 't', and an 'n'
 ```
-
-

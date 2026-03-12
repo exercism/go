@@ -51,7 +51,7 @@ fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
 // Output: Width: 10, Height: 10
 ```
 
-You can find several examples [here][pointers_receivers].
+You can find several [examples here][pointers_receivers].
 Also checkout this short tutorial about [methods][methods_tutorial].
 
 Remember: a method is just a function with a receiver argument.

@@ -6,8 +6,9 @@ They're a crucial part of Go, so take some time to really understand them.
 
 Before digging into the details, it's worth understanding the use of pointers.
 Pointers are a way to share memory with other parts of our program, which is useful for two major reasons:
+
 1. When we have large amounts of data, making copies to pass between functions is very inefficient.
-  By passing the memory location of where the data is stored instead, we can dramatically reduce the resource-footprint of our programs.
+   By passing the memory location of where the data is stored instead, we can dramatically reduce the resource-footprint of our programs.
 2. By passing pointers between functions, we can access and modify the single copy of the data directly, meaning that any changes made by one function are immediately visible to other parts of the program when the function ends.
 
 ## Variables and Memory
@@ -144,7 +145,6 @@ fmt.Println(p.Name) // Output: "Peter"
 Slices and maps are special types because they already have pointers in their implementation.
 This means that more often than not, we don't need to create pointers for these types to share the memory address for their values.
 Imagine we have a function that increments the value of a key in a map:
-
 
 ```go
 func incrementPeterAge(m map[string]int) {

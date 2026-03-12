@@ -157,8 +157,9 @@ the changes will be reflected on the original slice or map.
 ## Other types of functions
 
 Functions in Go are considered [first class citizens][first-class-functions] making them very powerful.
-There are a number of other concepts around functions like [concept:go/methods]() and anonymous functions which you will meet later in your journey.
+There are a number of other concepts around functions like [methods][concept-methods] and anonymous functions which you will meet later in your journey.
 
 [first-class-functions]: https://golangbot.com/first-class-functions
 [return]: https://golang.org/ref/spec#Return_statements
 [concept-multiple-return-values]: /tracks/go/concepts/multiple-return-values
+[concept-methods]: /tracks/go/concepts/methods

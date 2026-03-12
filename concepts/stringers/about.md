@@ -3,33 +3,33 @@
 [Stringer][stringer-interface] is an interface for defining the string format of values.
 
 The interface consists of a single `String` method:
- 
+
 ```go
 type Stringer interface {
     String() string
 }
 ```
- 
+
 Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type.
 The [fmt][fmt-package] package (and many others) will look for this method to format and print values.
 
 ## Example: Distances
 
-Assume we are working on an application that deals with geographical distances measured in different units. 
-We have defined types `DistanceUnit` and `Distance` as follows: 
- 
-```go 
+Assume we are working on an application that deals with geographical distances measured in different units.
+We have defined types `DistanceUnit` and `Distance` as follows:
+
+```go
 type DistanceUnit int
 
 const (
 	Kilometer    DistanceUnit = 0
 	Mile         DistanceUnit = 1
 )
- 
+
 type Distance struct {
 	number float64
 	unit   DistanceUnit
-} 
+}
 ```
 
 In the example above, `Kilometer` and `Mile` are constants of type `DistanceUnit`.
@@ -41,7 +41,7 @@ Hence `fmt` functions will print `Distance` values using Go's "default format":
 mileUnit := Mile
 fmt.Sprint(mileUnit)
 // => 1
-// The result is '1' because that is the underlying value of the 'Mile' constant (see constant declarations above) 
+// The result is '1' because that is the underlying value of the 'Mile' constant (see constant declarations above)
 
 dist := Distance{number: 790.7, unit: Kilometer}
 fmt.Sprint(dist)
@@ -61,7 +61,7 @@ func (d Distance) String() string {
 	return fmt.Sprintf("%v %v", d.number, d.unit)
 }
 ```
- 
+
 `fmt` package functions will call these methods when formatting `Distance` values:
 
 ```go

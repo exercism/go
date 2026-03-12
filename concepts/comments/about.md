@@ -59,13 +59,13 @@ func CelsiusFreezingTemp() int {
 
 You can install `golint` on your machine with the following command:
 
-```
+```sh
 go get -u golang.org/x/lint/golint
 ```
 
 It's a good idea to configure your editor to run `golint` for you, otherwise you can invoke it like this:
 
-```
+```sh
 golint weather.go
 ```
 

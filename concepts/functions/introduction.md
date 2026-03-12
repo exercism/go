@@ -105,4 +105,3 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
     return
 }
 ```
-
