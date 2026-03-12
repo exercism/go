@@ -40,7 +40,8 @@ fmt.Printf("name: %s size: %d\n", s.name, s.size)
 // Output: name: Circle size: 35
 ```
 
-Fields that don't have an initial value assigned, will have their zero value. For example:
+Fields that don't have an initial value assigned, will have their zero value.
+For example:
 
 ```go
 s := Shape{name: "Circle"}

@@ -1,10 +1,10 @@
 # Instructions
 
 Once there was an eccentric programmer living in a strange house with barred windows.
-One day he accepted a job from an online job board to build a party robot. The
-robot is supposed to greet people and help them to their seats. The first edition
-was very technical and showed the programmer's lack of human interaction. Some of
-which also made it into the next edition.
+One day he accepted a job from an online job board to build a party robot.
+The robot is supposed to greet people and help them to their seats.
+The first edition was very technical and showed the programmer's lack of human interaction.
+Some of which also made it into the next edition.
 
 ## 1. Welcome a new guest to the party
 

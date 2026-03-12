@@ -2,9 +2,8 @@
 
 ## Implementation Notes
 
-Define a function recognizeDigit as described in Step 1 of instructions except make it recognize
-all ten digits 0 to 9.  Pick what you like for parameters and return values
-but make it useful as a subroutine for step 2.
+Define a function recognizeDigit as described in Step 1 of instructions except make it recognize all ten digits 0 to 9.
+Pick what you like for parameters and return values but make it useful as a subroutine for step 2.
 
 For Step 2 define,
 
@@ -16,6 +15,9 @@ Input strings tested here have a \n at the beginning of each line and
 no trailing \n on the last line. (This makes for readable raw string
 literals.)
 
-For bonus points, gracefully handle misformatted data.  What should you
-do with a partial cell?  Discard it?  Pad with spaces?  Report it with a
-"?" character?  What should you do if the first character is not \n?
+For bonus points, gracefully handle misformatted data.
+What should you do with a partial cell?
+Discard it?
+Pad with spaces?
+Report it with a `"?"` character?
+What should you do if the first character is not `\n`?

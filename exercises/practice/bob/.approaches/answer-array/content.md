@@ -47,12 +47,10 @@ The correct answer is selected from the array by using the score as the array in
 
 In the `isShout()` function, the [`strings`][strings] function [`IndexFunc()`][indexfunc] is used to ensure there is at least one letter character in the input.
 If not, the function returns `0`, because if the input were only `"123"` it would equal itself uppercased, but without letters it would not be a shout.
-If the input does contain a letter, the function returns `2` if the uppercased input is the same as the input,
-otherwise it returns `0`.
+If the input does contain a letter, the function returns `2` if the uppercased input is the same as the input, otherwise it returns `0`.
 The uppercasing is done by using the [`ToUpper()`][toupper] function.
 
-In the `isQuestion()` function, the `strings` function [`HasSuffix()`][hassuffix] is used to return `1` if the input ends with a question mark,
-otherwise it returns `0`.
+In the `isQuestion()` function, the `strings` function [`HasSuffix()`][hassuffix] is used to return `1` if the input ends with a question mark, otherwise it returns `0`.
 
 An [array literal][array-literal] is used to define the responses.
 

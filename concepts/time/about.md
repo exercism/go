@@ -1,8 +1,12 @@
 # About
 
-A [`Time`][time] in Go is a type describing a moment in time. The date and time information can be accessed, compared, and manipulated through its methods, but there are also some functions called on the `time` package itself. The current date and time can be retrieved through the [`time.Now`][now] function.
+A [`Time`][time] in Go is a type describing a moment in time.
+The date and time information can be accessed, compared, and manipulated through its methods, but there are also some functions called on the `time` package itself.
+The current date and time can be retrieved through the [`time.Now`][now] function.
 
-The [`time.Parse`][parse] function parses strings into values of type `Time`. Go has a special way of how you define the layout you expect for the parsing. You need to write an example of the layout using the values from this special timestamp:
+The [`time.Parse`][parse] function parses strings into values of type `Time`.
+Go has a special way of how you define the layout you expect for the parsing.
+You need to write an example of the layout using the values from this special timestamp:
 `Mon Jan 2 15:04:05 -0700 MST 2006`.
 
 For example:
@@ -20,7 +24,8 @@ func parseTime() time.Time {
 // => 1995-09-22 13:00:00 +0000 UTC
 ```
 
-The [`Time.Format()`][format] method returns a string representation of time. Just as with the `Parse` function, the target layout is again defined via an example that uses the values from the special timestamp.
+The [`Time.Format()`][format] method returns a string representation of time.
+Just as with the `Parse` function, the target layout is again defined via an example that uses the values from the special timestamp.
 
 For Example:
 
@@ -41,7 +46,8 @@ func main() {
 
 ## Layout Options
 
-For a custom layout use combination of these options. In Go predefined date and timestamp [format constants][const] are also available.
+For a custom layout use combination of these options.
+In Go predefined date and timestamp [format constants][const] are also available.
 
 | Time        | Options                                        |
 | ----------- | ---------------------------------------------- |
@@ -55,7 +61,8 @@ For a custom layout use combination of these options. In Go predefined date and 
 | AM/PM Mark  | PM                                             |
 | Day of Year | 002 ; \_\_2                                    |
 
-The `time.Time` type has various methods for accessing a particular time. e.g. Hour : [`Time.Hour()`][hour] , Month : [`Time.Month()`][month]. More on how this works can be found in [ official documentation][time].
+The `time.Time` type has various methods for accessing a particular time. e.g. Hour: [`Time.Hour()`][hour] , Month: [`Time.Month()`][month].
+More on how this works can be found in [ official documentation][time].
 
 The [`time`][time] includes another type, [`Duration`][duration], representing elapsed time, plus support for locations/time zones, timers, and other related functionality that will be covered in another concept.
 

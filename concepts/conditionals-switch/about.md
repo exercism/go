@@ -71,7 +71,7 @@ case age > 20:
     // do something if age is greater than 20
 case age > 30:
     // WARNING: code here will never run. If age is greater than 30,
-    // it is also greater than 20, which means only the previous case will run
+    // it is also greater than 20, which means only the previous case will run.
 default:
     // do something else for every other case
 }

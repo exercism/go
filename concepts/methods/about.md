@@ -1,6 +1,7 @@
 # About
 
-A [method][methods] is a function with a special _receiver_ argument. The receiver appears in its own argument list between `func` keyword and the name of the method.
+A [method][methods] is a function with a special _receiver_ argument.
+The receiver appears in its own argument list between `func` keyword and the name of the method.
 
 ```go
 func (receiver type) MethodName(parameters) (returnTypes) {
@@ -50,7 +51,8 @@ fmt.Printf("Width: %d, Height: %d\n", r.width, r.height)
 // Output: Width: 10, Height: 10
 ```
 
-You can find several examples [here][pointers_receivers]. Also checkout this short tutorial about [methods][methods_tutorial].
+You can find several examples [here][pointers_receivers].
+Also checkout this short tutorial about [methods][methods_tutorial].
 
 Remember: a method is just a function with a receiver argument.
 

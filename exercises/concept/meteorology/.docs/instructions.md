@@ -7,9 +7,11 @@ Your task is to add suitable `String` methods to all types so that they implemen
 
 ## 1. Implement the `Stringer` interface for type `TemperatureUnit`
 
-After some discussion, the team have agreed that the unit of temperature will be either `Celsius` or `Fahrenheit`. Values should be formatted as shown in the examples below.
+After some discussion, the team have agreed that the unit of temperature will be either `Celsius` or `Fahrenheit`.
+Values should be formatted as shown in the examples below.
 
-Make the `TemperatureUnit` type implement the `Stringer` interface by adding a `String` method to it. This method must return the string `"°C"` if the temperature unit is Celsius or `"°F"` if the temperature unit is Fahrenheit.
+Make the `TemperatureUnit` type implement the `Stringer` interface by adding a `String` method to it.
+This method must return the string `"°C"` if the temperature unit is Celsius or `"°F"` if the temperature unit is Fahrenheit.
 
 ```go
 celsiusUnit := Celsius
@@ -25,9 +27,11 @@ fmt.Sprint(celsiusUnit)
 
 ## 2. Implement the `Stringer` interface for type  `Temperature`
 
-Temperature values consist of an integer and a temperature unit. They should be formatted as in the examples below.
+Temperature values consist of an integer and a temperature unit.
+They should be formatted as in the examples below.
 
-For that to happen, make the `Temperature` type implement the `Stringer` interface by adding a `String` method to it. This method should return a string with the numeric value for the temperature and the temperature unit separated by a space: `<temperature> <unit>`:
+For that to happen, make the `Temperature` type implement the `Stringer` interface by adding a `String` method to it.
+This method should return a string with the numeric value for the temperature and the temperature unit separated by a space: `<temperature> <unit>`:
 
 
 ```go
@@ -52,9 +56,11 @@ fmt.Sprint(fahrenheitTemp)
 
 ## 3. Implement the `Stringer` interface for type `SpeedUnit`
 
-After lengthy discussions, the team has agreed that the unit of wind speed will be either `KmPerHour` or `MilesPerHour`. Values should be formatted as the examples below.
+After lengthy discussions, the team has agreed that the unit of wind speed will be either `KmPerHour` or `MilesPerHour`.
+Values should be formatted as the examples below.
 
-For that to happen, make the `SpeedUnit` type implement the `Stringer` interface by adding a `String` method to it. This method must return the string `"km/h"` if the speed unit is kilometers per hour or `"mph"` if the speed unit is miles per hour:
+For that to happen, make the `SpeedUnit` type implement the `Stringer` interface by adding a `String` method to it.
+This method must return the string `"km/h"` if the speed unit is kilometers per hour or `"mph"` if the speed unit is miles per hour:
 
 
 ```go 
@@ -73,9 +79,11 @@ fmt.Sprint(kmhUnit)
 
 ## 4. Implement the `Stringer` interface for `Speed` 
 
-Wind speed values consist of an integer and a speed unit. They should be formatted as in the example below.
+Wind speed values consist of an integer and a speed unit.
+They should be formatted as in the example below.
 
-For that to happen, make the `Speed` type implement the `Stringer` interface by adding a `String` method to it. This method should return a string with the numeric value for the speed and the speed unit separated by a space: `<speed> <unit>`:
+For that to happen, make the `Speed` type implement the `Stringer` interface by adding a `String` method to it.
+This method should return a string with the numeric value for the speed and the speed unit separated by a space: `<speed> <unit>`:
 
 ```go 
 windSpeedNow := Speed{
@@ -99,10 +107,11 @@ fmt.Sprint(windSpeedYesterday)
 
 ## 5. Implement the `Stringer` interface for type `MeteorologyData`
 
-Meteorological data specifies location, temperature, wind direction, wind speed
-and humidity. It should be formatted as in the example below:
+Meteorological data specifies location, temperature, wind direction, wind speed and humidity.
+It should be formatted as in the example below:
 
-For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it. This method should return the meteorology data in the following format:
+For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it.
+This method should return the meteorology data in the following format:
 
 ```
 <location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity

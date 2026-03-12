@@ -24,7 +24,8 @@ GetDaysPerYear()
 
 ## 3. Represent the months of the year
 
-In a block, use the Go enumerator to create twelve untyped numeric constants to hold the values 1 through 12 for the months of the year. Name them `Jan`, `Feb`, `Mar`, etc., then implement the `GetMonth` function to return the value for a given month:
+In a block, use the Go enumerator to create twelve untyped numeric constants to hold the values 1 through 12 for the months of the year.
+Name them `Jan`, `Feb`, `Mar`, etc., then implement the `GetMonth` function to return the value for a given month:
 
 ```go
 GetMonth(Jan)

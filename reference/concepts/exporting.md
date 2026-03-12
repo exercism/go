@@ -1,6 +1,7 @@
 # Exported Identifiers
 
-Go does not have `public` and `private` keywords. Instead it exports identifiers that start with a capital letter.
+Go does not have `public` and `private` keywords.
+Instead it exports identifiers that start with a capital letter.
 
 > An identifier is exported if both:
 >

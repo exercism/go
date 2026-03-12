@@ -96,7 +96,8 @@ Instead of repeating the method signatures for `Read` and `Close`, to define `Re
 
 There is one very special interface type in Go, the **empty interface** type that contains zero methods.
 The empty interface is written like this: `interface{}`.
-In Go 1.18 or higher, `any` can be used as well. It was defined as an alias.
+In Go 1.18 or higher, `any` can be used as well.
+It was defined as an alias.
 
 Since the empty interface has no methods, every type implements it implicitly.
 This is helpful for defining a function that can generically accept any value.

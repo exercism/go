@@ -3,12 +3,14 @@
 In this exercise you'll be organizing races between various types of remote controlled cars.
 Each car has its own speed and battery drain characteristics.
 
-Cars start with full (100%) batteries. Each time you drive the car using the remote control,
+Cars start with full (100%) batteries.
+Each time you drive the car using the remote control,
 it covers the car's speed in meters and decreases the remaining battery percentage by its battery drain.
 
 If a car's battery is below its battery drain percentage, you can't drive the car anymore.
 
-Each race track has its own distance. Cars are tested by checking if they can finish the track without running out of battery.
+Each race track has its own distance.
+Cars are tested by checking if they can finish the track without running out of battery.
 
 ## 1. Create a remote controlled car
 
@@ -55,9 +57,12 @@ car = Drive(car)
 
 ## 4. Check if a remote controlled car can finish a race
 
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`.
+To finish a race, a car has to be able to drive the race's distance.
+This means not draining its battery before having crossed the finish line.
+Implement the `CanFinish` function that takes a `Car` and a `Track` instance as its parameter and returns `true` if the car can finish the race; otherwise, return `false`.
 
-Assume that you are currently at the starting line of the race and start the engine of the car for the race. Take into account that the car's battery might not necessarily be fully charged when starting the race:
+Assume that you are currently at the starting line of the race and start the engine of the car for the race.
+Take into account that the car's battery might not necessarily be fully charged when starting the race:
 ```go
 speed := 5
 batteryDrain := 2

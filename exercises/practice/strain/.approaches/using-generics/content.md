@@ -35,7 +35,8 @@ func Discard[T Slicer](input []T, filter func(T) bool) []T {
 This approach starts be defining some [types][types] that will be used in the package.
 It then defines an [interface type][interface-type] which will be used to constain which types are to be used for the [generics][generics]:
 
->Generics are a way of writing code that is independent of the specific types being used. Functions and types may now be written to use any of a set of types.
+>Generics are a way of writing code that is independent of the specific types being used.
+  Functions and types may now be written to use any of a set of types.
 
 To keep the code [DRY][dry], there will be one function that does most of the work.
 

@@ -1,12 +1,18 @@
 # About
 
-Go supports two types of [comments][comments]. Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
+Go supports two types of [comments][comments].
+Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
 
 ## Documentation comments
 
-In Go, comments play an important role in documenting code. They are used by the [godoc][godoc] command, which extracts these comments to create documentation about Go packages (see [pkg.go.dev][go packages] for examples). A documentation comment should be a complete sentence that starts with the name of the thing being described and ends with a period.
+In Go, comments play an important role in documenting code.
+They are used by the [godoc][godoc] command, which extracts these comments to create documentation about Go packages (see [pkg.go.dev][go packages] for examples).
+A documentation comment should be a complete sentence that starts with the name of the thing being described and ends with a period.
 
-Documentation comments are about `what` the thing does and contains, whereas other types of comments such as code comments are about `why` something is done. The `why` helps others and future you to understand the reason behind a particular piece of code. However, if the `why` feels obvious, the code comment is not necessary. A [good rule of thumb][less comments] and more sustainable solution is to write code that is easier to understand so that explanatory comments are hopefully not needed.
+Documentation comments are about `what` the thing does and contains, whereas other types of comments such as code comments are about `why` something is done.
+The `why` helps others and future you to understand the reason behind a particular piece of code.
+However, if the `why` feels obvious, the code comment is not necessary.
+A [good rule of thumb][less comments] and more sustainable solution is to write code that is easier to understand so that explanatory comments are hopefully not needed.
 
 ## Comments for exported identifiers
 
@@ -35,7 +41,10 @@ package kelvin
 
 ## Function comments
 
-A function comment should be written directly before the function declaration. It should be a full sentence that starts with the function name. For example, an exported comment for the function `Calculate` should take the form `Calculate  ...`. It should also explain what arguments the function takes, what it does with them, and what its return values mean, ending in a period):
+A function comment should be written directly before the function declaration.
+It should be a full sentence that starts with the function name.
+For example, an exported comment for the function `Calculate` should take the form `Calculate  ...`.
+It should also explain what arguments the function takes, what it does with them, and what its return values mean, ending in a period):
 
 ```go
 // CelsiusFreezingTemp returns an integer value equal to the temperature at which water freezes in degrees Celsius.

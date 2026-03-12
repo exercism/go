@@ -32,9 +32,9 @@ func PrintGreetingName(greeting, name string) {
 }
 ```
 
-## Parameters vs. Arguments
+## Parameters vs Arguments
 
-Let's quickly cover two terms that are often confused together: `parameters` and `arguments`. 
+Let's quickly cover two terms that are often confused together: `parameters` and `arguments`.
 Function parameters are the names defined in the function's signature, such as `greeting` and `name` in the function `PrintGreetingName` above.
 Function arguments are the concrete values passed to the function parameters when we invoke the function.
 For instance, in the example below, `"Hello"` and `"Katrina"` are the arguments passed to the `greeting` and `name` parameters:
@@ -107,7 +107,7 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 }
 ```
 
-## Pass by Value vs. Pass by Reference
+## Pass by Value vs Pass by Reference
 
 It is also important to clarify the concept of passing by value and passing by reference.
 
@@ -149,7 +149,7 @@ We have a dedicated section later in the syllabus to help you master pointers.
 
 ## Exceptions
 
-Note that `slices` and `maps` are exceptions to the above-mentioned rule. 
+Note that `slices` and `maps` are exceptions to the above-mentioned rule.
 When we pass a `slice` or a `map` as arguments into a function, they are treated as pointer types even though there is no explicit `*` in the type.
 This means that if we pass a slice or map into a function and modify its underlying data,
 the changes will be reflected on the original slice or map.

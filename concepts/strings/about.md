@@ -81,7 +81,10 @@ Jack
 Averell`
 ```
 
-This string has multiple lines. More specifically, it has 3 `\n`. However, because we are a raw string literal, we don't need to put the `\n` explicitly in the string. The newlines will be interpreted literally.
+This string has multiple lines.
+More specifically, it has 3 `\n`.
+However, because we are a raw string literal, we don't need to put the `\n` explicitly in the string.
+The newlines will be interpreted literally.
 
 Here are some other examples comparing raw string literals with regular string literals:
 

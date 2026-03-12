@@ -32,9 +32,9 @@ func PrintGreetingName(greeting, name string) {
 }
 ```
 
-## Parameters vs. Arguments
+## Parameters vs Arguments
 
-Let's quickly cover two terms that are often confused together: `parameters` and `arguments`. 
+Let's quickly cover two terms that are often confused together: `parameters` and `arguments`.
 Function parameters are the names defined in the function's signature, such as `greeting` and `name` in the function `PrintGreetingName` above.
 Function arguments are the concrete values passed to the function parameters when we invoke the function.
 For instance, in the example below, `"Hello"` and `"Katrina"` are the arguments passed to the `greeting` and `name` parameters:

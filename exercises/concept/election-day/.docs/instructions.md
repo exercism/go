@@ -4,8 +4,8 @@ A local school near you has a very active students' association.
 The students' association is managed by a president and once every 2 years,
 elections are run to elect a new president.
 
-In this year's election, it was decided that a new digital system to
-count the votes was needed. The school needs your help building this new system.
+In this year's election, it was decided that a new digital system to count the votes was needed.
+The school needs your help building this new system.
 
 ## 1. Create a vote counter
 
@@ -27,7 +27,8 @@ counter = NewVoteCounter(initialVotes)
 
 You now have a way to create new counters! But now you realize the new system will also need a way to get the number of votes from a counter.
 
-Create a function `VoteCount` that will take a counter (`*int`) as an argument and will return the number of votes in the counter. If the counter is `nil` you should assume the counter has no votes:
+Create a function `VoteCount` that will take a counter (`*int`) as an argument and will return the number of votes in the counter.
+If the counter is `nil` you should assume the counter has no votes:
 
 ```go
 var votes int
@@ -48,7 +49,8 @@ VoteCount(nilVoteCounter)
 
 It's finally the time to count the votes! Now you need a way to increment the votes in a counter.
 
-Create a function `IncrementVoteCount` that will take a counter (`*int`) as an argument and a number of votes, and will increment the counter by that number of votes. You can assume the pointer passed will never be `nil`.
+Create a function `IncrementVoteCount` that will take a counter (`*int`) as an argument and a number of votes, and will increment the counter by that number of votes.
+You can assume the pointer passed will never be `nil`.
 
 ```go
 var votes int
@@ -95,7 +97,8 @@ type ElectionResult struct {
 
 It's time to announce the new president to the school!
 The president will be announced in the little digital message boards that the school has.
-The message should show the name of the new president and the votes they had, in the following format: `<candidate_name> (<votes>)`. This is an example of such message: `"Peter (51)"`.
+The message should show the name of the new president and the votes they had, in the following format: `<candidate_name> (<votes>)`.
+This is an example of such message: `"Peter (51)"`.
 
 Create a function `DisplayResult` that will receive an `*ElectionResult` as an argument and will return a string with the message to display.
 
@@ -113,9 +116,11 @@ DisplayResult(result)
 
 ## 6. Vote recounting
 
-To make sure the final results were accurate, the votes were recounted. In the recount, it was found that the number votes for some of the candidates was off by one.
+To make sure the final results were accurate, the votes were recounted.
+In the recount, it was found that the number votes for some of the candidates was off by one.
 
-Create a function `DecrementVotesOfCandidate` that receives the final results and the name of a candidate for which you should decrement its vote count. The final results are given in the form of a `map[string]int`, where the keys are the names of the candidates and the values are its total votes.
+Create a function `DecrementVotesOfCandidate` that receives the final results and the name of a candidate for which you should decrement its vote count.
+The final results are given in the form of a `map[string]int`, where the keys are the names of the candidates and the values are its total votes.
 
 ```go
 var finalResults = map[string]int{

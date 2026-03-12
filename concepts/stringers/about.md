@@ -10,7 +10,8 @@ type Stringer interface {
 }
 ```
  
-Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type. The [fmt][fmt-package] package (and many others) will look for this method to format and print values.
+Types that want to implement this interface must have a `String()` method that returns a human-friendly string representation of the type.
+The [fmt][fmt-package] package (and many others) will look for this method to format and print values.
 
 ## Example: Distances
 

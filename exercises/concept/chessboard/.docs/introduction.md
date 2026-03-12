@@ -22,7 +22,8 @@ for i, x := range xi {
 
 ## Iterate over a map
 
-Iterating over a map raises a new problem. The order is now random.
+Iterating over a map raises a new problem.
+The order is now random.
 
 ```go
 hash := map[int]int{9: 10, 99: 20, 999: 30}

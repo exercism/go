@@ -8,7 +8,9 @@
 ## 1. Given a Chessboard and a File, count how many squares are occupied
 
 - You can iterate a [map][maps]
-- Check if the value is true. If it is increment. This is to count pieces.
+- Check if the value is true.
+  If it is increment.
+  This is to count pieces.
 - You have to [explicitly return an integer][return] from a function.
 
 ## 2. Given a Chessboard and a Rank, count how many squares are occupied

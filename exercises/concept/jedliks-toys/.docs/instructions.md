@@ -2,9 +2,11 @@
 
 Note: This exercise is a continuation of the `need-for-speed` exercise.
 
-In this exercise you'll be organizing races between various types of remote controlled cars. Each car has its own speed and battery drain characteristics.
+In this exercise you'll be organizing races between various types of remote controlled cars.
+Each car has its own speed and battery drain characteristics.
 
-Cars start with full (100%) batteries. Each time you drive the car using the remote control, it covers the car's speed in meters and decreases the remaining battery percentage by its battery drain.
+Cars start with full (100%) batteries.
+Each time you drive the car using the remote control, it covers the car's speed in meters and decreases the remaining battery percentage by its battery drain.
 
 If a car's battery is below its battery drain percentage, you can't drive the car anymore.
 
@@ -13,7 +15,8 @@ The remote controlled car has a fancy LED display that shows two bits of informa
 - The total distance it has driven, displayed as: `"Driven <METERS> meters"`.
 - The remaining battery charge, displayed as: `"Battery at <PERCENTAGE>%"`.
 
-Each race track has its own distance. Cars are tested by checking if they can finish the track without running out of battery.
+Each race track has its own distance.
+Cars are tested by checking if they can finish the track without running out of battery.
 
 ## 1. Drive the car
 
@@ -57,7 +60,9 @@ fmt.Println(car.DisplayBattery())
 
 ## 4. Check if a remote control car can finish a race
 
-To finish a race, a car has to be able to drive the race's distance. This means not draining its battery before having crossed the finish line. Implement the `CanFinish` method that takes a `trackDistance int` as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
+To finish a race, a car has to be able to drive the race's distance.
+This means not draining its battery before having crossed the finish line.
+Implement the `CanFinish` method that takes a `trackDistance int` as its parameter and returns `true` if the car can finish the race; otherwise, return `false`:
 
 ```go
 speed := 5

@@ -32,7 +32,7 @@ func PrintGreetingName(greeting, name string) {
 }
 ```
 
-## Parameters vs. Arguments
+## Parameters vs Arguments
 
 Let's quickly cover two terms that are often confused together: `parameters` and `arguments`. 
 Function parameters are the names defined in the function's signature, such as `greeting` and `name` in the function `PrintGreetingName` above.
@@ -106,7 +106,7 @@ func SumAndMultiplyThenMinus(a, b, c int) (sum, mult int) {
 }
 ```
 
-## Pass by Value vs. Pass by Reference
+## Pass by Value vs Pass by Reference
 
 It is also important to clarify the concept of passing by value and passing by reference.
 

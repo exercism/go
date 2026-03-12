@@ -1,6 +1,7 @@
 # About
 
-Constants in Go are simple, [unchanging values][const] created with the `const` keyword. Constants may be given an explicit type:
+Constants in Go are simple, [unchanging values][const] created with the `const` keyword.
+Constants may be given an explicit type:
 
 ```go
 const hi string = "hi" // string
@@ -12,7 +13,8 @@ or an implicit, default type:
 const hello = "hello" // string
 ```
 
-when the variable needs a type. This gives constants more flexibility in Go's type system and allows them to work in a variety of contexts without triggering a compiler error:
+when the variable needs a type.
+This gives constants more flexibility in Go's type system and allows them to work in a variety of contexts without triggering a compiler error:
 
 ```go
 const number2 = 2 // 2 is an untyped numeric constant and does not need to be explicitly given the type float64 as required by the Sqrt method
