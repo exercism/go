@@ -54,12 +54,12 @@ func (t testCase) Error() bool {
 var tmpl = `{{.Header}}
 
 type testCase struct {
-	description    string
-	inputPhrase    string
-	inputA          int
-	inputB          int
-	expectError     bool
-	expected       string
+	description string
+	inputPhrase string
+	inputA      int
+	inputB      int
+	expectError bool
+	expected    string
 }
 
 var encodeTests = []testCase{ {{range .J.encode}}
