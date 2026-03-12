@@ -74,8 +74,8 @@ var encodeTests = []testCase{
 {{end}}
 }
 
-var decodeTests = []testCase{
-{{range .J.decode}}{
+var decodeTests = []testCase{ {{range .J.decode}}
+	{
 		description:         {{printf "%q" .Description}},
 		inputPhrase:         {{printf "%q" .Input.Phrase}},
 		inputA:              {{.Input.Key.Num1}},
