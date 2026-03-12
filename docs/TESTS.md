@@ -3,11 +3,11 @@
 Go exercises within your exercism project directory can be run by changing to the exercise directory, and running `go test`.
 
 ```bash
-$ cd exercism/project/directory/go/leap
-$ go test
+cd exercism/project/directory/go/leap
+go test
 ```
 
-# Tests with Data Race Detector
+## Tests with Data Race Detector
 
 In addition to running `go test`, some exercises should be run with a flag for [data race detector](https://go.dev/doc/articles/race_detector) to check that your solution does not introduce data race bugs.
 You will find a reminder to run tests with the data race detector flag `-race` in the relevant exercises.
@@ -15,8 +15,8 @@ Run `go test -race` to check for data race.
 For example:
 
 ```bash
-$ cd exercism/project/directory/go/bank-account
-$ go test -race
+cd exercism/project/directory/go/bank-account
+go test -race
 ```
 
 ## Running benchmarks
@@ -26,7 +26,7 @@ To run the benchmarks for an exercise use the command `go test -v --bench . --be
 
 Consider this output.
 
-```
+```text
 BenchmarkReverse-16       403594              2537 ns/op             176 B/op         34 allocs/op
 ```
 

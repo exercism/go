@@ -53,8 +53,7 @@ result.Name // "John" - Go will automatically dereference the pointer
 
 - You can think of maps as being pointers already.
   This means that changes you make to the map inside the function will be visible outside the function.
-- To increment the value of a key in a `var m map[string]int`, you have several options: `m["mykey"] = m["mykey"] + 1 `, `m["mykey"] += 1 ` or `m["mykey"]++ `
+- To increment the value of a key in a `var m map[string]int`, you have several options: `m["mykey"] = m["mykey"] + 1`, `m["mykey"] += 1` or `m["mykey"]++`.
 
 [go-tour-pointers]: https://tour.golang.org/moretypes/1
 [go-by-example-pointers]: https://gobyexample.com/pointers
-

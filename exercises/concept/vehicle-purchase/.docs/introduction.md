@@ -75,5 +75,4 @@ if v := 2 * num; v > 10 {
 // Output: 14
 ```
 
-> Note: any variables created in the initialization statement go out of scope after the end of the if statement. 
-
+> Note: any variables created in the initialization statement go out of scope after the end of the if statement.

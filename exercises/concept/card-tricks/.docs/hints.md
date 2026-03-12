@@ -38,7 +38,6 @@ fmt.Println(c)
 - Removing an item from a slice can be done by appending the part after `index` to the part before index.
 
 [go-slices]: https://blog.golang.org/go-slices-usage-and-internals
-[make-builtin]: https://golang.org/pkg/builtin/#make
 [len-builtin]: https://golang.org/pkg/builtin/#len
 [append-builtin]: https://golang.org/pkg/builtin/#append
 [variadic-gobyexample]: https://gobyexample.com/variadic-functions

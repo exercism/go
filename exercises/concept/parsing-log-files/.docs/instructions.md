@@ -21,7 +21,7 @@ To be considered valid a line should begin with one of the following strings:
 
 Implement the `IsValidLine` function to return `false` if a string is not valid otherwise `true`.
 
-```go 
+```go
 IsValidLine("[ERR] A good error here")
 // => true
 IsValidLine("Any old [ERR] text")
@@ -60,7 +60,7 @@ lines := []string{
     `[INF] passWord`, // contains 'password' but not surrounded by quotation marks
     `"passWord"`,  // count this one
     `[INF] User saw error message "Unexpected Error" on page load.`, // does not contain 'password'
-    `[INF] The message "Please reset your password" was ignored by the user`, // count this one 
+    `[INF] The message "Please reset your password" was ignored by the user`, // count this one
 }
 // => 2
 ```
@@ -91,7 +91,7 @@ Implement a function `TagWithUserName` that processes log lines:
 
 - Lines that do not contain the string `"User "` remain unchanged.
 - For lines that contain the string `"User "`, prefix the line with `[USR]` followed by the user name.
- 
+
 For example:
 
 ```go
@@ -100,8 +100,7 @@ result := TagWithUserName([]string{
 	"[WRN] Host down. User   Michelle4 lost connection.",
 	"[INF] Users can login again after 23:00.",
 	"[DBG] We need to check that user names are at least 6 chars long.",
-     
-}) 
+})
 // => []string {
 //  "[USR] James123 [WRN] User James123 has exceeded storage space.",
 //  "[USR] Michelle4 [WRN] Host down. User   Michelle4 lost connection.",
@@ -110,10 +109,8 @@ result := TagWithUserName([]string{
 // }
 ```
 
-You can assume that: 
+You can assume that:
 
 - User names are followed by at least one whitespace character in the log.
 - There is at most one occurrence of the string `"User "` in each line.
 - User names are non-empty strings that do not contain whitespace.
-
- 

@@ -26,7 +26,7 @@ The goal of this exercise is to teach the student the basics on how to work with
 - `variadic-function`
 
 ## Prerequisites
- 
+
 - `numbers`: integers (`int`) to represent cards
 - `conditionals-if`: mostly to check for existing indexes
 

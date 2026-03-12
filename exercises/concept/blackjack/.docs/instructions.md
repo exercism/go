@@ -34,7 +34,7 @@ Although not optimal yet, you will follow the strategy your friend Alex has been
 - If your cards sum up to a value within the range [12, 16] you should always stand unless the dealer has a 7 or higher, in which case you should always hit.
 - If your cards sum up to 11 or lower you should always hit.
 
-## 1. Calculate the value of any given card.
+## 1. Calculate the value of any given card
 
 Implement a function to calculate the numerical value of a card:
 
@@ -44,7 +44,7 @@ fmt.Println(value)
 // Output: 11
 ```
 
-## 2. Implement the decision logic for the first turn.
+## 2. Implement the decision logic for the first turn
 
 Write a function that implements the decision logic as described above:
 

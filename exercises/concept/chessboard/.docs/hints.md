@@ -28,9 +28,6 @@
 
 - Get the CountInFile for all files in the chessboard.
 
-[functions]: https://golang.org/ref/spec#Function_declarations
 [return]: https://golang.org/ref/spec#Return_statements
-[operators]: https://golang.org/ref/spec#Operators
 [integers]: https://golang.org/ref/spec#Integer_literals
-[calls]: https://golang.org/ref/spec#Calls
 [maps]: /tracks/go/concepts/maps

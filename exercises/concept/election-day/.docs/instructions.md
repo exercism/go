@@ -102,7 +102,6 @@ This is an example of such message: `"Peter (51)"`.
 
 Create a function `DisplayResult` that will receive an `*ElectionResult` as an argument and will return a string with the message to display.
 
-
 ```go
 var result *ElectionResult
 result = &ElectionResult{
