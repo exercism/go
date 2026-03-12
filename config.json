@@ -1179,6 +1179,19 @@
         ]
       },
       {
+        "slug": "affine-cipher",
+        "name": "Affine Cipher",
+        "uuid": "cf62a3c5-af1a-4d05-a004-11b35eb79442",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4,
+        "topics": [
+          "algorithms",
+          "cryptography",
+          "strings"
+        ]
+      },
+      {
         "slug": "all-your-base",
         "name": "All Your Base",
         "uuid": "932a7ed0-c331-49b1-917b-a197198f642a",
