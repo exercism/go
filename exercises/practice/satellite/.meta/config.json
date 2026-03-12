@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "satellite.go"
+    ],
+    "test": [
+      "satellite_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Rebuild binary trees from pre-order and in-order traversals."
+}
