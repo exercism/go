@@ -19,4 +19,3 @@ func BenchmarkFormat(b *testing.B) {
 		}
 	}
 }
-

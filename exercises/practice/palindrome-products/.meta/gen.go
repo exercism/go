@@ -13,7 +13,7 @@ func main() {
 	}
 	j := map[string]any{
 		"smallest": &[]testCase{},
-		"largest": &[]testCase{},
+		"largest":  &[]testCase{},
 	}
 	if err := gen.Gen("palindrome-products", j, t); err != nil {
 		log.Fatal(err)
@@ -28,10 +28,10 @@ type testCase struct {
 		Max int `json:"max"`
 	} `json:"input"`
 	Expected struct {
-		Value   int `json:"value"`
+		Value   int      `json:"value"`
 		Factors [][2]int `json:"factors"`
-		Error   string `json:"error"`
-	}`json:"expected"`
+		Error   string   `json:"error"`
+	} `json:"expected"`
 }
 
 var tmpl = `{{.Header}}

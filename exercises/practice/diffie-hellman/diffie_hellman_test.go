@@ -171,7 +171,6 @@ func TestDifferentPrivateKey(t *testing.T) {
 	}
 }
 
-
 func BenchmarkPrivateKey(b *testing.B) {
 	for range b.N {
 		PrivateKey(biggerTest.p)

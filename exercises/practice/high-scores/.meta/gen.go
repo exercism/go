@@ -12,13 +12,13 @@ func main() {
 		log.Fatal(err)
 	}
 	j := map[string]any{
-		"latest": &[]intTestCase{},
-		"latestAfterBest": &[]intTestCase{},
+		"latest":              &[]intTestCase{},
+		"latestAfterBest":     &[]intTestCase{},
 		"latestAfterTopThree": &[]intTestCase{},
-		"personalBest": &[]intTestCase{},
-		"personalTopThree": &[]sliceTestCase{},
-		"scores": &[]sliceTestCase{},
-		"scoresAfterBest": &[]sliceTestCase{},
+		"personalBest":        &[]intTestCase{},
+		"personalTopThree":    &[]sliceTestCase{},
+		"scores":              &[]sliceTestCase{},
+		"scoresAfterBest":     &[]sliceTestCase{},
 		"scoresAfterTopThree": &[]sliceTestCase{},
 	}
 	if err := gen.Gen("high-scores", j, t); err != nil {

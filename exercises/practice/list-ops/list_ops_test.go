@@ -65,7 +65,6 @@ func TestReverse(t *testing.T) {
 	}
 }
 
-
 func TestAppend(t *testing.T) {
 	for _, tc := range testCasesAppend {
 		t.Run(tc.description, func(t *testing.T) {

@@ -23,9 +23,9 @@ func main() {
 }
 
 type operation struct {
-	Command string `json:"command"`
-	By string `json:"by"`
-	Expected any `json:"expected"`
+	Command  string `json:"command"`
+	By       string `json:"by"`
+	Expected any    `json:"expected"`
 }
 
 type testCase struct {
@@ -65,7 +65,7 @@ func (o operation) ExpectedErr() string {
 }
 
 func Title(command string) string {
-	return fmt.Sprintf("%q", strings.ToUpper(command[0:1]) + command[1:])
+	return fmt.Sprintf("%q", strings.ToUpper(command[0:1])+command[1:])
 }
 
 var tmpl = `{{.Header}}

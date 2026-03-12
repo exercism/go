@@ -9,7 +9,7 @@ import (
 
 type StopwatchTest struct {
 	stopwatch *SplitSecondStopwatch
-	commands []string
+	commands  []string
 }
 
 func (st *StopwatchTest) commandHistory() string {

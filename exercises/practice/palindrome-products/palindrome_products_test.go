@@ -7,7 +7,6 @@ import (
 	"testing"
 )
 
-
 // Bonus curiosities. Can a negative number be a palindrome? Most say no.
 // Toggle this to run bonus tests.
 const RunBonusTests = false
@@ -16,24 +15,24 @@ var bonusData = []testCase{
 	// The following test cases have the same input, but different expectations. Uncomment just one or the other.
 	// Here you can test that you can reach the limit of the largest palindrome made of two 2-digit numbers.
 	/*
-	{
-		description: "bonus test 1: error for negative limits",
-		fmin:        -99,
-		fmax:        -10,
-		property:    "smallest",
-		product:     0,
-		factors:     [][2]int{},
-		errorMsg:    "Negative limits",
-	},
-	{
-		description: "bonus test 1: error for negative limits",
-		fmin:        -99,
-		fmax:        -10,
-		property:    "largest",
-		product:     0,
-		factors:     [][2]int{},
-		errorMsg:    "Negative limits",
-	},
+		{
+			description: "bonus test 1: error for negative limits",
+			fmin:        -99,
+			fmax:        -10,
+			property:    "smallest",
+			product:     0,
+			factors:     [][2]int{},
+			errorMsg:    "Negative limits",
+		},
+		{
+			description: "bonus test 1: error for negative limits",
+			fmin:        -99,
+			fmax:        -10,
+			property:    "largest",
+			product:     0,
+			factors:     [][2]int{},
+			errorMsg:    "Negative limits",
+		},
 	*/
 	// You can still get non-negative products from negative factors.
 	{
@@ -70,15 +69,15 @@ var bonusData = []testCase{
 	},
 	// - you can keep the minus sign in place
 	/*
-	{
-		description: "bonus test 2",
-		fmin:        -2,
-		fmax:        2,
-		property:    "smallest",
-		product:     -4,
-		factors:     [][2]int{{-2, 2}},
-		errorMsg:    "",
-	},
+		{
+			description: "bonus test 2",
+			fmin:        -2,
+			fmax:        2,
+			property:    "smallest",
+			product:     -4,
+			factors:     [][2]int{{-2, 2}},
+			errorMsg:    "",
+		},
 	*/
 	{
 		description: "bonus test 2",
@@ -91,7 +90,10 @@ var bonusData = []testCase{
 	},
 }
 
-type CacheResult struct {min, max Product; err error}
+type CacheResult struct {
+	min, max Product
+	err      error
+}
 type CachedProducts map[[2]int]CacheResult
 
 // Return a cached result of Products.
@@ -103,7 +105,6 @@ func (cp CachedProducts) Products(min, max int) (Product, Product, error) {
 	result := cp[[2]int{min, max}]
 	return result.min, result.max, result.err
 }
-
 
 func TestPalindromeProducts(t *testing.T) {
 	if RunBonusTests {
@@ -121,7 +122,7 @@ func TestPalindromeProducts(t *testing.T) {
 				if !strings.HasPrefix(err.Error(), tc.errorMsg) {
 					t.Fatalf("Products(%d, %d) expected error with prefix %q, got: %q", tc.fmin, tc.fmax, tc.errorMsg, err.Error())
 				}
-			} else if  err != nil {
+			} else if err != nil {
 				t.Fatalf("Products(%d, %d) returned unexpected error: %v", tc.fmin, tc.fmax, err)
 			}
 

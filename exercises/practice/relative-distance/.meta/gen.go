@@ -23,8 +23,8 @@ type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
 		FamilyTree map[string][]string `json:"familyTree"`
-		PersonA string `json:"personA"`
-		PersonB string `json:"personB"`
+		PersonA    string              `json:"personA"`
+		PersonB    string              `json:"personB"`
 	} `json:"input"`
 	Expected *int `json:"expected"`
 }

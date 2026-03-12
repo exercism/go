@@ -24,8 +24,8 @@ func main() {
 
 type Operation struct {
 	Operation string `json:"operation"`
-	Value int `json:"value"`
-	Expected int `json:"expected"`
+	Value     int    `json:"value"`
+	Expected  int    `json:"expected"`
 }
 
 func (op Operation) String() string {
@@ -39,7 +39,7 @@ func (op Operation) String() string {
 
 type testCase struct {
 	Description string `json:"description"`
-	Input       struct{
+	Input       struct {
 		Operations []Operation `json:"operations"`
 	} `json:"input"`
 }
