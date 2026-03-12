@@ -10,9 +10,9 @@ Consider this crystal array configuration:
 {
   "start": { "x": 0, "y": 0, "angle": 0 },
   "prisms": [
-    { "id": 3, "x": 30, "y": 10, "angle": 45 },
     { "id": 1, "x": 10, "y": 10, "angle": -90 },
     { "id": 2, "x": 10, "y": 0, "angle": 90 },
+    { "id": 3, "x": 30, "y": 10, "angle": 45 },
     { "id": 4, "x": 20, "y": 0, "angle": 0 }
   ]
 }
@@ -34,3 +34,5 @@ The beam was traveling at 90°, so after refraction it's now at 0° (90° + (-90
 **Step 3**: From position `(10, 10)`, the beam travels horizontally and encounters **Crystal #3** at position `(30, 10)`.
 This crystal refracts the beam by 45°, changing its direction to 45°.
 The beam continues into empty space beyond the array.
+
+!["A graph showing the path of a laser beam refracted through three prisms."](https://assets.exercism.org/images/exercises/prism/laser_path-light.svg)

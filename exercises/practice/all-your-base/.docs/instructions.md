@@ -23,8 +23,6 @@ The number 1120, _in base 3_, means:
 
 `(1 × 3³) + (1 × 3²) + (2 × 3¹) + (0 × 3⁰)`
 
-_Yes.
-Those three numbers above are exactly the same.
-Congratulations!_
+_Yes. Those three numbers above are exactly the same. Congratulations!_
 
 [positional-notation]: https://en.wikipedia.org/wiki/Positional_notation
