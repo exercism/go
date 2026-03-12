@@ -7,7 +7,6 @@ The [approaches page][approaches] lists two idiomatic approaches to this exercis
 1. [Using map lookups][approach-map-lookups]
 2. [Using map lookups with generics][approach-map-lookups-with-generics]
 
-
 ## Benchmarks
 
 To benchmark the approaches, we ran the following Benchmark code for each approach:

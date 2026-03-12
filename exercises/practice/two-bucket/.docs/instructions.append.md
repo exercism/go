@@ -8,6 +8,7 @@ func Solve(sizeBucketOne,
 	goalAmount int,
 	startBucket string) (goalBucket string, numSteps, otherBucketLevel int, e error)
 ```
+
 Solve returns four values: the resulting goal bucket("one" or two"), the number of moves/steps to achieve the goal amount, the liters left in the other bucket, and an error value.
 The returned error value should be nil when the parameters are valid.
 Return an error for any invalid parameter.
@@ -16,7 +17,7 @@ Solve should also return an error when a solution cannot be found, but this erro
 ## Bonus exercise
 
 Once you get `go test` passing, try `go test -tags bonus`.
-This uses a *build tag* to enable tests that were not previously enabled.
+This uses a _build tag_ to enable tests that were not previously enabled.
 Build tags control which files should be included in the package.
 You can read more about those at [the Go documentation](https://golang.org/pkg/go/build/#hdr-Build_Constraints).
 

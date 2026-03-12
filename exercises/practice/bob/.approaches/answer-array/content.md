@@ -62,11 +62,10 @@ For example, giving a question a score of `1` and a shout a score of `0` would u
 
 | isShout | isQuestion | Index     | Answer                                |
 | ------- | ---------- | --------- | ------------------------------------- |
-|       0 |          0 | 0 + 0 = 0 | `"Whatever."`                         |
-|       0 |          1 | 0 + 1 = 1 | `"Sure."`                             |
-|       2 |          0 | 2 + 0 = 2 | `"Whoa, chill out!"`                  |
-|       2 |          1 | 2 + 1 = 3 | `"Calm down, I know what I'm doing!"` |
-
+| 0       | 0          | 0 + 0 = 0 | `"Whatever."`                         |
+| 0       | 1          | 0 + 1 = 1 | `"Sure."`                             |
+| 2       | 0          | 2 + 0 = 2 | `"Whoa, chill out!"`                  |
+| 2       | 1          | 2 + 1 = 3 | `"Calm down, I know what I'm doing!"` |
 
 [strings]: https://pkg.go.dev/strings@go1.19.4
 [indexfunc]: https://pkg.go.dev/strings@go1.19.4#IndexFunc

@@ -68,13 +68,12 @@ The `Robot` type is defined as a struct with a `name` field of type `string`.
 A [constant][const] is defined for the maximum number of names.
 Then the pool of names is defined along with the current index to be used for accessing the name pool.
 
-
 The function for generating the robot names is where most of the work is done.
 A variable is defined to keep track of the position in the name pool for each name as it is generated.
 The [make][make] function is used to create the [slice][slice] for all of the names.
 
 - The outer `for` loop generates the first letter for the name.
-- The middle `for` loop  generates the second letter for the name.
+- The middle `for` loop generates the second letter for the name.
 - The inner `for` loop generates the number for the name.
 
 [`fmt.Sprintf()`][sprintf] is used in the body of the inner `for` loop for formatting the current values of the letters and number into the name

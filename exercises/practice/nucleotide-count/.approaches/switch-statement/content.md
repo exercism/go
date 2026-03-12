@@ -84,7 +84,6 @@ func (dna DNA) Counts() (Histogram, error) {
 }
 ```
 
-
 The Histogram is defined as `map[byte]int` instead of `map[rune]int`.
 [Constants][const] are defined with the [ASCII][ascii] values of the valid DNA characters.
 

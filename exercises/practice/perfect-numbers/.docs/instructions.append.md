@@ -1,11 +1,12 @@
 # Implementation
 
 Define
-```type Classification```
+`type Classification`
 for containing the classification values for natural numbers.
 You may choose any representation for this type.
 
 Define three Classification constants named
+
 ```
 	ClassificationDeficient
 	ClassificationPerfect

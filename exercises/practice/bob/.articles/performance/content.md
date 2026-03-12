@@ -45,7 +45,7 @@ so these values represent the fastest results from several runs.
 The `if` statements approach gave the fastest result.
 The `switch` statement approach was the second-fastest.
 The answer array approach came in third.
-Since each approach sometimes gave results slower than the other approaches, which to use could be a matter of stylistic choice. 
+Since each approach sometimes gave results slower than the other approaches, which to use could be a matter of stylistic choice.
 
 [approaches]: https://exercism.org/tracks/go/exercises/bob/approaches
 [approach-if]: https://exercism.org/tracks/go/exercises/bob/approaches/if-statements

@@ -24,12 +24,11 @@ func IsIsogram(phrase string) bool {
 }
 ```
 
-
 The steps for this solution are
 
 - [`strings.ToLower()`][tolower] produces a new `string` with the characters of the passed-in `string` changed to lower case.
-The occurrence of the letter `a` and the letter `A` count as a repeated letter, so `Alpha` would not be an isogram.
-Lowercasing `Alpha` to `alpha` makes it easier to check for the repeated `a`.
+  The occurrence of the letter `a` and the letter `A` count as a repeated letter, so `Alpha` would not be an isogram.
+  Lowercasing `Alpha` to `alpha` makes it easier to check for the repeated `a`.
 
 The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
 The runes are from [`range`][range] on a string, the strings from [`Split()`][split], and the bytes from indexing into the string.
@@ -41,7 +40,7 @@ In this approach we don't care about the index, so ranging on a `string` is fine
 
 - [`unicode.IsLetter()`][isletter] is used to ignore the character if it is not a Unicode letter.
 - The letter [`rune`][rune] is converted to a [`string`][string] to be passed to `strings.Count()`.
-[`strings.Count()`][count] is used to get the number of occurrences of the letter in the entire `string`.
+  [`strings.Count()`][count] is used to get the number of occurrences of the letter in the entire `string`.
 - If the letter occurs more than once, then the function returns false.
 
 If the loop finishes without returning `false`, then no letters are repeated, and the function returns `true`.

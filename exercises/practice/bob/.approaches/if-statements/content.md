@@ -37,7 +37,7 @@ func Hey(remark string) string {
 	if shout {
 		if question {
 			return "Calm down, I know what I'm doing!"
-		} 
+		}
 		return "Whoa, chill out!"
 	}
 	if question {
@@ -53,7 +53,6 @@ In this approach you have a series of `if` statements using the private function
 A private (also called unexported) function is indicated by starting with a lowercase letter.
 More info on exported and unexported functions can be found [here](https://yourbasic.org/golang/public-private/).
 ~~~~
-
 
 As soon as the right condition is found, the correct response is returned.
 

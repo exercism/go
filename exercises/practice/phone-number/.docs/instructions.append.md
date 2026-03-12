@@ -7,4 +7,3 @@ Additionally, a `Format()` function should produce the output
 and an `AreaCode()` function should output
 
 `613`
-

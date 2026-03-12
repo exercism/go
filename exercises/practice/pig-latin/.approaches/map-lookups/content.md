@@ -44,13 +44,13 @@ func Sentence(phrase string) string {
 The approach imports the `strings` package so it can use [`strings.Builder`][builder] as an efficient way to build the output string.
 
 This approach starts be defining several [map][map]s for looking up vowels and special letter combinations.
-The maps have boolean values so that a key can be looked up simply as 
+The maps have boolean values so that a key can be looked up simply as
 
 ```go
 if vowels[word[0]]
 ```
 
-instead of 
+instead of
 
 ```
 if _, ok := vowels[word[0]]; ok {

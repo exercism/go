@@ -57,7 +57,7 @@ See if the `YearDay()` for December 31 is 366. For more information, see the [`t
 ## Which approach to use?
 
 The chain of boolean expressions _should_ be most efficient, as it proceeds from the most likely to least likely conditions.
-However,  the maximum of two checks approach benched faster, even though it starts from a less likely condition.
+However, the maximum of two checks approach benched faster, even though it starts from a less likely condition.
 Using `time.Add()` or `time.YearDay()` may be considered "cheats" for the exercise,
 but are both much slower than the other approaches.
 

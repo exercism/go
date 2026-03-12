@@ -290,14 +290,14 @@ To add a new exercise generator to an exercise the following steps are needed:
    var tmpl = `{{.Header}}
 
    var testCases = []struct {
-	   description    string
-	   input          int
-	   expected       int
+      description    string
+      input          int
+      expected       int
    }{ {{range .J.<property>}}
        {
-	       description: {{printf "%q"  .Description}},
-	       input: {{printf "%d"  .Score}},
-	       expected: {{printf "%d"  .Score}},
+          description: {{printf "%q"  .Description}},
+          input: {{printf "%d"  .Score}},
+          expected: {{printf "%d"  .Score}},
        },{{end}}
    }
    `

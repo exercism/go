@@ -12,17 +12,17 @@ UnsafeFirst returns the first substring of s with length n.
 
 At this point you could consider this exercise complete and move on.
 
-But wait, maybe you ask a reasonable question: Why is the function called **Unsafe** First?  If you are interested, read on for a bonus exercise.
+But wait, maybe you ask a reasonable question: Why is the function called **Unsafe** First? If you are interested, read on for a bonus exercise.
 
 ## Bonus exercise:
 
 Once you get `go test` passing, try `go test -tags asktoomuch`.
-This uses a *build tag* to enable a test that wasn't enabled before.
+This uses a _build tag_ to enable a test that wasn't enabled before.
 Build tags allow for the selection of files to be used by the package.
 In our case it will control which test files are used.
 You can read more about those at [the Go documentation](https://golang.org/pkg/go/build/#hdr-Build_Constraints).
 
-You may notice that you can't make this *asktoomuch* test happy.
+You may notice that you can't make this _asktoomuch_ test happy.
 We need a way to signal that in some cases you can't take the first N characters of the string.
 UnsafeFirst can't do that since it only returns a string.
 

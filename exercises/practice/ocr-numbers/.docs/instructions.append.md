@@ -7,7 +7,7 @@ Pick what you like for parameters and return values but make it useful as a subr
 
 For Step 2 define,
 
-   func Recognize(string) []string
+func Recognize(string) []string
 
 and implement it using recognizeDigit.
 

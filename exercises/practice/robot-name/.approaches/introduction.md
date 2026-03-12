@@ -60,7 +60,7 @@ func (r *Robot) Name() (string, error) {
 	if idx >= maxRobotNames {
 		return "", fmt.Errorf("uniqueness exhausted")
 	}
-	
+
 	r.name = namePool[idx]
 	idx++
 

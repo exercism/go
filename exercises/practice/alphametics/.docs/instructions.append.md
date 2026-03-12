@@ -9,13 +9,17 @@ Use the following signature for func Solve:
 ```
 func Solve(puzzle string) (map[string]int, error) {
 ```
+
 Solve should return an error if there is no solution to the given puzzle.
 
 An example puzzle and returned solution is:
+
 ```
 Solve("SEND + MORE == MONEY")
 ```
+
 would return
+
 ```
 map[string]int{"M":1, "O":0, "N":6, "E":5, "Y":2, "S":9, "D":7, "R":8}, nil
 ```
@@ -35,4 +39,3 @@ Replacing these with valid numbers gives:
 -----------
 1 0 6 5 2
 ```
-

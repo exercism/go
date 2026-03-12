@@ -35,14 +35,14 @@ func Discard[T Slicer](input []T, filter func(T) bool) []T {
 This approach starts be defining some [types][types] that will be used in the package.
 It then defines an [interface type][interface-type] which will be used to constain which types are to be used for the [generics][generics]:
 
->Generics are a way of writing code that is independent of the specific types being used.
-  Functions and types may now be written to use any of a set of types.
+> Generics are a way of writing code that is independent of the specific types being used.
+> Functions and types may now be written to use any of a set of types.
 
 To keep the code [DRY][dry], there will be one function that does most of the work.
 
 The `Keep()` function takes a generic type parameter of `[T Slicer]`.
 `T` is the name of the parameter.
-It does not have to be `T`, but it is a common convention in Go (and  other languages) to start with `T`,
+It does not have to be `T`, but it is a common convention in Go (and other languages) to start with `T`,
 and if a second name is needed, to use `U`, and so on.
 The type `T` is constrained to be one of the types defined in the `Slicer` interface.
 The arguments to the function are a slice of the generic type `T`, and a function which takes a value of type `T` and returns a boolean value.
