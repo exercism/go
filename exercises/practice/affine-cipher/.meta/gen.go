@@ -62,8 +62,8 @@ type testCase struct {
 	expected       string
 }
 
-var encodeTests = []testCase{
-{{range .J.encode}}{
+var encodeTests = []testCase{ {{range .J.encode}}
+	{
 		description:         {{printf "%q" .Description}},
 		inputPhrase:         {{printf "%q" .Input.Phrase}},
 		inputA:              {{.Input.Key.Num1}},
