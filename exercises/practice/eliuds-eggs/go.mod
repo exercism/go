@@ -1,3 +1,3 @@
-module eliuds-eggs
+module eliudseggs
 
 go 1.23
