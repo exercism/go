@@ -16,18 +16,15 @@ var testCases = []testCase{
 		description: "0 eggs",
 		input:       0,
 		expected:    0,
-	},
-	{
+	}, {
 		description: "1 egg",
 		input:       16,
 		expected:    1,
-	},
-	{
+	}, {
 		description: "4 eggs",
 		input:       89,
 		expected:    4,
-	},
-	{
+	}, {
 		description: "13 eggs",
 		input:       2000000000,
 		expected:    13,
