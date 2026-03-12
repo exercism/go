@@ -44,7 +44,7 @@ func (t testCase) SortedMapString() string {
 	for k, v := range t.Expected {
 		switch t := v.(type) {
 		case float64:
-			strs = append(strs, fmt.Sprintf("%q:%d", k, int(t)))
+			strs = append(strs, fmt.Sprintf("%q: %d", k[0], int(t)))
 		default:
 			log.Fatalf("unexpected type %T for %v", t, v)
 		}
@@ -61,13 +61,12 @@ var testCases = []struct {
 	strand        string
 	expected      Histogram
 	errorExpected bool
-}{
-{{range .J.nucleotideCounts}}{
-	description:	{{printf "%q"  .Description}},
-	strand:			{{printf "%#v"  .Input.Strand}},
-	errorExpected:	{{printf "%t"  .ErrorExpected}},
-	expected:       Histogram{ {{.SortedMapString}} },
-},
-{{end}}
+}{ {{range .J.nucleotideCounts}}
+	{
+		description:	{{printf "%q"  .Description}},
+		strand:		{{printf "%#v"  .Input.Strand}},
+		errorExpected:	{{printf "%t"  .ErrorExpected}},
+		expected:       Histogram{ {{.SortedMapString}} },
+	},{{end}}
 }
 `
