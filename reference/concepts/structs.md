@@ -2,7 +2,7 @@
 
 See also [records](https://github.com/exercism/v3/blob/main/reference/types/record.md)
 
-# Classes
+## Classes
 
 When talking about classes in Go, many refer to `structs`.
 They are often called Go's classes.
