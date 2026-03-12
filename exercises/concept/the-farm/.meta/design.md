@@ -12,7 +12,7 @@
 
 This exercise is deliberately kept simple (many aspects left for later exercises) to make sure students properly digest what errors are and the basic mechanics of how to work with them.
 This is very different in Go compared to many other languages so it is important is sticks.
-The exercise still has enough content to unlock 
+The exercise still has enough content to unlock.
 
 The following topics will be introduced later and should therefore not be part of this concept exercise:
 

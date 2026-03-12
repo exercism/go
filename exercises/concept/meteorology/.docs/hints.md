@@ -7,7 +7,7 @@
 - Add a `String()` method to the `TemperatureUnit` type so it satisfies the `Stringer` interface.
   This method must return the string `"°C"` if the temperature unit is Celsius or `"°F"` if the temperature unit is Fahrenheit
 
-## 2. Implement the `Stringer` interface for type  `Temperature` 
+## 2. Implement the `Stringer` interface for type  `Temperature`
 
 - Add a `String()` method to the `Temperature` type so it satisfies the `Stringer` interface
 - The `String()` method should return a string with the numeric value for the temperature and the temperature unit separated by a space (`<temperature> <unit>`)
@@ -38,8 +38,5 @@
 - The `String` method should return the meteorology data in the following format: `"<location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity"`
 - Since the `Temperature` and `Speed` types already implement the `Stringer` interface (from task 2 and 4), the functions of the `fmt` package like [fmt.Sprintf][sprintf] will know how to format it when you use the `%v` or `%s` [formatting verbs][fmt]
 
-
 [fmt]: https://pkg.go.dev/fmt
-[sprint]: https://pkg.go.dev/fmt#Sprint
 [sprintf]: https://pkg.go.dev/fmt#Sprintf
-[yourbasic-enum]: https://yourbasic.org/golang/iota/#complete-enum-type-with-strings-best-practice

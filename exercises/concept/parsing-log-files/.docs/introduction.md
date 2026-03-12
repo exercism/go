@@ -51,7 +51,7 @@ Using this function, there is no need to handle an error.
  `MustCompile` should only be used when we know for sure the pattern does compile, as otherwise the program will panic.
  ~~~~
 
- ## Regular expression methods
+## Regular expression methods
 
 There are 16 methods of `Regexp` that match a regular expression and identify the matched text.
 Their names are matched by this regular expression:
@@ -124,7 +124,7 @@ s = re.ReplaceAllString(" abc!", "X")       // => " X!"
 s = re.ReplaceAllString("123 456", "X")     // => "123 456"
 ```
 
- ### `Split` Examples
+### `Split` Examples
 
 Method `re.Split(s,n)` slices a text `s` into substrings separated by the expression and returns a slice of the substrings between those expression matches.
 The count `n` determines the maximal number of substrings to return.

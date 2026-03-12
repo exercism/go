@@ -21,6 +21,5 @@
 - Use a [for loop][for-loop] to iterate through the input slice and generate the output slice
 
 [len-builtin]: https://pkg.go.dev/builtin#len
-[concept-conditonals-if]: /tracks/go/concepts/conditionals-if
 [concept-slices]: /tracks/go/concepts/slices
 [for-loop]: https://tour.golang.org/flowcontrol/1

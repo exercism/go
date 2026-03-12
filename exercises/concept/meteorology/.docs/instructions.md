@@ -1,9 +1,9 @@
 # Instructions
 
-Your team is working on a meteorology application. 
-They have defined an API with various types and constants representing meteorological data, see file `meteorology.go`. 
-  
-Your task is to add suitable `String` methods to all types so that they implement interface `Stringer`. 
+Your team is working on a meteorology application.
+They have defined an API with various types and constants representing meteorological data, see file `meteorology.go`.
+
+Your task is to add suitable `String` methods to all types so that they implement interface `Stringer`.
 
 ## 1. Implement the `Stringer` interface for type `TemperatureUnit`
 
@@ -33,7 +33,6 @@ They should be formatted as in the examples below.
 For that to happen, make the `Temperature` type implement the `Stringer` interface by adding a `String` method to it.
 This method should return a string with the numeric value for the temperature and the temperature unit separated by a space: `<temperature> <unit>`:
 
-
 ```go
 celsiusTemp := Temperature{
     degree: 21,
@@ -50,7 +49,7 @@ fahrenheitTemp := Temperature{
 }
 fahrenheitTemp.String()
 // => 75 °F
-fmt.Sprint(fahrenheitTemp) 
+fmt.Sprint(fahrenheitTemp)
 // Output: 75 °F
 ```
 
@@ -62,8 +61,7 @@ Values should be formatted as the examples below.
 For that to happen, make the `SpeedUnit` type implement the `Stringer` interface by adding a `String` method to it.
 This method must return the string `"km/h"` if the speed unit is kilometers per hour or `"mph"` if the speed unit is miles per hour:
 
-
-```go 
+```go
 mphUnit := MilesPerHour
 mphUnit.String()
 // => mph
@@ -77,7 +75,7 @@ fmt.Sprint(kmhUnit)
 // Output: km/h
 ```
 
-## 4. Implement the `Stringer` interface for `Speed` 
+## 4. Implement the `Stringer` interface for `Speed`
 
 Wind speed values consist of an integer and a speed unit.
 They should be formatted as in the example below.
@@ -85,7 +83,7 @@ They should be formatted as in the example below.
 For that to happen, make the `Speed` type implement the `Stringer` interface by adding a `String` method to it.
 This method should return a string with the numeric value for the speed and the speed unit separated by a space: `<speed> <unit>`:
 
-```go 
+```go
 windSpeedNow := Speed{
     magnitude: 18,
     unit: KmPerHour,
@@ -113,11 +111,11 @@ It should be formatted as in the example below:
 For that to happen, make the `MeteorologyData` type implement the `Stringer` interface by adding a `String` method to it.
 This method should return the meteorology data in the following format:
 
-```
+```text
 <location>: <temperature>, Wind <wind_direction> at <wind_speed>, <humidity>% Humidity
 ```
 
-```go 
+```go
 sfData := MeteorologyData{
     location: "San Francisco",
     temperature: Temperature{
@@ -134,6 +132,6 @@ sfData := MeteorologyData{
 
 sfData.String()
 // => San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity
-fmt.Sprint(sfData) 
+fmt.Sprint(sfData)
 // Output: San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity
 ```

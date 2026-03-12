@@ -10,7 +10,7 @@
   Handle the error via an if-statement as it was explained in the introduction.
 - After that, call the `FatteningFactor` method and handle the error return value as before.
 - Now that you have the fodder amount and the factor, you can calculate the final result.
-  You need to divide the fodder by the number of cows (revisit [numbers] for hints on type conversion) and multiply with the factor.
+  You need to divide the fodder by the number of cows (revisit [concept-numbers] for hints on type conversion) and multiply with the factor.
   Check the introduction for what to return as the error value in case of success.
 
 ## 2. Check the number of cows

@@ -7,15 +7,15 @@
 
 ## 1. Identify garbled log lines
 
-- Function [regexp.MatchString][fun-match-string] or method [MatchString][method-match-string] could be useful here.
+- Function [regexp.MatchString][fun-re-match-string] or method [MatchString][method-match-string] could be useful here.
 - In a regular expression, the character `^` matches the beginning of a line/string.
 
 ## 2. Split the log line
 
 - Method [Split][regexp-split] could be useful here.
-  
+
 ## 3. Count the number of lines containing `password` in quoted text
- 
+
 - You can make expression matching case sensitive by prefixing the regular expression with `(?i)`.
   This will set the `i` flag.
   See [this tutorial][yourbasic-i-flag].
@@ -25,7 +25,7 @@
 - Method [ReplaceAllString][replace-all-string] could be useful here.
 
 ## 5. Tag lines with user names
- 
+
 - Method [FindStringSubmatch][find-string-submatch] could be useful here.
 
 [raw-string-literals]: https://yourbasic.org/golang/regexp-cheat-sheet/#raw-strings

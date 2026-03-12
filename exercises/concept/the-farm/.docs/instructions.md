@@ -2,7 +2,7 @@
 
 The day you waited so long finally came and you are now the proud owner of a beautiful farm in the Alps.
 
-You still do not like waking up too early in the morning to feed your cows. 
+You still do not like waking up too early in the morning to feed your cows.
 Because you are an excellent engineer, you build a food dispenser, the `FEED-M-ALL`.
 
 The last thing required in order to finish your project, is a piece of code that calculates the amount of fodder that each cow should get.
@@ -77,6 +77,7 @@ Checking the number of cows before passing it along was a good move but you are 
 You decide to do better by creating a custom error type called `InvalidCowsError`.
 
 The custom error should hold the number of cows (`int`) and a custom message (`string`) and the `Error` method should serialize the data in the following format:
+
 ```txt
 {number of cows} cows are invalid: {custom message}
 ```

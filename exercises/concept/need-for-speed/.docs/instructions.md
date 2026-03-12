@@ -63,6 +63,7 @@ Implement the `CanFinish` function that takes a `Car` and a `Track` instance as 
 
 Assume that you are currently at the starting line of the race and start the engine of the car for the race.
 Take into account that the car's battery might not necessarily be fully charged when starting the race:
+
 ```go
 speed := 5
 batteryDrain := 2

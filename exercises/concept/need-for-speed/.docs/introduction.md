@@ -100,6 +100,7 @@ NewShape("Triangle")
 ```
 
 Using `New` functions can have the following advantages:
+
 * validation of the given values
 * handling of default-values
 * since `New` functions are often declared in the same package of the structs they initialize, they can initialize even private fields of the struct

@@ -134,5 +134,3 @@ The step described above where a slice is created will simply be omitted in this
 list := []int{1, 2, 3}
 find(1, list...) // "find" defined as shown above
 ```
-
-[append-yourbasic]: https://yourbasic.org/golang/append-explained/

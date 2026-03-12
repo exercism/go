@@ -29,6 +29,7 @@ If the index is out of bounds (ie. if it is negative or after the end of the sta
 ```go
 card := GetItem([]int{1, 2, 4, 1}, 10) // card == -1
 ```
+
 ~~~~exercism/note
 By convention in Go, an error is returned instead of returning an "out-of-bounds" value.
 Here the "out-of-bounds" value is `-1` when a positive integer is expected.
