@@ -12,7 +12,6 @@ This [blog post](https://exercism.org/blog/freeing-our-maintainers) explains the
 
 If you have any feedback or experience problems, you can bring them up in the [Go section of the Exercism forum](https://forum.exercism.org/c/programming/go/19).
 
-
 ## Development setup
 
 If you work on this repository, you should follow some standard Go development practices.
@@ -195,14 +194,14 @@ They are useful if they let the solver try a change and see a performance effect
 Examples of function calls usually show the return value.
 We use the following style when doing so.
 
-```
+```text
 NeedsLicense("car")
 // => true
 ```
 
 When printing output (STDOUT), we use the following style.
 
-```
+```text
 needLicense := NeedsLicense("car")
 fmt.Println(needLicense)
 // Output: true
@@ -241,64 +240,69 @@ $ tree -L 1 .
 
 For most exercises, a test generator is used to generate the `cases_test.go` file with the test cases based on information from [problem-specifications](https://github.com/exercism/problem-specifications).
 To add a new exercise generator to an exercise the following steps are needed:
+
 1. Create the file `gen.go` in the directory `.meta` of the exercise
 2. Add the following template to `gen.go`:
-```go
-package main
 
-import (
-    "log"
-    "text/template"
-  
-    "../../../../gen"
-)
+   ```go
+   package main
 
-func main() {
-	t, err := template.New("").Parse(tmpl)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var j = map[string]interface{}{
-              "property_1":  &[]Property1Case{},
-              "property_2":  &[]Property2Case{},
-	}
-	if err := gen.Gen("<exercise-name>", j, t); err != nil {
-		log.Fatal(err)
-	}
-}
-```
+   import (
+       "log"
+       "text/template"
+
+       "../../../../gen"
+   )
+
+   func main() {
+       t, err := template.New("").Parse(tmpl)
+       if err != nil {
+           log.Fatal(err)
+       }
+       var j = map[string]interface{}{
+           "property_1":  &[]Property1Case{},
+           "property_2":  &[]Property2Case{},
+       }
+       if err := gen.Gen("<exercise-name>", j, t); err != nil {
+           log.Fatal(err)
+       }
+   }
+   ```
+
 3. Insert the name of the exercise to the call of `gen.Gen`
 4. Add all values for the field `property` in `canonical-data.json` to the map `j`.
    `canonical-data.json` can be found at [problem-specifications/exercises/\<exercise-name\>](https://github.com/exercism/problem-specifications)
 5. Create the needed structs for storing the test cases from `canonical-data.json` (you can for example use [JSON-to-Go](https://mholt.github.io/json-to-go/) to convert the JSON to a struct)
 
-**NOTE:** In some cases, the struct of the data in the `input`/`expected` fields is not the same for all test cases of one property.
-In those situations, an `interface{}` has to be used to represent the values for these fields.
-These `interface{}` values then need to be handled by the test generator.
-A common way to handle these cases is to create methods on the test case structs that perform type assertions on the `interface{}` values and return something more meaningful.
-These methods can then be referenced/called in the `tmpl` template variable.
-Examples of this can be found in the exercises [forth](https://github.com/exercism/go/blob/main/exercises/practice/forth/.meta/gen.go) or [bowling](https://github.com/exercism/go/blob/main/exercises/practice/bowling/.meta/gen.go).
+   **NOTE:** In some cases, the struct of the data in the `input`/`expected` fields is not the same for all test cases of one property.
+   In those situations, an `interface{}` has to be used to represent the values for these fields.
+   These `interface{}` values then need to be handled by the test generator.
+   A common way to handle these cases is to create methods on the test case structs that perform type assertions on the `interface{}` values and return something more meaningful.
+   These methods can then be referenced/called in the `tmpl` template variable.
+   Examples of this can be found in the exercises [forth](https://github.com/exercism/go/blob/main/exercises/practice/forth/.meta/gen.go) or [bowling](https://github.com/exercism/go/blob/main/exercises/practice/bowling/.meta/gen.go).
 
 6. Add the variable `tmpl` to `gen.go`.
    This template will be used to create the `cases_test.go` file.
 
-Example:
-```go
-var tmpl = `{{.Header}}
+   Example:
 
-var testCases = []struct {
-	description    string
-	input          int
-	expected       int       
-}{ {{range .J.<property>}}
-{
-	description: {{printf "%q"  .Description}},
-	input: {{printf "%d"  .Score}},
-	expected: {{printf "%d"  .Score}},
-},{{end}}
-}
-`
-```
+   ```go
+   var tmpl = `{{.Header}}
+
+   var testCases = []struct {
+	   description    string
+	   input          int
+	   expected       int
+   }{ {{range .J.<property>}}
+       {
+	       description: {{printf "%q"  .Description}},
+	       input: {{printf "%d"  .Score}},
+	       expected: {{printf "%d"  .Score}},
+       },{{end}}
+   }
+   `
+   ```
+
 7. Synchronize the test case using the exercise generator (as described in [Synchronizing tests and instructions](#synchronizing-tests-and-instructions))
 8. Check the validity of `cases_test.go`
 9. Use the generated test cases in the `<exercise>_test.go` file
@@ -310,25 +314,29 @@ To keep track of which tests are implemented by the exercise the file `.meta/tes
 
 To synchronize the exercise with [problem-specifications](https://github.com/exercism/problem-specifications) and to regenerate the tests, navigate into the **go** directory and perform the following steps:
 
-1. Synchronize your exercise with [`exercism/problem-specifications`](https://github.com/exercism/problem-specifications) using [configlet](https://github.com/exercism/configlet):
+#### Synchronize canonical data
+
+Synchronize your exercise with [`exercism/problem-specifications`](https://github.com/exercism/problem-specifications) using [configlet](https://github.com/exercism/configlet):
 
 ```console
-$ configlet sync --update -e <exercise>
+configlet sync --update -e <exercise>
 ```
 
 `configlet` synchronizes the following parts, if an updated is needed:
 
-* docs: `.docs/instructions.md`, `.docs/introduction.md`
-* metadata: `.meta/config.json`
-* tests: `.meta/tests.toml`
-* filepaths: `./meta/config.json`
+- docs: `.docs/instructions.md`, `.docs/introduction.md`
+- metadata: `.meta/config.json`
+- tests: `.meta/tests.toml`
+- filepaths: `./meta/config.json`
 
 For further instructions check out [configlet](https://github.com/exercism/configlet#configlet-sync).
 
-2. Run the test case generator to update `<exercise>/cases_test.go`:
+#### Run the generator
+
+Run the test case generator to update `<exercise>/cases_test.go`:
 
 ```console
-$ GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go
+GO111MODULE=off go run exercises/practice/<exercise>/.meta/gen.go
 ```
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
@@ -342,7 +350,7 @@ Commit the changes.
 ### Synchronizing all exercises with generators
 
 ```console
-$ ./bin/run-generators <GitHub Access Token>
+./bin/run-generators <GitHub Access Token>
 ```
 
 **NOTE**: If you see the error `json: cannot unmarshal object into Go value of type []gen.Commit` when running the generator you probably have been rate limited by GitHub.
@@ -358,13 +366,13 @@ This is a tool made in Go that can be seen in the `gomod-sync/` folder.
 To update all go.mod files according to the config file (`gomod-sync/config.json`) run:
 
 ```console
-$ cd gomod-sync && go run main.go update
+cd gomod-sync && go run main.go update
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
 
 ```console
-$ cd gomod-sync && go run main.go check
+cd gomod-sync && go run main.go check
 ```
 
 ## Pull requests
@@ -375,20 +383,20 @@ Use git to add, commit, and push to your repository.
 Checkout your repository on the web now.
 You should see your commit and the invitation to submit a pull request!
 
-<img src="img/mars1.png">
+![create a pull request](img/mars1.png)
 
 Click on that big green button.
 You have a chance to add more explanation to your pull request here, then send it.
 Looking at the exercism/go repository now instead of your own, you see this.
 
-<img src="img/mars2.png">
+![a new pull request](img/mars2.png)
 
 That inconspicuous orange dot is important!
 Hover over it (no, not on this image, on a real page) and you can see it's indicating that a CI build is in progress.
 After a few minutes (usually) that dot will turn green indicating that tests passed.
 If there's a problem, it comes up red:
 
-<img src="img/mars3.png">
+![failing test](img/mars3.png)
 
 This means you've still got work to do.
 Click on "details" to go to the CI build details.

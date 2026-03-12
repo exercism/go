@@ -21,7 +21,7 @@ Further material on Comments in Go:
 - [Effective Go](https://golang.org/doc/effective_go.html#commentary)
 - [Practical Go (Dave Chaney)](https://dave.cheney.net/practical-go/presentations/qcon-china.html#_comments)
 
-# Documentation
+## Documentation
 
 The Go tool chain provides the [godoc](https://godoc.org/golang.org/x/tools/cmd/godoc) tool for producing documentation as HTML or plain text from the Go source code.
 The generated documentation for many open source packages is available at [godoc.org](https://godoc.org/).

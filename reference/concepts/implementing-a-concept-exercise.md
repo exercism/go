@@ -26,7 +26,7 @@ Having done this, please read the [Go concept exercises introduction][concept-ex
 
 To implement a concept exercise, the following files must be added.
 
-<pre>
+```text
 languages
 └── go
     ├── concepts
@@ -47,7 +47,7 @@ languages
                 |   └── exemplar.go
                 ├── &lt;NAME&gt;.go
                 └── &lt;NAME&gt;_test.go
-</pre>
+```
 
 ## Step 1: Add code files
 
