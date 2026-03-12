@@ -2,10 +2,8 @@ package cryptosquare
 
 import "testing"
 
-var tests = []struct {
-	input    string // plain text
-	expected string // cipher text
-}{
+// Tests to add on after the canonical test cases, from cases_test.go
+var additionalTests = []testCase{
 	{
 		input:    "s#$%^&plunk",
 		expected: "su pn lk",
@@ -75,20 +73,20 @@ var tests = []struct {
 		expected: "159 26a 37  48 ",
 	},
 	{
-		input:    "If man was meant to stay on the ground god would have given us roots",
-		expected: "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau ",
-	},
-	{
 		input:    "Have a nice day. Feed the dog & chill out!",
 		expected: "hifei acedl veeol eddgo aatcu nyhht",
 	},
 }
 
 func TestEncode(t *testing.T) {
-	for _, test := range tests {
-		t.Run(test.input, func(t *testing.T) {
-			if got := Encode(test.input); got != test.expected {
-				t.Fatalf("Encode(%q):\n got:%q\nwant:%q", test.input, got, test.expected)
+	for _, tc := range append(testCases, additionalTests...) {
+		description := tc.description
+		if len(description) == 0 {
+			description = tc.input
+		}
+		t.Run(description, func(t *testing.T) {
+			if got := Encode(tc.input); got != tc.expected {
+				t.Fatalf("Encode(%q):\n got:%q\nwant:%q", tc.input, got, tc.expected)
 			}
 		})
 	}
@@ -96,8 +94,8 @@ func TestEncode(t *testing.T) {
 
 func BenchmarkEncode(b *testing.B) {
 	for range b.N {
-		for _, test := range tests {
-			Encode(test.input)
+		for _, tc := range append(testCases, additionalTests...) {
+			Encode(tc.input)
 		}
 	}
 }
