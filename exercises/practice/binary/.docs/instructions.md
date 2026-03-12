@@ -20,7 +20,7 @@ A number 23 in base 10 notation can be understood as a linear combination of pow
 - The rightmost digit gets multiplied by 10^0 = 1
 - The next number gets multiplied by 10^1 = 10
 - ...
-- The *n*th number gets multiplied by 10^*(n-1)*.
+- The *n*th number gets multiplied by 10^_(n-1)_.
 - All these values are summed.
 
 So: `23 => 2*10^1 + 3*10^0 => 2*10 + 3*1 = 23 base 10`

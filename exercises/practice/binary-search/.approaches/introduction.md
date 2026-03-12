@@ -13,7 +13,7 @@ package binarysearch
 func SearchInts(list []int, key int) int {
 	for left, right := 0, len(list); left != right; {
 		mid := (left + right) / 2
-    
+
 		switch {
 		case list[mid] == key:
 			return mid
@@ -29,4 +29,4 @@ func SearchInts(list []int, key int) int {
 
 For more information, check the [Loop with `switch` approach][approach-loop-with-switch].
 
-[approach-loop-with-switch]:  https://exercism.org/tracks/go/exercises/binary-search/approaches/loop-with-switch
+[approach-loop-with-switch]: https://exercism.org/tracks/go/exercises/binary-search/approaches/loop-with-switch

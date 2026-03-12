@@ -22,7 +22,6 @@ Regardless of the approach used, some things you could look out for include
 - If an `if` statement can return, then an `else if` or `else` is not needed.
   Execution will either return or will continue to the next statement anyway.
 
-
 ## Approach: `if` statements
 
 ```go
@@ -125,7 +124,6 @@ func Hey(remark string) string {
 
 For more information, check the [`switch` statement approach][approach-switch].
 
-
 ## Approach: Answer array
 
 ```go
@@ -172,10 +170,9 @@ func Hey(remark string) string {
 
 For more information, check the [Answer array approach][approach-answer-array].
 
-
 ## Which approach to use?
 
-Since each approach sometimes gave results slower than the other approaches when benchmarking, which to use could be a matter of stylistic choice. 
+Since each approach sometimes gave results slower than the other approaches when benchmarking, which to use could be a matter of stylistic choice.
 
 - To compare the performance of the approaches, check out the [Performance article][article-performance].
 

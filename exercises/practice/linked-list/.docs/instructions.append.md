@@ -6,20 +6,20 @@ Then implement a `List` which holds references to the first and last node and of
 
 Your `Node` should have the following fields and methods:
 
-* `Value`: the node's value (we will use `any`).
-* `Next() *Node`: pointer to the next node.
-* `Prev() *Node`: pointer to the previous node.
+- `Value`: the node's value (we will use `any`).
+- `Next() *Node`: pointer to the next node.
+- `Prev() *Node`: pointer to the previous node.
 
 You should have a function `NewList()` that creates and returns a `List`:
 
-* `NewList(args ...any) *List`: creates a new linked list preserving the order of the values.
+- `NewList(args ...any) *List`: creates a new linked list preserving the order of the values.
 
 Your `List` should have the following methods:
 
-* `First() *Node`: returns a pointer to the first node (head).
-* `Last() *Node`: returns a pointer to the last node (tail).
-* `Push(v any)`: insert value at the back of the list.
-* `Pop() (any, error)`: remove value from the back of the list.
-* `Unshift(v any) `: insert value at the front of the list.
-* `Shift() (any, error)`: remove value from the front of the list.
-* `Reverse()`: reverse the linked list.
+- `First() *Node`: returns a pointer to the first node (head).
+- `Last() *Node`: returns a pointer to the last node (tail).
+- `Push(v any)`: insert value at the back of the list.
+- `Pop() (any, error)`: remove value from the back of the list.
+- `Unshift(v any) `: insert value at the front of the list.
+- `Shift() (any, error)`: remove value from the front of the list.
+- `Reverse()`: reverse the linked list.

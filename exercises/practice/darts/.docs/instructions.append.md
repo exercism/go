@@ -1,4 +1,3 @@
-
 ## Scoring Note
 
 In scoring, consider a dart landing on the border of a circle to be "in the circle"

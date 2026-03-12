@@ -7,7 +7,6 @@ The [approaches page][approaches] lists two idiomatic approaches to this exercis
 1. [Using `math.Pow()` and `big` exponentiation][approach-math-pow-big-exponentiation]
 2. [Using bit shifting][approach-bit-shifting]
 
-
 ## Benchmarks
 
 To benchmark the approaches, we ran the following Benchmark code for each approach:

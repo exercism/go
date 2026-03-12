@@ -66,7 +66,7 @@ added to or subtracted by the `int` minutes, even though the underlying type of 
 This can be helpful if two `int` values are two different types, such as a meter and a foot.
 The compiler will not allow adding a meter type to a foot type,
 even if both are an `int`, unless one of them is converted to the other.
-For an example of why this is important, see an article on how a $125 million spacecraft crashed because of a 
+For an example of why this is important, see an article on how a $125 million spacecraft crashed because of a
 [mix-up between English and metric units of measure](https://www.simscale.com/blog/nasa-mars-climate-orbiter-metric/).
 ~~~~
 

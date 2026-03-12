@@ -72,7 +72,6 @@ For more information, check the [`strings.Count()` approach][approach-strings-co
 
 ## Approach: Bit field
 
-
 ```go
 // Package isogram is a small library for analyzing if a phrase is an isogram.
 package isogram

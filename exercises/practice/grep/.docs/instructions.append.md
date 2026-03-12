@@ -10,4 +10,3 @@ Use the following signature for func Search:
 ```
 func Search(pattern string, flags, files []string) []string {
 ```
-

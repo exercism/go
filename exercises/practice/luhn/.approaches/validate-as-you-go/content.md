@@ -105,14 +105,14 @@ func Valid(num string) bool {
 }
 ```
 
-The first modification is simple and changes 
+The first modification is simple and changes
 
 ```go
 total := 0
 pos := 0
 ```
 
-for 
+for
 
 ```
 var total, pos int
@@ -121,7 +121,7 @@ var total, pos int
 which defines the same variables with their default [zero values][zero-values].
 
 The other change is more of a mathematical way to avoid the conditional logic for adding the value.
-The `if` statement and entire `switch` statement can be replaced with 
+The `if` statement and entire `switch` statement can be replaced with
 
 ```go
 total += digit + pos%2*(digit+digit/5)
@@ -138,18 +138,17 @@ the extra `10` in the higher-number calculations is effectively factored out.
 
 To understand how this works, you can see in the following table for `digit + (digit + digit/5)`
 
-| Value   | Desired Value | Actual Value | How                            |
-| ------- | ------------- | ------------ | -----------------------------  |
-|       1 |             2 |            2 |  1 + (1 + 1/5(0)) = 2)  |
-|       2 |             4 |            4 |  2 + (2 + 2/5(0)) = 4)  |
-|       3 |             6 |            6 |  3 + (3 + 3/5(0)) = 6)  |
-|       4 |             8 |            8 |  4 + (4 + 4/5(0)) = 8)  |
-|       5 |             1 |           11 |  5 + (5 + 5/5(1)) = 11) |
-|       6 |             3 |           13 |  6 + (6 + 6/5(1)) = 13) |
-|       7 |             5 |           15 |  7 + (7 + 7/5(1)) = 15) |
-|       8 |             7 |           17 |  8 + (8 + 8/5(1)) = 17) |
-|       9 |             9 |           19 |  9 + (9 + 9/5(1)) = 19) |
-
+| Value | Desired Value | Actual Value | How                    |
+| ----- | ------------- | ------------ | ---------------------- |
+| 1     | 2             | 2            | 1 + (1 + 1/5(0)) = 2)  |
+| 2     | 4             | 4            | 2 + (2 + 2/5(0)) = 4)  |
+| 3     | 6             | 6            | 3 + (3 + 3/5(0)) = 6)  |
+| 4     | 8             | 8            | 4 + (4 + 4/5(0)) = 8)  |
+| 5     | 1             | 11           | 5 + (5 + 5/5(1)) = 11) |
+| 6     | 3             | 13           | 6 + (6 + 6/5(1)) = 13) |
+| 7     | 5             | 15           | 7 + (7 + 7/5(1)) = 15) |
+| 8     | 7             | 17           | 8 + (8 + 8/5(1)) = 17) |
+| 9     | 9             | 19           | 9 + (9 + 9/5(1)) = 19) |
 
 The benchmarks were as follows:
 

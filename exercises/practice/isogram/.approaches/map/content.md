@@ -46,12 +46,12 @@ In this approach we don't care about the index, so ranging on a `string` is fine
 
 - [`unicode.IsLetter()`][isletter] is used to ignore the character if it is not a Unicode letter.
 - [`unicode.ToLower()`][tolower] is used to ensure the letter is lowercase.
-The occurrence of the letter `a` and the letter `A` count as a repeated letter, so `Alpha` would not be an isogram.
-Lowercasing `A` to `a` makes it easier to check for the repeated `a`.
+  The occurrence of the letter `a` and the letter `A` count as a repeated letter, so `Alpha` would not be an isogram.
+  Lowercasing `A` to `a` makes it easier to check for the repeated `a`.
 
 - An [`if` with a short statement][if-assignment] is used to both assign the `exists` variable and to test if it's `true`.
-If it is `true`, then the letter has been used before, and the function returns `false`.
-If it is not `true`, the control falls through to the next statement, which creates the letter key and assigns it the empty struct value.
+  If it is `true`, then the letter has been used before, and the function returns `false`.
+  If it is not `true`, the control falls through to the next statement, which creates the letter key and assigns it the empty struct value.
 
 If the loop finishes without returning `false`, then no letters are repeated, and the function returns `true`.
 

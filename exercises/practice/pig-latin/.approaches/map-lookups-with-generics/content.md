@@ -69,7 +69,7 @@ More info on implementing a set in Go can be found [here](https://yourbasic.org/
 An [interface type][interface-type] is then defined which will be used to constain which types are to be used for the [generics][generics]:
 
 > Generics are a way of writing code that is independent of the specific types being used.
-  Functions and types may now be written to use any of a set of types.
+> Functions and types may now be written to use any of a set of types.
 
 Since there can not be multiple [`if` with short statements][if-with-short-statement] on the same line,
 the `contains()` function is defined which takes a generic type parameter of `[T container]`.

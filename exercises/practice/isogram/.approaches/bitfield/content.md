@@ -40,15 +40,16 @@ For example, if the first unicode character is two bytes, then the second unicod
 As of the time of this writing we can iterate bytes, since all of the characters are ASCII.
 
 The `string` is looped through its characters, looking for a character being `a` through `z` or `A` through `Z`.
+
 - The ASCII value for `a` is `97`, and for `z` is `122`.
 - The ASCII value for `A` is `65`, and for `Z` is `90`.
 
-- If the lower-cased letter is subtracted by `a`, then `a` will result in `0`, because `97` minus `97`  equals `0`.
-`z` would result in `25`, because `122` minus `97` equals `25`.
-So `a` would have `1` [shifted left][shift-left] 0 places (so not shifted at all) and `z` would have `1` shifted left 25 places.
-- If the upper-cased letter is subtracted by `A`, then `A` will result in `0`, because `65` minus `65`  equals `0`.
-`Z` would result in `25`, because `90` minus `65` equals `25`.
-So `A` would have `1` [shifted left][shift-left] 0 places (so not shifted at all) and `Z` would have `1` shifted left 25 places.
+- If the lower-cased letter is subtracted by `a`, then `a` will result in `0`, because `97` minus `97` equals `0`.
+  `z` would result in `25`, because `122` minus `97` equals `25`.
+  So `a` would have `1` [shifted left][shift-left] 0 places (so not shifted at all) and `z` would have `1` shifted left 25 places.
+- If the upper-cased letter is subtracted by `A`, then `A` will result in `0`, because `65` minus `65` equals `0`.
+  `Z` would result in `25`, because `90` minus `65` equals `25`.
+  So `A` would have `1` [shifted left][shift-left] 0 places (so not shifted at all) and `Z` would have `1` shifted left 25 places.
 
 In that way, both a lower-cased `z` and an upper-cased `Z` can share the same position in the bit field.
 

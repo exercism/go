@@ -79,7 +79,7 @@ Besides the aforementioned, idiomatic approaches, you could also approach the ex
 ### Other approach: `switch` on strings
 
 The input can be split into each character being a separate string.
-A  `switch` can be used to look up the score for each single-letter string.
+A `switch` can be used to look up the score for each single-letter string.
 
 For more information, check the [`switch` on strings approach][approach-switch-on-strings].
 

@@ -7,7 +7,6 @@ The [approaches page][approaches] lists two idiomatic approaches to this exercis
 1. [Typing `Clock` as an `int`][approach-clock-as-int]
 2. [Typing `Clock` as a `struct`][approach-clock-as-struct]
 
-
 ## Benchmarks
 
 To benchmark the approaches, we ran the following Benchmark code for each approach:

@@ -33,11 +33,11 @@ func IsValidISBN(input string) bool {
 }
 ```
 
-This approach starts be defining a helper function to return an `int` for a [`byte`][bytes] if the `byte` is the [ASCII][ascii]  value for a number.
+This approach starts be defining a helper function to return an `int` for a [`byte`][bytes] if the `byte` is the [ASCII][ascii] value for a number.
 The helper function is defined with [named return values][named-return-values] which are initialized with their [zero values][zero-values].
 If the `byte` is not an ASCII number it immediately returns `0, false` to indicate that the `byte` is not a digit.
 Otherwise it returns the ASCII value of the byte subtracted by the ASCII value of `0`, and `true`.
- 
+
 The `IsValidISBN()` function starts be defining variables for iterating the characters in the input `string`.
 
 The ways to iterate characters are by Unicode runes, or by each letter being a string, or by each letter being a byte.
@@ -58,7 +58,7 @@ Most characters will usually be a digit, and the happy path is indented only onc
 If the character is a digit, then it is multiplied by its position and is added to the sum,
 and the position is decremented.
 
-Otherwise, if the position is `1`  and the character is an `X`, then `10` is added to the sum,
+Otherwise, if the position is `1` and the character is an `X`, then `10` is added to the sum,
 and the position is decremented.
 
 If neither of those two conditions apply, then, if the character is not a dash,
@@ -68,7 +68,7 @@ If the character is a dash, then the loop continues without decrementing the pos
 After the loop finishes, the function returns whether the position is at the expected value of `0`,
 and if the sum is evenly divisible by 11.
 
-[bytes]: https://pkg.go.dev/bytes 
+[bytes]: https://pkg.go.dev/bytes
 [ascii]: https://www.asciitable.com/
 [named-return-values]: https://yourbasic.org/golang/named-return-values-parameters/
 [zero-values]: https://yourbasic.org/golang/default-zero-value/

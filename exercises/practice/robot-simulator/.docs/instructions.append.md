@@ -25,7 +25,7 @@ Complete step 1 before moving on to step 2.
 ## Step 2
 
 For step 1 you implemented robot movements, but it's not much of a simulation.
-For example where in the source code is "the robot"?  Where is "the grid"?
+For example where in the source code is "the robot"? Where is "the grid"?
 Where are the computations that turn robot actions into grid positions, in the robot, or in the grid?
 The physical world is different.
 
@@ -50,18 +50,18 @@ When it senses the robot shutting down, it sends a final report back to the test
 
 Step 3 has three major changes:
 
-* Robots run scripts rather than respond to individual commands.
-* A log channel allows robots and the room to log messages.
-* The room allows multiple robots to exist and operate concurrently.
+- Robots run scripts rather than respond to individual commands.
+- A log channel allows robots and the room to log messages.
+- The room allows multiple robots to exist and operate concurrently.
 
 For the final position report sent from Room3, you can return the same slice received from the robots channel, just with updated positions and directions.
 Messages must be sent on the log channel for
 
-* A robot without a name
-* Duplicate robot names
-* Robots placed at the same place
-* A robot placed outside of the room
-* An undefined command in a script
-* An action from an unknown robot
-* A robot attempting to advance into a wall
-* A robot attempting to advance into another robot
+- A robot without a name
+- Duplicate robot names
+- Robots placed at the same place
+- A robot placed outside of the room
+- An undefined command in a script
+- An action from an unknown robot
+- A robot attempting to advance into a wall
+- A robot attempting to advance into another robot

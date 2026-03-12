@@ -21,12 +21,12 @@ It does this by using the [modulus operator][modulus-operator].
 If the year is evenly divisible by `100`, then the expression is `true`, and the function returns if the year is evenly divisible by `400`.
 If the year is _not_ evenly divisible by `100`, then the expression is `false`, and the function returns if the year is evenly divisible by `4`.
 
-| year | year % 100 == 0 | year % 400 == 0 | year % 4 == 0  | is leap year |
-| ---- | --------------- | --------------- | -------------- | ------------ |
-| 2020 |           false |   not evaluated |           true |        true  |
-| 2019 |           false |   not evaluated |          false |       false  |
-| 2000 |           true  |            true |  not evaluated |        true  |
-| 1900 |           true  |           false |  not evaluated |        false |
+| year | year % 100 == 0 | year % 400 == 0 | year % 4 == 0 | is leap year |
+| ---- | --------------- | --------------- | ------------- | ------------ |
+| 2020 | false           | not evaluated   | true          | true         |
+| 2019 | false           | not evaluated   | false         | false        |
+| 2000 | true            | true            | not evaluated | true         |
+| 1900 | true            | false           | not evaluated | false        |
 
 Although it uses a maximum of only two checks, this approach tests an outlier condition of the year being evenly divisible by `100` first,
 which is less likely than the year being evenly divisible by `4`.

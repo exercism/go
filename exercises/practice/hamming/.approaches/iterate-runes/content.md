@@ -17,7 +17,7 @@ func Distance(strand1 string, strand2 string) (distance int, err error) {
 
 	strand1Runes := []rune(strand1)
 	strand2Runes := []rune(strand2)
-	
+
 	for idx, rooney := range strand1Runes {
 		if rooney != strand2Runes[idx] {
 			distance++

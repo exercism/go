@@ -74,7 +74,6 @@ If the codon look-up is "STOP", then the the error is set for a stopped codon.
 If the look-up of the codon is not matched by any switch case, then the error is set for an invalid codon.
 The function then returns whatever the values are for the protein and the error.
 
-
 The `FromRNA()` function is also defined with [named return values][named-return-values] which are initialized with their [zero values][zero-values].
 The [`for`][for] loop in `FromRNA()` starts at `0` and increments by the codon length of 3 until reaching the [len()][len] of the RNA strand.
 In each iteration of the loop, a [slice][slice] of the RNA strand is passed to the `FromCodon()` function, which returns the protein and an error.

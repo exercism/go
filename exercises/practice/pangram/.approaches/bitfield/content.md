@@ -38,6 +38,7 @@ For example, if the first unicode character is two bytes, then the second unicod
 As of the time of this writing we can iterate bytes, since all of the characters are ASCII.
 
 The `string` is looped through its characters, looking for a character being `a` through `z` or `A` through `Z`.
+
 - The ASCII value for `a` is `97`, and for `z` is `122`.
 - The ASCII value for `A` is `65`, and for `Z` is `90`.
 

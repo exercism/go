@@ -35,10 +35,10 @@ A [`switch` with no condition][switch-no-condition] is used to check the value o
 - If the element at the index of the middle value matches the value being searched for, then the middle value is returned.
 
 - If the value being searched for is less than the element at the index of the middle value, then `right` is set to the middle value
-so that the next iteration will look at lower numbers.
+  so that the next iteration will look at lower numbers.
 
 - Otherwise, the value being searched is greater than the element at the index of the middle value, so `left` is set to the middle value
-plus one so that the next iteration will look for higher numbers.
+  plus one so that the next iteration will look for higher numbers.
 
 If `left` and `right` are changed during the iterations so that they equal other, then the value being searched for is not in the slice of `int`s.
 The loop exits and `-1` is returned from the function.

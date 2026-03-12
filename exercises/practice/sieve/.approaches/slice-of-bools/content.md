@@ -40,13 +40,13 @@ numbers to `true` for being a composite number.
 
 After the outer loop is done, a slice of the primes slice up to but not including the prime index is returned.
 
-For example if `limit` is `2`, then the slice  of primes would be made with a length of `1`.
+For example if `limit` is `2`, then the slice of primes would be made with a length of `1`.
 The element at index `0` would be set to `2` and the prime index incremented to `1`.
 The slice of primes would be sliced from the beginning up to but not including the element at index `1`
 (good, since index `1` is beyond the length of the slice),
 and `[]int{2}` would be returned.
 
-if `limit` is `10`, then the slice  of primes would be made with a length of `5`.
+if `limit` is `10`, then the slice of primes would be made with a length of `5`.
 The last prime would be `7`.
 The element at index `3` would be set to `7` and the prime index incremented to `4`.
 The slice of primes would be sliced from the beginning up to but not including the element at index `4`,
