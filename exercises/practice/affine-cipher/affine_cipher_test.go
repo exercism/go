@@ -12,18 +12,14 @@ func runTests(
 ) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			got, err := op(tc.inputPhrase, tc.inputA, tc.inputB)
-			if err != nil {
+			if got, err := op(tc.inputPhrase, tc.inputA, tc.inputB); err != nil {
 				if !tc.expectError {
 					t.Fatalf("%s(%s, %d, %d) returned unexpected error %v", name, tc.inputPhrase, tc.inputA, tc.inputB, err)
 				}
-				return
-			}
-			if tc.expectError {
-				t.Fatalf("%s(%s, %d, %d) expected error, got %v", name, tc.inputPhrase, tc.inputA, tc.inputB, got)
-			}
-			if tc.expected != got {
-				t.Fatalf("%s(%s, %d, %d) = %s, expected: %s", name, tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
+			} else if tc.expectError {
+				t.Fatalf("%s(%s, %d, %d) expected error, got %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got)
+			} else if tc.expected != got {
+				t.Fatalf("%s(%s, %d, %d) = %q, expected: %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
 			}
 		})
 	}
