@@ -2,6 +2,7 @@ package main
 
 import (
 	"../../../../gen"
+	"fmt"
 	"log"
 	"strings"
 	"text/template"
@@ -29,13 +30,13 @@ type testCase struct {
 	Expected []string `json:"expected"`
 }
 
-func (tc testCase) Children() []string {
+func (tc testCase) Children() string {
 	children := []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"}
 	count := len(strings.Split(tc.Input.Diagram, "\n")[1])/2
 	if count == 12 {
-		return []string{}
+		return "nil"
 	}
-	return children[:count]
+	return fmt.Sprintf("%#v", children[:count])
 }
 
 var tmpl = `{{.Header}}
@@ -58,7 +59,7 @@ var testCases = []gardenTest { {{range .J.plants}}
 	{
 		description: 	{{printf "%q" .Description}},
 		diagram:        "\n" + {{printf "%q" .Input.Diagram}},
-		children:       {{printf "%#v" .Children}},
+		children:       {{.Children}},
 		expectError:    false,
 		lookups:        []lookup{
 			{

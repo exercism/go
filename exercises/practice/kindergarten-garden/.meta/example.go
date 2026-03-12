@@ -14,7 +14,7 @@ func (g *Garden) Plants(child string) ([]string, bool) {
 }
 
 func NewGarden(diagram string, children []string) (*Garden, error) {
-	if len(children) == 0 {
+	if children == nil {
 		children = []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"}
 	}
 	rows := strings.Split(diagram, "\n")
