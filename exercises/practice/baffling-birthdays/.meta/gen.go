@@ -12,7 +12,7 @@ func main() {
 		log.Fatal(err)
 	}
 	j := map[string]any{
-		"sharedBirthday": &[]sharedTestCase{},
+		"sharedBirthday":                       &[]sharedTestCase{},
 		"estimatedProbabilityOfSharedBirthday": &[]probabilityTestCase{},
 		// These tests are hand written.
 		"randomBirthdates": &[]interface{}{},

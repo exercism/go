@@ -22,8 +22,8 @@ func main() {
 type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
-		Name string `json:"name"`
-		Number int `json:"number"`
+		Name   string `json:"name"`
+		Number int    `json:"number"`
 	} `json:"input"`
 	Expected string `json:"expected"`
 }

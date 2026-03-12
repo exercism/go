@@ -1,6 +1,6 @@
 package splitsecondstopwatch
 
-type SplitSecondStopwatch struct {}
+type SplitSecondStopwatch struct{}
 
 func (sss *SplitSecondStopwatch) Start() error {
 	panic("Please implement the Start function")

@@ -23,10 +23,10 @@ type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
 		Cage struct {
-			Sum int `json:"sum"`
-			Size int `json:"size"`
+			Sum     int   `json:"sum"`
+			Size    int   `json:"size"`
 			Exclude []int `json:"exclude"`
-		}`json:"cage"`
+		} `json:"cage"`
 	} `json:"input"`
 	Expected [][]int `json:"expected"`
 }

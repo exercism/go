@@ -23,7 +23,7 @@ type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
 		MeetingStart string `json:"meetingStart"`
-		Description string `json:"description"`
+		Description  string `json:"description"`
 	} `json:"input"`
 	Expected string `json:"expected"`
 }

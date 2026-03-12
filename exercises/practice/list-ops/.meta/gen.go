@@ -15,13 +15,13 @@ func main() {
 		log.Fatal(err)
 	}
 	j := map[string]any{
-		"append": &[]testCaseAppend{},
-		"concat": &[]testCaseConcat{},
-		"filter": &[]testCaseFilter{},
-		"foldl": &[]testCaseFoldl{},
-		"foldr": &[]testCaseFoldr{},
-		"length": &[]testCaseLength{},
-		"map": &[]testCaseMap{},
+		"append":  &[]testCaseAppend{},
+		"concat":  &[]testCaseConcat{},
+		"filter":  &[]testCaseFilter{},
+		"foldl":   &[]testCaseFoldl{},
+		"foldr":   &[]testCaseFoldr{},
+		"length":  &[]testCaseLength{},
+		"map":     &[]testCaseMap{},
 		"reverse": &[]testCaseReverse{},
 	}
 	if err := gen.Gen("list-ops", j, t); err != nil {
@@ -31,8 +31,8 @@ func main() {
 
 type Operation struct {
 	Operation string `json:"operation"`
-	Value int `json:"value"`
-	Expected int `json:"expected"`
+	Value     int    `json:"value"`
+	Expected  int    `json:"expected"`
 }
 
 func (op Operation) String() string {
@@ -46,7 +46,7 @@ func (op Operation) String() string {
 
 type testCaseAppend struct {
 	Description string `json:"description"`
-	Input       struct{
+	Input       struct {
 		List1 []int `json:"list1"`
 		List2 []int `json:"list2"`
 	} `json:"input"`
@@ -55,7 +55,7 @@ type testCaseAppend struct {
 
 type testCaseConcat struct {
 	Description string `json:"description"`
-	Input       struct{
+	Input       struct {
 		Lists [][]int `json:"lists"`
 	} `json:"input"`
 	Expected []int `json:"expected"`
@@ -63,8 +63,8 @@ type testCaseConcat struct {
 
 type testCaseFilter struct {
 	Description string `json:"description"`
-	Input       struct{
-		List []int `json:"list"`
+	Input       struct {
+		List     []int  `json:"list"`
 		Function string `json:"function"`
 	} `json:"input"`
 	Expected []int `json:"expected"`
@@ -72,9 +72,9 @@ type testCaseFilter struct {
 
 type testCaseFoldl struct {
 	Description string `json:"description"`
-	Input       struct{
-		List []int `json:"list"`
-		Initial int `json:"initial"`
+	Input       struct {
+		List     []int  `json:"list"`
+		Initial  int    `json:"initial"`
 		Function string `json:"function"`
 	} `json:"input"`
 	Expected int `json:"expected"`
@@ -82,9 +82,9 @@ type testCaseFoldl struct {
 
 type testCaseFoldr struct {
 	Description string `json:"description"`
-	Input       struct{
-		List []int `json:"list"`
-		Initial int `json:"initial"`
+	Input       struct {
+		List     []int  `json:"list"`
+		Initial  int    `json:"initial"`
 		Function string `json:"function"`
 	} `json:"input"`
 	Expected int `json:"expected"`
@@ -92,7 +92,7 @@ type testCaseFoldr struct {
 
 type testCaseLength struct {
 	Description string `json:"description"`
-	Input       struct{
+	Input       struct {
 		List []int `json:"list"`
 	} `json:"input"`
 	Expected int `json:"expected"`
@@ -100,8 +100,8 @@ type testCaseLength struct {
 
 type testCaseMap struct {
 	Description string `json:"description"`
-	Input       struct{
-		List []int `json:"list"`
+	Input       struct {
+		List     []int  `json:"list"`
 		Function string `json:"function"`
 	} `json:"input"`
 	Expected []int `json:"expected"`
@@ -109,7 +109,7 @@ type testCaseMap struct {
 
 type testCaseReverse struct {
 	Description string `json:"description"`
-	Input       struct{
+	Input       struct {
 		List []int `json:"list"`
 	} `json:"input"`
 	Expected []int `json:"expected"`

@@ -13,14 +13,14 @@ func main() {
 		log.Fatal(err)
 	}
 	j := map[string]any{
-		"abs": &[]testCaseUnaryRationalToRational{},
-		"add": &[]testCaseBinaryRationalToRational{},
-		"div": &[]testCaseBinaryRationalToRational{},
-		"mul": &[]testCaseBinaryRationalToRational{},
-		"sub": &[]testCaseBinaryRationalToRational{},
+		"abs":         &[]testCaseUnaryRationalToRational{},
+		"add":         &[]testCaseBinaryRationalToRational{},
+		"div":         &[]testCaseBinaryRationalToRational{},
+		"mul":         &[]testCaseBinaryRationalToRational{},
+		"sub":         &[]testCaseBinaryRationalToRational{},
 		"exprational": &[]testCaseExprational{},
-		"expreal": &[]testCaseExpreal{},
-		"reduce": &[]testCaseUnaryRationalToRational{},
+		"expreal":     &[]testCaseExpreal{},
+		"reduce":      &[]testCaseUnaryRationalToRational{},
 	}
 	if err := gen.Gen("rational-numbers", j, t); err != nil {
 		log.Fatal(err)
@@ -47,20 +47,20 @@ type testCaseUnaryRationalToRational struct {
 	Input       struct {
 		R Rational `json:"r"`
 	} `json:"input"`
-	Expected    Rational `json:"expected"`
+	Expected Rational `json:"expected"`
 }
 
 type testCaseBinaryRationalToRational struct {
-	Description string `json:"description"`
+	Description string       `json:"description"`
 	Input       RationalPair `json:"input"`
-	Expected    Rational `json:"expected"`
+	Expected    Rational     `json:"expected"`
 }
 
 type testCaseExprational struct {
 	Description string `json:"description"`
 	Input       struct {
 		R Rational `json:"r"`
-		N int `json:"n"`
+		N int      `json:"n"`
 	} `json:"input"`
 	Expected Rational `json:"expected"`
 }
@@ -68,7 +68,7 @@ type testCaseExprational struct {
 type testCaseExpreal struct {
 	Description string `json:"description"`
 	Input       struct {
-		X int `json:"x"`
+		X int      `json:"x"`
 		R Rational `json:"r"`
 	} `json:"input"`
 	Expected float64 `json:"expected"`

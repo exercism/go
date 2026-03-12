@@ -32,7 +32,7 @@ type testCase struct {
 
 func (tc testCase) Children() string {
 	children := []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"}
-	count := len(strings.Split(tc.Input.Diagram, "\n")[1])/2
+	count := len(strings.Split(tc.Input.Diagram, "\n")[1]) / 2
 	if count == 12 {
 		return "nil"
 	}

@@ -4,7 +4,7 @@ import "fmt"
 
 func Format(name string, number int) string {
 	suffix := "th"
-	if number % 100 / 10 != 1 {
+	if number%100/10 != 1 {
 		switch number % 10 {
 		case 1:
 			suffix = "st"

@@ -24,7 +24,7 @@ type testCase struct {
 	Description string `json:"description"`
 	Input       struct {
 		Preorder []string `json:"preorder"`
-		Inorder []string `json:"inorder"`
+		Inorder  []string `json:"inorder"`
 	} `json:"input"`
 	Expected map[string]any `json:"expected"`
 }

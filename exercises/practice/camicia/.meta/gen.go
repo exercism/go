@@ -21,15 +21,15 @@ func main() {
 
 type testCase struct {
 	Description string `json:"description"`
-	Input struct {
+	Input       struct {
 		PlayerA []string `json:"playerA"`
 		PlayerB []string `json:"playerB"`
 	} `json:"input"`
 	Expected struct {
 		Status string `json:"status"`
-		Cards int `json:"cards"`
-		Tricks int `json:"tricks"`
-	}`json:"expected"`
+		Cards  int    `json:"cards"`
+		Tricks int    `json:"tricks"`
+	} `json:"expected"`
 }
 
 var tmpl = `{{.Header}}

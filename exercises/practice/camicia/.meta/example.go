@@ -11,19 +11,19 @@ type Outcome struct {
 var Penalty = map[string]int{"A": 4, "K": 3, "Q": 2, "J": 1}
 
 type Game struct {
-	hands [2][]string
-	middle []string
-	seen [][]string
+	hands     [2][]string
+	middle    []string
+	seen      [][]string
 	curPlayer int
-	cards int
-	tricks int
-	loop bool
+	cards     int
+	tricks    int
+	loop      bool
 }
 
 // Return if the game should stop.
 // The game stops if one player has all the cards of if we are in a loop.
 func (g *Game) gameOver() bool {
-	if len(g.middle) == 0 && len(g.hands[0]) * len(g.hands[1]) == 0 {
+	if len(g.middle) == 0 && len(g.hands[0])*len(g.hands[1]) == 0 {
 		return true
 	}
 	state := append(g.hands[0], "SEP")
@@ -39,14 +39,14 @@ func (g *Game) gameOver() bool {
 	return g.loop
 }
 
-func (g *Game) endTurn(){
-	g.curPlayer = 1-g.curPlayer
+func (g *Game) endTurn() {
+	g.curPlayer = 1 - g.curPlayer
 }
 
 // Add the middle pile to the player's hand.
 func (g *Game) collectMiddle() {
-        g.hands[g.curPlayer] = append(g.hands[g.curPlayer], g.middle...)
-        g.tricks++
+	g.hands[g.curPlayer] = append(g.hands[g.curPlayer], g.middle...)
+	g.tricks++
 	g.middle = g.middle[:0]
 }
 
@@ -54,8 +54,8 @@ func (g *Game) collectMiddle() {
 func (g *Game) playOneCard() string {
 	card := g.hands[g.curPlayer][0]
 	g.hands[g.curPlayer] = g.hands[g.curPlayer][1:]
-        g.middle = append(g.middle, card)
-        g.cards++
+	g.middle = append(g.middle, card)
+	g.cards++
 	return card
 }
 
@@ -70,9 +70,9 @@ func (g *Game) resolvePenalty(penalty int) {
 		}
 	}
 
-        // Collect the pile.
-        g.endTurn()
-        g.collectMiddle()
+	// Collect the pile.
+	g.endTurn()
+	g.collectMiddle()
 }
 
 // Return the outcome of the game.
@@ -111,9 +111,9 @@ func SimulateGame(playerA, playerB []string) Outcome {
 		hands[i] = hand
 	}
 	g := &Game{
-		hands: hands,
+		hands:  hands,
 		middle: []string{},
-		seen: [][]string{},
+		seen:   [][]string{},
 	}
 	got := g.play()
 	return got
