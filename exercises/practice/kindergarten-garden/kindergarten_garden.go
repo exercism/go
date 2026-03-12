@@ -9,6 +9,9 @@ package kindergarten
 //     diagram := `
 //     VVCCGG
 //     VVCCGG`
+//
+// If the children argument is empty, use the list of children defined in the instructions.
+// If it is not empty, use the given value.
 
 func NewGarden(diagram string, children []string) (*Garden, error) {
 	panic("Please implement the NewGarden function")
