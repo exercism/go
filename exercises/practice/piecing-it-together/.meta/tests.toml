@@ -1,0 +1,31 @@
+# This is an auto-generated file.
+#
+# Regenerating this file via `configlet sync` will:
+# - Recreate every `description` key/value pair
+# - Recreate every `reimplements` key/value pair, where they exist in problem-specifications
+# - Remove any `include = true` key/value pair (an omitted `include` key implies inclusion)
+# - Preserve any other key/value pair
+#
+# As user-added comments (using the # character) will be removed when this file
+# is regenerated, comments can be added via a `comment` key.
+
+[ad626f23-09a2-4f5f-ba22-eec0671fa2a9]
+description = "1000 pieces puzzle with 1.6 aspect ratio"
+
+[3e0c5919-3561-42f5-b9ed-26d70c20214e]
+description = "square puzzle with 32 rows"
+
+[1126f160-b094-4dc2-bf37-13e36e394867]
+description = "400 pieces square puzzle with only inside pieces and aspect ratio"
+
+[a9743178-5642-4cc0-8fdb-00d6b031c3a0]
+description = "1500 pieces landscape puzzle with 30 rows and 1.6 aspect ratio"
+
+[f6378369-989c-497f-a6e2-f30b1fa76cba]
+description = "300 pieces portrait puzzle with 70 border pieces"
+
+[f53f82ba-5663-4c7e-9e86-57fdbb3e53d2]
+description = "puzzle with insufficient data"
+
+[a3d5c31a-cc74-44bf-b4fc-9e4d65f1ac1a]
+description = "puzzle with contradictory data"

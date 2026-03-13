@@ -2092,19 +2092,6 @@
         ]
       },
       {
-        "slug": "zebra-puzzle",
-        "name": "Zebra Puzzle",
-        "uuid": "e31199ac-e657-4997-b931-63893a575c08",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 6,
-        "topics": [
-          "algorithms",
-          "arrays",
-          "searching"
-        ]
-      },
-      {
         "slug": "ocr-numbers",
         "name": "OCR Numbers",
         "uuid": "13e58d89-4dbb-4384-9268-2f8083588d7a",
@@ -2115,6 +2102,14 @@
           "parsing",
           "pattern_recognition"
         ]
+      },
+      {
+        "slug": "piecing-it-together",
+        "name": "Piecing It Together",
+        "uuid": "8fc12ac9-5ed7-4c33-be33-4ad35b544fa0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "react",
@@ -2176,6 +2171,19 @@
           "domain_specific_languages",
           "parsing",
           "stacks"
+        ]
+      },
+      {
+        "slug": "zebra-puzzle",
+        "name": "Zebra Puzzle",
+        "uuid": "e31199ac-e657-4997-b931-63893a575c08",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8,
+        "topics": [
+          "algorithms",
+          "arrays",
+          "searching"
         ]
       },
       {
