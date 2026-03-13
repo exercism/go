@@ -44,11 +44,7 @@ func TestNeedsLicense(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			actual := NeedsLicense(test.kind)
 			if actual != test.expected {
-				t.Errorf(
-					"NeedsLicense(%q) = %t, want %t",
-					test.kind,
-					actual,
-					test.expected)
+				t.Errorf("NeedsLicense(%q) = %t, want %t", test.kind, actual, test.expected)
 			}
 		})
 	}
@@ -93,23 +89,13 @@ func TestChooseVehicle(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			actual := ChooseVehicle(test.choice1, test.choice2)
 			if actual != test.expected {
-				t.Errorf(
-					"ChooseVehicle(%q, %q) = %q, want %q",
-					test.choice1,
-					test.choice2,
-					actual,
-					test.expected)
+				t.Errorf("ChooseVehicle(%q, %q) = %q, want %q", test.choice1, test.choice2, actual, test.expected)
 			}
 
 			// The result should be independent of the order in which the choices are given.
 			actual = ChooseVehicle(test.choice2, test.choice1)
 			if actual != test.expected {
-				t.Errorf(
-					"ChooseVehicle(%q, %q) = %q, want %q",
-					test.choice2,
-					test.choice1,
-					actual,
-					test.expected)
+				t.Errorf("ChooseVehicle(%q, %q) = %q, want %q", test.choice2, test.choice1, actual, test.expected)
 			}
 		})
 	}
@@ -170,12 +156,7 @@ func TestCalculateResellPrice(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			actual := CalculateResellPrice(test.originalPrice, test.age)
 			if !floatingPointEquals(actual, test.expected) {
-				t.Errorf(
-					"CalculateResellPrice(%v, %v) = %v, want %v",
-					test.originalPrice,
-					test.age,
-					actual,
-					test.expected)
+				t.Errorf("CalculateResellPrice(%v, %v) = %v, want %v", test.originalPrice, test.age, actual, test.expected)
 			}
 		})
 	}

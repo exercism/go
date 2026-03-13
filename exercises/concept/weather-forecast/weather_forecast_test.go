@@ -63,7 +63,7 @@ func testIdentifierComment(t *testing.T, node *ast.GenDecl) {
 
 	identifierName := node.Specs[0].(*ast.ValueSpec).Names[0].Name
 	if node.Doc == nil {
-		t.Errorf("Exported identifier %s should have a comment", identifierName)
+		t.Errorf("Exported identifier %q should have a comment", identifierName)
 	}
 
 	identifierComment := node.Doc.Text()
@@ -79,7 +79,7 @@ func testBlockIdentifierComment(t *testing.T, node *ast.ValueSpec) {
 
 	identifierName := node.Names[0].Name
 	if node.Doc == nil {
-		t.Errorf("Exported identifier %s should have a comment", identifierName)
+		t.Errorf("Exported identifier %q should have a comment", identifierName)
 	}
 
 	identifierComment := node.Doc.Text()

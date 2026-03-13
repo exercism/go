@@ -44,13 +44,13 @@ func testWrite(t *testing.T, writer func(io.Writer) WriteCounter) {
 				continue
 			}
 			if n != len(s) {
-				t.Errorf("test %d: Write(%q) unexpected number of bytes written: %v", i, s, n)
+				t.Errorf("test %d: Write(%q) wrote %d bytes, expected %d bytes", i, s, n, len(s))
 				continue
 			}
 		}
 		out := buf.String()
-		if out != strings.Join(test.writes, "") {
-			t.Errorf("test %d: unexpected content in underlying writer: %q", i, out)
+		if expected := strings.Join(test.writes, ""); out != expected {
+			t.Errorf("test %d: wrote %q, want %q", i, out, expected)
 		}
 	}
 }
@@ -73,24 +73,24 @@ func testRead(t *testing.T, reader func(io.Reader) ReadCounter) {
 	orig := make([]byte, 10<<20)
 	_, err := rand.Read(orig)
 	if err != nil {
-		t.Fatalf("error reading random data")
+		t.Fatalf("error reading random data, %v", err)
 	}
 	buf := bytes.NewBuffer(orig)
 	rc := reader(buf)
 	var obuf bytes.Buffer
 	ncopy, err := io.Copy(&obuf, rc)
 	if err != nil {
-		t.Fatalf("error reading: %v", err)
+		t.Fatalf("unexpected error reading: %v", err)
 	}
 	if ncopy != int64(chunkLen) {
-		t.Fatalf("copied %d bytes instead of %d", ncopy, chunkLen)
+		t.Fatalf("copied %d bytes, expected %d", ncopy, chunkLen)
 	}
 	if string(orig) != obuf.String() {
-		t.Fatalf("unexpected output from Read()")
+		t.Fatalf("Read() = %q, want %q", obuf.String(), string(orig))
 	}
 	n, nops := rc.ReadCount()
 	if n != int64(chunkLen) {
-		t.Fatalf("reported %d bytes read instead of %d", n, chunkLen)
+		t.Fatalf("reported %d bytes read, expected  %d", n, chunkLen)
 	}
 	if nops < 2 {
 		t.Fatalf("unexpected number of reads: %v", nops)

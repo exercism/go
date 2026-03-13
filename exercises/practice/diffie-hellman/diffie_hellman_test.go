@@ -85,12 +85,10 @@ func TestPrivateKey(t *testing.T) {
 		mb[priv(biggerTest.p).String()] = true
 	}
 	if len(ms) == 1 {
-		t.Fatalf("For prime %s same key generated every time.  "+
-			"Want random keys.", smallTest.p.String())
+		t.Fatalf("For prime %s same key generated every time. Want random keys.", smallTest.p.String())
 	}
 	if len(mb) < 100 {
-		t.Fatalf("For prime %s duplicate keys generated.  "+
-			"Want unique keys.", biggerTest.p.String())
+		t.Fatalf("For prime %s duplicate keys generated. Want unique keys.", biggerTest.p.String())
 	}
 }
 
@@ -98,8 +96,7 @@ func TestPrivateKey(t *testing.T) {
 func TestPublicKey(t *testing.T) {
 	tp := func(a, A, p *big.Int, g int64) {
 		if k := PublicKey(a, p, g); k.Cmp(A) != 0 {
-			t.Fatalf("PublicKey(%x,\n%x,\n%d)\n= %x,\nwant %x.",
-				a, p, g, k, A)
+			t.Fatalf("PublicKey(%x,\n%x,\n%d)\n= %x,\nwant %x.", a, p, g, k, A)
 		}
 	}
 	for _, test := range tests {
@@ -112,8 +109,7 @@ func TestPublicKey(t *testing.T) {
 func TestSecretKeys(t *testing.T) {
 	tp := func(a, B, p, s *big.Int) {
 		if k := SecretKey(a, B, p); k.Cmp(s) != 0 {
-			t.Fatalf("SecretKey(%x,\n%x,\n%x)\n= %x,\nwant %x.",
-				a, B, p, k, s)
+			t.Fatalf("SecretKey(%x,\n%x,\n%x)\n= %x,\nwant %x.", a, B, p, k, s)
 		}
 	}
 	for _, test := range tests {
@@ -127,12 +123,10 @@ func TestNewPair(t *testing.T) {
 	p, g := biggerTest.p, biggerTest.g
 	test := func(a, A *big.Int) {
 		if a.Cmp(_one) <= 0 || a.Cmp(p) >= 0 {
-			t.Fatalf("NewPair(%s, %d) private key = %s, out of range (1, %s)",
-				p.String(), g, a.String(), p.String())
+			t.Fatalf("NewPair(%s, %d) private key = %s, out of range (1, %s)", p.String(), g, a.String(), p.String())
 		}
 		if A.Cmp(_one) <= 0 || A.Cmp(p) >= 0 {
-			t.Fatalf("NewPair(%s, %d) public key = %s, out of range (1, %s)",
-				p.String(), g, A.String(), p.String())
+			t.Fatalf("NewPair(%s, %d) public key = %s, out of range (1, %s)", p.String(), g, A.String(), p.String())
 		}
 	}
 	a, A := NewPair(p, g)
@@ -143,7 +137,7 @@ func TestNewPair(t *testing.T) {
 		sa := SecretKey(a, B, p)
 		sb := SecretKey(b, A, p)
 		if sa.Cmp(sb) != 0 {
-			t.Fatalf("NewPair() produced non-working keys.")
+			t.Fatalf("NewPair(%s, %d) produced non-working keys.", p.String(), g)
 		}
 		a, A = b, B
 	}
@@ -167,7 +161,7 @@ func TestDifferentPrivateKey(t *testing.T) {
 	sa := SecretKey(a, B, p)
 	sb := SecretKey(b, A, p)
 	if sa.Cmp(sb) != 0 {
-		t.Fatalf("NewPair() produced non-working keys.")
+		t.Fatalf("NewPair(%s, %d) produced non-working keys.", p.String(), g)
 	}
 }
 

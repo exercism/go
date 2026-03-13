@@ -27,9 +27,7 @@ func TestAddStudent(t *testing.T) {
 	s.Add("Aimee", 2)
 	got := list(s.Enrollment())
 	if got != exp {
-		t.Errorf(`Add Aimee level 2, got
-%sexpected:
-%s`, got, exp)
+		t.Errorf("Add Aimee level 2, got\n%sexpected:\n%s", got, exp)
 	}
 }
 
@@ -41,9 +39,7 @@ func TestAddMoreSameGrade(t *testing.T) {
 	s.Add("Paul", 2)
 	got := list(s.Enrollment())
 	if got != exp {
-		t.Errorf(`Add more same grade, got
-%sexpected:
-%s`, got, exp)
+		t.Errorf("Add more same grade, got\n%sexpected:\n%s", got, exp)
 	}
 }
 
@@ -57,9 +53,7 @@ func TestAddDifferentGrades(t *testing.T) {
 	s.Add("Logan", 7)
 	got := list(s.Enrollment())
 	if got != exp {
-		t.Errorf(`Add different grades, got
-%sexpected:
-%s`, got, exp)
+		t.Errorf("Add different grades, got\n%sexpected:\n%s", got, exp)
 	}
 }
 
@@ -76,20 +70,14 @@ func TestGetGrade(t *testing.T) {
 			return
 		}
 	}
-	t.Errorf(`Get grade, got
-%q
-expected
-%q`, got, exp)
+	t.Errorf("Get grade, got\n%q\nexpected\n%q", got, exp)
 }
 
 func TestNonExistantGrade(t *testing.T) {
 	s := New()
 	got := s.Grade(1)
 	if len(got) != 0 {
-		t.Errorf(`Get non-existent grade, got
-%q
-expected
-[]`, got)
+		t.Errorf("Get non-existent grade, got\n%q\nexpected: []", got)
 	}
 }
 
@@ -106,9 +94,7 @@ func TestSortedEnrollment(t *testing.T) {
 	s.Add("Kyle", 3)
 	got := list(s.Enrollment())
 	if got != exp {
-		t.Errorf(`Sorted enrollment, got
-%sexpected:
-%s`, got, exp)
+		t.Errorf("Sorted enrollment, got\n%sexpected:\n%s", got, exp)
 	}
 }
 
