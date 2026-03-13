@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "piecing_it_together.go"
+    ],
+    "test": [
+      "piecing_it_together_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Fill in missing jigsaw puzzle details from partial data",
+  "source": "atk just started another 1000-pieces jigsaw puzzle when this idea hit him",
+  "source_url": "https://github.com/exercism/problem-specifications/pull/2554"
+}
