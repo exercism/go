@@ -26,7 +26,7 @@ func BenchmarkIsIsogram(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 map
 BenchmarkIsIsogram-12    	  237565	      4960 ns/op	    1201 B/op	      13 allocs/op
 
@@ -38,7 +38,7 @@ BenchmarkIsIsogram-12    	 6214525	       185.2 ns/op	       0 B/op	       0 all
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The fastest is the `Bitfeld` approach, but it depends on all of the letters being [ASCII][ascii].
 The fastest approach that supports Unicode is the `strings.Count()` approach.

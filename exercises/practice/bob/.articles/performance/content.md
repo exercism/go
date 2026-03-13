@@ -25,7 +25,7 @@ func BenchmarkHey(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 if statements
 BenchmarkHey-12    	  624798	      1746 ns/op	     432 B/op	      12 allocs/op
 
@@ -37,7 +37,7 @@ BenchmarkHey-12    	  632600	      1819 ns/op	     432 B/op	      12 allocs/op
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 Benchmarks can vary between one run and another by as much as a hundred nanoseconds,
 so these values represent the fastest results from several runs.

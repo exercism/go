@@ -23,7 +23,7 @@ func BenchmarkPangram(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 bit field
 BenchmarkPangram-12    	 6435968	       164.8 ns/op	       0 B/op	       0 allocs/op
 
@@ -32,7 +32,7 @@ BenchmarkPangram-12    	  707517	      1723 ns/op	      96 B/op	       2 allocs/
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The fastest is the `Bit feld` approach.
 

@@ -1,4 +1,4 @@
-```
+```text
 map
 BenchmarkScore-12    	 1544814	       711.7 ns/op	       0 B/op	       0 allocs/op
 

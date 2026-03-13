@@ -32,7 +32,7 @@ func BenchmarkTotal(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 math.Pow square
 BenchmarkSquare-12    	 4761478	       241.9 ns/op	      48 B/op	       3 allocs/op
 
@@ -47,7 +47,7 @@ BenchmarkTotal-12    	1000000000	         0.2689 ns/op	       0 B/op	       0 al
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The bit shifting approach is much faster than using `math.Pow()` and `big` exponentiation.
 

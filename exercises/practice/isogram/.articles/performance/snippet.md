@@ -1,4 +1,4 @@
-```
+```text
 map
 BenchmarkIsIsogram-12    	  237565	      4960 ns/op	    1201 B/op	      13 allocs/op
 strings.Count()

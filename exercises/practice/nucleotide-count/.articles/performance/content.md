@@ -24,7 +24,7 @@ func BenchmarkCounts(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 switch statement
 BenchmarkCounts-12    	  593500	      1942 ns/op	     840 B/op	      12 allocs/op
 
@@ -33,7 +33,7 @@ BenchmarkCounts-12    	  527168	      2208 ns/op	     840 B/op	      12 allocs/o
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The fastest is the `switch` statement approach.
 

@@ -1,4 +1,6 @@
-# Validate as you go
+# Approaches
+
+## Validate as you go
 
 ```go
 // Package luhn is a small library for returning if a phrase is valid according to the Luhn algorithm.
@@ -74,7 +76,7 @@ The `pos` variable is incremented to keep track of the position, and the loop ei
 
 After the loop exits, the functon returns if the position is greater than `1` and the total is evenly divisible by `10`.
 
-# Optimization
+## Optimization
 
 There is an interesting optimization for the "lidate as you go" approach that can cut the time by more than half.
 It requires two modifications to be made in tandem.
@@ -114,7 +116,7 @@ pos := 0
 
 for
 
-```
+```go
 var total, pos int
 ```
 
@@ -152,7 +154,7 @@ To understand how this works, you can see in the following table for `digit + (d
 
 The benchmarks were as follows:
 
-```
+```text
 unoptimized
 BenchmarkValid-12    	 4668248	       248.4 ns/op	       0 B/op	       0 allocs/op
 
@@ -160,13 +162,8 @@ optimized
 BenchmarkValid-12    	10885153	       106.8 ns/op	       0 B/op	       0 allocs/op
 ```
 
-The optimized solution is much faster, but it is not as clear as to how it is conforming to the Luhn algorithm,
-unless one readily understands the math.
+The optimized solution is much faster, but it is not as clear as to how it is conforming to the Luhn algorithm, unless one readily understands the math.
 
-[strings]: https://pkg.go.dev/strings
-[replaceall]: https://pkg.go.dev/strings#ReplaceAll
-[strconv]: https://pkg.go.dev/strconv
-[atoi]: https://pkg.go.dev/strconv#Atoi
 [range]: https://gobyexample.com/range
 [split]: https://pkg.go.dev/strings#Split
 [slice]: https://gobyexample.com/slices

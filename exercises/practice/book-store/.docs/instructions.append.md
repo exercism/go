@@ -5,7 +5,7 @@ for a given list of books based on the defined discounts.
 
 Use the following signature for func Cost:
 
-```
+```go
 func Cost(books []int) int
 ```
 

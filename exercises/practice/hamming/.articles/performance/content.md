@@ -25,7 +25,7 @@ func BenchmarkHamming(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 iterate as bytes
 BenchmarkHamming-12    	43623610	        26.92 ns/op	       0 B/op	       0 allocs/o
 
@@ -34,7 +34,7 @@ BenchmarkHamming-12    	 3330171	       361.5 ns/op	      64 B/op	       4 alloc
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The fastest is the iterate as bytes approach.
 As of the time of this writing we can iterate bytes, since all of the characters are [ASCII][ascii].

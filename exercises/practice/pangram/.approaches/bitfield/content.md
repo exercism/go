@@ -53,7 +53,7 @@ In that way, both a lowercase `z` and an uppercase `Z` can share the same positi
 
 So, for a 32-bit unsigned integer, if the values for `a` and `Z` were both set, the bits would look like
 
-```
+```text
       zyxwvutsrqponmlkjihgfedcba
 00000010000000000000000000000001
 ```

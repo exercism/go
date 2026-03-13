@@ -4,7 +4,7 @@ Define a single Go func, MakeChain, which accepts a slice of dominoes and attemp
 
 MakeChain should have the following signature:
 
-```
+```go
 type Domino [2]int
 
 func MakeChain(input []Domino) (chain []Domino, ok bool)

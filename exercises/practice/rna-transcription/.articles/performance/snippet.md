@@ -1,4 +1,4 @@
-```
+```text
 map function
 BenchmarkRNATranscription-12    	 5396551	       217.5 ns/op	      37 B/op	       5 allocs/op
 

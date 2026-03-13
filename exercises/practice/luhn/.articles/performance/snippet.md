@@ -1,4 +1,4 @@
-```
+```text
 validate as you go
 BenchmarkValid-12    	 4668248	       248.4 ns/op	       0 B/op	       0 allocs/op
 

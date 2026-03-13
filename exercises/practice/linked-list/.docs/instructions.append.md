@@ -20,6 +20,6 @@ Your `List` should have the following methods:
 - `Last() *Node`: returns a pointer to the last node (tail).
 - `Push(v any)`: insert value at the back of the list.
 - `Pop() (any, error)`: remove value from the back of the list.
-- `Unshift(v any) `: insert value at the front of the list.
+- `Unshift(v any)`: insert value at the front of the list.
 - `Shift() (any, error)`: remove value from the front of the list.
 - `Reverse()`: reverse the linked list.

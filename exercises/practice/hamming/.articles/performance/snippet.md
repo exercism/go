@@ -1,4 +1,4 @@
-```
+```text
 iterate as bytes
 BenchmarkHamming-12    	43623610	        26.92 ns/op	       0 B/op	       0 allocs/o
 

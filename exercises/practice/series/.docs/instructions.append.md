@@ -14,7 +14,7 @@ At this point you could consider this exercise complete and move on.
 
 But wait, maybe you ask a reasonable question: Why is the function called **Unsafe** First? If you are interested, read on for a bonus exercise.
 
-## Bonus exercise:
+## Bonus exercise
 
 Once you get `go test` passing, try `go test -tags asktoomuch`.
 This uses a _build tag_ to enable a test that wasn't enabled before.

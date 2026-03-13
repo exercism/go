@@ -7,7 +7,7 @@ You may choose any representation for this type.
 
 Define three Classification constants named
 
-```
+```text
 	ClassificationDeficient
 	ClassificationPerfect
 	ClassificationAbundant

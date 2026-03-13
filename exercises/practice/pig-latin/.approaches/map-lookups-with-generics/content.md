@@ -55,7 +55,7 @@ func Sentence(phrase string) string {
 
 The approach imports the `strings` package so it can use [`strings.Builder`][builder] as an efficient way to build the output string.
 
-This approach starts be defining a void [type][type] that will be used in the package.
+This approach starts be defining a void [type][types] that will be used in the package.
 
 Several [map][map]s for then defined for looking up vowels and special letter combinations.
 The maps have an empty struct as the type for their values.
@@ -104,7 +104,6 @@ plus a slice taken from the beginning of the word and stopped before the positio
 
 After the iteraton of words is finished, the `Builder`'s [`String`][string] method is called to return the accumulated string from the function.
 
-[strings]: https://pkg.go.dev/strings
 [builder]: https://pkg.go.dev/strings#Builder
 [types]: https://go.dev/ref/spec#Types
 [map]: https://gobyexample.com/maps

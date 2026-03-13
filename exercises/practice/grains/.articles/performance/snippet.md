@@ -1,4 +1,4 @@
-```
+```text
 math.Pow square
 BenchmarkSquare-12    	 4761478	       241.9 ns/op	      48 B/op	       3 allocs/op
 big exponentiation total

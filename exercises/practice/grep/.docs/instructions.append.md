@@ -7,6 +7,6 @@ the given flags and filenames.
 
 Use the following signature for func Search:
 
-```
+```go
 func Search(pattern string, flags, files []string) []string {
 ```

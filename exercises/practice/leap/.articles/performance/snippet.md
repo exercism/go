@@ -1,4 +1,4 @@
-```
+```text
 boolean chain
 Benchmark400-12    	 4936674	       219.4 ns/op	       0 B/op	       0 allocs/op
 max two checks

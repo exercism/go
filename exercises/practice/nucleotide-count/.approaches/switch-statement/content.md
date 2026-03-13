@@ -1,4 +1,6 @@
-# `switch` statement
+# Approaches
+
+## `switch` statement
 
 ```go
 // Package dna is a small library for counting nucleotides in a DNA strand.
@@ -33,7 +35,7 @@ If the character is not a valid nucleotide, then the function returns `nil` for 
 
 If the iteration successfully finishes, then the function returns the histogram and a `nil` error.
 
-# Iterate by bytes
+## Iterate by bytes
 
 Since iterating by bytes is often more performant than iterating by runes, it may be of interest to try that for Nucleotide Count.
 
@@ -97,9 +99,9 @@ If the character is not a valid nucleotide, then the function returns `nil` for 
 
 If the iteration successfully finishes, then the function returns the histogram and a `nil` error.
 However, the tests expect the Histogram to be returned as a `map[rune]int`.
-An ASCII byte can fit in a rune, but that takes time, as seen by the benchmark
+An ASCII byte can fit in a rune, but that takes time, as seen by this benchmark.
 
-```
+```text
 switch on runes
 BenchmarkCounts-12    	  593500	      1942 ns/op	     840 B/op	      12 allocs/o
 

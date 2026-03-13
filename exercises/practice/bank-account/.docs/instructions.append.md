@@ -40,8 +40,8 @@ For example: multiple goroutines may be depositing and withdrawing money simulta
 When working locally, you can test that your code handles concurrency properly and does not introduce data races, run tests with `-race` flag on.
 
 ```bash
-$ cd exercism/project/directory/go/bank-account
-$ go test -race
+cd exercism/project/directory/go/bank-account
+go test -race
 ```
 
 ## Resources
