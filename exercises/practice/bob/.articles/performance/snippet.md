@@ -1,4 +1,4 @@
-```
+```text
 if statements
 BenchmarkHey-12    	  624798	      1746 ns/op	     432 B/op	      12 allocs/op
 switch statement

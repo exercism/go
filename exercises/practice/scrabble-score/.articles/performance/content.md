@@ -25,7 +25,7 @@ func BenchmarkScore(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 map
 BenchmarkScore-12    	 1544814	       711.7 ns/op	       0 B/op	       0 allocs/op
 
@@ -37,7 +37,7 @@ BenchmarkScore-12    	  413484	      2527 ns/op	    1088 B/op	      12 allocs/op
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 Using `switch` on runes was about three times faster than the next fastest approach, which was using a `map`.
 Using a `switch` on each letter being a separate string was over ten times slower than switching on runes.

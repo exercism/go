@@ -1,4 +1,4 @@
-```
+```text
 bit field
 BenchmarkPangram-12    	 6435968	       164.8 ns/op	       0 B/op	       0 allocs/op
 

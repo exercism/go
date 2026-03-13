@@ -97,4 +97,3 @@ saves a lot of work!
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 [range]: https://go.dev/tour/moretypes/16
 [not-operator]: https://www.tutorialkart.com/golang-tutorial/golang-not/
-[method]: https://go.dev/tour/methods/1

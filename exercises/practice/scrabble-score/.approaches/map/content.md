@@ -69,7 +69,6 @@ When the iteration is finished, the output variable of the totaled score is retu
 
 [map]: https://gobyexample.com/maps
 [tolower]: https://pkg.go.dev/unicode#ToLower
-[rune]: https://pkg.go.dev/builtin#rune
 [ascii]: https://www.asciitable.com/
 [named-return-value]: https://yourbasic.org/golang/named-return-values-parameters/
 [zero-value]: https://yourbasic.org/golang/default-zero-value/

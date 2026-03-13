@@ -1,4 +1,4 @@
-## `math.Pow()` and `big` exponentiation
+# `math.Pow()` and `big` exponentiation
 
 ```go
 package grains

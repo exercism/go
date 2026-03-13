@@ -29,7 +29,7 @@ func Benchmark400(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 boolean chain
 Benchmark400-12    	 4936674	       219.4 ns/op	       0 B/op	       0 allocs/op
 
@@ -44,7 +44,7 @@ Benchmark400-12    	  118605	      9700 ns/op	       0 B/op	       0 allocs/op
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 You can see that the maximum of two checks approach was about twice as fast as the boolean chain,
 even though the maximum of two checks approach starts from a less likely condition.

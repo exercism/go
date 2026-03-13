@@ -23,7 +23,7 @@ func BenchmarkIsValidISBN(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 iterate as bytes
 BenchmarkIsValidISBN-12    	 4561827	       253.0 ns/op	       0 B/op	       0 allocs/op
 
@@ -32,7 +32,7 @@ BenchmarkIsValidISBN-12    	 3094387	       354.9 ns/op	       0 B/op	       0 a
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The fastest is the iterate as bytes approach.
 As of the time of this writing we can iterate bytes, since all of the characters are [ASCII][ascii].

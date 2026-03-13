@@ -65,4 +65,3 @@ constant, which is defined as `1<<64 - 1`.
 
 [uint64]: https://pkg.go.dev/builtin#uint64
 [left-shift-operator]: https://www.golangprograms.com/bitwise-operators-in-go-programming-language.html
-[maxuint64]: https://cs.opensource.google/go/go/+/refs/tags/go1.19.4:src/math/const.go;l=39

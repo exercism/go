@@ -52,7 +52,7 @@ if vowels[word[0]]
 
 instead of
 
-```
+```go
 if _, ok := vowels[word[0]]; ok {
 ```
 
@@ -82,7 +82,6 @@ plus a slice taken from the beginning of the word and stopped before the positio
 
 After the iteraton of words is finished, the `Builder`'s [`String`][string] method is called to return the accumulated string from the function.
 
-[strings]: https://pkg.go.dev/strings
 [builder]: https://pkg.go.dev/strings#Builder
 [map]: https://gobyexample.com/maps
 [if-with-short-statement]: https://go.dev/tour/flowcontrol/6

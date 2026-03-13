@@ -43,7 +43,7 @@ func BenchmarkCreateClocks(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 // clock as int
 BenchmarkCreateClocks-12    	182396848	         5.944 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSubtractMinutes-12    	372009392	         3.131 ns/op	       0 B/op	       0 allocs/op
@@ -57,7 +57,7 @@ BenchmarkAddMinutes-12    	361321388	         3.247 ns/op	       0 B/op	       0
 
 The above are the fastest times benched for each approach from multiple runs.
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 The two approaches were very similar in performance.
 The approach of `Clock` as a struct may have a bit of overhead with the indirection of having the minutes inside a struct,

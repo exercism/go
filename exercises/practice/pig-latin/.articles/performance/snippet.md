@@ -1,4 +1,4 @@
-```
+```text
 // map lookups
 BenchmarkSentence-12    	  310228	      3845 ns/op	     616 B/op	      46 allocs/op
 

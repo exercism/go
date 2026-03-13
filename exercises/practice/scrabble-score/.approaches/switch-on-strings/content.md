@@ -92,7 +92,6 @@ which is added to the output variable.
 When the iteration is finished, the output variable of the totaled score is returned from the function.
 
 [tolower]: https://pkg.go.dev/strings#ToLower
-[rune]: https://pkg.go.dev/builtin#rune
 [ascii]: https://www.asciitable.com/
 [named-return-value]: https://yourbasic.org/golang/named-return-values-parameters/
 [zero-value]: https://yourbasic.org/golang/default-zero-value/

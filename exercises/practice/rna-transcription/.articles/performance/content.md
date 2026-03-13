@@ -24,7 +24,7 @@ func BenchmarkRNATranscription(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 map function
 BenchmarkRNATranscription-12    	 5396551	       217.5 ns/op	      37 B/op	       5 allocs/op
 
@@ -36,7 +36,7 @@ BenchmarkRNATranscription-12    	11808524	        97.69 ns/op	      16 B/op	    
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 Using `switch` statement was the fastest approach.
 Using a `map` object was faster than using the `strings.Map()` function.

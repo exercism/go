@@ -2,7 +2,7 @@
 
 In package twobucket, implement a Go func, Solve, with the following signature:
 
-```
+```go
 func Solve(sizeBucketOne,
 	sizeBucketTwo,
 	goalAmount int,

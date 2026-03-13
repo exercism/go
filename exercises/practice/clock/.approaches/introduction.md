@@ -1,20 +1,17 @@
 # Introduction
 
 There are at least a couple of idiomatic ways to solve Clock.
-One approach is to type `Clock` as an `int`
+One approach is to type `Clock` as an `int`.
 Another approach is to type `Clock` as a struct with an `int` field.
 
 ## General guidance
 
 Something to consider is how the logic for calculation may possibly be simplified by storing only minutes in the Clock type.
-That leaves [separating the concern][separating the concern] of hours and minutes only for the `String()` function,
-which is the only place that cares about it.
+That leaves [separating the concern][separating the concern] of hours and minutes only for the `String()` function, which is the only place that cares about it.
 
-Instead of using `60`, `24` or `1440` literals as [magic numbers][magic numbers],
-it might be considered to define them as [constants][const] with informative names.
+Instead of using `60`, `24` or `1440` literals as [magic numbers][magic numbers], it might be considered to define them as [constants][const] with informative names.
 
-Another concern is to not duplicate code between `New`, `Add` and `Subtract`,
-thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+Another concern is to not duplicate code between `New`, `Add` and `Subtract`, thus keeping the code [DRY].
 
 Finally, for `Add` and `Subtract`, consider returning a new instance of `Clock` instead of mutating the existing `Clock`.
 For the benefits of immutability in general, see [this article][immutability-benefits].

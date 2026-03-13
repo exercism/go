@@ -23,7 +23,7 @@ func BenchmarkProtein(b *testing.B) {
 
 and received the following results:
 
-```
+```text
 switch statement
 BenchmarkProtein-12    	 1207272	       952.3 ns/op	     400 B/op	      12 allocs/op
 
@@ -32,7 +32,7 @@ BenchmarkProtein-12    	 1254066	       953.3 ns/op	     400 B/op	      12 alloc
 ```
 
 Generally, the fewer bytes allocated per op (`B/op`) the faster (i.e. the fewer ns/op) the implementation.
-More info on reading benchmarks can be found [here][benchmark].
+See [more info on reading benchmarks][benchmark].
 
 Both approaches are about the same performance.
 

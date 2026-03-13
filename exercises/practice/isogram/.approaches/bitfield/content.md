@@ -55,7 +55,7 @@ In that way, both a lower-cased `z` and an upper-cased `Z` can share the same po
 
 So, for an unsigned thirty-two bit integer, if the values for `a` and `Z` were both set, the bits would look like
 
-```
+```text
       zyxwvutsrqponmlkjihgfedcba
 00000010000000000000000000000001
 ```

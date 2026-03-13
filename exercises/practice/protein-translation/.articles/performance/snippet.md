@@ -1,4 +1,4 @@
-```
+```text
 switch statement
 BenchmarkProtein-12    	 1207272	       952.3 ns/op	     400 B/op	      12 allocs/op
 

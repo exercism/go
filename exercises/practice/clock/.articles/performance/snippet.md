@@ -1,4 +1,4 @@
-```
+```text
 // clock as int
 BenchmarkCreateClocks-12    	182396848	         5.944 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSubtractMinutes-12    	372009392	         3.131 ns/op	       0 B/op	       0 allocs/op
