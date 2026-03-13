@@ -90,12 +90,7 @@ func TestInterestRate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := InterestRate(tt.balance)
 			if !floatingPointEquals(float64(got), float64(tt.want)) {
-				t.Errorf(
-					"InterestRate(%f) = %f, want %f",
-					tt.balance,
-					got,
-					tt.want,
-				)
+				t.Errorf("InterestRate(%f) = %f, want %f", tt.balance, got, tt.want)
 			}
 		})
 	}
@@ -133,12 +128,7 @@ func TestInterest(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := Interest(tt.balance)
 			if !floatingPointEquals(got, tt.want) {
-				t.Errorf(
-					"Interest(%f) = %f, want %f",
-					tt.balance,
-					got,
-					tt.want,
-				)
+				t.Errorf("Interest(%f) = %f, want %f", tt.balance, got, tt.want)
 			}
 		})
 	}
@@ -191,12 +181,7 @@ func TestAnnualBalanceUpdate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := AnnualBalanceUpdate(tt.balance)
 			if !floatingPointEquals(got, tt.want) {
-				t.Errorf(
-					"AnnualBalanceUpdate(%f) = %f, want %f",
-					tt.balance,
-					got,
-					tt.want,
-				)
+				t.Errorf("AnnualBalanceUpdate(%f) = %f, want %f", tt.balance, got, tt.want)
 			}
 		})
 	}
@@ -257,13 +242,7 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := YearsBeforeDesiredBalance(tt.balance, tt.targetBalance)
 			if got != tt.want {
-				t.Errorf(
-					"YearsBeforeDesiredBalance(%f, %f) = %d, want %d",
-					tt.balance,
-					tt.targetBalance,
-					got,
-					tt.want,
-				)
+				t.Errorf("YearsBeforeDesiredBalance(%f, %f) = %d, want %d", tt.balance, tt.targetBalance, got, tt.want)
 			}
 		})
 	}

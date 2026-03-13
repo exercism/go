@@ -20,10 +20,9 @@ func TestNewVoteCounter(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := NewVoteCounter(tt.votes)
 			if got == nil {
-				t.Errorf("NewVoteCounter(%d) = %s, &%d", tt.votes, intPtrRepresentation(got), tt.votes)
-			}
-			if got != nil && *got != tt.votes {
-				t.Errorf("NewVoteCounter(%d) = %s, &%d", tt.votes, intPtrRepresentation(got), tt.votes)
+				t.Errorf("NewVoteCounter(%d) = nil, want &%d", tt.votes, tt.votes)
+			} else if *got != tt.votes {
+				t.Errorf("NewVoteCounter(%d) = &%d, &%d", tt.votes, *got, tt.votes)
 			}
 		})
 	}
@@ -52,7 +51,7 @@ func TestVoteCount(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := VoteCount(tt.counter); got != tt.expected {
-				t.Fatalf("VoteCount(%v) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
+				t.Fatalf("VoteCount(%s) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
 			}
 		})
 	}
@@ -96,11 +95,9 @@ func TestIncrementVoteCount(t *testing.T) {
 			after := intPtrRepresentation(tt.counter)
 
 			if tt.counter == nil {
-				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
-			}
-
-			if tt.counter != nil && *tt.counter != tt.expected {
-				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
+				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tt.expected)
+			} else if *tt.counter != tt.expected {
+				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tt.expected)
 			}
 		})
 	}
@@ -111,13 +108,13 @@ func TestNewElectionResult(t *testing.T) {
 		name          string
 		candidateName string
 		votes         int
-		wanted        ElectionResult
+		want          ElectionResult
 	}{
 		{
 			name:          "Call to NewElectionResult for Peter with 2 votes",
 			candidateName: "Peter",
 			votes:         2,
-			wanted: ElectionResult{
+			want: ElectionResult{
 				Name:  "Peter",
 				Votes: 2,
 			},
@@ -128,9 +125,9 @@ func TestNewElectionResult(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := NewElectionResult(tt.candidateName, tt.votes)
 
-			if result == nil || result.Name != tt.wanted.Name || result.Votes != tt.wanted.Votes {
-				t.Errorf("NewElectionResult(\"%s\", %d) = %#v, wanted %#v",
-					tt.candidateName, tt.votes, result, tt.wanted)
+			if result == nil || result.Name != tt.want.Name || result.Votes != tt.want.Votes {
+				t.Errorf("NewElectionResult(%q, %d) = %#v, want %#v",
+					tt.candidateName, tt.votes, result, tt.want)
 			}
 		})
 	}
@@ -140,7 +137,7 @@ func TestDisplayResult(t *testing.T) {
 	tests := []struct {
 		name   string
 		result *ElectionResult
-		wanted string
+		want   string
 	}{
 		{
 			name: "Call to DisplayResult for John with 5 votes",
@@ -148,14 +145,14 @@ func TestDisplayResult(t *testing.T) {
 				Name:  "John",
 				Votes: 5,
 			},
-			wanted: "John (5)",
+			want: "John (5)",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if result := DisplayResult(tt.result); result != tt.wanted {
-				t.Errorf("DisplayResult(%#v) = %s, wanted %s", *tt.result, result, tt.wanted)
+			if result := DisplayResult(tt.result); result != tt.want {
+				t.Errorf("DisplayResult(%#v) = %q, want %q", *tt.result, result, tt.want)
 			}
 		})
 	}
@@ -166,7 +163,7 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 		name      string
 		candidate string
 		results   map[string]int
-		wanted    int
+		want      int
 	}{
 		{
 			name:      "Call to DecrementVotesOfCandidate for John with 3 votes",
@@ -174,16 +171,16 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 			results: map[string]int{
 				"John": 3,
 			},
-			wanted: 2,
+			want: 2,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			DecrementVotesOfCandidate(tt.results, tt.candidate)
-			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.wanted {
-				t.Errorf("DecrementVotesOfCandidate(%v) | wanted %d, got %d",
-					tt.results, tt.wanted, votes)
+			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.want {
+				t.Errorf("DecrementVotesOfCandidate(%#v, %q) = %d, want %d",
+					tt.results, tt.candidate, votes, tt.want)
 			}
 		})
 	}

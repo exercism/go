@@ -58,11 +58,11 @@ func TestBottlesVerse(t *testing.T) {
 				}
 			} else {
 				if err != nil {
-					t.Fatalf("Verse(%d) returned error: %v, want:%q", tc.verse, err, tc.expectedVerse)
+					t.Fatalf("Verse(%d) returned error: %v, want: %q", tc.verse, err, tc.expectedVerse)
 				}
 
 				if actualVerse != tc.expectedVerse {
-					t.Fatalf("Verse(%d)\n got:%q\nwant:%q", tc.verse, actualVerse, tc.expectedVerse)
+					t.Fatalf("Verse(%d)\n got: %q\nwant: %q", tc.verse, actualVerse, tc.expectedVerse)
 				}
 			}
 		})
@@ -89,14 +89,14 @@ func TestSeveralVerses(t *testing.T) {
 			actualVerse, err := Verses(tc.upperBound, tc.lowerBound)
 			if tc.expectErr {
 				if err == nil {
-					t.Fatalf("Verses(%d,%d) expected an error, but error is nil", tc.upperBound, tc.lowerBound)
+					t.Fatalf("Verses(%d, %d) expected an error, but error is nil", tc.upperBound, tc.lowerBound)
 				}
 			} else {
 				if err != nil {
-					t.Fatalf("Verses(%d,%d) returned error: %v, want:%q", tc.upperBound, tc.lowerBound, err, tc.expectedVerse)
+					t.Fatalf("Verses(%d, %d) returned error: %v, want: %q", tc.upperBound, tc.lowerBound, err, tc.expectedVerse)
 				}
 				if actualVerse != tc.expectedVerse {
-					t.Fatalf("Verse(%d,%d)\n got:%q\nwant:%q", tc.upperBound, tc.lowerBound, actualVerse, tc.expectedVerse)
+					t.Fatalf("Verse(%d, %d)\n got: %q\nwant: %q", tc.upperBound, tc.lowerBound, actualVerse, tc.expectedVerse)
 				}
 			}
 		})
@@ -119,15 +119,7 @@ func TestEntireSong(t *testing.T) {
 	actual := Song()
 
 	if expected != actual {
-		t.Fatalf(`
-		  Did not sing the whole song correctly.
-
-			Expected:
-			%v
-
-			Actual:
-			%v
-		`, expected, actual)
+		t.Fatalf("Did not sing the whole song correctly. Verses(99, 0),\ngot: %q\nwant: %q", actual, expected)
 	}
 }
 

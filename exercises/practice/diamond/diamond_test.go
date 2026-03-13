@@ -45,13 +45,13 @@ func TestDiamond(t *testing.T) {
 			got, err := Gen(testCase.input[0])
 
 			if err != testCase.expectedError {
-				t.Fatalf("Gen(%q)\nExpected:%v\nGot:%v", testCase.input, testCase.expectedError, err)
+				t.Fatalf("Gen(%q)\ngot: %v\nwant: %v", testCase.input, err, testCase.expectedError)
 			}
 			if got != expected {
 				if got == fmt.Sprintf("%s\n", expected) {
 					t.Fatalf("Gen(%q): no \\n expected after last line", testCase.input)
 				}
-				t.Fatalf("Gen(%q)\nExpected:\n%s\n(len=%d)\nGot:\n%s\n(len=%d)", testCase.input, expected, len(expected), got, len(got))
+				t.Fatalf("Gen(%q)\ngot:\n%#v\n(len=%d)\nwant:\n%#v\n(len=%d)", testCase.input, got, len(got), expected, len(expected))
 			}
 		})
 	}
