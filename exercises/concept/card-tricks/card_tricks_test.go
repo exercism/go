@@ -135,9 +135,9 @@ func TestSetItem(t *testing.T) {
 			args: args{
 				slice: []int{-2, -1, 0, 1, 2},
 				index: 1,
-				value: -1,
+				value: 5,
 			},
-			want: []int{-2, -1, 0, 1, 2},
+			want: []int{-2, 5, 0, 1, 2},
 		},
 	}
 	for _, tt := range tests {
