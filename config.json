@@ -2200,6 +2200,14 @@
           "loops",
           "searching"
         ]
+      },
+      {
+        "slug": "zipper",
+        "name": "Zipper",
+        "uuid": "bb0a975b-0620-4ef1-aaa5-47b42439a308",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
       }
     ]
   },

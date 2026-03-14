@@ -33,11 +33,10 @@ var testCases = []struct {
 	description string
 	input       string
 	expected	bool
-}{
-{{range .J.valid}}{
-	description: 	{{printf "%q" .Description}},
-	input: 			{{printf "%q" .Input.Value}},
-	expected:    	{{.Expected}},
-},
-{{end}}
+}{ {{range .J.valid}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input: 			{{printf "%q" .Input.Value}},
+		expected:    	{{.Expected}},
+	},{{end}}
 }`
