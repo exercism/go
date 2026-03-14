@@ -22,7 +22,7 @@ func TestNewVoteCounter(t *testing.T) {
 			if got == nil {
 				t.Errorf("NewVoteCounter(%d) = nil, want &%d", tt.votes, tt.votes)
 			} else if *got != tt.votes {
-				t.Errorf("NewVoteCounter(%d) = &%d, &%d", tt.votes, *got, tt.votes)
+				t.Errorf("NewVoteCounter(%d) = &%d, want &%d", tt.votes, *got, tt.votes)
 			}
 		})
 	}
