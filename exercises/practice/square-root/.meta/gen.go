@@ -33,11 +33,10 @@ var testCases = []struct {
 	description string
 	input       int
 	expected    int
-}{
-{{range .J.squareRoot}}{
-	description: 	{{printf "%q" .Description}},
-	input:	        {{printf "%d" .Input.Radicand}},
-	expected:    	{{.Expected}},
-},
-{{end}}
+}{ {{range .J.squareRoot}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input:	        {{printf "%d" .Input.Radicand}},
+		expected:    	{{.Expected}},
+	},{{end}}
 }`
