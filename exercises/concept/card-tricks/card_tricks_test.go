@@ -130,6 +130,15 @@ func TestSetItem(t *testing.T) {
 			},
 			want: []int{5, 2, 10, 6, 8, 7, 0, 9, 8},
 		},
+		{
+			name: "GetItem not valid bounds check",
+			args: args{
+				slice: []int{-2, -1, 0, 1, 2},
+				index: 1,
+				value: 5,
+			},
+			want: []int{-2, 5, 0, 1, 2},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
