@@ -1413,6 +1413,14 @@
         ]
       },
       {
+        "slug": "hangman",
+        "name": "Hangman",
+        "uuid": "d4bb5bfc-e7ec-4b63-9de3-ec06daa530f5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "house",
         "name": "House",
         "uuid": "11008fb0-4ef9-4aff-befb-c56f4084f96e",
