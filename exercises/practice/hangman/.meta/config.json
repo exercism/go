@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "hangman.go"
+    ],
+    "test": [
+      "hangman_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Implement the logic of the hangman game using functional reactive programming."
+}
