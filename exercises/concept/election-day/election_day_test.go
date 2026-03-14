@@ -22,7 +22,7 @@ func TestNewVoteCounter(t *testing.T) {
 			if got == nil {
 				t.Errorf("NewVoteCounter(%d) = nil, want &%d", tt.votes, tt.votes)
 			} else if *got != tt.votes {
-				t.Errorf("NewVoteCounter(%d) = &%d, &%d", tt.votes, *got, tt.votes)
+				t.Errorf("NewVoteCounter(%d) = &%d, want &%d", tt.votes, *got, tt.votes)
 			}
 		})
 	}
@@ -51,7 +51,7 @@ func TestVoteCount(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := VoteCount(tt.counter); got != tt.expected {
-				t.Fatalf("VoteCount(%s) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
+				t.Errorf("VoteCount(%s) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
 			}
 		})
 	}
