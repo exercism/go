@@ -25,7 +25,7 @@ fmt.Sprint(celsiusUnit)
 // Output: °C
 ```
 
-## 2. Implement the `Stringer` interface for type  `Temperature`
+## 2. Implement the `Stringer` interface for type `Temperature`
 
 Temperature values consist of an integer and a temperature unit.
 They should be formatted as in the examples below.
@@ -88,7 +88,7 @@ windSpeedNow := Speed{
     magnitude: 18,
     unit: KmPerHour,
 }
-windSpeedNow.String(windSpeedNow)
+windSpeedNow.String()
 // => 18 km/h
 fmt.Sprintf(windSpeedNow)
 // Output: 18 km/h
@@ -97,7 +97,7 @@ windSpeedYesterday := Speed{
     magnitude: 22,
     unit: MilesPerHour,
 }
-windSpeedYesterday.String(windSpeedYesterday)
+windSpeedYesterday.String()
 // => 22 mph
 fmt.Sprint(windSpeedYesterday)
 // Output: 22 mph
