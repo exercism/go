@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "rest_api.go"
+    ],
+    "test": [
+      "rest_api_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Implement a RESTful API for tracking IOUs."
+}
