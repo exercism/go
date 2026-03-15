@@ -42,12 +42,7 @@ func (t testCase) ExpectedString() string {
 }
 
 func (t testCase) Error() bool {
-	m, ok := t.Expected.(map[string]interface{})
-	if !ok {
-		return ok
-	}
-	_, ok = m["error"].(string)
-	return ok
+	return gen.IsError(t.Expected)
 }
 
 // Template to generate encode and decode test cases.
@@ -70,8 +65,7 @@ var encodeTests = []testCase{ {{range .J.encode}}
 		inputB:			     {{.Input.Key.Num2}},
 		expectError:         {{.Error}},
 		expected:            {{printf "%q" .ExpectedString}},
-	},
-{{end}}
+	},{{end}}
 }
 
 var decodeTests = []testCase{ {{range .J.decode}}
@@ -82,7 +76,6 @@ var decodeTests = []testCase{ {{range .J.decode}}
 		inputB:			     {{.Input.Key.Num2}},
 		expectError:         {{.Error}},
 		expected:            {{printf "%q" .ExpectedString}},
-	},
-{{end}}
+	},{{end}}
 }
 `

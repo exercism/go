@@ -52,13 +52,7 @@ func (t testCase) FormatExpectedValue() string {
 }
 
 func (t testCase) FormatExpectedError() string {
-	if asMap, ok := t.Expected.(map[string]any); ok {
-		var errString string
-		if errString, ok = asMap["error"].(string); ok {
-			return errString
-		}
-	}
-	return ""
+	return gen.ErrorMessage(t.Expected)
 }
 
 var tmpl = `{{.Header}}

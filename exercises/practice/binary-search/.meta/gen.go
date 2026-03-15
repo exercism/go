@@ -39,18 +39,7 @@ func (t testCase) Value() int {
 }
 
 func (t testCase) Error() string {
-	if _, ok := t.Expected.(float64); !ok {
-		m, ok := t.Expected.(map[string]any)
-		if !ok {
-			return ""
-		}
-		b, ok := m["error"].(string)
-		if !ok {
-			return ""
-		}
-		return b
-	}
-	return ""
+	return gen.ErrorMessage(t.Expected)
 }
 
 // Template to generate test cases.

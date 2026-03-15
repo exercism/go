@@ -36,12 +36,7 @@ func (t testCase) ExpectedValue() string {
 }
 
 func (t testCase) ExpectError() bool {
-	v, ok := t.Expected.(map[string]any)
-	if ok {
-		_, ok := v["error"]
-		return ok
-	}
-	return false
+	return gen.IsError(t.Expected)
 }
 
 // Template to generate test cases.

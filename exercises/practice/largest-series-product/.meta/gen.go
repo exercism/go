@@ -37,14 +37,7 @@ func (t testCase) ExpectedValue() int {
 }
 
 func (t testCase) ExpectedError() string {
-	v, ok := t.Expected.(map[string]any)
-	if ok {
-		e, ok := v["error"].(string)
-		if ok {
-			return e
-		}
-	}
-	return ""
+	return gen.ErrorMessage(t.Expected)
 }
 
 var tmpl = `{{.Header}}

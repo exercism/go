@@ -29,19 +29,7 @@ type testCase struct {
 }
 
 func (t testCase) ExpectedValues() []int {
-	values, ok := t.Expected.([]any)
-	if !ok {
-		return nil
-	}
-	intValues := make([]int, 0)
-	for _, v := range values {
-		i, ok := v.(float64)
-		if !ok {
-			return nil
-		}
-		intValues = append(intValues, int(i))
-	}
-	return intValues
+	return gen.FloatSliceToInts(t.Expected)
 }
 
 func (t testCase) Valid() bool {

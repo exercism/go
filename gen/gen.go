@@ -219,6 +219,44 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	return outputSource("SUCCESS", goModFile, []byte(fmt.Sprintf("module %s\n\ngo %s\n", PackageName(exercise), version.Default)))
 }
 
+// ErrorMessage extracts the error string from a canonical-data.json error object.
+// Error objects have the form {"error": "some message"}.
+// Returns "" if v is not an error object or contains no error string.
+func ErrorMessage(v any) string {
+	m, ok := v.(map[string]any)
+	if !ok {
+		return ""
+	}
+	e, ok := m["error"].(string)
+	if !ok {
+		return ""
+	}
+	return e
+}
+
+// IsError reports whether v is a canonical-data.json error object (i.e., {"error": "..."}).
+func IsError(v any) bool {
+	return ErrorMessage(v) != ""
+}
+
+// FloatSliceToInts converts a JSON-decoded []any of float64 values to []int.
+// Returns nil if v is not a []any or if any element is not a float64.
+func FloatSliceToInts(v any) []int {
+	values, ok := v.([]any)
+	if !ok {
+		return nil
+	}
+	result := make([]int, len(values))
+	for i, elem := range values {
+		f, ok := elem.(float64)
+		if !ok {
+			return nil
+		}
+		result[i] = int(f)
+	}
+	return result
+}
+
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
 func outputSource(status, fileName string, src []byte) error {
 	err := os.WriteFile(fileName, src, 0o644) //nolint:gosec // 644 are the default permissions for a new file on *nix systems
