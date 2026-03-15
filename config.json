@@ -1981,6 +1981,14 @@
         ]
       },
       {
+        "slug": "go-counting",
+        "name": "Go Counting",
+        "uuid": "ecc1e964-c28c-431f-8ee9-1a2dad2efee9",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "intergalactic-transmission",
         "name": "Intergalactic Transmission",
         "uuid": "70388d18-427b-4421-831c-b5bc987e7890",
@@ -2100,6 +2108,14 @@
         ]
       },
       {
+        "slug": "zipper",
+        "name": "Zipper",
+        "uuid": "bb0a975b-0620-4ef1-aaa5-47b42439a308",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "ocr-numbers",
         "name": "OCR Numbers",
         "uuid": "13e58d89-4dbb-4384-9268-2f8083588d7a",
@@ -2208,14 +2224,6 @@
           "loops",
           "searching"
         ]
-      },
-      {
-        "slug": "zipper",
-        "name": "Zipper",
-        "uuid": "bb0a975b-0620-4ef1-aaa5-47b42439a308",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 6
       }
     ]
   },
