@@ -3,7 +3,7 @@ package hangman
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: cfbb6ab Add UUIDs
+// Commit: 96cde92 [hangman] Add a new canonical data file (#2632)
 
 var testCases = []struct {
 	description       string

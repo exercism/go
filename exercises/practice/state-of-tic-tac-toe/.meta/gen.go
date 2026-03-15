@@ -38,8 +38,7 @@ func (o testCase) ExpectedResult() string {
 }
 
 func (o testCase) ExpectError() bool {
-	_, ok := o.Expected.(map[string]any)
-	return ok
+	return gen.IsError(o.Expected)
 }
 
 // template applied to above data structure generates the Go test cases

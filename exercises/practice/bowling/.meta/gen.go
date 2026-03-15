@@ -43,18 +43,7 @@ func (t Case) Valid() bool {
 }
 
 func (t Case) ExplainText() string {
-	if !t.Valid() {
-		m, ok := t.Expected.(map[string]any)
-		if !ok {
-			return ""
-		}
-		b, ok := m["error"].(string)
-		if !ok {
-			return ""
-		}
-		return b
-	}
-	return ""
+	return gen.ErrorMessage(t.Expected)
 }
 
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.

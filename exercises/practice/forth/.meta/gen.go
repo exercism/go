@@ -29,34 +29,11 @@ type testCase struct {
 }
 
 func (t testCase) ExpectedNumbers() []int {
-	numbers, ok := t.Expected.([]any)
-	if !ok {
-		return nil
-	}
-	result := make([]int, 0)
-	for _, number := range numbers {
-		x, ok := number.(float64)
-		if !ok {
-			return nil
-		}
-		result = append(result, int(x))
-	}
-	return result
+	return gen.FloatSliceToInts(t.Expected)
 }
 
 func (t testCase) ExplainText() string {
-	if t.ExpectedNumbers() != nil {
-		return ""
-	}
-	m, ok := t.Expected.(map[string]any)
-	if !ok {
-		return ""
-	}
-	errText, ok := m["error"].(string)
-	if !ok {
-		return ""
-	}
-	return errText
+	return gen.ErrorMessage(t.Expected)
 }
 
 // template applied to above data structure generates the Go test cases

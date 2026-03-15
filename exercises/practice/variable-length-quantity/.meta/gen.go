@@ -59,12 +59,7 @@ func (t testCase) ValueSliceUint32() []uint32 {
 }
 
 func (t testCase) ErrorExpected() bool {
-	v, ok := t.Expected.(map[string]any)
-	if ok {
-		_, ok := v["error"].(string)
-		return ok
-	}
-	return false
+	return gen.IsError(t.Expected)
 }
 
 // template applied to above data structure generates the Go test cases

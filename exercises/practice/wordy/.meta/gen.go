@@ -28,12 +28,7 @@ type testCase struct {
 }
 
 func (t testCase) ExpectError() bool {
-	v, ok := t.Expected.(map[string]any)
-	if ok {
-		_, ok := v["error"].(string)
-		return ok
-	}
-	return false
+	return gen.IsError(t.Expected)
 }
 
 func (t testCase) ExpectedValue() int {

@@ -36,14 +36,7 @@ func (t testCase) GetExpectedValue() int {
 }
 
 func (t testCase) GetError() string {
-	v, ok := t.Expected.(map[string]any)
-	if ok {
-		e, ok := v["error"].(string)
-		if ok {
-			return e
-		}
-	}
-	return ""
+	return gen.ErrorMessage(t.Expected)
 }
 
 // template applied to above data structure generates the Go test cases
