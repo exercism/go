@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "sgf_parsing.go"
+    ],
+    "test": [
+      "sgf_parsing_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Parsing a Smart Game Format string."
+}
