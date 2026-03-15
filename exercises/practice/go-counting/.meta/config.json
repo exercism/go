@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "go_counting.go"
+    ],
+    "test": [
+      "go_counting_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Count the scored points on a Go board."
+}
