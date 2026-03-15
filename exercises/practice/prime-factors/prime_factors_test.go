@@ -12,7 +12,7 @@ func TestPrimeFactors(t *testing.T) {
 			slices.Sort(actual)
 			slices.Sort(tc.expected)
 			if !slices.Equal(actual, tc.expected) {
-				t.Fatalf("Factors(%d)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+				t.Fatalf("Factors(%d)\ngot: %#v\nwant: %#v", tc.input, actual, tc.expected)
 			}
 		})
 	}

@@ -73,7 +73,7 @@ func TestTransform(t *testing.T) {
 	for _, tt := range transformTests {
 		t.Run(tt.description, func(t *testing.T) {
 			if actual := Transform(tt.input); !equal(actual, tt.expect) {
-				t.Fatalf("Transform(%v)\n got:%v\nwant:%v", tt.input, actual, tt.expect)
+				t.Fatalf("Transform(%v)\ngot: %v\nwant: %v", tt.input, actual, tt.expect)
 			}
 		})
 	}

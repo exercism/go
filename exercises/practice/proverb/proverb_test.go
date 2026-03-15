@@ -10,7 +10,7 @@ func TestProverb(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Proverb(tc.input)
 			if fmt.Sprintf("%q", actual) != fmt.Sprintf("%q", tc.expected) {
-				t.Fatalf("Proverb(%#v)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+				t.Fatalf("Proverb(%#v)\ngot: %#v\nwant: %#v", tc.input, actual, tc.expected)
 			}
 		})
 	}

@@ -6,7 +6,7 @@ func TestMarkdown(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := Render(tc.input); actual != tc.expected {
-				t.Fatalf("Render(%q)\n got:%q\nwant:%q", tc.input, actual, tc.expected)
+				t.Fatalf("Render(%q)\ngot: %q\nwant: %q", tc.input, actual, tc.expected)
 			}
 		})
 	}

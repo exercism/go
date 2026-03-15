@@ -10,7 +10,7 @@ func TestWordCount(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := WordCount(tc.input)
 			if !reflect.DeepEqual(actual, tc.expected) {
-				t.Fatalf("WordCount(%q)\n got:%v\nwant:%v", tc.input, actual, tc.expected)
+				t.Fatalf("WordCount(%q)\ngot: %v\nwant: %v", tc.input, actual, tc.expected)
 			}
 		})
 	}

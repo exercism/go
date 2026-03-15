@@ -15,9 +15,9 @@ func TestSolve(t *testing.T) {
 					t.Fatalf("Solve(%q) expected error, got: %#v", tc.input, s)
 				}
 			case err != nil:
-				t.Fatalf("Solve(%q)\nexpected: %#v\ngot error: %q", tc.input, tc.expected, err)
+				t.Fatalf("Solve(%q)\nwant: %#v\ngot error: %q", tc.input, tc.expected, err)
 			case !reflect.DeepEqual(s, tc.expected):
-				t.Fatalf("Solve(%q)\ngot: %#v\nwant:%#v", tc.input, s, tc.expected)
+				t.Fatalf("Solve(%q)\ngot: %#v\nwant: %#v", tc.input, s, tc.expected)
 			}
 		})
 	}

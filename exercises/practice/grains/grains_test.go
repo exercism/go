@@ -26,7 +26,7 @@ func TestSquare(t *testing.T) {
 func TestTotal(t *testing.T) {
 	var expected uint64 = 18446744073709551615
 	if actual := Total(); actual != expected {
-		t.Errorf("Total() = %d, want:%d", actual, expected)
+		t.Errorf("Total() = %d, want: %d", actual, expected)
 	}
 }
 

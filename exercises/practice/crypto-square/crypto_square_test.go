@@ -86,7 +86,7 @@ func TestEncode(t *testing.T) {
 		}
 		t.Run(description, func(t *testing.T) {
 			if got := Encode(tc.input); got != tc.expected {
-				t.Fatalf("Encode(%q):\n got:%q\nwant:%q", tc.input, got, tc.expected)
+				t.Fatalf("Encode(%q):\ngot: %q\nwant: %q", tc.input, got, tc.expected)
 			}
 		})
 	}

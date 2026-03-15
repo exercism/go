@@ -43,7 +43,7 @@ func TestParseBinary(t *testing.T) {
 					tt.binary, err)
 			}
 			if actual != tt.expected {
-				t.Fatalf("ParseBinary(%q): actual %d, expected %v",
+				t.Fatalf("ParseBinary(%q): got: %d, want: %v",
 					tt.binary, actual, tt.expected)
 			}
 		} else if err == nil {

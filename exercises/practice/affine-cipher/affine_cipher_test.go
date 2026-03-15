@@ -19,7 +19,7 @@ func runTests(
 			} else if tc.expectError {
 				t.Fatalf("%s(%s, %d, %d) expected error, got %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got)
 			} else if tc.expected != got {
-				t.Fatalf("%s(%s, %d, %d) = %q, expected: %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
+				t.Fatalf("%s(%s, %d, %d) = %q, want: %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
 			}
 		})
 	}

@@ -10,7 +10,7 @@ func testCases(
 	for _, tc := range cases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := op(tc.message, tc.rails); actual != tc.expected {
-				t.Fatalf("%s(%q, %d)\n got:%q\nwant:%q", name, tc.message, tc.rails, actual, tc.expected)
+				t.Fatalf("%s(%q, %d)\ngot: %q\nwant: %q", name, tc.message, tc.rails, actual, tc.expected)
 			}
 		})
 	}

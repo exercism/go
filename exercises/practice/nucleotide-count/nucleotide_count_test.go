@@ -18,7 +18,7 @@ func TestCounts(t *testing.T) {
 			case err != nil:
 				t.Fatalf("DNA.Counts(%q) returned error: %v, want: %#v", tc.strand, err, tc.expected)
 			case !reflect.DeepEqual(actual, tc.expected):
-				t.Fatalf("DNA.Counts(%q)\n got:%#v\nwant: %#v", tc.strand, actual, tc.expected)
+				t.Fatalf("DNA.Counts(%q)\ngot: %#v\nwant: %#v", tc.strand, actual, tc.expected)
 			}
 		})
 	}
