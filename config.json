@@ -1915,6 +1915,14 @@
         "difficulty": 5
       },
       {
+        "slug": "sgf-parsing",
+        "name": "SGF Parsing",
+        "uuid": "8260387b-b3d5-420d-8cb6-d40f384c3242",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "state-of-tic-tac-toe",
         "name": "State of Tic-Tac-Toe",
         "uuid": "ab6050ba-b40c-46bb-938f-7baef097b52d",
