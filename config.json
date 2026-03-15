@@ -1907,6 +1907,14 @@
         "difficulty": 5
       },
       {
+        "slug": "rest-api",
+        "name": "REST API",
+        "uuid": "7164a2a7-9a09-4662-8d26-3b461cb37971",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "state-of-tic-tac-toe",
         "name": "State of Tic-Tac-Toe",
         "uuid": "ab6050ba-b40c-46bb-938f-7baef097b52d",
