@@ -14,7 +14,7 @@ func TestSieve(t *testing.T) {
 				return
 			}
 			if !reflect.DeepEqual(actual, tc.expected) {
-				t.Fatalf("Sieve(%d)\n got:%#v\nwant:%#v", tc.limit, actual, tc.expected)
+				t.Fatalf("Sieve(%d)\ngot: %#v\nwant: %#v", tc.limit, actual, tc.expected)
 			}
 		})
 	}

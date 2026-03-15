@@ -10,25 +10,25 @@ var array1To10 = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 func TestEmptyListHasSizeZero(t *testing.T) {
 	list := New([]int{})
 	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of empty list: %d, expected: %d", size, 0)
+		t.Fatalf("Size of empty list: %d, want: %d", size, 0)
 	}
 	list = New(nil)
 	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of empty list: %d, expected: %d", size, 0)
+		t.Fatalf("Size of empty list: %d, want: %d", size, 0)
 	}
 }
 
 func TestSingletonListHasSizeOne(t *testing.T) {
 	list := New([]int{1})
 	if size := list.Size(); size != 1 {
-		t.Fatalf("Size of singleton list: %d, expected: %d", size, 1)
+		t.Fatalf("Size of singleton list: %d, want: %d", size, 1)
 	}
 }
 
 func TestNonEmptyListHasCorrectSize(t *testing.T) {
 	list := New([]int{1, 2, 3})
 	if size := list.Size(); size != 3 {
-		t.Fatalf("Size of list from [1, 2, 3]: %d, expected: %d", size, 3)
+		t.Fatalf("Size of list from [1, 2, 3]: %d, want: %d", size, 3)
 	}
 }
 
@@ -40,7 +40,7 @@ func TestListHasCorrectSizeAfterPop(t *testing.T) {
 	list.Pop()
 
 	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got %d, expected: %d", size, 0)
+		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got: %d, want: %d", size, 0)
 	}
 }
 
@@ -52,7 +52,7 @@ func TestListHasCorrectSizeAfterPush(t *testing.T) {
 	list.Push(3)
 
 	if size := list.Size(); size != 3 {
-		t.Fatalf("Size of list from [] after 3 calls to push(): got %d, expected: %d", size, 3)
+		t.Fatalf("Size of list from [] after 3 calls to push(): got: %d, want: %d", size, 3)
 	}
 }
 

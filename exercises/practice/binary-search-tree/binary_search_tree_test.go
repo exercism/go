@@ -153,13 +153,13 @@ func TestNewBst(t *testing.T) {
 			t.Fatalf("bst should not be nil")
 		}
 		if tree.Size() != len(td.input) {
-			t.Fatalf("bst should have same number of elements as input, expected: %v, got: %v",
+			t.Fatalf("bst should have same number of elements as input, want: %v, got: %v",
 				len(td.input), tree.Size())
 		}
 		expected := td.data[0]
 		got := tree.data
 		if got != expected {
-			t.Fatalf("expected %d, got %d", expected, got)
+			t.Fatalf("want: %d, got: %d", expected, got)
 		}
 	})
 }
@@ -172,7 +172,7 @@ func TestInsert(t *testing.T) {
 				t.Fatalf("bst should not be nil")
 			}
 			if tree.Size() != len(td.input) {
-				t.Fatalf("bst should have same number of elements as input, expected: %v, got: %v",
+				t.Fatalf("bst should have same number of elements as input, want: %v, got: %v",
 					len(td.input), tree.Size())
 			}
 			for i, path := range td.paths {
@@ -183,7 +183,7 @@ func TestInsert(t *testing.T) {
 					t.Fatalf("%v should not be nil:", expPath)
 				}
 				if got != expected {
-					t.Fatalf("%v: expected %d, got %d", expPath+".data", expected, got)
+					t.Fatalf("%v: want: %d, got: %d", expPath+".data", expected, got)
 				}
 			}
 		})
@@ -198,12 +198,12 @@ func TestSortedData(t *testing.T) {
 				t.Fatalf("bst should not be nil")
 			}
 			if tree.Size() != len(td.input) {
-				t.Fatalf("bst should have same number of elements as input, expected: %v, got: %v",
+				t.Fatalf("bst should have same number of elements as input, want: %v, got: %v",
 					len(td.input), tree.Size())
 			}
 			got := tree.SortedData()
 			if !slicesEqual(got, td.expected) {
-				t.Fatalf("expected %d, got %d", td.expected, got)
+				t.Fatalf("want: %d, got: %d", td.expected, got)
 			}
 		})
 	}

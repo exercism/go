@@ -89,7 +89,7 @@ func TestVerse(t *testing.T) {
 	for v := 1; v <= 8; v++ {
 		t.Run(fmt.Sprintf("verse %d", v), func(t *testing.T) {
 			if got := Verse(v); got != text[v] {
-				t.Fatalf("Verse(%d)\ngot:%s\nwant:%s\nhelp: %s", v, got, text[v], diff(got, text[v]))
+				t.Fatalf("Verse(%d)\ngot: %s\nwant: %s\nhelp: %s", v, got, text[v], diff(got, text[v]))
 			}
 		})
 	}

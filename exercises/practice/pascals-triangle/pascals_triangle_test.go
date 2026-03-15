@@ -38,7 +38,7 @@ func TestTriangle(t *testing.T) {
 			want := triangleTestCases[:n]
 			if !reflect.DeepEqual(got, want) {
 				help := getHelp(got, want)
-				t.Fatalf("Triangle(%d)\nhelp: %s\ncomplete got:%s\ncomplete want:%s\n", n, help, format(got), format(want))
+				t.Fatalf("Triangle(%d)\nhelp: %s\ncomplete got: %s\ncomplete want: %s\n", n, help, format(got), format(want))
 			}
 		})
 	}

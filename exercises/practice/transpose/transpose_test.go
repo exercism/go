@@ -17,10 +17,10 @@ func TestTranspose(t *testing.T) {
 				min := min(len(tc.expected), len(actual))
 				for i := range min {
 					if tc.expected[i] != actual[i] {
-						t.Fatalf("Transpose(%#v)\n got:%#v\nwant:%#v\n row:%d\n got:%q\nwant:%q", tc.input, actual, tc.expected, i, actual[i], tc.expected[i])
+						t.Fatalf("Transpose(%#v)\ngot: %#v\nwant: %#v\n row:%d\ngot: %q\nwant: %q", tc.input, actual, tc.expected, i, actual[i], tc.expected[i])
 					}
 				}
-				t.Fatalf("Transpose(%#v)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+				t.Fatalf("Transpose(%#v)\ngot: %#v\nwant: %#v", tc.input, actual, tc.expected)
 			}
 		})
 	}

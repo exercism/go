@@ -10,7 +10,7 @@ func TestEncodeVarint(t *testing.T) {
 	for _, tc := range encodeTestCases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := EncodeVarint(tc.input); !bytes.Equal(actual, tc.expected) {
-				t.Fatalf("EncodeVarint(%#v)\n got:%#v\nwant:%#v", tc.input, actual, tc.expected)
+				t.Fatalf("EncodeVarint(%#v)\ngot: %#v\nwant: %#v", tc.input, actual, tc.expected)
 			}
 		})
 	}
@@ -26,9 +26,9 @@ func TestDecodeVarint(t *testing.T) {
 					t.Fatalf("DecodeVarint(%#v) expected error, got: %#v", tc.input, actual)
 				}
 			case err != nil:
-				t.Fatalf("DecodeVarint(%#v) returned error: %q, want:%#v", tc.input, err, tc.expected)
+				t.Fatalf("DecodeVarint(%#v) returned error: %q, want: %#v", tc.input, err, tc.expected)
 			case !reflect.DeepEqual(actual, tc.expected):
-				t.Fatalf("DecodeVarint(%#v) = %#v, want:%#v", tc.input, actual, tc.expected)
+				t.Fatalf("DecodeVarint(%#v) = %#v, want: %#v", tc.input, actual, tc.expected)
 			}
 		})
 	}

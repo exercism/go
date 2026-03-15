@@ -15,7 +15,7 @@ func assertCellValue(t *testing.T, c Cell, expected int, explanation string) {
 	observed := c.Value()
 	_, _, line, _ := runtime.Caller(1)
 	if observed != expected {
-		t.Fatalf("(from line %d) %s: expected %d, got %d", line, explanation, expected, observed)
+		t.Fatalf("(from line %d) %s: want: %d, got: %d", line, explanation, expected, observed)
 	}
 }
 
