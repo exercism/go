@@ -1,5 +1,5 @@
 {
-  "default": "1.16",
+  "default": "1.26",
   "exceptions": [
     {
       "exercise": "exercise01",

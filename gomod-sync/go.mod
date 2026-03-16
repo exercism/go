@@ -1,6 +1,6 @@
 module github.com/exercism/go/gomod-sync
 
-go 1.25
+go 1.26
 
 require (
 	github.com/logrusorgru/aurora/v3 v3.0.0

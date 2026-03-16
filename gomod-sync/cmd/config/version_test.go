@@ -16,16 +16,16 @@ func TestExpectedVersion(t *testing.T) {
 		{
 			Name: "Config with just a default version should return the default version",
 			Config: config.VersionConfig{
-				Default:    "1.16",
+				Default:    "1.26",
 				Exceptions: nil,
 			},
 			Exercise: "exercise01",
-			Expected: "1.16",
+			Expected: "1.26",
 		},
 		{
 			Name: "Expected version for an exercise not in exceptions should return the default version",
 			Config: config.VersionConfig{
-				Default: "1.16",
+				Default: "1.26",
 				Exceptions: []config.ExerciseVersion{
 					{
 						Exercise: "exercise02",
@@ -34,12 +34,12 @@ func TestExpectedVersion(t *testing.T) {
 				},
 			},
 			Exercise: "exercise01",
-			Expected: "1.16",
+			Expected: "1.26",
 		},
 		{
 			Name: "Expected version for an exercise in exceptions should return the version in the exception",
 			Config: config.VersionConfig{
-				Default: "1.16",
+				Default: "1.26",
 				Exceptions: []config.ExerciseVersion{
 					{
 						Exercise: "exercise02",

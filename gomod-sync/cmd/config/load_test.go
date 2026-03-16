@@ -24,7 +24,7 @@ func TestLoad(t *testing.T) {
 			Name: "Loading config with no exceptions",
 			Path: filepath.Join("..", "..", "testdata", "version_config_no_exceptions.json"),
 			Expected: config.VersionConfig{
-				Default: "1.16",
+				Default: "1.26",
 			},
 			ExpectError: false,
 		},
@@ -32,7 +32,7 @@ func TestLoad(t *testing.T) {
 			Name: "Loading config with 1 exception",
 			Path: filepath.Join("..", "..", "testdata", "version_config_one_exception.json"),
 			Expected: config.VersionConfig{
-				Default: "1.16",
+				Default: "1.26",
 				Exceptions: []config.ExerciseVersion{
 					{
 						Exercise: "exercise01",
@@ -46,7 +46,7 @@ func TestLoad(t *testing.T) {
 			Name: "Loading config with 2 exceptions",
 			Path: filepath.Join("..", "..", "testdata", "version_config_two_exceptions.json"),
 			Expected: config.VersionConfig{
-				Default: "1.16",
+				Default: "1.26",
 				Exceptions: []config.ExerciseVersion{
 					{
 						Exercise: "exercise01",
