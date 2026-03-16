@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "line_up_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Help lining up customers at Yaʻqūb's Deli.",

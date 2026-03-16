@@ -28,6 +28,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "ledger_test.go",
+      "cases_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

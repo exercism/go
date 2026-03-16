@@ -29,7 +29,8 @@
       ".meta/example.go"
     ],
     "editor": [
-      "common.go"
+      "common.go",
+      "error_handling_test.go"
     ],
     "invalidator": [
       "go.mod"

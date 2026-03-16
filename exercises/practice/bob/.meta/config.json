@@ -32,6 +32,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "bob_test.go",
       "cases_test.go"
     ],
     "invalidator": [

@@ -22,6 +22,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "simple_linked_list_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

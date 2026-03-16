@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "camicia_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Simulate the card game and determine whether the match ends or enters an infinite loop.",

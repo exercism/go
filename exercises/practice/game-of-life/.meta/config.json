@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "game_of_life_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Implement Conway's Game of Life.",

@@ -32,6 +32,9 @@
     ],
     "invalidator": [
       "go.mod"
+    ],
+    "editor": [
+      "binary_test.go"
     ]
   },
   "source": "All of Computer Science",

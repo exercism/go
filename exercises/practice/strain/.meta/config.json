@@ -25,6 +25,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "strain_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

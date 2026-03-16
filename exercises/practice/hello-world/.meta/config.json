@@ -25,6 +25,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "hello_world_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

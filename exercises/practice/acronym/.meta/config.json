@@ -35,6 +35,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "acronym_test.go",
       "cases_test.go"
     ],
     "invalidator": [

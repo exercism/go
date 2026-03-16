@@ -31,6 +31,9 @@
     ],
     "invalidator": [
       "go.mod"
+    ],
+    "editor": [
+      "hexadecimal_test.go"
     ]
   },
   "source": "All of Computer Science",

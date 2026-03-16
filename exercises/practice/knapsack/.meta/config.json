@@ -13,6 +13,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "knapsack_test.go",
       "cases_test.go"
     ]
   },

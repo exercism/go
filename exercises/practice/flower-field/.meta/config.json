@@ -26,6 +26,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "flower_field_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Mark all the flowers in a garden."

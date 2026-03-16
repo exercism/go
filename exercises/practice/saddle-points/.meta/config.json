@@ -27,6 +27,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "saddle_points_test.go",
+      "cases_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

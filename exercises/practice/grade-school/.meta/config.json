@@ -26,6 +26,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "grade_school_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

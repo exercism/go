@@ -15,6 +15,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "state_of_tic_tac_toe_test.go",
+      "cases_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

@@ -24,6 +24,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "two_fer_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

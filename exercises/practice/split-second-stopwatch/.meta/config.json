@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "split_second_stopwatch_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Keep track of time through a digital stopwatch.",

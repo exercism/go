@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "satellite_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Rebuild binary trees from pre-order and in-order traversals."
