@@ -30,6 +30,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "etl_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

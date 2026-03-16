@@ -31,6 +31,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "nucleotide_count_test.go",
       "cases_test.go"
     ],
     "invalidator": [

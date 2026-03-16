@@ -26,6 +26,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "pig_latin_test.go",
       "cases_test.go"
     ],
     "invalidator": [

@@ -27,6 +27,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "all_your_base_test.go",
       "cases_test.go"
     ],
     "invalidator": [

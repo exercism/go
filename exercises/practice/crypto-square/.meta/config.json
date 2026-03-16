@@ -26,6 +26,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "crypto_square_test.go",
+      "cases_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

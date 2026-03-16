@@ -27,6 +27,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "sieve_test.go",
       "cases_test.go"
     ],
     "invalidator": [

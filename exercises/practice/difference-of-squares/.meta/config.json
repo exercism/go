@@ -27,6 +27,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "difference_of_squares_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

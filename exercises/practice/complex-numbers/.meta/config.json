@@ -12,6 +12,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "complex_numbers_test.go",
+      "cases_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

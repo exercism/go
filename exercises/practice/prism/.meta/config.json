@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "prism_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Calculate the path of a laser through refractive prisms.",

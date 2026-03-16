@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "piecing_it_together_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Fill in missing jigsaw puzzle details from partial data",

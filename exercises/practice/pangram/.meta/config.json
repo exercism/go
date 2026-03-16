@@ -29,6 +29,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "pangram_test.go",
       "cases_test.go"
     ],
     "invalidator": [

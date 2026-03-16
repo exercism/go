@@ -25,6 +25,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "house_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

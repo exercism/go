@@ -27,6 +27,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "transpose_test.go",
       "cases_test.go"
     ],
     "invalidator": [

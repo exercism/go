@@ -27,6 +27,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "circular_buffer_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

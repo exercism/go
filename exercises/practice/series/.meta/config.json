@@ -26,6 +26,10 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "first_test.go",
+      "series_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

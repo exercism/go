@@ -18,6 +18,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "zebra_puzzle_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

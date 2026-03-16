@@ -11,6 +11,10 @@
     ],
     "example": [
       ".meta/example.go"
+    ],
+    "editor": [
+      "killer_sudoku_helper_test.go",
+      "cases_test.go"
     ]
   },
   "blurb": "Write a tool that makes it easier to solve Killer Sudokus",

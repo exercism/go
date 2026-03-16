@@ -21,6 +21,9 @@
     "example": [
       ".meta/example.go"
     ],
+    "editor": [
+      "rotational_cipher_test.go"
+    ],
     "invalidator": [
       "go.mod"
     ]

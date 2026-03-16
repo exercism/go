@@ -29,6 +29,7 @@
       ".meta/example.go"
     ],
     "editor": [
+      "sum_of_multiples_test.go",
       "cases_test.go"
     ],
     "invalidator": [

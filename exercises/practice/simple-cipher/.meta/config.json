@@ -25,7 +25,8 @@
       ".meta/example.go"
     ],
     "editor": [
-      "cipher.go"
+      "cipher.go",
+      "simple_cipher_test.go"
     ],
     "invalidator": [
       "go.mod"
