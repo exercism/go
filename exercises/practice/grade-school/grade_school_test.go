@@ -1,100 +1,108 @@
 //nolint:gosec // In the context of this exercise, it is fine to use math.Rand instead of crypto.Rand.
-package school
+package gradeschool
 
 import (
 	"fmt"
 	"math/rand"
+	"slices"
 	"strconv"
+	"strings"
 	"testing"
 )
 
-func TestNewSchoolIsEmpty(t *testing.T) {
-	if len(New().Enrollment()) != 0 {
-		t.Error("New school not empty")
+func TestAdd(t *testing.T) {
+	for _, tc := range testCasesAdd {
+		t.Run(tc.description, func(t *testing.T) {
+			var calls strings.Builder
+
+			s := New()
+			calls.WriteString("s := New()")
+
+			for i, student := range tc.students {
+				got := s.Add(student.name, student.grade)
+				calls.WriteString(fmt.Sprintf("; s.Add(%q, %d)", student.name, student.grade))
+				if got != tc.expected[i] {
+					t.Fatalf("%s = %t, expected %t", calls.String(), got, tc.expected[i])
+				}
+			}
+		})
 	}
 }
 
-func list(e []Grade) (s string) {
-	for _, l := range e {
-		s += fmt.Sprintln(l)
-	}
-	return s
-}
+func TestGrade(t *testing.T) {
+	for _, tc := range testCasesGrade {
+		t.Run(tc.description, func(t *testing.T) {
+			var calls strings.Builder
 
-func TestAddStudent(t *testing.T) {
-	exp := list([]Grade{{2, []string{"Aimee"}}})
-	s := New()
-	s.Add("Aimee", 2)
-	got := list(s.Enrollment())
-	if got != exp {
-		t.Errorf("Add Aimee level 2, got\n%sexpected:\n%s", got, exp)
-	}
-}
+			s := New()
+			calls.WriteString("s := New(); ")
 
-func TestAddMoreSameGrade(t *testing.T) {
-	exp := list([]Grade{{2, []string{"Blair James Paul"}}})
-	s := New()
-	s.Add("Blair", 2)
-	s.Add("James", 2)
-	s.Add("Paul", 2)
-	got := list(s.Enrollment())
-	if got != exp {
-		t.Errorf("Add more same grade, got\n%sexpected:\n%s", got, exp)
+			for _, student := range tc.students {
+				s.Add(student.name, student.grade)
+				calls.WriteString(fmt.Sprintf("s.Add(%q, %d); ", student.name, student.grade))
+			}
+			if got := s.Grade(tc.grade); !slices.Equal(got, tc.expected) {
+				t.Fatalf("%s s.Grade(%d) = %#v, expected %#v", calls.String(), tc.grade, got, tc.expected)
+			}
+		})
 	}
 }
 
-func TestAddDifferentGrades(t *testing.T) {
-	exp := list([]Grade{
-		{3, []string{"Chelsea"}},
-		{7, []string{"Logan"}},
-	})
-	s := New()
-	s.Add("Chelsea", 3)
-	s.Add("Logan", 7)
-	got := list(s.Enrollment())
-	if got != exp {
-		t.Errorf("Add different grades, got\n%sexpected:\n%s", got, exp)
+func TestEnrollment(t *testing.T) {
+	for _, tc := range testCasesEnrollment {
+		t.Run(tc.description, func(t *testing.T) {
+			var calls strings.Builder
+
+			s := New()
+			calls.WriteString("s := New(); ")
+
+			for _, student := range tc.students {
+				s.Add(student.name, student.grade)
+				calls.WriteString(fmt.Sprintf("s.Add(%q, %d); ", student.name, student.grade))
+			}
+			if got := s.Enrollment(); !slices.Equal(got, tc.expected) {
+				t.Fatalf("%s s.Enrollment() = %#v, expected %#v", calls.String(), got, tc.expected)
+			}
+		})
 	}
 }
 
-func TestGetGrade(t *testing.T) {
-	exp := []string{"Bradley", "Franklin"}
-	s := New()
-	s.Add("Bradley", 5)
-	s.Add("Franklin", 5)
-	s.Add("Jeff", 1)
-	got := s.Grade(5)
-	if len(got) == len(exp) {
-		if got[0] == exp[0] && got[1] == exp[1] ||
-			got[0] == exp[1] && got[1] == exp[0] { // accept out of order
-			return
+func BenchmarkAdd(b *testing.B) {
+	for range b.N {
+		s := New()
+		for _, tc := range testCasesAdd {
+			for _, student := range tc.students {
+				s.Add(student.name, student.grade)
+			}
 		}
 	}
-	t.Errorf("Get grade, got\n%q\nexpected\n%q", got, exp)
 }
 
-func TestNonExistantGrade(t *testing.T) {
-	s := New()
-	got := s.Grade(1)
-	if len(got) != 0 {
-		t.Errorf("Get non-existent grade, got\n%q\nexpected: []", got)
+func BenchmarkGrade(b *testing.B) {
+	for _, tc := range testCasesGrade {
+		b.StopTimer()
+		s := New()
+		for _, student := range tc.students {
+			s.Add(student.name, student.grade)
+		}
+		b.StartTimer()
+		for range b.N {
+			s.Grade(tc.grade)
+		}
 	}
 }
 
-func TestSortedEnrollment(t *testing.T) {
-	exp := list([]Grade{
-		{3, []string{"Kyle"}},
-		{4, []string{"Christopher Jennifer"}},
-		{6, []string{"Kareem"}},
-	})
-	s := New()
-	s.Add("Jennifer", 4)
-	s.Add("Kareem", 6)
-	s.Add("Christopher", 4)
-	s.Add("Kyle", 3)
-	got := list(s.Enrollment())
-	if got != exp {
-		t.Errorf("Sorted enrollment, got\n%sexpected:\n%s", got, exp)
+func BenchmarkEnrollment(b *testing.B) {
+	for _, tc := range testCasesEnrollment {
+		b.StopTimer()
+		s := New()
+		for _, student := range tc.students {
+			s.Add(student.name, student.grade)
+		}
+		b.StartTimer()
+		for range b.N {
+			s.Enrollment()
+		}
 	}
 }
 
@@ -125,7 +133,7 @@ func BenchmarkAddStudents(b *testing.B) {
 	}
 }
 
-func BenchmarkEnrollment(b *testing.B) {
+func BenchmarkRandomEnrollment(b *testing.B) {
 	const pool = 1000 // pool of schools
 	ss := make([]*School, pool)
 	for i := range ss {
