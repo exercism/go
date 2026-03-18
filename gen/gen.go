@@ -73,6 +73,7 @@ type testCase struct {
 	Comments    []string    `json:"comments"`
 	Property    string      `json:"property"`
 	Scenario    string      `json:"scenario"`
+	Scenarios   []string    `json:"scenarios"`
 	Input       interface{} `json:"input"`
 	Expected    interface{} `json:"expected"`
 }

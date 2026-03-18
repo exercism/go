@@ -1,9 +1,9 @@
-package account
+package bankaccount
 
 import "sync"
 
 type Account struct {
-	mu      *sync.RWMutex
+	mu      sync.RWMutex
 	open    bool
 	balance int64
 }
@@ -15,7 +15,6 @@ func Open(amt int64) *Account {
 	return &Account{
 		open:    true,
 		balance: amt,
-		mu:      new(sync.RWMutex),
 	}
 }
 
@@ -37,6 +36,13 @@ func (a *Account) Deposit(amt int64) (newBal int64, ok bool) {
 	}
 	a.balance += amt
 	return a.balance, true
+}
+
+func (a *Account) Withdraw(amt int64) (newBal int64, ok bool) {
+	if amt < 0 {
+		return 0, false
+	}
+	return a.Deposit(-amt)
 }
 
 func (a *Account) Close() (pay int64, ok bool) {

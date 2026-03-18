@@ -30,7 +30,8 @@
       ".meta/example.go"
     ],
     "editor": [
-      "bank_account_test.go"
+      "bank_account_test.go",
+      "cases_test.go"
     ],
     "invalidator": [
       "go.mod"
