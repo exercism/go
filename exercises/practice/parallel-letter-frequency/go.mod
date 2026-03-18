@@ -1,3 +1,3 @@
-module letter
+module parallelletterfrequency
 
 go 1.26

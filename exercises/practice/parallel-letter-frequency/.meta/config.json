@@ -30,7 +30,8 @@
       ".meta/example.go"
     ],
     "editor": [
-      "parallel_letter_frequency_test.go"
+      "parallel_letter_frequency_test.go",
+      "cases_test.go"
     ],
     "invalidator": [
       "go.mod"
