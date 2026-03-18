@@ -1,0 +1,16 @@
+{
+  "exclude": {
+    "counter": [
+      "counter_test.go",
+      "impl1.go",
+      "impl2.go",
+      "impl3.go",
+      "impl4.go",
+      "interface.go",
+      "maker.go"
+    ],
+    "series": [
+      "asktoomuch_test.go"
+    ]
+  }
+}

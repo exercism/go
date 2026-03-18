@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd "$(git rev-parse --show-toplevel)/utils/editor_files"
+go run main.go check
