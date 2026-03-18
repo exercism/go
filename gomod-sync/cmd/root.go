@@ -12,7 +12,9 @@ var (
 	exercisesPathFlag string
 	targetVersionFlag string
 	configFileFlag    string
-	versionConfig     config.VersionConfig
+	// Should we make automated updates to resolve issues.
+	updateFlag    bool
+	versionConfig config.VersionConfig
 )
 
 func init() {
@@ -27,9 +29,12 @@ func init() {
 			"version in case of the check command, and to update all go.mod files to this version "+
 			"in the case of the update command. Using this flag will override "+
 			"the version specified in the config file.")
+	rootCmd.PersistentFlags().BoolVarP(&updateFlag,
+		"update", "u", false,
+		"make automated updates to resolve issues")
 	rootCmd.PersistentFlags().StringVarP(&configFileFlag,
 		"config", "c", "config.json",
-		"path to the JSON configuration file. ")
+		"path to the JSON configuration file")
 }
 
 var rootCmd = &cobra.Command{

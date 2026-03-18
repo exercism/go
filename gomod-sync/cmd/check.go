@@ -32,11 +32,20 @@ var checkCmd = &cobra.Command{
 		var faultyFiles []faultyFile
 		for _, file := range files {
 			expectedVersion := versionConfig.ExerciseExpectedVersion(file.ExerciseSlug)
-			if file.GoVersion != expectedVersion {
-				fmt.Println(aurora.Red(fmt.Sprintf("%v has version %s, but %s expected - FAIL", file.Path, file.GoVersion, expectedVersion)))
-				faultyFiles = append(faultyFiles, faultyFile{Info: file, ExpectedVersion: expectedVersion})
-			} else {
+			if file.GoVersion == expectedVersion {
 				fmt.Println(aurora.Green(fmt.Sprintf("%v has version %s as expected - OK", file.Path, file.GoVersion)))
+			} else {
+				if updateFlag {
+					if err := gomod.Update(file.Path, expectedVersion); err != nil {
+						fmt.Println(aurora.Red(fmt.Sprintf("failed to update %q: %v", file.Path, err)))
+						return fmt.Errorf("failed to update %q: %w", file.Path, err)
+					} else {
+						fmt.Println(aurora.Green(fmt.Sprintf("Updated %s: %s => %s\n", file.Path, file.GoVersion, expectedVersion)))
+					}
+				} else {
+					fmt.Println(aurora.Red(fmt.Sprintf("%v has version %s, but %s expected - FAIL", file.Path, file.GoVersion, expectedVersion)))
+					faultyFiles = append(faultyFiles, faultyFile{Info: file, ExpectedVersion: expectedVersion})
+				}
 			}
 		}
 
