@@ -29,9 +29,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Pick the best hand(s) from a list of poker hands.",

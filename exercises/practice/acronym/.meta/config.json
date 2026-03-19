@@ -34,9 +34,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Convert a long phrase to its acronym.",

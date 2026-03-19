@@ -31,9 +31,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Refactor a tree building algorithm."

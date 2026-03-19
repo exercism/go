@@ -28,9 +28,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Create a program to solve a word search puzzle."

@@ -28,9 +28,6 @@
     ],
     "editor": [
       "interfaces.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Implement a basic reactive system."

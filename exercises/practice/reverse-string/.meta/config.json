@@ -23,9 +23,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Reverse a given string.",

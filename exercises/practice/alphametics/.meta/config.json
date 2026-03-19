@@ -20,9 +20,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Given an alphametics puzzle, find the correct solution."

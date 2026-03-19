@@ -29,9 +29,6 @@
     ],
     "editor": [
       "interface.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Report network IO statistics.",

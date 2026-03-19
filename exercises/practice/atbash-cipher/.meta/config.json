@@ -28,9 +28,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Create an implementation of the Atbash cipher, an ancient encryption system created in the Middle East.",

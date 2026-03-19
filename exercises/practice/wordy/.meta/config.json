@@ -27,9 +27,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Parse and evaluate simple math word problems returning the answer as an integer.",

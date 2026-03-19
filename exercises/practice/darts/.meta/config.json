@@ -17,9 +17,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Calculate the points scored in a single toss of a Darts game.",

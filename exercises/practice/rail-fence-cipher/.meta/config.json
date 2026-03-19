@@ -20,9 +20,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Implement encoding and decoding for the rail fence cipher.",

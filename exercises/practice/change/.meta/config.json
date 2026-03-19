@@ -25,9 +25,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Correctly determine change to be given using the least number of coins.",

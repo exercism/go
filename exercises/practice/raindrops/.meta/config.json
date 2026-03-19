@@ -27,9 +27,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Convert a number into its corresponding raindrop sounds - Pling, Plang and Plong.",

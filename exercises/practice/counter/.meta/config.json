@@ -28,9 +28,6 @@
       "impl4.go",
       "interface.go",
       "maker.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Design a test suite for a line/letter/character counter tool."

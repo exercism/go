@@ -28,9 +28,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Given a DNA strand, return its RNA complement.",

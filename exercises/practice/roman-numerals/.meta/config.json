@@ -30,9 +30,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Convert modern Arabic numbers into Roman numerals.",

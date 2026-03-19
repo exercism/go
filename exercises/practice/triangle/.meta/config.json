@@ -28,9 +28,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Determine if a triangle is equilateral, isosceles, or scalene.",
