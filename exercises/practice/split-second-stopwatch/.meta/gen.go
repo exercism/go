@@ -4,7 +4,6 @@ import (
 	"../../../../gen"
 	"fmt"
 	"log"
-	"reflect"
 	"strings"
 	"text/template"
 )
@@ -43,25 +42,22 @@ func (o operation) ExpectedString() string {
 }
 
 func (o operation) ExpectedPrevLaps() string {
-	if reflect.ValueOf(o.Expected).Kind() == reflect.Slice {
-		m := reflect.ValueOf(o.Expected).Convert(reflect.TypeOf([]any{})).Interface().([]any)
-		var vals []string
-		for _, val := range m {
-			vals = append(vals, fmt.Sprintf("%q", val.(string)))
-		}
-		return fmt.Sprintf("[]string{%s}", strings.Join(vals, ", "))
-
+	if gen.IsError(o.Expected) {
+		return ""
 	}
-	return ""
+	m, ok := o.Expected.([]any)
+	if !ok {
+		return ""
+	}
+	var vals []string
+	for _, val := range m {
+		vals = append(vals, fmt.Sprintf("%q", val.(string)))
+	}
+	return fmt.Sprintf("[]string{%s}", strings.Join(vals, ", "))
 }
 
 func (o operation) ExpectedErr() string {
-	if reflect.ValueOf(o.Expected).Kind() == reflect.Map {
-		m := reflect.ValueOf(o.Expected).Convert(reflect.TypeOf(map[string]any{}))
-		return m.MapIndex(reflect.ValueOf("error")).Interface().(string)
-
-	}
-	return ""
+	return gen.ErrorMessage(o.Expected)
 }
 
 func Title(command string) string {
