@@ -7,7 +7,8 @@
       "affine_cipher.go"
     ],
     "test": [
-      "affine_cipher_test.go"
+      "affine_cipher_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

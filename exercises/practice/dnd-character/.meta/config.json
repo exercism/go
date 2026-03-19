@@ -10,13 +10,11 @@
       "dnd_character.go"
     ],
     "test": [
-      "dnd_character_test.go"
+      "dnd_character_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
     ]
   },
   "blurb": "Randomly generate Dungeons & Dragons characters.",

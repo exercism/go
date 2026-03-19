@@ -21,7 +21,8 @@
       "crypto_square.go"
     ],
     "test": [
-      "crypto_square_test.go"
+      "crypto_square_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

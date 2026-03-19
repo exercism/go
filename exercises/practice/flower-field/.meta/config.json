@@ -22,7 +22,8 @@
       "flower_field.go"
     ],
     "test": [
-      "flower_field_test.go"
+      "flower_field_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

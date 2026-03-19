@@ -7,13 +7,11 @@
       "resistor_color_trio.go"
     ],
     "test": [
-      "resistor_color_trio_test.go"
+      "resistor_color_trio_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
     ],
     "invalidator": [
       "go.mod"

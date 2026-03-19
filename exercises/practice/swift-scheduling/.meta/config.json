@@ -7,7 +7,8 @@
       "swift_scheduling.go"
     ],
     "test": [
-      "swift_scheduling_test.go"
+      "swift_scheduling_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

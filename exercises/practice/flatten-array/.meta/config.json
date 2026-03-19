@@ -16,13 +16,11 @@
       "flatten_array.go"
     ],
     "test": [
-      "flatten_array_test.go"
+      "flatten_array_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
     ],
     "invalidator": [
       "go.mod"

@@ -25,13 +25,11 @@
       "scrabble_score.go"
     ],
     "test": [
-      "scrabble_score_test.go"
+      "scrabble_score_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
     ],
     "invalidator": [
       "go.mod"

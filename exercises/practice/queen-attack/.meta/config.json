@@ -22,7 +22,8 @@
       "queen_attack.go"
     ],
     "test": [
-      "queen_attack_test.go"
+      "queen_attack_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

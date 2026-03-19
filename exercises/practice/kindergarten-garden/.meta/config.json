@@ -22,7 +22,8 @@
       "kindergarten_garden.go"
     ],
     "test": [
-      "kindergarten_garden_test.go"
+      "kindergarten_garden_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

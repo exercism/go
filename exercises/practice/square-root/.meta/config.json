@@ -7,7 +7,8 @@
       "square_root.go"
     ],
     "test": [
-      "square_root_test.go"
+      "square_root_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
