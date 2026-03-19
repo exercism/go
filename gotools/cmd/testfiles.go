@@ -2,17 +2,29 @@
 package cmd
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 
 	aurora "github.com/logrusorgru/aurora/v3"
 	"github.com/spf13/cobra"
 )
+
+// Patterns to strip from JSON output.
+var EmptyJson = []string{
+	`"[^"]*":null,`,
+	`"[^"]*":\[\],`,
+	`"[^"]*":"",`,
+	`,"[^"]*":null`,
+	`,"[^"]*":\[\]`,
+	`,"[^"]*":""`,
+}
 
 func init() {
 	rootCmd.AddCommand(testFilesCmd)
@@ -60,8 +72,7 @@ func (e ExerciseData) Check() error {
 	if err != nil {
 		return err
 	}
-	testFiles := []string{}
-	editorFiles := []string{}
+	var testFiles, editorFiles []string
 	for _, srcFile := range srcFiles {
 		_, name := filepath.Split(srcFile)
 		if name != solutionFile && !slices.Contains(configData.TestFiles.Exclude[e.Slug], name) {
@@ -79,7 +90,16 @@ func (e ExerciseData) Check() error {
 		if updateFlag {
 			meta.Files.Editor = editorFiles
 			meta.Files.Test = testFiles
-			out, err := json.MarshalIndent(meta, "", "  ")
+			// Convert to JSON, remove empty fields and indent.
+			out, err := json.Marshal(meta)
+			for _, pattern := range EmptyJson {
+				out = regexp.MustCompile(pattern).ReplaceAll(out, []byte{})
+			}
+
+			var indented bytes.Buffer
+			json.Indent(&indented, out, "", "  ")
+			indented.WriteString("\n")
+
 			if err != nil {
 				return fmt.Errorf("exercise %q, failed to marshal config data, %v", e.Slug, err)
 			}
@@ -87,8 +107,7 @@ func (e ExerciseData) Check() error {
 			if err != nil {
 				return fmt.Errorf("exercise %q, failed to stat() config data, %v", e.Slug, err)
 			}
-			out = append(out, byte('\n'))
-			if err = os.WriteFile(configFile, out, fi.Mode().Perm()); err != nil {
+			if err = os.WriteFile(configFile, indented.Bytes(), fi.Mode().Perm()); err != nil {
 				return fmt.Errorf("exercise %q, failed to write config data, %v", e.Slug, err)
 			}
 			fmt.Println(aurora.Green(fmt.Sprintf("Updated the config file for %q", e.Slug)))
