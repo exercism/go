@@ -35,9 +35,6 @@
     ],
     "invalidator": [
       "go.mod"
-    ],
-    "editor": [
-      "beer_song_test.go"
     ]
   },
   "source": "Learn to Program by Chris Pine",

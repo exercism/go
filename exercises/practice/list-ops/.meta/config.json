@@ -22,10 +22,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "list_ops_test.go",
-      "cases_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

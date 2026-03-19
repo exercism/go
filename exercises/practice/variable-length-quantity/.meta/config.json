@@ -31,7 +31,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "variable_length_quantity_test.go",
       "cases_test.go"
     ],
     "invalidator": [

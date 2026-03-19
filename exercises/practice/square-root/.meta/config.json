@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "square_root_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Given a natural radicand, return its square root.",

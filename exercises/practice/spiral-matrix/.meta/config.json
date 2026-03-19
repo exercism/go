@@ -21,9 +21,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "spiral_matrix_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

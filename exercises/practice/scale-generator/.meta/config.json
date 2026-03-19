@@ -22,7 +22,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "scale_generator_test.go",
       "cases_test.go"
     ],
     "invalidator": [

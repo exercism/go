@@ -27,10 +27,7 @@
       ".meta/example.go"
     ],
     "editor": [
-      "defs.go",
-      "robot_simulator_test.go",
-      "robot_simulator_step2_test.go",
-      "robot_simulator_step3_test.go"
+      "defs.go"
     ],
     "invalidator": [
       "go.mod"

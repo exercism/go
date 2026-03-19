@@ -31,7 +31,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "matching_brackets_test.go",
       "cases_test.go"
     ],
     "invalidator": [

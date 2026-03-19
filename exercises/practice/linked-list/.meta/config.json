@@ -24,7 +24,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "linked_list_test.go",
       "cases_test.go",
       "extra_cases_test.go"
     ],

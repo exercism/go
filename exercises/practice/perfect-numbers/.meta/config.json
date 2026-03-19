@@ -28,7 +28,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "perfect_numbers_test.go",
       "cases_test.go"
     ],
     "invalidator": [

@@ -31,9 +31,6 @@
     ],
     "invalidator": [
       "go.mod"
-    ],
-    "editor": [
-      "octal_test.go"
     ]
   },
   "source": "All of Computer Science",

@@ -27,8 +27,7 @@
       ".meta/example.go"
     ],
     "editor": [
-      "interfaces.go",
-      "react_test.go"
+      "interfaces.go"
     ],
     "invalidator": [
       "go.mod"

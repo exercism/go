@@ -22,7 +22,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "collatz_conjecture_test.go",
       "cases_test.go"
     ],
     "invalidator": [

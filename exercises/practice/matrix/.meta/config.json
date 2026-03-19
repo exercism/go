@@ -29,9 +29,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "matrix_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

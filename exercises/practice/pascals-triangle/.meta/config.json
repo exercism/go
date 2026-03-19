@@ -26,9 +26,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "pascals_triangle_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

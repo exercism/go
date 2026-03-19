@@ -23,7 +23,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "bowling_test.go",
       "cases_test.go"
     ],
     "invalidator": [

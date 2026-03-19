@@ -32,7 +32,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "secret_handshake_test.go",
       "cases_test.go"
     ],
     "invalidator": [

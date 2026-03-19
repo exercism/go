@@ -32,7 +32,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "grains_test.go",
       "cases_test.go"
     ],
     "invalidator": [

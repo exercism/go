@@ -29,7 +29,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "luhn_test.go",
       "cases_test.go"
     ],
     "invalidator": [

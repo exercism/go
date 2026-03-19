@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "relative_distance_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Given a family tree, calculate the degree of separation.",

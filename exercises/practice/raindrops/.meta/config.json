@@ -28,7 +28,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "raindrops_test.go",
       "cases_test.go"
     ],
     "invalidator": [

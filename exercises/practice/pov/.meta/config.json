@@ -27,9 +27,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "pov_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]
