@@ -3,7 +3,7 @@
     "default": "1.26",
     "exceptions": []
   },
-  "editor_files" : {
+  "test_files" : {
     "exclude": {
       "series": ["asktoomuch_test.go"]
     }

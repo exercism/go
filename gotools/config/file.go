@@ -17,13 +17,13 @@ type VersionConfig struct {
 	Exceptions []ExerciseVersion `json:"exceptions"`
 }
 
-type EditorFileConfig struct {
+type TestFileConfig struct {
 	Exclude map[string][]string `json:"exclude"`
 }
 
 type Config struct {
-	GoModVersion VersionConfig    `json:"go_mod_version"`
-	EditorFiles  EditorFileConfig `json:"editor_files"`
+	GoModVersion VersionConfig  `json:"go_mod_version"`
+	TestFiles    TestFileConfig `json:"test_files"`
 }
 
 // ExerciseExpectedVersion gives the expected version the go.mod file for

@@ -24,4 +24,3 @@ jobs:
         run: |
           cd gotools
           go run main.go gomod
-          go run main.go editor_files

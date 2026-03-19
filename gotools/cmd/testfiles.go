@@ -1,4 +1,4 @@
-// editorfiles.go contains the logic for the editor_files subcommand, used to check the editor.files values in exercise .meta/config.json files.
+// testfiles.go contains the logic for the test_files subcommand, used to check the test.files values in exercise .meta/config.json files.
 package cmd
 
 import (
@@ -15,8 +15,8 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(editorFilesCmd)
-	editorFilesCmd.PersistentFlags().BoolVarP(&updateFlag,
+	rootCmd.AddCommand(testFilesCmd)
+	testFilesCmd.PersistentFlags().BoolVarP(&updateFlag,
 		"update", "u", false,
 		"make automated updates to resolve issues")
 }
@@ -24,16 +24,16 @@ func init() {
 type ExerciseConfigFile struct {
 	Authors      []string `json:"authors"`
 	Contributors []string `json:"contributors"`
-	Files struct {
+	Files        struct {
 		Solution    []string `json:"solution"`
 		Test        []string `json:"test"`
 		Example     []string `json:"example"`
 		Editor      []string `json:"editor"`
 		Invalidator []string `json:"invalidator"`
 	} `json:"files"`
-	Blurb        string   `json:"blurb"`
-	Source       string   `json:"source"`
-	Source_url   string   `json:"source_url"`
+	Blurb      string `json:"blurb"`
+	Source     string `json:"source"`
+	Source_url string `json:"source_url"`
 }
 
 type ExerciseData struct {
@@ -53,25 +53,32 @@ func (e ExerciseData) Check() error {
 	if err != nil {
 		return err
 	}
-	slices.Sort(meta.Files.Editor)
+	slices.Sort(meta.Files.Test)
 
 	solutionFile := strings.ReplaceAll(e.Slug, "-", "_") + ".go"
 	srcFiles, err := filepath.Glob(filepath.Join(e.Path, "*.go"))
 	if err != nil {
 		return err
 	}
-	var srcNames []string
+	testFiles := []string{}
+	editorFiles := []string{}
 	for _, srcFile := range srcFiles {
 		_, name := filepath.Split(srcFile)
-		if name != solutionFile && !slices.Contains(configData.EditorFiles.Exclude[e.Slug], name) {
-			srcNames = append(srcNames, name)
+		if name != solutionFile && !slices.Contains(configData.TestFiles.Exclude[e.Slug], name) {
+			if strings.Contains(name, "test") {
+				testFiles = append(testFiles, name)
+			} else {
+				editorFiles = append(editorFiles, name)
+			}
 		}
 	}
-	slices.Sort(srcNames)
+	slices.Sort(testFiles)
+	slices.Sort(editorFiles)
 
-	if !slices.Equal(meta.Files.Editor, srcNames) {
+	if !slices.Equal(meta.Files.Test, testFiles) || !slices.Equal(meta.Files.Editor, editorFiles) {
 		if updateFlag {
-			meta.Files.Editor = srcNames
+			meta.Files.Editor = editorFiles
+			meta.Files.Test = testFiles
 			out, err := json.MarshalIndent(meta, "", "  ")
 			if err != nil {
 				return fmt.Errorf("exercise %q, failed to marshal config data, %v", e.Slug, err)
@@ -86,7 +93,7 @@ func (e ExerciseData) Check() error {
 			}
 			fmt.Println(aurora.Green(fmt.Sprintf("Updated the config file for %q", e.Slug)))
 		} else {
-			return fmt.Errorf("exercise %q, editor files %v do not match source files %v", e.Slug, meta.Files.Editor, srcNames)
+			return fmt.Errorf("exercise %q, config files do not match source files. Meta files test [%v] and editor [%v] vs source test [%v] and others [%v]", e.Slug, meta.Files.Test, meta.Files.Editor, testFiles, editorFiles)
 		}
 	}
 	return nil
@@ -115,10 +122,10 @@ func exerciseData(exercisePath string) ([]ExerciseData, error) {
 	return exercises, nil
 }
 
-var editorFilesCmd = &cobra.Command{
+var testFilesCmd = &cobra.Command{
 	SilenceErrors:     true,
-	Use:               "editor_files",
-	Short:             "Checks all test files are shown in the editor",
+	Use:               "test_files",
+	Short:             "Checks all test files are shown in the test tab",
 	PersistentPreRunE: loadConfig,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		exercises, err := exerciseData(exercisesPathFlag)
