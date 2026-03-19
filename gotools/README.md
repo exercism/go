@@ -2,7 +2,7 @@
 
 Utility tool to check and update the Go version specified in the `go.mod` files of all exercises.
 It works by specifying the desired Go version for all the `go.mod` files to be in.
-The `check` command will verify if all `go.mod` files are in the desired version.
+The `gomod` command will verify if all `go.mod` files are in the desired version.
 The `--update` flag will update all `go.mod` files to have the desired Go version.
 
 Some exercises must have its `go.mod` specify a Go version that is different from the other exercise's `go.mod`.
@@ -14,14 +14,14 @@ To update all go.mod files according to the config file (gotools/config.json) ru
 
 ```console
 cd gotools
-go run main.go --update check
+go run main.go --update gomod
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
 
 ```console
 cd gotools
-go run main.go check
+go run main.go gomod
 ```
 
 ## Installing
@@ -55,7 +55,7 @@ go test ./...
   gotools commandUpdate gitig [flags]
 
 Available Commands:
-  check       Checks if all go.mod files are in the target version
+  gomod       Checks if all go.mod files are in the target version
   help        Help about any command
 
 ```
@@ -63,7 +63,7 @@ Available Commands:
 ## Commands
 
 ```text
-gotools check -v target_version [-e exercises_path] [-c config_file]
+gotools gomod -v target_version [-e exercises_path] [-c config_file]
   checks if all `go.mod` files are in the target version
 
 gotools completion
@@ -75,7 +75,7 @@ gotools help
 gotools list [-e exercises_path]
   list `go.mod` files and the Go version they specify
 
-gotools --update check -v target_version [-e exercises_path] [-c config_file]
+gotools --update gomod -v target_version [-e exercises_path] [-c config_file]
   updates `go.mod` files to the target version
 ```
 
@@ -95,7 +95,7 @@ gotools --update check -v target_version [-e exercises_path] [-c config_file]
 -v, --goversion target_version
   target go version that all go.mod files are expected to have.
   This will be used to check if the `go.mod` files are in the expected version
-  in case of the check command, and to update all `go.mod` files to this version
+  in case of the gomod command, and to update all `go.mod` files to this version
   in the case of the update command.
   Using this flag will override the version specified in the config file.
 
@@ -132,10 +132,10 @@ Specifying the `-v, --goversion` flag overrides the default version specified in
 ## Examples
 
 - Check if all `go.mod` files of exercises in the `../exercises` folder have the default version specified in the `config.json` file:
-  - `gotools check`
+  - `gotools gomod`
 - Check if all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gotools check --goversion 1.26 --exercises ./exercises`
+  - `gotools gomod --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gotools --update check --goversion 1.26 --exercises ./exercises`
+  - `gotools --update gomod --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files, using a config file to specify the versions of exercises:
-  - `gotools --update check --config a_dir/config.json --exercises ./exercises`
+  - `gotools --update gomod --config a_dir/config.json --exercises ./exercises`

@@ -23,4 +23,4 @@ jobs:
         shell: bash
         run: |
           cd gotools
-          go run main.go check
+          go run main.go gomod
