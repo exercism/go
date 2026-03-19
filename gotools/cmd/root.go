@@ -22,16 +22,6 @@ func init() {
 		"exercises", "e", "../exercises",
 		"path to the exercises folder. go.mod files will "+
 			"be recursively searched inside this directory.")
-	rootCmd.PersistentFlags().StringVarP(&targetVersionFlag,
-		"goversion", "v", "",
-		"target go version that all go.mod files are expected to have. "+
-			"This will be used to check if the go.mod files are in the expected "+
-			"version in case of the check command, and to update all go.mod files to this version "+
-			"in the case of the update command. Using this flag will override "+
-			"the version specified in the config file.")
-	rootCmd.PersistentFlags().BoolVarP(&updateFlag,
-		"update", "u", false,
-		"make automated updates to resolve issues")
 	rootCmd.PersistentFlags().StringVarP(&configFileFlag,
 		"config", "c", "config.json",
 		"path to the JSON configuration file")

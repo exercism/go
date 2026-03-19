@@ -372,7 +372,7 @@ cd gotools && go run main.go update
 To check all exercise go.mod files specify the correct Go version, run:
 
 ```console
-cd gotools && go run main.go check
+cd gotools && go run main.go gomod
 ```
 
 ## Pull requests
