@@ -3,7 +3,7 @@
 gotools has two commands which both check exercises files.
 
 * `gomod` checks/updates the Go version in the `go.mod` files for all exercises.
-* `editor_files` checks the `files.editor` value in `.meta/config.json` for practice exercises.
+* `test_files` checks the `files.test` value in `.meta/config.json` for practice exercises.
 
 ## gomod
 
