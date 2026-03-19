@@ -32,7 +32,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "leap_test.go",
       "cases_test.go"
     ],
     "invalidator": [

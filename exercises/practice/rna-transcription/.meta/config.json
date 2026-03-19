@@ -29,7 +29,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "rna_transcription_test.go",
       "cases_test.go"
     ],
     "invalidator": [

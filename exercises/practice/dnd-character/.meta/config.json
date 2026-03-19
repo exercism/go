@@ -16,7 +16,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "dnd_character_test.go",
       "cases_test.go"
     ]
   },

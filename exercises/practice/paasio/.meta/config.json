@@ -28,7 +28,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "paasio_test.go",
       "interface.go"
     ],
     "invalidator": [

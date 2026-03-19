@@ -29,9 +29,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "binary_search_tree_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

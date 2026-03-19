@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "baffling_birthdays_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Estimate the birthday paradox's probabilities.",

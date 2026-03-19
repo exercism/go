@@ -28,9 +28,6 @@
     ],
     "invalidator": [
       "go.mod"
-    ],
-    "editor": [
-      "trinary_test.go"
     ]
   },
   "source": "All of Computer Science",

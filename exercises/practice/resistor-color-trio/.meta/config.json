@@ -13,7 +13,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "resistor_color_trio_test.go",
       "cases_test.go"
     ],
     "invalidator": [

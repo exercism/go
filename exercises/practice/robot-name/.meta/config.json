@@ -28,9 +28,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "robot_name_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

@@ -31,7 +31,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "scrabble_score_test.go",
       "cases_test.go"
     ],
     "invalidator": [

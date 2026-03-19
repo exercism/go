@@ -27,10 +27,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "kindergarten_garden_test.go",
-      "cases_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

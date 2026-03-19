@@ -21,7 +21,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "proverb_test.go",
       "cases_test.go"
     ],
     "invalidator": [

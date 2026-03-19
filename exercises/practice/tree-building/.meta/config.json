@@ -32,9 +32,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "tree_building_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

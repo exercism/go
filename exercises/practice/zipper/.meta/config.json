@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "zipper_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Creating a zipper for a binary tree."

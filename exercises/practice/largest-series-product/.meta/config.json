@@ -27,7 +27,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "largest_series_product_test.go",
       "cases_test.go"
     ],
     "invalidator": [

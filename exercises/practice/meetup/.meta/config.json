@@ -27,7 +27,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "meetup_test.go",
       "cases_test.go"
     ],
     "invalidator": [

@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "sgf_parsing_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Parsing a Smart Game Format string."

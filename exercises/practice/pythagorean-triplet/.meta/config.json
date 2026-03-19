@@ -26,9 +26,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "pythagorean_triplet_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

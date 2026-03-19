@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "go_counting_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Count the scored points on a Go board."

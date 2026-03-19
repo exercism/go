@@ -18,7 +18,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "darts_test.go",
       "cases_test.go"
     ],
     "invalidator": [

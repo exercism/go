@@ -29,9 +29,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "triangle_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

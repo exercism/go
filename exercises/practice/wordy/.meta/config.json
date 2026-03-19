@@ -28,7 +28,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "wordy_test.go",
       "cases_test.go"
     ],
     "invalidator": [

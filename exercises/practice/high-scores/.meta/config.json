@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "high_scores_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Manage a player's High Score list.",

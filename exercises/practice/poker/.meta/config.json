@@ -30,7 +30,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "poker_test.go",
       "cases_test.go"
     ],
     "invalidator": [

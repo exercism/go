@@ -21,7 +21,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "grep_test.go",
       "cases_test.go"
     ],
     "invalidator": [

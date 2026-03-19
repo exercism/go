@@ -12,10 +12,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "bottle_song_test.go",
-      "cases_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

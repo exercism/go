@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "affine_cipher_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Create an implementation of the Affine cipher, an ancient encryption algorithm from the Middle East.",

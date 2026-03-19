@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "intergalactic_transmission_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Add parity bits to a message for transmission",

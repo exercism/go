@@ -31,7 +31,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "prime_factors_test.go",
       "cases_test.go"
     ],
     "invalidator": [

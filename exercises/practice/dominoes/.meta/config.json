@@ -24,7 +24,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "dominoes_test.go",
       "cases_test.go"
     ],
     "invalidator": [

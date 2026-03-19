@@ -22,7 +22,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "two_bucket_test.go",
       "cases_test.go"
     ],
     "invalidator": [

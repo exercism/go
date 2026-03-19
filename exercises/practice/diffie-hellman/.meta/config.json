@@ -26,9 +26,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "diffie_hellman_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

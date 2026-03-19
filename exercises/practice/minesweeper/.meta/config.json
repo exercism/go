@@ -28,9 +28,6 @@
     ],
     "invalidator": [
       "go.mod"
-    ],
-    "editor": [
-      "minesweeper_test.go"
     ]
   },
   "blurb": "Add the numbers to a minesweeper board."

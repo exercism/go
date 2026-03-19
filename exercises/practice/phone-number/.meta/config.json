@@ -34,7 +34,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "phone_number_test.go",
       "cases_test.go"
     ],
     "invalidator": [

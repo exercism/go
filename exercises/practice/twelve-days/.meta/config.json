@@ -28,9 +28,6 @@
     "example": [
       ".meta/example.go"
     ],
-    "editor": [
-      "twelve_days_test.go"
-    ],
     "invalidator": [
       "go.mod"
     ]

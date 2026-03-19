@@ -35,9 +35,6 @@
     ],
     "invalidator": [
       "go.mod"
-    ],
-    "editor": [
-      "accumulate_test.go"
     ]
   },
   "source": "Conversation with James Edward Gray II",

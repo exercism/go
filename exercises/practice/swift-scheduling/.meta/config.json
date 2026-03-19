@@ -11,10 +11,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "swift_scheduling_test.go",
-      "cases_test.go"
     ]
   },
   "blurb": "Convert delivery date descriptions to actual delivery dates.",

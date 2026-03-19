@@ -24,7 +24,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "reverse_string_test.go",
       "cases_test.go"
     ],
     "invalidator": [

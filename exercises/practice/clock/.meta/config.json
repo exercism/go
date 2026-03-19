@@ -33,7 +33,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "clock_test.go",
       "cases_test.go"
     ],
     "invalidator": [

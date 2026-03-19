@@ -22,7 +22,6 @@
       ".meta/example.go"
     ],
     "editor": [
-      "flatten_array_test.go",
       "cases_test.go"
     ],
     "invalidator": [

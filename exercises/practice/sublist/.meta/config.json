@@ -22,9 +22,8 @@
       ".meta/example.go"
     ],
     "editor": [
-      "relations.go",
-      "sublist_test.go",
-      "cases_test.go"
+      "cases_test.go",
+      "relations.go"
     ],
     "invalidator": [
       "go.mod"
