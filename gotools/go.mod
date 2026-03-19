@@ -1,4 +1,4 @@
-module github.com/exercism/go/gomod-sync
+module github.com/exercism/go/gotools
 
 go 1.26
 

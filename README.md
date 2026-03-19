@@ -360,19 +360,19 @@ The token does not need any specific scopes as it is only used to fetch infos ab
 
 ## Managing the Go version
 
-For an easy management of the Go version in the `go.mod` file in all exercises, we can use `gomod-sync`.
-This is a tool made in Go that can be seen in the `gomod-sync/` folder.
+For an easy management of the Go version in the `go.mod` file in all exercises, we can use `gotools`.
+This is a tool made in Go that can be seen in the `gotools/` folder.
 
-To update all go.mod files according to the config file (`gomod-sync/config.json`) run:
+To update all go.mod files according to the config file (`gotools/config.json`) run:
 
 ```console
-cd gomod-sync && go run main.go update
+cd gotools && go run main.go update
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
 
 ```console
-cd gomod-sync && go run main.go check
+cd gotools && go run main.go check
 ```
 
 ## Pull requests

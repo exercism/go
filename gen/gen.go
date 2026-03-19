@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"../gomod-sync/cmd/config"
+	"../gotools/cmd/config"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -211,7 +211,7 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		return err
 	}
 	// write the go.mod file
-	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gomod-sync", "config.json")
+	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gotools", "config.json")
 	version, err := config.Load(versionConfig)
 	if err != nil {
 		return err
