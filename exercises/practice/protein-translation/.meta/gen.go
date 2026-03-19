@@ -4,7 +4,6 @@ import (
 	"../../../../gen"
 	"fmt"
 	"log"
-	"reflect"
 	"text/template"
 )
 
@@ -30,10 +29,13 @@ type testCase struct {
 }
 
 func (tc testCase) ExpectedProteins() string {
-	if reflect.ValueOf(tc.Expected).Kind() != reflect.Slice {
+	if gen.IsError(tc.Expected) {
 		return "nil"
 	}
-	rawValues := reflect.ValueOf(tc.Expected).Interface().([]any)
+	rawValues, ok := tc.Expected.([]any)
+	if !ok {
+		return "nil"
+	}
 	var stringValues []string
 	for _, raw := range rawValues {
 		stringValues = append(stringValues, raw.(string))
@@ -42,10 +44,10 @@ func (tc testCase) ExpectedProteins() string {
 }
 
 func (tc testCase) ExpectedError() string {
-	if reflect.ValueOf(tc.Expected).Kind() != reflect.Map {
-		return "nil"
+	if gen.IsError(tc.Expected) {
+		return "ErrInvalidBase"
 	}
-	return "ErrInvalidBase"
+	return "nil"
 }
 
 var tmpl = `{{.Header}}
