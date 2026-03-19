@@ -26,9 +26,6 @@
     ],
     "editor": [
       "cipher.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Implement the Vigenère cipher, a simple substitution cipher.",

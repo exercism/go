@@ -22,16 +22,11 @@
       "raindrops.go"
     ],
     "test": [
-      "raindrops_test.go"
+      "raindrops_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Convert a number into its corresponding raindrop sounds - Pling, Plang and Plong.",

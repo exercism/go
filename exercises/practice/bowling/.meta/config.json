@@ -17,16 +17,11 @@
       "bowling.go"
     ],
     "test": [
-      "bowling_test.go"
+      "bowling_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Score a bowling game.",

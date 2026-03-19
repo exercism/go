@@ -15,16 +15,11 @@
       "grep.go"
     ],
     "test": [
-      "grep_test.go"
+      "grep_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Search a file for lines matching a regular expression pattern. Return the line number and contents of each matching line.",

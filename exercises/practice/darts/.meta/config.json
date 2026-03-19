@@ -12,16 +12,11 @@
       "darts.go"
     ],
     "test": [
-      "darts_test.go"
+      "darts_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Calculate the points scored in a single toss of a Darts game.",

@@ -29,9 +29,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Change the data format for scoring a game to more easily add other languages.",

@@ -7,7 +7,8 @@
       "split_second_stopwatch.go"
     ],
     "test": [
-      "split_second_stopwatch_test.go"
+      "split_second_stopwatch_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

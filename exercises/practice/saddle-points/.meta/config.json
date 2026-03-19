@@ -22,13 +22,11 @@
       "saddle_points.go"
     ],
     "test": [
-      "saddle_points_test.go"
+      "saddle_points_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Detect saddle points in a matrix.",

@@ -10,13 +10,11 @@
       "state_of_tic_tac_toe.go"
     ],
     "test": [
-      "state_of_tic_tac_toe_test.go"
+      "state_of_tic_tac_toe_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Determine the game state of a match of Tic-Tac-Toe.",

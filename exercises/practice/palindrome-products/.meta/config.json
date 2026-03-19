@@ -21,13 +21,11 @@
       "palindrome_products.go"
     ],
     "test": [
-      "palindrome_products_test.go"
+      "palindrome_products_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Detect palindrome products in a given range.",

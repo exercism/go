@@ -23,13 +23,11 @@
       "ledger.go"
     ],
     "test": [
-      "ledger_test.go"
+      "ledger_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Refactor a ledger printer."

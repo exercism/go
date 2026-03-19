@@ -7,7 +7,8 @@
       "relative_distance.go"
     ],
     "test": [
-      "relative_distance_test.go"
+      "relative_distance_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

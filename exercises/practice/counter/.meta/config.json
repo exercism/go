@@ -22,16 +22,12 @@
       ".meta/example.go"
     ],
     "editor": [
-      "counter_test.go",
       "impl1.go",
       "impl2.go",
       "impl3.go",
       "impl4.go",
       "interface.go",
       "maker.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Design a test suite for a line/letter/character counter tool."

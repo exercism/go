@@ -15,16 +15,11 @@
       "proverb.go"
     ],
     "test": [
-      "proverb_test.go"
+      "proverb_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "For want of a horseshoe nail, a kingdom was lost, or so the saying goes. Output the full text of this proverbial rhyme.",

@@ -16,17 +16,14 @@
       "sublist.go"
     ],
     "test": [
-      "sublist_test.go"
+      "sublist_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
     ],
     "editor": [
-      "cases_test.go",
       "relations.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Write a function to determine if a list is a sublist of another list."

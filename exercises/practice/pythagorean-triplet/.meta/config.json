@@ -25,9 +25,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Given an integer N, find all Pythagorean triplets for which a + b + c = N.",

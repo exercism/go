@@ -23,16 +23,11 @@
       "isogram.go"
     ],
     "test": [
-      "isogram_test.go"
+      "isogram_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Determine if a word or phrase is an isogram.",

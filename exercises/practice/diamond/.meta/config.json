@@ -19,13 +19,11 @@
       "diamond.go"
     ],
     "test": [
-      "diamond_test.go"
+      "diamond_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Given a letter, print a diamond starting with 'A' with the supplied letter at the widest point.",

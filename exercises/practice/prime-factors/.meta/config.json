@@ -25,16 +25,11 @@
       "prime_factors.go"
     ],
     "test": [
-      "prime_factors_test.go"
+      "prime_factors_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Compute the prime factors of a given natural number.",

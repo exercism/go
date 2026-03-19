@@ -26,16 +26,11 @@
       "bob.go"
     ],
     "test": [
-      "bob_test.go"
+      "bob_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "editor": [
-      "cases_test.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",

@@ -20,9 +20,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Given the size, return a square matrix of numbers in spiral order.",

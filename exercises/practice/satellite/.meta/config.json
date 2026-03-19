@@ -7,7 +7,8 @@
       "satellite.go"
     ],
     "test": [
-      "satellite_test.go"
+      "satellite_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

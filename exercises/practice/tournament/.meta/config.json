@@ -23,13 +23,11 @@
       "tournament.go"
     ],
     "test": [
-      "tournament_test.go"
+      "tournament_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Tally the results of a small football competition."

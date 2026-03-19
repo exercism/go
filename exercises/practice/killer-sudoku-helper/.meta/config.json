@@ -7,7 +7,8 @@
       "killer_sudoku_helper.go"
     ],
     "test": [
-      "killer_sudoku_helper_test.go"
+      "killer_sudoku_helper_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

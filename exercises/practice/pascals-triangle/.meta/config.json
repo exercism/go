@@ -25,9 +25,6 @@
     ],
     "example": [
       ".meta/example.go"
-    ],
-    "invalidator": [
-      "go.mod"
     ]
   },
   "blurb": "Compute Pascal's triangle up to a given number of rows.",
