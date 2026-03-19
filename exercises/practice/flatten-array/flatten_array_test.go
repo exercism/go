@@ -1,7 +1,7 @@
 package flattenarray
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -15,7 +15,7 @@ func TestFlatten(t *testing.T) {
 				t.Fatalf("Flatten(%v) = %v (nil slice), want: %v (empty slice)", tc.input, actual, tc.expected)
 			}
 
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				t.Fatalf("Flatten(%v) = %v, want: %v", tc.input, &actual, tc.expected)
 			}
 		})

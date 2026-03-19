@@ -1,7 +1,7 @@
 package forth
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestForth(t *testing.T) {
 			if err == nil {
 				if tc.expected == nil {
 					t.Fatalf("Forth(%#v) expected an error, got %v", tc.input, v)
-				} else if !reflect.DeepEqual(v, tc.expected) {
+				} else if !slices.Equal(v, tc.expected) {
 					t.Fatalf("Forth(%#v) expected %v, got %v", tc.input, tc.expected, v)
 				}
 			} else if tc.expected != nil {

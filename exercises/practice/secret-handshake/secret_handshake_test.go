@@ -1,7 +1,7 @@
 package secrethandshake
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -13,7 +13,7 @@ func TestHandshake(t *testing.T) {
 			if len(actual) == 0 && len(tc.expected) == 0 {
 				return
 			}
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				t.Fatalf("Handshake(%d) = %q, want: %q", tc.input, actual, tc.expected)
 			}
 		})

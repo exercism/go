@@ -2,7 +2,7 @@ package grep
 
 import (
 	"os"
-	"reflect"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -70,7 +70,7 @@ func TestSearch(t *testing.T) {
 				return
 			}
 
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				t.Errorf("Search(%q, %q, %q)\ngot: %q\nwant: %q", tc.pattern, tc.flags, tc.files, actual, tc.expected)
 			}
 		})

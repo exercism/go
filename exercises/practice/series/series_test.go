@@ -2,7 +2,7 @@ package series
 
 import (
 	"fmt"
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -92,7 +92,7 @@ func TestAll(t *testing.T) {
 			if len(got) == 0 && len(tc.expected) == 0 {
 				return
 			}
-			if !reflect.DeepEqual(got, tc.expected) {
+			if !slices.Equal(got, tc.expected) {
 				t.Fatalf("All(%d, %q)\n got: %v, want: %v", tc.digits, tc.input, got, tc.expected)
 			}
 		})

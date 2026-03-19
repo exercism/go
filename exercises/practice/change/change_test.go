@@ -1,7 +1,7 @@
 package change
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestChange(t *testing.T) {
 			if tc.valid {
 				if err != nil {
 					t.Fatalf("Change(%v, %d): want: %v, got error: %v", tc.coins, tc.target, tc.expectedChange, err)
-				} else if !reflect.DeepEqual(actual, tc.expectedChange) {
+				} else if !slices.Equal(actual, tc.expectedChange) {
 					t.Fatalf("Change(%v, %d): want: %#v, got: %#v", tc.coins, tc.target, tc.expectedChange, actual)
 				}
 			} else {

@@ -1,7 +1,7 @@
 package sieve
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -13,7 +13,7 @@ func TestSieve(t *testing.T) {
 			if len(actual) == 0 && len(tc.expected) == 0 {
 				return
 			}
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				t.Fatalf("Sieve(%d)\ngot: %#v\nwant: %#v", tc.limit, actual, tc.expected)
 			}
 		})

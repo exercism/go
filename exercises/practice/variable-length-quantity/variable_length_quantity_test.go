@@ -2,7 +2,7 @@ package variablelengthquantity
 
 import (
 	"bytes"
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -27,7 +27,7 @@ func TestDecodeVarint(t *testing.T) {
 				}
 			case err != nil:
 				t.Fatalf("DecodeVarint(%#v) returned error: %q, want: %#v", tc.input, err, tc.expected)
-			case !reflect.DeepEqual(actual, tc.expected):
+			case !slices.Equal(actual, tc.expected):
 				t.Fatalf("DecodeVarint(%#v) = %#v, want: %#v", tc.input, actual, tc.expected)
 			}
 		})

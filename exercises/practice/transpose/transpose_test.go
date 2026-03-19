@@ -1,7 +1,7 @@
 package transpose
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -12,10 +12,10 @@ func TestTranspose(t *testing.T) {
 			if len(actual) == 0 && len(tc.expected) == 0 {
 				return
 			}
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				// let's make the error more specific and find the row it's on
-				min := min(len(tc.expected), len(actual))
-				for i := range min {
+				smallest := min(len(tc.expected), len(actual))
+				for i := range smallest {
 					if tc.expected[i] != actual[i] {
 						t.Fatalf("Transpose(%#v)\ngot: %#v\nwant: %#v\n row:%d\ngot: %q\nwant: %q", tc.input, actual, tc.expected, i, actual[i], tc.expected[i])
 					}
@@ -24,13 +24,6 @@ func TestTranspose(t *testing.T) {
 			}
 		})
 	}
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }
 
 func BenchmarkTranspose(b *testing.B) {

@@ -2,7 +2,7 @@ package pascal
 
 import (
 	"fmt"
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -36,7 +36,7 @@ func TestTriangle(t *testing.T) {
 		t.Run(fmt.Sprintf("Triangle until row %d", n), func(t *testing.T) {
 			got := Triangle(n)
 			want := triangleTestCases[:n]
-			if !reflect.DeepEqual(got, want) {
+			if !slices.EqualFunc(got, want, slices.Equal) {
 				help := getHelp(got, want)
 				t.Fatalf("Triangle(%d)\nhelp: %s\ncomplete got: %s\ncomplete want: %s\n", n, help, format(got), format(want))
 			}
@@ -49,7 +49,7 @@ func getHelp(got, want [][]int) string {
 		return fmt.Sprintf("expected %d rows, got: %d", len(want), len(got))
 	}
 	for i, gotLine := range got {
-		if !reflect.DeepEqual(gotLine, want[i]) {
+		if !slices.Equal(gotLine, want[i]) {
 			return fmt.Sprintf("first difference in row with index: %d\n got: %v\nwant: %v", i, gotLine, want[i])
 		}
 	}
