@@ -1,6 +1,9 @@
 package etl
 
-import "testing"
+import (
+	"maps"
+	"testing"
+)
 
 var transformTests = []struct {
 	description string
@@ -53,26 +56,10 @@ var transformTests = []struct {
 	},
 }
 
-func equal(actual, expectation map[string]int) bool {
-	if len(actual) != len(expectation) {
-		return false
-	}
-
-	for k, actualVal := range actual {
-		expectationVal, present := expectation[k]
-
-		if !present || actualVal != expectationVal {
-			return false
-		}
-	}
-
-	return true
-}
-
 func TestTransform(t *testing.T) {
 	for _, tt := range transformTests {
 		t.Run(tt.description, func(t *testing.T) {
-			if actual := Transform(tt.input); !equal(actual, tt.expect) {
+			if actual := Transform(tt.input); !maps.Equal(actual, tt.expect) {
 				t.Fatalf("Transform(%v)\ngot: %v\nwant: %v", tt.input, actual, tt.expect)
 			}
 		})

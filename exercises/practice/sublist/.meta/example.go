@@ -1,13 +1,13 @@
 package sublist
 
-import "reflect"
+import "slices"
 
 // Sublist checks difference of two lists and
 // returns equal, sublist, superlist or unequal according
 // to their relation to each other.
 func Sublist(l1, l2 []int) Relation {
 	switch {
-	case reflect.DeepEqual(l1, l2):
+	case slices.Equal(l1, l2):
 		return RelationEqual
 	case contains(l1, l2):
 		return RelationSuperlist

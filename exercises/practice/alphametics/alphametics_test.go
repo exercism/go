@@ -1,7 +1,7 @@
 package alphametics
 
 import (
-	"reflect"
+	"maps"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestSolve(t *testing.T) {
 				}
 			case err != nil:
 				t.Fatalf("Solve(%q)\nwant: %#v\ngot error: %q", tc.input, tc.expected, err)
-			case !reflect.DeepEqual(s, tc.expected):
+			case !maps.Equal(s, tc.expected):
 				t.Fatalf("Solve(%q)\ngot: %#v\nwant: %#v", tc.input, s, tc.expected)
 			}
 		})

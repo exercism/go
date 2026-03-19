@@ -1,7 +1,7 @@
 package allyourbase
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -15,7 +15,7 @@ func TestConvertToBase(t *testing.T) {
 				} else if tc.expectedError != err.Error() {
 					t.Errorf("ConvertToBase(%d, %#v, %d)\nwant error: %q\ngot: %q", tc.inputBase, tc.inputDigits, tc.outputBase, tc.expectedError, err.Error())
 				}
-			} else if !reflect.DeepEqual(tc.expected, actual) {
+			} else if !slices.Equal(tc.expected, actual) {
 				t.Errorf("ConvertToBase(%d, %#v, %d) = %#v, want: %#v", tc.inputBase, tc.inputDigits, tc.outputBase, actual, tc.expected)
 			}
 		})

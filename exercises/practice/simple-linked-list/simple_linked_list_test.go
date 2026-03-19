@@ -1,7 +1,7 @@
 package simplelinkedlist
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -71,7 +71,7 @@ func TestNonEmptyListToArray(t *testing.T) {
 	expected := []int{1, 2, 3}
 	list := New(expected)
 	array := list.Array()
-	if !reflect.DeepEqual(array, expected) {
+	if !slices.Equal(array, expected) {
 		t.Fatalf("Test non empty list to array: %v, want %v", array, expected)
 	}
 }
@@ -98,7 +98,7 @@ func TestPopFromNonEmptyList(t *testing.T) {
 	}
 	actual := list.Array()
 	expected := []int{1, 2}
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Pop from non empty list: %v, want %v", actual, expected)
 	}
 }
@@ -108,13 +108,13 @@ func TestPushToEmptyList(t *testing.T) {
 	list.Push(1)
 	actual := list.Array()
 	expected := []int{1}
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Push to empty list: %v, want %v", actual, expected)
 	}
 	list = New(nil)
 	list.Push(1)
 	actual = list.Array()
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Push to empty list: %v, want %v", actual, expected)
 	}
 }
@@ -124,7 +124,7 @@ func TestPushToNonEmptyList(t *testing.T) {
 	list.Push(4)
 	actual := list.Array()
 	expected := []int{1, 2, 3, 4}
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Push to non empty list: %v, want %v", actual, expected)
 	}
 }
@@ -138,7 +138,7 @@ func TestPushAndPop(t *testing.T) {
 	list.Push(6)
 	actual := list.Array()
 	expected := []int{1, 2, 4, 6}
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Test push and pop: %v, want %v", actual, expected)
 	}
 }
@@ -158,7 +158,7 @@ func TestReverseNonEmptyList(t *testing.T) {
 	list := New([]int{1, 2, 3})
 	actual := list.Reverse().Array()
 	expected := []int{3, 2, 1}
-	if !reflect.DeepEqual(actual, expected) {
+	if !slices.Equal(actual, expected) {
 		t.Fatalf("Reverse non empty list: %v, want %v", actual, expected)
 	}
 }

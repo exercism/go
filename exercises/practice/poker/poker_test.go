@@ -1,7 +1,7 @@
 package poker
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -58,7 +58,7 @@ func TestBestHandValid(t *testing.T) {
 			if err != nil {
 				t.Fatalf("BestHand(%v) returned error: %v, want: %v", tc.hands, err, tc.expected)
 			}
-			if !reflect.DeepEqual(actual, tc.expected) {
+			if !slices.Equal(actual, tc.expected) {
 				t.Fatalf("BestHand(%v) = %v, want: %v", tc.hands, actual, tc.expected)
 			}
 		})

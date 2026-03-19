@@ -1,7 +1,7 @@
 package ocr
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -168,7 +168,7 @@ var _ = recognizeDigit // step 1.
 func TestRecognize(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			if got := Recognize(tc.in); !reflect.DeepEqual(got, tc.out) {
+			if got := Recognize(tc.in); !slices.Equal(got, tc.out) {
 				t.Fatalf("Recognize(%q) = %q, want: %q", tc.in, got, tc.out)
 			}
 		})
