@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/exercism/go/gomod-sync/gomod"
+	"github.com/exercism/go/gotools/gomod"
 )
 
 func TestInfos(t *testing.T) {

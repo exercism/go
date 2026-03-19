@@ -1,4 +1,4 @@
-# gomod-sync
+# gotools
 
 Utility tool to check and update the Go version specified in the `go.mod` files of all exercises.
 It works by specifying the desired Go version for all the `go.mod` files to be in.
@@ -10,17 +10,17 @@ This is supported by the `exceptions` key of the configuration file, where an en
 
 ## Quick start
 
-To update all go.mod files according to the config file (gomod-sync/config.json) run:
+To update all go.mod files according to the config file (gotools/config.json) run:
 
 ```console
-cd gomod-sync
+cd gotools
 go run main.go --update check
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
 
 ```console
-cd gomod-sync
+cd gotools
 go run main.go check
 ```
 
@@ -29,30 +29,30 @@ go run main.go check
 ### Compiling locally
 
 ```console
-cd gomod-sync
+cd gotools
 go build
 ```
 
-This will create an executable `gomod-sync` (`gomod-sync.exe` in windows) in the current directory that you can run to execute the program.
+This will create an executable `gotools` (`gotools.exe` in windows) in the current directory that you can run to execute the program.
 
 ### Running without compiling
 
 ```console
-cd gomod-sync
+cd gotools
 go run main.go <command> [flags]
 ```
 
 ### Running the tests
 
 ```console
-cd gomod-sync
+cd gotools
 go test ./...
 ```
 
 ## Usage
 
 ```text
-  gomod-sync commandUpdate gitig [flags]
+  gotools commandUpdate gitig [flags]
 
 Available Commands:
   check       Checks if all go.mod files are in the target version
@@ -63,19 +63,19 @@ Available Commands:
 ## Commands
 
 ```text
-gomod-sync check -v target_version [-e exercises_path] [-c config_file]
+gotools check -v target_version [-e exercises_path] [-c config_file]
   checks if all `go.mod` files are in the target version
 
-gomod-sync completion
+gotools completion
   generate the autocompletion script for the specified shell
 
-gomod-sync help
+gotools help
   Help about any command
 
-gomod-sync list [-e exercises_path]
+gotools list [-e exercises_path]
   list `go.mod` files and the Go version they specify
 
-gomod-sync --update check -v target_version [-e exercises_path] [-c config_file]
+gotools --update check -v target_version [-e exercises_path] [-c config_file]
   updates `go.mod` files to the target version
 ```
 
@@ -100,7 +100,7 @@ gomod-sync --update check -v target_version [-e exercises_path] [-c config_file]
   Using this flag will override the version specified in the config file.
 
 -h, --help
-  help for gomod-sync
+  help for gotools
 ```
 
 ## Configuration file
@@ -132,10 +132,10 @@ Specifying the `-v, --goversion` flag overrides the default version specified in
 ## Examples
 
 - Check if all `go.mod` files of exercises in the `../exercises` folder have the default version specified in the `config.json` file:
-  - `gomod-sync check`
+  - `gotools check`
 - Check if all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gomod-sync check --goversion 1.26 --exercises ./exercises`
+  - `gotools check --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gomod-sync --update check --goversion 1.26 --exercises ./exercises`
+  - `gotools --update check --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files, using a config file to specify the versions of exercises:
-  - `gomod-sync --update check --config a_dir/config.json --exercises ./exercises`
+  - `gotools --update check --config a_dir/config.json --exercises ./exercises`

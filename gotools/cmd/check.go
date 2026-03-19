@@ -6,7 +6,7 @@ import (
 	aurora "github.com/logrusorgru/aurora/v3"
 	"github.com/spf13/cobra"
 
-	"github.com/exercism/go/gomod-sync/gomod"
+	"github.com/exercism/go/gotools/gomod"
 )
 
 func init() {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/exercism/go/gomod-sync/cmd/config"
+	"github.com/exercism/go/gotools/cmd/config"
 	"github.com/spf13/cobra"
 )
 
@@ -38,8 +38,8 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "gomod-sync",
-	Short: "gomod-sync checks and updates the go version for all go.mod files in a path.",
+	Use:   "gotools",
+	Short: "gotools checks and updates the go version for all go.mod files in a path.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return nil
 	},

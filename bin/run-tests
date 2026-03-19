@@ -118,31 +118,22 @@ if [ "$mode" = "$TEST_STUBS_MODE" ];then
 fi
 
 echo "running tests for exercises and exercise generators"
-go test ./$tmp/...
-
-exitcode=$?
-
-if [ $exitcode -ne 0 ]
-  then 
-    echo "LINTER/TESTS FAILED for exercises or exercise generators"
-    exit $exitcode
+if ! go test ./$tmp/...; then
+  echo "LINTER/TESTS FAILED for exercises or exercise generators"
+  exit 1
 fi
 
 echo "SUCCESS"
 
-paths_to_lint="gomod-sync gen"
-for path in $paths_to_lint; do
+paths_to_lint=(gotools gen)
+for path in "${paths_to_lint[@]}"; do
   cd "$root"
   cd "$path"
 
   echo "running tests for $path/..."
-  go test ./...
-
-  exitcode=$?
-  if [ $exitcode -ne 0 ]
-    then 
-      echo "LINTER/TESTS FAILED for $path/..."
-      exit $exitcode
+  if ! go test ./...; then
+    echo "LINTER/TESTS FAILED for $path/..."
+    exit 1
   fi
   echo "SUCCESS"
 done

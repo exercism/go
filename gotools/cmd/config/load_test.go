@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/exercism/go/gomod-sync/cmd/config"
+	"github.com/exercism/go/gotools/cmd/config"
 )
 
 func TestLoad(t *testing.T) {

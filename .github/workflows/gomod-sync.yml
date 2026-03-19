@@ -22,5 +22,5 @@ jobs:
       - name: Check go.mod files
         shell: bash
         run: |
-          cd gomod-sync
+          cd gotools
           go run main.go check

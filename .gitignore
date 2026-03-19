@@ -7,8 +7,8 @@ bin/configlet.exe
 bin/golangci-lint
 bin/golangci-lint.exe
 
-# gomod-sync
+# gotools
 
-gomod-sync/gomod-sync
-gomod-sync/gomod-sync.exe
-gomod-sync/vendor
+gotools/gotools
+gotools/gotools.exe
+gotools/vendor
