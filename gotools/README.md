@@ -1,5 +1,12 @@
 # gotools
 
+gotools has two commands which both check exercises files.
+
+* `gomod` checks/updates the Go version in the `go.mod` files for all exercises.
+* `editor_files` checks the `files.editor` value in `.meta/config.json` for practice exercises.
+
+## gomod
+
 Utility tool to check and update the Go version specified in the `go.mod` files of all exercises.
 It works by specifying the desired Go version for all the `go.mod` files to be in.
 The `gomod` command will verify if all `go.mod` files are in the desired version.
@@ -8,7 +15,7 @@ The `--update` flag will update all `go.mod` files to have the desired Go versio
 Some exercises must have its `go.mod` specify a Go version that is different from the other exercise's `go.mod`.
 This is supported by the `exceptions` key of the configuration file, where an entry must exist for each exercise that must not have the default version.
 
-## Quick start
+### Quick start
 
 To update all go.mod files according to the config file (gotools/config.json) run:
 
@@ -24,9 +31,9 @@ cd gotools
 go run main.go gomod
 ```
 
-## Installing
+### Installing
 
-### Compiling locally
+#### Compiling locally
 
 ```console
 cd gotools
@@ -35,21 +42,21 @@ go build
 
 This will create an executable `gotools` (`gotools.exe` in windows) in the current directory that you can run to execute the program.
 
-### Running without compiling
+#### Running without compiling
 
 ```console
 cd gotools
 go run main.go <command> [flags]
 ```
 
-### Running the tests
+#### Running the tests
 
 ```console
 cd gotools
 go test ./...
 ```
 
-## Usage
+### Usage
 
 ```text
   gotools commandUpdate gitig [flags]
@@ -60,7 +67,7 @@ Available Commands:
 
 ```
 
-## Commands
+### Commands
 
 ```text
 gotools gomod -v target_version [-e exercises_path] [-c config_file]
@@ -79,7 +86,7 @@ gotools --update gomod -v target_version [-e exercises_path] [-c config_file]
   updates `go.mod` files to the target version
 ```
 
-## Flags
+### Flags
 
 ```text
 -c, --config config_file
@@ -103,7 +110,7 @@ gotools --update gomod -v target_version [-e exercises_path] [-c config_file]
   help for gotools
 ```
 
-## Configuration file
+### Configuration file
 
 Besides the `-v, --goversion` flag, it is also possible to specify the expected go versions for the `go.mod` files in a JSON configuration file.
 This file can be given to the program with the `-c, --config file` flag.
@@ -116,20 +123,22 @@ This an example of such configuration file:
 
 ```json
 {
-  "default": "1.26",
-  "exceptions": [
-    {
-      "exercise": "strain",
-      "version": "1.18"
-    }
-  ]
+  "gomod": {
+    "default": "1.26",
+    "exceptions": [
+      {
+        "exercise": "strain",
+        "version": "1.18"
+      }
+    ]
+  }
 }
 ```
 
 With such configuration, all `go.mod` files will be expected to have the `1.26` version of Go, except the exercise `strain`, which must have version `1.18` in its `go.mod`.
 Specifying the `-v, --goversion` flag overrides the default version specified in this file.
 
-## Examples
+### Examples
 
 - Check if all `go.mod` files of exercises in the `../exercises` folder have the default version specified in the `config.json` file:
   - `gotools gomod`

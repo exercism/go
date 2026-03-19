@@ -1,3 +1,4 @@
+// Package config contains the structure of the gotools config file, along with helpers.
 package config
 
 // ExerciseVersion represents the version one particular exercise should
@@ -14,6 +15,15 @@ type VersionConfig struct {
 	// List of exercises and their versions that must not have
 	// the default version.
 	Exceptions []ExerciseVersion `json:"exceptions"`
+}
+
+type EditorFileConfig struct {
+	Exclude map[string][]string `json:"exclude"`
+}
+
+type Config struct {
+	GoModVersion VersionConfig    `json:"go_mod_version"`
+	EditorFiles  EditorFileConfig `json:"editor_files"`
 }
 
 // ExerciseExpectedVersion gives the expected version the go.mod file for

@@ -1,10 +1,12 @@
+// Package cmd contains the logic for the various sub-commands.
+// root.go represents the main command and contains common flags and setup.
 package cmd
 
 import (
 	"fmt"
 	"os"
 
-	"github.com/exercism/go/gotools/cmd/config"
+	"github.com/exercism/go/gotools/config"
 	"github.com/spf13/cobra"
 )
 
@@ -13,8 +15,8 @@ var (
 	targetVersionFlag string
 	configFileFlag    string
 	// Should we make automated updates to resolve issues.
-	updateFlag    bool
-	versionConfig config.VersionConfig
+	updateFlag bool
+	configData config.Config
 )
 
 func init() {
@@ -46,7 +48,7 @@ func loadConfig(cmd *cobra.Command, args []string) error {
 	var err error
 
 	// Load version config
-	versionConfig, err = config.Load(configFileFlag)
+	configData, err = config.Load(configFileFlag)
 
 	versionWasGiven := cmd.PersistentFlags().Changed("goversion")
 
@@ -56,7 +58,7 @@ func loadConfig(cmd *cobra.Command, args []string) error {
 
 	// Override config default if version passed via flag
 	if versionWasGiven {
-		versionConfig.Default = targetVersionFlag
+		configData.GoModVersion.Default = targetVersionFlag
 	}
 
 	return nil

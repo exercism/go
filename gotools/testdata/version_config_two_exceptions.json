@@ -1,13 +1,15 @@
 {
-  "default": "1.26",
-  "exceptions": [
-    {
-      "exercise": "exercise01",
-      "version": "1.17"
-    },
-    {
-      "exercise": "exercise02",
-      "version": "1.17"
-    }
-  ]
+  "go_mod_version": {
+    "default": "1.26",
+    "exceptions": [
+      {
+        "exercise": "exercise01",
+        "version": "1.17"
+      },
+      {
+        "exercise": "exercise02",
+        "version": "1.17"
+      }
+    ]
+  }
 }

@@ -1,4 +1,4 @@
-name: go.mod check
+name: gotools check
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   check:
-    name: go.mod check
+    name: gotools check
     runs-on: ubuntu-24.04
 
     steps:
@@ -24,3 +24,4 @@ jobs:
         run: |
           cd gotools
           go run main.go gomod
+          go run main.go editor_files
