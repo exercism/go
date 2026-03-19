@@ -2,7 +2,8 @@
 
 Utility tool to check and update the Go version specified in the `go.mod` files of all exercises.
 It works by specifying the desired Go version for all the `go.mod` files to be in.
-The `check` command will verify if all `go.mod` files are in the desired version and the `update` command will update all `go.mod` files to have the desired Go version.
+The `check` command will verify if all `go.mod` files are in the desired version.
+The `--update` flag will update all `go.mod` files to have the desired Go version.
 
 Some exercises must have its `go.mod` specify a Go version that is different from the other exercise's `go.mod`.
 This is supported by the `exceptions` key of the configuration file, where an entry must exist for each exercise that must not have the default version.
@@ -13,7 +14,7 @@ To update all go.mod files according to the config file (gomod-sync/config.json)
 
 ```console
 cd gomod-sync
-go run main.go update
+go run main.go --update check
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
@@ -55,7 +56,6 @@ go test ./...
 
 Available Commands:
   check       Checks if all go.mod files are in the target version
-  update      Updates go.mod files to the target version
   help        Help about any command
 
 ```
@@ -75,7 +75,7 @@ gomod-sync help
 gomod-sync list [-e exercises_path]
   list `go.mod` files and the Go version they specify
 
-gomod-sync update -v target_version [-e exercises_path] [-c config_file]
+gomod-sync --update check -v target_version [-e exercises_path] [-c config_file]
   updates `go.mod` files to the target version
 ```
 
@@ -88,6 +88,9 @@ gomod-sync update -v target_version [-e exercises_path] [-c config_file]
 -e, --exercises exercises_path
   path to the exercises folder. `go.mod` files will be recursively searched inside this directory.
   default: "../exercises"
+
+-u, --update
+  make automated updates to resolve issues
 
 -v, --goversion target_version
   target go version that all go.mod files are expected to have.
@@ -133,6 +136,6 @@ Specifying the `-v, --goversion` flag overrides the default version specified in
 - Check if all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
   - `gomod-sync check --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gomod-sync update --goversion 1.26 --exercises ./exercises`
+  - `gomod-sync --update check --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files, using a config file to specify the versions of exercises:
-  - `gomod-sync update --config a_dir/config.json --exercises ./exercises`
+  - `gomod-sync --update check --config a_dir/config.json --exercises ./exercises`
