@@ -3,7 +3,7 @@ package config_test
 import (
 	"testing"
 
-	"github.com/exercism/go/gotools/cmd/config"
+	"github.com/exercism/go/gotools/config"
 )
 
 func TestExpectedVersion(t *testing.T) {

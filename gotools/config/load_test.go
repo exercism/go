@@ -4,60 +4,63 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/exercism/go/gotools/cmd/config"
+	"github.com/exercism/go/gotools/config"
 )
 
 func TestLoad(t *testing.T) {
 	tests := []struct {
 		Name        string
 		Path        string
-		Expected    config.VersionConfig
+		Expected    config.Config
 		ExpectError bool
 	}{
 		{
 			Name:        "Loading non-existent config",
-			Path:        filepath.Join("..", "..", "testdata", "non_existent.json"),
-			Expected:    config.VersionConfig{},
+			Path:        filepath.Join("..", "testdata", "non_existent.json"),
+			Expected:    config.Config{},
 			ExpectError: true,
 		},
 		{
 			Name: "Loading config with no exceptions",
-			Path: filepath.Join("..", "..", "testdata", "version_config_no_exceptions.json"),
-			Expected: config.VersionConfig{
-				Default: "1.26",
-			},
+			Path: filepath.Join("..", "testdata", "version_config_no_exceptions.json"),
+			Expected: config.Config{
+				GoModVersion: config.VersionConfig{
+					Default: "1.26",
+				}},
 			ExpectError: false,
 		},
 		{
 			Name: "Loading config with 1 exception",
-			Path: filepath.Join("..", "..", "testdata", "version_config_one_exception.json"),
-			Expected: config.VersionConfig{
-				Default: "1.26",
-				Exceptions: []config.ExerciseVersion{
-					{
-						Exercise: "exercise01",
-						Version:  "1.17",
+			Path: filepath.Join("..", "testdata", "version_config_one_exception.json"),
+			Expected: config.Config{
+				GoModVersion: config.VersionConfig{
+					Default: "1.26",
+					Exceptions: []config.ExerciseVersion{
+						{
+							Exercise: "exercise01",
+							Version:  "1.17",
+						},
 					},
-				},
-			},
+				}},
 			ExpectError: false,
 		},
 		{
 			Name: "Loading config with 2 exceptions",
-			Path: filepath.Join("..", "..", "testdata", "version_config_two_exceptions.json"),
-			Expected: config.VersionConfig{
-				Default: "1.26",
-				Exceptions: []config.ExerciseVersion{
-					{
-						Exercise: "exercise01",
-						Version:  "1.17",
+			Path: filepath.Join("..", "testdata", "version_config_two_exceptions.json"),
+			Expected: config.Config{
+				GoModVersion: config.VersionConfig{
+					Default: "1.26",
+					Exceptions: []config.ExerciseVersion{
+						{
+							Exercise: "exercise01",
+							Version:  "1.17",
+						},
+						{
+							Exercise: "exercise02",
+							Version:  "1.17",
+						},
 					},
-					{
-						Exercise: "exercise02",
-						Version:  "1.17",
-					},
-				},
-			},
+				}},
 			ExpectError: false,
 		},
 	}
@@ -81,8 +84,8 @@ func TestLoad(t *testing.T) {
 	}
 }
 
-func configEqual(a, b config.VersionConfig) bool {
-	return a.Default == b.Default && equalExceptions(a.Exceptions, b.Exceptions)
+func configEqual(a, b config.Config) bool {
+	return a.GoModVersion.Default == b.GoModVersion.Default && equalExceptions(a.GoModVersion.Exceptions, b.GoModVersion.Exceptions)
 }
 
 // equalExceptions compares two lists of exercise versions and tells if they are equal.

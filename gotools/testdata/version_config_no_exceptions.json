@@ -1,4 +1,6 @@
 {
-  "default": "1.26",
-  "exceptions": []
+  "go_mod_version": {
+    "default": "1.26",
+    "exceptions": []
+  }
 }

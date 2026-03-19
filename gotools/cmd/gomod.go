@@ -1,3 +1,4 @@
+// gomod.go contains the `gomod` subcommand logic, used to check the go version in go.mod files.
 package cmd
 
 import (
@@ -11,6 +12,9 @@ import (
 
 func init() {
 	rootCmd.AddCommand(gomodCmd)
+	gomodCmd.PersistentFlags().BoolVarP(&updateFlag,
+		"update", "u", false,
+		"make automated updates to resolve issues")
 	gomodCmd.PersistentFlags().StringVarP(&targetVersionFlag,
 		"goversion", "v", "",
 		"target go version that all go.mod files are expected to have. "+
@@ -18,9 +22,6 @@ func init() {
 			"version in case of the gomod command, and to update all go.mod files to this version "+
 			"in the case of the update command. Using this flag will override "+
 			"the version specified in the config file.")
-	gomodCmd.PersistentFlags().BoolVarP(&updateFlag,
-		"update", "u", false,
-		"make automated updates to resolve issues")
 }
 
 var gomodCmd = &cobra.Command{
@@ -41,7 +42,7 @@ var gomodCmd = &cobra.Command{
 
 		var faultyFiles []faultyFile
 		for _, file := range files {
-			expectedVersion := versionConfig.ExerciseExpectedVersion(file.ExerciseSlug)
+			expectedVersion := configData.GoModVersion.ExerciseExpectedVersion(file.ExerciseSlug)
 			if file.GoVersion == expectedVersion {
 				fmt.Println(aurora.Green(fmt.Sprintf("%v has version %s as expected - OK", file.Path, file.GoVersion)))
 			} else {

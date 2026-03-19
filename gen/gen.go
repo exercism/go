@@ -1,7 +1,8 @@
+// package gen contains the commmon code used by practice exercises to generate `cases_test.go` from canonical data.
 package gen
 
 import (
-	"../gotools/cmd/config"
+	"../gotools/config"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -212,12 +213,12 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 	}
 	// write the go.mod file
 	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gotools", "config.json")
-	version, err := config.Load(versionConfig)
+	version, err := config.DefaultVersion(versionConfig)
 	if err != nil {
 		return err
 	}
 	goModFile := filepath.Join(exerciseDir, "go.mod")
-	return outputSource("SUCCESS", goModFile, []byte(fmt.Sprintf("module %s\n\ngo %s\n", PackageName(exercise), version.Default)))
+	return outputSource("SUCCESS", goModFile, []byte(fmt.Sprintf("module %s\n\ngo %s\n", PackageName(exercise), version)))
 }
 
 // ErrorMessage extracts the error string from a canonical-data.json error object.
