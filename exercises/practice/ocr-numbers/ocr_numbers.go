@@ -1,5 +1,5 @@
-package ocr
+package ocrnumbers
 
-func Recognize(string) []string {
+func Recognize(s string) ([]string, error) {
 	panic("Please implement the Recognize function")
 }
