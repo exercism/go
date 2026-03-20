@@ -1,6 +1,9 @@
-package ocr
+package ocrnumbers
 
-import "strings"
+import (
+	"errors"
+	"strings"
+)
 
 var digit = map[string]byte{
 	" _ | ||_|   ": '0',
@@ -34,10 +37,15 @@ func recognizeDigit(lines []string, start int) byte {
 	return '?'
 }
 
-func Recognize(s string) []string {
+func Recognize(s string) ([]string, error) {
 	lines := strings.Split(s, "\n")
 	if lines[0] == "" {
 		lines = lines[1:]
+	}
+	if len(lines) % 4 != 0 {
+		return nil, errors.New("number of input lines is not a multiple of four")
+	} else if len(lines[0]) % 3 != 0 {
+		return nil, errors.New("number of input columns is not a multiple of three")
 	}
 	r := make([]string, (len(lines)+3)/4)
 	for i := range r {
@@ -54,5 +62,5 @@ func Recognize(s string) []string {
 		r[i] = string(b)
 		lines = lines[4:]
 	}
-	return r
+	return r, nil
 }
