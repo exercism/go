@@ -1,4 +1,4 @@
-package diffsquares
+package differenceofsquares
 
 func SquareOfSum(n int) int {
 	s := 0
