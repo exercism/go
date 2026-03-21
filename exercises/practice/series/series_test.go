@@ -77,6 +77,11 @@ var testCases = []struct {
 		expected: nil,
 	},
 	{
+		digits:   42,
+		input:    "12345",
+		expected: nil,
+	},
+	{
 		digits:   len(cx) + 1,
 		input:    cx,
 		expected: nil,

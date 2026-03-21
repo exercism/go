@@ -47,3 +47,8 @@ description = "set_right with subtree"
 
 [c246be85-6648-4e9c-866f-b08cd495149a]
 description = "set_value on deep focus"
+
+[47aa85a0-5240-48a4-9f42-e2ac636710ea]
+description = "different paths to same zipper"
+include = false
+comment = "this is tested by testing values via different paths"
