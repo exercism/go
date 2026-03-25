@@ -1,167 +1,108 @@
 package simplelinkedlist
 
 import (
+	"fmt"
 	"slices"
+	"strings"
 	"testing"
 )
 
+func (op Operation) Execute(l *List) (*List, int, []int, error) {
+	switch op.operation {
+	case "Push":
+		l.Push(op.value)
+		return l, 0, nil, nil
+	case "Pop":
+		gotInt, err := l.Pop()
+		return l, gotInt, nil, err
+	case "Peek":
+		gotInt, err := l.Peek()
+		return l, gotInt, nil, err
+	case "Size":
+		gotInt := l.Size()
+		return l, gotInt, nil, nil
+	case "Reverse":
+		l := l.Reverse()
+		return l, 0, nil, nil
+	case "Array":
+		gotInts := l.Array()
+		return l, 0, gotInts, nil
+	default:
+		panic(fmt.Sprintf("Invalid op %q", op.operation))
+	}
+}
+
+func (op Operation) String() string {
+	switch op.operation {
+	case "Push":
+		return fmt.Sprintf("l.%s(%d)", op.operation, op.value)
+	case "Pop", "Peek", "Size":
+		return fmt.Sprintf("l.%s()", op.operation)
+		return fmt.Sprintf("l.%s()", op.operation)
+	case "Reverse":
+		return fmt.Sprintf("l = l.%s()", op.operation)
+	case "Array":
+		return fmt.Sprintf("l.%s()", op.operation)
+	default:
+		panic(fmt.Sprintf("Invalid op %q", op.operation))
+	}
+}
+
+func (tc testCase) callStack(i int) string {
+	calls := []string{fmt.Sprintf("l := New(%#v)", tc.initialValues)}
+	for i := range i + 1 {
+		calls = append(calls, tc.operations[i].String())
+	}
+	return strings.Join(calls, "; ")
+}
+
+func TestList(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			l := New(tc.initialValues)
+
+			for i, op := range tc.operations {
+				newList, gotInt, gotInts, err := op.Execute(l)
+				// Preserve across loops
+				l = newList
+
+				// Verify
+				switch op.operation {
+				case "Pop", "Peek", "Size":
+					if op.expectedErr != "" {
+						if err == nil {
+							t.Fatalf("%s = %d, expected error %s", tc.callStack(i), gotInt, op.expectedErr)
+						} else if err.Error() != op.expectedErr {
+							t.Fatalf("%s = %v, expected error %s", tc.callStack(i), err, op.expectedErr)
+						}
+					} else if err != nil {
+						t.Fatalf("%s\ngot unexpected error %v", tc.callStack(i), err)
+					} else if gotInt != op.expectedInt {
+						t.Fatalf("%s = %d, want %d", tc.callStack(i), gotInt, op.expectedInt)
+					}
+				case "Array":
+					if !slices.Equal(gotInts, op.expectedInts) {
+						t.Fatalf("%s = %#v, want %#v", tc.callStack(i), gotInts, op.expectedInts)
+					}
+				}
+			}
+		})
+	}
+}
+
+func BenchmarkListOps(b *testing.B) {
+	for range b.N {
+		for _, tc := range testCases {
+			l := New(tc.initialValues)
+
+			for _, op := range tc.operations {
+				l, _, _, _ = op.Execute(l)
+			}
+		}
+	}
+}
+
 var array1To10 = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-
-func TestEmptyListHasSizeZero(t *testing.T) {
-	list := New([]int{})
-	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of empty list: %d, want: %d", size, 0)
-	}
-	list = New(nil)
-	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of empty list: %d, want: %d", size, 0)
-	}
-}
-
-func TestSingletonListHasSizeOne(t *testing.T) {
-	list := New([]int{1})
-	if size := list.Size(); size != 1 {
-		t.Fatalf("Size of singleton list: %d, want: %d", size, 1)
-	}
-}
-
-func TestNonEmptyListHasCorrectSize(t *testing.T) {
-	list := New([]int{1, 2, 3})
-	if size := list.Size(); size != 3 {
-		t.Fatalf("Size of list from [1, 2, 3]: %d, want: %d", size, 3)
-	}
-}
-
-func TestListHasCorrectSizeAfterPop(t *testing.T) {
-	list := New([]int{1, 2, 3})
-
-	list.Pop()
-	list.Pop()
-	list.Pop()
-
-	if size := list.Size(); size != 0 {
-		t.Fatalf("Size of list from [1, 2, 3] after 3 calls to pop(): got: %d, want: %d", size, 0)
-	}
-}
-
-func TestListHasCorrectSizeAfterPush(t *testing.T) {
-	list := New([]int{})
-
-	list.Push(1)
-	list.Push(2)
-	list.Push(3)
-
-	if size := list.Size(); size != 3 {
-		t.Fatalf("Size of list from [] after 3 calls to push(): got: %d, want: %d", size, 3)
-	}
-}
-
-func TestEmptyListToEmptyArray(t *testing.T) {
-	list := New([]int{})
-	if array := list.Array(); len(array) != 0 {
-		t.Fatalf("Test empty list to array: %v, want empty array", array)
-	}
-	list = New(nil)
-	if array := list.Array(); len(array) != 0 {
-		t.Fatalf("Test empty list to array: %v, want empty array", array)
-	}
-}
-
-func TestNonEmptyListToArray(t *testing.T) {
-	expected := []int{1, 2, 3}
-	list := New(expected)
-	array := list.Array()
-	if !slices.Equal(array, expected) {
-		t.Fatalf("Test non empty list to array: %v, want %v", array, expected)
-	}
-}
-
-func TestPopFromEmptyList(t *testing.T) {
-	list := New([]int{})
-	if _, err := list.Pop(); err == nil {
-		t.Fatalf("Pop from empty list: expected error but there was not")
-	}
-	list = New(nil)
-	if _, err := list.Pop(); err == nil {
-		t.Fatalf("Pop from empty list: expected error but there was not")
-	}
-}
-
-func TestPopFromNonEmptyList(t *testing.T) {
-	list := New([]int{1, 2, 3})
-	elem, err := list.Pop()
-	if err != nil {
-		t.Fatalf("Pop from non empty list: unexpected error %v", err)
-	}
-	if elem != 3 {
-		t.Fatalf("Pop from non empty list: %d, want %d", elem, 3)
-	}
-	actual := list.Array()
-	expected := []int{1, 2}
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Pop from non empty list: %v, want %v", actual, expected)
-	}
-}
-
-func TestPushToEmptyList(t *testing.T) {
-	list := New([]int{})
-	list.Push(1)
-	actual := list.Array()
-	expected := []int{1}
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Push to empty list: %v, want %v", actual, expected)
-	}
-	list = New(nil)
-	list.Push(1)
-	actual = list.Array()
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Push to empty list: %v, want %v", actual, expected)
-	}
-}
-
-func TestPushToNonEmptyList(t *testing.T) {
-	list := New([]int{1, 2, 3})
-	list.Push(4)
-	actual := list.Array()
-	expected := []int{1, 2, 3, 4}
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Push to non empty list: %v, want %v", actual, expected)
-	}
-}
-
-func TestPushAndPop(t *testing.T) {
-	list := New([]int{1, 2, 3})
-	list.Pop()
-	list.Push(4)
-	list.Push(5)
-	list.Pop()
-	list.Push(6)
-	actual := list.Array()
-	expected := []int{1, 2, 4, 6}
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Test push and pop: %v, want %v", actual, expected)
-	}
-}
-
-func TestReverseEmptyList(t *testing.T) {
-	list := New([]int{})
-	if reversed := list.Reverse().Array(); len(reversed) != 0 {
-		t.Fatalf("Reverse empty list: %v, want empty list", reversed)
-	}
-	list = New(nil)
-	if reversed := list.Reverse().Array(); len(reversed) != 0 {
-		t.Fatalf("Reverse empty list: %v, want empty list", reversed)
-	}
-}
-
-func TestReverseNonEmptyList(t *testing.T) {
-	list := New([]int{1, 2, 3})
-	actual := list.Reverse().Array()
-	expected := []int{3, 2, 1}
-	if !slices.Equal(actual, expected) {
-		t.Fatalf("Reverse non empty list: %v, want %v", actual, expected)
-	}
-}
 
 func BenchmarkNewList(b *testing.B) {
 	for range b.N {
@@ -182,7 +123,7 @@ func BenchmarkListPush(b *testing.B) {
 		b.StopTimer()
 		list := New([]int{})
 		b.StartTimer()
-		for k := 0; k < 1000; k++ {
+		for k := range 1000 {
 			list.Push(k)
 		}
 	}
@@ -192,11 +133,10 @@ func BenchmarkListPop(b *testing.B) {
 	for range b.N {
 		b.StopTimer()
 		list := New([]int{})
-		for k := 0; k < 1000; k++ {
+		for k := range 1000 {
 			list.Push(k)
 		}
-		b.StartTimer()
-		for k := 0; k < 1000; k++ {
+		for range 1000 {
 			list.Pop()
 		}
 	}

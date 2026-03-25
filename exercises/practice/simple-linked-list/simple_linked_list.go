@@ -18,6 +18,10 @@ func (l *List) Pop() (int, error) {
 	panic("Please implement the Pop function")
 }
 
+func (l *List) Peek() (int, error) {
+	panic("Please implement the Peek function")
+}
+
 func (l *List) Array() []int {
 	panic("Please implement the Array function")
 }
