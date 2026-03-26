@@ -1,3 +1,3 @@
-module tree
+module treebuilding
 
 go 1.26
