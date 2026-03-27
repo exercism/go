@@ -1,36 +1,38 @@
 # Introduction
 
-Conditionals in Go are similar to conditionals in other languages.
-The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`.
-Conditionals are often used as flow control mechanisms to check for various conditions.
+Conditionals are statements that execute different code depending on whether a condition is `true` or `false`.
 
-For checking a particular case an `if` statement can be used, which executes its code if the underlying condition is `true` like this:
+An `if` statement executes its body only when its condition is `true`.
+Go has no concept of truthy or falsy values so the condition must be of type `bool`.
+Expressions like `if mySlice { ... }` or `if 1 { ... }` are compile errors.
 
 ```go
-var value string
-
-if value == "val" {
-    return "was val"
+func describe(val string) string {
+    if val == "val" {
+        return "was val"
+    }
+    return "was not val"
 }
 ```
 
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
+Use `else if` to check additional conditions, and `else` as a fallback if none match.
+Conditions are evaluated top to bottom, and only the first branch whose condition is true will run.
 
 ```go
-var number int
+number := 0
 result := "This number is "
 
 if number > 0 {
-   result += "positive"
+    result += "positive"
 } else if number < 0 {
     result += "negative"
 } else {
-   result += "zero"
+    result += "zero"
 }
 ```
 
-If statements can also include a short initialization statement that can be used to initialize one or more variables for the if statement.
-For example:
+An `if` statement can also include a short initialization statement.
+Variables declared this way are only in scope within the entire `if`/`else` chain.
 
 ```go
 num := 7
@@ -41,5 +43,3 @@ if v := 2 * num; v > 10 {
 }
 // Output: 14
 ```
-
-> Note: any variables created in the initialization statement go out of scope after the end of the if statement.
