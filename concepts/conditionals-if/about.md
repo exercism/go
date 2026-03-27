@@ -1,22 +1,25 @@
 # About
 
-Conditionals in Go are similar to conditionals in other languages.
-The underlying type of any conditional operation is the `bool` type, which can have the value of `true` or `false`.
-Conditionals are often used as flow control mechanisms to check for various conditions.
-For checking a particular case an [`if` statement][if_statement] can be used, which executes its code if the underlying condition is `true` like this:
+Conditionals are statements that execute different code depending on whether a condition is `true` or `false`.
+
+An [`if` statement][if_statement] executes its body only when its condition is `true`.
+Go has no concept of truthy or falsy values so the condition must be of type `bool`.
+Expressions like `if mySlice { ... }` or `if 1 { ... }` are compile errors.
 
 ```go
-var value string
-
-if value == "val" {
-    return "was val"
+func describe(val string) string {
+    if val == "val" {
+        return "was val"
+    }
+    return "was not val"
 }
 ```
 
-In scenarios involving more than one case many `if` statements can be chained together using the `else if` and `else` statements.
+Use `else if` to check additional conditions, and `else` as a fallback if none match.
+Conditions are evaluated top to bottom, and only the first branch whose condition is true will run.
 
 ```go
-var number int
+number := 0
 result := "This number is "
 
 if number > 0 {
@@ -28,14 +31,11 @@ if number > 0 {
 }
 ```
 
-However, it is convention to avoid `else` statements as Go promotes early returns:
+Generally, Go favors returning early from the exceptional case and avoiding `else`.
 
 ```go
 func getVal(connected bool) int {
-    // The exceptional case should be in the `if` statemeent.
-    // In this case being `connected` is the default, `readLocalVal` the fallback.
     if !connected {
-        // using an `early return` to remove the need for an `else` case
         return readLocalVal()
     }
 
@@ -43,8 +43,8 @@ func getVal(connected bool) int {
 }
 ```
 
-If statements can also include a short initialization statement that can be used to initialize one or more variables for the if statement.
-For example:
+An `if` statement can also include a short initialization statement.
+This is commonly used to check an error immediately after a call:
 
 ```go
 num := 7
@@ -56,13 +56,10 @@ if v := 2 * num; v > 10 {
 // Output: 14
 ```
 
-> Note: any variables created in the initialization statement go out of scope after the end of the if statement.
+Variables declared in the initialization statement are only in scope within the entire `if`/`else` chain.
+Notably, Go has no ternary operator, a deliberate design choice to keep code easy to scan.
 
-Coming from other languages one may be tempted to try to use one-line conditionals.
-Go does not support ternary operators or one-line conditionals.
-This is a purposeful design decision to limit the amount of possibilities, making code simpler and easier to read.
+To learn more, see [Go by Example: If/Else][go_by_example_if].
 
-To learn more about this topic it is recommended to check this source: [Go by Example: If/Else][go_by_example_if]
-
-[if_statement]: https://golang.org/ref/spec#If_statements
+[if_statement]: https://go.dev/ref/spec#If_statements
 [go_by_example_if]: https://gobyexample.com/if-else
