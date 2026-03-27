@@ -1,13 +1,9 @@
 # About
 
-Like other languages, Go also provides a [`switch` statement][switch_statement].
-Switch statements are a shorter way to write long `if ... else if` statements.
+A [`switch` statement][switch_statement] evaluates an expression and runs the first `case` that matches its value.
+It is an often cleaner alternative to long `if ... else if` chains.
 
-## Basic usage
-
-To make a switch, we start by using the keyword `switch` followed by a value or expression.
-We then declare each one of the conditions with the `case` keyword.
-We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
+## Basic Usage
 
 ```go
 operatingSystem := "windows"
@@ -24,11 +20,10 @@ default:
 }
 ```
 
-If we want to run the same piece of code for several cases, we can group them together in a single `case`, separating them with a `,`:
+Multiple values can be grouped into a single `case` with a comma.
+The case matches if the expression equals any one of them:
 
 ```go
-operatingSystem := "windows"
-
 switch operatingSystem {
 case "windows", "linux":
     // do something if the operating system is windows or linux
@@ -39,10 +34,10 @@ default:
 }
 ```
 
-## Cases with boolean expressions
+## Expressionless Switch
 
-One interesting thing about switch statements, is that the value after the `switch` keyword can be omitted, and we can have boolean conditions for each `case`.
-This effectively can be a shorter way to write complex `if ... else` statements:
+The expression after `switch` can also be omitted entirely.
+Each `case` then holds a boolean expression, and the first one that evaluates to `true` runs.
 
 ```go
 age := 21
@@ -57,44 +52,49 @@ default:
 }
 ```
 
+## Initialization Statement
+
+Like `if`, a `switch` can include a short initialization statement before the expression.
+Variables declared there are scoped to the `switch` block:
+
+```go
+switch v := getValue(); {
+case v < 0:
+    // do something if v is less than 0
+case v == 0:
+    // do something if v is 0
+default:
+    // do something else for every other case
+}
+// v will not be accessible here
+```
+
 ## Fallthrough
 
-When the condition in a `case` matches, the corresponding code will run and Go will not evaluate the other `case` conditions by default.
-We can make use of the `fallthrough` keyword to tell Go to evaluate the other `case` conditions.
-Take this example:
+`fallthrough` causes the next case's body to run regardless of whether its expression would match.
+It must be the last statement in the case's body, and there must be a next case to run.
+
+`fallthrough` is uncommon in idiomatic Go because it makes adjacent cases dependent on each other.
+As a result, it's harder to reason about the cases in isolation, making the switch harder to read.
+When cases should have the same behavior, grouping them with a comma is clearer.
+When logic is shared across cases for other reasons, consider extracting the shared logic into a helper function.
 
 ```go
-age := 21
+s := "hello"
 
-switch {
-case age > 20:
-    // do something if age is greater than 20
-case age > 30:
-    // WARNING: code here will never run. If age is greater than 30,
-    // it is also greater than 20, which means only the previous case will run.
-default:
-    // do something else for every other case
-}
-```
-
-We can correct this code by using the `fallthrough` keyword:
-
-```go
-age := 21
-
-switch {
-case age > 20:
-    // do something if age is greater than 20
+switch s {
+case "hello":
+    fmt.Println("hello")
     fallthrough
-case age > 30:
-    // Since the previous case uses 'fallthrough',
-    // this code will now run if age is also greater than 30
-default:
-    // do something else for every other case
+case "world":
+    fmt.Println("world") // also runs, even though s != "world"
 }
+// Output:
+// hello
+// world
 ```
 
-To learn more about this topic, check [Go by Example: Switch][go_by_example_switch] or [Tour of Go: Switch][switch_statement].
+To learn more, check [Go by Example: Switch][go_by_example_switch] or the [Go language specification][switch_statement].
 
-[switch_statement]: https://tour.golang.org/flowcontrol/9
+[switch_statement]: https://go.dev/ref/spec#Switch_statements
 [go_by_example_switch]: https://gobyexample.com/switch

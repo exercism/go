@@ -1,10 +1,24 @@
 # Introduction
 
-Like other languages, Go also provides a `switch` statement.
-Switch statements are a shorter way to write long `if ... else if` statements.
-To make a switch, we start by using the keyword `switch` followed by a value or expression.
-We then declare each one of the conditions with the `case` keyword.
-We can also declare a `default` case, that will run when none of the previous `case` conditions matched:
+A `switch` statement evaluates an expression and runs the first `case` that matches its value.
+It is an often cleaner alternative to long `if ... else if` chains.
+For example,
+
+```go
+operatingSystem := "windows"
+
+if operatingSystem == "windows" {
+    // do something if the operating system is windows
+} else if operatingSystem == "linux" {
+    // do something if the operating system is linux
+} else if operatingSystem == "macos" {
+    // do something if the operating system is macos
+} else {
+    // do something if the operating system is none of the above
+}
+```
+
+can be rewritten as:
 
 ```go
 operatingSystem := "windows"
@@ -21,7 +35,22 @@ default:
 }
 ```
 
-One interesting thing about switch statements, is that the value after the `switch` keyword can be omitted, and we can have boolean conditions for each `case`:
+Multiple values can be grouped into a single `case` with a comma.
+That case will match if the expression equals any of the values:
+
+```go
+switch operatingSystem {
+case "windows", "linux":
+    // do something if the operating system is windows or linux
+case "macos":
+    // do something if the operating system is macos
+default:
+    // do something if the operating system is none of the above
+}
+```
+
+The expression after `switch` can also be omitted entirely.
+Each `case` then holds a boolean expression, and the first case being true is run.
 
 ```go
 age := 21
