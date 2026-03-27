@@ -1,6 +1,9 @@
 package simplelinkedlist
 
-import "errors"
+import (
+	"errors"
+	"slices"
+)
 
 type element struct {
 	data int
@@ -8,7 +11,7 @@ type element struct {
 }
 
 type List struct {
-	head *element
+	top  *element
 	size int
 }
 
@@ -25,51 +28,41 @@ func (list *List) Size() int {
 }
 
 func (list *List) Push(elem int) {
-	newNode := element{elem, nil}
-	if list.head == nil {
-		list.head = &newNode
-	} else {
-		node := list.head
-		for node.next != nil {
-			node = node.next
-		}
-		node.next = &newNode
-	}
+	list.top = &element{elem, list.top}
 	list.size++
 }
 
 func (list *List) Pop() (int, error) {
-	var elem int
-	switch list.size {
-	case 0:
-		return 0, errors.New("Cannot call pop on empty list")
-	case 1:
-		elem = list.head.data
-		list.head = nil
-	default:
-		node := list.head
-		for node.next.next != nil {
-			node = node.next
-		}
-		elem = node.next.data
-		node.next = nil
+	if list.size == 0 {
+		return 0, errors.New("list is empty")
 	}
+	elem := list.top.data
+	list.top = list.top.next
 	list.size--
 	return elem, nil
 }
 
-func (list *List) Array() []int {
+func (list *List) Peek() (int, error) {
+	if list.size == 0 {
+		return 0, errors.New("list is empty")
+	}
+	return list.top.data, nil
+}
+
+func (list *List) values() []int {
 	res := []int{}
-	for node := list.head; node != nil; node = node.next {
+	for node := list.top; node != nil; node = node.next {
 		res = append(res, node.data)
 	}
 	return res
 }
 
+func (list *List) Array() []int {
+	res := list.values()
+	slices.Reverse(res)
+	return res
+}
+
 func (list *List) Reverse() *List {
-	array, size := list.Array(), list.size
-	for i := range size / 2 {
-		array[i], array[size-1-i] = array[size-1-i], array[i]
-	}
-	return New(array)
+	return New(list.values())
 }
