@@ -1,24 +1,34 @@
-# Introduction to Multiple Return Values
+# Introduction
 
-Go functions and methods can return multiple values.
-Very often, a second return value is used to return an error.
-For example:
+Go functions and methods can return multiple values:
 
 ```go
 func GetCard() (Card, error) { ... }
 ```
 
-The assignment for multiple return values just uses a comma to separate the variables:
+Every return value must be assigned in order and separated by commas:
 
 ```go
 card, err := GetCard()
 ```
 
-If statements can use an initializer before the condition separated by a semicolon.
-This is a common idiom seen for error handling:
+Each position in the assignment declares a variable.
+Go will not compile if any declared variable is never used.
+The blank identifier `_` takes the place of a variable name to skip that return value:
 
 ```go
-if card, err := GetCard(); err != nil {
-    // handle the error
+card, _ := GetCard()
+```
+
+`error` is a built-in interface.
+A `nil` error means no error occurred; any non-nil value means something went wrong.
+By convention, functions that can fail should return an `error` as their last value.
+The caller must check it before using any other return values:
+
+```go
+card, err := GetCard()
+if err != nil {
+    return err // do not use card here
 }
+// safe to use card here
 ```
