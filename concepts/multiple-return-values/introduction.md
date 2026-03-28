@@ -12,7 +12,8 @@ Every return value must be assigned in order and separated by commas:
 card, err := GetCard()
 ```
 
-Each position in the assignment declares a variable. Go will not compile if any declared variable is never used.
+Each position in the assignment declares a variable.
+Go will not compile if any declared variable is never used.
 The blank identifier `_` takes the place of a variable name to skip that return value:
 
 ```go
