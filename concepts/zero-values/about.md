@@ -25,7 +25,7 @@ For example, `var a [3]int` creates the array `[0, 0, 0]`.
 ```go
 var myBool bool   // false
 var mySlice []int // nil
-var p Person      // Name: "", Age: 0
+var p Person      // Person{Name: "", Age: 0}
 ```
 
 For structs, a composite literal `T{}` is an alternative:
