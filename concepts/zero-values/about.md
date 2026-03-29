@@ -1,78 +1,130 @@
 # About
 
-Go does not have a concept of empty, null, or undefined for variable values.
-Variables declared without an explicit initial value default to the zero value for their respective type.
+In Go, every variable has a value.
+Declaring a variable without assigning a value sets it to the zero value for its type.
 
-The zero value for primitive types such as booleans, numeric types, and strings are `false`, `0`, and `""`, respectively.
+Basic types, including `bool`, numeric types, and `string`, each have a fixed zero value:
 
-The identifier `nil`, meaning zero, is the zero value for more complex types such as pointers, functions, interfaces, slices, channels, and maps.
+| Type                   | Zero Value |
+| ---------------------- | ---------- |
+| bool                   | `false`    |
+| int, int8, int64, etc. | `0`        |
+| float32, float64       | `0`        |
+| complex64, complex128  | `0+0i`     |
+| string                 | `""`       |
 
-The following table details the zero value for Go's types.
+Types that reference underlying data, including pointers, functions, interfaces, slices, channels, and maps, each have a zero value of `nil`.
+However, arrays and structs are never `nil` because they hold the data directly, not a reference to it.
+Each element of an array and each field of a struct is initialized to its own type's zero value.
+For example, `var a [3]int` creates the array `[0, 0, 0]`.
 
-| Type      | Zero Value |
-| --------- | ---------- |
-| boolean   | `false`    |
-| numeric   | `0`        |
-| string    | `""`       |
-| pointer   | `nil`      |
-| function  | `nil`      |
-| interface | `nil`      |
-| slice     | `nil`      |
-| channel   | `nil`      |
-| map       | `nil`      |
+## Declaring Zero Values
 
-You may have noticed struct types are absent from the above table.
-That is because the zero value for a struct type depends on its fields.
-Structs are set to their zero value when all of its fields are set to their respective zero value.
-
-## Zero Value Construction
-
-The `var` keyword can be used to construct any type to its zero value:
+`var` without an initial value gives the zero value for any type:
 
 ```go
-var myBool bool
-fmt.Printf("Zero value boolean: %#v", myBool)
-// Output: Zero value boolean: false
+var myBool bool   // false
+var mySlice []int // nil
+var p Person      // Person{Name: "", Age: 0}
 ```
 
+For structs, a composite literal `T{}` is an alternative:
+
 ```go
-var mySlice []int
-fmt.Printf("Zero value slice: %#v", mySlice)
-// Output: Zero value slice: []int(nil)
+myPerson := Person{} // equivalent to var myPerson Person
 ```
 
-When constructing the zero value for a struct type, all of the struct's fields will be set to their zero value:
+`new(T)` returns a pointer to the zero value of any type.
+It is most commonly used with structs, though it works for basic types too:
 
 ```go
-type Person struct {
-  Name string
-  Age  int
+p := new(Person) // *Person, pointing to Person{Name: "", Age: 0}
+s := new(string) // *string, pointing to ""
+i := new(int)    // *int, pointing to 0
+```
+
+## Why Zero Values Matter
+
+In Go, a zero value represents a natural and useful starting state.
+
+A `bool` defaults to `false`, which can work as a flag:
+
+```go
+var done bool // action not done yet
+done = true   // action now done
+```
+
+An integer defaults to `0`, which can work as a counter:
+
+```go
+var count int
+count++ // 1
+count++ // 2
+```
+
+For structs, each field starts at its own type's zero value.
+A `Stack` with a single `[]string` field is already a working empty stack when declared.
+Because `append` allocates a new backing array when called on a nil slice, no constructor is needed:
+
+```go
+type Stack struct {
+    items []string
 }
 
-var myPerson Person
-fmt.Printf("Zero value Person: %#v", myPerson)
-// Output: Zero value Person: main.Person{Name:"", Age:0}
+func (s *Stack) Push(v string) {
+    s.items = append(s.items, v)
+}
+
+func (s *Stack) IsEmpty() bool {
+    return len(s.items) == 0
+}
+
+var s Stack
+fmt.Println(s.IsEmpty()) // true
+s.Push("a") // append allocates a new backing array
+fmt.Println(s.IsEmpty()) // false
 ```
 
-## Comparing with Nil
+## Working with Nil
 
-If you try to compare a type whose zero value is not `nil` to `nil`, your code will not compile.
-You will see a compiler error because booleans, numeric types, and strings can never be `nil` in Go.
+Most types with `nil` zero values require initialization before use or they panic.
+A `nil` slice is the exception: you can range over it, append to it, and pass it to `len` and `cap` safely.
+
+A map should be initialized before storing a value:
+
+```go
+var m map[string]int
+m["key"] = 1 // panic
+```
+
+A map is commonly initialized two different ways:
+
+```go
+m1 := make(map[string]int)
+m2 := map[string]int{}
+m1["key"] = 1 // ok
+m2["key"] = 1 // ok
+```
+
+Check a pointer for `nil` before using it:
+
+```go
+var p *int
+
+if p == nil {
+    fmt.Println("no value assigned")
+    return
+}
+
+fmt.Println(*p) // p is not nil
+```
+
+Basic types always hold a concrete value, so comparing them to `nil` is a compile error:
 
 ```go
 var myString string
 
-if myString != nil { // invalid operation: myString != nil (mismatched types string and nil)
-  fmt.Println("Do some work here.")
-}
-```
-
-However, comparing a type whose zero value is `nil` to `nil` is acceptable:
-
-```go
-var mySlice []int
-
-if mySlice != nil {
-  fmt.Println("Do some work here.")
+if myString == nil {
+    // compile error: mismatched types
 }
 ```

@@ -1,26 +1,40 @@
 # Introduction
 
-Go does not have a concept of empty, null, or undefined for variable values.
-Variables declared without an explicit initial value default to the zero value for their respective type.
+In Go, every variable has a value.
+Declaring a variable without assigning one sets it to the zero value for its type.
 
-The zero value for primitive types such as booleans, numeric types, and strings are `false`, `0`, and `""`, respectively.
+Basic types, including `bool`, numeric types, and `string`, each have a fixed zero value:
 
-The identifier `nil`, meaning zero, is the zero value for more complex types such as pointers, functions, interfaces, slices, channels, and maps.
+| Type                   | Zero Value |
+| ---------------------- | ---------- |
+| bool                   | `false`    |
+| int, int8, int64, etc. | `0`        |
+| float32, float64       | `0`        |
+| complex64, complex128  | `0+0i`     |
+| string                 | `""`       |
 
-The following table details the zero value for Go's types.
+Pointers, functions, interfaces, slices, channels, and maps each have a zero value of `nil`.
 
-| Type      | Zero Value |
-| --------- | ---------- |
-| boolean   | `false`    |
-| numeric   | `0`        |
-| string    | `""`       |
-| pointer   | `nil`      |
-| function  | `nil`      |
-| interface | `nil`      |
-| slice     | `nil`      |
-| channel   | `nil`      |
-| map       | `nil`      |
+Arrays and structs are never `nil` because they hold the data directly, not a reference to it.
+Each element of an array and each field of a struct is initialized to its own type's zero value.
+For example, `var a [3]int` creates the array `[0, 0, 0]`.
 
-You may have noticed struct types are absent from the above table.
-That is because the zero value for a struct type depends on its fields.
-Structs are set to their zero value when all of its fields are set to their respective zero value.
+## Declaring Zero Values
+
+Use `var` for a declaration:
+
+```go
+var myBool bool   // false
+var mySlice []int // nil
+```
+
+Use a composite literal `T{}` for structs:
+
+```go
+type Person struct {
+    Name string
+    Age  int
+}
+
+myPerson := Person{} // Person{Name: "", Age: 0}
+```
