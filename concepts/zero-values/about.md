@@ -90,14 +90,20 @@ fmt.Println(s.IsEmpty()) // false
 Most types with `nil` zero values require initialization before use or they panic.
 A `nil` slice is the exception: you can range over it, append to it, and pass it to `len` and `cap` safely.
 
-Always initialize a map with `make` before writing to it:
+A map should be initialized before storing a value:
 
 ```go
 var m map[string]int
 m["key"] = 1 // panic
+```
 
-m = make(map[string]int)
-m["key"] = 1 // ok
+A map is commonly initialized two different ways:
+
+```go
+m1 := make(map[string]int)
+m2 := map[string]int{}
+m1["key"] = 1 // ok
+m2["key"] = 1 // ok
 ```
 
 Check a pointer for `nil` before using it:
