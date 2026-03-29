@@ -36,5 +36,5 @@ type Person struct {
     Age  int
 }
 
-myPerson := Person{} // Name: "", Age: 0
+myPerson := Person{} // Person{Name: "", Age: 0}
 ```
