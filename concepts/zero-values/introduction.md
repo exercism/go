@@ -5,13 +5,13 @@ Declaring a variable without assigning one sets it to the zero value for its typ
 
 Basic types, including `bool`, numeric types, and `string`, each have a fixed zero value:
 
-| Type                  | Zero Value |
-| --------------------- | ---------- |
-| bool                  | `false`    |
+| Type                   | Zero Value |
+| ---------------------- | ---------- |
+| bool                   | `false`    |
 | int, int8, int64, etc. | `0`        |
-| float32, float64      | `0`        |
-| complex64, complex128 | `0+0i`     |
-| string                | `""`       |
+| float32, float64       | `0`        |
+| complex64, complex128  | `0+0i`     |
+| string                 | `""`       |
 
 Pointers, functions, interfaces, slices, channels, and maps each have a zero value of `nil`.
 
