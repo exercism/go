@@ -3,7 +3,7 @@ package connect
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 42dd0ce Remove version (#1678)
+// Commit: d5f665e Add dead-end test cases for Connect (#2633)
 
 var testCases = []struct {
 	description string
@@ -75,6 +75,26 @@ var testCases = []struct {
 			"  O X O .",
 			"   X X O X",
 			"    . O X .",
+		},
+		expected: "X",
+	},
+	{
+		description: "X wins with left-hand dead end fork",
+		board: []string{
+			". . X .",
+			" X X . .",
+			"  . X X X",
+			"   O O O O",
+		},
+		expected: "X",
+	},
+	{
+		description: "X wins with right-hand dead end fork",
+		board: []string{
+			". . X X",
+			" X X . .",
+			"  . X X .",
+			"   O O O O",
 		},
 		expected: "X",
 	},
