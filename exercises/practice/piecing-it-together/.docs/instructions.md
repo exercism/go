@@ -24,18 +24,24 @@ For this exercise, you may assume square pieces, so that the format can be deriv
 
 ### Portrait
 
-A portrait jigsaw puzzle with 6 pieces, all of which are border pieces and none are inside pieces. It has 3 rows and 2 columns. The aspect ratio is 1.5 (3/2).
+A portrait jigsaw puzzle with 6 pieces, all of which are border pieces and none are inside pieces.
+It has 2 columns and 3 rows.
+The aspect ratio is 0.666666... (2/3).
 
 ![A 2 by 3 jigsaw puzzle](https://assets.exercism.org/images/exercises/piecing-it-together/jigsaw-puzzle-2x3.svg)
 
 ### Square
 
-A square jigsaw puzzle with 9 pieces, all of which are border pieces except for the one in the center, which is an inside piece. It has 3 rows and 3 columns. The aspect ratio is 1 (3/3).
+A square jigsaw puzzle with 9 pieces, all of which are border pieces except for the one in the center, which is an inside piece.
+It has 3 columns and 3 rows.
+The aspect ratio is 1.0 (3/3).
 
 ![A 3 by 3 jigsaw puzzle](https://assets.exercism.org/images/exercises/piecing-it-together/jigsaw-puzzle-3x3.svg)
 
 ### Landscape
 
-A landscape jigsaw puzzle with 12 pieces, 10 of which are border pieces and 2 are inside pieces. It has 3 rows and 4 columns. The aspect ratio is 1.333333... (4/3).
+A landscape jigsaw puzzle with 12 pieces, 10 of which are border pieces and 2 are inside pieces.
+It has 4 columns and 3 rows.
+The aspect ratio is 1.333333... (4/3).
 
 ![A 4 by 3 jigsaw puzzle](https://assets.exercism.org/images/exercises/piecing-it-together/jigsaw-puzzle-4x3.svg)

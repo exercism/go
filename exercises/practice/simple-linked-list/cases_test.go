@@ -3,7 +3,7 @@ package simplelinkedlist
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: b97ba39 [simple-linked-list] Add a new canonical data file (#2635)
+// Commit: f1ff9e6 simple-linked-list: reimplement 1 test to count after reverse (#2636)
 
 type Operation struct {
 	operation    string
@@ -206,6 +206,7 @@ var testCases = []testCase{
 		initialValues: []int{1, 2, 3},
 		operations: []Operation{
 			Operation{operation: "Reverse"},
+			Operation{operation: "Size", expectedInt: 3},
 			Operation{operation: "Pop", expectedInt: 1},
 			Operation{operation: "Pop", expectedInt: 2},
 			Operation{operation: "Pop", expectedInt: 3},
