@@ -38,7 +38,7 @@ myPerson := Person{} // equivalent to var myPerson Person
 It is most commonly used with structs, though it works for basic types too:
 
 ```go
-p := new(Person) // *Person, pointing to Name: "", Age: 0
+p := new(Person) // *Person, pointing to Person{Name: "", Age: 0}
 s := new(string) // *string, pointing to ""
 i := new(int)    // *int, pointing to 0
 ```
