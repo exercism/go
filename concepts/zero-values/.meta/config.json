@@ -1,8 +1,10 @@
 {
-  "blurb": "When a variable is created without a value, it gets assigned the zero value of its type.",
+  "blurb": "Variables declared without an assignment use the zero value of their type.",
   "authors": [
     "ErikSchierboom",
     "sudomateo"
   ],
-  "contributors": []
+  "contributors": [
+    "BNAndras"
+  ]
 }
