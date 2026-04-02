@@ -33,7 +33,7 @@ Use them when the reason behind a decision isn't obvious from the code:
 results = results[1:] // skipping the header row
 ```
 
-In most cases, code that is clearly written is self -explanatory, and comments are not needed.
+In most cases, code that is clearly written is self-explanatory, and comments are not needed.
 Occasionally, it is necessary for the code to do something complex or unexpected; that type of code should be commented.
 
 ## Doc comments
