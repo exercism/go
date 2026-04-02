@@ -39,6 +39,9 @@ Occasionally, it is necessary for the code to do something complex or unexpected
 ## Doc comments
 
 Doc comments are used to document a package, variable or function.
+This documentation is intended for other coders that would like to know how to _use_ your code.
+It should explain, at a high level, what the code does and how to use it.
+It should not include details of how the code itself works.
 Doc comments sit directly before a declaration, with no blank line separating the comment from the declaration.
 [`godoc`][godoc] parses them to generate package documentation, as seen on [pkg.go.dev][go packages].
 A doc comment should be a complete sentence starting with the name of the identifier and ending with a period.
