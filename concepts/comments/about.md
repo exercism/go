@@ -1,80 +1,79 @@
 # About
 
-Go supports two types of [comments][comments].
-Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
-
-## Documentation comments
-
-In Go, comments play an important role in documenting code.
-They are used by the [godoc][godoc] command, which extracts these comments to create documentation about Go packages (see [pkg.go.dev][go packages] for examples).
-A documentation comment should be a complete sentence that starts with the name of the thing being described and ends with a period.
-
-Documentation comments are about `what` the thing does and contains, whereas other types of comments such as code comments are about `why` something is done.
-The `why` helps others and future you to understand the reason behind a particular piece of code.
-However, if the `why` feels obvious, the code comment is not necessary.
-A [good rule of thumb][less comments] and more sustainable solution is to write code that is easier to understand so that explanatory comments are hopefully not needed.
-
-## Comments for exported identifiers
-
-Documentation comments should precede packages as well as [exported identifier][exported identifiers]s, for example exported functions, methods, package variables, constants, and structs, which you will learn more about in further concepts.
-Comments written for packages and exported identifiers are useful for the users who import and use these packages.
-
-Note, however, that identifiers (such as variables) that are declared inside of functions and methods are private and do not necessarily require comments for the users of the packages.
-
-A package-level variable can look like this:
+Comments let you leave notes in code without affecting how it runs.
+A single-line comment starts with `//` anywhere on a line.
+The compiler ignores everything from `//` to the end of that line.
+When a comment comes after code on the same line, it is often called an inline comment.
+A multiline comment starts with `/*` and ends with `*/` anywhere on a line.
+The compiler ignores everything in between, spanning one or more lines.
 
 ```go
-// TemperatureFahrenheit represents a certain temperature in degrees Fahrenheit.
-var TemperatureFahrenheit float64
+// This is a single-line comment on its own line
+
+x := 1 // This is an single-line comment inline with code
+fmt.Println(x) // prints 1
+
+/*
+This is a valid
+multiline comment.
+*/
+
+/* This is also a valid multi-line comment. */
+
 ```
 
-Note that `TemperatureFahrenheit` is capitalized, which makes this identifier exported, and thus usable in any code which imports this package.
+Comments serve different purposes depending on where they appear.
 
-## Package comments
+## Code comments
 
-Package comments should be written directly before a package clause (`package x`) and begin with `Package x ...` like this:
+Code comments explain why something is done, not what.
+Use them when the reason behind a decision isn't obvious from the code:
+
+```go
+results = results[1:] // skipping the header row
+```
+
+In most cases, code that is clearly written is self-explanatory, and comments are not needed.
+Occasionally, it is necessary for the code to do something complex or unexpected; that type of code should be commented.
+
+## Doc comments
+
+Doc comments are used to document a package, variable or function.
+This documentation is intended for other coders that would like to know how to _use_ your code.
+It should explain, at a high level, what the code does and how to use it.
+It should not include details of how the code itself works.
+Doc comments sit directly before a declaration, with no blank line separating the comment from the declaration.
+[`godoc`][godoc] parses them to generate package documentation, as seen on [pkg.go.dev][go packages].
+A doc comment should be a complete sentence starting with the name of the identifier and ending with a period.
+
+Doc comments on exported identifiers (those that begin with an uppercase letter) appear in generated documentation.
+Doc comments on unexported identifiers (those that don't begin with an uppercase letter) won't appear, but they can still provide useful context within the code.
+
+Comments documenting packages begin with the package name and describe what the package does:
 
 ```go
 // Package kelvin provides tools to convert temperatures to and from Kelvin.
 package kelvin
 ```
 
-## Function comments
-
-A function comment should be written directly before the function declaration.
-It should be a full sentence that starts with the function name.
-For example, an exported comment for the function `Calculate` should take the form `Calculate  ...`.
-It should also explain what arguments the function takes, what it does with them, and what its return values mean, ending in a period):
+Comments documenting functions begin with the function name and describe what the function does, including its arguments and return values:
 
 ```go
 // CelsiusFreezingTemp returns an integer value equal to the temperature at which water freezes in degrees Celsius.
 func CelsiusFreezingTemp() int {
-	return 0
+    return 0
 }
 ```
 
-## Golint
+Comments documenting variables begin with the variable name and describe what the variable represents:
 
-[Golint][golint] is a great tool to check for missing comments and other common stylistic issues, which you can read more about at [Effective Go][effective go].
-
-You can install `golint` on your machine with the following command:
-
-```sh
-go get -u golang.org/x/lint/golint
+```go
+// TemperatureFahrenheit represents a certain temperature in degrees Fahrenheit.
+var TemperatureFahrenheit float64
 ```
 
-It's a good idea to configure your editor to run `golint` for you, otherwise you can invoke it like this:
+For the full doc comment specification, see the [Go documentation guide][doc-comments].
 
-```sh
-golint weather.go
-```
-
-To use the `golint` command globally, make sure that it is in your `$PATH`.
-
-[godoc]: https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol
+[godoc]: https://go.dev/blog/godoc
 [go packages]: https://pkg.go.dev/
-[less comments]: https://dave.cheney.net/practical-go/presentations/qcon-china.html#_dont_comment_bad_code_rewrite_it
-[exported identifiers]: https://www.ardanlabs.com/blog/2014/03/exportedunexported-identifiers-in-go.html
-[golint]: https://github.com/golang/lint
-[effective go]: https://golang.org/doc/effective_go.html
-[comments]: https://golang.org/ref/spec#Comments
+[doc-comments]: https://go.dev/doc/comment
