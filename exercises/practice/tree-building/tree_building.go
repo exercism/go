@@ -1,4 +1,4 @@
-package tree
+package treebuilding
 
 type Record struct {
 	ID     int
