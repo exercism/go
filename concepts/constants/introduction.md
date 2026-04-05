@@ -1,6 +1,6 @@
 # Introduction
 
-Constants are values set at compile time and cannot be reassigned.
+Constants are variables that are set to a value at compile time and cannot be reassigned.
 Use the `const` keyword to declare a constant:
 
 ```go
