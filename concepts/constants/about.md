@@ -1,51 +1,82 @@
 # About
 
-Constants in Go are simple, [unchanging values][const] created with the `const` keyword.
-Constants may be given an explicit type:
+Constants are values set at compile time and cannot be reassigned.
+Use the `const` keyword to declare a single constant:
 
 ```go
-const hi string = "hi" // string
+const greeting = "hello"
 ```
 
-or an implicit, default type:
-
-```go
-const hello = "hello" // string
-```
-
-when the variable needs a type.
-This gives constants more flexibility in Go's type system and allows them to work in a variety of contexts without triggering a compiler error:
-
-```go
-const number2 = 2 // 2 is an untyped numeric constant and does not need to be explicitly given the type float64 as required by the Sqrt method
-sqrt2 := math.Sqrt(number2)
-```
-
-Go does not have enums like some other languages but the `iota` enumerator can be used to create successive untyped integer constants:
+Multiple constants can be declared in a block.
+Within a block, a constant without an explicit value set repeats the previous expression:
 
 ```go
 const (
-    a = 6 * iota // 0
-    b            // 6
-    c            // 12
-    d            // 18
+    greeting    = "hello"
+    buffSize    = 4096
+    chunkSize   // 4096
 )
 ```
 
-Complex types like maps and slices are mutable and cannot be constants; the compiler will throw errors:
+Constants are typically declared at package level, though uncommonly they can also be declared inside a function.
+
+## Typed and untyped constants
+
+Declaring a constant without specifying a type makes it untyped.
+An untyped constant has no set type, but its value determines what types it's compatible with.
+As long as the underlying value is compatible, the compiler will convert it to the required type at each use:
 
 ```go
-func main() {
-    const m = map[int]int{2: 8}
-    const s = []string{"exercism", "v3"}
-}
-// => const initializer map[int]int literal is not a constant
-// => const initializer []string literal is not a constant
+const numA = 2
+
+math.Sqrt(numA)  // numA is treated as float64 here
+var numB int = numA  // numA is treated as int here
 ```
 
-For a fuller explanation please see [Effective Go][const2], [The Go Blog][const3], and [YourBasic Go][const4].
+A typed constant fixes the type at declaration:
 
-[const]: https://golang.org/ref/spec#Constants
-[const2]: https://golang.org/doc/effective_go.html#constants
-[const3]: https://blog.golang.org/constants
-[const4]: https://yourbasic.org/golang/untyped-constants/
+```go
+const num int = 2
+
+math.Sqrt(num)  // compile error because a float is expected
+```
+
+## What can be a constant
+
+Constants can only hold booleans, numbers, strings, and runes.
+Because the values are set at compile time, the results of a function call can not be constants:
+
+```go
+const s = math.Sqrt(4)  // compile error because the value isn't known at compile time
+```
+
+## Iota
+
+Within a block of constants, `iota` represents each constant's position within the block:
+
+```go
+const (
+    Sunday    = iota // 0
+    Monday           // 1
+    Tuesday          // 2
+    Wednesday        // 3
+)
+```
+
+Each constant after the first inherits the same expression, with `iota` incrementing by one.
+
+`iota` also works in expressions.
+
+```go
+const (
+    _  = iota             // position 0: value discarded
+    KB = 1 << (10 * iota) // position 1: 1 << 10 = 1024
+    MB                    // position 2: 1 << 20 = 1048576
+    GB                    // position 3: 1 << 30 = 1073741824
+)
+```
+
+For a deeper look at constants in Go, see [The Go Blog][const-blog] and [Effective Go][effective-go].
+
+[const-blog]: https://go.dev/blog/constants
+[effective-go]: https://go.dev/doc/effective_go#constants

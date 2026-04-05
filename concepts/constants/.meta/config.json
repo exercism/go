@@ -1,5 +1,9 @@
 {
-  "blurb": "Constants are pieces of data similar to variables, but whose value cannot change during execution.",
-  "authors": ["jamessouth"],
-  "contributors": []
+  "blurb": "Constants are named values that don't change during a program's execution.",
+  "authors": [
+    "jamessouth"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
 }
