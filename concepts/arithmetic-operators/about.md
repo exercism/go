@@ -2,7 +2,7 @@
 
 ## Operators
 
-Go supports many standard arithmetic operators:
+Go supports the following arithmetic operators:
 
 | Operator | Example        |
 | -------- | -------------- |
@@ -14,24 +14,29 @@ Go supports many standard arithmetic operators:
 
 For integer division, the remainder is dropped (e.g. `5 / 2 == 2`).
 
-## Arithmetic operations on different types
+The `+` operator also concatenates strings: `"foo" + "bar" == "foobar"`.
 
-In many languages you can perform arithmetic operations on different types of variables, but in Go this gives an error.
-For example:
+## Mixed-Type Arithmetic
+
+Go does not allow arithmetic operations between different numeric types:
 
 ```go
-var x int = 42
+x := 42
+n := 2.0
+value := n * x // invalid operation: n * x (mismatched types float64 and int)
+```
 
-// this line produces an error
-value := float32(2.0) * x // invalid operation: mismatched types float32 and int
+The operands must be the same type, sometimes requiring explicit conversion:
 
-// you must convert int type to float32 before performing arithmetic operation
-value := float32(2.0) * float32(x)
+```go
+x := float64(42)
+n := 2.0
+value := n * x 
 ```
 
 ## Shorthand Assignments
 
-These can be used in shorthand assignments to update and assign a variable using the operator:
+Each operator has a shorthand assignment form that updates the variable in place:
 
 ```go
 a := 1
@@ -52,9 +57,8 @@ e %= 2 // same as e = e % 2 == 0
 
 ## Increment and Decrement
 
-There are also two special statements: increment (`++`) and decrement (`--`).
-They modify the value of a variable by increasing (or decreasing) the value by 1.
-For example:
+When placed after a variable, the increment (`++`) and decrement (`--`) statements either increase or decrease its stored numeric value by 1.
+Placing them before a variable is a syntax error.
 
 ```go
 a := 10
@@ -64,5 +68,4 @@ b := 10
 b-- // same as b -= 1, b == 9
 ```
 
-NOTE: these are statements and cannot be used as expressions (ie. they do not return a value).
-Also, only the postfix notation is allowed (ie. no `++a` or `--a`).
+Because they are statements, they do not return a value.
