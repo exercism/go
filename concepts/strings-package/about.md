@@ -1,6 +1,7 @@
 # About
 
-The [`strings` package](https://pkg.go.dev/strings) provides functions for working with strings:
+The [`strings` package](https://pkg.go.dev/strings) provides functions for working with strings.
+Below are some of the functions in the package; check out the documentation to see the rest!
 
 | Role                  | Function                                            | Purpose                                                             |
 | --------------------- | --------------------------------------------------- | ------------------------------------------------------------------- |
