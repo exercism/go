@@ -9,6 +9,7 @@ Below are some of the functions in the package; check out the documentation to s
 | Case Conversion       | [ToUpper](https://pkg.go.dev/strings#ToUpper)       | Convert a string to upper case                                      |
 | Searching             | [Contains](https://pkg.go.dev/strings#Contains)     | Check if a string contains a specific substring                     |
 | Searching             | [Count](https://pkg.go.dev/strings#Count)           | Count non-overlapping occurrences of a substring                    |
+| Searching             | [HasPrefix](https://pkg.go.dev/strings#HasPrefix)   | Check if a string starts with a specific substring                  |
 | Searching             | [HasSuffix](https://pkg.go.dev/strings#HasSuffix)   | Check if a string ends with a specific substring                    |
 | Searching             | [Index](https://pkg.go.dev/strings#Index)           | Return the index of the first occurrence of a substring, or -1      |
 | Modifying             | [Replace](https://pkg.go.dev/strings#Replace)       | Replace up to n occurrences of a substring                          |
@@ -29,6 +30,7 @@ strings.Contains("Apple", "le")        // true
 strings.Index("Apple", "le")           // 3
 strings.Index("Apple", "xyz")          // -1
 strings.Count("test", "t")             // 2
+strings.HasPrefix("Gopher", "Go")      // true
 strings.HasSuffix("Gopher", "er")      // true
 
 // Modifying
