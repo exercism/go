@@ -7,7 +7,8 @@
       "complex_numbers.go"
     ],
     "test": [
-      "complex_numbers_test.go"
+      "complex_numbers_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
