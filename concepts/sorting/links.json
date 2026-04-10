@@ -1,0 +1,14 @@
+[
+    {
+        "url": "https://pkg.go.dev/slices",
+        "description": "Standard Library: slices package"
+    },
+    {
+        "url": "https://pkg.go.dev/sort",
+        "description": "Standard Library: sort package"
+    },
+    {
+        "url": "https://gobyexample.com/sorting",
+        "description": "Go by Example: Sorting"
+    }
+]
