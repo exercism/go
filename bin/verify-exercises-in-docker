@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# Synopsis:
+# Verify that each exercise's example/exemplar solution passes the tests
+# using the track's test runner Docker image.
+# You can either verify all exercises or a single exercise.
+
+# Example: verify all exercises in Docker
+# bin/verify-exercises-in-docker
+
+# Example: verify single exercise in Docker
+# bin/verify-exercises-in-docker two-fer
+
+set -e
+shopt -s nullglob
+
+die() {
+    echo "$*" >&2
+    exit 1
+}
+
+required_tool() {
+    command -v "${1}" >/dev/null 2>&1 || die "${1} is required but not installed. Please install it and make sure it's in your PATH."
+}
+
+copy_example() {
+    local solution example dir="${1}"
+    solution=$(jq -r '.files.solution[0]' "${dir}/.meta/config.json")
+    example=$(jq -r '.files|(.example//.exemplar)[0]' "${dir}/.meta/config.json")
+    cp "${dir}/${example}" "${dir}/${solution}"
+}
+
+run_tests() {
+    local slug="${1}" dir="${2}"
+    local -a docker_args
+
+    docker_args+=( --rm --network none )
+    docker_args+=( --mount type=bind,src="${dir}",dst=/solution )
+    # /tmp needs to be a proper volume to run the compiled executable; tmpfs is not executable.
+    docker_args+=( --mount type=volume,dst=/tmp )
+
+    # /solution is used both as the location to read the code from and as a destination for the results.json file.
+    docker run "${docker_args[@]}" "${image}" "${slug}" /solution /solution
+    jq -e '.status == "pass"' "${dir}/results.json" >/dev/null 2>&1
+}
+
+verify_exercise() {
+    local dir slug tmpdir
+    dir="$(readlink -e "${1}")"
+    slug="${dir##*/}"
+    tmpdir="$(mktemp -d -t "exercism-verify-${slug}-XXXXX")"
+
+    echo "Verifying ${slug} exercise..."
+    (
+        trap 'rm -rf "${tmpdir}"' EXIT    # remove tmpdir when subshell ends
+        cp -r "${dir}/." "${tmpdir}" || exit
+        copy_example "${tmpdir}"
+        run_tests "${slug}" "${tmpdir}" || { cat "${PWD}/results.json"; exit 1; }
+    )
+}
+
+verify_exercises() {
+    local -a exercises
+    local parent path
+    if (( $# )); then
+        for slug; do
+            for parent in concept practice; do
+                path="./exercises/${parent}/${slug}"
+                [[ -d "${path}" ]] && exercises+=( "${path}" )
+            done
+        done
+    else
+        exercises=( ./exercises/{concept,practice}/* )
+    fi
+    (( ${#exercises[@]} )) || die "No matching exercises found"
+
+    rc=0
+    for exercise_dir in "${exercises[@]}"; do
+        verify_exercise "${exercise_dir}" || rc=$?
+    done
+    return "$rc"
+}
+
+
+(( ${BASH_VERSINFO[0]} >= 4 )) || die "Requires bash 4 or greater."
+required_tool docker
+required_tool jq
+
+image="exercism/go-test-runner"
+while getopts i: opt; do
+    case "${opt}" in
+        i) image="${OPTARG}" ;;
+        ?) die "Unknown option: -$OPTARG" ;;
+    esac
+done
+shift "$((OPTIND - 1))"
+
+docker pull "${image}" ||
+  die "docker pull ${image} failed. Check the test runner docs at https://exercism.org/docs/building/tooling/test-runners for more information."
+
+verify_exercises "$@"
