@@ -23,6 +23,12 @@ required_tool() {
     command -v "${1}" >/dev/null 2>&1 || die "${1} is required but not installed. Please install it and make sure it's in your PATH."
 }
 
+track() {
+    local repo_root
+    repo_root=$(git rev-parse --show-toplevel)
+    jq -r .slug "${repo_root}/config.json"
+}
+
 copy_example() {
     local solution example dir="${1}"
     solution=$(jq -r '.files.solution[0]' "${dir}/.meta/config.json")
@@ -85,8 +91,9 @@ verify_exercises() {
 (( ${BASH_VERSINFO[0]} >= 4 )) || die "Requires bash 4 or greater."
 required_tool docker
 required_tool jq
+required_tool git
 
-image="exercism/go-test-runner"
+image="exercism/$(track)-test-runner"
 while getopts i: opt; do
     case "${opt}" in
         i) image="${OPTARG}" ;;
