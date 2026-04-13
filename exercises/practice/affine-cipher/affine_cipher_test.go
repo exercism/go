@@ -4,32 +4,36 @@ import (
 	"testing"
 )
 
-func runTests(
-	t *testing.T,
-	name string,
-	op func(string, int, int) (string, error),
-	testCases []testCase,
-) {
-	for _, tc := range testCases {
+func TestEncode(t *testing.T) {
+	for _, tc := range encodeTests {
 		t.Run(tc.description, func(t *testing.T) {
-			if got, err := op(tc.inputPhrase, tc.inputA, tc.inputB); err != nil {
+			if got, err := Encode(tc.inputPhrase, tc.inputA, tc.inputB); err != nil {
 				if !tc.expectError {
-					t.Fatalf("%s(%s, %d, %d) returned unexpected error %v", name, tc.inputPhrase, tc.inputA, tc.inputB, err)
+					t.Fatalf("Encode(%s, %d, %d) returned unexpected error %v", tc.inputPhrase, tc.inputA, tc.inputB, err)
 				}
 			} else if tc.expectError {
-				t.Fatalf("%s(%s, %d, %d) expected error, got %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got)
+				t.Fatalf("Encode(%s, %d, %d) expected error, got %q", tc.inputPhrase, tc.inputA, tc.inputB, got)
 			} else if tc.expected != got {
-				t.Fatalf("%s(%s, %d, %d) = %q, want: %q", name, tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
+				t.Fatalf("Encode(%s, %d, %d) = %q, want: %q", tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
 			}
 		})
 	}
 }
-func TestEncode(t *testing.T) {
-	runTests(t, "Encode", Encode, encodeTests)
-}
 
 func TestDecode(t *testing.T) {
-	runTests(t, "Decode", Decode, decodeTests)
+	for _, tc := range decodeTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if got, err := Decode(tc.inputPhrase, tc.inputA, tc.inputB); err != nil {
+				if !tc.expectError {
+					t.Fatalf("Decode(%s, %d, %d) returned unexpected error %v", tc.inputPhrase, tc.inputA, tc.inputB, err)
+				}
+			} else if tc.expectError {
+				t.Fatalf("Decode(%s, %d, %d) expected error, got %q", tc.inputPhrase, tc.inputA, tc.inputB, got)
+			} else if tc.expected != got {
+				t.Fatalf("Decode(%s, %d, %d) = %q, want: %q", tc.inputPhrase, tc.inputA, tc.inputB, got, tc.expected)
+			}
+		})
+	}
 }
 
 func runBenchmark(
