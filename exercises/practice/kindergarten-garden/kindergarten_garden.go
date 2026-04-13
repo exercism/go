@@ -1,4 +1,4 @@
-package kindergarten
+package kindergartengarden
 
 // Define the Garden type here.
 
