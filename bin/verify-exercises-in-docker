@@ -29,6 +29,12 @@ track() {
     jq -r .slug "${repo_root}/config.json"
 }
 
+docker_pull() {
+    local image="$1"
+    docker pull "${image}" ||
+      die "docker pull ${image} failed. Check the test runner docs at https://exercism.org/docs/building/tooling/test-runners for more information."
+}
+
 copy_example() {
     local solution example dir="${1}"
     solution=$(jq -r '.files.solution[0]' "${dir}/.meta/config.json")
@@ -37,7 +43,7 @@ copy_example() {
 }
 
 run_tests() {
-    local slug="${1}" dir="${2}"
+    local slug="${1}" dir="${2}" copy_results="${3}" dst
     local -a docker_args
 
     docker_args+=( --rm --network none )
@@ -47,12 +53,17 @@ run_tests() {
 
     # /solution is used both as the location to read the code from and as a destination for the results.json file.
     docker run "${docker_args[@]}" "${image}" "${slug}" /solution /solution
+    if [[ "${copy_results}" == "true" ]]; then
+        dst="test-results-${slug}.json"
+        cp "${dir}/results.json" "${dst}"
+        echo "Copied test results to ${dst}"
+    fi
     jq -e '.status == "pass"' "${dir}/results.json" >/dev/null 2>&1
 }
 
 verify_exercise() {
-    local dir slug tmpdir
-    dir="$(readlink -e "${1}")"
+    local dir slug tmpdir copy_results="${1}"
+    dir="$(readlink -e "${2}")"
     slug="${dir##*/}"
     tmpdir="$(mktemp -d -t "exercism-verify-${slug}-XXXXX")"
 
@@ -61,13 +72,14 @@ verify_exercise() {
         trap 'rm -rf "${tmpdir}"' EXIT    # remove tmpdir when subshell ends
         cp -r "${dir}/." "${tmpdir}" || exit
         copy_example "${tmpdir}"
-        run_tests "${slug}" "${tmpdir}" || { cat "${tmpdir}/results.json"; exit 1; }
+        run_tests "${slug}" "${tmpdir}" "${copy_results}" || { cat "${tmpdir}/results.json"; exit 1; }
     )
 }
 
 verify_exercises() {
     local -a exercises
-    local parent path
+    local parent path copy_results="${1}"
+    shift
     if (( $# )); then
         for slug; do
             for parent in concept practice; do
@@ -82,7 +94,7 @@ verify_exercises() {
 
     rc=0
     for exercise_dir in "${exercises[@]}"; do
-        verify_exercise "${exercise_dir}" || rc=$?
+        verify_exercise "${copy_results}" "${exercise_dir}" || rc=$?
     done
     return "$rc"
 }
@@ -94,15 +106,15 @@ required_tool jq
 required_tool git
 
 image="exercism/$(track)-test-runner"
-while getopts i: opt; do
+copy_results=false
+while getopts i:c opt; do
     case "${opt}" in
         i) image="${OPTARG}" ;;
+        c) copy_results=true ;;
         ?) die "Unknown option: -$OPTARG" ;;
     esac
 done
 shift "$((OPTIND - 1))"
 
-docker pull "${image}" ||
-  die "docker pull ${image} failed. Check the test runner docs at https://exercism.org/docs/building/tooling/test-runners for more information."
-
-verify_exercises "$@"
+docker_pull "${image}"
+verify_exercises "${copy_results}" "$@"
