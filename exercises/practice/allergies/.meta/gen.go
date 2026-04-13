@@ -2,6 +2,7 @@ package main
 
 import (
 	"../../../../gen"
+	"fmt"
 	"log"
 	"text/template"
 )
@@ -29,6 +30,10 @@ type allergicToCase struct {
 	Expected bool `json:"expected"`
 }
 
+func (tc allergicToCase) ExpandedDescription() string {
+	return fmt.Sprintf("%q", tc.Description + ": check " + tc.Input.Item)
+}
+
 type listCase struct {
 	Description string `json:"description"`
 	Input       struct {
@@ -39,39 +44,38 @@ type listCase struct {
 
 var tmpl = `{{.Header}}
 
-// allergicTo
 type allergicToInput struct {
 	allergen string
 	score    uint
 }
 
-var allergicToTests = []struct {
+type allergicToTestCase struct {
 	description string
 	input       allergicToInput
 	expected    bool
-}{
-{{range .J.allergicTo}}{
-		description: {{printf "%q"  .Description}},
+}
+
+var allergicToTests = []allergicToTestCase { {{range .J.allergicTo}}
+	{
+		description: {{.ExpandedDescription}},
 		input:       allergicToInput{
 			allergen: {{printf "%q"  .Input.Item}},
 			score:    {{printf "%d"  .Input.Score}},
 		},
 		expected:    {{printf "%v"  .Expected}},
-	},
-{{end}}
+	},{{end}}
 }
 
-// list
-var listTests = []struct {
+type listTestCase struct {
 	description string
 	score       uint
 	expected    []string
-}{
-	{{range .J.list}}{
+}
+var listTests = []listTestCase { {{range .J.list}}
+	{
 		description: {{printf "%q"  .Description}},
-	    score: 	     {{printf "%d"  .Input.Score}},
+		score: 	     {{printf "%d"  .Input.Score}},
 		expected:    {{printf "%#v"  .Expected}},
-	},
-	{{end}}
+	},{{end}}
 }
 `
