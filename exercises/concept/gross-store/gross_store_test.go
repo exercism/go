@@ -10,30 +10,32 @@ type entry struct {
 	qty  int
 }
 
+type unitsTestCase struct {
+	description string
+	expected    int
+}
+
 func TestUnits(t *testing.T) {
-	tests := []struct {
-		name string
-		qty  int
-	}{
-		{"quarter_of_a_dozen", 3},
-		{"half_of_a_dozen", 6},
-		{"dozen", 12},
-		{"small_gross", 120},
-		{"gross", 144},
-		{"great_gross", 1728},
+	tests := []unitsTestCase{
+		{description: "quarter_of_a_dozen", expected: 3},
+		{description: "half_of_a_dozen", expected: 6},
+		{description: "dozen", expected: 12},
+		{description: "small_gross", expected: 120},
+		{description: "gross", expected: 144},
+		{description: "great_gross", expected: 1728},
 	}
 
 	units := Units()
-	for _, tt := range tests {
-		qty, ok := units[tt.name]
+	for _, tc := range tests {
+		qty, ok := units[tc.description]
 
 		if !ok {
-			t.Errorf("Unit %q not found!", tt.name)
+			t.Errorf("Unit %q not found!", tc.description)
 			continue
 		}
 
-		if qty != tt.qty {
-			t.Errorf("Unit %q should have quantity %d, found %d", tt.name, tt.qty, qty)
+		if qty != tc.expected {
+			t.Errorf("Unit %q should have quantity %d, found %d", tc.description, tc.expected, qty)
 		}
 	}
 }
@@ -49,24 +51,26 @@ func TestNewBill(t *testing.T) {
 	})
 }
 
+type addItemTestCase struct {
+	description string
+	entry       []entry
+	expected    bool
+}
+
 func TestAddItem(t *testing.T) {
-	tests := []struct {
-		name     string
-		entry    []entry
-		expected bool
-	}{
+	tests := []addItemTestCase {
 		{
-			"Invalid measurement unit",
-			[]entry{
+			description: "Invalid measurement unit",
+			entry: []entry{
 				{"pasta", "", 0},
 				{"onion", "quarter", 0},
 				{"pasta", "pound", 0},
 			},
-			false,
+			expected: false,
 		},
 		{
-			"Valid measurement unit",
-			[]entry{
+			description: "Valid measurement unit",
+			entry: []entry{
 				{"peas", "quarter_of_a_dozen", 3},
 				{"tomato", "half_of_a_dozen", 6},
 				{"chili", "dozen", 12},
@@ -74,31 +78,31 @@ func TestAddItem(t *testing.T) {
 				{"potato", "gross", 144},
 				{"zucchini", "great_gross", 1728},
 			},
-			true,
+			expected: true,
 		},
 		{
-			"check quantity of item added twice",
-			[]entry{
+			description: "check quantity of item added twice",
+			entry: []entry{
 				{"peas", "quarter_of_a_dozen", 3},
 				{"peas", "quarter_of_a_dozen", 6},
 				{"tomato", "half_of_a_dozen", 6},
 				{"tomato", "quarter_of_a_dozen", 9},
 			},
-			true,
+			expected: true,
 		},
 	}
 	units := Units()
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
 			bill := NewBill()
-			for _, item := range tt.entry {
+			for _, item := range tc.entry {
 				ok := AddItem(bill, units, item.name, item.unit)
-				if ok != tt.expected {
-					t.Errorf("Expected %t from AddItem, found %t at %v", tt.expected, ok, item.name)
+				if ok != tc.expected {
+					t.Errorf("Expected %t from AddItem, found %t at %v", tc.expected, ok, item.name)
 				}
 
 				itemQty, ok := bill[item.name]
-				if ok != tt.expected {
+				if ok != tc.expected {
 					t.Errorf("Unexpected item on bill: found %s with quantity %d", item.name, itemQty)
 				}
 
@@ -110,49 +114,52 @@ func TestAddItem(t *testing.T) {
 	}
 }
 
-func TestRemoveItem(t *testing.T) {
-	type expectedItem struct {
-		name   string
-		unit   string
-		qty    int
-		exists bool
-	}
+type expectedRemoveItem struct {
+	name   string
+	unit   string
+	qty    int
+	exists bool
+}
 
-	tests := []struct {
-		name     string
-		remove   []expectedItem
-		expected bool
-	}{
+type removeItemTestCase struct {
+	description string
+	remove      []expectedRemoveItem
+	expected    bool
+}
+
+func TestRemoveItem(t *testing.T) {
+
+	tests := []removeItemTestCase {
 		{
-			"Item Not found in bill",
-			[]expectedItem{
+			description: "Item Not found in bill",
+			remove: []expectedRemoveItem{
 				{"papaya", "gross", 0, false},
 			},
-			false,
+			expected: false,
 		},
 		{
-			"Invalid measurement unit",
-			[]expectedItem{
+			description: "Invalid measurement unit",
+			remove: []expectedRemoveItem{
 				{"peas", "pound", 3, true},
 				{"tomato", "kilogram", 6, true},
 				{"cucumber", "stone", 120, true},
 			},
-			false,
+			expected: false,
 		},
 		{
-			"Resulted qty less than 0",
-			[]expectedItem{
+			description: "Resulted qty less than 0",
+			remove: []expectedRemoveItem{
 				{"peas", "half_of_a_dozen", 3, true},
 				{"tomato", "dozen", 6, true},
 				{"chili", "small_gross", 12, true},
 				{"cucumber", "gross", 120, true},
 				{"potato", "great_gross", 144, true},
 			},
-			false,
+			expected: false,
 		},
 		{
-			"Should delete the item if 0",
-			[]expectedItem{
+			description: "Should delete the item if 0",
+			remove: []expectedRemoveItem{
 				{"peas", "quarter_of_a_dozen", 0, false},
 				{"tomato", "half_of_a_dozen", 0, false},
 				{"chili", "dozen", 0, false},
@@ -160,27 +167,27 @@ func TestRemoveItem(t *testing.T) {
 				{"potato", "gross", 0, false},
 				{"zucchini", "great_gross", 0, false},
 			},
-			true,
+			expected: true,
 		},
 		{
-			"Should reduce the qty",
-			[]expectedItem{
+			description: "Should reduce the qty",
+			remove: []expectedRemoveItem{
 				{"chili", "half_of_a_dozen", 6, true},
 				{"cucumber", "dozen", 108, true},
 				{"zucchini", "gross", 1584, true},
 			},
-			true,
+			expected: true,
 		},
 	}
 
 	units := Units()
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
 			bill := setupInitialBillData()
-			for _, item := range tt.remove {
+			for _, item := range tc.remove {
 				ok := RemoveItem(bill, units, item.name, item.unit)
-				if ok != tt.expected {
-					t.Errorf("Expected %t from RemoveItem, found %t at %v", tt.expected, ok, item.name)
+				if ok != tc.expected {
+					t.Errorf("Expected %t from RemoveItem, found %t at %v", tc.expected, ok, item.name)
 				}
 
 				itemQty, ok := bill[item.name]
@@ -195,26 +202,29 @@ func TestRemoveItem(t *testing.T) {
 	}
 }
 
-func TestGetItem(t *testing.T) {
-	type expectedItem struct {
-		name     string
-		expected bool
-		qty      int
-	}
+type expectedGetItem struct {
+	name     string
+	expected bool
+	qty      int
+}
 
-	test := []struct {
-		name    string
-		getItem []expectedItem
-	}{
+type getItemTestCase struct {
+	description string
+	getItem     []expectedGetItem
+}
+
+func TestGetItem(t *testing.T) {
+
+	test := []getItemTestCase {
 		{
-			"Item Not found in bill",
-			[]expectedItem{
+			description: "Item Not found in bill",
+			getItem: []expectedGetItem{
 				{"grape", false, 0},
 			},
 		},
 		{
-			"Success",
-			[]expectedItem{
+			description: "Success",
+			getItem: []expectedGetItem{
 				{"peas", true, 3},
 				{"tomato", true, 6},
 				{"chili", true, 12},
@@ -225,10 +235,10 @@ func TestGetItem(t *testing.T) {
 		},
 	}
 
-	for _, tt := range test {
-		t.Run(tt.name, func(t *testing.T) {
+	for _, tc := range test {
+		t.Run(tc.description, func(t *testing.T) {
 			bill := setupInitialBillData()
-			for _, item := range tt.getItem {
+			for _, item := range tc.getItem {
 				itemQty, ok := GetItem(bill, item.name)
 
 				if ok != item.expected {
