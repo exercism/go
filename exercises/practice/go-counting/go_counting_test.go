@@ -15,7 +15,7 @@ func cmpPair(a, b [2]int) int {
 }
 
 func territoryEqual(a, b [][2]int) bool {
-	if (a == nil || len(a) == 0) && (b == nil || len(b) == 0) {
+	if len(a) == 0 && len(b) == 0 {
 		return true
 	}
 	a = slices.Clone(a)
