@@ -1,7 +1,6 @@
 package chessboard
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -31,24 +30,27 @@ func newChessboard() Chessboard {
 	}
 }
 
+type fileTestCase struct {
+	description string
+	in          string
+	expected    int
+}
+
 func TestCountInFile(t *testing.T) {
 	cb := newChessboard()
-	testCases := []struct {
-		in       string
-		expected int
-	}{
-		{in: "A", expected: 3},
-		{in: "B", expected: 1},
-		{in: "C", expected: 1},
-		{in: "D", expected: 0},
-		{in: "E", expected: 2},
-		{in: "F", expected: 0},
-		{in: "G", expected: 1},
-		{in: "H", expected: 7},
-		{in: "Z", expected: 0},
+	testCases := []fileTestCase {
+		{description: "Count of occupied squares in file A", in: "A", expected: 3},
+		{description: "Count of occupied squares in file B", in: "B", expected: 1},
+		{description: "Count of occupied squares in file C", in: "C", expected: 1},
+		{description: "Count of occupied squares in file D", in: "D", expected: 0},
+		{description: "Count of occupied squares in file E", in: "E", expected: 2},
+		{description: "Count of occupied squares in file F", in: "F", expected: 0},
+		{description: "Count of occupied squares in file G", in: "G", expected: 1},
+		{description: "Count of occupied squares in file H", in: "H", expected: 7},
+		{description: "Count of occupied squares in file Z", in: "Z", expected: 0},
 	}
 	for _, test := range testCases {
-		t.Run(fmt.Sprintf("Count of occupied squares in file %s", test.in), func(t *testing.T) {
+		t.Run(test.description, func(t *testing.T) {
 			if got := CountInFile(cb, test.in); got != test.expected {
 				t.Errorf("CountInFile(chessboard, %q) = %d, want: %d", test.in, got, test.expected)
 			}
@@ -56,28 +58,31 @@ func TestCountInFile(t *testing.T) {
 	}
 }
 
+type rankTestCase struct {
+	description string
+	in          int
+	expected    int
+}
+
 func TestCountInRank(t *testing.T) {
 	cb := newChessboard()
-	testCases := []struct {
-		in       int
-		expected int
-	}{
-		{in: 1, expected: 2},
-		{in: 2, expected: 1},
-		{in: 3, expected: 3},
-		{in: 4, expected: 2},
-		{in: 5, expected: 2},
-		{in: 6, expected: 2},
-		{in: 7, expected: 0},
-		{in: 8, expected: 3},
+	testCases := []rankTestCase {
+		{description: "Count of occupied squares in rank 1", in: 1, expected: 2},
+		{description: "Count of occupied squares in rank 2", in: 2, expected: 1},
+		{description: "Count of occupied squares in rank 3", in: 3, expected: 3},
+		{description: "Count of occupied squares in rank 4", in: 4, expected: 2},
+		{description: "Count of occupied squares in rank 5", in: 5, expected: 2},
+		{description: "Count of occupied squares in rank 6", in: 6, expected: 2},
+		{description: "Count of occupied squares in rank 7", in: 7, expected: 0},
+		{description: "Count of occupied squares in rank 8", in: 8, expected: 3},
 		// cases not between 1 and 8, inclusive
-		{in: 100, expected: 0},
-		{in: 0, expected: 0},
-		{in: -1, expected: 0},
-		{in: -100, expected: 0},
+		{description: "Count of occupied squares in rank 100", in: 100, expected: 0},
+		{description: "Count of occupied squares in rank 0", in: 0, expected: 0},
+		{description: "Count of occupied squares in rank -1", in: -1, expected: 0},
+		{description: "Count of occupied squares in rank -100", in: -100, expected: 0},
 	}
 	for _, test := range testCases {
-		t.Run(fmt.Sprintf("Count of occupied squares in rank %d", test.in), func(t *testing.T) {
+		t.Run(test.description, func(t *testing.T) {
 			if got := CountInRank(cb, test.in); got != test.expected {
 				t.Errorf("CountInRank(chessboard, %d) = %d, want: %d", test.in, got, test.expected)
 			}
