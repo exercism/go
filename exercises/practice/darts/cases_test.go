@@ -5,12 +5,14 @@ package darts
 // Source: exercism/problem-specifications
 // Commit: 0b1dfc2 darts: use US English in test description (#2228)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	x           float64
 	y           float64
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Missed target",
 		x:           -9.0,

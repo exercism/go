@@ -5,13 +5,15 @@ package killersudokuhelper
 // Source: exercism/problem-specifications
 // Commit: 7cd0ab1 Add exercise: killer-sudoku-helper (#2007)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	sum         int
 	size        int
 	exclude     []int
 	expected    [][]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "1",
 		sum:         1,

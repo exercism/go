@@ -5,11 +5,13 @@ package saddlepoints
 // Source: exercism/problem-specifications
 // Commit: 2e820e1 Auto-format portions of some JSON files (#1967)
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	input          [][]int
 	expectedOutput []Pair
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Can identify single saddle point",
 		input: [][]int{

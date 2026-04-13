@@ -76,12 +76,13 @@ type testCaseExpreal struct {
 
 var tmpl = `{{.Header}}
 
-var testCasesAbs = []struct {
+type testCaseAbs struct {
 	description string
 	input       Rational
 	expected    Rational
-}{
-{{range .J.abs}}{
+}
+
+var testCasesAbs = []testCaseAbs { {{range .J.abs}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input.R}},
 	expected:    	{{.Expected}},
@@ -89,12 +90,13 @@ var testCasesAbs = []struct {
 {{end}}
 }
 
-var testCasesAdd = []struct {
+type testCaseAdd struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-{{range .J.add}}{
+}
+
+var testCasesAdd = []testCaseAdd { {{range .J.add}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input}},
 	expected:    	{{.Expected}},
@@ -102,12 +104,13 @@ var testCasesAdd = []struct {
 {{end}}
 }
 
-var testCasesSub = []struct {
+type testCaseSub struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-{{range .J.sub}}{
+}
+
+var testCasesSub = []testCaseSub { {{range .J.sub}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input}},
 	expected:    	{{.Expected}},
@@ -115,12 +118,13 @@ var testCasesSub = []struct {
 {{end}}
 }
 
-var testCasesMul = []struct {
+type testCaseMul struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-{{range .J.mul}}{
+}
+
+var testCasesMul = []testCaseMul { {{range .J.mul}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input}},
 	expected:    	{{.Expected}},
@@ -128,12 +132,13 @@ var testCasesMul = []struct {
 {{end}}
 }
 
-var testCasesDiv = []struct {
+type testCaseDiv struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-{{range .J.div}}{
+}
+
+var testCasesDiv = []testCaseDiv { {{range .J.div}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input}},
 	expected:    	{{.Expected}},
@@ -141,13 +146,14 @@ var testCasesDiv = []struct {
 {{end}}
 }
 
-var testCasesExprational = []struct {
+type testCaseExprational struct {
 	description string
 	inputR      Rational
 	inputInt    int
 	expected    Rational
-}{
-{{range .J.exprational}}{
+}
+
+var testCasesExprational = []testCaseExprational { {{range .J.exprational}}{
 	description: 	{{printf "%q" .Description}},
 	inputR:         {{.Input.R}},
 	inputInt:       {{.Input.N}},
@@ -156,13 +162,14 @@ var testCasesExprational = []struct {
 {{end}}
 }
 
-var testCasesExpreal = []struct {
+type testCaseExpreal struct {
 	description string
 	inputInt    int
 	inputR      Rational
 	expected    float64
-}{
-{{range .J.expreal}}{
+}
+
+var testCasesExpreal = []testCaseExpreal { {{range .J.expreal}}{
 	description: 	{{printf "%q" .Description}},
 	inputInt:       {{.Input.X}},
 	inputR:         {{.Input.R}},
@@ -171,12 +178,13 @@ var testCasesExpreal = []struct {
 {{end}}
 }
 
-var testCasesReduce = []struct {
+type testCaseReduce struct {
 	description string
 	input       Rational
 	expected    Rational
-}{
-{{range .J.reduce}}{
+}
+
+var testCasesReduce = []testCaseReduce { {{range .J.reduce}}{
 	description: 	{{printf "%q" .Description}},
 	input:	        {{.Input.R}},
 	expected:    	{{.Expected}},

@@ -35,7 +35,7 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description       string
 	word              string
 	guesses           []rune
@@ -43,7 +43,9 @@ var testCases = []struct {
 	maskedWord        string
 	remainingFailures int
 	error             string
-}{ {{range .J.guess}}
+}
+
+var testCases = []testCase { {{range .J.guess}}
 	{
 		description:       {{printf "%q" .Description}},
 		word:              {{printf "%q" .Input.Word}},

@@ -5,12 +5,14 @@ package nthprime
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var tests = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    int
 	err         string
-}{
+}
+
+var tests = []testCase{
 	{
 		description: "first prime",
 		input:       1,

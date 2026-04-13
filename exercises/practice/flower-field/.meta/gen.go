@@ -29,11 +29,13 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    []string
-}{ {{range .J.annotate}}
+}
+
+var testCases = []testCase { {{range .J.annotate}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       []string{
@@ -44,6 +46,5 @@ var testCases = []struct {
 			{{range .Expected}} {{printf "%q" .}},
 			{{end}}
 		},
-	},
-{{end}}
+	},{{end}}
 }`

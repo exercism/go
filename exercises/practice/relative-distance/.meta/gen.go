@@ -38,21 +38,22 @@ func (tc testCase) ExpectedDegree() int {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	tree           map[string][]string
 	personA        string
 	personB        string
 	expectedDegree int
 	expectedOk     bool
-}{
-{{range .J.degreeOfSeparation}}{
-	description:    {{printf "%q" .Description}},
-	tree:           {{printf "%#v" .Input.FamilyTree}},
-	personA:        {{printf "%q" .Input.PersonA}},
-	personB:        {{printf "%q" .Input.PersonB}},
-	expectedDegree: {{.ExpectedDegree}},
-	expectedOk:     {{ne nil .Expected}},
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.degreeOfSeparation}}
+	{
+		description:    {{printf "%q" .Description}},
+		tree:           {{printf "%#v" .Input.FamilyTree}},
+		personA:        {{printf "%q" .Input.PersonA}},
+		personB:        {{printf "%q" .Input.PersonB}},
+		expectedDegree: {{.ExpectedDegree}},
+		expectedOk:     {{ne nil .Expected}},
+	},{{end}}
 }`

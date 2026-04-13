@@ -5,11 +5,13 @@ package luhn
 // Source: exercism/problem-specifications
 // Commit: fc7ad52 luhn: test-case covering the usage of %5==0 (#2056)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "single digit strings can not be valid",
 		input:       "1",

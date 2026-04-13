@@ -56,12 +56,14 @@ type Operation struct {
 	Amount int64
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	operations  []Operation
 	expected    int64
 	expectedErr string
-}{ {{range .J.bankAccount}}{{if eq .Scenarios nil}}
+}
+
+var testCases = []testCase { {{range .J.bankAccount}}{{if eq .Scenarios nil}}
 	{
 		description: {{printf "%q" .Description}},
 		operations:  []Operation { {{range .Input.Operations}}

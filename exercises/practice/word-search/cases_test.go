@@ -5,13 +5,15 @@ package wordsearch
 // Source: exercism/problem-specifications
 // Commit: 76c0ba7 word-search: Add cases checking for concatenation and wrapping
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	puzzle      []string
 	words       []string
 	expectError bool
 	expected    map[string][2][2]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Should accept an initial game grid and a target search word",
 		puzzle:      []string{"jefblpepre"},

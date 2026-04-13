@@ -34,12 +34,14 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	playerA     []string
 	playerB     []string
 	expected    Outcome
-}{ {{range .J.simulateGame}}
+}
+
+var testCases = []testCase { {{range .J.simulateGame}}
 	{
 		description: {{printf "%q" .Description}},
 		playerA:     {{printf "%#v" .Input.PlayerA}},

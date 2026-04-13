@@ -5,11 +5,13 @@ package flattenarray
 // Source: exercism/problem-specifications
 // Commit: c30d44e flatten-array: Replace references to lists with arrays, and revise instructions (#2533)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       any
 	expected    []any
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty",
 		input:       []any{},

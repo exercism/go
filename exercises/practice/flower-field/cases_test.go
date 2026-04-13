@@ -5,17 +5,18 @@ package flowerfield
 // Source: exercism/problem-specifications
 // Commit: 60a5626 Add test for over-counting horizontal neighbors in Flower Field (#2603)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    []string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no rows",
 		input:       []string{},
 		expected:    []string{},
 	},
-
 	{
 		description: "no columns",
 		input: []string{
@@ -25,7 +26,6 @@ var testCases = []struct {
 			"",
 		},
 	},
-
 	{
 		description: "no flowers",
 		input: []string{
@@ -39,7 +39,6 @@ var testCases = []struct {
 			"   ",
 		},
 	},
-
 	{
 		description: "garden full of flowers",
 		input: []string{
@@ -53,7 +52,6 @@ var testCases = []struct {
 			"***",
 		},
 	},
-
 	{
 		description: "flower surrounded by spaces",
 		input: []string{
@@ -67,7 +65,6 @@ var testCases = []struct {
 			"111",
 		},
 	},
-
 	{
 		description: "space surrounded by flowers",
 		input: []string{
@@ -81,7 +78,6 @@ var testCases = []struct {
 			"***",
 		},
 	},
-
 	{
 		description: "horizontal line",
 		input: []string{
@@ -91,7 +87,6 @@ var testCases = []struct {
 			"1*2*1",
 		},
 	},
-
 	{
 		description: "horizontal line, flowers at edges",
 		input: []string{
@@ -101,7 +96,6 @@ var testCases = []struct {
 			"*1 1*",
 		},
 	},
-
 	{
 		description: "vertical line",
 		input: []string{
@@ -119,7 +113,6 @@ var testCases = []struct {
 			"1",
 		},
 	},
-
 	{
 		description: "vertical line, flowers at edges",
 		input: []string{
@@ -137,7 +130,6 @@ var testCases = []struct {
 			"*",
 		},
 	},
-
 	{
 		description: "cross",
 		input: []string{
@@ -155,7 +147,6 @@ var testCases = []struct {
 			" 2*2 ",
 		},
 	},
-
 	{
 		description: "large garden",
 		input: []string{
@@ -175,7 +166,6 @@ var testCases = []struct {
 			"111111",
 		},
 	},
-
 	{
 		description: "multiple adjacent flowers",
 		input: []string{

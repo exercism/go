@@ -5,13 +5,15 @@ package highscores
 // Source: exercism/problem-specifications
 // Commit: 38aef6b High Score: drop implementation details from the problem spec (#2295)
 
-var intTestCases = []struct {
+type testCaseInt struct {
 	description string
 	input       []int
 	call        func(h *HighScores) int
 	callMsg     string
 	expected    int
-}{
+}
+
+var intTestCases = []testCaseInt{
 	{
 		description: "Latest score",
 		input:       []int{100, 0, 90, 30},
@@ -42,13 +44,15 @@ var intTestCases = []struct {
 	},
 }
 
-var sliceTestCases = []struct {
+type testCaseSlice struct {
 	description string
 	input       []int
 	call        func(h *HighScores) []int
 	callMsg     string
 	expected    []int
-}{
+}
+
+var sliceTestCases = []testCaseSlice{
 	{
 		description: "List of scores",
 		input:       []int{30, 50, 20, 70},

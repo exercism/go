@@ -5,13 +5,15 @@ package hamming
 // Source: exercism/problem-specifications
 // Commit: 7a8722a Reorder keys (#1960)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	s1          string
 	s2          string
 	want        int
 	expectError bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty strands",
 		s1:          "",

@@ -5,13 +5,15 @@ package satellite
 // Source: exercism/problem-specifications
 // Commit: 4e18617 More complex satellite tests (#2612)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	preorder    []string
 	inorder     []string
 	expected    *Node
 	err         string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Empty tree",
 		preorder:    []string{},

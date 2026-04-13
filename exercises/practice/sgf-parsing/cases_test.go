@@ -5,12 +5,14 @@ package sgfparsing
 // Source: exercism/problem-specifications
 // Commit: 3c33c24 sgf-parsing: Add individual tests of escaping/whitespace behaviour (#1889)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	encoded       string
 	expectedError string
 	expected      *Node
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:   "empty input",
 		encoded:       "",

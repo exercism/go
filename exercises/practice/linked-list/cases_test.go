@@ -12,10 +12,12 @@ type Operation struct {
 	expected  int
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	operations  []Operation
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "pop gets element from the list",
 		operations: []Operation{

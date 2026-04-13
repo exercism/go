@@ -58,12 +58,14 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []Record
 	wantErr     bool
 	expected    *Node
-}{ {{range .J.buildTree}}
+}
+
+var testCases = []testCase { {{range .J.buildTree}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       []Record{ {{range .Input.Records}}

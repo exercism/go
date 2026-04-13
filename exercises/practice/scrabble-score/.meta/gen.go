@@ -36,11 +36,11 @@ type scrabbleTest struct {
 	expected    int
 }
 
-var scrabbleScoreTests = []scrabbleTest {
-{{range .J.score}}{
-	description: 	{{printf "%q" .Description}},
-	input:  		{{printf "%q" .Input.Word}},
-	expected: 		{{printf "%d" .Expected}},
-},
-{{end}}}
+var scrabbleScoreTests = []scrabbleTest { {{range .J.score}}
+	{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%q" .Input.Word}},
+		expected:    {{printf "%d" .Expected}},
+	},{{end}}
+}
 `

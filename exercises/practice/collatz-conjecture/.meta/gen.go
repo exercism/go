@@ -43,18 +43,19 @@ func (t testCase) ExpectError() bool {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expectError bool
 	expected    int
-}{
-{{range .J.steps}}{
-	description:	{{printf "%q"  .Description}},
-	input:			{{printf "%d"  .Input.Number}},
-	expectError: 	{{printf "%v"  .ExpectError}},
-	expected: 		{{printf "%d"  .ExpectedValue}},
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.steps}}
+	{
+		description: {{printf "%q"  .Description}},
+		input:       {{printf "%d"  .Input.Number}},
+		expectError: {{printf "%v"  .ExpectError}},
+		expected:    {{printf "%d"  .ExpectedValue}},
+	},{{end}}
 }
 `

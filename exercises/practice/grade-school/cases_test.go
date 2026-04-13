@@ -10,11 +10,13 @@ type student struct {
 	grade int
 }
 
-var testCasesAdd = []struct {
+type testCaseAdd struct {
 	description string
 	students    []student
 	expected    []bool
-}{
+}
+
+var testCasesAdd = []testCaseAdd{
 	{
 		description: "Add a student",
 		students: []student{
@@ -61,11 +63,13 @@ var testCasesAdd = []struct {
 	},
 }
 
-var testCasesEnrollment = []struct {
+type testCaseEnrollment struct {
 	description string
 	students    []student
 	expected    []string
-}{
+}
+
+var testCasesEnrollment = []testCaseEnrollment{
 	{
 		description: "Roster is empty when no student is added",
 		students:    []student{},
@@ -148,12 +152,14 @@ var testCasesEnrollment = []struct {
 	},
 }
 
-var testCasesGrade = []struct {
+type testCaseGrade struct {
 	description string
 	students    []student
 	grade       int
 	expected    []string
-}{
+}
+
+var testCasesGrade = []testCaseGrade{
 	{
 		description: "Grade is empty if no students in the roster",
 		students:    []student{},

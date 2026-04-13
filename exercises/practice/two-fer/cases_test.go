@@ -5,11 +5,13 @@ package twofer
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no name given",
 		input:       "",

@@ -67,12 +67,14 @@ type postTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var getUsersTestCases = []struct {
+type testCaseGetUsers struct {
 	description string
 	database    []User
 	payload     GetUsersRequest
 	response    GetUsersResponse
-}{ {{range .J.get}}
+}
+
+var getUsersTestCases = []testCaseGetUsers { {{range .J.get}}
 	{
 		description: {{printf "%q" .Description}},
 		database:    []User { {{range .Input.Database.Users }}
@@ -97,12 +99,14 @@ var getUsersTestCases = []struct {
 	},{{end}}
 }
 
-var addUserTestCases = []struct {
+type testCaseAddUser struct {
 	description string
 	database    []User
 	payload     AddUserRequest
 	response    AddUserResponse
-}{ {{range .J.post}} {{if eq .Input.Url "/add"}}
+}
+
+var addUserTestCases = []testCaseAddUser { {{range .J.post}} {{if eq .Input.Url "/add"}}
 	{
 		description: {{printf "%q" .Description}},
 		database:    []User { {{range .Input.Database.Users }}
@@ -125,12 +129,14 @@ var addUserTestCases = []struct {
 	},{{end}}{{end}}
 }
 
-var addIouTestCases = []struct {
+type testCaseAddIOU struct {
 	description string
 	database    []User
 	payload     AddIouRequest
 	response    AddIouResponse
-}{ {{range .J.post}} {{if eq .Input.Url "/iou"}}
+}
+
+var addIouTestCases = []testCaseAddIOU { {{range .J.post}} {{if eq .Input.Url "/iou"}}
 	{
 		description: {{printf "%q" .Description}},
 		database:    []User { {{range .Input.Database.Users }}

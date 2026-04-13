@@ -5,11 +5,13 @@ package bafflingbirthdays
 // Source: exercism/problem-specifications
 // Commit: 1799950 Add `baffling-birthdays` exercise (#2539)
 
-var sharedTestCase = []struct {
+type testCaseShared struct {
 	description string
 	input       []string
 	expected    bool
-}{
+}
+
+var sharedTestCase = []testCaseShared{
 	{
 		description: "one birthdate",
 		input:       []string{"2000-01-01"},
@@ -57,11 +59,13 @@ var sharedTestCase = []struct {
 	},
 }
 
-var probabilityTestCase = []struct {
+type testCaseProbability struct {
 	description string
 	input       int
 	expected    float64
-}{
+}
+
+var probabilityTestCase = []testCaseProbability{
 	{
 		description: "for one person",
 		input:       1,

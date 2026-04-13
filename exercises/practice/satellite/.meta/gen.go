@@ -49,13 +49,15 @@ func (tc testCase) Tree() string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	preorder    []string
 	inorder     []string
 	expected    *Node
 	err         string
-}{ {{range .J.treeFromTraversals}}
+}
+
+var testCases = []testCase { {{range .J.treeFromTraversals}}
 	{
 		description: {{printf "%q" .Description}},
 		preorder:    {{printf "%#v" .Input.Preorder}},

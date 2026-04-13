@@ -5,11 +5,13 @@ package clock
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var timeTestCases = []struct {
+type testCaseTime struct {
 	description string
 	h, m        int
 	expected    string
-}{
+}
+
+var timeTestCases = []testCaseTime{
 	{
 		description: "on the hour",
 		h:           8,
@@ -132,11 +134,13 @@ var timeTestCases = []struct {
 	},
 }
 
-var addTestCases = []struct {
+type testCaseAdd struct {
 	description      string
 	h, m, addedValue int
 	expected         string
-}{
+}
+
+var addTestCases = []testCaseAdd{
 	{
 		description: "add minutes",
 		h:           10,
@@ -195,11 +199,13 @@ var addTestCases = []struct {
 	},
 }
 
-var subtractTestCases = []struct {
+type testCaseSubtract struct {
 	description           string
 	h, m, subtractedValue int
 	expected              string
-}{
+}
+
+var subtractTestCases = []testCaseSubtract{
 	{
 		description:     "subtract minutes",
 		h:               10,
@@ -261,11 +267,13 @@ var subtractTestCases = []struct {
 // Compare two clocks for equality
 type hm struct{ h, m int }
 
-var equalTestCases = []struct {
+type testCaseEqual struct {
 	description string
 	c1, c2      hm
 	expected    bool
-}{
+}
+
+var equalTestCases = []testCaseEqual{
 	{
 		description: "clocks with same time",
 		c1:          hm{15, 37},

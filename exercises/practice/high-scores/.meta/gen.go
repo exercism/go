@@ -44,13 +44,15 @@ type sliceTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var intTestCases = []struct {
+type testCaseInt struct {
 	description  string
 	input        []int
 	call         func(h *HighScores) int
 	callMsg      string
 	expected     int
-}{ {{range .J.latest}}
+}
+
+var intTestCases = []testCaseInt { {{range .J.latest}}
 	{
 		description: 	{{printf "%q" .Description}},
 		input:	        {{printf "%#v" .Input.Scores}},
@@ -81,13 +83,15 @@ var intTestCases = []struct {
 	},{{end}}
 }
 
-var sliceTestCases = []struct {
+type testCaseSlice struct {
 	description  string
 	input        []int
 	call         func(h *HighScores) []int
 	callMsg      string
 	expected     []int
-}{ {{range .J.scores}}
+}
+
+var sliceTestCases = []testCaseSlice { {{range .J.scores}}
 	{
 		description: 	{{printf "%q" .Description}},
 		input:	        {{printf "%#v" .Input.Scores}},

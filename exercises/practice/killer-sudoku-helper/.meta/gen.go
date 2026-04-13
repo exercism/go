@@ -33,13 +33,15 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	sum         int
 	size        int
 	exclude     []int
 	expected    [][]int
-}{ {{range .J.combinations}}
+}
+
+var testCases = []testCase { {{range .J.combinations}}
 	{
 		description: 	{{printf "%q" .Description}},
 		sum:    	{{.Input.Cage.Sum}},

@@ -143,11 +143,13 @@ func (tc testCaseFoldr) Func() string {
 var tmpl = `// This file contains tests from the shared problem specifications repo.
 {{.Header}}
 
-var testCasesAppend = []struct{
+type testCaseAppend struct {
 	description   string
 	list1, list2  []int
 	expected      []int
-}{ {{range .J.append}}
+}
+
+var testCasesAppend = []testCaseAppend { {{range .J.append}}
 	{
 		description: {{printf "%q" .Description}},
 		list1:       {{printf "%#v" .Input.List1}},
@@ -156,11 +158,13 @@ var testCasesAppend = []struct{
 	},{{end}}
 }
 
-var testCasesConcat = []struct{
+type testCaseConcat struct {
 	description string
 	lists       [][]int
 	expected    []int
-}{ {{range .J.concat}}
+}
+
+var testCasesConcat = []testCaseConcat { {{range .J.concat}}
 	{
 		description: {{printf "%q" .Description}},
 		lists:       {{printf "%#v" .Input.Lists}},
@@ -168,13 +172,15 @@ var testCasesConcat = []struct{
 	},{{end}}
 }
 
-var testCasesFilter = []struct{
+type testCaseFilter struct {
 	description string
 	list        []int
 	function    func(int) bool
 	functionStr string
 	expected    []int
-}{ {{range .J.filter}}
+}
+
+var testCasesFilter = []testCaseFilter { {{range .J.filter}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},
@@ -184,14 +190,16 @@ var testCasesFilter = []struct{
 	},{{end}}
 }
 
-var testCasesFoldl = []struct{
+type testCaseFoldl struct {
 	description string
 	list []int
 	initial int
 	function func(int, int) int
 	functionStr string
 	expected int
-}{ {{range .J.foldl}}
+}
+
+var testCasesFoldl = []testCaseFoldl { {{range .J.foldl}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},
@@ -202,14 +210,16 @@ var testCasesFoldl = []struct{
 	},{{end}}
 }
 
-var testCasesFoldr = []struct{
+type testCaseFoldr struct {
 	description string
 	list []int
 	initial int
 	function func(int, int) int
 	functionStr string
 	expected int
-}{ {{range .J.foldr}}
+}
+
+var testCasesFoldr = []testCaseFoldr { {{range .J.foldr}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},
@@ -220,11 +230,13 @@ var testCasesFoldr = []struct{
 	},{{end}}
 }
 
-var testCasesLength = []struct{
+type testCaseLength struct {
 	description string
 	list        []int
 	expected    int
-}{ {{range .J.length}}
+}
+
+var testCasesLength = []testCaseLength { {{range .J.length}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},
@@ -232,13 +244,15 @@ var testCasesLength = []struct{
 	},{{end}}
 }
 
-var testCasesMap = []struct{
+type testCaseMap struct {
 	description string
 	list []int
 	function func(int) int
 	functionStr string
 	expected []int
-}{ {{range .J.map}}
+}
+
+var testCasesMap = []testCaseMap { {{range .J.map}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},
@@ -248,11 +262,13 @@ var testCasesMap = []struct{
 	},{{end}}
 }
 
-var testCasesReverse = []struct{
+type testCaseReverse struct {
 	description string
 	list        []int
 	expected    []int
-}{ {{range .J.reverse}}
+}
+
+var testCasesReverse = []testCaseReverse { {{range .J.reverse}}
 	{
 		description: {{printf "%q" .Description}},
 		list:        {{printf "%#v" .Input.List}},

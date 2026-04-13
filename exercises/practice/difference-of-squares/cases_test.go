@@ -5,13 +5,15 @@ package differenceofsquares
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	fn          func(int) int
 	fnName      string
 	input       int
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "sum of squares 1",
 		fn:          SumOfSquares,

@@ -30,17 +30,19 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description	string
 	listOne		[]int
 	listTwo		[]int
 	expected	Relation
-}{ {{range .J.sublist}}
-{
-	description:	{{printf "%q"   .Description}},
-	listOne:		{{printf "%#v"  .Input.ListOne}},
-	listTwo:		{{printf "%#v"  .Input.ListTwo}},
-	expected:		{{printf "%#v"  .Expected}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.sublist}}
+	{
+		description:	{{printf "%q"   .Description}},
+		listOne:		{{printf "%#v"  .Input.ListOne}},
+		listTwo:		{{printf "%#v"  .Input.ListTwo}},
+		expected:		{{printf "%#v"  .Expected}},
+	},{{end}}
 }
 `

@@ -5,11 +5,13 @@ package connect
 // Source: exercism/problem-specifications
 // Commit: d5f665e Add dead-end test cases for Connect (#2633)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	board       []string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "an empty board has no winner",
 		board: []string{

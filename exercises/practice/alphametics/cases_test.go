@@ -5,12 +5,14 @@ package alphametics
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	input         string
 	expected      map[string]int
 	errorExpected bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "puzzle with three letters",
 		input:       "I + BB == ILL",

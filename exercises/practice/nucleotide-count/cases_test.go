@@ -5,12 +5,14 @@ package nucleotidecount
 // Source: exercism/problem-specifications
 // Commit: 5fc501b Remove unneeded nesting (#1798)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	strand        string
 	expected      Histogram
 	errorExpected bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:   "empty strand",
 		strand:        "",

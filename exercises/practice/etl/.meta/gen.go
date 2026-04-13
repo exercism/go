@@ -42,11 +42,13 @@ func (tc *testCase) Legacy() map[int][]string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       map[int][]string
 	expected    map[string]int
-}{ {{range .J.transform}}
+}
+
+var testCases = []testCase { {{range .J.transform}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{printf "%#v" .Legacy}},

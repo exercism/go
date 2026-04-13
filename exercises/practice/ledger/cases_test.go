@@ -3,7 +3,7 @@ package ledger
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 2801085 Update ledger canonical-data.json (#2355)
+// Commit: 51afd37 Add a comment in `canonical-data.json` for refactoring exercises mentioning these are refactoring exercises (#2638)
 
 import "strings"
 

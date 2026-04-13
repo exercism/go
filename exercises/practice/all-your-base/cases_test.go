@@ -5,14 +5,16 @@ package allyourbase
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	inputBase     int
 	inputDigits   []int
 	outputBase    int
 	expected      []int
 	expectedError string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:   "single bit one to decimal",
 		inputBase:     2,

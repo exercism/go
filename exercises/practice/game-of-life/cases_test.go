@@ -5,11 +5,13 @@ package gameoflife
 // Source: exercism/problem-specifications
 // Commit: 381bb40 Add Game of Life exercise (#2281)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       [][]int
 	expected    [][]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty matrix",
 		input:       [][]int{},

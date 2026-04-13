@@ -5,13 +5,15 @@ package largestseriesproduct
 // Source: exercism/problem-specifications
 // Commit: f427e3d span must not exceed string length (#2548)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	digits      string
 	span        int
 	expected    int64
 	error       string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "finds the largest product if span equals length",
 		digits:      "29",

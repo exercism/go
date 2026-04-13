@@ -5,12 +5,14 @@ package diamond
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	input         string
 	expected      []string
 	expectedError error
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Degenerate case with a single 'A' row",
 		input:       "A",

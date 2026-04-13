@@ -5,12 +5,14 @@ package spaceage
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	planet      Planet
 	seconds     float64
 	expected    float64
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "age on Earth",
 		planet:      "Earth",

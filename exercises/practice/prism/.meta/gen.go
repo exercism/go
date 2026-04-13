@@ -45,19 +45,20 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	start       Position
 	prisms      []Prism
 	expected    []int
-}{
-{{range .J.findSequence}}{
-	description: 	{{printf "%q" .Description}},
-	start:          Position{x: {{.Input.Start.X}}, y: {{.Input.Start.Y}}, angle: {{.Input.Start.Angle}}, },
-	prisms:         []Prism{
-		{{range .Input.Prisms}} { id: {{.ID}}, x: {{.X}}, y: {{.Y}}, angle: {{.Angle}}, }, {{end}}
-	},
-	expected:    	[]int{ {{range .Expected.Sequence}} {{.}}, {{end}} },
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.findSequence}}
+	{
+		description: 	{{printf "%q" .Description}},
+		start:          Position{x: {{.Input.Start.X}}, y: {{.Input.Start.Y}}, angle: {{.Input.Start.Angle}}, },
+		prisms:         []Prism{ {{range .Input.Prisms}}
+			{ id: {{.ID}}, x: {{.X}}, y: {{.Y}}, angle: {{.Angle}}, }, {{end}}
+		},
+		expected:    	[]int{ {{range .Expected.Sequence}} {{.}}, {{end}} },
+	},{{end}}
 }`

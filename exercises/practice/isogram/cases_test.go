@@ -5,11 +5,13 @@ package isogram
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty string",
 		input:       "",

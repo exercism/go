@@ -46,11 +46,13 @@ type modifierTestInput struct {
 	Score int
 }
 
-var modifierTests = []struct {
+type testCase struct {
 	description    string
 	input          modifierTestInput
 	expected       int
-}{ {{range .J.modifier}}
+}
+
+var modifierTests = []testCase { {{range .J.modifier}}
 	{
 		description: {{printf "%q"  .Description}},
 		input: modifierTestInput {

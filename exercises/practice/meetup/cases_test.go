@@ -7,14 +7,16 @@ package meetup
 
 import "time"
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	year        int
 	month       time.Month
 	week        WeekSchedule
 	weekday     time.Weekday
 	expectedDay int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "when teenth Monday is the 13th, the first day of the teenth week",
 		year:        2013,

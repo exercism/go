@@ -52,17 +52,18 @@ func (tc testCase) ExpectedError() string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	input          string
 	expected       []string
 	expectedError  error
-}{
-{{range .J.proteins}}{
-	description: 	{{printf "%q" .Description}},
-	input:	        {{printf "%q" .Input.Strand}},
-	expected:    	{{.ExpectedProteins}},
-	expectedError:  {{.ExpectedError}},
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.proteins}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input:	        {{printf "%q" .Input.Strand}},
+		expected:    	{{.ExpectedProteins}},
+		expectedError:  {{.ExpectedError}},
+	},{{end}}
 }`

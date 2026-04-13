@@ -56,19 +56,21 @@ func (c testCase) ErrorExpected() bool {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	puzzle      []string
 	words       []string
 	expectError bool
 	expected    map[string][2][2]int
-}{ {{range .J.search}}
-{
-	description: 	{{printf "%q"  .Description}},
-	puzzle: 		{{printf "%#v" .Input.Grid}},
-	words:			{{printf "%#v"  .Input.WordsToSearchFor}},
-	expectError: 	{{printf "%t"  .ErrorExpected}},
-	expected:		map[string][2][2]int{ {{ range $key, $value := .Expected }} "{{ $key }}": { { {{ $value.Start.Column.Minus1 }}, {{ $value.Start.Row.Minus1 }}, }, { {{ $value.End.Column.Minus1 }}, {{ $value.End.Row.Minus1 }} } }, {{ end }} },
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.search}}
+	{
+		description: 	{{printf "%q"  .Description}},
+		puzzle: 	{{printf "%#v" .Input.Grid}},
+		words:		{{printf "%#v"  .Input.WordsToSearchFor}},
+		expectError: 	{{printf "%t"  .ErrorExpected}},
+		expected:	map[string][2][2]int{ {{ range $key, $value := .Expected }} "{{ $key }}": { { {{ $value.Start.Column.Minus1 }}, {{ $value.Start.Row.Minus1 }}, }, { {{ $value.End.Column.Minus1 }}, {{ $value.End.Row.Minus1 }} } }, {{ end }} },
+	},{{end}}
 }
 `

@@ -5,11 +5,13 @@ package sieve
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	limit       int
 	expected    []int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no primes under two",
 		limit:       1,

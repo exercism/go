@@ -101,17 +101,19 @@ func renderChildren(children []expectedNode) string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	encoded       string
 	expectedError string
 	expected      *Node
-}{
-{{range .J.parse}}{
-	description:   {{printf "%q" .Description}},
-	encoded:       {{printf "%q" .Input.Encoded}},
-	expectedError: {{printf "%q" .ExpectedError}},
-	expected:      {{.ExpectedNode}},
-},
-{{end}}}
+}
+
+var testCases = []testCase { {{range .J.parse}}
+	{
+		description:   {{printf "%q" .Description}},
+		encoded:       {{printf "%q" .Input.Encoded}},
+		expectedError: {{printf "%q" .ExpectedError}},
+		expected:      {{.ExpectedNode}},
+	},{{end}}
+}
 `

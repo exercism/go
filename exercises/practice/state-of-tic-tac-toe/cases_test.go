@@ -5,12 +5,14 @@ package stateoftictactoe
 // Source: exercism/problem-specifications
 // Commit: 4326086 exercise state-of-tic-tac-toe: set proper value for 'reimplements' key of reimplemented test case (#2070)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	board       []string
 	expected    State
 	wantErr     bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Finished game where X won via left column victory",
 		board:       []string{"XOO", "X  ", "X  "},

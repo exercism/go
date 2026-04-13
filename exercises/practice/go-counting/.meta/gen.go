@@ -49,7 +49,7 @@ type territoriesTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var oneTerritoryTestCases = []struct {
+type testCaseOne struct {
 	description string
 	board       []string
 	posX        int
@@ -57,7 +57,9 @@ var oneTerritoryTestCases = []struct {
 	owner       string
 	territory   [][2]int
 	expectedErr string
-}{ {{range .J.territory}}
+}
+
+var oneTerritoryTestCases = []testCaseOne { {{range .J.territory}}
 	{
 		description: {{printf "%q" .Description}},
 		board:       {{printf "%#v" .Input.Board}},
@@ -69,11 +71,13 @@ var oneTerritoryTestCases = []struct {
 	},{{end}}
 }
 
-var allTerritoriesTestCases = []struct {
+type testCaseAll struct {
 	description string
 	input       []string
 	expected    AllTerritories
-}{ {{range .J.territories}}
+}
+
+var allTerritoriesTestCases = []testCaseAll { {{range .J.territories}}
 	{
 		description: {{printf "%q" .Description}},
 		input: 	     {{printf "%#v" .Input.Board}},

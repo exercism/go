@@ -5,12 +5,14 @@ package perfectnumbers
 // Source: exercism/problem-specifications
 // Commit: b638a1b Perfect Numbers: add perfect-square abundant test (196) (#2620)
 
-var classificationTestCases = []struct {
+type testCase struct {
 	description string
 	input       int64
 	ok          bool
 	expected    Classification
-}{
+}
+
+var classificationTestCases = []testCase{
 	{
 		description: "Smallest perfect number is classified correctly",
 		input:       6,

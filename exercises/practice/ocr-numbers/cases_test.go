@@ -5,12 +5,14 @@ package ocrnumbers
 // Source: exercism/problem-specifications
 // Commit: 2e820e1 Auto-format portions of some JSON files (#1967)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    []string
 	errorMsg    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Recognizes 0",
 		input:       "\n _ \n| |\n|_|\n   ",

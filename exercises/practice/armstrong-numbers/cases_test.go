@@ -5,11 +5,13 @@ package armstrongnumbers
 // Source: exercism/problem-specifications
 // Commit: 33667ce [armstrong-numbers] Two new test cases (#2080)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Zero is an Armstrong number",
 		input:       0,

@@ -5,13 +5,15 @@ package change
 // Source: exercism/problem-specifications
 // Commit: 5e967e1 Add a test for which a greedy algorithm fails (#2385)
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	coins          []int
 	target         int
 	valid          bool  // true => no error, false => error expected
 	expectedChange []int // when .valid == true, the expected change coins
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:    "change for 1 cent",
 		coins:          []int{1, 5, 10, 25},

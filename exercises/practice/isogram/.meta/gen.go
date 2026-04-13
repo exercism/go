@@ -29,15 +29,17 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description	string
 	input		string
 	expected	bool
-}{ {{range .J.isIsogram}} 
-{
-	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%q"  .Input.Phrase}},
-	expected:	{{printf "%t"  .Expected}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.isIsogram}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:		{{printf "%q"  .Input.Phrase}},
+		expected:	{{printf "%t"  .Expected}},
+	},{{end}}
 }
 `

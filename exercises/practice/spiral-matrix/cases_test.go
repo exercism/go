@@ -5,11 +5,13 @@ package spiralmatrix
 // Source: exercism/problem-specifications
 // Commit: b820099 Allow prettier to format more files (#1966)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    [][]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty spiral",
 		input:       0,

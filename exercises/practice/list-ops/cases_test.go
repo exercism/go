@@ -6,11 +6,13 @@ package listops
 // Source: exercism/problem-specifications
 // Commit: 7a8722a Reorder keys (#1960)
 
-var testCasesAppend = []struct {
+type testCaseAppend struct {
 	description  string
 	list1, list2 []int
 	expected     []int
-}{
+}
+
+var testCasesAppend = []testCaseAppend{
 	{
 		description: "empty lists",
 		list1:       []int{},
@@ -37,11 +39,13 @@ var testCasesAppend = []struct {
 	},
 }
 
-var testCasesConcat = []struct {
+type testCaseConcat struct {
 	description string
 	lists       [][]int
 	expected    []int
-}{
+}
+
+var testCasesConcat = []testCaseConcat{
 	{
 		description: "empty list",
 		lists:       [][]int{},
@@ -54,13 +58,15 @@ var testCasesConcat = []struct {
 	},
 }
 
-var testCasesFilter = []struct {
+type testCaseFilter struct {
 	description string
 	list        []int
 	function    func(int) bool
 	functionStr string
 	expected    []int
-}{
+}
+
+var testCasesFilter = []testCaseFilter{
 	{
 		description: "empty list",
 		list:        []int{},
@@ -77,14 +83,16 @@ var testCasesFilter = []struct {
 	},
 }
 
-var testCasesFoldl = []struct {
+type testCaseFoldl struct {
 	description string
 	list        []int
 	initial     int
 	function    func(int, int) int
 	functionStr string
 	expected    int
-}{
+}
+
+var testCasesFoldl = []testCaseFoldl{
 	{
 		description: "direction dependent function applied to non-empty list",
 		list:        []int{2, 5},
@@ -111,14 +119,16 @@ var testCasesFoldl = []struct {
 	},
 }
 
-var testCasesFoldr = []struct {
+type testCaseFoldr struct {
 	description string
 	list        []int
 	initial     int
 	function    func(int, int) int
 	functionStr string
 	expected    int
-}{
+}
+
+var testCasesFoldr = []testCaseFoldr{
 	{
 		description: "direction dependent function applied to non-empty list",
 		list:        []int{2, 5},
@@ -145,11 +155,13 @@ var testCasesFoldr = []struct {
 	},
 }
 
-var testCasesLength = []struct {
+type testCaseLength struct {
 	description string
 	list        []int
 	expected    int
-}{
+}
+
+var testCasesLength = []testCaseLength{
 	{
 		description: "empty list",
 		list:        []int{},
@@ -162,13 +174,15 @@ var testCasesLength = []struct {
 	},
 }
 
-var testCasesMap = []struct {
+type testCaseMap struct {
 	description string
 	list        []int
 	function    func(int) int
 	functionStr string
 	expected    []int
-}{
+}
+
+var testCasesMap = []testCaseMap{
 	{
 		description: "empty list",
 		list:        []int{},
@@ -185,11 +199,13 @@ var testCasesMap = []struct {
 	},
 }
 
-var testCasesReverse = []struct {
+type testCaseReverse struct {
 	description string
 	list        []int
 	expected    []int
-}{
+}
+
+var testCasesReverse = []testCaseReverse{
 	{
 		description: "empty list",
 		list:        []int{},

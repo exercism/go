@@ -5,13 +5,15 @@ package piecingittogether
 // Source: exercism/problem-specifications
 // Commit: 087e5e3 Add 'piecing-it-together' exercise (#2554)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       PuzzleDetails
 	expected    PuzzleDetails
 	err         string
 	wantError   bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "1000 pieces puzzle with 1.6 aspect ratio",
 		input: PuzzleDetails{

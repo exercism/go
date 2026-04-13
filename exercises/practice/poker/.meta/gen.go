@@ -62,11 +62,11 @@ type testCase struct {
 	expected []string
 }
 
-var validTestCases = []testCase {
-{{range .J.bestHands}}{
-	description:  	{{printf "%q"  .Description }},
-	hands: 			{{pokerHands .Input.Hands | printf "%#v"}},
-	expected:  		{{pokerHands .Expected | printf "%#v"}},
-},
-{{end}}}
+var validTestCases = []testCase { {{range .J.bestHands}}
+	{
+		description: {{printf "%q"  .Description }},
+		hands:       {{pokerHands .Input.Hands | printf "%#v"}},
+		expected:    {{pokerHands .Expected | printf "%#v"}},
+	},{{end}}
+}
 `

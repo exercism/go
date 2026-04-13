@@ -41,13 +41,15 @@ func (tc testCase) Func() string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	fn          func(int) int
 	fnName      string
 	input       int
 	expected    int
-}{ {{range .J.sumOfSquares}}
+}
+
+var testCases = []testCase { {{range .J.sumOfSquares}}
 	{
 		description: {{printf "%q" .Description}},
 		fn:          {{.Func}},

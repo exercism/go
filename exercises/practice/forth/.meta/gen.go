@@ -39,17 +39,19 @@ func (t testCase) ExplainText() string {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
-	description    string
-	input   	   []string
-	expected 	   []int // nil slice indicates error expected.
-	explainText    string   // error explanation text
-}{ {{range .J.evaluate}}
-{
-	description: {{printf "%q"  .Description}},
-	input: {{printf "%#v" .Input.Instructions}},
-	expected: {{printf "%#v" .ExpectedNumbers}},
-	explainText: {{printf "%q"  .ExplainText}},
-},{{end}}
+type testCase struct {
+	description string
+	input       []string
+	expected    []int // nil slice indicates error expected.
+	explainText string   // error explanation text
+}
+
+var testCases = []testCase { {{range .J.evaluate}}
+	{
+		description: {{printf "%q"  .Description}},
+		input: {{printf "%#v" .Input.Instructions}},
+		expected: {{printf "%#v" .ExpectedNumbers}},
+		explainText: {{printf "%q"  .ExplainText}},
+	},{{end}}
 }
 `

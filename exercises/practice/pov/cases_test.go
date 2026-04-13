@@ -5,12 +5,14 @@ package pov
 // Source: exercism/problem-specifications
 // Commit: b820099 Allow prettier to format more files (#1966)
 
-var povTestCases = []struct {
+type povTestCase struct {
 	description string
 	from        string
 	tree        *Tree
 	expected    *Tree
-}{
+}
+
+var povTestCases = []povTestCase{
 	{
 		description: "Results in the same tree if the input tree is a singleton",
 		from:        "x",
@@ -61,13 +63,15 @@ var povTestCases = []struct {
 	},
 }
 
-var pathTestCases = []struct {
+type pathTestCase struct {
 	description string
 	from        string
 	to          string
 	tree        *Tree
 	expected    []string
-}{
+}
+
+var pathTestCases = []pathTestCase{
 	{
 		description: "Can find path to parent",
 		from:        "x",

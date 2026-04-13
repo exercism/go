@@ -29,21 +29,22 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       [][]int
 	expected    [][]int
-}{
-{{range .J.tick}}{
-	description: {{printf "%q" .Description}},
-	input:       [][]int{
-		{{range .Input.Matrix}} { {{range .}} {{.}}, {{end}}},
-		{{end}}
-	},
-	expected:       [][]int{
-		{{range .Expected}} { {{range .}} {{.}}, {{end}}},
-		{{end}}
-	},
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.tick}}
+	{
+		description: {{printf "%q" .Description}},
+		input:       [][]int{
+			{{range .Input.Matrix}} { {{range .}} {{.}}, {{end}}},
+			{{end}}
+		},
+		expected:       [][]int{
+			{{range .Expected}} { {{range .}} {{.}}, {{end}}},
+			{{end}}
+		},
+	},{{end}}
 }`

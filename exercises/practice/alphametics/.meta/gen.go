@@ -45,19 +45,20 @@ func (c testCase) SortedMapString() string {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	input         string
 	expected      map[string]int
 	errorExpected bool
-}{
-{{range .J.solve}}{
-	description:	{{printf "%q" .Description}},
-	input:		{{printf "%q" .Input.Puzzle}},
-	{{if .ErrorExpected}}errorExpected:	true,
-	{{else}}expected:	map[string]int{ {{.SortedMapString}} },
-	{{- end}}
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.solve}}
+	{
+		description:	{{printf "%q" .Description}},
+		input:		{{printf "%q" .Input.Puzzle}},
+		{{if .ErrorExpected}}errorExpected:	true,
+		{{else}}expected:	map[string]int{ {{.SortedMapString}} },
+		{{- end}}
+	},{{end}}
 }
 `

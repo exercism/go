@@ -5,12 +5,14 @@ package rotationalcipher
 // Source: exercism/problem-specifications
 // Commit: b820099 Allow prettier to format more files (#1966)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	shift       int
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "rotate a by 0, same output as input",
 		input:       "a",

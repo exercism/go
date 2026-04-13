@@ -44,13 +44,15 @@ var fileContentData = []string{
 	"   ------------------------------------------------- ",
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	pattern     string
 	flags       []string
 	files       []string
 	expected    []string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "One file, one match, no flags",
 		pattern:     "Agamemnon",

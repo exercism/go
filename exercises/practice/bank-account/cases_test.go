@@ -10,12 +10,14 @@ type Operation struct {
 	Amount int64
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	operations  []Operation
 	expected    int64
 	expectedErr string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Newly opened account has zero balance",
 		operations: []Operation{

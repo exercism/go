@@ -30,15 +30,17 @@ type testCase struct {
 // Template to generate test cases.
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description	string
 	input		int
 	expected	bool
-}{ {{range .J.isArmstrongNumber}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%#v"  .Input.Number}},
-	expected:	{{printf "%#v"  .Expected}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.isArmstrongNumber}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:		{{printf "%#v"  .Input.Number}},
+		expected:	{{printf "%#v"  .Expected}},
+	},{{end}}
 }
 `

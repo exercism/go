@@ -5,16 +5,17 @@ package rectangles
 // Source: exercism/problem-specifications
 // Commit: 55b098b rectangles: Add test for missing sides (#2050)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    int
-}{
-	{
-		description: "no rows",
-		input:       []string{},
-		expected:    0,
-	},
+}
+
+var testCases = []testCase{{
+	description: "no rows",
+	input:       []string{},
+	expected:    0,
+},
 	{
 		description: "no columns",
 		input: []string{

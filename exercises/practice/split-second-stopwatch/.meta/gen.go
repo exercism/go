@@ -74,22 +74,23 @@ type operation struct{
 	expectedErr string
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	commands []operation
-}{
-{{range .J.time}}{
-	description: 	{{printf "%q" .Description}},
-	commands:       []operation {
-		{{range .Input.Commands}}
-		{
-			command: {{title .Command}},{{if .By}}
-			by: {{printf "%q" .By}}, {{end}} {{if .ExpectedString}}
-			expected: {{printf "%q" .ExpectedString}}, {{end}} {{if .ExpectedPrevLaps}}
-			expectedPrevLaps: {{.ExpectedPrevLaps}}, {{end}} {{if .ExpectedErr}}
-			expectedErr: {{printf "%q" .ExpectedErr}}, {{end}}
-		},{{end}}
-	},
-},
-{{end}}
+}
+
+var testCases = []testCase { {{range .J.time}}
+	{
+		description: 	{{printf "%q" .Description}},
+		commands:       []operation {
+			{{range .Input.Commands}}
+			{
+				command: {{title .Command}},{{if .By}}
+				by: {{printf "%q" .By}}, {{end}} {{if .ExpectedString}}
+				expected: {{printf "%q" .ExpectedString}}, {{end}} {{if .ExpectedPrevLaps}}
+				expectedPrevLaps: {{.ExpectedPrevLaps}}, {{end}} {{if .ExpectedErr}}
+				expectedErr: {{printf "%q" .ExpectedErr}}, {{end}}
+			},{{end}}
+		},
+	},{{end}}
 }`

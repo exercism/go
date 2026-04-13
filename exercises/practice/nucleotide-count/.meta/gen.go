@@ -56,12 +56,14 @@ func (t testCase) SortedMapString() string {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	strand        string
 	expected      Histogram
 	errorExpected bool
-}{ {{range .J.nucleotideCounts}}
+}
+
+var testCases = []testCase { {{range .J.nucleotideCounts}}
 	{
 		description:	{{printf "%q"  .Description}},
 		strand:		{{printf "%#v"  .Input.Strand}},

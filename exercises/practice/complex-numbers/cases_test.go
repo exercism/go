@@ -10,11 +10,13 @@ type complexNumber struct {
 	b float64
 }
 
-var realTestCases = []struct {
+type testCaseReal struct {
 	description string
 	in          complexNumber
 	want        float64
-}{
+}
+
+var realTestCases = []testCaseReal{
 	{
 		description: "Real part of a purely real number",
 		in: complexNumber{
@@ -41,11 +43,13 @@ var realTestCases = []struct {
 	},
 }
 
-var imaginaryTestCases = []struct {
+type testCaseImag struct {
 	description string
 	in          complexNumber
 	want        float64
-}{
+}
+
+var imaginaryTestCases = []testCaseImag{
 	{
 		description: "Imaginary part of a purely real number",
 		in: complexNumber{
@@ -72,12 +76,14 @@ var imaginaryTestCases = []struct {
 	},
 }
 
-var addTestCases = []struct {
+type testCaseAdd struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want        complexNumber
-}{
+}
+
+var addTestCases = []testCaseAdd{
 	{
 		description: "Add purely real numbers",
 		n1: complexNumber{
@@ -155,12 +161,14 @@ var addTestCases = []struct {
 	},
 }
 
-var subtractTestCases = []struct {
+type testCaseSubtract struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want        complexNumber
-}{
+}
+
+var subtractTestCases = []testCaseSubtract{
 	{
 		description: "Subtract purely real numbers",
 		n1: complexNumber{
@@ -238,12 +246,14 @@ var subtractTestCases = []struct {
 	},
 }
 
-var divideTestCases = []struct {
+type testCaseDivide struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want        complexNumber
-}{
+}
+
+var divideTestCases = []testCaseDivide{
 	{
 		description: "Divide purely real numbers",
 		n1: complexNumber{
@@ -321,13 +331,15 @@ var divideTestCases = []struct {
 	},
 }
 
-var multiplyTestCases = []struct {
+type testCaseMultiply struct {
 	description string
 	n1          complexNumber
 	n2          *complexNumber // if n2 is nil it is a multiplication with the factor
 	factor      float64
 	want        complexNumber
-}{
+}
+
+var multiplyTestCases = []testCaseMultiply{
 	{
 		description: "Imaginary unit",
 		n1: complexNumber{
@@ -424,11 +436,13 @@ var multiplyTestCases = []struct {
 	},
 }
 
-var conjugateTestCases = []struct {
+type testCaseConjugate struct {
 	description string
 	in          complexNumber
 	want        complexNumber
-}{
+}
+
+var conjugateTestCases = []testCaseConjugate{
 	{
 		description: "Conjugate a purely real number",
 		in: complexNumber{
@@ -464,11 +478,13 @@ var conjugateTestCases = []struct {
 	},
 }
 
-var absTestCases = []struct {
+type testCaseAbs struct {
 	description string
 	in          complexNumber
 	want        float64
-}{
+}
+
+var absTestCases = []testCaseAbs{
 	{
 		description: "Absolute value of a positive purely real number",
 		in: complexNumber{
@@ -511,11 +527,13 @@ var absTestCases = []struct {
 	},
 }
 
-var expTestCases = []struct {
+type testCaseExp struct {
 	description string
 	in          complexNumber
 	want        complexNumber
-}{
+}
+
+var expTestCases = []testCaseExp{
 	{
 		description: "Euler's identity/formula",
 		in: complexNumber{

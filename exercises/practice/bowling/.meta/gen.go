@@ -49,36 +49,40 @@ func (t Case) ExplainText() string {
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
 var tmpl = `{{.Header}}
 
-var scoreTestCases = []struct {
+type testCaseScore struct {
 	description    string
 	previousRolls  []int	// bowling rolls to do before the Score() test
 	valid          bool     // true => no error, false => error expected
 	score          int	// when .valid == true, the expected score value
 	explainText    string   // when .valid == false, error explanation text
-}{ {{range .J.score}}
-{
-	description: {{printf "%q"  .Description}},
-	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
-	valid: {{printf "%v"  .Valid}},
-	score: {{printf "%d"  .Score}},
-	explainText: {{printf "%q"  .ExplainText}},
-},{{end}}
+}
+
+var scoreTestCases = []testCaseScore { {{range .J.score}}
+	{
+		description: {{printf "%q"  .Description}},
+		previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+		valid: {{printf "%v"  .Valid}},
+		score: {{printf "%d"  .Score}},
+		explainText: {{printf "%q"  .ExplainText}},
+	},{{end}}
 }
 
 
-var rollTestCases = []struct {
+type testCaseRoll struct {
 	description    string
 	previousRolls  []int	// bowling rolls to do before the Roll(roll) test
 	valid          bool     // true => no error, false => error expected
 	roll           int	// pin count for the test roll
 	explainText    string   // when .valid == false, error explanation text
-}{ {{range .J.roll}}
-{
-	description: {{printf "%q"  .Description}},
-	previousRolls: {{printf "%#v" .Input.PreviousRolls}},
-	valid: {{printf "%v"  .Valid}},
-	roll: {{printf "%d"  .Input.Roll}},
-	explainText: {{printf "%q"  .ExplainText}},
-},{{end}}
+}
+
+var rollTestCases = []testCaseRoll { {{range .J.roll}}
+	{
+		description: {{printf "%q"  .Description}},
+		previousRolls: {{printf "%#v" .Input.PreviousRolls}},
+		valid: {{printf "%v"  .Valid}},
+		roll: {{printf "%d"  .Input.Roll}},
+		explainText: {{printf "%q"  .ExplainText}},
+	},{{end}}
 }
 `

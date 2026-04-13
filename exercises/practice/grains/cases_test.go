@@ -6,12 +6,14 @@ package grains
 // Commit: af1c8d0 grains: don't say "raises an exception" (#2328)
 
 // returns the number of grains on the square
-var squareTests = []struct {
+type testCase struct {
 	description string
 	input       int
 	expectedVal uint64
 	expectError bool
-}{
+}
+
+var squareTests = []testCase{
 	{
 		description: "grains on square 1",
 		input:       1,

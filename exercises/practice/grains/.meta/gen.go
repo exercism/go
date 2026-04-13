@@ -44,18 +44,19 @@ func (t testCase) ExpectError() bool {
 var tmpl = `{{.Header}}
 
 // returns the number of grains on the square
-var squareTests = []struct {
+type testCase struct {
 	description string
 	input       int
 	expectedVal uint64
 	expectError bool
-}{
-	{{range .J.square}}{
-			description: {{printf "%q" .Description}},
-			input:       {{printf "%d" .Input.Square}},
-			expectedVal: {{printf "%d" .ExpectedValue}},
-			expectError: {{printf "%t" .ExpectError}},
-		},
-	{{end}}
+}
+
+var squareTests = []testCase { {{range .J.square}}
+	{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%d" .Input.Square}},
+		expectedVal: {{printf "%d" .ExpectedValue}},
+		expectError: {{printf "%t" .ExpectError}},
+	},{{end}}
 }
 `

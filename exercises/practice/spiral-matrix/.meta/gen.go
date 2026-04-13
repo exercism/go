@@ -29,11 +29,13 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    [][]int
-}{ {{range .J.spiralMatrix}}
+}
+
+var testCases = []testCase { {{range .J.spiralMatrix}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{.Input.Size}},

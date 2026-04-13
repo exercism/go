@@ -53,10 +53,12 @@ type Operation struct{
 	expected int
 }
 
-var testCases = []struct{
+type testCase struct {
 	description string
 	operations []Operation
-}{ {{range .J.list}}
+}
+
+var testCases = []testCase { {{range .J.list}}
 	{
 		description: 	{{printf "%q" .Description}},
 		operations:     []Operation{ {{range .Input.Operations}}

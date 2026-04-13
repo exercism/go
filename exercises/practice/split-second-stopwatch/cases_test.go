@@ -13,10 +13,12 @@ type operation struct {
 	expectedErr      string
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	commands    []operation
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "new stopwatch starts in ready state",
 		commands: []operation{

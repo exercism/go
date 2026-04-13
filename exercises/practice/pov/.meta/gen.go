@@ -59,12 +59,14 @@ type pathTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var povTestCases = []struct {
+type povTestCase struct {
 	description string
 	from        string
 	tree        *Tree
 	expected    *Tree
-}{ {{range .J.fromPov}}
+}
+
+var povTestCases = []povTestCase { {{range .J.fromPov}}
 	{
 		description: {{printf "%q" .Description}},
 		from:        {{printf "%q" .Input.From}},
@@ -73,13 +75,15 @@ var povTestCases = []struct {
 	},{{end}}
 }
 
-var pathTestCases = []struct {
+type pathTestCase struct {
 	description string
 	from        string
 	to          string
 	tree        *Tree
 	expected    []string
-}{ {{range .J.pathTo}}
+}
+
+var pathTestCases = []pathTestCase { {{range .J.pathTo}}
 	{
 		description: {{printf "%q" .Description}},
 		from:        {{printf "%q" .Input.From}},

@@ -5,11 +5,13 @@ package primefactors
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int64
 	expected    []int64
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no factors",
 		input:       1,

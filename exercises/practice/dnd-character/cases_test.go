@@ -9,11 +9,13 @@ type modifierTestInput struct {
 	Score int
 }
 
-var modifierTests = []struct {
+type testCase struct {
 	description string
 	input       modifierTestInput
 	expected    int
-}{
+}
+
+var modifierTests = []testCase{
 	{
 		description: "ability modifier for score 3 is -4",
 		input: modifierTestInput{

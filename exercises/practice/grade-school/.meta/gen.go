@@ -65,11 +65,13 @@ type student struct {
 	grade int
 }
 
-var testCasesAdd = []struct {
+type testCaseAdd struct {
 	description string
 	students    []student
 	expected    []bool
-}{ {{range .J.add}}
+}
+
+var testCasesAdd = []testCaseAdd { {{range .J.add}}
 	{
 		description: 	{{printf "%q" .Description}},
 		students:       []student { {{range .Input.Students}}
@@ -79,11 +81,13 @@ var testCasesAdd = []struct {
 	},{{end}}
 }
 
-var testCasesEnrollment = []struct {
+type testCaseEnrollment struct {
 	description string
 	students    []student
 	expected    []string
-}{ {{range .J.roster}}
+}
+
+var testCasesEnrollment = []testCaseEnrollment { {{range .J.roster}}
 	{
 		description: 	{{printf "%q" .Description}},
 		students:       []student { {{range .Input.Students}}
@@ -93,12 +97,14 @@ var testCasesEnrollment = []struct {
 	},{{end}}
 }
 
-var testCasesGrade = []struct {
+type testCaseGrade struct {
 	description  string
 	students     []student
 	grade        int
 	expected     []string
-}{ {{range .J.grade}}
+}
+
+var testCasesGrade = []testCaseGrade { {{range .J.grade}}
 	{
 		description: 	{{printf "%q" .Description}},
 		students:       []student { {{range .Input.Students}}

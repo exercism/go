@@ -53,21 +53,23 @@ func (o testCase) Err() string {
 // Template to generate test cases.
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	inputBase     int
 	inputDigits   []int
 	outputBase    int
 	expected      []int
 	expectedError string
-}{ {{range .J.rebase}}
-{
-	description:	{{printf "%q"  .Description}},
-	inputBase:		{{printf "%d"  .Input.InputBase}},
-	inputDigits:		{{printf "%#v"  .Input.Digits}},
-	outputBase:	{{printf "%d"  .Input.OutputBase}},
-	expected:	{{printf "%#v"  .Result}},
-	expectedError:	{{printf "%q"  .Err}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.rebase}}
+	{
+		description:	{{printf "%q"  .Description}},
+		inputBase:		{{printf "%d"  .Input.InputBase}},
+		inputDigits:		{{printf "%#v"  .Input.Digits}},
+		outputBase:	{{printf "%d"  .Input.OutputBase}},
+		expected:	{{printf "%#v"  .Result}},
+		expectedError:	{{printf "%q"  .Err}},
+	},{{end}}
 }
 `

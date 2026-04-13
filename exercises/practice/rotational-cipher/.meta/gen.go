@@ -30,12 +30,14 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	shift       int
 	expected    string
-}{ {{range .J.rotate}}
+}
+
+var testCases = []testCase { {{range .J.rotate}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{printf "%q" .Input.Text}},

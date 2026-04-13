@@ -5,11 +5,13 @@ package bookstore
 // Source: exercism/problem-specifications
 // Commit: ece572c [book-store] Made test descriptions consistent (#2016)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	basket      []int
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Only a single book",
 		basket:      []int{1},

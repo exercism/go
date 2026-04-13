@@ -29,11 +29,13 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    string
-}{ {{range .J.twoFer}}
+}
+
+var testCases = []testCase { {{range .J.twoFer}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{printf "%q" .Input.Name}},

@@ -5,7 +5,7 @@ package hangman
 // Source: exercism/problem-specifications
 // Commit: 96cde92 [hangman] Add a new canonical data file (#2632)
 
-var testCases = []struct {
+type testCase struct {
 	description       string
 	word              string
 	guesses           []rune
@@ -13,7 +13,9 @@ var testCases = []struct {
 	maskedWord        string
 	remainingFailures int
 	error             string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:       "Initially 9 failures are allowed and no letters are guessed",
 		word:              "loot",

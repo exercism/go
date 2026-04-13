@@ -5,12 +5,14 @@ package restapi
 // Source: exercism/problem-specifications
 // Commit: d137db1 Format using prettier (#1917)
 
-var getUsersTestCases = []struct {
+type testCaseGetUsers struct {
 	description string
 	database    []User
 	payload     GetUsersRequest
 	response    GetUsersResponse
-}{
+}
+
+var getUsersTestCases = []testCaseGetUsers{
 	{
 		description: "no users",
 		database:    []User{},
@@ -49,12 +51,14 @@ var getUsersTestCases = []struct {
 	},
 }
 
-var addUserTestCases = []struct {
+type testCaseAddUser struct {
 	description string
 	database    []User
 	payload     AddUserRequest
 	response    AddUserResponse
-}{
+}
+
+var addUserTestCases = []testCaseAddUser{
 	{
 		description: "add user",
 		database:    []User{},
@@ -70,12 +74,14 @@ var addUserTestCases = []struct {
 	},
 }
 
-var addIouTestCases = []struct {
+type testCaseAddIOU struct {
 	description string
 	database    []User
 	payload     AddIouRequest
 	response    AddIouResponse
-}{
+}
+
+var addIouTestCases = []testCaseAddIOU{
 	{
 		description: "both users have 0 balance",
 		database: []User{

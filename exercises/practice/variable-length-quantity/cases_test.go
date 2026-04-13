@@ -5,11 +5,13 @@ package variablelengthquantity
 // Source: exercism/problem-specifications
 // Commit: 9f4f82c variable-length-quantity: add more test cases (#2576)
 
-var encodeTestCases = []struct {
+type testCaseEncode struct {
 	description string
 	input       []uint32
 	expected    []byte
-}{
+}
+
+var encodeTestCases = []testCaseEncode{
 	{
 		description: "zero",
 		input:       []uint32{0x0},
@@ -127,12 +129,14 @@ var encodeTestCases = []struct {
 	},
 }
 
-var decodeTestCases = []struct {
+type testCaseDecode struct {
 	description   string
 	input         []byte
 	expected      []uint32
 	errorExpected bool
-}{{
+}
+
+var decodeTestCases = []testCaseDecode{{
 	description:   "one byte",
 	input:         []byte{0x7f},
 	expected:      []uint32{0x7f},

@@ -42,20 +42,21 @@ func (t testCase) ExpectedError() string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	digits      string
 	span        int
 	expected    int64
 	error       string
-}{
-{{range .J.largestProduct}}{
+}
+
+var testCases = []testCase { {{range .J.largestProduct}}
+	{
 		description: {{printf "%q" .Description}},
 		digits:      {{printf "%q" .Input.Digits}},
 		span:        {{printf "%d" .Input.Span}},
 		expected:    {{printf "%d" .ExpectedValue}},
 		error:       {{printf "%q" .ExpectedError}},
-	},
-{{end}}
+	},{{end}}
 }
 `

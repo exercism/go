@@ -68,13 +68,15 @@ func (tc testCase) ToPuzzleDetails(p PuzzleDetails) string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       PuzzleDetails
 	expected    PuzzleDetails
 	err         string
 	wantError   bool
-}{ {{range .J.jigsawData}}
+}
+
+var testCases = []testCase { {{range .J.jigsawData}}
 	{
 		description: 	{{printf "%q" .Description}},
 		input:	        {{.ToPuzzleDetails .Input}},

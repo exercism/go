@@ -5,12 +5,14 @@ package camicia
 // Source: exercism/problem-specifications
 // Commit: 7fc6778 Add new exercise: camicia (#2581)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	playerA     []string
 	playerB     []string
 	expected    Outcome
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "two cards, one trick",
 		playerA:     []string{"2"},

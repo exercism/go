@@ -5,12 +5,14 @@ package collatzconjecture
 // Source: exercism/problem-specifications
 // Commit: 7a8722a Reorder keys (#1960)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expectError bool
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "zero steps for one",
 		input:       1,

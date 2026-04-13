@@ -5,11 +5,13 @@ package gigasecond
 // Source: exercism/problem-specifications
 // Commit: 9b743e8 http to https (#2137)
 
-var addCases = []struct {
+type testCase struct {
 	description string
 	in          string
 	want        string
-}{
+}
+
+var addCases = []testCase{
 	{
 		description: "date only specification of time",
 		in:          "2011-04-25",

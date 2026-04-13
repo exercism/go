@@ -5,12 +5,14 @@ package swiftscheduling
 // Source: exercism/problem-specifications
 // Commit: a8ca9c5 Add `swift-scheduling` exercise (#2536)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	start       string
 	delivery    string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "NOW translates to two hours later",
 		start:       "2012-02-13T09:00:00",

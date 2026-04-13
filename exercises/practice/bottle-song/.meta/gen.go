@@ -34,11 +34,13 @@ type bottleSongInput struct {
 	takeDown		int
 }
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	input          bottleSongInput
 	expected       []string       
-}{ {{range .J.recite}}
+}
+
+var testCases = []testCase { {{range .J.recite}}
 	{
 		description: {{printf "%q"  .Description}},
 		input: bottleSongInput{

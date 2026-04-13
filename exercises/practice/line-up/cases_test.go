@@ -5,12 +5,14 @@ package lineup
 // Source: exercism/problem-specifications
 // Commit: 4ed5a3c Add new exercise: line-up (#2595)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	name        string
 	number      int
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "format smallest non-exceptional ordinal numeral 4",
 		name:        "Gianna",

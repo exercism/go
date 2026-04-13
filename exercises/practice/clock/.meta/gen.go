@@ -49,11 +49,13 @@ type equalTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var timeTestCases = []struct {
+type testCaseTime struct {
 	description string
 	h, m        int
 	expected    string
-}{ {{range .J.create}}
+}
+
+var timeTestCases = []testCaseTime { {{range .J.create}}
 	{
 		description: {{printf "%q"  .Description}},
 		h:           {{printf "%d"  .Input.Hour}},
@@ -62,11 +64,13 @@ var timeTestCases = []struct {
 	},{{end}}
 }
 
-var addTestCases = []struct {
+type testCaseAdd struct {
 	description      string
 	h, m, addedValue int
 	expected         string
-}{ {{range .J.add}}
+}
+
+var addTestCases = []testCaseAdd { {{range .J.add}}
 	{
 		description: {{printf "%q"  .Description}},
 		h:           {{printf "%d"  .Input.Hour}},
@@ -76,11 +80,13 @@ var addTestCases = []struct {
 	},{{end}}
 }
 
-var subtractTestCases = []struct {
+type testCaseSubtract struct {
 	description      		string
 	h, m, subtractedValue 	int
 	expected         		string
-}{ {{range .J.subtract}}
+}
+
+var subtractTestCases = []testCaseSubtract { {{range .J.subtract}}
 	{
 		description: 		{{printf "%q"  .Description}},
 		h:           		{{printf "%d"  .Input.Hour}},
@@ -93,11 +99,13 @@ var subtractTestCases = []struct {
 // Compare two clocks for equality
 type hm struct{ h, m int }
 
-var equalTestCases = []struct {
+type testCaseEqual struct {
 	description string
 	c1, c2      hm
 	expected    bool
-}{ {{range .J.equal}}
+}
+
+var equalTestCases = []testCaseEqual { {{range .J.equal}}
 	{
 		description: {{printf "%q"  .Description}},
 		c1:          hm{ {{printf "%d"  .Input.Clock1.Hour}} , {{printf "%d"  .Input.Clock1.Minute}} },

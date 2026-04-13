@@ -40,11 +40,13 @@ type probabilityTestCase struct {
 
 var tmpl = `{{.Header}}
 
-var sharedTestCase = []struct {
+type testCaseShared struct {
 	description string
 	input       []string
 	expected    bool
-}{ {{range .J.sharedBirthday}}
+}
+
+var sharedTestCase = []testCaseShared { {{range .J.sharedBirthday}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{printf "%#v" .Input.Birthdates}},
@@ -52,11 +54,13 @@ var sharedTestCase = []struct {
 	},{{end}}
 }
 
-var probabilityTestCase = []struct {
+type testCaseProbability struct {
 	description string
 	input       int
 	expected    float64
-}{ {{range .J.estimatedProbabilityOfSharedBirthday}}
+}
+
+var probabilityTestCase = []testCaseProbability { {{range .J.estimatedProbabilityOfSharedBirthday}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{.Input.GroupSize}},

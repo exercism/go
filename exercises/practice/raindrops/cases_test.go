@@ -5,11 +5,13 @@ package raindrops
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "the sound for 1 is 1",
 		input:       1,

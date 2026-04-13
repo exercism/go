@@ -30,15 +30,17 @@ type testCase struct {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    []string
-}{
-{{range .J.transpose}}{
-	description: 	{{printf "%q" .Description}},
-	input:			{{printf "%#v" .Input.Lines}},
-	expected:		{{printf "%#v" .Expected}},
-},
-{{end}}}
+}
+
+var testCases = []testCase { {{range .J.transpose}}
+	{
+		description: 	{{printf "%q" .Description}},
+		input:			{{printf "%#v" .Input.Lines}},
+		expected:		{{printf "%#v" .Expected}},
+	},{{end}}
+}
 `

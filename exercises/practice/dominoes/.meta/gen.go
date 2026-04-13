@@ -30,17 +30,18 @@ type testCase struct {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	dominoes    []Domino
 	valid       bool // true => can chain, false => cannot chain
-}{
-	{{range .J.canChain}}{
-			description: {{printf "%q" .Description}},
-			{{range .Comments}}// {{.}}
-			{{end}}dominoes: []Domino{ {{range .Input.Dominoes}}{ {{range .}} {{printf "%v" .}}, {{end}}}, {{end}} },
-			valid: {{printf "%v" .Expected}},
-		},
-	{{end}}
+}
+
+var testCases = []testCase { {{range .J.canChain}}
+	{
+		description: {{printf "%q" .Description}},
+		{{range .Comments}}// {{.}}
+		{{end}}dominoes: []Domino{ {{range .Input.Dominoes}}{ {{range .}} {{printf "%v" .}}, {{end}}}, {{end}} },
+		valid: {{printf "%v" .Expected}},
+	},{{end}}
 }
 `

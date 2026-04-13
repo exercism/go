@@ -50,8 +50,8 @@ type bucketTestCase struct {
 	expectedError   string
 }
 
-var testCases = []bucketTestCase {
-{{range .J.measure}}{
+var testCases = []bucketTestCase { {{range .J.measure}}
+	{
 		description:   	{{ printf "%q" .Description}},
 		bucketOne:     	{{ printf "%d" .Input.BucketOne}},
 		bucketTwo:      {{ printf "%d" .Input.BucketTwo}},
@@ -61,6 +61,6 @@ var testCases = []bucketTestCase {
 		moves:        	{{ printf "%d" .Expected.Moves}},
 		otherBucket:   	{{ printf "%d" .Expected.OtherBucket}},
 		expectedError: 	{{ printf "%q" .Expected.Error}},
-},
-{{end}}}
+	},{{end}}
+}
 `

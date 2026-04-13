@@ -5,12 +5,14 @@ package sumofmultiples
 // Source: exercism/problem-specifications
 // Commit: 42dd0ce Remove version (#1678)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	divisors    []int
 	limit       int
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no multiples within limit",
 		divisors:    []int{3, 5},

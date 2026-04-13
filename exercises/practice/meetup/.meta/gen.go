@@ -48,23 +48,24 @@ var tmpl = `{{.Header}}
 
 import "time"
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	year        int
 	month       time.Month
 	week        WeekSchedule
 	weekday     time.Weekday
 	expectedDay int
-}{
-{{range .J.meetup}}{
+}
+
+var testCases = []testCase { {{range .J.meetup}}
+	{
 		description: 	{{printf "%q" .Description}},
 		year:        	{{printf "%d" .Input.Year}},
 		month:       	{{printf "%d" .Input.Month}},
 		week:        	{{week .Input.Week}},
 		weekday:     	time.{{.Input.DayOfWeek}},
 		expectedDay:    {{printf "%d" .ExpectedDay}},
-	},
-{{end}}
+	},{{end}}
 }
 `
 

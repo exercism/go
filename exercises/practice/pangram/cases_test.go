@@ -5,11 +5,13 @@ package pangram
 // Source: exercism/problem-specifications
 // Commit: fc50648 Pangram: check case insensitive behavior (#1660)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty sentence",
 		input:       "",

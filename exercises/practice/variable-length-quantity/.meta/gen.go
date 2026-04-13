@@ -65,25 +65,28 @@ func (t testCase) ErrorExpected() bool {
 // template applied to above data structure generates the Go test cases
 var tmpl = `{{.Header}}
 
-var encodeTestCases = []struct {
+type testCaseEncode struct {
 	description string
 	input		[]uint32
 	expected	[]byte
-}{ 
-{{range .J.encode}}{
-		description: 	{{printf  "%q"  .Description    }},
-		input: 			{{printf  "%#v" .Input.Integers }},
-		expected: 		{{printf  "%#v" .ValueSliceByte }},
-	},
-{{end}}
 }
 
-var decodeTestCases = []struct {
+var encodeTestCases = []testCaseEncode { {{range .J.encode}}
+	{
+		description: 	{{printf  "%q"  .Description    }},
+		input: 		{{printf  "%#v" .Input.Integers }},
+		expected: 	{{printf  "%#v" .ValueSliceByte }},
+	},{{end}}
+}
+
+type testCaseDecode struct {
 	description     string
-	input			[]byte
-	expected		[]uint32
+	input		[]byte
+	expected	[]uint32
 	errorExpected	bool
-}{ {{range .J.decode}}{
+}
+
+var decodeTestCases = []testCaseDecode { {{range .J.decode}}{
 		description: 	{{printf "%q" 	.Description}},
 		input: 			[]byte{ {{range .Input.Integers}} {{printf "%#x" .}},{{end}}},
 		expected: 		{{printf "%#v" 	.ValueSliceUint32 }},

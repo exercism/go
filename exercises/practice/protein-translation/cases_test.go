@@ -5,12 +5,14 @@ package proteintranslation
 // Source: exercism/problem-specifications
 // Commit: 87bd801 fix: prevent matching STOP in a valid non-STOP sequence (#2458)
 
-var testCases = []struct {
+type testCase struct {
 	description   string
 	input         string
 	expected      []string
 	expectedError error
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:   "Empty RNA sequence results in no proteins",
 		input:         "",

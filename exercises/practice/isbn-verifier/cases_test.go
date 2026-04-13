@@ -5,11 +5,13 @@ package isbnverifier
 // Source: exercism/problem-specifications
 // Commit: 9d3c90b isbn-verifier: a check digit can only be one character (#2604)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	isbn        string
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "valid isbn",
 		isbn:        "3-598-21508-8",

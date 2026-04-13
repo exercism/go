@@ -5,12 +5,14 @@ package say
 // Source: exercism/problem-specifications
 // Commit: aad92b5 say: Add more tests (#2087)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int64
 	expected    string
 	expectError bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "zero",
 		input:       0,

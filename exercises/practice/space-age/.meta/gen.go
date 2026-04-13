@@ -39,17 +39,19 @@ func (t testCase) ExpectedValue() float64 {
 // Template to generate test cases.
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description		string
 	planet			Planet
 	seconds			float64
 	expected		float64
-}{ {{range .J.age}}
-{
-	description:	{{printf "%q"    .Description}},
-	planet:			{{printf "%q"   .Input.Planet}},
-	seconds:		{{printf "%.1f"  .Input.Seconds}},
-	expected:		{{printf "%.2f"  .ExpectedValue}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.age}}
+	{
+		description:	{{printf "%q"    .Description}},
+		planet:			{{printf "%q"   .Input.Planet}},
+		seconds:		{{printf "%.1f"  .Input.Seconds}},
+		expected:		{{printf "%.2f"  .ExpectedValue}},
+	},{{end}}
 }
 `

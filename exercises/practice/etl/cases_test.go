@@ -5,11 +5,13 @@ package etl
 // Source: exercism/problem-specifications
 // Commit: 65e86ee Rework etl documentation (#2250)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       map[int][]string
 	expected    map[string]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "single letter",
 		input:       map[int][]string{1: []string{"A"}},

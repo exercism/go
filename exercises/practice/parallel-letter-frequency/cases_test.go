@@ -5,11 +5,13 @@ package parallelletterfrequency
 // Source: exercism/problem-specifications
 // Commit: 822d524 parallel-letter-frequency: add canonical data (#2209)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    map[rune]int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "no texts",
 		input:       []string{},

@@ -5,11 +5,13 @@ package piglatin
 // Source: exercism/problem-specifications
 // Commit: d11557d New "qu" test for Pig Latin (#2507)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "word beginning with a",
 		input:       "apple",

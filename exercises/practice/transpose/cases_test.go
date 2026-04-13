@@ -5,11 +5,13 @@ package transpose
 // Source: exercism/problem-specifications
 // Commit: daf84d6 bowling, transpose: conform array format to rest of file
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    []string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty string",
 		input:       []string{},

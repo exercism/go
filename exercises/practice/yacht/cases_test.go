@@ -5,12 +5,14 @@ package yacht
 // Source: exercism/problem-specifications
 // Commit: 4758bf7 yacht: add test to ensure fives are handled (#1993)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	dice        []int
 	category    string
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "Yacht",
 		dice:        []int{5, 5, 5, 5, 5},

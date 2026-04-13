@@ -5,11 +5,13 @@ package squareroot
 // Source: exercism/problem-specifications
 // Commit: ffd3173 Square-Root: Add new exercise (#1582)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       int
 	expected    int
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "root of 1",
 		input:       1,

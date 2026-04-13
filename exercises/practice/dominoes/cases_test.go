@@ -5,11 +5,13 @@ package dominoes
 // Source: exercism/problem-specifications
 // Commit: b5bfcda Fix reference to Eulerian graph in comment (#2127)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	dominoes    []Domino
 	valid       bool // true => can chain, false => cannot chain
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty input = empty output",
 		dominoes:    []Domino{},

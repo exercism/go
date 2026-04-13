@@ -42,17 +42,19 @@ func (t testCase) ExpectError() bool {
 // Template to generate test cases.
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description	string
 	input		int64
 	expected	string
 	expectError	bool
-}{ {{range .J.say}}
-{
-	description:	{{printf "%q"  .Description}},
-	input:		{{printf "%v"  .Input.Number}},
-	expected: 	{{printf "%q"  .ExpectedValue}},
-	expectError: {{printf "%t"  .ExpectError}},
-},{{end}}
+}
+
+var testCases = []testCase { {{range .J.say}}
+	{
+		description:	{{printf "%q"  .Description}},
+		input:		{{printf "%v"  .Input.Number}},
+		expected: 	{{printf "%q"  .ExpectedValue}},
+		expectError: {{printf "%t"  .ExpectError}},
+	},{{end}}
 }
 `

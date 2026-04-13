@@ -5,11 +5,13 @@ package bob
 // Source: exercism/problem-specifications
 // Commit: 8ee2035 Let multi line question example be one sentence (#2498)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "stating something",
 		input:       "Tom-ay-to, tom-aaaah-to.",

@@ -33,11 +33,13 @@ type Case struct {
 // Template to generate two sets of test cases, one for Score tests and one for Roll tests.
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	input          [][]int
 	expectedOutput []Pair
-}{ {{range .J.saddlePoints}}
+}
+
+var testCases = []testCase { {{range .J.saddlePoints}}
 	{
 		description: {{printf "%q"  .Description}},
 		input: [][]int{

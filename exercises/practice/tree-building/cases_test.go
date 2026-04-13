@@ -5,12 +5,14 @@ package treebuilding
 // Source: exercism/problem-specifications
 // Commit: 884384d [tree-building] Add canonical data where there was none previously (#2643)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []Record
 	wantErr     bool
 	expected    *Node
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty list",
 		input:       []Record{},

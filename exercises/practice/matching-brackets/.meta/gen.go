@@ -36,11 +36,11 @@ type bracketTest struct {
 	expected    bool
 }
 
-var testCases = []bracketTest {
-{{range .J.isPaired}}{
-	description:  	{{printf "%q" .Description}},
-	input: 			{{printf "%q" .Input.Value}},
-	expected: 		{{.Expected}},
-},
-{{end}}}
+var testCases = []bracketTest { {{range .J.isPaired}}
+	{
+		description:  	{{printf "%q" .Description}},
+		input: 			{{printf "%q" .Input.Value}},
+		expected: 		{{.Expected}},
+	},{{end}}
+}
 `

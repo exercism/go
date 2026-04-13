@@ -5,7 +5,7 @@ package gocounting
 // Source: exercism/problem-specifications
 // Commit: 2e820e1 Auto-format portions of some JSON files (#1967)
 
-var oneTerritoryTestCases = []struct {
+type testCaseOne struct {
 	description string
 	board       []string
 	posX        int
@@ -13,7 +13,9 @@ var oneTerritoryTestCases = []struct {
 	owner       string
 	territory   [][2]int
 	expectedErr string
-}{
+}
+
+var oneTerritoryTestCases = []testCaseOne{
 	{
 		description: "Black corner territory on 5x5 board",
 		board:       []string{"  B  ", " B B ", "B W B", " W W ", "  W  "},
@@ -88,11 +90,13 @@ var oneTerritoryTestCases = []struct {
 	},
 }
 
-var allTerritoriesTestCases = []struct {
+type testCaseAll struct {
 	description string
 	input       []string
 	expected    AllTerritories
-}{
+}
+
+var allTerritoriesTestCases = []testCaseAll{
 	{
 		description: "One territory is the whole board",
 		input:       []string{" "},

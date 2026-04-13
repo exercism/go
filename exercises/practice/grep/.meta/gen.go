@@ -49,20 +49,21 @@ var tmpl = `{{.Header}}
 var fileContentData = []string{ {{range $line := fileContentData .Comments}}{{printf "\n%q," $line}}{{end}}
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	pattern     string
 	flags       []string
 	files       []string
 	expected    []string
-}{
-{{range .J.grep}}{
+}
+
+var testCases = []testCase { {{range .J.grep}}
+	{
 		description: {{printf "%q" .Description}},
 		pattern: {{printf "%q" .Input.Pattern}},
 		flags: {{printf "%#v" .Input.Flags}},
 		files: {{printf "%#v" .Input.Files}},
 		expected: {{printf "%#v" .Expected}},
-},
-{{end}}
+	},{{end}}
 }
 `

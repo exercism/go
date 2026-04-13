@@ -10,11 +10,13 @@ type bottleSongInput struct {
 	takeDown     int
 }
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       bottleSongInput
 	expected    []string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "first generic verse",
 		input: bottleSongInput{

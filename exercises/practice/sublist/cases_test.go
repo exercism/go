@@ -5,12 +5,14 @@ package sublist
 // Source: exercism/problem-specifications
 // Commit: 8b5bd7c Update canonical-data.json (#2527)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	listOne     []int
 	listTwo     []int
 	expected    Relation
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "empty lists",
 		listOne:     []int{},

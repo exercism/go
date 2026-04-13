@@ -46,12 +46,14 @@ func (tc testCase) ParseExpected() []string {
 
 var tmpl = `{{.Header}}
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    []string
 	errorMsg    string
-}{ {{range .J.convert}}
+}
+
+var testCases = []testCase { {{range .J.convert}}
 	{
 		description: {{printf "%q" .Description}},
 		input:       {{printf "%q" .ParseInput}},{{if .IsError}}

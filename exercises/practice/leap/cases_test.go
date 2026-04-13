@@ -5,11 +5,13 @@ package leap
 // Source: exercism/problem-specifications
 // Commit: a2c75d2 leap: fix typo (#1726)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	year        int
 	expected    bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "year not divisible by 4 in common year",
 		year:        2015,

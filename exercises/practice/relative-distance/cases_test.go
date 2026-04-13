@@ -5,14 +5,16 @@ package relativedistance
 // Source: exercism/problem-specifications
 // Commit: ad7e332 fix: relative distance (#2545)
 
-var testCases = []struct {
+type testCase struct {
 	description    string
 	tree           map[string][]string
 	personA        string
 	personB        string
 	expectedDegree int
 	expectedOk     bool
-}{
+}
+
+var testCases = []testCase{
 	{
 		description:    "Direct parent-child relation",
 		tree:           map[string][]string{"Tomoko": []string{"Aditi"}, "Vera": []string{"Tomoko"}},

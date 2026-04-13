@@ -49,12 +49,12 @@ type wordyTest struct {
 	expected    int
 }
 
-var tests = []wordyTest {
-{{range .J.answer}}{
-	description: {{printf "%q"  .Description}},
-	question: {{printf "%q" .Input.Question}},
-	expectError: {{printf "%t" .ExpectError }},
-	expected: {{printf "%d"  .ExpectedValue}},
-},
-{{end}}}
+var tests = []wordyTest { {{range .J.answer}}
+	{
+		description: {{printf "%q"  .Description}},
+		question: {{printf "%q" .Input.Question}},
+		expectError: {{printf "%t" .ExpectError }},
+		expected: {{printf "%d"  .ExpectedValue}},
+	},{{end}}
+}
 `

@@ -5,16 +5,17 @@ package rationalnumbers
 // Source: exercism/problem-specifications
 // Commit: 4bcdfc3 rational-numbers: test to reduce abs value (#1938)
 
-var testCasesAbs = []struct {
+type testCaseAbs struct {
 	description string
 	input       Rational
 	expected    Rational
-}{
-	{
-		description: "Absolute value of a positive rational number",
-		input:       Rational{1, 2},
-		expected:    Rational{1, 2},
-	},
+}
+
+var testCasesAbs = []testCaseAbs{{
+	description: "Absolute value of a positive rational number",
+	input:       Rational{1, 2},
+	expected:    Rational{1, 2},
+},
 	{
 		description: "Absolute value of a positive rational number with negative numerator and denominator",
 		input:       Rational{-1, -2},
@@ -42,16 +43,17 @@ var testCasesAbs = []struct {
 	},
 }
 
-var testCasesAdd = []struct {
+type testCaseAdd struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-	{
-		description: "Add two positive rational numbers",
-		input:       [2]Rational{{1, 2}, {2, 3}},
-		expected:    Rational{7, 6},
-	},
+}
+
+var testCasesAdd = []testCaseAdd{{
+	description: "Add two positive rational numbers",
+	input:       [2]Rational{{1, 2}, {2, 3}},
+	expected:    Rational{7, 6},
+},
 	{
 		description: "Add a positive rational number and a negative rational number",
 		input:       [2]Rational{{1, 2}, {-2, 3}},
@@ -69,16 +71,17 @@ var testCasesAdd = []struct {
 	},
 }
 
-var testCasesSub = []struct {
+type testCaseSub struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-	{
-		description: "Subtract two positive rational numbers",
-		input:       [2]Rational{{1, 2}, {2, 3}},
-		expected:    Rational{-1, 6},
-	},
+}
+
+var testCasesSub = []testCaseSub{{
+	description: "Subtract two positive rational numbers",
+	input:       [2]Rational{{1, 2}, {2, 3}},
+	expected:    Rational{-1, 6},
+},
 	{
 		description: "Subtract a positive rational number and a negative rational number",
 		input:       [2]Rational{{1, 2}, {-2, 3}},
@@ -96,16 +99,17 @@ var testCasesSub = []struct {
 	},
 }
 
-var testCasesMul = []struct {
+type testCaseMul struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-	{
-		description: "Multiply two positive rational numbers",
-		input:       [2]Rational{{1, 2}, {2, 3}},
-		expected:    Rational{1, 3},
-	},
+}
+
+var testCasesMul = []testCaseMul{{
+	description: "Multiply two positive rational numbers",
+	input:       [2]Rational{{1, 2}, {2, 3}},
+	expected:    Rational{1, 3},
+},
 	{
 		description: "Multiply a negative rational number by a positive rational number",
 		input:       [2]Rational{{-1, 2}, {2, 3}},
@@ -133,16 +137,17 @@ var testCasesMul = []struct {
 	},
 }
 
-var testCasesDiv = []struct {
+type testCaseDiv struct {
 	description string
 	input       [2]Rational
 	expected    Rational
-}{
-	{
-		description: "Divide two positive rational numbers",
-		input:       [2]Rational{{1, 2}, {2, 3}},
-		expected:    Rational{3, 4},
-	},
+}
+
+var testCasesDiv = []testCaseDiv{{
+	description: "Divide two positive rational numbers",
+	input:       [2]Rational{{1, 2}, {2, 3}},
+	expected:    Rational{3, 4},
+},
 	{
 		description: "Divide a positive rational number by a negative rational number",
 		input:       [2]Rational{{1, 2}, {-2, 3}},
@@ -160,18 +165,19 @@ var testCasesDiv = []struct {
 	},
 }
 
-var testCasesExprational = []struct {
+type testCaseExprational struct {
 	description string
 	inputR      Rational
 	inputInt    int
 	expected    Rational
-}{
-	{
-		description: "Raise a positive rational number to a positive integer power",
-		inputR:      Rational{1, 2},
-		inputInt:    3,
-		expected:    Rational{1, 8},
-	},
+}
+
+var testCasesExprational = []testCaseExprational{{
+	description: "Raise a positive rational number to a positive integer power",
+	inputR:      Rational{1, 2},
+	inputInt:    3,
+	expected:    Rational{1, 8},
+},
 	{
 		description: "Raise a negative rational number to a positive integer power",
 		inputR:      Rational{-1, 2},
@@ -222,18 +228,19 @@ var testCasesExprational = []struct {
 	},
 }
 
-var testCasesExpreal = []struct {
+type testCaseExpreal struct {
 	description string
 	inputInt    int
 	inputR      Rational
 	expected    float64
-}{
-	{
-		description: "Raise a real number to a positive rational number",
-		inputInt:    8,
-		inputR:      Rational{4, 3},
-		expected:    16,
-	},
+}
+
+var testCasesExpreal = []testCaseExpreal{{
+	description: "Raise a real number to a positive rational number",
+	inputInt:    8,
+	inputR:      Rational{4, 3},
+	expected:    16,
+},
 	{
 		description: "Raise a real number to a negative rational number",
 		inputInt:    9,
@@ -248,16 +255,17 @@ var testCasesExpreal = []struct {
 	},
 }
 
-var testCasesReduce = []struct {
+type testCaseReduce struct {
 	description string
 	input       Rational
 	expected    Rational
-}{
-	{
-		description: "Reduce a positive rational number to lowest terms",
-		input:       Rational{2, 4},
-		expected:    Rational{1, 2},
-	},
+}
+
+var testCasesReduce = []testCaseReduce{{
+	description: "Reduce a positive rational number to lowest terms",
+	input:       Rational{2, 4},
+	expected:    Rational{1, 2},
+},
 	{
 		description: "Reduce places the minus sign on the numerator",
 		input:       Rational{3, -4},

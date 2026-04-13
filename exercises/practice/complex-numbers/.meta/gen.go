@@ -134,152 +134,166 @@ type complexNumber struct {
 	b float64
 }
 
-var realTestCases = []struct {
+type testCaseReal struct {
 	description string
 	in          complexNumber
 	want    float64
-}{
+}
+
+var realTestCases = []testCaseReal {
 	{{range .J.real}}{
-		description: {{printf "%q"  	.Description}},
-	    in: complexNumber{
-			a: {{printf "%f"  	.GetZ.A}},
-			b: {{printf "%f"  	.GetZ.B}},
+		description: {{printf "%q" .Description}},
+		in: complexNumber{
+			a: {{printf "%f" .GetZ.A}},
+			b: {{printf "%f" .GetZ.B}},
 		},
-		want:    {{printf "%f"  	.GetExpected.A}},
+		want:    {{printf "%f" .GetExpected.A}},
 	},
 	{{end}}
 }
 
-var imaginaryTestCases = []struct {
+type testCaseImag struct {
 	description string
 	in          complexNumber
 	want    float64
-}{
+}
+
+var imaginaryTestCases = []testCaseImag {
 	{{range .J.imaginary}}{
-		description: {{printf "%q"  	.Description}},
-	    in: complexNumber{
-			a: {{printf "%f"  	.GetZ.A}},
-			b: {{printf "%f"  	.GetZ.B}},
+		description: {{printf "%q" .Description}},
+		in: complexNumber{
+			a: {{printf "%f" .GetZ.A}},
+			b: {{printf "%f" .GetZ.B}},
 		},
-		want:  {{printf "%f"  	.GetExpected.A}},
+		want:  {{printf "%f" .GetExpected.A}},
 	},
 	{{end}}
 }
 
-var addTestCases = []struct {
+type testCaseAdd struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want    complexNumber
-}{
+}
+
+var addTestCases = []testCaseAdd {
 	{{range .J.add}}{
-		description: {{printf "%q"  	.Description}},
-	    n1: complexNumber{
-			a: {{printf "%f"  	.GetZ1.A}},
-			b: {{printf "%f"  	.GetZ1.B}},
+		description: {{printf "%q" .Description}},
+		n1: complexNumber{
+			a: {{printf "%f" .GetZ1.A}},
+			b: {{printf "%f" .GetZ1.B}},
 		},
 		n2: complexNumber{
-			a: {{printf "%f"  	.GetZ2.A}},
-			b: {{printf "%f"  	.GetZ2.B}},
+			a: {{printf "%f" .GetZ2.A}},
+			b: {{printf "%f" .GetZ2.B}},
 		},
 		want:    complexNumber{
-			a: {{printf "%f"  	.GetExpected.A}},
-			b: {{printf "%f"  	.GetExpected.B}},
+			a: {{printf "%f" .GetExpected.A}},
+			b: {{printf "%f" .GetExpected.B}},
 		},
 	},
 	{{end}}
 }
 
-var subtractTestCases = []struct {
+type testCaseSubtract struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want    complexNumber
-}{
+}
+
+var subtractTestCases = []testCaseSubtract {
 	{{range .J.sub}}{
-		description: {{printf "%q"  	.Description}},
-	    n1: complexNumber{
-			a: {{printf "%f"  	.GetZ1.A}},
-			b: {{printf "%f"  	.GetZ1.B}},
+		description: {{printf "%q" .Description}},
+		n1: complexNumber{
+			a: {{printf "%f" .GetZ1.A}},
+			b: {{printf "%f" .GetZ1.B}},
 		},
 		n2: complexNumber{
-			a: {{printf "%f"  	.GetZ2.A}},
-			b: {{printf "%f"  	.GetZ2.B}},
+			a: {{printf "%f" .GetZ2.A}},
+			b: {{printf "%f" .GetZ2.B}},
 		},
 		want:    complexNumber{
-			a: {{printf "%f"  	.GetExpected.A}},
-			b: {{printf "%f"  	.GetExpected.B}},
+			a: {{printf "%f" .GetExpected.A}},
+			b: {{printf "%f" .GetExpected.B}},
 		},
 	},
 	{{end}}
 }
 
-var divideTestCases = []struct {
+type testCaseDivide struct {
 	description string
 	n1          complexNumber
 	n2          complexNumber
 	want    complexNumber
-}{
+}
+
+var divideTestCases = []testCaseDivide {
 	{{range .J.div}}{
-		description: {{printf "%q"  	.Description}},
-	    n1: complexNumber{
-			a: {{printf "%f"  	.GetZ1.A}},
-			b: {{printf "%f"  	.GetZ1.B}},
+		description: {{printf "%q" .Description}},
+		n1: complexNumber{
+			a: {{printf "%f" .GetZ1.A}},
+			b: {{printf "%f" .GetZ1.B}},
 		},
 		n2: complexNumber{
-			a: {{printf "%f"  	.GetZ2.A}},
-			b: {{printf "%f"  	.GetZ2.B}},
+			a: {{printf "%f" .GetZ2.A}},
+			b: {{printf "%f" .GetZ2.B}},
 		},
 		want:    complexNumber{
-			a: {{printf "%f"  	.GetExpected.A}},
-			b: {{printf "%f"  	.GetExpected.B}},
+			a: {{printf "%f" .GetExpected.A}},
+			b: {{printf "%f" .GetExpected.B}},
 		},
 	},
 	{{end}}
 }
 
-var multiplyTestCases = []struct {
+type testCaseMultiply struct {
 	description string
-	n1          complexNumber
-	n2          *complexNumber // if n2 is nil it is a multiplication with the factor
-	factor 		float64
-	want    	complexNumber
-}{
+	n1     complexNumber
+	n2     *complexNumber // if n2 is nil it is a multiplication with the factor
+	factor float64
+	want   complexNumber
+}
+
+var multiplyTestCases = []testCaseMultiply {
 	{{range .J.mul}}{
-		description: {{printf "%q"  	.Description}},
+		description: {{printf "%q" .Description}},
 		{{- if .IsSimpleFactor }}
 			n1: complexNumber{
-				a: {{printf "%f"  	.GetNeededZ.A}},
-				b: {{printf "%f"  	.GetNeededZ.B}},
+				a: {{printf "%f" .GetNeededZ.A}},
+				b: {{printf "%f" .GetNeededZ.B}},
 			},
 		{{else}}
 			n1: complexNumber{
-				a: {{printf "%f"  	.GetZ1.A}},
-				b: {{printf "%f"  	.GetZ1.B}},
+				a: {{printf "%f" .GetZ1.A}},
+				b: {{printf "%f" .GetZ1.B}},
 			},
 		{{- end}}
 		{{- if .IsSimpleFactor }}
 			n2: nil,
 		{{else}}
 			n2: &complexNumber{
-				a: {{printf "%f"  	.GetZ2.A}},
-				b: {{printf "%f"  	.GetZ2.B}},
+				a: {{printf "%f" .GetZ2.A}},
+				b: {{printf "%f" .GetZ2.B}},
 			},
 		{{- end}}
-		factor: {{printf "%f"  	.GetFactor}},
-		want:    complexNumber{
-			a: {{printf "%f"  	.GetExpected.A}},
-			b: {{printf "%f"  	.GetExpected.B}},
+		factor: {{printf "%f" .GetFactor}},
+		want:   complexNumber{
+			a: {{printf "%f" .GetExpected.A}},
+			b: {{printf "%f" .GetExpected.B}},
 		},
 	},
 	{{end}}
 }
 
-var conjugateTestCases = []struct {
+type testCaseConjugate struct {
 	description string
 	in          complexNumber
 	want    	complexNumber
-}{
+}
+
+var conjugateTestCases = []testCaseConjugate {
 	{{range .J.conjugate}}{
 		description: {{printf "%q"  	.Description}},
 	    in: complexNumber{
@@ -294,11 +308,13 @@ var conjugateTestCases = []struct {
 	{{end}}
 }
 
-var absTestCases = []struct {
+type testCaseAbs struct {
 	description string
 	in          complexNumber
 	want    float64
-}{
+}
+
+var absTestCases = []testCaseAbs {
 	{{range .J.abs}}{
 		description: {{printf "%q"  	.Description}},
 	    in: complexNumber{
@@ -310,11 +326,13 @@ var absTestCases = []struct {
 	{{end}}
 }
 
-var expTestCases = []struct {
+type testCaseExp struct {
 	description string
 	in          complexNumber
 	want    complexNumber
-}{
+}
+
+var expTestCases = []testCaseExp {
 	{{range .J.exp}}{
 		description: {{printf "%q"  	.Description}},
 	    in: complexNumber{

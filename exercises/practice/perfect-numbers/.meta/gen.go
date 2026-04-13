@@ -51,18 +51,19 @@ func (t testCase) ExpectedClassification() string {
 // Template to generate test cases.
 var tmpl = `{{.Header}}
 
-var classificationTestCases = []struct {
+type testCase struct {
 	description	string
 	input		int64
 	ok		bool
 	expected	Classification
-}{
-{{range .J.classify}}{
-	description:	{{printf "%q" .Description}},
-	input:			{{printf "%d" .Input.Number}},
-	ok: 			{{printf "%t" .Valid}},
-	{{if .Valid}} expected: 		{{printf "%s" .ExpectedClassification}},{{- end}}
-},
-{{end}}
+}
+
+var classificationTestCases = []testCase { {{range .J.classify}}
+	{
+		description: {{printf "%q" .Description}},
+		input:       {{printf "%d" .Input.Number}},
+		ok:          {{printf "%t" .Valid}},
+		{{if .Valid}} expected:      {{printf "%s" .ExpectedClassification}},{{- end}}
+	},{{end}}
 }
 `

@@ -5,12 +5,14 @@ package forth
 // Source: exercism/problem-specifications
 // Commit: 4b91a92 Forth: additional tests for "combined arithmetic" category (#2477)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       []string
 	expected    []int  // nil slice indicates error expected.
 	explainText string // error explanation text
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "numbers just get pushed onto the stack",
 		input:       []string{"1 2 3 4 5"},

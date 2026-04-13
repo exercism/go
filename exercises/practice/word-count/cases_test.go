@@ -5,11 +5,13 @@ package wordcount
 // Source: exercism/problem-specifications
 // Commit: ef25a61 Word count: test with quotations for word with apostrophe (#2042)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    Frequency
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "count one word",
 		input:       "word",

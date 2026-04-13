@@ -5,11 +5,13 @@ package intergalactictransmission
 // Source: exercism/problem-specifications
 // Commit: 75e16b1 Add intergalactic-transmission exercise (#2543)
 
-var transmitCases = []struct {
+type testCaseTransmit struct {
 	description string
 	input       []byte
 	expected    []byte
-}{
+}
+
+var transmitCases = []testCaseTransmit{
 	{
 		description: "empty message",
 		input:       []byte{},
@@ -67,12 +69,14 @@ var transmitCases = []struct {
 	},
 }
 
-var decodeCases = []struct {
+type testCaseDecode struct {
 	description   string
 	input         []byte
 	expectedValue []byte
 	expectedError string
-}{
+}
+
+var decodeCases = []testCaseDecode{
 	{
 		description:   "empty message",
 		input:         []byte{},

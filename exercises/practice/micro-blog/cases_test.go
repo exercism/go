@@ -5,11 +5,13 @@ package microblog
 // Source: exercism/problem-specifications
 // Commit: 5fc501b Remove unneeded nesting (#1798)
 
-var testCases = []struct {
+type testCase struct {
 	description string
 	input       string
 	expected    string
-}{
+}
+
+var testCases = []testCase{
 	{
 		description: "English language short",
 		input:       "Hi",
