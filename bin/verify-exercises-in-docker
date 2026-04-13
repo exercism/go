@@ -55,7 +55,7 @@ verify_exercise() {
         trap 'rm -rf "${tmpdir}"' EXIT    # remove tmpdir when subshell ends
         cp -r "${dir}/." "${tmpdir}" || exit
         copy_example "${tmpdir}"
-        run_tests "${slug}" "${tmpdir}" || { cat "${PWD}/results.json"; exit 1; }
+        run_tests "${slug}" "${tmpdir}" || { cat "${tmpdir}/results.json"; exit 1; }
     )
 }
 
