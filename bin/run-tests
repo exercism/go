@@ -35,7 +35,7 @@ for parentdir in concept practice; do
       exemplar="${dir}.meta/example.go"
     fi
     if [ ! -f $exemplar ]; then
-      echo "Missing examplar in ${dir}.meta called exemplar.go or example.go"
+      echo "Missing exemplar in ${dir}.meta called exemplar.go or example.go"
       exit 1
     fi
     mod="${dir}go.mod"
