@@ -28,13 +28,13 @@ func TestOvenTime(t *testing.T) {
 func TestRemainingOvenTime(t *testing.T) {
 	tests := []lasagnaTests{
 		{
-			name:     "Remaining minutes in oven",
+			name:     "Remaining minutes in oven after 15 min",
 			layers:   0,
 			time:     15,
 			expected: 25,
 		},
 		{
-			name:     "Remaining minutes in oven",
+			name:     "Remaining minutes in oven after 30 min",
 			layers:   0,
 			time:     30,
 			expected: 10,
