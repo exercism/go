@@ -21,12 +21,6 @@ var testCases = []anagramTest{
 	},
 	{
 		description: "detects two anagrams",
-		subject:     "master",
-		candidates:  []string{"stream", "pigeon", "maters"},
-		expected:    []string{"stream", "maters"},
-	},
-	{
-		description: "detects two anagrams",
 		subject:     "solemn",
 		candidates:  []string{"lemons", "cherry", "melons"},
 		expected:    []string{"lemons", "melons"},
