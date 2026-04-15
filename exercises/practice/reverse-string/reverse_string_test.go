@@ -6,7 +6,17 @@ import (
 )
 
 func TestReverse(t *testing.T) {
-	for _, tc := range append(testCases, multiByteCases...) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Reverse(tc.input); actual != tc.expected {
+				t.Fatalf("Reverse(%q) = %q, want: %q", tc.input, actual, tc.expected)
+			}
+		})
+	}
+}
+
+func TestReverseMultibyte(t *testing.T) {
+	for _, tc := range multiByteCases {
 		t.Run(tc.description, func(t *testing.T) {
 			if actual := Reverse(tc.input); actual != tc.expected {
 				t.Fatalf("Reverse(%q) = %q, want: %q", tc.input, actual, tc.expected)
