@@ -2,7 +2,9 @@ package main
 
 import (
 	"../../../../gen"
+	"fmt"
 	"log"
+	"strings"
 	"text/template"
 )
 
@@ -22,18 +24,23 @@ func main() {
 
 type testCase struct {
 	Description string `json:"description"`
+	Parents     []string
 	Input       struct {
 		Instructions []string `json:"instructions"`
 	} `json:"input"`
 	Expected any `json:"expected"`
 }
 
-func (t testCase) ExpectedNumbers() []int {
-	return gen.FloatSliceToInts(t.Expected)
+func (tc testCase) ExtendedDescription() string {
+	return fmt.Sprintf("%q", strings.Join(append(tc.Parents, tc.Description), " -> "))
 }
 
-func (t testCase) ExplainText() string {
-	return gen.ErrorMessage(t.Expected)
+func (tc testCase) ExpectedNumbers() []int {
+	return gen.FloatSliceToInts(tc.Expected)
+}
+
+func (tc testCase) ExplainText() string {
+	return gen.ErrorMessage(tc.Expected)
 }
 
 // template applied to above data structure generates the Go test cases
@@ -48,7 +55,7 @@ type testCase struct {
 
 var testCases = []testCase { {{range .J.evaluate}}
 	{
-		description: {{printf "%q"  .Description}},
+		description: {{.ExtendedDescription}},
 		input: {{printf "%#v" .Input.Instructions}},
 		expected: {{printf "%#v" .ExpectedNumbers}},
 		explainText: {{printf "%q"  .ExplainText}},
