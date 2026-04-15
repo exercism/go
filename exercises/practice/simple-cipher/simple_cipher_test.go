@@ -1,144 +1,254 @@
 package cipher
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 // type for testing implementations of the Cipher interface
 type cipherTest struct {
-	source string // source text, any UTF-8
-	cipher string // cipher text, result of Encode(st)
-	plain  string // decoded plain text, result of Decode(ct)
-}
-
-var caesarPrepped = []cipherTest{
-	{"iamapandabear", "ldpdsdqgdehdu", "iamapandabear"},
-	{"programmingisawesome", "surjudpplqjlvdzhvrph", "programmingisawesome"},
-	{"todayisholiday", "wrgdblvkrolgdb", "todayisholiday"},
-	{"venividivici", "yhqlylglylfl", "venividivici"},
+	description string
+	source      string // source text, any UTF-8
+	cipher      string // cipher text, result of Encode(st)
+	plain       string // decoded plain text, result of Decode(ct)
 }
 
 var caesarTests = []cipherTest{
-	{"Go, go, gophers", "jrjrjrskhuv", "gogogophers"},
-	{"I am a panda bear.", "ldpdsdqgdehdu", "iamapandabear"},
-	{"Programming is AWESOME!", "surjudpplqjlvdzhvrph", "programmingisawesome"},
-	{"today is holiday", "wrgdblvkrolgdb", "todayisholiday"},
-	{"Twas the night before Christmas", "wzdvwkhqljkwehiruhfkulvwpdv", "twasthenightbeforechristmas"},
-	{" -- @#!", "", ""},
-	{"", "", ""},
+	{
+		description: "Caeser iamapandabear",
+		source:      "iamapandabear",
+		cipher:      "ldpdsdqgdehdu",
+		plain:       "iamapandabear",
+	},
+	{
+		description: "Caeser programmingisawesome",
+		source:      "programmingisawesome",
+		cipher:      "surjudpplqjlvdzhvrph",
+		plain:       "programmingisawesome",
+	},
+	{
+		description: "Caeser todayisholiday",
+		source:      "todayisholiday",
+		cipher:      "wrgdblvkrolgdb",
+		plain:       "todayisholiday",
+	},
+	{
+		description: "Caeser venividivici",
+		source:      "venividivici",
+		cipher:      "yhqlylglylfl",
+		plain:       "venividivici",
+	},
+	{
+		description: "Caeser Go, go, gophers",
+		source:      "Go, go, gophers",
+		cipher:      "jrjrjrskhuv",
+		plain:       "gogogophers",
+	},
+	{
+		description: "Caeser I am a panda bear.",
+		source:      "I am a panda bear.",
+		cipher:      "ldpdsdqgdehdu",
+		plain:       "iamapandabear",
+	},
+	{
+		description: "Caeser Programming is AWESOME!",
+		source:      "Programming is AWESOME!",
+		cipher:      "surjudpplqjlvdzhvrph",
+		plain:       "programmingisawesome",
+	},
+	{
+		description: "Caeser today is holiday",
+		source:      "today is holiday",
+		cipher:      "wrgdblvkrolgdb",
+		plain:       "todayisholiday",
+	},
+	{
+		description: "Caeser Twas the night before Christmas",
+		source:      "Twas the night before Christmas",
+		cipher:      "wzdvwkhqljkwehiruhfkulvwpdv",
+		plain:       "twasthenightbeforechristmas",
+	},
+	{
+		description: "Caeser  -- @#!",
+		source:      " -- @#!",
+		cipher:      "",
+		plain:       "",
+	},
+	{
+		description: "Caeser empty",
+		source:      "",
+		cipher:      "",
+		plain:       "",
+	},
 }
 
 func TestCaesar(t *testing.T) {
-	c := NewCaesar()
-	t.Run("no extra symbols", func(t *testing.T) {
-		testCipher(c, caesarPrepped, t)
-	})
-	t.Run("with extra symbols", func(t *testing.T) {
-		testCipher(c, caesarTests, t)
-	})
-}
-
-func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
-	for _, test := range tests {
-		t.Run(fmt.Sprintf("Encode(%q)", test.source), func(tt *testing.T) {
-			if enc := c.Encode(test.source); enc != test.cipher {
-				tt.Fatalf("Encode(%q) = %q, want %q.", test.source, enc, test.cipher)
+	for _, tc := range caesarTests {
+		t.Run(tc.description, func(tt *testing.T) {
+			c := NewCaesar()
+			if got := c.Encode(tc.source); got != tc.cipher {
+				tt.Fatalf("NewCaesar().Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
 			}
-		})
-		t.Run(fmt.Sprintf("Decode(%q)", test.cipher), func(tt *testing.T) {
-			if dec := c.Decode(test.cipher); dec != test.plain {
-				tt.Fatalf("Decode(%q) = %q, want %q.", test.cipher, dec, test.plain)
+			if got := c.Decode(tc.cipher); got != tc.plain {
+				tt.Fatalf("NewCaesar().Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
 			}
 		})
 	}
 }
 
-var NSATests = []cipherTest{
-	{"THE ENEMY IS NEAR", "qebbkbjvfpkbxo", "theenemyisnear"},
+var nsaTests = []cipherTest{
 	{
-		"SPIES SEND SECRET MESSAGES",
-		"pmfbppbkapbzobqjbppxdbp",
-		"spiessendsecretmessages",
+		description: "Shift() THE ENEMY IS NEAR",
+		source:      "THE ENEMY IS NEAR",
+		cipher:      "qebbkbjvfpkbxo",
+		plain:       "theenemyisnear",
 	},
 	{
-		"THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
-		"qeljxpgbccboplkabpfdkbaxprypqfqrqflkzfmebo",
-		"thomasjeffersondesignedasubstitutioncipher",
+		description: "Shift() SPIES SEND SECRET MESSAGES",
+		source:      "SPIES SEND SECRET MESSAGES",
+		cipher:      "pmfbppbkapbzobqjbppxdbp",
+		plain:       "spiessendsecretmessages",
 	},
 	{
-		"the quick brown fox jumps over the lazy dog",
-		"qebnrfzhyoltkclugrjmplsboqebixwvald",
-		"thequickbrownfoxjumpsoverthelazydog",
+		description: "Shift() THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
+		source:      "THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
+		cipher:      "qeljxpgbccboplkabpfdkbaxprypqfqrqflkzfmebo",
+		plain:       "thomasjeffersondesignedasubstitutioncipher",
+	},
+	{
+		description: "Shift() the quick brown fox jumps over the lazy dog",
+		source:      "the quick brown fox jumps over the lazy dog",
+		cipher:      "qebnrfzhyoltkclugrjmplsboqebixwvald",
+		plain:       "thequickbrownfoxjumpsoverthelazydog",
 	},
 }
 
 func TestShift(t *testing.T) {
-	// test shift(3) against Caesar cases.
-	t.Run(fmt.Sprintf("key=%d", 3), func(t *testing.T) {
-		c := NewShift(3)
-		if c == nil {
-			t.Fatal("NewShift(3): got nil, want non-nil Cipher")
-		}
-		testCipher(c, caesarTests, t)
-	})
-
-	// NSA and WP say Caesar uses shift of -3
-	t.Run(fmt.Sprintf("key=%d", -3), func(t *testing.T) {
-		c := NewShift(-3)
-		if c == nil {
-			t.Fatal("NewShift(-3): got nil, want non-nil Cipher")
-		}
-		testCipher(c, NSATests, t)
-	})
-}
-
-func TestWrongShiftKey(t *testing.T) {
-	for _, s := range []int{-27, -26, 0, 26, 27} {
-		if NewShift(s) != nil {
-			t.Errorf("NewShift(%d): got non-nil, want nil", s)
-		}
-	}
-}
-
-var vtests = []struct {
-	key   string
-	tests []cipherTest
-}{
-	{"lemon", []cipherTest{{"ATTACKATDAWN", "lxfopvefrnhr", "attackatdawn"}}},
-	{"abcdefghij", []cipherTest{
-		{"aaaaaaaaaa", "abcdefghij", "aaaaaaaaaa"},
-		{"zzzzzzzzzz", "zabcdefghi", "zzzzzzzzzz"},
-	}},
-	{"iamapandabear", []cipherTest{
-		{"I am a panda bear.", "qayaeaagaciai", "iamapandabear"},
-	}},
-	{"duxrceqyaimciuucnelkeoxjhdyduu", []cipherTest{
-		{"Diffie Hellman", "gccwkixcltycv", "diffiehellman"},
-	}},
-	{"qgbvno", []cipherTest{
-		{"cof-FEE, 123!", "sugars", "coffee"},
-	}},
-}
-
-func TestVigenere(t *testing.T) {
-	for _, test := range vtests {
-		t.Run(fmt.Sprintf("key=%s", test.key), func(t *testing.T) {
-			v := NewVigenere(test.key)
-			if v == nil {
-				t.Fatalf("NewVigenere(%q): got nil, want non-nil Cipher",
-					test.key)
+	for _, tc := range nsaTests {
+		t.Run(tc.description, func(tt *testing.T) {
+			c := NewShift(-3)
+			if got := c.Encode(tc.source); got != tc.cipher {
+				tt.Fatalf("NewShift(-3).Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
 			}
-			testCipher(v, test.tests, t)
+			if got := c.Decode(tc.cipher); got != tc.plain {
+				tt.Fatalf("NewShift(-3).Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
+			}
 		})
 	}
 }
 
+type invalidShiftTestCase struct {
+	description string
+	shift       int
+}
+
+var invalidShiftTestCases = []invalidShiftTestCase{
+	{description: "shift by -27", shift: -27},
+	{description: "shift by -26", shift: -26},
+	{description: "shift by 0", shift: 0},
+	{description: "shift by 26", shift: 26},
+	{description: "shift by 27", shift: 27},
+}
+
+func TestWrongShiftKey(t *testing.T) {
+	for _, tc := range invalidShiftTestCases {
+		t.Run(tc.description, func(tt *testing.T) {
+			if NewShift(tc.shift) != nil {
+				t.Errorf("NewShift(%d): got non-nil, want nil", tc.shift)
+			}
+		})
+	}
+}
+
+type vigenereTestCase struct {
+	description string
+	key         string
+	source      string // source text, any UTF-8
+	cipher      string // cipher text, result of Encode(st)
+	plain       string // decoded plain text, result of Decode(ct)
+}
+
+var vtests = []vigenereTestCase{
+	{
+		description: "lemon dawn",
+		key:         "lemon",
+		source:      "ATTACKATDAWN",
+		cipher:      "lxfopvefrnhr",
+		plain:       "attackatdawn",
+	},
+	{
+		description: "alpha a",
+		key:         "abcdefghij",
+		source:      "aaaaaaaaaa",
+		cipher:      "abcdefghij",
+		plain:       "aaaaaaaaaa",
+	},
+	{
+		description: "alpha z",
+		key:         "abcdefghij",
+		source:      "zzzzzzzzzz",
+		cipher:      "zabcdefghi",
+		plain:       "zzzzzzzzzz",
+	},
+	{
+		description: "panda",
+		key:         "iamapandabear",
+		source:      "I am a panda bear.",
+		cipher:      "qayaeaagaciai",
+		plain:       "iamapandabear",
+	},
+	{
+		description: "crypto",
+		key:         "duxrceqyaimciuucnelkeoxjhdyduu",
+		source:      "Diffie Hellman",
+		cipher:      "gccwkixcltycv",
+		plain:       "diffiehellman",
+	},
+	{
+		description: "coffee",
+		key:         "qgbvno",
+		source:      "cof-FEE, 123!",
+		cipher:      "sugars",
+		plain:       "coffee",
+	},
+}
+
+func TestVigenere(t *testing.T) {
+	for _, tc := range vtests {
+		t.Run(tc.description, func(t *testing.T) {
+			c := NewVigenere(tc.key)
+			if c == nil {
+				t.Fatalf("NewVigenere(%q): got nil, want non-nil Cipher", tc.key)
+			}
+			if got := c.Encode(tc.source); got != tc.cipher {
+				t.Fatalf("NewVigenere(%q).Encode(%q) = %q, want %q.", tc.key, tc.source, got, tc.cipher)
+			}
+			if got := c.Decode(tc.cipher); got != tc.plain {
+				t.Fatalf("NewVigenere(%q).Decode(%q) = %q, want %q.", tc.key, tc.cipher, got, tc.plain)
+			}
+		})
+	}
+}
+
+type vigenereInvalidTestCase struct {
+	description string
+	key         string
+}
+
+var vigenereInvalidTestCases = []vigenereInvalidTestCase{
+	{description: "Vigenere empty", key: ""},
+	{description: "Vigenere a", key: "a"},
+	{description: "Vigenere aa", key: "aa"},
+	{description: "Vigenere no way", key: "no way"},
+	{description: "Vigenere CAT", key: "CAT"},
+	{description: "Vigenere 3", key: "3"},
+	{description: "Vigenere and", key: "and,"},
+}
+
 func TestVigenereWrongKey(t *testing.T) {
-	for _, k := range []string{"", "a", "aa", "no way", "CAT", "3", "and,"} {
-		if NewVigenere(k) != nil {
-			t.Errorf("NewVigenere(%q): got non-nil, want nil", k)
-		}
+	for _, tc := range vigenereInvalidTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if NewVigenere(tc.key) != nil {
+				t.Errorf("NewVigenere(%q): got non-nil, want nil", tc.key)
+			}
+		})
 	}
 }
 
@@ -148,8 +258,8 @@ func BenchmarkEncodeCaesar(b *testing.B) {
 	c := NewCaesar()
 	b.ResetTimer()
 	for range b.N {
-		for _, test := range caesarTests {
-			c.Encode(test.source)
+		for _, tc := range caesarTests {
+			c.Encode(tc.source)
 		}
 	}
 }
@@ -158,8 +268,8 @@ func BenchmarkDecodeCaesar(b *testing.B) {
 	c := NewCaesar()
 	b.ResetTimer()
 	for range b.N {
-		for _, test := range caesarTests {
-			c.Decode(test.cipher)
+		for _, tc := range caesarTests {
+			c.Decode(tc.cipher)
 		}
 	}
 }
@@ -175,11 +285,11 @@ func BenchmarkNewShift(b *testing.B) {
 func BenchmarkEncodeShift(b *testing.B) {
 	s := NewShift(5)
 	all := caesarTests
-	all = append(all, NSATests...)
+	all = append(all, nsaTests...)
 	b.ResetTimer()
 	for range b.N {
-		for _, test := range all {
-			s.Encode(test.source)
+		for _, tc := range all {
+			s.Encode(tc.source)
 		}
 	}
 }
@@ -187,57 +297,51 @@ func BenchmarkEncodeShift(b *testing.B) {
 func BenchmarkDecodeShift(b *testing.B) {
 	s := NewShift(5)
 	all := caesarTests
-	all = append(all, NSATests...)
+	all = append(all, nsaTests...)
 	b.ResetTimer()
 	for range b.N {
-		for _, test := range all {
-			s.Decode(test.cipher)
+		for _, tc := range all {
+			s.Decode(tc.cipher)
 		}
 	}
 }
 
 func BenchmarkNewVigenere(b *testing.B) {
 	for range b.N {
-		for _, test := range vtests {
-			NewVigenere(test.key)
+		for _, tc := range vtests {
+			NewVigenere(tc.key)
 		}
 	}
 }
 
 func BenchmarkEncVigenere(b *testing.B) {
 	v := make([]Cipher, len(vtests))
-	for i, test := range vtests {
-		v[i] = NewVigenere(test.key)
+	for i, tc := range vtests {
+		v[i] = NewVigenere(tc.key)
 		if v[i] == nil {
-			b.Skip("Benchmark requires valid Vigenere test cases")
+			b.Skip("Benchmark requires valid Vigenere tc cases")
 		}
 	}
 	b.ResetTimer()
-	for j := 0; j < b.N; j++ {
-		for i, test := range vtests {
-			vi := v[i]
-			for _, test := range test.tests {
-				vi.Encode(test.source)
-			}
+	for range b.N {
+		for i, tc := range vtests {
+			v[i].Encode(tc.source)
 		}
 	}
 }
 
 func BenchmarkDecVigenere(b *testing.B) {
 	v := make([]Cipher, len(vtests))
-	for i, test := range vtests {
-		v[i] = NewVigenere(test.key)
+	for i, tc := range vtests {
+		v[i] = NewVigenere(tc.key)
 		if v[i] == nil {
-			b.Skip("Benchmark requires valid Vigenere test cases")
+			b.Skip("Benchmark requires valid Vigenere tc cases")
 		}
 	}
 	b.ResetTimer()
-	for j := 0; j < b.N; j++ {
-		for i, test := range vtests {
-			vi := v[i]
-			for _, test := range test.tests {
-				vi.Decode(test.cipher)
-			}
+	for range b.N {
+		for i, tc := range vtests {
+			v[i].Decode(tc.cipher)
 		}
 	}
 }
