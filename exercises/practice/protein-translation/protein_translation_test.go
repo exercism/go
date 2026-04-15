@@ -1,15 +1,33 @@
 package proteintranslation
 
 import (
+	"slices"
 	"testing"
 )
 
+type notNilTestCase struct {
+	description string
+	err         error
+}
+
+var notNilTestCases = []notNilTestCase{
+	{
+		description: "ErrStop",
+		err:         ErrStop,
+	},
+	{
+		description: "ErrInvalidBase",
+		err:         ErrInvalidBase,
+	},
+}
+
 func TestErrorsNotNil(t *testing.T) {
-	if ErrStop == nil {
-		t.Fatalf("FAIL: ErrStop cannot be nil")
-	}
-	if ErrInvalidBase == nil {
-		t.Fatalf("FAIL: ErrInvalidBase cannot be nil")
+	for _, tc := range notNilTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if tc.err == nil {
+				t.Fatalf("FAIL: %s cannot be nil", tc.description)
+			}
+		})
 	}
 }
 
@@ -112,7 +130,7 @@ func TestCodon(t *testing.T) {
 
 func TestProtein(t *testing.T) {
 	for _, tc := range testCases {
-		t.Run(tc.input, func(t *testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			got, err := FromRNA(tc.input)
 			switch {
 			case tc.expectedError != nil:
@@ -121,29 +139,11 @@ func TestProtein(t *testing.T) {
 				}
 			case err != nil:
 				t.Fatalf("FromRNA(%q) returned unexpected error: %v, want: %q", tc.input, err, tc.expected)
-			case !slicesEqual(got, tc.expected):
+			case !slices.Equal(got, tc.expected):
 				t.Fatalf("FromRNA(%q)\n got: %v\nwant: %v", tc.input, got, tc.expected)
 			}
 		})
 	}
-}
-
-func slicesEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
-	}
-
-	if len(a) == 0 {
-		return true
-	}
-
-	for i := range len(a) {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-
-	return true
 }
 
 func BenchmarkCodon(b *testing.B) {
