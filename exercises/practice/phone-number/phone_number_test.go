@@ -4,8 +4,34 @@ import (
 	"testing"
 )
 
-func TestNumber(t *testing.T) {
-	runTests("Number", Number, func(tc testCase) string { return tc.expectedNumber }, t)
+func TestPhoneNumber(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			checkFunction(t, Number, "Number", tc.expectedNumber, tc)
+			checkFunction(t, AreaCode, "AreaCode", tc.expectedAreaCode, tc)
+			checkFunction(t, Format, "Format", tc.expectedFormatted, tc)
+		})
+	}
+}
+
+func checkFunction(
+	t *testing.T,
+	f func(string) (string, error),
+	funcName string,
+	want string,
+	tc testCase,
+) {
+	got, gotErr := f(tc.input)
+	switch {
+	case tc.expectErr:
+		if gotErr == nil {
+			t.Errorf("%s(%q) expected error, got: %q", funcName, tc.input, got)
+		}
+	case gotErr != nil:
+		t.Errorf("%s(%q) returned error: %v, want: %q", funcName, tc.input, gotErr, want)
+	case got != want:
+		t.Errorf("%s(%q) = %q, want: %q", funcName, tc.input, got, want)
+	}
 }
 
 func BenchmarkNumber(b *testing.B) {
@@ -16,10 +42,6 @@ func BenchmarkNumber(b *testing.B) {
 	}
 }
 
-func TestAreaCode(t *testing.T) {
-	runTests("AreaCode", AreaCode, func(tc testCase) string { return tc.expectedAreaCode }, t)
-}
-
 func BenchmarkAreaCode(b *testing.B) {
 	for range b.N {
 		for _, test := range testCases {
@@ -28,37 +50,10 @@ func BenchmarkAreaCode(b *testing.B) {
 	}
 }
 
-func TestFormat(t *testing.T) {
-	runTests("Format", Format, func(tc testCase) string { return tc.expectedFormatted }, t)
-}
-
 func BenchmarkFormat(b *testing.B) {
 	for range b.N {
 		for _, test := range testCases {
 			Format(test.input)
 		}
-	}
-}
-
-func runTests(
-	funcName string,
-	f func(s string) (string, error),
-	getExpected func(tc testCase) string,
-	t *testing.T,
-) {
-	for _, tc := range testCases {
-		t.Run(tc.description, func(t *testing.T) {
-			actual, actualErr := f(tc.input)
-			switch {
-			case tc.expectErr:
-				if actualErr == nil {
-					t.Fatalf("%s(%q) expected error, got: %q", funcName, tc.input, actual)
-				}
-			case actualErr != nil:
-				t.Fatalf("%s(%q) returned error: %v, want: %q", funcName, tc.input, actualErr, getExpected(tc))
-			case actual != getExpected(tc):
-				t.Fatalf("%s(%q) = %q, want: %q", funcName, tc.input, actual, getExpected(tc))
-			}
-		})
 	}
 }
