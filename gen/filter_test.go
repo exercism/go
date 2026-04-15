@@ -33,6 +33,7 @@ var (
 		"uuid": "8snv0f-f781-4c52-b73b-8e76427defd0"
 		},
 		{
+		"description": "nested cases",
 		"cases": [
 			{
 			"description": "test case 3",
@@ -115,7 +116,7 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 		expectedOutput []testCase
 	}{
 		{
-			description: "Filter valid json successfully",
+			description: "filter valid json successfully",
 			inputJSON:   []byte(validInputJSON),
 			excludeList: excludeList,
 			expectedOutput: []testCase{
@@ -136,6 +137,7 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 						"integers": []interface{}{64.0},
 					},
 					Expected: []interface{}{64.0},
+					Parents:  []string{"nested cases"},
 				},
 				{
 					UUID:        "dvthrd4-4514-4915-bac0-f7f585e0e59a",
@@ -145,11 +147,12 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 						"bools": []interface{}{true, false},
 					},
 					Expected: false,
+					Parents:  []string{"some nested cases", "nested cases"},
 				},
 			},
 		},
 		{
-			description:    "Filtering invalid json should fail",
+			description:    "filtering invalid json should fail",
 			inputJSON:      []byte("{\"asd"),
 			excludeList:    excludeList,
 			expectedOutput: nil,
@@ -183,7 +186,7 @@ func TestGetAllTestCasesFiltered(t *testing.T) {
 					t.Errorf("unexpected error %v", err)
 				}
 				if output == nil || !reflect.DeepEqual(tc.expectedOutput, *output) {
-					t.Errorf("wrong output. expected: %v, got %v", tc.expectedOutput, output)
+					t.Errorf("wrong output.\nexpected %#v,\ngot %#v", tc.expectedOutput, output)
 				}
 			}
 		})

@@ -77,6 +77,9 @@ type testCase struct {
 	Scenarios   []string    `json:"scenarios"`
 	Input       interface{} `json:"input"`
 	Expected    interface{} `json:"expected"`
+	// Group is used when test cases are grouped with a group description.
+	// In practice there should be exactly 0 or 1 group descriptions.
+	Parents     []string
 }
 
 // PackageName gives the Go package name from an exercise slug.

@@ -3,6 +3,7 @@ package gen
 import (
 	"encoding/json"
 	"fmt"
+	"slices"
 )
 
 // getAllTestCasesFiltered recursively collects all test cases in a flattened list except the ones excluded by excludedTests.
@@ -13,14 +14,14 @@ func getAllTestCasesFiltered(jSrc []byte, excludedTests map[string]struct{}) (*[
 	jSrc = append([]byte{'['}, append(jSrc, ']')...)
 
 	// recursively get all test cases except the excluded ones
-	err := recursiveFilterCases(jSrc, result, excludedTests)
+	err := recursiveFilterCases(jSrc, result, nil, excludedTests)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get/filter all test cases: %w", err)
 	}
 	return result, nil
 }
 
-func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTests map[string]struct{}) error {
+func recursiveFilterCases(cases json.RawMessage, result *[]testCase, parentDescriptions []string, excludedTests map[string]struct{}) error {
 	var js []map[string]json.RawMessage
 
 	// 'cases' is always an array, where every item is either a single test or an object containing nested cases
@@ -51,7 +52,7 @@ func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTes
 				return err
 			}
 
-			tc := testCase{}
+			tc := testCase{Parents: parentDescriptions}
 			err = json.Unmarshal(jTestCase, &tc)
 			if err != nil {
 				return err
@@ -62,7 +63,17 @@ func recursiveFilterCases(cases json.RawMessage, result *[]testCase, excludedTes
 		}
 
 		// If uuid key is not present, this item is an object containing nested cases.
-		err := recursiveFilterCases(j["cases"], result, excludedTests)
+		// Update the parent description slice.
+		updatedParentDescriptions := slices.Clone(parentDescriptions)
+		if _, ok := j["description"]; ok {
+			var description string
+			err = json.Unmarshal(j["description"], &description)
+			if err != nil {
+				return err
+			}
+			updatedParentDescriptions = append(updatedParentDescriptions, description)
+		}
+		err := recursiveFilterCases(j["cases"], result, updatedParentDescriptions, excludedTests)
 		if err != nil {
 			return err
 		}
