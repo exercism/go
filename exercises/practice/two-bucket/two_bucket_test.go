@@ -3,25 +3,34 @@ package twobucket
 import "testing"
 
 func TestSolve(t *testing.T) {
-	for _, tc := range append(testCases, errorTestCases...) {
-		runTestCase(t, tc)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			goalBucket, numSteps, otherBucketLevel, err := Solve(tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket)
+			checkResult(t, tc, goalBucket, numSteps, otherBucketLevel, err)
+		})
 	}
 }
 
-func runTestCase(t *testing.T, tc bucketTestCase) {
-	t.Run(tc.description, func(t *testing.T) {
-		g, m, other, err := Solve(tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket)
-		switch {
-		case tc.expectedError != "":
-			if err == nil {
-				t.Fatalf("Solve(%d,%d,%d,%q) expected error, got: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, g, m, other)
-			}
-		case err != nil:
-			t.Fatalf("Solve(%d,%d,%d,%q) returned error: %q, want: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, err, tc.goalBucket, tc.moves, tc.otherBucket)
-		case g != tc.goalBucket || m != tc.moves || other != tc.otherBucket:
-			t.Fatalf("Solve(%d,%d,%d,%q) = %q,%d,%d, want: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, g, m, other, tc.goalBucket, tc.moves, tc.otherBucket)
+func TestErrors(t *testing.T) {
+	for _, tc := range errorTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			goalBucket, numSteps, otherBucketLevel, err := Solve(tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket)
+			checkResult(t, tc, goalBucket, numSteps, otherBucketLevel, err)
+		})
+	}
+}
+
+func checkResult(t *testing.T, tc bucketTestCase, goalBucket string, numSteps, otherBucketLevel int, err error) {
+	switch {
+	case tc.expectedError != "":
+		if err == nil {
+			t.Fatalf("Solve(%d,%d,%d,%q) expected error, got: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, goalBucket, numSteps, otherBucketLevel)
 		}
-	})
+	case err != nil:
+		t.Fatalf("Solve(%d,%d,%d,%q) returned error: %q, want: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, err, tc.goalBucket, tc.moves, tc.otherBucket)
+	case goalBucket != tc.goalBucket || numSteps != tc.moves || otherBucketLevel != tc.otherBucket:
+		t.Fatalf("Solve(%d,%d,%d,%q) = %q,%d,%d, want: %q,%d,%d", tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket, goalBucket, numSteps, otherBucketLevel, tc.goalBucket, tc.moves, tc.otherBucket)
+	}
 }
 
 func BenchmarkSolve(b *testing.B) {
