@@ -8,16 +8,14 @@ import (
 type testCase struct {
 	description string
 	in          string
-	ok          bool
 	rows        [][]int
 	cols        [][]int
 }
 
 var validTestCases = []testCase{
 	{
-		description: "2 rows, 2 columns",
+		description: "2 rows, 2 columns, low",
 		in:          "1 2\n10 20",
-		ok:          true,
 		rows: [][]int{
 			{1, 2},
 			{10, 20},
@@ -28,9 +26,8 @@ var validTestCases = []testCase{
 		},
 	},
 	{
-		description: "2 rows, 2 columns",
+		description: "2 rows, 2 columns, high",
 		in:          "9 7\n8 6",
-		ok:          true,
 		rows: [][]int{
 			{9, 7},
 			{8, 6},
@@ -41,9 +38,8 @@ var validTestCases = []testCase{
 		},
 	},
 	{
-		description: "2 rows, 3 columns",
+		description: "2 rows, 3 columns, low",
 		in:          "9 8 7\n19 18 17",
-		ok:          true,
 		rows: [][]int{
 			{9, 8, 7},
 			{19, 18, 17},
@@ -55,9 +51,8 @@ var validTestCases = []testCase{
 		},
 	},
 	{
-		description: "2 rows, 3 columns",
+		description: "2 rows, 3 columns, high",
 		in:          "1 4 9\n16 25 36",
-		ok:          true,
 		rows: [][]int{
 			{1, 4, 9},
 			{16, 25, 36},
@@ -71,7 +66,6 @@ var validTestCases = []testCase{
 	{
 		description: "4 rows, 3 columns",
 		in:          "1 2 3\n4 5 6\n7 8 9\n 8 7 6",
-		ok:          true,
 		rows: [][]int{
 			{1, 2, 3},
 			{4, 5, 6},
@@ -87,7 +81,6 @@ var validTestCases = []testCase{
 	{
 		description: "3 rows, 3 columns",
 		in:          "89 1903 3\n18 3 1\n9 4 800",
-		ok:          true,
 		rows: [][]int{
 			{89, 1903, 3},
 			{18, 3, 1},
@@ -102,7 +95,6 @@ var validTestCases = []testCase{
 	{
 		description: "1 row, 3 columns",
 		in:          "1 2 3",
-		ok:          true,
 		rows: [][]int{
 			{1, 2, 3},
 		},
@@ -115,7 +107,6 @@ var validTestCases = []testCase{
 	{
 		description: "3 rows, 1 column",
 		in:          "1\n2\n3",
-		ok:          true,
 		rows: [][]int{
 			{1},
 			{2},
@@ -128,7 +119,6 @@ var validTestCases = []testCase{
 	{
 		description: "1 row, 1 column",
 		in:          "0",
-		ok:          true,
 		rows: [][]int{
 			{0},
 		},
@@ -142,26 +132,30 @@ var validTestCases = []testCase{
 }
 
 var invalidTestCases = []testCase{
-	{description: "int64 overflow", in: "9223372036854775808", ok: false, rows: nil, cols: nil},
-	{description: "uneven rows", in: "1 2\n10 20 30", ok: false, rows: nil, cols: nil},
-	{description: "first row empty", in: "\n3 4\n5 6", ok: false, rows: nil, cols: nil},
-	{description: "middle row empty", in: "1 2\n\n5 6", ok: false, rows: nil, cols: nil},
-	{description: "last row empty", in: "1 2\n3 4\n", ok: false, rows: nil, cols: nil},
-	{description: "non integer", in: "2.7", ok: false, rows: nil, cols: nil},
-	{description: "non numeric", in: "cat", ok: false, rows: nil, cols: nil},
+	{description: "int64 overflow", in: "9223372036854775808", rows: nil, cols: nil},
+	{description: "uneven rows", in: "1 2\n10 20 30", rows: nil, cols: nil},
+	{description: "first row empty", in: "\n3 4\n5 6", rows: nil, cols: nil},
+	{description: "middle row empty", in: "1 2\n\n5 6", rows: nil, cols: nil},
+	{description: "last row empty", in: "1 2\n3 4\n", rows: nil, cols: nil},
+	{description: "non integer", in: "2.7", rows: nil, cols: nil},
+	{description: "non numeric", in: "cat", rows: nil, cols: nil},
 }
 
-func TestNew(t *testing.T) {
-	for _, tc := range append(validTestCases, invalidTestCases...) {
+func TestNewValid(t *testing.T) {
+	for _, tc := range validTestCases {
 		t.Run(tc.description, func(t *testing.T) {
-			got, err := New(tc.in)
-			switch {
-			case !tc.ok:
-				if err == nil {
-					t.Fatalf("New(%q) expected error, got: %v", tc.in, got)
-				}
-			case err != nil:
+			if _, err := New(tc.in); err != nil {
 				t.Fatalf("New(%q) returned error %q.  Error not expected", tc.in, err)
+			}
+		})
+	}
+}
+
+func TestNewInvalid(t *testing.T) {
+	for _, tc := range invalidTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if got, err := New(tc.in); err == nil {
+				t.Fatalf("New(%q) expected error, got: %v", tc.in, got)
 			}
 		})
 	}
