@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSquareRoot(t *testing.T) {
+func TestHighScoreIntFuncs(t *testing.T) {
 	for _, tc := range intTestCases {
 		t.Run(tc.description, func(t *testing.T) {
 			h := NewHighScores(tc.input)
@@ -14,6 +14,9 @@ func TestSquareRoot(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestHighScoreSliceFuncs(t *testing.T) {
 	for _, tc := range sliceTestCases {
 		t.Run(tc.description, func(t *testing.T) {
 			h := NewHighScores(tc.input)
