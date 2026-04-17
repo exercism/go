@@ -104,37 +104,37 @@ func TestWithinLimit(t *testing.T) {
 		want  bool
 	}{
 		{
-			name:  "exact limit",
+			name:  "exact limit 1",
 			log:   "exercism❗",
 			limit: 9,
 			want:  true,
 		},
 		{
-			name:  "under limit",
+			name:  "under limit 1",
 			log:   "exercism❗",
 			limit: 10,
 			want:  true,
 		},
 		{
-			name:  "over limit",
+			name:  "over limit 1",
 			log:   "exercism❗",
 			limit: 8,
 			want:  false,
 		},
 		{
-			name:  "exact limit",
+			name:  "exact limit 2",
 			log:   "exercism🔍",
 			limit: 9,
 			want:  true,
 		},
 		{
-			name:  "under limit",
+			name:  "under limit 2",
 			log:   "exercism🔍",
 			limit: 10,
 			want:  true,
 		},
 		{
-			name:  "over limit",
+			name:  "over limit 2",
 			log:   "exercism🔍",
 			limit: 8,
 			want:  false,
