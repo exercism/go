@@ -90,42 +90,39 @@ func TestExpectedValue(t *testing.T) {
 	}
 }
 
-func TestImmutable(t *testing.T) {
-	t.Run("SetValue does not change the original tree", func(t *testing.T) {
-		root := &Node{value: 5}
-		newRoot := NewZipper(root).SetValue(6).ToTree()
-		if newRoot == nil || newRoot.value != 6 {
-			t.Fatal("z.SetValue(6).ToTree() did not give a tree with value 6")
-		}
-		if root.value != 5 {
-			t.Fatal("Calling z.SetValue() should not change the original tree")
-		}
-	})
-	t.Run("SetRight does not change the original tree", func(t *testing.T) {
-		root := &Node{value: 5}
-		newRoot := NewZipper(root).SetRight(&Node{value: 6}).ToTree()
-		if newRoot == nil || newRoot.right == nil || newRoot.right.value != 6 {
-			t.Fatal("z.SetRight(&Node{value: 6}).ToTree() did not give a tree with new right node")
-		}
-		if root.right != nil {
-			t.Fatal("Calling z.SetRight() should not change the original tree")
-		}
-	})
+func TestImmutableSetValue(t *testing.T) {
+	root := &Node{value: 5}
+	newRoot := NewZipper(root).SetValue(6).ToTree()
+	if newRoot == nil || newRoot.value != 6 {
+		t.Fatal("z.SetValue(6).ToTree() did not give a tree with value 6")
+	}
+	if root.value != 5 {
+		t.Fatal("Calling z.SetValue() should not change the original tree")
+	}
+}
+
+func TestImmutableSetRight(t *testing.T) {
+	root := &Node{value: 5}
+	newRoot := NewZipper(root).SetRight(&Node{value: 6}).ToTree()
+	if newRoot == nil || newRoot.right == nil || newRoot.right.value != 6 {
+		t.Fatal("z.SetRight(&Node{value: 6}).ToTree() did not give a tree with new right node")
+	}
+	if root.right != nil {
+		t.Fatal("Calling z.SetRight() should not change the original tree")
+	}
 }
 
 func TestFocusDoesNotChangeNodes(t *testing.T) {
-	t.Run("Changing focus does not clone the tree", func(t *testing.T) {
-		root := &Node{value: 5, left: &Node{value: 6}, right: &Node{value: 7}}
-		z := NewZipper(root)
-		z, _ = z.Right()
-		z, _ = z.Up()
-		z, _ = z.Left()
-		z, _ = z.Up()
-		newRoot := z.ToTree()
-		if root != newRoot {
-			t.Fatal("z.ToTree() should return the original tree if there were no changes to the tree.")
-		}
-	})
+	root := &Node{value: 5, left: &Node{value: 6}, right: &Node{value: 7}}
+	z := NewZipper(root)
+	z, _ = z.Right()
+	z, _ = z.Up()
+	z, _ = z.Left()
+	z, _ = z.Up()
+	newRoot := z.ToTree()
+	if root != newRoot {
+		t.Fatal("z.ToTree() should return the original tree if there were no changes to the tree.")
+	}
 }
 
 func BenchmarkExpectedValue(b *testing.B) {

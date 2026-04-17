@@ -116,7 +116,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_value",
+		description: "set value",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "left"},
@@ -129,7 +129,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_value after traversing up",
+		description: "set value after traversing up",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "left"},
@@ -144,7 +144,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_left with leaf",
+		description: "set left with leaf",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "left"},
@@ -157,7 +157,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_right with null",
+		description: "set right with null",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "left"},
@@ -170,7 +170,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_right with subtree",
+		description: "set right with subtree",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "set_right", nodeArg: &Node{value: 6, left: &Node{value: 7, left: nil, right: nil}, right: &Node{value: 8, left: nil, right: nil}}},
@@ -182,7 +182,7 @@ var testCases = []testCase{
 		},
 	},
 	{
-		description: "set_value on deep focus",
+		description: "set value on deep focus",
 		input:       &Node{value: 1, left: &Node{value: 2, left: nil, right: &Node{value: 3, left: nil, right: nil}}, right: &Node{value: 4, left: nil, right: nil}},
 		operations: []operation{
 			operation{funcCall: "left"},

@@ -78,6 +78,10 @@ type testCase struct {
 	} `json:"expected"`
 }
 
+func (tc testCase) FormatDescription() string {
+	return fmt.Sprintf("%q", strings.ReplaceAll(tc.Description, "_", " "))
+}
+
 func (tc testCase) InitialTree() *Node {
 	return newNode(tc.Input.InitialTree)
 }
@@ -134,7 +138,7 @@ type testCase struct {
 
 var testCases = []testCase { {{range .J.expectedValue}}
 	{
-		description:   {{printf "%q" .Description}},
+		description:   {{.FormatDescription}},
 		input:         {{.InitialTree}},
 		operations:    []operation{ {{range .Input.Operations}}
 			{{.}},{{end}}
