@@ -41,7 +41,7 @@ func TestNewTrack(t *testing.T) {
 		expected Track
 	}{
 		{
-			name: "Create a new track.",
+			name: "Create a long track.",
 			track: Track{
 				distance: 800,
 			},
@@ -50,7 +50,7 @@ func TestNewTrack(t *testing.T) {
 			},
 		},
 		{
-			name: "Create a new track.",
+			name: "Create a short track.",
 			track: Track{
 				distance: 360,
 			},
