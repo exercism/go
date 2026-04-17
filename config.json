@@ -41,8 +41,7 @@
         "concepts": [
           "basics"
         ],
-        "prerequisites": [],
-        "status": "beta"
+        "prerequisites": []
       },
       {
         "slug": "annalyns-infiltration",
@@ -53,8 +52,7 @@
         ],
         "prerequisites": [
           "basics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "party-robot",
@@ -67,8 +65,7 @@
         "prerequisites": [
           "strings",
           "numbers"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "weather-forecast",
@@ -79,8 +76,7 @@
         ],
         "prerequisites": [
           "basics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "savings-account",
@@ -107,8 +103,7 @@
           "strings",
           "numbers",
           "conditionals-if"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "booking-up-for-beauty",
@@ -122,8 +117,7 @@
           "numbers",
           "functions",
           "booleans"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "cars-assemble",
@@ -135,8 +129,7 @@
         ],
         "prerequisites": [
           "basics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "vehicle-purchase",
@@ -151,8 +144,7 @@
           "arithmetic-operators",
           "booleans",
           "numbers"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "gross-store",
@@ -167,8 +159,7 @@
           "strings",
           "conditionals-switch",
           "functions"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "lasagna-master",
@@ -184,8 +175,7 @@
           "comparison",
           "slices",
           "for-loops"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "need-for-speed",
@@ -197,8 +187,7 @@
         "prerequisites": [
           "conditionals-if",
           "numbers"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "jedliks-toys",
@@ -213,8 +202,7 @@
           "type-definitions",
           "pointers",
           "functions"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "deep-thought",
@@ -235,8 +223,7 @@
           "numbers",
           "conditionals-if",
           "slices"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "card-tricks",
@@ -250,8 +237,7 @@
           "booleans",
           "numbers",
           "conditionals-if"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "logs-logs-logs",
@@ -266,8 +252,7 @@
           "slices",
           "maps",
           "range-iteration"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "sorting-room",
@@ -280,8 +265,7 @@
         "prerequisites": [
           "interfaces",
           "string-formatting"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "chessboard",
@@ -297,8 +281,7 @@
           "maps",
           "slices",
           "structs"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "airport-robot",
@@ -312,8 +295,7 @@
           "structs",
           "strings",
           "methods"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "the-farm",
@@ -330,8 +312,7 @@
           "string-formatting",
           "methods",
           "packages"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "census",
@@ -350,8 +331,7 @@
           "slices",
           "conditionals-if",
           "pointers"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "welcome-to-tech-palace",
@@ -363,8 +343,7 @@
         ],
         "prerequisites": [
           "basics"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "election-day",
@@ -379,8 +358,7 @@
           "maps",
           "arithmetic-operators",
           "string-formatting"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "interest-is-interesting",
@@ -394,8 +372,7 @@
           "conditionals-if",
           "packages",
           "for-loops"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "expenses",
@@ -410,8 +387,7 @@
           "structs",
           "type-definitions",
           "errors"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "animal-magic",
@@ -423,8 +399,7 @@
         "prerequisites": [
           "arithmetic-operators",
           "slices"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "parsing-log-files",
@@ -437,8 +412,7 @@
           "runes",
           "methods",
           "slices"
-        ],
-        "status": "beta"
+        ]
       },
       {
         "slug": "meteorology",
@@ -453,8 +427,7 @@
           "interfaces",
           "methods",
           "structs"
-        ],
-        "status": "beta"
+        ]
       }
     ],
     "practice": [
