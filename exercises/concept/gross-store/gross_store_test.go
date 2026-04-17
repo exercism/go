@@ -24,9 +24,8 @@ func TestUnits(t *testing.T) {
 		{description: "gross", expected: 144},
 		{description: "great_gross", expected: 1728},
 	}
-
-	units := Units()
 	for _, tc := range tests {
+		units := Units()
 		qty, ok := units[tc.description]
 
 		if !ok {
@@ -42,13 +41,11 @@ func TestUnits(t *testing.T) {
 
 func TestNewBill(t *testing.T) {
 	// Success, zero out the  bill
-	t.Run("Should reset customerbill", func(t *testing.T) {
-		bill := NewBill()
+	bill := NewBill()
 
-		if len(bill) != 0 {
-			t.Error("Customer bill must be empty")
-		}
-	})
+	if len(bill) != 0 {
+		t.Error("Customer bill must be empty")
+	}
 }
 
 type addItemTestCase struct {
@@ -58,7 +55,7 @@ type addItemTestCase struct {
 }
 
 func TestAddItem(t *testing.T) {
-	tests := []addItemTestCase {
+	tests := []addItemTestCase{
 		{
 			description: "Invalid measurement unit",
 			entry: []entry{
@@ -128,8 +125,7 @@ type removeItemTestCase struct {
 }
 
 func TestRemoveItem(t *testing.T) {
-
-	tests := []removeItemTestCase {
+	tests := []removeItemTestCase{
 		{
 			description: "Item Not found in bill",
 			remove: []expectedRemoveItem{
@@ -180,9 +176,9 @@ func TestRemoveItem(t *testing.T) {
 		},
 	}
 
-	units := Units()
 	for _, tc := range tests {
 		t.Run(tc.description, func(t *testing.T) {
+			units := Units()
 			bill := setupInitialBillData()
 			for _, item := range tc.remove {
 				ok := RemoveItem(bill, units, item.name, item.unit)
@@ -214,8 +210,7 @@ type getItemTestCase struct {
 }
 
 func TestGetItem(t *testing.T) {
-
-	test := []getItemTestCase {
+	test := []getItemTestCase{
 		{
 			description: "Item Not found in bill",
 			getItem: []expectedGetItem{
