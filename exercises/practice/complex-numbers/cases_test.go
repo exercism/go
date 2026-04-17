@@ -535,7 +535,7 @@ type testCaseExp struct {
 
 var expTestCases = []testCaseExp{
 	{
-		description: "Euler's identity/formula",
+		description: "Euler's identity formula",
 		in: complexNumber{
 			a: 0.000000,
 			b: 3.141593,

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"strings"
 	"text/template"
 )
 
@@ -14,22 +15,22 @@ func main() {
 		log.Fatal(err)
 	}
 	j := map[string]any{
-		"real":      &[]Case{},
-		"imaginary": &[]Case{},
-		"mul":       &[]Case{},
-		"add":       &[]Case{},
-		"sub":       &[]Case{},
-		"div":       &[]Case{},
-		"abs":       &[]Case{},
-		"conjugate": &[]Case{},
-		"exp":       &[]Case{},
+		"real":      &[]TestCase{},
+		"imaginary": &[]TestCase{},
+		"mul":       &[]TestCase{},
+		"add":       &[]TestCase{},
+		"sub":       &[]TestCase{},
+		"div":       &[]TestCase{},
+		"abs":       &[]TestCase{},
+		"conjugate": &[]TestCase{},
+		"exp":       &[]TestCase{},
 	}
 	if err := gen.Gen("complex-numbers", j, t); err != nil {
 		log.Fatal(err)
 	}
 }
 
-type Case struct {
+type TestCase struct {
 	UUID        string `json:"uuid"`
 	Description string `json:"description"`
 	Property    string `json:"property"`
@@ -46,46 +47,50 @@ type complexNumber struct {
 	B float64
 }
 
-func (c Case) GetZ() complexNumber {
-	return getComplex(c.Input.Z)
+func (tc TestCase) GetDescription() string {
+	return fmt.Sprintf("%q", strings.ReplaceAll(tc.Description, "/", " "))
 }
 
-func (c Case) GetZ1() complexNumber {
-	return getComplex(c.Input.Z1)
+func (tc TestCase) GetZ() complexNumber {
+	return getComplex(tc.Input.Z)
 }
 
-func (c Case) GetZ2() complexNumber {
-	return getComplex(c.Input.Z2)
+func (tc TestCase) GetZ1() complexNumber {
+	return getComplex(tc.Input.Z1)
 }
 
-func (c Case) GetNeededZ() complexNumber {
-	_, ok := c.Input.Z1.(float64)
+func (tc TestCase) GetZ2() complexNumber {
+	return getComplex(tc.Input.Z2)
+}
+
+func (tc TestCase) GetNeededZ() complexNumber {
+	_, ok := tc.Input.Z1.(float64)
 	if ok {
-		return c.GetZ2()
+		return tc.GetZ2()
 	}
-	return c.GetZ1()
+	return tc.GetZ1()
 }
 
-func (c Case) IsSimpleFactor() bool {
-	_, ok := c.Input.Z1.(float64)
+func (tc TestCase) IsSimpleFactor() bool {
+	_, ok := tc.Input.Z1.(float64)
 	if ok {
 		return ok
 	}
-	_, ok = c.Input.Z2.(float64)
+	_, ok = tc.Input.Z2.(float64)
 	return ok
 }
 
-func (c Case) GetFactor() float64 {
-	v, ok := c.Input.Z1.(float64)
+func (tc TestCase) GetFactor() float64 {
+	v, ok := tc.Input.Z1.(float64)
 	if ok {
 		return v
 	}
-	v, _ = c.Input.Z2.(float64)
+	v, _ = tc.Input.Z2.(float64)
 	return v
 }
 
-func (c Case) GetExpected() complexNumber {
-	return getComplex(c.Expected)
+func (tc TestCase) GetExpected() complexNumber {
+	return getComplex(tc.Expected)
 }
 
 func getComplex(in any) complexNumber {
@@ -142,7 +147,7 @@ type testCaseReal struct {
 
 var realTestCases = []testCaseReal {
 	{{range .J.real}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		in: complexNumber{
 			a: {{printf "%f" .GetZ.A}},
 			b: {{printf "%f" .GetZ.B}},
@@ -160,7 +165,7 @@ type testCaseImag struct {
 
 var imaginaryTestCases = []testCaseImag {
 	{{range .J.imaginary}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		in: complexNumber{
 			a: {{printf "%f" .GetZ.A}},
 			b: {{printf "%f" .GetZ.B}},
@@ -179,7 +184,7 @@ type testCaseAdd struct {
 
 var addTestCases = []testCaseAdd {
 	{{range .J.add}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		n1: complexNumber{
 			a: {{printf "%f" .GetZ1.A}},
 			b: {{printf "%f" .GetZ1.B}},
@@ -205,7 +210,7 @@ type testCaseSubtract struct {
 
 var subtractTestCases = []testCaseSubtract {
 	{{range .J.sub}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		n1: complexNumber{
 			a: {{printf "%f" .GetZ1.A}},
 			b: {{printf "%f" .GetZ1.B}},
@@ -231,7 +236,7 @@ type testCaseDivide struct {
 
 var divideTestCases = []testCaseDivide {
 	{{range .J.div}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		n1: complexNumber{
 			a: {{printf "%f" .GetZ1.A}},
 			b: {{printf "%f" .GetZ1.B}},
@@ -258,7 +263,7 @@ type testCaseMultiply struct {
 
 var multiplyTestCases = []testCaseMultiply {
 	{{range .J.mul}}{
-		description: {{printf "%q" .Description}},
+		description: {{.GetDescription}},
 		{{- if .IsSimpleFactor }}
 			n1: complexNumber{
 				a: {{printf "%f" .GetNeededZ.A}},
@@ -295,7 +300,7 @@ type testCaseConjugate struct {
 
 var conjugateTestCases = []testCaseConjugate {
 	{{range .J.conjugate}}{
-		description: {{printf "%q"  	.Description}},
+		description: {{.GetDescription}},
 	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
@@ -316,7 +321,7 @@ type testCaseAbs struct {
 
 var absTestCases = []testCaseAbs {
 	{{range .J.abs}}{
-		description: {{printf "%q"  	.Description}},
+		description: {{.GetDescription}},
 	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
@@ -334,7 +339,7 @@ type testCaseExp struct {
 
 var expTestCases = []testCaseExp {
 	{{range .J.exp}}{
-		description: {{printf "%q"  	.Description}},
+		description: {{.GetDescription}},
 	    in: complexNumber{
 			a: {{printf "%f"  	.GetZ.A}},
 			b: {{printf "%f"  	.GetZ.B}},
