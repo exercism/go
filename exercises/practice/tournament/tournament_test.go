@@ -2,7 +2,6 @@ package tournament
 
 import (
 	"bytes"
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -39,47 +38,68 @@ Courageous Californians        |  3 |  0 |  1 |  2 |  1
 	},
 }
 
-var errorTestCases = []string{
-	"Bla;Bla;Bla",
-	"Devastating Donkeys_Courageous Californians;draw",
-	"Devastating Donkeys@Courageous Californians;draw",
-	"Devastating Donkeys;Allegoric Alaskians;dra",
+type errorTestCase struct {
+	description string
+	input       string
+}
+
+var errorTestCases = []errorTestCase{
+	{
+		description: "Invalid result 'Bla'",
+		input:       "Bla;Bla;Bla",
+	},
+	{
+		description: "Invalid separator, underscore",
+		input:       "Devastating Donkeys_Courageous Californians;draw",
+	},
+	{
+		description: "Invalid separator, '@'",
+		input:       "Devastating Donkeys@Courageous Californians;draw",
+	},
+	{
+		description: "Invalid result 'dra'",
+		input:       "Devastating Donkeys;Allegoric Alaskians;dra",
+	},
 }
 
 func RunOneTest(t *testing.T, tc TestCase) {
-	t.Run(tc.description, func(t *testing.T) {
-		reader := strings.NewReader(tc.input)
-		var buffer bytes.Buffer
-		err := Tally(reader, &buffer)
-		// We don't expect errors for any of the test cases
-		if err != nil {
-			t.Fatalf("Tally for input named %q returned unexpected error %q", tc.description, err)
-		}
-		got := buffer.String()
-		expected := strings.TrimLeft(tc.expected, "\n")
-		if got != expected {
-			t.Fatalf("Tally for input named %q returned unexpected value\ngot: %s\nwant: %s", tc.description, got, expected)
-		}
-	})
+	reader := strings.NewReader(tc.input)
+	var buffer bytes.Buffer
+	err := Tally(reader, &buffer)
+	// We don't expect errors for any of the test cases
+	if err != nil {
+		t.Fatalf("Tally for input named %q returned unexpected error %q", tc.description, err)
+	}
+	got := buffer.String()
+	expected := strings.TrimLeft(tc.expected, "\n")
+	if got != expected {
+		t.Fatalf("Tally for input named %q returned unexpected value\ngot: %s\nwant: %s", tc.description, got, expected)
+	}
 }
 
-func TestTally(t *testing.T) {
+func TestTallyCanonical(t *testing.T) {
 	for _, tc := range testCases {
-		RunOneTest(t, tc)
+		t.Run(tc.description, func(t *testing.T) {
+			RunOneTest(t, tc)
+		})
 	}
+}
+func TestTallyExtra(t *testing.T) {
 	for _, tc := range extraTestCases {
-		RunOneTest(t, tc)
+		t.Run(tc.description, func(t *testing.T) {
+			RunOneTest(t, tc)
+		})
 	}
 }
 
 func TestTallyError(t *testing.T) {
-	for i, errorInput := range errorTestCases {
-		t.Run(fmt.Sprintf("Error Input %d", i), func(t *testing.T) {
-			reader := strings.NewReader(errorInput)
+	for _, tc := range errorTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			reader := strings.NewReader(tc.input)
 			var buffer bytes.Buffer
 			err := Tally(reader, &buffer)
 			if err == nil {
-				t.Fatalf("Tally for input %q expected error, got nil", errorInput)
+				t.Fatalf("Tally for input %q expected error, got nil", tc.input)
 			}
 		})
 	}
@@ -87,17 +107,17 @@ func TestTallyError(t *testing.T) {
 
 func BenchmarkTally(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
+		for _, tc := range testCases {
 			var buffer bytes.Buffer
-			Tally(strings.NewReader(tt.input), &buffer)
+			Tally(strings.NewReader(tc.input), &buffer)
 		}
-		for _, tt := range extraTestCases {
+		for _, tc := range extraTestCases {
 			var buffer bytes.Buffer
-			Tally(strings.NewReader(tt.input), &buffer)
+			Tally(strings.NewReader(tc.input), &buffer)
 		}
-		for _, s := range errorTestCases {
+		for _, tc := range errorTestCases {
 			var buffer bytes.Buffer
-			Tally(strings.NewReader(s), &buffer)
+			Tally(strings.NewReader(tc.input), &buffer)
 		}
 	}
 }
