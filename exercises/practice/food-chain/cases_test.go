@@ -1,0 +1,246 @@
+package foodchain
+
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
+// Source: exercism/problem-specifications
+// Commit: 5fc501b Remove unneeded nesting (#1798)
+
+type verseTestCase struct {
+	description string
+	verse       int
+	expected    []string
+}
+
+var verseTestCases = []verseTestCase{
+	{
+		description: "fly",
+		verse:       1,
+		expected: []string{
+			"I know an old lady who swallowed a fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "spider",
+		verse:       2,
+		expected: []string{
+			"I know an old lady who swallowed a spider.",
+			"It wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "bird",
+		verse:       3,
+		expected: []string{
+			"I know an old lady who swallowed a bird.",
+			"How absurd to swallow a bird!",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "cat",
+		verse:       4,
+		expected: []string{
+			"I know an old lady who swallowed a cat.",
+			"Imagine that, to swallow a cat!",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "dog",
+		verse:       5,
+		expected: []string{
+			"I know an old lady who swallowed a dog.",
+			"What a hog, to swallow a dog!",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "goat",
+		verse:       6,
+		expected: []string{
+			"I know an old lady who swallowed a goat.",
+			"Just opened her throat and swallowed a goat!",
+			"She swallowed the goat to catch the dog.",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "cow",
+		verse:       7,
+		expected: []string{
+			"I know an old lady who swallowed a cow.",
+			"I don't know how she swallowed a cow!",
+			"She swallowed the cow to catch the goat.",
+			"She swallowed the goat to catch the dog.",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "horse",
+		verse:       8,
+		expected: []string{
+			"I know an old lady who swallowed a horse.",
+			"She's dead, of course!",
+		},
+	},
+}
+
+type multiVerseTestCase struct {
+	description string
+	start       int
+	end         int
+	expected    []string
+}
+
+var multiVerseTestCases = []multiVerseTestCase{
+	{
+		description: "multiple verses",
+		start:       1,
+		end:         3,
+		expected: []string{
+			"I know an old lady who swallowed a fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a spider.",
+			"It wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a bird.",
+			"How absurd to swallow a bird!",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+		},
+	},
+	{
+		description: "full song",
+		start:       1,
+		end:         8,
+		expected: []string{
+			"I know an old lady who swallowed a fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a spider.",
+			"It wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a bird.",
+			"How absurd to swallow a bird!",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a cat.",
+			"Imagine that, to swallow a cat!",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a dog.",
+			"What a hog, to swallow a dog!",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a goat.",
+			"Just opened her throat and swallowed a goat!",
+			"She swallowed the goat to catch the dog.",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a cow.",
+			"I don't know how she swallowed a cow!",
+			"She swallowed the cow to catch the goat.",
+			"She swallowed the goat to catch the dog.",
+			"She swallowed the dog to catch the cat.",
+			"She swallowed the cat to catch the bird.",
+			"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+			"She swallowed the spider to catch the fly.",
+			"I don't know why she swallowed the fly. Perhaps she'll die.",
+			"",
+			"I know an old lady who swallowed a horse.",
+			"She's dead, of course!",
+		},
+	},
+}
+
+var song = []string{
+	"I know an old lady who swallowed a fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a spider.",
+	"It wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a bird.",
+	"How absurd to swallow a bird!",
+	"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a cat.",
+	"Imagine that, to swallow a cat!",
+	"She swallowed the cat to catch the bird.",
+	"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a dog.",
+	"What a hog, to swallow a dog!",
+	"She swallowed the dog to catch the cat.",
+	"She swallowed the cat to catch the bird.",
+	"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a goat.",
+	"Just opened her throat and swallowed a goat!",
+	"She swallowed the goat to catch the dog.",
+	"She swallowed the dog to catch the cat.",
+	"She swallowed the cat to catch the bird.",
+	"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a cow.",
+	"I don't know how she swallowed a cow!",
+	"She swallowed the cow to catch the goat.",
+	"She swallowed the goat to catch the dog.",
+	"She swallowed the dog to catch the cat.",
+	"She swallowed the cat to catch the bird.",
+	"She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.",
+	"She swallowed the spider to catch the fly.",
+	"I don't know why she swallowed the fly. Perhaps she'll die.",
+	"",
+	"I know an old lady who swallowed a horse.",
+	"She's dead, of course!",
+}
