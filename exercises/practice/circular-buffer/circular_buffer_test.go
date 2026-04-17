@@ -54,7 +54,7 @@ func (tc testCase) Run(t *testing.T) {
 
 func TestRun(t *testing.T) {
 	for _, tc := range testCases {
-		t.Run(tc.description, tc.Run)
+		t.Run(tc.description, func(t *testing.T) { tc.Run(t) })
 	}
 }
 
