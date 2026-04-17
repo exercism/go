@@ -27,8 +27,8 @@ func territoryEqual(a, b [][2]int) bool {
 
 func TestTerritory(t *testing.T) {
 	for _, tc := range oneTerritoryTestCases {
-		call := fmt.Sprintf("NewGame(%#v).Territory(%d, %d)", tc.board, tc.posX, tc.posY)
 		t.Run(tc.description, func(t *testing.T) {
+			call := fmt.Sprintf("NewGame(%#v).Territory(%d, %d)", tc.board, tc.posX, tc.posY)
 			if owner, territory, err := NewGame(tc.board).Territory(tc.posX, tc.posY); err != nil {
 				if tc.expectedErr == "" {
 					t.Fatalf("%s unexpected returned error %v", call, err)
