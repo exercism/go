@@ -2,30 +2,38 @@ package railfencecipher
 
 import "testing"
 
-func testCases(
-	name string,
-	op func(string, int) string,
-	cases []testCase, t *testing.T,
-) {
-	for _, tc := range cases {
+func TestEncode(t *testing.T) {
+	for _, tc := range encodeTests {
 		t.Run(tc.description, func(t *testing.T) {
-			if actual := op(tc.message, tc.rails); actual != tc.expected {
-				t.Fatalf("%s(%q, %d)\ngot: %q\nwant: %q", name, tc.message, tc.rails, actual, tc.expected)
+			if actual := Encode(tc.message, tc.rails); actual != tc.expected {
+				t.Fatalf("Encode(%q, %d)\ngot: %q\nwant: %q", tc.message, tc.rails, actual, tc.expected)
 			}
 		})
 	}
 }
 
-func runBenchmark(op func(string, int) string, cases []testCase, b *testing.B) {
+func TestDecode(t *testing.T) {
+	for _, tc := range decodeTests {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Decode(tc.message, tc.rails); actual != tc.expected {
+				t.Fatalf("Decode(%q, %d)\ngot: %q\nwant: %q", tc.message, tc.rails, actual, tc.expected)
+			}
+		})
+	}
+}
+
+func BenchmarkEncode(b *testing.B) {
 	for range b.N {
-		for _, test := range cases {
-			op(test.message, test.rails)
+		for _, test := range encodeTests {
+			Encode(test.message, test.rails)
 		}
 	}
 }
 
-func TestEncode(t *testing.T) { testCases("Encode", Encode, encodeTests, t) }
-func TestDecode(t *testing.T) { testCases("Decode", Decode, decodeTests, t) }
-
-func BenchmarkEncode(b *testing.B) { runBenchmark(Encode, encodeTests, b) }
-func BenchmarkDecode(b *testing.B) { runBenchmark(Decode, decodeTests, b) }
+func BenchmarkDecode(b *testing.B) {
+	for range b.N {
+		for _, test := range decodeTests {
+			Decode(test.message, test.rails)
+		}
+	}
+}
