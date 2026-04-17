@@ -2,6 +2,7 @@ package binarysearchtree
 
 import (
 	"errors"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -106,21 +107,6 @@ func (bst *BinarySearchTree) Data(path []rune) (int, error) {
 	}
 }
 
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	if len(a) == 0 {
-		return true
-	}
-	for i := range len(a) {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
 // makeBst builds tree by calling user defined functions NewBst and Insert
 func makeBst(input []int) *BinarySearchTree {
 	if len(input) == 0 {
@@ -147,21 +133,19 @@ func expandPath(p string) string {
 
 func TestNewBst(t *testing.T) {
 	td := newBstTestCase
-	t.Run(td.description, func(t *testing.T) {
-		tree := NewBst(td.input[0])
-		if tree == nil {
-			t.Fatalf("bst should not be nil")
-		}
-		if tree.Size() != len(td.input) {
-			t.Fatalf("bst should have same number of elements as input, want: %v, got: %v",
-				len(td.input), tree.Size())
-		}
-		expected := td.data[0]
-		got := tree.data
-		if got != expected {
-			t.Fatalf("want: %d, got: %d", expected, got)
-		}
-	})
+	tree := NewBst(td.input[0])
+	if tree == nil {
+		t.Fatalf("bst should not be nil")
+	}
+	if tree.Size() != len(td.input) {
+		t.Fatalf("bst should have same number of elements as input, want: %v, got: %v",
+			len(td.input), tree.Size())
+	}
+	expected := td.data[0]
+	got := tree.data
+	if got != expected {
+		t.Fatalf("want: %d, got: %d", expected, got)
+	}
 }
 
 func TestInsert(t *testing.T) {
@@ -202,7 +186,7 @@ func TestSortedData(t *testing.T) {
 					len(td.input), tree.Size())
 			}
 			got := tree.SortedData()
-			if !slicesEqual(got, td.expected) {
+			if !slices.Equal(got, td.expected) {
 				t.Fatalf("want: %d, got: %d", td.expected, got)
 			}
 		})
