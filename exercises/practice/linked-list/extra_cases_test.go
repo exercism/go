@@ -4,11 +4,13 @@ package linkedlist
 
 import "testing"
 
-var newListTestCases = []struct {
+type newListTestCase struct {
 	name     string
 	in       []any
 	expected []any
-}{
+}
+
+var newListTestCases = []newListTestCase {
 	{
 		name:     "from 5 elements",
 		in:       []any{1, 2, 3, 4, 5},
@@ -31,11 +33,13 @@ var newListTestCases = []struct {
 	},
 }
 
-var reverseTestCases = []struct {
+type reverseTestCase struct {
 	name     string
 	in       []any
 	expected []any
-}{
+}
+
+var reverseTestCases = []reverseTestCase {
 	{
 		name:     "from 5 elements",
 		in:       []any{1, 2, 3, 4, 5},
@@ -58,12 +62,14 @@ var reverseTestCases = []struct {
 	},
 }
 
-var pushPopTestCases = []struct {
+type pushPopTestCase struct {
 	name     string
 	in       []any
 	actions  []checkedAction
 	expected []any
-}{
+}
+
+var pushPopTestCases = []pushPopTestCase {
 	{
 		name: "PushFront only",
 		in:   []any{},

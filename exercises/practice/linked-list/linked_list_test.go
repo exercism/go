@@ -9,10 +9,10 @@ import (
 )
 
 func TestList(t *testing.T) {
-	hasInput := []string{"push", "unshift", "delete"}
-
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
+			hasInput := []string{"push", "unshift", "delete"}
+
 			list := NewList()
 			var calls []string
 			for _, op := range tc.operations {
