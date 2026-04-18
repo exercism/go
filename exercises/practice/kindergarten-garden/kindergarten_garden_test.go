@@ -2,12 +2,13 @@ package kindergartengarden
 
 import (
 	"reflect"
+	"slices"
 	"sort"
 	"testing"
 )
 
 // Tests in addition to the canonical cases in cases_test.go
-var tests = []gardenTest{
+var extraTests = []gardenTest{
 	{
 		description: "garden with three students",
 		diagram:     "\nVVCCGG\nVVCCGG",
@@ -18,8 +19,38 @@ var tests = []gardenTest{
 			{child: "Charlie", plants: []string{"grass", "grass", "grass", "grass"}, ok: true},
 		},
 	},
-	test5,
-	test6,
+	{
+		description: "full garden",
+		diagram:     "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
+		children:    []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
+		expectError: false,
+		lookups: []lookup{
+			{child: "Alice", plants: []string{"violets", "radishes", "violets", "radishes"}, ok: true},
+			{child: "Bob", plants: []string{"clover", "grass", "clover", "clover"}, ok: true},
+			{child: "Charlie", plants: []string{"violets", "violets", "clover", "grass"}, ok: true},
+			{child: "David", plants: []string{"radishes", "violets", "clover", "radishes"}, ok: true},
+			{child: "Eve", plants: []string{"clover", "grass", "radishes", "grass"}, ok: true},
+			{child: "Fred", plants: []string{"grass", "clover", "violets", "clover"}, ok: true},
+			{child: "Ginny", plants: []string{"clover", "grass", "grass", "clover"}, ok: true},
+			{child: "Harriet", plants: []string{"violets", "radishes", "radishes", "violets"}, ok: true},
+			{child: "Ileana", plants: []string{"grass", "clover", "violets", "clover"}, ok: true},
+			{child: "Joseph", plants: []string{"violets", "clover", "violets", "grass"}, ok: true},
+			{child: "Kincaid", plants: []string{"grass", "clover", "clover", "grass"}, ok: true},
+			{child: "Larry", plants: []string{"grass", "violets", "clover", "violets"}, ok: true},
+		},
+	},
+	{
+		description: "names out of order",
+		diagram:     "\nVCRRGVRG\nRVGCCGCV",
+		children:    []string{"Samantha", "Patricia", "Xander", "Roger"},
+		expectError: false,
+		lookups: []lookup{
+			{child: "Patricia", plants: []string{"violets", "clover", "radishes", "violets"}, ok: true},
+			{child: "Roger", plants: []string{"radishes", "radishes", "grass", "clover"}, ok: true},
+			{child: "Samantha", plants: []string{"grass", "violets", "clover", "grass"}, ok: true},
+			{child: "Xander", plants: []string{"radishes", "grass", "clover", "violets"}, ok: true},
+		},
+	},
 	{
 		description: "lookup invalid name",
 		diagram:     "\nRC\nGG",
@@ -65,64 +96,35 @@ var tests = []gardenTest{
 	},
 }
 
-var test5 = gardenTest{
-	description: "full garden",
-	diagram:     "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV",
-	children:    []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"},
-	expectError: false,
-	lookups: []lookup{
-		{child: "Alice", plants: []string{"violets", "radishes", "violets", "radishes"}, ok: true},
-		{child: "Bob", plants: []string{"clover", "grass", "clover", "clover"}, ok: true},
-		{child: "Charlie", plants: []string{"violets", "violets", "clover", "grass"}, ok: true},
-		{child: "David", plants: []string{"radishes", "violets", "clover", "radishes"}, ok: true},
-		{child: "Eve", plants: []string{"clover", "grass", "radishes", "grass"}, ok: true},
-		{child: "Fred", plants: []string{"grass", "clover", "violets", "clover"}, ok: true},
-		{child: "Ginny", plants: []string{"clover", "grass", "grass", "clover"}, ok: true},
-		{child: "Harriet", plants: []string{"violets", "radishes", "radishes", "violets"}, ok: true},
-		{child: "Ileana", plants: []string{"grass", "clover", "violets", "clover"}, ok: true},
-		{child: "Joseph", plants: []string{"violets", "clover", "violets", "grass"}, ok: true},
-		{child: "Kincaid", plants: []string{"grass", "clover", "clover", "grass"}, ok: true},
-		{child: "Larry", plants: []string{"grass", "violets", "clover", "violets"}, ok: true},
-	},
+func testGaren(t *testing.T, tc gardenTest) {
+	actual, err := NewGarden(tc.diagram, tc.children)
+	switch {
+	case tc.expectError:
+		if err == nil {
+			t.Fatal("NewGarden expected error but got nil")
+		}
+	case err != nil:
+		t.Fatalf("NewGarden returned unexpected error: %v ", err)
+	}
+	for _, l := range tc.lookups {
+		switch plants, ok := actual.Plants(l.child); {
+		case ok != l.ok:
+			t.Fatalf("Lookup %q returned ok = %t, want %t", l.child, ok, l.ok)
+		case ok && !reflect.DeepEqual(plants, l.plants):
+			t.Fatalf("Lookup %q = %q, want: %q", l.child, plants, l.plants)
+		}
+	}
 }
 
-var (
-	test6names = []string{"Samantha", "Patricia", "Xander", "Roger"}
-	test6      = gardenTest{
-		description: "names out of order",
-		diagram:     "\nVCRRGVRG\nRVGCCGCV",
-		children:    test6names,
-		expectError: false,
-		lookups: []lookup{
-			{child: "Patricia", plants: []string{"violets", "clover", "radishes", "violets"}, ok: true},
-			{child: "Roger", plants: []string{"radishes", "radishes", "grass", "clover"}, ok: true},
-			{child: "Samantha", plants: []string{"grass", "violets", "clover", "grass"}, ok: true},
-			{child: "Xander", plants: []string{"radishes", "grass", "clover", "violets"}, ok: true},
-		},
+func TestGardenCanonical(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) { testGaren(t, tc) })
 	}
-)
+}
 
-func TestGarden(t *testing.T) {
-	for _, test := range append(testCases, tests...) {
-		t.Run(test.description, func(t *testing.T) {
-			actual, err := NewGarden(test.diagram, test.children)
-			switch {
-			case test.expectError:
-				if err == nil {
-					t.Fatal("NewGarden expected error but got nil")
-				}
-			case err != nil:
-				t.Fatalf("NewGarden returned unexpected error: %v ", err)
-			}
-			for _, l := range test.lookups {
-				switch plants, ok := actual.Plants(l.child); {
-				case ok != l.ok:
-					t.Fatalf("Lookup %q returned ok = %t, want %t", l.child, ok, l.ok)
-				case ok && !reflect.DeepEqual(plants, l.plants):
-					t.Fatalf("Lookup %q = %q, want: %q", l.child, plants, l.plants)
-				}
-			}
-		})
+func TestGardenExtra(t *testing.T) {
+	for _, tc := range extraTests {
+		t.Run(tc.description, func(t *testing.T) { testGaren(t, tc) })
 	}
 }
 
@@ -130,12 +132,13 @@ func TestGarden(t *testing.T) {
 // on the argument slice.  That's an in-place sort though and it's bad practice
 // to have a side effect.
 func TestNamesNotModified(t *testing.T) {
-	cp := append([]string{}, test6names...)
-	_, err := NewGarden(test6.diagram, cp)
+	children := []string{"Samantha", "Patricia", "Xander", "Roger"}
+	cp := slices.Clone(children)
+	_, err := NewGarden("\nVCRRGVRG\nRVGCCGCV", cp)
 	if err != nil || sort.StringsAreSorted(cp) {
 		t.Fatalf("error in test setup: TestNamesNotModified requires valid garden and unsorted children")
 	}
-	if !reflect.DeepEqual(cp, test6names) {
+	if !reflect.DeepEqual(cp, children) {
 		t.Fatalf("NewGarden modified children argment. Arguments should not be modified.")
 	}
 }
@@ -168,21 +171,23 @@ RVGCCGCV`
 
 func BenchmarkNewGarden(b *testing.B) {
 	for range b.N {
-		for _, test := range tests {
+		for _, test := range testCases {
 			NewGarden(test.diagram, test.children)
 		}
 	}
 }
 
 func BenchmarkGarden_Plants(b *testing.B) {
-	g, err := NewGarden(test5.diagram, test5.children)
+	diagram := "\nVRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV"
+	children := []string{"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"}
+	g, err := NewGarden(diagram, children)
 	if err != nil {
 		b.Fatalf("error in benchmark setup: BenchmarkGarden_Plants requires valid garden")
 	}
 	b.ResetTimer()
 	for range b.N {
-		for _, l := range test5.lookups {
-			g.Plants(l.child)
+		for _, child := range children {
+			g.Plants(child)
 		}
 	}
 }
