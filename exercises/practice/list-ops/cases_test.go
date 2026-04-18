@@ -8,84 +8,84 @@ package listops
 
 type testCaseAppend struct {
 	description  string
-	list1, list2 []int
-	expected     []int
+	list1, list2 IntList
+	expected     IntList
 }
 
 var testCasesAppend = []testCaseAppend{
 	{
 		description: "empty lists",
-		list1:       []int{},
-		list2:       []int{},
-		expected:    []int{},
+		list1:       IntList{},
+		list2:       IntList{},
+		expected:    IntList{},
 	},
 	{
 		description: "list to empty list",
-		list1:       []int{},
-		list2:       []int{1, 2, 3, 4},
-		expected:    []int{1, 2, 3, 4},
+		list1:       IntList{},
+		list2:       IntList{1, 2, 3, 4},
+		expected:    IntList{1, 2, 3, 4},
 	},
 	{
 		description: "empty list to list",
-		list1:       []int{1, 2, 3, 4},
-		list2:       []int{},
-		expected:    []int{1, 2, 3, 4},
+		list1:       IntList{1, 2, 3, 4},
+		list2:       IntList{},
+		expected:    IntList{1, 2, 3, 4},
 	},
 	{
 		description: "non-empty lists",
-		list1:       []int{1, 2},
-		list2:       []int{2, 3, 4, 5},
-		expected:    []int{1, 2, 2, 3, 4, 5},
+		list1:       IntList{1, 2},
+		list2:       IntList{2, 3, 4, 5},
+		expected:    IntList{1, 2, 2, 3, 4, 5},
 	},
 }
 
 type testCaseConcat struct {
 	description string
-	lists       [][]int
-	expected    []int
+	lists       []IntList
+	expected    IntList
 }
 
 var testCasesConcat = []testCaseConcat{
 	{
 		description: "empty list",
-		lists:       [][]int{},
-		expected:    []int{},
+		lists:       []IntList{},
+		expected:    IntList{},
 	},
 	{
 		description: "list of lists",
-		lists:       [][]int{[]int{1, 2}, []int{3}, []int{}, []int{4, 5, 6}},
-		expected:    []int{1, 2, 3, 4, 5, 6},
+		lists:       []IntList{{1, 2}, {3}, {}, {4, 5, 6}},
+		expected:    IntList{1, 2, 3, 4, 5, 6},
 	},
 }
 
 type testCaseFilter struct {
 	description string
-	list        []int
+	list        IntList
 	function    func(int) bool
 	functionStr string
-	expected    []int
+	expected    IntList
 }
 
 var testCasesFilter = []testCaseFilter{
 	{
 		description: "empty list",
-		list:        []int{},
+		list:        IntList{},
 		function:    func(x int) bool { return x%2 == 1 },
 		functionStr: "(x) -> x modulo 2 == 1",
-		expected:    []int{},
+		expected:    IntList{},
 	},
 	{
 		description: "non-empty list",
-		list:        []int{1, 2, 3, 5},
+		list:        IntList{1, 2, 3, 5},
 		function:    func(x int) bool { return x%2 == 1 },
 		functionStr: "(x) -> x modulo 2 == 1",
-		expected:    []int{1, 3, 5},
+		expected:    IntList{1, 3, 5},
 	},
 }
 
 type testCaseFoldl struct {
 	description string
-	list        []int
+	list        IntList
 	initial     int
 	function    func(int, int) int
 	functionStr string
@@ -95,7 +95,7 @@ type testCaseFoldl struct {
 var testCasesFoldl = []testCaseFoldl{
 	{
 		description: "direction dependent function applied to non-empty list",
-		list:        []int{2, 5},
+		list:        IntList{2, 5},
 		initial:     5,
 		function:    func(x, y int) int { return x / y },
 		functionStr: "(x, y) -> x / y",
@@ -103,7 +103,7 @@ var testCasesFoldl = []testCaseFoldl{
 	},
 	{
 		description: "empty list",
-		list:        []int{},
+		list:        IntList{},
 		initial:     2,
 		function:    func(acc, el int) int { return el * acc },
 		functionStr: "(acc, el) -> el * acc",
@@ -111,7 +111,7 @@ var testCasesFoldl = []testCaseFoldl{
 	},
 	{
 		description: "direction independent function applied to non-empty list",
-		list:        []int{1, 2, 3, 4},
+		list:        IntList{1, 2, 3, 4},
 		initial:     5,
 		function:    func(acc, el int) int { return el + acc },
 		functionStr: "(acc, el) -> el + acc",
@@ -121,7 +121,7 @@ var testCasesFoldl = []testCaseFoldl{
 
 type testCaseFoldr struct {
 	description string
-	list        []int
+	list        IntList
 	initial     int
 	function    func(int, int) int
 	functionStr string
@@ -131,7 +131,7 @@ type testCaseFoldr struct {
 var testCasesFoldr = []testCaseFoldr{
 	{
 		description: "direction dependent function applied to non-empty list",
-		list:        []int{2, 5},
+		list:        IntList{2, 5},
 		initial:     5,
 		function:    func(x, y int) int { return x / y },
 		functionStr: "(x, y) -> x / y",
@@ -139,7 +139,7 @@ var testCasesFoldr = []testCaseFoldr{
 	},
 	{
 		description: "empty list",
-		list:        []int{},
+		list:        IntList{},
 		initial:     2,
 		function:    func(acc, el int) int { return el * acc },
 		functionStr: "(acc, el) -> el * acc",
@@ -147,7 +147,7 @@ var testCasesFoldr = []testCaseFoldr{
 	},
 	{
 		description: "direction independent function applied to non-empty list",
-		list:        []int{1, 2, 3, 4},
+		list:        IntList{1, 2, 3, 4},
 		initial:     5,
 		function:    func(acc, el int) int { return el + acc },
 		functionStr: "(acc, el) -> el + acc",
@@ -157,63 +157,63 @@ var testCasesFoldr = []testCaseFoldr{
 
 type testCaseLength struct {
 	description string
-	list        []int
+	list        IntList
 	expected    int
 }
 
 var testCasesLength = []testCaseLength{
 	{
 		description: "empty list",
-		list:        []int{},
+		list:        IntList{},
 		expected:    0,
 	},
 	{
 		description: "non-empty list",
-		list:        []int{1, 2, 3, 4},
+		list:        IntList{1, 2, 3, 4},
 		expected:    4,
 	},
 }
 
 type testCaseMap struct {
 	description string
-	list        []int
+	list        IntList
 	function    func(int) int
 	functionStr string
-	expected    []int
+	expected    IntList
 }
 
 var testCasesMap = []testCaseMap{
 	{
 		description: "empty list",
-		list:        []int{},
+		list:        IntList{},
 		function:    func(x int) int { return x + 1 },
 		functionStr: "(x) -> x + 1",
-		expected:    []int{},
+		expected:    IntList{},
 	},
 	{
 		description: "non-empty list",
-		list:        []int{1, 3, 5, 7},
+		list:        IntList{1, 3, 5, 7},
 		function:    func(x int) int { return x + 1 },
 		functionStr: "(x) -> x + 1",
-		expected:    []int{2, 4, 6, 8},
+		expected:    IntList{2, 4, 6, 8},
 	},
 }
 
 type testCaseReverse struct {
 	description string
-	list        []int
-	expected    []int
+	list        IntList
+	expected    IntList
 }
 
 var testCasesReverse = []testCaseReverse{
 	{
 		description: "empty list",
-		list:        []int{},
-		expected:    []int{},
+		list:        IntList{},
+		expected:    IntList{},
 	},
 	{
 		description: "non-empty list",
-		list:        []int{1, 3, 5, 7},
-		expected:    []int{7, 5, 3, 1},
+		list:        IntList{1, 3, 5, 7},
+		expected:    IntList{7, 5, 3, 1},
 	},
 }

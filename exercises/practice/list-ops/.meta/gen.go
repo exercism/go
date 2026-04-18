@@ -5,12 +5,37 @@ import (
 	"fmt"
 	"log"
 	"slices"
+	"strconv"
 	"strings"
 	"text/template"
 )
 
+func sliceIntToStr(ints []int) string {
+	parts := make([]string, len(ints))
+	for i, v := range ints {
+		parts[i] = strconv.Itoa(v)
+	}
+	return fmt.Sprintf("%s", strings.Join(parts, ", "))
+}
+
+func asIntList(list []int) string {
+	return fmt.Sprintf("IntList{%s}", sliceIntToStr(list))
+}
+
+func asIntListSlice(list [][]int) string {
+	parts := make([]string, len(list))
+	for i, p := range list {
+		parts[i] = fmt.Sprintf("{%s}", sliceIntToStr(p))
+	}
+	return fmt.Sprintf("[]IntList{%s}", strings.Join(parts, ", "))
+}
+
 func main() {
-	t, err := template.New("").Parse(tmpl)
+	funcMap := template.FuncMap{
+		"IntList":      asIntList,
+		"IntListSlice": asIntListSlice,
+	}
+	t, err := template.New("").Funcs(funcMap).Parse(tmpl)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -145,133 +170,133 @@ var tmpl = `// This file contains tests from the shared problem specifications r
 
 type testCaseAppend struct {
 	description   string
-	list1, list2  []int
-	expected      []int
+	list1, list2  IntList
+	expected      IntList
 }
 
 var testCasesAppend = []testCaseAppend { {{range .J.append}}
 	{
 		description: {{printf "%q" .Description}},
-		list1:       {{printf "%#v" .Input.List1}},
-		list2:       {{printf "%#v" .Input.List2}},
-		expected:    {{printf "%#v" .Expected}},
+		list1:       {{IntList .Input.List1}},
+		list2:       {{IntList .Input.List2}},
+		expected:    {{IntList .Expected}},
 	},{{end}}
 }
 
 type testCaseConcat struct {
 	description string
-	lists       [][]int
-	expected    []int
+	lists       []IntList
+	expected    IntList
 }
 
 var testCasesConcat = []testCaseConcat { {{range .J.concat}}
 	{
 		description: {{printf "%q" .Description}},
-		lists:       {{printf "%#v" .Input.Lists}},
-		expected:    {{printf "%#v" .Expected}},
+		lists:       {{IntListSlice .Input.Lists}},
+		expected:    {{IntList .Expected}},
 	},{{end}}
 }
 
 type testCaseFilter struct {
 	description string
-	list        []int
+	list        IntList
 	function    func(int) bool
 	functionStr string
-	expected    []int
+	expected    IntList
 }
 
 var testCasesFilter = []testCaseFilter { {{range .J.filter}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
+		list:        {{IntList .Input.List}},
 		function:    {{.Func}},
 		functionStr: {{printf "%q" .Input.Function}},
-		expected:    {{printf "%#v" .Expected}},
+		expected:    {{IntList .Expected}},
 	},{{end}}
 }
 
 type testCaseFoldl struct {
 	description string
-	list []int
-	initial int
-	function func(int, int) int
+	list        IntList
+	initial     int
+	function    func(int, int) int
 	functionStr string
-	expected int
+	expected    int
 }
 
 var testCasesFoldl = []testCaseFoldl { {{range .J.foldl}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
+		list:        {{IntList .Input.List}},
 		initial:     {{.Input.Initial}},
 		function:    {{.Func}},
 		functionStr: {{printf "%q" .Input.Function}},
-		expected:    {{printf "%#v" .Expected}},
+		expected:    {{.Expected}},
 	},{{end}}
 }
 
 type testCaseFoldr struct {
 	description string
-	list []int
-	initial int
-	function func(int, int) int
+	list        IntList
+	initial     int
+	function    func(int, int) int
 	functionStr string
-	expected int
+	expected    int
 }
 
 var testCasesFoldr = []testCaseFoldr { {{range .J.foldr}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
+		list:        {{IntList .Input.List}},
 		initial:     {{.Input.Initial}},
 		function:    {{.Func}},
 		functionStr: {{printf "%q" .Input.Function}},
-		expected:    {{printf "%#v" .Expected}},
+		expected:    {{.Expected}},
 	},{{end}}
 }
 
 type testCaseLength struct {
 	description string
-	list        []int
+	list        IntList
 	expected    int
 }
 
 var testCasesLength = []testCaseLength { {{range .J.length}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
+		list:        {{IntList .Input.List}},
 		expected:    {{.Expected}},
 	},{{end}}
 }
 
 type testCaseMap struct {
 	description string
-	list []int
-	function func(int) int
+	list        IntList
+	function    func(int) int
 	functionStr string
-	expected []int
+	expected    IntList
 }
 
 var testCasesMap = []testCaseMap { {{range .J.map}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
+		list:        {{IntList .Input.List}},
 		function:    {{.Func}},
 		functionStr: {{printf "%q" .Input.Function}},
-		expected:    {{printf "%#v" .Expected}},
+		expected:    {{IntList .Expected}},
 	},{{end}}
 }
 
 type testCaseReverse struct {
 	description string
-	list        []int
-	expected    []int
+	list        IntList
+	expected    IntList
 }
 
 var testCasesReverse = []testCaseReverse { {{range .J.reverse}}
 	{
 		description: {{printf "%q" .Description}},
-		list:        {{printf "%#v" .Input.List}},
-		expected:    {{printf "%#v" .Expected}},
+		list:        {{IntList .Input.List}},
+		expected:    {{IntList .Expected}},
 	},{{end}}
 }`
