@@ -5,7 +5,7 @@ import "testing"
 func TestZeroGivesPositiveRequiredError(t *testing.T) {
 	// GivesPositiveRequiredError
 	if _, err := Classify(0); err != ErrOnlyPositive {
-		t.Fatalf("Classify(0) expected error %q, got: %q", ErrOnlyPositive, err)
+		t.Fatalf("Classify(0) expected error %v, got: %v", ErrOnlyPositive, err)
 	}
 }
 
@@ -17,12 +17,12 @@ func TestClassifiesCorrectly(t *testing.T) {
 			case !tc.ok:
 				// expect error
 				if err == nil {
-					t.Fatalf("Classify(%d) expected error, got: %q", tc.input, actual)
+					t.Fatalf("Classify(%d) expected error, got: %v", tc.input, actual)
 				}
 			case err != nil:
-				t.Fatalf("Classify(%d) returned error: %q, want: %q", tc.input, err, tc.expected)
+				t.Fatalf("Classify(%d) returned error: %v, want: %v", tc.input, err, tc.expected)
 			case actual != tc.expected:
-				t.Fatalf("Classify(%d) = %q, want: %q", tc.input, actual, tc.expected)
+				t.Fatalf("Classify(%d) = %v, want: %v", tc.input, actual, tc.expected)
 			}
 		})
 	}
