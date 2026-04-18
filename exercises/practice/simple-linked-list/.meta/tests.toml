@@ -35,6 +35,12 @@ description = "pop -> Pop updates the count"
 
 [70d747a1-2e84-4ebc-bc3f-dcbee6a05f6b]
 description = "push -> Can push to an empty list"
+include = false
+comment = "reimplemented by f3197f0a-1fea-45a5-939f-4a5ea60387ec"
+
+[f3197f0a-1fea-45a5-939f-4a5ea60387ec]
+description = "push -> Can push to an empty list"
+reimplements = "70d747a1-2e84-4ebc-bc3f-dcbee6a05f6b"
 
 [391e332e-1f91-4033-b1e0-0e0c17812fa7]
 description = "push -> Can push to a non-empty list"

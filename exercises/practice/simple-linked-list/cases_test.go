@@ -3,7 +3,7 @@ package simplelinkedlist
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: f1ff9e6 simple-linked-list: reimplement 1 test to count after reverse (#2636)
+// Commit: 76ee5b7 [simple-linked-list] Add missing initialValues field (#2645)
 
 type Operation struct {
 	operation    string
@@ -83,7 +83,7 @@ var testCases = []testCase{
 	},
 	{
 		description:   "Can push to an empty list",
-		initialValues: []int(nil),
+		initialValues: []int{},
 		operations: []Operation{
 			Operation{operation: "Push", value: 1},
 		},
