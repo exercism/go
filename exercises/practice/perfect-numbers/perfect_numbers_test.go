@@ -3,11 +3,10 @@ package perfectnumbers
 import "testing"
 
 func TestZeroGivesPositiveRequiredError(t *testing.T) {
-	t.Run("GivesPositiveRequiredError", func(t *testing.T) {
-		if _, err := Classify(0); err != ErrOnlyPositive {
-			t.Fatalf("Classify(0) expected error %q, got: %q", ErrOnlyPositive, err)
-		}
-	})
+	// GivesPositiveRequiredError
+	if _, err := Classify(0); err != ErrOnlyPositive {
+		t.Fatalf("Classify(0) expected error %q, got: %q", ErrOnlyPositive, err)
+	}
 }
 
 func TestClassifiesCorrectly(t *testing.T) {
