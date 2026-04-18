@@ -69,29 +69,37 @@ func TestHas(t *testing.T) {
 }
 
 // helper for testing Subset, Disjoint, Equal
-func testBinBool(name string, f func(Set, Set) bool, cases []binBoolCase, t *testing.T) {
-	for _, tc := range cases {
-		t.Run(tc.description, func(t *testing.T) {
-			s1 := NewFromSlice(tc.set1)
-			s2 := NewFromSlice(tc.set2)
-			got := f(s1, s2)
-			if got != tc.want {
-				t.Errorf("%s(%v, %v) = %t, want %t", name, s1, s2, got, tc.want)
-			}
-		})
+func testBinBool(name string, f func(Set, Set) bool, tc binBoolCase, t *testing.T) {
+	s1 := NewFromSlice(tc.set1)
+	s2 := NewFromSlice(tc.set2)
+	got := f(s1, s2)
+	if got != tc.want {
+		t.Errorf("%s(%v, %v) = %t, want %t", name, s1, s2, got, tc.want)
 	}
 }
 
 func TestSubset(t *testing.T) {
-	testBinBool("Subset", Subset, subsetCases, t)
+	for _, tc := range subsetCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinBool("Subset", Subset, tc, t)
+		})
+	}
 }
 
 func TestDisjoint(t *testing.T) {
-	testBinBool("Disjoint", Disjoint, disjointCases, t)
+	for _, tc := range disjointCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinBool("Disjoint", Disjoint, tc, t)
+		})
+	}
 }
 
 func TestEqual(t *testing.T) {
-	testBinBool("Equal", Equal, equalCases, t)
+	for _, tc := range equalCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinBool("Equal", Equal, tc, t)
+		})
+	}
 }
 
 func TestAdd(t *testing.T) {
@@ -108,30 +116,38 @@ func TestAdd(t *testing.T) {
 }
 
 // helper for testing Intersection, Difference, Union
-func testBinOp(name string, f func(Set, Set) Set, cases []binOpCase, t *testing.T) {
-	for _, tc := range cases {
-		t.Run(tc.description, func(t *testing.T) {
-			s1 := NewFromSlice(tc.set1)
-			s2 := NewFromSlice(tc.set2)
-			want := NewFromSlice(tc.want)
-			got := f(s1, s2)
-			if !Equal(got, want) {
-				t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
-			}
-		})
+func testBinOp(name string, f func(Set, Set) Set, tc binOpCase, t *testing.T) {
+	s1 := NewFromSlice(tc.set1)
+	s2 := NewFromSlice(tc.set2)
+	want := NewFromSlice(tc.want)
+	got := f(s1, s2)
+	if !Equal(got, want) {
+		t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
 	}
 }
 
 func TestIntersection(t *testing.T) {
-	testBinOp("Intersection", Intersection, intersectionCases, t)
+	for _, tc := range intersectionCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinOp("Intersection", Intersection, tc, t)
+		})
+	}
 }
 
 func TestDifference(t *testing.T) {
-	testBinOp("Difference", Difference, differenceCases, t)
+	for _, tc := range differenceCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinOp("Difference", Difference, tc, t)
+		})
+	}
 }
 
 func TestUnion(t *testing.T) {
-	testBinOp("Union", Union, unionCases, t)
+	for _, tc := range unionCases {
+		t.Run(tc.description, func(t *testing.T) {
+			testBinOp("Union", Union, tc, t)
+		})
+	}
 }
 
 func BenchmarkNewFromSlice1e1(b *testing.B) { bench(1e1, b) }
