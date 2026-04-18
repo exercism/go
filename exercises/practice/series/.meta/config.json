@@ -21,7 +21,9 @@
       "series.go"
     ],
     "test": [
-      "series_test.go"
+      "first_test.go",
+      "series_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
