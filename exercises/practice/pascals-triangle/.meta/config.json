@@ -21,7 +21,8 @@
       "pascals_triangle.go"
     ],
     "test": [
-      "pascals_triangle_test.go"
+      "pascals_triangle_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

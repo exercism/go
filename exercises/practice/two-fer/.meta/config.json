@@ -19,7 +19,8 @@
       "two_fer.go"
     ],
     "test": [
-      "two_fer_test.go"
+      "two_fer_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

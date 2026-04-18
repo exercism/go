@@ -16,7 +16,8 @@
       "rotational_cipher.go"
     ],
     "test": [
-      "rotational_cipher_test.go"
+      "rotational_cipher_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

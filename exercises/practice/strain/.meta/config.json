@@ -20,7 +20,8 @@
       "strain.go"
     ],
     "test": [
-      "strain_test.go"
+      "strain_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

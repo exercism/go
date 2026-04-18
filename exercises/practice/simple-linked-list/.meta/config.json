@@ -17,7 +17,8 @@
       "simple_linked_list.go"
     ],
     "test": [
-      "simple_linked_list_test.go"
+      "simple_linked_list_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

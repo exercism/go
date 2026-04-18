@@ -16,7 +16,8 @@
       "spiral_matrix.go"
     ],
     "test": [
-      "spiral_matrix_test.go"
+      "spiral_matrix_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

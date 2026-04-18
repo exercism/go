@@ -22,7 +22,8 @@
       "circular_buffer.go"
     ],
     "test": [
-      "circular_buffer_test.go"
+      "circular_buffer_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

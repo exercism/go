@@ -21,7 +21,8 @@
       "food_chain.go"
     ],
     "test": [
-      "food_chain_test.go"
+      "food_chain_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

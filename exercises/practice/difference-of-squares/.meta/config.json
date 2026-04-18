@@ -22,7 +22,8 @@
       "difference_of_squares.go"
     ],
     "test": [
-      "difference_of_squares_test.go"
+      "difference_of_squares_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"
