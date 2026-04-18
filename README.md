@@ -414,3 +414,32 @@ Your fresh ideas and contributions are welcome.
 ### Go icon
 
 The Go logo was designed by Renée French, and has been released under the Creative Commons 3.0 Attributions license.
+
+
+## All the tests
+
+A collection of commands to update/validate/verify all the things in the Go repos.
+
+```bash
+# Check JSON files
+./bin/configlet fmt
+./bin/configlet lint
+
+# Check if files are up to date
+./bin/configlet sync
+
+# Regenerate the cases_test.go files
+./bin/run-generators
+
+# Check the example/exemplar solutions pass the tests
+./bin/run-tests
+
+# Run the test runner for each test.
+# If there is any non-Docker output, the test runner probably can't parse the test file/data.
+# See the go-test-runner where you can run these tests without Docker via ./bin/test-examples.sh
+./bin/verify-exercises-in-docker
+
+# Test the generator and tools
+cd "$(git rev-parse --show-toplevel)/gen"; GO111MODULE=off go test ./...
+cd "$(git rev-parse --show-toplevel)/gotools"; go test ./...
+```
