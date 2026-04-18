@@ -1,3 +1,3 @@
-module twelve
+module twelvedays
 
 go 1.26

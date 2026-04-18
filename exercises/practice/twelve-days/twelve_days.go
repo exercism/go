@@ -1,4 +1,4 @@
-package twelve
+package twelvedays
 
 func Verse(i int) string {
 	panic("Please implement the Verse function")

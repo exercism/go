@@ -1,4 +1,4 @@
-package twelve
+package twelvedays
 
 import (
 	"fmt"
