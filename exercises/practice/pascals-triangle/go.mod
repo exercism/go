@@ -1,3 +1,3 @@
-module pascal
+module pascalstriangle
 
 go 1.26

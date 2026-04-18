@@ -1,4 +1,4 @@
-package pascal
+package pascalstriangle
 
 func Triangle(n int) (t [][]int) {
 	if n < 1 {
