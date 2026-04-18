@@ -45,7 +45,7 @@ func TestNewNotNil(t *testing.T) {
 func TestValue(t *testing.T) {
 	for _, tt := range helperTestCases {
 		t.Run(tt.description, func(t *testing.T) {
-			tree := New(tt.root, tt.children...)
+			tree := tt.tree
 			got := tree.Value()
 			want := tt.root
 			if want != got {
@@ -58,7 +58,7 @@ func TestValue(t *testing.T) {
 func TestChildren(t *testing.T) {
 	for _, tt := range helperTestCases {
 		t.Run(tt.description, func(t *testing.T) {
-			tree := New(tt.root, tt.children...)
+			tree := tt.tree
 			got := tree.Children()
 			want := tt.children
 			if !treeSliceEqual(want, got) {
