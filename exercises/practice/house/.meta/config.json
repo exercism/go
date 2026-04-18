@@ -20,7 +20,8 @@
       "house.go"
     ],
     "test": [
-      "house_test.go"
+      "house_test.go",
+      "cases_test.go"
     ],
     "example": [
       ".meta/example.go"

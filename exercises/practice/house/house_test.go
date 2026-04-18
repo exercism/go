@@ -11,111 +11,15 @@
 package house
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
 
-var (
-	// song copied from README
-	expectedSong = `This is the house that Jack built.
-
-This is the malt
-that lay in the house that Jack built.
-
-This is the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the man all tattered and torn
-that kissed the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the priest all shaven and shorn
-that married the man all tattered and torn
-that kissed the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the rooster that crowed in the morn
-that woke the priest all shaven and shorn
-that married the man all tattered and torn
-that kissed the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the farmer sowing his corn
-that kept the rooster that crowed in the morn
-that woke the priest all shaven and shorn
-that married the man all tattered and torn
-that kissed the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.
-
-This is the horse and the hound and the horn
-that belonged to the farmer sowing his corn
-that kept the rooster that crowed in the morn
-that woke the priest all shaven and shorn
-that married the man all tattered and torn
-that kissed the maiden all forlorn
-that milked the cow with the crumpled horn
-that tossed the dog
-that worried the cat
-that killed the rat
-that ate the malt
-that lay in the house that Jack built.`
-
-	expectedVerses = strings.Split(expectedSong, "\n\n")
-)
-
 func TestVerse(t *testing.T) {
-	for v := 0; v < len(expectedVerses); v++ {
-		t.Run(fmt.Sprintf("verse %d", v+1), func(t *testing.T) {
-			if got := Verse(v + 1); got != expectedVerses[v] {
-				t.Fatalf("Verse(%d)\ngot:\n%q\nwant:\n%q", v+1, got, expectedVerses[v])
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if got := Verse(tc.verse); got != tc.expected {
+				t.Fatalf("Verse(%d)\ngot:\n%q\nwant:\n%q", tc.verse, got, tc.expected)
 			}
 		})
 	}
@@ -123,17 +27,17 @@ func TestVerse(t *testing.T) {
 
 func TestSong(t *testing.T) {
 	s := Song()
-	if s == expectedSong {
+	if s == strings.Join(song, "\n\n") {
 		return
 	}
 	// a little help in locating an error
 	gotStanzas := len(strings.Split(s, "\n\n"))
-	wantStanzas := len(expectedVerses)
+	wantStanzas := len(song)
 	if wantStanzas != gotStanzas {
 		t.Fatalf("Song() has %d verse(s), want %d verses", gotStanzas, wantStanzas)
 	}
 	got := strings.Split(s, "\n")
-	want := strings.Split(expectedSong, "\n")
+	want := strings.Split(strings.Join(song, "\n\n"), "\n")
 	var g, w string
 	var i int
 	for i, w = range want {
@@ -150,8 +54,8 @@ func TestSong(t *testing.T) {
 
 func BenchmarkVerse(b *testing.B) {
 	for range b.N {
-		for v := 0; v < len(expectedVerses); v++ {
-			Verse(v + 1)
+		for _, tc := range testCases {
+			Verse(tc.verse)
 		}
 	}
 }
