@@ -1643,7 +1643,9 @@
         "slug": "pig-latin",
         "name": "Pig Latin",
         "uuid": "4fe8ba14-20ba-4aa3-b134-7aed799a7522",
-        "practices": [],
+        "practices": [
+          "regular-expressions"
+        ],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
@@ -1863,7 +1865,9 @@
         "slug": "wordy",
         "name": "Wordy",
         "uuid": "1eb7d7b2-6367-4038-bb86-7dc6c682b6a3",
-        "practices": [],
+        "practices": [
+          "regular-expressions"
+        ],
         "prerequisites": [],
         "difficulty": 4,
         "topics": [
