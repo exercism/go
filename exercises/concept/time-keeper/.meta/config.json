@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "thibault2705"
+  ],
+  "files": {
+    "solution": [
+      "time_keeper.go"
+    ],
+    "test": [
+      "time_keeper_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
+  "blurb": "Learn how concept time and duration is implemented in Go."
+}
