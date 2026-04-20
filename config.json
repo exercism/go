@@ -428,6 +428,17 @@
           "methods",
           "structs"
         ]
+      },
+      {
+        "slug": "time-duration",
+        "name": "Time Duration",
+        "uuid": "82abf57d-891b-484f-b4d8-309e1486a6f5",
+        "concepts": [
+          "time-duration"
+        ],
+        "prerequisites": [
+          "time"
+        ]
       }
     ],
     "practice": [
@@ -2280,7 +2291,7 @@
         ],
         "prerequisites": [
           "time"
-        ],
+        ],f
         "difficulty": 7
       },
       {

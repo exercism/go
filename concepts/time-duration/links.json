@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://pkg.go.dev/time",
+    "description": "Go packages: time package"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Time",
+    "description": "Go packages: time.Time type"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Duration",
+    "description": "Go packages: time.Duration type"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Since",
+    "description": "Go packages: time.Since function"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Time.Add",
+    "description": "Go packages: time.Time.Add method"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Time.Sub",
+    "description": "Go packages: time.Time.Sub method"
+  },
+  {
+    "url": "https://pkg.go.dev/time#Now",
+    "description": "Go packages: time.Now function"
+  },
+  {
+    "url": "https://gobyexample.com/time",
+    "description": "Go by Example: Time"
+  },
+  {
+    "url": "https://gobyexample.com/time-formatting-parsing",
+    "description": "Go by Example: Time Formatting / Parsing"
+  }
+]
