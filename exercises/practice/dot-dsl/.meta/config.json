@@ -1,0 +1,20 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "dot_dsl.go"
+    ],
+    "test": [
+      "dot_dsl_test.go",
+      "cases_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Write a Domain Specific Language similar to the Graphviz dot language.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/DOT_(graph_description_language)"
+}
