@@ -3,7 +3,7 @@ package dotdsl
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 3908a66 add canonical-data for dot-dsl (#2646)
+// Commit: d6451b0 [dot-dsl] Make test case descriptions unique
 
 type testCase struct {
 	description string
@@ -99,12 +99,12 @@ var testCases = []testCase{
 		expectedErr: "invalid edge",
 	},
 	{
-		description: "malformed multiple edges",
+		description: "multiple edges missing a node",
 		input:       "graph {\n    a -- b --;\n}",
 		expectedErr: "invalid edge",
 	},
 	{
-		description: "malformed multiple edges",
+		description: "multiple edges missing a connector",
 		input:       "graph {\n    a -- b c;\n}",
 		expectedErr: "invalid edge",
 	},

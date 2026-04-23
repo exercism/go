@@ -1906,7 +1906,9 @@
         "slug": "dot-dsl",
         "name": "DOT DSL",
         "uuid": "82c49ab1-270c-425a-a461-377853a13e3b",
-        "practices": [],
+        "practices": [
+          "type-conversion"
+        ],
         "prerequisites": [],
         "difficulty": 5
       },
