@@ -23,7 +23,7 @@ Constants are typically declared at package level, though they can also be decla
 ## Typed and untyped constants
 
 Declaring a constant without specifying a type makes it untyped.
-An untyped constant has no set type, but its value determines what types it's compatible with.
+An untyped constant has no set type; its value determines what types it's compatible with.
 As long as the underlying value is compatible, the compiler will convert it to the required type at each use:
 
 ```go
