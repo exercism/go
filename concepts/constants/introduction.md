@@ -1,14 +1,14 @@
 # Introduction
 
-Constants are variables that are set to a value at compile time and cannot be reassigned.
-Use the `const` keyword to declare a constant:
+Constants are values set at compile time and cannot be reassigned.
+Use the `const` keyword to declare a single constant:
 
 ```go
 const greeting = "hello"
 ```
 
 Multiple constants can be declared in a block.
-Within a block, a constant without an explicit value repeats the previous expression:
+Within a block, a constant without an explicit value set repeats the previous expression:
 
 ```go
 const (
@@ -18,12 +18,12 @@ const (
 )
 ```
 
-Constants are typically declared at package level, though they can also be declared inside a function.
+Constants are typically declared at package level, though uncommonly they can also be declared inside a function.
 
 ## Typed and untyped constants
 
 Declaring a constant without specifying a type makes it untyped.
-An untyped constant has no set type; its value determines what types it's compatible with.
+An untyped constant has no set type, but its value determines what types it's compatible with.
 As long as the underlying value is compatible, the compiler will convert it to the required type at each use:
 
 ```go
@@ -43,7 +43,7 @@ math.Sqrt(num)  // compile error because a float is expected
 
 ## What can be a constant
 
-Constants can only hold booleans, numbers, strings, and runes.
+Constants can only hold Booleans, numbers, strings, and runes.
 Because the values are set at compile time, the results of a function call can not be constants:
 
 ```go
@@ -64,3 +64,19 @@ const (
 ```
 
 Each constant after the first inherits the same expression, with `iota` incrementing by one.
+
+`iota` also works in expressions.
+
+```go
+const (
+    _  = iota             // position 0: value discarded
+    KB = 1 << (10 * iota) // position 1: 1 << 10 = 1024
+    MB                    // position 2: 1 << 20 = 1048576
+    GB                    // position 3: 1 << 30 = 1073741824
+)
+```
+
+For a deeper look at constants in Go, see [The Go Blog][const-blog] and [Effective Go][effective-go].
+
+[const-blog]: https://go.dev/blog/constants
+[effective-go]: https://go.dev/doc/effective_go#constants
