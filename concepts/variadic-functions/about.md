@@ -1,7 +1,8 @@
 # About
 
 Typically, functions accept only a fixed number of arguments.
-Prefix the last parameter's type with `...` to accept any number of trailing arguments:
+However, if you prefix the last parameter's type with `...`, the function can accept any number of trailing arguments.
+This makes the last parameter a _variadic parameter_.
 
 ```go
 func sum(nums ...int) int {
