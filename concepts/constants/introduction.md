@@ -44,7 +44,7 @@ math.Sqrt(num)  // compile error because a float is expected
 ## What can be a constant
 
 Constants can only hold Booleans, numbers, strings, and runes.
-Because the values are set at compile time, the results of a function call can not be constants:
+Because the values are set at compile time, the results of a function call can not be used for a constant.
 
 ```go
 const s = math.Sqrt(4)  // compile error because the value isn't known at compile time
