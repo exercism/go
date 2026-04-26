@@ -18,7 +18,7 @@ const (
 )
 ```
 
-Constants are typically declared at package level, though uncommonly they can also be declared inside a function.
+Constants are typically declared at package level, though they can also be declared inside a function.
 
 ## Typed and untyped constants
 
