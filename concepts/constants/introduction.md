@@ -52,7 +52,7 @@ const s = math.Sqrt(4)  // compile error because the value isn't known at compil
 
 ## Iota
 
-Within a block of constants, `iota` represents each constant's position within the block:
+Within a block of constants, `iota` represents a constant's position within the block:
 
 ```go
 const (
