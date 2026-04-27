@@ -1,21 +1,46 @@
 # Introduction
 
-Booleans in Go are represented by the `bool` type.
-A `bool` is either `true` or `false`.
-
-Go supports three boolean operators: `!` (NOT), `&&` (AND), and `||` (OR).
+A Boolean value represents whether a condition is `true` or `false`.
+In Go, the `bool` type has only those two values.
 
 ```go
-true || false // => true
-true && false // => false
-!true // => false
+isDoorLocked := true
+hasKey := true
+knowsCode := false
 ```
 
-The three boolean operators each have a different _operator precedence_.
-As a consequence, they are evaluated in this order: `!` first, `&&` second, and finally `||`.
-If you want to force a different ordering, you can enclose a boolean expression in parentheses (ie. `()`), as the parentheses have an even higher operator precedence.
+## Logical Operators
+
+Logical operators work on one or two `bool` values and produce a Boolean result.
+
+| Operator | Name | Behavior |
+| -------- | ---- | -------- |
+| `!`      | NOT  | Returns the opposite of a single Boolean value |
+| `&&`     | AND  | Returns `true` only when both sides are `true` |
+| `||`     | OR   | Returns `true` when at least one side is `true` |
+
+Use `!` (NOT) when you need the opposite of a Boolean value:
 
 ```go
-!true && false   // => false
-!(true && false) // => true
+!isDoorLocked // false
+```
+
+Use `&&` (AND) when both conditions must be `true`:
+
+```go
+canUnlockDoor := isDoorLocked && hasKey // true
+```
+
+Use `||` (OR) when at least one condition must be `true`:
+
+```go
+canOpenDoor := canUnlockDoor || knowsCode // true
+```
+
+Boolean operators are evaluated by default in this order: `!` first, then `&&`, then `||`.
+Use parentheses to override this behavior:
+
+```go
+!true && false   // false
+!(true && false) // true
 ```

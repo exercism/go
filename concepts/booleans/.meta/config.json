@@ -1,5 +1,9 @@
 {
-  "blurb": "Representation of true and false. Booleans can be combined into expressions using operators AND, OR and NOT.",
-  "authors": ["oanaOM"],
-  "contributors": []
+  "blurb": "Use bool values and Boolean operators to work with true and false conditions.",
+  "authors": [
+    "oanaOM"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
 }

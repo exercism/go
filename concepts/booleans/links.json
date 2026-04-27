@@ -1,14 +1,10 @@
 [
   {
-    "url": "https://golangdocs.com/booleans-in-golang",
-    "description": "Article: Booleans in Golang"
+    "url": "https://go.dev/ref/spec#Logical_operators",
+    "description": "Logical operators"
   },
   {
-    "url": "https://golang.org/ref/spec#Logical_operators",
-    "description": "Go Language Spec: Logical Operators"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Operators",
-    "description": "Go Language Spec: Operators"
+    "url": "https://go.dev/ref/spec#Operator_precedence",
+    "description": "Operator precedence"
   }
 ]
