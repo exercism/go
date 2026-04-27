@@ -23,7 +23,7 @@ sum()           // nums is []int{}
 ```
 
 A function can have non-variadic parameters before the variadic one.
-A function have at most one variadic parameter and it must be the last parameter.
+A function can have at most one variadic parameter and it must be the last parameter.
 
 ```go
 func greet(greeting string, names ...string) {
