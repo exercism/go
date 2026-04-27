@@ -1,6 +1,8 @@
 # Introduction
 
-Prefix the last parameter's type with `...` to accept any number of trailing arguments:
+Typically, functions accept only a fixed number of arguments.
+However, if you prefix the last parameter's type with `...`, the function can accept any number of trailing arguments.
+This makes the last parameter a _variadic parameter_.
 
 ```go
 func sum(nums ...int) int {
@@ -20,7 +22,8 @@ sum(1, 2, 3, 4) // nums is []int{1, 2, 3, 4}
 sum()           // nums is []int{}
 ```
 
-A function can have non-variadic parameters before the variadic one:
+A function can have non-variadic parameters before the variadic one.
+A function have at most one variadic parameter and it must be the last parameter.
 
 ```go
 func greet(greeting string, names ...string) {
