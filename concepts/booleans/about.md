@@ -11,7 +11,7 @@ knowsCode := false
 
 ## Logical Operators
 
-Logical operators work on one or two `bool` values and produce a Boolean result.
+Logical operators work on one or two Boolean values and produce a Boolean result.
 
 | Operator | Name | Behavior |
 | -------- | ---- | -------- |
