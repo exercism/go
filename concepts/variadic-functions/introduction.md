@@ -1,76 +1,45 @@
 # Introduction
 
-Usually, functions in Go accept only a fixed number of arguments.
-However, it is also possible to write variadic functions in Go.
-
-A variadic function is a function that accepts a variable number of arguments.
-
-If the type of the last parameter in a function definition is prefixed by ellipsis `...`, then the function can accept any number of arguments for that parameter.
+Typically, functions accept only a fixed number of arguments.
+However, if you prefix the last parameter's type with `...`, the function can accept any number of trailing arguments.
+This makes the last parameter a _variadic parameter_.
 
 ```go
-func find(a int, b ...int) {
-    // ...
-}
-```
-
-In the above function, parameter `b` is variadic and we can pass 0 or more arguments to `b`.
-
-```go
-find(5, 6)
-find(5, 6, 7)
-find(5)
-```
-
-~~~~exercism/caution
-The variadic parameter must be the last parameter of the function.
-~~~~
-
-The way variadic functions work is by converting the variable number of arguments to a slice of the type of the variadic parameter.
-
-Here is an example of an implementation of a variadic function.
-
-```go
-func find(num int, nums ...int) {
-    fmt.Printf("type of nums is %T\n", nums)
-
-    for i, v := range nums {
-        if v == num {
-            fmt.Println(num, "found at index", i, "in", nums)
-            return
-        }
+func sum(nums ...int) int {
+    total := 0
+    for _, n := range nums {
+        total += n
     }
-
-    fmt.Println(num, "not found in ", nums)
-}
-
-func main() {
-    find(89, 90, 91, 95)
-    // Output:
-    // type of nums is []int
-    // 89 not found in  [90 91 95]
-
-    find(45, 56, 67, 45, 90, 109)
-    // Output:
-    // type of nums is []int
-    // 45 found at index 2 in [56 67 45 90 109]
-
-    find(87)
-    // Output:
-    // type of nums is []int
-    // 87 not found in  []
+    return total
 }
 ```
 
-In line `find(89, 90, 91, 95)` of the program above, the variable number of arguments to the find function are `90`, `91` and `95`.
-The `find` function expects a variadic int parameter after `num`.
-Hence these three arguments will be converted by the compiler to a slice of type `int` `[]int{90, 91, 95}` and then it will be passed to the find function as `nums`.
-
-Sometimes you already have a slice and want to pass that to a variadic function.
-This can be achieved by passing the slice followed by `...`.
-That will tell the compiler to use the slice as is inside the variadic function.
-The step described above where a slice is created will simply be omitted in this case.
+Inside the function, the variadic parameter is a slice:
 
 ```go
-list := []int{1,2,3}
-find(1, list...) // "find" defined as shown above
+sum(1, 2, 3)    // nums is []int{1, 2, 3}
+sum(1, 2, 3, 4) // nums is []int{1, 2, 3, 4}
+sum()           // nums is []int{}
 ```
+
+A function can have non-variadic parameters before the variadic one.
+A function can have at most one variadic parameter and it must be the last parameter.
+
+```go
+func greet(greeting string, names ...string) {
+    for _, name := range names {
+        fmt.Printf("%s, %s!\n", greeting, name)
+    }
+}
+```
+
+## Spreading a slice
+
+To pass a slice into the variadic parameter, follow it with `...`:
+
+```go
+nums := []int{1, 2, 3}
+sum(nums...) // equivalent to sum(1, 2, 3)
+```
+
+`...` is only valid when passing a slice to a variadic parameter.
