@@ -17,7 +17,7 @@ Logical operators work on one or two `bool` values and produce a Boolean result.
 | -------- | ---- | -------- |
 | `!`      | NOT  | Returns the opposite of a single Boolean value |
 | `&&`     | AND  | Returns `true` only when both sides are `true` |
-| `||`     | OR   | Returns `true` when at least one side is `true` |
+| `\|\|`     | OR   | Returns `true` if any side is `true` |
 
 Use `!` (NOT) when you need the opposite of a Boolean value:
 
