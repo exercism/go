@@ -1,7 +1,7 @@
 # About
 
 A Boolean value represents whether a condition is `true` or `false`.
-In Go, the `bool` type has only those two values.
+In Go, the `bool` type can only be one of those two values.
 
 ```go
 isDoorLocked := true
