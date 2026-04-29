@@ -1,7 +1,7 @@
-# Introduction
+# About
 
 A Boolean value represents whether a condition is `true` or `false`.
-In Go, the `bool` type has only those two values.
+In Go, the `bool` type can only be one of those two values.
 
 ```go
 isDoorLocked := true
@@ -11,13 +11,13 @@ knowsCode := false
 
 ## Logical Operators
 
-Logical operators work on one or two `bool` values and produce a Boolean result.
+Logical operators work on one or two Boolean values and produce a Boolean result.
 
-| Operator | Name | Behavior |
-| -------- | ---- | -------- |
+| Operator | Name | Behavior                                       |
+| -------- | ---- | ---------------------------------------------- |
 | `!`      | NOT  | Returns the opposite of a single Boolean value |
 | `&&`     | AND  | Returns `true` only when both sides are `true` |
-| `||`     | OR   | Returns `true` when at least one side is `true` |
+| `\|\|`   | OR   | Returns `true` if any side is `true`           |
 
 Use `!` (NOT) when you need the opposite of a Boolean value:
 
@@ -37,10 +37,10 @@ Use `||` (OR) when at least one condition must be `true`:
 canOpenDoor := canUnlockDoor || knowsCode // true
 ```
 
-Boolean operators are evaluated by default in this order: `!` first, then `&&`, then `||`.
-Use parentheses to override this behavior:
+Logical operators are evaluated in this order: first `!`, then `&&`, then `||`.
+Use parentheses to group code and control which operations happen first:
 
 ```go
-!true && false   // false
-!(true && false) // true
+!true && false   // false because !true is evaluated first
+!(true && false) // true because true && false is evaluated first
 ```
