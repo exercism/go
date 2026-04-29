@@ -37,10 +37,10 @@ Use `||` (OR) when at least one condition must be `true`:
 canOpenDoor := canUnlockDoor || knowsCode // true
 ```
 
-Boolean operators are evaluated by default in this order: `!` first, then `&&`, then `||`.
-Use parentheses to override this behavior:
+Logical operators are evaluated in this order: first `!`, then `&&`, then `||`.
+Use parentheses to group code and control which operations happen first:
 
 ```go
-!true && false   // false
-!(true && false) // true
+!true && false   // false because !true is evaluated first
+!(true && false) // true because true && false is evaluated first
 ```
