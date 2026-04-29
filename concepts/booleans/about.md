@@ -13,11 +13,11 @@ knowsCode := false
 
 Logical operators work on one or two Boolean values and produce a Boolean result.
 
-| Operator | Name | Behavior |
-| -------- | ---- | -------- |
+| Operator | Name | Behavior                                       |
+| -------- | ---- | ---------------------------------------------- |
 | `!`      | NOT  | Returns the opposite of a single Boolean value |
 | `&&`     | AND  | Returns `true` only when both sides are `true` |
-| `\|\|`     | OR   | Returns `true` if any side is `true` |
+| `\|\|`   | OR   | Returns `true` if any side is `true`           |
 
 Use `!` (NOT) when you need the opposite of a Boolean value:
 
