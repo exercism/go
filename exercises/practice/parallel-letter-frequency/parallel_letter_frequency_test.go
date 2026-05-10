@@ -34,11 +34,22 @@ func TestCalculateFrequencies(t *testing.T) {
 }
 
 func BenchmarkSequentialFrequency(b *testing.B) {
-	for range b.N {
+	var inputs []string
+	for _, tc := range testCases {
+		inputs = append(inputs, tc.input...)
+	}
+	input := strings.Join(inputs, "\n")
+	for b.Loop() {
+		Frequency(input)
 	}
 }
 
 func BenchmarkConcurrentFrequency(b *testing.B) {
-	for range b.N {
+	var inputs []string
+	for _, tc := range testCases {
+		inputs = append(inputs, tc.input...)
+	}
+	for b.Loop() {
+		ConcurrentFrequency(inputs)
 	}
 }
