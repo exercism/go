@@ -438,10 +438,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
-        "status": "deprecated",
-        "topics": [
-          "lists"
-        ]
+        "status": "deprecated"
       },
       {
         "slug": "binary",
@@ -823,12 +820,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
-        "status": "deprecated",
-        "topics": [
-          "loops",
-          "strings",
-          "text_formatting"
-        ]
+        "status": "deprecated"
       },
       {
         "slug": "bob",
@@ -1485,7 +1477,8 @@
         "uuid": "d4bb5bfc-e7ec-4b63-9de3-ec06daa530f5",
         "practices": [],
         "prerequisites": [],
-        "difficulty": 4
+        "difficulty": 4,
+        "status": "deprecated"
       },
       {
         "slug": "house",
@@ -1741,17 +1734,21 @@
         ]
       },
       {
+        "slug": "save-the-cow",
+        "name": "Save the Cow",
+        "uuid": "491f6c74-a7b1-4354-95b4-52bb7a0b090c",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "scale-generator",
         "name": "Scale Generator",
         "uuid": "478d8d31-454d-4a8a-af01-96864186d5f2",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
-        "status": "deprecated",
-        "topics": [
-          "pattern_matching",
-          "strings"
-        ]
+        "status": "deprecated"
       },
       {
         "slug": "secret-handshake",
