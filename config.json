@@ -2275,19 +2275,6 @@
         "difficulty": 7
       },
       {
-        "slug": "react",
-        "name": "React",
-        "uuid": "4b168cb9-605b-465d-8f89-3a3b760c1402",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 8,
-        "topics": [
-          "callbacks",
-          "interfaces",
-          "reactive_programming"
-        ]
-      },
-      {
         "slug": "book-store",
         "name": "Book Store",
         "uuid": "9265ef0c-a882-4e2e-9689-cd4fddac6097",
@@ -2312,6 +2299,19 @@
           "domain_specific_languages",
           "parsing",
           "stacks"
+        ]
+      },
+      {
+        "slug": "react",
+        "name": "React",
+        "uuid": "4b168cb9-605b-465d-8f89-3a3b760c1402",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8,
+        "topics": [
+          "callbacks",
+          "interfaces",
+          "reactive_programming"
         ]
       },
       {
