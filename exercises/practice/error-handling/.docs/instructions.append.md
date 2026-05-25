@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 If you are new to Go errors or panics we recommend reading [the documentation on these topics](https://blog.golang.org/defer-panic-and-recover) first for context.
 
 In this exercise you will be required to define a function `Use(opener ResourceOpener, input string) error` that opens a resource, calls `Frob(input)` on the result resource and then closes that resource (in all cases).

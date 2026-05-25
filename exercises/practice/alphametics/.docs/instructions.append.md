@@ -1,4 +1,6 @@
-# Implementation
+# Instructions append
+
+## Implementation
 
 Define a single Go func, Solve, which accepts a puzzle string which may have zero
 or more + operators, and one == operator; Solve should attempt to solve the alphametics puzzle
