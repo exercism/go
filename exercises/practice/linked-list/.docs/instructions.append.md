@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 You will write an implementation of a doubly linked list.
 Implement a `Node` to hold a value and pointers to the next and previous nodes.
 Then implement a `List` which holds references to the first and last node and offers functions for adding and removing items.

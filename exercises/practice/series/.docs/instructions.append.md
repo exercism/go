@@ -1,4 +1,6 @@
-# Implementation
+# Instructions append
+
+## Implementation
 
 Define two functions: (Two? Yes, sometimes we ask more out of Go.)
 

@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 It is possible to run out of robot names - once every possible robot name has been allocated then an error should be returned.
 
 ## Bonus test

@@ -1,5 +1,7 @@
 # Instructions append
 
+## Implementation
+
 You may be wondering about the `cases_test.go` file.
 We explain it in the [leap exercise][leap-exercise-link].
 
