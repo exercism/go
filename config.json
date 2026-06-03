@@ -450,15 +450,6 @@
         "status": "deprecated"
       },
       {
-        "slug": "counter",
-        "name": "Counter",
-        "uuid": "9a06556b-a661-4329-97a1-b5d0f0c7590c",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "status": "deprecated"
-      },
-      {
         "slug": "hello-world",
         "name": "Hello World",
         "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
@@ -482,6 +473,15 @@
         "slug": "octal",
         "name": "Octal",
         "uuid": "4840c889-ebe5-4082-98c0-b9ed8618f6eb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1,
+        "status": "deprecated"
+      },
+      {
+        "slug": "counter",
+        "name": "Counter",
+        "uuid": "9a06556b-a661-4329-97a1-b5d0f0c7590c",
         "practices": [],
         "prerequisites": [],
         "difficulty": 1,
