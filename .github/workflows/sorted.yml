@@ -1,0 +1,16 @@
+name: Exercise order
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  call-gha-workflow:
+    name: Check
+    uses: IsaacG/github-actions/.github/workflows/sorted.yml@d8f4dccec573394c901c0623f090dd0f82c7d79f
+    with:
+      ordering: difficulty-then-slug
