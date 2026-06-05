@@ -102,20 +102,24 @@ func TestRandomBirthdays_RandomDays(t *testing.T) {
 }
 
 func BenchmarkSharedBirthday(b *testing.B) {
-	for _, tc := range sharedTestCase {
-		var dates []time.Time
-		for _, d := range tc.input {
+	// Convert the testCase data into parsed inputs.
+	inputs := make([][]time.Time, len(sharedTestCase))
+	for i, tc := range sharedTestCase {
+		inputs[i] = make([]time.Time, len(tc.input))
+		for j, d := range tc.input {
 			date, _ := time.Parse(time.DateOnly, d)
-			dates = append(dates, date)
+			inputs[i][j] = date
 		}
-		for range b.N {
+	}
+	for b.Loop() {
+		for _, dates := range inputs {
 			SharedBirthday(dates)
 		}
 	}
 }
 
 func BenchmarkRandomBirthdates(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		RandomBirthdates(randomSampleSize)
 	}
 }

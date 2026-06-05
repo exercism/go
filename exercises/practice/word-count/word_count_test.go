@@ -17,7 +17,7 @@ func TestWordCount(t *testing.T) {
 }
 
 func BenchmarkWordCount(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			WordCount(tc.input)
 		}

@@ -195,7 +195,7 @@ func BenchmarkAnnotate(b *testing.B) {
 		"111111",
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		result = Annotate(board)
 	}
 	benchmarkResult = result

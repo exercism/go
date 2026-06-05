@@ -14,7 +14,7 @@ func TestHey(t *testing.T) {
 }
 
 func BenchmarkHey(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Hey(tc.input)
 		}

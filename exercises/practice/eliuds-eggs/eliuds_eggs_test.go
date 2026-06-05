@@ -14,7 +14,7 @@ func TestEggCount(t *testing.T) {
 }
 
 func BenchmarkEggCount(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			EggCount(tc.input)
 		}

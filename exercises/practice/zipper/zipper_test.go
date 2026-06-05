@@ -126,7 +126,7 @@ func TestFocusDoesNotChangeNodes(t *testing.T) {
 }
 
 func BenchmarkExpectedValue(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			runTest(tc)
 		}

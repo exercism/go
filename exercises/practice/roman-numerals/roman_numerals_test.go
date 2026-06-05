@@ -34,7 +34,7 @@ func TestRomanNumeralsInvalid(t *testing.T) {
 }
 
 func BenchmarkRomanNumerals(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range validRomanNumeralTests {
 			ToRomanNumeral(tc.input)
 		}

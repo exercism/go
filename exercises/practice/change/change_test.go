@@ -25,7 +25,7 @@ func TestChange(t *testing.T) {
 }
 
 func BenchmarkChange(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Change(tc.coins, tc.target)
 		}

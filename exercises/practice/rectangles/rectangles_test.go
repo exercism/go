@@ -15,7 +15,7 @@ func TestRectangles(t *testing.T) {
 }
 
 func BenchmarkRectangles(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Count(tc.input)
 		}

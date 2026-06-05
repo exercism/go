@@ -25,7 +25,7 @@ func TestCounts(t *testing.T) {
 }
 
 func BenchmarkCounts(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			dna := DNA(tc.strand)
 			dna.Counts()

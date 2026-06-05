@@ -104,7 +104,7 @@ func TestSeveralVerses(t *testing.T) {
 }
 
 func BenchmarkSeveralVerses(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range versesTestCases {
 			Verses(tc.upperBound, tc.lowerBound)
 		}
@@ -124,7 +124,7 @@ func TestEntireSong(t *testing.T) {
 }
 
 func BenchmarkEntireSong(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Song()
 	}
 }

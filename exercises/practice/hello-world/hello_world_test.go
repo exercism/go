@@ -31,7 +31,7 @@ func TestHelloWorld(t *testing.T) {
 // machines, with different specs, so the results from these benchmark tests may
 // vary.
 func BenchmarkHelloWorld(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		HelloWorld()
 	}
 }

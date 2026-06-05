@@ -13,7 +13,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkIsValidISBN(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, n := range testCases {
 			IsValidISBN(n.isbn)
 		}

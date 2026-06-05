@@ -97,7 +97,7 @@ var benchmarkResultPov *Tree
 func BenchmarkFromPov(b *testing.B) {
 	var result *Tree
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))
@@ -112,7 +112,7 @@ var benchmarkResultPathTo []string
 func BenchmarkPathTo(b *testing.B) {
 	var result []string
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		tree := New("grandparent", New("parent",
 			New("x", New("kid-0"), New("kid-1")), New("sibling-0"),
 			New("sibling-1")), New("uncle", New("cousin-0"), New("cousin-1")))

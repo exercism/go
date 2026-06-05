@@ -23,7 +23,7 @@ func TestSay(t *testing.T) {
 }
 
 func BenchmarkSay(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Say(tc.input)
 		}

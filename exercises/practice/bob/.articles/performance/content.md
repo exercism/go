@@ -15,7 +15,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 ```go
 
 func BenchmarkHey(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Hey(tc.input)
 		}

@@ -15,7 +15,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 func BenchmarkAddMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, a := range addTests {
 			c.Add(a.a)
 		}
@@ -25,7 +25,7 @@ func BenchmarkAddMinutes(b *testing.B) {
 func BenchmarkSubtractMinutes(b *testing.B) {
 	c := New(12, 0)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, a := range subtractTests {
 			c.Subtract(a.a)
 		}
@@ -33,7 +33,7 @@ func BenchmarkSubtractMinutes(b *testing.B) {
 }
 
 func BenchmarkCreateClocks(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, n := range timeTests {
 			New(n.h, n.m)
 		}

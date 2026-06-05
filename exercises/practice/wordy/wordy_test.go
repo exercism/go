@@ -22,7 +22,7 @@ func TestAnswer(t *testing.T) {
 
 // Benchmark combined time to answer all questions.
 func BenchmarkAnswer(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range tests {
 			Answer(test.question)
 		}

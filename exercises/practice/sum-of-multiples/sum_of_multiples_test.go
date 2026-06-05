@@ -14,7 +14,7 @@ func TestSumMultiples(t *testing.T) {
 }
 
 func BenchmarkSumMultiples(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			SumMultiples(tc.limit, tc.divisors...)
 		}

@@ -82,7 +82,7 @@ func BenchmarkSearch(b *testing.B) {
 	defer deleteFiles(files)
 
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Search(tc.pattern, tc.flags, tc.files)
 		}

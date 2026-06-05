@@ -53,7 +53,7 @@ func TestTerritories(t *testing.T) {
 }
 
 func BenchmarkTerritory(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range oneTerritoryTestCases {
 			NewGame(tc.board).Territory(tc.posX, tc.posY)
 		}
@@ -61,7 +61,7 @@ func BenchmarkTerritory(b *testing.B) {
 }
 
 func BenchmarkTerritories(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range allTerritoriesTestCases {
 			NewGame(tc.input).Territories()
 		}

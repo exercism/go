@@ -10,6 +10,13 @@ import (
 	"testing"
 )
 
+const (
+	// Vars used to control randomized benchmarks
+	minLevel   = 1
+	maxLevel   = 9
+	enrollment = 400
+)
+
 func TestAdd(t *testing.T) {
 	for _, tc := range testCasesAdd {
 		t.Run(tc.description, func(t *testing.T) {
@@ -68,7 +75,7 @@ func TestEnrollment(t *testing.T) {
 }
 
 func BenchmarkAdd(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		s := New()
 		for _, tc := range testCasesAdd {
 			for _, student := range tc.students {
@@ -79,38 +86,36 @@ func BenchmarkAdd(b *testing.B) {
 }
 
 func BenchmarkGrade(b *testing.B) {
-	for _, tc := range testCasesGrade {
-		b.StopTimer()
-		s := New()
+	schools := make([]*School, len(testCasesGrade))
+	for i, tc := range testCasesGrade {
+		schools[i] = New()
 		for _, student := range tc.students {
-			s.Add(student.name, student.grade)
+			schools[i].Add(student.name, student.grade)
 		}
-		b.StartTimer()
-		for range b.N {
-			s.Grade(tc.grade)
+	}
+
+	for b.Loop() {
+		for i, tc := range testCasesGrade {
+			schools[i].Grade(tc.grade)
 		}
 	}
 }
 
 func BenchmarkEnrollment(b *testing.B) {
-	for _, tc := range testCasesEnrollment {
-		b.StopTimer()
-		s := New()
+	schools := make([]*School, len(testCasesGrade))
+	for i, tc := range testCasesGrade {
+		schools[i] = New()
 		for _, student := range tc.students {
-			s.Add(student.name, student.grade)
+			schools[i].Add(student.name, student.grade)
 		}
-		b.StartTimer()
-		for range b.N {
-			s.Enrollment()
+	}
+
+	for b.Loop() {
+		for _, school := range schools {
+			school.Enrollment()
 		}
 	}
 }
-
-const (
-	minLevel   = 1
-	maxLevel   = 9
-	enrollment = 400
-)
 
 func BenchmarkAddStudents(b *testing.B) {
 	const pool = 1e6 // pool of students
@@ -122,7 +127,7 @@ func BenchmarkAddStudents(b *testing.B) {
 	}
 	p := 0
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		// bench combined time to create a school and add
 		// a number of students, drawn from a pool of students
 		s := New()
@@ -145,9 +150,8 @@ func BenchmarkRandomEnrollment(b *testing.B) {
 		}
 		ss[i] = s
 	}
-	p := 0
-	b.ResetTimer()
-	for range b.N {
+	var p int
+	for b.Loop() {
 		// bench time to get enrollment of a full school,
 		// averaged over a pool of schools.
 		ss[p].Enrollment()

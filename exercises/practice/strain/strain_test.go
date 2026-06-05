@@ -67,7 +67,7 @@ func TestSlice(t *testing.T) {
 }
 
 func BenchmarkInt(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range intTestCases {
 			fn := Discard[int]
 			if tc.keep {
@@ -79,7 +79,7 @@ func BenchmarkInt(b *testing.B) {
 }
 
 func BenchmarkString(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range stringTestCases {
 			fn := Discard[string]
 			if tc.keep {
@@ -91,7 +91,7 @@ func BenchmarkString(b *testing.B) {
 }
 
 func BenchmarkSlice(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range sliceTestCases {
 			fn := Discard[[]int]
 			if tc.keep {

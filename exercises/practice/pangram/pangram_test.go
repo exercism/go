@@ -15,7 +15,7 @@ func TestPangram(t *testing.T) {
 }
 
 func BenchmarkPangram(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			IsPangram(test.input)
 		}

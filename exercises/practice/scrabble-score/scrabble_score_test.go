@@ -13,7 +13,7 @@ func TestScore(t *testing.T) {
 }
 
 func BenchmarkScore(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range scrabbleScoreTests {
 			Score(test.input)
 		}

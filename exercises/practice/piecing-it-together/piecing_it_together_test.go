@@ -27,7 +27,7 @@ func TestJigsawData(t *testing.T) {
 }
 
 func BenchmarkJigsawData(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			JigsawData(tc.input)
 		}

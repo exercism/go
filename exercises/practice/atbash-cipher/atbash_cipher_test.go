@@ -14,7 +14,7 @@ func TestAtbash(t *testing.T) {
 }
 
 func BenchmarkAtbash(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Atbash(test.phrase)
 		}

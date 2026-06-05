@@ -15,7 +15,7 @@ func TestPigLatin(t *testing.T) {
 }
 
 func BenchmarkSentence(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Sentence(tc.input)
 		}

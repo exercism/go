@@ -68,13 +68,13 @@ func TestSum(t *testing.T) {
 }
 
 func BenchmarkRange(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Range(1, 100)
 	}
 }
 
 func BenchmarkSum(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Sum(1000)
 	}
 }

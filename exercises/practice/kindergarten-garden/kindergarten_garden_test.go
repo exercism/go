@@ -170,7 +170,7 @@ RVGCCGCV`
 }
 
 func BenchmarkNewGarden(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			NewGarden(test.diagram, test.children)
 		}
@@ -185,7 +185,7 @@ func BenchmarkGarden_Plants(b *testing.B) {
 		b.Fatalf("error in benchmark setup: BenchmarkGarden_Plants requires valid garden")
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, child := range children {
 			g.Plants(child)
 		}

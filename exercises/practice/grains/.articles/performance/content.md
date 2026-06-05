@@ -14,7 +14,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 ```go
 func BenchmarkSquare(b *testing.B) {
 
-	for range b.N {
+	for b.Loop() {
 
 		for _, test := range squareTests {
 			Square(test.input)
@@ -24,7 +24,7 @@ func BenchmarkSquare(b *testing.B) {
 }
 
 func BenchmarkTotal(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Total()
 	}
 }

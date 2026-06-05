@@ -16,7 +16,7 @@ func TestCost(t *testing.T) {
 }
 
 func BenchmarkCost(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, testCase := range testCases {
 			Cost(testCase.basket)
 		}

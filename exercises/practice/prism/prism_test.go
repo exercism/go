@@ -16,7 +16,7 @@ func TestFindSequence(t *testing.T) {
 }
 
 func BenchmarkFindSequence(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			FindSequence(tc.start, tc.prisms)
 		}

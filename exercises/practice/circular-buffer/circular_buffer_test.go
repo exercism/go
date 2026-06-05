@@ -59,7 +59,7 @@ func TestRun(t *testing.T) {
 }
 
 func BenchmarkRun(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			b := NewBuffer(tc.capacity)
 			for _, op := range tc.operations {
@@ -81,7 +81,7 @@ func BenchmarkRun(b *testing.B) {
 func BenchmarkOverwrite(b *testing.B) {
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		c.Overwrite(0)
 	}
 	b.SetBytes(int64(b.N))
@@ -90,7 +90,7 @@ func BenchmarkOverwrite(b *testing.B) {
 func BenchmarkWriteRead(b *testing.B) {
 	c := NewBuffer(100)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		c.WriteByte(0)
 		c.ReadByte()
 	}

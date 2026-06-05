@@ -34,7 +34,7 @@ func checkResult(t *testing.T, tc bucketTestCase, goalBucket string, numSteps, o
 }
 
 func BenchmarkSolve(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range append(testCases, errorTestCases...) {
 			Solve(tc.bucketOne, tc.bucketTwo, tc.goal, tc.startBucket)
 		}

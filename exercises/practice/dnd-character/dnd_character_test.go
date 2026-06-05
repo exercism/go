@@ -61,13 +61,13 @@ func BenchmarkModifier(b *testing.B) {
 }
 
 func BenchmarkAbility(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Ability()
 	}
 }
 
 func BenchmarkCharacter(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		GenerateCharacter()
 	}
 }

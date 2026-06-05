@@ -16,7 +16,7 @@ func TestAcronym(t *testing.T) {
 }
 
 func BenchmarkAcronym(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Abbreviate(test.input)
 		}

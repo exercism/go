@@ -88,7 +88,7 @@ func TestExpreal(t *testing.T) {
 }
 
 func BenchmarkAbs(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesAbs {
 			tc.input.Abs()
 		}
@@ -96,7 +96,7 @@ func BenchmarkAbs(b *testing.B) {
 }
 
 func BenchmarkAdd(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesAdd {
 			tc.input[0].Add(tc.input[1])
 		}
@@ -104,7 +104,7 @@ func BenchmarkAdd(b *testing.B) {
 }
 
 func BenchmarkSub(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesSub {
 			tc.input[0].Sub(tc.input[1])
 		}
@@ -112,7 +112,7 @@ func BenchmarkSub(b *testing.B) {
 }
 
 func BenchmarkMul(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesMul {
 			tc.input[0].Mul(tc.input[1])
 		}
@@ -120,7 +120,7 @@ func BenchmarkMul(b *testing.B) {
 }
 
 func BenchmarkDiv(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesDiv {
 			tc.input[0].Div(tc.input[1])
 		}
@@ -128,7 +128,7 @@ func BenchmarkDiv(b *testing.B) {
 }
 
 func BenchmarkExprational(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesExprational {
 			tc.inputR.Exprational(tc.inputInt)
 		}
@@ -136,7 +136,7 @@ func BenchmarkExprational(b *testing.B) {
 }
 
 func BenchmarkExpreal(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesExpreal {
 			tc.inputR.Expreal(tc.inputInt)
 		}
@@ -144,7 +144,7 @@ func BenchmarkExpreal(b *testing.B) {
 }
 
 func BenchmarkReduce(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCasesReduce {
 			tc.input.Reduce()
 		}

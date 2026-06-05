@@ -14,7 +14,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 ```go
 func BenchmarkHamming(b *testing.B) {
 	// bench combined time to run through all test cases
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			// ignoring errors and results because we're just timing function execution
 			Distance(tc.s1, tc.s2)

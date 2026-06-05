@@ -17,7 +17,7 @@ func TestSimulateGame(t *testing.T) {
 }
 
 func BenchmarkSimulateGame(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			SimulateGame(tc.playerA, tc.playerB)
 		}

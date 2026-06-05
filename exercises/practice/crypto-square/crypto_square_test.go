@@ -13,7 +13,7 @@ func TestEncode(t *testing.T) {
 }
 
 func BenchmarkEncode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Encode(tc.input)
 		}

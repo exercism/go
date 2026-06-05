@@ -38,7 +38,7 @@ func TestGuess(t *testing.T) {
 }
 
 func BenchmarkGuess(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			g := NewGame(tc.word)
 			for _, c := range tc.guesses {

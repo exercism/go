@@ -41,7 +41,7 @@ func runBenchmark(n int, b *testing.B) {
 		b.Error(err)
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		SearchInts(q.slice, q.x)
 	}
 }

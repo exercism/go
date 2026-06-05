@@ -15,7 +15,7 @@ func TestDegreeOfSeparation(t *testing.T) {
 }
 
 func BenchmarkDegreeOfSeparation(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			DegreeOfSeparation(tc.tree, tc.personA, tc.personB)
 		}

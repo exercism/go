@@ -67,7 +67,7 @@ func BenchmarkSaddle(b *testing.B) {
 		}
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, m := range ms {
 			m.Saddle()
 		}

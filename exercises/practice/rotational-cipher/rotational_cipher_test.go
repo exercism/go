@@ -16,7 +16,7 @@ func TestRotationalCipher(t *testing.T) {
 }
 
 func BenchmarkRotationalCipher(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			RotationalCipher(tc.input, tc.shift)
 		}

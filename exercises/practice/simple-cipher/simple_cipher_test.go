@@ -257,7 +257,7 @@ func TestVigenereWrongKey(t *testing.T) {
 func BenchmarkEncodeCaesar(b *testing.B) {
 	c := NewCaesar()
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range caesarTests {
 			c.Encode(tc.source)
 		}
@@ -267,7 +267,7 @@ func BenchmarkEncodeCaesar(b *testing.B) {
 func BenchmarkDecodeCaesar(b *testing.B) {
 	c := NewCaesar()
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range caesarTests {
 			c.Decode(tc.cipher)
 		}
@@ -275,7 +275,7 @@ func BenchmarkDecodeCaesar(b *testing.B) {
 }
 
 func BenchmarkNewShift(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for s := -27; s <= 27; s++ {
 			NewShift(s)
 		}
@@ -287,7 +287,7 @@ func BenchmarkEncodeShift(b *testing.B) {
 	all := caesarTests
 	all = append(all, nsaTests...)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range all {
 			s.Encode(tc.source)
 		}
@@ -299,7 +299,7 @@ func BenchmarkDecodeShift(b *testing.B) {
 	all := caesarTests
 	all = append(all, nsaTests...)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range all {
 			s.Decode(tc.cipher)
 		}
@@ -307,7 +307,7 @@ func BenchmarkDecodeShift(b *testing.B) {
 }
 
 func BenchmarkNewVigenere(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range vtests {
 			NewVigenere(tc.key)
 		}
@@ -323,7 +323,7 @@ func BenchmarkEncVigenere(b *testing.B) {
 		}
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for i, tc := range vtests {
 			v[i].Encode(tc.source)
 		}
@@ -339,7 +339,7 @@ func BenchmarkDecVigenere(b *testing.B) {
 		}
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for i, tc := range vtests {
 			v[i].Decode(tc.cipher)
 		}

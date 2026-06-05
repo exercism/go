@@ -23,7 +23,7 @@ func TestDecode(t *testing.T) {
 }
 
 func BenchmarkEncode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range encodeTests {
 			Encode(test.message, test.rails)
 		}
@@ -31,7 +31,7 @@ func BenchmarkEncode(b *testing.B) {
 }
 
 func BenchmarkDecode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range decodeTests {
 			Decode(test.message, test.rails)
 		}
