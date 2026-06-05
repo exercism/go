@@ -17,8 +17,8 @@ func TestBracket(t *testing.T) {
 
 func BenchmarkBracket(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			Bracket(tt.input)
+		for _, tc := range testCases {
+			Bracket(tc.input)
 		}
 	}
 }

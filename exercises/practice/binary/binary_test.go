@@ -34,21 +34,21 @@ var testCases = []struct {
 }
 
 func TestParseBinary(t *testing.T) {
-	for _, tt := range testCases {
-		actual, err := ParseBinary(tt.binary)
-		if tt.ok {
+	for _, tc := range testCases {
+		actual, err := ParseBinary(tc.binary)
+		if tc.ok {
 			if err != nil {
 				var _ error = err
 				t.Fatalf("ParseBinary(%q) returned error %q.  Error not expected.",
-					tt.binary, err)
+					tc.binary, err)
 			}
-			if actual != tt.expected {
+			if actual != tc.expected {
 				t.Fatalf("ParseBinary(%q): got: %d, want: %v",
-					tt.binary, actual, tt.expected)
+					tc.binary, actual, tc.expected)
 			}
 		} else if err == nil {
 			t.Fatalf("ParseBinary(%q) returned %d and no error.  Expected an error.",
-				tt.binary, actual)
+				tc.binary, actual)
 		}
 	}
 }
@@ -56,8 +56,8 @@ func TestParseBinary(t *testing.T) {
 // Benchmark combined time for all tests
 func BenchmarkBinary(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			ParseBinary(tt.binary)
+		for _, tc := range testCases {
+			ParseBinary(tc.binary)
 		}
 	}
 }

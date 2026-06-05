@@ -52,16 +52,16 @@ func TestCalculateWorkingCarsPerHour(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateWorkingCarsPerHour(tt.productionRate, tt.successRate)
-			if !floatingPointEquals(got, tt.want) {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := CalculateWorkingCarsPerHour(tc.productionRate, tc.successRate)
+			if !floatingPointEquals(got, tc.want) {
 				t.Errorf(
 					"CalculateWorkingCarsPerHour(%d, %f) = %f, want %f",
-					tt.productionRate,
-					tt.successRate,
+					tc.productionRate,
+					tc.successRate,
 					got,
-					tt.want,
+					tc.want,
 				)
 			}
 		})
@@ -107,16 +107,16 @@ func TestCalculateWorkingCarsPerMinute(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateWorkingCarsPerMinute(tt.productionRate, tt.successRate)
-			if got != tt.want {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := CalculateWorkingCarsPerMinute(tc.productionRate, tc.successRate)
+			if got != tc.want {
 				t.Errorf(
 					"CalculateWorkingCarsPerMinute(%d, %f) = %d, want %d",
-					tt.productionRate,
-					tt.successRate,
+					tc.productionRate,
+					tc.successRate,
 					got,
-					tt.want,
+					tc.want,
 				)
 			}
 		})
@@ -181,15 +181,15 @@ func TestCalculateCost(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CalculateCost(tt.carsCount)
-			if got != tt.want {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := CalculateCost(tc.carsCount)
+			if got != tc.want {
 				t.Errorf(
 					"CalculateCost(%d) = %d, want %d",
-					tt.carsCount,
+					tc.carsCount,
 					got,
-					tt.want,
+					tc.want,
 				)
 			}
 		})

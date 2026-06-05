@@ -28,10 +28,10 @@ func TestTotalBirdCount(t *testing.T) {
 			want:       57,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := TotalBirdCount(tt.birdCounts); got != tt.want {
-				t.Errorf("TotalBirdCount(%v) = %v; want %v", tt.birdCounts, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := TotalBirdCount(tc.birdCounts); got != tc.want {
+				t.Errorf("TotalBirdCount(%v) = %v; want %v", tc.birdCounts, got, tc.want)
 			}
 		})
 	}
@@ -70,10 +70,10 @@ func TestBirdsInWeek(t *testing.T) {
 			want:       12,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BirdsInWeek(tt.birdCounts, tt.week); got != tt.want {
-				t.Errorf("BirdsInWeek(%#v, %d) = %d; want %d", tt.birdCounts, tt.week, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := BirdsInWeek(tc.birdCounts, tc.week); got != tc.want {
+				t.Errorf("BirdsInWeek(%#v, %d) = %d; want %d", tc.birdCounts, tc.week, got, tc.want)
 			}
 		})
 	}
@@ -104,13 +104,13 @@ func TestFixBirdCount(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			input := make([]int, len(tt.birdCounts))
-			copy(input, tt.birdCounts)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			input := make([]int, len(tc.birdCounts))
+			copy(input, tc.birdCounts)
 
-			if got := FixBirdCountLog(tt.birdCounts); !reflect.DeepEqual(tt.want, got) {
-				t.Errorf("FixBirdCountLog(%v) = %v; want %v", input, got, tt.want)
+			if got := FixBirdCountLog(tc.birdCounts); !reflect.DeepEqual(tc.want, got) {
+				t.Errorf("FixBirdCountLog(%v) = %v; want %v", input, got, tc.want)
 			}
 		})
 	}

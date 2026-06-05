@@ -81,13 +81,13 @@ var caesarTests = []cipherTest{
 
 func TestCaesar(t *testing.T) {
 	for _, tc := range caesarTests {
-		t.Run(tc.description, func(tt *testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			c := NewCaesar()
 			if got := c.Encode(tc.source); got != tc.cipher {
-				tt.Fatalf("NewCaesar().Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
+				t.Fatalf("NewCaesar().Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
 			}
 			if got := c.Decode(tc.cipher); got != tc.plain {
-				tt.Fatalf("NewCaesar().Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
+				t.Fatalf("NewCaesar().Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
 			}
 		})
 	}
@@ -122,13 +122,13 @@ var nsaTests = []cipherTest{
 
 func TestShift(t *testing.T) {
 	for _, tc := range nsaTests {
-		t.Run(tc.description, func(tt *testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			c := NewShift(-3)
 			if got := c.Encode(tc.source); got != tc.cipher {
-				tt.Fatalf("NewShift(-3).Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
+				t.Fatalf("NewShift(-3).Encode(%q) = %q, want %q.", tc.source, got, tc.cipher)
 			}
 			if got := c.Decode(tc.cipher); got != tc.plain {
-				tt.Fatalf("NewShift(-3).Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
+				t.Fatalf("NewShift(-3).Decode(%q) = %q, want %q.", tc.cipher, got, tc.plain)
 			}
 		})
 	}
@@ -149,7 +149,7 @@ var invalidShiftTestCases = []invalidShiftTestCase{
 
 func TestWrongShiftKey(t *testing.T) {
 	for _, tc := range invalidShiftTestCases {
-		t.Run(tc.description, func(tt *testing.T) {
+		t.Run(tc.description, func(t *testing.T) {
 			if NewShift(tc.shift) != nil {
 				t.Errorf("NewShift(%d): got non-nil, want nil", tc.shift)
 			}

@@ -79,10 +79,10 @@ func TestParseCard(t *testing.T) {
 			want: 0,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := ParseCard(tt.card); got != tt.want {
-				t.Errorf("ParseCard(%s) = %d, want %d", tt.card, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := ParseCard(tc.card); got != tc.want {
+				t.Errorf("ParseCard(%s) = %d, want %d", tc.card, got, tc.want)
 			}
 		})
 	}
@@ -291,10 +291,10 @@ func TestFirstTurn(t *testing.T) {
 			want:   "H",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := FirstTurn(tt.hand.card1, tt.hand.card2, tt.dealer); got != tt.want {
-				t.Errorf("FirstTurn(%s, %s, %s) = %s, want %s", tt.hand.card1, tt.hand.card2, tt.dealer, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := FirstTurn(tc.hand.card1, tc.hand.card2, tc.dealer); got != tc.want {
+				t.Errorf("FirstTurn(%s, %s, %s) = %s, want %s", tc.hand.card1, tc.hand.card2, tc.dealer, got, tc.want)
 			}
 		})
 	}

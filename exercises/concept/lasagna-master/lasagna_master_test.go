@@ -52,10 +52,10 @@ func TestPreparationTime(t *testing.T) {
 			expected: 4,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := PreparationTime(tt.layers, tt.time); got != tt.expected {
-				t.Errorf("PreparationTime(%v, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := PreparationTime(tc.layers, tc.time); got != tc.expected {
+				t.Errorf("PreparationTime(%v, %d) = %d; want %d", tc.layers, tc.time, got, tc.expected)
 			}
 		})
 	}
@@ -120,14 +120,14 @@ func TestQuantities(t *testing.T) {
 			expSauce:   0.0,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			gotNoodles, gotSauce := Quantities(tt.layers)
-			if gotNoodles != tt.expNoodles {
-				t.Errorf("quantities(%v) = %d noodles; want %d", tt.layers, gotNoodles, tt.expNoodles)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotNoodles, gotSauce := Quantities(tc.layers)
+			if gotNoodles != tc.expNoodles {
+				t.Errorf("quantities(%v) = %d noodles; want %d", tc.layers, gotNoodles, tc.expNoodles)
 			}
-			if gotSauce != tt.expSauce {
-				t.Errorf("quantities(%v) = %f sauce; want %f", tt.layers, gotSauce, tt.expSauce)
+			if gotSauce != tc.expSauce {
+				t.Errorf("quantities(%v) = %f sauce; want %f", tc.layers, gotSauce, tc.expSauce)
 			}
 		})
 	}
@@ -149,18 +149,18 @@ func TestAddSecretIngredient(t *testing.T) {
 			expected:    []string{"sauce", "noodles", "meat", "tomatoes", "marjoram"},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			friendsList := make([]string, len(tt.friendsList))
-			copy(friendsList, tt.friendsList)
-			myList := make([]string, len(tt.myList))
-			copy(myList, tt.myList)
-			AddSecretIngredient(tt.friendsList, tt.myList)
-			if !reflect.DeepEqual(tt.myList, tt.expected) {
-				t.Errorf("addSecretIngredient(%v, %v) = %v want %v", tt.friendsList, myList, tt.myList, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			friendsList := make([]string, len(tc.friendsList))
+			copy(friendsList, tc.friendsList)
+			myList := make([]string, len(tc.myList))
+			copy(myList, tc.myList)
+			AddSecretIngredient(tc.friendsList, tc.myList)
+			if !reflect.DeepEqual(tc.myList, tc.expected) {
+				t.Errorf("addSecretIngredient(%v, %v) = %v want %v", tc.friendsList, myList, tc.myList, tc.expected)
 			}
-			if !reflect.DeepEqual(friendsList, tt.friendsList) {
-				t.Errorf("addSecretIngredient permuted friendsList (was %v, now %v), should not alter inputs", tt.friendsList, friendsList)
+			if !reflect.DeepEqual(friendsList, tc.friendsList) {
+				t.Errorf("addSecretIngredient permuted friendsList (was %v, now %v), should not alter inputs", tc.friendsList, friendsList)
 			}
 		})
 	}
@@ -200,21 +200,21 @@ func TestScaleRecipe(t *testing.T) {
 			expected: []float64{},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			inputList := make([]float64, len(tt.input))
-			copy(inputList, tt.input)
-			got := ScaleRecipe(inputList, tt.portions)
-			if len(got) != len(tt.expected) {
-				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tt.portions, len(got), len(tt.expected))
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			inputList := make([]float64, len(tc.input))
+			copy(inputList, tc.input)
+			got := ScaleRecipe(inputList, tc.portions)
+			if len(got) != len(tc.expected) {
+				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tc.portions, len(got), len(tc.expected))
 			}
-			for i := range tt.expected {
-				if math.Abs(got[i]-tt.expected[i]) > 0.000001 {
-					t.Errorf("Got %f Expected %f for index %d", got[i], tt.expected[i], i)
+			for i := range tc.expected {
+				if math.Abs(got[i]-tc.expected[i]) > 0.000001 {
+					t.Errorf("Got %f Expected %f for index %d", got[i], tc.expected[i], i)
 				}
 			}
-			if !reflect.DeepEqual(inputList, tt.input) {
-				t.Errorf("ScaleRecipe permuted list (was %v, now %v), should not alter inputs", tt.input, inputList)
+			if !reflect.DeepEqual(inputList, tc.input) {
+				t.Errorf("ScaleRecipe permuted list (was %v, now %v), should not alter inputs", tc.input, inputList)
 			}
 		})
 	}

@@ -78,8 +78,8 @@ func TestBestHandInvalid(t *testing.T) {
 
 func BenchmarkBestHand(b *testing.B) {
 	for range b.N {
-		for _, tt := range validTestCases {
-			BestHand(tt.hands)
+		for _, tc := range validTestCases {
+			BestHand(tc.hands)
 		}
 	}
 }

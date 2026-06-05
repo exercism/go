@@ -16,10 +16,10 @@ func TestOvenTime(t *testing.T) {
 			expected: 40,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := OvenTime; got != tt.expected {
-				t.Errorf("OvenTime()  = %d; want %d", got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := OvenTime; got != tc.expected {
+				t.Errorf("OvenTime()  = %d; want %d", got, tc.expected)
 			}
 		})
 	}
@@ -40,10 +40,10 @@ func TestRemainingOvenTime(t *testing.T) {
 			expected: 10,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := RemainingOvenTime(tt.time); got != tt.expected {
-				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tt.time, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := RemainingOvenTime(tc.time); got != tc.expected {
+				t.Errorf("RemainingOvenTime(%d) = %d; want %d", tc.time, got, tc.expected)
 			}
 		})
 	}
@@ -64,10 +64,10 @@ func TestPreparationTime(t *testing.T) {
 			expected: 8,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := PreparationTime(tt.layers); got != tt.expected {
-				t.Errorf("PreparationTime(%d) = %d; want %d", tt.layers, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := PreparationTime(tc.layers); got != tc.expected {
+				t.Errorf("PreparationTime(%d) = %d; want %d", tc.layers, got, tc.expected)
 			}
 		})
 	}
@@ -88,10 +88,10 @@ func TestElapsedTime(t *testing.T) {
 			expected: 16,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := ElapsedTime(tt.layers, tt.time); got != tt.expected {
-				t.Errorf("ElapsedTime(%d, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := ElapsedTime(tc.layers, tc.time); got != tc.expected {
+				t.Errorf("ElapsedTime(%d, %d) = %d; want %d", tc.layers, tc.time, got, tc.expected)
 			}
 		})
 	}

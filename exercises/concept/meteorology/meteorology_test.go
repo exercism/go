@@ -21,10 +21,10 @@ func TestTemperatureUnitString(t *testing.T) {
 			want: "°F",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.unit.String(); got != tt.want {
-				t.Errorf("unit.String()=%q, want %q", got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := tc.unit.String(); got != tc.want {
+				t.Errorf("unit.String()=%q, want %q", got, tc.want)
 			}
 		})
 	}
@@ -52,10 +52,10 @@ func TestTemperatureString(t *testing.T) {
 			want: "-17 °C",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.temp.String(); got != tt.want {
-				t.Errorf("temp.String()=%q, want %q", got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := tc.temp.String(); got != tc.want {
+				t.Errorf("temp.String()=%q, want %q", got, tc.want)
 			}
 		})
 	}
@@ -78,10 +78,10 @@ func TestSpeedUnitString(t *testing.T) {
 			want: "mph",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.unit.String(); got != tt.want {
-				t.Errorf("unit.String()=%q, want %q", got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := tc.unit.String(); got != tc.want {
+				t.Errorf("unit.String()=%q, want %q", got, tc.want)
 			}
 		})
 	}
@@ -109,10 +109,10 @@ func TestSpeedString(t *testing.T) {
 			want:  "0 km/h",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.speed.String(); got != tt.want {
-				t.Errorf("speed.String()=%q, want %q", got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := tc.speed.String(); got != tc.want {
+				t.Errorf("speed.String()=%q, want %q", got, tc.want)
 			}
 		})
 	}
@@ -140,10 +140,10 @@ func TestMeteorologyDataString(t *testing.T) {
 			want:            "San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.meteorologyData.String(); got != tt.want {
-				t.Errorf("meteorologyData.String()=%q, want %q", got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := tc.meteorologyData.String(); got != tc.want {
+				t.Errorf("meteorologyData.String()=%q, want %q", got, tc.want)
 			}
 		})
 	}

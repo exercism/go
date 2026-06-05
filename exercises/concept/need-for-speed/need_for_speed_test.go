@@ -23,12 +23,12 @@ func TestNewCar(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := NewCar(tt.car.speed, tt.car.batteryDrain)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NewCar(tc.car.speed, tc.car.batteryDrain)
 
-			if got != tt.expected {
-				t.Errorf("NewCar(%+v,%+v) = %+v; expected %+v", tt.car.speed, tt.car.batteryDrain, got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("NewCar(%+v,%+v) = %+v; expected %+v", tc.car.speed, tc.car.batteryDrain, got, tc.expected)
 			}
 		})
 	}
@@ -60,12 +60,12 @@ func TestNewTrack(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := NewTrack(tt.track.distance)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NewTrack(tc.track.distance)
 
-			if got != tt.expected {
-				t.Errorf("NewTrack(%+v) = %+v; expected %+v", tt.track.distance, got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("NewTrack(%+v) = %+v; expected %+v", tc.track.distance, got, tc.expected)
 			}
 		})
 	}
@@ -169,12 +169,12 @@ func TestDrive(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := Drive(tt.car)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := Drive(tc.car)
 
-			if got != tt.expected {
-				t.Errorf("Drive(%+v) = %+v; expected %+v", tt.car, got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("Drive(%+v) = %+v; expected %+v", tc.car, got, tc.expected)
 			}
 		})
 	}
@@ -254,12 +254,12 @@ func TestCanFinish(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := CanFinish(tt.car, tt.track)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := CanFinish(tc.car, tc.track)
 
-			if got != tt.expected {
-				t.Errorf("CanFinish(%#v, %#v) = %+v; expected %+v", tt.car, tt.track, got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("CanFinish(%#v, %#v) = %+v; expected %+v", tc.car, tc.track, got, tc.expected)
 			}
 		})
 	}

@@ -21,10 +21,10 @@ func TestSayHello_Italian(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.testName, func(t *testing.T) {
-			if got := SayHello(tt.name, Italian{}); got != tt.want {
-				t.Errorf("SayHello(%q, \"Italian{}\") = %q, want %q", tt.name, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.testName, func(t *testing.T) {
+			if got := SayHello(tc.name, Italian{}); got != tc.want {
+				t.Errorf("SayHello(%q, \"Italian{}\") = %q, want %q", tc.name, got, tc.want)
 			}
 		})
 	}
@@ -49,10 +49,10 @@ func TestSayHello_Portuguese(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.testName, func(t *testing.T) {
-			if got := SayHello(tt.name, Portuguese{}); got != tt.want {
-				t.Errorf("SayHello(%q, \"Portuguese{}\") = %q, want %q", tt.name, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.testName, func(t *testing.T) {
+			if got := SayHello(tc.name, Portuguese{}); got != tc.want {
+				t.Errorf("SayHello(%q, \"Portuguese{}\") = %q, want %q", tc.name, got, tc.want)
 			}
 		})
 	}

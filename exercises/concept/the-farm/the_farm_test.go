@@ -78,18 +78,18 @@ func TestDivideFood(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			gotAmount, gotErr := DivideFood(tt.fodderCalculator, tt.cows)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotAmount, gotErr := DivideFood(tc.fodderCalculator, tc.cows)
 
-			if gotErr != tt.wantErr {
+			if gotErr != tc.wantErr {
 				msg := "expected error %q but got %q\n" +
 					"(if expected and actual look the same that means the message matches but the errors are not identical)"
-				t.Fatalf(msg, tt.wantErr, gotErr)
+				t.Fatalf(msg, tc.wantErr, gotErr)
 			}
 
-			if math.Abs(gotAmount-tt.wantAmount) > precision {
-				t.Fatalf("expected amount %v but got %v", tt.wantAmount, gotAmount)
+			if math.Abs(gotAmount-tc.wantAmount) > precision {
+				t.Fatalf("expected amount %v but got %v", tc.wantAmount, gotAmount)
 			}
 		})
 	}
@@ -164,24 +164,24 @@ func TestValidateInputAndDivideFood(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			gotAmount, gotErr := ValidateInputAndDivideFood(tt.fodderCalculator, tt.cows)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotAmount, gotErr := ValidateInputAndDivideFood(tc.fodderCalculator, tc.cows)
 
-			if tt.wantErr != nil && gotErr != nil && tt.wantErr.Error() != gotErr.Error() {
-				t.Fatalf("expected error %q but got %q", tt.wantErr, gotErr)
+			if tc.wantErr != nil && gotErr != nil && tc.wantErr.Error() != gotErr.Error() {
+				t.Fatalf("expected error %q but got %q", tc.wantErr, gotErr)
 			}
 
-			if tt.wantErr == nil && gotErr != nil {
+			if tc.wantErr == nil && gotErr != nil {
 				t.Fatalf("expected nil but got error %q", gotErr)
 			}
 
-			if tt.wantErr != nil && gotErr == nil {
-				t.Fatalf("expected error %q but got nil", tt.wantErr)
+			if tc.wantErr != nil && gotErr == nil {
+				t.Fatalf("expected error %q but got nil", tc.wantErr)
 			}
 
-			if math.Abs(gotAmount-tt.wantAmount) > precision {
-				t.Fatalf("expected amount %v but got %v", tt.wantAmount, gotAmount)
+			if math.Abs(gotAmount-tc.wantAmount) > precision {
+				t.Fatalf("expected amount %v but got %v", tc.wantAmount, gotAmount)
 			}
 		})
 	}
@@ -225,19 +225,19 @@ func TestValidateNumberOfCows(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			gotErr := ValidateNumberOfCows(tt.cows)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotErr := ValidateNumberOfCows(tc.cows)
 
-			if tt.errorExpected && gotErr == nil {
+			if tc.errorExpected && gotErr == nil {
 				t.Fatalf("an error was expected but got nil")
 			}
 
-			if tt.errorExpected && tt.wantErrMsg != gotErr.Error() {
-				t.Fatalf("want error %q but got %q", tt.wantErrMsg, gotErr)
+			if tc.errorExpected && tc.wantErrMsg != gotErr.Error() {
+				t.Fatalf("want error %q but got %q", tc.wantErrMsg, gotErr)
 			}
 
-			if !tt.errorExpected && gotErr != nil {
+			if !tc.errorExpected && gotErr != nil {
 				t.Fatalf("expected nil but got %q", gotErr)
 			}
 		})

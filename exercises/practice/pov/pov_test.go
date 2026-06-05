@@ -33,9 +33,9 @@ var helperTestCases = []struct {
 }
 
 func TestNewNotNil(t *testing.T) {
-	for _, tt := range helperTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			if tt.tree == nil {
+	for _, tc := range helperTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if tc.tree == nil {
 				t.Fatalf("tree should not be nil")
 			}
 		})
@@ -43,11 +43,11 @@ func TestNewNotNil(t *testing.T) {
 }
 
 func TestValue(t *testing.T) {
-	for _, tt := range helperTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			tree := tt.tree
+	for _, tc := range helperTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			tree := tc.tree
 			got := tree.Value()
-			want := tt.root
+			want := tc.root
 			if want != got {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -56,11 +56,11 @@ func TestValue(t *testing.T) {
 }
 
 func TestChildren(t *testing.T) {
-	for _, tt := range helperTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			tree := tt.tree
+	for _, tc := range helperTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			tree := tc.tree
 			got := tree.Children()
-			want := tt.children
+			want := tc.children
 			if !treeSliceEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -69,10 +69,10 @@ func TestChildren(t *testing.T) {
 }
 
 func TestFromPov(t *testing.T) {
-	for _, tt := range povTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			got := tt.tree.FromPov(tt.from)
-			want := tt.expected
+	for _, tc := range povTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			got := tc.tree.FromPov(tc.from)
+			want := tc.expected
 			if !treeEqual(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -81,10 +81,10 @@ func TestFromPov(t *testing.T) {
 }
 
 func TestPathTo(t *testing.T) {
-	for _, tt := range pathTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			got := tt.tree.PathTo(tt.from, tt.to)
-			want := tt.expected
+	for _, tc := range pathTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			got := tc.tree.PathTo(tc.from, tc.to)
+			want := tc.expected
 			if !slices.Equal(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}

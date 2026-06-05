@@ -86,11 +86,11 @@ func TestInterestRate(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := InterestRate(tt.balance)
-			if !floatingPointEquals(float64(got), float64(tt.want)) {
-				t.Errorf("InterestRate(%f) = %f, want %f", tt.balance, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := InterestRate(tc.balance)
+			if !floatingPointEquals(float64(got), float64(tc.want)) {
+				t.Errorf("InterestRate(%f) = %f, want %f", tc.balance, got, tc.want)
 			}
 		})
 	}
@@ -124,11 +124,11 @@ func TestInterest(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := Interest(tt.balance)
-			if !floatingPointEquals(got, tt.want) {
-				t.Errorf("Interest(%f) = %f, want %f", tt.balance, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := Interest(tc.balance)
+			if !floatingPointEquals(got, tc.want) {
+				t.Errorf("Interest(%f) = %f, want %f", tc.balance, got, tc.want)
 			}
 		})
 	}
@@ -177,11 +177,11 @@ func TestAnnualBalanceUpdate(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := AnnualBalanceUpdate(tt.balance)
-			if !floatingPointEquals(got, tt.want) {
-				t.Errorf("AnnualBalanceUpdate(%f) = %f, want %f", tt.balance, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := AnnualBalanceUpdate(tc.balance)
+			if !floatingPointEquals(got, tc.want) {
+				t.Errorf("AnnualBalanceUpdate(%f) = %f, want %f", tc.balance, got, tc.want)
 			}
 		})
 	}
@@ -238,11 +238,11 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := YearsBeforeDesiredBalance(tt.balance, tt.targetBalance)
-			if got != tt.want {
-				t.Errorf("YearsBeforeDesiredBalance(%f, %f) = %d, want %d", tt.balance, tt.targetBalance, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := YearsBeforeDesiredBalance(tc.balance, tc.targetBalance)
+			if got != tc.want {
+				t.Errorf("YearsBeforeDesiredBalance(%f, %f) = %d, want %d", tc.balance, tc.targetBalance, got, tc.want)
 			}
 		})
 	}
