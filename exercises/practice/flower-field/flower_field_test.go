@@ -26,7 +26,7 @@ func BenchmarkAnnotate(b *testing.B) {
 		" *  * ",
 		"      ",
 	}
-	for range b.N {
+	for b.Loop() {
 		Annotate(board)
 	}
 }

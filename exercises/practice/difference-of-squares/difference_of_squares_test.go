@@ -13,19 +13,19 @@ func TestDifferenceOfSquares(t *testing.T) {
 }
 
 func BenchmarkSquareOfSum(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		SquareOfSum(100)
 	}
 }
 
 func BenchmarkSumOfSquares(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		SumOfSquares(100)
 	}
 }
 
 func BenchmarkDifference(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Difference(100)
 	}
 }

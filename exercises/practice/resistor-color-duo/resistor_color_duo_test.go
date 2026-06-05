@@ -18,7 +18,7 @@ func TestValue(t *testing.T) {
 var valueBench int
 
 func BenchmarkValue(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range valueTestCases {
 			valueBench = Value(tc.input)
 		}

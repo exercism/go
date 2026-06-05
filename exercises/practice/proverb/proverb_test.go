@@ -17,7 +17,7 @@ func TestProverb(t *testing.T) {
 }
 
 func BenchmarkProverb(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Proverb(test.input)
 		}

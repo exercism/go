@@ -147,16 +147,16 @@ func TestProtein(t *testing.T) {
 }
 
 func BenchmarkCodon(b *testing.B) {
-	for _, test := range codonTestCases {
-		for range b.N {
+	for b.Loop() {
+		for _, test := range codonTestCases {
 			FromCodon(test.input)
 		}
 	}
 }
 
 func BenchmarkProtein(b *testing.B) {
-	for _, test := range testCases {
-		for range b.N {
+	for b.Loop() {
+		for _, test := range testCases {
 			FromRNA(test.input)
 		}
 	}

@@ -15,7 +15,7 @@ func TestSublist(t *testing.T) {
 }
 
 func BenchmarkSublist(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Sublist(tc.listOne, tc.listTwo)
 		}

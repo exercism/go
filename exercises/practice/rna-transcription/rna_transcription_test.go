@@ -13,7 +13,7 @@ func TestRNATranscription(t *testing.T) {
 }
 
 func BenchmarkRNATranscription(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			ToRNA(tc.input)
 		}

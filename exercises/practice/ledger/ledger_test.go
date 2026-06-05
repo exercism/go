@@ -103,7 +103,7 @@ func TestFormatLedgerNotChangeInput(t *testing.T) {
 }
 
 func BenchmarkFormatLedger(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			FormatLedger(tc.currency, tc.locale, tc.entries)
 		}

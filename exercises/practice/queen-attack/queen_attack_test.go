@@ -43,7 +43,7 @@ func TestCanQueenAttackInvalid(t *testing.T) {
 func BenchmarkCanQueenAttack(b *testing.B) {
 	allTestCases := append(testCases, invalidTestCases...)
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		for _, test := range allTestCases {
 			CanQueenAttack(test.pos1, test.pos2)
 		}

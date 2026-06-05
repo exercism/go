@@ -55,7 +55,7 @@ func TestParseBinary(t *testing.T) {
 
 // Benchmark combined time for all tests
 func BenchmarkBinary(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			ParseBinary(tc.binary)
 		}

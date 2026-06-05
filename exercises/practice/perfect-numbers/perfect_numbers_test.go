@@ -51,7 +51,7 @@ func TestClassificationsNotEqual(t *testing.T) {
 }
 
 func BenchmarkClassify(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, c := range classificationTestCases {
 			Classify(c.input)
 		}

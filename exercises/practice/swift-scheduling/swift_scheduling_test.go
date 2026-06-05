@@ -13,7 +13,7 @@ func TestDeliveryDate(t *testing.T) {
 }
 
 func BenchmarkDeliveryDate(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			DeliveryDate(tc.start, tc.delivery)
 		}

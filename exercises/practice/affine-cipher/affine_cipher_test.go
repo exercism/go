@@ -41,7 +41,7 @@ func runBenchmark(
 	op func(string, int, int) (string, error),
 	testCases []testCase,
 ) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			op(tc.inputPhrase, tc.inputA, tc.inputB)
 		}

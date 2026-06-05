@@ -21,7 +21,7 @@ func TestHandshake(t *testing.T) {
 }
 
 func BenchmarkHandshake(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for j := uint(0); j < 32; j++ {
 			Handshake(j)
 		}

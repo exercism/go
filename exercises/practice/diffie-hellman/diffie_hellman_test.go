@@ -166,25 +166,25 @@ func TestDifferentPrivateKey(t *testing.T) {
 }
 
 func BenchmarkPrivateKey(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		PrivateKey(biggerTest.p)
 	}
 }
 
 func BenchmarkPublicKey(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		PublicKey(biggerTest.a, biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkNewPair(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		NewPair(biggerTest.p, biggerTest.g)
 	}
 }
 
 func BenchmarkSecretKey(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		SecretKey(biggerTest.a, biggerTest.B, biggerTest.p)
 	}
 }

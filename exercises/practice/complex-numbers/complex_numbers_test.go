@@ -134,7 +134,7 @@ func TestNumber_Exp(t *testing.T) {
 }
 
 func BenchmarkNumber_Real(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range realTestCases {
 			Number{tc.in.a, tc.in.b}.Real()
 		}
@@ -142,7 +142,7 @@ func BenchmarkNumber_Real(b *testing.B) {
 }
 
 func BenchmarkNumber_Imaginary(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range imaginaryTestCases {
 			Number{tc.in.a, tc.in.b}.Imaginary()
 		}
@@ -150,7 +150,7 @@ func BenchmarkNumber_Imaginary(b *testing.B) {
 }
 
 func BenchmarkNumber_Add(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range addTestCases {
 			n1 := Number{tc.n1.a, tc.n1.b}
 			n2 := Number{tc.n2.a, tc.n2.b}
@@ -160,7 +160,7 @@ func BenchmarkNumber_Add(b *testing.B) {
 }
 
 func BenchmarkNumber_Subtract(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range subtractTestCases {
 			n1 := Number{tc.n1.a, tc.n1.b}
 			n2 := Number{tc.n2.a, tc.n2.b}
@@ -170,7 +170,7 @@ func BenchmarkNumber_Subtract(b *testing.B) {
 }
 
 func BenchmarkNumber_Multiply(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range multiplyTestCases {
 			if tc.n2 == nil {
 				b.Skip("skipping tests with factor used withNumber.Times()")
@@ -183,7 +183,7 @@ func BenchmarkNumber_Multiply(b *testing.B) {
 }
 
 func BenchmarkNumber_Times(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range multiplyTestCases {
 			if tc.n2 != nil {
 				b.Skip("skipping tests with complex multiplier used withNumber.Multiply()")
@@ -194,7 +194,7 @@ func BenchmarkNumber_Times(b *testing.B) {
 }
 
 func BenchmarkNumber_Divide(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range divideTestCases {
 			n1 := Number{tc.n1.a, tc.n1.b}
 			n2 := Number{tc.n2.a, tc.n2.b}
@@ -204,7 +204,7 @@ func BenchmarkNumber_Divide(b *testing.B) {
 }
 
 func BenchmarkNumber_Abs(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range absTestCases {
 			Number{tc.in.a, tc.in.b}.Abs()
 		}
@@ -212,7 +212,7 @@ func BenchmarkNumber_Abs(b *testing.B) {
 }
 
 func BenchmarkNumber_Conjugate(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range conjugateTestCases {
 			Number{tc.in.a, tc.in.b}.Conjugate()
 		}
@@ -220,7 +220,7 @@ func BenchmarkNumber_Conjugate(b *testing.B) {
 }
 
 func BenchmarkNumber_Exp(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range expTestCases {
 			Number{tc.in.a, tc.in.b}.Exp()
 		}

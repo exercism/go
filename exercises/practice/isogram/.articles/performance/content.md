@@ -14,7 +14,7 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkIsIsogram(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 
 		for _, c := range testCases {
 			IsIsogram(c.input)

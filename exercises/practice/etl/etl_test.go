@@ -16,7 +16,7 @@ func TestTransform(t *testing.T) {
 }
 
 func BenchmarkTransform(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Transform(tc.input)
 		}

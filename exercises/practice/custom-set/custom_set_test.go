@@ -161,7 +161,7 @@ func bench(nAdd int, b *testing.B) {
 		s[i] = strconv.Itoa(rand.Intn(len(s)))
 	}
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		NewFromSlice(s)
 	}
 }

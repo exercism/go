@@ -13,8 +13,8 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 ```go
 func BenchmarkProtein(b *testing.B) {
-	for _, test := range proteinTestCases {
-		for range b.N {
+	for b.Loop() {
+		for _, test := range proteinTestCases {
 			FromRNA(test.input)
 		}
 	}

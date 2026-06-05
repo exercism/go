@@ -200,7 +200,7 @@ func BenchmarkSortedData(b *testing.B) {
 	tree := makeBst(input)
 	var result []int
 	b.ResetTimer()
-	for range b.N {
+	for b.Loop() {
 		result = tree.SortedData()
 	}
 	benchmarkResult = result

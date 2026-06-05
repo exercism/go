@@ -15,7 +15,7 @@ func TestSquareRoot(t *testing.T) {
 }
 
 func BenchmarkSquareRoot(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			SquareRoot(tc.input)
 		}

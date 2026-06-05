@@ -21,7 +21,7 @@ func TestHamming(t *testing.T) {
 }
 
 func BenchmarkHamming(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Distance(tc.s1, tc.s2)
 		}

@@ -13,7 +13,7 @@ func TestMarkdown(t *testing.T) {
 }
 
 func BenchmarkMarkdown(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Render(test.input)
 		}

@@ -13,7 +13,7 @@ func TestValid(t *testing.T) {
 }
 
 func BenchmarkValid(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Valid(tc.input)
 		}

@@ -13,7 +13,7 @@ func TestConvert(t *testing.T) {
 }
 
 func BenchmarkConvert(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Convert(test.input)
 		}

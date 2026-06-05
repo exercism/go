@@ -58,7 +58,7 @@ func TestAddIou(t *testing.T) {
 }
 
 func BenchmarkGetUsers(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range getUsersTestCases {
 			getApi(tc.database).GetUsers(tc.payload)
 		}
@@ -66,7 +66,7 @@ func BenchmarkGetUsers(b *testing.B) {
 }
 
 func BenchmarkAddUser(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range addUserTestCases {
 			getApi(tc.database).AddUser(tc.payload)
 		}
@@ -74,7 +74,7 @@ func BenchmarkAddUser(b *testing.B) {
 }
 
 func BenchmarkAddIou(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range addIouTestCases {
 			getApi(tc.database).AddIou(tc.payload)
 		}

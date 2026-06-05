@@ -33,7 +33,7 @@ func TestRunLengthEncodeDecode(t *testing.T) {
 }
 
 func BenchmarkRunLengthEncode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range encodeTests {
 			RunLengthEncode(test.input)
 		}
@@ -41,7 +41,7 @@ func BenchmarkRunLengthEncode(b *testing.B) {
 }
 
 func BenchmarkRunLengthDecode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range decodeTests {
 			RunLengthDecode(test.input)
 		}

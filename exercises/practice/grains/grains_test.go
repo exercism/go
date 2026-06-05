@@ -31,7 +31,7 @@ func TestTotal(t *testing.T) {
 }
 
 func BenchmarkSquare(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range squareTests {
 			Square(test.input)
 		}
@@ -39,7 +39,7 @@ func BenchmarkSquare(b *testing.B) {
 }
 
 func BenchmarkTotal(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Total()
 	}
 }

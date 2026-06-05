@@ -16,7 +16,7 @@ func TestScore(t *testing.T) {
 }
 
 func BenchmarkScore(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, testCase := range testCases {
 			Score(testCase.dice, testCase.category)
 		}

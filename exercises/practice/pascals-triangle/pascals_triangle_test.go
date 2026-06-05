@@ -39,7 +39,7 @@ func format(t [][]int) (s string) {
 // BenchmarkPascalsTriangleFixed will generate Pascals Triangles against the
 // solution using triangles of fixed size 20.
 func BenchmarkPascalsTriangleFixed(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Triangle(len(testCases))
 	}
 }
@@ -47,7 +47,7 @@ func BenchmarkPascalsTriangleFixed(b *testing.B) {
 // BenchmarkPascalsTriangleIncreasing will generate Pascals Triangles against the
 // solution using triangles of an increasingly larger size from 1 to 20.
 func BenchmarkPascalsTriangleIncreasing(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for x := range len(testCases) {
 			Triangle(x)
 		}

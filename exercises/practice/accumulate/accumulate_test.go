@@ -109,7 +109,7 @@ func TestAccumulate(t *testing.T) {
 }
 
 func BenchmarkAccumulate(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range tests {
 			Accumulate(test.given, test.converter)
 		}

@@ -19,7 +19,7 @@ func TestPrimeFactors(t *testing.T) {
 }
 
 func BenchmarkPrimeFactors(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Factors(test.input)
 		}

@@ -13,7 +13,7 @@ func TestIsIsogram(t *testing.T) {
 }
 
 func BenchmarkIsIsogram(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, c := range testCases {
 			IsIsogram(c.input)
 		}

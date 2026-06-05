@@ -35,7 +35,7 @@ func checkFunction(
 }
 
 func BenchmarkNumber(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Number(test.input)
 		}
@@ -43,7 +43,7 @@ func BenchmarkNumber(b *testing.B) {
 }
 
 func BenchmarkAreaCode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			AreaCode(test.input)
 		}
@@ -51,7 +51,7 @@ func BenchmarkAreaCode(b *testing.B) {
 }
 
 func BenchmarkFormat(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Format(test.input)
 		}

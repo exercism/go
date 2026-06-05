@@ -142,7 +142,7 @@ func TestPalindromeProducts(t *testing.T) {
 }
 
 func BenchmarkPalindromeProducts(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Products(test.fmin, test.fmax)
 		}

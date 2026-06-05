@@ -65,7 +65,7 @@ func TestKind(t *testing.T) {
 }
 
 func BenchmarkKind(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			KindFromSides(test.a, test.b, test.c)
 		}

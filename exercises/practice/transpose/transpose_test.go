@@ -27,7 +27,7 @@ func TestTranspose(t *testing.T) {
 }
 
 func BenchmarkTranspose(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, test := range testCases {
 			Transpose(test.input)
 		}

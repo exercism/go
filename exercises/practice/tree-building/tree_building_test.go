@@ -57,7 +57,7 @@ func makeTwoTreeRecords() []Record {
 var twoTreeRecords = makeTwoTreeRecords()
 
 func BenchmarkTwoTree(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Build(twoTreeRecords)
 	}
 }
@@ -78,7 +78,7 @@ func makeTenTreeRecords() []Record {
 var tenTreeRecords = makeTenTreeRecords()
 
 func BenchmarkTenTree(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Build(tenTreeRecords)
 	}
 }
@@ -94,7 +94,7 @@ func makeShallowRecords() []Record {
 var shallowRecords = makeShallowRecords()
 
 func BenchmarkShallowTree(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Build(shallowRecords)
 	}
 }

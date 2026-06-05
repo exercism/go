@@ -60,7 +60,7 @@ func TestSong(t *testing.T) {
 }
 
 func BenchmarkSong(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		Song()
 	}
 }

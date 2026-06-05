@@ -23,7 +23,7 @@ func TestFlatten(t *testing.T) {
 }
 
 func BenchmarkFlatten(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Flatten(tc.input)
 		}

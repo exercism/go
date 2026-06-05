@@ -18,7 +18,7 @@ func TestLabel(t *testing.T) {
 var labelBench string
 
 func BenchmarkLabel(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range labelTestCases {
 			labelBench = Label(tc.input)
 		}

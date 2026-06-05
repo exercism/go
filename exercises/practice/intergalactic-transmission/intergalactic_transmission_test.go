@@ -34,7 +34,7 @@ func TestDecode(t *testing.T) {
 }
 
 func BenchmarkTransmit(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range transmitCases {
 			Transmit(tc.input)
 		}
@@ -42,7 +42,7 @@ func BenchmarkTransmit(b *testing.B) {
 }
 
 func BenchmarkDecode(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range decodeCases {
 			Decode(tc.input)
 		}

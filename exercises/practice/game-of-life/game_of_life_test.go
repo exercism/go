@@ -16,7 +16,7 @@ func TestTick(t *testing.T) {
 }
 
 func BenchmarkTick(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Tick(tc.input)
 		}

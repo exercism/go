@@ -23,7 +23,7 @@ func TestForth(t *testing.T) {
 }
 
 func BenchmarkForth(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		for _, tc := range testCases {
 			Forth(tc.input)
 		}
