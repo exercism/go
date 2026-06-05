@@ -6,10 +6,10 @@ import (
 )
 
 func TestTransform(t *testing.T) {
-	for _, tt := range testCases {
-		t.Run(tt.description, func(t *testing.T) {
-			if actual := Transform(tt.input); !maps.Equal(actual, tt.expected) {
-				t.Fatalf("Transform(%v)\ngot: %v\nwant: %v", tt.input, actual, tt.expected)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			if actual := Transform(tc.input); !maps.Equal(actual, tc.expected) {
+				t.Fatalf("Transform(%v)\ngot: %v\nwant: %v", tc.input, actual, tc.expected)
 			}
 		})
 	}
@@ -17,8 +17,8 @@ func TestTransform(t *testing.T) {
 
 func BenchmarkTransform(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			Transform(tt.input)
+		for _, tc := range testCases {
+			Transform(tc.input)
 		}
 	}
 }

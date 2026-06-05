@@ -67,11 +67,11 @@ func TestGetItem(t *testing.T) {
 			want: -1,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := GetItem(slices.Clone(tt.args.slice), tt.args.index)
-			if got != tt.want {
-				t.Errorf("GetItem(%#v, %d) got = %#v, want %#v", tt.args.slice, tt.args.index, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := GetItem(slices.Clone(tc.args.slice), tc.args.index)
+			if got != tc.want {
+				t.Errorf("GetItem(%#v, %d) got = %#v, want %#v", tc.args.slice, tc.args.index, got, tc.want)
 			}
 		})
 	}
@@ -143,16 +143,16 @@ func TestSetItem(t *testing.T) {
 			want: []int{-2, 5, 0, 1, 2},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := SetItem(tt.args.slice, tt.args.index, tt.args.value)
-			if !slices.Equal(got, tt.want) {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := SetItem(tc.args.slice, tc.args.index, tc.args.value)
+			if !slices.Equal(got, tc.want) {
 				t.Errorf("SetItem(%#v, %d, %d) = %#v, want %#v",
-					tt.args.slice, tt.args.index, tt.args.value, got, tt.want)
-			} else if len(tt.args.slice) == len(got) {
-				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.args.slice).Pointer() {
-					t.Errorf("SetItem(%#v, %d, %d) does not return the modified input slice)", tt.args.slice,
-						tt.args.index, tt.args.value)
+					tc.args.slice, tc.args.index, tc.args.value, got, tc.want)
+			} else if len(tc.args.slice) == len(got) {
+				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tc.args.slice).Pointer() {
+					t.Errorf("SetItem(%#v, %d, %d) does not return the modified input slice)", tc.args.slice,
+						tc.args.index, tc.args.value)
 				}
 			}
 		})
@@ -210,17 +210,17 @@ func TestPrependItems(t *testing.T) {
 			want: []int{5, 2, 10, 6, 5, 2, 10, 6},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := PrependItems(slices.Clone(tt.args.slice), tt.args.value...)
-			args := make([]string, len(tt.args.value))
-			for i, v := range tt.args.value {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := PrependItems(slices.Clone(tc.args.slice), tc.args.value...)
+			args := make([]string, len(tc.args.value))
+			for i, v := range tc.args.value {
 				args[i] = strconv.Itoa(v)
 			}
 
-			if !slices.Equal(got, tt.want) {
+			if !slices.Equal(got, tc.want) {
 				t.Errorf("PrependItems(%#v, %s) = %#v, want %#v",
-					tt.args.slice, strings.Join(args, ", "), got, tt.want)
+					tc.args.slice, strings.Join(args, ", "), got, tc.want)
 			}
 		})
 	}
@@ -277,10 +277,10 @@ func TestRemoveItem(t *testing.T) {
 			want: []int{3, 4, 5, 6},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := RemoveItem(slices.Clone(tt.args.slice), tt.args.index); !slices.Equal(got, tt.want) {
-				t.Errorf("RemoveItem(%#v, %d) = %#v, want %#v", tt.args.slice, tt.args.index, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := RemoveItem(slices.Clone(tc.args.slice), tc.args.index); !slices.Equal(got, tc.want) {
+				t.Errorf("RemoveItem(%#v, %d) = %#v, want %#v", tc.args.slice, tc.args.index, got, tc.want)
 			}
 		})
 	}

@@ -71,11 +71,11 @@ func TestFormatLedgerSuccess(t *testing.T) {
 }
 
 func TestFormatLedgerFailure(t *testing.T) {
-	for _, tt := range failureTestCases {
-		t.Run(tt.description, func(t *testing.T) {
-			_, err := FormatLedger(tt.currency, tt.locale, tt.entries)
+	for _, tc := range failureTestCases {
+		t.Run(tc.description, func(t *testing.T) {
+			_, err := FormatLedger(tc.currency, tc.locale, tc.entries)
 			if err == nil {
-				t.Fatalf("FormatLedger for test %q expected error, got nil", tt.description)
+				t.Fatalf("FormatLedger for test %q expected error, got nil", tc.description)
 			}
 		})
 	}
@@ -104,8 +104,8 @@ func TestFormatLedgerNotChangeInput(t *testing.T) {
 
 func BenchmarkFormatLedger(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			FormatLedger(tt.currency, tt.locale, tt.entries)
+		for _, tc := range testCases {
+			FormatLedger(tc.currency, tc.locale, tc.entries)
 		}
 	}
 }

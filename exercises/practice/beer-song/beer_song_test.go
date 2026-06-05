@@ -105,8 +105,8 @@ func TestSeveralVerses(t *testing.T) {
 
 func BenchmarkSeveralVerses(b *testing.B) {
 	for range b.N {
-		for _, tt := range versesTestCases {
-			Verses(tt.upperBound, tt.lowerBound)
+		for _, tc := range versesTestCases {
+			Verses(tc.upperBound, tc.lowerBound)
 		}
 	}
 }

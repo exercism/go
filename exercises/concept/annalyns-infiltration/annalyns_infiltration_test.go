@@ -24,10 +24,10 @@ func TestCanFastAttack(t *testing.T) {
 			expected:      true,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.desc, func(t *testing.T) {
-			if got := CanFastAttack(tt.knightIsAwake); got != tt.expected {
-				t.Errorf("CanFastAttack(%v) = %v; want %v", tt.knightIsAwake, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			if got := CanFastAttack(tc.knightIsAwake); got != tc.expected {
+				t.Errorf("CanFastAttack(%v) = %v; want %v", tc.knightIsAwake, got, tc.expected)
 			}
 		})
 	}
@@ -92,10 +92,10 @@ func TestCanSpy(t *testing.T) {
 			expected:        true,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.desc, func(t *testing.T) {
-			if got := CanSpy(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
-				t.Errorf("CanSpy(%v, %v, %v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			if got := CanSpy(tc.knightIsAwake, tc.archerIsAwake, tc.prisonerIsAwake); got != tc.expected {
+				t.Errorf("CanSpy(%v, %v, %v) = %v; want %v", tc.knightIsAwake, tc.archerIsAwake, tc.prisonerIsAwake, got, tc.expected)
 			}
 		})
 	}
@@ -128,10 +128,10 @@ func TestCanSignalPrisoner(t *testing.T) {
 			expected:        false,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.desc, func(t *testing.T) {
-			if got := CanSignalPrisoner(tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
-				t.Errorf("CanSignalPrisoner(%v, %v) = %v; want %v", tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			if got := CanSignalPrisoner(tc.archerIsAwake, tc.prisonerIsAwake); got != tc.expected {
+				t.Errorf("CanSignalPrisoner(%v, %v) = %v; want %v", tc.archerIsAwake, tc.prisonerIsAwake, got, tc.expected)
 			}
 		})
 	}
@@ -276,10 +276,10 @@ func TestCanFreePrisoner(t *testing.T) {
 			expected:        false,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.desc, func(t *testing.T) {
-			if got := CanFreePrisoner(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent); got != tt.expected {
-				t.Errorf("CanFreePrisoner(%v,%v,%v,%v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent, got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			if got := CanFreePrisoner(tc.knightIsAwake, tc.archerIsAwake, tc.prisonerIsAwake, tc.dogIsPresent); got != tc.expected {
+				t.Errorf("CanFreePrisoner(%v,%v,%v,%v) = %v; want %v", tc.knightIsAwake, tc.archerIsAwake, tc.prisonerIsAwake, tc.dogIsPresent, got, tc.expected)
 			}
 		})
 	}

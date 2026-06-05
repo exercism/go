@@ -47,10 +47,10 @@ func TestIsValidLine(t *testing.T) {
 			expected:    false,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			got := IsValidLine(tt.text)
-			want := tt.expected
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			got := IsValidLine(tc.text)
+			want := tc.expected
 			if want != got {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -90,10 +90,10 @@ func TestSplitLogLine(t *testing.T) {
 			expected:    []string{""},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			got := SplitLogLine(tt.text)
-			want := tt.expected
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			got := SplitLogLine(tc.text)
+			want := tc.expected
 			if !slices.Equal(want, got) {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -126,10 +126,10 @@ func TestCountQuotedPasswords(t *testing.T) {
 			expected: 0,
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			got := CountQuotedPasswords(tt.lines)
-			want := tt.expected
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			got := CountQuotedPasswords(tc.lines)
+			want := tc.expected
 			if want != got {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -149,10 +149,10 @@ func TestRemoveEndOfLineText(t *testing.T) {
 			expected:    "[INF]  Network Failure ",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			got := RemoveEndOfLineText(tt.text)
-			want := tt.expected
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			got := RemoveEndOfLineText(tc.text)
+			want := tc.expected
 			if want != got {
 				t.Fatalf("expected: %v, got: %v", want, got)
 			}
@@ -182,10 +182,10 @@ func TestTagWithUserName(t *testing.T) {
 			},
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			got := TagWithUserName(tt.lines)
-			want := tt.expected
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			got := TagWithUserName(tc.lines)
+			want := tc.expected
 			if !slices.Equal(want, got) {
 				for i := range got {
 					if want[i] != got[i] {

@@ -32,8 +32,8 @@ func TestResultOf(t *testing.T) {
 func BenchmarkResultOf(b *testing.B) {
 	b.StopTimer()
 
-	for _, tt := range testCases {
-		board := prepare(tt.board)
+	for _, tc := range testCases {
+		board := prepare(tc.board)
 		b.StartTimer()
 
 		for range b.N {

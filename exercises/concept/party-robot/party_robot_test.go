@@ -22,10 +22,10 @@ func TestWelcome(t *testing.T) {
 			want:        "Welcome to my party, Xuân Jing!",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			if got := Welcome(tt.name); got != tt.want {
-				t.Errorf("Welcome(%q) = %q, want %q", tt.name, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			if got := Welcome(tc.name); got != tc.want {
+				t.Errorf("Welcome(%q) = %q, want %q", tc.name, got, tc.want)
 			}
 		})
 	}
@@ -51,10 +51,10 @@ func TestHappyBirthday(t *testing.T) {
 			want:        "Happy birthday Xuân Jing! You are now 17 years old!",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			if got := HappyBirthday(tt.name, tt.age); got != tt.want {
-				t.Errorf("HappyBirthday(%q, %d) = %q, want %q", tt.name, tt.age, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			if got := HappyBirthday(tc.name, tc.age); got != tc.want {
+				t.Errorf("HappyBirthday(%q, %d) = %q, want %q", tc.name, tc.age, got, tc.want)
 			}
 		})
 	}
@@ -98,18 +98,18 @@ func TestAssignTable(t *testing.T) {
 			want:        "Welcome to my party, Paula!\nYou have been assigned to table 101. Your table is on the right, exactly 100.0 meters from here.\nYou will be sitting next to Chioma.",
 		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.description, func(t *testing.T) {
-			if got := AssignTable(tt.name, tt.tableNumber, tt.seatmate, tt.direction, tt.distance); got != tt.want {
+	for _, tc := range tests {
+		t.Run(tc.description, func(t *testing.T) {
+			if got := AssignTable(tc.name, tc.tableNumber, tc.seatmate, tc.direction, tc.distance); got != tc.want {
 				t.Errorf(
 					"AssignTable(%q, %d, %q, %q, %f),\ngot: %q\nwant: %q",
-					tt.name, tt.tableNumber, tt.seatmate, tt.direction, tt.distance, got, tt.want,
+					tc.name, tc.tableNumber, tc.seatmate, tc.direction, tc.distance, got, tc.want,
 				)
-				wantLen := len(tt.want)
+				wantLen := len(tc.want)
 				gotLen := len(got)
-				wantNewlines := strings.Count(tt.want, "\n")
+				wantNewlines := strings.Count(tc.want, "\n")
 				gotNewlines := strings.Count(got, "\n")
-				wantSpaces := strings.Count(tt.want, " ")
+				wantSpaces := strings.Count(tc.want, " ")
 				gotSpaces := strings.Count(got, " ")
 
 				if wantLen != gotLen {

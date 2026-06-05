@@ -20,8 +20,8 @@ func TestDetectAnagrams(t *testing.T) {
 
 func BenchmarkDetectAnagrams(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			Detect(tt.subject, tt.candidates)
+		for _, tc := range testCases {
+			Detect(tc.subject, tc.candidates)
 		}
 	}
 }

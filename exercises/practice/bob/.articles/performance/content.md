@@ -16,8 +16,8 @@ To benchmark the approaches, we ran the following Benchmark code for each approa
 
 func BenchmarkHey(b *testing.B) {
 	for range b.N {
-		for _, tt := range testCases {
-			Hey(tt.input)
+		for _, tc := range testCases {
+			Hey(tc.input)
 		}
 	}
 }

@@ -42,13 +42,13 @@ func TestDrive(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			car := tt.car
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			car := tc.car
 			car.Drive()
 
-			if car != tt.expected {
-				t.Errorf("method Drive() = %v; expected %v", car, tt.expected)
+			if car != tc.expected {
+				t.Errorf("method Drive() = %v; expected %v", car, tc.expected)
 			}
 		})
 	}
@@ -72,12 +72,12 @@ func TestDisplayDistance(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := tt.car.DisplayDistance()
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.car.DisplayDistance()
 
-			if got != tt.expected {
-				t.Errorf("method DisplayDistance() = %v; Expected value %v", got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("method DisplayDistance() = %v; Expected value %v", got, tc.expected)
 			}
 		})
 	}
@@ -101,12 +101,12 @@ func TestDisplayBattery(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := tt.car.DisplayBattery()
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.car.DisplayBattery()
 
-			if got != tt.expected {
-				t.Errorf("method DisplayBattery() = %v; Expected value %v", got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("method DisplayBattery() = %v; Expected value %v", got, tc.expected)
 			}
 		})
 	}
@@ -161,12 +161,12 @@ func TestCanFinish(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := tt.car.CanFinish(tt.trackDistance)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.car.CanFinish(tc.trackDistance)
 
-			if got != tt.expected {
-				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.trackDistance, got, tt.expected)
+			if got != tc.expected {
+				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tc.trackDistance, got, tc.expected)
 			}
 		})
 	}

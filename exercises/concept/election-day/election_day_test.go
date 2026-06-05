@@ -16,13 +16,13 @@ func TestNewVoteCounter(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got := NewVoteCounter(tt.votes)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NewVoteCounter(tc.votes)
 			if got == nil {
-				t.Errorf("NewVoteCounter(%d) = nil, want &%d", tt.votes, tt.votes)
-			} else if *got != tt.votes {
-				t.Errorf("NewVoteCounter(%d) = &%d, want &%d", tt.votes, *got, tt.votes)
+				t.Errorf("NewVoteCounter(%d) = nil, want &%d", tc.votes, tc.votes)
+			} else if *got != tc.votes {
+				t.Errorf("NewVoteCounter(%d) = &%d, want &%d", tc.votes, *got, tc.votes)
 			}
 		})
 	}
@@ -48,10 +48,10 @@ func TestVoteCount(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := VoteCount(tt.counter); got != tt.expected {
-				t.Fatalf("VoteCount(%s) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := VoteCount(tc.counter); got != tc.expected {
+				t.Fatalf("VoteCount(%s) = %d, want %d", intPtrRepresentation(tc.counter), got, tc.expected)
 			}
 		})
 	}
@@ -88,16 +88,16 @@ func TestIncrementVoteCount(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			before := intPtrRepresentation(tt.counter)
-			IncrementVoteCount(tt.counter, tt.increment)
-			after := intPtrRepresentation(tt.counter)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			before := intPtrRepresentation(tc.counter)
+			IncrementVoteCount(tc.counter, tc.increment)
+			after := intPtrRepresentation(tc.counter)
 
-			if tt.counter == nil {
-				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tt.expected)
-			} else if *tt.counter != tt.expected {
-				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tt.expected)
+			if tc.counter == nil {
+				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tc.expected)
+			} else if *tc.counter != tc.expected {
+				t.Errorf("counter before: %s | counter after: %v | want: &%d", before, after, tc.expected)
 			}
 		})
 	}
@@ -121,13 +121,13 @@ func TestNewElectionResult(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result := NewElectionResult(tt.candidateName, tt.votes)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			result := NewElectionResult(tc.candidateName, tc.votes)
 
-			if result == nil || result.Name != tt.want.Name || result.Votes != tt.want.Votes {
+			if result == nil || result.Name != tc.want.Name || result.Votes != tc.want.Votes {
 				t.Errorf("NewElectionResult(%q, %d) = %#v, want %#v",
-					tt.candidateName, tt.votes, result, tt.want)
+					tc.candidateName, tc.votes, result, tc.want)
 			}
 		})
 	}
@@ -149,10 +149,10 @@ func TestDisplayResult(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if result := DisplayResult(tt.result); result != tt.want {
-				t.Errorf("DisplayResult(%#v) = %q, want %q", *tt.result, result, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if result := DisplayResult(tc.result); result != tc.want {
+				t.Errorf("DisplayResult(%#v) = %q, want %q", *tc.result, result, tc.want)
 			}
 		})
 	}
@@ -175,12 +175,12 @@ func TestDecrementVotesOfCandidate(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			DecrementVotesOfCandidate(tt.results, tt.candidate)
-			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.want {
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			DecrementVotesOfCandidate(tc.results, tc.candidate)
+			if votes, ok := tc.results[tc.candidate]; !ok || votes != tc.want {
 				t.Errorf("DecrementVotesOfCandidate(%#v, %q) = %d, want %d",
-					tt.results, tt.candidate, votes, tt.want)
+					tc.results, tc.candidate, votes, tc.want)
 			}
 		})
 	}

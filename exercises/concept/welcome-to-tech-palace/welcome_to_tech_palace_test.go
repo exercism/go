@@ -30,10 +30,10 @@ func TestWelcomeMessage(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := WelcomeMessage(tt.customer); got != tt.want {
-				t.Errorf("WelcomeMessage(\"%s\") = \"%s\", want \"%s\"", tt.customer, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := WelcomeMessage(tc.customer); got != tc.want {
+				t.Errorf("WelcomeMessage(\"%s\") = \"%s\", want \"%s\"", tc.customer, got, tc.want)
 			}
 		})
 	}
@@ -60,10 +60,10 @@ func TestAddBorder(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := AddBorder(tt.welcomeMessage, tt.numStarsPerLine); got != tt.want {
-				t.Errorf("AddBorder(\"%s\", %d) = \"%s\", want \"%s\"", tt.welcomeMessage, tt.numStarsPerLine, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := AddBorder(tc.welcomeMessage, tc.numStarsPerLine); got != tc.want {
+				t.Errorf("AddBorder(\"%s\", %d) = \"%s\", want \"%s\"", tc.welcomeMessage, tc.numStarsPerLine, got, tc.want)
 			}
 		})
 	}
@@ -92,10 +92,10 @@ func TestCleanupMessage(t *testing.T) {
 		},
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := CleanupMessage(tt.oldMessage); got != tt.want {
-				t.Errorf("CleanupMessage(\"%s\") = \"%s\", want \"%s\"", tt.oldMessage, got, tt.want)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := CleanupMessage(tc.oldMessage); got != tc.want {
+				t.Errorf("CleanupMessage(\"%s\") = \"%s\", want \"%s\"", tc.oldMessage, got, tc.want)
 			}
 		})
 	}
