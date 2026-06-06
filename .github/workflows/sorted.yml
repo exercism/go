@@ -11,6 +11,6 @@ permissions:
 jobs:
   call-gha-workflow:
     name: Check
-    uses: IsaacG/github-actions/.github/workflows/sorted.yml@main
+    uses: exercism/github-actions/.github/workflows/sorted.yml@main
     with:
       ordering: ".difficulty, .lowercase_name"
