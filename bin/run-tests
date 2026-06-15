@@ -25,49 +25,49 @@ mode="${1:-default}"
 TEST_STUBS_MODE="test-stubs"
 
 for parentdir in concept practice; do
-  for dir in exercises/$parentdir/*/; do
-    stub=$(echo $(basename $dir) | tr - _)
-    if [ -f "${dir}.meta/.skip_tests" ]; then
+  for dir in "exercises/${parentdir}/"*/; do
+    stub=$(basename "${dir}" | tr - _)
+    if [[ -f "${dir}.meta/.skip_tests" ]]; then
       continue
     fi
     exemplar="${dir}.meta/exemplar.go"
-    if [ ! -f $exemplar ]; then
+    if [[ ! -f "${exemplar}" ]]; then
       exemplar="${dir}.meta/example.go"
     fi
-    if [ ! -f $exemplar ]; then
+    if [[ ! -f "${exemplar}" ]]; then
       echo "Missing exemplar in ${dir}.meta called exemplar.go or example.go"
       exit 1
     fi
     mod="${dir}go.mod"
-    if [ ! -f $mod ]; then
+    if [[ ! -f "${mod}" ]]; then
       echo "File go.mod is missing."
       exit 1
     fi
 
     if [ -f "${dir}${stub}.go" ] ; then
       tmpstub=$tmp/$parentdir/$stub
-      mkdir -p $tmpstub
-      echo "copy base files and tests to $tmpstub"
-      cp $dir/*.go $tmpstub
-      if [ "$mode" != "$TEST_STUBS_MODE" ];then
-        echo "copy exemplar $exemplar to $tmpstub"
-        cp $exemplar "${tmpstub}/${stub}.go"
+      mkdir -p "${tmpstub}"
+      echo "copy base files and tests to ${tmpstub}"
+      cp "${dir}"/*.go "${tmpstub}"
+      if [[ "${mode}" != "${TEST_STUBS_MODE}" ]];then
+        echo "copy exemplar ${exemplar} to ${tmpstub}"
+        cp "${exemplar}" "${tmpstub}/${stub}.go"
       fi
       echo "copy module $mod to $tmpstub"
-      cp $mod $tmpstub
+      cp "${mod}" "${tmpstub}"
 
       generator="${dir}.meta/gen.go"
-      if [ -f "${generator}" ]; then
+      if [[ -f "${generator}" ]]; then
         # copying generator to be automatically linted when the exercise is linted
         echo "copy generator ${generator}"
         mkdir -p "${tmp}/gen/${stub}" && cp "${generator}" "${tmp}/gen/${stub}/gen.go"
       fi
 
       echo "put everything in the same module"
-      original_module=`head -n1 $tmpstub/go.mod | awk '{ print $2 }'`
-      sed -i'.bak' "s|package .*|package ${stub}|" $tmpstub/*.go
-      sed -i'.bak' "s|// Package ${original_module}|// Package ${stub}|" $tmpstub/*.go
-      sed -i'.bak' "s|module .*|module ${stub}|" $tmpstub/go.mod
+      original_module=$(head -n1 "${tmpstub}/go.mod" | awk '{ print $2 }')
+      sed -i'.bak' "s|package .*|package ${stub}|" "${tmpstub}"/*.go
+      sed -i'.bak' "s|// Package ${original_module}|// Package ${stub}|" "${tmpstub}"/*.go
+      sed -i'.bak' "s|module .*|module ${stub}|" "${tmpstub}/go.mod"
     else
       echo "${dir}${stub}.go not found: expected a file ${dir}${stub}.go since the exercise is in a folder named $stub"
       exit 1
@@ -79,9 +79,9 @@ cleanup () {
   echo "deleting ${tmp}"
   # the cd for go fmt or go vet could leave us in an unexpected place.
   # cd to a known place.
-  cd "$root"
+  cd "$root" || exit 1
 
-  rm -rf $tmp
+  rm -rf "${tmp}"
 }
 
 trap cleanup EXIT INT TERM
@@ -93,9 +93,9 @@ trap cleanup EXIT INT TERM
 # module-aware mode only in places where a go.mod is present.
 export GO111MODULE=auto
 
-if [ "$mode" = "$TEST_STUBS_MODE" ];then
+if [[ "${mode}" = "${TEST_STUBS_MODE}" ]];then
   echo "running tests with stubs and expecting tests to fail"
-  for exercise in ./$tmp/concept/* ./$tmp/practice/*; do
+  for exercise in "./${tmp}/concept"/* "./${tmp}/practice"/*; do
     # ignore exercises that have a stub that passes the tests
       # deep_thought: no tests
       # ledger, markdown: refactoring exercise
@@ -103,11 +103,11 @@ if [ "$mode" = "$TEST_STUBS_MODE" ];then
     if [[ "$exercise" == *"deep_thought"* || "$exercise" == *"ledger"*  || "$exercise" == *"markdown"* ]];
     then
         echo "ignoring $exercise (no tests or refactoring exercise)"
-        continue;
+        continue
     fi
     echo "testing $exercise"
     result=$(go test -v "$exercise" 2>&1)
-    if echo "$result" | grep -q 'PASS'; then
+    if [[ "$result" = *PASS* ]]; then
       echo "[ERROR] stub at $exercise passed the tests, even thought expect stub to fail"
       echo "$result"
       exit 1
@@ -127,12 +127,12 @@ echo "SUCCESS"
 
 paths_to_lint=(gotools gen)
 for path in "${paths_to_lint[@]}"; do
-  cd "$root"
-  cd "$path"
+  cd "$root" || exit 1
+  cd "$path" || exit 1
 
-  echo "running tests for $path/..."
+  echo "running tests for ${path}/..."
   if ! go test ./...; then
-    echo "LINTER/TESTS FAILED for $path/..."
+    echo "LINTER/TESTS FAILED for ${path}/..."
     exit 1
   fi
   echo "SUCCESS"

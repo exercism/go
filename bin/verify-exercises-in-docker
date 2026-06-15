@@ -47,9 +47,9 @@ run_tests() {
     local -a docker_args
 
     docker_args+=( --rm --network none )
-    docker_args+=( --mount type=bind,src="${dir}",dst=/solution )
+    docker_args+=( --mount "type=bind,src=${dir},dst=/solution" )
     # /tmp needs to be a proper volume to run the compiled executable; tmpfs is not executable.
-    docker_args+=( --mount type=volume,dst=/tmp )
+    docker_args+=( --mount 'type=volume,dst=/tmp' )
 
     # /solution is used both as the location to read the code from and as a destination for the results.json file.
     docker run "${docker_args[@]}" "${image}" "${slug}" /solution /solution
@@ -100,7 +100,7 @@ verify_exercises() {
 }
 
 
-(( ${BASH_VERSINFO[0]} >= 4 )) || die "Requires bash 4 or greater."
+(( BASH_VERSINFO[0] >= 4 )) || die "Requires bash 4 or greater."
 required_tool docker
 required_tool jq
 required_tool git
