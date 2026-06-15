@@ -1,0 +1,13 @@
+name: shellcheck
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  shellcheck:
+    name: Run shellcheck on scripts
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - name: Run shellcheck
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38
