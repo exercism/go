@@ -1,5 +1,5 @@
 {
-  "blurb": "Declare variables, assign values, and understand how Go uses variable types.",
+  "blurb": "Declare variables, assign values, and understand variable typing.",
   "authors": [
     "ErikSchierboom"
   ],
