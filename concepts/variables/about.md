@@ -23,7 +23,7 @@ A variable in Go always has a value.
 If one isn't set at declaration, Go provides one [called a zero value][zero-values], based on the variable's type.
 
 ```go
-var total int      // 0
+var total int     // 0
 var name string   // ""
 var ready bool    // false
 ```
