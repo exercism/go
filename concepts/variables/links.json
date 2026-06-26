@@ -1,35 +1,14 @@
 [
   {
-    "url": "https://golang.org/ref/spec#Assignments",
-    "description": "assignment"
+    "url": "https://go.dev/ref/spec#Variable_declarations",
+    "description": "Variable declarations"
   },
   {
-    "url": "https://golang.org/ref/spec#Assignments",
-    "description": "assignment"
+    "url": "https://go.dev/ref/spec#Short_variable_declarations",
+    "description": "Short variable declarations"
   },
   {
-    "url": "https://golang.org/ref/spec#Operators",
-    "description": "operators"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Exported_identifiers",
-    "description": "public-vs-private"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Method_declarations",
-    "description": "methods"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Exported_identifiers",
-    "description": "public-vs-private"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Return_statements",
-    "description": "return"
-  },
-  {
-    "url": "https://golang.org/ref/spec#Exported_identifiers",
-    "description": "public-vs-private"
-  },
-  { "url": "https://golang.org/ref/spec#Comments", "description": "comments" }
+    "url": "https://go.dev/ref/spec#Assignments",
+    "description": "Assignments"
+  }
 ]

@@ -1,46 +1,47 @@
 # Introduction
 
-Go is a statically-typed language, which means that everything has a type at compile-time.
-Assigning a value to a name is referred to as defining a variable.
-A variable can be defined either by explicitly specifying its type, or by assigning a value to have the Go compiler infer its type based on the assigned value.
+Go is statically typed, so every variable will have a type known at compile time.
+Once declared, a variable's type cannot change.
+
+## Creating a Variable
+
+The `var` statement can declare a new variable's type, set its value, or do both at once:
 
 ```go
-var explicit int // Explicitly typed
-implicit := 10   // Implicitly typed
+var total int     // Type explicitly declared, value implicitly set (see note on zero values below)
+var count int = 1 // Type explicitly declared, value explicitly set
+var sum = 100     // Type implictly declared, value explicitly set
 ```
 
-The value of a variable can be assigned using the `:=` and updated using the `=`.
-Once defined, a variable's type can never change.
+Inside a function, the `:=` short assignment statement can also be used.
 
 ```go
-count := 1 // Assign initial value
-count = 2  // Update to new value
-
-// Compiler error when assigning different type
-// count = false
+count := 1 // Type implictly declared, value explicitly set
 ```
 
-A function can have zero or more parameters.
-All parameters must be explicitly typed, there is no type inference for parameters.
-A function can also have multiple return values which must also be explicitly typed.
-Values are returned from functions using the `return` keyword.
-To allow a function to be called by code in other packages, the name of the function must start with a capital letter.
+A variable in Go always has a value.
+If one isn't set at declaration, Go provides one [called a zero value][zero-values], based on the variable's type.
 
 ```go
-package greeting
-
-// Hello is a public function.
-func Hello(name string) string {
-    return hello(name)
-}
-
-// hello is a private function.
-func hello(name string) string {
-    return "Hello " + name
-}
+var total int     // 0
+var name string   // ""
+var ready bool    // false
 ```
 
-Invoking a function is done by specifying the function name and passing arguments for each of the function's parameters.
+## Updating a Variable
 
-Go supports two types of comments.
-Single line comments are preceded by `//` and multiline comments are inserted between `/*` and `*/`.
+Inside a function, the `=` assignment operator can set a new value for an existing variable:
+
+```go
+count := 1
+count = 2
+```
+
+The new value must have the same type as the variable:
+
+```go
+count := 1
+count = false // compile error: a Boolean is not an int
+```
+
+[zero-values]: https://exercism.org/tracks/go/concepts/zero-values

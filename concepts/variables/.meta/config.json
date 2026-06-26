@@ -1,5 +1,9 @@
 {
-  "blurb": "TODO: add blurb",
-  "authors": ["ErikSchierboom"],
-  "contributors": []
+  "blurb": "Declare variables, assign values, and understand variable typing.",
+  "authors": [
+    "ErikSchierboom"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
 }

@@ -1,30 +1,47 @@
 # About
 
-Go is a statically-typed language, which means that everything has a type at compile-time.
-Assigning a value to a name is referred to as defining a variable.
-A variable can be defined either by explicitly specifying its type, or by assigning a value to have the Go compiler infer its type based on the assigned value.
+Go is statically typed, so every variable will have a type known at compile time.
+Once declared, a variable's type cannot change.
+
+## Creating a Variable
+
+The `var` statement can declare a new variable's type, set its value, or do both at once:
 
 ```go
-var explicitVar int // Explicitly typed
-implicitVar := 10   // Implicitly typed
+var total int     // Type explicitly declared, value implicitly set (see note on zero values below)
+var count int = 1 // Type explicitly declared, value explicitly set
+var sum = 100     // Type implictly declared, value explicitly set
 ```
 
-The value of a variable can be assigned using the [`:=` operator][assignment] and updated using the [`=` operator][assignment].
-Once defined, a variable's type can never change.
+Inside a function, the `:=` short assignment statement can also be used.
 
 ```go
-count := 1 // Assign initial value
-count = 2  // Update to new value
-
-// Compiler error when assigning different type
-// count = false
+count := 1 // Type implictly declared, value explicitly set
 ```
 
-## Integers
+A variable in Go always has a value.
+If one isn't set at declaration, Go provides one [called a zero value][zero-values], based on the variable's type.
 
-TODO: decide what to do with this section
+```go
+var total int     // 0
+var name string   // ""
+var ready bool    // false
+```
 
-Integer values are defined as one or more (consecutive) digits and support the [default mathematical operators][operators].
+## Updating a Variable
 
-[assignment]: https://golang.org/ref/spec#Assignments
-[operators]: https://golang.org/ref/spec#Operators
+Inside a function, the `=` assignment operator can set a new value for an existing variable:
+
+```go
+count := 1
+count = 2
+```
+
+The new value must have the same type as the variable:
+
+```go
+count := 1
+count = false // compile error: a Boolean is not an int
+```
+
+[zero-values]: https://exercism.org/tracks/go/concepts/zero-values
