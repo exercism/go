@@ -3,7 +3,7 @@ package resistorcolortrio
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: cb7eab5 Resistor Color Trio: extend tests, borrowing from awk (#2162)
+// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
 
 type labelTestCase struct {
 	description string

@@ -3,7 +3,7 @@ package zipper
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 931f320 Add left, right, up, up case to zipper canon (#1875)
+// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
 
 type operation struct {
 	funcCall string
