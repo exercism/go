@@ -3,7 +3,7 @@ package proteintranslation
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 87bd801 fix: prevent matching STOP in a valid non-STOP sequence (#2458)
+// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
 
 type testCase struct {
 	description   string

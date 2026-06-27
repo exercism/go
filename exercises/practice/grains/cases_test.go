@@ -3,7 +3,7 @@ package grains
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: af1c8d0 grains: don't say "raises an exception" (#2328)
+// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
 
 // returns the number of grains on the square
 type testCase struct {
