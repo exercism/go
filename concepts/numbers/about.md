@@ -21,6 +21,41 @@ For a full list of the available numeric types and more detail see the following
 
 Go supports the standard set of arithmetic operators of `+`, `-`, `*`, `/` and `%` (remainder not modulo).
 
+### Alternative number notations
+
+Go supports several alternative notations for numeric literals that can improve readability and express values more naturally:
+
+```go
+// Underscores improve readability
+population := 1_000_000
+
+// Binary literals
+permissions := 0b1101
+
+// Hexadecimal literals
+color := 0xFF
+
+// Scientific notation
+avogadro := 6.022e23
+distance := 1.496e11
+```
+
+Underscores (`_`) can be used to separate digits for improved readability without affecting the value.
+Binary (`0b`) and hexadecimal (`0x`) literals provide convenient representations for bit manipulation and low-level programming.
+Scientific notation (`e`) is useful when working with very large or very small floating-point values.
+
+### Complex numbers
+
+Go has built-in support for complex numbers through the `complex64` and `complex128` types:
+
+```go
+z1 := complex(2, 3)      // 2 + 3i
+z2 := 4 + 5i             // 4 + 5i
+sum := z1 + z2           // 6 + 8i
+```
+
+Complex numbers are commonly used in scientific computing, signal processing, and mathematical applications.
+
 In Go, assignment of a value between different types requires explicit conversion.
 For example, to convert an `int` to a `float64` you would need to do the following:
 
