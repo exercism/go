@@ -3,7 +3,7 @@ package stateoftictactoe
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
+// Commit: 0682194 state-of-tic-tac-toe: Add test cases for playing after a win (#2667)
 
 type testCase struct {
 	description string
@@ -172,6 +172,18 @@ var testCases = []testCase{
 	{
 		description: "Invalid board: players kept playing after a win",
 		board:       []string{"XXX", "OOO", "XOX"},
+		expected:    "",
+		wantErr:     true,
+	},
+	{
+		description: "Invalid board: O kept playing after X wins",
+		board:       []string{"OO ", "XXX", " O "},
+		expected:    "",
+		wantErr:     true,
+	},
+	{
+		description: "Invalid board: X kept playing after O wins",
+		board:       []string{"XX ", "OOO", " XX"},
 		expected:    "",
 		wantErr:     true,
 	},
