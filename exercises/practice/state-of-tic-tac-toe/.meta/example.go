@@ -48,6 +48,13 @@ func StateOfTicTacToe(board []string) (State, error) {
 		}
 	}
 
+	if xWin > 0 && xCount == oCount {
+		return "", errors.New("impossible board: game should have ended after the game was won")
+	}
+	if oWin > 0 && xCount != oCount {
+		return "", errors.New("impossible board: game should have ended after the game was won")
+	}
+
 	if xWin > 0 || oWin > 0 {
 		return Win, nil
 	}
