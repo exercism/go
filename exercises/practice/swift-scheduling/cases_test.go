@@ -3,7 +3,7 @@ package swiftscheduling
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
+// Commit: dc8a9b2 swift-scheduling: add test for quarterly rollover off-by-one error (#2669)
 
 type testCase struct {
 	description string
@@ -108,5 +108,11 @@ var testCases = []testCase{
 		start:       "2022-10-06T11:00:00",
 		delivery:    "Q3",
 		expected:    "2023-09-29T08:00:00",
+	},
+	{
+		description: "Q2 starting in the last month of the second quarter translates to the last workday of the second quarter of this year",
+		start:       "2019-06-15T09:50:00",
+		delivery:    "Q2",
+		expected:    "2019-06-28T08:00:00",
 	},
 }
