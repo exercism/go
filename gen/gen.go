@@ -79,7 +79,7 @@ type testCase struct {
 	Expected    interface{} `json:"expected"`
 	// Group is used when test cases are grouped with a group description.
 	// In practice there should be exactly 0 or 1 group descriptions.
-	Parents     []string
+	Parents []string
 }
 
 // PackageName gives the Go package name from an exercise slug.
@@ -210,9 +210,11 @@ func Gen(exercise string, tests map[string]interface{}, t *template.Template) er
 		outputSource("ERROR", casesFile, casesFileContent)
 		return err
 	}
-	// write output file for the Go test cases.
-	if err := outputSource("SUCCESS", casesFile, formattedFileContent); err != nil {
-		return err
+	// write output file for the Go test cases, but only if there is a change
+	if !casesFileUnchanged(casesFile, formattedFileContent) {
+		if err := outputSource("SUCCESS", casesFile, formattedFileContent); err != nil {
+			return err
+		}
 	}
 	// write the go.mod file
 	versionConfig := filepath.Join(exerciseDir, "..", "..", "..", "gotools", "config.json")
@@ -260,6 +262,29 @@ func FloatSliceToInts(v any) []int {
 		result[i] = int(f)
 	}
 	return result
+}
+
+// casesFileUnchanged returns if the content matches the file. Commit ID does not count.
+func casesFileUnchanged(fileName string, src []byte) bool {
+	existing, err := os.ReadFile(fileName)
+	if err != nil {
+		return false
+	}
+	a := strings.Split(string(existing), "\n")
+	b := strings.Split(string(src), "\n")
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if strings.HasPrefix(a[i], "// Commit: ") && strings.HasPrefix(b[i], "// Commit: ") {
+			continue
+		}
+
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
 }
 
 // outputSource writes the src text to the given fileName and outputs a log message with given [status].
