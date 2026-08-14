@@ -3,7 +3,7 @@ package lineup
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
+// Commit: 03f8331 line-up: add test cases for ordinal numbers that are multiples of 11/12/13 and update the descriptions (#2672)
 
 type testCase struct {
 	description string
@@ -98,10 +98,40 @@ var testCases = []testCase{
 		expected:    "Washi, you are the 21st customer we serve today. Thank you!",
 	},
 	{
+		description: "format exceptional ordinal numeral 22 ending in nd even though it is a multiple of 11",
+		name:        "Ingrid",
+		number:      22,
+		expected:    "Ingrid, you are the 22nd customer we serve today. Thank you!",
+	},
+	{
+		description: "format exceptional ordinal numeral 33 ending in rd even though it is a multiple of 11",
+		name:        "Mario",
+		number:      33,
+		expected:    "Mario, you are the 33rd customer we serve today. Thank you!",
+	},
+	{
+		description: "format exceptional ordinal numeral 52 ending in nd even though it is a multiple of 13",
+		name:        "Quentin",
+		number:      52,
+		expected:    "Quentin, you are the 52nd customer we serve today. Thank you!",
+	},
+	{
 		description: "format exceptional ordinal numeral 62",
 		name:        "Nayra",
 		number:      62,
 		expected:    "Nayra, you are the 62nd customer we serve today. Thank you!",
+	},
+	{
+		description: "format non-exceptional ordinal numeral 72 ending in nd even though it is a multiple of 12",
+		name:        "Ugo",
+		number:      72,
+		expected:    "Ugo, you are the 72nd customer we serve today. Thank you!",
+	},
+	{
+		description: "format exceptional ordinal numeral 91 ending in st even though it is a multiple of 13",
+		name:        "Boris",
+		number:      91,
+		expected:    "Boris, you are the 91st customer we serve today. Thank you!",
 	},
 	{
 		description: "format exceptional ordinal numeral 100",
@@ -126,5 +156,11 @@ var testCases = []testCase{
 		name:        "Yma",
 		number:      123,
 		expected:    "Yma, you are the 123rd customer we serve today. Thank you!",
+	},
+	{
+		description: "format large number 972 ending in nd even though it is a multiple of 12",
+		name:        "Elias",
+		number:      972,
+		expected:    "Elias, you are the 972nd customer we serve today. Thank you!",
 	},
 }
