@@ -1,8 +1,10 @@
 {
-  "blurb": "Go has a special \"for range\" loop to easily iterate over collections of data.",
+  "blurb": "The for range loop iterates over slices, arrays, maps, strings, and channels.",
   "authors": [
     "brugnara",
     "tehsphinx"
   ],
-  "contributors": []
+  "contributors": [
+    "BNAndras"
+  ]
 }
