@@ -59,7 +59,7 @@ for i, r := range []rune("子猫") {
 
 ### Range over an Integer
 
-Since Go 1.22, `range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
+`range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
 Zero and negative values are valid but produce no iterations.
 
 ```go
@@ -73,7 +73,7 @@ for n := range 3 {
 
 ### Range over an Iterator
 
-Since Go 1.23, `range` accepts an iterator of type `iter.Seq[V]` or `iter.Seq2[K, V]`.
+`range` accepts an iterator of type `iter.Seq[V]` or `iter.Seq2[K, V]`.
 An iterator is a function that produces a sequence of values one at a time.
 `range` can then step through those values.
 
