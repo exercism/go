@@ -35,7 +35,6 @@ for k, v := range hash {
 ## Omitting Index or Value
 
 Go will not compile if a variable is declared but never used.
-If only the value is needed, assign the index or key to `_` to ignore it.
 
 ```go
 vals := []int{10, 20, 30}
@@ -44,6 +43,8 @@ for i, v := range vals {
 }
 // Go build failed: declared and not used: i
 ```
+
+If only the value is needed, assign the index or key to `_` to ignore it.
 
 ```go
 vals := []int{10, 20, 30}
