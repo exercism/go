@@ -1,7 +1,7 @@
 # Introduction
 
 In Go, `for range` repeats a block of code for values from a range expression.
-That expression determines whether each iteration will yield one value or two.
+The range expression determines whether each iteration will yield one value or two.
 
 ## Range Expressions
 
