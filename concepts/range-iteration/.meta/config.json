@@ -1,5 +1,5 @@
 {
-  "blurb": "The for range loop iterates over slices, arrays, maps, strings, and channels.",
+  "blurb": "The for range syntax can repeat a block of code in a variety of ways.",
   "authors": [
     "brugnara",
     "tehsphinx"
