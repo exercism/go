@@ -3,7 +3,9 @@
 In Go, `for range` repeats a block of code for values from a range expression.
 That expression determines whether each iteration will yield one value or two.
 
-## Iterating over a Slice
+## Range Expressions
+
+### Range over a Slice
 
 `range` over a slice yields the index and value of each element in order:
 
@@ -17,7 +19,7 @@ for i, v := range vals {
 // 2 30
 ```
 
-## Iterating over a Map
+### Range over a Map
 
 `range` over a map yields each key and value, but the iteration order is not guaranteed.
 Go deliberately randomizes map iteration order, so the same program may produce different output on each run.
@@ -30,6 +32,45 @@ for k, v := range hash {
 // 99 20
 // 999 30
 // 9 10
+```
+
+### Range over an Integer
+
+Since Go 1.22, `range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
+Zero and negative values are valid but produce no iterations.
+
+```go
+for n := range 3 {
+    fmt.Println(n)
+}
+// 0
+// 1
+// 2
+```
+
+### Range over an Iterator
+
+Since Go 1.23, `range` accepts an iterator of type `iter.Seq[V]` or `iter.Seq2[K, V]`.
+An iterator is a function that produces a sequence of values one at a time.
+`range` can then step through those values.
+
+```go
+text := "The quick brown fox"
+for word := range strings.FieldsSeq(text) {
+    fmt.Println(word)
+}
+// The
+// quick
+// brown
+// fox
+
+names := []string{"Alice", "Bob", "Vera"}
+for i, v := range slices.All(names) {
+    fmt.Println(i, ":", v)
+}
+// 0 : Alice
+// 1 : Bob
+// 2 : Vera
 ```
 
 ## Omitting Index or Value
@@ -77,43 +118,4 @@ for range vals {
     count++
 }
 // count == 3
-```
-
-## Range over an Integer
-
-Since Go 1.22, `range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
-Zero and negative values are valid but produce no iterations.
-
-```go
-for n := range 3 {
-    fmt.Println(n)
-}
-// 0
-// 1
-// 2
-```
-
-## Range over an Iterator
-
-Since Go 1.23, `range` accepts an iterator of type `iter.Seq[V]` or `iter.Seq2[K, V]`.
-An iterator is a function that produces a sequence of values one at a time.
-`range` can then step through those values.
-
-```go
-text := "The quick brown fox"
-for word := range strings.FieldsSeq(text) {
-    fmt.Println(word)
-}
-// The
-// quick
-// brown
-// fox
-
-names := []string{"Alice", "Bob", "Vera"}
-for i, v := range slices.All(names) {
-    fmt.Println(i, ":", v)
-}
-// 0 : Alice
-// 1 : Bob
-// 2 : Vera
 ```
