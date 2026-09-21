@@ -34,6 +34,29 @@ for k, v := range hash {
 // 9 10
 ```
 
+### Range over a String
+
+`range` over a string yields the byte index and each rune (Unicode code point).
+In the following example, `子` occupies three bytes so `猫` begins at byte index `3`, not `1`.
+
+```go
+for i, r := range "子猫" {
+    fmt.Println(i, r, string(r))
+}
+// 0 23376 子
+// 3 29483 猫
+```
+
+If you need rune indices instead, convert the string to a slice of runes:
+
+```go
+for i, r := range []rune("子猫") {
+    fmt.Println(i, r, string(r))
+}
+// 0 23376 子
+// 1 29483 猫
+```
+
 ### Range over an Integer
 
 Since Go 1.22, `range` can iterate over an integer directly, yielding values from `0` up to but not including that integer.
