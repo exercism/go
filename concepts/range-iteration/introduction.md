@@ -96,6 +96,11 @@ for i, v := range slices.All(names) {
 // 2 : Vera
 ```
 
+### Range over a Channel
+
+Finally, `range` can receive values sent through a channel until that channel is closed elsewhere.
+Channels are covered in more depth later in the track syllabus.
+
 ## Omitting Index or Value
 
 Go will not compile if a variable is declared but never used.
