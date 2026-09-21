@@ -1,7 +1,7 @@
 # About
 
-In Go, `range` iterates over slices, arrays, maps, and strings.
-Depending on what is being ranged over, each iteration yields one or two values.
+In Go, `for range` repeats a block of code for values from a range expression.
+That expression determines whether each iteration will yield one value or two.
 
 ## Iterating over a Slice
 
