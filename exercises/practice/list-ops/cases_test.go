@@ -4,7 +4,7 @@ package listops
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
+// Commit: 99cdcba [list-ops] Add a reverse test with an odd-length list
 
 type testCaseAppend struct {
 	description  string
@@ -212,8 +212,13 @@ var testCasesReverse = []testCaseReverse{
 		expected:    IntList{},
 	},
 	{
-		description: "non-empty list",
+		description: "non-empty even-length list",
 		list:        IntList{1, 3, 5, 7},
 		expected:    IntList{7, 5, 3, 1},
+	},
+	{
+		description: "non-empty odd-length list",
+		list:        IntList{1, 3, 5, 7, 9, 11, 13},
+		expected:    IntList{13, 11, 9, 7, 5, 3, 1},
 	},
 }
