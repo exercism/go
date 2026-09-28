@@ -428,7 +428,22 @@
           "methods",
           "structs"
         ]
-      }
+      },
+      {
+        "slug": "sql-builder",
+        "name": "SQL Builder",
+        "uuid": "dd4f9cc8-0edd-4ed5-8c44-6c98a3bdca9b",
+        "concepts": [
+          "strings-builder"
+        ],
+        "prerequisites": [
+          "strings",
+          "string-formatting",
+          "runes",
+          "zero-values"
+        ],
+        "status": "active"
+      }      
     ],
     "practice": [
       {
@@ -2534,6 +2549,11 @@
       "uuid": "f22b0e85-4d86-4ecf-9415-ea27c93ebcd6",
       "slug": "error-wrapping",
       "name": "Error Wrapping"
+    },
+    {
+      "uuid": "43b78292-6927-4638-8928-dfa312d8a36c",
+      "slug": "strings-builder",
+      "name": "Strings Builder"
     }
   ],
   "key_features": [

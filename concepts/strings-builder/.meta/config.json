@@ -1,0 +1,5 @@
+{
+  "blurb": "The standard library \"strings\" package includes the Builder type, which is used to efficiently minimize memory allocations when concatenating and mutating strings.",
+  "authors": ["usernaimandrey"],
+  "contributors": []
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://go.dev",
+    "description": "The official Go standard library documentation for strings.Builder."
+  },
+  {
+    "url": "https://gobyexample.com/string-functions",
+    "description": "Go by Example: String Functions."
+  }
+]
