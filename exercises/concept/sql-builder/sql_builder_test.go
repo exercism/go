@@ -52,20 +52,20 @@ func TestBuildBatchInserts(t *testing.T) {
 	tests := []struct {
 		name  string
 		table string
-		rows  []map[string]string
+		rows  [][]ColumnValue
 		want  []string
 	}{
 		{
 			name:  "Empty rows slice",
 			table: "users",
-			rows:  []map[string]string{},
+			rows:  [][]ColumnValue{},
 			want:  []string{},
 		},
 		{
 			name:  "Single row single column",
 			table: "tags",
-			rows: []map[string]string{
-				{"name": "golang"},
+			rows: [][]ColumnValue{
+				{{Column: "name", Value: "golang"}},
 			},
 			want: []string{
 				"INSERT INTO tags (name) VALUES ('golang');",
@@ -74,13 +74,27 @@ func TestBuildBatchInserts(t *testing.T) {
 		{
 			name:  "Multiple rows with ordered execution",
 			table: "users",
-			rows: []map[string]string{
-				{"name": "Alice"},
-				{"name": "Bob"},
+			rows: [][]ColumnValue{
+				{{Column: "name", Value: "Alice"}},
+				{{Column: "name", Value: "Bob"}},
 			},
 			want: []string{
 				"INSERT INTO users (name) VALUES ('Alice');",
 				"INSERT INTO users (name) VALUES ('Bob');",
+			},
+		},
+		{
+			name:  "Multiple columns preserve precise slice order",
+			table: "products",
+			rows: [][]ColumnValue{
+				// Порядок гарантирован самим слайсом, сортировка не нужна!
+				{
+					{Column: "title", Value: "Book"},
+					{Column: "price", Value: "100"},
+				},
+			},
+			want: []string{
+				"INSERT INTO products (title, price) VALUES ('Book', '100');",
 			},
 		},
 	}
@@ -95,5 +109,34 @@ func TestBuildBatchInserts(t *testing.T) {
 				t.Errorf("BuildBatchInserts(%q, %v)\ngot:  %v\nwant: %v", tt.table, tt.rows, got, tt.want)
 			}
 		})
+	}
+}
+
+// --- SELECT QUERY BENCHMARKS ---
+
+// BenchmarkBuildSelectQuery_Efficient benchmarks the optimized solution
+// that pre-allocates memory using Grow() to minimize heap allocations.
+func BenchmarkBuildSelectQuery_Efficient(b *testing.B) {
+	columns := []string{"id", "name", "email", "created_at", "updated_at", "status", "role"}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = BuildSelectQuery("users", columns)
+	}
+}
+
+// --- BATCH INSERT BENCHMARKS ---
+
+// BenchmarkBuildBatchInserts_Efficient benchmarks the optimized solution
+// that declares a single strings.Builder and reuses it across loop
+// iterations via Reset() to preserve allocated capacity.
+func BenchmarkBuildBatchInserts_Efficient(b *testing.B) {
+	rows := [][]ColumnValue{
+		{{Column: "name", Value: "Alice"}, {Column: "email", Value: "alice@example.com"}},
+		{{Column: "name", Value: "Bob"}, {Column: "email", Value: "bob@example.com"}},
+		{{Column: "name", Value: "Charlie"}, {Column: "email", Value: "charlie@example.com"}},
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = BuildBatchInserts("users", rows)
 	}
 }
