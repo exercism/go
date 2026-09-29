@@ -85,33 +85,27 @@ for i := range xi {
 // 2
 ```
 
-## Non-struct types
+## Defining Types
 
-You've previously seen defining struct types.
-It is also possible to define non-struct types which you can use as an alias for a built-in type declaration, and you can define receiver functions on them to extend them in the same way as struct types.
-
-```go
-type Name string
-func SayHello(n Name) {
-  fmt.Printf("Hello %s\n", n)
-}
-n := Name("Fred")
-SayHello(n)
-// Output: Hello Fred
-```
-
-You can also define non-struct types composed of arrays and maps.
+A type definition creates a new named type, distinct from every other type, even one with the same underlying type.
 
 ```go
-type Names []string
-func SayHello(n Names) {
-  for _, name := range n {
-    fmt.Printf("Hello %s\n", name)
-  }
-}
-n := Names([]string{"Fred", "Bill"})
-SayHello(n)
-// Output:
-// Hello Fred
-// Hello Bill
+type File []bool
 ```
+
+`File` here refers to a single vertical column on a chessboard, commonly labeled A to H.
+Each square in this column is represented by a Boolean value marking whether it's occupied or not.
+Now that `File` is defined, we can use it inside other definitions:
+
+```go
+type Chessboard map[string]File
+
+board := Chessboard{
+    "A": File{true, false, true},
+    "B": File{false, true, false},
+}
+```
+
+`Chessboard` maps file identifiers to `File` values.
+Each `File` is a slice of Booleans representing the squares in one chess file.
+Without these type definitions, `board` would be a `map[string][]bool`, which would make it harder to understand what we're representing.
