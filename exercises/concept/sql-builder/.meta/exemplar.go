@@ -14,6 +14,8 @@ const (
 	sqlValues     = " VALUES "
 )
 
+// ColumnValue represents a single database column and its corresponding value
+// to be used in SQL INSERT statements.
 type ColumnValue struct {
 	Column string
 	Value  string

@@ -22,11 +22,11 @@ You can append data to the builder using various write methods. The most common 
 * `WriteRune(r rune)`: Appends a single rune (Unicode code point).
 * `WriteByte(c byte)`: Appends a single byte.
 
-Each of these methods returns the number of bytes written and an error (which is always `nil` but is part of the `io.Writer` interface compliance). In everyday code, these errors are typically ignored.
+Each of these methods returns the number of bytes written and an error (which is part of the `io.Writer` interface compliance). However, `strings.Builder` is guaranteed to never return an error (it is always `nil`), so you can safely ignore these return values in everyday code.
 
 ```go
-builder.WriteString("Hello, ")
-builder.WriteRune('世界')
+builder.WriteString("Hello, Go ")
+builder.WriteRune('🌎')
 ```
 
 ## Retrieving and Resetting
@@ -34,10 +34,10 @@ builder.WriteRune('世界')
 Once you are done building the string, you can retrieve the accumulated text as a standard Go string using the `String()` method:
 
 ```go
-result := builder.String() // Returns "Hello, 世界"
+result := builder.String() // Returns "Hello, Go 🌎"
 ```
 
-If you need to reuse the same builder instance for a new string, you can call the `Reset()` method. This empties the internal buffer, allowing you to start fresh without allocating a new builder.
+If you need to reuse the same builder instance for a new string, you can call the `Reset()` method. This empties the internal buffer, allowing you to start fresh without allocating a new builder structure in memory.
 
 ```go
 builder.Reset()

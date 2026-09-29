@@ -1,10 +1,10 @@
 [
   {
-    "url": "https://go.dev",
-    "description": "The official Go standard library documentation for strings.Builder."
+    "url": "https://pkg.go.dev/strings#Builder",
+    "description": "The official standard library API documentation for strings.Builder."
   },
   {
     "url": "https://gobyexample.com/string-functions",
-    "description": "Go by Example: String Functions."
+    "description": "Practical code examples demonstrating the strings package from Go by Example."
   }
 ]

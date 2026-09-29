@@ -1,6 +1,6 @@
 # About String Builder
 
-The [`strings` package](https://pkg.go.dev/strings) provides a specialized type called [`Builder`](https://go.dev) to efficiently build strings using write methods.
+The [`strings` package](https://pkg.go.dev/strings) provides a specialized type called [`Builder`](https://pkg.go.dev/strings#Builder) to efficiently build strings using write methods.
 
 In Go, strings are immutable. Any standard modification or concatenation (like `s += "text"` in a loop) forces Go to allocate a completely new string in memory and copy the old data over. The `strings.Builder` type solves this by accumulating text inside an internal, mutable byte buffer, minimizing memory allocation and copying overhead.
 
@@ -10,14 +10,14 @@ Below are the essential methods provided by `strings.Builder` for constructing s
 
 | Role                  | Method                                                 | Purpose                                                             |
 | --------------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
-| Writing Data          | [WriteString](https://go.dev.WriteString) | Appends the contents of a string to the buffer                      |
-| Writing Data          | [WriteRune](https://go.dev.WriteRune)   | Appends the UTF-8 encoding of a Unicode rune to the buffer          |
-| Writing Data          | [WriteByte](https://go.dev.WriteByte)   | Appends a single raw byte to the buffer                             |
-| Performance Tuning    | [Grow](https://go.dev.Grow)             | Pre-allocates memory for another `n` bytes to avoid re-allocations  |
-| Performance Tuning    | [Cap](https://go.dev.Cap)               | Returns the total capacity of the underlying allocated byte slice   |
-| Performance Tuning    | [Len](https://go.dev.Len)               | Returns the number of accumulated bytes                             |
-| Control & Retrieval   | [String](https://go.dev.String)         | Returns the accumulated text as a final string                      |
-| Control & Retrieval   | [Reset](https://go.dev.Reset)           | Resets the builder to be empty, making it ready for reuse           |
+| Writing Data          | [WriteString](https://pkg.go.dev/strings#Builder.WriteString) | Appends the contents of a string to the buffer                      |
+| Writing Data          | [WriteRune](https://pkg.go.dev/strings#Builder.WriteRune)   | Appends the UTF-8 encoding of a Unicode rune to the buffer          |
+| Writing Data          | [WriteByte](https://pkg.go.dev/strings#Builder.WriteByte)   | Appends a single raw byte to the buffer                             |
+| Performance Tuning    | [Grow](https://pkg.go.dev/strings#Builder.Grow)             | Pre-allocates memory for another `n` bytes to avoid re-allocations  |
+| Performance Tuning    | [Cap](https://pkg.go.dev/strings#Builder.Cap)               | Returns the total capacity of the underlying allocated byte slice   |
+| Performance Tuning    | [Len](https://pkg.go.dev/strings#Builder.Len)               | Returns the number of accumulated bytes                             |
+| Control & Retrieval   | [String](https://pkg.go.dev/strings#Builder.String)         | Returns the accumulated text as a final string                      |
+| Control & Retrieval   | [Reset](https://pkg.go.dev/strings#Builder.Reset)           | Resets the builder to be empty, making it ready for reuse           |
 
 ## Code Examples
 
@@ -26,26 +26,18 @@ Below are the essential methods provided by `strings.Builder` for constructing s
 The zero-value of a `strings.Builder` is immediately ready to use. You can write strings and individual runes seamlessly:
 
 ```go
-package main
+var b strings.Builder
 
-import (
-    "fmt"
-    "strings"
-)
+// Appending standard strings
+b.WriteString("Gopher")
 
-func main() {
-    var b strings.Builder
+// Appending individual Unicode characters (runes)
+b.WriteRune(' ')
+b.WriteRune('🚀')
 
-    // Appending standard strings
-    b.WriteString("Gopher")
-
-    // Appending individual Unicode characters (runes)
-    b.WriteRune(' ')
-    b.WriteRune('🚀')
-
-    // Retrieving the final result
-    fmt.Println(b.String()) // Output: Gopher 🚀
-}
+// Retrieving the final result
+fmt.Println(b.String()) 
+// Output: Gopher 🚀
 ```
 
 ### Resource Reuse with Reset()
@@ -57,13 +49,13 @@ var b strings.Builder
 
 // First task
 b.WriteString("Task One")
-fmt.Println(b.String()) // "Task One"
+fmt.Println(b.String()) // Output: Task One
 
 // Clear and reuse the exact same builder instance
 b.Reset() 
 
 b.WriteString("Task Two")
-fmt.Println(b.String()) // "Task Two"
+fmt.Println(b.String()) // Output: Task Two
 ```
 
 ### Performance Optimization with Grow()
