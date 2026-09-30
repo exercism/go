@@ -57,15 +57,10 @@ func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 	result := make([]string, 0, len(rows))
 	var sb strings.Builder
 
+	sb.Grow(estimatedInsertStatementLength)
 	for _, row := range rows {
 		if len(row) == 0 {
 			continue
-		}
-
-		sb.Reset()
-
-		if sb.Cap() == 0 {
-			sb.Grow(estimatedInsertStatementLength)
 		}
 
 		sb.WriteString(sqlInsertInto)
