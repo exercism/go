@@ -6,7 +6,7 @@ To solve this efficiency problem, Go's standard library provides the `strings.Bu
 
 ## Efficient Text Assembly
 
-The `strings.Builder` type accumulates text inside an internal, mutable byte buffer, minimizing memory allocation and copying overhead. 
+The `strings.Builder` type accumulates text inside an internal, mutable byte buffer, minimizing memory allocation and copying overhead.
 
 Its zero-value is immediately ready to use without any explicit initialization or allocation:
 

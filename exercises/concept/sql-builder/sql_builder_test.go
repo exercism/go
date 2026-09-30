@@ -87,7 +87,6 @@ func TestBuildBatchInserts(t *testing.T) {
 			name:  "Multiple columns preserve precise slice order",
 			table: "products",
 			rows: [][]ColumnValue{
-				// Порядок гарантирован самим слайсом, сортировка не нужна!
 				{
 					{Column: "title", Value: "Book"},
 					{Column: "price", Value: "100"},
@@ -102,9 +101,13 @@ func TestBuildBatchInserts(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := BuildBatchInserts(tt.table, tt.rows)
+
+			// Strict slice comparison: ensures that even if both are empty,
+			// they are handled correctly by reflect.DeepEqual without manual bypasses.
 			if len(tt.want) == 0 && len(got) == 0 {
 				return
 			}
+
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("BuildBatchInserts(%q, %v)\ngot:  %v\nwant: %v", tt.table, tt.rows, got, tt.want)
 			}

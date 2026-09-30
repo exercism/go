@@ -92,6 +92,12 @@ func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 		// This retains the underlying allocated capacity across loop iterations.
 		builder.Reset()
 
+		// Micro-optimization: Optional warm-up Grow for the builder.
+		// Approximates the row size to avoid re-allocations during the first heavy loops.
+		if builder.Cap() == 0 {
+			builder.Grow(128)
+		}
+
 		// Build the column definitions part: INSERT INTO table (col1, col2)
 		builder.WriteString(sqlInsertInto)
 		builder.WriteString(table)
@@ -111,9 +117,9 @@ func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 			if i > 0 {
 				builder.WriteString(", ")
 			}
-			builder.WriteRune('\'')
+			builder.WriteByte('\'')
 			builder.WriteString(pair.Value)
-			builder.WriteRune('\'')
+			builder.WriteByte('\'')
 		}
 		builder.WriteString(");")
 
