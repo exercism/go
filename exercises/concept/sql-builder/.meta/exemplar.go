@@ -4,7 +4,6 @@ import (
 	"strings"
 )
 
-// SQL syntax components used to construct the query.
 const (
 	sqlSelect     = "SELECT "
 	sqlFrom       = " FROM "
@@ -12,10 +11,11 @@ const (
 	sqlEnd        = ";"
 	sqlInsertInto = "INSERT INTO "
 	sqlValues     = " VALUES "
+
+	estimatedColumnLength          = 15
+	estimatedInsertStatementLength = 128
 )
 
-// ColumnValue represents a single database column and its corresponding value
-// to be used in SQL INSERT statements.
 type ColumnValue struct {
 	Column string
 	Value  string
@@ -23,107 +23,75 @@ type ColumnValue struct {
 
 // BuildSelectQuery generates a valid SQL SELECT query from the given table name
 // and a slice of column names.
-//
-// Performance optimizations:
-//   - Uses strings.Builder to prevent unnecessary string allocations in the heap.
-//   - Pre-calculates the exact buffer size in bytes to avoid dynamic re-allocations during execution.
-//
-// Edge cases handled:
-//   - If the columns slice is empty or nil, it automatically falls back to the "*" wildcard.
 func BuildSelectQuery(table string, columns []string) string {
-	var builder strings.Builder
+	var sb strings.Builder
 
-	// Calculate the exact size of the destination buffer in bytes.
-	// Initial size includes base keywords ("SELECT ", " FROM ", ";") and the table name.
-	totalSize := len(sqlSelect) + len(sqlFrom) + len(sqlEnd) + len(table)
+	sb.Grow(len(sqlSelect) + len(sqlFrom) + len(table) + len(sqlEnd) + len(columns)*estimatedColumnLength)
 
-	if len(columns) == 0 {
-		totalSize += len(sqlWildcard)
-	} else {
-		for i, col := range columns {
-			totalSize += len(col)
-			if i > 0 {
-				totalSize += 2 // Account for the separating comma and space (", ")
-			}
-		}
-	}
-
-	// Pre-allocate memory once to completely avoid overhead from dynamic buffer growing.
-	builder.Grow(totalSize)
-
-	// Assemble the SQL string sequentially into the buffer without intermediate allocations.
-	builder.WriteString(sqlSelect)
+	sb.WriteString(sqlSelect)
 
 	if len(columns) == 0 {
-		builder.WriteString(sqlWildcard)
+		sb.WriteString(sqlWildcard)
 	} else {
 		for i, col := range columns {
 			if i > 0 {
-				builder.WriteString(", ")
+				sb.WriteString(", ")
 			}
-			builder.WriteString(col)
+			sb.WriteString(col)
 		}
 	}
 
-	builder.WriteString(sqlFrom)
-	builder.WriteString(table)
-	builder.WriteString(sqlEnd)
+	sb.WriteString(sqlFrom)
+	sb.WriteString(table)
+	sb.WriteString(sqlEnd)
 
-	return builder.String()
+	return sb.String()
 }
 
 // BuildBatchInserts generates a slice of SQL INSERT statements for the given rows.
-// It accepts a slice of rows, where each row is a structured slice of ColumnValue pairs,
-// ensuring a deterministic and predictable execution order.
 func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 	if len(rows) == 0 {
 		return []string{}
 	}
 
 	result := make([]string, 0, len(rows))
-	var builder strings.Builder
+	var sb strings.Builder
 
 	for _, row := range rows {
 		if len(row) == 0 {
 			continue
 		}
 
-		// Reset the builder buffer to start fresh for each statement.
-		// This retains the underlying allocated capacity across loop iterations.
-		builder.Reset()
+		sb.Reset()
 
-		// Micro-optimization: Optional warm-up Grow for the builder.
-		// Approximates the row size to avoid re-allocations during the first heavy loops.
-		if builder.Cap() == 0 {
-			builder.Grow(128)
+		if sb.Cap() == 0 {
+			sb.Grow(estimatedInsertStatementLength)
 		}
 
-		// Build the column definitions part: INSERT INTO table (col1, col2)
-		builder.WriteString(sqlInsertInto)
-		builder.WriteString(table)
-		builder.WriteString(" (")
+		sb.WriteString(sqlInsertInto)
+		sb.WriteString(table)
+		sb.WriteString(" (")
 		for i, pair := range row {
 			if i > 0 {
-				builder.WriteString(", ")
+				sb.WriteString(", ")
 			}
-			builder.WriteString(pair.Column)
+			sb.WriteString(pair.Column)
 		}
-		builder.WriteString(")")
+		sb.WriteString(")")
 
-		// Build the values mapping part: VALUES ('val1', 'val2');
-		builder.WriteString(sqlValues)
-		builder.WriteString("(")
+		sb.WriteString(sqlValues)
+		sb.WriteString("(")
 		for i, pair := range row {
 			if i > 0 {
-				builder.WriteString(", ")
+				sb.WriteString(", ")
 			}
-			builder.WriteByte('\'')
-			builder.WriteString(pair.Value)
-			builder.WriteByte('\'')
+			sb.WriteByte('\'')
+			sb.WriteString(pair.Value)
+			sb.WriteByte('\'')
 		}
-		builder.WriteString(");")
+		sb.WriteString(");")
 
-		result = append(result, builder.String())
+		result = append(result, sb.String())
 	}
 
 	return result

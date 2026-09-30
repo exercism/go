@@ -1,80 +1,71 @@
-# About String Builder
+# About
 
-The [`strings` package](https://pkg.go.dev/strings) provides a specialized type called [`Builder`](https://pkg.go.dev/strings#Builder) to efficiently build strings using write methods.
-
-In Go, strings are immutable. Any standard modification or concatenation (like `s += "text"` in a loop) forces Go to allocate a completely new string in memory and copy the old data over. The `strings.Builder` type solves this by accumulating text inside an internal, mutable byte buffer, minimizing memory allocation and copying overhead.
+In Go, strings are immutable.
+Concatenating strings with `+` in a loop causes frequent allocations and copies data multiple times.
+The [`strings` package](https://pkg.go.dev/strings) provides [`Builder`](https://pkg.go.dev/strings#Builder) to minimize memory overhead by efficiently assembling strings.
 
 ## Core Methods
 
-Below are the essential methods provided by `strings.Builder` for constructing strings:
-
-| Role                  | Method                                                 | Purpose                                                             |
-| --------------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
-| Writing Data          | [WriteString](https://pkg.go.dev/strings#Builder.WriteString) | Appends the contents of a string to the buffer                      |
-| Writing Data          | [WriteRune](https://pkg.go.dev/strings#Builder.WriteRune)   | Appends the UTF-8 encoding of a Unicode rune to the buffer          |
-| Writing Data          | [WriteByte](https://pkg.go.dev/strings#Builder.WriteByte)   | Appends a single raw byte to the buffer                             |
-| Performance Tuning    | [Grow](https://pkg.go.dev/strings#Builder.Grow)             | Pre-allocates memory for another `n` bytes to avoid re-allocations  |
-| Performance Tuning    | [Cap](https://pkg.go.dev/strings#Builder.Cap)               | Returns the total capacity of the underlying allocated byte slice   |
-| Performance Tuning    | [Len](https://pkg.go.dev/strings#Builder.Len)               | Returns the number of accumulated bytes                             |
-| Control & Retrieval   | [String](https://pkg.go.dev/strings#Builder.String)         | Returns the accumulated text as a final string                      |
-| Control & Retrieval   | [Reset](https://pkg.go.dev/strings#Builder.Reset)           | Resets the builder to be empty, making it ready for reuse           |
+| Method | Purpose |
+| --- | --- |
+| [`WriteString`](https://pkg.go.dev/strings#Builder.WriteString) | Appends a string to the buffer |
+| [`WriteRune`](https://pkg.go.dev/strings#Builder.WriteRune) | Appends the UTF-8 encoding of a rune |
+| [`WriteByte`](https://pkg.go.dev/strings#Builder.WriteByte) | Appends a single byte |
+| [`Grow`](https://pkg.go.dev/strings#Builder.Grow) | Pre-allocates memory for `n` additional bytes |
+| [`Cap`](https://pkg.go.dev/strings#Builder.Cap) | Returns the current buffer capacity |
+| [`Len`](https://pkg.go.dev/strings#Builder.Len) | Returns the number of accumulated bytes |
+| [`String`](https://pkg.go.dev/strings#Builder.String) | Returns the accumulated text as a string |
+| [`Reset`](https://pkg.go.dev/strings#Builder.Reset) | Resets the builder to an empty state |
 
 ## Code Examples
 
 ### Basic String Construction
 
-The zero-value of a `strings.Builder` is immediately ready to use. You can write strings and individual runes seamlessly:
+The zero-value of a `strings.Builder` is ready to use:
 
 ```go
-var b strings.Builder
+var sb strings.Builder
 
-// Appending standard strings
-b.WriteString("Gopher")
+sb.WriteString("Gopher")
+sb.WriteRune(' ')
+sb.WriteRune('🚀')
 
-// Appending individual Unicode characters (runes)
-b.WriteRune(' ')
-b.WriteRune('🚀')
-
-// Retrieving the final result
-fmt.Println(b.String()) 
+fmt.Println(sb.String())
 // Output: Gopher 🚀
 ```
 
-### Resource Reuse with Reset()
+### Resource Reuse
 
-If you need to process a batch of data or build multiple strings in a sequence, you don't need to redeclare a new builder variable. Calling `Reset()` clears the internal buffer and brings the builder back to its pristine initial state:
+Use `Reset()` to clear the buffer and reuse the instance:
 
 ```go
-var b strings.Builder
+var sb strings.Builder
 
-// First task
-b.WriteString("Task One")
-fmt.Println(b.String()) // Output: Task One
+sb.WriteString("Task One")
+fmt.Println(sb.String()) // Output: Task One
 
-// Clear and reuse the exact same builder instance
-b.Reset() 
+sb.Reset()
 
-b.WriteString("Task Two")
-fmt.Println(b.String()) // Output: Task Two
+sb.WriteString("Task Two")
+fmt.Println(sb.String()) // Output: Task Two
 ```
 
-### Performance Optimization with Grow()
+### Capacity Optimization
 
-If you happen to know or can approximate the final size of the string you are building, you can use `Grow()` to explicitly reserve memory upfront. This eliminates the CPU overhead of dynamically resizing the buffer multiple times:
+Use `Grow()` upfront if the final string size is predictable:
 
 ```go
-var b strings.Builder
+var sb strings.Builder
 
-// Pre-allocate space for 100 bytes ahead of time
-b.Grow(100) 
-
+sb.Grow(100)
 for i := 0; i < 10; i++ {
-    b.WriteString("item...") 
+    sb.WriteString("item...")
 }
 ```
 
 ## Important Safety Restriction
 
-Once a `strings.Builder` has had data written to it, **it must not be copied**. Because the builder internally holds a pointer to its own growable buffer, copying the builder structure will result in multiple instances pointing to the same memory.
-
-If you attempt to modify or use a copied instance of a non-zero builder, Go will immediately trigger a **runtime panic** to protect against memory corruption.
+**Do not copy a non-zero `strings.Builder`.**
+It internally maintains a pointer to its growable buffer.
+Copying the structure duplicates this internal pointer, causing multiple instances to share the same memory.
+Modifying a copied builder triggers an immediate **runtime panic** to prevent data corruption.
