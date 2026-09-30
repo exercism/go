@@ -1,8 +1,6 @@
 package sqlbuilder
 
-import (
-	"strings"
-)
+import "strings"
 
 const (
 	sqlSelect     = "SELECT "
@@ -12,8 +10,10 @@ const (
 	sqlInsertInto = "INSERT INTO "
 	sqlValues     = " VALUES "
 
-	estimatedColumnLength          = 15
-	estimatedInsertStatementLength = 128
+	separatorLength      = 2
+	quotesLength         = 2
+	columnBracketsLength = 3
+	valueBracketsLength  = 4
 )
 
 type ColumnValue struct {
@@ -21,12 +21,20 @@ type ColumnValue struct {
 	Value  string
 }
 
-// BuildSelectQuery generates a valid SQL SELECT query from the given table name
-// and a slice of column names.
 func BuildSelectQuery(table string, columns []string) string {
 	var sb strings.Builder
 
-	sb.Grow(len(sqlSelect) + len(sqlFrom) + len(table) + len(sqlEnd) + len(columns)*estimatedColumnLength)
+	totalSize := len(sqlSelect) + len(sqlFrom) + len(table) + len(sqlEnd)
+	if len(columns) == 0 {
+		totalSize += len(sqlWildcard)
+	} else {
+		for _, col := range columns {
+			totalSize += len(col)
+		}
+		totalSize += (len(columns) - 1) * separatorLength
+	}
+
+	sb.Grow(totalSize)
 
 	sb.WriteString(sqlSelect)
 
@@ -48,7 +56,6 @@ func BuildSelectQuery(table string, columns []string) string {
 	return sb.String()
 }
 
-// BuildBatchInserts generates a slice of SQL INSERT statements for the given rows.
 func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 	if len(rows) == 0 {
 		return []string{}
@@ -57,7 +64,32 @@ func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 	result := make([]string, 0, len(rows))
 	var sb strings.Builder
 
-	sb.Grow(estimatedInsertStatementLength)
+	baseInsertSize := len(sqlInsertInto) + len(table) + columnBracketsLength + len(sqlValues) + valueBracketsLength
+
+	maxRowSize := 0
+	for _, row := range rows {
+		if len(row) == 0 {
+			continue
+		}
+
+		currentSize := baseInsertSize
+		for _, pair := range row {
+			currentSize += len(pair.Column) + len(pair.Value) + quotesLength
+		}
+
+		if len(row) > 1 {
+			currentSize += (len(row) - 1) * separatorLength * 2
+		}
+
+		if currentSize > maxRowSize {
+			maxRowSize = currentSize
+		}
+	}
+
+	if maxRowSize > 0 {
+		sb.Grow(maxRowSize)
+	}
+
 	for _, row := range rows {
 		if len(row) == 0 {
 			continue
