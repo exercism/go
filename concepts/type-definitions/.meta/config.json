@@ -1,5 +1,9 @@
 {
-  "blurb": "Go allows you to define custom types.",
-  "authors": ["bobtfish"],
-  "contributors": []
+  "blurb": "Define new named types and type aliases.",
+  "authors": [
+    "bobtfish"
+  ],
+  "contributors": [
+    "BNAndras"
+  ]
 }
