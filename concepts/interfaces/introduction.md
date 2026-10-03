@@ -75,4 +75,4 @@ This is helpful for defining a function that can generically accept any value.
 In that case, the function parameter uses the empty interface type.
 
 [go-tour-interfaces]: https://go.dev/tour/methods/9
-[concept-methods]: /tracks/go/concepts/methods
+[concept-methods]: https://exercism.org/tracks/go/concepts/methods

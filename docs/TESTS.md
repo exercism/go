@@ -1,11 +1,3 @@
-# Tests
-
-Go exercises within your exercism project directory can be run by changing to the exercise directory, and running `go test`.
-
-```bash
-cd exercism/project/directory/go/leap
-go test
-```
 
 ## Tests with Data Race Detector
 
@@ -41,7 +33,7 @@ These examples are used for documenting and verifying the exercise's API and can
 
 ## Go fmt
 
-Please run [`go fmt`](http://blog.golang.org/go-fmt-your-code) on your code before submitting it.
+Please run [`go fmt`](https://go.dev/blog/gofmt) on your code before submitting it.
 
 ## Hints and tips
 
