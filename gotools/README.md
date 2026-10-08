@@ -21,7 +21,7 @@ To update all go.mod files according to the config file (gotools/config.json) ru
 
 ```console
 cd gotools
-go run main.go --update gomod
+go run main.go gomod --update
 ```
 
 To check all exercise go.mod files specify the correct Go version, run:
@@ -82,7 +82,7 @@ gotools help
 gotools list [-e exercises_path]
   list `go.mod` files and the Go version they specify
 
-gotools --update gomod -v target_version [-e exercises_path] [-c config_file]
+gotools gomod --update -v target_version [-e exercises_path] [-c config_file]
   updates `go.mod` files to the target version
 ```
 
@@ -145,6 +145,6 @@ Specifying the `-v, --goversion` flag overrides the default version specified in
 - Check if all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
   - `gotools gomod --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files of exercises in the `exercises` folder have the `1.26` Go version:
-  - `gotools --update gomod --goversion 1.26 --exercises ./exercises`
+  - `gotools gomod --update --goversion 1.26 --exercises ./exercises`
 - Update all `go.mod` files, using a config file to specify the versions of exercises:
-  - `gotools --update gomod --config a_dir/config.json --exercises ./exercises`
+  - `gotools gomod --update --config a_dir/config.json --exercises ./exercises`

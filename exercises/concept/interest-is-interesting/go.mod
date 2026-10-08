@@ -1,3 +1,3 @@
 module interest
 
-go 1.26
+go 1.27

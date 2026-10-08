@@ -10,26 +10,12 @@ import (
 	"github.com/exercism/go/gotools/gomod"
 )
 
-func init() {
-	rootCmd.AddCommand(gomodCmd)
-	gomodCmd.PersistentFlags().BoolVarP(&updateFlag,
-		"update", "u", false,
-		"make automated updates to resolve issues")
-	gomodCmd.PersistentFlags().StringVarP(&targetVersionFlag,
-		"goversion", "v", "",
-		"target go version that all go.mod files are expected to have. "+
-			"This will be used to check if the go.mod files are in the expected "+
-			"version in case of the gomod command, and to update all go.mod files to this version "+
-			"in the case of the update command. Using this flag will override "+
-			"the version specified in the config file.")
-}
-
 var gomodCmd = &cobra.Command{
-	SilenceErrors:     true,
 	Use:               "gomod",
 	Short:             "Checks if all go.mod files are in the target version",
 	PersistentPreRunE: loadConfig,
 	RunE: func(cmd *cobra.Command, args []string) error {
+		fmt.Printf("Hello")
 		files, err := gomod.Infos(exercisesPathFlag)
 		if err != nil {
 			return err
@@ -41,6 +27,7 @@ var gomodCmd = &cobra.Command{
 		}
 
 		var faultyFiles []faultyFile
+		fmt.Printf("Files: %s", files)
 		for _, file := range files {
 			expectedVersion := configData.GoModVersion.ExerciseExpectedVersion(file.ExerciseSlug)
 			if file.GoVersion == expectedVersion {
@@ -70,4 +57,18 @@ var gomodCmd = &cobra.Command{
 
 		return nil
 	},
+}
+
+func init() {
+	gomodCmd.PersistentFlags().BoolVarP(&updateFlag,
+		"update", "u", false,
+		"make automated updates to resolve issues")
+	gomodCmd.PersistentFlags().StringVarP(&targetVersionFlag,
+		"goversion", "v", "",
+		"target go version that all go.mod files are expected to have. "+
+			"This will be used to check if the go.mod files are in the expected "+
+			"version in case of the gomod command, and to update all go.mod files to this version "+
+			"in the case of the update command. Using this flag will override "+
+			"the version specified in the config file.")
+	rootCmd.AddCommand(gomodCmd)
 }
