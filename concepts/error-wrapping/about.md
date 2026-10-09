@@ -205,8 +205,8 @@ In Go 1.20, a new `Join` function was added to the built-in `errors` package.
 With that, the error chain can actually be an error tree in reality.
 More information can be found in the [release notes][release-notes] and the [documentation][doc-join].
 
-[concept-errors]: /tracks/go/concepts/errors
-[concept-pointers]: /tracks/go/concepts/pointers
+[concept-errors]: https://exercism.org/tracks/go/concepts/errors
+[concept-pointers]: https://exercism.org/tracks/go/concepts/pointers
 [google-go-styleguide]: https://google.github.io/styleguide/go/best-practices#adding-information-to-errors
 [release-notes]: https://tip.golang.org/doc/go1.20#errors
 [doc-join]: https://pkg.go.dev/errors#Join

@@ -161,5 +161,5 @@ There are a number of other concepts around functions like [methods][concept-met
 
 [first-class-functions]: https://golangbot.com/first-class-functions
 [return]: https://golang.org/ref/spec#Return_statements
-[concept-multiple-return-values]: /tracks/go/concepts/multiple-return-values
-[concept-methods]: /tracks/go/concepts/methods
+[concept-multiple-return-values]: https://exercism.org/tracks/go/concepts/multiple-return-values
+[concept-methods]: https://exercism.org/tracks/go/concepts/methods
