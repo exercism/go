@@ -1,68 +1,73 @@
 # About
 
-## General syntax
+## For Loops
 
-The for loop is one of the most commonly used statements to repeatedly execute some logic.
-In Go it consists of the `for` keyword, a header and a code block that contains the body of the loop wrapped in curly brackets.
-The header consists of 3 components separated by semicolons `;`: init, condition and post.
+A `for` statement repeats a block of code.
+Its first line controls how often the block repeats:
 
 ```go
 for init; condition; post {
-  // loop body - code that is executed repeatedly as long as the condition is true
+    // loop body
 }
 ```
 
-- The **init** component is some code that runs only once before the loop starts.
-- The **condition** component must be some expression that evaluates to a boolean and controls when the loop should stop.
-  The code inside the loop will run as long as this condition evaluates to true.
-  As soon as this expression evaluates to false, no more iterations of the loop will run.
-- The **post** component is some code that will run at the end of each iteration.
+- The **init** statement runs once before the first iteration. It's common to declare and initialize a counter variable used by the loop.
+- The **condition** is a Boolean expression evaluated before each iteration. The loop stops when this evaluates to `false`.
+- The **post** statement runs after each completed iteration. It can be used to update a counter.
 
-**Note:** Unlike other languages, there are no parentheses `()` surrounding the three components of the header.
-In fact, inserting such parenthesis is a compilation error.
+Do not surround `init; condition; post` with parentheses.
 However, the braces `{ }` surrounding the loop body are always required.
 
-## For Loops - An example
-
-The init component usually sets up a counter variable, the condition checks whether the loop should be continued or stopped and the post component usually increments the counter at the end of each repetition.
+This loop starts `i` at `1`, prints the current value of `i`, increases it for the next iteration, and stops when `i` reaches `10`:
 
 ```go
 for i := 1; i < 10; i++ {
-  fmt.Println(i)
+    fmt.Println(i)
 }
 ```
 
-This loop will print the numbers from `1` to `9` (including `9`).
-Defining the step is often done using an increment or decrement statement, as shown in the example above.
+## Other Loop Forms
 
-## Optional components of the header
+### Condition-Only Loop
 
-The init and post components of the header are optional:
+The init and post statements may be omitted.
+A `for` statement with only a condition serves the same purpose as a `while` loop in other languages.
+Go does not have a `while` keyword.
 
 ```go
-var sum = 1
+sum := 1
 for sum < 1000 {
-	sum += sum
+    sum += sum
 }
 fmt.Println(sum)
 // Output: 1024
 ```
 
-By omitting the init and post component in a for loop like shown above, you create a while loop in Go.
-There is no `while` keyword.
-This is an example of Go's principle that concepts should be orthogonal.
-Since there is already a concept to achieve the behavior of a while loop, namely the for loop, `while` was not added as an additional concept.
+### Infinite Loop
 
-## Break and Continue
+A `for` statement can be written without a condition:
 
-Inside a loop body you can use the `break` keyword to stop the execution of the loop entirely:
+```go
+for {
+    // loop body
+}
+```
+
+This loop does not terminate on its own.
+Execution must leave the loop explicitly, for example with `break` or `return`.
+
+## Controlling Loops
+
+### Break and Continue
+
+In this loop, `break` exits the loop:
 
 ```go
 for n := 0; n <= 5; n++ {
-  if n == 3 {
-    break
-  }
-  fmt.Println(n)
+    if n == 3 {
+        break
+    }
+    fmt.Println(n)
 }
 // Output:
 // 0
@@ -70,14 +75,14 @@ for n := 0; n <= 5; n++ {
 // 2
 ```
 
-In contrast, the keyword `continue` only stops the execution of the current iteration and continues with the next one:
+`continue` skips the rest of the current loop body and begins the next iteration:
 
 ```go
 for n := 0; n <= 5; n++ {
-  if n%2 == 0 {
-    continue
-  }
-  fmt.Println(n)
+    if n % 2 == 0 {
+        continue
+    }
+    fmt.Println(n)
 }
 // Output:
 // 1
@@ -85,43 +90,19 @@ for n := 0; n <= 5; n++ {
 // 5
 ```
 
-## Infinite for loop
+### Labeled Break and Continue
 
-The condition part of the loop header is also optional.
-In fact, you can write a loop with no header:
-
-```go
-for {
-  // Endless loop...
-}
-```
-
-This loop will only ever finish if the program exits or has a `break` in its body.
-
-## Labels and goto
-
-When we use `break`, Go will stop running the most inner loop.
-Similarly, when we use `continue`, Go will run the next iteration of the most inner loop.
-
-However, this is not always desirable.
-We can use labels together with `break` and `continue` to specifcy exactly from which loop we want to exit or continue, respectively.
-
-In this example we are creating a label `OuterLoop`, that will refer to the most outter loop.
-In the most inner loop, to say that we want exit from the most outter loop, we then use `break` followed by the name of the label of the most outter loop:
+With nested loops, an unlabeled `break` or `continue` applies to the innermost loop.
+Label an enclosing loop by placing an identifier followed by a colon on the line directly above it.
+Then write the loop's label after `break` or `continue` to direct the action to it:
 
 ```go
 OuterLoop:
-    for i := 0; i < 10; i++ {
-        for j := 0; j < 10; j++ {
-            // ...
+for i := 0; i < 10; i++ {
+    for j := 0; j < 10; j++ {
+        if i + j == 10 {
             break OuterLoop
         }
     }
+}
 ```
-
-Using labels with `continue` would also work, in which case, Go would continue in the next iteration of the loop referenced by the label.
-
-Go also has a `goto` keyword that works in a similar way and allows us to jump to from a piece of code to another labeled piece of code.
-
-**Warning:** Even though Go allows to jump to a piece of code marked with a label, using this feature of the language can easily make the code very hard to read.
-For this reason, using labels is often not recommended.
