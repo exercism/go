@@ -1,6 +1,6 @@
 {
   "go_mod_version": {
-    "default": "1.26",
+    "default": "1.27",
     "exceptions": []
   },
   "test_files" : {

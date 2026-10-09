@@ -25,7 +25,7 @@ func TestLoad(t *testing.T) {
 			Path: filepath.Join("..", "testdata", "version_config_no_exceptions.json"),
 			Expected: config.Config{
 				GoModVersion: config.VersionConfig{
-					Default: "1.26",
+					Default: "1.27",
 				}},
 			ExpectError: false,
 		},
@@ -34,7 +34,7 @@ func TestLoad(t *testing.T) {
 			Path: filepath.Join("..", "testdata", "version_config_one_exception.json"),
 			Expected: config.Config{
 				GoModVersion: config.VersionConfig{
-					Default: "1.26",
+					Default: "1.27",
 					Exceptions: []config.ExerciseVersion{
 						{
 							Exercise: "exercise01",
@@ -49,7 +49,7 @@ func TestLoad(t *testing.T) {
 			Path: filepath.Join("..", "testdata", "version_config_two_exceptions.json"),
 			Expected: config.Config{
 				GoModVersion: config.VersionConfig{
-					Default: "1.26",
+					Default: "1.27",
 					Exceptions: []config.ExerciseVersion{
 						{
 							Exercise: "exercise01",
