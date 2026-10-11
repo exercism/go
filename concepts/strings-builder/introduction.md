@@ -1,61 +1,38 @@
 # Introduction
 
 In Go, strings are immutable.
-This means that every time you concatenate strings using the `+` operator, Go creates a completely new string in memory and copies the data.
-While this is fine for short or infrequent operations, doing this inside loops can severely degrade performance and consume a lot of memory.
+Concatenating strings with `+` in a loop causes frequent allocations and copies data multiple times.
+The [`strings` package](https://pkg.go.dev/strings) provides [`Builder`](https://pkg.go.dev/strings#Builder) to minimize memory overhead by efficiently assembling strings.
 
-To solve this problem, Go's standard library provides the `strings.Builder` type.
+## Efficient Text Assembly
 
-## Efficient Concatenation
-
-The `strings.Builder` type is used to efficiently build strings from parts.
-It minimizes memory allocations by writing to an internal byte buffer.
-
-To use it, you first declare a variable of type `strings.Builder`.
-Its zero value is ready to use immediately:
+The zero-value of a `strings.Builder` is ready to use immediately without any explicit initialization or allocation:
 
 ```go
 var sb strings.Builder
 ```
 
-## Writing Content
+## Appending Content
 
-You can append data to the builder using various write methods.
-The most common ones are:
+You can push new data into the builder using specific write methods.
+Each write method returns the number of bytes written and a nil error.
+This error is typically ignored in everyday code.
 
-* `WriteString(s string)`: Appends a string.
-* `WriteRune(r rune)`: Appends a single rune (Unicode code point).
-* `WriteByte(c byte)`: Appends a single byte.
+The most frequently used methods are:
 
-Each of these methods returns the number of bytes written and an error.
-While this error is always `nil` (implemented to comply with the `io.Writer` interface), it is typically ignored in everyday code.
-
-```go
-sb.WriteString("Hello, ")
-sb.WriteRune('🍏')
-```
-
-## Performance Tuning
-
-If you know the size of the final string in advance, you can optimize memory usage using the `Grow(n int)` method.
-This pre-allocates enough space in the internal buffer to hold `n` additional bytes.
-Using `Grow` prevents the buffer from resizing during runtime, minimizing allocation overhead.
-
-```go
-var sb strings.Builder
-sb.Grow(32) // Pre-allocate buffer for 32 bytes
-```
+- `sb.WriteString(s string)`: Appends a string to the buffer
+- `sb.WriteRune(r rune)`: Appends the UTF-8 encoding of a rune
+- `sb.WriteByte(c byte)`: Appends a single byte
 
 ## Retrieving and Resetting
 
-Once you are done building the string, you can retrieve the accumulated text as a standard Go string using the `String()` method:
+Once you have finished assembling your text, you can extract the accumulated content as a standard Go string by calling the `String()` method.
+Calling `String()` is a very cheap operation.
+It returns the underlying byte slice as a string directly without copying the accumulated data.
 
-```go
-result := sb.String()
-```
-
-If you need to reuse the same builder instance for a new string, you can call the `Reset()` method.
-This empties the internal buffer, allowing you to start fresh without allocating a new builder.
+If you need to reuse the same builder instance to assemble a new string (for example, inside a loop), you can call the `Reset()` method.
+This empties the internal buffer.
+It allows you to start fresh and build the next string while preserving the already allocated memory capacity under the hood.
 
 ```go
 sb.Reset()

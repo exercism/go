@@ -1,7 +1,7 @@
 package sqlbuilder
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -101,7 +101,7 @@ func TestBuildBatchInserts(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := BuildBatchInserts(tt.table, tt.rows)
-			if !reflect.DeepEqual(got, tt.want) {
+			if !slices.Equal(got, tt.want) {
 				t.Errorf("BuildBatchInserts(%q, %v)\ngot:  %v\nwant: %v", tt.table, tt.rows, got, tt.want)
 			}
 		})
