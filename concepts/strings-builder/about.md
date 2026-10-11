@@ -6,16 +6,16 @@ The [`strings` package](https://pkg.go.dev/strings) provides [`Builder`](https:/
 
 ## Core Methods
 
-| Method | Purpose |
-| --- | --- |
-| [`WriteString`](https://pkg.go.dev/strings#Builder.WriteString) | Appends a string to the buffer |
-| [`WriteRune`](https://pkg.go.dev/strings#Builder.WriteRune) | Appends the UTF-8 encoding of a rune |
-| [`WriteByte`](https://pkg.go.dev/strings#Builder.WriteByte) | Appends a single byte |
-| [`Grow`](https://pkg.go.dev/strings#Builder.Grow) | Pre-allocates memory for `n` additional bytes |
-| [`Cap`](https://pkg.go.dev/strings#Builder.Cap) | Returns the current buffer capacity |
-| [`Len`](https://pkg.go.dev/strings#Builder.Len) | Returns the number of accumulated bytes |
-| [`String`](https://pkg.go.dev/strings#Builder.String) | Returns the accumulated text as a string |
-| [`Reset`](https://pkg.go.dev/strings#Builder.Reset) | Resets the builder to an empty state |
+| Method                                                          | Purpose                                       |
+| --------------------------------------------------------------- | --------------------------------------------- |
+| [`WriteString`](https://pkg.go.dev/strings#Builder.WriteString) | Appends a string to the buffer                |
+| [`WriteRune`](https://pkg.go.dev/strings#Builder.WriteRune)     | Appends the UTF-8 encoding of a rune          |
+| [`WriteByte`](https://pkg.go.dev/strings#Builder.WriteByte)     | Appends a single byte                         |
+| [`Grow`](https://pkg.go.dev/strings#Builder.Grow)               | Pre-allocates memory for `n` additional bytes |
+| [`Cap`](https://pkg.go.dev/strings#Builder.Cap)                 | Returns the current buffer capacity           |
+| [`Len`](https://pkg.go.dev/strings#Builder.Len)                 | Returns the number of accumulated bytes       |
+| [`String`](https://pkg.go.dev/strings#Builder.String)           | Returns the accumulated text as a string      |
+| [`Reset`](https://pkg.go.dev/strings#Builder.Reset)             | Resets the builder to an empty state          |
 
 ## Code Examples
 
