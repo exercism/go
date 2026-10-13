@@ -1,0 +1,10 @@
+name: Links
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 16 * * # 16th day of each month
+
+jobs:
+  call-gha-workflow:
+    uses: exercism/github-actions/.github/workflows/link-checker.yml@main

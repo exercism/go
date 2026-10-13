@@ -119,5 +119,5 @@ func AnythingGoes(i interface{}) string {
 
 [^1]: [Tour of Go: Interfaces][tour-of-go-interfaces]
 
-[concept-methods]: /tracks/go/concepts/methods
+[concept-methods]: https://exercism.org/tracks/go/concepts/methods
 [tour-of-go-interfaces]: https://go.dev/tour/methods/9

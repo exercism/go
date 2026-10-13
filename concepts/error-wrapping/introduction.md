@@ -147,6 +147,6 @@ func (e *SpecialError) Unwrap() error {
 }
 ```
 
-[concept-errors]: /tracks/go/concepts/errors
-[concept-pointers]: /tracks/go/concepts/pointers
+[concept-errors]: https://exercism.org/tracks/go/concepts/errors
+[concept-pointers]: https://exercism.org/tracks/go/concepts/pointers
 [google-go-styleguide]: https://google.github.io/styleguide/go/best-practices#adding-information-to-errors

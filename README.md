@@ -15,7 +15,7 @@ If you have any feedback or experience problems, you can bring them up in the [G
 ## Development setup
 
 If you work on this repository, you should follow some standard Go development practices.
-You should have a [recent version of Go](http://golang.org/doc/install) installed, ideally either the current release or previous release.
+You should have a [recent version of Go](https://go.dev/doc/install) installed, ideally either the current release or previous release.
 
 You will need a github account and you will need to fork exercism/go to your account.
 See [GitHub Help](https://help.github.com/articles/fork-a-repo/) if you are unfamiliar with the process.
@@ -44,7 +44,7 @@ Let's walk through an example, non-existent, exercise, which we'll call `fizzbuz
 
 ### Exercise configuration
 
-An exercise is configured via an entry in the exercises array in [config.json file](/config.json).
+An exercise is configured via an entry in the exercises array in [config.json file](https://github.com/exercism/go/blob/main/config.json).
 If `fizzbuzz` is an optional exercise, it would have an entry below the core exercises that might look like:
 
 ```json
@@ -115,7 +115,7 @@ Let's briefly describe each file:
 
 - **.meta/metadata.yml** - Track specific exercise metadata, overrides the exercise metadata from the problem-specifications repository.
 
-In some exercises there can be extra files, for instance the [series](exercises/series/) exercise contains extra test files.
+In some exercises there can be extra files, for instance the [series](https://github.com/exercism/go/tree/main/exercises/practice/series) exercise contains extra test files.
 
 ### Ignored files
 
@@ -125,7 +125,7 @@ Therefore there are certain files and directories that are ignored when an exerc
 These are:
 
 - The _.meta_ directory and anything within it.
-- Any file that matches the `ignore_pattern` defined in [config.json file](/config.json).
+- Any file that matches the `ignore_pattern` defined in [config.json file](https://github.com/exercism/go/blob/main/config.json).
   This currently matches any filename that contains the word `example`, _unless_ it is followed by the word `test`, with any number of characters in between.
 
 ### Example solutions
@@ -165,14 +165,6 @@ Really we like most of the advice on that page.
 
 In Go we generally have all tests enabled and do not ask the solver to edit the test program, to enable progressive tests for example.
 `t.Fatalf()`, as seen in the _leap_test.go_ file, will stop tests at the first failure encountered, so the solver is not faced with too many failures at once.
-
-### Testable examples
-
-Some exercises can contain [Example tests](https://blog.golang.org/examples) that document the exercise API.
-These examples are run alongside the standard exercise tests and will verify that the exercise API is working as expected.
-They are not required by all exercises and are not intended to replace the data-driven tests.
-They are most useful for providing examples of how an exercise's API is used.
-Have a look at the example tests in the [clock exercise](https://github.com/exercism/go/blob/master/exercises/clock/example_clock_test.go) to see them in action.
 
 ### Errors
 
