@@ -432,17 +432,6 @@
     ],
     "practice": [
       {
-        "slug": "hello-world",
-        "name": "Hello World",
-        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "strings"
-        ]
-      },
-      {
         "slug": "accumulate",
         "name": "Accumulate",
         "uuid": "fb03948c-11e8-440d-9a5d-979396451270",
@@ -468,6 +457,17 @@
         "prerequisites": [],
         "difficulty": 1,
         "status": "deprecated"
+      },
+      {
+        "slug": "hello-world",
+        "name": "Hello World",
+        "uuid": "19957346-dedf-441e-85ea-656cac0d96d8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "strings"
+        ]
       },
       {
         "slug": "hexadecimal",
@@ -1866,6 +1866,14 @@
           "algorithms",
           "math"
         ]
+      },
+      {
+        "slug": "resistor-color-tolerance",
+        "name": "Resistor Color Tolerance",
+        "uuid": "35bd69a9-e619-4a08-9fb0-4d37c6a28bcb",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "rest-api",

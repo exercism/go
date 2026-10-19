@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "resistor_color_tolerance.go"
+    ],
+    "test": [
+      "resistor_color_tolerance_test.go"
+    ],
+    "example": [
+      ".meta/example.go"
+    ]
+  },
+  "blurb": "Convert color codes as used on resistors with different bands to a human-readable label.",
+  "source": "@meatball133",
+  "source_url": "https://github.com/exercism/python/tree/main/exercises/practice/resistor-color-expert"
+}
