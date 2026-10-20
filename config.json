@@ -438,9 +438,11 @@
         ],
         "prerequisites": [
           "strings",
-          "string-formatting",
           "runes",
-          "zero-values"
+          "zero-values",
+          "for-loops",
+          "slices",
+          "structs"
         ],
         "status": "active"
       }

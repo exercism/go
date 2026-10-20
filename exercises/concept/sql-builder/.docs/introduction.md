@@ -15,14 +15,14 @@ var sb strings.Builder
 ## Appending Content
 
 You can push new data into the builder using specific write methods.
-Each write method returns the number of bytes written and a nil error.
+Each write method returns an error value to satisfy standard Go interfaces, but it is guaranteed to always be `nil`.
 This error is typically ignored in everyday code.
 
 The most frequently used methods are:
 
-- `sb.WriteString(s string)`: Appends a string to the buffer
-- `sb.WriteRune(r rune)`: Appends the UTF-8 encoding of a rune
-- `sb.WriteByte(c byte)`: Appends a single byte
+- `WriteString(s string) (int, error)`: Appends a string to the buffer.
+- `WriteRune(r rune) (int, error)`: Appends the UTF-8 encoding of a rune.
+- `WriteByte(c byte) error`: Appends a single byte.
 
 ## Retrieving and Resetting
 

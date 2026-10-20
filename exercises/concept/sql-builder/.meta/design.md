@@ -29,7 +29,9 @@ The exercise teaches the following concepts:
 ## Prerequisites
 
 To successfully complete this exercise, the student should already be familiar with:
-- `strings` (Basic usage)
-- `slices` (Iterating over slices)
-- `structs` (Accessing struct fields)
-- `loops` (For-range loops)
+- `strings` (Basic usage and immutability)
+- `runes` (Working with individual Unicode code points)
+- `zero-values` (Understanding how uninitialized variables behave, specifically for structs)
+- `for-loops` (Iterating using standard and for-range loops)
+- `slices` (Iterating over and handling dynamic collections)
+- `structs` (Defining structures and accessing fields)
