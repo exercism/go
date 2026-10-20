@@ -4,15 +4,13 @@ In Go, strings are immutable.
 Concatenating strings with `+` in a loop causes frequent allocations and copies data multiple times.
 The [`strings` package](https://pkg.go.dev/strings) provides [`Builder`](https://pkg.go.dev/strings#Builder) to minimize memory overhead by efficiently assembling strings.
 
-## Efficient Text Assembly
+## Building Strings
 
 The zero-value of a `strings.Builder` is ready to use immediately without any explicit initialization or allocation:
 
-```go
+\`\`\`go
 var sb strings.Builder
-```
-
-## Appending Content
+\`\`\`
 
 You can push new data into the builder using specific write methods.
 Each write method returns an error value to satisfy standard Go interfaces, but it is guaranteed to always be `nil`.
@@ -23,6 +21,16 @@ The most frequently used methods are:
 - `WriteString(s string) (int, error)`: Appends a string to the buffer.
 - `WriteRune(r rune) (int, error)`: Appends the UTF-8 encoding of a rune.
 - `WriteByte(c byte) error`: Appends a single byte.
+
+\`\`\`go
+var sb strings.Builder
+sb.WriteString("Hello")
+var r rune = ' '
+sb.WriteRune(r)
+var b byte = '.'
+sb.WriteByte(b)
+\`\`\`
+
 
 ## Retrieving and Resetting
 
