@@ -46,7 +46,7 @@ rows := [][]ColumnValue{
 }
 
 BuildBatchInserts("products", rows)
-// Function return strings slice: [
+// Function returns string slice: [
 //   "INSERT INTO products (title, price) VALUES ('Book', '100');",
 //   "INSERT INTO products (title, price) VALUES ('Magazine', '15');"
 // ]
