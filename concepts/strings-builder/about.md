@@ -6,7 +6,9 @@ The [`strings` package](https://pkg.go.dev/strings) provides [`Builder`](https:/
 
 ## Building Strings
 
-The zero-value of a `strings.Builder` is ready to use immediately without any explicit initialization or allocation. You can push new data into the builder using specific write methods. Each write method returns an error value to satisfy standard Go interfaces, but it is guaranteed to always be `nil` and is typically ignored in everyday code.
+The zero-value of a `strings.Builder` is ready to use immediately without any explicit initialization or allocation.
+You can push new data into the builder using specific write methods.
+Each write method returns an error value to satisfy standard Go interfaces, but it is guaranteed to always be `nil` and is typically ignored in everyday code.
 
 The most frequently used methods are:
 
@@ -26,9 +28,11 @@ sb.WriteByte(b)
 
 ## Retrieving and Resetting
 
-Once you have finished assembling your text, you can extract the accumulated content as a standard Go string by calling the `String()` method. Calling `String()` is a very cheap operation because it returns the underlying byte slice as a string directly without copying the accumulated data.
+Once you have finished assembling your text, you can extract the accumulated content as a standard Go string by calling the `String()` method.
+Calling `String()` is a very cheap operation because it returns the underlying byte slice as a string directly without copying the accumulated data.
 
-If you need to reuse the same builder instance to assemble a new string (for example, inside a loop), you can call the `Reset()` method. This empties the internal buffer, allowing you to start fresh and build the next string while preserving the already allocated memory capacity under the hood.
+If you need to reuse the same builder instance to assemble a new string (for example, inside a loop), you can call the `Reset()` method.
+This empties the internal buffer, allowing you to start fresh and build the next string while preserving the already allocated memory capacity under the hood.
 
 ```go
 var sb strings.Builder
@@ -42,16 +46,3 @@ sb.Reset()
 sb.WriteString("Task Two")
 fmt.Println(sb.String()) // Output: Task Two
 ```
-
-## Core Methods
-
-| Method                                                          | Purpose                                       |
-| --------------------------------------------------------------- | --------------------------------------------- |
-| [`WriteString`](https://pkg.go.dev/strings#Builder.WriteString) | Appends a string to the buffer                |
-| [`WriteRune`](https://pkg.go.dev/strings#Builder.WriteRune)     | Appends the UTF-8 encoding of a rune          |
-| [`WriteByte`](https://pkg.go.dev/strings#Builder.WriteByte)     | Appends a single byte                         |
-| [`Grow`](https://pkg.go.dev/strings#Builder.Grow)               | Pre-allocates memory for `n` additional bytes |
-| [`Cap`](https://pkg.go.dev/strings#Builder.Cap)                 | Returns the current buffer capacity           |
-| [`Len`](https://pkg.go.dev/strings#Builder.Len)                 | Returns the number of accumulated bytes       |
-| [`String`](https://pkg.go.dev/strings#Builder.String)           | Returns the accumulated text as a string      |
-| [`Reset`](https://pkg.go.dev/strings#Builder.Reset)             | Resets the builder to an empty state          |
