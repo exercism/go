@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "usernaimandrey"
+  ],
+  "files": {
+    "solution": [
+      "sql_builder.go"
+    ],
+    "test": [
+      "sql_builder_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
+  "blurb": "Learn how to efficiently construct SQL query strings from components using strings.Builder."
+}
