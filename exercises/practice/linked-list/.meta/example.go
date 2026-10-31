@@ -1,19 +1,20 @@
 package linkedlist
 
-import (
-	"errors"
-)
+import "errors"
+
+var ErrEmptyList = errors.New("list is empty")
+
 
 // Node is a node in a linked list.
-type Node struct {
-	Value any
-	next  *Node
-	prev  *Node
+type Node[T comparable] struct {
+	Value T
+	next  *Node[T]
+	prev  *Node[T]
 }
 
 // NewNode constructs a new Node with the given value & no next/prev links.
-func NewNode(v any) *Node {
-	return &Node{
+func NewNode[T comparable](v T) *Node[T] {
+	return &Node[T]{
 		Value: v,
 		next:  nil,
 		prev:  nil,
@@ -21,17 +22,17 @@ func NewNode(v any) *Node {
 }
 
 // Next returns a pointer to the next node in the linked list.
-func (n *Node) Next() *Node {
+func (n *Node[T]) Next() *Node[T] {
 	return n.next
 }
 
 // Prev returns a pointer to the previous node in the linked list.
-func (n *Node) Prev() *Node {
+func (n *Node[T]) Prev() *Node[T] {
 	return n.prev
 }
 
 // First returns a pointer to the first node in the linked list (head).
-func (n *Node) First() *Node {
+func (n *Node[T]) First() *Node[T] {
 	cur := n
 	for ; cur.prev != nil; cur = cur.prev {
 	}
@@ -40,7 +41,7 @@ func (n *Node) First() *Node {
 }
 
 // Last returns a pointer to the last node in the linked list (tail).
-func (n *Node) Last() *Node {
+func (n *Node[T]) Last() *Node[T] {
 	cur := n
 	for ; cur.next != nil; cur = cur.next {
 	}
@@ -49,14 +50,14 @@ func (n *Node) Last() *Node {
 }
 
 // List is a doubly-linked list with Head and Tail.
-type List struct {
-	head *Node
-	tail *Node
+type List[T comparable] struct {
+	head *Node[T]
+	tail *Node[T]
 }
 
 // NewList constructs a doubly linked list from a sequence of integers.
-func NewList(elements ...any) *List {
-	ll := &List{
+func NewList[T comparable](elements ...T) *List[T] {
+	ll := &List[T]{
 		head: nil,
 		tail: nil,
 	}
@@ -85,17 +86,17 @@ func NewList(elements ...any) *List {
 }
 
 // First returns a pointer to the first node in the linked list (head).
-func (ll *List) First() *Node {
+func (ll *List[T]) First() *Node[T] {
 	return ll.head
 }
 
 // Last returns a pointer to the last node in the linked list (tail).
-func (ll *List) Last() *Node {
+func (ll *List[T]) Last() *Node[T] {
 	return ll.tail
 }
 
 // Reverse reverses the given linked list in-place.
-func (ll *List) Reverse() {
+func (ll *List[T]) Reverse() {
 	if ll.head == nil || ll.head.next == nil {
 		return
 	}
@@ -109,7 +110,7 @@ func (ll *List) Reverse() {
 }
 
 // Unshift pushes a new value before Head.
-func (ll *List) Unshift(v any) {
+func (ll *List[T]) Unshift(v T) {
 	n := NewNode(v)
 
 	switch {
@@ -127,7 +128,7 @@ func (ll *List) Unshift(v any) {
 }
 
 // Push pushes a new value after Tail.
-func (ll *List) Push(v any) {
+func (ll *List[T]) Push(v T) {
 	n := NewNode(v)
 
 	switch {
@@ -144,15 +145,14 @@ func (ll *List) Push(v any) {
 	}
 }
 
-var ErrEmptyList = errors.New("list is empty")
-
 // Shift posp the element at Head. It returns error if the linked list is empty.
-func (ll *List) Shift() (any, error) {
+func (ll *List[T]) Shift() (T, error) {
 	switch {
 	default:
 		panic("bad PopFront implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
-		return nil, ErrEmptyList
+		var zero T
+		return zero, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.head.next == nil: // 1 element
 		v := ll.head.Value
 		ll.head = nil
@@ -169,12 +169,13 @@ func (ll *List) Shift() (any, error) {
 }
 
 // Pop pops the element at Tail. It returns error if the linked list is empty.
-func (ll *List) Pop() (any, error) {
+func (ll *List[T]) Pop() (T, error) {
 	switch {
 	default:
 		panic("bad PopBack implementation")
 	case ll.head == nil && ll.tail == nil: // empty list
-		return nil, ErrEmptyList
+		var zero T
+		return zero, ErrEmptyList
 	case ll.head != nil && ll.tail != nil && ll.tail.prev == nil: // 1 element
 		v := ll.tail.Value
 		ll.head = nil
@@ -191,7 +192,7 @@ func (ll *List) Pop() (any, error) {
 }
 
 // Count returns the number of nodes in the list.
-func (ll *List) Count() int {
+func (ll *List[T]) Count() int {
 	var count int
 	for cur := ll.head; cur != nil; cur = cur.Next() {
 		count++
@@ -201,7 +202,7 @@ func (ll *List) Count() int {
 
 // Delete removes the first node in a list with a given value.
 // Returns true if a node was removed.
-func (ll *List) Delete(v any) bool {
+func (ll *List[T]) Delete(v T) bool {
 	for cur := ll.head; cur != nil; cur = cur.Next() {
 		if cur.Value == v {
 			if cur.prev == nil {
