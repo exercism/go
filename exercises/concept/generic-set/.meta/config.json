@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "IsaacG"
+  ],
+  "files": {
+    "solution": [
+      "generic_set.go"
+    ],
+    "test": [
+      "generic_set_test.go"
+    ],
+    "exemplar": [
+      ".meta/exemplar.go"
+    ]
+  },
+  "blurb": "Implement a simple generic set."
+}
