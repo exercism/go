@@ -445,6 +445,20 @@
           "structs"
         ],
         "status": "active"
+      },
+      {
+        "slug": "generic-set",
+        "name": "generic-set",
+        "uuid": "1d4bc862-852c-4759-af2f-0610b6386e28",
+        "concepts": [
+          "generics"
+        ],
+        "prerequisites": [
+          "interfaces",
+          "maps",
+          "methods"
+        ],
+        "status": "active"
       }
     ],
     "practice": [
@@ -2409,6 +2423,11 @@
       "uuid": "a960da78-c940-4725-8069-929f42564cdb",
       "slug": "errors",
       "name": "Errors"
+    },
+    {
+      "uuid": "af508d6a-3ec9-489f-bff2-d1675f136ead",
+      "slug": "generics",
+      "name": "Generics"
     },
     {
       "uuid": "a492060c-11e7-448e-bdbd-6a907cec9493",
