@@ -66,7 +66,7 @@ A constraint also determines the operations you are allowed to perform on values
 The `any` constraint allows any type.
 In Go, `any` is an alias for the empty interface `interface{}`.
 Because `any` allows every type, the function can only perform operations that work on all Go types.
-For example, you cannot compare two values of type `any` using `==`, because functions and slices cannot be compared with `==`.
+For example, if you have two `any` values, holding slices, they cannot be compared with `==` as slices cannot be compared using `==`.
 
 ### The `comparable` constraint
 
@@ -131,6 +131,8 @@ type Number interface {
 
 Now you can use `Double` with values of type `MyInt`.
 
+### The `cmp.Ordered` constraint
+
 The standard library provides the `cmp.Ordered` constraint in the [`cmp` package][doc-cmp].
 The `cmp.Ordered` constraint allows any type that supports the comparison operators `<`, `<=`, `>`, and `>=`.
 
@@ -184,6 +186,7 @@ Use generics in situations like these:
 
 Use interfaces instead in situations like these:
 - You care about behavior and methods, rather than the underlying data type.
+  For example, if you want to read and process data from sources of various types (files, network, TTY), you would use `func Process(src io.Reader)` over `func Process[T](src T)`.
 - Different types require different method implementations to accomplish their work.
 
 For more information, see the [Go Generics Tutorial][doc-tutorial-generics], the [Go Blog introduction to generics][blog-intro-generics], and the [Go Language Specification on Type Parameters][ref-spec-type-params].
