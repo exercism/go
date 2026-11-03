@@ -1,361 +1,107 @@
 package genericset
 
-import "testing"
+import (
+	"maps"
+	"slices"
+	"testing"
+)
 
-func TestNew(t *testing.T) {
+// testRunnerTaskID=1
+func TestNewMembers(t *testing.T) {
+	if got := NewSet[string](); got == nil {
+		t.Errorf("NewSet[string]() = nil, want a Set.")
+	}
+}
+
+// testRunnerTaskID=1
+func TestNewAges(t *testing.T) {
 	if got := NewSet[int](); got == nil {
-		t.Errorf("NewSet() = nil, want a Set.")
+		t.Errorf("NewSet[int]() = nil, want a Set.")
 	}
 }
 
-func TestEmptyEqual(t *testing.T) {
-	setOne := NewSet[int]()
-	setTwo := NewSet[int]()
-	if !setOne.Equal(setTwo) {
-		t.Errorf("setOne.Equal(setTwo) = false, want true.")
+// testRunnerTaskID=1
+func TestAddMembers(t *testing.T) {
+	members := NewSet[string]()
+	want := map[string]struct{}{}
+	log := []string{"Alice", "Bob", "Alice", "Cara", "Bob"}
+	for i := range log {
+		want[log[i]] = struct{}{}
+		members.Add(log[i])
+		if !maps.Equal(members, want) {
+			t.Fatalf("Added %v. Got %v but expected %v.", log[0:i], members, want)
+		}
 	}
 }
 
-type addCases[T comparable] struct {
-	description string
-	addOne      []T
-	addTwo      []T
-	want        bool
-}
-
-var addStringCases = []addCases[string]{
-	{
-		description: "Two empty Set[string] should be equal.",
-		addOne:      []string{},
-		addTwo:      []string{},
-		want:        true,
-	},
-	{
-		description: "Two Set[string] with one element each should be equal.",
-		addOne:      []string{"one"},
-		addTwo:      []string{"one"},
-		want:        true,
-	},
-	{
-		description: "Two Set[string] with two elements each should be equal.",
-		addOne:      []string{"one", "two"},
-		addTwo:      []string{"one", "two"},
-		want:        true,
-	},
-	{
-		description: "Changing the Add order should not make Sets unequal.",
-		addOne:      []string{"one", "two"},
-		addTwo:      []string{"two", "one"},
-		want:        true,
-	},
-	{
-		description: "Two Set[string] with one different element each should be unequal.",
-		addOne:      []string{"one"},
-		addTwo:      []string{"two"},
-		want:        false,
-	},
-	{
-		description: "Two Set[string] with more elements in the second set should be unequal.",
-		addOne:      []string{"one"},
-		addTwo:      []string{"one", "two"},
-		want:        false,
-	},
-	{
-		description: "Two Set[string] with more elements in the first set should be unequal.",
-		addOne:      []string{"one", "two"},
-		addTwo:      []string{"two"},
-		want:        false,
-	},
-	{
-		description: "Two Set[string] with partial overlap should be unequal.",
-		addOne:      []string{"one", "two"},
-		addTwo:      []string{"zero", "two"},
-		want:        false,
-	},
-}
-
-func TestAddString(t *testing.T) {
-	for _, tc := range addStringCases {
-		t.Run(tc.description, func(t *testing.T) {
-			one := NewSet[string]()
-			for _, i := range tc.addOne {
-				one.Add(i)
-			}
-			two := NewSet[string]()
-			for _, i := range tc.addTwo {
-				two.Add(i)
-			}
-			if got := one.Equal(two); got != tc.want {
-				t.Errorf("%v.Equal(%v) = %t, want %t", one, two, got, tc.want)
-			}
-		})
+// testRunnerTaskID=1
+func TestAddAges(t *testing.T) {
+	ages := NewSet[int]()
+	want := map[int]struct{}{}
+	log := []int{5, 5, 5, 6, 4, 3, 4, 3, 2}
+	for i := range log {
+		want[log[i]] = struct{}{}
+		ages.Add(log[i])
+		if !maps.Equal(ages, want) {
+			t.Fatalf("Added %v. Got %v but expected %v.", log[0:i], ages, want)
+		}
 	}
 }
 
-var addIntCases = []addCases[int]{
-	{
-		description: "Two empty Set[int] should be equal.",
-		addOne:      []int{},
-		addTwo:      []int{},
-		want:        true,
-	},
-	{
-		description: "Two Set[int] with one element each should be equal.",
-		addOne:      []int{1},
-		addTwo:      []int{1},
-		want:        true,
-	},
-	{
-		description: "Two Set[int] with two elements each should be equal.",
-		addOne:      []int{1, 2},
-		addTwo:      []int{1, 2},
-		want:        true,
-	},
-	{
-		description: "Changing the Add order should not make Sets unequal.",
-		addOne:      []int{1, 2},
-		addTwo:      []int{2, 1},
-		want:        true,
-	},
-	{
-		description: "Two Set[int] with one different element each should be unequal.",
-		addOne:      []int{1},
-		addTwo:      []int{2},
-		want:        false,
-	},
-	{
-		description: "Two Set[int] with more elements in the second set should be unequal.",
-		addOne:      []int{1},
-		addTwo:      []int{1, 2},
-		want:        false,
-	},
-	{
-		description: "Two Set[int] with more elements in the first set should be unequal.",
-		addOne:      []int{1, 2},
-		addTwo:      []int{2},
-		want:        false,
-	},
-	{
-		description: "Two Set[int] with partial overlap should be unequal.",
-		addOne:      []int{1, 2},
-		addTwo:      []int{0, 2},
-		want:        false,
-	},
-}
-
-func TestAddInt(t *testing.T) {
-	for _, tc := range addIntCases {
-		t.Run(tc.description, func(t *testing.T) {
-			one := NewSet[int]()
-			for _, i := range tc.addOne {
-				one.Add(i)
+// testRunnerTaskID=2
+func TestContainsMember(t *testing.T) {
+	members := NewSet[string]()
+	log := []string{"Alice", "Bob", "Alice", "Cara", "Bob"}
+	for i := range log {
+		members.Add(log[i])
+		for _, member := range []string{"Alice", "Bob", "Cara", "Dave", "Ellie"} {
+			want := slices.Contains(log[0:i+1], member)
+			if got := members.Contains(member); got != want {
+				t.Fatalf("Added %v. members.Contains(%#v) = %t but want %t.", log[0:i], member, got, want)
 			}
-			two := NewSet[int]()
-			for _, i := range tc.addTwo {
-				two.Add(i)
-			}
-			if got := one.Equal(two); got != tc.want {
-				t.Errorf("%v.Equal(%v) = %t, want %t", one, two, got, tc.want)
-			}
-		})
+		}
 	}
 }
 
-type hasCases[T comparable] struct {
-	description string
-	add         []T
-	check       T
-	want        bool
-}
-
-var hasIntCases = []hasCases[int]{
-	{
-		description: "Empty Set does not have 1.",
-		add:         []int{},
-		check:       1,
-		want:        false,
-	},
-	{
-		description: "Set {1} does have 1.",
-		add:         []int{1},
-		check:       1,
-		want:        true,
-	},
-	{
-		description: "Set {1, 2, 3, 4, 5} does have 3.",
-		add:         []int{1, 2, 3, 4, 5},
-		check:       3,
-		want:        true,
-	},
-	{
-		description: "Set {1, 2, 3, 4, 5} does not have 7.",
-		add:         []int{1, 2, 3, 4, 5},
-		check:       7,
-		want:        false,
-	},
-}
-
-var hasStringCases = []hasCases[string]{
-	{
-		description: "Empty Set does not have 'dog'.",
-		add:         []string{},
-		check:       "dog",
-		want:        false,
-	},
-	{
-		description: "Set {'dog'} does have 'dog'.",
-		add:         []string{"dog"},
-		check:       "dog",
-		want:        true,
-	},
-	{
-		description: "Set {'cat', 'dog', 'mouse'} does have 'cat'.",
-		add:         []string{"cat", "dog", "mouse"},
-		check:       "cat",
-		want:        true,
-	},
-	{
-		description: "Set {'cat', 'dog', 'mouse'} does not have 'bird'.",
-		add:         []string{"cat", "dog", "mouse"},
-		check:       "bird",
-		want:        false,
-	},
-}
-
-func TestHasString(t *testing.T) {
-	for _, tc := range hasStringCases {
-		t.Run(tc.description, func(t *testing.T) {
-			set := NewSet[string]()
-			for _, i := range tc.add {
-				set.Add(i)
-			}
-			if got := set.Has(tc.check); got != tc.want {
-				t.Errorf("%v.Has(%v) = %t, want %t", set, tc.check, got, tc.want)
-			}
-		})
+// testRunnerTaskID=3
+func TestEquals(t *testing.T) {
+	cases := []struct {
+		one  []string
+		two  []string
+		want bool
+	}{
+		{
+			[]string{},
+			[]string{},
+			true,
+		},
+		{
+			[]string{"Alice", "Bob"},
+			[]string{"Bob", "Alice"},
+			true,
+		},
+		{
+			[]string{"Alice"},
+			[]string{"Bob", "Alice"},
+			false,
+		},
+		{
+			[]string{"Alice", "Bob"},
+			[]string{"Alice"},
+			false,
+		},
 	}
-}
-
-func TestHasInt(t *testing.T) {
-	for _, tc := range hasIntCases {
-		t.Run(tc.description, func(t *testing.T) {
-			set := NewSet[int]()
-			for _, i := range tc.add {
-				set.Add(i)
-			}
-			if got := set.Has(tc.check); got != tc.want {
-				t.Errorf("%v.Has(%d) = %t, want %t", set, tc.check, got, tc.want)
-			}
-		})
-	}
-}
-
-var removeCases = []struct {
-	description string
-	add         []int
-	remove      []int
-	check       int
-	want        bool
-}{
-	{
-		description: "Remove 1 from {1}, does not have 1.",
-		add:         []int{1},
-		remove:      []int{1},
-		check:       1,
-		want:        false,
-	},
-	{
-		description: "Remove 1 from {1, 2}, does not have 1.",
-		add:         []int{1, 2},
-		remove:      []int{1},
-		check:       1,
-		want:        false,
-	},
-	{
-		description: "Remove 1 from {1, 2}, does have 2.",
-		add:         []int{1, 2},
-		remove:      []int{1},
-		check:       2,
-		want:        true,
-	},
-	{
-		description: "Remove 1, 2 from {1, 2}, does not have 1.",
-		add:         []int{1, 2},
-		remove:      []int{1, 2},
-		check:       1,
-		want:        false,
-	},
-	{
-		description: "Remove 1, 2 from {1, 2}, does not have 2.",
-		add:         []int{1, 2},
-		remove:      []int{1, 2},
-		check:       2,
-		want:        false,
-	},
-}
-
-func TestRemove(t *testing.T) {
-	for _, tc := range removeCases {
-		t.Run(tc.description, func(t *testing.T) {
-			set := NewSet[int]()
-			for _, i := range tc.add {
-				set.Add(i)
-			}
-			for _, i := range tc.remove {
-				set.Remove(i)
-			}
-			if got := set.Has(tc.check); got != tc.want {
-				t.Errorf("%v.Has(%d) = %t, want %t", set, tc.check, got, tc.want)
-			}
-		})
-	}
-}
-
-var isEmptyCases = []struct {
-	description string
-	add         []int
-	remove      []int
-	want        bool
-}{
-	{
-		description: "Empty Set is empty.",
-		add:         []int{},
-		remove:      []int{1},
-		want:        true,
-	},
-	{
-		description: "Remove 1 from {1, 2}, not empty.",
-		add:         []int{1, 2},
-		remove:      []int{1},
-		want:        false,
-	},
-	{
-		description: "Remove 2 from {1, 2}, not empty.",
-		add:         []int{1, 2},
-		remove:      []int{2},
-		want:        false,
-	},
-	{
-		description: "Remove 1, 2 from {1, 2}, is empty.",
-		add:         []int{1, 2},
-		remove:      []int{1, 2},
-		want:        true,
-	},
-}
-
-func TestEmpty(t *testing.T) {
-	for _, tc := range isEmptyCases {
-		t.Run(tc.description, func(t *testing.T) {
-			set := NewSet[int]()
-			for _, i := range tc.add {
-				set.Add(i)
-			}
-			for _, i := range tc.remove {
-				set.Remove(i)
-			}
-			if got := set.IsEmpty(); got != tc.want {
-				t.Errorf("%v.IsEmpty() = %t, want %t", set, got, tc.want)
-			}
-		})
+	for _, tc := range cases {
+		lastMonth := NewSet[string]()
+		for _, member := range tc.one {
+			lastMonth.Add(member)
+		}
+		thisMonth := NewSet[string]()
+		for _, member := range tc.two {
+			thisMonth.Add(member)
+		}
+		if got := lastMonth.Equals(thisMonth); got != tc.want {
+			t.Fatalf("Last month: %v\nThis month: %v\nlastMonth.Equals(thisMonth) = %t, want %t.", tc.one, tc.two, got, tc.want)
+		}
 	}
 }
