@@ -3,7 +3,7 @@ package piglatin
 // This is an auto-generated file. Do not change it manually. Run the generator to update the file.
 // See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: 25c2ae5 build(deps): bump fast-uri from 3.1.0 to 3.1.2 (#2653)
+// Commit: 7b49ec4 [pig-latin] reimplement a test which had an incorrect value (#2699)
 
 type testCase struct {
 	description string
@@ -124,7 +124,7 @@ var testCases = []testCase{
 	},
 	{
 		description: "a whole phrase",
-		input:       "quick fast run",
-		expected:    "ickquay astfay unray",
+		input:       "why do squids enjoy xrays",
+		expected:    "ywhay oday idssquay enjoyay xraysay",
 	},
 }
