@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://go.dev/doc/tutorial/generics",
+    "description": "Go Docs Tutorial: Getting started with generics"
+  },
+  {
+    "url": "https://go.dev/blog/intro-generics",
+    "description": "Go Blog: An Introduction To Generics"
+  },
+  {
+    "url": "https://go.dev/ref/spec#Type_parameter_declarations",
+    "description": "Go specs: Type parameter declarations"
+  }
+]
