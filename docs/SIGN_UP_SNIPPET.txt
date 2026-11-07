@@ -1,0 +1,11 @@
+func mostCommonWord(text string) string {
+	counts := map[string]int{}
+	best := ""
+	for _, word := range strings.Fields(strings.ToLower(text)) {
+		counts[word]++
+		if counts[word] > counts[best] {
+			best = word
+		}
+	}
+	return fmt.Sprintf("%q appears %d times", best, counts[best])
+}
