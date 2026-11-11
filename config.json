@@ -448,7 +448,7 @@
       },
       {
         "slug": "generic-set",
-        "name": "generic-set",
+        "name": "Generic Set",
         "uuid": "1d4bc862-852c-4759-af2f-0610b6386e28",
         "concepts": [
           "generics"
