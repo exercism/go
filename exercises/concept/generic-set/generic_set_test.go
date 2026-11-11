@@ -20,7 +20,7 @@ func TestNewAges(t *testing.T) {
 	}
 }
 
-// testRunnerTaskID=1
+// testRunnerTaskID=2
 func TestAddMembers(t *testing.T) {
 	members := NewSet[string]()
 	want := map[string]struct{}{}
@@ -34,7 +34,7 @@ func TestAddMembers(t *testing.T) {
 	}
 }
 
-// testRunnerTaskID=1
+// testRunnerTaskID=2
 func TestAddAges(t *testing.T) {
 	ages := NewSet[int]()
 	want := map[int]struct{}{}
@@ -48,7 +48,7 @@ func TestAddAges(t *testing.T) {
 	}
 }
 
-// testRunnerTaskID=2
+// testRunnerTaskID=3
 func TestContainsMember(t *testing.T) {
 	members := NewSet[string]()
 	log := []string{"Alice", "Bob", "Alice", "Cara", "Bob"}
@@ -63,7 +63,7 @@ func TestContainsMember(t *testing.T) {
 	}
 }
 
-// testRunnerTaskID=3
+// testRunnerTaskID=4
 func TestEquals(t *testing.T) {
 	cases := []struct {
 		one  []string
