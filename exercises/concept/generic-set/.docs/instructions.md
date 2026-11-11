@@ -3,12 +3,10 @@
 You manage an exclusive movie theater.
 In order to attend a movie, people must purchase annual passes, then can attend movies for free.
 
-You want to know which members shows up this month.
-You have a log of people that came into the threater this month.
-Some members never came in this month, and others came in multiple times.
-
-You also want to track what age demographics attended movies.
-In order to do that, you will need to collect what age groups, calculated as `age/10`, attended.
+Your theater maintains a log of admissions.
+You want to use that log to track which members used their annual pass this month.
+You also want to get information about age demographics of your customers.
+You realize you can use sets to solve these goals.
 
 ## Sets
 
@@ -16,7 +14,7 @@ A set is a perfect data type to store this type of data.
 
 A set is a data type used to store distinct, unique values in no particular order.
 Distinct and unique means an element is either in the set or not in the set; unlike with an array, it cannot be in the set multiple times.
-Sets are typically unorderd; if you list the elements in a set, the order you get may be different from the order they were added -- or even different from the order you got on the prior list!
+Sets are typically unordered; if you list the elements in a set, the order you get may be different from the order they were added -- or even different from the order you got on the prior list!
 
 A fundamental property of sets is membership checks: the ability to check if a set contains an element.
 Membership checks are core to almost all uses of a set.

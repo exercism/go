@@ -7,7 +7,7 @@
 
 ## 1. Tracking Attendees
 
-- The [type definition] concept explains how to define a new type.
+- The [type definition][] concept explains how to define a new type.
 - Use `make()` to create a new `map` instance.
 - To add a value to the map, use `struct{}{}` to create an instance of the empty `struct{}`.
 
