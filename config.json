@@ -1827,6 +1827,7 @@
         "name": "Linked List",
         "uuid": "4368df53-39fb-4f36-97c2-39c399cd6d25",
         "practices": [
+	  "generics",
           "variadic-functions"
         ],
         "prerequisites": [],

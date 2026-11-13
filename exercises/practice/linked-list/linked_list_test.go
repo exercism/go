@@ -8,85 +8,8 @@ import (
 	"testing"
 )
 
-func TestList(t *testing.T) {
-	for _, tc := range testCases {
-		t.Run(tc.description, func(t *testing.T) {
-			hasInput := []string{"push", "unshift", "delete"}
-
-			list := NewList()
-			var calls []string
-			for _, op := range tc.operations {
-				if slices.Contains(hasInput, op.operation) {
-					calls = append(calls, fmt.Sprintf("%s(%v)", op.operation, op.value))
-				} else {
-					calls = append(calls, fmt.Sprintf("%s()", op.operation))
-				}
-
-				var got int
-				switch op.operation {
-				case "Push":
-					list.Push(op.value)
-				case "Unshift":
-					list.Unshift(op.value)
-				case "Delete":
-					list.Delete(op.value)
-				case "Pop":
-					raw, _ := list.Pop()
-					got = raw.(int)
-				case "Shift":
-					raw, _ := list.Shift()
-					got = raw.(int)
-				case "Count":
-					got = list.Count()
-				default:
-					panic(fmt.Sprintf("unknown operation %s", op.operation))
-				}
-
-				checkGot := op.expected != 0 || op.operation == "Count"
-				if checkGot && op.expected != got {
-					t.Fatalf("%s() = %d, want %d\nCalls: %s.", op.operation, got, op.expected, strings.Join(calls, "; "))
-					break
-				}
-			}
-		})
-	}
-}
-func TestNew(t *testing.T) {
-	for _, tc := range newListTestCases {
-		t.Run(tc.name, func(t *testing.T) {
-			actual := NewList(tc.in...)
-
-			checkDoublyLinkedList(t, actual, tc.expected)
-		})
-	}
-}
-
-func TestReverse(t *testing.T) {
-	for _, tc := range reverseTestCases {
-		t.Run(tc.name, func(t *testing.T) {
-			actual := NewList(tc.in...)
-			actual.Reverse()
-
-			checkDoublyLinkedList(t, actual, tc.expected)
-		})
-	}
-}
-
-func TestPushPop(t *testing.T) {
-	for _, tc := range pushPopTestCases {
-		t.Run(tc.name, func(t *testing.T) {
-			actual := NewList(tc.in...)
-			for _, ac := range tc.actions {
-				ac(t, actual)
-			}
-
-			checkDoublyLinkedList(t, actual, tc.expected)
-		})
-	}
-}
-
 // checkDoublyLinkedList checks that the linked list is constructed correctly.
-func checkDoublyLinkedList(t *testing.T, ll *List, expected []any) {
+func checkDoublyLinkedList[T comparable](t *testing.T, ll *List[T], expected []T) {
 	// check that length and elements are correct (scan once from begin -> end)
 	elem, count, idx := ll.First(), 0, 0
 	for ; elem != nil && idx < len(expected); elem, count, idx = elem.Next(), count+1, idx+1 {
@@ -143,8 +66,96 @@ func checkDoublyLinkedList(t *testing.T, ll *List, expected []any) {
 	}
 }
 
+func TestList(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			hasInput := []string{"push", "unshift", "delete"}
+
+			list := NewList[int]()
+			var calls []string
+			for _, op := range tc.operations {
+				if slices.Contains(hasInput, op.operation) {
+					calls = append(calls, fmt.Sprintf("%s(%v)", op.operation, op.value))
+				} else {
+					calls = append(calls, fmt.Sprintf("%s()", op.operation))
+				}
+
+				var got int
+				switch op.operation {
+				case "Push":
+					list.Push(op.value)
+				case "Unshift":
+					list.Unshift(op.value)
+				case "Delete":
+					list.Delete(op.value)
+				case "Pop":
+					got, _ = list.Pop()
+				case "Shift":
+					got, _ = list.Shift()
+				case "Count":
+					got = list.Count()
+				default:
+					panic(fmt.Sprintf("unknown operation %s", op.operation))
+				}
+
+				checkGot := op.expected != 0 || op.operation == "Count"
+				if checkGot && op.expected != got {
+					t.Fatalf("%s() = %d, want %d\nCalls: %s.", op.operation, got, op.expected, strings.Join(calls, "; "))
+					break
+				}
+			}
+		})
+	}
+}
+func TestNew(t *testing.T) {
+	for _, tc := range newListTestCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := NewList(tc.in...)
+
+			checkDoublyLinkedList(t, actual, tc.expected)
+		})
+	}
+}
+
+func TestReverse(t *testing.T) {
+	for _, tc := range reverseTestCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := NewList(tc.in...)
+			actual.Reverse()
+
+			checkDoublyLinkedList(t, actual, tc.expected)
+		})
+	}
+}
+
+func TestPushPop(t *testing.T) {
+	for _, tc := range pushPopTestCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := NewList(tc.in...)
+			for _, ac := range tc.actions {
+				ac(t, actual)
+			}
+
+			checkDoublyLinkedList(t, actual, tc.expected)
+		})
+	}
+}
+
+func TestPushPopStrings(t *testing.T) {
+	for _, tc := range pushPopStringTestCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := NewList(tc.in...)
+			for _, ac := range tc.actions {
+				ac(t, actual)
+			}
+
+			checkDoublyLinkedList(t, actual, tc.expected)
+		})
+	}
+}
+
 // debugString prints the linked list with both node's Value, next & prev pointers.
-func (ll *List) debugString() string {
+func (ll *List[T]) debugString() string {
 	buf := bytes.NewBuffer([]byte{'{'})
 	fmt.Fprintf(buf, "First()= %p; ", ll.First())
 
