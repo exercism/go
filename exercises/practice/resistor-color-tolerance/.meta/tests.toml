@@ -20,6 +20,11 @@ description = "Red, black, red and green"
 
 [c001757b-d388-4f42-9987-23e42bc22d68]
 description = "Green, brownm orange and grey"
+include = false
+
+[a182cca5-4f3c-49f2-8d46-709d11624353]
+description = "Green, brownm orange and grey"
+reimplements = "c001757b-d388-4f42-9987-23e42bc22d68"
 
 [1cb18e15-1fc5-4375-8a24-ca6eee130a27]
 description = "Only one band"
