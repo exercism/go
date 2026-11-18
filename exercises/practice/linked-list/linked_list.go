@@ -19,26 +19,26 @@ func (n *Node[T]) Prev() *Node[T] {
 }
 
 // Unshift pushes a new value before Head.
-func (ll *List[T]) Unshift(v T) {
+func (l *List[T]) Unshift(v T) {
 }
 
 // Push pushes a new value after Tail.
-func (ll *List[T]) Push(v T) {
+func (l *List[T]) Push(v T) {
 	panic("Please implement the Push function")
 }
 
 // Shift posp the element at Head. It returns error if the linked list is empty.
-func (ll *List[T]) Shift() (T, error) {
+func (l *List[T]) Shift() (T, error) {
 	panic("Please implement the Shift function")
 }
 
 // Pop pops the element at Tail. It returns error if the linked list is empty.
-func (ll *List[T]) Pop() (T, error) {
+func (l *List[T]) Pop() (T, error) {
 	panic("Please implement the Pop function")
 }
 
 // Reverse reverses the given linked list in-place.
-func (ll *List[T]) Reverse() {
+func (l *List[T]) Reverse() {
 	panic("Please implement the Reverse function")
 }
 
@@ -53,12 +53,12 @@ func (n *Node[T]) Last() *Node[T] {
 }
 
 // Count returns the number of nodes in the list.
-func (ll *List[T]) Count() int {
+func (l *List[T]) Count() int {
 	panic("Please implement the Count function")
 }
 
 // Delete removes the first node in a list with a given value.
 // Returns true if a node was removed.
-func (ll *List[T]) Delete(v T) bool {
+func (l *List[T]) Delete(v T) bool {
 	panic("Please implement the Delete function")
 }
