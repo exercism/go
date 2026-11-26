@@ -4,7 +4,7 @@ Your task is to create a program that implements the Sieve of Eratosthenes algor
 
 A prime number is a number larger than 1 that is only divisible by 1 and itself.
 For example, 2, 3, 5, 7, 11, and 13 are prime numbers.
-By contrast, 6 is _not_ a prime number as it not only divisible by 1 and itself, but also by 2 and 3.
+By contrast, 6 is _not_ a prime number as it is not only divisible by 1 and itself, but also by 2 and 3.
 
 To use the Sieve of Eratosthenes, first, write out all the numbers from 2 up to and including your given number.
 Then, follow these steps:

@@ -10,7 +10,7 @@ The unencrypted string is called the _plaintext_ and the encrypted string is cal
 Converting plaintext to ciphertext is called _encoding_ while the reverse is called _decoding_.
 
 In a _substitution cipher_, each plaintext letter is replaced with a ciphertext letter which is computed with the help of a _key_.
-(Note, it is possible for replacement letter to be the same as the original letter.)
+(Note, it is possible for the replacement letter to be the same as the original letter.)
 
 ## Encoding details
 

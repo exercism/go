@@ -30,6 +30,6 @@ The leftmost and rightmost values have only one preceding position to consider, 
 With the topmost value being `1`, it follows from this that all the leftmost and rightmost values are also `1`.
 
 The other values all have two positions to consider.
-For example, the fifth row's (`1 4 6 4 1`) middle value is `6`, as the values to its left and right in the preceding row are `3` and `3`:
+For example, the fifth row's (`1 4 6 4 1`) middle value is `6`, as the values to its left and right in the preceding row are `3` and `3`.
 
 [wikipedia]: https://en.wikipedia.org/wiki/Pascal%27s_triangle

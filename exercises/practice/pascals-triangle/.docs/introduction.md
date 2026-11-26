@@ -1,7 +1,7 @@
 # Introduction
 
 With the weather being great, you're not looking forward to spending an hour in a classroom.
-Annoyed, you enter the class room, where you notice a strangely satisfying triangle shape on the blackboard.
+Annoyed, you enter the classroom, where you notice a strangely satisfying triangle shape on the blackboard.
 Whilst waiting for your math teacher to arrive, you can't help but notice some patterns in the triangle: the outer values are all ones, each subsequent row has one more value than its previous row and the triangle is symmetrical.
 Weird!
 

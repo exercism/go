@@ -12,7 +12,7 @@ An in-order traversal reads the left subtree in-order then the current node and 
 So in order from left to right.
 
 For example the pre-order traversal of this tree is [a, i, x, f, r].
-The in-order traversal of this tree is [i, a, f, x, r]
+The in-order traversal of this tree is [i, a, f, x, r].
 
 ```text
   a

@@ -22,10 +22,10 @@ In a 3-digit cage with a sum of 7, there is only one valid combination: 124.
 
 ![Sudoku grid, with three killer cages that are marked as grouped together.
 The first killer cage is in the 3×3 box in the top left corner of the grid.
-The middle column of that box forms the cage, with the followings cells from top to bottom: first cell contains a 1 and a pencil mark of 7, indicating a cage sum of 7, second cell contains a 2, third cell contains a 5.
+The middle column of that box forms the cage, with the following cells from top to bottom: first cell contains a 1 and a pencil mark of 7, indicating a cage sum of 7, second cell contains a 2, third cell contains a 5.
 The numbers are highlighted in red to indicate a mistake.
 The second killer cage is in the central 3×3 box of the grid.
-The middle column of that box forms the cage, with the followings cells from top to bottom: first cell contains a 1 and a pencil mark of 7, indicating a cage sum of 7, second cell contains a 2, third cell contains a 4.
+The middle column of that box forms the cage, with the following cells from top to bottom: first cell contains a 1 and a pencil mark of 7, indicating a cage sum of 7, second cell contains a 2, third cell contains a 4.
 None of the numbers in this cage are highlighted and therefore don't contain any mistakes.
 The third killer cage follows the outside corner of the central 3×3 box of the grid.
 It is made up of the following three cells: the top left cell of the cage contains a 2, highlighted in red, and a cage sum of 7.
@@ -42,7 +42,7 @@ In a 2-digit cage with a sum 10, there are 4 possible combinations:
 - 46
 
 ![Sudoku grid, all squares empty except for the middle column, column 5, which has 8 rows filled.
-Each continguous two rows form a killer cage and are marked as grouped together.
+Each contiguous two rows form a killer cage and are marked as grouped together.
 From top to bottom: first group is a cell with value 1 and a pencil mark indicating a cage sum of 10, cell with value 9.
 Second group is a cell with value 2 and a pencil mark of 10, cell with value 8.
 Third group is a cell with value 3 and a pencil mark of 10, cell with value 7.

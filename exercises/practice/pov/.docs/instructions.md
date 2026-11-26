@@ -37,5 +37,5 @@ So for example the path from 6-9 (which in the first tree goes up to the root an
 
 This exercise involves taking an input tree and re-orientating it from the point of view of one of the nodes.
 
-[wiki-graph]: https://en.wikipedia.org/wiki/Tree_(graph_theory)
-[wiki-tree]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+[wiki-graph]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+[wiki-tree]: https://en.wikipedia.org/wiki/Tree_(graph_theory)
