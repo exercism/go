@@ -1,4 +1,4 @@
-# Description
+# Introduction
 
 Today, most people in the world use Arabic numerals (0–9).
 But if you travelled back two thousand years, you'd find that most Europeans were using Roman numerals instead.

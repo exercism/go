@@ -5,7 +5,7 @@ Your job is to help implement
 - the transmitter, which calculates the transmission sequence, and
 - the receiver, which decodes it.
 
-A parity bit is simple way of detecting transmission errors.
+A parity bit is a simple way of detecting transmission errors.
 The transmitters and receivers can only transmit and receive _exactly_ eight bits at a time (including the parity bit).
 The parity bit is set so that there is an _even_ number of 1 bits in each transmission, and the parity bit is always the first bit from the right.
 So if the receiver receives `11000001`, `01110101` or `01000000` (i.e. a transmission with an odd number of 1 bits), it knows there is an error.

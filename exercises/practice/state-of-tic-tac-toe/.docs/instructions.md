@@ -5,7 +5,7 @@ In this exercise, you're going to implement a program that determines the state 
 
 The game is played on a 3×3 grid.
 Players take turns to place `X`s and `O`s on the grid.
-The game ends when one player has won by placing three of marks in a row, column, or along a diagonal of the grid, or when the entire grid is filled up.
+The game ends when one player has won by placing three of their marks in a row, column, or along a diagonal of the grid, or when the entire grid is filled up.
 
 In this exercise, we will assume that `X` starts.
 

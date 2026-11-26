@@ -14,7 +14,7 @@ The color bands are encoded as follows:
 | Green  | 5     |
 | Blue   | 6     |
 | Violet | 7     |
-| Gray   | 8     |
+| Grey   | 8     |
 | White  | 9     |
 
 In [`Resistor Color Trio`][resistor-color-trio-exercise] you decoded the first three color bands.

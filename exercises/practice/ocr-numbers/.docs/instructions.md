@@ -4,7 +4,7 @@ Optical Character Recognition or OCR is software that converts images of text in
 Given a grid of characters representing some digits, convert the grid to a string of digits.
 If the grid has multiple rows of cells, the rows should be separated in the output with a `","`.
 
-- The grid is made of one of more lines of cells.
+- The grid is made of one or more lines of cells.
 - Each line of the grid is made of one or more cells.
 - Each cell is three columns wide and four rows high (3x4) and represents one digit.
 - Digits are drawn using pipes (`"|"`), underscores (`"_"`), and spaces (`" "`).
@@ -22,7 +22,7 @@ The following input (without the comments) is converted to `"1234567890"`.
       _  _     _  _  _  _  _  _  #
     | _| _||_||_ |_   ||_||_|| | # Decimal numbers.
     ||_  _|  | _||_|  ||_| _||_| #
-                                 # The fourth line is always blank,
+                                 # The fourth line is always blank.
 ```
 
 The following input is converted to `"123,456,789"`.

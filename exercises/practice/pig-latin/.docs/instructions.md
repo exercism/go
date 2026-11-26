@@ -34,11 +34,11 @@ If a word starts with zero or more consonants followed by `"qu"`, first move tho
 For example:
 
 - `"quick"` -> `"ickqu"` -> `"ickquay"` (starts with `"qu"`, no preceding consonants)
-- `"square"` -> `"aresqu"` -> `"aresquay"` (starts with one consonant followed by `"qu`")
+- `"square"` -> `"aresqu"` -> `"aresquay"` (starts with one consonant followed by `"qu"`)
 
 ## Rule 4
 
-If a word starts with one or more consonants followed by `"y"`, first move the consonants preceding the `"y"`to the end of the word, and then add an `"ay"` sound to the end of the word.
+If a word starts with one or more consonants followed by `"y"`, first move the consonants preceding the `"y"` to the end of the word, and then add an `"ay"` sound to the end of the word.
 
 Some examples:
 

@@ -23,6 +23,6 @@ Yet, the conjecture claims that no matter the starting number, we'll always end 
 It was fascinating, but also puzzling.
 Why does this always seem to work?
 Could there be a number where the process breaks down, looping forever or escaping into infinity?
-The notebook suggested solving this could reveal something profound — and with it, fame, [fortune][collatz-prize], and a place in history awaits whoever could unlock its secrets.
+The notebook suggested solving this could reveal something profound — and with it, fame, [fortune][collatz-prize], and a place in history await whoever could unlock its secrets.
 
 [collatz-prize]: https://mathprize.net/posts/collatz-conjecture/

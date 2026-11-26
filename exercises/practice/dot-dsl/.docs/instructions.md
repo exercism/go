@@ -15,7 +15,7 @@ A simple graph looks like this:
         a -- b [color="green"]
     }
 
-Putting this in a file `example.dot` and running `dot example.dot -T png -o example.png` creates an image `example.png` with red and blue circle connected by a green line on a yellow background.
+Putting this in a file `example.dot` and running `dot example.dot -T png -o example.png` creates an image `example.png` with a red and a blue circle connected by a green line on a yellow background.
 
 Write a Domain Specific Language similar to the Graphviz dot language.
 

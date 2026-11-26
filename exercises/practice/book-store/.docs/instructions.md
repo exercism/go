@@ -26,7 +26,7 @@ For example, how much does this basket of books cost?
 
 One way of grouping these 8 books is:
 
-- 1 group of 5 (1st, 2nd,3rd, 4th, 5th)
+- 1 group of 5 (1st, 2nd, 3rd, 4th, 5th)
 - 1 group of 3 (1st, 2nd, 3rd)
 
 This would give a total of:
